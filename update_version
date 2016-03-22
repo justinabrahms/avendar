@@ -1,0 +1,24 @@
+#!/usr/bin/perl
+
+### Delete version.o, if it exists (this object compiles in the version info)
+`rm version.o`;
+
+### Obtain the values
+$ver = `svnversion`;
+$date = `date`;
+$pwd = `pwd`;
+
+### Chomp the values
+chomp($ver);
+chomp($date);
+chomp($pwd);
+
+### Generate the header
+print "#ifndef VERSION_H\n";
+print "#define VERSION_H\n";
+print "\n";
+print "static const char * BuildVersion = \"$ver\";\n";
+print "static const char * BuildTime = \"$date\";\n";
+print "static const char * BuildPath = \"$pwd\";\n";
+print "\n";
+print "#endif\n";
