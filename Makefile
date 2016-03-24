@@ -2,7 +2,7 @@ CC      = g++
 PROF    = -O0 -g
 RELEASE = -O3
 C_FLAGS =  -Wall -Wno-parentheses -Wno-char-subscripts -Wno-write-strings $(PROF) $(NOCRYPT) 
-L_FLAGS =  -lm -lcrypt -L/usr/local/lib/mysql/ -lmysqlclient $(PROF)
+L_FLAGS =  -lm -lcrypt -L/usr/local/bin/ -L/usr/lib32/ -L/usr/lib/x86_64-linux/gnu/ -L/usr/local/lib/mysql/ -lmysqlclient $(PROF)
 
 O_FILES = act_comm.o act_enter.o act_info.o act_move.o act_obj.o act_wiz.o AirTitles.o \
           alchemy.o alias.o ban.o bit.o comm.o CommandTrie.o const.o db.o db2.o dictionary.o \
