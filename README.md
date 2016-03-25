@@ -13,3 +13,5 @@ sudo aptitude install g++-multilib  # Is this needed? Who knows!
 sudo aptitude install libmysql{client,++}-dev:i386
 
 ```
+
+mysql --cflags  things here looks promising: http://ubuntuforums.org/archive/index.php/t-1666018.html
