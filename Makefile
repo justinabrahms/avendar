@@ -29,10 +29,10 @@ main:
 	make rom
 
 rom: $(O_FILES)
-	$(CC) $(L_FLAGS) -o avendar $(O_FILES)
+	$(CC) -o avendar $(O_FILES) $(L_FLAGS)
 
 prof: $(O_FILES)
-	$(CC) $(L_FLAGS) -o avendar -pg $(O_FILES)
+	$(CC) -o avendar -pg $(O_FILES) $(L_FLAGS)
 
 clean:
 	rm -f avendar *~ *.o
