@@ -15,3 +15,16 @@ sudo aptitude install libmysql{client,++}-dev:i386
 ```
 
 mysql --cflags  things here looks promising: http://ubuntuforums.org/archive/index.php/t-1666018.html
+
+
+Setup mysql.
+```
+mysql> create database pantheon;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> create user pantheon identified by 'BuFF3L1ve5!';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> grant all on * to pantheon;
+Query OK, 0 rows affected (0.00 sec)
+```
