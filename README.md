@@ -28,6 +28,8 @@ Query OK, 0 rows affected (0.00 sec)
 mysql> grant all on * to pantheon;
 Query OK, 0 rows affected (0.00 sec)
 ```
+
+
 ## Status
 ### Factions
 There's a bug wherein the last line of factions.txt is getting
@@ -42,3 +44,25 @@ why this is. I have a small check in Faction::Read which states
 I think this is ultimately wrong and results in an extra faction than
 should exist. It passes though (for now).
 
+
+### Player lists
+
+There seems to be an error getting player information. We're opening
+`../player/_player.lst`, but it's empty. The setup doesn't expect
+this.
+
+NOTE: You can apparently just delete everything in the player/ dir, and it works.
+
+
+### Help files
+
+Player creation is buggy b/c helpfiles arne't loaded.
+
+```
+Mon Mar 28 02:17:16 2016 :: [*****] BUG: Query error 1146: Table 'pantheon.help_data' doesn't exist.
+```
+
+You can load the helpfiles in by starting a mysql session, selecting
+the `pantheon` database and running `. help_db.sql` which will load
+the help files. `help_db.sql` is a file in the initial avendar tarball
+dump.
