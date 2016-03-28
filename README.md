@@ -28,3 +28,17 @@ Query OK, 0 rows affected (0.00 sec)
 mysql> grant all on * to pantheon;
 Query OK, 0 rows affected (0.00 sec)
 ```
+## Status
+### Factions
+There's a bug wherein the last line of factions.txt is getting
+interpreted as "" and it's not triggering the eof warning. Not sure
+why this is. I have a small check in Faction::Read which states
+
+```
+        if (key == "")
+            return true;
+```
+
+I think this is ultimately wrong and results in an extra faction than
+should exist. It passes though (for now).
+
