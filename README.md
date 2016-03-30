@@ -1,6 +1,7 @@
 # Avendar
 
 [![Circle CI](https://circleci.com/gh/justinabrahms/avendar.svg?style=svg)](https://circleci.com/gh/justinabrahms/avendar)
+[![codecov.io](https://codecov.io/github/justinabrahms/avendar/coverage.svg?branch=master)](https://codecov.io/github/justinabrahms/avendar?branch=master)
 
 ## Getting it working.
 
