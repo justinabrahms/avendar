@@ -97,7 +97,7 @@ gtest_main.a : gtest-all.o gtest_main.o
 
 
 StringUtil_test.o : StringUtil_test.cpp $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(C_FLAGS) $(USER_DIR)/StringUtil_test.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(C_FLAGS) $(USER_DIR)/$*.cpp
 
 StringUtil_test : StringUtil.o StringUtil_test.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@ 
