@@ -26,7 +26,7 @@ O_FILES = act_comm.o act_enter.o act_info.o act_move.o act_obj.o act_wiz.o AirTi
 	      version.o WaterTitles.o
 
 USER_DIR = .
-GTEST_DIR = ${HOME}/src/github.com/google/googletest/googletest/
+GTEST_DIR = deps/googletest
 
 TESTS = StringUtil_test
 
