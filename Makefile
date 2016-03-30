@@ -1,8 +1,9 @@
 CC      = g++
 PROF    = -O0 -g
 RELEASE = -O3
-C_FLAGS =  -m32 -fpermissive -Wall -Wno-parentheses -Wno-char-subscripts -Wno-write-strings $(PROF) $(NOCRYPT) 
-L_FLAGS =  -m32 -lm -L/usr/lib/i386-linux-gnu -L/lib/i386-linux-gnu -lcrypt -L/usr/local/bin/ -lmysqlclient $(PROF)
+COVERAGE= -fprofile-arcs -ftest-coverage
+C_FLAGS = -m32 -fpermissive -Wall -Wno-parentheses -Wno-char-subscripts -Wno-write-strings $(PROF) $(NOCRYPT) $(COVERAGE)
+L_FLAGS = -m32 -lm -L/usr/lib/i386-linux-gnu -L/lib/i386-linux-gnu -lcrypt -L/usr/local/bin/ -lmysqlclient $(PROF)
 
 # TODO(jabrahms): Move this into things which are mud dependencies and things which rarely change (eg StringUtil)
 O_FILES = act_comm.o act_enter.o act_info.o act_move.o act_obj.o act_wiz.o AirTitles.o \
@@ -41,7 +42,7 @@ prof: $(O_FILES)
 	$(CC) -o avendar -pg $(O_FILES) $(L_FLAGS)
 
 clean:
-	rm -f avendar *~ *.o *.a $(TESTS)
+	rm -f avendar *~ *.o *.a *.gcov *.gcda *.gcno $(TESTS)
 
 .c.o: merc.h
 	$(CC) -c $(C_FLAGS) $<
@@ -59,7 +60,7 @@ test: $(TESTS)
 # Flags passed to the preprocessor.
 # Set Google Test's header directory as a system directory, such that
 # the compiler doesn't generate warnings in Google Test headers.
-CPPFLAGS += -m32 -isystem $(GTEST_DIR)/include
+CPPFLAGS += -m32 -isystem $(GTEST_DIR)/include $(COVERAGE)
 
 # Flags passed to the C++ compiler.
 CXXFLAGS += -m32 -g -Wall -Wextra -pthread
