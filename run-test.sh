@@ -14,4 +14,4 @@ make clean test
 find . -name "*_test" -exec ./{} --gtest_output=xml:$TEST_OUTPUT_DIR/{}.xml \;
 
 # Mark all non _test files for coverage checking.
-find . -name "*.c" -o -name "*.cpp" | grep -v "_test" | xargs gcov
+find . -name "*.c" -o -name "*.cpp" | grep -v "_test" | xargs gcov --relative-only
