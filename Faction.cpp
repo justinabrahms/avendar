@@ -29,6 +29,9 @@ bool Faction::Read(std::istream & input)
         if (key == Marker_End) 
             return true;
 
+        if (key == "")
+            return true;
+
         if (input.fail() || input.eof())
             break;
 
@@ -37,7 +40,8 @@ bool Faction::Read(std::istream & input)
         {
             // Eat the single space before grabbing the rest of the line
             input.get();
-            std::getline(input, m_name); 
+            std::getline(input, m_name);
+            log_string(m_name.c_str());
             continue;
         }
 
@@ -52,6 +56,8 @@ bool Faction::Read(std::istream & input)
         if (key == Marker_InitGender) {input >> value; input >> initValue; m_initialValueByGender.push_back(std::make_pair(value, initValue)); continue;}
     }
 
+    log_string("Error loading factions key");
+    log_string(key.c_str());
     return false;
 }
 
@@ -327,6 +333,7 @@ FactionTable::FactionTable(const char * filename)
         if (!faction.Read(fin))
         {
             bug("Failed to read faction from faction file", 0);
+            bug(filename, 0);
             return;
         }
 

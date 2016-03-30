@@ -52,6 +52,7 @@
 #include "spells_spirit_air.h"
 #include "spells_void.h"
 #include "Faction.h"
+using namespace std;
 
 /* command procedures needed */
 DECLARE_DO_FUN(do_quit  );
