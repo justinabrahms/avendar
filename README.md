@@ -1,5 +1,7 @@
 # Avendar
 
+[![Circle CI](https://circleci.com/gh/justinabrahms/avendar.svg?style=svg)](https://circleci.com/gh/justinabrahms/avendar)
+
 ## Getting it working.
 
 We're not there yet. Here are the steps as I know them so far.
