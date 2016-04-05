@@ -59,6 +59,7 @@ struct	cmd_type
     int		info;
     int		canmount;
     int		comm;
+    OBJ_DO_FUN * obj_do_fun;
 };
 
 /* the command table itself */
@@ -636,7 +637,8 @@ DECLARE_DO_FUN( do_worth	);
 DECLARE_DO_FUN(	do_yell		);
 DECLARE_DO_FUN(	do_char_yell	);
 DECLARE_DO_FUN(	do_zap		);
-DECLARE_DO_FUN( do_nock         );
+DECLARE_DO_FUN( old_do_nock         );
+DECLARE_OBJ_DO_FUN( do_nock         );
 DECLARE_DO_FUN(	do_identifyowner);
 DECLARE_DO_FUN( do_zecho	);
 DECLARE_DO_FUN( do_whodata	);

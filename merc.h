@@ -46,6 +46,7 @@
 #include "SomaticArtsInfo.h"
 #include "StringUtil.h"
 
+class IPlayer;
 class PhantasmInfo;
 class FactionStanding;
 class ExperienceList;
@@ -57,6 +58,7 @@ class ExperienceList;
 #define const
 #define args( list )			( )
 #define DECLARE_DO_FUN( fun )		void fun( )
+#define DECLARE_OBJ_DO_FUN( fun )	void fun( )
 #define DECLARE_ODO_FUN( fun )          void fun( )
 #define DECLARE_SPEC_FUN( fun )		bool fun( )
 #define DECLARE_SPELL_FUN( fun )	bool fun( )
@@ -67,6 +69,7 @@ class ExperienceList;
 #else
 #define args( list )			list
 #define DECLARE_DO_FUN( fun )		DO_FUN    fun
+#define DECLARE_OBJ_DO_FUN( fun )	OBJ_DO_FUN    fun
 #define DECLARE_ODO_FUN( fun )          ODO_FUN   fun
 #define DECLARE_SPEC_FUN( fun )		SPEC_FUN  fun
 #define DECLARE_SPELL_FUN( fun )	SPELL_FUN fun
@@ -164,6 +167,7 @@ typedef struct	sac_type		SAC_TYPE;
  * Function types.
  */
 typedef	void DO_FUN	args( ( CHAR_DATA *ch, char *argument ) );
+typedef	void OBJ_DO_FUN	args( ( IPlayer *player, char *argument ) );
 typedef void ODO_FUN    args( ( OBJ_DATA  *ch, char *argument ) );
 typedef bool SPEC_FUN	args( ( CHAR_DATA *ch ) );
 typedef void EVENT_FUN  args( ( void *vo ) );

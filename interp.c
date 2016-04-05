@@ -39,6 +39,7 @@
 #include "merc.h"
 #include "interp.h"
 #include "CommandTrie.h"
+#include "Player.h"
 
 bool is_social(CHAR_DATA * ch, const char * command, int & index);
 bool	check_social	args( ( CHAR_DATA *ch, char *command,
@@ -493,7 +494,7 @@ const	struct	cmd_type	cmd_table	[] =
      * Miscellaneous commands.
      */
     { "shieldcover",	do_shieldcover, 0,POS_STANDING, 0, LOG_NORMAL, 1,0,0,0,0},
-    { "nock",           do_nock,        0,POS_STANDING, 0, LOG_NORMAL, 1,1,0,1,0},
+    { "nock",           old_do_nock,    0,POS_STANDING, 0, LOG_NORMAL, 1,1,0,1,0, do_nock},
     { "drag",           do_drag,        0,POS_STANDING, 0, LOG_NORMAL, 1,0,0,0,0},
     { "gag",            do_gag,         0,POS_STANDING, 0, LOG_NORMAL, 1,0,0,0,0},    
     { "listen",		do_listen,	0,POS_STANDING, 0, LOG_NORMAL, 1,1,0,1,0},
@@ -1540,7 +1541,15 @@ af.point = NULL;
     }	
 
     if (cmd_table[cmd].do_fun != 0)
-      (*cmd_table[cmd].do_fun) ( ch, argument );
+      // TODO(abrahms): I'm considering adding YET ANOTHER CONDITIONAL
+      // to check if the command is a known command in the "new
+      // syntax" where it'll wrap the ch in a Player class.
+      if (cmd_table[cmd].obj_do_fun) {
+        Player player(ch);
+        (*cmd_table[cmd].obj_do_fun) ( &player, argument );
+      } else {
+        (*cmd_table[cmd].do_fun) ( ch, argument );
+      }
     else if (cmd_table[cmd].prog_fun != 0)
     {
 	if ((IS_NPC(ch) && (!ch->desc)) || (ch->level > LEVEL_HERO))

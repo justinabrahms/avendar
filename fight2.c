@@ -46,6 +46,7 @@
 #include "spells_spirit.h"
 #include "spells_earth.h"
 #include "Direction.h"
+#include "Player.h"
 
 void offhanddisarm( CHAR_DATA *ch, CHAR_DATA *victim );
 
@@ -500,7 +501,81 @@ void do_ignite(CHAR_DATA *ch, char *argument)
 }
 
 
-void do_nock(CHAR_DATA *ch, char *argument)
+void do_nock(IPlayer *player, char *argument)
+{
+    OBJ_DATA *obj;
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *ch = player->get_ch();
+
+    if (!get_skill(ch, gsn_archery))
+    {
+	send_to_char("Huh?\n\r", ch);
+	return;
+    }
+    obj = get_eq_char(ch, WEAR_HOLD);
+    if ((obj == NULL) || (obj->item_type != ITEM_BOW))
+    {
+	send_to_char("You need to be using a bow to nock an arrow.\n\r", ch);
+	return;
+    }
+    if (!str_cmp(argument,"none"))
+    {
+	if (ch->nocked)
+	{
+	    act("You relax your draw on $p and put it away.",ch,ch->nocked,NULL,TO_CHAR);
+	    act("$n relaxes $s draw on $p and puts it away.",ch,ch->nocked,NULL,TO_ROOM);
+	    ch->nocked = NULL;
+	    return;
+	}
+	else
+	{
+	    send_to_char("You have no arrow nocked.\n\r",ch);
+	    return; 
+	}
+    }
+    if (argument[0] == '\0')
+    {
+	if (ch->nocked)
+	{
+	    sprintf(buf, "You are no longer prepared to fire %s.", ch->nocked->short_descr);
+            REMOVE_BIT(ch->nocked->extra_flags[0], ITEM_WIZI);
+	    ch->nocked = NULL;
+	    send_to_char(buf, ch);
+	    return;
+	}
+	else
+	{
+	    send_to_char("What arrow do you wish to nock?\n\r", ch);
+	    return;
+	}
+    }
+
+    if ((obj = get_obj_carry(ch, argument, ch)) == NULL)
+    {
+	send_to_char("You are not carrying that arrow.\n\r", ch);
+	return;
+    }  
+    
+    if (obj->item_type != ITEM_ARROW)
+    {
+	send_to_char("You may only nock arrows.\n\r", ch);
+	return;
+    }
+    
+    if (ch->nocked)
+    {
+	act("You relax your draw on $p and put it away.",ch,ch->nocked,NULL,TO_CHAR);
+	act("$n relaxes $s draw on $p and puts it away.",ch,ch->nocked,NULL,TO_ROOM);
+    }
+    ch->nocked = obj;
+    sprintf(buf, "You nock and prepare to fire %s.\n\r", obj->short_descr);
+    send_to_char(buf, ch);
+    sprintf(buf, "$n nocks and prepares to fire %s.",obj->short_descr);
+    act(buf,ch,NULL,NULL,TO_ROOM);
+    return;
+}
+
+void old_do_nock(CHAR_DATA *ch, char *argument)
 {
     OBJ_DATA *obj;
     char buf[MAX_STRING_LENGTH];

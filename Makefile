@@ -23,12 +23,12 @@ O_FILES = act_comm.o act_enter.o act_info.o act_move.o act_obj.o act_wiz.o AirTi
           spells_air_earth.o spells_air_void.o spells_void.o spells_water.o spells_water_earth.o spells_water_void.o \
           spells_water_air.o SpiritTitles.o StatEmitter.o string.o StringUtil.o tables.o Titles.o \
 	      update.o VoidTitles.o weather.o Weave.o cards.o mount.o puerto.o gameserv.o coloretto.o \
-	      version.o WaterTitles.o
+	      version.o WaterTitles.o Player.o
 
 USER_DIR = .
 GTEST_DIR = deps/googletest
 
-TESTS = StringUtil_test
+TESTS = StringUtil_test fight2_test
 
 main:
 	./update_version > version.h
@@ -100,4 +100,11 @@ StringUtil_test.o : StringUtil_test.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(C_FLAGS) $(USER_DIR)/$*.cpp
 
 StringUtil_test : StringUtil.o StringUtil_test.o gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@ 
+
+
+fight2_test.o : fight2_test.cpp $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(C_FLAGS) $(USER_DIR)/$*.cpp
+
+fight2_test : gtest_main.a fight2_test.o
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@ 
