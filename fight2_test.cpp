@@ -6,12 +6,12 @@
 
 // TODO(abrahms): Move to mock_player.cpp?
 class MockPlayer : public IPlayer {
-  // MOCK_METHOD1(send_message, void(const char *txt));
-  // MOCK_METHOD0(get_ch, CHAR_DATA*());
+  MOCK_METHOD1(send_message, void(const char *txt));
+  MOCK_METHOD0(get_ch, CHAR_DATA*());
 };
 
 TEST(Nock, DoesntHaveSkillErrors) {
-  MockPlayer player;
+  // MockPlayer player;
   // EXPECT_CALL(player, send_message(StartsWith("Huh?")));
   // EXPECT_CALL(player, send_message());
 
