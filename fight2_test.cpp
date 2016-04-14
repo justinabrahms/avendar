@@ -11,7 +11,7 @@ class MockPlayer : public IPlayer {
 };
 
 TEST(Nock, DoesntHaveSkillErrors) {
-  // MockPlayer player;
+  MockPlayer player;
   // EXPECT_CALL(player, send_message(StartsWith("Huh?")));
   // EXPECT_CALL(player, send_message());
 

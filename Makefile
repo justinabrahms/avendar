@@ -2,7 +2,7 @@ CC      = g++
 PROF    = -O0 -g
 RELEASE = -O3
 C_FLAGS =  -m32 -fpermissive -Wall -Wno-parentheses -Wno-char-subscripts -Wno-write-strings $(PROF) $(NOCRYPT) 
-L_FLAGS =  -m32 -lm -L/usr/lib/i386-linux-gnu -L/lib/i386-linux-gnu -lcrypt -L/usr/local/bin/ -lmysqlclient $(PROF)
+L_FLAGS =  -m32 -lm -Ldeps/googlemock -Ldeps/googlemock/gtest -L. -L/usr/lib/i386-linux-gnu -L/lib/i386-linux-gnu -lcrypt -L/usr/local/bin/ -lmysqlclient -Wl,-v $(PROF)
 
 # TODO(jabrahms): Move this into things which are mud dependencies and things which rarely change (eg StringUtil)
 O_FILES = act_comm.o act_enter.o act_info.o act_move.o act_obj.o act_wiz.o AirTitles.o \
@@ -93,8 +93,8 @@ gtest_main.o : $(GTEST_SRCS_)
 	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) -I$(GMOCK_DIR) $(CXXFLAGS) -c \
             $(GTEST_DIR)/src/gtest_main.cc
 
-gtest.a : gtest-all.o
-	$(AR) $(ARFLAGS) $@ $^
+# libgtest.a : gtest-all.o
+# 	$(AR) $(ARFLAGS) $@ $^
 
 gtest_main.a : gtest-all.o gtest_main.o
 	$(AR) $(ARFLAGS) $@ $^
@@ -115,7 +115,7 @@ gmock_main.a : gmock-all.o gmock_main.o
 	$(AR) $(ARFLAGS) $@ $^
 
 
-gtest-mock:
+libgmock.a:
 	g++ -isystem ${GTEST_DIR}/include -I${GTEST_DIR} \
 		-isystem ${GMOCK_DIR}/include -I${GMOCK_DIR} \
 		-pthread -c ${GTEST_DIR}/src/gtest-all.cc
@@ -123,6 +123,12 @@ gtest-mock:
 		-isystem ${GMOCK_DIR}/include -I${GMOCK_DIR} \
 		-pthread -c ${GMOCK_DIR}/src/gmock-all.cc
 	ar -rv libgmock.a gtest-all.o gmock-all.o
+
+libgtest.a:
+	g++ -isystem ${GTEST_DIR}/include -I${GTEST_DIR} \
+		-isystem ${GMOCK_DIR}/include -I${GMOCK_DIR} \
+		-pthread -c ${GTEST_DIR}/src/gtest-all.cc
+	ar -rv libgmock.a gtest-all.o
 
 
 
@@ -137,6 +143,6 @@ StringUtil_test : StringUtil.o StringUtil_test.o gtest_main.a
 fight2_test.o : fight2_test.cpp $(GTEST_HEADERS) $(GMOCK_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(C_FLAGS) $(USER_DIR)/$*.cpp
 
-fight2_test :  gtest_main.a gmock_main.a fight2_test.o
-	$(CXX) $(CPPFLAGS) $(L_FLAGS) $(CXXFLAGS) -lpthread $^ -o $@ 
+fight2_test :  gtest_main.a libgtest.a gmock_main.a fight2_test.o
+	$(CXX) $(CPPFLAGS) $(L_FLAGS) $(CXXFLAGS) -lpthread -L. -lgtest $^ -o $@ 
 # $(CC) -o avendar $(O_FILES) $(L_FLAGS)
