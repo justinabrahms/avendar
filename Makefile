@@ -1,10 +1,16 @@
 CC      = g++
 PROF    = -O0 -g
+# This is set during testing to enable coverage reporting for test runs.
+ifeq ($(ENABLE_COVERAGE), 1)
+  COVERAGE = --coverage
+else
+  COVERAGE =
+endif
 RELEASE = -O3
 GTEST_DIR = deps/googletest
 GMOCK_DIR = deps/googlemock
-C_FLAGS =  -Wno-write-strings -m32 -fpermissive -Wall -Wno-parentheses -Wno-char-subscripts -Wno-write-strings $(PROF) $(NOCRYPT) 
-L_FLAGS =  -m32 -lm -L. -L/usr/lib/i386-linux-gnu -L/lib/i386-linux-gnu -lcrypt -L/usr/local/bin/ -lmysqlclient -Wl,-v $(PROF)
+C_FLAGS =  -Wno-write-strings -m32 -fpermissive -Wall -Wno-parentheses -Wno-char-subscripts -Wno-write-strings $(PROF) $(NOCRYPT) $(COVERAGE)
+L_FLAGS =  -m32 -lm -L. -L/usr/lib/i386-linux-gnu -L/lib/i386-linux-gnu -lcrypt -L/usr/local/bin/ -lmysqlclient -Wl,-v $(PROF) $(COVERAGE)
 
 # TODO(jabrahms): Move this into things which are mud dependencies and things which rarely change (eg StringUtil)
 O_FILES = act_comm.o act_enter.o act_info.o act_move.o act_obj.o act_wiz.o AirTitles.o \
