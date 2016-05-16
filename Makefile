@@ -1,8 +1,10 @@
 CC      = g++
 PROF    = -O0 -g
 RELEASE = -O3
+GTEST_DIR = deps/googletest
+GMOCK_DIR = deps/googlemock
 C_FLAGS =  -m32 -fpermissive -Wall -Wno-parentheses -Wno-char-subscripts -Wno-write-strings $(PROF) $(NOCRYPT) 
-L_FLAGS =  -m32 -lm -Ldeps/googlemock -Ldeps/googlemock/gtest -L. -L/usr/lib/i386-linux-gnu -L/lib/i386-linux-gnu -lcrypt -L/usr/local/bin/ -lmysqlclient -Wl,-v $(PROF)
+L_FLAGS =  -m32 -lm -L. -L/usr/lib/i386-linux-gnu -L/lib/i386-linux-gnu -lcrypt -L/usr/local/bin/ -lmysqlclient -Wl,-v $(PROF)
 
 # TODO(jabrahms): Move this into things which are mud dependencies and things which rarely change (eg StringUtil)
 O_FILES = act_comm.o act_enter.o act_info.o act_move.o act_obj.o act_wiz.o AirTitles.o \
@@ -26,8 +28,6 @@ O_FILES = act_comm.o act_enter.o act_info.o act_move.o act_obj.o act_wiz.o AirTi
 	      version.o WaterTitles.o Player.o
 
 USER_DIR = .
-GTEST_DIR = deps/googletest
-GMOCK_DIR = deps/googlemock
 
 TESTS = StringUtil_test fight2_test
 
@@ -50,99 +50,21 @@ clean:
 .cpp.o: merc.h
 	$(CC) -c $(C_FLAGS) $<
 
-test: rom $(TESTS)
-
-# TESTS!!!
-#
-# The bulk of these were pulled from GoogleTests's Makefile samples.
-
-
-# Flags passed to the preprocessor.
-# Set Google Test's header directory as a system directory, such that
-# the compiler doesn't generate warnings in Google Test headers.
-CPPFLAGS += -m32 -isystem $(GTEST_DIR)/include -isystem $(GMOCK_DIR)/include -DGTEST_USE_OWN_TR1_TUPLE=1
-
-# Flags passed to the C++ compiler.
-CXXFLAGS += -m32 -g -Wall -Wextra -pthread
-
-# All Google Test headers.  Usually you shouldn't change this
-# definition.
-GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
-                $(GTEST_DIR)/include/gtest/internal/*.h
-GMOCK_HEADERS = $(GMOCK_DIR)/include/gmock/internal/*.h \
-                $(GMOCK_DIR)/include/gmock/*.h \
-		$(GTEST_HEADERS)
-
-# House-keeping build targets.
-
-
-# Usually you shouldn't tweak such internal variables, indicated by a
-# trailing _.
-GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
-GMOCK_SRCS_ = $(GMOCK_DIR)/src/*.cc $(GMOCK_HEADERS)
-
-# For simplicity and to avoid depending on Google Test's
-# implementation details, the dependencies specified below are
-# conservative and not optimized.  This is fine as Google Test
-# compiles fast and for ordinary users its source rarely changes.
-gtest-all.o : $(GTEST_SRCS_)
-	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) -I$(GMOCK_DIR) $(CXXFLAGS) -c \
-            $(GTEST_DIR)/src/gtest-all.cc
-
-gtest_main.o : $(GTEST_SRCS_)
-	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) -I$(GMOCK_DIR) $(CXXFLAGS) -c \
-            $(GTEST_DIR)/src/gtest_main.cc
-
-# libgtest.a : gtest-all.o
-# 	$(AR) $(ARFLAGS) $@ $^
-
-gtest_main.a : gtest-all.o gtest_main.o
-	$(AR) $(ARFLAGS) $@ $^
-
-# --
-gmock-all.o : $(GMOCK_SRCS_)
-	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) -I$(GMOCK_DIR) $(CXXFLAGS) -c \
-            $(GMOCK_DIR)/src/gmock-all.cc
-
-gmock_main.o : $(GMOCK_SRCS_)
-	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) -I$(GMOCK_DIR) $(CXXFLAGS) -c \
-            $(GMOCK_DIR)/src/gmock_main.cc
-
-gmock.a : gmock-all.o
-	$(AR) $(ARFLAGS) $@ $^
-
-gmock_main.a : gmock-all.o gmock_main.o
-	$(AR) $(ARFLAGS) $@ $^
-
+# test: rom $(TESTS)
 
 libgmock.a:
-	g++ -isystem ${GTEST_DIR}/include -I${GTEST_DIR} \
-		-isystem ${GMOCK_DIR}/include -I${GMOCK_DIR} \
-		-pthread -c ${GTEST_DIR}/src/gtest-all.cc
-	g++ -isystem ${GTEST_DIR}/include -I${GTEST_DIR} \
-		-isystem ${GMOCK_DIR}/include -I${GMOCK_DIR} \
-		-pthread -c ${GMOCK_DIR}/src/gmock-all.cc
+	$(CC) -m32 -isystem ${GTEST_DIR}/include -I${GTEST_DIR} \
+	      -isystem ${GMOCK_DIR}/include -I${GMOCK_DIR} \
+	      -pthread -c ${GTEST_DIR}/src/gtest-all.cc
+	$(CC) -m32 -isystem ${GTEST_DIR}/include -I${GTEST_DIR} \
+	    -isystem ${GMOCK_DIR}/include -I${GMOCK_DIR} \
+	    -pthread -c ${GMOCK_DIR}/src/gmock-all.cc
 	ar -rv libgmock.a gtest-all.o gmock-all.o
 
-libgtest.a:
-	g++ -isystem ${GTEST_DIR}/include -I${GTEST_DIR} \
-		-isystem ${GMOCK_DIR}/include -I${GMOCK_DIR} \
-		-pthread -c ${GTEST_DIR}/src/gtest-all.cc
-	ar -rv libgmock.a gtest-all.o
+StringUtil_test: StringUtil.h StringUtil.cpp libgmock.a
+	$(CC) -isystem ${GTEST_DIR}/include -isystem ${GMOCK_DIR}/include \
+	      -pthread StringUtil_test.cpp libgmock.a StringUtil.o -o StringUtil_test $(L_FLAGS)
 
-
-
-
-StringUtil_test.o : StringUtil_test.cpp $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(C_FLAGS) $(USER_DIR)/$*.cpp
-
-StringUtil_test : StringUtil.o StringUtil_test.o gtest_main.a
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@ 
-
-
-fight2_test.o : fight2_test.cpp $(GTEST_HEADERS) $(GMOCK_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(C_FLAGS) $(USER_DIR)/$*.cpp
-
-fight2_test :  gtest_main.a libgtest.a gmock_main.a fight2_test.o
-	$(CXX) $(CPPFLAGS) $(L_FLAGS) $(CXXFLAGS) -lpthread -L. -lgtest $^ -o $@ 
-# $(CC) -o avendar $(O_FILES) $(L_FLAGS)
+fight2_test: fight2.h fight2.c fight2_test.cpp libgmock.a
+	$(CC) -isystem ${GTEST_DIR}/include -isystem ${GMOCK_DIR}/include \
+	      -pthread fight2_test.cpp libgmock.a -o fight2_test $(L_FLAGS)

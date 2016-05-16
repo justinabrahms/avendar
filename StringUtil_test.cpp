@@ -2,7 +2,7 @@
 #include "gtest/gtest.h"
 
 // Defined extern'd functions with nonsensical things. Void cast is to silence unused param warnings.
-char * str_dup(const char *str) { (void) str; return ""; };
+char * str_dup(const char *str) { return (char*) str; };
 void free_string(char *&pstr)   { (void)pstr; };
 
 TEST(MacroTests, Upper) {
@@ -46,4 +46,9 @@ TEST(Trim, Punctuation) {
   EXPECT_EQ(std::string("foo"), stripPunctuation("foo."));
   EXPECT_EQ(std::string("foobar"), stripPunctuation("foo-bar"));
   EXPECT_EQ(std::string("foo bar"), stripPunctuation("foo bar"));
+}
+
+int main(int argc, char* argv[]) {
+  ::testing::InitGoogleTest(&argc,argv);
+  return RUN_ALL_TESTS();
 }
