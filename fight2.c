@@ -507,9 +507,9 @@ void do_nock(IPlayer *player, char *argument)
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *ch = player->get_ch();
 
-    if (!get_skill(ch, gsn_archery))
+    if (!player->get_skill(gsn_archery))
     {
-	send_to_char("Huh?\n\r", ch);
+	player->send_message("Huh?\n\r");
 	return;
     }
     obj = get_eq_char(ch, WEAR_HOLD);

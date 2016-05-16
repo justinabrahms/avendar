@@ -59,12 +59,16 @@ libgmock.a:
 	    -pthread -c ${GMOCK_DIR}/src/gmock-all.cc
 	ar -rv libgmock.a gtest-all.o gmock-all.o
 
-StringUtil_test: StringUtil.h StringUtil.cpp libgmock.a
+StringUtil_test: StringUtil.o libgmock.a
 	$(CC) -isystem ${GTEST_DIR}/include -isystem ${GMOCK_DIR}/include \
 	      -pthread StringUtil_test.cpp libgmock.a StringUtil.o -o StringUtil_test $(L_FLAGS)
 
-fight2_test: merc.h const.c fight2.h fight2.o fight2_test.cpp libgmock.a
+fight2_test: merc.h fight2.h libgmock.a $(O_FILES)
 	$(CC) -isystem ${GTEST_DIR}/include -isystem ${GMOCK_DIR}/include \
 	      -pthread fight2_test.cpp libgmock.a \
 	      $(O_FILES) \
 	      -o fight2_test $(L_FLAGS) -Wno-write-strings 
+
+
+test: StringUtil_test fight2_test
+	@bash -c "ls *_test | xargs -I {} bash -c "./{}" --max-args 1"

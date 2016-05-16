@@ -4,22 +4,23 @@
 #include "fight2.h"
 #include "Player.h"
 using ::testing::StartsWith;
+using ::testing::Return;
 
 // TODO(abrahms): Move to mock_player.cpp?
 class MockPlayer : public IPlayer {
 public:
   MOCK_METHOD1(send_message, void(const char *txt));
+  MOCK_METHOD1(get_skill, int(int skill_number));
   MOCK_METHOD0(get_ch, CHAR_DATA*());
 };
 
 TEST(Nock, DoesntHaveSkillErrors) {
-  MockPlayer player;
+  testing::NiceMock<MockPlayer> player;
+  EXPECT_CALL(player, get_skill(0))
+    .WillOnce(Return(0));
   EXPECT_CALL(player, send_message(StartsWith("Huh?")));
-  // EXPECT_CALL(player, send_message());
 
-  
   do_nock(&player, "");
-  // EXPECT_EQ(true, false);
 }
 
 int main(int argc, char* argv[]) {
