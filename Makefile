@@ -70,5 +70,4 @@ fight2_test: merc.h fight2.h libgmock.a $(O_FILES)
 	      -o fight2_test $(L_FLAGS) -Wno-write-strings 
 
 
-test: StringUtil_test fight2_test
-	@bash -c "ls *_test | xargs -I {} bash -c "./{}" --max-args 1"
+test: $(TESTS)
