@@ -3,7 +3,7 @@ PROF    = -O0 -g
 RELEASE = -O3
 GTEST_DIR = deps/googletest
 GMOCK_DIR = deps/googlemock
-C_FLAGS =  -m32 -fpermissive -Wall -Wno-parentheses -Wno-char-subscripts -Wno-write-strings $(PROF) $(NOCRYPT) 
+C_FLAGS =  -Wno-rite-strings -m32 -fpermissive -Wall -Wno-parentheses -Wno-char-subscripts -Wno-write-strings $(PROF) $(NOCRYPT) 
 L_FLAGS =  -m32 -lm -L. -L/usr/lib/i386-linux-gnu -L/lib/i386-linux-gnu -lcrypt -L/usr/local/bin/ -lmysqlclient -Wl,-v $(PROF)
 
 # TODO(jabrahms): Move this into things which are mud dependencies and things which rarely change (eg StringUtil)
@@ -65,6 +65,8 @@ StringUtil_test: StringUtil.h StringUtil.cpp libgmock.a
 	$(CC) -isystem ${GTEST_DIR}/include -isystem ${GMOCK_DIR}/include \
 	      -pthread StringUtil_test.cpp libgmock.a StringUtil.o -o StringUtil_test $(L_FLAGS)
 
-fight2_test: fight2.h fight2.c fight2_test.cpp libgmock.a
+fight2_test: merc.h const.c fight2.h fight2.o fight2_test.cpp libgmock.a
 	$(CC) -isystem ${GTEST_DIR}/include -isystem ${GMOCK_DIR}/include \
-	      -pthread fight2_test.cpp libgmock.a -o fight2_test $(L_FLAGS)
+	      -pthread fight2_test.cpp libgmock.a \
+	      $(O_FILES) \
+	      -o fight2_test $(L_FLAGS) -Wno-write-strings 

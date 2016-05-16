@@ -4,4 +4,5 @@
 #include "Player.h"
 
 void do_nock(IPlayer *player, char *argument);
+
 #endif

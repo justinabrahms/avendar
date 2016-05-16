@@ -1,8 +1,8 @@
 // Import order seems to matter. Including merc.h defines T, which I suspect gtest also defines.
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "Player.h"
 #include "fight2.h"
+#include "Player.h"
 using ::testing::StartsWith;
 
 // TODO(abrahms): Move to mock_player.cpp?
@@ -18,7 +18,7 @@ TEST(Nock, DoesntHaveSkillErrors) {
   // EXPECT_CALL(player, send_message());
 
   
-  // do_nock(&player, "");
+  do_nock(&player, "");
   // EXPECT_EQ(true, false);
 }
 
