@@ -70,4 +70,4 @@ fight2_test: merc.h fight2.h libgmock.a $(O_FILES)
 	      -o fight2_test $(L_FLAGS) -Wno-write-strings 
 
 
-test: $(TESTS) rom
+test: main $(TESTS)
