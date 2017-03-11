@@ -3,7 +3,7 @@ PROF    = -O0 -g
 RELEASE = -O3
 COVERAGE= -fprofile-arcs -ftest-coverage
 C_FLAGS = -m32 -fpermissive -Wall -Wno-parentheses -Wno-char-subscripts -Wno-write-strings $(PROF) $(NOCRYPT) $(COVERAGE)
-L_FLAGS = -m32 -lm -L/usr/lib/i386-linux-gnu -L/lib/i386-linux-gnu -lcrypt -L/usr/local/bin/ -lmysqlclient $(PROF)
+L_FLAGS = -m32 -lm -L/usr/lib/i386-linux-gnu -L/lib/i386-linux-gnu -lcrypt -L/usr/local/bin/ -lmysqlclient -lgcov $(PROF)
 
 # TODO(jabrahms): Move this into things which are mud dependencies and things which rarely change (eg StringUtil)
 O_FILES = act_comm.o act_enter.o act_info.o act_move.o act_obj.o act_wiz.o AirTitles.o \
