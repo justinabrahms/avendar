@@ -1,0 +1,6973 @@
+#AREADATA
+Name The Teiphokoban Keep~
+Builders Iacobos Raestral Caraighan Tzajai~
+VNUMs 27000 27199
+Credits [49 51] Kestrel   The Teikophoban Keep~
+Danger 3
+Security 1
+Areainfo 59
+Herbs 0
+Weather 0 3 4 0 0
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 27000
+bot~
+a generic blank bot~
+A generic blank bot.
+~
+It\@s a generic bot.  
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 27001
+shade formless~
+a formless shade~
+A formless shade hovers here, visible only as a disturbance in the air.
+~
+A formless shade hovers here, visible only as a disturbance in the air. 
+Flitting agitatedly about, one gets the vague impression of un-wings and a
+long, slender body, but it is hard to tell.  
+~
+generic~
+water scholar~
+AFLOc 0 DEFTUZ E 0
+52 30 9d45+500 0d0+0 4d5+10 cold~
+unearthly chill~
+1 4 4 4
+0 D
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+L 0 0 tiny flesh
+>fight_prog 10~
+mpecho The shade gives a high-pitched, chittering shriek!
+~
+>fight_prog 10~
+mpecho The shade charges at your face, and you instinctively raise your hand to ward it off!
+mpcast 341 51
+~
+>death_prog 100~
+mpecho A formless shade is DEAD!!
+mpecho The air about the body ripples, and the shade is gone.
+mpecho An ominous muttering hums through the walls, fading back into uneasy silence.
+mpgoto 27000
+done
+~
+|
+V4 27002
+flashback 1 bot~
+Flashback 1~
+Flashback 1 plays cinematics with an old slide projector.
+~
+It\@s a generic bot.  
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 27003
+bot~
+a generic blank bot~
+A generic blank bot.
+~
+It\@s a generic bot.  
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 27004
+stick stickbot bot~
+Stickbot~
+Stickbot lets people touch his stick.  Er.  Gives out sticks.
+~
+It\@s a generic bot.  
+~
+human~
+water scholar~
+AL 0 DFJLPZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p measure~
+if compstr(2) == sinew
+or compstr(2) == sinewy
+or compstr(2) == thread
+  mpechoat $n You unwind a length of sinewy thread from the spool on the wall, cutting it off.
+  mpechoaround $n $N unwinds a length of sinewy thread from the spool on the wall, cutting it off.
+  mpoload 27005 on $n
+  mplag $n 1
+else
+  mpnextinterp
+endif
+~
+>verb_prog p get~
+if compstr(2) == twig
+or compstr(2) == strand
+or compstr(2) == grass
+  if compstr(3) == 
+    mpechoat $n What kind of twig or strand did you want?
+    break
+  endif
+  if compstr(3) == holly
+  or compstr(3) == rowan
+  or compstr(3) == magnolia
+  or compstr(3) == willow
+  or compstr(3) == redwood
+  or compstr(3) == teak
+  or compstr(3) == oak
+  or compstr(3) == applewood
+  or compstr(3) == beech
+  or compstr(3) == sycamore
+  or compstr(3) == maple
+  or compstr(3) == grass
+  or compstr(3) == strand
+    mpoload 27003
+    if compstr(3) == grass
+    or compstr(3) == strand
+      mpvalueset objtype strand
+      mpset obj blank_twig objvalue 0 8
+    else
+      mpvalueset objtype twig
+      if compstr(3) == holly
+        mpset obj blank_twig objvalue 0 5
+      endif
+      if compstr(3) == rowan
+        mpset obj blank_twig objvalue 0 1
+      endif
+      if compstr(3) == magnolia
+        mpset obj blank_twig objvalue 0 6
+      endif
+      if compstr(3) == willow
+        mpset obj blank_twig objvalue 0 9
+      endif
+      if compstr(3) == redwood
+        mpset obj blank_twig objvalue 0 2
+      endif
+      if compstr(3) == teak
+        mpset obj blank_twig objvalue 0 10
+      endif
+      if compstr(3) == oak
+        mpset obj blank_twig objvalue 0 3
+      endif
+      if compstr(3) == applewood
+        mpset obj blank_twig objvalue 0 4
+      endif
+      if compstr(3) == beech
+        mpset obj blank_twig objvalue 0 11
+      endif
+      if compstr(3) == sycamore
+        mpset obj blank_twig objvalue 0 7
+      endif
+      if compstr(3) == maple
+        mpset obj blank_twig objvalue 0 12
+      endif
+      if compstr(3) == grass
+        mpset obj blank_twig objvalue 0 8
+      endif
+      if compstr(3) == strand
+        mpset obj blank_twig objvalue 0 8
+      endif
+    endif
+    mpstring obj blank_twig short a flexible %objtype of $y3
+    mpstring obj blank_twig long A flexible %objtype of $y3 lies here.
+    mpstring obj blank_twig name flexible %objtype $y3
+    get c_o_n_t_a_i_n_e_r
+    mpat 27000 put flexible c_o_n_t_a_i_n_e_r
+    drop c_o_n_t_a_i_n_e_r
+    mpforce $n take flexible c_o_n_t_a_i_n_e_r
+  else
+    mpechoat $n There are no $y3 twigs here.
+  endif    
+else
+  mpnextinterp
+endif
+~
+|
+V4 27005
+Tesser phase bot phasebot~
+Tesser~
+Tesser the phase bot is here, ready to begin temporal phase.
+~
+~
+fido~
+water scholar~
+AL 0 L N 0
+0 0 1d2+6 0d0+0 0d0+0 none~
+~
+0 0 0 0
+FR 0
+26 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMV ABCDEFGHIJKQV 0 medium flesh
+>verb_prog initiate_phase~
+~
+|
+V4 27006
+bot demon demonbot boss~
+Demonbot boss.~
+The Boss Demonbot stands here.  Check his desc if you want.
+~
+It\@s a generic bot.  
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>greet_prog 100~
+if isimmort($n)
+or isbitset($n) == 27006
+or value(0) == 1
+else
+  mpvalueset 0 1
+  mpvaluerand 1 27055 27067
+//This is sloppy and redundant, but I want to make sure I\@m being clear.
+  if value(2) == 0
+    mpvalueset 2 1
+    mpvalueset 3 $1
+  endif
+  if value(2) == 1
+    mpvalueset 2 2
+    mpvaluerand 1 27055 27067
+    if value(1) == $3
+      loop 1 to 20
+        mpvaluerand 1 27055 27067
+        if value(1) != $3
+          mpvalueset 4 $1
+          endloop
+        endif
+    else
+      mpvalueset 4 $1
+    endif
+  endif
+  if value(2) == 2
+    mpvalueset 2 3
+    mpvaluerand 1 27055 27067
+    if value(1) == $3
+    or value(1) == $4
+      loop 1 to 20
+        mpvaluerand 1 27055 27067
+        if value(1) != $3
+          if value(1) != $4
+            mpvalueset 5 $1
+            endloop
+          endif
+        endif
+    else
+      mpvalueset 5 $1
+    endif
+  endif
+  if value(2) == 3
+    mpvalueset 2 4
+    mpvaluerand 1 27055 27067
+    if value(1) == $3
+    or value(1) == $4
+    or value(1) == $5
+      loop 1 to 20
+        mpvaluerand 1 27055 27067
+        if value(1) != $3
+          if value(1) != $4
+            if value(1) != $5
+              mpvalueset 6 $1
+              endloop
+            endif
+          endif
+        endif
+    else
+      mpvalueset 6 $1
+    endif
+  endif
+  mpgoto 27044
+  mpforce mob_27007 mpvalueset 0 $3
+  mpgoto 27080
+  mpforce mob_27007 mpvalueset 0 $4
+  mpgoto 27081
+  mpforce mob_27007 mpvalueset 0 $5
+  mpgoto 27045
+  mpforce mob_27007 mpvalueset 0 $6
+  mpgoto 27043
+endif
+~
+>data_prog Values~
+0 - Set or not
+1 - Rand
+2 - Iterator for demons
+3 - Flunky 1\@s demon (044)
+4 - Flunky 2\@s demon (080)
+5 - Flunky 3\@s demon (081)
+6 - Flunky 4\@s demon (045)
+~
+>verb_prog p charm_check~
+~
+|
+V4 27007
+flunky demon bot flunkybot demonbot mob_27007~
+Demonbot flunky~
+A flunky demonbot cringes here, hoping not to screw up.
+~
+It\@s a generic bot.  
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p sit_stay_heel~
+if name($n) / blockdemon
+  mpfocus $n
+  mpvaluerand 2 1 3
+  mpvalueset verb glowers
+  if value(2) == 1
+    mpvalueset verb hunches
+  endif
+  if value(2) == 2
+    mpvalueset verb cowers
+  endif
+  if value(2) == 3
+    mpvalueset verb cringes
+  endif
+  mpvalueset adj here.
+  if value(2) == 1
+    mpvalueset adj away from the charm.
+  endif
+  if value(2) == 2
+    mpvalueset adj hatefully.
+  endif
+  if value(2) == 3
+    mpvalueset adj fearfully away from the charm.
+  endif
+  mpstring mob blockdemon long Huddled against the wall, $N %verb %adj
+  mpflag exit east - fake
+  mpforce blockdemon mpvalueset 1 1
+endif
+~
+>data_prog emotions1~
+snarl
+hiss
+snort
+glower
+glare
+gnash
+glower
+spit
+yowl
+snarl
+hiss
+~
+>data_prog emotions2~
+emote emits a furious shriek!
+emote emits a furious shriek!
+emote emits a furious shriek!
+emote howls in infuriated anguish!
+emote emits a keening, scraping snarl!
+emote bellows in demonic fury!
+emote screams with infernal hate!
+emote screeches with boundless rage!
+emote twitches in voiceless hate.
+emote bellows angrily, the sound making you cringe!
+emote bellows in demonic fury!
+emote screams with infernal hate!
+emote screeches with boundless rage!
+~
+>verb_prog p do_fail_stuff~
+if name($n) / blockdemon
+  mpforce blockdemon mpfocus $f 
+  mpforce blockdemon pmote dashes the charm from $F\@s hand!
+  mpecho The charm shatters into useless fragments.
+  mpsetdata emotions1
+  if value(3) == 3
+    mpsetdata emotions2
+    mpforce blockdemon esay snarls It is clear that you are not of the Master!
+    emote attacks!
+    mpforce blockdemon mpmurder $f
+    mpforce blockdemon mpkill $f
+  endif
+  if value(3) == 2
+    mpsetdata emotions2
+  endif
+  if value(3) == 0
+    dismiss_the_fool
+  endif
+  mpvalueup 3
+  mpvaluerand 2 1 8
+  loop 0 to $2
+    mpnextdata
+  endloop
+  mpforce blockdemon $d
+endif
+~
+>all_death_prog 100~
+if name($t) / blockdemon
+  mpflag exit east - fake
+endif
+~
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+or isbitset($n) == 27006
+or value(1) == 1
+else
+  mpfocus $n
+  mpvalueset 1 1
+  mpmload $0
+  play_that_funky_music_now
+  mpvaluerand 2 1 3
+  if value(2) == 1
+    mpforce blockdemon emote moves and blocks passage to the east.
+  endif
+  if value(2) == 2
+    mpforce blockdemon pmote shifts, moving in front of $N.
+  endif
+  if value(2) == 3
+    mpforce blockdemon pmote prevents $N from moving further.
+  endif
+  if rand(50)
+    mpvalueset what watches
+    mpvalueset how rigidly.
+    if mobhere(27055)
+    or mobhere(27056)
+    or mobhere(27067)
+      if rand(50)
+        mpvalueset what glares at
+        mpvalueset how with barely controlled rage.
+      else
+        mpvalueset what stares at
+        mpvalueset how hungrily.
+      endif
+    endif
+    if mobhere(27057)
+      if rand(50)
+        mpvalueset what leers at
+        mpvalueset how with obscene desire.
+      else
+        mpvalueset what evaluates
+        mpvalueset how with a cruel, bemused smirk.
+      endif
+    endif
+    mpvaluerand 2 1 3
+    if value(2) == 1
+      mpforce blockdemon pmote %what $N %how
+    endif
+    if value(2) == 2
+      mpforce blockdemon look $n
+    endif
+    if value(2) == 3
+      mpforce blockdemon pmote %what $N %how
+    endif
+  endif  
+  mpflag exit east = fake
+endif
+~
+|
+V4 27010
+bot poolbot pool Chlorine~
+Chlorine~
+Chlorine the poolbot is here, hungry for stupidity.
+~
+~
+fido~
+water scholar~
+AL 0 JLZ N 0
+0 0 1d1+1000 0d0+0 0d0+0 none~
+~
+0 0 0 0
+FR 0
+26 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGV ACDEFHJKQV 0 medium flesh
+>rand_prog 100~
+if value(0) == 1
+mpecho The pool ripples and slides forward, rising to cover your feet.
+mplag $f 2
+endif
+if value(0) == 2
+mpecho Your feet grow suddenly cold as the pool surges and begins to flow up your legs.
+mpecho A pleasant numbing sensation begins to spread through your feet.
+mpaddaffect $f 128 60 16 2 -4 536870912
+endif
+if value(0) == 3
+mpecho The gelid substance continues flowing up about your waist and torso.
+mpecho The world becomes a hazy fog, and waves of tranquil bliss envelop your mind.
+mpcast 574 60 $f
+endif
+if value(0) == 4
+mpecho Through a mist of apathy, you feel stabbing pains begin at your extremities and crawl over your body.
+mplag $f 2
+endif
+if value (0) == 5
+mpecho The thick goo slowly covers your head, and all becomes black.
+mpslay $f
+endif
+endif
+if value(0) > 0
+if value(0) < 6
+mpvalueup 0
+endif
+endif
+if isanypchere()
+else
+mpvalueset 0 0
+endif
+~
+>greet_prog 100~
+if ispc($n)
+if value(0) == 0
+mpfocus $n
+mpvalueup 0
+mpecho The pool stirs slightly.
+endif
+endif
+~
+|
+V4 27011
+Marathon bot change changebot~
+Marathon~
+Marathon the change bot is here, ready to trigger temporal phase.
+~
+~
+fido~
+water scholar~
+AL 0 L N 0
+0 0 1d2+6 0d0+0 0d0+0 none~
+~
+0 0 0 0
+FR 0
+26 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMV ABCDEFGHIJKQV 0 medium flesh
+>verb_prog phaseit~
+loop 27001 to 27199
+mpgoto $v1
+jrrtolkien
+mpecho {WThe world lurches sickeningly, a wave of transient nothingness rippling through the walls!{n
+endloop
+mpgoto 27000
+~
+|
+V4 27012
+gas bot gasbot Pepco~
+Pepco~
+Pepco the gasbot is here, waiting to blow stupid people to bits.
+~
+~
+fido~
+water scholar~
+AL 0 DFJLZ N 0
+0 0 1d2+6 0d0+0 0d0+0 none~
+~
+0 0 0 0
+FR 0
+26 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGV ACDEFHJKQV 0 medium flesh
+>rand_prog 100~
+if value(0) == 1
+mpecho The hissing continues, and the air about your feet stirs
+endif
+if value(0) == 2
+mpecho A sudden spark blooms near one of the burners in the glass assemblage!
+mpcast 63 52
+endif
+if value(0) > 0
+if value(0) < 3
+mpvalueup 0
+endif
+endif
+~
+>greet_prog 100~
+mpvalueset 0 0
+endif
+~
+|
+V4 27013
+shade semi corporeal semicorporeal~
+a semicorporeal shade~
+A semicorporeal shade is here, dusky body nearly entirely transparent.
+~
+A mostly transparent shade hovers here, visible as a shadow cast on the
+air itself.  Flitting agitatedly about, one gets the vague impression of
+un-wings and a long, slender body, but it is difficult to discern exact
+features beyond that.  
+~
+generic~
+water scholar~
+AFLOc 0 DEFTUZ E 0
+52 40 10d50+550 0d0+0 4d5+10 slash~
+unearthly chill~
+1 4 4 4
+0 D
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+L 0 0 tiny flesh
+>fight_prog 15~
+mpecho The shade darts about the air, snapping at your midriff with ghostly fangs!
+~
+>fight_prog 10~
+mpecho The shade suddenly shoots forward, passing through your head!
+mpcast 20 50
+~
+>fight_prog 10~
+mpecho The shade rears suddenly, flaring dusky, transparent wings!
+mpcast 629 60
+~
+>death_prog 100~
+mpecho The shade suddenly falls apart, shadowy form dissipating in wisps of darkness.
+mpgoto 27000
+mpecho The semicorporeal shade is DEAD!!
+~
+|
+V4 27014
+man blank eyed blank-eyed gaunt unshaven~
+a blank-eyed man~
+A blank-eyed man is here, gaunt and unshaven.
+~
+This man is starveling-thin and quite naked, his wasted body covered with
+sores of the imprisoned.  His flesh has begun to suppurate in places, the
+rotting stink palpable as a blow to the face.  His pale brown hair has grown
+down over his shoulders, matted and unkempt.  A scraggly beard grows in
+wispy, dirty strands.  Shriveled arms and legs seem to be nothing more than
+baggy skin over bare bones.  
+
+The man\@s eyes are the most striking feature of his decrepit body, however. 
+Wide and staring, they possess the blank unexpression of the blind, yet with
+a far more profound weight.  The man seems entirely dumb to the fact that he
+is even alive, utterly mindless.  
+~
+human~
+water scholar~
+AGT 0 Z E 0
+30 15 5d10+100 1d1+99 5d5+15 slash~
+claw~
+-9 -9 -9 0
+DEFHN P
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 20 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 27015
+dog doglike figure hound Teikophobos~
+a doglike figure~
+A horrifying doglike figure crouches here.
+~
+This chilling figure is foggy and indistinct about the edges, square body
+vaguely reminiscent of a bulldog.  Squatting on the floor, it regards you
+with two large, corpse-pale sections of tissue which might be eyes.  A
+bulbous, obscene knob of flesh serves as a head, and the indistinct legs
+seem smoky and noncorporeal.  The figure sits with awful patience, at once
+tensed to spring and yet confidently relaxed.  
+~
+human~
+water scholar~
+ALTX L DFJUZ E 0
+53 50 18d200+920 0d0+0 5d8+22 none~
+ghostly bite~
+0 0 0 0
+FHV ALQ
+26 0 0 0 0 0 0 0 0 0 0 0 0 30 -20 0 50 0 0 -30 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 27016
+ethron blank eyed blank-eyed emaciated shivering~
+an emaciated ethron~
+An emaciated ethron shivers here, a mass of inflamed scars where his eyes should be.
+~
+This ethron is starveling-thin and quite naked, his wasted body covered
+with sores of the imprisoned.  His flesh has begun to suppurate in places,
+the rotting stink palpable as a blow to the face.  Shriveled arms and legs
+seem to be nothing more than baggy skin over bare bones.  A shaved head
+shows several ugly bruises.  The ethron\@s eyes are gone, angry flushed scar
+tissue healing poorly.  Apparently the result of crude cauterizing, the
+horrific scarring has served only to stop any bleeding, rather than to
+sterilize.  The man seems entirely dumb to the fact that he is so badly
+injured or even alive, utterly mindless.  
+~
+ethron~
+water scholar~
+ABGT 0 AZ E 0
+30 15 5d10+100 1d1+99 5d5+15 bash~
+punch~
+-9 -9 -9 0
+DEFHN P
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 20 -1
+AHMVW ABCDEFGHIJK J medium flesh
+>rand_prog 100~
+if hitprcnt($i)>75
+mpdamage $i 1 1 10
+endif
+~
+>fight_prog 10~
+mpecho The ethron suddenly ceases fighting, curling up in the corner of the room.
+mpgoto 27037
+sit
+~
+|
+V4 27017
+drop bot dropbot hrabal~
+Hrabal~
+Hrabal the dropbot hangs out here.
+~
+Look at me.  LOOK AT ME.
+d
+~
+human~
+water scholar~
+AL 0 DFJLZ N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+mpfocus $r 
+  if isflying($f)
+  or iswizi($f)
+  or isimmort($f)
+  or isghost($f)
+  break
+else
+if ispc($f)
+mpechoat $f You scrabble for purchase on the rough stone walls, but fall into the widening shaft below!
+mpdamtype $f 1 1 80 1
+mpechoat $f You crash into cold stone with a sickening {rthud{n!
+mptransfer $f 27051
+mpat $f mpforce $f look
+endif
+~
+>verb_prog p up~
+if isflying($n)
+or isimmort($n)
+or isghost($n)
+mpinterpret $n $x
+else
+mpechoat $n You\@re not flying.
+endif
+~
+>greet_prog 100~
+if israce($n) == Nefortu
+  if rand(17)
+    mpechoat $n Your wing catches on the narrow walls, sending you tumbling downwards!
+    mpdamtype $n 1 1 40 1
+    if rand(30)
+        mpechoat $n You twist helplessly in midair, landing on your head.
+        mpechoat $n You crash into cold stone with a sickening {rthud{n!
+        mpechoat $n A searing pain {Rexplodes{n at the base of your skull, and all becomes black.
+        mptransfer $n 27051
+        mpat $n mpknockout $n
+        mpat $n mpdamtype $ 1 1 50 1
+    else
+      mpechoat $n You crash into cold stone with a sickening {rthud{n!
+      mptransfer $n 27051
+      mpat $n mpforce $n look
+    endif
+  endif
+  break
+endif
+if israce($n) == Aelin
+  if rand(28)
+    mpechoat $n Your wing catches on the narrow walls, sending you tumbling downwards!
+    mpdamtype $n 1 1 100 1
+    if rand(30)
+        mpechoat $n You twist helplessly in midair, landing on your head.
+        mpechoat $n You crash into cold stone with a sickening {rthud{n!
+        mpechoat $n A searing pain {Rexplodes{n at the base of your skull, and all becomes black.
+        mptransfer $n 27051
+        mpat $n mpknockout $n
+        mpat $n mpdamtype $ 1 1 75 1
+    else
+      mpechoat $n You crash into cold stone with a sickening {rthud{n!
+      mptransfer $n 27051
+      mpat $n mpforce $n look
+    endif
+  endif
+  break
+endif
+  if isflying($n)
+    break
+  endif
+  if isimmort($n)
+    break
+  endif
+  if isghost($n)
+    break
+  endif
+  mpechoat $n You scrabble for purchase on the rough stone walls, but fall into the widening shaft below!
+  mpdamtype $n 1 1 80 1
+  mpechoat $n You crash into cold stone with a sickening {rthud{n!
+  mptransfer $n 27051
+  mpat $n mpforce $n look
+~
+|
+V4 27018
+Holey hole holebot bot~
+Holey~
+Holey the holebot helps people up and down.
+~
+Look at me.  LOOK AT ME.
+d
+~
+fido~
+water scholar~
+AL 0 DFJLZ N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+FR 0
+26 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMV ABCDEFGHIJKQV 0 medium flesh
+>verb_prog p d~
+if isflying($n)
+mpechoat $n You carefully fly down into the narrow hole.
+mpinterpret $n $x
+break
+endif
+if isimmort($n)
+mpinterpret $n $x
+break
+endif
+mpechoat $n You carefully lower yourself into the narrow hole.
+mpinterpret $n $x
+~
+|
+V4 27019
+bot flushbot Mr. Clean flush~
+Mr. Clean~
+Mr. Clean the flushbot is here, moving inventory.
+~
+Look at me.  LOOK AT ME.
+d
+~
+human~
+water scholar~
+AL 0 DFJLZ N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+mpfocus $r
+if isnpc($f)
+mpfocus $r
+endif
+if value(0) == 1
+mpecho Your stomach churns as you lurch through the storm of emptiness.
+mplag $n 2
+endif
+if value(0) == 2
+mpecho The painful transience howls in your mind, and you struggle to maintain consciousness!
+endif
+if value(0) == 3
+mptransfer $f 26128
+mpechoat $f Eventually, the insane storm fades from your senses, and you find yourself lying upon cold stone.
+mpat $f mpknockout $f
+endif
+if value(0) > 0
+if value(0) < 4
+mpvalueup 0
+endif
+endif
+~
+|
+V4 27020
+Inventory bot~
+Inventory~
+Inventory the bot is here, loading and unloading stuff.
+~
+Look at me.  LOOK AT ME.
+d
+~
+fido~
+water scholar~
+AL 0 DFJLZ N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+FR 0
+26 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMV ABCDEFGHIJKQV 0 medium flesh
+>verb_prog p uncover third~
+if value(2) == 0
+mpechoat $n You pull the silken cover off, revealing a silvery headpiece resting on a wooden head.
+mpoload 27034 in room
+mpoload 27012 in head
+mpvalueset 2 1
+else
+mpinterpret $n $x
+endif
+~
+>verb_prog p look third~
+if value(2) == 0
+mpechoat $n This small round object is roughly the size of a human head, covered by a black silk drape.  Perhaps you could uncover it.
+else
+mpinterpret $n $x
+endif
+~
+>verb_prog p uncover second~
+if value(1) == 0
+mpechoat $n You remove the silken cover, revealing a small metal box.
+mpoload 27011 in room
+mpoload 27012 in box
+mpvalueset 1 1
+else
+mpechoat $n That object is already uncovered.
+endif
+~
+>verb_prog p look second~
+if value(1) == 0
+mpechoat $n This small, rectangular shape is covered with black silk.
+else
+mpinterpret $n $x
+endif
+~
+>verb_prog p uncover first~
+if value(0) == 0
+mpechoat $n You remove the dusty, heavy canvas from the object, revealing a complex array of gears.
+mpoload 27053 in room
+mpoload 27058 in room
+mpoload 27059 in room
+mpvalueset 0 1
+else
+mpechoat $n That object is already uncovered.
+endif
+~
+>verb_prog p uncover~
+mpechoat $n What did you want to uncover?
+~
+>verb_prog p look first~
+if value(0) == 0
+mpechoat $n This large, bulky shape sits on the floor, covered by a heavy canvas drape.  Perhaps you could uncover it.
+else
+mpinterpret $n $x
+endif
+~
+|
+V4 27021
+virgil door bot doorbot~
+Virgil~
+Virgil the doorbot is here, making PCs abandon all hope.
+~
+Abandon hope, all ye who enter here.  Abandon your wallets, while you\@re at it.
+~
+fido~
+water scholar~
+AL 0 JLZ N 0
+0 0 1d1+1000 0d0+0 0d0+0 none~
+~
+0 0 0 0
+FR 0
+26 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGV ACDEFHJKQV 0 medium flesh
+>verb_prog p open south~
+if compstr(2) == s
+or compstr(2) == so
+or compstr(2) == sou
+or compstr(2) == sout
+or compstr(2) == south
+  if value(0) == 0
+    mpecho You are struck with a sudden feeling of ill will as you reach for the door, the malice surprising enough to pause your hand in midair.
+    mpvalueset 0 1
+  endif
+  if value(0) == 1
+    mpecho You pull on the iron ring, yet no efforts of yours can induce the slightest movement of the door.
+    mpecho The iron grows cold beneath your touch, and a faint purple glow flickers along the metal!
+    mpaddaffect $n 699 51 1 0 0 0
+    mpvalueset 0 2
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V4 27042
+bot scope scopebot Copernicus~
+Copernicus~
+Copernicus the scope bot is here, helping with the lens.
+~
+~
+fido~
+water scholar~
+AL 0 L N 0
+0 0 6d5+7 0d0+0 0d0+0 none~
+~
+0 0 0 0
+FR 0
+26 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGV ACDEFHJKQV 0 medium flesh
+>verb_prog p loosen screw~
+if value(0) != 2
+mpoload 27043 in scope
+mpecho A faint click is heard, and the lens shifts within the telescope.
+mpvalueset 0 2
+endif
+~
+>speech_prog Resetete!~
+if isimmort($n)
+mpvalueset 0 0
+endif
+~
+>verb_prog p turn screw~
+if value(0) != 2
+mpoload 27043 in scope
+mpecho A faint click is heard, and the lens shifts within the telescope.
+mpvalueset 0 2
+endif
+~
+|
+V4 27043
+east bot door doorbot~
+an east doorbot~
+This east door bot bots doors.
+~
+EAST CLOSER
+~
+fido~
+water scholar~
+AL 0 L N 0
+0 0 6d5+7 0d0+0 0d0+0 none~
+~
+0 0 0 0
+FR 0
+26 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGV ACDEFHJKQV 0 medium flesh
+>exit_prog 100~
+close east
+~
+>greet_prog 100~
+close east
+~
+|
+V4 27044
+west bot door doorbot~
+an west doorbot~
+This west door bot bots doors.
+~
+EAST CLOSER
+~
+fido~
+water scholar~
+AL 0 L N 0
+0 0 6d5+7 0d0+0 0d0+0 none~
+~
+0 0 0 0
+FR 0
+26 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGV ACDEFHJKQV 0 medium flesh
+>exit_prog 100~
+close west
+~
+>greet_prog 100~
+close west
+~
+|
+V4 27045
+east bot door bot doorbot sealer~
+an east sealer doorbot~
+This east doorbot seals the (fake) door to the east.
+~
+EAST CLOSER
+~
+fido~
+water scholar~
+AL 0 L N 0
+0 0 6d5+7 0d0+0 0d0+0 none~
+~
+0 0 0 0
+FR 0
+26 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGV ACDEFHJKQV 0 medium flesh
+>verb_prog p open~
+if compstr(2) == east
+or compstr(2) == eas
+or compstr(2) == ea
+or compstr(2) == e
+  if value(0) != 2
+    mpecho The door begins to open, and you glimpse a field of swirling nothingness.
+    mpecho A sudden violet light flares above the door, and it slams shut!
+    mpoload 27045
+    mpvalueset 0 2
+  else 
+    mpecho The rune writhes slightly, and the door does not budge.
+  endif
+endif
+~
+>speech_prog p Resetete!~
+mpvalueset 0 0
+~
+|
+V4 27050
+quasit cage caged~
+a hostile spirit~
+A vaguely indistinct spirit is here, constantly shifting form.
+~
+~
+bat~
+water scholar~
+ABDX 0 DFJTVZ E 0
+25 26 12d45+707 0d0+0 5d6+15 pierce~
+scratch~
+-7 -7 -7 1
+FHK ABDEFGKLNPXZb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 50 0 0 0 50 0 -50 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABCGHMV ABCDEFGHIJKPVW A small unknown
+V4 27052
+gravitybot bot gravity Isaac Newton~
+Isaac Newton~
+Isaac Newton is here, laying down his Law.
+~
+Look at me.  LOOK AT ME.
+~
+human~
+water scholar~
+AL 0 DFJLZ N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p up~
+if isimmort($n)
+mpinterpret $n $x
+endif
+if isghost($n)
+mpinterpret $n $x
+endif
+if isflying($n)
+mpinterpret $n $x
+else
+mpecho You\@re not flying.
+endif
+~
+|
+V4 27053
+bot focus focusbot Sensei~
+Sensei~
+Sensei the focusbot is here.
+~
+~
+fido~
+water scholar~
+AL 0 JLZ N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+FR 0
+26 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGV ACDEFHJKQV 0 medium flesh
+>exit_prog 100~
+mpechoat $n As you leave the library behind you, your thoughts grow more disjointed and incoherent.
+~
+>greet_prog 100~
+mpechoat $n As you enter the library, your thoughts grow clear and exact.
+~
+|
+V4 27054
+no name~
+(no short description)~
+(no long description)
+~
+~
+demon~
+water scholar~
+ABGOTX 0 DF E 0
+51 26 34d103+1170 51d10+100 6d8+26 none~
+~
+-21 -21 -21 -6
+FK Bb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACH ABCDEFGHIJKP AK medium flesh
+V4 27055
+skeleton many armed scythe scythelike claw claws agduk_demon mob_27055 blockdemon~
+a many-armed skeleton~
+A many-armed skeleton crouches here, claws scraping the stone impatiently.
+~
+This skeleton is composed of thick, shiny yellow bone, the frame
+apparently taken from a powerful animal.  Six arms sprout from three pairs
+of shoulders on the broad torso, each pair oriented in a different
+direction.  Cruel, slashing claws tip the powerful limbs, wicked and
+scythelike.  A long, canine head sits on the vertebrae of the neck, eye
+holes curved in a mocking, glaring gaze.  Vicious teeth arc from the
+jawbone, a few shreds of tendon yet holding the mandible in place.  The
+demon moves with a fitful, twitchy energy, eager and impatient.  
+~
+demon~
+water scholar~
+ABGOTX 0 DF E 0
+51 26 34d103+1170 51d10+100 6d8+26 slash~
+raking slash~
+-21 -21 -21 -6
+FK B
+26 0 0 0 0 -33 90 0 0 90 15 0 0 20 0 0 0 0 0 20 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACH ABCDEFGHIJKP AK medium flesh
+>death_prog 100~
+emote collapses, bones shattering into a foul-smelling dust as they strike the ground.
+mppurge self
+~
+>verb_prog p play_that_funky_music_now~
+if isnpc($n)
+mpecho {rWith a rending tear, $I claws its way through a rift in the air!{n
+endif
+~
+|
+V4 27056
+maw flaming burning spiked teeth molten iron flames xthjich_demon mob_27056 blockdemon~
+a flaming maw~
+(Glowing) A flaming maw gnashes its molten teeth within a cloud of smoke.
+~
+This demon is little more than a broad mouth, floating amidst a roiling
+cloud of oily smoke.  Nearly two feet wide, the maw burns with a vicious
+heat; flames dance and snap upwards from it in tall, searing tongues. 
+Spike-like teeth of molten iron jut out at irregular angles, glowing dully. 
+~
+demon~
+water scholar~
+ABGOTX 0 DEF E 0
+51 35 34d103+1170 51d10+100 6d8+30 fire~
+burning bite~
+-21 -21 -21 -6
+FK BHQb
+26 0 0 0 20 0 0 0 0 -20 0 0 0 0 0 0 0 0 -50 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACH ABCDEFGHIJKP AK medium flesh
+>death_prog 100~
+emote explodes outward, obliterating itself in a cloud of smoke and flame!
+mpcast 112 20
+mpcast 129 20
+mppurge self
+~
+>verb_prog p play_that_funky_music_now~
+if isnpc($n)
+mpecho {RWith a blast of heat $I bursts into existance, roaring like a furnace!{x
+endif
+~
+|
+V4 27057
+succubus curvaceous naked pricina_demon mob_27057 blockdemon~
+a naked succubus~
+A curvaceous, naked succubus hovers here on diaphanous wings.
+~
+A combination of features both horrific and beautiful, this initiate of
+Pricina hovers before you on spined, batlike wings.  The succubus hovers
+unclothed, her soft curves readily visible.  Visible too are her unnaturally
+long fingers and toes, the digits elongating into piercing claws.  The flesh
+of her hands and feet are black as pitch, a stark contrast to the skin of
+milky white covering the rest of her body.  Where white flesh meets black,
+the colors spatter into one another as they blend.  The skin of her face is
+pulled tight over her skull, the gaunt appearance contrasting the pleasant
+softness the rest of her body seems to have.  Her eyes also strike you as
+unnatural, the pupils vertical slits, like a cat\@s.  The eyes flash hungrily
+as they dart, searching.  
+~
+demon~
+water scholar~
+ABGOTX 0 DF E 0
+51 26 34d103+1170 51d10+100 6d8+26 negative~
+draining touch~
+-21 -21 -21 -6
+FK BQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 50 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+ACH ABCDEFGHIJKP AK medium flesh
+>death_prog 100~
+emote dissipates into a fine black mist, dispatched back to the void.
+mppurge self
+~
+>verb_prog p play_that_funky_music_now~
+if isnpc($n)
+mpecho You hear a woman\@s mocking laughter sound from somewhere close.
+mpecho {W$I fades into existence, smiling cruelly.{n
+endif
+~
+|
+V4 27058
+youth sore covered sore-covered slender leper leprous tzakmeqiel_demon mob_27058 blockdemon~
+a sore-covered youth~
+A slender youth, his skin covered in leprous sores, smiles at you beatifically.
+~
+This slender youth appears to have once been possessing of strength and
+grace.  The disease which clearly has ravaged his body seems to have taken
+most of that away.  Sores cover his skin, several of which ooze a
+white-yellow pus.  His skin has taken on a pallid, greenish hue and is
+covered in pock marks.  His fingertips are worn to the very bone and caked
+with his own blackened blood.  Deep gouges rend his flesh, seemingly
+self-inflicted.  The most unsettling thing amidst this fleshly tapestry of
+horror is his face.  A rapturous grin splits his face, his blood-red eyes
+glittering with joy.  
+~
+demon~
+water scholar~
+ABGOTX 0 DF E 0
+51 26 34d103+1170 51d10+100 6d8+26 disease~
+infectious scratch~
+-21 -21 -21 -6
+FK BLMQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -20 0 0 0 -24 -20 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACH ABCDEFGHIJKP AK medium flesh
+>death_prog 100~
+emote gives a gurgling cry as he collapses, body breaking down into a noxious mist.
+mpcast 343 20
+mppurge self
+~
+>verb_prog p play_that_funky_music_now~
+if isnpc($n)
+mpecho {D.    {nA pool of filth swirls on the floor.
+mpecho {y$I crawls disjointedly from the pool, clambering to his feet.{n
+endif
+~
+|
+V4 27059
+buzzing swirling cloud fine grey dust igrayiitu_demon mob_27059 blockdemon~
+a buzzing cloud of dust~
+A cloud of fine grey dust hovers here, a malevolent buzzing coming from within.
+~
+The churning cloud before you is composed of fine grey dust.  A curious
+buzzing sounds from within the cloud as it billows, drifts and swirls.  The
+buzz sounds like the humming of countless insect wings, though none appear
+to be visible within.  
+~
+demon~
+water scholar~
+ABGOTX 0 DF E 0
+51 26 34d103+1170 51d10+100 6d8+26 drowning~
+suffocation~
+-21 -21 -21 -6
+FK BDb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACH ABCDEFGHIJKP AK medium flesh
+>verb_prog p play_that_funky_music_now~
+if isnpc($n)
+mpecho {rThe air grows stale and dry as a cone of grey dust blows into existence.{n
+endif
+~
+|
+V4 27060
+spider glitter glittering chitin headless gold khamurn_demon mob_27060 blockdemon~
+a glittering, headless golden spider~
+A large, headless spider with chitin of glittering gold stalks here.
+~
+A large metallic spider stands here on long, segmented legs.  Its
+exoskeleton seems made from glittering, textured gold which reflects the
+light in sparkling spots.  The thorax is small and slender, eight legs
+supporting the weight of the beast on their slender length.  The abdomen is
+grossly swollen, and might be considered sagging were it not rigid and
+metallic.  No head adorns the body, a blank metal plate taking the place of
+its neck.  Despite any lack of sensory organs or mouth, the spider seems
+more than aware of the area, and its posture suggests a predatorial,
+avaricious frame of mind.  
+~
+demon~
+water scholar~
+ABGOTX 0 DF E 0
+51 26 34d103+1170 51d10+100 6d8+26 pierce~
+snapping bite~
+-21 -21 -21 -6
+FK Bb
+26 0 0 20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACH ABCDEFGHIJKP AK medium flesh
+>verb_prog p play_that_funky_music_now~
+if isnpc($n)
+mpecho {G$I bursts into existence amidst a noxious green cloud.{n
+endif
+~
+|
+V4 27061
+many eyed many-eyed stick sticklike figure thin barkja_demon mob_27061 blockdemon~
+a many-eyed sticklike figure~
+A thin, stick-like figure stands here, watching with many eyes.
+~
+~
+demon~
+water scholar~
+ABGOTX 0 DF E 0
+51 26 34d103+1170 51d10+100 6d8+26 mental~
+psionic whip~
+-21 -21 -21 -6
+FK Bb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACH ABCDEFGHIJKP AK medium flesh
+>verb_prog p play_that_funky_music_now~
+if isnpc($n)
+mpecho {W$I unfolds itself stiffly from the thin air.{n
+endif
+~
+|
+V4 27062
+pale webbed humanoid pale glistening wet bahhaoth_demon mob_27062 blockdemon~
+a pale, webbed humanoid~
+A webbed humanoid with pale, glistening wet skin stands here.
+~
+~
+demon~
+water scholar~
+ABGOTX 0 DF E 0
+51 26 34d103+1170 51d10+100 6d8+26 drowning~
+choking drown~
+-21 -21 -21 -6
+FK BQRb
+26 0 0 0 0 0 0 0 0 0 0 0 0 20 -33 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACH ABCDEFGHIJKP AK medium flesh
+>verb_prog p play_that_funky_music_now~
+if isnpc($n)
+mpecho {gWith a wet, gurgling shudder, $I appears before you!{n
+endif
+~
+|
+V4 27063
+void golem metallic ashvr_demon mob_27063 blockdemon~
+a void golem~
+A metallic golem stands here, blackness seeping from the joints.
+~
+~
+demon~
+water scholar~
+ABGOTX 0 DF E 0
+51 26 34d103+1170 51d10+100 6d8+26 none~
+~
+-21 -21 -21 -6
+FK Bb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACH ABCDEFGHIJKP AK medium flesh
+>verb_prog p play_that_funky_music_now~
+if isnpc($n)
+mpecho {r$I flickers malevolently into existence.{n
+endif
+~
+|
+V4 27064
+mass chains chain chain-draped demon chagrob_demon mob_27065 blockdemon~
+a chain-draped demon~
+A mass of chains obscures the bulk of a muscular demon.
+~
+~
+demon~
+water scholar~
+ABGOTX 0 DF E 0
+51 26 34d103+1170 51d10+100 6d8+26 none~
+~
+-21 -21 -21 -6
+FK BHb
+26 0 0 0 0 -15 0 0 0 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACH ABCDEFGHIJKP AK medium flesh
+>verb_prog p play_that_funky_music_now~
+if isnpc($n)
+mpecho {rA loud, harsh clattering sounds as $I appears out of thin air.{n
+endif
+~
+|
+V4 27065
+mass tentacle tentacles slime covered slime-covered isetaton_demon mob_27065 blockdemon~
+a mass of tentacles~
+A slime-covered mass of tentacles squirms here.
+~
+~
+demon~
+water scholar~
+ABGOTX 0 DF E 0
+51 26 34d103+1170 51d10+100 6d8+26 none~
+~
+-21 -21 -21 -6
+FK BHb
+26 0 0 0 0 -15 0 0 0 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACH ABCDEFGHIJKP AK medium flesh
+>verb_prog p play_that_funky_music_now~
+if isnpc($n)
+mpecho {mA number of weak tentacles snatch at empty air, and $I drags itself into being.{n
+endif
+~
+|
+V4 27066
+bone construct slender nyogthua_demon mob_27066 blockdemon~
+a bone construct~
+A slender construct of bone hovers here.
+~
+~
+demon~
+water scholar~
+ABGOTX 0 DF E 0
+51 26 34d103+1170 51d10+100 6d8+26 pierce~
+stabbing punch~
+-21 -21 -21 -6
+FK BMb
+26 0 0 20 0 -25 95 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACH ABCDEFGHIJKP AK medium flesh
+>verb_prog p play_that_funky_music_now~
+if isnpc($n)
+mpecho {r$I swirls into being before you, pulling a robe tightly about its thin shoulders.{n
+endif
+~
+|
+V4 27067
+serpent burning ash smoking smouldering anakarta_demon mob_27067 blockdemon~
+a burning serpent~
+A serpent of smouldering, smoking ash floats angrily here.
+~
+~
+demon~
+water scholar~
+ABGOTX 0 DF E 0
+51 26 34d103+1170 51d10+100 6d8+26 fire~
+searing bite~
+-21 -21 -21 -6
+FK BHb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACH ABCDEFGHIJKP AK medium flesh
+>verb_prog p play_that_funky_music_now~
+if isnpc($n)
+mpecho {R$I flares into being in the air before you!{n
+hiss 
+endif
+~
+|
+V4 27068
+flayed dessicated revenant corpse mad_ethron mob_27068~
+a flayed revenant~
+A flayed, dessicated corpse sprawls here.
+~
+This corpse appears to have once been a small, broad humanoid.  The skin
+has been systematically removed from the body - bands of dull red muscle and
+white bone are fully exposed to the air, and seem to have dried somewhat. 
+The body\@s arms and legs are heavily damaged, the tissue torn and mangled. 
+It seems as though the victim was forcibly restrained at some point.  
+~
+ethron~
+water scholar~
+AL L 0 N 0
+40 20 28d70+1116 40d10+100 5d8+20 slash~
+scratching~
+-15 -15 -15 -3
+FHK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMW ABCDEFGIJK JK medium flesh
+V4 27100
+small girl ethron Teikophobos~
+the small girl~
+A small girl is here, dressed in a simple white frock.
+~
+Tentacles, bat-wings, claws, etc.
+~
+demon~
+water scholar~
+AB 0 DFJZe E 0
+-50 -100 10d10+20000 0d0+0 1d1+0 mental~
+slap~
+-70 -70 -70 -70
+AFK B
+26 0 0 90 90 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACH ABCDEFGHIJKP 0 huge flesh
+V4 27101
+bot desc descbot~
+Descbot27001~
+Descbot27001 is here, doing his thaaang.
+~
+~
+fido~
+water scholar~
+AL 0 L N 0
+0 0 1d2+6 0d0+0 0d0+0 none~
+~
+0 0 0 0
+FR 0
+26 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMV ABCDEFGHIJKQV 0 medium flesh
+>data_prog desc27001c~
+You are in a tall hallway which stretches into darkness to the east and
+west.  Pitch black, the room is painted with a matte finish, smooth to the
+touch, which seems to actively absorb light.  The paint is peeling off the
+walls in rough strips and flakes, revealing the planed grey stone beneath. 
+No window, carving, or tapestry breaks the blank perfection of the walls. 
+High above, a curving, vaulted ceiling is vaguely visible in the oppressive
+gloom.  The basalt floor is obscured in a heavy blanket of muffling dust,
+for the most part undisturbed.  Cool and still, the heavy air seems to
+dampen your senses.  To the south, a tall stone door stands, firmly shut.  
+
+Squatting in the center of the room, covered with heavy dust, is a low block of stone.
+~
+>verb_prog p jrrtolkien~
+if isnpc($n)
+or isimmort($n)
+  mpgoto 27001
+    if value(0) == 2
+      mpdesc here desc27001a
+      mpvalueset 0 0
+      break
+    endif
+    if value(0) == 1
+      mpdesc here desc27001c
+      mpvalueset 0 2
+      break
+    endif
+    if value(0) == 0
+      mpdesc here desc27001b
+      mpvalueset 0 1
+      break
+    endif
+endif
+~
+>data_prog desc27001doorb~
+This tall door is a perfectly-proportioned rectangle, over ten feet in
+height.  The top is formed into a rounded arch, the geometrically perfect
+hemicircle curving above.  Clearly quite heavy, the door\@s only
+distinguishing mark is a plain iron ring to aid with opening and closing. 
+Though it is shut fast, the door shows evidence of having been forced,
+perhaps recently - several chips and cracks radiate from the edge of the
+door nearest the iron ring.  
+~
+>data_prog desc27001doora~
+This tall door is a perfectly-proportioned rectangle, over ten feet in
+height.  The top is formed into a rounded arch, the geometrically perfect
+hemicircle curving above.  Clearly quite heavy, the door\@s only
+distinguishing mark is a plain iron ring to aid with opening and closing.
+~
+>data_prog desc27001b~
+You are in a tall hallway which stretches into darkness to the east and
+west.  Pitch black, the room is painted with a matte finish, smooth to the
+touch, which seems to actively absorb light.  The air is thick with smoke,
+darkly billowing clouds obsuring the ceiling far above.  The floor is made
+of unpolished basalt, completing the motif of disorienting, muffling
+darkness.  Several smears of blood mar the otherwise impossibly clean floor,
+and the door to the south shows evidence of having been forced.  
+
+Squatting in the center of the room is a low block of stone.
+~
+>data_prog desc27001a~
+You are in a tall hallway which stretches into darkness to the east and
+west.  Pitch black, the room is painted with a matte finish, smooth to the
+touch, which seems to actively absorb light.  Plain and unadorned, no
+window, carving, or tapestry breaks the blank perfection of the walls.  High
+above, a curving, vaulted ceiling is vaguely visible in the oppressive
+gloom.  The floor is made of unpolished basalt, completing the motif of
+disorienting, muffling darkness.  Cool and still, the heavy air seems to
+dampen your senses.  To the south, a tall stone door stands, firmly shut.
+
+Squatting in the center of the room is a low block of stone.
+~
+>verb_prog p Charge!~
+mpkill $r
+~
+|
+V4 27102
+testy bot testybot~
+Testy~
+Testy
+~
+~
+fido~
+water scholar~
+AL 0 DFJLZ N 0
+0 0 1d2+6 0d0+0 0d0+0 none~
+~
+0 0 0 0
+FR 0
+26 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGV ACDEFHJKQV 0 medium flesh
+>data_prog desc27001a~
+You are in a tall hallway which stretches into darkness to the east and
+west.  Pitch black, the room is painted with a matte finish, smooth to the
+touch, which seems to actively absorb light.  Plain and unadorned, no
+window, carving, or tapestry breaks the blank perfection of the walls.  High
+above, a curving, vaulted ceiling is vaguely visible in the oppressive
+gloom.  The floor is made of unpolished basalt, completing the motif of
+disorienting, muffling darkness.  Cool and still, the heavy air seems to
+dampen your senses.  To the south, a tall stone door stands, firmly shut.
+Squatting in the center of the room is a low block of stone.
+~
+>verb_prog p testy~
+loop 1 to 70
+  esay glees I\@m on the $v1th loop!
+  mpgoto 27067
+  mpdesc here desc27001a
+endloop
+~
+|
+V4 27103
+bardess young aelin curly Cifete~
+a young aelin bardess~
+A young aelin bardess sits in a corner, holding an intricately crafted lyre. 
+~
+Young, with curly red hair framing a pale face sprinkled with generous
+freckles, this young bardess surveys the bar with a haughty look.  Every so
+often, her long, deft fingers pluck her lyre and her distracted eyes glance
+towards the entrance.  
+~
+ch\@taren~
+water scholar~
+A 0 U N 0
+20 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 10 0 0 0 0 0 0 0 0 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 40 -1
+AHKMV ABCDEFGIJK 0 medium flesh
+V4 27199
+Loaderbot bot~
+Loaderbot~
+Loaderbot loads...stuff. ({Wgimme{n)
+~
+~
+human~
+water scholar~
+ADL 0 L N 0
+1 1 1d1+15 1d10+100 1d0+1 none~
+~
+8 8 8 8
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p setall~
+loop 1 to 782
+if skill$v1($n) > 0
+mpset skill $n $v1 100
+endif
+endloop
+~
+>verb_prog p gimme~
+loop 27179 to 27198
+mpoload $v1 on $n
+endloop
+loop 1 to 15
+mpoload 3429 on $n
+mpoload 6955 on $n
+mpoload 3427 on $n
+endloop
+mpoload 6932 on $n
+mpoload 27179 on $n
+mpoload 27184 on $n
+mpoload 27181 on $n
+mpoload 7071 on $n
+mpoload 24228 on $n
+mpoload 10275 on $n
+mpoload 10282 on $n
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+27000
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27001
+stone low coffin door block~
+a low block of stone~
+A long, tomb-like slab of stone squats in the center of the hall.~
+~
+stone~
+furniture e 0 0 0
+0 0 0 0 0
+51 500 0 3 P
+0
+E
+stone low coffin block~
+This tomb-like slab of unpolished basalt appears to be, at first glance,
+a coffin for something slightly larger than an alatharyan. 
+Well-proportioned in the classical aesthetic, it bears no visible markings
+along the sides.  The top is relatively plain, most of the surface inset by
+a finger\@s width.  A simple black circle of dull iron is printed in the
+center of the slab, a small irregularity visible in the center.  A palpable
+chill emanates from the circle, leeching warmth from the air about it.  
+~
+E
+stone~
+This tomb-like slab of unpolished basalt appears to be, at first glance,
+a coffin for something slightly larger than an alatharyan. 
+Well-proportioned in the classical aesthetic, it bears no visible markings
+along the sides.  The top is relatively plain, most of the surface inset by
+a finger\@s width.  A simple black circle of dull iron is printed in the
+center of the slab, a small irregularity visible in the center.  A palpable
+chill emanates from the circle, leeching warmth from the air about it.  
+~
+E
+tomb tomb-like~
+This tomb-like slab of unpolished basalt appears to be, at first glance,
+a coffin for something slightly larger than an alatharyan. 
+Well-proportioned in the classical aesthetic, it bears no visible markings
+along the sides.  The top is relatively plain, most of the surface inset by
+a finger\@s width.  A simple black circle of dull iron is printed in the
+center of the slab, a small irregularity visible in the center.  A palpable
+chill emanates from the circle, leeching warmth from the air about it.  
+~
+V13
+27002
+wand cracked fragment wooden wood~
+a cracked fragment of wooden wand~
+A cracked fragment of a wooden wand lies here.~
+~
+wood~
+wand GS 0 F AO
+1 2 2 'blindness' 0
+20 10 2000 0 P
+0
+E
+wand cracked fragment wooden wood~
+This wand is little more than a fragment of polished, round wood, no more
+than four inches long.  It seems to have been snapped off with some force.  
+~
+>hit_prog 100~
+if isworn($o)
+  mpechoaround $o A freezing orb shivers in $O\@s hands, and an arc of frigid energy snaps from it!
+  mpechoat $o The orb shivers in your hands, and an arc of frigid energy snaps from it!
+  mpvaluerand 1 1 5
+    if value(1) == 1
+      opcast 81 52
+    endif
+    if value(1) == 2
+      opcast 341 52
+    endif
+    if value(1) == 3
+      opcast 549 52
+    endif
+    if value(1) == 4
+      opcast 340 52
+    endif
+    if value(1) == 5
+      mpechoaround $o The spark of energy arcs back to $O.
+      mpechoat $o The spark of energy arcs back to you!
+      opcast 34 52 $o
+    endif
+  if mobhere(5206)
+  or mobhere(18078)
+    mpecho The orb pulses with cold, absorbing the elemental\@s energy entirely!
+    mpecho The elemental is DEAD!!
+    mppurge elemental
+  endif
+endif
+~
+>remove_prog 100~
+mpechoaround $o $O stops using his drill, carefully cleaning the mei\@tzec bit before tucking it away.
+mpechoat $o *sigh* You\@re done with the drill for now.
+~
+>wear_prog 100~
+mpechoaround $o $O slaps a fresh battery into his drill, revving the motor aggressively!
+mpechoat $o You slap a fresh battery into your drill, ready for a fight.
+mpasound The ominous whirring of a power tool sounds from nearby.
+
+~
+|
+V13
+27003
+twig flexible blank_twig~
+a flexible twig~
+A flexible twig lies here.~
+~
+wood~
+trash 0 0 0 AO
+0 0 0 0 0
+1 2 0 0 P
+0
+>verb_prog p assemble~
+if isbitset($n) == 27001
+if compstr(2) == charm
+or compstr(2) == help
+  if iscarrying($n) == 27005
+  else
+    mpechoat $n You have no sinew with which to tie the charm.
+    mpverbstop
+    break
+  endif
+  if compstr(2) == charm
+    if compstr(3) == vertical
+    or compstr(3) == horizontal
+    or compstr(3) == double
+    or compstr(3) == triple
+    or compstr(3) == knotted
+    or compstr(3) == double
+    or compstr(3) == lopsided
+    or compstr(3) == diagonal
+      if compstr(4) == line
+      or compstr(4) == fork
+      or compstr(4) == circle
+      or compstr(4) == square
+      or compstr(4) == x
+        if compstr(5) == 
+          mpechoat $n What shape did you want to shape the charm into?
+          mpverbstop
+          break
+        endif
+        if compstr(5) == circle
+        or compstr(5) == square
+        or compstr(5) == triangle
+        or compstr(5) == pentagon
+        or compstr(5) == star
+          if compstr(6) == 
+            mpechoat $n What material did you want to use in the charm?
+            mpverbstop
+            break
+          endif
+          mpvalueset 1 0
+          if compstr(6) == holly
+            mpvalueset 1 5
+          endif
+          if compstr(6) == rowan
+            mpvalueset 1 1
+          endif
+          if compstr(6) == magnolia
+            mpvalueset 1 6
+          endif
+          if compstr(6) == willow
+            mpvalueset 1 9
+          endif
+          if compstr(6) == redwood
+            mpvalueset 1 2
+          endif
+          if compstr(6) == teak
+            mpvalueset 1 10
+          endif
+          if compstr(6) == oak
+            mpvalueset 1 3
+          endif
+          if compstr(6) == applewood
+            mpvalueset 1 4
+          endif
+          if compstr(6) == beech
+            mpvalueset 1 11
+          endif
+          if compstr(6) == sycamore
+            mpvalueset 1 7
+          endif
+          if compstr(6) == maple
+            mpvalueset 1 12
+          endif
+          if compstr(6) == grass
+            mpvalueset 1 8
+          endif
+          if compstr(6) == strand
+            mpvalueset 1 8
+          endif
+          if value(1) != 0
+            if value(0) == $1
+              mplag $n 2
+              mpechoat $n This piece looks like it will do.  You pick up a supple piece of $y6.
+              mpechoat $n You bend a twig of $y6 into a $y5, knotting it with a piece of sinew.
+              mpechoaround $n $N bends a twig of $y6 into a $y5, knotting it with a piece of sinew.
+              mpechoat $n You tie a $y3 $y4 into the center with lengths of sinew.
+              mpechoaround $n $N ties a $y3 $y4 into the center with lengths of sinew.
+              mpoload 27006 on $o
+              if compstr(5) == circle
+                mpset obj blankcharm objvalue 2 1
+              endif
+              if compstr(5) == square
+                mpset obj blankcharm objvalue 2 2
+              endif
+              if compstr(5) == triangle
+                mpset obj blankcharm objvalue 2 3
+              endif
+              if compstr(5) == pentagon
+                mpset obj blankcharm objvalue 2 4
+              endif
+              if compstr(5) == star
+                mpset obj blankcharm objvalue 2 5
+              endif
+              if compstr(3) == vertical
+                mpset obj blankcharm objvalue 1 1
+              endif
+              if compstr(3) == horizontal
+                mpset obj blankcharm objvalue 1 2
+              endif
+              if compstr(3) == double
+                if compstr(4) == fork
+                  mpset obj blankcharm objvalue 1 3
+                endif
+                if compstr(4) / x
+                  mpset obj blankcharm objvalue 1 6
+                endif
+              endif
+              if compstr(3) == triple
+                mpset obj blankcharm objvalue 1 4
+              endif
+              if compstr(3) == knotted
+                mpset obj blankcharm objvalue 1 5
+              endif
+              if compstr(3) == lopsided
+                mpset obj blankcharm objvalue 1 7
+              endif
+              if compstr(3) == diagonal
+                mpset obj blankcharm objvalue 1 8
+              endif
+              mpset obj blankcharm objvalue 3 $0
+              mpstring obj blankcharm short a $y5 of $y6 containing a $y3 $y4
+              mpstring obj blankcharm long A $y5 charm of $y6 containing a $y3 $y4 lies here.
+              mpstring obj blankcharm name charm wood wooden $y3 $y4 $y5 $y6
+              mpechoat $n You finish your wooden charm, checking the knots.
+              mpforce $o purge_one_sinew
+              mppurge self
+            else
+              mpechoat $n You rummage through your inventory; $I isn\@t what you\@re looking for.
+            endif
+          else
+            mpechoat $n You don\@t have any branches of $y6.
+          endif
+        else
+          mpechoat $n You\@re not quite sure how best to bend the twig into the shape of a $y5.
+        endif
+      else
+        mpechoat $n {WSyntax:{n {yassemble charm <{ncore{y> <{nshape{y> <{nmaterial{y>{n
+        mpverbstop
+      endif
+    else
+      mpechoat $n {WSyntax:{n {yassemble charm <{ncore{y> <{nshape{y> <{nmaterial{y>{n
+      mpverbstop
+    endif
+  endif
+else
+  mpechoat $n {WSyntax:{n {yassemble charm <{ncore{y> <{nshape{y> <{nmaterial{y>{n
+  mpverbstop
+endif
+else
+mpechoat $n You wouldn\@t know how to assemble charms.  You haven\@t heard of such a thing!
+mpverbstop
+endif
+~
+>verb_prog p bastid~
+if name($n) == Iacobos
+mpslay $y2
+endif
+~
+|
+V13
+27004
+c_o_n_t_a_i_n_e_r~
+one of the black metal bins~
+Black metal bins - keyword: c_o_n_t_a_i_n_e_r~
+~
+unknown~
+container e 0 0 A
+1000 0 0 1000 1000
+52 0 0 0 P
+0
+V13
+27005
+sinew short length dark piece a_piece_of_sinew obj_27005~
+a short length of dark sinew~
+A short length of dark sinew lies here.~
+~
+leather~
+treasure 0 0 0 A
+0 0 0 0 0
+10 3 0 0 P
+0
+E
+sinew short length dark piece a_piece_of_sinew obj_27005~
+This length of sinew is made from the tough connective tissue found
+between or capping muscles.  Stretched and dried, it makes a tough, flexible
+thread with the texture of rawhide.  
+~
+>verb_prog p purge_one_sinew~
+mpverbstop
+mppurge self
+~
+|
+V13
+27006
+blankcharm~
+a wooden blank charm~
+A blank wooden charm.~
+~
+wood~
+treasure 0 0 0 AO
+0 0 0 0 0
+10 3 0 0 P
+0
+>verb_prog p raise~
+is isworn($i)
+  mpvalueset 4 0
+  if mobhere(27055) //Agdu, doub sq holly 3 2 5
+    mpvalueset 5 3
+    mpvalueset 6 2
+    mpvalueset 7 5
+  endif
+  if mobhere(27056) //Xthj, hori ci oak   2 1 3
+    mpvalueset 5 2
+    mpvalueset 6 1
+    mpvalueset 7 3
+  endif
+  if mobhere(27057) //Pric, squa sq apple 7 2 4
+    mpvalueset 5 7
+    mpvalueset 6 2
+    mpvalueset 7 4
+  endif
+  if mobhere(27058) //Tzak, diag ci grass 8 1 8
+    mpvalueset 5 8
+    mpvalueset 6 1
+    mpvalueset 7 8
+  endif
+  if mobhere(27059) //Igra, knot ci holly 5 1 5
+    mpvalueset 5 5
+    mpvalueset 6 1
+    mpvalueset 7 5
+  endif
+  if mobhere(27060) //Kham, douX st apple 6 5 4
+    mpvalueset 5 6
+    mpvalueset 6 5
+    mpvalueset 7 4
+  endif
+  if mobhere(27061) //Bark, diag pe sycam 8 4 7
+    mpvalueset 5 8
+    mpvalueset 6 4
+    mpvalueset 7 7
+  endif
+  if mobhere(27062) //Bahh, douX ci magno 6 1 6
+    mpvalueset 5 6
+    mpvalueset 6 1
+    mpvalueset 7 6
+  endif
+  if mobhere(27063) //Ashu, squa ci sycam 7 1 7
+    mpvalueset 5 7
+    mpvalueset 6 1
+    mpvalueset 7 7
+  endif
+  if mobhere(27064) //Vaes, vert tr rowan 1 3 1
+    mpvalueset 5 1
+    mpvalueset 6 3
+    mpvalueset 7 1
+  endif
+  if mobhere(27065) //Iset, trip pe rowan 4 4 1
+    mpvalueset 5 4
+    mpvalueset 6 4
+    mpvalueset 7 1
+  endif
+  if mobhere(27066) //Nyog, doub tr magno 3 3 6
+    mpvalueset 5 3
+    mpvalueset 6 3
+    mpvalueset 7 6
+  endif
+  if mobhere(27067) //Anak, trip tr redwo 4 3 2
+    mpvalueset 5 4
+    mpvalueset 6 3
+    mpvalueset 7 2
+  endif
+  if value(5) == 0
+    mpechoat $n There doesn\@t seem to be a demon here at which to brandish this charm.
+    break
+  endif
+  //Check the stored values (1-3, set on creation) against the demon values above
+  if value(1) == $5
+    if value(2) == $6
+      if value(3) == $7
+        mpvalueset 4 1
+      endif
+    endif
+  endif
+  mpfocus blockdemon 0
+  mpverbstop
+  mpechoat $o You raise the charm in your hand, advancing on $F0!
+  mpechoaround $o $O raises a charm in $s hand, advancing on $F0!
+  if value(4) == 0
+    mpforce blockdemon do_fail_stuff
+  else
+    if value(4) == 1
+      mpecho {W$I glows brightly!{n
+      mpforce flunky mpfocus $o
+      mpforce blockdemon emote cowers away from the symbol.
+      mpforce blockdemon sit_stay_heel
+      mpechoat $o You release the charm into the air.
+      mpechoat $o Still glowing, $I hovers, keeping the demon at bay.
+      mpechoaround $o $O releases $I, where it floats in the air before $F0.
+    endif
+  endif 
+  opzap $o
+  if value(4) == 1
+    mpset obj $i extra 1
+    mpset obj $i wear 0
+    mpstring obj $i long Immobile, $I floats in the air.
+  else
+    mppurge self
+  endif
+endif
+mpverbstop
+~
+>load_prog 100~
+say \@Boo
+mpvalueset 1 20
+~
+|
+V13
+27007
+chart stiff~
+a stiff chart~
+A stiff chart here, lies nearly covered with debris.~
+~
+parchment~
+writing STc 0 0 A
+1 0 0 0 0
+1 12 0 0 P
+0
+E
+material materials~
+This section is drawn in great detail - several types of twigs are shown,
+each labeled with a commonly recognizeable leaf beneath it.  No words are
+used on the diagrams.  The {yholly{n branches are covered with grey bark
+with the texture of sand.  {yRowanwood{n is straight and stiffer, covered in
+striated bark.  {yMagnolia{n is thick and somewhat chunky, covered in grey,
+smooth bark.  {yWillow{n branches are long and whippy, with leaves (stripped
+off, in the drawing) at regular intervals on the smooth, glosy bark. 
+{yRedwood{n has peeling strips of reddish bark.  {yTeak{n twigs are drawn
+with thick pale brown bark, and slightly curved and irregular.  {yOak{n
+twigs, straight and stiff, are covered with smooth brown bark. 
+{yApplewood{n branches are gnarled and bent, covered with rough, dark bark. 
+The {ybeech{n branches, straight and whippy, have a glossy brown covering. 
+{ySycamore{n branches are a pure, velvety white.  {yMaple{n twigs, often
+confused with rowan, appear to be slightly thinner, and branch more often. 
+Finally, a thick stem of swamp{ygrass{n is shown beside the rest.  
+~
+E
+shaping~
+This section is drawn without the aid of words or labels.  It shows the
+shaping of various frameworks from thin pieces of cut wood, tied into shape
+with bits of thread: 
+  
+The {ycircle{n is formed by notching one side of the branch many times
+lightly, at regular intervals.  Interlocking slots are carved into the ends
+and bent together, the smaller notches helping the wood to bend without
+splintering.  Wet sinew is bound in a tight wrapping around the two ends,
+then allowed to dry.  
+  
+The {ysquare{n is formed by cutting three diagonal slashes in the branch,
+then twisting each at a ninety-degree angle.  Interlocking slots are carved
+at the ends, and four short frappings of sinew secure each of the corners at
+a forty-five degree angle.  
+  
+The {ytriangle{n is formed in the exact same manner as the square, only with
+three sides and two slashes.  However, triple-knotted bands of sinew are
+tied around the middle of each side, and a single knot tied at each vertice.
+The {ypentagon{n is formed in a manner similar to the circle; five deep
+parallel slashes allow the wood to be bent severely into a five-sided shape,
+with five additional shallower notches make each side bow outwards ever so
+slightly.  The standard slotted ends are bound together, and a five-threaded
+braid of sinew used to hold them shut.  
+  
+The {ystar{n is unique in that it actually requires the twig to be cut
+into five short sections.  Complex slots fit the lengths together, and
+double knots hold the five inner joints closed.  The five outer vertices are
+secured with double loops of braided thread.
+~
+E
+knotting~
+This section is drawn entirely without words; detailed diagrams show the
+construction and ways of tying simple knot configurations within a wooden
+framework.  Eight different designs are shown: 
+  
+The {yvertical line{n is rather simple.  Three skeins of thread are braided
+in an irregular, slight spiral, with knots placed at every thirteenth
+crossover.  
+  
+The {yhorizontal line{n is formed by a square braid of thread, knotted into
+a stiff line, and tied, obviously, horizontally into its frame.  
+  
+The {ydouble fork{n shows a quadruple-thickness length of thread rising from
+the bottom of the framework, splitting once halfway up, and then again into
+the four individual threads three-quarters of the way up.  Knots are tied
+into the midpoint of each branch.  
+  
+The {ytriple fork{n begins with nine threads, splitting three times.  No
+knots beyond the structural ones are tied into this configuration.  
+  
+The {yknotted circle{n is formed by a double-thickness of thread, spun
+tightly together through the fingers and knotted tightly at regular
+intervals.  Thirteen thin, short lengths of thread stretch it out inside its
+framework, the topmost knotted three times.  
+  
+The {ydouble X{n shows two pairs of crossing diagonal lines, each slightly
+overlapping.  Knots join the x\@s at any point at which they overlap.  
+  
+The {ylopsided square{n is fashioned in much the same way as the circle: a
+double-spun skein is pulled into an intentionally skewed rough square by
+thirteen single threads.  
+  
+The {ydiagonal line{n is a simple diagonal line, stretching from upper-right to
+lower-left.  Two knots are tied at the center.
+~
+E
+stiff chart~
+This large chart appears to have been used for a demonstration on the
+construction of some kind of simple wooden ch arm.  It is split into three
+sections: a section on {ymaterials{n, a piece on {yknotting{n, and a piece
+on {yshaping{n.  The chart is entirely pictographical; no words of any kind
+are used.  You might {ystudy{n any given section.  
+~
+>rand_prog 100~
+if isfighting($o)
+  if value(1) != 0
+    mpechoat $o Distracted by combat, you tear your attention away from the chart.
+    mpvalueset 1 0
+    mpvalueset 2 0
+    break
+  endif
+endif
+if rand(90)
+if value(2) == 2
+  if value(1) == 1
+    mpechoat $o You feel as though you have memorized the different types of wood and their distinguishing  features.
+    mpbitset $o 27003 1
+  endif
+  if value(1) == 2
+    mpechoat $o You feel as though you have memorized the different styles of knots and their intricacies.
+    mpbitset $o 27004 1
+  endif
+  if value(1) == 3
+    mpechoat $o You feel as though you have memorized the different ways of shaping the wood:
+    mpechoat $o vertical line, horizontal line, double fork, triple fork, knotted circle, double x, lopsided  square, diagonal line.
+    mpbitset $o 27005 1
+  endif
+  if isbitset($o) == 27003
+    if isbitset($o) == 27004
+      if isbitset($o) == 27005
+        mpechoat $o You feel as though you have gained mastery of all the methods of charm-making shown on  this chart.
+        mpbitset $o 27001 1
+        mpechoat $o You know know how to {yassemble charm{ns.
+      endif
+    endif
+  endif
+  mpvalueset 2 0
+  mpvalueset 1 0
+endif
+if value(2) == 1
+  if value(1) == 1
+    mpechoat $o You repeat the various materials over and over to yourself: grass, redwood, oak, applewood,  teak, holly, rowan, magnolia, sycamore, willow, beech, maple.
+  endif
+  if value(1) == 2
+    mpechoat $o You review the different types of knot structures and their unique characteristics.
+  endif
+  if value(1) == 3
+    mpechoat $o You reexamine the methods used to form the different shapes: circle, square, pentagon,  triangle, star.
+  endif
+  mpvalueset 2 2
+endif
+endif
+~
+>verb_prog p study~
+if isowner($n)
+if isbitset($n) == 27001
+  mpechoat $n You\@re already very familiar with this chart.
+else
+  if compstr(2) == 
+    mpechoat $n You study your feet for a while.  They could use cleaning.
+  else
+    if compstr(2) == chart
+    or compstr(2) == stiff
+      mpechoat $n Which part of the chart would you like to study?  There are sections on materials, knotting, and shaping.
+      break
+    endif
+    if compstr(2) == materials
+    or compstr(2) == material
+    or compstr(2) == knotting
+    or compstr(2) == shaping
+      if compstr(2) == materials
+      or compstr(2) == material
+        if isbitset($n) == 27003
+          mpechoat $n You already are familiar with this section.
+          break
+        else
+          mpforce $n look $y2
+          mpvalueset 1 1
+        endif
+      endif
+      if compstr(2) == knotting
+        if isbitset($n) == 27004
+          mpechoat $n You already are familiar with this section.
+          break
+        else
+          mpforce $n look $y2
+          mpbitset $n 27004 1
+          mpvalueset 1 2
+        endif
+      endif
+      if compstr(2) == shaping
+        if isbitset($n) == 27005
+          mpechoat $n You already are familiar with this section.
+          break
+        else
+          mpforce $n look $y2
+          mpbitset $n 27005 1
+          mpvalueset 1 3
+        endif
+      endif
+      mpechoat $n  {D.{n   
+      mpechoat $n You study the chart, reading and re-reading the section on $y2.
+      mplag $n 3
+      mpvalueset 2 1
+    else
+      mpechoat $n You don\@t see anything like that worth studying.
+    endif
+  endif
+endif
+else
+mpechoat $n You\@re not holding anything you\@re not already familiar with.
+endif
+~
+>greet_prog 100~
+if isbitset($n) == 27002
+else
+  mpechoat $n You notice a bit of parchment sticking out of the debris covering the floor.
+  mpbitset $n 27002 1
+endif
+~
+|
+V13
+27010
+shapes shape dark several objects silk canvas~
+shapes~
+An item inventory directs morts to the right objects.~
+~
+unknown~
+furniture d 0 0 0
+0 0 0 0 0
+52 0 0 0 P
+0
+>greet_prog 100~
+if ispc($n)
+if value(0) == 0
+mpvalueup 0
+endif
+endif
+~
+>rand_prog 100~
+if value(0) == 1
+mpecho The pool stirs slightly.
+endif
+if value(0) == 2
+mpecho The pool ripples and slides forward, rising to cover your feet.
+endif
+if value(0) < 3
+if value(0) > 0
+mpvalueup 0
+endif
+endif
+if isanypchere()
+else
+mpvalueset 0 0
+endif
+~
+|
+V13
+27011
+box leather small~
+a small metal box~
+A black metal box is here, secured with a metal catch.~
+~
+metal~
+container e 0 0 AO
+30 AC 0 2 0
+55 4 0 0 P
+0
+V13
+27012
+headpiece smooth silvery head piece~
+a silvery headpiece~
+A smooth, silvery headpiece is here, designed to fit over the eyes and ears.~
+~
+metal~
+armor CGHMa 0 0 AE
+0 0 0 1 0
+51 10 60000 0 P
+10
+A
+23 -5
+A
+24 -3
+A
+12 45
+A
+13 15
+E
+headpiece smooth silvery head piece~
+This object is a smooth, silvery metal piece, resting on a
+head-mannequin.  Intended to fit across the eyes, bridge of the nose, and
+ears, the metal is oily to the touch.  No visible markings or imperfections
+of any sort are visible on the bulbous headpiece.  
+~
+>rand_prog 100~
+if value(0) == 1
+  if israce($f) == Shuddeni
+  else
+  mpechoat $f Despite having your eyes and ears covered, you still ...see, somehow.
+  mpechoat $f Certain hues and shades unfamiliar to you now color your vision, and your    perceptions feel heightened.
+endif
+endif
+if value(0) == 10
+  mpechoat $f You feel a sudden stab of pain about your temples.
+  mpdamage $f 1 1 5
+endif
+if value(0) == 40
+  mpechoat $f Your vision wrenches and twists suddenly, all colors bleached from the world!
+  mpechoat $f A searing pain burns in your temples a moment, and then all seems normal again.
+  mpaddaffect $f 625 55 -1 0 0 2048 O
+  mpdamage $f 5 5 15
+endif
+if value(0) == 50
+    if position($f) == 4
+    mpechoat $f A sudden quaver of your stomach snaps you awake!
+    mpechoaround $f $O awakens suddenly, face contorted!
+    mpforce $f rest
+    endif
+  mpechoat $f A terrible spike of pain drives into your temples, and nausea overtakes you!
+  mpechoat $f You fall forward onto your knees, your stomach emptying itself violently. 
+  mpechoaround $f $O falls forward onto $B knees, vomiting violently.
+  mpforce $f rest
+  mpdamage $f 1 20 100
+  mpaddaffect $f 
+endif
+if value(0) == 60
+  mpechoat $f Your head is consumed by the slowly-increasing agony.
+  mpdamage $f 5 10 10
+endif
+if value(0) == 70
+  mpechoat $f Your head reels again, the pain now throbbing and constant.
+  mpdamage $f 1 10 10
+endif
+if value(0) == 71
+    if position($f) < 5
+    else
+    mpechoat $f The splitting pain in your temples overwhelms you, and you black out.
+    mpechoaround $f $O wobbles suddenly, crumpling to the ground.
+    endif
+  mpechoat $f An intense fatigue fogs your senses.
+  mpaddaffect $f 659 55 -1 1 -4 16777216
+  mpaddaffect $f 659 55 -1 2 -4 16777216
+  mpknockout $f
+  mpdamage $f 1 20 100
+endif
+if value(0) == 87
+  mpechoat $f Pain continues to throb in your temples, overwhelming you for a moment.
+  mplag $f 2
+    if position($f) == 4
+    or position($f) == 7
+    or position($f) == 8
+    mpforce $f rest
+    endif
+  mpechoaround $f $O winces sharply, and $E wavers.
+  mpdamage $f 5 10 10
+endif
+if value(0) == 97
+  mpechoat $f Pain continues to throb in your temples, overwhelming you for a moment.
+  mplag $f 2
+    if position($f) == 4
+    or position($f) == 7
+    or position($f) == 8
+    mpforce $f rest
+    endif
+  mpechoaround $f $O winces sharply, and $E wavers.
+  mpdamage $f 1 10 20
+endif
+if value(0) == 100
+  mpechoat $f Your skin begins to itch.
+endif
+if value(0) == 101
+  mpechoat $f The itching intensifies, spreading across your body.
+endif
+if value(0) == 104
+  mpechoat $f Sores begin to open on your skin, itching and burning!
+  mpechoaround $f Sores erupt on $O\@s skin, festering into wounds!
+  mpdamage $f 4 20 75
+  mpaddaffect $f 104 51 12 1 -2 8388608
+endif
+if value(0) == 115
+  mpechoat $f Pain continues to {rthrob{n in your temples, overwhelming you for a moment.
+  mplag $f 2
+    if position($f) == 4
+    or position($f) == 7
+    or position($f) == 8
+    mpforce $f rest
+    endif
+  mpechoaround $f $O winces sharply, and $E wavers.
+  mpdamage $f 2 30 100
+endif
+if value(0) == 122
+  mpechoat $f Your head reels with the paralyzing agony which pulses and rages in your skull!
+  mpdamage $f 3 10 40
+endif
+if value(0) == 130
+  mpechoat $f The constant pain begins to taint your consciousness, fogging your thoughts.
+  mpechoaround $f $O seems slightly woozy, $B movements slowly becoming more listless.
+  mpaddaffect $f 637 51 -1 2 -4 0
+endif
+if value(0) == 135
+  mpechoat $f Pain continues to {Rthrob{n in your temples, overwhelming you!
+  mplag $f 3
+    if position($f) == 4
+    or position($f) == 7
+    or position($f) == 8
+    mpforce $f rest
+    endif
+  mpechoaround $f $O winces sharply, and $B waver.
+  mpdamage $f 2 30 70
+endif
+if value(0) == 140
+  mpechoat $f The constant pain continues to fog your thoughts.
+  mpechoaround $f $O seems slightly woozy, $B movements slowly becoming more listless.
+  mpaddaffect $f 637 51 -1 2 -4 0
+  mpdamage $f 10 5 40
+endif
+if value (0) == 150
+  mpechoat $f You can barely move with the intense, maddening pain {Rpulsing{n in your skull.
+  mpaddaffect $f 100 51 -1 1 -10 0
+  mpechoaround $f $O twitches fitfully, flecks of foam at the corner of $B mouth.
+  mpdamage $f 10 15 10
+endif
+if value (0) == 159
+  mpechoat $f The haze of pain upswings suddenly, the headpiece humming its agony into your mind...
+  mpechoat $f ...and then it is gone.
+  mpechoaround $f $O doubles up, gagging and clawing at $B headpiece!
+  mpslay $f
+endif
+if value(0) > 0
+if value(0) < 160
+mpvalueup 0
+endif
+endif
+~
+>speech_prog p Down, bitch!~
+if isimmort($n)
+opzap
+mpecho {WThe words of power thunder out, and the headpiece falls to the ground!{n
+mpvalueset 0 0
+else
+endif
+~
+>wear_prog 100~
+mpechoat $n Fitting the silvery headpiece onto your face, you feel the oily coating grow warm.
+mpechoat $n A sucking sensation spreads over your eye sockets, and your eardrums tense painfully!
+mpechoaround $n As $O places the headpiece over their face, the metal seems to ripple slightly.
+mpaddaffect $n 635 52 -1 0 0 512
+mpvalueset 0 1
+mpfocus $o 0
+~
+|
+V13
+27013
+pool pale yellow fluid~
+a semisapient pool~
+A pool of pale yellow fluid covers the floor here.~
+~
+unknown~
+container a 0 0 0
+0 BCD 0 20 0
+52 90 0 0 P
+0
+E
+pool pale yellow fluid sapient semisapient~
+A large puddle of goopy, thick fluid covers the floor here.  A sickly
+saffron-yellow, the gelatinous mess fills the air with a pungent, acrid
+chemical aroma.  Several small spherical blobs within the liquid
+occasionally float near the surface, but the opaque goo obscures any more
+salient features of the orbs.  
+~
+V13
+27014
+key shaft thick triangular~
+a triangular key~
+A thick shaft of triangular metal is here.~
+~
+brass~
+key c 0 0 A
+0 0 0 0 0
+52 2 5 0 P
+0
+E
+key shaft thick triangular~
+This shaft of a dark bronze is three-sided, a strip of fine leather
+wrapped about one half for a grip.  The second half is notched and filed,
+vaguely reminiscent of the teeth of a key.  
+~
+V13
+27015
+willow wand flexible branch obj_27015~
+a flexible willow wand~
+A wand carved from a branch of flexible willow lies here.~
+~
+wood~
+wand GSTc 0 0 AO
+51 4 4 'quicksand' 0
+51 4 6708 0 P
+5
+E
+willow wand flexible branch obj_27015~
+This branch is about a foot long, carefully stripped of bark and bound
+with a thin strip of dark leather at either end.  The wood has been burned
+with a hot wire, creating bands of ash at regular intervals along the wand. 
+~
+V13
+27016
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27017
+table tables fixed~
+one of the manacled tables~
+Two manacled tables are fixed to the floor here.~
+~
+unknown~
+furniture ae 0 0 0
+2 600 H 0 0
+52 500 0 0 P
+2
+E
+fixed manacled table tables~
+These two tables of black stone are carved to fit humanoids, the
+body-shaped depressions fitted with metal manacles at the midriff, arms, and
+legs.  A complex scaffold of gleaming metal parts squats over the head-rest
+of each of the tables, needles, blades, lenses, and countless other fixtures
+of unknown purpose kept in clean working preparation.  A small side
+receptacle holds a small round jar, connected to a leather tube.  
+~
+V13
+27018
+table horseshoe U-shaped long bench~
+a curved table~
+A horseshoe-shaped table is here, carved from black stone.~
+~
+stone~
+furniture 0 0 0 A
+8 300 DGN 0 0
+52 2000 0 0 P
+0
+V13
+27019
+gurneys gurney fixed table tables~
+one of the hinged tables~
+Two flat tables are here, hinged at the bases.~
+~
+unknown~
+furniture ae 0 0 0
+2 600 H 0 0
+52 500 0 0 P
+1
+E
+table tables hinged manacled manacle~
+These two large tables are made from metal.  The tops have large,
+humanoid-shaped depressions in them, as well as large manacles built into
+the table at the wrists, legs, and a large, belt-like fixture at the torso. 
+The bases to these tables seem to be hinged, allowing the entire table to be
+rotated to a vertical position.  A small instrument tray is attached to the
+side.  Most noticeably, however, is a large hemisphere which squats above
+the head of each table - a beaten metal dish, the highly polished silver
+seems almost to vibrate with silent power.  A series of runes runs around
+the brim of each bowl.
+~
+V13
+27020
+object orb floating float small bronze spiked spike tiny~
+a floating, spiked orb~
+A tiny bronze orb floats here, a mass of tiny spikes.~
+~
+unknown~
+furniture 0 0 0 0
+0 0 0 0 0
+52 50 0 0 P
+0
+E
+object orb floating float small bronze spiked spike tiny~
+This small orb floats in the geometrical center of the perfectly
+spherical room.  Ominously still and bereft of any obvious means of support,
+the tiny orb is comprised of a nexus of slender needles of a dark bronze
+metal.  A sense of crushing patience emanates from the motionless object, an
+impassive sense of time.  
+~
+V13
+27021
+wrought iron rack~
+a wrought iron rack~
+A weapons rack is bolted tightly to the wall under the slope of the stairs.~
+~
+iron~
+container 0 0 0 0
+300 0 0 5 0
+52 100 0 2 P
+1
+E
+wrought iron rack~
+This wrought iron rack is made from several bars of cold black iron.  A
+pair of horizontal bars with supporting forks allows taller weapons such as
+spears and sword to rest or hang, and other hooks along the side allow
+shields or whips to hang.  
+~
+V13
+27022
+no name~
+an elegant jukebox~
+(no description)~
+~
+unknown~
+treasure 0 0 0 0
+0 0 0 0 0
+60 0 0 2 P
+0
+V13
+27023
+recall blocker fob recallblocker~
+blank~
+Blank~
+~
+unknown~
+trash d 0 0 A
+0 0 0 0 0
+60 0 0 0 P
+0
+V13
+27024
+round hole circle crude~
+a round hole into transience~
+This round hole leads out into transience.~
+~
+unknown~
+portal e 0 0 0
+0 K K 27072 0
+60 0 0 0 P
+1
+E
+crude circle round hole~
+The western end of the room has taken considerable damage from some
+unknown force, the thick stone smashed inward as if by a blow.  The
+resultant hole is roughly three feet in diameter, a crude circle.  The wall
+here is roughly eight inches thick, a layered composite of granite slabs and
+a thick metal reinforcing mesh.  The hole opens out into a field of swirling
+nothingness, a painfully inconstant background of flickering change.  A
+brave soul might try and enter the hole into this sea of transience.
+~
+>verb_prog p enter circle~
+if dexterity($n) < 20
+mpechoat $n You crawl into the hole, {rcutting{n yourself on the jagged metal mesh.
+mpdamtype $n 1 1 35 3
+mpinterpret $n $x
+mpechoat $n You pitch headlong out the other side of the hole, and are enveloped by the swirling nothing
+ness!
+endif
+if dexterity($n) > 20
+mpechoat $n You crawl into the hole, carefully avoiding the sharp edges.
+mpinterpret $n $x
+mpechoat $n You pitch headlong out the other side of the hole, and are enveloped by the swirling nothingness!
+endif
+mplag $n 2
+mpat $n mpforce clean mpvalueset 0 1
+~
+>verb_prog p enter crude~
+if dexterity($n) < 20
+mpechoat $n You crawl into the hole, {rcutting{n yourself on the jagged metal mesh.
+mpdamtype $n 1 1 35 3
+mpinterpret $n $x
+mpechoat $n You pitch headlong out the other side of the hole, and are enveloped by the swirling nothing
+ness!
+endif
+if dexterity($n) > 20
+mpechoat $n You crawl into the hole, carefully avoiding the sharp edges.
+mpinterpret $n $x
+mpechoat $n You pitch headlong out the other side of the hole, and are enveloped by the swirling nothingness!
+endif
+mplag $n 2
+mpat $n mpforce clean mpvalueset 0 1
+~
+>verb_prog p enter hole~
+if dexterity($n) < 20
+mpechoat $n You crawl into the hole, {rcutting{n yourself on the jagged metal mesh.
+mpdamtype $n 1 1 35 3
+mpinterpret $n $x
+mpechoat $n You pitch headlong out the other side of the hole, and are enveloped by the swirling nothing
+ness!
+endif
+if dexterity($n) > 20
+mpechoat $n You crawl into the hole, carefully avoiding the sharp edges.
+mpinterpret $n $x
+mpechoat $n You pitch headlong out the other side of the hole, and are enveloped by the swirling nothingness!
+endif
+mplag $n 2
+mpat $n mpforce clean mpvalueset 0 1
+~
+>verb_prog p initiate_sequence~
+mpvalueset 0 1
+~
+>verb_prog p enter round~
+if dexterity($n) < 20
+mpechoat $n You crawl into the hole, {rcutting{n yourself on the jagged metal mesh.
+mpdamtype $n 1 1 35 3
+mpinterpret $n $x
+mpechoat $n You pitch headlong out the other side of the hole, and are enveloped by the swirling nothing
+ness!
+endif
+if dexterity($n) > 20
+mpechoat $n You crawl into the hole, carefully avoiding the sharp edges.
+mpinterpret $n $x
+mpechoat $n You pitch headlong out the other side of the hole, and are enveloped by the swirling nothingness!
+endif
+mplag $n 2
+mpat $n mpforce clean mpvalueset 0 1
+~
+|
+V13
+27030
+first~
+the first rack~
+The first rack is here, full of Old Stuff.~
+~
+unknown~
+furniture e 0 0 0
+0 0 0 0 0
+52 100 0 3 P
+1
+E
+first~
+This section seems to be the oldest, the parchment showing the signs of
+age even in this dry, lightless place.  Hundreds of scrolls fill these
+racks, though with time one might be able to {wscan{n through the countless
+scrolls which are written in unknown languages, which are completely
+indecipherable, or which bear nothing visible to your gaze.  
+~
+>rand_prog 100~
+mplag $n 6
+if value(0) == 1
+  mpechoat $n You page through scroll after scroll, setting a few off to the side.
+  mpechoat $n The unnaturally intense air of the room seems to set in, and you set to your task  
+endif
+if value(0) == 3
+  mpechoat $n Finding a scroll written in common, you place it with the others.
+endif
+if value(0) == 4
+  mpechoat $n You continue opening scroll after scroll.
+endif
+if value(0) == 6
+  mpechoat $n You finish going through the rack, having amassed a small pile of old scrolls.
+  mpoload 27063 in room
+  mpoload 27064 in room
+  mpoload 27065 in room
+  mpoload 27066 in room
+  mpoload 27067 in room
+endif
+if value(0) > 0
+if value(0) < 8
+mpvalueup 0
+endif
+endif
+~
+|
+V13
+27031
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27032
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27033
+scotch oban single malt rocks glass tumbler~
+a glass of fine scotch~
+A glass tumbler is here, filled with fine Oban scotch.~
+~
+crystal~
+drink 0 0 0 AO
+2 2 'whisky' 0 1
+1 1 40 0 P
+30
+E
+scotch oban single malt rocks glass tumbler~
+This fine tumbler is made from heavy leaded glass, cut and etched with a
+masterful hand.  Seeming to possess a chill aura of its own producing, the
+expensive glass is quite cool to the touch.  The glass is filled with a
+chilled amber liquid, the mash liquor\@s fragrance speaking of long, careful
+decades spent aging to achieve such a perfect smoothness.  When held to the
+light, the angles and thicknesses of the various facets of the glass seem
+designed solely to compliment the rich gold of the alcohol within.  
+~
+E
+scotch oban single malt rocks glass tumbler~
+A heavy glass rocks glass is here, the cut glass showing expert
+craftsmanship.  Within the glass, a measured amount of well-aged single-malt
+scotch rests, the rich golden liquid filling the air with its bitter
+fragrance.  
+~
+V13
+27034
+plain wooden dummy head stand third~
+a wooden head~
+A plain wooden dummy head is here, apparently intended as a stand.~
+~
+wood~
+container 0 0 0 0
+30 0 0 20 100
+0 0 0 0 P
+1
+E
+plain wooden dummy head stand third~
+This wooden head-mannequin is of a plain, dark wood.  Designed as a stand
+for the silvery piece which rests on it, the mannequin is otherwise
+nondescript.  
+~
+>verb_prog p get head head~
+if value(0) == 0
+mpechoat $n Pulling the oddly heavy piece from the mannequin, you feel a sudden chill behind you.
+mpinterpret $n $x
+mpvalueset 0 1
+else
+mpechoat $n You\@ve already taken the headpiece off.
+endif
+~
+>verb_prog p get headpiece head~
+if value(0) == 0
+mpechoat $n Pulling the oddly heavy piece from the mannequin, you feel a sudden chill behind you.
+mpinterpret $n $x
+mpvalueset 0 1
+else
+mpechoat $n You\@ve already taken the headpiece off.
+endif
+~
+>verb_prog p get 1. head~
+if value(0) == 0
+mpechoat $n Pulling the oddly heavy piece from the mannequin, you feel a sudden chill behind you.
+mpinterpret $n $x
+mpvalueset 0 1
+else
+mpechoat $n You\@ve already taken the headpiece off.
+endif
+~
+>verb_prog p get all head~
+if value(0) == 0
+mpechoat $n Pulling the oddly heavy piece from the mannequin, you feel a sudden chill behind you.
+mpinterpret $n $x
+mpvalueset 0 1
+else
+mpechoat $n You\@ve already taken the headpiece off.
+endif
+~
+>verb_prog p get silvery head~
+if value(0) == 0
+mpechoat $n Pulling the oddly heavy piece from the mannequin, you feel a sudden chill behind you.
+mpinterpret $n $x
+mpvalueset 0 1
+else
+mpechoat $n You\@ve already taken the headpiece off.
+endif
+~
+>load_prog 100~
+mpoload 27012 in head
+~
+|
+V13
+27037
+stone bench~
+a stone bench~
+A long stone bench sits against the northern wall.~
+~
+stone~
+furniture ae 0 0 0
+2 300 BEHK 0 0
+0 0 0 3 P
+0
+V13
+27040
+stone round heavy lid~
+a heavy stone lid~
+A heavy stone lid several feet around leans against the wall.~
+~
+stone~
+trash a 0 0 P
+0 0 0 0 0
+60 350 0 2 P
+0
+E
+stone round heavy lid~
+This large slab of stone is several feet in diameter, designed to fit
+snugly over the hole in the floor.  Scrapes around the edges indicate its
+long use.  Four fist-sized holes in the center allow greater purchase for
+moving the ponderous lid.  
+~
+V13
+27041
+ring gold soft dull~
+a soft gold ring~
+A dull ring of soft gold is here.~
+~
+gold~
+armor DGK 0 0 AB
+8 8 8 12 0
+52 1 40 0 P
+2
+A
+24 6
+A
+12 25
+E
+ring gold soft dull~
+This thick gold ring is heavy for its size, the metal unpolished and
+dull.  The soft metal has been heavily scratched, and bears a few small
+dents.  
+~
+V13
+27042
+telescope scope large brass gears cogs~
+a large brass telescope~
+A large brass telescope is fixed to the wall with a complex set of gears.~
+~
+unknown~
+container e 0 0 0
+10 0 0 7 0
+52 90 0 3 P
+1
+E
+telescope scope large brass gears cogs~
+This large brass telescope nestles among a supporting frame of gleaming
+metal, numerous cogs, sprockets, and gears allowing the ponderous piece to
+be winched up a pair of glistening toothed tracks which lead up to a hatch
+in the ceiling.  The entire piece is kept in immaculate condition, well
+oiled and polished.  A large lens can be seen within the large aperture at
+the front end of the telescope, finely tooled screws holding it in place.  A
+small eyepiece is ringed with dark metal.  
+~
+E
+lens finely tooled screws aperture~
+This large lens is several inches in diameter, the crystal carefully
+machined to direct the light with precision.  Four small screws, each nurled
+to allow finger-tightening, secure the lens into place.  
+~
+E
+screw screws~
+Each of these small screws is roughly half an inch in diameter at the
+head.  Nurled to give gripping purchase, one might be able to loosen them.  
+~
+V13
+27043
+lens crystal~
+a crystal lens~
+A large crystal lens is here.~
+~
+crystal~
+gem SX 0 0 A
+0 0 0 0 0
+0 7 0 0 P
+1
+E
+lens crystal~
+This round crystal lens is perfectly crafted for powerful magnification. 
+The flattened-sphere shape focuses light through various etched elements in
+the crystal, forming a strong focal point.  
+~
+V13
+27045
+rune violet dull throbbing sickly~
+a sullen violet rune~
+A dull rune glows above the door to the east, a throbbing, sickly violet.~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+E
+rune violet dull throbbing sickly~
+This twisting, harsh rune pulses above the door to the east, an aura of
+stern vigilance emanating from the bruised violet shape.  Shedding no light
+of its own, it neither waxes nor wanes in brightness.  
+~
+V13
+27050
+key iron complex plain~
+a complex iron key~
+A large key with a plain iron ring for a head is here.~
+~
+iron~
+key 0 0 0 A
+0 0 0 0 0
+52 1 0 0 P
+1
+E
+key iron complex plain~
+This long key is made from unnaturally cold iron.  A round, flat circle
+forms the head.  The long shaft of the key is twisted and bent, lined with a
+complex series of teeth.  
+~
+V13
+27051
+chair metal~
+a metal chair~
+A straight-backed metal chair is here.~
+~
+metal~
+furniture e 0 0 P
+1 2000 E 30 30
+1 200 0 4 P
+0
+V13
+27052
+cabinet metal muffled velvet~
+a metal cabinet~
+A plain metal cabinet is here, hinges muffled.~
+~
+metal~
+container ae 0 0 P
+700 ACD 0 200 90
+60 0 0 4 P
+0
+>verb_prog p reply~
+if inroom($o) > 27000
+  if inroom($o) < 27100
+    mpechoat $o Your senses are suppressed and muffled.  You can feel no one to cast your words to.
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+27053
+covered first complex array gears iron dynamo~
+a set of gears and wheels~
+A complex array of gears set in an iron base is bolted to the floor.~
+~
+unknown~
+furniture 0 0 0 0
+0 0 0 0 0
+60 500 0 2 P
+1
+E
+complex array gears iron dynamo first~
+This large metallic object squats heavily on the floor.  A solid
+cast-iron base supports four heavy wooden rings each pointing outwards from
+the base in the four cardinal directions.  Wrapped with hundreds of copper
+strings, these rings have a fifth ring of some dark metal suspended within
+them.  Tiny teeth around the edge of this ring mesh with a complex series of
+gears, at the other extreme of which a crank protrudes.  Heavier copper
+piping runs from the four small rings down to a small hopper, in which a
+hollow glass orb rests.  A small basket attached to the side holds extra
+balls.
+~
+E
+crank~
+This large crank is perhaps two and a half feet in length.  Appearing to
+set the main, horizontal ring spinning among the smaller disks, the crank is
+equipped with a series of intermediate gears.  
+~
+V13
+27054
+yawning gap~
+a yawning gap into transience~
+A yawning gap splits the wall here.~
+~
+unknown~
+portal e 0 0 0
+0 K K 27072 0
+0 0 0 0 P
+0
+>verb_prog p enter yawning~
+if dexterity($n) < 20
+mpechoat $n You climb into the gap, {rcutting{n yourself on the jagged metal mesh.
+mpdamtype $n 1 1 35 3
+mpinterpret $n $x
+mpechoat $n You pitch headlong out the other side of the gap into swirling nothingness!
+endif
+if dexterity($n) > 20
+mpechoat $n You climb over the breach in the wall, carefully avoiding the sharp edges.
+mpinterpret $n $x
+mpechoat $n You leap headlong out the other side of the hole, and are enveloped by the swirling nothingness!
+endif
+mplag $n 2
+mpat $n mpforce clean mpvalueset 0 1
+~
+>verb_prog p enter gap~
+if dexterity($n) < 20
+mpechoat $n You climb into the gap, {rcutting{n yourself on the jagged metal mesh.
+mpdamtype $n 1 1 35 3
+mpinterpret $n $x
+mpechoat $n You pitch headlong out the other side of the gap into swirling nothingness!
+endif
+if dexterity($n) > 20
+mpechoat $n You climb over the breach in the wall, carefully avoiding the sharp edges.
+mpinterpret $n $x
+mpechoat $n You leap headlong out the other side of the hole, and are enveloped by the swirling nothingness!
+endif
+mplag $n 2
+mpat $n mpforce clean mpvalueset 0 1
+~
+|
+V13
+27055
+cage metal overturned open~
+an empty cage~
+A sturdy metal cage is here, knocked on its side.~
+~
+metal~
+furniture a 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+E
+sturdy cage metal overturned open~
+This hefty metal cage is three feet in height, thick metal strips closely
+interlaced.  The small door is open, the metal around the doorframe bent and
+scratched deeply.  A stand with a hook sits nearby - presumably the cage
+once hung from it.  
+~
+V13
+27056
+bucket broken well chain~
+a broken well bucket~
+A rusted bucket is here, attached to a length of corroded chain.~
+~
+metal~
+trash 0 0 0 AO
+0 0 0 0 0
+0 20 0 1 P
+1
+E
+bucket broken well chain~
+This rusty bucket is attached to a length of broken, corroded chain.  The
+bottom is crumpled in, as if it fell from a great height.  
+~
+V13
+27057
+barrel cask first stone large~
+a stone barrel~
+A stone barrel of water is here.~
+~
+stone~
+fountain e 0 0 AP
+1000 1000 'water' 0 0
+0 1000 0 5 P
+0
+E
+barrel water fresh~
+A large wooden barrel mostly filled with relatively fresh water.
+~
+V13
+27058
+hopper~
+the hopper~
+The hopper holds spheres for charging.~
+~
+unknown~
+container e 0 0 0
+20 0 0 1 0
+60 0 0 0 P
+0
+E
+hopper~
+This small hopper is merely a series of metal rings in which one of the
+hollow glass spheres may rest.  
+~
+>verb_prog p turn crank~
+if incontainer(27061)
+mpechoaround $n $N turns the crank, and the toothed wheel slowly begins to spin.
+mpechoat $n You turn the crank and the large wheel slowly begins to spin through the four smaller wheels, a whining hum emanating from within.
+mpecho Small sparks begin to crackle along the copper tubes as the wheel spins to a blur, and a sudden light {Wflashes{n in the orb!
+~
+|
+V13
+27059
+basket~
+the basket~
+The basket contains extra spheres.~
+~
+unknown~
+container e 0 0 0
+20 0 0 4 0
+60 0 0 0 P
+0
+E
+basket~
+This small wire basket is designed to carry several small spheres
+slightly larger than a human fist.  Small depressions in the bottom prevent
+the orbs from rattling about inside.  
+~
+V13
+27060
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27061
+hollow glass orb~
+a hollow orb~
+A hollow glass orb rests here.~
+~
+glass~
+treasure 0 0 0 AO
+0 0 0 0 0
+52 2 0 0 P
+20
+E
+hollow glass orb~
+This small glass orb is roughly larger than a human fist.  Made of
+bubble-thin glass, the reflective orb seems otherwise unremarkable.  
+~
+V13
+27062
+flickering sparking glass orb~
+a sparking glass orb~
+A flickering, sparking glass orb rests here.~
+~
+glass~
+treasure AU 0 0 AO
+0 0 0 0 0
+52 2 0 0 P
+20
+E
+flickering sparking glass orb~
+This small glass orb is roughly larger than a human fist.  Made of
+bubble-thin glass, the reflective orb seems to contain a great deal of
+energy.  Bright, inconstant light flickers crazily from inside, and the
+occasional spark or arc of energy spits from the fragile ball.  
+~
+>verb_prog p drop orb~
+mpechoat $n The orb falls, the delicate glass shatters with a faint tinkle.
+mpechoaround $n $N drops an orb of bright glass, which shatters!
+mpecho $n A sudden flare of light {Wflashes{n from the broken shards, and a pungent smell of ozone fills the air!
+mpget char $n mana 8
+mpget char $n mana 9
+mpmath 4 ( ( $8 * 100 ) / ( $9 * 100 ) )
+mpget char $n hp 5
+mpmath 1 ( $5 * ( $4 / 100 ) )
+mpset char $n hp $1
+mpinterpret $n $x
+~
+|
+V13
+27063
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+>verb_prog p cast \@flesh to stone\@~
+if name($n) == iacobos
+  mpnextinterp
+else
+  mpechoat $n No.
+endif
+~
+>all_death_prog 100~
+if name($n) == iacobos
+  mpat iacobos mpoload 27063 on iacobos 16
+  opverbstop
+  oppurge self
+endif
+~
+>verb_prog Putmedown~
+opzap $o
+~
+|
+V13
+27064
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27065
+fob who muffler mufflerfob obj_27065~
+the who list muffler fob~
+Who muffler fob.~
+~
+ch\@lonin~
+trash MYad 0 0 A
+0 0 0 0 0
+60 0 0 0 P
+0
+>verb_prog p htell~
+mptrigger $n
+~
+>speech_prog p report~
+if isaffected($o) == 1
+ mpecho BLIND
+endif
+~
+>trigger_prog 100~
+if isowner($n)
+if inroom($o) > 27000
+  if inroom($o) < 27199
+    mpechoat $o Your senses are suppressed and muffled.  You can feel no one to cast your words to...
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+else
+mpnextinterp
+endif
+~
+>verb_prog p gtell~
+mptrigger $n
+~
+>verb_prog p reply~
+mptrigger $n
+~
+>verb_prog p release_the_prisoner~
+mppurge self
+~
+>verb_prog p tell~
+mptrigger $n
+~
+>verb_prog p who~
+if isowner($n)
+  if compstr(1) == wh
+  or compstr(1) == w
+  or isimmort($o)
+  or isghost($o)
+    mpnextinterp
+  else
+    if inroom($o) > 27000
+      if inroom($o) < 27199
+        mpechoat $o Your senses are disoriented and oddly muffled.  You can feel no one else\@s presence...    
+      else
+        mpnextinterp
+      endif
+    else
+      mpnextinterp
+    endif
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+27066
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27100
+necklace cube cubes black stone rune~
+a heavy, runic necklace~
+A necklace of cubes of black stone is here, each marked with a silvery rune.~
+~
+unknown~
+trash BPX 0 0 AC
+0 0 0 0 0
+60 3 0 0 P
+0
+E
+necklace cube cubes black stone rune~
+This necklace is made of a series of crude black stone cubes strung on a
+loop of braided wire.  Each cube is inscribed with a silvery rune, the
+mercurial stuff oily to the touch.  A faint violet glow emanates from the
+gently vibrating necklace.  One particular piece of stone seems to be the
+center piece, more spherical than cubical.  Obviously older than the rest of
+the pieces, the round stone is pitted and cracked.  
+~
+>speech_prog Test!~
+if inroom($o) < 27199
+if inroom($o) > 27000
+break
+endif
+endif  
+if ispc($o)
+  if isworn($o)
+    mpechoaround $o At the turning of midnight, $O\@s necklace flashes violet.
+    mpechoaround $o $O vanishes suddenly.
+    mpechoat $o At the turning of midnight, your head throbs suddenly as your vision is blinded by a glaring violet flash!
+    mplag $o 2
+    if inroom($o) == 26128
+    or inroom($o) == 26130
+      mptransfer $o 27001
+      mpecho Your vision clears, and you find yourself in a completely dark hall.
+      mpecho Your necklace has grown unnaturally cold.
+      mpforce $o look
+      mpoload 27065 on $o
+    else
+      mptransfer $o 26130
+      mplag $o 2
+      mpechoaround $o $O appears suddenly, staggering woozily.
+      mpforce $o look
+      mpechoat $o You awaken a short time later, having apparently lost consciousness.
+      mpechoat $o Your necklace has grown unnaturally cold, and the violet glow is dim.
+      mpdamage $o 10 5 + 50
+    endif
+  endif
+endif
+~
+>time_prog 0~
+if inroom($o) < 27199
+if inroom($o) > 27000
+break
+endif
+endif  
+if ispc($o)
+  if isworn($o)
+    mpechoaround $o At the turning of midnight, $O\@s necklace flashes violet.
+    mpechoaround $o $O vanishes suddenly.
+    mpechoat $o At the turning of midnight, your head throbs suddenly as your vision is blinded by a glaring violet flash!
+    mplag $o 2
+    if inroom($o) == 26128
+    or inroom($o) == 26130
+      mptransfer $o 27001
+      mpecho Your vision clears, and you find yourself in a completely dark hall.
+      mpecho Your necklace has grown unnaturally cold.
+      mpforce $o look
+      mpoload 27065 on $o
+    else
+      mptransfer $o 26130
+      mplag $o 2
+      mpechoaround $o $O appears suddenly, staggering woozily.
+      mpforce $o look
+      mpechoat $o You awaken a short time later, having apparently lost consciousness.
+      mpechoat $o Your necklace has grown unnaturally cold, and the violet glow is dim.
+      mpdamage $o 10 5 + 50
+    endif
+  endif
+endif
+~
+|
+V13
+27101
+low dining table~
+a low wooden dining table~
+Low wooden dining tables are arranged casually about the room, benches to s~
+~
+wood~
+container Se 0 0 P
+4000 0 0 200 100
+60 500 0 4 P
+0
+V13
+27175
+heavy sword grey metal tapered triangular point greysword graysword~
+a heavy tapered sword of grey metal~
+A heavy sword of grey metal, tapered to a point, lies here.~
+This appears to be the legendary Grey Sword,
+~
+steel~
+weapon JKYa 0 0 ANP
+sword 7 7 3 0
+slash~
+60 200 53659 0 P
+1
+A
+13 30
+A
+18 2
+A
+19 2
+A
+31 10
+E
+heavy sword grey metal tapered triangular point greysword graysword~
+This large sword is quite heavy, forged from bands of pure steel.  A
+thick, unadorned double hilt forms a cross perpendicular to the blade.  The
+blade itself is several inches wide at the base, tapering in unswerving
+lines to a deadly point.  Deep blood channels run the length of the
+triangular sword, curving around a symbol etched near the hilt.  The pommel
+of the sword is a three-sided pyramid, detailed with an eye, and the grip is
+wrapped in thick grey wire.  The metal of the weapon has been blasted or
+brushed, making it seem dull and unreflective.  
+~
+E
+symbol~
+This symbol appears to be the eye-in-triangle of Enirra, faint rays
+etched around the emblem as though a bright light shone behind it.  
+~
+E
+pommel pyramid~
+This simple pyramid has a triangular base, etched as though made from
+stone bricks.  Detailed on each of the faces is the Eye of Enirra, hammered
+out in thick grey wire.  
+~
+V13
+27176
+javelin flaming awesome~
+the flaming javelin of Awesome~
+The Javelin of Anirim blazes with righteous flames.~
+It is said by Anirim himself that the Javelin of Heavenly Flames was
+forged during the creation of the world.  The Deities of Light shaped the
+divine flames of the Sun itself into a physical weapon for the use of the
+great heroes that would come.  Anirim now holds it, granting its temporary
+use to heroes who can prove themselves worthy.  
+~
+fire~
+weapon AKLMSZa 0 0 AN
+spear 8 7 10 F
+divine power~
+60 80 2000000 3 P
+1
+A
+54 2
+A
+29 33
+A
+41 6
+>hour_prog 100~
+mpecho *DING*
+~
+|
+V13
+27177
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27178
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27179
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27180
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27181
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27182
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27183
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27184
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27185
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27186
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27187
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27188
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27189
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27190
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27191
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27192
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27193
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27194
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27195
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+27196
+green mace~
+a green mace~
+A green mace is here.~
+~
+unknown~
+weapon f 0 0 AN
+mace 6 7 1 0
+beatdown~
+1 10 0 0 P
+0
+A
+19 1
+A
+18 1
+V13
+27197
+green axe~
+a green axe~
+A green axe is here.~
+~
+unknown~
+weapon 0 0 0 AN
+axe 6 7 3 0
+beatdown~
+1 10 0 0 P
+0
+A
+18 1
+A
+19 1
+V13
+27198
+green shield~
+a green shield~
+A green shield~
+~
+unknown~
+armor 0 0 0 AJ
+10 10 10 10 0
+70 10 0 0 P
+0
+A
+20 -1
+A
+12 15
+A
+13 15
+A
+18 2
+A
+19 2
+>verb_prog p killme~
+opslay $o
+~
+|
+V13
+27199
+glowing golden gold one ring~
+the One Ring~
+A glowing golden ring is here, gleaming as seductively as gold can gleam.~
+~
+gold~
+treasure 0 0 0 AB
+0 0 0 0 0
+60 0 0 0 P
+10
+>remove_prog 100~
+mpremaffect $o 87
+mpechoaround $o $O flickers into existence suddenly.
+mpechoat $o You flicker into existence suddenly.
+~
+>wear_prog 100~
+mpaddaffect $o 87 60 -1 0 0 2
+mpechoaround $o $O flickers out of existence suddenly.
+mpechoat $o You flicker out of existence suddenly.
+~
+>verb_prog p goto~
+if name($o) == $n
+if isworn($o)
+mpsetdata poofouts
+mpvaluerand 0 0 10
+loop 1 to $0
+mpnextdata
+endloop
+mpforce $o poofout $d
+mpsetdata poofins
+mpvaluerand 0 0 10
+loop 1 to $0
+mpnextdata
+endloop
+mpforce $o poofin $d
+endif
+endif
+mpnextinterp
+~
+>data_prog poofouts~
+$O struts out.
+$O shrugs casually, now bored with his surroundings, and is gone.
+$O chugs a viscous green potion and melts away into nothing!
+With a loud *thbpbpt*, $O deflates and zooms out of the room.
+The outline of a bird appears projected onto the clouds, and $O sprints off.
+*pshwing* $O speeds off, legs a circular blur!
+Loud sirens and many footsteps suddenly sound nearby, and $O sprints from the room!
+A massive fist appears, crushing $O into a top hat!  The smashed hat waddles from the room.
+$O leaps into the air, dives into a tiny crack in the ground, and is gone.
+$O suddenly folds himself into a small ball, rolling from the room.
+With a faint sizzle, $O vanishes.
+$O sprints out, sprawling headlong over the threshold.
+~
+>data_prog poofins~
+$O struts in.
+$O walks in, brushing ticker tape off his head and shoulders.
+With a loud noise as of flatulence, $O appears.
+A tiny, flesh-colored balloon *thpbpbts* into the room, quickly inflating into $O.
+$O falls from the sky, crawling out of the man-shaped impact crater.
+*meep meep* $O skids to a halt in front of you!
+$O suddenly bursts out of a large pink birthday cake!
+A crushed top hat with feet waddles into the room.  With a loud {W*POP*{n, $O decompresses from within.
+The ground beneath you humps up in an elongating mound, and $O pops out, scattering soil everywhere.
+$O arrives to the dramatic strains of his Own Custom Theme Music.
+$O sprints in, sprawling headlong on the threshold.
+~
+|
+#0
+
+
+
+#ROOMS
+#27000
+The Keep Bitroom~
+Scary stuff in here!
+27001 - Knows how to assemble charms.
+27002 - got the chart-is-hidden echo hint in the wandmaking lab
+27003-5 - preliminary checks (wood, knotting, shaping) for charm making
+27006 - Has passed all the demons on the walkway (RESET ME)
+~
+~
+0
+0 294922 1
+E
+large display rack weaponry~
+This open-fronted display case is entirely devoted to a thorough sampling
+of mankind\@s weaponry throughout the ages.  Systematically organized in
+chronological succession, the display holds chipped-flint axes and
+pre-Columbian obsidian-toothed swords, oak- and ash-hafted spears of Greek
+and Roman make, Persian scimitars and falchions, Samburu throwing spears,
+assegai, Tibetan phurpa, French misericords, throwing-sticks, blowpipes, and
+shuriken.  The display moves on through rapiers, broadswords, foils, sabres,
+claymores, katanas, and other broad-edged weapons.  Bows both hand-drawn,
+mechanically-wound, and everything in between are shown beside an impressive
+array of pike- and bill-heads.  Hand-axes of Norman, Saxon, Algonquian,
+Zulu, and Mongolian make mingle with maces and staves.  An exhaustive study
+of firearms finishes the display, from the earliest French hand-gonnes to
+Colt automatic carbines; however, the collector\@s predilection for shotguns
+shows through here, with a Remington 1170 Over-Under prominently displayed. 
+Finally, an odd collection of the more miscellaneous weapons, or those which
+defied classification, rounds off the case: whips, sjambok, bayonets,
+grenades, caltraps, bolo, and an odd pair of shiny black leather industrial
+boots seem almost cramped on their individual stands.  
+~
+E
+polished mahogany bar solid tap taps bottle bottles neat lines~
+This solid mahogany bar is polished to a dull gleam, smelling faintly of
+lemon oil and alcohol.  The front has been subtly carved with the faintest
+of reliefs, depicting various scenes of a falconer with a small bird of
+prey.  Several comfortable stools sit in front of the bar, thick leather
+cushions worn just-so after many years of service.  At one end of the bar, a
+colorful row of taps protrude over the top of the bar, obviously biased
+towards darker lagers, stouts, and porters.  An impressive array of liquors
+are lined neatly, each bottle in its individual shelf in a long row just
+below the surface of the bar.  
+~
+E
+cage~
+This large cage sits mostly in shadow, the close-set thin bars painted a
+matte black.  A jumble of cardboard boxes sits among several hanging
+hammocks, the bottom covered with sweet-smelling aspen shavings; all in all,
+the perfect habitat for the two small rats within.  The rats seem to always
+be sleeping, curled up together in an emptied tissue box.  Cute and fuzzy,
+they are tangled endearingly up with one another, dreaming sweet rattie
+dreams.  
+~
+E
+dark painting paintings~
+Several dark paintings hang on the southern wall, Picasso\@s scribbled
+depiction of Don Quixote seeming to be the most celebrated of the lot.  The
+rest seem to be selected for their photorealism and classical lines: mostly
+Northern Italian Renaissance, a single work by Manet, Vermeer, and an El
+Greco apiece have snuck in as well.  
+~
+D3
+~
+~
+3 0 27073
+W 5 0 0
+Z 5 5
+S
+#27001
+A High, Black Hall~
+You are in a tall hallway which stretches into darkness to the east and
+west.  Pitch black, the room is painted with a matte finish, smooth to the
+touch, which seems to actively absorb light.  Plain and unadorned, no
+window, carving, or tapestry breaks the blank perfection of the walls.  High
+above, a curving, vaulted ceiling is vaguely visible in the oppressive
+gloom.  The floor is made of unpolished basalt, completing the motif of
+disorienting, muffling darkness.  Cool and still, the heavy air seems to
+dampen your senses.  To the south, a tall stone door stands, firmly shut.
+
+Squatting in the center of the room is a low block of stone.
+~
+~
+0
+0 8247 0
+E
+tall stone door south~
+This tall door is a perfectly-proportioned rectangle, over ten feet in
+height.  The top is formed into a rounded arch, the geometrically perfect
+hemicircle curving above.  Clearly quite heavy, the door\@s only
+distinguishing mark is a plain iron ring to aid with opening and closing.  
+~
+E
+irregularity keyhole key hole dot darker~
+This small, irregular hole pierces the center of the circle.  Apparently
+a keyhole of some sort, the wiggling line matches a key of some great
+complexity.  Upon further inspection, a few faint runes have been lightly
+etched into the surface surrounding the keyhole.  
+~
+E
+simple dull iron flat circle~
+This simple ring of flat black iron is affixed firmly to the smooth,
+unpolished rock.  A small, darker dot in the center catches your eye.  The
+air about the circle is noticeably colder, drawing the heat away.  
+~
+D1
+~
+~
+0 0 27002
+D3
+~
+~
+0 0 27003
+D5
+~
+~
+66119 27050 27050
+W 5 0 0
+Z 5 5
+P
+>greet_prog 100~
+greet_prog 100
+if ispc($n)
+load obj 27003 $n
+endif
+~
+|
+S
+#27002
+The East End of a High, Black Hall~
+This tall hallway stretches into darkness to the west.  Pitch black, the
+room is painted with a matte finish, smooth to the touch, which seems to
+actively absorb light.  Plain and unadorned, no window, carving, or tapestry
+breaks the blank perfection of the walls.  High above, a curving, vaulted
+ceiling is vaguely visible in the oppressive gloom.  The floor is made of
+unpolished basalt, completing the motif of disorienting, muffling darkness. 
+In the center of the room, to the west, an indistinct, boxy shape lurks in
+the gloom.  The wall to the east is broken by a simple doorway to several
+curving stone stairs, wide enough for two humans to walk through abreast. 
+The top of the simple archway is marked above the keystone with a flat,
+simple half-ring of iron, affixed firmly to the stone.  
+~
+~
+3
+0 8247 0
+D1
+~
+~
+0 0 27013
+D3
+~
+~
+0 0 27001
+W 5 0 0
+Z 5 5
+S
+#27003
+The West End of a High, Black Hall~
+This tall hallway stretches into darkness to the east.  Pitch black, the
+room is painted with a matte finish, smooth to the touch, which seems to
+actively absorb light.  Plain and unadorned, no window, carving, or tapestry
+breaks the blank perfection of the walls.  High above, a curving, vaulted
+ceiling is vaguely visible in the oppressive gloom.  The floor is made of
+unpolished basalt, completing the motif of disorienting, muffling darkness. 
+In the center of the room, to the east, an indistinct, boxy shape lurks in
+the gloom.  The heavy, still air seems to dampen the senses.  The wall to
+the west is broken by a simple doorway to several curving stone stairs, wide
+enough for two humans to walk through abreast.  The top of the simple
+archway is marked above the keystone with a flat, simple ring of iron,
+affixed firmly to the stone.  
+~
+~
+0
+0 8243 0
+D1
+~
+~
+0 0 27001
+D3
+~
+~
+0 0 27004
+W 5 0 0
+Z 5 5
+P
+>greet_prog 25~
+if isflying($n)
+break
+endif
+if isnpc($n)
+break
+endif
+if class($n) == assassin
+or class($n) == thief
+or class($n) == bandit
+or class($n) == watcher
+break
+endif
+mpecho The sound of your footsteps is oddly muted in the bare, empty hall, the lack of echo surprising.
+~
+|
+S
+#27004
+A Silent Library~
+The walls of this room are vaguely hexagonal, curved slightly.  The lines
+of the room seem somehow ...wrong, perhaps built to a radically different
+aesthetic.  Wandering rows of scroll-filled racks meander across the dull
+floor, each scroll resting neatly in its own slot.  The room is oppressively
+dark.  A curved ceiling stands about an alatharya\@s height off the floor. 
+For what seems to be a reading room, the lack of lighting or seating seems
+strange.  Seeming at first to be a shadow, a dark smudge on the ceiling
+attracts your gaze a moment.  An open archway leads to a curved stairwell to
+the east, and curtained doorways permit egress to the north, south, and
+west.
+~
+~
+3
+0 8243 0
+E
+shadow dark smudge ceiling~
+Difficult to pick out exactly due to the slightly darker lines on the
+black matte ceiling, this smudgy mark proves to be in fact a series of
+delicate, swirling lines, grouped in odd clouds and indistinct nebulae of
+etched lines.  Sprawling aimlessly, they all seem part of an ordered whole,
+yet what the whole is is unclear.  A sense of focus, a determined purpose,
+seems to roll off of the odd inscriptions.  
+~
+E
+rack racks scroll wandering row rows~
+These racks dominate the room, standing several feet in height.  Made
+from a charcoal-black undetermined substance, they are cool to the touch,
+and neat pairs of hooks provide resting-places for the many scrolls which
+fill them.  The scrolls seem to be organized chronologically, judging by the
+aging of the parchments.  After some study, the racks seem to be divided
+into three sections.  You may look at the first, second, or third.  
+~
+D0
+~
+~
+0 0 27005
+D1
+~
+~
+0 0 27003
+D2
+~
+~
+0 0 27009
+D3
+~
+~
+0 0 27008
+M 300 H 100 V 100
+W 5 0 0
+Z 5 5
+S
+#27005
+A Large Laboratory~
+This large room of pure black stone holds several stone counters and two
+fixed tables, as well as rack of vials and tubes.  Stretching to the east
+and west, the low room appears to be some sort of laboratory.  The equipment
+seems to center about the tables, the central fixtures of this room.  A
+dull, unpolished floor is immaculately clean, and the various racks seem
+well-organized and neatly labeled, though in what language is uncertain. 
+The floor is slightly sloped, leading down to a shallow trough which runs
+the length of the center of the room.  Completely unlit, the room gives a
+general impression of military attention to detail, each item set precisely
+out and ready for use.  Curtained portals lead to the east, south, and west.
+~
+~
+0
+0 8243 0
+E
+tables table~
+These two tables of black stone are carved to fit humanoids, the
+body-shaped depressions fitted with metal manacles at the midriff, arms, and
+legs.  A complex scaffold of gleaming metal parts squats over the head-rest
+of each of the tables, needles, blades, lenses, and countless other fixtures
+of unknown purpose kept in clean working preparation.  A small side
+receptacle holds a small round jar, connected to a leather tube.  
+~
+D1
+~
+~
+0 0 27006
+D2
+~
+~
+0 0 27004
+D3
+~
+~
+0 0 27007
+W 5 0 0
+Z 5 5
+S
+#27006
+A Jar-Filled Room~
+This square room, done in the same muffling black stone as the rest of
+the keep, is completely unilluminated.  The pitch black room is filled with
+shelves packed floor-to-ceiling with countless jars, each neatly labeled
+vessel containing a pair of floating eyes.  Of every size and color, these
+macabre specimens stare unseeing from every angle.  A hanging scroll against
+a far shelf and a large chart covering the only open wallspace are the only
+other items in the room of note.  A curtain-covered portal leads out of the
+room to the west.  
+~
+~
+0
+0 8243 0
+E
+hanging scroll~
+This scroll is written in a neat, though indecipherable shorthand. 
+Obviously an inventory of the room, it seems to describe the species and
+date of stock, as well as several other indeterminate properties.  
+~
+E
+chart large~
+A large, highly detailed drawing of some round object sliced open
+transversely, this diagram shows a curved, shallow protuberance at one end
+and a bunch of cable-like bundles sprouting from the other end.  The edges
+of the orb are multi-layered, every possible feature labeled with
+indecipherable characters.  
+~
+E
+jars eyes eye jar~
+This grotesque collection is apparently in perfect condition, the
+hundreds and hundreds of eyes protected from any form of decay.  Of all
+sizes and colors, the eyes are preserved in a solution which, upon closer
+inspection, turns out to be a pale pale pink.  Your light throws the
+innumerable jars into changing, flickering shadows, causing them to wink and
+blink with macabre energy.  
+~
+E
+shelves shelf~
+Shelves cover almost every inch of wall space, save for the door and the
+chart.  Filled with hundreds of jars filled with floating eyes, the black
+stone is clean and dust-free.  
+~
+D3
+~
+~
+0 0 27005
+W 5 0 0
+Z 5 5
+S
+#27007
+A Dusty Storeroom~
+This room, built of the same muffling black stone as the rest of the
+keep, does not seem to be as often visited as the others.  A thin layer of
+dust covers everything, and grime has begun to accumulate in the corners. 
+Several dark shapes wrapped in black silk rest on the shelves of this small
+storeroom, and a few larger objects are protectively covered with dark
+canvas.  The ceiling here is lower, the dark, velvet-smooth stone barely six
+feet in height.  A curtained portal leads back to the east.  
+~
+~
+3
+0 8243 0
+E
+shapes dark black silk shelves canvas shape object objects~
+There are eleven total items in this room.  You may look at the FIRST, SECOND, etc.
+~
+D1
+~
+~
+0 0 27005
+W 5 0 0
+Z 5 5
+S
+#27008
+A Small Laboratory~
+This small room of pure black stone holds several stone counters and two
+fixed tables, as well as rack of vials and tubes.  Roughly ten paces square,
+the low room appears to be some sort of laboratory.  The equipment seems to
+center about the tables, the central fixtures of this room.  A dull,
+unpolished floor is immaculately clean, sloping to a drain in the center of
+the room, and the various racks of chemicals seem well-organized and neatly
+labeled, though in what language is uncertain.  Completely unlit, the room
+gives a general impression of military attention to detail, each item set
+precisely out and ready for use.  A curtained portal leads back to the east.
+~
+~
+0
+0 8243 0
+E
+polished silver beaten metal dish bowl runes~
+These thin, beaten dishes of metal radiate an aura of power, a massive
+sense of bound energy.  Positioned to be pointing at each other when the
+tables are vertical, the dishes are completely still and silent.  Stylized
+runes are overlaid around the edges, written with twisting black metal. 
+Their purpose is unknown, the symbols unfamiliar.
+~
+D1
+~
+~
+0 0 27004
+W 5 0 0
+Z 5 5
+S
+#27009
+A Dark Corridor~
+A small corridor leads from north to south, the black stone walls bare
+and unadorned.  A faint metallic tang lingers in the air, filling your
+nostrils and coating your tongue.  The air is cool and still, the close
+passageway more oppressive than the expansive entry hall.  A curtained
+portal leads to the north, and a heavy stone door sits in the western wall. 
+To the south, the hall opens into a larger space -- with the stifling
+darkness, you cannot tell more.  
+~
+~
+3
+0 8243 0
+E
+heavy stone door~
+This solid door is heavily reinforced with strips of interlaced steel. 
+Heavy, thick hinges of stone several inches in diameter show evidence of
+recent oiling, and a thin strip of some rubbery material utterly seals the
+door, preventing any vapors or liquids from seeping around the door.  
+~
+D0
+~
+~
+0 0 27004
+D2
+~
+~
+0 0 27011
+D3
+~
+heavy, sealed door~
+65603 0 27010
+W 5 0 0
+Z 5 5
+S
+#27010
+An Oddly-Panelled Room~
+The walls of this small, dark cell are panelled in a smooth, unknown
+substance.  A pale, flecked grey, the panelling seems perfectly clean.  The
+entire interior of the cell is plated with sheets of the hard, smooth
+material, sheathing any of the standard black stone from view.  A heavy door
+leads back into the hallway to the east.  The air here has an unmistakable,
+biting mettalic tang to it, an almost tangible chemical taint thick in the
+air.  
+~
+~
+3
+0 8243 0
+D1
+~
+heavy, sealed door~
+65603 0 27009
+W 5 0 0
+Z 5 5
+S
+#27011
+A Silent Laboratory~
+A round table sits in the center of this room, laden with an intricate
+assemblage of glass pipettes, beakers, and tubes.  Around the edges of the
+black-walled room three smaller such workstations can be seen.  The floor is
+slightly sloped, the dully reflective black floor slanted towards a row of
+drains against the western wall.  A large tap protrudes from the southern
+wall, a metal wheel atop it.  An open doorway to the north leads out of the
+room, and the southeastern corner of the room is occupied by the curvature
+of an enclosed spiral stairwell which ascends to the next floor of the
+castle.  A plain door stands in the wall to the west.  
+~
+~
+3
+0 8243 0
+E
+table round~
+This complex mass of glass tubing and bulbs must contain at least several
+hundred delicate glass pipettes, beakers, distillation bulbs, flasks,
+condensers, and other spiralling, curving, or redoubling tubes.  All seem to
+be part of one immensely complex system, but the purpose is not immediately
+apparent.  The entire assemblage is immaculately clean inside and out.  A
+few small burners crackle away underneath several of the flasks, blue-green
+flames oddly casting no light of their own.
+~
+E
+intricate assemblage glass~
+This complex mass of glass tubing and bulbs must contain at least several
+hundred delicate glass pipettes, beakers, distillation bulbs, flasks,
+condensers, and other spiralling, curving, or redoubling tubes.  All seem to
+be part of one immensely complex system, but the purpose is not immediately
+apparent.  The entire assemblage is immaculately clean inside and out.  A
+few small burners crackle away underneath several of the flasks, blue-green
+flames oddly casting no light of their own.  
+~
+E
+large tap metal wheel~
+This large tap protrudes from the wall, a tapered nozzle upturned at the
+tip.  The silvery metal is covered with a faint, oily residue.  A large
+metal wheel sits atop the tap.  Perhaps you could turn the wheel.  
+~
+D0
+~
+~
+0 0 27009
+D3
+~
+~
+7 0 27012
+D4
+~
+~
+0 0 27030
+W 5 0 0
+Z 5 5
+S
+#27012
+A Partitioned Cell~
+This round cell is quite tall, ceiling at least twelve feet in height. 
+The dark black walls around you seem to actively absorb light, enforcing the
+tenebrous gloom that lies heavy over the castle.  Honeycombed with small,
+regular niches, the walls form a basic ovoid centered about a simple
+pedestal in the middle of the dull floor.  A slightly vaulted ceiling joins
+smoothly with the walls, also honeycombed with the same small rectangular
+coffers.  
+
+The western end of the room has taken considerable damage from some unknown
+force, the thick stone smashed inward as if by a blow.  The resultant hole
+is roughly three feet in diameter, a crude circle.  Debris of crumbled stone
+and twisted metal lies scattered in the western end of the room, littering
+the floor.  
+~
+~
+3
+0 8243 0
+E
+hole crude circle~
+The western end of the room has taken considerable damage from some
+unknown force, the thick stone smashed inward as if by a blow.  The
+resultant hole is roughly three feet in diameter, a crude circle.  The wall
+here is roughly eight inches thick, a layered composite of granite slabs and
+a thick metal reinforcing mesh.  The hole opens out into a field of swirling
+nothingness, a painfully inconstant background of flickering change.  A
+brave soul might try and enter the hole into this sea of transience.  
+~
+E
+niche niches coffer coffers rectangular~
+These small niches are set at regular intervals all around the walls and
+ceiling.  Roughly three inches by six, they are reach back into the walls at
+varying, seemingly random depths.  Nothing clear regarding their purpose can
+be gleaned by their position or size.  
+~
+D1
+~
+well-oiled door~
+7 27014 27011
+W 5 0 0
+Z 5 5
+S
+#27013
+An Oddly-Shaped Chamber~
+This odd chamber seems to have built with complete disregard for any
+standard concept of floor, ceiling, or wall.  Amorphous, the apparent random
+room structure flows and curves in some places while in others corners and
+lines form entirely independently.  Several equally serendipitous lines wind
+crazily across the lack of architecture.  To the north, south, and west,
+straight passageways form and lead out of the room.  
+~
+~
+3
+0 8243 0
+E
+serendipitous lines rune~
+These crazily wandering lines are etched into the black rock.  After some
+observation, they seem to be a part of an odd, structured whole, completely
+at odds with their forms and the warped shape of the chamber around them. 
+Though they allude to a sense of purpose, their function is not immediately
+apparent.  
+~
+D0
+~
+~
+0 0 27016
+D2
+~
+~
+0 0 27014
+D3
+~
+~
+0 0 27002
+W 5 0 0
+Z 5 5
+S
+#27014
+A Sloping Corridor~
+This corridor descends to the south in a series of long, graduated steps,
+each one no more than two inches in height.  Made of the everpresent matte
+black stone, the hall is heavy and still.  Sound and light seem to be
+actively absorbed, and the chill air has a density of its own.  The corridor
+passes through open doorways at the northern and southern ends.  A recessed
+doorway stands to the east, the solid combination of metal and stone fitted
+with a thick, sliding handle.  
+~
+~
+3
+0 8243 0
+D0
+~
+~
+0 0 27013
+D1
+~
+heavy door~
+3 0 27020
+D2
+~
+~
+0 0 27015
+W 5 0 0
+Z 5 5
+S
+#27015
+A Round Room~
+This round room is completely bare of any furniture.  The black stone
+walls are straight and circular, combining with the smooth ceiling and floor
+to make the room a perfect cylinder.  No features whatsoever mar the walls,
+the velvet smooth finish seeming to actively dampen one\@s senses.  The air
+in this room is cool and still, and feels almost ponderously heavy in one\@s
+lungs.  To the north and west, black doorways open like gaping maws.  
+~
+~
+3
+0 8243 0
+D0
+~
+~
+0 0 27014
+D1
+~
+~
+0 0 27021
+W 5 0 0
+Z 5 5
+S
+#27016
+An Intersecting Hallway~
+Three small hallways converge here.  Of identical dimensions, the low,
+unpretentious walls and ceiling are painted with the same muffling black
+coating.  A small niche in the northern wall sits empty.  The floor is
+smooth and hard with the dull reflectiveness of poured black glass.  To the
+east and south, the corridors lead into larger, more open rooms, and the
+passage to the west enters a small, confined space.  
+~
+~
+3
+0 8243 0
+E
+small niche northern~
+This arched niche, perhaps eight inches shallow, is empty and
+unremarkable.  
+~
+D1
+~
+~
+0 0 27018
+D2
+~
+~
+0 0 27013
+D3
+~
+~
+0 0 27017
+W 5 0 0
+Z 5 5
+S
+#27017
+A Grimy Back Room~
+This square room is lined with shelves, the stone of the the floor and
+walls noticeably coarser than the usual fine matte finish present elsewhere
+in the keep.  Rows of covered boxes line the shelves, each marked with a
+simple rune.  The ceiling is quite low here, sloping in an almost cave-like
+fashion.  In the center of the room, a round shaft leads down into
+blackness.  A simple winch and bucket lie next to the hole, a braided metal
+chain allowing the bucket to be raised and lowered.  An open doorway leads
+back to the east.  
+~
+~
+3
+0 8243 0
+E
+box boxes rune simple covered row rows shelves shelf~
+These simple boxes are made of metal and stone, each marked with a simple glyph.
+~
+E
+hole shaft round~
+This hole is about two and a half feet in diameter, leading down into a
+stone shaft of the same width.  As utterly black as the rest of the keep, it
+leads down into darkness.  
+~
+E
+winch simple bucket braided chain~
+This plain winch is equipped with a pawl and ratchet to govern its
+vertical movement.  A crank allows one to provide sufficient force to raise
+the bucket.  Coiled neatly, a thin chain of braided wire is attached to the
+top of a simple metal bucket.  
+~
+D1
+~
+~
+0 0 27016
+D5
+~
+~
+0 0 27038
+W 5 0 0
+Z 5 5
+S
+#27018
+A Simple Room~
+This dark room of black stone is dominated by a long, U-shaped table. 
+Around it curves a bench of the same matte stone as the walls and ceiling. 
+The air is heavy and still, and the walls seem to actively dampen light and
+sound.  Set in the northern and eastern walls are two small alcoves, each
+containing a small bust.  A seal is carved into the floor inside the
+horseshoe-shaped table.  To the south and west, short hallways lead out of
+the room.  
+~
+~
+0
+0 0 0
+E
+seal carved~
+This simple geometric seal consists of a thick ring, containing two
+bifurcated half-circles.  More etched than carved, the design is set in the
+center of the room.  About the seal, the two ends of the table reach out.  
+~
+E
+eastern~
+Fashioned of dusty green jade, this bust shows a tranquil, placid face. 
+Heavy-lidded eyes stare with a blank calm, and the thin cheeks are calm and
+untroubled by wrinkle or emotion.  A hooked nose and thin, expressionless
+mouth sit above a narrow chin.  The forehead is high, with no visible hair. 
+Pointed ears flank the head, flat and unseemly.  
+~
+E
+northern~
+This simple bust is made from a pale, milky marble.  Translucent and
+pure, the stone is free of imperfection or striation.  The bust portrays a
+nondescript humanoid face with wide-set eyes and a strong chin.  A coarse,
+broken nose sits uneasily over a thin mouth.  
+~
+E
+bust small alcoves~
+There are two niches, each with busts - the northern and eastern.
+~
+D2
+~
+~
+0 0 27019
+D3
+~
+~
+0 0 27016
+W 5 0 0
+Z 5 5
+S
+#27019
+A Bare Kitchen~
+This long, rectanglar room is as oppressively dark as the rest of the
+keep.  Two ovens and several long counters are made of the same black stone
+as the walls and ceiling.  A large sink stands against the northern wall. 
+Hanging from the ceiling, an iron rack holds several pots and pans.  The air
+is cool and still and somehow seems thicker here.  A smooth black floor is
+covered with an odd, rubbery grid, making the footing quite stable.  To the
+north, a short hallway leads out of the kitchen.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27018
+W 5 0 0
+Z 5 5
+S
+#27020
+A Cavernous, Spherical Room~
+This room is perfectly spherical, the black stone walls marred only by
+the portal which leads west.  A high, domed ceiling seems perfectly smooth,
+and a sunken floor of equal smoothness mirrors the curvature of the ceiling.
+The room is spotless and clean.  A small object floats in the geometric
+center of the room.  The curved door stands open, fashioned to complete the
+spherical wall when closed.  
+~
+~
+0
+0 0 0
+D3
+~
+curved, heavy door~
+3 0 27014
+W 5 0 0
+Z 5 5
+S
+#27021
+A Small Stairwell~
+This small room is rectangular, a dark staircase winding around the walls
+as it ascends.  Everything is coated with a smooth, matte-black substance
+which seems to muffle light and sound.  The wide stairs are proportionally
+short, though deep.  A simple railing which is more a short, thin wall than
+banister follows the stairs upwards.  Underneath the stairs, a wrought iron
+rack has been installed, bolted securely to the stone.  A small doorway
+leads back to the west.  
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 27015
+D4
+~
+~
+0 0 27023
+D5
+~
+~
+0 0 27075
+W 5 0 0
+Z 5 5
+S
+#27022
+An Empty Room~
+This room is bare and empty, small accumulations of dust visible in the
+corners.  With walls and ceiling of light- and sound-suppressing black
+stone, the room\@s oppressive blankness seems to press in on you.  Two chairs
+are bolted to the floor here, facing each other.  Spaced about a foot apart,
+the simple metal chairs are plain and unadorned.  The air is chill and close
+here, eerily calm and still.  An open doorway leads into darkness to the
+east.  
+~
+~
+3
+0 8243 0
+D1
+~
+~
+0 0 27074
+W 5 0 0
+Z 5 5
+S
+#27023
+Top of a Rectangular Stairwell~
+This small room is rectangular, a dark staircase winding around the walls
+as it descends.  Everything is coated with a smooth, matte-black substance
+which seems to muffle light and sound.  The wide stairs are proportionally
+short, though deep.  A simple railing which is more a short, thin wall than
+banister follows the stairs upwars.  A small, open doorway leads through the
+wall to the west.  Below, the stairs sink into thick, oddly-obscuring
+darkness.  
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 27074
+D5
+~
+~
+0 0 27021
+W 5 0 0
+Z 5 5
+S
+#27024
+A Pristine Bunkroom~
+This long room is pitch black, the dark stone walls seeming to actively
+absorb light and sound.  Low-ceilinged, the room is filled with a row of
+sturdy metal bunks, each triple-tiered bed bolted securely to the floor and
+ceiling.  Each bed is covered with a thin pallet, a grey blanket folded
+neatly at the foot of each immaculate bunk.  A heavy, muffling curtain of
+dark grey wool hangs in the doorway to the west.  The floor is as perfectly
+clean as the rest of the room, the smooth black stone dully reflective.  The
+air is eerily still and heavy, smelling faintly of dusty wool and cold
+stone.  
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 27025
+W 5 0 0
+Z 5 5
+S
+#27025
+A Silent Passageway~
+This square room of black stone tapers slightly towards the ceiling.  The
+floor is a dull, slightly polished black stone, as smooth as glass.  A short
+corridor leads to the north, ending in a flat black door fitted with a
+small, muffled latch.  To the east, a small, doorway leads through a grey
+wool curtain.  To the north and south, open doorways lead into darkness. 
+The air is thick and heavy here, possessing a palpable weight.  Smelling
+faintly of dusty wool and cool metal, the air is eerily still.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27026
+D1
+~
+~
+0 0 27024
+D2
+~
+~
+0 0 27074
+W 5 0 0
+Z 5 5
+S
+#27026
+A Damaged Room~
+This dark room of matte black stone appears to have been an office of
+some sorts.  Two long desks stand in front of the northern and western
+walls, the lacquered wooden tops covered with chips and bits of stone.  The
+dully reflective basalt floor bears several cracks, all beginning from a
+narrow fissure in the western wall.  The air is chill and oddly still, a
+heavy tang of salt thick in the air.  The ceiling has buckled in several
+small pieces near the western wall, the slabs of broken stone seeming
+relatively unstable.  A small, wooden door stands to the south, and an open
+doorway leads east.  
+~
+~
+0
+0 0 0
+E
+fissure west crack narrow~
+Through the crack in the western wall, no more than a finger\@s breadth,
+one can see a field of swirling nothingness.  Dark, sullen flashes of
+transience flicker through the painfully inconstant background.  
+~
+D1
+~
+~
+0 0 27027
+D2
+~
+~
+0 0 27025
+W 5 0 0
+Z 5 5
+S
+#27027
+A Long Bunkroom~
+This long room is pitch black, the dark stone walls seeming to actively
+absorb light and sound.  Low-ceilinged, the room is filled with a row of
+sturdy metal bunks, each triple-tiered bed bolted securely to the floor and
+ceiling.  Each bed is covered with a thin pallet, a grey blanket folded
+neatly at the foot of each immaculate bunk.  A heavy, muffling curtain of
+dark grey wool hangs in the doorway to the west.  The floor is as perfectly
+clean as the rest of the room, the smooth black stone dully reflective.  The
+air is eerily still and heavy, smelling faintly of dusty wool and cold
+stone.  To the north the bunkroom continues.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27029
+D3
+~
+~
+0 0 27026
+W 5 0 0
+Z 5 5
+S
+#27028
+The Armory~
+This square cell is quite small, just over a pace\@s width per side.  An
+open doorway to the east leads back into the bunkroom.  The matte-black
+walls are smooth to the touch, and seem to dampen light and sound.  A few
+weapons are arranged neatly in racks and hooks on the northern and southern
+walls, but almost all seem to be gone.  A semicircular alcove in the western
+wall is fronted by a slender iron grille.  Not even a room in its own right,
+the small space is fitted with a curving rack.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 27029
+W 5 0 0
+Z 5 5
+S
+#27029
+A Long Bunkroom~
+This long room is pitch black, the dark stone walls seeming to actively
+absorb light and sound.  Low-ceilinged, the room is filled with a row of
+sturdy metal bunks, each triple-tiered bed bolted securely to the floor and
+ceiling.  Each bed is covered with a thin pallet, a grey blanket folded
+neatly at the foot of each immaculate bunk.  The floor is as perfectly clean
+as the rest of the room, the smooth black stone dully reflective.  The air
+is eerily still and heavy, smelling faintly of dusty wool and cold stone. 
+To the south the bunkroom continues, and a small doorway leads west out of
+the room.  
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 27027
+D3
+~
+~
+0 0 27028
+W 5 0 0
+Z 5 5
+S
+#27030
+A Curving Stairwell~
+This stairwell curves sharply above you.  Steep stone steps are coated
+with an oddly firm substance, rendering the likelihood of slipping very
+small.  The walls are a smooth, matte black.  A plain metal rail, enamelled
+black, curves along with the stairs.  Above you the stairs open into a room,
+and an arched doorway leads north.  A small alcove in the stairwell holds a
+dark bust.  Below you, the stairs wind around the turn and out of sight.  
+~
+~
+3
+0 0 0
+E
+alcove bust small dark~
+This bust is not, upon closer inspection, any representation of a
+humanoid head, but rather a similarly-shaped globe of shards.  Hundreds of
+jagged pieces of volcanic obsidian have been merged to form this
+razor-spiked orb.  A thick piece of steel wire supports the orb within the
+small niche.  
+~
+D0
+~
+~
+0 0 27033
+D4
+~
+~
+0 0 27039
+D5
+~
+~
+0 0 27011
+W 5 0 0
+Z 5 5
+P
+>verb_prog p take~
+if compstr(2) == bust
+or compstr(2) == orb
+or compstr(2) == shard
+or compstr(2) == shards
+or compstr(2) == globe
+  mpechoat $n Seizing the bust, you find your hands instantly {rlacerated{n by the incredibly sharp stone.
+  mpechoat $n The globe remains firmly attached to the stand.
+  mpdamage $n 20d6 10
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog p get~
+if compstr(2) == bust
+or compstr(2) == orb
+or compstr(2) == shard
+or compstr(2) == shards
+or compstr(2) == globe
+  mpechoat $n Seizing the bust, you find your hands instantly {rlacerated{n by the incredibly sharp stone.
+  mpechoat $n The globe remains firmly attached to the stand.
+  mpdamage $n 20d6 10
+else
+  mpinterpret $n $x
+endif
+~
+|
+S
+#27031
+A Confined Cell~
+This confined cell is only a few feet wide, reaching barely four paces in
+length.  With walls and ceiling of the standard velvet-smooth black stone,
+the muffling cell is quite cramped.  A smooth floor of a dully reflective,
+hard black substance is free of cracks or ripples.  A sturdy stone door to
+the north could be mistaken for a fourth wall, if not for the small slit
+penetrating the otherwise blank panel at eye level.  In some places, bits of
+filth, excrement, and gore are smeared on the walls and floor.  
+~
+~
+0
+0 0 0
+E
+slit slot~
+This small slit in the door is blocked by a dull piece of metal.
+~
+D0
+~
+heavy stone door~
+3 0 27032
+W 5 0 0
+Z 5 5
+P
+>verb_prog p open~
+if compstr(2) == slit
+or compstr(2) == slot
+  mpechoat $n You cannot effectively manipulate the metal plate due to the thickness of the door and the concurrent depth of the slot.
+else
+  mpinterpret $n $x
+endif
+~
+|
+S
+#27032
+An Austere Laboratory~
+This simple room is small and unremarkable.  Stone walls of a matte black
+support a low ceiling, and the floor is the same smooth, slightly reflective
+surface as the rest of the castle.  A plain desk sits in the middle of the
+room, made from a lacquered wood top set across two cubes of the everpresent
+black stone.  A plain metal chair sits in front of the desk, bolted to the
+floor.  To to south, a heavy stone door stands, thick stone hinges strong
+and sturdy.  An open doorway leads east, and a small, bare door sits in the
+northern wall.  
+~
+~
+0
+0 0 0
+E
+slit slot~
+This small slot in the door to the south allows a piece of oiled metal to
+slide to the right for viewing of the interior without exposing oneself to
+the inhabitants.
+~
+D0
+~
+bare wooden door~
+65539 0 27034
+D1
+~
+~
+0 0 27033
+D2
+~
+~
+3 0 27031
+W 5 0 0
+Z 5 5
+P
+>verb_prog p slide~
+if compstr(2) == metal
+or compstr(2) == slot
+or compstr(2) == right
+  mpechoat $n You slide the slot to the right, oiled metal sliding silently.  Through the gap, you
+ can see..
+  mpforce $n at 27031 look
+  mpecho Once the hold on the slot is released, it slides back with a quiet snap.
+else
+  mpechoat $n What did you want to slide?
+endif
+~
+|
+S
+#27033
+A Dark Passageway~
+This intersecting corridor passes to the north, west, and south, pitch
+black.  Made of the everpresent matte black stone, the hall is heavy and
+still.  Sound and light seem to be actively absorbed, and the chill air has
+a density of its own.  The corridor passes through open doorways at the
+northern and southern ends, and a smaller recessed doorway leads to the
+west.  The dully reflective floor is made from smooth basalt.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27035
+D2
+~
+~
+0 0 27030
+D3
+~
+~
+0 0 27032
+W 5 0 0
+Z 5 5
+S
+#27034
+An Observation Room~
+This dark stone room is as bare and blank, plain black walls helping to
+enforce the stifling silence.  A smooth, slightly reflective floor is kept
+clean of dust and dirt.  A tall desk stands against the western wall, more a
+narrow shelf than a proper piece of furniture.  An imposingly solid door of
+stone blocks entry to the room to the north, heavy hinges several inches
+thick.  A small corridor leads in from the east, and a smaller door of
+darkened wood sits in the southern wall.  A small slot in the northern door
+is covered with an iron plate of metal.  
+~
+~
+0
+0 0 0
+E
+iron plate slot small~
+This small slot allows one to look through the door to the north, if the
+plate were slid to one side.  
+~
+E
+slot slit~
+This small slot in the door to the north allows a piece of oiled metal to
+slide to the right for viewing of the interior without exposing oneself to
+the inhabitants.
+~
+D0
+~
+heavy stone door~
+3 0 27036
+D1
+~
+~
+0 0 27035
+D2
+~
+~
+65539 0 27032
+W 5 0 0
+Z 5 5
+P
+>verb_prog p slide~
+if compstr(2) == metal
+or compstr(2) == slot
+or compstr(2) == right
+  mpechoat $n You slide the slot to the right, oiled metal sliding silently.  Through the gap, you can see..
+  mpforce $n at 27036 look
+  mpecho Once the hold on the slot is released, it slides back with a quiet snap.
+else
+  mpechoat $n What did you want to slide?
+endif
+~
+|
+S
+#27035
+A Dark Passageway~
+This corridor passes to the west and south, pitch black.  Made of the
+everpresent matte black stone, the hall is heavy and still.  Sound and light
+seem to be actively absorbed, and the chill air has a density of its own. 
+The corridor passes through open doorways at the western and southern ends. 
+A recessed doorway stands to the east, the solid combination of metal and
+stone lined at the seams of the door with an odd, rubbery material.  To the
+north, an imposingly solid door stands, thick stone hinges several inches in
+diameter.
+~
+~
+0
+0 0 0
+D0
+~
+~
+3 0 27037
+D2
+~
+~
+0 0 27033
+D3
+~
+~
+0 0 27034
+W 5 0 0
+Z 5 5
+S
+#27036
+A Cramped Cell~
+This confined cell is only a few feet wide, reaching barely four paces in
+length.  With walls and ceiling of the standard velvet-smooth black stone,
+the muffling cell is quite cramped.  A smooth floor of a dully reflective,
+hard black substance is free of cracks or ripples.  In some places, bits of
+filth, excrement, and gore are smeared on the walls and floor.  A few small
+tatters of some unidentifiable cloth lie near the door, crusted with fecal
+matter.  A sturdy stone door to the south could be mistaken for a fourth
+wall, if not for the small slit penetrating the otherwise blank panel at eye
+height.  
+~
+~
+0
+0 0 0
+E
+slit~
+This small slit in the door is blocked by a dull piece of metal.
+~
+E
+slot~
+This small slit in the door is blocked by a dull piece of metal.
+~
+D2
+~
+~
+3 0 27034
+W 5 0 0
+Z 5 5
+P
+>verb_prog p open~
+if compstr(2) == slit
+or compstr(2) == slot
+  mpechoat $n You cannot effectively manipulate the metal plate due to the thickness of the door a
+nd the concurrent depth of the slot.
+else
+  mpinterpret $n $x
+endif
+~
+|
+S
+#27037
+A Large Cell~
+This large cell is several paces square, with a long stone bench running
+the length of the northern wall.  With walls and ceiling of the standard
+velvet-smooth black stone, the muffling cell is as dark as the rest of the
+castle.  The floor is crafted of a dully reflective, hard black substance. 
+A sturdy stone door to the south is as bare and featureless as the rest of
+the room.  
+
+A long crack has developed in the eastern wall, slightly less than a
+finger\@s diameter in width.  A few small chips of dark stone are scattered
+beneath.  
+~
+~
+0
+0 0 0
+E
+bench stone~
+This plain stone bench runs the length of the northern wall.  Barely two
+feet in height, the stark, angular stone does not appear to be designed for
+comfort.  
+~
+E
+long crack~
+This long narrow crack splits the wall slightly in the northeastern
+corner of the room.  Slightly more narrow than a finger, the gap looks out
+on swirling, flickering nothingness, both interminably unchanging and
+unpleasantly inconstant.  
+~
+D2
+~
+heavy stone door~
+3 0 27035
+W 5 0 0
+Z 5 5
+S
+#27038
+A Steep Stone Shaft~
+This round stone shaft is quite narrow - only a few feet in diameter, the
+grey, rough stone bricks press in on every side.  Above you, the shaft ends
+in a small, dark room, and below, the walls widen into darkness.  Several
+small scratches are gouged into the unfinished walls, scraping down into the
+pit below.  
+~
+~
+0
+0 8 0
+E
+several small scratches scratch~
+This line of scrapes in the stone runs down the wall and out of sight. 
+Shallow and broad, they seem to have been made by a blunt set of claws, set
+close together.  
+~
+D4
+~
+~
+0 0 27017
+D5
+~
+~
+0 0 27051
+W 5 0 0
+Z 5 5
+S
+#27039
+A Dark Room at the Top of the Tower~
+This square room of black stone tapers slightly towards the ceiling.  A
+circular shaft containing a sharply-spiralling staircase twists out of sight
+above and below, but the curvature is too sharp to discern where it leads. 
+The floor is a dull, slightly polished black stone, as smooth as glass. 
+Short corridors lead to the west and north.  Two small alcoves sit in the
+south and east walls, respectively, each containing a bust.  A stale, leaden
+heaviness hangs in the air, thick on your nose and tongue.  
+~
+~
+0
+0 0 0
+E
+eastern~
+This life-sized basalt bust depicts a starveling-thin shuddeni.  Gaunt,
+hollow cheeks are stretched tightly over the bones, and the chin is a sharp,
+angular jut.  Deeply sunken sockets, blank and empty, flank a shriveled
+nose.  The scalp is wrinkled, and careful etching has covered the top of the
+head with a mottled rime.  
+~
+E
+southern~
+This life-sized bust depicts an aelin face.  Fashioned from finely
+translucent alabaster, the milky white stone is masterfully chiseled, shaped
+and polished.  The bust depicts a cold, regal face, with an aquiline nose
+and hollow cheeks.  Delicately pointed ears seem almost fragile, and the
+remarkably lifelike hair is bound back from the face with a simple thong. 
+The eyes are blank, their round smoothness untouched by the sculpture. 
+Somehow their bare lack of detail expresses a chilling sense of patient,
+ageless -life-.  
+~
+E
+alcove alcoves small bust busts south east~
+There are two niches, a southern and an eastern.
+~
+D0
+~
+~
+0 0 27082
+D3
+~
+~
+0 0 27040
+D4
+~
+~
+0 0 27042
+D5
+~
+~
+0 0 27030
+W 5 0 0
+Z 5 5
+S
+#27040
+A Dark Room at the Top of the Tower~
+This square room of black stone tapers slightly towards the ceiling, the
+walls leaning in towards each other at a gentle degree.  The floor is a
+dull, slightly polished black stone, as smooth as glass.  Short corridors
+lead to the north and east.  
+
+A slight gap has somehow formed in the southwestern corner, shorn off as if
+by a blade.  Smooth-edged shards litter the floor.  Through the gap, a
+flickering cloud of nothingness whirls, the impermanence making your vision
+ache.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27041
+D1
+~
+~
+0 0 27039
+W 5 0 0
+Z 5 5
+S
+#27041
+A Storeroom at the Top of the Tower~
+This square room of black stone tapers slightly towards the ceiling, the
+walls leaning in towards each other at a gentle degree.  The floor is a
+dull, slightly polished black stone, as smooth as glass.  The northern wall
+is fitted with a solid metal shelf.  Boxes line the shelf, and several large
+spools of cable and rope are stacked on the floor.  In the corner, two large
+barrels of stone sit.  To the south, a small corridor leads into another
+room.  
+~
+~
+0
+0 0 0
+E
+barrels barrel large corner~
+Two large stone casks are here, both open.  The first contains a quantity
+of odorless clear liquid, and the second is filled with a viscous fluid, the
+exact same color as the dark stone walls.  
+~
+E
+barrels barrel large corner~
+~
+E
+shelf boxes box solid metal~
+This broad metal shelf holds about twenty boxes, each containing various
+metal objects.  Small gears, cranks, ratchets, and other objects whose
+purposes are less obvious are neatly sorted among the boxes.  Several small
+glass vials of oil and a flat can of grease are tucked among the equipment. 
+
+~
+D2
+~
+~
+0 0 27040
+W 5 0 0
+Z 5 5
+S
+#27042
+A Dark Room at the Top of the Tower~
+This square room of black stone tapers slightly towards the ceiling.  To
+the south, the room continues towards the stairway.  The northern and
+western walls are lined with a complex array of glistening metal equipment. 
+Centered about a large telescope, the many peripheral gears and scopes
+attached take up a great deal of the space of the room.  Several smaller
+instruments for navigating and stargazing hang on hooks scattered about the
+walls, as well.  A sturdy door opens in the eastern wall, blank and
+featureless as the walls about it but for a simple metal latch.  The latch
+is padded with muffling velvet.  
+~
+~
+0
+0 0 0
+D5
+~
+~
+0 0 27039
+W 5 0 0
+Z 5 5
+P
+>greet_prog 100~
+close east
+~
+|
+S
+#27043
+A Suspended Walkway~
+This long, narrow walkway is barely seven feet in width.  The stone here
+is a uniform, speckled dark granite, the blocks joined with a rubbery black
+mortar.  Here, some attention seems to have been paid to the decor, and a
+few simple faux columns are carved into the walls.  Between these, long,
+narrow archer\@s slits line the walls to the north and south.  Through these
+slits a field of flickering, inconstant nothingness can be seen, painful
+transience stormy and capricious.  The walkway seems to vibrate slightly, as
+if in a high wind, but the air is as oppressively still and silent as in the
+rest of the keep, seemingly oblivious to the raging Change outside.  A
+sealed door stands in the wall to the west.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 27044
+D3
+~
+~
+0 0 27082
+W 5 0 0
+Z 5 5
+S
+#27044
+A Suspended Walkway~
+This long, narrow walkway is barely seven feet in width.  The stone here
+is a uniform, speckled dark granite, the blocks joined with a rubbery black
+mortar.  Here, some attention seems to have been paid to the decor, and a
+few simple faux columns are carved into the walls.  Between these, long,
+narrow archer\@s slits line the walls to the north and south.  Through these
+slits a field of flickering, inconstant nothingness can be seen, painful
+transience stormy and capricious.  The walkway sways perceptibly here,
+rocking slightly as though being beaten by powerful gale-force winds.  Oddly
+enough, the air is as oppressively still and heavy as the rest of the
+castle, and the eerie silence goes unbroken.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 27080
+D3
+~
+~
+0 0 27043
+W 5 0 0
+Z 5 5
+S
+#27045
+A Suspended Walkway~
+This long, narrow walkway is barely seven feet in width.  The stone here
+is a uniform, speckled dark granite, the blocks joined with a rubbery black
+mortar.  Here, some attention seems to have been paid to the decor, and a
+few simple faux columns are carved into the walls.  Between these, long,
+narrow archer\@s slits line the walls to the north and south.  Through these
+slits a field of flickering, inconstant nothingness can be seen, painful
+transience stormy and capricious.  The walkway seems to vibrate slightly, as
+if in a high wind, but the air is as oppressively still and silent as in the
+rest of the keep, seemingly oblivious to the raging Change outside.  A
+sealed door stands in the wall to the east.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+3 0 27046
+D3
+~
+~
+0 0 27081
+W 5 0 0
+Z 5 5
+S
+#27046
+A Dark Tower Room~
+This square room of black stone tapers slightly towards the ceiling. 
+The floor is a dull, slightly polished black stone, as smooth as glass. 
+Short corridors lead to the west and north, each terminating in a door.  The
+door to the west is thick and heavy-looking, apparently a hinged slab of
+stone.  Trimmed at the edges with an odd, rubbery substance, the door is
+secured with a solid latch.  The door to the north is far less intimidating,
+simple dark wood with a small, muffled latch.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27083
+D3
+~
+~
+3 0 27045
+W 5 0 0
+Z 5 5
+S
+#27047
+A Simple Office~
+This office is made in keeping with the stark emptiness of the rest of
+the castle.  Bare stone walls with a smooth black finish support an equally
+bare ceiling.  A plain desk is comprised of two large blocks of stone with a
+slab of lacquered black wood across them.  Harsh and ascetic, a metal,
+straight-backed chair fits into the kneehole.  Against the far wall a small
+metal cabinet sits, hinges and doors muffled with soft velvet.  
+
+Some unknown force has damaged the southeast corner of the room, ripping a
+yawning gap in the wall.  Some small volume of stone debris is spilled out
+across the floor.  
+~
+~
+0
+0 1 0
+E
+yawning gap~
+This sizeable gap has been caused by the collapse or smashing of the
+southeastern wall.  Raw edges of ruined stone frame a large hole, and you
+can see into the antechamber to the south through a few tiny chinks. 
+Filling the rent is a flurry of transience, the terrible inconstancy causing
+your vision to ache.  Sullen grey fields of nothingness are overlaid with
+flashes of a ruined courtyard.  Even as you watch, the image of the same
+courtyard, though silent and undamaged, flashes in and out of view.  
+
+A daring soul might perhaps try and ENTER this gap.
+~
+E
+desk lacquered black wood blocks~
+This simple desk is merely a tabletop of thick black lacquered wood
+supported by two cubes of stone several feet to a side.  
+
+Several small pieces of parchment sit on the desk.  You may look at the
+first, second, third, or fourth.  
+~
+D2
+~
+~
+67 0 27048
+W 5 0 0
+Z 5 5
+S
+#27048
+A Ruined Antechamber~
+This black room is small, a simple stone bench sitting against the
+southern wall.  The entire northeastern corner of the antechamber is ruined,
+lying in a large pile of stones and beams.  An arched doorway to the north
+is mostly blocked by the caved in debris, a simple emblem of a semicircle
+chiseled over the top.  An open doorway leads to the rest of the tower to
+the west.  
+
+Through the little unblocked space left by the collapse, one can see
+swirling nothingness, dark flashes of transience suffusing the achingly
+inconstant background.  
+~
+~
+0
+0 0 0
+E
+pile large stones beams cavein cave-in cave debris collapse~
+This large mound of stone and other construction debris has poured in
+after a collapse of the northeastern corner.  Comprised mainly of large
+blocks of black stone and weighty beams of dark wood, the pile obstructs the
+door to the north, wedging it shut.  Perhaps with effort one could {WDIG{n
+the door out.  
+~
+D0
+~
+~
+67 0 27047
+D3
+~
+~
+0 0 27049
+W 5 0 0
+Z 5 5
+S
+#27049
+A Dark Tower Room~
+This square room of black stone tapers slightly towards the ceiling.  The
+floor is a dull, slightly polished black stone, as smooth as glass.  A short
+corridor leads to the north, ending in a flat black door fitted with a
+small, muffled latch.  To the east, a small, open doorway leads into an
+antechamber.  The air is thick and heavy here, possessing a palpable weight
+even greater than other rooms in the castle.  Cool and eerily still, it
+smells faintly of metal and the salty stink of blood.  A set of chains hangs
+from the center of the ceiling here, the strong iron links of blackened iron
+ending in thick manacles.  A mirroring pair lie in a pile below, affixed to
+the floor.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 27048
+D5
+~
+~
+0 0 27074
+W 5 0 0
+Z 5 5
+S
+#27050
+A Pitch-Black Shaft~
+Carved into the very rock of the hills, a great circular shaft many
+meters in diameter drops away into black depths far below.  A narrow
+staircase of pale, sickly marble winds about the perfectly smooth grey stone
+walls of the shaft, spiralling downward as far as the one can see.  Above,
+the stairs gradually widen, stopping beneath the outline of the tomblike
+entrance which caps the shaft.  Pitch black, the air in the abyssal shaft is
+chill and eerily still and stagnant, despite the vast open space.
+~
+~
+0
+0 0 0
+D4
+~
+~
+66119 0 27001
+W 5 0 0
+Z 5 5
+S
+#27051
+The Bottom of a Deep Reservoir~
+You are in a large room, made from coarse, clean blocks of granite.  The
+top of the cell narrows to a shaft, stretching far above you.  It is
+noticeably cold down here, and a clammy humidity tinges the air with an
+almost earthy smell.  Three small holes a few inches in diameter can be seen
+several feet off of the floor.  A few small puddles have formed on the stone
+underneath you, and the walls and floor are damp.  
+~
+~
+0
+0 0 0
+E
+holes small~
+These three holes in the sides of the shaft stand about five feet off of
+the floor.  Each is blocked by a simple metal cross, blocking any
+explorative poking or prying.  The edges of the holes are significantly
+smoother than the coarse rock around them, indicating long, continual wear. 
+~
+D4
+~
+~
+0 0 27038
+W 5 0 0
+Z 5 5
+S
+#27052
+An Abyssal Shaft~
+Carved into the very rock of the hills, a great circular shaft many
+meters in diameter drops away into black depths far below.  A narrow
+staircase of pale, sickly marble winds about the perfectly smooth grey stone
+walls of the shaft, spiralling downward as far as the one can see.  Above,
+the stairs wind their way up into blackness.  Utterly dark, the air in the
+abyssal shaft is chill, eerily still and stagnant despite the vast open
+space.  
+~
+~
+0
+0 0 0
+D4
+~
+~
+0 0 27050
+D5
+~
+~
+0 0 27053
+W 5 0 0
+Z 5 5
+S
+#27053
+An Abyssal Shaft~
+Carved into the very rock of the hills, a great circular shaft many
+meters in diameter drops away into black depths far below.  A narrow
+staircase of pale, sickly marble winds about the perfectly smooth grey stone
+walls of the shaft, spiralling downward as far as the one can see.  Above,
+the stairs wind their way up into blackness.  Utterly dark, the air in the
+abyssal shaft is chill, eerily still and stagnant despite the vast open
+space.  Here, the perfection of the wall is marred by a large striation
+which runs around the shaft, an angled stratus of crumbly, calcareous stone.
+On both sides of this narrow band of limestone the solid, smooth granite
+resumes.  
+~
+~
+0
+0 0 0
+D4
+~
+~
+0 0 27052
+D5
+~
+~
+0 0 27054
+W 5 0 0
+Z 5 5
+S
+#27054
+An Abyssal Shaft~
+Carved into the very rock of the hills, a great circular shaft many
+meters in diameter drops away into black depths far below.  A narrow
+staircase of pale, sickly marble winds about the perfectly smooth grey stone
+walls of the shaft, spiralling downward as far as the one can see.  Above,
+the stairs wind their way up into blackness.  Utterly dark, the air in the
+abyssal shaft is chill, eerily still and stagnant despite the vast open
+space.  
+~
+~
+0
+0 0 0
+D4
+~
+~
+0 0 27053
+D5
+~
+~
+0 0 27055
+W 5 0 0
+Z 5 5
+S
+#27055
+An Abyssal Shaft~
+Carved into the very rock of the hills, a great circular shaft many
+meters in diameter drops away into black depths far below.  A narrow
+staircase of pale, sickly marble winds about the perfectly smooth grey stone
+walls of the shaft, spiralling downward as far as the one can see.  Above,
+the stairs wind their way up into blackness.  Utterly dark, the air in the
+abyssal shaft is chill, eerily still and stagnant despite the vast open
+space.  The grey stone slowly darkens to black here, glossy smoothness
+ceding to grainy, coarse roughness.  
+~
+~
+0
+0 0 0
+D4
+~
+~
+0 0 27054
+D5
+~
+~
+0 0 27056
+W 5 0 0
+Z 5 5
+S
+#27056
+Nearing the Bottom of an Abyssal Shaft~
+Carved into the very rock of the hills, a great circular shaft many
+meters in diameter drops away into black depths far below.  A narrow
+staircase of pale, sickly marble winds about the coarse black walls of the
+shaft, spiralling downward as far as the one can see.  Above, the stairs
+wind their way up into blackness.  Utterly dark, the air in the abyssal
+shaft is chill, eerily still and stagnant despite the vast open space. 
+Below, a cold blue glow tinges the utter blackness, the ambient light
+seeming to frost the incrementally more uneven walls.  
+~
+~
+0
+0 0 0
+D4
+~
+~
+0 0 27055
+D5
+~
+~
+0 0 27057
+W 5 0 0
+Z 5 5
+S
+#27057
+The Bottom of an Abyssal Shaft~
+This great circular shaft ends its immeasurable drop here, the vast
+diameter slowly narrowing to a rounded bottom.  A staircase of pale, sickly
+marble widens to adjust for the irregularity of the walls as it winds to the
+bottom.  Above, the stairs narrow and spiral out of sight into blackness. 
+Pitch black, the air in the abyssal shaft is chill and eerily still, despite
+the vast open space.  Carved out of the living black rock to the east is a
+massive archway, several paces wide and many more tall.  It is from this
+plain portal that the faint blue light emanates, the source yet unseen. 
+Even the reflected glow is dazzlingly bright after the lack of illumination
+above.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 27058
+D4
+~
+~
+0 0 27056
+W 5 0 0
+Z 5 5
+S
+#27058
+An Arched, Sloping Tunnel~
+This vast tunnel slopes downwards to the east, hewn from the rough,
+living black rock.  The floor is made of the same gritty black stone.  The
+high ceiling is arched, curving at least ten meters above the floor.  To the
+west, the tunnel opens out into the abyssal shaft.  The tunnel stretches
+down into the bowels of the earth to the east, the blue glow gaining in
+reflected intensity.  The air here is still and heavy, but possessing a
+frigid energy not felt in the upper reaches of the shaft.  The air seems to
+grow more alive to the east, as it nears the source of the light.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 27059
+D3
+~
+~
+0 0 27057
+W 5 0 0
+Z 5 5
+S
+#27059
+A Turn in the Tunnel~
+This vast tunnel continues its slope downwards to the east, hewn from the
+rough, living black rock.  The floor is made of the same gritty black stone.
+The high ceiling arches at least ten meters above the floor.  To the west,
+the tunnel runs for some distance, eventually opening out into the abyssal
+shaft.  The tunnel turns into the bowels of the earth to the north, the blue
+glow gaining in reflected intensity.  The air here is still and heavy, a
+frigid, palpable energy thick about you.  The air seems to grow more alive
+to the north, as the tunnel opens into a cavernous underground chamber.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27060
+D3
+~
+~
+0 0 27058
+W 5 0 0
+Z 5 5
+S
+#27060
+An Immense Chamber~
+The tunnel opens into a vast chamber here, the rough black walls widening
+and stretching up beyond the limit of your vision.  No ceiling is visible to
+the gargantuan chamber, inky blackness hovering above the immense space like
+an uneasy stormcloud.  A low, swirling vortex of mist rotates slowly to your
+north, rising as it approaches the center of the room.  At the middle of the
+vortex, the mists curl and twist in on themselves, focusing about a bright,
+cold blue light.  The tunnel opening stands back to the south, dark compared
+to the light of the chamber.  A tangible energy tingles in the air,
+emanating from the mist-obscured source of the light.  The floor is cracked
+and very uneven, the black stone furrowed and crumpled in many places.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27061
+D1
+~
+~
+0 0 27063
+D2
+~
+~
+0 0 27059
+D3
+~
+~
+0 0 27062
+W 5 0 0
+Z 5 5
+P
+>exit_prog 5~
+if isflying($r)
+break
+endif
+else
+mpecho You stumble on the harshly uneven floor, the mists making it difficult to anticipate your next step.
+mplag $r 1
+~
+|
+S
+#27061
+A Vortex of Fog~
+You are in a swirling, disorienting bank of opaque mist.  Dry and almost
+dusty, the heavy grey fog is oppressively close on every side.  A bath of
+almost intolerably bright blue light suffuses the mist here, having no
+apparent source.  A rough, broken floor below provides inconstant footing
+for the unwary.  Occasional glimpses of a massive, ceilingless chamber can
+be partially gleaned through the odd lessening of the fog.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27068
+D1
+~
+~
+0 0 27064
+D2
+~
+~
+0 0 27060
+D3
+~
+~
+0 0 27070
+W 5 0 0
+Z 5 5
+P
+>exit_prog 25~
+if isflying($r)
+break
+endif
+else
+mpecho You stumble on the harshly uneven floor, the mists making it impossible to anticipate your next step.
+mplag $r 1
+~
+>greet_prog 25~
+if isflying($r)
+break
+endif
+else
+mpecho You stumble on the harshly uneven floor, the mists making it impossible to anticipate your next step.
+mplag $r 1
+~
+|
+S
+#27062
+An Immense Chamber~
+You are near the southern wall of a vast chamber, the rough black walls
+widening and stretching up beyond the limit of your vision.  No ceiling is
+visible to the gargantuan chamber, inky blackness hovering above the immense
+space like an uneasy stormcloud.  A low, swirling vortex of mist rotates
+slowly to the northeast, rising as it approaches the center of the room.  At
+the middle of the vortex, the mists curl and twist in on themselves,
+focusing about a bright, cold blue light.  A tangible energy tingles in the
+air, emanating from the mist-obscured source of the light.  The floor is
+cracked and very uneven, the black stone furrowed and crumpled in many
+places.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27070
+D1
+~
+~
+0 0 27060
+W 5 0 0
+Z 5 5
+S
+#27063
+An Immense Chamber~
+You are near the eastern wall of a vast chamber, the rough black walls
+widening and stretching up beyond the limit of your vision.  No ceiling is
+visible to the gargantuan chamber, inky blackness hovering above the immense
+space like an uneasy stormcloud.  A low, swirling vortex of mist rotates
+slowly to the northwest, rising as it approaches the center of the room.  At
+the middle of the vortex, the mists curl and twist in on themselves,
+focusing about a bright, cold blue light.  A tangible energy tingles in the
+air, emanating from the mist-obscured source of the light.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27064
+D3
+~
+~
+0 0 27060
+W 5 0 0
+Z 5 5
+S
+#27064
+The Edge of a Swirling Mist~
+You are near the eastern wall of a vast chamber, the rough black walls
+widening and stretching up beyond the limit of your vision.  No ceiling is
+visible to the gargantuan chamber, inky blackness hovering above the immense
+space like an uneasy stormcloud.  A low, swirling vortex of mist rotates
+slowly to the west, rising as it approaches the center of the room.  At the
+middle of the vortex, the mists curl and twist in on themselves, focusing
+about a bright, cold blue light.  Wisps of fog swirl about the floor, the
+extreme edge of the twisting haze.  A tangible energy tingles in the air,
+emanating from the mist-obscured source of the light.  The floor is cracked
+and very uneven, the black stone furrowed and crumpled in many places.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27065
+D2
+~
+~
+0 0 27063
+D3
+~
+~
+0 0 27061
+W 5 0 0
+Z 5 5
+S
+#27065
+An Immense Chamber~
+You are near the northern wall of a vast chamber, the rough black walls
+widening and stretching up beyond the limit of your vision.  No ceiling is
+visible to the gargantuan chamber, inky blackness hovering above the immense
+space like an uneasy stormcloud.  A low, swirling vortex of mist rotates
+slowly to the southwest, rising as it approaches the center of the room.  At
+the middle of the vortex, the mists curl and twist in on themselves,
+focusing about a bright, cold blue light.  A tangible energy tingles in the
+air, emanating from the mist-obscured source of the light.  The floor is
+cracked and very uneven, the black stone furrowed and crumpled in many
+places.  
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 27064
+D3
+~
+~
+0 0 27068
+W 5 0 0
+Z 5 5
+P
+>greet_prog 5~
+if isflying($r)
+break
+endif
+else
+mpecho You stumble on the harshly uneven floor, the mists making it difficult to anticipate your next step.
+mplag $r 1
+~
+>rand_prog 2~
+mpecho Slipping smoothly over the broken, black rock, a patch of mist glides past.
+~
+|
+S
+#27066
+~
+You are in a tall hallway which stretches into darkness to the east and
+west.  Pitch black, the room is painted with a matte finish, smooth to the
+touch, which seems to actively absorb light.  Plain and unadorned, no
+window, carving, or tapestry breaks the blank perfection of the walls.  High
+above, a curving, vaulted ceiling is vaguely visible in the oppressive
+gloom.  The floor is made of unpolished basalt, completing the motif of
+disorienting, muffling darkness.  Cool and still, the heavy air seems to
+dampen your senses.  To the south, a tall stone door stands, firmly shut.
+
+Squatting in the center of the room is a low block of stone.
+~
+~
+0
+0 0 0
+E
+\@door blahblah\@~
+This tall door is a perfectly-proportioned rectangle, over ten feet in
+height.  The top is formed into a rounded arch, the geometrically perfect
+hemicircle curving above.  Clearly quite heavy, the door\@s only
+distinguishing mark is a plain iron ring to aid with opening and closing. 
+Though it is shut fast, the door shows evidence of having been forced,
+perhaps recently - several chips and cracks radiate from the edge of the
+door nearest the iron ring.  
+~
+E
+door~
+This tall door is a perfectly-proportioned rectangle, over ten feet in
+height.  The top is formed into a rounded arch, the geometrically perfect
+hemicircle curving above.  Clearly quite heavy, the door\@s only
+distinguishing mark is a plain iron ring to aid with opening and closing.
+~
+D1
+~
+~
+0 0 27064
+D3
+~
+~
+0 0 27067
+W 5 0 0
+Z 5 5
+S
+#27067
+~
+You are in a tall hallway which stretches into darkness to the east and
+west.  Pitch black, the room is painted with a matte finish, smooth to the
+touch, which seems to actively absorb light.  Plain and unadorned, no
+window, carving, or tapestry breaks the blank perfection of the walls.  High
+above, a curving, vaulted ceiling is vaguely visible in the oppressive
+gloom.  The floor is made of unpolished basalt, completing the motif of
+disorienting, muffling darkness.  Cool and still, the heavy air seems to
+dampen your senses.  To the south, a tall stone door stands, firmly shut.
+Squatting in the center of the room is a low block of stone.
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27068
+D1
+~
+~
+0 0 27066
+W 5 0 0
+Z 5 5
+S
+#27068
+The Edge of a Swirling Mist~
+You are near the northern wall of a vast chamber, the rough black walls
+widening and stretching up beyond the limit of your vision.  No ceiling is
+visible to the gargantuan chamber, inky blackness hovering above the immense
+space like an uneasy stormcloud.  A low, swirling vortex of mist rotates
+slowly to the south, rising as it approaches the center of the room.  At the
+middle of the vortex, the mists curl and twist in on themselves, focusing
+about a bright, cold blue light.  Wisps of fog swirl about the floor, the
+extreme edge of the twisting haze.  A tangible energy tingles in the air,
+emanating from the mist-obscured source of the light.  The floor is cracked
+and very uneven, the black stone furrowed and crumpled in many places.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27071
+D1
+~
+~
+0 0 27065
+D2
+~
+~
+0 0 27061
+D3
+~
+~
+0 0 27069
+W 5 0 0
+Z 5 5
+S
+#27069
+An Immense Chamber~
+You are near the western wall of a vast chamber, the rough black walls
+widening and stretching up beyond the limit of your vision.  No ceiling is
+visible to the gargantuan chamber, inky blackness hovering above the immense
+space like an uneasy stormcloud.  A low, swirling vortex of mist rotates
+slowly to the southeast, rising as it approaches the center of the room.  At
+the middle of the vortex, the mists curl and twist in on themselves,
+focusing about a bright, cold blue light.  A tangible energy tingles in the
+air, emanating from the mist-obscured source of the light.  The floor is
+cracked and very uneven, the black stone furrowed and crumpled in many
+places.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 27068
+D2
+~
+~
+0 0 27070
+W 5 0 0
+Z 5 5
+S
+#27070
+The Edge of a Swirling Mist~
+You are near the western wall of a vast chamber, the rough black walls
+widening and stretching up beyond the limit of your vision.  No ceiling is
+visible to the gargantuan chamber, inky blackness hovering above the immense
+space like an uneasy stormcloud.  A low, swirling vortex of mist rotates
+slowly to the east, rising as it approaches the center of the room.  At the
+middle of the vortex, the mists curl and twist in on themselves, focusing
+about a bright, cold blue light.  Wisps of fog swirl about the floor, the
+extreme edge of the twisting haze.  A tangible energy tingles in the air,
+emanating from the mist-obscured source of the light.  The floor is cracked
+and very uneven, the black stone furrowed and crumpled in many places.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27069
+D1
+~
+~
+0 0 27061
+D2
+~
+~
+0 0 27062
+W 5 0 0
+Z 5 5
+P
+>exit_prog 15~
+if isflying($r)
+break
+endif
+else
+mpecho You stumble on the harshly uneven floor, the mists making it difficult to anticipate your next step.
+mplag $r 1
+~
+>greet_prog 15~
+if isflying($r)
+break
+endif
+else
+mpecho You stumble on the harshly uneven floor, the mists making it difficult to anticipate your next step.
+mplag $r 1
+~
+|
+S
+#27071
+A Large Alcove~
+This large alcove is hewn out of the living black rock, here at the very
+roots of the earth.  The walls are sufficiently uneven to make the nature of
+this side chamber unsure; whether artificial or natural, you cannot tell.  A
+large block of stone stands at the back of the alcove.  To the south, the
+walls open out abruptly, expanding into an immense chamber.  A harsh, cold
+blue glow streams into the black alcove, coming from somewhere within the
+swirling, twisting mists.  
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 27068
+W 5 0 0
+Z 5 5
+S
+#27072
+Among A Whirling Field of Transience~
+You fall without weight amidst spinning flurries of nothingness, the
+bruised darkness suffused with flickering flashes of something not quite
+light.  Nothing is visible but for the swirling shards of reality which
+twist about and through you.  It is completely silent, yet all your other
+senses give the impression of falling through a frenzied, wild tempest.  The
+numbing cold surrounds you like no earthly ice might, tearing at your very
+essence.  
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#27073
+The Door Room~
+~
+~
+0
+0 0 0
+D1
+~
+~
+3 0 27000
+W 5 0 0
+Z 5 5
+S
+#27074
+Transition room~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27025
+D1
+~
+~
+0 0 27023
+D3
+~
+~
+0 0 27022
+D4
+~
+~
+0 0 27049
+W 5 0 0
+Z 5 5
+S
+#27075
+The Bottom of a Small Stairwell~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 27076
+D4
+~
+~
+0 0 27021
+W 5 0 0
+Z 5 5
+S
+#27076
+A Narrow Hallway~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27077
+D1
+~
+~
+0 0 27075
+W 5 0 0
+Z 5 5
+S
+#27077
+A Narrow Hallway~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 27079
+D1
+~
+~
+0 0 27078
+D2
+~
+~
+0 0 27076
+W 5 0 0
+Z 5 5
+S
+#27078
+A Ruined Laboratory~
+This low room appears to be a laboratory of some sort.  Counters run
+around the walls, and a cabinet full of shattered, dusty dishes hangs on the
+western wall.  A similar cabinet full of shards of glass hangs on the
+northern wall.  In the southern corner a number of simple woodworking tools
+lie, rusted and decayed beyond repair or usefulness: an adze, a plane, and a
+lathe can be seen among the jumble of less-recognizeable implements.  The
+floor is laced with a network of thick cracks which shift and groan wherever
+weight is placed on them.  Several large containers of black metal are lined
+up on the counter to the east, and a broad spool of dark thread is mounted
+on the wall behind them.  Dirty, mouldering sawdust and long, curling wood
+shavings litter the shattered floor in piles.  
+~
+~
+0
+0 0 0
+E
+floor down sawdust pile piles shaving shavings~
+The black stone floor is laced with thick, dark cracks, broken by some
+immense shock or concussion.  The floor seems to be held together with
+something slightly flexible - bars of metal reinforcing the stone, perhaps -
+but it shifts and grinds ominously whenever weight is put on it.  A thick
+coating of sawdust and shavings covers the floor in irregular clumps.  
+~
+E
+adze plane lathe implement implements~
+These appear to be a series of commonplace woodworking tools; an adze, a
+lathe, a plane, and several types of carving and nurling knives.  All are
+corroded and decayed into a state of uselessness.  
+~
+E
+north~
+This cabinet is carved from stained black wood, the door having fallen
+off long ago.  It is filled with useless shards of glass equipment, some of
+which have spilled out onto the floor.  The force which broke the glassware
+seems to have been sudden and brutal, as the pieces are quite fragmented,
+the bottommost reduced to a gritty powder.  
+~
+E
+west~
+This cabinet is carved from stained black wood, the door having fallen
+off long ago.  It is filled with useless shards of crockery and other
+laboratory equipment.  They appear to have been stacked neatly before
+breaking, as though they were all shattered simultaneously.  
+~
+E
+cabinet~
+There are two cabinets, one to the west and one to the north.  
+~
+E
+broad spool dark thread~
+This spool is several inches wide, mounted on a cast iron bracket.  It
+contains a great deal of dark, leathery thread.  If you desired, you could
+{ymeasure{n a length of the {ysinew{ny thread and cut it off.
+~
+E
+container containers counter east~
+Over a dozen large, cylindrical bins of black metal sit on the counter to
+the east.  Each one is filled with hundreds of thin twigs, each apparently
+from a different kind of common tree.  An emblem of each tree\@s leaf is
+hammered into each container.  You can {yget{n a {ytwig{n of: holly, rowan,
+magnolia, willow, redwood, teak, oak, applewood, beech, sycamore, maple, or
+a tough strand of thick grass.  
+~
+D3
+~
+~
+0 0 27077
+W 5 0 0
+Z 5 5
+S
+#27079
+An Alchemical Laboratory~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 27077
+W 5 0 0
+Z 5 5
+S
+#27080
+A Suspended Walkway~
+This long, narrow walkway is barely seven feet in width.  The stone here
+is a uniform, speckled dark granite, the blocks joined with a rubbery black
+mortar.  Here, some attention seems to have been paid to the decor, and a
+few simple faux columns are carved into the walls.  Between these, long,
+narrow archer\@s slits line the walls to the north and south.  Through these
+slits a field of flickering, inconstant nothingness can be seen, painful
+transience stormy and capricious.  The walkway sways perceptibly here,
+rocking slightly as though being beaten by powerful gale-force winds.  Oddly
+enough, the air is as oppressively still and heavy as the rest of the
+castle, and the eerie silence goes unbroken.
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 27081
+D3
+~
+~
+0 0 27044
+W 5 0 0
+Z 5 5
+S
+#27081
+A Suspended Walkway~
+This long, narrow walkway is barely seven feet in width.  The stone here
+is a uniform, speckled dark granite, the blocks joined with a rubbery black
+mortar.  Here, some attention seems to have been paid to the decor, and a
+few simple faux columns are carved into the walls.  Between these, long,
+narrow archer\@s slits line the walls to the north and south.  Through these
+slits a field of flickering, inconstant nothingness can be seen, painful
+transience stormy and capricious.  The walkway sways perceptibly here,
+rocking slightly as though being beaten by powerful gale-force winds.  Oddly
+enough, the air is as oppressively still and heavy as the rest of the
+castle, and the eerie silence goes unbroken.
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 27045
+D3
+~
+~
+0 0 27080
+W 5 0 0
+Z 5 5
+S
+#27082
+blankroom~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 27043
+D2
+~
+~
+0 0 27039
+W 5 0 0
+Z 5 5
+S
+#27083
+End of 1~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 27046
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 27050 spec_poison
+S
+
+
+
+#RESETS
+D 0 27000 3 3
+D 0 27001 5 66119
+D 0 27009 3 65603
+D 0 27010 1 65603
+D 0 27011 3 7
+D 0 27012 1 7
+D 0 27014 1 3
+D 0 27020 3 3
+D 0 27031 0 3
+D 0 27032 0 65539
+D 0 27032 2 3
+D 0 27034 0 3
+D 0 27034 2 65539
+D 0 27035 0 3
+D 0 27036 2 3
+D 0 27037 2 3
+D 0 27045 1 3
+D 0 27046 3 3
+D 0 27047 2 67
+D 0 27048 0 67
+D 0 27050 4 66119
+D 0 27073 1 3
+O 0 27001 0 27001
+M 0 27053 1 27004 1
+O 0 27017 0 27005
+M 0 27068 1 27006 1
+M 0 27020 1 27007 1
+O 0 27019 0 27008
+M 0 27002 1 27008 1
+O 0 27013 0 27010
+P 0 27014 1 27013 1
+M 0 27010 1 27010 1
+M 0 27012 1 27011 1
+O 0 27024 0 27012
+M 0 27018 1 27017 1
+O 0 27018 0 27018
+O 0 27020 0 27020
+O 0 27021 0 27021
+M 0 27045 1 27035 1
+M 0 27014 1 27036 1
+M 0 27016 1 27037 1
+O 0 27037 0 27037
+O 0 27057 0 27041
+O 0 27042 0 27042
+M 0 27042 1 27042 1
+M 0 27043 1 27042 1
+M 0 27044 1 27043 1
+M 0 27006 1 27043 1
+M 0 27007 4 27044 1
+M 0 27007 4 27045 1
+M 0 27044 1 27046 1
+O 0 27052 0 27047
+O 0 27055 0 27047
+O 0 27051 0 27047
+O 0 27054 0 27047
+M 0 27052 1 27051 1
+M 0 27019 1 27072 1
+O 0 27002 0 27078
+M 0 27004 1 27078 1
+O 0 27004 0 27078
+O 0 27015 0 27078
+M 0 27007 4 27080 1
+M 0 27007 4 27081 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

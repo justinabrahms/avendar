@@ -1,0 +1,2926 @@
+#AREADATA
+Name The Rock Tunnels~
+Builders Iacobos Iandir~
+VNUMs 4800 4899
+Credits [ 1 20] Iandir    The Rock Tunnels~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 5 0 0
+Shades 5 5
+Stone 84
+End
+
+
+
+#MOBILES
+V4 4800
+deerhound alaskan~
+a rarely-seen Alaskan deerhound~
+A rarely-seen Alaskan deerhound bays at the moon.
+~
+~
+human~
+water scholar~
+AN 0 DFJZ N 0
+50 0 1d1+1 0d0+0 360d1+1 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 4801
+lizard tiny brown rock~
+a tiny rock lizard~
+A tiny brown lizard with lumpy stone-like scales scampers about.
+~
+A tiny lizard with brown scales that resemble brown stone scampers about
+the cave.  
+~
+lizard~
+water scholar~
+AGN 0 JZ N 0
+1 0 1d2+6 0d0+0 1d2+0 pierce~
+bite~
+10 10 10 12
+F 0
+26 0 0 0 0 0 0 0 0 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMVXc ABCDEFGHIJKQV A tiny unknown
+V4 4802
+small brown lizard rock~
+a small rock lizard~
+A small brown lizard with rough, stone-like skin moves about the cave.
+~
+A small brown lizard with rock-like scales moves swiftly about the cave.  
+~
+lizard~
+water scholar~
+AGN 0 JZ N 0
+3 1 1d6+24 0d0+0 1d3+2 pierce~
+bite~
+8 8 8 9
+F 0
+26 0 0 0 0 0 0 0 0 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMVXc ABCDEFGHIJKQV A tiny unknown
+V4 4803
+lizard rock large~
+a large rock lizard~
+A large rock lizard darts swiftly about the cave.
+~
+Large for a rock lizard, this five-foot reptile moves swiftly about the
+cave, its brown scales blending with the rock walls.  
+~
+lizard~
+water scholar~
+AN 0 JZ N 0
+7 4 3d18+76 0d0+0 2d4+5 none~
+hit~
+6 6 6 7
+0 0
+26 0 0 0 0 0 0 0 0 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMVXc ABCDEFGHIJKQV A medium unknown
+V4 4804
+crysmal pile crystals large~
+the crysmal~
+A large pile of crystals moves fitfully about the cave.
+~
+Appearing at first to be nothing more than a large pile of crystals, the
+crysmal\@s nature becomes slightly more clear after it begins moving about. 
+A creature of pure mineral, the crysmal darts in sudden movements, stopping
+completely for long periods.  
+~
+elemental~
+water scholar~
+AGTX 0 DFJTZ N 0
+25 13 12d45+707 0d0+0 4d5+10 slash~
+slash~
+-60 0 -60 -10
+FH KLRb
+26 0 0 0 0 -33 33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ADHLMV ABCDEFGHIJK K medium unknown
+>death_prog 100~
+if rand(30)
+mpecho The crysmal\@s leg breaks from its body!
+mpoload 4801
+else
+mpecho The crysmal\@s body shatters into useless fragments!
+endif
+~
+>death_prog 30~
+mpecho The crysmal\@s leg breaks from its body!
+mpoload 4801
+~
+>rand_prog 60~
+if inroom($i) > 4875
+if inroom($i) < 4881
+mpwander
+endif
+endif
+if inroom($i) == 4875
+east
+endif
+~
+|
+V4 4805
+lizard rock enormous giant~
+the giant rock lizard~
+An enormous rock lizard flexes its powerful jaws.
+~
+An enormous rock lizard, measuring well over 12\@ in length, paces proudly
+along the length of the cave.  
+~
+lizard~
+water scholar~
+AGNT 0 JZ N 0
+20 10 12d40+333 0d0+0 4d6+12 pierce~
+chomp~
+-5 -5 -5 2
+FH A
+26 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMVXc ABCDEFGHIJKQV A medium unknown
+>death_prog 100~
+mpat 1300 mppurge
+~
+>entry_prog 100~
+mpfocus $r
+if ispc($f)
+mpkill $f
+endif
+~
+>rand_prog 100~
+mpvaluerand 0 1 2
+if mobvalue(0) == 1
+north
+endif
+if mobvalue(0) == 2
+south
+endif
+~
+|
+V4 4806
+objloader~
+the objloader~
+The miscellaneous objloader is here.
+~
+To the west, a large door is set in the wall.
+~
+human~
+water scholar~
+AB 0 DFJLPZ N 0
+50 0 5d5+5 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+mpsetskilled
+mppurge
+mpoload 4802
+mpoload 4803 in pouch
+stash pouch
+mpoload 4804
+stash mace
+north
+north
+mppurge
+mpmload 4805
+mpoload 4805
+stash helmet
+mpvaluerand 0 1 2
+if mobvalue(0) == 1
+mpoload 4806
+stash potion
+endif
+if mobvalue(0) == 2
+mpoload 4807
+stash potion
+endif
+mpgoto 1300
+~
+|
+V4 4807
+Rakgr kankoran scraggly~
+Rakgr~
+A scraggly kankoran skulks through the caves.
+~
+This kankoran\@s red fur is scraggly and untended.  He stumbles through
+the caves with a wild, hunted look about him.  His bloodshot eyes dart
+warily about his surroundings.  He sniffs the air from time to time, as if
+trying to catch a scent.  
+~
+kankoran~
+water scholar~
+AG 0 JZ E 0
+20 10 15d26+572 20d10+100 3d7+10 slash~
+claw~
+-3 -3 -3 3
+FHNV A
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 -1
+AHMV ABCDEFGIJKUV AD medium flesh
+V4 4808
+glitterer ringglitterer~
+the ringglitterer~
+A ringglitterer stands here, making the ring glitter.
+~
+~
+human~
+water scholar~
+AB 0 JLPZ N 0
+50 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+mpsetskilled
+mpoload 4810
+stash ring
+~
+>greet_prog 3~
+if objhere(4810)
+mpechoat $n You notice something glitter on the cave floor.
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+4800
+massive pile crystals obj_4800~
+a massive pile of crystals~
+The way south is blocked by a massive pile of crystals which fill the tunnel.~
+~
+unknown~
+trash TYa 0 0 P
+0 0 0 0 0
+0 0 0 0 P
+0
+E
+massive pile crystals~
+This heap of crystals might have formed over time or as the result of a
+partial cave-in, but either way it forms a solid barrier preventing further
+passage south.  
+~
+>rand_prog 100~
+mpflag exit south + fake
+~
+|
+V13
+4801
+crystal shaft long leg~
+a long shaft of crystal~
+A long, sharp shaft of solid crystal rests here.~
+~
+crystal~
+weapon S 0 0 AN
+exotic 3 9 2 0
+stab~
+25 80 250 2 P
+0
+V13
+4802
+pouch small leather~
+a small leather pouch~
+A small leather pouch sits among the mud.~
+~
+leather~
+container S 0 0 AL
+15 0 0 4 0
+5 10 0 2 P
+0
+V13
+4803
+ring gold ruby glittering~
+a ring set with a glittering ruby~
+A gold ring set with a glittering ruby sits here.~
+~
+ruby~
+armor 0 0 0 AB
+2 2 2 0 0
+10 10 617 0 P
+0
+A
+4 1
+A
+3 1
+V13
+4804
+mace iron heavy filth filthy~
+a filthy iron mace~
+A heavy iron mace, encrusted with filth, rests on the ground.~
+~
+iron~
+weapon 0 0 0 AN
+mace 4 5 1 0
+smash~
+15 150 90 2 P
+0
+V13
+4805
+helmet steel old battered~
+an old, battered helmet~
+An old, battered helmet rests on the ground.~
+~
+steel~
+armor 0 0 0 AE
+5 5 5 0 0
+20 50 1780 2 P
+0
+A
+13 5
+A
+19 1
+A
+18 1
+V13
+4806
+potion black liquid~
+a potion of black liquid~
+A potion made of thick black liquid sits here.~
+~
+glass~
+potion PS 0 0 AO
+10 'teleport' '' '' 'blindness'
+10 10 0 1 P
+0
+V13
+4807
+potion thick black~
+a potion of black liquid~
+A potion made of thick black liquid sits here.~
+~
+glass~
+potion PS 0 0 AO
+10 'pass door' '' '' ''
+10 10 410 1 P
+0
+V13
+4808
+whip leather unremarkable~
+a leather whip~
+An unremarkable leather whip lies here.~
+This whip is still exceedingly un-noteworthy.
+~
+leather~
+weapon S 0 F AN
+whip 3 7 3 0
+lash~
+20 40 300 1 P
+0
+A
+18 1
+E
+unremarkable~
+There really isn\@t anything of note about this whip.
+~
+E
+leather whip~
+This simple leather whip is of unremarkable craftsmanship.
+~
+V13
+4809
+skullcap cap leather~
+a leather skullcap~
+A leather skullcap lies here.~
+~
+leather~
+armor S 0 F AE
+6 6 6 0 0
+21 40 700 0 P
+0
+A
+13 4
+E
+leather skullcap cap~
+This skullcap is made of stiff, boiled leather and is re-inforced to
+protect the head from blows.  
+~
+V13
+4810
+ring var bandor scholar\@s symbol~
+a Var Bandor scholar\@s ring~
+A ring bearing the symbol of the Var Bandor scholar faction glitters here.~
+~
+gold~
+armor G 0 0 AB
+4 4 4 2 0
+25 10 765 0 P
+0
+A
+17 -6
+E
+ring~
+Inscribed on the inside of the ring is the name \@Thijardu\@.
+~
+V13
+4811
+scalp bloody kankoran rakgrscalp~
+a kankoran scalp~
+A bloody scalp, cut from a kankoran corpse, is here.~
+~
+flesh~
+trash QS 0 0 A
+0 0 0 0 0
+20 10 0 1 P
+0
+E
+scalp bloody kankoran~
+This bloody scalp was cut from a red-furred kankoran\@s head.  
+~
+V13
+4812
+enormous workbench~
+an enormous workbench~
+An enormous workbench stands high along the southern wall.~
+~
+unknown~
+container TYa 0 0 P
+0 0 0 0 0
+0 0 0 0 P
+0
+E
+enormous workbench~
+This worktable has been carved from the rocky wall of the laboratory, and
+though simple in design it is grandiose in scale.  It is covered in pieces
+of crystal and shale, and bears a single, giant rune carved into its center:
+
+   **************
+ ******************
+***              ***
+***    /\\    /\\  ***
+***  |/\\   \\/    ***
+***  .           ***
+***              ***
+ ******************
+   **************
+
+Perhaps if you were to {Wstudy{x the rune, you would learn more.
+~
+>verb_prog p study~
+if isghost($n)
+or isnpc($n)
+  mpnextinterp
+  break
+endif
+if compx() == runes
+or compx() == rune
+  mpechoaround $n $N stares intently at $I for a long moment.
+  // Check for stonecraft
+  if skill1152($n) <= 0
+    mpechoat $n You study the ancient rune for a long moment, but it is meaningless to you.
+  else
+    // Check for stoneshaper
+    if skill1157($n) <= 0
+      mpechoat $n You recognize the pattern as an ancient rune of earth, but grow swiftly weary of trying to understand it; the rune is too complex for your skills.
+    else
+      // Check for already learned the rune
+      if isbitset($n) == 290
+        mpechoat $n You study the rune of Tremor, but learn nothing new.
+      else
+        mpechoat $n You study the ancient rune for a long moment, and slowly a new understanding of runic magic fills you.
+        mpechoat $n You have learned the rune of Tremor!
+        mpbitset $n 290 1
+      endif
+    endif
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+#0
+
+
+
+#ROOMS
+#4800
+A Small Cave~
+This small cave, worn into the side of a mountain, is filled with dried
+leaves, dead branches, and various other bits of debris.  Several abandoned
+bird\@s nests line a naturally-formed shelf in the upper reaches of the cave.
+Toward the back of the cave, a crevice opens in the limestone floor.  The
+space below is concealed in darkness.  
+~
+~
+1
+0 1 12
+D1
+~
+~
+0 0 573
+D5
+The cave tunnel continues.
+~
+~
+0 0 4801
+W 5 0 0
+Z 5 5
+S
+#4801
+Under a Crevice~
+A small cavernous tunnel worn into the shale bedrock of the Brintor
+mountains leads to the south.  The tunnel is quite narrow; the walls slant
+together toward the floor of the cave, making progress somewhat tricky.  A
+crevice near the ceiling of the cave opens into a partially-lit area above. 
+~
+~
+1
+0 0 12
+D2
+The cave tunnel continues.
+~
+~
+0 0 4807
+D4
+The cave tunnel continues.
+~
+~
+0 0 4800
+W 5 0 0
+Z 5 5
+S
+#4802
+A Shale Tunnel~
+A small cavernous tunnel worn into the shale bedrock of the Brintor
+mountains leads to the south and west.  The black shale of the cave walls is
+uneven, and small sharp edges protrude everywhere along the dark tunnel.  A
+few sections of dried reptilian skin rest on the floor.  
+~
+~
+1
+0 9 12
+D2
+The cave tunnel continues.
+~
+~
+0 0 4808
+D3
+The cave tunnel continues.
+~
+~
+0 0 4804
+W 5 0 0
+Z 5 5
+S
+#4803
+A Shale Tunnel~
+A small cavernous tunnel worn into the shale bedrock of the Brintor
+mountains leads to the south and east.  The black shale of the cave walls is
+uneven, and small sharp edges protrude everywhere along the dark tunnel.  A
+few sections of dried reptilian skin rest on the floor.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4804
+D2
+The cave tunnel continues.
+~
+~
+0 0 4806
+W 5 0 0
+Z 5 5
+S
+#4804
+A Shale Tunnel~
+A small cavernous tunnel worn into the shale bedrock of the Brintor
+mountains leads to the east and west.  The black shale of the cave walls is
+uneven, and small sharp edges protrude everywhere along the dark tunnel.  A
+few sections of dried reptilian skin rest on the floor.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4802
+D3
+The cave tunnel continues.
+~
+~
+0 0 4803
+W 5 0 0
+Z 5 5
+S
+#4805
+A Dead-end Shale Tunnel~
+The black shale walls of the tunnel gradually converge to form an end in
+the tunnel.  The floor slopes slightly upwards toward the end of the narrow
+cave, and the walls are covered with small, sharp protrusions.  A faint
+rustling sound echoes softly through the caves.  
+~
+~
+1
+0 9 12
+D2
+The cave tunnel continues.
+~
+~
+0 0 4811
+W 5 0 0
+Z 5 5
+S
+#4806
+A Shale Tunnel~
+A small cavernous tunnel worn into the shale bedrock of the Brintor
+mountains leads to the north and south.  The black shale of the cave walls
+is uneven, and small sharp edges protrude everywhere along the dark tunnel. 
+A few sections of dried reptilian skin rest on the floor.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4803
+D2
+The cave tunnel continues.
+~
+~
+0 0 4813
+W 5 0 0
+Z 5 5
+S
+#4807
+A Shale Tunnel~
+A small cavernous tunnel worn into the shale bedrock of the Brintor
+mountains leads to the north and south.  The tunnel is quite narrow here,
+with walls that slant together toward the floor of the cave.  A few pieces
+of dry, scaly skin rest on the tunnel floor.  
+~
+~
+1
+0 1 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4801
+D2
+The cave tunnel continues.
+~
+~
+0 0 4815
+W 5 0 0
+Z 5 5
+S
+#4808
+A Shale Tunnel~
+A small cavernous tunnel worn into the shale bedrock of the Brintor
+mountains leads to the north and south, intersecting with a much narrower
+tunnel to the east.  The black shale of the cave walls is uneven, and small
+sharp edges protrude everywhere.  A few sections of dried reptilian skin
+rest on the floor.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4802
+D1
+The cave tunnel continues.
+~
+~
+0 0 4809
+D2
+The cave tunnel continues.
+~
+~
+0 0 4817
+W 5 0 0
+Z 5 5
+S
+#4809
+A Dead-end in a Shale Tunnel~
+The shale tunnel leads into a small, narrowing branch.  The black shale
+walls gradually converge, closing off the tunnel to the east.  The floor of
+the dark tunnel is littered with scraps of dry, scaly skin, and distant
+rustling noises echo softly through the cave.  
+~
+~
+1
+0 9 12
+D3
+The cave tunnel continues.
+~
+~
+0 0 4808
+W 5 0 0
+Z 5 5
+S
+#4810
+A Narrowing Shale Tunnel~
+A A small cavernous tunnel worn into the shale bedrock of the Brintor
+mountains leads west, gradually narrowing as it slopes slightly downward. 
+Eventually, the tunnel is too narrow for passage, although it continues on
+for some time into the darkness.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4811
+W 5 0 0
+Z 5 5
+S
+#4811
+A Shale Tunnel~
+A small cavernous tunnel worn into the shale bedrock of the Brintor
+mountains leads to the east and west, and a small, narrow branch leads to
+the north.  The black shale of the cave walls is uneven, and small sharp
+edges protrude everywhere along the dark tunnel.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4805
+D1
+The cave tunnel continues.
+~
+~
+0 0 4812
+D3
+The cave tunnel continues.
+~
+~
+0 0 4810
+W 5 0 0
+Z 5 5
+S
+#4812
+A Shale Tunnel~
+A small cavernous tunnel worn into the shale bedrock of the Brintor
+mountains leads to the north and south.  The black shale of the cave walls
+is uneven, and small sharp edges protrude everywhere along the dark tunnel. 
+A few sections of dried reptilian skin rest on the floor.  To the south, an
+intersecting tunnel slopes slowly downward.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4813
+D2
+The cave tunnel continues.
+~
+~
+0 0 4819
+D3
+The cave tunnel continues.
+~
+~
+0 0 4811
+W 5 0 0
+Z 5 5
+S
+#4813
+A Shale Tunnel~
+A small cavernous tunnel worn into the shale bedrock of the Brintor
+mountains leads to the east and west, with an intersecting tunnel leading
+north.  The black shale of the cave walls is uneven, and small sharp edges
+protrude everywhere along the dark tunnel.  A few sections of dried
+reptilian skin rest on the floor.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4806
+D1
+The cave tunnel continues.
+~
+~
+0 0 4814
+D3
+The cave tunnel continues.
+~
+~
+0 0 4812
+W 5 0 0
+Z 5 5
+S
+#4814
+A Shale Tunnel~
+A small cavernous tunnel worn into the shale bedrock of the Brintor
+mountains leads to the east and west, with an intersecting tunnel leading
+south.  The black shale of the cave walls is uneven, and small sharp edges
+protrude everywhere along the dark tunnel.  Shards of stone litter the
+tunnel floor.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4815
+D2
+The cave tunnel continues.
+~
+~
+0 0 4821
+D3
+The cave tunnel continues.
+~
+~
+0 0 4813
+W 5 0 0
+Z 5 5
+S
+#4815
+A Shale Tunnel~
+A small cavernous tunnel worn into the shale bedrock of the Brintor
+mountains leads to the east and west, intersecting with another tunnel
+leading to the north.  The shale tunnel is quite narrow, with walls that
+slant together toward the floor of the cave.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4807
+D1
+The cave tunnel continues.
+~
+~
+0 0 4816
+D3
+The cave tunnel continues.
+~
+~
+0 0 4814
+W 5 0 0
+Z 5 5
+S
+#4816
+A Shale Tunnel~
+A small cavernous tunnel worn into the shale bedrock of the Brintor
+mountains leads to the east and west.  The tunnel is quite narrow here, with
+walls that slant together toward the floor of the cave.  A few pieces of
+dry, scaly skin rest on the tunnel floor.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4817
+D3
+The cave tunnel continues.
+~
+~
+0 0 4815
+W 5 0 0
+Z 5 5
+S
+#4817
+A Shale Tunnel~
+A small cavernous tunnel worn into the shale bedrock of the Brintor
+mountains leads to the north and west.  The tunnel is quite narrow here,
+with walls that slant together toward the floor of the cave.  A few pieces
+of dry, scaly skin rest on the tunnel floor.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4808
+D3
+The cave tunnel continues.
+~
+~
+0 0 4816
+W 5 0 0
+Z 5 5
+S
+#4818
+A Curving Shale Tunnel~
+The narrow black walls of the shale tunnel curve to the east and south at
+this point, with the floor sloping gradually downward to the south.  Small,
+sharp protrusions project from the cave wall, and bits of shale litter the
+floor.  A slight rustle of movement seems to echo through the tunnels.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4819
+D2
+The cave tunnel continues.
+~
+~
+0 0 4823
+W 5 0 0
+Z 5 5
+S
+#4819
+A Curving Shale Tunnel~
+The narrow black walls of the shale tunnel curve to the north and west at
+this point, with the floor sloping gradually downward to the west.  Small,
+sharp protrusions project from the cave wall, and bits of shale litter the
+floor.  A slight rustle of movement seems to echo through the tunnels.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4812
+D3
+The cave tunnel continues.
+~
+~
+0 0 4818
+W 5 0 0
+Z 5 5
+S
+#4820
+A Steep Incline in the Shale Tunnel~
+The narrow black walls of the shale tunnel slope steeply downward at this
+point, creating a near-vertical slide that leads down into the darkness. 
+Sharp bits of shale litter the floor, and small sharp edges protrude from
+the cave walls.  To the south, the tunnel slopes upwards.  
+~
+~
+1
+0 9 12
+D2
+The cave tunnel continues.
+~
+~
+0 0 4825
+D5
+The cave tunnel continues.
+~
+~
+0 0 4855
+W 5 0 0
+Z 5 5
+S
+#4821
+A Narrow Shale Tunnel~
+The shale walls of the dark tunnels narrow at this point, and the tunnel
+begins to slant slightly to the east.  Small, sharp protrusions jut from the
+stone walls, and small pieces of shale litter the floor of the tunnel.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4814
+D2
+The cave tunnel continues.
+~
+~
+0 0 4826
+W 5 0 0
+Z 5 5
+S
+#4822
+A Sloping Shale Tunnel~
+The narrow tunnel of black shale slopes upward here, curving to the
+south, and sloping downward to the east.  The narrow floor is scattered with
+shards of black stone mingled with scraps of dried, scaly skin.  A faint
+scampering noise echoes throughout the cave.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4823
+D2
+The cave tunnel continues.
+~
+~
+0 0 4828
+W 5 0 0
+Z 5 5
+S
+#4823
+A Sloping Shale Tunnel~
+The narrow walls of the shale bedrock tunnel widen slightly at this
+point, opening to form a dark cave that slopes gradually downward to the
+east.  Narrow tunnels of similar shale branch off from the cave to the north
+and west, climbing gradually upwards.  The floor of the cave is littered
+with small pieces of dried, scaly skin.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4818
+D1
+The cave tunnel continues.
+~
+~
+0 0 4824
+D3
+The cave tunnel continues.
+~
+~
+0 0 4822
+W 5 0 0
+Z 5 5
+S
+#4824
+A Sloping Shale Tunnel~
+The black walls of the shale bedrock tunnel are somewhat broader here
+than in other parts of the cave system, and the tunnel widens slightly to
+the west, opening into a small cave.  The uneven stone floor slopes upwards
+toward the cave, and slants gradually downward to the east.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4825
+D3
+The cave tunnel continues.
+~
+~
+0 0 4823
+W 5 0 0
+Z 5 5
+S
+#4825
+A Sloping Shale Tunnel~
+The narrow black walls of the shale tunne curve sharply to the north and
+west at this point, with the floor sloping gradually upwards to the west. 
+To the north, the floor inclines steeply, descending into the darkness.  A
+smaller side tunnel branches to the south.  All throughout the tunnels,
+small bits of dried, scaly skin lie about.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4820
+D2
+The cave tunnel continues.
+~
+~
+0 0 4829
+D3
+The cave tunnel continues.
+~
+~
+0 0 4824
+W 5 0 0
+Z 5 5
+S
+#4826
+A Narrow Shale Tunnel~
+The dark shale tunnel is somewhat narrower here than in other places;
+small, sharp edges protrude from the black stone walls, and the floor is
+littered with shale gravel.  The tunnel continues north and south, and a
+branching tunnel leads to the east.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4821
+D1
+The cave tunnel continues.
+~
+~
+0 0 4827
+D2
+The cave tunnel continues.
+~
+~
+0 0 4830
+W 5 0 0
+Z 5 5
+S
+#4827
+A Small Passage~
+A small side passage, worn into the shale bedrock by centuries of
+waterflow, leads from the main passage to the west, and curves to the south.
+The walls and floor of the narrow tunnel still bear evidence of the long-ago
+stream in the form of trickling water.  
+~
+~
+1
+0 9 12
+D2
+The cave tunnel continues.
+~
+~
+0 0 4831
+D3
+The cave tunnel continues.
+~
+~
+0 0 4826
+W 5 0 0
+Z 5 5
+S
+#4828
+A Sloping Shale Tunnel~
+The narrow tunnel of black shale comes to and at this point, opening up
+into a narrow stone crevice further south.  Small, sharp protrusions project
+from the walls of bedrock, and the floor is littered with small shards of
+stone.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4822
+D2
+The tunnel opens into a narrow crevice.
+~
+~
+0 0 22088
+W 5 0 0
+Z 5 5
+S
+#4829
+A Dark Shale Tunnel~
+The small tunnel worn into the shale bedrock leads to the north and
+south, sloping slightly downward to the north.  A faint rustling noise
+echoes softly throughout the caves, and small bits of shale litter the stone
+floor.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4825
+D2
+The cave tunnel continues.
+~
+~
+0 0 4832
+W 5 0 0
+Z 5 5
+S
+#4830
+A Dark Shale Tunnel~
+The small tunnel worn into the shale bedrock leads to the north and
+south, sloping slightly downward to the south.  A faint rustling noise
+echoes softly throughout the caves, and small bits of shale litter the stone
+floor.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4826
+D2
+The cave tunnel continues.
+~
+~
+0 0 4833
+W 5 0 0
+Z 5 5
+S
+#4831
+A Small Passage~
+A small side passage, worn into the shale bedrock by centuries of
+waterflow, leads from the north to this dead end.  A small rivulet of water
+trickles from an opening in the ceiling, and runs down to be absorbed into
+the floor.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4827
+W 5 0 0
+Z 5 5
+S
+#4832
+A Dark Shale Tunnel~
+The narrow shale tunnel curves to the north and east here, sloping
+slightly downward to the east.  The black stone walls are covered with
+small, sharp protrusions, and the floor is littered with shards of shale.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4829
+D1
+The cave tunnel continues.
+~
+~
+0 0 4833
+W 5 0 0
+Z 5 5
+S
+#4833
+A Dark Shale Tunnel~
+The narrow shale tunnel curves to the north and west here, sloping
+slightly downward to the west.  The black stone walls are covered with
+small, sharp protrusions, and the floor is littered with shards of shale.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4830
+D3
+The cave tunnel continues.
+~
+~
+0 0 4832
+W 5 0 0
+Z 5 5
+S
+#4834
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel, and small pieces of
+scaly, dry skin are scattered about.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4835
+D2
+The cave tunnel continues.
+~
+~
+0 0 4838
+W 5 0 0
+Z 5 5
+S
+#4835
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel.  The cave continues to
+the south and west.  
+~
+~
+1
+0 9 12
+D2
+The cave tunnel continues.
+~
+~
+0 0 4839
+D3
+The cave tunnel continues.
+~
+~
+0 0 4834
+W 5 0 0
+Z 5 5
+S
+#4836
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel.  The gravel-filled tunnel
+curves to the east and south.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4837
+D2
+The cave tunnel continues.
+~
+~
+0 0 4841
+W 5 0 0
+Z 5 5
+S
+#4837
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel.  The cave continues east
+and west.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4838
+D2
+The cave tunnel continues.
+~
+~
+0 0 4842
+D3
+The cave tunnel continues.
+~
+~
+0 0 4836
+W 5 0 0
+Z 5 5
+S
+#4838
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel.  The cave curves to the
+north and west.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4834
+D3
+The cave tunnel continues.
+~
+~
+0 0 4837
+W 5 0 0
+Z 5 5
+S
+#4839
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel.  The cave continues east
+and north.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4835
+D1
+The cave tunnel continues.
+~
+~
+0 0 4840
+W 5 0 0
+Z 5 5
+S
+#4840
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel.  To the south, the cave
+slants sharply upwards.  
+~
+~
+1
+0 9 12
+D3
+The cave tunnel continues.
+~
+~
+0 0 4839
+D4
+The cave tunnel continues.
+~
+~
+0 0 4845
+W 5 0 0
+Z 5 5
+S
+#4841
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel.  The cave slants steeply
+upward to the south, and continues to the north.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4836
+D4
+The cave tunnel continues.
+~
+~
+0 0 4847
+W 5 0 0
+Z 5 5
+S
+#4842
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Small pieces of shale gravel are scattered about the ground, and bits of
+dry, scaly skin lay in small piles.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4837
+W 5 0 0
+Z 5 5
+S
+#4843
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel.  The cave turns to the
+east and south at this point.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4844
+D2
+The cave tunnel continues.
+~
+~
+0 0 4849
+W 5 0 0
+Z 5 5
+S
+#4844
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel.  The cave continues to
+the east and west.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4845
+D3
+The cave tunnel continues.
+~
+~
+0 0 4843
+W 5 0 0
+Z 5 5
+S
+#4845
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel.  A branching cave leads
+sharply downward here, and the gravel-filled tunnel leads west and south.  
+~
+~
+1
+0 9 12
+D2
+The cave tunnel continues.
+~
+~
+0 0 4850
+D3
+The cave tunnel continues.
+~
+~
+0 0 4844
+D5
+The cave tunnel continues.
+~
+~
+0 0 4840
+W 5 0 0
+Z 5 5
+S
+#4846
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel, and small pieces of scaly
+skin lie about.  The tunnel comes to a dead end at this point.  
+~
+~
+1
+0 9 12
+D2
+The cave tunnel continues.
+~
+~
+0 0 4853
+W 5 0 0
+Z 5 5
+S
+#4847
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel.  The tunnel curves to the
+east and south, and a side tunnel slants steeply downward.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4848
+D2
+The cave tunnel continues.
+~
+~
+0 0 4854
+D5
+The cave tunnel continues.
+~
+~
+0 0 4841
+W 5 0 0
+Z 5 5
+S
+#4848
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel.  The tunnel continues
+east and west.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4849
+D3
+The cave tunnel continues.
+~
+~
+0 0 4847
+W 5 0 0
+Z 5 5
+S
+#4849
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel.  The tunnel branches to
+the west and north, and continues to the south.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4843
+D2
+The cave tunnel continues.
+~
+~
+0 0 4855
+D3
+The cave tunnel continues.
+~
+~
+0 0 4848
+W 5 0 0
+Z 5 5
+S
+#4850
+A Subterranean Tunnel~
+You stand in a dark cave tunnel, the walls of which are formed of hard,
+brown clay.  The air seems slightly moist, and a dank odor fills the area. 
+The tunnel slants slightly upwards to the north, and the walls change from
+clay to black shale bedrock in that direction.  To the east and south, the
+subterranean tunnel continues.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4845
+D1
+The cave tunnel continues.
+~
+~
+0 0 4851
+D2
+The cave tunnel continues.
+~
+~
+0 0 4856
+W 5 0 0
+Z 5 5
+S
+#4851
+A Subterranean Tunnel~
+The dark subterranean tunnel continues to the east and west, its damp
+earthen walls curving to form a low ceiling overhead.  The air is dank and
+musty, and the clay of the floor is slightly moist.  A faint scurrying
+sounds throughout the caves.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4852
+D3
+The cave tunnel continues.
+~
+~
+0 0 4850
+W 5 0 0
+Z 5 5
+S
+#4852
+A Subterranean Tunnel~
+The dark subterranean tunnel continues to the south and west, its damp
+earthen walls curving to form a low ceiling overhead.  The air is dank and
+musty, and the clay of the floor is slightly moist.  A faint scurrying
+sounds throughout the caves.  
+~
+~
+1
+0 9 12
+D2
+The cave tunnel continues.
+~
+~
+0 0 4857
+D3
+The cave tunnel continues.
+~
+~
+0 0 4851
+W 5 0 0
+Z 5 5
+S
+#4853
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel, and small pieces of scaly
+skin lie about.  The tunnel continues north here.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4846
+D1
+The cave tunnel continues.
+~
+~
+0 0 4854
+W 5 0 0
+Z 5 5
+S
+#4854
+A Gravel-filled Tunnel~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel, and small pieces of
+dried, scaly skin are scattered about.  The tunnel continues north and west.
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4847
+D3
+The cave tunnel continues.
+~
+~
+0 0 4853
+W 5 0 0
+Z 5 5
+S
+#4855
+At the Bottom of a Steep Incline~
+You stand in a dark tunnel worn deep into the roots of the Brintor
+mountains.  The walls of the tunnel are formed of a black shale, and loose
+fragments of stone jut from the cave walls, ready to tumble to the floor. 
+Underfoot, layers of shale gravel line the tunnel.  To the south, a steep
+slide leads upwards, and the gravel-filled cave leads to the north.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4849
+D4
+The cave tunnel continues.
+~
+~
+0 0 4820
+W 5 0 0
+Z 5 5
+S
+#4856
+A Subterranean Tunnel~
+The subterranean tunnel continues to the north and south, burrowing
+through the hard, brown clay earth.  The air is musty, filled with a dank
+odor, and the floor of the cave tunnel is slightly soft and moist.  To the
+west, a side tunnel slopes upward.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4850
+D2
+The cave tunnel continues.
+~
+~
+0 0 4862
+D3
+The cave tunnel continues.
+~
+~
+0 0 4849
+W 5 0 0
+Z 5 5
+S
+#4857
+A Subterranean Tunnel~
+The dark subterranean tunnel slopes steeply downward here, the damp clay
+floor sloping into the shadows below.  The tunnel continues to the north,
+the hard clay walls curving to form a low ceiling overhead.  The air is dank
+and musty, and a faint scurrying sounds throughout the caves.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4852
+D5
+The cave tunnel continues.
+~
+~
+0 0 4859
+W 5 0 0
+Z 5 5
+S
+#4858
+A Subterranean Tunnel~
+The dark subterranean tunnel continues to the east and south, its damp
+earthen walls curving to form a low ceiling overhead.  The air is dank and
+musty, and the clay of the floor is slightly moist.  A faint scurrying
+sounds throughout the caves.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4859
+D2
+The cave tunnel continues.
+~
+~
+0 0 4861
+W 5 0 0
+Z 5 5
+S
+#4859
+A Subterranean Tunnel~
+The dark subterranean tunnel slopes steeply upward to the north, the damp
+clay floor rising into the shadows above.  The hard clay tunnel continues to
+the east and west, its moist earthen walls curving together overhead to form
+a low ceiling.  The air is dank and musty, and a faint scurrying sounds
+throughout the caves.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4860
+D3
+The cave tunnel continues.
+~
+~
+0 0 4858
+D4
+The cave tunnel continues.
+~
+~
+0 0 4857
+W 5 0 0
+Z 5 5
+S
+#4860
+A Subterranean Tunnel~
+The dark subterranean tunnel continues to the east and west, its damp
+earthen walls curving to form a low ceiling overhead.  The air is dank and
+musty, and the clay of the floor is slightly moist.  A faint scurrying
+sounds throughout the caves.  
+~
+~
+1
+0 9 12
+D3
+The cave tunnel continues.
+~
+~
+0 0 4859
+W 5 0 0
+Z 5 5
+S
+#4861
+A Subterranean Tunnel~
+The dark subterranean tunnel continues to the north and south, its damp
+earthen walls curving to form a low ceiling overhead.  The air is dank and
+musty, and the clay of the floor is slightly moist.  A faint scurrying
+sounds throughout the caves.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4858
+D2
+The cave tunnel continues.
+~
+~
+0 0 4863
+W 5 0 0
+Z 5 5
+S
+#4862
+A Subterranean Tunnel~
+The dark subterranean tunnel continues to the north and east, its damp
+earthen walls curving to form a low ceiling overhead.  The air is dank and
+musty, and the clay of the floor is slightly moist.  A faint scurrying
+sounds throughout the caves.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4856
+D1
+The cave tunnel continues.
+~
+~
+0 0 4863
+W 5 0 0
+Z 5 5
+S
+#4863
+A Subterranean Tunnel~
+The dark subterranean tunnel continues to the north and east, its damp
+earthen walls curving to form a low ceiling overhead.  The air is dank and
+musty, and the clay of the floor is slightly moist.  To the west, a small
+side tunnel branches into the darkness.  A faint scurrying sounds throughout
+the caves.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4861
+D1
+The cave tunnel continues.
+~
+~
+0 0 4864
+D3
+The cave tunnel continues.
+~
+~
+0 0 4862
+W 5 0 0
+Z 5 5
+S
+#4864
+A Subterranean Tunnel~
+The dark subterranean tunnel continues to the east and west, its damp
+earthen walls curving to form a low ceiling overhead.  The air is dank and
+musty, and a faint odor of carrion wafts throughout the tunnel.  A small
+side passage leads steeply downward into the darkness below.  
+~
+~
+1
+0 8 12
+D2
+The cave tunnel continues.
+~
+~
+0 0 4865
+D3
+The cave tunnel continues.
+~
+~
+0 0 4863
+D5
+A large reptile appears to have made its lair below.
+~
+~
+0 0 4883
+W 5 0 0
+Z 5 5
+S
+#4865
+A Subterranean Tunnel~
+The dark subterranean tunnel continues to the east and west, its damp
+earthen walls curving to form a low ceiling overhead.  The air is dank and
+musty, and the clay of the floor is slightly moist.  A faint scurrying
+sounds throughout the caves.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4864
+D2
+The cave tunnel continues.
+~
+~
+0 0 4866
+W 5 0 0
+Z 5 5
+S
+#4866
+A Subterranean Tunnel~
+The dark subterranean tunnel curves to the north and east, and a small
+side tunnel branches to the south.  The hard clay of the cave walls is much
+darker in this section of tunnel than to the north, and the air seems more
+dank and moist to the north and east.  To the east, the clay of the cave
+floor is marked with deep furrows, seemingly made by a set of large claws.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4865
+D1
+The cave tunnel continues.
+~
+~
+0 0 4867
+D2
+The cave tunnel continues.
+~
+~
+0 0 4870
+W 5 0 0
+Z 5 5
+S
+#4867
+A Subterranean Tunnel~
+The dark subterranean tunnel leads to the east and west.  The hard, dark
+clay of the cave walls curves overhead to form a low ceiling.  The air in
+the tunnel is dank and musty, and the damp clay of the floor has been marred
+by the passage of a large, clawed animal.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4868
+D3
+The cave tunnel continues.
+~
+~
+0 0 4866
+W 5 0 0
+Z 5 5
+S
+#4868
+A Subterranean Tunnel~
+The dark subterranean tunnel leads to the west, and curves sharply
+downward to the east.  The hard, dark clay of the cave walls curves overhead
+to form a low ceiling.  The air in the tunnel is dank and musty, and the
+damp clay of the floor has been marred by the passage of a large, clawed
+animal.  
+~
+~
+1
+0 9 12
+D3
+~
+~
+0 0 4867
+D5
+~
+~
+0 0 4871
+W 5 0 0
+Z 5 5
+S
+#4869
+A Dark Subterranean Tunnel~
+The subterranean tunnel continues to the east and west, continuing into a
+thick, unnatural darkness.  The dim shadows that cloud this section of cave
+seem to shift subtly before your eyes, and obscure the tunnel beyond a very
+short distance.  
+~
+~
+1
+0 9 12
+D1
+The cave tunnel continues.
+~
+~
+0 0 4870
+D5
+~
+~
+0 0 3352
+W 5 0 0
+Z 5 5
+S
+#4870
+A Dark Subterranean Tunnel~
+The subterranean tunnel curves from the north to the west, continuing
+into a thick, unnatural darkness.  The dim shadows that cloud this section
+of cave seem to shift subtly before your eyes, and obscure the tunnel beyond
+a very short distance.  
+~
+~
+1
+0 9 12
+D0
+The cave tunnel continues.
+~
+~
+0 0 4866
+D3
+The cave tunnel continues.
+~
+~
+0 0 4869
+W 5 0 0
+Z 5 5
+S
+#4871
+A Subterranean Tunnel~
+The dark subterranean tunnel leads to the east, and curves sharply upward
+to the west.  The hard, dark clay of the cave walls curves overhead to form
+a low ceiling.  The air in the tunnel is dank and musty, and the damp clay
+of the floor has been marred by the passage of a large, clawed animal.  
+~
+~
+1
+0 9 12
+D1
+~
+~
+0 0 4872
+D4
+~
+~
+0 0 4868
+W 5 0 0
+Z 5 5
+S
+#4872
+A Subterranean Tunnel~
+The dark subterranean tunnel leads to the south and west.  The hard, dark
+clay of the cave walls curves overhead to form a low ceiling.  The air in
+the tunnel is dank and musty, and the damp clay of the floor has been marred
+by the passage of a large, clawed animal. 
+~
+~
+1
+0 9 12
+D2
+~
+~
+0 0 4873
+D3
+~
+~
+0 0 4871
+W 5 0 0
+Z 5 5
+S
+#4873
+A Subterranean Tunnel~
+The dark subterranean tunnel leads to the north, and curves sharply
+downward to the east.  The hard, dark clay of the cave walls curves overhead
+to form a low ceiling.  The air in the tunnel is dank and musty, and the
+damp clay of the floor has been marred by the passage of a large, clawed
+animal.  
+~
+~
+1
+0 9 12
+D0
+~
+~
+0 0 4872
+D5
+~
+~
+0 0 4875
+W 5 0 0
+Z 5 5
+S
+#4874
+A Rough Earthen Tunnel~
+The walls of the rough earthen tunnel continue, with jagged pieces of
+stone protruding from the sides.  The floor is uneven, and appears to have
+been chiseled in places.  The rough tunnel continues to the east and south. 
+~
+~
+1
+0 9 12
+D1
+~
+~
+0 0 4875
+D2
+~
+~
+0 0 4877
+T 7
+W 5 0 0
+Z 5 5
+S
+#4875
+A Rough Earthen Tunnel~
+The walls of the rough earthen tunnel continue, with jagged pieces of
+stone protruding from the sides.  The floor is uneven, and appears to have
+been chiseled in places.  The rough tunnel continues to the north and east,
+and a side tunnel leads upwards.  
+~
+~
+1
+0 9 12
+D1
+~
+~
+0 0 4876
+D3
+~
+~
+0 0 4874
+D4
+~
+~
+0 0 4873
+T 7
+W 5 0 0
+Z 5 5
+S
+#4876
+A Crystal-filled Cave~
+The subterranean tunnel curves to the south and west at this point, the
+cave walls formed of a dark brown sedimentary stone.  Sprouting from this
+stone are dozens of naturally-formed crystals, whose intricate shapes line
+the walls in shimmering patterns.  Broken shards and whole shafts of crystal
+lay about the floor of the cave, the smaller pieces filling the various
+cracks and variations in the stone floor.  
+~
+~
+1
+0 9 12
+D2
+~
+~
+0 0 4879
+D3
+~
+~
+0 0 4875
+T 86
+W 5 0 0
+Z 5 5
+S
+#4877
+A Rough Earthen Tunnel~
+The walls of the rough earthen tunnel continue, with jagged pieces of
+stone protruding from the sides.  The floor is uneven, and appears to have
+been chiseled in places.  The rough tunnel continues to the north and south.
+~
+~
+1
+0 9 12
+D0
+~
+~
+0 0 4874
+D2
+~
+~
+0 0 4882
+T 7
+W 5 0 0
+Z 5 5
+S
+#4878
+The Rock Lizard Lair~
+The cave lair continues from the south, ending in a rounded wall to the
+north.  The mud of the cave floor is marked by large reptilian tracks,
+littered with broken and yellowing bones.  An animal smell is heavy in the
+air of the closed-in cave.  
+~
+~
+1
+0 1 12
+D2
+The rock lizard\@s lair continues.
+~
+~
+0 0 4883
+W 5 0 0
+Z 5 5
+S
+#4879
+A Crystal-filled Cave~
+The subterranean tunnel curves to the north and east at this point, the
+cave walls formed of a dark brown sedimentary stone.  Sprouting from this
+stone are dozens of naturally-formed crystals, whose intricate shapes line
+the walls in shimmering patterns.  Broken shards and whole shafts of crystal
+lay about the floor of the cave, the smaller pieces filling the various
+cracks and variations in the stone floor. 
+~
+~
+1
+0 9 12
+D0
+~
+~
+0 0 4876
+D1
+~
+~
+0 0 4880
+T 86
+W 5 0 0
+Z 5 5
+S
+#4880
+A Crystal-filled Cave~
+The subterranean tunnel comes to an abrupt end at this point, the cave
+walls formed of a dark brown sedimentary stone.  Sprouting from this stone
+are dozens of naturally-formed crystals, whose intricate shapes line the
+walls in shimmering patterns.  Broken shards and whole shafts of crystal lay
+about the floor of the cave, the smaller pieces filling the various cracks
+and variations in the stone floor.  
+~
+~
+1
+0 9 12
+D2
+~
+~
+131072 0 4897
+D3
+~
+~
+0 0 4879
+T 86
+W 5 0 0
+Z 5 5
+S
+#4881
+A Rough Earthen Tunnel~
+The walls of the rough earthen tunnel continue, with jagged pieces of
+stone protruding from the sides.  The floor is uneven, and appears to have
+been chiseled in places.  The rough tunnel continues to the east and south. 
+~
+~
+1
+0 9 12
+D1
+~
+~
+0 0 4882
+D2
+~
+~
+0 0 4884
+T 7
+W 5 0 0
+Z 5 5
+S
+#4882
+A Rough Earthen Tunnel~
+The walls of the rough earthen tunnel continue, with jagged pieces of
+stone protruding from the sides.  The floor is uneven, and appears to have
+been chiseled in places.  The rough tunnel continues to the north and west. 
+~
+~
+1
+0 9 12
+D0
+~
+~
+0 0 4877
+D3
+~
+~
+0 0 4881
+T 7
+W 5 0 0
+Z 5 5
+S
+#4883
+The Rock Lizard Lair~
+A small passage leads from the main tunnel down into this large side
+cave.  The mud of the cave floor is marked by large reptilian tracks,
+littered with broken and yellowing bones.  An animal smell is heavy in the
+air of the closed-in cave.  
+~
+~
+1
+0 1 12
+D0
+The rock lizard\@s lair continues.
+~
+~
+0 0 4878
+D2
+The rock lizard\@s lair continues.
+~
+~
+0 0 4885
+D4
+~
+~
+0 0 4864
+W 5 0 0
+Z 5 5
+S
+#4884
+A Rough Earthen Tunnel~
+The walls of the rough earthen tunnel continue, with jagged pieces of
+stone protruding from the sides.  The floor is uneven, and appears to have
+been chiseled in places.  The rough tunnel continues to the north and south.
+~
+~
+1
+0 9 12
+D0
+~
+~
+0 0 4881
+D2
+~
+~
+0 0 4887
+T 7
+W 5 0 0
+Z 5 5
+S
+#4885
+The Rock Lizard Lair~
+The cave lair continues from the north, ending in a rounded wall to the
+south.  The mud of the cave floor is marked by large reptilian tracks,
+littered with broken and yellowing bones.  An animal smell is heavy in the
+air of the closed-in cave.  
+~
+~
+1
+0 1 12
+D0
+The rock lizard\@s lair continues.
+~
+~
+0 0 4883
+W 5 0 0
+Z 5 5
+S
+#4886
+A Rough Earthen Tunnel~
+The rough earthen walls of the cave tunnel continue here, with jagged
+pieces of stone protruding from the sides.  The floor is uneven, and appears
+to have been chiseled in places.  The rough tunnel continues to the east,
+and comes to a dead end to the west.  
+~
+~
+1
+0 9 12
+D1
+~
+~
+0 0 4887
+T 7
+W 5 0 0
+Z 5 5
+S
+#4887
+A Rough Earthen Tunnel~
+The walls of the cave tunnel become rough at this point, with jagged
+pieces of stone protruding from the sides.  The floor is uneven, and appears
+to have been chiseled in places.  The rough tunnel continues to the north
+and west, and a dank side tunnel leads upward.  
+~
+~
+1
+0 9 12
+D0
+~
+~
+0 0 4884
+D3
+~
+~
+0 0 4886
+D4
+~
+~
+0 0 4888
+T 7
+W 5 0 0
+Z 5 5
+S
+#4888
+A Hard-packed Clay Tunnel~
+The hard-packed clay walls of the tunnel continue to the south.  The dark
+earth is damp, and every so often a small piece of clay falls from its place
+on the wall.  The floor of the tunnel is packed as hard as stone, despite
+the thin layer of muddy earth on top.  At the north end of the tunnel, the
+ground slopes sharply downward into darkness.  
+~
+~
+1
+0 9 12
+D2
+~
+~
+0 0 4889
+D5
+~
+~
+0 0 4887
+W 5 0 0
+Z 5 5
+S
+#4889
+A Hard-Packed Clay Tunnel~
+The hard-packed clay walls of the tunnel continue to the north and east. 
+The dark earth is damp, and every so often a small piece of clay falls from
+its place on the wall.  The floor of the tunnel is packed as hard as stone,
+despite the thin layer of muddy earth on top.  
+~
+~
+1
+0 9 12
+D0
+~
+~
+0 0 4888
+D1
+~
+~
+0 0 4890
+W 5 0 0
+Z 5 5
+S
+#4890
+A Hard-Packed Clay Tunnel~
+The hard-packed clay walls of the tunnel continue to the south and west. 
+The dark earth is damp, and every so often a small piece of clay falls from
+its place on the wall.  The floor of the tunnel is packed as hard as stone,
+despite the thin layer of muddy earth on top.  
+~
+~
+1
+0 9 12
+D2
+~
+~
+0 0 4891
+D3
+~
+~
+0 0 4889
+W 5 0 0
+Z 5 5
+S
+#4891
+A Hard-Packed Clay Tunnel~
+The hard-packed clay walls of the tunnel continue to the north and east. 
+The dark earth is damp, and every so often a small piece of clay falls from
+its place on the wall.  The floor of the tunnel is packed as hard as stone,
+despite the thin layer of muddy earth on top.  
+~
+~
+1
+0 9 12
+D0
+~
+~
+0 0 4890
+D1
+~
+~
+0 0 4892
+W 5 0 0
+Z 5 5
+S
+#4892
+A Hard-Packed Clay Tunnel~
+A dark earthen tunnel leads to the south and west.  The hard-packed clay
+walls are slightly damp, and the air is cold and musty.  To the east, the
+cave tunnel slopes sharply upward, leading up into the darkness.  
+~
+~
+1
+0 9 12
+D2
+~
+~
+0 0 4895
+D3
+~
+~
+0 0 4891
+D4
+~
+~
+0 0 4893
+W 5 0 0
+Z 5 5
+S
+#4893
+A Damp Passage~
+The ill-maintained cobbles and masonry leading in from the east break
+down in a pile of loosely-stacked stones and bricks.  To the west, a tunnel
+of hard-packed clay leads steeply downward into darkness.  The air of the
+underground passage is moist, and filled with an unpleasant sour odor.  
+~
+~
+1
+0 9 12
+D1
+~
+~
+0 0 4894
+D5
+~
+~
+0 0 4892
+W 5 0 0
+Z 5 5
+S
+#4894
+A Damp Passage~
+The cobbles of this passageway are in bad repair, many broken or missing.
+The brick walls sag slightly inward, and in places the masonry has
+deteriorated completely.  The walls are thick with condensed moisture, and
+the air is filled with an unpleasant sour odor.  The passageway ends in a
+blank wall.  
+~
+~
+1
+0 9 12
+D3
+~
+~
+0 0 4893
+W 5 0 0
+Z 5 5
+S
+#4895
+A Hard-Packed Clay Tunnel~
+The hard-packed clay walls of the tunnel continue to the north and west. 
+The dark earth is damp, and every so often a small piece of clay falls from
+its place on the wall.  The floor of the tunnel is packed as hard as stone,
+despite the thin layer of muddy earth on top.  
+~
+~
+1
+0 9 12
+D0
+~
+~
+0 0 4892
+D3
+~
+~
+0 0 4896
+W 5 0 0
+Z 5 5
+S
+#4896
+A Hard-Packed Clay Tunnel~
+The hard-packed clay walls of the tunnel continue to the east.  The dark
+earth is damp, and every so often a small piece of clay falls from its place
+on the wall.  The floor of the tunnel is packed as hard as stone, despite
+the thin layer of muddy earth on top.  The tunnel comes to an end here.  
+~
+~
+1
+0 9 12
+D1
+~
+~
+0 0 4895
+W 5 0 0
+Z 5 5
+S
+#4897
+A Ruined Underground Workshop~
+Though it has long since fallen into ruin, this place was clearly once a
+magical workshop of some kind.  Fragments of stone etched with broken runes
+litter the floor at the feet of a worktable, on which several chipped
+crystals lay scattered.  Scrollcases are piled up in one corner of the room,
+whatever scrolls they have may once contained long since rotted away.  The
+proportions are massive, indicating that whatever researchers used this
+laboratory were far larger than human.  
+~
+~
+2
+0 7 12
+D0
+~
+~
+0 0 4880
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 4880 2 131072
+M 0 4803 20 4801 1
+M 0 4801 20 4802 1
+M 0 4807 1 4803 1
+G 0 4811 0
+E 0 4809 0 6
+E 0 4808 0 16
+M 0 4801 20 4804 1
+M 0 4801 20 4805 1
+M 0 4802 30 4805 1
+M 0 4801 20 4806 1
+M 0 4803 20 4807 1
+M 0 4801 20 4808 2
+M 0 4801 20 4808 2
+M 0 4801 20 4810 1
+M 0 4801 20 4811 2
+M 0 4801 20 4811 2
+M 0 4802 30 4811 1
+M 0 4802 30 4812 2
+M 0 4802 30 4812 2
+M 0 4801 20 4813 1
+M 0 4801 20 4813 1
+M 0 4802 30 4814 2
+M 0 4802 30 4814 2
+M 0 4801 20 4815 1
+M 0 4802 30 4815 2
+M 0 4802 30 4815 2
+M 0 4803 20 4815 1
+M 0 4802 30 4816 1
+M 0 4801 20 4817 1
+M 0 4802 30 4817 2
+M 0 4802 30 4817 2
+M 0 4802 30 4818 1
+M 0 4801 20 4819 1
+M 0 4802 30 4819 2
+M 0 4802 30 4819 2
+M 0 4803 20 4820 1
+M 0 4801 20 4821 1
+M 0 4802 30 4821 1
+M 0 4803 20 4821 1
+M 0 4801 20 4823 1
+M 0 4802 30 4823 1
+M 0 4801 20 4824 1
+M 0 4802 30 4824 2
+M 0 4802 30 4824 2
+M 0 4803 20 4824 1
+M 0 4801 20 4825 1
+M 0 4802 30 4825 2
+M 0 4802 30 4825 2
+M 0 4803 20 4825 1
+M 0 4801 20 4826 1
+M 0 4802 30 4826 1
+M 0 4801 20 4827 1
+M 0 4802 30 4827 1
+M 0 4802 30 4828 1
+M 0 4801 20 4829 1
+M 0 4802 30 4829 2
+M 0 4802 30 4829 2
+M 0 4803 20 4829 1
+M 0 4801 20 4830 1
+M 0 4802 30 4830 1
+M 0 4803 20 4830 1
+M 0 4802 30 4831 2
+M 0 4802 30 4831 2
+M 0 4801 20 4832 1
+M 0 4802 30 4832 1
+M 0 4803 20 4832 1
+M 0 4801 20 4833 1
+M 0 4802 30 4833 1
+M 0 4803 20 4833 1
+M 0 4803 20 4843 1
+M 0 4803 20 4844 1
+M 0 4803 20 4846 1
+M 0 4803 20 4847 1
+M 0 4803 20 4848 1
+M 0 4803 20 4849 2
+M 0 4803 20 4849 2
+M 0 4803 20 4853 1
+M 0 4803 20 4854 1
+M 0 4803 20 4855 1
+M 0 4808 1 4870 1
+M 0 4804 1 4880 1
+O 0 4800 0 4880
+M 0 4806 1 4885 1
+O 0 4812 0 4897
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

@@ -1,0 +1,4818 @@
+#AREADATA
+Name Outskirts of Earendam~
+Builders Iandir Saedacal Brazen~
+VNUMs 5800 5899
+Credits [ ALL ] Iandir    Outskirts of Earendam~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 0 8
+Weave 5 0 0
+Shades 5 5
+Stone 85
+End
+
+
+
+#MOBILES
+V4 5800
+errand boy errandboy bot mob_5800~
+the earout.are errand boy~
+An errand boy is here doing everyone else\@s job for them.
+~
+~
+human~
+water scholar~
+AL 0 LP N 0
+52 26 35d107+1167 52d10+100 6d9+26 none~
+~
+-22 -22 -22 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>time_prog 0~
+mpat 5800 get all
+mpset char self platinum 0
+mpset char self gold 0
+mpset char self silver 0
+mpset char self copper 0
+~
+>rand_prog 1~
+mpgetroomvnum 8
+mpvaluerand 6 5816 5876
+if value(6) == 5865
+or value(6) == 5863
+or value(6) == 5861
+or value(6) == 5859
+or value(6) == 5857
+or value(6) == 5855
+or value(6) == 5853
+or value(6) == 5851
+or value(6) == 5849
+or value(6) == 5847
+or value(6) == 5828
+or value(6) == 5830
+or value(6) == 5832
+or value(6) == 5834
+or value(6) == 5836
+or value(6) == 5838
+or value(6) == 5840
+or value(6) == 5842
+or value(6) == 5844
+or value(6) == 5846
+else
+  mpgoto $6
+  mpvaluerand 7 1 2
+  if objhere(5826)
+  else
+    mpoload 5826 in room
+    mpset obj obj_5826 objvalue 0 $7
+  endif
+endif
+mpgoto $8
+~
+>verb_prog p take~
+if isimmort($n)
+or isnpc($n)
+  mpnextinterp
+else
+  if compstr(2) == chunk
+  or compstr(2) == large
+  or compstr(2) == stone
+  or compstr(2) == rough-hewn
+  or compstr(2) == granite
+  or compstr(2) == all
+    if compstr(3) == cart
+    or compstr(3) == pushcart
+    or compstr(3) == wooden
+    or compstr(3) == wooden-wheeled
+    or compstr(3) == sturdy
+      mpechoat $n You can\@t lift the granite out of there, it\@s way too heavy.
+    else
+      mpnextinterp
+    endif
+  else
+    mpnextinterp
+  endif
+endif
+~
+>verb_prog p get~
+if isimmort($n)
+or isnpc($n)
+  mpnextinterp
+else
+  if compstr(2) == chunk
+  or compstr(2) == large
+  or compstr(2) == stone
+  or compstr(2) == rough-hewn
+  or compstr(2) == granite
+  or compstr(2) == all
+    if compstr(3) == cart
+    or compstr(3) == pushcart
+    or compstr(3) == wooden
+    or compstr(3) == wooden-wheeled
+    or compstr(3) == sturdy
+      mpechoat $n You can\@t lift the granite out of there, it\@s way too heavy.
+    else
+      mpnextinterp
+    endif
+  else
+    mpnextinterp
+  endif
+endif
+~
+>verb_prog p load~
+if compstr(2) == chunk
+or compstr(2) == granite
+or compstr(2) == stone
+or compstr(2) == rough-hewn
+or compstr(2) == large
+  if value(3) > 4
+    mpechoat $n You can\@t manage to fit any more into the pushcart.
+    mpechoaround $n After a bit of futile effort, $N decides they can\@t load any more stone into the pushcart.
+    mplag $n 2
+  else
+    if objhere(5831)
+      mpvalueup 3
+      mpset obj obj_5831 wear 1
+      get obj_5831
+      put obj_5831 obj_5830
+      mpechoat $n Using the front edge of the cart for leverage, you manage to load the large chunk of granite.
+      mpechoaround $n Using the front edge of the cart for leverage, $N manages to load the large chunk of granite.
+      mplag $n 2
+    else
+      mpechoat $n You don\@t see that here.
+    endif
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p donequarry~
+if isimmort($n)
+or isnpc($n)
+  mpgoto 5800
+endif
+~
+>entry_prog 100~
+if mobhere(5801)
+  mpforce mob_5801 say Oh good, you\@re back!
+  mpforce mob_5801 say Just {Wunload{Y the {Wcart{Y so I can get at the stone you\@ve collected.{x
+endif
+~
+>time_prog 6~
+mpgetroomvnum 8
+loop 5816 to 5827
+  mpgoto $v1
+  if objhere(5823)
+  else
+    if rand(10)
+      mpecho As the sun rises, the discoloration of the wall from dirt and grime becomes evident.
+      mpoload 5823 in room
+    endif
+  endif
+endloop
+loop 5866 to 5876
+  mpgoto $v1
+  if objhere(5823)
+  else
+    if rand(10)
+      mpecho As the sun rises, the discoloration of the wall from dirt and grime becomes evident.
+      mpoload 5823 in room
+    endif
+  endif
+endloop
+mpgoto $8
+~
+>verb_prog p push~
+if compstr(2) == cart
+or compstr(2) == pushcart
+or compstr(2) == sturdy
+or compstr(2) == wooden
+or compstr(2) == wooden-wheeled
+  if objhere(5830)
+    if compstr(3) == 
+      mpechoat $n Which direction did you want to push the cart?
+    else
+      mpfocus $n
+      mpget char $f str 0
+      mpvalueset 1 0
+      if sector($f) == mountain
+        mpvalueup 1 10
+      endif
+      if sector($f) == hills
+        mpvalueup 1 7
+      endif
+      if sector($f) == forest
+        mpvalueup 1 3
+      endif
+      if sector($f) == underground
+        mpvalueup 1 5
+      endif
+      mpmath 2 $0 - $1
+      if value(2) < 10
+        if rand(60)
+          mpechoat $f You try to push the cart with all your might, but the terrain proves too difficult to maneuver through.
+          mpechoat $n The pushcart does not move.
+          mpechoaround $f $F leans on the pushcart with all $s might, but it refuses to move.
+          mplag $f 3
+          break
+        else
+          mpechoat $f You struggle to push the cart through the difficult terrain, but it finally moves to your bidding.
+          mpechoaround $f $F grunts with effort to push the cart slowly through the difficult terrain.
+          mplag $f 2
+        endif
+      else
+        if value(2) < 13
+          if rand(40)
+            mpechoat $f You try to push the cart with all your might, but the terrain proves too difficult to maneuver through.
+            mpechoat $n The pushcart does not move.
+            mpechoaround $f $F leans on the pushcart with all $s might, but it refuses to move.
+            mplag $f 3
+            break
+          else
+            if rand(50)
+              mpechoat $f You manage to push the cart a little, but it then rolls back to where you started.
+              mpechoaround $f The cart rocks back and forth a few times as $F tries to push it, but $e makes no progress.
+              mplag $f 3
+              break
+            else
+              mpechoat $f with a little difficulty you manage to push the cart where you direct it to go.
+              mpechoaround $f $F slowly pushes the cart, obviously exerting $mself.
+              mplag $f 2
+            endif
+          endif
+        else
+          if value(2) < 19
+            if rand(40)
+              mpechoat $f You try to push the cart with all your might, but the terrain proves too difficult to maneuver through.
+              mpechoat $n The pushcart does not move.
+              mpechoaround $f $F leans on the pushcart with all $s might, but it refuses to move.
+              mplag $f 3
+              break
+            else
+              if rand(30)
+                mpechoat $f The cart moves stubbornly seeming to resist your efforts to push it.
+                mpechoaround $n $F struggles a bit to move the cart in the direction $e wants.
+                mplag $f 2
+              else
+                mpechoat $n The cart moves along smoothly as you push it.
+                mpechoaround $f Rolling the cart with relative ease, $F quickly moves through the terrain.
+                mplag $f 1
+              endif
+            endif
+          else
+            mpechoat $f You grab the cart with both hands and it responds immediately to your direction.
+            mpechoaround $f $F moves the cart with an ease, as if $e had done it a hundred times before.
+            mplag $f 1
+          endif
+        endif
+      endif
+      mpset obj obj_5830 wear 1
+      if compstr(3) == north
+      or compstr(3) == n
+        mpforce $f north
+        get obj_5830
+        north
+        drop obj_5830
+        mpset obj obj_5830 wear 0
+      endif
+      if compstr(3) == east
+      or compstr(3) == e
+        mpforce $f east
+        get obj_5830
+        east
+        drop obj_5830
+        mpset obj obj_5830 wear 0
+      endif
+      if compstr(3) == south
+      or compstr(3) == s
+        mpforce $f south
+        get obj_5830
+        south
+        drop obj_5830
+        mpset obj obj_5830 wear 0
+      endif
+      if compstr(3) == west
+      or compstr(3) == w
+        mpforce $f west
+        get obj_5830
+        west
+        drop obj_5830
+        mpset obj obj_5830 wear 0
+      endif
+      if compstr(3) == up
+      or compstr(3) == u
+        mpforce $f up
+        get obj_5830
+        up
+        drop obj_5830
+        mpset obj obj_5830 wear 0
+      endif
+      if compstr(3) == down
+      or compstr(3) == d
+        mpforce $f down
+        get obj_5830
+        down
+        drop obj_5830
+        mpset obj obj_5830 wear 0
+      endif
+    endif
+  else
+    mpechoat $n You don\@t see that here.
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V4 5801
+Carl foreman man worker mob_5801~
+the foreman~
+The foreman of the Earendam city workers is here.
+~
+This large, hardy man has dirt and grime in every crease of his person,
+from his calloused hands to his ears.  His regulation coveralls, embossed
+with the Earendam crest, have become so filthy and faded that you can barely
+tell they once were a classic, noble blue.  
+~
+human~
+water scholar~
+ABL 0 0 N 0
+25 13 19d35+818 25d10+100 4d6+13 bash~
+punch~
+-6 -6 -6 1
+FHIKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 220 -1
+AHMV ABCDEFGHIJK A medium flesh
+>speech_prog p quarry tools~
+if value(0) == 1
+  tell $n Just a moment, I\@m busy right now.
+else
+  mpfocus $n
+  if isbitset($f) == 5899
+    if israce($f) == KANKORAN
+      esay \@shakes a fist at $F, saying\@ I\@ll quarry the teeth right outta your jaw, savage!
+    endif
+    if israce($n) == SRRYN
+      esay \@pushes $F away angrily, saying\@ I\@ll quarry the scales right off your back, swamp-fiend!
+    endif
+    esay \@Now get goin\@!
+  else
+    if istime() >= 19
+      esay \@squints at the sky, and says\@ Well it\@s gettin\@ dark now, why don\@t you come by tomorrow and I\@ll see what I can have you do.
+    else
+      if isbitset($f) == 5803
+        esay \@grins and says\@ You\@ve already helped us out quite a bit, $F. You could always send me some of your friends.
+      else
+        if isbitset($f) == 5802
+          esay \@nods at $F\@ Sure, sure.
+          mpvalueset 0 1
+          mpsetdata FINALTASK
+        else
+          esay smiles Well I\@m glad you\@re so ambitious, but there\@s other work that needs doin\@ first.
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>give_prog large granite brick obj_5833~
+mppurge obj_5833
+if isbitset($n) == 5803
+  esay \@smiles\@ That\@s real nice of you, $N, but you\@ve done enough.  Maybe tell some of your friends to come lend a hand.
+else
+  mpvalueset 3 0
+  loop 5810 to 5815
+    mpvalueup 3 1
+    if isbitset($n) == $v1
+    else
+      say That\@s $3.
+      mpbitset $n $v1 1
+      if value(3) == 1
+        say I\@ll have you prepare four more stones the same way, and then you can call it quits.
+        esay \@notes\@ If you don\@t think you have enough, just ask for the \#quarry tools\# again.
+      endif
+      if value(3) == 5
+        say Excellent job. I\@d take a hundred more like you if they existed.
+        mpechoat $n $I pats you on the back, likely leaving a dusty handprint.
+        mpxp $n 5000
+        mpechoat $n {WYou received 5,000 experience for rebuilding the walls of Earendam!{x
+        mpset mob self gold 100
+        give 100 gold $n
+        esay \@says with a smile and nod\@ You\@re okay in my book, $N.  Hope you do well in your endeavors.
+        mpbitset $n 5803 1
+        loop 5810 to 5815
+          mpbitset $n $v2 0
+        endloop
+      endif
+      break
+    endif
+  endloop
+endif
+~
+>verb_prog p stonestuff~
+if objhere(5830)
+  emote pushes the cart over next to the scaffold and covers it with a woolen tarp.
+  mppurge obj_5830
+  DONEQUARRY
+endif
+if iscarrying($f) == 5832
+else
+  mpoload 5832
+  give obj_5832 $f
+endif
+~
+>data_prog shapingstone~
+esay \@exclaims\@ That looks perfect!
+esay \@places his hands on his hips and says\@ Now we just need to shape these up into blocks we can use.
+esay \@gathers some tools\@ You\@re going to need this chisel to smooth out the edges of the blocks so they can fit into the wall.
+STONESTUFF
+esay instructs I\@ll just have you {Wshape{Y each {Wstone{Y carefully, and then hand them to me.
+esay nods Then I can put them into the needed places in the wall.
+mpvalueset 0 0
+~
+>load_prog 100~
+mpoload 5819 in room
+~
+>time_prog 20~
+mpgetroomvnum 8
+esay \@gives an exhaunsted sigh, and says\@ Guess it\@s time to call it in for the night.
+dust
+emote heads home for the night.
+mpgoto 5800
+~
+>time_prog 4~
+if inroom($i) == 5800
+  mpgoto $8
+  emote arrives before the dawn to begin his workday.
+endif
+~
+>give_prog large brush coarse bristle bristles obj_5822~
+mpget obj $o val0 2
+if value(2) == 10
+  mppurge obj_5822
+  mppurge obj_5821
+  esay \@nods at $N\@ Good work, though the battle against grime will ever rage on.
+  if level($n) <= 50
+    mpxp $n 1500
+    mpechoat $n {WYou received 1,500 experience for helping to clean the walls of Earendam!{x
+  endif
+  mpset char self gold 20
+  give 20 gold $n
+  esay notes If you\@re still up to it, there\@s more to do. Just ask me about more work.
+  mpbitset $n 5801 1
+else
+  give obj_5821 $n
+  give obj_5822 $n
+  esay \@points a grody finger at the wall\@ Now, now, there\@s still more cleanin\@ to do. You\@re not done yet.
+endif
+~
+>give_prog stitched hide bag sealant obj_5825~
+mpget obj $o val0 2
+if value(2) >= 5
+  mppurge obj_5825
+  mpvalueset 3 0
+  loop 5805 to 5808
+    mpvalueup 3 1
+    if isbitset($n) == $v1
+    else
+      say That\@s $3.
+      mpbitset $n $v1 1
+      if value(3) == 1
+        say I\@ll pay you for your time after you use up three bags.
+      endif
+      if value(3) == 3
+        say Excellent, that should hold up nicely.
+        mpxp $n 2500
+        mpechoat $n {WYou received 2,500 experience for resealing the walls of Earendam!{x
+        mpset mob self gold 50
+        give 50 gold $n
+        esay \@mentions\@ I think you could manage one last job if you\@re willin\@.  Just ask me about more work.
+        mpbitset $n 5802 1
+        loop 5805 to 5808
+          mpbitset $n $v2 0
+        endloop
+      else
+        mpoload 5825
+        give obj_5825 $n
+        say There you go.
+      endif
+      break
+    endif
+  endloop
+else
+  esay \@wrinkles his eyebrow and says\@ You can still get more outta this.
+  esay scolds Don\@t be half-assin\@ the job, this is city-regulated work.
+  give obj_5825 $n
+endif
+~
+>data_prog WORKLIST~
+esay \@casually flips through a scheduling booklet as he says\@ We need to get the walls and grounds cleaned up firstly.
+esay continues And we\@re supposed to remove and replace all the old, crusty mortar in the wall.
+esay \@glances over his shoulder at the wall\@ And we have to fix up some of the holes with new stone.
+say So what do you say, will you help us out?
+mpvalueset 0 0
+~
+>data_prog FINALTASK~
+esay \@closes one eye and points at the wall with a flattened hand saying\@ You might not notice, but some of the granite stones have deteriorated so much that they need to be replaced.
+esay \@scratches his head and shrugs\@ Problem is, we haven\@t really got the stone to do the job.
+esay explains So what I need you to do is to go gather some granite from the mountains and bring it back here.  We can\@t have mismatched blocks in the wall, after all.
+esay instructs So head to some caves or up into the peaks to {Wquarry{Y some stone.{x
+esay notes I don\@t expect you to carry armfulls of rocks back and forth, so I\@ll let you use my personal pushcart to transport the blocks you can get.
+emote walks over next to the scaffold to a pile of tools and other workstuffs, and pulls aside a tarp.
+QUARRYSTUFF
+esay \@says simply\@ Just {Wpush{Y the {Wcart{Y wherever you need to go.{x
+esay \@instructs with added hand motions\@ You can use the hammer and wedge to break up the stone, and then {Wload{Y the {Wchunks{Y into the {Wcart{Y.{x
+say Then bring the load back here and we can shape the pieces as we need them.
+dust
+esay \@waves a hand at $F\@ Okay then, off you go.
+mpvalueset 0 0
+~
+>data_prog SECONDTASK~
+esay \@wobbles a scoring knife in his fingers loosely\@ This part is a bit more painstaking than scrubbing at some dirt.
+esay \@sayswith a rehearsed pride\@ The beauty of the wall is what draws the public in...
+esay \@taps the flat of the knife against his palm\@ At least that\@s what they keep telling us.
+esay \@sighs and instructs\@ Anyway, we have to keep it looking nice.  So we have to go over every square inch of the wall and {Wscrape{Y away all the old, crusty mortar from between the blocks, and then {Wapply{Y new sealant to replace it.{x
+esay \@notes\@ It isn\@t always obvious where the mortar is bad, so you\@ll have to {Wpick{Y at it high and low to find the weak spots.  Though you\@ll need to fly to get to the top unless you use my scaffold.{x
+SCOURSTUFF
+esay \@points out\@ That new sealant won\@t last forever, so use what you can and come ask me for more when you run out.
+say Just ask me about \#wall repair\# if you forget anything.
+mpvalueset 0 0
+~
+>data_prog CLEANUP~
+esay \@points out\@ So you may have noticed that the walls are fairly grimy in places all around the city.
+esay \@explains\@ Your task is simple. Just go around and clean them up.
+esay continues We\@re supposed to use this cleaning agent that is approved by the city officials, but really it\@s just a marketing ploy designed to circulate our pay back into the economy.
+esay \@holds up a single finger\@ Instead, we just mix some organic ash into our buckets and it does a pretty decent job.
+esay instructs Take this bucket and scrub brush down to the grasslands in the south where you should be able to find an old firepit with a chimney.
+CLEANUPSTUFF
+say Just {Wcollect ashes{Y from the firepit in the bucket and then look for grimy spots along the wall to {Wscrub{Y.{x
+esay nods Once you\@ve done that, just bring me back the brush and bucket.
+esay adds If you need me to repeat any of this again just ask about \#cleaning up\#.
+mpvalueset 0 0
+~
+>verb_prog p QUARRYSTUFF~
+if isunderlimit(5830)
+  emote uncovers a wooden-wheeled pushcart.
+  mpoload 5830 in room
+  mpseewizi
+  mptransfer mob_5800
+  mpunseewizi
+else
+  emote stands there a moment staring at the conspicuously empty space.
+  esay hmphs Someone must have taken my cart already...You\@ll need to find where it is, I guess.
+endif
+if iscarrying($f) == 5828
+else
+  mpoload 5828
+  give obj_5828 $f
+endif
+if iscarrying($f) == 5829
+else
+  mpoload 5829
+  give obj_5829 $f
+endif
+~
+>verb_prog p SCOURSTUFF~
+if iscarrying($f) == 5824
+else
+  mpoload 5824
+  give obj_5824 $f
+endif
+if iscarrying($f) == 5825
+else
+  mpoload 5825
+  give obj_5825 $f
+endif
+~
+>verb_prog p CLEANUPSTUFF~
+if iscarrying($f) == 5820
+or iscarrying($f) == 5821
+else
+  mpoload 5820
+  give bucket $f
+endif
+if iscarrying($f) == 5822
+else
+  mpoload 5822
+  give brush $f
+endif
+~
+>entry_prog 100~
+mpoload 5819 in room
+emote quickly sets up a scaffold along the wall.
+~
+>verb_prog p MOVEALONG~
+if isimmort($n)
+or isnpc($n)
+  if value(0) == 1
+  else
+    if inroom($i) > 5816
+      if inroom($i) < 5827
+        mpvaluerand 1 1 2
+        if value(1) == 1
+          emote quickly breaks down the scaffold, gathers his things, and moves along the wall to the east.
+          mppurge obj_5819
+          east
+          break
+        endif
+        if value(1) == 2
+          emote quickly breaks down the scaffold, gathers his things, and moves along the wall to the west.
+          mppurge obj_5819
+          west
+          break
+        endif
+      endif
+    endif
+    if inroom($i) > 5866
+      if inroom($i) < 5876
+        mpvaluerand 1 1 2
+        if value(1) == 1
+          emote quickly breaks down the scaffold, gathers his things, and moves along the wall to the east.
+          mppurge obj_5819
+          east
+          break
+        endif
+        if value(1) == 2
+          emote quickly breaks down the scaffold, gathers his things, and moves along the wall to the west.
+          mppurge obj_5819
+          west
+          break
+        endif
+      endif
+    endif
+    if inroom($i) == 5829
+    or inroom($i) == 5831
+    or inroom($i) == 5833
+    or inroom($i) == 5835
+    or inroom($i) == 5837
+    or inroom($i) == 5839
+    or inroom($i) == 5841
+    or inroom($i) == 5843
+    or inroom($i) == 5845
+    or inroom($i) == 5848
+    or inroom($i) == 5850
+    or inroom($i) == 5852
+    or inroom($i) == 5854
+    or inroom($i) == 5856
+    or inroom($i) == 5858
+    or inroom($i) == 5860
+    or inroom($i) == 5862
+    or inroom($i) == 5864
+      mpvaluerand 1 1 2
+      if value(1) == 1
+        emote quickly breaks down the scaffold, gathers his things, and moves along the wall to the north.
+        mppurge obj_5819
+        north
+        break
+      endif
+      if value(1) == 2
+        emote quickly breaks down the scaffold, gathers his things, and moves along the wall to the south.
+        mppurge obj_5819
+        south
+        break
+      endif
+    endif
+    if inroom($i) == 5816
+      mpvaluerand 1 1 2
+      if value(1) == 1
+        emote quickly breaks down the scaffold, gathers his things, and moves along the wall to the east.
+        mppurge obj_5819
+        east
+        break
+      endif
+      if value(1) == 2
+        emote quickly breaks down the scaffold, gathers his things, and moves along the wall to the south.
+        mppurge obj_5819
+        south
+        break
+      endif
+    endif
+    if inroom($i) == 5827
+      mpvaluerand 1 1 2
+      if value(1) == 1
+        emote quickly breaks down the scaffold, gathers his things, and moves along the wall to the west.
+        mppurge obj_5819
+        west
+        break
+      endif
+      if value(1) == 2
+        emote quickly breaks down the scaffold, gathers his things, and moves along the wall to the south.
+        mppurge obj_5819
+        south
+        break
+      endif
+    endif
+    if inroom($i) == 5876
+      mpvaluerand 1 1 2
+      if value(1) == 1
+        emote quickly breaks down the scaffold, gathers his things, and moves along the wall to the west.
+        mppurge obj_5819
+        west
+        break
+      endif
+      if value(1) == 2
+        emote quickly breaks down the scaffold, gathers his things, and moves along the wall to the north.
+        mppurge obj_5819
+        north
+        break
+      endif
+    endif
+    if inroom($i) == 5866
+      mpvaluerand 1 1 2
+      if value(1) == 1
+        emote quickly breaks down the scaffold, gathers his things, and moves along the wall to the east.
+        mppurge obj_5819
+        east
+        break
+      endif
+      if value(1) == 2
+        emote quickly breaks down the scaffold, gathers his things, and moves along the wall to the north.
+        mppurge obj_5819
+        north
+        break
+      endif
+    endif
+  endif
+endif
+~
+>speech_prog p sealant~
+if isbitset($n) == 5899
+  esay smirks With claws like those, you wouldn\@t be able to do a good job applyin\@ sealant.
+  tell $n Why don\@t you go find some village to terrorize.
+else
+  if isbitset($n) == 5801
+    if isbitset($n) == 5802
+      esay \@shakes his head\@ I don\@t need you to do that again, $N, but maybe one of your friends would be interested?
+    else
+      if iscarrying($n) == 5825
+        esay \@looks up and says\@ Need some more, do you? Alright, just hand me that stitched bag.
+      else
+        esay \@nods\@ There\@s always spots that need a touchup.
+        mpsetdata SECONDTASK
+        mpvalueset 0 1
+      endif
+    endif
+  else
+    esay \@points out\@ There\@s things that need doin\@ before you can apply sealant.
+    esay asks You really interested in helpin\@ out?
+  endif
+endif
+~
+>speech_prog p wall repair~
+if value(0) == 1
+  tell $n Just a moment, I\@m busy right now.
+else
+  if isbitset($n) == 5899
+    tell $n Wall scrapin\@ isn\@t done with claws and teeth.  Go bother someone else.
+  else
+    if isbitset($n) == 5802
+      esay \@shakes his head\@ I don\@t need you to do that again, $N, but maybe one of your friends would be interested?
+    else
+      mpfocus $n
+      mpvalueset 0 1
+      mpsetdata SECONDTASK
+    endif
+  endif
+endif
+~
+>speech_prog p cleaning up~
+if value(0) == 1
+  tell $n Just a moment, I\@m busy right now.
+else
+  if isbitset($n) == 5899
+    tell $n I\@m not havin\@ you clean up anything. You should just go.
+  else
+    if isbitset($n) == 5801
+      esay \@shakes his head\@ I don\@t need you to do that again, $N, but thanks anyway.
+    else
+      mpfocus $n
+      mpvalueset 0 1
+      mpsetdata CLEANUP
+    endif
+  endif
+endif
+~
+>speech_prog p yes~
+if value(0) == 1
+  tell $n Just a moment, I\@m busy right now.
+else
+  mpfocus $n
+  if isbitset($f) == 5899
+    if israce($f) == KANKORAN
+      esay \@waves dismissively at $F while saying\@ Not you, you mangy...
+    endif
+    if israce($f) == SRRYN
+      esay \@waves dismissively at $F while saying\@ Not you, you scaly, cold-blooded...
+    endif
+    esay \@stops himself mid sentence before continuing\@ ...Look, just go away.
+  else
+    if isbitset($f) == 5800
+    else
+      mpvalueset 0 1
+      esay \@claps his hands together and says\@ Excellent! Let\@s get you started then.
+      mpbitset $f 5800 1
+      mpsetdata CLEANUP
+    endif
+  endif
+endif
+~
+>speech_prog p no~
+if value(0) == 1
+  tell $n Well, I wasn\@t talking to you anyway.
+else
+  if isbitset($n) == 5899
+    esay \@gives an exaggerated smirk saying\@ Not like I\@d let you touch these walls anyway.
+  endif
+  esay \@shrugs\@ Well there\@s always plenty to do if you change your mind.
+endif
+~
+>speech_prog p work~
+if value(0) == 1
+  tell $n Just a moment, I\@m busy right now.
+else
+  mpfocus $n
+  if isbitset($f) == 5899
+    if israce($f) == KANKORAN
+      esay \@scoffs at $F\@ A kankoran who wants to help maintain a city?
+    endif
+    if israce($n) == SRRYN
+      esay \@scoffs at $F\@ A srryn who wants to help maintain a city?
+    endif
+    esay \@shakes his head and scowls\@ No, I don\@t think we need any help from you, $F. Not now, not ever.
+  else
+    if istime() >= 19
+      esay \@squints at the sky, and says\@ Well it\@s gettin\@ dark now, why don\@t you come by tomorrow and I\@ll see what I can have you do.
+    else
+      if isbitset($f) == 5803
+        esay \@grins and says\@ You\@ve already helped us out quite a bit, $F. You could always send me some of your friends.
+      else
+        mpvalueset 0 1
+        if isbitset($f) == 5802
+          esay \@slaps one hand into the palm of his other saying\@ I thought you might be interested.
+          mpsetdata FINALTASK
+        else
+          if isbitset($f) == 5801
+            esay nods Good. Glad to see you\@re diligent.
+            mpsetdata SECONDTASK
+          else
+            esay \@pauses for a moment to say\@ Well there\@s quite a bit to get done, actually.
+            mpsetdata WORKLIST
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>greet_prog 100~
+if isimmort($n)
+or isnpc($n)
+else
+  if isbitset($n) == 5800
+    nod $n
+  else
+    if israce($n) == ALATHARYA
+    or israce($n) == CHAJA
+      if ismale($n)
+        tell $n Hey there, you look like a strong fella. You lookin\@ for some work?
+      else
+        tell $n Hey there, you look like a strong lass. You lookin\@ for some work?
+      endif
+    else
+      if israce($n) == AELIN
+      or israce($n) == NEFORTU
+        tell $n I could really use a hand getting to some of these higher spots.  You lookin\@ for some work?
+      else
+        if israce($n) == KANKORAN
+        or israce($n) == SRRYN
+          hmph $n
+          if isbitset($n) == 5899
+          else
+            mpbitset $n 5899 1
+          endif
+        else
+          tell $n There\@s a bunch of things that need doing around here.  You lookin\@ for some work?
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>rand_prog 100~
+if value(0) == 1
+  $d
+  mpnextdata
+else
+  if inroom($i) == 5800
+  else
+    if rand(2)
+      mpvaluerand 0 2 6
+      if value(0) == 2
+        emote uses a scoring tool to scrape away some bits of moldy mortar.
+      endif
+      if value(0) == 3
+        emote scrubs at the walls with a coarse bristle brush occasionally sloshing it into a bucket of water.
+      endif
+      if value(0) == 4
+        emote wipes his brow with a dingy cloth.
+      endif
+      if value(0) == 5
+        emote mutters to himself as he peers at the wall with scrutiny.
+      endif
+      if value(0) == 6
+        emote carefully shapes the edges of a stone block with a chisel.
+      endif
+    else
+      if rand(2)
+        MOVEALONG
+      endif
+    endif
+  endif
+endif
+mpjunk 1.
+~
+|
+V4 5802
+city worker man mob_5802~
+a city worker~
+A city worker of Earendam goes about his business.
+~
+This man wears a set of regulation Earendam coveralls which are
+unflattering to his rotund figure.  He goes about his work with deliberate
+focus, taking no time from his day for distractions.  
+~
+human~
+water scholar~
+ACG 0 0 N 0
+20 10 15d26+572 20d10+100 3d7+10 bash~
+punch~
+-3 -3 -3 3
+FHIN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 110 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 5~
+if objhere(5819)
+  if mobhere(5801)
+  else
+    mpecho $I breaks down a scaffold and collects its parts.
+    mppurge obj_5819
+  endif
+endif
+~
+>time_prog 19~
+if value(1) == 0
+  mpvalueset 1 1
+  emote heads home for the night.
+  mpwizi
+endif
+~
+>time_prog 5~
+if value(1) == 1
+  mpvalueset 1 0
+  mpunwizi
+  emote arrives before the dawn to begin his workday.
+endif
+~
+>rand_prog 3~
+if value(1) == 1
+else
+  mpvaluerand 0 1 4
+  if value(0) == 1
+    emote crouches for a moment to inspect something in the tall grass.
+  endif
+  if mobvalue(0) == 2
+    search
+  endif
+  if value(0) == 3
+    emote quickly digs up some unlevel ground and then distributes it evenly around the area.
+  endif
+  if value(0) == 4
+    emote pauses for a while to look around at his surroundings.
+  endif
+endif
+~
+|
+V4 5803
+dockhand earendam man mob_5803~
+an Earendam dockhand~
+A dockhand is here working tirelessly.
+~
+This dock worker is well built with broad shoulders and sturdy legs.  A
+lifetime of physical exertion has done wonders for their fitness, and they
+look about as strong as a bull bjorcha.  
+~
+human~
+water scholar~
+AL 0 0 N 0
+35 18 25d57+1041 35d10+100 5d7+18 bash~
+beating~
+-12 -12 -12 -1
+CFHIK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 130 -1
+AHMV ABCDEFGHIJK A medium flesh
+>greet_prog 2~
+mpechoat $n $I nearly bumps into you as you enter the docks, but deftly moves to avoid you.
+mpechoaround $n $I nearly runs into $N as they move about the docks, but deftly moves to avoid $m.
+~
+>rand_prog 4~
+mpvaluerand 0 1 6
+if value(0) == 1
+  emote grunts with effort as they move crates about the docks.
+endif
+if value(0) == 2
+  emote pauses for a moment to catch a breath.
+endif
+if value(0) == 3
+  mpecho A barge on the river toots its horn as it chugs by the docks.
+  emote waves to the barge, directing its approach.
+endif
+if value(0) == 4
+  emote hurredly clears the clutter away on the docks, coiling ropes and stacking crates.
+endif
+if value(0) == 5
+  emote unloads some cargo from a barge, stacking the crates in an orderly fashion.
+endif
+if value(0) == 6
+  emote finishes loading crates onto a barge, and looses the tiedowns from the dock cleats.
+endif
+~
+|
+V4 5804
+fisherman bearded ethron mob_5804~
+an ethron fisherman~
+A bearded ethron fisherman peers out over the river.
+~
+A fisherman sits here, pulling his small net through the water.  He has a
+thick reddish-brown beard and bright green eyes.  Through a large gap where
+his two front teeth are missing, he keeps a slender pipe which emits small
+puffs of smoke.  
+~
+ethron~
+water scholar~
+ADL 0 0 G 0
+8 4 6d9+158 8d10+100 2d4+4 pierce~
+slash~
+4 4 4 6
+K 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 60 -1
+AHMVW ABCDEFGHIJK J medium flesh
+V4 5805
+citizen mob_5805~
+a citizen~
+A citizen of Earendam meanders around the city.
+~
+This citizen walks across the outskirts in no particular direction. 
+Spending time to brush a hand through the tall grass or gather a breath of
+fresh air, they seem to be at peace.  
+~
+human~
+water scholar~
+AG 0 0 N 0
+18 9 14d23+487 18d10+100 3d6+9 bash~
+slap~
+-1 -1 -1 3
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 75 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 5806
+aelin noble nobleman mob_5806~
+an aelin nobleman~
+An aelin dressed in fine clothing flits around the outskirts of the city.
+~
+A young noble of one of the prosperous aelin houses flits about the
+outskirts of the city.  He is dressed in clean, well-knit robes of fine
+silk, which he constantly keeps free of any stray debris from the grasses. 
+Holding a proper posture, he deliberately makes an effort to avoid coming
+into contact with others who walk around him.  
+~
+aelin~
+water scholar~
+AG 0 E N 0
+18 9 14d23+487 18d10+100 3d6+9 slash~
+scratch~
+-1 -1 -1 3
+FI 0
+26 0 0 0 0 -20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 220 -1
+AHMW ABCDEFGIJKP AF medium flesh
+V4 5807
+group small children mob_5807~
+a group of small children~
+A group of small children laugh and play in the tall grasses.
+~
+These children run freely about the outskirts, laughing and playing. 
+They seem quite like typical youth as they shout and chase each other
+around.  
+~
+human~
+water scholar~
+AG 0 0 N 0
+5 3 4d5+89 5d10+100 2d2+3 bash~
+flailing~
+6 6 6 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV EF 0 medium flesh
+V4 5808
+shuddeni templar sinister mob_5808~
+a shuddeni templar~
+A sinister looking shuddeni glides through the night with dark, fluid robes trailing behind him.
+~
+This shuddeni stalks about with what seems like a cruel smile etched on
+his face.  Lengthy scars curve from the edges of his mouth, the left side
+forking midway up his cheek.  He twitches periodically and mutters to
+himself in an angered tone as if playing out some tortured moment from his
+past.  
+~
+shuddeni~
+water scholar~
+AG 0 ABDJU E 0
+36 18 26d59+1058 36d10+100 5d7+18 bash~
+punch~
+-12 -12 -12 -1
+FHK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 20 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 170 -1
+AHMW ABCDEFGIJ AGK medium flesh
+>fight_prog 100~
+if hitprcnt($i) > 60
+or class($n) == 3
+or class($n) == 9
+  if snaffected($i) == 684
+  else
+    assume asp
+  endif
+else
+  if snaffected($i) == 683
+  else
+    assume wraith
+  endif
+endif
+if rand(25)
+  mpvaluerand 0 1 7
+  if value(0) == 1
+    if snaffected($n) == 8
+      cast harm
+    else
+      cast blindness
+    endif
+  endif
+  if value(0) == 2
+    if snaffected($n) == 104
+      shadowstrike
+    else
+      cast plague
+    endif
+  endif
+  if value(0) == 3
+    if snaffected($i) == 679
+      cast siphon
+    else
+      cast \@demonic howl
+    endif
+  endif
+  if value(0) == 4
+    if snaffected($n) == 678
+      cast harm
+    else
+      cast blight
+    endif
+  endif
+  if value(0) == 5
+    shadowstrike
+  endif
+  if value(0) == 6
+    cast siphon
+  endif
+  if value(0) == 7
+    cast harm
+  endif
+endif
+~
+>speech_prog p dimming~
+if israce($n) == shuddeni
+  speak shuddeni
+else
+  if israce($n) == ch\@taren
+    speak common
+    tell $n Begone, filth! I wretch at you disgusting, child-faced, putrid wastes of space!
+    sneer $n
+    break
+  else
+    speak common
+  endif
+endif
+tell $n For the small fee of twenty silver coins, I will attempt to rid an item of its accursed glow.
+~
+>bribe_prog 200~
+mpfaction $n 20 13 1
+esay \@holds the coins up to his ear and rubs them together\@ Mmm. Very well
+say Give me the item you wish dimmed.
+mpremember $n
+~
+>give_prog all~
+if israce($n) == ch\@taren
+  emote twitches his upper lip as he lets $O fall from his listless hand.
+  drop $o
+else
+  if remembers($n)
+    cast dim $o
+    give $o $n
+    mpforget $n
+  else
+    give $o $n
+    esay \@clacks his teeth together\@ I am no putz. Give me the coins first, bilk.
+  endif
+endif
+~
+>rand_prog 100~
+if value(9) == 0
+else
+  if isfighting($i)
+  else
+    if snaffected($i) == 675
+    else
+      cast \@curse of kijjasku
+    endif
+    if value(1) > 0
+      mpvaluedown 1
+    endif
+    if value(2) > 0
+      mpvaluedown 2
+    endif
+    if value(1) == 0
+      remove obj_5834
+      remove obj_5835
+      cast desecrate obj_5834
+      cast desecrate obj_5835
+      mpvalueset 1 100
+    endif
+    if value(2) == 0
+      remove obj_5834
+      remove obj_5835
+      cast poison obj_5834
+      cast poison obj_5835
+      mpvalueset 2 40
+    endif
+    wear obj_5834
+    wear obj_5835
+    $d
+    mpnextdata
+  endif
+endif
+~
+>load_prog 100~
+mpaddskill self 683 100 (form of the wraith)
+mpaddskill self 684 100 (form of the asp)
+mpaddskill self 173 100 (enhanced damage)
+mpaddskill self 157 100 (dual wield)
+mpaddskill self 672 100 (flay)
+mpaddskill self 188 100 (third attack)
+mpaddskill self 878 100 (shadow strike)
+mpaddskill self 673 100 (pestilence)
+mpaddskill self 879 100 (dim)
+mpaddskill self 8 100 (blindness)
+mpaddskill self 39 100 (curse)
+mpaddskill self 877 100 (desecrate weapon)
+mpaddskill self 679 100 (demonic howl)
+mpaddskill self 105 100 (poison)
+mpaddskill self 104 100 (plague)
+mpaddskill self 75 100 (harm)
+mpaddskill self 675 100 (curse of kijjasku)
+mpaddskill self 678 100 (blight of adduthala)
+mpaddskill self 677 100 (siphon mana)
+~
+>greet_prog 20~
+if value(9) == 1
+  if israce($n) == shuddeni
+    speak shuddeni
+    tell $n May your path be darkened before you, sibling.
+    tell $n If it suits you, brethren, I can remove the vile glow from an object for you.
+    tell $n Just ask me about dimming.
+  else
+    if israce($n) == ch\@taren
+      speak shuddeni
+      esay \@curses at $N\@ You offal heap.  I should make a collar of your flesh to bind others of your dispossessed kin.
+      spit
+    else
+      speak common
+      mpechoat $n $I sizes you up with a tilt of his head.
+      tell $n You\@d sell for a few gold in the Yithoul slave market, I think.
+    endif
+  endif
+endif
+~
+>time_prog 5~
+esay \@hisses towards the east\@ The wretched dawn approaches.
+mpecho Shadows swirl and quickly surround $I, and he vanishes into darkness.
+mpwizi
+mpvalueset 9 0
+mpget char self copper 5
+mpget char self silver 6
+mpget char self gold 7
+mpget char self platinum 8
+mpat 5800 drop $5 copper
+mpat 5800 drop $6 silver
+mpat 5800 drop $7 gold
+mpat 5800 drop $8 platinum
+~
+>time_prog 22~
+mpunwizi
+mpecho The nearby shadows converge, quickly taking on the form of a shuddeni.
+mpvalueset 9 1
+mpset char self gold 4
+mpset char self copper 8
+~
+|
+V4 5809
+bot squad loader squadloader~
+the squadloader bot~
+The squadloader bot is here, loading soldiers.
+~
+It\@s a generic bot.  
+~
+human~
+water scholar~
+AL 0 DFJLPZe N 0
+52 26 35d107+1167 52d10+100 6d9+26 none~
+hit~
+-22 -22 -22 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 5810
+guard earendam guardsman recruit young~
+a recruit in the Earendam Guard~
+A young Earendam Guard recruit marches on a training patrol.
+~
+~
+human~
+fighter~
+AG G JZ N 0
+15 15 8d30+261 0d0+0 3d6+7 slash~
+hit~
+0 0 0 5
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 50 6
+AHMV ABCDEFGHIJK A medium unknown
+V4 5811
+radiant human templar mob_5811~
+a human templar~
+A radiant human briskly walks the outskirts, a wispy aura of light trailing behind him.
+~
+This bronze-skinned human seems to glow with an inner gladness.  His keen
+eyes of sparkling hazel scan the passersby with curiosity, as if looking for
+some way to alleviate an unspoken burden.  
+~
+human~
+water scholar~
+AG 0 D G 0
+36 18 26d59+1058 36d10+100 5d7+18 bash~
+punch~
+-12 -12 -12 -1
+FHK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 170 70
+AHMV ABCDEFGHIJK AK medium flesh
+>time_prog 6~
+mpunwizi
+mpecho Spindles of light swirl and coalesce into a human form.
+mpvalueset 9 1
+mpset char self gold 4
+mpset char self copper 8
+~
+>time_prog 21~
+esay \@intones\@ Blessed be the night, and reverent the day that follows.
+emote reaches out for a rune of spirit and pulls himself through the weave.
+mpwizi
+mpvalueset 9 0
+mpget char self copper 5
+mpget char self silver 6
+mpget char self gold 7
+mpget char self platinum 8
+mpat 5800 drop $5 copper
+mpat 5800 drop $6 silver
+mpat 5800 drop $7 gold
+mpat 5800 drop $8 platinum
+~
+>greet_prog 20~
+if value(9) == 1
+  mpget char $n karma 1
+  if value(1) > 249
+    tell $n Should you decide to reconsider your path, dark one, your choices will continually mold your soul.
+  else
+    if value(1) < 9999
+      bow $n
+      tell $n Your great and many deeds of goodness inspire us all, $N.
+    else
+      if value(1) < 4999
+        nod $n
+        tell $n May light always guide your path.
+      else
+        if value(1) < 999
+          nod $n
+        endif
+      endif
+    endif
+  endif
+  tell $n I would like to offer you my services.
+  tell $n In exchange for one platinum I will gladly enchant a single item to make it glow.
+endif
+~
+>fight_prog 25~
+mpvaluerand 0 1 5
+if value(0) == 1
+  cast \@ray of light\@
+endif
+if value(0) == 2
+  if snaffected($n) == 698
+    cast ray
+  else
+    cast wrath
+  endif
+endif
+if value(0) == 3
+  if snaffected($i) == 696
+    cast ray
+  else
+    sortie
+  endif
+endif
+if value(0) == 4
+  if snaffected($n) == 688
+    cast ray
+  else
+    cast soul
+  endif
+endif
+if value(0) == 5
+  cast vengeance
+endif
+~
+>bribe_prog 1000~
+mpfaction $n 70 20 1
+emote closes his eyes and murmurs a quiet prayer.
+say Hand me the item you wish to glow, please.
+mpremember $n
+~
+>give_prog all~
+if remembers($n)
+  if israce($n) == shuddeni
+    esay sighs I\@m not entirely sure what good this will do for you, but...
+  endif
+  cast undying $o
+  give $o $n
+  mpforget $n
+else
+  give $o $n
+  esay \@says appolgetically\@ I\@m sorry, but I really must insist on a donation first.
+endif
+~
+>rand_prog 100~
+if value(9) == 1
+  if iswielding($i) == 5804
+  else
+    if snaffected($i) == 700
+    else
+      cast \@blade of light
+      mppurge blade
+      mpoload 5804
+      wear obj_5804
+      wear obj_5836
+      break
+    endif
+  endif
+  if snaffected($i) == 7
+  else
+    cast bless
+    break
+  endif
+  if snaffected($i) == 416
+  else
+    cast zeal
+    break
+  endif
+  if snaffected($i) == 902
+  else
+    cast seraphic
+    break
+  endif
+  if snaffected($i) == 692
+  else
+    cast truesight
+    break
+  endif
+  if snaffected($i) == 689
+  else
+    cast \@astral form
+    break
+  endif
+  if snaffected($i) == 984
+  else
+    cast \@ward of grace
+    break
+  endif  
+  $d
+  mpnextdata
+endif
+if rand(1)
+  mpvaluerand 3 1 6
+  if value(3) == 1
+    battlecry The light shall prevail!
+  endif
+  if value(3) == 2
+    battlecry For the glory of the Dawn!
+  endif
+  if value(3) == 3
+    battlecry Righteous fury comes upon thee!
+  endif
+  if value(3) == 4
+    battlecry I smite thee, O wicked villain!
+  endif
+  if value(3) == 5
+    battlecry Aaaaaiieeeeeee!!
+  endif
+  if value(3) == 6
+    battlecry Away, vile devil! Back to the darkness with you!
+  endif
+endif
+~
+>load_prog 100~
+mpaddskill self 173 100 (enhanced damage)
+mpaddskill self 157 100 (dual wield)
+mpaddskill self 188 100 (third attack)
+mpaddskill self 7 100 (bless)
+mpaddskill self 416 100 (zeal)
+mpaddskill self 902 100 (seraphic wings)
+mpaddskill self 686 100 (consecrate weapon)
+mpaddskill self 692 100 (truesight)
+mpaddskill self 687 100 (ray of light)
+mpaddskill self 689 100 (astral form)
+mpaddskill self 688 100 (soul flare)
+mpaddskill self 1050 100 (ward of grace)
+mpaddskill self 698 100 (wrath of kyana)
+mpaddskill self 701 100 (vengeance)
+mpaddskill self 696 100 (sortie)
+mpaddskill self 700 100 (blade of light)
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+5801
+bright red ball obj_5801~
+a bright red ball~
+A bright red ball is here.~
+~
+air~
+trash 0 0 0 A
+0 0 0 0 0
+1 10 0 0 P
+2
+V13
+5802
+nets net pile fishing worn~
+a pile of fishing nets~
+A pile of worn fishing nets sits at the edge of the dock.~
+~
+plant~
+container S 0 0 0
+0 0 0 0 0
+11 110 60 3 P
+0
+V13
+5803
+spear guardsman guardsman\@s~
+a guardsman\@s training spear~
+A guardsman\@s training spear lies here.~
+~
+steel~
+weapon 0 0 F AN
+spear 7 3 2 F
+pierce~
+15 160 714 3 P
+0
+A
+18 2
+O pierce~
+V13
+5804
+blade sword light obj_5804~
+a blade of light~
+A blade of light lies here.~
+~
+energy~
+weapon AGKLSY 0 0 AN
+sword 5 6 15 0
+searing light~
+30 9 0 2 P
+5
+E
+pure~
+This weapon is made from a pure white light, and pulses with a vital
+energy.  
+~
+E
+blade~
+This sword is made from a pure white light, and pulses with a vital
+energy.  
+
+~
+E
+sword~
+This sword is made from a pure white light, and pulses with a vital
+energy.  
+~
+O searing light~
+>fight_prog 100~
+mpvalueup 0
+if value(0) >= 190
+  mpechoat $o $I crumbles into dust.
+  mppurge self
+endif
+~
+>rand_prog 100~
+mpvalueup 0
+if value(0) >= 190
+  mpechoat $o $I crumbles into dust.
+  mppurge self
+endif
+~
+>wear_prog 100~
+if class($o) == 9
+or name($n) / mob_5811
+else
+  mpforce $o emote is zapped by the blade of light and drops it.
+  opzap $o
+endif
+~
+|
+V13
+5819
+scaffold simple obj_5819~
+a scaffold~
+A simple scaffold is erected next to the wall here.~
+~
+wood~
+furniture 0 0 0 0
+3 9999 BEHK 100 100
+1 0 0 3 P
+0
+V13
+5820
+wooden bucket banded obj_5820~
+a banded wooden bucket~
+A wooden bucket banded together with wide strips of brass is here.~
+~
+wood~
+drink 0 0 0 AO
+150 0 'water' 0 0
+1 100 0 1 P
+0
+>drink_prog 100~
+if objvalue2() == 0
+  mpechoat $n The water has a potent earthy taste which lingers for a moment after you drink it.
+endif
+~
+>verb_prog p collect~
+if isowner($n)
+  if compstr(2) == ashes
+  or compstr(2) == ash
+    if inroom($n) == 5654
+      mpechoat $n As you collect ashes from the crumbling firepit a large plume of dust pours from the chimney.
+      mpechoaround $n As $N collects ashes from the crumbling firepit a plume of dust pours from the chimney.
+      mpforce $n cough
+      mpoload 5821 on $n
+      mppurge self
+    else
+      mpechoat $n You don\@t see any ashes here to collect.
+    endif
+  else
+    mpechoat $n What did you want to collect?
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+5821
+banded wooden bucket obj_5821~
+a banded wooden bucket~
+A wooden bucket banded together with strips of brass is here, its edges dusty with ash.~
+~
+wood~
+drink 0 0 0 AO
+150 75 'water' 0 1
+1 130 0 1 P
+0
+>verb_prog p collect~
+if isowner($n)
+  if compstr(2) == ashes
+  or compstr(2) == ash
+    if inroom($n) == 5654
+      mpechoat $n You\@ve already collected enough ash in the bucket.
+    else
+      You don\@t see any ashes here to collect.
+    endif
+  else
+    mpechoat $n What did you want to collect?
+  endif
+else
+  mpnextinterp
+endif
+~
+>drink_prog 100~
+mpechoat $n The ash-laden water tastes absolutely wretched with granular lumps congealing in your mouth and throat as you drink it.
+mpechoaround $n $N chokes and gags as $e drinks from a banded wooden bucket.
+~
+|
+V13
+5822
+large brush coarse bristle bristles obj_5822~
+a coarse bristle brush~
+A large brush with coarse bristles has been discarded here.~
+~
+wood~
+special 0 0 0 AO
+0 0 0 0 0
+1 30 0 0 P
+0
+>verb_prog p scrub~
+if isowner($n)
+  if iswielding($n) == 5822
+    if objhere(5823)
+      if iscarrying($n) == 5820
+        mpechoat $n You slosh water from the bucket onto the wall, but it doesn\@t seem to clean it very effectively.
+        mpechoaround $n Sloshing water from $s bucket onto the wall, $N scrubs with futility to clean the grime.
+        mplag $n 3
+        break
+      endif
+      if iscarrying($n) == 5821
+        mpechoat $n You slosh water from the bucket onto the wall, and scrub furiously to remove the grime.
+        mpechoat $n With a bit of elbow-grease the filth is cleared, leaving a pungent organic odor behind.
+        mpechoaround $n Sloshing water from $s bucket onto the wall, $N furiously scrubs away the grime.
+        mpechoaround $n As the filth is cleared, a pungent organic odor becomes evident.
+        mpvalueup 0
+        mppurge obj_5823
+        mplag $n 2
+        if value(0) >= 10
+          mpvalueset 0 10
+        endif
+      endif
+    else
+      mpechoat $n You don\@t see anything that needs scrubbing here.
+    endif
+  else
+    mpechoat $n You aren\@t holding anything to scrub with.
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+5823
+grime filth section wall obj_5823~
+wall grime~
+A section of the stone wall is discolored with grime.~
+~
+dirt~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+5824
+knife scoring hooked short wide obj_5824~
+a short scoring knife~
+A short knife with a wide, hooked blade has been discarded here.~
+~
+steel~
+weapon 0 0 0 AN
+dagger 2 4 3 0
+scoring~
+1 10 0 0 P
+0
+O scoring~
+>verb_prog p pick~
+if isowner($n)
+  if compstr(2) == wall
+  or compstr(2) == mortar
+    if iswielding($n) == 5824
+      if compstr(3) == high
+        if isflying($n)
+          mpechoat $n You fly up to pick at the mortar near the top of the wall with the point of a short scoring knife.
+          mpechoaround $n $N flies up and picks at the mortar near the top of the wall with the point of a short scoring knife.
+        else
+          if objhere(5819)
+            mpechoat $n You climb the scaffold to pick at the mortar near the top of the wall with the point of a short scoring knife.
+            mpechoaround $n $N climbs the scaffold to pick at the mortar near the top of the wall with a short scoring knife.
+          else
+            mpechoat $n You can\@t get high enough to reach the top of the wall.
+            break
+          endif
+        endif
+        if objhere(5826)
+          mpget obj obj_5826 val0 0
+          if value(0) == 1
+            mpechoat $n The mortar seems soft and grossly discolored here.  You should probably scrape it away.
+            mpset obj obj_5826 objvalue 1 1
+          else
+            mpechoat $n The mortar here is rigid and dense. You are certain it will hold up for a while longer.
+          endif
+        else
+          if objhere(5827)
+            mpechoat $n The mortar here has been scraped away leaving only a gap between the stones.
+          else
+            mpechoat $n The mortar here is rigid and dense. You are certain it will hold up for a while longer.
+          endif
+        endif
+      else
+        if compstr(3) == low
+          mpechoat $n You pick at the mortar near the base of the wall with the point of a short scoring knife.
+          mpechoaround $n $N crouches down to pick at the mortar near the base of the wall with the point of a short scoring knife.
+          if objhere(5826)
+            mpget obj obj_5826 val0 0
+            if value(0) == 2
+              mpechoat $n The mortar seems soft and grossly discolored here.  You should probably scrape it away.
+              mpset obj obj_5826 objvalue 1 1
+            else
+              mpechoat $n The mortar here is rigid and dense. You are certain it will hold up for a while longer.
+            endif
+          else
+            if objhere(5827)
+              mpechoat $n The mortar here has been scraped away leaving only a gap between the stones.
+            else
+              mpechoat $n The mortar here is rigid and dense. You are certain it will hold up for a while longer.
+            endif
+          endif
+        else
+          mpechoat $n Did you want to pick at the $Y2 {Whigh{x or {WLow{x?
+        endif
+      endif
+    else
+      mpechoat $n You need to be holding the scoring knife to pick at the mortar.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p scrape~
+if isowner($n)
+  if compstr(2) == mortar
+  or compstr(2) == wall
+    if iswielding($n) == 5824
+      if compstr(3) == high
+        if isflying($n)
+          mpechoat $n You brace yourself against the top of the wall and diligently go to work.
+          mpechoaround $n $N braces $mself against the top of the wall and diligently goes to work.
+        else
+          if objhere(5819)
+            mpechoat $n You lean precariously at the top of the scaffold and begin to work diligently.
+            mpechoaround $n Leaning precariously off the top of the scaffold, $N begins to work diligently.
+          else
+            mpechoat $n You cannot get high enough to reach the top of the wall.
+            break
+          endif
+        endif
+        if objhere(5827)
+          mpechoat $n The mortar there has already been scraped away.
+        else
+          if objhere(5826)
+            mpget obj obj_5826 val1 0
+            if value(0) == 1
+              mpechoat $n You carefully scrape the deteriorating mortar from between some of the blocks with a scoring knife.
+              mpechoaround $n $N scores and scrapes some deteriorating mortar from between the stone blocks on the wall.
+              mppurge obj_5826
+              mpoload 5827 in room
+              mplag $n 3
+            else
+              mpechoat $n The mortar there is in no need of replacement.
+            endif
+          else
+            mpechoat $n The mortar there is in no need of replacement,
+          endif
+        endif
+      else
+        if compstr(3) == low
+          if objhere(5827)
+            mpechoat $n The mortar there has already been scraped away.
+          else
+            if objhere(5826)
+              mpget obj obj_5826 val1 0
+              if value(0) == 1
+                mpechoat $n You carefully scrape the deteriorating mortar from between some of the blocks with a scoring knife.
+                mpechoaround $n $N scores and scrapes some deteriorating mortar from between the stone blocks on the wall.
+                mppurge obj_5826
+                mpoload 5827 in room
+                mplag $n 3
+              else
+                mpechoat $n The mortar there is in no need of replacement.
+              endif
+            else
+              mpechoat $n The mortar there is in no need of replacement,
+            endif
+          endif
+        else
+          mpechoat $n Did you want to scrape the $Y2 {Whigh{x or {Wlow{x?
+        endif
+      endif
+    else
+      if iscarrying($n) == 5824
+        mpechoat $n You aren\@t using the proper tool to scrape the mortar with.
+      else
+        mpechoat $n You don\@t have anything to scrape it with.
+      endif
+    endif
+  else
+    mpechoat $n What did you want to scrape?
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+5825
+stitched hide bag sealant obj_5825~
+a stitched hide bag of sealant~
+A hide bag lies discarded here, its folded edges coated with some kind of sealant.~
+~
+hide~
+trash 0 0 0 A
+0 0 0 0 0
+1 50 0 1 P
+0
+>verb_prog p apply~
+if objtargetcarry($n)
+  if value(0) >= 5
+    mpechoat $n You have no sealant left in the bag to apply.
+  else
+    if objhere(5827)
+      mpechoat $n You apply a new layer of sealant to the stone wall, mashing the sticky substance into the gaps with your fingers.
+      mpechoaround $n Mashing the sticky substance into the small gaps between the stones, $N applies a new layer of sealant to the wall.
+      mppurge obj_5827
+      mplag $n 3
+      mpvalueup 0
+      if value(0) == 2
+        mpechoat $n A stitched hide bag of sealant is about half full.
+      endif
+      if value(0) == 4
+        mpechoat $n You think you can probably seal one more section of wall with what you have left in the bag.
+      endif
+    else
+      mpechoat $n You do not need to apply any sealant to the wall here.
+    endif
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+5826
+mortar old crusty obj_5826~
+old, crusty mortar~
+The mortar between the stone blocks of the wall is discolored and crumbling.~
+~
+unknown~
+trash e 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+5827
+gap gaps mortar absence wall obj_5827~
+the absence of mortar~
+The mortar here has been scraped away, and gaps have been left between the stones of the wall.~
+~
+unknown~
+trash e 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+5828
+steel wedge piece obj_5828~
+a steel wedge~
+A piece of steel shaped into a wedge has been discarded here.~
+~
+steel~
+trash 0 0 0 AO
+0 0 0 0 0
+1 50 0 0 P
+0
+>verb_prog p quarry~
+if isowner($n)
+  if iswielding($n) == 5828
+    if iswielding($n) == 5829
+      mpnextinterp
+    else
+      mpechoat $n You can\@t quarry stone with only a steel wedge.
+    endif
+  else
+    mpechoat $n You need to be holding the wedge to quarry stone.
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+5829
+heavy steel hammer square obj_5829~
+a heavy steel hammer~
+A steel hammer with a heavy, square head has been discarded here.~
+~
+steel~
+weapon 0 0 0 AN
+mace 3 6 1 0
+smash~
+1 120 0 1 P
+0
+O smash~
+>verb_prog p quarry~
+if isowner($n)
+  if iswielding($n) == 5829
+    if iswielding($n) == 5828
+      if sector($n) == mountain
+      or sector($n) == underground
+        mpget room stone 0
+        if value(0) == 82
+          mpechoat $n You take your time to carefully quarry some of the granite, and produce a large chunk about the size of the blocks in the Earendam wall.
+          mpechoaround $n Taking $s time, $N carefully quarries some of the granite producing a large chunk.
+          mpoload 5831 in room
+          mplag $n 3
+        else
+          mpechoat $n You don\@t see the right kind of stone here to match the walls of Earendam.
+        endif
+      else
+        mpechoat $n There isn\@t a good enough source of stone to quarry here.
+      endif
+    else
+      mpechoat $n You can\@t quarry stone with only a heavy steel hammer.
+    endif
+  else
+    mpechoat $n You need to be holding the hammer to quarry stone.
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+5830
+cart pushcart sturdy wooden wooden-wheeled obj_5830~
+a wooden-wheeled pushcart~
+A sturdy pushcart with two large wooden wheels is here, standing on a rear support beneath the handle.~
+~
+wood~
+container 0 0 0 P
+3500 0 0 9999 0
+1 500 0 3 P
+1
+>verb_prog p unload~
+if mobhere(5800)
+  if compstr(2) == cart
+  or compstr(2) == pushcart
+  or compstr(2) == wooden
+  or compstr(2) == wooden-wheeled
+  or compstr(2) == sturdy
+    loop 1 to 5
+      if incontainer(5831)
+        mpforce mob_5800 get obj_5831 cart
+        mpforce mob_5800 drop obj_5831
+        mpforce mob_5800 mpset obj obj_5831 wear 0
+      endif
+    endloop
+    mpforce mob_5800 get all cart
+    mpforce mob_5800 drop all
+    mpforce mob_5800 mpvalueset 3 0
+    mpechoat $n You tip the cart forward dumping its contents onto the ground.
+    mpechoaround $n $N tips the cart forward dumping its contents on the ground.
+    if mobhere(5801)
+      mpforce mob_5801 mpfocus $n
+      mpforce mob_5801 mpsetdata SHAPINGSTONE
+      mpforce mob_5801 mpvalueset 0 1
+    endif
+  else
+    mpechoat $n What did you want to unload?
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+5831
+chunk large stone granite rough-hewn obj_5831~
+a large chunk of granite~
+A large, rough-hewn chunk of granite rests here.~
+~
+granite~
+trash 0 0 0 0
+0 0 0 0 0
+1 600 0 0 P
+0
+>verb_prog p get~
+if isimmort($n)
+or isnpc($n)
+  mpnextinterp
+else
+  if compstr(2) == chunk
+  or compstr(2) == large
+  or compstr(2) == stone
+  or compstr(2) == rough-hewn
+  or compstr(2) == granite
+  or compstr(2) == all
+    mpechoat $n There is no way you can lift a chunk of granite by yourself.  You would need to load it into a cart or something.
+    mpechoaround $n $N tries to pick up a large chunk of granite, but can\@t even move it.
+    mpverbstop
+  else
+    mpnextinterp
+  endif
+endif
+~
+>verb_prog p take~
+if isimmort($n)
+or isnpc($n)
+  mpnextinterp
+else
+  if compstr(2) == chunk
+  or compstr(2) == large
+  or compstr(2) == stone
+  or compstr(2) == rough-hewn
+  or compstr(2) == granite
+  or compstr(2) == all
+    mpechoat $n There is no way you can lift a chunk of granite by yourself.  You would need to load it into a cart or something.
+    mpechoaround $n $N tries to pick up a large chunk of granite, but can\@t even move it.
+    mpverbstop
+  else
+    mpnextinterp
+  endif
+endif
+~
+|
+V13
+5832
+wide steel chisel obj_5832~
+a wide steel chisel~
+A wide steel chisel has been discarded here.~
+~
+steel~
+weapon 0 0 0 AN
+dagger 3 3 2 0
+pierce~
+5 20 0 0 P
+0
+O pierce~
+>verb_prog p shape~
+if isowner($n)
+  if iswielding($n) == 5832
+    if compstr(2) == stone
+    or compstr(2) == granite
+    or compstr(2) == large
+    or compstr(2) == chunk
+      if objhere(5831)
+        mpechoat $n You take your time and carefully shape the granite block with a wide steel chisel.
+        mpechoaround $n $N carefully uses a wide steel chisel to shape a granite block.
+        mppurge obj_5831
+        mpoload 5833
+        mplag $n 4
+      else
+        mpechoat $n You don\@t see that here.
+      endif
+    else
+      mpechoat $n What did you want to shape?
+    endif
+  else
+    mpechoat $n You need to be holding a chisel to shape stones.
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+5833
+large granite brick obj_5833~
+a large granite brick~
+A large granite brick, like those used in walls, lies discarded here.~
+~
+granite~
+trash 0 0 0 A
+0 0 0 0 0
+1 450 0 3 P
+0
+V13
+5834
+long wavy iron sword obj_5834~
+a wavy iron sword~
+A long, wavy iron sword has been discarded here.~
+~
+iron~
+weapon 0 0 0 AN
+sword 4 8 3 0
+gash~
+30 100 3703 1 P
+0
+A
+18 3
+A
+19 1
+O gash~
+V13
+5835
+knout braided hide whip obj_5835~
+a braided knout~
+A knout of braided hide has been discarded here.~
+~
+hide~
+weapon 0 0 0 AN
+whip 3 12 3 0
+flogging~
+30 40 8797 0 P
+0
+A
+18 3
+A
+19 2
+O flogging~
+V13
+5836
+length silver whip tightly-wound obj_5836~
+a whip of tightly-wound silver~
+A length of tightly-wound silver crafted into a whip has been discarded here.~
+~
+silver~
+weapon A 0 0 AN
+whip 3 12 3 0
+lashing~
+30 50 9222 0 P
+0
+A
+19 2
+A
+18 2
+A
+12 10
+O lashing~
+#0
+
+
+
+#ROOMS
+#5800
+The Earendam Outskirts Upskirt~
+#### Bits ####
+5899 == Kankoran/Srryn bit, Earendam doesn\@t like them much.
+5800 == Has agreed to help the wallworker.
+5801 == Has scrubbed the walls to satisfaction.
+5802 == Has resealed the walls to satisfaction.
+5803 == Has shaped new stones to satisfaction.
+5805-5808 == Used for wallworker\@s second task.
+5810-5815 == Used for wallworker\@s final task.
+~
+~
+0
+0 524342 2
+W 5 0 0
+Z 4 5
+S
+#5801
+Northern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the southeast.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5701
+D1
+~
+~
+0 0 5802
+D2
+~
+~
+0 0 5815
+W 5 0 0
+Z 5 5
+S
+#5802
+Northern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the south.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5702
+D1
+~
+~
+0 0 5803
+D2
+~
+~
+0 0 5816
+D3
+~
+~
+0 0 5801
+W 5 0 0
+Z 5 5
+S
+#5803
+Northern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the south.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5703
+D1
+~
+~
+0 0 5804
+D2
+~
+~
+0 0 5817
+D3
+~
+~
+0 0 5802
+W 5 0 0
+Z 5 5
+S
+#5804
+Northern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the south.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5704
+D1
+~
+~
+0 0 5805
+D2
+~
+~
+0 0 5818
+D3
+~
+~
+0 0 5803
+W 5 0 0
+Z 5 5
+S
+#5805
+Northern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the south.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5705
+D1
+~
+~
+0 0 5806
+D2
+~
+~
+0 0 5819
+D3
+~
+~
+0 0 5804
+W 5 0 0
+Z 5 5
+S
+#5806
+Northern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the south.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5706
+D1
+~
+~
+0 0 5807
+D2
+~
+~
+0 0 5821
+D3
+~
+~
+0 0 5805
+W 5 0 0
+Z 5 5
+S
+#5807
+Northern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the south.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5707
+D1
+~
+~
+0 0 5808
+D2
+~
+~
+0 0 5820
+D3
+~
+~
+0 0 5806
+W 5 0 0
+Z 5 5
+S
+#5808
+The Earendam Road~
+A narrow strip of stones that leads north into the grasslands, the
+Earendam Road was once heavily travelled by caravans trading with the
+mountain outposts to the north.  It has since fallen into disuse, but is
+still nominally maintained by Earendam.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5708
+D1
+~
+~
+0 0 5809
+D2
+~
+~
+0 0 5822
+D3
+~
+~
+0 0 5807
+W 5 0 0
+Z 5 5
+S
+#5809
+Northern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the south.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5709
+D1
+~
+~
+0 0 5810
+D2
+~
+~
+0 0 5823
+D3
+~
+~
+0 0 5808
+W 5 0 0
+Z 5 5
+S
+#5810
+Northern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the south.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5710
+D1
+~
+~
+0 0 5811
+D2
+~
+~
+0 0 5824
+D3
+~
+~
+0 0 5809
+W 5 0 0
+Z 5 5
+S
+#5811
+Northern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the south.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5711
+D1
+~
+~
+0 0 5812
+D2
+~
+~
+0 0 5825
+D3
+~
+~
+0 0 5810
+W 5 0 0
+Z 5 5
+S
+#5812
+Northern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the south.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5712
+D1
+~
+~
+0 0 5813
+D2
+~
+~
+0 0 5826
+D3
+~
+~
+0 0 5811
+W 5 0 0
+Z 5 5
+S
+#5813
+Northern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the south.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5713
+D1
+~
+~
+0 0 5814
+D2
+~
+~
+0 0 5827
+D3
+~
+~
+0 0 5812
+W 5 0 0
+Z 5 5
+S
+#5814
+Northern Outskirts of Earendam~
+Beyond the east walls of the city, a bare plain extends into the
+distance. To the east, the blue vastness of the Uthlin Ocean is visible,
+and to the north and south of the city stretch the Earendam Grasslands.  
+Now and then a breeze carries the distant smell of saltwater from the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5714
+D2
+~
+~
+0 0 5828
+D3
+~
+~
+0 0 5813
+W 5 0 0
+Z 5 5
+S
+#5815
+Western Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5801
+D1
+~
+~
+0 0 5816
+D2
+~
+~
+0 0 5847
+W 5 0 0
+Z 5 5
+S
+#5816
+Outside the Northern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the southeast,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the north of the
+city.  Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5802
+D1
+~
+~
+0 0 5817
+D2
+~
+~
+0 0 5848
+D3
+~
+~
+0 0 5815
+W 5 0 0
+Z 5 5
+S
+#5817
+Outside the Northern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the south,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the north of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 0
+D0
+~
+~
+0 0 5803
+D1
+~
+~
+0 0 5818
+D3
+~
+~
+0 0 5816
+W 5 0 0
+Z 5 5
+S
+#5818
+Outside the Northern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the south,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the north of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 0
+D0
+~
+~
+0 0 5804
+D1
+~
+~
+0 0 5819
+D3
+~
+~
+0 0 5817
+W 5 0 0
+Z 5 5
+S
+#5819
+Outside the Northern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the south,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the north of the
+city.  Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 0
+D0
+~
+~
+0 0 5805
+D1
+~
+~
+0 0 5821
+D3
+~
+~
+0 0 5818
+W 5 0 0
+Z 5 5
+S
+#5820
+Outside the Northern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the south,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the north of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 0
+D0
+~
+~
+0 0 5807
+D1
+~
+~
+0 0 5822
+D3
+~
+~
+0 0 5821
+W 5 0 0
+Z 5 5
+S
+#5821
+Outside the Northern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the south,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the north of the
+city.  Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 0
+D0
+~
+~
+0 0 5806
+D1
+~
+~
+0 0 5820
+D3
+~
+~
+0 0 5819
+W 5 0 0
+Z 5 5
+S
+#5822
+The Earendam Road~
+A narrow strip of stones that leads north into the grasslands, the
+Earendam Road was once heavily travelled by caravans trading with the
+mountain outposts to the north.  It has since fallen into disuse, but is
+still nominally maintained by Earendam.  
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 5808
+D1
+~
+~
+0 0 5823
+D2
+~
+~
+0 0 7367
+D3
+~
+~
+0 0 5820
+W 5 0 0
+Z 5 5
+S
+#5823
+Outside the Northern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the south,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the north of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 0
+D0
+~
+~
+0 0 5809
+D1
+~
+~
+0 0 5824
+D3
+~
+~
+0 0 5822
+W 5 0 0
+Z 5 5
+S
+#5824
+Outside the Northern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the south,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the north of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 0
+D0
+~
+~
+0 0 5810
+D1
+~
+~
+0 0 5825
+D3
+~
+~
+0 0 5823
+W 5 0 0
+Z 5 5
+S
+#5825
+Outside the Northern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the south,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the north of the
+city.  Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 0
+D0
+~
+~
+0 0 5811
+D1
+~
+~
+0 0 5826
+D3
+~
+~
+0 0 5824
+W 5 0 0
+Z 5 5
+S
+#5826
+Outside the Northern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the south,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the north of the
+city.  Beyond the walls, the Grasslands of Earendam spread like a green sea,
+and to the east, the Uthlin Ocean can be seen.  
+~
+~
+1
+0 0 0
+D0
+~
+~
+0 0 5812
+D1
+~
+~
+0 0 5827
+D3
+~
+~
+0 0 5825
+W 5 0 0
+Z 5 5
+S
+#5827
+Outside the Northern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the southwest,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the north of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea,
+and to the east, the Uthlin Ocean can be seen.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5813
+D1
+~
+~
+0 0 5828
+D2
+~
+~
+0 0 5829
+D3
+~
+~
+0 0 5826
+W 5 0 0
+Z 5 5
+S
+#5828
+Eastern Outskirts of Earendam~
+Beyond the east walls of the city, a bare plain extends into the
+distance. To the east, the blue vastness of the Uthlin Ocean is visible,
+and to the north and south of the city stretch the Earendam Grasslands.  
+Now and then a breeze carries the distant smell of saltwater from the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5814
+D2
+~
+~
+0 0 5830
+D3
+~
+~
+0 0 5827
+W 5 0 0
+Z 5 5
+S
+#5829
+Outside the Eastern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the west,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for watchmen to peer out at the ocean to the east of the
+city.  Far to the east, the Uthlin Ocean spreads vast and blue.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5827
+D1
+~
+~
+0 0 5830
+D2
+~
+~
+0 0 5831
+W 5 0 0
+Z 5 5
+S
+#5830
+Eastern Outskirts of Earendam~
+Beyond the east walls of the city, a bare plain extends into the
+distance. To the east, the blue vastness of the Uthlin Ocean is visible,
+and to the north and south of the city stretch the Earendam Grasslands.  
+Now and then a breeze carries the distant smell of saltwater from the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5828
+D2
+~
+~
+0 0 5832
+D3
+~
+~
+0 0 5829
+W 5 0 0
+Z 5 5
+S
+#5831
+Outside the Eastern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the west,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for watchmen to peer out at the ocean to the east of the
+city.  Far to the east, the Uthlin Ocean spreads vast and blue.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5829
+D1
+~
+~
+0 0 5832
+D2
+~
+~
+0 0 5833
+W 5 0 0
+Z 5 5
+S
+#5832
+Eastern Outskirts of Earendam~
+Beyond the east walls of the city, a bare plain extends into the
+distance. To the east, the blue vastness of the Uthlin Ocean is visible,
+and to the north and south of the city stretch the Earendam Grasslands.  
+Now and then a breeze carries the distant smell of saltwater from the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5830
+D2
+~
+~
+0 0 5834
+D3
+~
+~
+0 0 5831
+W 5 0 0
+Z 5 5
+S
+#5833
+A Bridge on the Eastern Outskirts~
+A stone bridge straddles the Dantaron River at this point, the placid
+waters flowing east out of the city.  The granite walls of the city Earendam
+tower before you to the west, their blocks well worn by the elements. 
+Notches are carved near the tops of the battlements for watchmen to peer out
+at the ocean to the east of the city.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5831
+D1
+~
+~
+0 0 5834
+D2
+~
+~
+0 0 5835
+W 5 0 0
+Z 5 5
+S
+#5834
+A Bridge on the Eastern Outskirts~
+A stone bridge straddles the Dantaron River at this point, the placid
+waters flowing east out of the city.  The granite walls of the city Earendam
+tower before you to the west, their blocks well worn by the elements. 
+Notches are carved near the tops of the battlements for watchmen to peer out
+at the ocean to the east of the city.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5832
+D2
+~
+~
+0 0 5836
+D3
+~
+~
+0 0 5833
+W 5 0 0
+Z 5 5
+S
+#5835
+Outside the Eastern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the west,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for watchmen to peer out at the ocean to the east of the
+city.  Far to the east, the Uthlin Ocean spreads vast and blue.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5833
+D1
+~
+~
+0 0 5836
+D2
+~
+~
+0 0 5837
+W 5 0 0
+Z 5 5
+S
+#5836
+Eastern Outskirts of Earendam~
+Beyond the east walls of the city, a bare plain extends into the
+distance. To the east, the blue vastness of the Uthlin Ocean is visible,
+and to the north and south of the city stretch the Earendam Grasslands.  
+Now and then a breeze carries the distant smell of saltwater from the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5834
+D2
+~
+~
+0 0 5838
+D3
+~
+~
+0 0 5835
+W 5 0 0
+Z 5 5
+S
+#5837
+The Uthlin Road~
+The Uthlin Road is a narrow strip of stones leading eastward toward the
+Uthlin Ocean.  Maintained by the Earendam authorities, it cuts a path
+through the grass to the east, allowing merchants and caravans a route to
+the shore of the ocean.  The faint smell of saltwater is carried by a
+western breeze.  
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 5835
+D1
+~
+~
+0 0 5838
+D2
+~
+~
+0 0 5839
+D3
+~
+~
+0 0 7058
+W 5 0 0
+Z 5 5
+S
+#5838
+The Uthlin Road~
+The Uthlin Road is a narrow strip of stones leading eastward toward the
+Uthlin Ocean.  Maintained by the Earendam authorities, it cuts a path
+through the grass to the east, allowing merchants and caravans a route to
+the shore of the ocean.  The faint smell of saltwater is carried by a
+western breeze.  
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 5836
+D1
+~
+~
+0 0 23701
+D2
+~
+~
+0 0 5840
+D3
+~
+~
+0 0 5837
+W 5 0 0
+Z 5 5
+S
+#5839
+Outside the Eastern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the west,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for watchmen to peer out at the ocean to the east of the
+city.  Far to the east, the Uthlin Ocean spreads vast and blue.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5837
+D1
+~
+~
+0 0 5840
+D2
+~
+~
+0 0 5841
+W 5 0 0
+Z 5 5
+S
+#5840
+Eastern Outskirts of Earendam~
+Beyond the east walls of the city, a bare plain extends into the
+distance. To the east, the blue vastness of the Uthlin Ocean is visible,
+and to the north and south of the city stretch the Earendam Grasslands.  
+Now and then a breeze carries the distant smell of saltwater from the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5838
+D2
+~
+~
+0 0 5842
+D3
+~
+~
+0 0 5839
+W 5 0 0
+Z 5 5
+S
+#5841
+Outside the Eastern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the west,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for watchmen to peer out at the ocean to the east of the
+city.  Far to the east, the Uthlin Ocean spreads vast and blue.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5839
+D1
+~
+~
+0 0 5842
+D2
+~
+~
+0 0 5843
+W 5 0 0
+Z 5 5
+S
+#5842
+Eastern Outskirts of Earendam~
+Beyond the east walls of the city, a bare plain extends into the
+distance. To the east, the blue vastness of the Uthlin Ocean is visible,
+and to the north and south of the city stretch the Earendam Grasslands.  
+Now and then a breeze carries the distant smell of saltwater from the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5840
+D2
+~
+~
+0 0 5844
+D3
+~
+~
+0 0 5841
+W 5 0 0
+Z 5 5
+S
+#5843
+Outside the Eastern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the west,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for watchmen to peer out at the ocean to the east of the
+city.  Far to the east, the Uthlin Ocean spreads vast and blue.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5841
+D1
+~
+~
+0 0 5844
+D2
+~
+~
+0 0 5845
+W 5 0 0
+Z 5 5
+S
+#5844
+Eastern Outskirts of Earendam~
+Beyond the east walls of the city, a bare plain extends into the
+distance. To the east, the blue vastness of the Uthlin Ocean is visible,
+and to the north and south of the city stretch the Earendam Grasslands.  
+Now and then a breeze carries the distant smell of saltwater from the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5842
+D2
+~
+~
+0 0 5846
+D3
+~
+~
+0 0 5843
+W 5 0 0
+Z 5 5
+S
+#5845
+Outside the Eastern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the west,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for watchmen to peer out at the ocean to the east of the
+city.  Far to the east, the Uthlin Ocean spreads vast and blue.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5843
+D1
+~
+~
+0 0 5846
+D2
+~
+~
+0 0 5876
+W 5 0 0
+Z 5 5
+S
+#5846
+Eastern Outskirts of Earendam~
+Beyond the east walls of the city, a bare plain extends into the
+distance. To the east, the blue vastness of the Uthlin Ocean is visible,
+and to the north and south of the city stretch the Earendam Grasslands.  
+Now and then a breeze carries the distant smell of saltwater from the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5844
+D2
+~
+~
+0 0 5877
+D3
+~
+~
+0 0 5845
+W 5 0 0
+Z 5 5
+S
+#5847
+Western Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5815
+D1
+~
+~
+0 0 5848
+D2
+~
+~
+0 0 5849
+W 5 0 0
+Z 5 5
+S
+#5848
+Outside the Western Wall of Earendam~
+The granite walls of the city Earendam tower before you to the east,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the west of the
+city.  Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5816
+D2
+~
+~
+0 0 5850
+D3
+~
+~
+0 0 5847
+W 5 0 0
+Z 5 5
+S
+#5849
+Western Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5847
+D1
+~
+~
+0 0 5850
+D2
+~
+~
+0 0 5851
+W 5 0 0
+Z 5 5
+S
+#5850
+Outside the Western Wall of Earendam~
+The granite walls of the city Earendam tower before you to the east,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the west of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5848
+D2
+~
+~
+0 0 5852
+D3
+~
+~
+0 0 5849
+W 5 0 0
+Z 5 5
+S
+#5851
+Western Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5849
+D1
+~
+~
+0 0 5852
+D2
+~
+~
+0 0 5853
+W 5 0 0
+Z 5 5
+S
+#5852
+Outside the Western Wall of Earendam~
+The granite walls of the city Earendam tower before you to the east,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the west of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5850
+D2
+~
+~
+0 0 5854
+D3
+~
+~
+0 0 5851
+W 5 0 0
+Z 5 5
+S
+#5853
+Western Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the east.  To the south the Arien Road cuts through the
+grass.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5851
+D1
+~
+~
+0 0 5854
+D2
+~
+~
+0 0 5855
+D3
+~
+~
+0 0 8890
+W 5 0 0
+Z 5 5
+S
+#5854
+Outside the Western Wall of Earendam~
+The granite walls of the city Earendam tower before you to the east,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the west of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5852
+D2
+~
+~
+0 0 5856
+D3
+~
+~
+0 0 5853
+W 5 0 0
+Z 5 5
+S
+#5855
+The Arien Road~
+Outside the western gates of Earendam, the Arien Road stretches into the
+distance to the west.  Leading through the Plains of Arien to Var Bandor,
+the broad strip of stones accomodates a great number of caravans, travelers
+and merchants.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5853
+D1
+~
+~
+0 0 5856
+D2
+~
+~
+0 0 5857
+D3
+~
+~
+0 0 8860
+W 5 0 0
+Z 5 5
+S
+#5856
+The Arien Road~
+Outside the western gates of Earendam, the Arien Road stretches into the
+distance to the west.  Leading through the Plains of Arien to Var Bandor,
+the broad strip of stones accomodates a great number of caravans, travelers
+and merchants.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5854
+D1
+~
+~
+0 0 7366
+D2
+~
+~
+0 0 5858
+D3
+~
+~
+0 0 5855
+W 5 0 0
+Z 5 5
+S
+#5857
+The Earendam Docks~
+A wide wooden docks has been erected just to the north of the River
+Dantaron, flowing sluggishly to the south under the city wall.  The docks
+are clear of clutter, incoming cargo being regulated closely and required to
+move immediately.  An occasional raft or barge can be seen on the river,
+arriving or leaving the city.  Several ladders and wooden walkways lead
+downward to the water of the river itself.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5855
+D1
+~
+~
+0 0 5858
+D2
+~
+~
+0 0 5859
+D3
+~
+~
+0 0 8830
+D5
+~
+~
+0 0 1802
+W 5 0 0
+Z 5 5
+S
+#5858
+The Earendam Docks~
+A wide wooden docks has been erected just to the north of the River
+Dantaron, flowing sluggishly to the south under the city wall.  The docks
+are clear of clutter, incoming cargo being regulated closely and required to
+move immediately.  An occasional raft or barge can be seen on the river,
+arriving or leaving the city.  To the east, the granite walls of Earendam
+tower above the dock area.  Several ladders and wooden walkways lead
+downward to the water of the river itself.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5856
+D2
+~
+~
+0 0 5860
+D3
+~
+~
+0 0 5857
+D5
+~
+~
+0 0 1801
+W 5 0 0
+Z 5 5
+S
+#5859
+Western Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5857
+D1
+~
+~
+0 0 5860
+D2
+~
+~
+0 0 5861
+W 5 0 0
+Z 5 5
+S
+#5860
+Outside the Western Wall of Earendam~
+The granite walls of the city Earendam tower before you to the east,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the west of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5858
+D2
+~
+~
+0 0 5862
+D3
+~
+~
+0 0 5859
+W 5 0 0
+Z 5 5
+S
+#5861
+Western Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5859
+D1
+~
+~
+0 0 5862
+D2
+~
+~
+0 0 5863
+W 5 0 0
+Z 5 5
+S
+#5862
+Outside the Western Wall of Earendam~
+The granite walls of the city Earendam tower before you to the east,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the west of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5860
+D2
+~
+~
+0 0 5864
+D3
+~
+~
+0 0 5861
+W 5 0 0
+Z 5 5
+S
+#5863
+Western Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5861
+D1
+~
+~
+0 0 5864
+D2
+~
+~
+0 0 5865
+W 5 0 0
+Z 5 5
+S
+#5864
+Outside the Western Wall of Earendam~
+The granite walls of the city Earendam tower before you to the east,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the west of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5862
+D2
+~
+~
+0 0 5866
+D3
+~
+~
+0 0 5863
+W 5 0 0
+Z 5 5
+S
+#5865
+Western Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5863
+D1
+~
+~
+0 0 5866
+D2
+~
+~
+0 0 5878
+W 5 0 0
+Z 5 5
+S
+#5866
+Outside the Southern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the northeast,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the west of the
+city.  Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5864
+D1
+~
+~
+0 0 5867
+D2
+~
+~
+0 0 5879
+D3
+~
+~
+0 0 5865
+W 5 0 0
+Z 5 5
+S
+#5867
+Outside the Southern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the north,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the south of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D1
+~
+~
+0 0 5868
+D2
+~
+~
+0 0 5880
+D3
+~
+~
+0 0 5866
+W 5 0 0
+Z 5 5
+S
+#5868
+Outside the Southern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the north,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the south of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D1
+~
+~
+0 0 5869
+D2
+~
+~
+0 0 5881
+D3
+~
+~
+0 0 5867
+W 5 0 0
+Z 5 5
+S
+#5869
+Outside the Southern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the north,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the south of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D1
+~
+~
+0 0 5870
+D2
+~
+~
+0 0 5882
+D3
+~
+~
+0 0 5868
+W 5 0 0
+Z 5 5
+S
+#5870
+Outside the Southern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the north,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the south of the
+city.  Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D1
+~
+~
+0 0 5871
+D2
+~
+~
+0 0 5883
+D3
+~
+~
+0 0 5869
+W 5 0 0
+Z 5 5
+S
+#5871
+The Southern Path~
+A well-worn dirt path has been beaten into the soil outside the southern
+gatehouse of Earendam.  Known as the Southern Path, the trail leads south of
+the city into the vast grasslands.  To the north, the granite city walls
+tower, and to the east and west are the outskirts of Earendam.  
+~
+~
+1
+0 0 2
+E
+sign~
+~
+D0
+~
+~
+0 0 7082
+D1
+~
+~
+0 0 5872
+D2
+~
+~
+0 0 5884
+D3
+~
+~
+0 0 5870
+W 5 0 0
+Z 5 5
+S
+#5872
+Outside the Southern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the north,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the south of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D1
+~
+~
+0 0 5873
+D2
+~
+~
+0 0 5885
+D3
+~
+~
+0 0 5871
+W 5 0 0
+Z 5 5
+S
+#5873
+Outside the Southern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the north,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the south of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D1
+~
+~
+0 0 5874
+D2
+~
+~
+0 0 5886
+D3
+~
+~
+0 0 5872
+W 5 0 0
+Z 5 5
+S
+#5874
+Outside the Southern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the north,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the south of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D1
+~
+~
+0 0 5875
+D2
+~
+~
+0 0 5887
+D3
+~
+~
+0 0 5873
+W 5 0 0
+Z 5 5
+S
+#5875
+Outside the Southern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the north,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the south of the
+city. Beyond the walls, the Grasslands of Earendam spread like a green sea.
+~
+~
+1
+0 0 2
+D1
+~
+~
+0 0 5876
+D2
+~
+~
+0 0 5888
+D3
+~
+~
+0 0 5874
+W 5 0 0
+Z 5 5
+S
+#5876
+Outside the Southern Wall of Earendam~
+The granite walls of the city Earendam tower before you to the northwest,
+their blocks well worn by the elements.  Notches are carved near the tops of
+the battlements for archers to peer out at the plains to the south of the
+city.  Beyond the walls, the Grasslands of Earendam spread like a green sea,
+and to the east, the Uthlin Ocean can be seen.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5845
+D1
+~
+~
+0 0 5877
+D2
+~
+~
+0 0 5889
+D3
+~
+~
+0 0 5875
+W 5 0 0
+Z 5 5
+S
+#5877
+Eastern Outskirts of Earendam~
+Beyond the east walls of the city, a bare plain extends into the
+distance.  To the east, the blue vastness of the Uthlin Ocean is visible,
+and to the north and south of the city stretch the Earendam Grasslands.  
+Now and then a breeze carries the distant smell of saltwater from the east.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5846
+D2
+~
+~
+0 0 5890
+D3
+~
+~
+0 0 5876
+W 5 0 0
+Z 5 5
+S
+#5878
+Southern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the northeast.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5865
+D1
+~
+~
+0 0 5879
+D2
+~
+~
+0 0 5601
+W 5 0 0
+Z 5 5
+S
+#5879
+Southern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the north.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5866
+D1
+~
+~
+0 0 5880
+D2
+~
+~
+0 0 5602
+D3
+~
+~
+0 0 5878
+W 5 0 0
+Z 5 5
+S
+#5880
+Southern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the north. 
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5867
+D1
+~
+~
+0 0 5881
+D2
+~
+~
+0 0 5603
+D3
+~
+~
+0 0 5879
+W 5 0 0
+Z 5 5
+S
+#5881
+Southern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the north. 
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5868
+D1
+~
+~
+0 0 5882
+D2
+~
+~
+0 0 5604
+D3
+~
+~
+0 0 5880
+W 5 0 0
+Z 5 5
+S
+#5882
+Southern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the north. 
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5869
+D1
+~
+~
+0 0 5883
+D2
+~
+~
+0 0 5605
+D3
+~
+~
+0 0 5881
+W 5 0 0
+Z 5 5
+S
+#5883
+Southern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the north. 
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5870
+D1
+~
+~
+0 0 5884
+D2
+~
+~
+0 0 5606
+D3
+~
+~
+0 0 5882
+W 5 0 0
+Z 5 5
+S
+#5884
+The Southern Path~
+A well-worn dirt path has been beaten into the soil outside the southern
+wall of Earendam.  Known as the Southern Path, the trail leads south of the
+city into the vast grasslands.  To the north, the granite city walls tower,
+and to the east and west are the outskirts of Earendam.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5871
+D1
+~
+~
+0 0 5885
+D2
+~
+~
+0 0 5607
+D3
+~
+~
+0 0 5883
+W 5 0 0
+Z 5 5
+S
+#5885
+Southern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the north. 
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5872
+D1
+~
+~
+0 0 5886
+D2
+~
+~
+0 0 5608
+D3
+~
+~
+0 0 5884
+W 5 0 0
+Z 5 5
+S
+#5886
+Southern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the north. 
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5873
+D1
+~
+~
+0 0 5887
+D2
+~
+~
+0 0 5609
+D3
+~
+~
+0 0 5885
+W 5 0 0
+Z 5 5
+S
+#5887
+Southern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the north. 
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5874
+D1
+~
+~
+0 0 5888
+D2
+~
+~
+0 0 5610
+D3
+~
+~
+0 0 5886
+W 5 0 0
+Z 5 5
+S
+#5888
+Southern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the north. 
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5875
+D1
+~
+~
+0 0 5889
+D2
+~
+~
+0 0 5611
+D3
+~
+~
+0 0 5887
+W 5 0 0
+Z 5 5
+S
+#5889
+Southern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+visible nearby to the north. 
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5876
+D1
+~
+~
+0 0 5890
+D2
+~
+~
+0 0 5612
+D3
+~
+~
+0 0 5888
+W 5 0 0
+Z 5 5
+S
+#5890
+Southern Outskirts of Earendam~
+Beyond the bare ground of the city walls begin the Grasslands of
+Earendam, a vast sea of green vegetation that stirs and whispers softly in
+the breeze.  The long Earendam grasses grow to your waist, and so densely as
+to slow progress through the area.  The walls of the city Earendam are
+nearby to the northwest, and to the east, the Uthlin Ocean is visible.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5877
+D2
+~
+~
+0 0 5613
+D3
+~
+~
+0 0 5889
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+M 0 5800 1 5800 1
+M 0 5811 1 5801 1
+E 0 5836 0 16
+M 0 5807 2 5804 1
+O 0 5801 0 5804
+M 0 5806 4 5808 1
+M 0 5805 4 5812 1
+M 0 5806 4 5815 1
+M 0 5801 1 5818 1
+M 0 5802 5 5819 1
+M 0 5802 5 5825 1
+M 0 5804 1 5833 1
+O 0 5802 0 5833
+M 0 5802 5 5839 1
+M 0 5805 4 5846 1
+M 0 5803 6 5857 3
+M 0 5803 6 5857 3
+M 0 5803 6 5857 3
+M 0 5804 1 5857 1
+O 0 5802 0 5857
+M 0 5803 6 5858 3
+M 0 5803 6 5858 3
+M 0 5803 6 5858 3
+M 0 5805 4 5859 1
+M 0 5802 5 5864 1
+M 0 5809 1 5871 1
+M 0 5802 5 5872 1
+M 0 5808 1 5877 1
+E 0 5834 0 16
+E 0 5835 0 16
+M 0 5806 4 5879 1
+M 0 5807 2 5881 1
+O 0 5801 0 5881
+M 0 5805 4 5883 1
+M 0 5806 4 5887 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

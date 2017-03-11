@@ -1,0 +1,1345 @@
+#AREADATA
+Name The Proving Ground~
+Builders Marlax~
+VNUMs 12151 12199
+Credits [House] Marlax    The Proving Ground~
+Danger 2
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 3 1 5 4
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 12151
+Kolith door ward doorward guardian conquest~
+Kolith~
+Kolith, the Door-Ward of Conquest, steadfastly guards the bottom of the hill.
+~
+A massive ape sits warily before the gates of the Proving Ground.  A
+shining coat of silvery-white fur covers his body, bulging outward on his
+arms, chest, and legs with the well-trained muscles of a true fighter.  The
+perpetual grimace on his face is reserved for the weak; he turns it only on
+those who fall before his power.  Shifting, he guards his post, and watches
+for enemies.  
+~
+alatharya~
+water scholar~
+ABDX 0 DFJVZ N 0
+35 20 7d12+1939 1d1+100 4d6+8 none~
+hit~
+-15 -15 -15 -15
+CDFIJKN AB
+26 0 0 0 0 33 0 0 0 0 0 0 0 0 -33 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>fight_prog 15~
+mpsetskilled
+bash
+mpunsetskilled
+~
+>greet_prog 100~
+if ispc($n)
+ if isinhouse($n)
+  say Greetings, victorious warrior!
+ else
+  mpkill $n
+  ht $N steps within!
+ endif
+endif
+~
+|
+V4 12154
+Larent bandit thief gate guard conquest~
+Larent~
+Larent, the Conqueror of Shadows, hides just behind the gate.
+~
+A quick-moving shadow draws attention to Larent.  A short, thin man, he
+steps fully from the shadows and looks at you with his warm, brown eyes that
+seem to embrace you.  Long, brown hair is neatly bunched into one thick
+strand at the back of his head, without one hair out of place.  He has a
+look of arrogant dominance about him.  
+~
+human~
+water scholar~
+ABX 0 JQVZ E 0
+40 20 11d15+5054 1d1+99 6d6+20 bash~
+punch~
+-17 -17 -17 -5
+CFIJKN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 120 -1
+AHMV ABCDEFGHIJK A medium flesh
+>greet_prog 100~
+if ispc($n)
+ if isinhouse($n)
+  bow
+  say Greetings, $N. How goes the hunt?
+  mpsetskilled
+  hide
+  mpunsetskilled
+ else
+  ht $N is within! I\@ll distract $m!
+  mpsetskilled
+  trip $n
+  mpkill $n
+  mpunsetskilled
+ endif
+endif
+~
+>rand_prog 5~
+mpecho Larent carefully looks about, watching for unworthy souls on these grounds.
+mpsetskilled
+hide
+mpunsetskilled
+~
+>fight_prog 10~
+mpsetskilled
+trip
+mpunsetskilled
+~
+>rand_prog 10~
+mpsetskilled
+hide
+mpunsetskilled
+~
+|
+V4 12155
+bot well voice booming~
+a well bot~
+A well bot is here, interpreting.
+~
+~
+human~
+water scholar~
+AB 0 DFJLZ N 0
+0 0 1d1+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p look in well~
+if isinhouse($n)
+ if isfight($n)
+  mpechoat $n You turn to look at the well, but a sudden move from your opponent distracts you.
+ else
+  mpechoaround $n $N gazes into the well.
+  mpechoat $n You look into the waters of the well, and see a shimmering image form in it\@s depths.
+  mptransfer $n 12160
+  mpat 12160 mpforce $n look
+  mpat 12160 mptransfer $n 12155
+  mpechoat $n The image recedes into the depth of the well.
+ endif
+endif
+~
+>verb_prog p drink well~
+if isinhouse($n)
+ if snaffected($n)==73
+  mpechoat $n You drink from a cobblestone well.
+  mpechoat $n The water quenches your thirst.
+  mpechoaround $n $N drinks from a cobblestone well.
+  mpset char $n thirst 48
+ else
+  mpechoat $n You drink from a cobblestone well.
+  mpechoat $n The water quenches your thirst.
+  mpechoaround $n $N drinks from a cobblestone well.
+  mpset char $n thirst 48
+  mpechoat $n The water of the well inspires you to fight.
+  mpaddaffect $n 73 60 24 1 4 0
+ endif
+else
+ mpechoat $n The water of the well burns as it goes down your throat.
+ mpechoaround $n $N clutches his throat as the water goes down.
+ mpaddaffect $n 143 60 10 1 -10 16777216
+endif
+~
+|
+V4 12158
+bot throne thronebot~
+a thronebot~
+A thronebot is here, looking for the Khal.
+~
+~
+human~
+water scholar~
+AB 0 DFJLZ N 0
+52 0 1d1+100 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>trigger_prog 100~
+mpgoto 12160
+loop 1 to 50
+ say Loop 1
+ get power
+endloop
+loop 1 to 50
+ say Loop 2
+ if vnum(1.)==12000
+  say A stone :)
+  mpvalueup 0
+ else
+  say Not a stone :(
+ endif
+ drop 1.
+endloop
+mpgoto 12158
+say $0 stones in the vault.
+~
+|
+V4 12159
+Vashel guard houseguard conquest~
+Vashel~
+Vashel, Mistress of Domination, keeps a steady eye on the Khal-Hold.
+~
+A beautiful dark-haired woman stands before the vault door, waiting for
+someone to challenge her authority.  Her firmly muscled body is
+well-proportioned for fighting
+ her legs and arms evenly muscled for
+fighting of all sorts.  Her leather tunic is simple, yet protective,
+covering her torso and waist, and the tops of her legs.  Her eyes are the
+lightest blue, and have a somewhat cold quality to them, as if they were
+filled with tiny ice chips.
+~
+human~
+water scholar~
+ABX B DFJVZ N 0
+60 30 10d20+19900 0d0+0 8d9+25 bash~
+crush~
+-30 -30 -30 -10
+ACDFIJKN AB
+26 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 200 -1
+AHMV ABCDEFGHIJK A medium flesh
+>speech_prog p I want something from the vault.~
+if isinhouse($n)
+if mobvalue(3) > 0
+say The enemies of our house have invaded recently. I must be on my guard until all is still.
+else
+if isfocused($i)
+say No. I\@m busy getting something for $F.
+else
+mpvalueset 0 5
+mpfocus $n
+mpvaultprep $n
+endif
+endif
+endif
+if isinhouse($n)
+else
+say The contents of the vault are the property of Lords, $N!
+endif
+~
+>rand_prog 2~
+if isfocused($i)
+if mobvalue(0) < 0
+tell $f I have other duties to attend to. Speak more quickly next time.
+mpunfocus
+mpvalueset 0 0
+endif
+endif
+~
+>exit_prog 100~
+if valname($n) == $f
+mpunfocus
+mpvalueset 0 0
+endif
+~
+>rand_prog 100~
+if isfocused($i)
+if mobvalue(0) == 0
+say What is it you wish me to bring you?
+mpvaluedown 0
+else
+mpvaluedown 0
+endif
+endif
+if mobvalue(0) > 0
+mpvaluedown 3
+endif
+~
+>speech_prog p Show me the vault.~
+mpvaultshow $n
+~
+>speech_prog p Show me the vault~
+mpvaultshow $n
+~
+>rand_prog 40~
+>rand_prog 40
+if mobvalue(0) > 0
+mpvaluedown 0
+endif
+~
+>rand_prog 15~
+stand
+~
+>greet_prog 100~
+if isinhouse($n)
+\@Greetings, Conquestor.
+else
+if ispc($n)
+\@You will not be allowed to violate the Vault, $n!
+mpforce $n yell Help! I am being attacked by Vashel!
+mpkill $n
+ht I have engaged $N in combat!
+endif
+endif
+~
+>give_prog all~
+if isinhouse($n)
+  if iscarrying($i)==12000
+    say A Stone of Power!
+    ht Hail, $N, Stonebringer!
+  else
+    if islimited($o)
+      say A fine addition to our hold, $N.
+    else
+      say This item is worthless to us!
+      give $o $n
+      break
+    endif
+  endif
+  mpvaultdrop $o
+else
+  say I want no offal from you!
+  drop 1.
+  mpkill $n
+endif
+~
+>speech_prog p Bring me:~
+if isfocused($i)
+if mobvalue(0) > 0 
+say I\@m still sorting through the vault.
+else
+mpvaultgive $f $x
+mpunfocus
+mpvalueset 0 0
+endif
+endif
+~
+>fight_prog 25~
+if ispc($n)
+else
+ mpsetskilled
+ rage
+ mpunsetskilled
+endif
+if ispc($n)
+else
+ mpsetskilled
+ rage
+ mpunsetskilled
+endif
+~
+|
+V4 12160
+kicker bot mob mobkickerbot~
+a mob kicker bot~
+A kicker bot is here, tipping it\@s hat at intruders.
+~
+~
+human~
+water scholar~
+AB 0 DFJLZ N 0
+52 0 1d1+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>trigger_prog 100~
+if ispc($n)
+or if number($n)==12158
+else
+ mpecho A beam of light flashes from a gem on the wall, and $N screams in agony!
+ mpdamage $n 1 1 499
+endif
+~
+>rand_prog 50~
+mproomcmd mptrigger all
+~
+|
+V4 12161
+man bulky butcher~
+a bulky man~
+A bulky man is here, carving a turkey.
+~
+A large, heavily-muscled man carves a turkey with deftness, picking off
+the choicest bits and handing them out to the Conquerors he serves.  He has
+a work-tanned face, and black hair with a black moustache.  He wears a white
+apron.  
+~
+human~
+water scholar~
+AB 0 DFJZ N 0
+45 23 2d500+8038 1d1+99 6d8+20 bash~
+punch~
+-20 -20 -20 -20
+FHK ABa
+26 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 40 -1
+AHMV ABCDEFGHIJK A medium flesh
+>speech_prog p Give me some food!~
+if ispc($n)
+ if isbitset($n)==12162
+  say I just gave you some not too long ago! I\@m not giving you more yet!
+ else
+  mpecho A bulky man carves a leg from the turkey.
+  mpoload 12162
+  give leg $n
+  mpbitset $n 12162 1
+  mpaddaffect $n 479 60 24 27 12162 0
+ endif
+endif
+~
+>speech_prog p Give me some food.~
+if ispc($n)
+ if isbitset($n)==12162
+  say I just gave you some not too long ago! I\@m not giving you more yet!
+ else
+  mpecho A bulky man carves a leg from the turkey.
+  mpoload 12162
+  give leg $n
+  mpbitset $n 12162 1
+  mpaddaffect $n 479 60 24 27 12162 0
+ endif
+endif
+~
+>greet_prog 100~
+if isinhouse($n)
+ tell $n Hail! If you feel the need for food, tell me to give you some and I\@ll see what I can find for you.
+else
+ if ispc($n)
+  say You\@ll not get anything from me!
+  ht Come, lords! $N tests our strength!
+  mpkill $n
+  endif
+endif
+~
+>speech_prog p Give me some food~
+if ispc($n)
+ if isbitset($n)==12162
+  say I just gave you some not too long ago! I\@m not giving you more yet!
+ else
+  mpecho A bulky man carves a leg from the turkey.
+  mpoload 12162
+  give leg $n
+  mpbitset $n 12162 1
+  mpaddaffect $n 479 60 24 27 12162 0
+ endif
+endif
+~
+|
+V4 12162
+bot watcher fight fightwatcher~
+the fightwatcher bot~
+The fightwatcher bot cheers on the Khal enthusiastically.
+~
+~
+human~
+water scholar~
+AB 0 DFJLZ N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 12199
+conqtranspoint~
+conquest weapon trans point~
+A conquest weapon trans point shouldn\@t be here.
+~
+~
+human~
+water scholar~
+A 0 L N 0
+52 0 1d1+29999 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>give_prog all~
+stash 1.
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+12151
+power mass conquestblade distilled~
+a mass of distilled power~
+A mass of distilled power is on the ground.~
+~
+energy~
+weapon AGHMOSYZa 0 0 ANP
+exotic 7 7 1 0
+crush~
+51 150 520000 2 P
+1
+>verb_prog p sheathe conquestblade~
+if isworn($o)
+ opset obj conquestblade extra 0
+ opechoat $n A mass of distilled power brightens for a moment.
+ opforce $o rem conquestblade
+ opset obj conquestblade extra 126111937
+endif
+~
+>verb_prog p sheathe distilled~
+if isworn($o)
+ opset obj conquestblade extra 0
+ opechoat $n A mass of distilled power brightens for a moment.
+ opforce $o rem conquestblade
+ opset obj conquestblade extra 126111937
+endif
+~
+>verb_prog p sheathe power~
+if isworn($o)
+ opset obj conquestblade extra 0
+ opechoat $n A mass of distilled power brightens for a moment.
+ opforce $o rem conquestblade
+ opset obj conquestblade extra 126111937
+endif
+~
+>verb_prog p sheathe mass~
+if isworn($o)
+ opset obj conquestblade extra 0
+ opechoat $n A mass of distilled power brightens for a moment.
+ opforce $o rem conquestblade
+ opset obj conquestblade extra 126111937
+endif
+~
+>rand_prog 100~
+if isbitset($o)==12158
+else
+ opecho A mass of distilled power dissolves into nothing.
+ if isoverlimit($o)
+ else
+  opat 12158 mpforce thronebot mpoload 12151 in room
+ endif
+ opzap
+ opjunk $i
+endif
+~
+>speech_prog p Shape of a polearm!~
+if isowner($n)
+ if isfight($n)
+  opechoat $n You can\@t concentrate enough.
+  oplag $n 1
+ else
+  if isworn($o)
+   opechoat $n You can\@t focus enough while wielding it.
+  else
+   if isbitset($n)==12158
+    opecho A mass of distilled power flows into a polearm-shape.
+    opset obj conquestblade value0 8
+    opset obj conquestblade value3 15
+    opset obj conquestblade value4 32
+   else
+    opat 12158 opoload 12151
+    opecho A mass of distilled power dissipates.
+    oppurge self
+   endif
+  endif
+  oplag $n 1
+ endif 
+endif
+~
+>speech_prog p Shape of a staff!~
+if isowner($n)
+ if isfight($n)
+  opechoat $n You can\@t concentrate enough.
+  oplag $n 1
+ else
+  if isworn($o)
+   opechoat $n You can\@t focus enough while wielding it.
+  else
+   if isbitset($n)==12158
+    opecho A mass of distilled power flows into a staff-shape.
+    opset obj conquestblade value0 9
+    opset obj conquestblade value3 7
+    opset obj conquestblade value4 32
+   else
+    opat 12158 opoload 12151
+    opecho A mass of distilled power dissipates.
+    oppurge self
+   endif
+  endif
+  oplag $n 1
+ endif 
+endif
+~
+>speech_prog p Shape of a spear!~
+if isowner($n)
+ if isfight($n)
+  opechoat $n You can\@t concentrate enough.
+  oplag $n 1
+ else
+  if isworn($o)
+   opechoat $n You can\@t focus enough while wielding it.
+  else
+   if isbitset($n)==12158
+    opecho A mass of distilled power flows into a spear-shape.
+    opset obj conquestblade value0 3
+    opset obj conquestblade value3 34
+    opset obj conquestblade value4 32
+   else
+    opat 12158 opoload 12151
+    opecho A mass of distilled power dissipates.
+    oppurge self
+   endif
+  endif
+  oplag $n 1
+ endif 
+endif
+~
+>speech_prog p Shape of a flail!~
+if isowner($n)
+ if isfight($n)
+  opechoat $n You can\@t concentrate enough.
+  oplag $n 1
+ else
+  if isworn($o)
+   opechoat $n You can\@t focus enough while wielding it.
+  else
+   if isbitset($n)==12158
+    opecho A mass of distilled power flows into a flail-shape.
+    opset obj conquestblade value0 6
+    opset obj conquestblade value3 37
+    opset obj conquestblade value4 0
+   else
+    opat 12158 opoload 12151
+    opecho A mass of distilled power dissipates.
+    oppurge self
+   endif
+  endif
+  oplag $n 1
+ endif 
+endif
+~
+>speech_prog p Shape of a whip!~
+if isowner($n)
+ if isfight($n)
+  opechoat $n You can\@t concentrate enough.
+  oplag $n 1
+ else
+  if isworn($o)
+   opechoat $n You can\@t focus enough while wielding it.
+  else
+   if isbitset($n)==12158
+    opecho A mass of distilled power flows into a whip-shape.
+    opset obj conquestblade value0 7
+    opset obj conquestblade value3 26
+    opset obj conquestblade value4 0
+   else
+    opat 12158 opoload 12151
+    opecho A mass of distilled power dissipates.
+    oppurge self
+   endif
+  endif
+  oplag $n 1
+ endif 
+endif
+~
+>speech_prog p Shape of a mace!~
+if isowner($n)
+ if isfight($n)
+  opechoat $n You can\@t concentrate enough.
+  oplag $n 1
+ else
+  if isworn($o)
+   opechoat $n You can\@t focus enough while wielding it.
+  else
+   if isbitset($n)==12158
+    opecho A mass of distilled power flows into a mace-shape.
+    opset obj conquestblade value0 4
+    opset obj conquestblade value3 8
+    opset obj conquestblade value4 0
+   else
+    opat 12158 opoload 12151
+    opecho A mass of distilled power dissipates.
+    oppurge self
+   endif
+  endif
+  oplag $n 1
+ endif 
+endif
+~
+>speech_prog p Shape of a dagger!~
+if isowner($n)
+ if isfight($n)
+  opechoat $n You can\@t concentrate enough.
+  oplag $n 1
+ else
+  if isworn($o)
+   opechoat $n You can\@t focus enough while wielding it.
+  else
+   if isbitset($n)==12158
+    opecho A mass of distilled power flows into a dagger-shape.
+    opset obj conquestblade value0 2
+    opset obj conquestblade value3 11
+    opset obj conquestblade value4 0
+   else
+    opat 12158 opoload 12151
+    opecho A mass of distilled power dissipates.
+    oppurge self
+   endif
+  endif
+  oplag $n 1
+ endif 
+endif
+~
+>speech_prog p Shape of a sword!~
+if isowner($n)
+ if isfight($n)
+  opechoat $n You can\@t concentrate enough.
+  oplag $n 1
+ else
+  if isworn($o)
+   opechoat $n You can\@t focus enough while wielding it.
+  else
+   if isbitset($n)==12158
+    opecho A mass of distilled power flows into a sword-shape.
+    opset obj conquestblade value0 1
+    opset obj conquestblade value3 21
+    opset obj conquestblade value4 0
+   else
+    opat 12158 opoload 12151
+    opecho A mass of distilled power dissipates.
+    oppurge self
+   endif
+  endif
+  oplag $n 1
+ endif 
+endif
+~
+>speech_prog p Shape of an axe!~
+if isowner($n)
+ if isfight($n)
+  opechoat $n You can\@t concentrate enough.
+  oplag $n 1
+ else
+  if isworn($o)
+   opechoat $n You can\@t focus enough while wielding it.
+  else
+   if isbitset($n)==12158
+    opecho A mass of distilled power flows into an axe-shape.
+    opset obj conquestblade value0 5
+    opset obj conquestblade value3 3
+    opset obj conquestblade value4 0
+   else
+    opat 12158 opoload 12151
+    opecho A mass of distilled power dissipates.
+    oppurge self
+   endif
+  endif
+  oplag $n 1
+ endif 
+endif
+~
+|
+V13
+12155
+well stone cobble cobblestone~
+a cobblestone well~
+A cobblestone well is fixed in the ground here.~
+~
+stone~
+trash a 0 0 P
+0 0 0 0 0
+60 32000 0 2 P
+0
+E
+well~
+You see a few coins that conquerors have tossed into the well.
+~
+V13
+12158
+throne khal gold encrusted opulent~
+an opulent throne~
+An opulent, jewel-encrusted throne radiates dominance from the top of the hill.~
+~
+gold~
+furniture AGOa 0 0 P
+1 1000 E 200 200
+60 100 0 4 P
+0
+>verb_prog p sit throne~
+if isbitset($n)==12158
+ opinterpret $n $x
+ opecho An opulent throne brightens, and fades.
+ if snaffected($n)==44
+ else
+  opechoat $n Your eyes tingle.
+  opaddaffect $n 44 60 12 0 0 32
+  opbitset $n 12162 1
+ endif
+ if snaffected($n)==45
+ else
+  opechoat $n Your awareness improves.
+  opaddaffect $n 45 60 12 0 0 8
+  opbitset $n 12163 1
+ endif
+else
+ opechoaround $n An opulent throne shudders as $N attempts to sit..
+ opechoat $n An opulent throne shudders as you attempt to sit..
+ opaddaffect $n 8 60 10 0 0 1
+ opechoat $n You are blinded!
+ opaddaffect $n 39 60 10 0 0 1024
+ opechoat $n You feel unclean!
+endif
+~
+>verb_prog p stand~
+opinterpret $n $x
+if isbitset($n)==12162
+ opechoat $n You no longer see invisible objects
+ opremaffect 44 $n
+ opbitset $n 12162 0
+endif
+if isbitset($n)==12163
+ opechoat $n You feel less aware of your surroundings
+ opremaffect 45 $n
+ opbitset $n 12163 0
+endif
+~
+|
+V13
+12160
+sceptre victory~
+the Sceptre of Victory~
+The Sceptre of Victory is regally poised above the ground.~
+~
+energy~
+treasure BPQ 0 0 AO
+0 0 0 0 0
+60 10 0 2 P
+0
+E
+sceptre~
+The bodies of dragons made from silver and gold twist around each other
+to form a staff, clutchng an orb made from glass.  Each of the dragons is
+made in painstaking detail, from the careful detail on every single scale,
+to the sleek lines along their wings.  A fire seems to be burning inside the
+sphere that they hold, attempting to tug on the rage that burns within your
+soul as well.  As you gaze into it, you see images of conquerors from days
+gone by.  The words \#Raise Me in Triumph\# are carved in tiny letters in the
+middle of the sphere, glistening with each beam of light.  
+~
+E
+victory~
+The bodies of dragons made from silver and gold twist around each other
+to form a staff, clutchng an orb made from glass.  Each of the dragons is
+made in painstaking detail, from the careful detail on every single scale,
+to the sleek lines along their wings.  A fire seems to be burning inside the
+sphere that they hold, attempting to tug on the rage that burns within your
+soul as well.  As you gaze into it, you see images of conquerors from days
+gone by.  The words \#Raise Me in Triumph\# are carved in tiny letters in the
+middle of the sphere, glistening with each beam of light.  
+~
+>verb_prog p raise sceptre~
+opechoat $n You clasp the Sceptre of Victory in both hands and raise it over your head.
+opechoaround $n $N clasps the Sceptre of Victory in both hands and raises it over his head.
+opforce $n yell I am victorious!
+if inhouse($n) == CONQUEST
+ if objvalue(0)==0
+  opechoat $n The Sceptre of Victory pulses once.
+  opcast 77 60
+  opcast 77 60
+  opvalueset 0 1
+ else
+  opechoat $n The Sceptre of Victory\@s power is drained.
+ endif
+else
+ if isowner($n)
+  if inroom($n) == 12159
+  opechoat $n The fires of victory burn in your soul. When your head clears, you wake up elsewhere.
+  opechoaround $n A bright flash of light blinds you momentarily. When you recover, $N is gone.
+  optransfer $n 12160
+  opforce $n look
+  endif
+ endif
+endif
+~
+|
+V13
+12161
+table wooden large~
+a large wooden table~
+A large wooden table seats the Conquerors as they eat.~
+~
+wood~
+furniture a 0 0 P
+100 30000 E 150 150
+60 1 0 4 P
+0
+V13
+12162
+leg turkey~
+a turkey leg~
+A turkey leg looks filling on the ground~
+~
+food~
+food S 0 0 A
+100 50 0 0 0
+60 2 0 1 P
+0
+#0
+
+
+
+#ROOMS
+#12151
+Before a Large Hill~
+A trampled mound rises before you, the grass barely clinging to its
+earth.  Boot-prints old and new scar the ground, in some places the fresh
+earth\@s overturning displays moist soil.  To the north, a large, grassy hill
+rises, filling the horizon with earth and foliage.  Massive stone walls
+circle the hill, with gates at the southern trail up the knoll.  At the very
+top, a red brick structure juts into the sky, the angled roof pointing to
+the heavens.  
+~
+~
+1
+0 34 4
+D0
+A large hill is to the north.
+~
+~
+0 0 12152
+D2
+~
+~
+0 0 19551
+C CONQUEST~
+W 5 0 0
+Z 5 5
+S
+#12152
+Before the Outer Circle~
+A large stone wall circles the hill, the grey stones stacked with ends
+overlapping.  Blades of green grass cover the earth even to the base of the
+hill, and from what you can see through the gate, continues to the next
+wall.  A large, iron gate is propped open with a stick, leading up the mount
+by a dirt path.  The hill rises steadily to the north, towering over the
+countryside.  
+~
+~
+1
+0 34 4
+D2
+The bottom of a large hill is to the south.
+~
+~
+0 0 12151
+D4
+A path leads upward through the outer circle.
+~
+~
+0 0 12153
+C CONQUEST~
+W 5 0 0
+Z 5 5
+S
+#12153
+Behind the Outer Circle~
+The hill climbs upward, the green carpet of grass mixing with a few trees
+between the outer and inner circles.  To the south, and down the hill, a
+ring of stone surrounds the hill.  Northward, and farther up the mount,
+another stone wall circles the hilltop, closing off the building at the
+highest point.  Wildflowers mix with the grasses, but only a few, standing
+out in small clumps among the covering of grass.  
+~
+~
+1
+0 34 4
+D0
+A path leads to the inner circle.
+~
+~
+0 0 12154
+D5
+A path leads to the bottom of the hill.
+~
+~
+0 0 12152
+C CONQUEST~
+W 5 0 0
+Z 5 5
+S
+#12154
+Before the Inner Circle~
+A tall stone wall rises before a large stone structure.  Lichen cracks
+and crumbles the older stones on the ground.  Down the mountain, you see
+another wall of stone, with a gate opening to a path down the hill.  To the
+south you can see the bottom of the hill, and the beginnings of the other
+rises in the range.  A dark cave leads into the hillside to the north.  A
+few trees have created gaps in the wall, but they have grown in to fill the
+empty space with their trunks.  
+~
+~
+1
+0 34 1
+D2
+A path leads down the hill.
+~
+~
+0 0 12153
+D4
+A path leads upward through the inner circle.
+~
+~
+0 0 12155
+C CONQUEST~
+W 5 0 0
+Z 5 5
+S
+#12155
+Behind the Inner Circle~
+A grassy field leads up the mountain, stopping only at the very foot of a
+large stone structure.  The wildflowers on the hill are more prominent; in
+many places there is no grass interspersed.  A few scattered patches of
+small brush grow, covering small parts of the ground in shadows.  Four trees
+grow on this side of the mountain, their weathered bark sheared away by
+lightning on the southward side.  
+~
+~
+1
+0 34 4
+D0
+A path leads northward to the seat of ambition.
+~
+~
+0 0 12156
+D5
+A path leads to the bottom of the hill.
+~
+~
+0 0 12154
+C CONQUEST~
+W 5 0 0
+Z 5 5
+S
+#12156
+The Seat of Ambition~
+A series of marble steps lead up into the stone building at the top of
+the hill.  The rock is worn smooth by the passage of countless feet, eager
+to contend for the throne.  Statues of previous rulers line the sides of the
+stairs, each depicted in their full armor and with arms crossed.  A vast
+hall opens up above you, and to the south you can see for a mile or two, the
+hill\@s height putting you above the surrounding area.  To the east, a small
+grey stone building perches upon the shelf of earth.  
+~
+~
+1
+0 42 0
+D1
+A barracks is to the east.
+~
+~
+0 0 12161
+D2
+A path leads toward the bottom of the hill.
+~
+~
+0 0 12155
+D4
+A deep pit with a large stone in the middle is above you.
+~
+~
+0 0 12157
+C CONQUEST~
+W 5 0 0
+Z 5 5
+S
+#12157
+The Challenge Stone~
+Stone columns carry the ceiling at their tops, the carvings upon them
+telling stories of battles past.  A series of benches line the outside of a
+deep pit, with a stone in the center.  A few bent weapons hang from the
+walls, each with a small plaque telling who used it, and the circumstances
+of it\@s destruction.  
+~
+~
+1
+0 42 0
+D0
+~
+~
+0 0 12158
+D5
+A path leads toward the bottom of the hill.
+~
+~
+0 0 12156
+C CONQUEST~
+W 5 0 0
+Z 5 5
+S
+#12158
+The Throne of the Khal~
+The hill reaches its highest point, inside the building, directly
+underneath a bejewelled throne.  A flat dais circles the seat, upraised from
+the rest of the floor.  Servants bustle about, carrying chilled pitchers and
+food for the Khal.  From the dais, the Khal has an encompassing view of the
+pit to the south, where he can watch his conquerors duel.  Cool breezes flow
+through this room through slits in the roof and the stairwell near the
+Stone.  The Conqueror\@s Banner, a sword crossed with a spear on a red
+background, hangs behind the throne, creating an even more regal atmosphere.
+A stairwell off to the side leads down below the throne room.  
+~
+~
+1
+0 42 0
+D2
+~
+~
+0 0 12157
+D5
+A well-lit stairwell leads downward.
+~
+~
+0 0 12159
+C CONQUEST~
+W 5 0 0
+Z 5 5
+S
+#12159
+Before the Hold~
+The stairwell leads down to this subterranean chamber.  The earth is
+walled away behind large stone bricks, and heavily mortared.  A solid piece
+of pure, white marble forms the floor.  When you step onto it, a shiver runs
+through your feet as the vault\@s entryway ripples with magical wards.  No
+servants are allowed to enter here; most are too afraid to come near,
+risking the Khal\@s wrath.  A hanging tapestry on the western wall depicts
+the Conqueror\@s Banner of a crossed sword and spear on red.  
+~
+~
+1
+0 58 0
+D4
+An opulent throne is above you.
+~
+~
+0 0 12158
+C CONQUEST~
+W 5 0 0
+Z 5 5
+S
+#12160
+The Khal-Hold~
+A pair of gold braziers provide smouldering light to the closed-off room.
+The dim glow flashes across the piled gold pieces scatterered about, some in
+piles and some loose.  Barrels of various substances - perfume, oil, and
+some that smell horrid.  Rugs hang from a rack on the wall, neatly wound
+around a wooden post.  A few full suits of armor hang from the walls,
+between the rugs and the other walls.  The portal you came through shimmers
+and shines as pulses of energy flow across it.  A large, multifaceted gem is
+mounted in the northern wall.  It sparkles with the flickering light of the
+braziers, yet remains perfectly clear throughout.  
+~
+~
+3
+0 8334 0
+D4
+A portal leads up through the wall.
+~
+~
+0 0 12159
+C CONQUEST~
+W 5 0 0
+Z 5 5
+S
+#12161
+The Barracks~
+This small, stone shack is simply built, with ample floor space on smooth
+dirt.  Shards of straw litter the floor, scattered about in small sections
+along the sides.  A few windows allow a scant breeze to cool the room. 
+Here, stories of battles past and the general cameraderie invigorate the
+fierce warriors of the house.  
+~
+~
+3
+0 34 0
+D3
+A shelf of earth separates the steps to the west.
+~
+~
+0 0 12156
+C CONQUEST~
+W 5 0 0
+Z 5 5
+S
+#12162
+A Dark Corridor~
+~
+~
+5
+0 4227596 0
+D0
+The dark corridor continues to the north.
+~
+~
+0 0 12163
+C CONQUEST~
+W 5 0 0
+Z 5 5
+S
+#12163
+A Dark Corridor~
+~
+~
+0
+0 32769 0
+D0
+A shimmering field blocks the way to the north.
+~
+~
+0 0 12164
+D2
+The dark corridor continues to the south.
+~
+~
+0 0 12162
+C CONQUEST~
+W 5 0 0
+Z 5 5
+P
+>verb_prog north~
+if inhouse($n) == CONQUEST
+ if isfight($n)
+  mpechoat $n You\@re too busy fighting to do that!
+ else
+  mpechoat $n A shimmering field parts to let you through.
+  mpechoaround $n A shimmering field parts to let $N through.
+  mptransfer $n 12164
+  mpforce $n look
+  mpechoat $n A shimmering field closes behind you.
+  mpechoaround $n A shimmering field closes behind $N.
+ endif
+else
+ mpechoat $n A shimmering field blocks your path.
+ mpechoaround $n A shimmering field blocks $N\@s path.
+endif
+~
+|
+S
+#12164
+Deep Within the Hill~
+The dark rock of this cave encloses you tightly.  You can see nothing
+beyond your light.  The walls have a moist feeling, almost fleshy from the
+thick moss that grows on them.  To the south, a rainbow field of colors
+shimmers across the cave opening.  You can only assume the cave continues
+past the field.  
+~
+~
+0
+0 8315 12
+D2
+A shimmering field blocks the way to the south.
+~
+~
+131072 0 12163
+C CONQUEST~
+W 5 0 0
+Z 5 5
+P
+>verb_prog flee~
+if inhouse($n) == CONQUEST
+ mpechoat $n You flee from combat!
+ mptransfer $n 12163
+ mpforce $n look
+else
+ mpinterpret $n $x
+endif
+~
+>verb_prog south~
+if inhouse($n) == CONQUEST
+ if isfight($n)
+  mpechoat $n You\@re too busy fighting to do that!
+ else
+  mpechoat $n A shimmering field parts to let you through.
+  mpechoaround $n A shimmering field parts to let $N through.
+  mptransfer $n 12163
+  mpforce $n look
+  mpechoat $n A shimmering field closes behind you.
+  mpechoaround $n A shimmering field closes behind $N.
+ endif
+else
+ mpechoat $n A shimmering field blocks your path.
+ mpechoaround $n A shimmering field blocks $N\@s path.
+endif
+~
+|
+S
+#12199
+~
+~
+~
+1
+0 557060 0
+C CONQUEST~
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 12164 2 131072
+M 0 12151 1 12152 1
+M 0 12154 1 12154 1
+M 0 12155 1 12155 1
+O 0 12155 0 12155
+O 0 12158 0 12158
+M 0 12158 1 12158 1
+M 0 12159 1 12159 1
+G 0 12160 0
+M 0 12160 1 12160 1
+M 0 12161 1 12161 1
+O 0 12161 0 12161
+M 0 12199 1 12199 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

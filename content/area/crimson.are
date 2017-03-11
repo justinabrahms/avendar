@@ -1,0 +1,6033 @@
+#AREADATA
+Name Crimson Sands~
+Builders Ramc~
+VNUMs 24400 24599
+Credits [ 1 51] Ramc      The Crimson Sands~
+Danger 0
+Security 1
+Areainfo 59
+Herbs 4194592
+Weather 1 0 1 3 32
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 24400
+Ada\@Chemta\@Boghor Ada Chemta Boghor fire devil~
+OLD Ada\@Chemta\@Boghor~
+The fire devil Ada\@Chemta\@Boghor stands here admist a roaring inferno.
+~
+The fire devil Ada\@Chemta\@Boghor looms here, hulking demonic figure with
+steaming flesh like basalt rock.  
+~
+demon~
+water scholar~
+ABFPTX 0 DFJVZ E 0
+60 50 10d100+6000 1d1+3000 11d15+65 fire~
+burning~
+-25 -25 -25 -20
+AHKN ABHb
+26 0 0 25 20 0 0 0 0 -20 0 0 0 0 0 0 0 0 -20 -50 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 300 -1
+ACH ABCDEFGHIJKP 0 large flesh
+>trigger_prog 100~
+mpcast 120 99 $n
+~
+>load_prog 100~
+mpaddskill $i 157 100
+mpaddskill $i 672 100
+mpaddskill $i 668 100
+~
+>fight_prog 100~
+if rand(40)
+mpvaluerand 0 1 7
+if mobvalue(0) == 1
+emote raises its hand, roaring in fury!
+mpcast 402 99
+endif
+if mobvalue(0) == 2
+yell Ag-da Var-ka Mo-da!
+mpcast 63 99
+endif
+if mobvalue(0) == 3
+emote focuses the flame around it..
+mpcast 205 99
+endif
+if mobvalue(0) == 4
+emote stomps the earth with a molten foot and burning sand jets forth!
+mproomcmd mptrigger all
+endif
+if mobvalue(0) == 5
+wear fusedblade
+if iswielding($i) == 24412
+emote breathes forth a weakening miasma!
+mpcast 62 99
+else
+emote scrapes his burning talons across the sand, forming a blade of fused glass!
+mpoload 24412
+wear fusedblade
+endif
+endif
+if mobvalue(0) == 6
+if mobvalue(1) == 1
+emote releases a gout of withering flame!
+mpcast 149 99
+mpvalueset 1 0
+else
+emote takes in a deep, sucking breath, a shimmering heat forming around it.
+mpvalueup 1
+endif
+endif
+if mobvalue(0) == 7
+roar
+flay
+endif
+endif
+~
+|
+V4 24401
+lesser djinn small dust whirling~
+the lesser dust djinn~
+A small djinn of whirling sand gusts about.
+~
+Amidst a miniature whirlwind floats a fiendish-looking humanoid with skin
+like sand.  Among the least of its kind, the djinn appears as a child-sized
+man within its sandstorm.  Its eyes glow an angry red and it bares its sharp
+teeth in an animal snarl as it gusts about.  
+~
+demon~
+water scholar~
+AGL 0 FJTZ E 0
+20 10 15d26+572 20d10+100 3d7+10 slash~
+lashing~
+-3 -3 -3 3
+FN B
+26 0 0 -10 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+ACHMVW ABCDEFGHIJKP K small unknown
+>rand_prog 1~
+if inroom($i) == 24411
+if rand(50)
+east
+else
+south
+endif
+break
+endif
+if inroom($i) == 24412
+or inroom($i) == 24413
+if rand(50)
+east
+else
+west
+endif
+break
+endif
+if inroom($i) == 24414
+or inroom($i) == 24438
+or inroom($i) == 24450
+west
+break
+endif
+if inroom($i) == 24424
+if rand(50)
+north
+else
+south
+endif
+break
+endif
+if inroom($i) == 24426
+north
+break
+endif
+if inroom($i) == 24436
+if rand(50)
+east
+else
+south
+endif
+break
+endif
+if inroom($i) == 24437
+or inroom($i) == 24449
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+north
+endif
+if mobvalue(0) == 2
+east
+endif
+if mobvalue(0) == 3
+west
+endif
+break
+endif
+if inroom($i) == 24448
+east
+break
+endif
+~
+>death_prog 100~
+if rand(20)
+mpecho A gleaming red crystal falls from the chest of the lesser dust djinni as it is destroyed!
+mpoload 24400 in room
+else
+mpecho The red crystal heart of the lesser dust djinni shatters as it is destroyed.
+endif
+~
+|
+V4 24402
+dust djinn sandstorm~
+the dust djinn~
+A djinn whirls through here admist a small sandstorm.
+~
+An malicious, sand-fleshed djinn floats through here in his own personal
+sandstorm.  The dust djinn appears as a muscular humanoid with the teeth of
+a wolf and eyes of burning flame.  While far from his home plane and one of
+the lesser of the djinni race, the devil is still a creature not to be idly
+trifled with.  
+~
+demon~
+water scholar~
+AGLT 0 FJTZ E 0
+30 15 22d45+941 30d10+100 4d8+15 bash~
+blast~
+-9 -9 -9 0
+CFN B
+26 0 0 -10 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 10 -1
+ACHMVW ABCDEFGHIJKP K small unknown
+>rand_prog 1~
+if inroom($i) == 24411
+if rand(50)
+east
+else
+south
+endif
+break
+endif
+if inroom($i) == 24412
+or inroom($i) == 24413
+if rand(50)
+east
+else
+west
+endif
+break
+endif
+if inroom($i) == 24414
+or inroom($i) == 24438
+or inroom($i) == 24450
+west
+break
+endif
+if inroom($i) == 24424
+if rand(50)
+north
+else
+south
+endif
+break
+endif
+if inroom($i) == 24426
+north
+break
+endif
+if inroom($i) == 24436
+if rand(50)
+east
+else
+south
+endif
+break
+endif
+if inroom($i) == 24437
+or inroom($i) == 24449
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+north
+endif
+if mobvalue(0) == 2
+east
+endif
+if mobvalue(0) == 3
+west
+endif
+break
+endif
+if inroom($i) == 24448
+east
+break
+endif
+~
+>death_prog 100~
+if rand(20)
+mpecho A gleaming red crystal falls from the chest of the dust djinni as it is destroyed.
+mpoload 24401 in room
+else
+mpecho The red crystal heart of the dust djinni shatters as it is destroyed.
+endif
+~
+|
+V4 24403
+dust djinni djinn lord churning whirlwind sand~
+the dust djinni lord~
+The dust djinni lord floats amidst a churning whirlwind of sand.
+~
+This muscular humanoid being with crimson desert sand for flesh floats
+amidst a churning sandstorm.  The dust djinni lord appears as a cruel
+nobleman with slick black hair and burning red eyes.  A mighty magical
+creature of sand, wind and flame, the djinni lord concocts his foul plots as
+he surveys the Crimson Sands from his vantage point.  
+~
+demon~
+water scholar~
+ABFX 0 DFJTVZ E 0
+51 42 18d200+920 1d1+3999 10d5+25 energy~
+magic~
+-21 -21 -21 -5
+ACFHK ABLQ
+26 0 0 0 50 0 0 0 50 0 75 -15 0 0 -15 40 20 0 -10 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 250 -1
+ACHMV ABCDEFGHIJKPY K large unknown
+>greet_prog 100~
+if ispc($n)
+if level($n) < 26
+cast \@wind blast\@ $n down
+endif
+endif
+~
+>death_prog 100~
+if isunderlimit(24402)
+if rand(20)
+mpecho A gleaming red crystal falls from the chest of the dust djinni lord as it is destroyed.
+mpoload 24402 in room
+else
+mpecho The red crystal heart of the dust djinni lord is shattered by his death!
+endif
+else
+mpecho The red crystal heart of the dust djinni lord is shattered by his death!
+endif
+~
+>rand_prog 100~
+if snaffected($i) == 600
+else
+cast \@blur\@
+endif
+~
+>fight_prog 100~
+if rand(20)
+mpvaluerand 0 1 4
+if mobvalue(0) == 1
+cast \@ball lightning\@
+endif
+if mobvalue(0) == 2
+cast sandstorm
+endif
+if mobvalue(0) == 3
+cast sandspray
+endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 121 100
+mpaddskill $i 603 100
+mpaddskill $i 120 100
+mpaddskill $i 604 100
+mpaddskill $i 600 100
+mpaddskill $i 354 100
+~
+|
+V4 24404
+churning sandstorm bot sandstormbot~
+the churning sandstorm~
+Sandstorm bot always hurts the ones he loves.
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+51 1000 34d103+1170 51d10+100 3d5+5 none~
+~
+-21 -21 -21 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+if rand(15)
+if ispc($r)
+mpecho The raging sandstrom whirls furiously!
+if isimmort($r)
+else
+if isghost($r)
+mpechoat $r The churning sandstorm passes harmlessly through your ghostly form.
+mpechoaround $r The churning sandstorm passes harmlessly through $R\@s ghostly form.
+else
+mpechoat $r The churning sandstorm {rlashes{x you!
+mpechoaround $r The churning sandstorm {rlashes{x $R!
+mpdamtype $r 3 5 5 3
+if rand(10)
+if israce($r) == shuddeni
+else
+mpechoat $r You are blinded by the dirt in your eyes!
+mpechoaround $r $R is blinded by the dirt in $K eyes!
+mpaddaffect $r 170 50 1 0 0 1
+endif
+endif
+if rand(33)
+mplag $r 2
+mpechoat $r You reel from the buffeting storm!
+mpechoaround $r $R reels from the buffeting storm!
+endif
+endif
+endif
+endif
+endif
+~
+|
+V4 24405
+caladaran journeyman~
+the caladaran journeyman~
+A caladaran journeyman tinkers within his camp.
+~
+This caladaran is dressed in the clothing of a journeyman alchemist.  His
+dress marks him as a member of the The Harmonizers of the Once-Separated, a
+Harrudim collective of spell-brewers.  He now travels the world outside of
+Ashta Harrud at the behest of his guild, seeking knowledge.  
+~
+caladaran~
+water scholar~
+AGL 0 DJZ G 0
+30 15 1583d1+1 30d100+1 5d6+15 slash~
+slash~
+-3 -3 -3 0
+FJK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGHIJK AI medium unknown
+V4 24406
+dunark templar leader~
+Dunark~
+The templar Dunark, leader of his band, travels through here.
+~
+Dunark, a solid youth with the copper skin of a man raised in Ashta
+Harrud, travels here.  He is a templar of earth and leader of the band of
+adventurers known informally as the Dune Delver Company.  He and his party
+travel looking for coin and adventure, hiring themselves out as mercenaries
+from time to time.  
+~
+human~
+water scholar~
+AL B DJZ N 0
+27 14 20d39+869 27d10+100 4d7+14 bash~
+smash~
+-7 -7 -7 0
+HK 0
+26 0 0 0 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 24407 24408 24409 0 0
+stand stand male 80 -1
+AHMV ABCDEFGHIJK A medium flesh
+>verb_prog p Srysikisdead~
+if rand(80)
+say You\@ll pay for that!
+endif
+~
+>verb_prog p Murgolisdead~
+if rand(70)
+esay \@cries\@ No! Monsters!
+c \@sandspray\@
+endif
+~
+>verb_prog p joachilisdead~
+if rand(90)
+say This looks bad, hold firm!
+endif
+~
+>death_prog 100~
+esay \@coughs\@ ..adventure.. on..
+dunarkisdead
+~
+>rand_prog 100~
+if snaffected($i) == 70
+else
+cast \@fortify\@
+break
+endif
+if snaffected($f) == 70
+else
+cast \@fortify\@ $f
+endif
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+if mobhere(24408)
+mpfocus srysik
+endif
+endif
+if mobvalue(0) == 2
+if mobhere(24407)
+mpfocus murgol
+endif
+endif
+if mobvalue(0) == 3
+if mobhere(24409)
+mpfocus joachil
+endif
+endif
+if rand(2)
+mpvaluerand 3 1 10
+if mobvalue(3) == 1
+emote brushes some sand from his armor.
+endif
+if mobvalue(3) == 2
+say Keep an eye out, you never know what\@s out here.
+endif
+if mobvalue(3) == 3
+say I hear they\@re hiring up in Var Bandor.
+endif
+if mobvalue(3) == 4
+emote scans his surroundings alertly.
+endif
+if mobvalue(3) == 5
+say This is just like when we were in the waste, eh?
+endif
+if mobvalue(3) == 6
+emote cracks his knuckles.
+endif
+if mobvalue(3) == 7
+emote scratches at his neck, looking around.
+endif
+if mobvalue(3) == 8
+say Ah. This way.
+endif
+if mobvalue(3) == 9
+say Be ready for anything, friends.
+endif
+if mobvalue(3) == 10
+chuckle
+endif
+endif
+~
+>fight_prog 100~
+if rand(30)
+mpvaluerand 0 1 5
+if mobvalue(0) == 1
+c \@sandspray\@
+endif
+if mobvalue(0) == 2
+if mobvalue(1) == 1
+rescue $f
+mpvalueset 1 0
+else
+esay \@orders\@ Drive them! Drive them back!
+endif
+endif
+if mobvalue(0) == 3
+if hitprcnt($i) < 20
+esay \@cries\@ They\@re too much! Flee!
+flee
+endif
+endif
+if mobvalue(0) == 4
+if mobhere(24407)
+if mobvalue(2) == 0
+esay \@cries\@ Just hew, Murgol!
+mpvalueset 2 1
+else
+cast \@sandspray\@
+endif
+else
+cast \@sandspray\@
+endif
+endif
+if mobvalue(0) == 5
+if mobhere(24408)
+if hitprcnt($i) < 80
+say Some healing please, Srysik!
+mpforce Srysik mpfocus Dunark
+mpforce Srysik say Hold on!
+endif
+endif
+endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 178 76
+mpaddskill $i 70 86
+mpaddskill $i 120 96
+speak common
+~
+|
+V4 24407
+Murgol chaja barbarian~
+Murgol~
+Murgol the chaja barbarian goes about his travels.
+~
+A burly chaja barbarian, Murgol has been a member of the adventuring
+company led by Durnark for some time.  Having escaped from the undercities
+of the shuddeni, he found his way to Ashta Harrud and fell in with the Dune
+Delvers looking to make enough coin to eat.  Judging by the vacant grin on
+his face, he seems to enjoy his travels.  
+~
+chaja~
+water scholar~
+AL 0 JZ N 0
+26 13 19d37+844 26d10+100 4d7+13 slash~
+hack~
+-6 -6 -6 1
+FHK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 20 0 0 0 20 0 -20 0 0 0 0 0 0 0 
+5 24406 24408 24409 0 0
+stand stand male 30 -1
+AHMW ABCDEFGIJK AG large flesh
+>verb_prog p Srysikisdead~
+if rand(95)
+esay \@roars\@ No kill healy-srryn! Murgol angry!
+warcry
+endif
+~
+>verb_prog p Joachilisdead~
+if rand(80)
+esay \@snarls\@ No hurt nice stick lady! DIE!
+bash
+endif
+~
+>verb_prog p Dunarkisdead~
+esay \@growls\@ No hurt Murgol\@s friends! Murgol not bad!
+warcry
+~
+>death_prog 100~
+emote groans loudly, teetering..
+murgolisdead
+~
+>rand_prog 100~
+if mobhere(24406)
+if mobvalue(2) == 0
+mpvalueset 2 1
+follow dunark
+endif
+else
+if rand(8)
+mpwander
+endif
+endif
+if rand(2)
+mpvaluerand 0 1 10
+if mobvalue(0) == 1
+emote hefts his weapon.
+endif
+if mobvalue(0) == 2
+emote grins vacantly.
+endif
+if mobvalue(0) == 3
+say Ah\@m\@a gonna get all th\@gold this time!
+endif
+if mobvalue(0) == 4
+emote wipes his brow with the back of a meaty hand.
+endif
+if mobvalue(0) == 5
+emote rubs some sand from his eyes with his thick fingers.
+endif
+if mobvalue(0) == 6
+esay \@mumbles\@ Never had weather like this down below.
+endif
+if mobvalue(0) == 7
+emote flexes his great muscles, yawning.
+endif
+if mobvalue(0) == 8
+emote scans the horizon.
+endif
+if mobvalue(0) == 9
+emote blinks dimly.
+endif
+if mobvalue(0) == 10
+esay \@holds a hand up over his eyes\@ I ain\@t gettin\@ used t\@th\@sun.
+endif
+endif
+~
+>hitprcnt_prog 5~
+if rand(15)
+say Jus\@ run! S\@like fightin\@ Arkhural hisself! Run!
+endif
+flee
+~
+>fight_prog 100~
+if rand(30)
+mpvaluerand 0 1 5
+if mobvalue(0) == 1
+kick
+endif
+if mobvalue(0) == 2
+bash
+endif
+if mobvalue(0) == 3
+if mobvalue(1) == 1
+hew
+endif
+endif
+if mobvalue(0) == 4
+if mobvalue(1) == 1
+hew
+endif
+endif
+if mobvalue(0) == 5
+if hitprcnt($i) > 40
+if mobhere(24408)
+say Ow! Hey, oof! Heal!
+mpforce Srysik mpfocus Murgol
+mpforce Srysik say One at a time!
+endif
+endif
+endif
+endif
+~
+>speech_prog hew hew, hew! hew.~
+if mobvalue(1) == 0
+say Oh yeh! Me\@s good at that!
+mpvalueset 1 1
+endif
+~
+>load_prog 100~
+speak common
+mpaddskill $i 176 95
+mpaddskill $i 168 71
+mpaddskill $i 226 80
+mpaddskill $i 459 100
+battlecry MURGOL EAT ENEMY!
+~
+|
+V4 24408
+srysik srryn templar~
+Srysik~
+Srysik, the srryn templar, goes about his travels.
+~
+Srysik is a youthful srryn with scales of sand-hued brown.  His
+coldblooded nature and the teachings of the templars of the waves make
+Srysik perfectly at home in the desert climes from which he hails.  Raised
+in Ashta Harrud, he went on to join an adventuring company known informally,
+and alliteratively, as the Dune Delvers.  
+~
+srryn~
+water scholar~
+AL 0 DJZ N 0
+24 12 18d33+765 24d10+100 3d8+12 pierce~
+bite~
+-5 -5 -5 1
+HKMV 0
+26 0 0 0 0 0 0 0 20 -20 0 0 20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 24406 24407 24409 0 0
+stand stand male 70 -1
+AHMX ABCDEFGIJKLQUVX AC medium flesh
+>verb_prog p Dunarkisdead~
+if rand(80)
+say Thiss bodess ill!
+cast \@cure crit\@
+endif
+~
+>verb_prog p Murgolisdead~
+if rand(80)
+esay \@hisses\@ Murderouss whelpss!
+cast \@heatsink\@
+endif
+~
+>verb_prog p Joachilisdead~
+if rand(60)
+say Bah!
+endif
+~
+>death_prog 100~
+emote hisses wetly.
+Srysikisdead
+~
+>fight_prog 100~
+if rand(35)
+mpvaluerand 0 1 5
+if isfighting($i)
+mpforce dunark mpfocus Srysik
+endif
+if mobvalue(0) == 1
+esay \@hisses\@ Now hold still..
+cast \@cure critical\@ $f
+endif
+if mobvalue(0) == 2
+or mobvalue(0) == 3
+if hitprcnt($i) < 20
+esay \@cries\@ Useless! If only I had the aura!
+flee
+else
+mpcast \@cure critical\@
+endif
+endif
+if mobvalue(0) == 4
+esay \@mutters\@ Alwayss injured! Always!
+cast \@cure critical\@ $f
+endif
+if mobvalue(0) == 5
+if rand(30)
+esay \@cries out\@ Let the frost take you!
+endif
+cast \@heatsink\@
+endif
+endif
+~
+>rand_prog 100~
+if mobhere(24406)
+if mobvalue(2) == 0
+mpvalueset 2 1
+follow dunark
+endif
+else
+if rand(8)
+mpwander
+endif
+endif
+if rand(2)
+mpvaluerand 0 1 10
+if mobvalue(0) == 1
+emote basks contentedly in the heat.
+endif
+if mobvalue(0) == 2
+emote scratches at some dust in his scales.
+endif
+if mobvalue(0) == 3
+emote hefts his shield.
+endif
+if mobvalue(0) == 4
+say The heat, it iss pleassant. But there iss no damp. I misss it.
+endif
+if mobvalue(0) == 5
+say Perhapss we should go and train? Ssoon I will learn the aura.
+endif
+if mobvalue(0) == 6
+emote flicks out his tongue, tasting the air.
+endif
+if mobvalue(0) == 7
+emote hisses softly.
+endif
+if mobvalue(0) == 8
+esay \@asks\@ Thiss will be worthwhile, this job, yess?
+endif
+if mobvalue(0) == 9
+say Do you know another way to heal your injuriess? Don\@t get hurt.
+endif
+if mobvalue(0) == 10
+esay \@mocks\@ Help Srysik! I\@m bleeding to death. Help!
+esay \@snorts\@ Weaklingss.
+endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 34 85
+mpaddskill $i 567 100
+speak common
+mpaddskill $i 340 80
+~
+|
+V4 24409
+Joachil robed woman caladaran~
+Joachil~
+A robed caladaran woman, Joachil, journeys here.
+~
+Joachil\@s tall, spindly frame is well-concealed beneath voluminous robes.
+Numerous bandoleers full of ingredients and half-finished potions and pills
+mark her as a student of the alchemical arts.  She currently travels avendar
+in the company of other adventurers as part of the Dune Delvers to gain more
+knowledge of her craft and the world.  
+~
+caladaran~
+water scholar~
+AL 0 DJZ N 0
+25 13 19d35+818 25d10+100 4d6+13 bash~
+pound~
+-6 -6 -6 1
+FK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 24408 24407 24406 0 0
+stand stand female 30 -1
+AHMW ABCDEFGIJK AI medium flesh
+>verb_prog p Murgolisdead~
+if rand(90)
+say You fiend!
+endif
+~
+>verb_prog p Dunarkisdead~
+if rand(70)
+say Oh... oh goodness!
+flee
+endif
+~
+>verb_prog p Srysikisdead~
+if rand(80)
+say Oh no! Oh no!
+endif
+~
+>death_prog 100~
+emote coughs, collapsing.
+Joachilisdead
+~
+>hitprcnt_prog 30~
+if rand(30)
+say I\@m not supposed to be taking the blows!
+endif
+flee
+~
+>hitprcnt_prog 70~
+if mobvalue(1) == 0
+quaff mypotion
+mpvalueset 1 1
+endif
+~
+>fight_prog 100~
+if rand(40)
+mpvaluerand 0 1 5
+if mobvalue(0) == 1
+rynath
+endif
+if mobvalue(0) == 2
+harrudimtalc
+endif
+if mobvalue(0) == 3
+say Get them! Get them!
+mpforce Dunark mpfocus Joachil
+endif
+if mobvalue(0) == 4
+if hitprcnt($n) < 90
+say Some healing, please!
+mpforce Srysik say Fine, fine. Ssilence.
+mpforce srysik mpfocus Joachil
+else
+harrudimtalc
+endif
+endif
+if mobvalue(0) == 5
+say Oh goodness.. oh no..
+mpforce Dunark mpfocus Joachil
+endif
+endif
+~
+>rand_prog 100~
+if mobhere(24406)
+if mobvalue(2) == 0
+mpvalueset 2 1
+follow dunark
+endif
+else
+if rand(8)
+mpwander
+endif
+endif
+if rand(2)
+mpvaluerand 0 1 10
+if mobvalue(0) == 1
+emote squints at an empty vial.
+endif
+if mobvalue(0) == 2
+emote sighs, trying to clean out sand from an empty vial.
+endif
+if mobvalue(0) == 3
+esay \@asks\@ Why do you refuse to let me render your armors?
+esay \@presses\@ Aren\@t you interested in -discovery-?
+endif
+if mobvalue(0) == 4
+esay \@asks\@ Are you sure we can\@t stop for me to brew something up?
+endif
+if mobvalue(0) == 5
+esay \@sighs\@ It won\@t explode like last time.
+endif
+if mobvalue(0) == 6
+esay \@sighs\@ For the last time, I\@m sorry you were turned into a hen. Accidents happen!
+endif
+if mobvalue(0) == 7
+esay \@smiles\@ I wonder what we\@ll find next.
+endif
+if mobvalue(0) == 8
+say A grand adventure, but I still miss my lab.
+endif
+if mobvalue(0) == 9
+emote brushes sand from her skirts.
+endif
+if mobvalue(0) == 10
+emote inspects a potion warily.
+endif
+endif
+~
+>load_prog 100~
+speak common
+mpsetskill $i 800 80
+mpsetskill $i 798 90
+~
+|
+V4 24410
+basilisk large six-legged lizard spines basiliskCS~
+the basilisk~
+A large, six-legged lizard with spines jutting from its back lies here.
+~
+The wide body of this lizard-like beast is covered in hard, stony scales
+the color of sandstone.  Three pairs of squat, clawed legs propel the
+basilisk with surprising speed and strength.  From its back a nest of
+blackened spines grow, twitching with its every movement.  The most
+arresting feature of the basilisk, however, is its head, with its great
+fanged maw and gleaming yellow eyes.  Its cavernous mouth is filled with
+teeth that glisten with poison.  Its eyes are a vivid yellow, arresting
+those who it sets its gaze upon with petrifying magic.  
+~
+dragon~
+water scholar~
+ABFP 0 DFJTZ N 0
+57 40 5d100+6000 50d10+100 5d20+70 pierce~
+chomp~
+-21 -21 -21 -6
+ACFHK AB
+26 0 0 0 20 10 -10 0 33 -10 0 0 80 0 0 0 33 80 0 0 -10 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHXZc ACDEFGHIJKPQUVX 0 large flesh
+>rand_prog 100~
+if rand(20)
+if snaffected($r) == 370
+mpechoat $r The basilisk begins to gnaw on your stony form, grinding off bits of your granite flesh!
+mpechoaround $r The basilisk begins to gnaw on $R\@s stony form, grinding off bits of their granite flesh! 
+mpaddaffect $r 434 51 24 13 -50 0 0
+mpcast 117 20
+endif
+endif
+~
+>trigger_prog 100~
+if isimmort($n)
+else
+if cansee($n) == $i
+mpechoat $n You catch the basilisk\@s gaze!
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+mpcast 584 99 $n
+endif
+if mobvalue(0) == 2
+mpcast 380 99 $n
+endif
+if mobvalue(0) == 3
+mpgoto $n
+mpcast 370 99 $n
+mpdelaffect $i 370
+mpgoto $n
+endif
+endif
+endif
+~
+>fight_prog 100~
+if rand(25)
+mpfocus $n
+mpseewizi
+mproomcmd mptrigger all
+mpunseewizi
+mpkill $f
+mpunfocus
+endif
+if rand(8)
+mpcast 151 57
+endif
+~
+>hit_prog 4~
+if rand(50)
+if snaffected($n) == 105
+else
+mpechoat $n The basilisk\@s venom gets in your wound!
+mpcast 105 57 $n
+endif
+else
+mpoload 20306 on $n
+endif
+~
+|
+V4 24411
+shuddeni woman slave bladeswoman mistress slavemistress~
+the shuddeni slavemistress~
+A shuddeni bladeswoman surveys her camp with a cruel leer.
+~
+This shuddeni woman stands in the midst of her camp, surveying the new
+slaves from her vantage point.  The bladeswoman is dressed in finely tooled
+leathers and wears a pair of scabbards at her belt.  Her fine clothes and
+martial prowess mark her as one of the lieutenants of the ring of slavers
+who operate out of Ashta Harrud.  While the leadership of the group has
+proved mysterious and elusive, its agents have not.  
+~
+shuddeni~
+water scholar~
+AB 0 AJVZ E 0
+51 40 34d103+1170 51d10+100 6d8+26 slash~
+slice~
+-21 -21 -21 -6
+EFHIKN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 20 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 120 -1
+AHMW ABCDEFGIJ AG medium flesh
+>fight_prog 100~
+if rand(20)
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+assume cat
+endif
+if mobvalue(0) == 2
+assume viper
+endif
+if mobvalue(0) == 3
+if snaffected($n) == 466
+else
+assume wasp
+endif
+endif
+endif
+~
+>load_prog 100~
+speak common
+mpaddskill $i 216 100
+mpaddskill $i 465 100
+mpaddskill $i 464 100
+mpaddskill $i 157 100
+~
+|
+V4 24412
+chaja slaver chajaCS~
+a chaja slaver~
+A chaja slaver cruelly oversees his charges.
+~
+This whip-scarred chaja slaver keeps watch over the slaves in his charge,
+cruelly punishing any who step out of line.  His skin has become a dark,
+leathery gray from his time under the sun and his eyes squinting and
+bloodshot.  
+~
+chaja~
+water scholar~
+AL 0 FJZ E 0
+28 14 21d41+894 28d10+100 4d7+14 pierce~
+thrust~
+-7 -7 -7 0
+DEFK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 24411 0 0 0 0
+stand stand male 50 -1
+AHMVW ABCDEFGHIJK AG medium unknown
+V4 24413
+slave~
+a slave~
+A beaten and bedraggled slave sits here, cowed.
+~
+This slave sits here, beaten and bedraggled by constant torment.  Staring
+ahead listlessly, the spark of hope seems to be vacant in this hapless
+person\@s eyes 
+~
+human~
+water scholar~
+ADL 0 0 N 0
+10 5 8d11+212 10d10+100 2d5+5 bash~
+hit~
+3 3 3 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 2~
+mpvaluerand 1 1 5
+if mobvalue(1) == 1
+moan
+endif
+if mobvalue(1) == 2
+emote coughs weakly.
+endif
+if mobvalue(1) == 3
+shudder
+endif
+if mobvalue(1) == 4
+groan
+endif
+if mobvalue(1) == 5
+emote stares into the distance.
+endif
+~
+>load_prog 100~
+mpvaluerand 0 1 10
+if mobvalue(0) == 1
+mpstring mob self long A beaten slave lies in the dirt.
+endif
+if mobvalue(0) == 2
+mpstring mob self long A slave is here, mumbling to himself madly.
+endif
+if mobvalue(0) == 3
+mpstring mob self long A filthy slave lies here.
+endif
+if mobvalue(0) == 4
+mpstring mob self long A burly slave sits quietly, glaring into the distance.
+endif
+if mobvalue(0) == 5
+mpstring mob self long A wiry-looking slave glares spitefully.
+endif
+if mobvalue(0) == 6
+mpstring mob self long A bedraggled slave sits here hopelessly.
+endif
+if mobvalue(0) == 7
+mpstring mob self long A beaten slave lies here, bruised and bloodied.
+endif
+if mobvalue(0) == 8
+mpstring mob self long A slave sits here, lash wounds still fresh.
+endif
+if mobvalue(0) == 9
+mpstring mob self long A viciously scarred slave lies here.
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+24400
+small flame-crystal flame crystal heartstone crystallized bit~
+a small flame-crystal heartstone~
+A small bit of crystallized flame lies here.~
+This is the magical heart of a lesser djinni.  The crystallized flame
+serves as its link to its home plane, allowing it to exist in Avendar.  The
+djinni who once bore this heart has clearly been destroyed.  
+~
+fire~
+gem ACDE 0 0 AO
+0 0 0 0 0
+20 10 1500 0 P
+0
+A
+19 1
+A
+37 1
+E
+small~
+This glowing crystal easily fits in the palm of your hand and is warm to
+the touch.  The red glowing crystal appears to be some manner of frozen
+flame.  
+~
+E
+flame-crystal~
+This glowing crystal easily fits in the palm of your hand and is warm to
+the touch.  The red glowing crystal appears to be some manner of frozen
+flame.  
+~
+E
+flame~
+This glowing crystal easily fits in the palm of your hand and is warm to
+the touch.  The red glowing crystal appears to be some manner of frozen
+flame.  
+~
+E
+crystal~
+This glowing crystal easily fits in the palm of your hand and is warm to
+the touch.  The red glowing crystal appears to be some manner of frozen
+flame.  
+~
+E
+heartstone~
+This glowing crystal easily fits in the palm of your hand and is warm to
+the touch.  The red glowing crystal appears to be some manner of frozen
+flame.  
+~
+E
+crystallized~
+This glowing crystal easily fits in the palm of your hand and is warm to
+the touch.  The red glowing crystal appears to be some manner of frozen
+flame.  
+~
+E
+bit~
+This glowing crystal easily fits in the palm of your hand and is warm to
+the touch.  The red glowing crystal appears to be some manner of frozen
+flame.  
+~
+V13
+24401
+flame-crystal flame crystal heartstone crystallized Normal piece~
+a flame-crystal heartstone~
+A piece of crystallized flame lies here.~
+This is the magical heart of a djinni.  The crystallized flame serves as
+its link to its home plane, allowing it to exist in Avendar.  The djinni who
+once bore this heart has clearly been destroyed.  
+~
+fire~
+gem ACDE 0 0 AO
+0 0 0 0 0
+30 25 7400 0 P
+0
+A
+19 2
+A
+37 2
+E
+crystallized~
+This glowing crystal fits in the palm of your hand and is warm to the
+touch.  The red glowing crystal appears to be some manner of frozen flame.  
+~
+E
+heartstone~
+This glowing crystal fits in the palm of your hand and is warm to the
+touch.  The red glowing crystal appears to be some manner of frozen flame.  
+~
+E
+crystal~
+This glowing crystal fits in the palm of your hand and is warm to the
+touch.  The red glowing crystal appears to be some manner of frozen flame.  
+~
+E
+flame~
+This glowing crystal fits in the palm of your hand and is warm to the
+touch.  The red glowing crystal appears to be some manner of frozen flame.  
+~
+E
+flame-crystal~
+This glowing crystal fits in the palm of your hand and is warm to the
+touch.  The red glowing crystal appears to be some manner of frozen flame.  
+~
+E
+piece~
+This glowing crystal fits in the palm of your hand and is warm to the
+touch.  The red glowing crystal appears to be some manner of frozen flame.  
+~
+V13
+24402
+flame-crystal glittering flame crystal heartstone stone djinnheart crystallized~
+a large, glittering flame-crystal heartstone~
+A glittering heartstone of crystallized flame lies here.~
+This heartstone was the magical source of power to a dust djinni lord. 
+The solidified flame served to link the creature to its home on the
+elemental borderplanes between earth, air and fire.  While the djinni lord
+who bore this heart is now destroyed, it still holds a great deal of magical
+energy.  
+~
+fire~
+gem ACDE 0 0 AO
+0 0 0 0 0
+51 40 70000 1 P
+2
+A
+19 3
+A
+37 5
+E
+flame-crystal~
+This glowing crystal fits in the palm of your hand and is warm to the
+touch.  The red glowing crystal appears to be some manner of frozen flame
+that throbs with barely-contained power.  
+~
+E
+flame~
+This glowing crystal fits in the palm of your hand and is warm to the
+touch.  The red glowing crystal appears to be some manner of frozen flame
+that throbs with barely-contained power.  
+~
+E
+crystal~
+This glowing crystal fits in the palm of your hand and is warm to the
+touch.  The red glowing crystal appears to be some manner of frozen flame
+that throbs with barely-contained power.  
+~
+E
+heartstone~
+This glowing crystal fits in the palm of your hand and is warm to the
+touch.  The red glowing crystal appears to be some manner of frozen flame
+that throbs with barely-contained power.  
+~
+E
+crystallized~
+This glowing crystal fits in the palm of your hand and is warm to the
+touch.  The red glowing crystal appears to be some manner of frozen flame
+that throbs with barely-contained power.  
+~
+E
+glittering~
+This glowing crystal fits in the palm of your hand and is warm to the
+touch.  The red glowing crystal appears to be some manner of frozen flame
+that throbs with barely-contained power.  
+~
+>fight_prog 15~
+if isworn($o)
+mpecho A large, glittering flame-crystal heartstone releases a gout of flame!
+mpcast 66 25
+endif
+~
+|
+V13
+24403
+mass crackling lightning~
+a mass of crackling lightning~
+A mass of crackling lightning sizzles here.~
+~
+energy~
+weapon ABGS 0 0 AN
+exotic 3 15 6 F
+shocking bite~
+51 0 100000 2 P
+3
+A
+19 3
+E
+mass~
+This sparking mass of lightning has been somehow tamed, to a point, to be
+wielded.  Its thrashing and arcing nature makes it difficult to wrangle even
+with two hands.  
+~
+E
+lightning~
+This sparking mass of lightning has been somehow tamed, to a point, to be
+wielded.  Its thrashing and arcing nature makes it difficult to wrangle even
+with two hands.  
+~
+E
+crackling~
+This sparking mass of lightning has been somehow tamed, to a point, to be
+wielded.  Its thrashing and arcing nature makes it difficult to wrangle even
+with two hands.  
+~
+>remove_prog 100~
+opunfocus
+~
+>wear_prog 100~
+opfocus $n
+mpechoat $f You struggle to reign in the crackling mass of lightning!
+mpechoaround $f $F struggles to reign in the crackling mass of lightning!
+mplag $f 1
+~
+>rand_prog 1~
+if ispc($f)
+if isworn($o)
+opechoat $f You briefly lose control of the mass of lightning!
+opechoaround $f $F briefly loses control of the mass of lightning!
+opcast 126 51 $f
+endif
+endif
+~
+|
+V13
+24404
+shimmering gold shoulder sash length cloth~
+a shimmering gold shoulder sash~
+A length of shimmering gold cloth lies here.~
+~
+gold~
+trash G 0 F AK
+0 0 0 0 0
+51 100 45000 0 P
+50
+A
+19 2
+A
+13 20
+A
+12 20
+A
+54 1
+A
+20 -1
+E
+shimmering~
+This sash, designed to be worn over the shoulder, is woven from threads
+of gold.  
+~
+E
+gold~
+This sash, designed to be worn over the shoulder, is woven from threads
+of gold.  
+~
+E
+shoulder~
+This sash, designed to be worn over the shoulder, is woven from threads
+of gold.  
+~
+E
+sash~
+This sash, designed to be worn over the shoulder, is woven from threads
+of gold.  
+~
+E
+length~
+This sash, designed to be worn over the shoulder, is woven from threads
+of gold.  
+~
+E
+cloth~
+This sash, designed to be worn over the shoulder, is woven from threads
+of gold.  
+~
+V13
+24405
+electrum ring gleaming~
+a gleaming electrum ring~
+A ring of gleaming electrum lies here.~
+~
+electrum~
+trash BG 0 F AB
+0 0 0 0 0
+50 1 26000 0 P
+80
+A
+18 3
+A
+38 4
+A
+12 40
+E
+gleaming~
+This loop of electrum gleams a pale and metallic shade of gold.  The
+outer loop of the ring is smooth while the inside of the band is decorated
+with a jagged lightning motif.  The ring hums gently.  
+~
+E
+ring~
+This loop of electrum gleams a pale and metallic shade of gold.  The
+outer loop of the ring is smooth while the inside of the band is decorated
+with a jagged lightning motif.  The ring hums gently.  
+~
+E
+electrum~
+This loop of electrum gleams a pale and metallic shade of gold.  The
+outer loop of the ring is smooth while the inside of the band is decorated
+with a jagged lightning motif.  The ring hums gently.  
+~
+V13
+24406
+flail seasons richly engraved wood platinum~
+the Flail of Seasons~
+A richly engraved wood-and-platinum flail lies here.~
+~
+platinum~
+weapon GY 0 0 AN
+flail 5 9 1 0
+crush~
+53 70 195000 1 P
+1
+>fight_prog 100~
+if isworn($o)
+if isseason() == 0
+mpecho The Flail of Seasons calls upon the new growth of spring!
+mpcast 538 51
+endif
+if isseason() == 1
+mpecho The Flail of Seasons calls upon the summer\@s searing heat!
+mpcast 78 51
+endif
+if isseason() == 2
+mpecho The Flail of Seasons calls upon autumn\@s weakening decay!
+mpcast 392 51
+endif
+if isseason() == 3
+mpecho The Flail of Seasons calls upon the icy chill of winter!
+mpcast 341 51
+endif
+endif
+~
+>fight_prog 1~
+if isworn($o)
+if isseason() == 0
+mpecho The Flail of Seasons calls upon the new growth of spring!
+mpcast 538 51
+endif
+if isseason() == 1
+mpecho The Flail of Seasons calls upon the summer\@s searing heat!
+mpcast 78 51
+endif
+if isseason() == 2
+mpecho The Flail of Seasons calls upon autumn\@s weakening decay!
+mpcast XXX
+endif
+if isseason() == 3
+mpecho The Flail of Seasons calls upon the icy chill of winter!
+mpcast 341 51
+endif
+endif
+~
+|
+V13
+24407
+pair billowy beige pantaloons silk~
+a pair of billowy beige pantaloons~
+A pile of billowy beige silk lies here.~
+~
+silk~
+armor S 0 F AF
+6 6 6 2 0
+30 20 9000 2 P
+160
+A
+13 18
+A
+18 2
+E
+silk~
+This pair of pantaloons has been sewn from fine silk.
+~
+E
+beige~
+This pair of pantaloons has been sewn from fine silk.
+~
+E
+pantaloons~
+This pair of pantaloons has been sewn from fine silk.
+~
+E
+billowy~
+This pair of pantaloons has been sewn from fine silk.
+~
+E
+pair~
+This pair of pantaloons has been sewn from fine silk.  
+~
+V13
+24408
+copper neckplate neck plate gilded symbols~
+a gilded copper neckplate~
+A copper neckplate rests here, gilded with alchemical symbols.~
+~
+copper~
+armor 0 0 F AC
+3 3 3 5 0
+30 30 3780 1 P
+100
+A
+4 1
+A
+12 15
+A
+14 15
+E
+symbols~
+The symbol of a flaming vial suggest this plate was made for a Harrudim
+alchemist.  
+~
+E
+gilded~
+This protective copper neckplate is gold-gilt with symbols.
+~
+E
+plate~
+This protective copper neckplate is gold-gilt with symbols.
+~
+E
+neck~
+This protective copper neckplate is gold-gilt with symbols.
+~
+E
+neckplate~
+This protective copper neckplate is gold-gilt with symbols.
+~
+E
+copper~
+This protective copper neckplate is gold-gilt with symbols.
+~
+V13
+24409
+pair leather protective sleeves~
+a pair of protective leather sleeves~
+A pair of leather sleeves lie here.~
+~
+leather~
+armor S 0 F AI
+5 5 5 2 0
+30 50 5300 2 P
+120
+A
+13 15
+A
+19 1
+E
+protective~
+This pair of leather sleeves have been reinforced and padded for added
+protection.  
+~
+E
+leather~
+This pair of leather sleeves have been reinforced and padded for added
+protection.  
+~
+E
+sleeves~
+This pair of leather sleeves have been reinforced and padded for added
+protection.  
+~
+E
+pair~
+This pair of leather sleeves have been reinforced and padded for added
+protection.  
+~
+V13
+24410
+a fused glass bracer~
+a fused glass bracer~
+A bracer made of fused glass lies here.~
+~
+glass~
+armor S 0 0 AM
+10 10 10 5 0
+55 40 45600 1 P
+20
+A
+18 1
+A
+2 1
+A
+19 3
+A
+35 3
+E
+bracer~
+This glass bracer, created by fusing sand at impossibly hot temperatures,
+sports wicked blades.  
+~
+E
+glass~
+This glass bracer, created by fusing sand at impossibly hot temperatures,
+sports wicked blades.  
+~
+E
+fused~
+This glass bracer, created by fusing sand at impossibly hot temperatures,
+sports wicked blades.  
+~
+V13
+24411
+glass-studded lash sand cruel~
+a cruel lash of glass-studded sand~
+A lash formed of sand lies here.~
+~
+dirt~
+weapon CDGS 0 0 AN
+whip 4 12 3 0
+lashing~
+54 100 354383 1 P
+2
+A
+18 4
+A
+19 3
+E
+cruel~
+Magical energies have knit glass and sand together to form this weapon. 
+A smooth glass handle forms the base of the lash with several ropes of sand
+hanging off its end.  Bits of jagged fused glass stud the already abrasive
+lengths of the sand-lashes, making for an exceptionally cruel weapon.  
+~
+E
+lash~
+Magical energies have knit glass and sand together to form this weapon. 
+A smooth glass handle forms the base of the lash with several ropes of sand
+hanging off its end.  Bits of jagged fused glass stud the already abrasive
+lengths of the sand-lashes, making for an exceptionally cruel weapon.  
+~
+E
+sand~
+Magical energies have knit glass and sand together to form this weapon. 
+A smooth glass handle forms the base of the lash with several ropes of sand
+hanging off its end.  Bits of jagged fused glass stud the already abrasive
+lengths of the sand-lashes, making for an exceptionally cruel weapon.  
+~
+E
+glass-studded~
+Magical energies have knit glass and sand together to form this weapon. 
+A smooth glass handle forms the base of the lash with several ropes of sand
+hanging off its end.  Bits of jagged fused glass stud the already abrasive
+lengths of the sand-lashes, making for an exceptionally cruel weapon.  
+~
+V13
+24412
+blade fused glass razor-sharp sharp fusedblade~
+a razor-sharp blade of fused glass~
+A wickedly sharp blade of glass lies here.~
+~
+glass~
+weapon AEG 0 0 AN
+sword 7 7 3 A
+slice~
+50 50 0 0 P
+10000
+A
+19 5
+A
+18 5
+E
+sharp~
+This fused-glass blade, still burning with the fires of its creation, is
+fearsomely sharp.  It is also exceedingly fragile. 
+~
+E
+razor-sharp~
+This fused-glass blade, still burning with the fires of its creation, is
+fearsomely sharp.  It is also exceedingly fragile. 
+~
+E
+glass~
+This fused-glass blade, still burning with the fires of its creation, is
+fearsomely sharp.  It is also exceedingly fragile. 
+~
+E
+fused~
+This fused-glass blade, still burning with the fires of its creation, is
+fearsomely sharp.  It is also exceedingly fragile. 
+~
+E
+blade~
+This fused-glass blade, still burning with the fires of its creation, is
+fearsomely sharp.  It is also exceedingly fragile.  
+~
+>hit_prog 5~
+mpechoat $n The a razor-sharp blade of fused glass shatters into shards which dig into your flesh!
+mpechoaround $n The a razor-sharp blade of fused glass shatters into shards which dig into $N\@s flesh!
+opoload 24413 in room
+mpaddaffect $n 227 45 5 27 0 0
+oppurge self
+break
+~
+|
+V13
+24413
+shards broken glass~
+some shards of broken glass~
+Some shards of broken glass are scattered here.~
+~
+glass~
+trash S 0 0 A
+0 0 0 0 0
+40 30 0 0 P
+0
+E
+shards~
+These are some shards of broken glass.
+~
+E
+broken~
+These are some shards of broken glass.
+~
+E
+glass~
+These are some shards of broken glass.
+~
+V13
+24414
+boots pair grey leather~
+a pair of grey leather boots~
+A pair of grey boots sit here.~
+~
+leather~
+armor S 0 F AG
+7 7 7 0 0
+27 20 1500 0 P
+0
+A
+14 15
+A
+18 2
+E
+pair~
+These boots are made from light grey leather and well-made for travel.  
+~
+E
+boots~
+These boots are made from light grey leather and well-made for travel.
+~
+E
+grey~
+These boots are made from light grey leather and well-made for travel.
+~
+E
+leather~
+These boots are made from light grey leather and well-made for travel.
+~
+V13
+24415
+chestplate plate decorated steel chest~
+a decorated chestplate~
+A steel chestplate lies here.~
+This is the chestplate of the leader of the adventuring company known as
+the Dune Delvers.  It was passed down through his family.  How it came to
+your hands is anyones guess.  
+~
+steel~
+armor 0 0 F AD
+7 7 7 2 0
+27 100 9700 2 P
+250
+A
+13 20
+A
+17 -5
+E
+chestplate~
+This steel chestplate is decorated with etchings of rolling desert dunes
+along its trim.  
+~
+E
+plate~
+This steel chestplate is decorated with etchings of rolling desert dunes
+along its trim.  
+~
+E
+chest~
+This steel chestplate is decorated with etchings of rolling desert dunes
+along its trim.  
+~
+E
+steel~
+This steel chestplate is decorated with etchings of rolling desert dunes
+along its trim.  
+~
+E
+decorated~
+This steel chestplate is decorated with etchings of rolling desert dunes
+along its trim.  
+~
+V13
+24416
+mace brass handle brass-handled gleaming~
+a brass-handled mace~
+A mace with a gleaming brass handle lies here.~
+This is the mace of the leader of the adventuring company known as the
+Dune Delvers.  
+~
+brass~
+weapon 0 0 F AN
+mace 4 7 1 0
+crush~
+27 150 1000 0 P
+0
+A
+19 1
+E
+mace~
+This mace has a gleaming brass handle and a sturdy steel head.
+~
+E
+brass~
+This mace has a gleaming brass handle and a sturdy steel head.
+~
+E
+handle~
+This handle of this mace is made from gleaming brass.
+~
+E
+gleaming~
+This handle of this mace is made from gleaming brass.
+~
+E
+brass-handled~
+This mace has a gleaming brass handle and a sturdy steel head.
+~
+V13
+24417
+battleaxe axe sturdy~
+a sturdy battleaxe~
+A sturdy battleaxe lies here.~
+This ill-kept axe is of Yithoul make.
+~
+iron~
+weapon 0 0 F AN
+axe 3 10 0 0
+cleave~
+26 160 1000 0 P
+0
+A
+13 5
+E
+battleaxe~
+This sturdy old battleaxe has been poorly cared for.  A faded symbol of
+Yithoul marks it.  
+~
+E
+axe~
+This sturdy old battleaxe has been poorly cared for.  A faded symbol of
+Yithoul marks it.  
+~
+E
+sturdy~
+This sturdy old battleaxe has been poorly cared for.  A faded symbol of
+Yithoul marks it.  
+~
+V13
+24418
+pair worn black hide gauntlets~
+a pair of worn black hide gauntlets~
+A pair of black hide gauntlets lie here.~
+This pair of gauntlets seems to be of Yithoul make.
+~
+hide~
+armor S 0 F AH
+6 6 6 0 0
+26 80 5800 0 P
+0
+A
+18 1
+A
+19 2
+E
+pair~
+These gauntlets, made of some black hide, are worn from use.
+~
+E
+worn~
+These gauntlets, made of some black hide, are worn from use.
+~
+E
+black~
+These gauntlets, made of some black hide, are worn from use.
+~
+E
+hide~
+These gauntlets, made of some black hide, are worn from use.
+~
+E
+gauntlets~
+These gauntlets, made of some black hide, are worn from use.
+~
+V13
+24419
+helm stout iron~
+a stout iron helm~
+A stout iron helm lies here.~
+~
+iron~
+armor 0 0 F AE
+8 8 8 0 0
+26 50 5000 1 P
+0
+A
+13 15
+A
+18 1
+E
+helm~
+This iron helm is well-made and sturdy.
+~
+E
+iron~
+This iron helm is well-made and sturdy.
+~
+E
+stout~
+This iron helm is well-made and sturdy.
+~
+V13
+24420
+armguards set copper copper-decorated~
+a set of copper-decorated armguards~
+A set of copper-decorated armguards lie here.~
+~
+copper~
+armor 0 0 F AI
+5 5 5 3 0
+24 140 3500 0 P
+0
+A
+13 10
+A
+19 1
+E
+armguards~
+This pair of iron armguards have been decorated with copper in a pattern
+of scales.  
+~
+E
+set~
+This pair of iron armguards have been decorated with copper in a pattern
+of scales.  
+~
+E
+copper~
+This pair of iron armguards have been decorated with copper in a pattern
+of scales.  
+~
+E
+copper-decorated~
+This pair of iron armguards have been decorated with copper in a pattern
+of scales.  
+~
+V13
+24421
+light brass shortspear short spear~
+a light brass shortspear~
+A brass shortspear lies here.~
+~
+brass~
+weapon 0 0 F AN
+spear 7 3 2 0
+pierce~
+24 100 250 1 P
+0
+E
+brass~
+This short brass javelin is light enough to be used single-handed or be
+thrown.  
+~
+E
+shortspear~
+This short brass javelin is light enough to be used single-handed or be
+thrown.  
+~
+E
+spear~
+This short brass javelin is light enough to be used single-handed or be
+thrown.  
+~
+E
+short~
+This short brass javelin is light enough to be used single-handed or be
+thrown.  
+~
+E
+light~
+This short brass javelin is light enough to be used single-handed or be
+thrown.  
+~
+E
+spear~
+This short brass javelin is light enough to be used single-handed or be
+thrown.  
+~
+V13
+24422
+steel ring sapphire~
+a steel ring set with a sapphire~
+A steel ring with a sapphire lies here.~
+This ring has been blessed with minor restorative abilities by the
+Harrudim guild of water templars.  It was last known to be owned by Srysik,
+a young srryn adventurer traveling with the company known as the Dune
+Delvers.  
+~
+sapphire~
+jewelry G 0 F AB
+0 0 0 0 0
+24 1 6000 0 P
+250
+A
+13 10
+A
+12 15
+E
+steel~
+This simple steel ring is decorated with a single small sapphire.  
+~
+E
+ring~
+This simple steel ring is decorated with a single small sapphire.
+~
+E
+sapphire~
+This simple steel ring is decorated with a single small sapphire.
+~
+>rand_prog 1~
+if isworn($o)
+mpechoat $o The sapphire in the steel ring glints softly.
+mpcast 36 25
+endif
+~
+|
+V13
+24423
+shield beaten steel~
+a beaten steel shield~
+A steel shield lies here, beaten and worn.~
+~
+steel~
+armor 0 0 F AJ
+5 5 5 0 0
+24 100 2000 0 P
+0
+A
+13 5
+A
+17 -10
+E
+beaten~
+This steel shield is dented from use.
+~
+E
+steel~
+This steel shield is dented from much use and little repair.  
+~
+E
+shield~
+This steel shield is dented from much use and little repair.
+~
+V13
+24424
+skirt light cotton cloth pile~
+a light cotton skirt~
+A pile of cotton cloth lies here.~
+~
+cloth~
+armor S 0 F AF
+4 0 4 0 0
+25 20 3300 1 P
+0
+A
+12 15
+A
+18 1
+E
+skirt~
+This off-white skirt is made of light, airy cotton.
+~
+E
+light~
+This off-white skirt is made of light, airy cotton.
+~
+E
+cotton~
+This off-white skirt is made of light, airy cotton.
+~
+E
+cloth~
+This off-white skirt is made of light, airy cotton.
+~
+E
+pile~
+This off-white skirt is made of light, airy cotton.
+~
+V13
+24425
+cloak off-white cotton cloak pile cloth~
+a off-white cotton cloak~
+A pile of off-white cloth lies here.~
+~
+cloth~
+armor S 0 F AK
+3 3 3 3 0
+25 30 3000 0 P
+0
+A
+12 10
+A
+4 1
+A
+13 10
+E
+cloak~
+This off-white cloak is made of light and airy cotton.
+~
+E
+off-white~
+This off-white cloak is made of light and airy cotton.
+~
+E
+cotton~
+This off-white cloak is made of light and airy cotton.
+~
+E
+pile~
+This off-white cloak is made of light and airy cotton.
+~
+E
+cloth~
+This off-white cloak is made of light and airy cotton.
+~
+V13
+24426
+shiny brass dagger~
+a shiny brass dagger~
+A shiny brass dagger lies here.~
+While lovingly cared for, brass is a poor metal for weaponmaking.  More
+likely this is a scholar\@s focus as much as a weapon of war.  
+~
+brass~
+weapon 0 0 F AN
+dagger 4 6 2 0
+stab~
+25 0 3300 0 P
+0
+A
+12 20
+E
+dagger~
+This brass dagger gleams with polish.
+~
+E
+brass~
+This brass dagger gleams with polish.
+~
+E
+shiny~
+This brass dagger gleams with polish.
+~
+V13
+24427
+potion frothy blue mypotion~
+a frothy blue potion~
+A frothy blue potion is here.~
+~
+glass~
+potion G 0 F AO
+25 'slow cure serious' 'slow cure poison' 'slow cure light' 'slow cure disease'
+25 1 300 0 P
+100
+V13
+24428
+basilisk-fang dagger fang basilisk grimy~
+a basilisk-fang dagger~
+A dagger fashioned from a grimy fang lies here.~
+This dagger has been carved from an intact fang from the beast known as
+the basilisk.  A fearsome serpent with a gaze of stone and a venomous maw,
+this grimy fang still carries much of the virulence of the creature when it
+once lived, letting its wielder spread poison and disease with their blows. 
+~
+dragonbone~
+weapon QS 0 0 AO
+dagger 5 9 2 H
+pierce~
+57 30 200000 1 P
+20
+E
+basilisk~
+This dagger has been carved from an intact fang from the beast known as
+the basilisk.  A layer of ichor and grime covers the blade, making it
+especially deadly. 
+~
+E
+fang~
+This dagger has been carved from an intact fang from the beast known as
+the basilisk.  A layer of ichor and grime covers the blade, making it
+especially deadly. 
+~
+E
+grimy~
+This dagger has been carved from an intact fang from the beast known as
+the basilisk.  A layer of ichor and grime covers the blade, making it
+especially deadly. 
+~
+E
+dagger~
+This dagger has been carved from an intact fang from the beast known as
+the basilisk.  A layer of ichor and grime covers the blade, making it
+especially deadly. 
+~
+E
+basilisk-fang~
+This dagger has been carved from an intact fang from the beast known as
+the basilisk.  A layer of ichor and grime covers the blade, making it
+especially deadly.  
+~
+>hit_prog 1~
+if isworn($o)
+opechoat $n The basilisk-fang dagger leaves a wicked, infected cut.
+opechoaround $n The basilisk-fang dagger leaves a wicked, infected cut on $N.
+opoload 20306 on $n
+endif
+~
+|
+V13
+24429
+eye petrified basilisk stony~
+the petrified eye of the basilisk~
+A stony eye lies here.~
+This is an eye from the beast known as the basilisk, petrified upon its
+death.  The fearsome serpent is known for its petrifying gaze and venomous
+maw.  The eye, though no longer so dangerous with the beast dead, can still
+petrify foes on occasion when worn.  
+~
+stone~
+gem GQS 0 0 AO
+0 0 0 0 0
+57 30 30000 0 P
+2
+A
+13 10
+A
+22 -4
+E
+stony~
+This stone-hard basilisk eye fits in the palm of your hand.  The once
+vivid-yellow iris has grayed over in death.  
+~
+E
+basilisk~
+This stone-hard basilisk eye fits in the palm of your hand.  The once
+vivid-yellow iris has grayed over in death.  
+~
+E
+petrified~
+This stone-hard basilisk eye fits in the palm of your hand.  The once
+vivid-yellow iris has grayed over in death.  
+~
+E
+eye~
+This stone-hard basilisk eye fits in the palm of your hand.  The once
+vivid-yellow iris has grayed over in death.  
+~
+>fight_prog 4~
+if isworn($o)
+mpechoat $n You glance at the petrified eye in your foes hand and begin to stiffen!
+mpcast 584 99
+endif
+~
+|
+V13
+24430
+cuirass stony hide basilisk basilisk-hide~
+a basilisk-hide cuirass~
+A cuirass made from stony hide lies here.~
+This cuirass is made from the hide of the basilisk, a fearsome monster of
+the southern deserts.  It is said that it breathes poison and can turn a man
+to stone with a glance.  The blind, however, are said to be immune to its
+gaze.  
+~
+dragonscale~
+armor Q 0 0 AD
+11 13 10 10 0
+51 300 92500 2 P
+25
+A
+19 3
+A
+18 2
+A
+13 30
+A
+22 -4
+E
+stony~
+This heavy cuirass made from thick, stony scales protects the body\@s
+front and back.  
+~
+E
+basilisk-hide~
+This heavy cuirass made from thick, stony scales protects the body\@s
+front and back.  
+~
+E
+basilisk~
+This heavy cuirass made from thick, stony scales protects the body\@s
+front and back.  
+~
+E
+hide~
+This heavy cuirass made from thick, stony scales protects the body\@s
+front and back.  
+~
+E
+cuirass~
+This heavy cuirass made from thick, stony scales protects the body\@s
+front and back.  
+~
+V13
+24431
+large pile rubble~
+the large pile of rubble~
+A large pile of rubble has been gathered toward the back of the cave.~
+~
+stone~
+container e 0 0 P
+1000 0 0 10 0
+40 3000 0 0 P
+0
+V13
+24432
+scimitar mercurial moonsilver moon silver shimmering moonscimitar~
+a moonsilver scimitar~
+A scimitar made of shimmering moonsilver lies here.~
+This weapon was made of a moon-blessed silver by druidic craftsmen.  The
+mercurial light of the moon transmuted the blade into a mystic quicksilver. 
+It channels the feminine energies of the moon, adopting a mystical bite when
+wielded by a woman outdoors at night.  Once it has caught the moons energy,
+it maintains this power until dawn.  
+
+The weapon itself was created as part of a pair as a reward for a ranger
+adventuress who successfully defended a circle of druids from a ravening
+shura horde.  The blades eventually were lost, as such things often are,
+falling into less noble hands.  
+~
+mercury~
+weapon GMYa 0 0 AN
+sword 3 14 3 0
+slice~
+51 80 50000 0 P
+2
+A
+19 2
+A
+12 40
+E
+scimitar mercurial moonsilver moon silver shimmering moonscimitar~
+The blade of this narrow scimitar seems to slowly ebb and flow, its shape
+transmuting slightly even as it is wielded.  It appears to maintains its
+balance as a weapon despite being forged of mutable, gleaming moonsilver. 
+It maintains its own keen edge as well.  
+~
+>wear_prog 100~
+if sex($n) == 2
+mpechoat $n You feel a certain harmony with the weapon as you wield it.
+endif
+~
+>rand_prog 100~
+if sex($o) == 2
+if objvalue(0) == 1
+if islight()
+opecho The mystic gleam fades from the mercurial moonsilver scimitar.
+opset obj moonscimitar v3 3
+mpstring obj moonscimitar damverb slice
+opvalueset 0 0
+else
+endif
+endif
+if objvalue(0) == 0
+if islight()
+else
+if sector($o) == inside
+or sector($o) == underground
+or sector($o) == underwater
+else
+opecho The mercurial moonsilver scimitar begins to gleam in the moonlight.
+opset obj moonscimitar v3 11
+mpstring obj moonscimitar damverb energy
+opvalueset 0 1
+endif
+endif
+endif
+else
+if objvalue(0) == 1
+opecho The mystic gleam fades from the mercurial moonsilver scimitar.
+opset obj moonscimitar v3 3
+mpstring obj moonscimitar damverb slice
+opvalueset 0 0
+endif
+endif
+~
+|
+V13
+24433
+bracer moonbracer mercurial moonsilver moon silver silvery gleaming~
+a moonsilver bracer~
+A gleaming silvery bracer lies here.~
+One of a number of bracers made from mystical silver blessed with the
+mercurial energies of the moon.  Made by a circle of female druids to
+harness the feminine aspect of the moon, the bracers allow a woman who wears
+them to invoke Lunus\@ power.  The bracers, however, are loathe to be
+removed, and can only call down the moon a bare handful of times before
+being depleted of their energy.  
+~
+mercury~
+armor GMa 0 F AM
+8 8 8 8 0
+51 50 20248 0 P
+20
+A
+12 40
+A
+19 2
+E
+bracer moonbracer mercurial moonsilver moon silver silvery gleaming~
+This metallic bracer is made of a strange, silvery metal that seems to
+flow slightly while still maintaining its hardness and its general shape.  
+~
+>verb_prog p invoke bracer~
+is isowner($n)
+if isworn($o)
+if sex($n) == 2
+if isfighting($n)
+if islight()
+opechoat $n There is no moon to call.
+else
+if objvalue(0) == 2
+opechoat $n The magic of the bracer feels permanantly drained.
+else
+opvalueup 0
+opechoat $n You raise your hand to the sky!
+opechoaround $n $N raises her hand to the sky!
+opcast 278 99
+mplag $n 1
+endif
+endif
+else
+opechoat $n But you aren\@t in combat.
+endif
+else
+opechoat $n You feel no connection to the bracer.
+endif
+endif
+endif
+~
+>wear_prog 100~
+if sex($n) == 2
+if islight()
+else
+if sector($o) == inside
+or sector($o) == underground
+or sector($o) == underwater
+else
+mpechoat $n As you don the bracer under the light of the moon, you feel as if you could \@invoke bracer\@ in combat.
+endif
+endif
+endif
+~
+|
+V13
+24434
+lash barbed hooks~
+a lash covered in barbed hooks~
+A lash covered in barbed hooks lies here.~
+~
+leather~
+weapon EGS 0 F AN
+whip 3 10 3 0
+lashing~
+30 30 4500 0 P
+0
+A
+19 2
+>fight_prog 1~
+if isworn($o)
+opechoat $n The hooks on the barbed lash dig into you!
+opechoat $n A pulse of magical agony shoots through your limbs!
+opechoaround $n The hooks on the barbed lash dig into $N!
+opechoaround $n $N screams in sudden agony!
+opaddaffect $n 306 30 1 2 -4 0
+endif
+~
+|
+V13
+24435
+pair leather black boots back-laced back laced~
+a pair of back-laced leather boots~
+A pair of black leather boots lie here together.~
+~
+leather~
+armor G 0 F AG
+5 5 5 1 0
+50 40 11000 0 P
+120
+A
+20 -1
+A
+13 17
+A
+18 3
+E
+pair leather black boots back-laced back laced~
+These tall boots are made from finely tooled black leather.  Unlike
+normal boots, these are laced up the back along the calf rather than in
+front.  A curiosity thats makes them slightly more difficult to don. 
+Further inspection shows that some sort of metallic plate has been placed
+under the leathers of the boot to protect the shin.  
+~
+V13
+24436
+white travel cloak~
+a white travel cloak~
+A white cloak lies here.~
+~
+cloth~
+armor S 0 F AK
+2 2 3 4 0
+40 10 5000 0 P
+0
+A
+14 35
+A
+20 -2
+A
+5 2
+E
+white~
+This traveler\@s cloak protects its wearer from the harsh elements.
+~
+E
+cloak~
+This traveler\@s cloak protects its wearer from the harsh elements.  
+~
+E
+travel~
+This traveler\@s cloak protects its wearer from the harsh elements.
+~
+V13
+24574
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+#0
+
+
+
+#ROOMS
+#24400
+The Crimson Sands Casino~
+At the swanky Crimson Sands casino, lives are on the line and all bets
+are off!  
+
+And still noone knows how to play baccarat.  Really.  Noone.  They make it
+up.  
+~
+~
+0
+0 41012 0
+W 5 0 0
+Z 5 5
+S
+#24401
+The Slaver\@s Camp at the Canyon Lip~
+This slavers camp is situated overlooking a sheer drop into Kyaza Ha
+Canyon.  The few tents standing for overseers are made of black fabric.  The
+odd choice of cloth seems more aimed at blocking sunlight than relieving the
+oppressive southern heat.  Several wooden posts are staked into the ground,
+the stony earth dark at their bases.  
+~
+~
+0
+0 0 10
+E
+posts~
+These wooden posts and the earth about them are spattered with what looks
+like dried blood.  
+~
+E
+wooden post earth~
+These wooden posts and the earth about them are spattered with what looks
+like dried blood.  
+~
+D1
+~
+~
+0 0 24402
+D2
+~
+~
+0 0 24409
+W 5 0 0
+Z 5 5
+S
+#24402
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24403
+D2
+~
+~
+0 0 24410
+D3
+~
+~
+0 0 24401
+W 5 0 0
+Z 5 5
+S
+#24403
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24404
+D3
+~
+~
+0 0 24402
+W 5 0 0
+Z 5 5
+S
+#24404
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24405
+D2
+~
+~
+0 0 24412
+D3
+~
+~
+0 0 24403
+W 5 0 0
+Z 5 5
+S
+#24405
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24406
+D3
+~
+~
+0 0 24404
+W 5 0 0
+Z 5 5
+S
+#24406
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24407
+D3
+~
+~
+0 0 24405
+W 5 0 0
+Z 5 5
+S
+#24407
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24408
+D2
+~
+~
+0 0 24415
+D3
+~
+~
+0 0 24406
+W 5 0 0
+Z 5 5
+S
+#24408
+~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 24416
+D3
+~
+~
+0 0 24407
+W 5 0 0
+Z 5 5
+S
+#24409
+The Slaver\@s Camp at the Canyon Lip~
+This slavers camp is situated overlooking a sheer drop into Kyaza Ha
+Canyon.  The few tents standing for overseers are made of black fabric.  The
+odd choice of cloth seems more aimed at blocking sunlight than relieving the
+oppressive southern heat.  The slave camp continues in all directions with
+more dark tents and stakes driven into the dry, stony soil.  
+~
+~
+0
+0 0 10
+D0
+The camp continues to the north.
+~
+~
+0 0 24401
+D1
+The camp continues to the east.
+~
+~
+0 0 24410
+D2
+The camp continues to the south.
+~
+~
+0 0 24422
+M 100 H 100 V 80
+W 5 0 0
+Z 5 5
+S
+#24410
+The Slaver\@s Camp~
+This slaver\@s camp is set up within sight of Kyaza Ha Canyon to the west,
+past the rest of the encampment.  The few tents standing for overseers are
+made of black fabric.  The odd choice of cloth seems more aimed at blocking
+sunlight than relieving the oppressive southern heat.  Several wooden posts
+are staked into the ground, the stony earth dark at their bases.  
+~
+~
+0
+0 0 10
+E
+wooden post earth posts~
+These wooden posts and the earth about them are spattered with what looks
+like dried blood.  
+~
+D0
+~
+~
+0 0 24402
+D2
+~
+~
+0 0 24423
+D3
+~
+~
+0 0 24409
+M 100 H 100 V 80
+W 5 0 0
+Z 5 5
+S
+#24411
+A Sandy Valley Trail~
+~
+~
+0
+0 0 5
+D1
+~
+~
+0 0 24412
+D2
+~
+~
+0 0 24424
+W 5 0 0
+Z 5 5
+S
+#24412
+The Valley of Red Rock~
+~
+~
+0
+0 0 5
+D0
+~
+~
+0 0 24404
+D1
+~
+~
+0 0 24413
+D3
+~
+~
+0 0 24411
+W 5 0 0
+Z 5 5
+S
+#24413
+The Valley of Red Rock~
+~
+~
+0
+0 0 5
+D1
+~
+~
+0 0 24414
+D2
+~
+~
+0 0 24426
+D3
+~
+~
+0 0 24412
+W 5 0 0
+Z 5 5
+S
+#24414
+The Valley of Red Rock~
+~
+~
+0
+0 0 5
+D1
+~
+~
+0 0 24415
+D3
+~
+~
+0 0 24413
+W 5 0 0
+Z 5 5
+S
+#24415
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24407
+D1
+~
+~
+0 0 24416
+D2
+~
+~
+0 0 24428
+D3
+~
+~
+0 0 24414
+W 5 0 0
+Z 5 5
+S
+#24416
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24408
+D1
+~
+~
+0 0 24417
+D2
+~
+~
+0 0 24429
+D3
+~
+~
+0 0 24415
+W 5 0 0
+Z 5 5
+S
+#24417
+~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 24430
+D3
+~
+~
+0 0 24416
+W 5 0 0
+Z 5 5
+S
+#24418
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24419
+D2
+~
+~
+0 0 24431
+W 5 0 0
+Z 5 5
+S
+#24419
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24420
+D2
+~
+~
+0 0 24432
+D3
+~
+~
+0 0 24418
+W 5 0 0
+Z 5 5
+S
+#24420
+At the Lip of a Canyon~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24421
+D3
+~
+~
+0 0 24419
+W 5 0 0
+Z 5 5
+S
+#24421
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24422
+D2
+~
+~
+0 0 24434
+D3
+~
+~
+0 0 24420
+W 5 0 0
+Z 5 5
+S
+#24422
+The Slaver\@s Camp~
+This slavers camp is situated a within sight of Kyaza Ha Canyon to the
+northwest.  The few tents standing for overseers are made of black fabric. 
+The odd choice of cloth seems more aimed at blocking sunlight than relieving
+the oppressive southern heat.  Several wooden posts are staked into the
+ground, the stony earth dark at their bases.  
+~
+~
+0
+0 0 10
+E
+wooden post earth posts~
+These wooden posts and the earth about them are spattered with what looks
+like dried blood.  
+~
+D0
+The camp continues to the north.
+~
+~
+0 0 24409
+D1
+~
+~
+0 0 24423
+D2
+~
+~
+0 0 24435
+D3
+~
+~
+0 0 24421
+M 100 H 100 V 80
+W 5 0 0
+Z 5 5
+S
+#24423
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24410
+D1
+~
+~
+0 0 24424
+D3
+~
+~
+0 0 24422
+W 5 0 0
+Z 5 5
+S
+#24424
+A Trail Through the Red Valley~
+~
+~
+0
+0 0 5
+D0
+~
+~
+0 0 24411
+D2
+~
+~
+0 0 24437
+D3
+~
+~
+0 0 24423
+W 5 0 0
+Z 5 5
+S
+#24425
+Amidst a Raging Sandstorm~
+All about you whirls a blinding sandstorm.  The air is thick with the
+crimson-brown grit of the Crimson Sands, making breathing difficult and
+seeing even harder.  The churning storm hovers unnaturally over the valley
+of red rock below, unmoved by the prevailing winds.  
+~
+~
+2
+0 0 9
+D5
+A canyon of red rock is barely visible through the storm.  
+~
+~
+0 0 24426
+W 5 0 0
+Z 5 5
+S
+#24426
+A Stony Rise~
+~
+~
+0
+0 0 5
+D0
+~
+~
+0 0 24413
+D4
+~
+~
+0 0 24425
+W 5 0 0
+Z 5 5
+S
+#24427
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24428
+D2
+~
+~
+0 0 24440
+W 5 0 0
+Z 5 5
+S
+#24428
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24415
+D1
+~
+~
+0 0 24429
+D2
+~
+~
+0 0 24441
+D3
+~
+~
+0 0 24427
+W 5 0 0
+Z 5 5
+S
+#24429
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24416
+D1
+~
+~
+0 0 24430
+D2
+~
+~
+0 0 24442
+D3
+~
+~
+0 0 24428
+W 5 0 0
+Z 5 5
+S
+#24430
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24417
+D2
+~
+~
+0 0 24443
+D3
+~
+~
+0 0 24429
+W 5 0 0
+Z 5 5
+S
+#24431
+The Beginning of the Road of Rubies~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24418
+D1
+~
+~
+0 0 24432
+D2
+~
+~
+0 0 24444
+W 5 0 0
+Z 5 5
+S
+#24432
+Along the Road of Rubies~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24419
+D1
+~
+~
+0 0 24433
+D2
+~
+~
+0 0 24445
+D3
+~
+~
+0 0 24431
+W 5 0 0
+Z 5 5
+S
+#24433
+Along the Road of Rubies~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 24446
+D3
+~
+~
+0 0 24432
+W 5 0 0
+Z 5 5
+S
+#24434
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24421
+D1
+~
+~
+0 0 24435
+D2
+~
+~
+0 0 24447
+W 5 0 0
+Z 5 5
+S
+#24435
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24422
+D3
+~
+~
+0 0 24434
+W 5 0 0
+Z 5 5
+S
+#24436
+A Trail Through the Red Rocks~
+~
+~
+0
+0 0 5
+D1
+~
+~
+0 0 24437
+D2
+~
+~
+0 0 24449
+W 5 0 0
+Z 5 5
+S
+#24437
+The Valley of Red Rock~
+~
+~
+0
+0 0 5
+D0
+~
+~
+0 0 24424
+D1
+~
+~
+0 0 24438
+D3
+~
+~
+0 0 24436
+W 5 0 0
+Z 5 5
+S
+#24438
+A Box Canyon~
+~
+~
+0
+0 0 5
+D3
+~
+~
+0 0 24437
+W 5 0 0
+Z 5 5
+S
+#24439
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24440
+D2
+~
+~
+0 0 24452
+W 5 0 0
+Z 5 5
+S
+#24440
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24427
+D1
+~
+~
+0 0 24441
+D2
+~
+~
+0 0 24453
+D3
+~
+~
+0 0 24439
+W 5 0 0
+Z 5 5
+S
+#24441
+The Spire of Glass~
+~
+~
+0
+0 0 10
+D0
+~
+~
+0 0 24428
+D1
+~
+~
+0 0 24442
+D2
+~
+~
+0 0 24454
+D3
+~
+~
+0 0 24440
+W 5 0 0
+Z 5 5
+S
+#24442
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24429
+D1
+~
+~
+0 0 24443
+D2
+~
+~
+0 0 24455
+D3
+~
+~
+0 0 24441
+W 5 0 0
+Z 5 5
+S
+#24443
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24430
+D3
+~
+~
+0 0 24442
+W 5 0 0
+Z 5 5
+S
+#24444
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24431
+D1
+~
+~
+0 0 24445
+D2
+~
+~
+0 0 24460
+W 5 0 0
+Z 5 5
+S
+#24445
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24432
+D1
+~
+~
+0 0 24446
+D2
+~
+~
+0 0 24461
+D3
+~
+~
+0 0 24444
+W 5 0 0
+Z 5 5
+S
+#24446
+Along the Road of Rubies~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24433
+D1
+~
+~
+0 0 24447
+D2
+~
+~
+0 0 24462
+D3
+~
+~
+0 0 24445
+W 5 0 0
+Z 5 5
+S
+#24447
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24434
+D1
+~
+~
+0 0 24448
+D2
+~
+~
+0 0 24463
+D3
+~
+~
+0 0 24446
+W 5 0 0
+Z 5 5
+S
+#24448
+The Valley of Red Rock~
+~
+~
+0
+0 0 5
+D1
+~
+~
+0 0 24449
+D2
+~
+~
+0 0 24464
+D3
+~
+~
+0 0 24447
+W 5 0 0
+Z 5 5
+S
+#24449
+The Valley of Red Rock~
+~
+~
+0
+0 0 5
+D0
+~
+~
+0 0 24436
+D1
+~
+~
+0 0 24450
+D3
+~
+~
+0 0 24448
+W 5 0 0
+Z 5 5
+S
+#24450
+The Valley of Red Rock~
+~
+~
+0
+0 0 5
+D2
+~
+~
+0 0 24466
+D3
+~
+~
+0 0 24449
+W 5 0 0
+Z 5 5
+S
+#24451
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24452
+D2
+~
+~
+0 0 24467
+W 5 0 0
+Z 5 5
+S
+#24452
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24439
+D1
+~
+~
+0 0 24453
+D2
+~
+~
+0 0 24468
+D3
+~
+~
+0 0 24451
+W 5 0 0
+Z 5 5
+S
+#24453
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24440
+D1
+~
+~
+0 0 24454
+D2
+~
+~
+0 0 24469
+D3
+~
+~
+0 0 24452
+W 5 0 0
+Z 5 5
+S
+#24454
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24441
+D1
+~
+~
+0 0 24455
+D3
+~
+~
+0 0 24453
+W 5 0 0
+Z 5 5
+S
+#24455
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24442
+D3
+~
+~
+0 0 24454
+D5
+~
+~
+0 0 24456
+W 5 0 0
+Z 5 5
+S
+#24456
+~
+~
+~
+0
+0 0 0
+D4
+~
+~
+0 0 24455
+W 5 0 0
+Z 5 5
+S
+#24457
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24458
+W 5 0 0
+Z 5 5
+S
+#24458
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24459
+D2
+~
+~
+0 0 24470
+D3
+~
+~
+0 0 24457
+W 5 0 0
+Z 5 5
+S
+#24459
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24460
+D2
+~
+~
+0 0 24471
+D3
+~
+~
+0 0 24458
+W 5 0 0
+Z 5 5
+S
+#24460
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24444
+D1
+~
+~
+0 0 24461
+D2
+~
+~
+0 0 24472
+D3
+~
+~
+0 0 24459
+W 5 0 0
+Z 5 5
+S
+#24461
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24445
+D1
+~
+~
+0 0 24462
+D2
+~
+~
+0 0 24473
+D3
+~
+~
+0 0 24460
+W 5 0 0
+Z 5 5
+S
+#24462
+Along the Road of Rubies~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24446
+D1
+~
+~
+0 0 24463
+D2
+~
+~
+0 0 24474
+D3
+~
+~
+0 0 24461
+W 5 0 0
+Z 5 5
+S
+#24463
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24447
+D1
+~
+~
+0 0 24464
+D2
+~
+~
+0 0 24475
+D3
+~
+~
+0 0 24462
+W 5 0 0
+Z 5 5
+S
+#24464
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24448
+D1
+~
+~
+0 0 24465
+D2
+~
+~
+0 0 24476
+D3
+~
+~
+0 0 24463
+W 5 0 0
+Z 5 5
+S
+#24465
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24466
+D2
+~
+~
+0 0 24477
+D3
+~
+~
+0 0 24464
+W 5 0 0
+Z 5 5
+S
+#24466
+A Small Desert Camp~
+~
+~
+0
+0 0 10
+D0
+~
+~
+0 0 24450
+D1
+~
+~
+0 0 24467
+D2
+~
+~
+0 0 24478
+D3
+~
+~
+0 0 24465
+W 5 0 0
+Z 5 5
+S
+#24467
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24451
+D1
+~
+~
+0 0 24468
+D2
+~
+~
+0 0 24479
+D3
+~
+~
+0 0 24466
+W 5 0 0
+Z 5 5
+S
+#24468
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24452
+D1
+~
+~
+0 0 24469
+D2
+~
+~
+0 0 24480
+D3
+~
+~
+0 0 24467
+W 5 0 0
+Z 5 5
+S
+#24469
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24453
+D3
+~
+~
+0 0 24468
+W 5 0 0
+Z 5 5
+S
+#24470
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24458
+D1
+~
+~
+0 0 24471
+D2
+~
+~
+0 0 24481
+W 5 0 0
+Z 5 5
+S
+#24471
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24459
+D1
+~
+~
+0 0 24472
+D2
+~
+~
+0 0 24482
+D3
+~
+~
+0 0 24470
+W 5 0 0
+Z 5 5
+S
+#24472
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24460
+D1
+~
+~
+0 0 24473
+D2
+~
+~
+0 0 24483
+D3
+~
+~
+0 0 24471
+W 5 0 0
+Z 5 5
+S
+#24473
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24461
+D1
+~
+~
+0 0 24474
+D2
+~
+~
+0 0 24484
+D3
+~
+~
+0 0 24472
+W 5 0 0
+Z 5 5
+S
+#24474
+Along the Road of Rubies~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24462
+D1
+~
+~
+0 0 24475
+D2
+~
+~
+0 0 24485
+D3
+~
+~
+0 0 24473
+W 5 0 0
+Z 5 5
+S
+#24475
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24463
+D1
+~
+~
+0 0 24476
+D2
+~
+~
+0 0 24486
+D3
+~
+~
+0 0 24474
+W 5 0 0
+Z 5 5
+S
+#24476
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24464
+D1
+~
+~
+0 0 24477
+D3
+~
+~
+0 0 24475
+W 5 0 0
+Z 5 5
+S
+#24477
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24465
+D1
+~
+~
+0 0 24478
+D3
+~
+~
+0 0 24476
+W 5 0 0
+Z 5 5
+S
+#24478
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24466
+D1
+~
+~
+0 0 24479
+D2
+~
+~
+0 0 24489
+D3
+~
+~
+0 0 24477
+W 5 0 0
+Z 5 5
+S
+#24479
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24467
+D1
+~
+~
+0 0 24480
+D2
+~
+~
+0 0 24490
+D3
+~
+~
+0 0 24478
+W 5 0 0
+Z 5 5
+S
+#24480
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24468
+D2
+~
+~
+0 0 24491
+D3
+~
+~
+0 0 24479
+W 5 0 0
+Z 5 5
+S
+#24481
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24470
+D1
+~
+~
+0 0 24482
+D2
+~
+~
+0 0 24492
+W 5 0 0
+Z 5 5
+S
+#24482
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24471
+D1
+~
+~
+0 0 24483
+D2
+~
+~
+0 0 24493
+D3
+~
+~
+0 0 24481
+W 5 0 0
+Z 5 5
+S
+#24483
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24472
+D1
+~
+~
+0 0 24484
+D2
+~
+~
+0 0 24494
+D3
+~
+~
+0 0 24482
+W 5 0 0
+Z 5 5
+S
+#24484
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24473
+D2
+~
+~
+0 0 24495
+D3
+~
+~
+0 0 24483
+W 5 0 0
+Z 5 5
+S
+#24485
+Along the Road of Rubies~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24474
+D1
+~
+~
+0 0 24486
+W 5 0 0
+Z 5 5
+S
+#24486
+Along the Road of Rubies~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24475
+D1
+~
+~
+0 0 24487
+D2
+~
+~
+0 0 24497
+D3
+~
+~
+0 0 24485
+W 5 0 0
+Z 5 5
+S
+#24487
+Along the Road of Rubies~
+Motherfucking rubies on the motherfucking road.
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24488
+D2
+~
+~
+0 0 24498
+D3
+~
+~
+0 0 24486
+W 5 0 0
+Z 5 5
+S
+#24488
+Along the Road of Rubies~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24489
+D3
+~
+~
+0 0 24487
+W 5 0 0
+Z 5 5
+S
+#24489
+Along the Road of Rubies~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24478
+D1
+~
+~
+0 0 24490
+D3
+~
+~
+0 0 24488
+W 5 0 0
+Z 5 5
+S
+#24490
+Along the Road of Rubies~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24479
+D1
+~
+~
+0 0 24491
+D2
+~
+~
+0 0 24501
+D3
+~
+~
+0 0 24489
+W 5 0 0
+Z 5 5
+S
+#24491
+Outside the Gates of Ashta Harrud~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24480
+D2
+~
+~
+0 0 24502
+D3
+~
+~
+0 0 24490
+W 5 0 0
+Z 5 5
+S
+#24492
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24481
+D1
+~
+~
+0 0 24493
+W 5 0 0
+Z 5 5
+S
+#24493
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24482
+D1
+~
+~
+0 0 24494
+D3
+~
+~
+0 0 24492
+W 5 0 0
+Z 5 5
+S
+#24494
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24483
+D1
+~
+~
+0 0 24495
+D2
+~
+~
+0 0 24503
+D3
+~
+~
+0 0 24493
+W 5 0 0
+Z 5 5
+S
+#24495
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24484
+D1
+~
+~
+0 0 24496
+D2
+~
+~
+0 0 24504
+D3
+~
+~
+0 0 24494
+W 5 0 0
+Z 5 5
+S
+#24496
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24497
+D2
+~
+~
+0 0 24505
+D3
+~
+~
+0 0 24495
+W 5 0 0
+Z 5 5
+S
+#24497
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24486
+D1
+~
+~
+0 0 24498
+D2
+~
+~
+0 0 24506
+D3
+~
+~
+0 0 24496
+W 5 0 0
+Z 5 5
+S
+#24498
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24487
+D1
+~
+~
+0 0 24499
+D2
+~
+~
+0 0 24507
+D3
+~
+~
+0 0 24497
+W 5 0 0
+Z 5 5
+S
+#24499
+A Rocky Rise~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24500
+D2
+~
+~
+0 0 24508
+D3
+~
+~
+0 0 24498
+W 5 0 0
+Z 5 5
+S
+#24500
+A Rocky Rise~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24501
+D2
+~
+~
+0 0 24509
+D3
+~
+~
+0 0 24499
+W 5 0 0
+Z 5 5
+S
+#24501
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24490
+D1
+~
+~
+0 0 24502
+D2
+~
+~
+0 0 24510
+D3
+~
+~
+0 0 24500
+W 5 0 0
+Z 5 5
+S
+#24502
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24491
+D2
+~
+~
+0 0 24511
+D3
+~
+~
+0 0 24501
+W 5 0 0
+Z 5 5
+S
+#24503
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24494
+D1
+~
+~
+0 0 24504
+D3
+~
+~
+0 0 24549
+W 5 0 0
+Z 5 5
+S
+#24504
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24495
+D1
+~
+~
+0 0 24505
+D2
+~
+~
+0 0 24514
+D3
+~
+~
+0 0 24503
+W 5 0 0
+Z 5 5
+S
+#24505
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24496
+D1
+~
+~
+0 0 24506
+D2
+~
+~
+0 0 24515
+D3
+~
+~
+0 0 24504
+W 5 0 0
+Z 5 5
+S
+#24506
+~
+~
+~
+0
+0 0 10
+D0
+~
+~
+0 0 24497
+D1
+~
+~
+0 0 24507
+D2
+~
+~
+0 0 24516
+D3
+~
+~
+0 0 24505
+W 5 0 0
+Z 5 5
+S
+#24507
+~
+~
+~
+0
+0 0 10
+D0
+~
+~
+0 0 24498
+D1
+~
+~
+0 0 24508
+D2
+~
+~
+0 0 24517
+D3
+~
+~
+0 0 24506
+W 5 0 0
+Z 5 5
+S
+#24508
+The Hive~
+~
+~
+0
+0 0 10
+D0
+~
+~
+0 0 24499
+D2
+~
+~
+0 0 24518
+D3
+~
+~
+0 0 24507
+W 5 0 0
+Z 5 5
+S
+#24509
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24500
+D1
+~
+~
+0 0 24510
+D2
+~
+~
+0 0 24519
+W 5 0 0
+Z 5 5
+S
+#24510
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24501
+D1
+~
+~
+0 0 24511
+D2
+~
+~
+0 0 24520
+D3
+~
+~
+0 0 24509
+W 5 0 0
+Z 5 5
+S
+#24511
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24502
+D2
+~
+~
+0 0 24521
+D3
+~
+~
+0 0 24510
+W 5 0 0
+Z 5 5
+S
+#24514
+By a Rise of Rock~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24504
+D1
+~
+~
+0 0 24515
+D2
+~
+~
+0 0 24522
+D3
+~
+~
+8 0 24555
+W 5 0 0
+Z 5 5
+S
+#24515
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24505
+D2
+~
+~
+0 0 24523
+D3
+~
+~
+0 0 24514
+W 5 0 0
+Z 5 5
+S
+#24516
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24506
+D1
+~
+~
+0 0 24517
+D2
+~
+~
+0 0 24524
+W 5 0 0
+Z 5 5
+S
+#24517
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24507
+D1
+~
+~
+0 0 24518
+D2
+~
+~
+0 0 24525
+D3
+~
+~
+0 0 24516
+W 5 0 0
+Z 5 5
+S
+#24518
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24508
+D1
+~
+~
+0 0 24519
+D2
+~
+~
+0 0 24526
+D3
+~
+~
+0 0 24517
+W 5 0 0
+Z 5 5
+S
+#24519
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24509
+D1
+~
+~
+0 0 24520
+D2
+~
+~
+0 0 24527
+D3
+~
+~
+0 0 24518
+W 5 0 0
+Z 5 5
+S
+#24520
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24510
+D1
+~
+~
+0 0 24521
+D2
+~
+~
+0 0 24528
+D3
+~
+~
+0 0 24519
+W 5 0 0
+Z 5 5
+S
+#24521
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24511
+D1
+~
+~
+0 0 24553
+D2
+~
+~
+0 0 24529
+D3
+~
+~
+0 0 24520
+W 5 0 0
+Z 5 5
+S
+#24522
+The Cliffs Overlooking the Sea~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24514
+D1
+~
+~
+0 0 24523
+D5
+~
+~
+0 0 24533
+W 5 0 0
+Z 5 5
+S
+#24523
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24515
+D1
+~
+~
+0 0 24524
+D3
+~
+~
+0 0 24522
+W 5 0 0
+Z 5 5
+S
+#24524
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24516
+D1
+~
+~
+0 0 24525
+D3
+~
+~
+0 0 24523
+W 5 0 0
+Z 5 5
+S
+#24525
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24517
+D1
+~
+~
+0 0 24526
+D3
+~
+~
+0 0 24524
+W 5 0 0
+Z 5 5
+S
+#24526
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24518
+D1
+~
+~
+0 0 24527
+D3
+~
+~
+0 0 24525
+W 5 0 0
+Z 5 5
+S
+#24527
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24519
+D1
+~
+~
+0 0 24528
+D3
+~
+~
+0 0 24526
+W 5 0 0
+Z 5 5
+S
+#24528
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24520
+D1
+~
+~
+0 0 24529
+D3
+~
+~
+0 0 24527
+W 5 0 0
+Z 5 5
+S
+#24529
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24521
+D1
+~
+~
+0 0 24530
+D2
+~
+~
+0 0 24538
+D3
+~
+~
+0 0 24528
+W 5 0 0
+Z 5 5
+S
+#24530
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24553
+D2
+~
+~
+0 0 24539
+D3
+~
+~
+0 0 24529
+W 5 0 0
+Z 5 5
+S
+#24531
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24532
+D2
+~
+~
+0 0 24540
+W 5 0 0
+Z 5 5
+S
+#24532
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 24531
+W 5 0 0
+Z 5 5
+S
+#24533
+At the Cliff Face~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24534
+D4
+~
+~
+0 0 24522
+W 5 0 0
+Z 5 5
+S
+#24534
+At the Cliff Face~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24541
+D1
+~
+~
+0 0 24535
+D3
+~
+~
+0 0 24533
+W 5 0 0
+Z 5 5
+S
+#24535
+At the Cliff Face~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 24534
+W 5 0 0
+Z 5 5
+S
+#24536
+A Tent~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24537
+W 5 0 0
+Z 5 5
+S
+#24537
+none~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 24536
+W 5 0 0
+Z 5 5
+S
+#24538
+A Tent~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24529
+D1
+~
+~
+0 0 24539
+W 5 0 0
+Z 5 5
+S
+#24539
+none~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24530
+D3
+~
+~
+0 0 24538
+D5
+~
+~
+0 0 24540
+W 5 0 0
+Z 5 5
+S
+#24540
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24531
+D4
+~
+~
+0 0 24539
+W 5 0 0
+Z 5 5
+S
+#24541
+An Underground Entranceway~
+~
+~
+0
+0 0 12
+D0
+~
+~
+0 0 24542
+D2
+~
+~
+0 0 24534
+W 5 0 0
+Z 5 5
+S
+#24542
+An Underground Passageway~
+~
+~
+0
+0 0 12
+D1
+~
+~
+0 0 24544
+D2
+~
+~
+0 0 24541
+D3
+~
+~
+0 0 24543
+W 5 0 0
+Z 5 5
+S
+#24543
+An Underground Chamber~
+~
+~
+0
+0 0 12
+D1
+~
+~
+0 0 24542
+W 5 0 0
+Z 5 5
+S
+#24544
+An Underground Passageway~
+~
+~
+0
+0 0 12
+D0
+~
+~
+0 0 24546
+D1
+~
+~
+0 0 24545
+D3
+~
+~
+0 0 24542
+W 5 0 0
+Z 5 5
+S
+#24545
+An Underground Chamber~
+~
+~
+0
+0 0 12
+D3
+~
+~
+0 0 24544
+W 5 0 0
+Z 5 5
+S
+#24546
+At the Altar of Flame~
+~
+~
+3
+0 0 12
+D2
+~
+~
+0 0 24544
+D5
+~
+~
+0 0 24547
+W 5 0 0
+Z 5 5
+S
+#24547
+An Obsidian Passageway~
+This tunnel passage appears to have been burned through the very earth
+with its smooth obsidian walls.  The glassy passage cores its way to the
+north in one direction and turns sharply upward in the other.  It appears to
+lead from above to a large chamber of the same glittering black stone.  
+~
+~
+4
+0 8243 12
+D0
+~
+~
+0 0 24548
+D4
+~
+~
+0 0 24546
+W 5 0 0
+Z 5 5
+S
+#24548
+The Obsidian Tomb~
+This great chamber seems to have been burned out of the very core of the
+earth.  Glassy obsidian walls appear to have been melted smoothly into place
+by an unspeakable heat in ages past.  Despite its violent past, an ominous,
+tomblike stillness hangs in the room.  A held breath waiting for release.  
+~
+~
+5
+0 8251 12
+D2
+~
+~
+0 0 24547
+W 5 0 0
+Z 5 5
+S
+#24549
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24551
+D1
+~
+~
+0 0 24503
+D2
+~
+~
+0 0 24550
+W 5 0 0
+Z 5 5
+S
+#24550
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 24549
+D3
+~
+~
+0 0 24552
+W 5 0 0
+Z 5 5
+S
+#24551
+~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 24549
+D3
+~
+~
+0 0 24554
+W 5 0 0
+Z 5 5
+S
+#24552
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24550
+W 5 0 0
+Z 5 5
+S
+#24553
+~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 24530
+D3
+~
+~
+0 0 24521
+W 5 0 0
+Z 5 5
+S
+#24554
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 24551
+W 5 0 0
+Z 5 5
+S
+#24555
+A Rock-Strewn Cave~
+The floor of this cave is littered shattered stone and strewn with the
+ground dust of countless rocks.  A closer inspection reveals the rubble to
+be made of what appears to be broken pieces of statuary.  A carved face
+here, a granite animal there.  They all seem to be of the highest quality,
+despite being in ruins, the undamaged surfaces appearing almost lifelike. 
+The cave opens into a chamber to the west.  
+~
+~
+2
+0 9 12
+D1
+A crack leads out of the cave.
+~
+~
+8 0 24514
+D3
+The cave is strewn with broken statues.
+~
+~
+0 0 24556
+W 5 0 0
+Z 5 5
+S
+#24556
+The Lair of the Basilisk~
+The floor of this chamber is littered shattered stone and strewn with the
+ground dust of countless rocks.  A closer inspection reveals the rubble to
+be made of what appears to be broken pieces of statuary.  A carved face
+here, a granite animal there.  They all seem to be of the highest quality,
+despite being in ruins, the undamaged surfaces appearing almost lifelike.  A
+large pile of rubble has been gathered toward the back of the cave by
+whatever creature inhabits this place.  
+~
+~
+4
+0 9 12
+D1
+The cave is strewn with broken statues.
+~
+~
+0 0 24555
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 24514 3 8
+D 0 24555 1 8
+M 0 24400 1 24400 1
+E 0 24411 0 16
+E 0 24410 0 14
+M 0 24413 9 24401 3
+M 0 24412 3 24401 1
+E 0 24434 0 16
+M 0 24411 1 24409 1
+E 0 24436 0 12
+E 0 24433 0 15
+E 0 24435 0 8
+E 0 24432 0 16
+M 0 24413 9 24410 3
+M 0 24412 3 24410 1
+E 0 24434 0 16
+M 0 24402 8 24411 1
+M 0 24401 8 24411 1
+M 0 24402 8 24412 1
+M 0 24401 8 24413 1
+M 0 24402 8 24414 1
+M 0 24413 9 24422 3
+M 0 24412 3 24422 1
+E 0 24434 0 16
+M 0 24401 8 24424 1
+M 0 24404 1 24425 1
+M 0 24403 1 24425 1
+E 0 24405 0 1
+E 0 24404 0 12
+E 0 24403 0 16
+M 0 24401 8 24426 1
+M 0 24402 8 24436 1
+M 0 24401 8 24436 1
+M 0 24402 8 24437 1
+M 0 24401 8 24437 1
+M 0 24402 8 24438 1
+M 0 24401 8 24448 1
+M 0 24402 8 24449 1
+M 0 24401 8 24450 1
+M 0 24405 1 24466 1
+E 0 24409 0 10
+E 0 24408 0 3
+E 0 24407 0 7
+M 0 24408 1 24486 1
+E 0 24420 0 10
+E 0 24421 0 16
+E 0 24422 0 1
+E 0 24423 0 11
+M 0 24407 1 24486 1
+E 0 24417 0 16
+E 0 24418 0 9
+E 0 24419 0 6
+M 0 24406 1 24486 1
+E 0 24414 0 8
+E 0 24415 0 5
+E 0 24416 0 16
+M 0 24409 1 24486 1
+E 0 24424 0 7
+E 0 24425 0 12
+E 0 24426 0 16
+G 0 24427 0
+O 0 24431 0 24556
+M 0 24410 1 24556 1
+G 0 24430 0
+G 0 24429 0
+G 0 24428 0
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

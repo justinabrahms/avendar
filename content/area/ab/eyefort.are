@@ -1,0 +1,5985 @@
+#AREADATA
+Name The Fortress of the Eye~
+Builders Dovolente Yendri Girikha Iacobos~
+VNUMs 22051 22099
+Credits [ 5 51] Dov/Girik Fortress of the Eye~
+Danger 2
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 3 2 2 4
+End
+
+
+
+#MOBILES
+V4 22051
+irionne priest healer healer-priest~
+Irionne~
+Irionne, healer-priest of Enirra, tends to the altar.
+~
+The eldest member of the knighthood, Irionne the water scholar now serves
+the order as priest of Enirra and healer of the knights.  He is reknown,
+though some might say infamous, for the many services rendered to the order,
+especially for his role in the Guardian Conflict and the destruction of the
+temple in Earendam where he served many years.  Despite the years that
+clearly weigh upon him, his brown eyes twinkle from the recesses of his
+wizened face.  
+~
+human~
+water scholar~
+ABGLTXa Q DFHJZ N 0
+55 28 36d118+1147 55d10+100 7d8+28 cold~
+freezing blast~
+-24 -24 -24 -7
+FHK ABb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 130 37
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+if isnpc($n)
+  break
+endif
+if isinhouse($n)
+  if isbitset($n) == 22051
+    break
+  else
+    mpbitset $n 22051 1
+    smile $n
+    say I\@ll see that you are added to the duty roster, Knight.
+    mpat 22075 rosteradd $N
+    note to enaerai
+    note subject $N now a Knight
+    note + $n a Knight, FYI
+    note post
+  endif
+endif
+~
+>verb_prog p heal~
+if isfight($n)
+  say Calm yourself first, $N.
+  mplag $n 1
+  break
+endif
+if isinhouse($n)
+or isbitset($n) == 22056
+  mpinterpret $n $x
+else
+  say This isn\@t Salyra!  Be off with you!
+  mpkill $n
+endif
+~
+|
+V4 22052
+gate gates knightgates~
+the gate~
+The gate is here.  Odd... it shouldn\@t be.
+~
+~
+human~
+water scholar~
+A 0 Ad N 0
+5 50 1d1+999 19d210+1000 5d5+5 energy~
+defensive ward~
+-24 -24 -24 -7
+0 ABFGLMNPQRab
+26 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit sit none 0 0
+AHJMV ABCDEFGHIJK 0 medium stone
+V4 22053
+Kanoher knight guard sentry knightcellguard~
+Kanoher~
+Knight Kanoher stands here, guarding the storeroom.
+~
+Clad in gleaming silver armor marked with the symbol of Enirra, Knight
+Kanoher peers about sternly.  He has piercing yellow eyes and a daunting,
+authoritative gaze.  His thick, grizzled fur is marked with scars, evidence
+of long service given at his post.  
+~
+kankoran~
+water scholar~
+ABTX 0 DFJZ N 0
+58 85 1d1+6200 60d10+100 6d6+50 pierce~
+pierce~
+-27 -27 -27 -9
+AEFHIKV ABb
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 150 37
+AHMVW ABCDEFGHIJKUV A medium flesh
+>load_prog 100~
+speak common
+~
+>greet_prog 100~
+if isinhouse($n)
+ if isbitset($n) == 22062
+   if rand(20)
+     nod
+   endif
+ else
+   mpbitset $n 22062 1
+   tell $n To enter the storeroom, move toward the door and I\@ll open for you.
+   tell $n To leave the storeroom, simply call for me to open it up.
+ endif
+else
+  if isbitset($n) == 22056
+  or isnpc($n)
+  or isghost($n)
+  or isimmort($n)
+    break
+  endif
+  ht Intruders at the storeroom! Help!
+  mpkill $n
+endif
+~
+>verb_prog p east~
+if isinhouse($n)
+  unlock e
+  open e
+  if isopen($n) == east
+    mpat 22084 mptrans $n
+    mpforce $n look
+    mpat $n mpechoaround $N has arrived.
+    mpecho $N leaves east.
+    close e
+    lock e
+  else
+    shrug
+    say I\@m sorry, I can\@t do that at the moment.
+  endif
+else
+  frown $n
+  esay \@snarls\@ You are no Knight!
+  mpkill $n
+endif
+~
+|
+V4 22054
+knight templar~
+a templar knight~
+A templar knight patrols the battlements.
+~
+A somber figure, this knight\@s pale grey robes flow over his solid frame
+as he stands here at attention.  His countenance a mask of intense
+concentration, his eyes diligently scan the room as he stands vigil at the
+crenellated battlement.  
+~
+human~
+water scholar~
+ADLT 0 DFJZ N 0
+40 20 16d170+976 16d170+976 5d8+20 pierce~
+stab~
+-15 -15 -15 -2
+EFHIKN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 10 37
+AHMV ABCDEFGHIJK AK medium unknown
+>greet_prog 100~
+if isinhouse($n)
+or isbitset($n) == 22056
+or isghost($n)
+or isimmort($n)
+or name($n) / knight
+  break
+else
+  mpkill $n
+ yell $N attacks the fortress!
+endif
+if isinhouse($n)
+or isbitset($n) == 22056
+or isghost($n)
+or isimmort($n)
+or name($n) / knight
+  break
+else
+  if isnpc($n)
+    if ischarmed($n)
+      break
+    endif
+  endif
+  mpkill $n
+  yell $N attacks the fortress!
+endif
+if isinhouse($n)
+or isbitset($n) == 22056
+or isghost($n)
+or isimmort($n)
+or name($n) / knight
+or name($n) / mob_21
+or name($n) / mob_33
+  break
+else
+  if isnpc($n)
+    if ischarmed($n)
+      break
+    endif
+  endif
+  mpkill $n
+  yell $N attacks the fortress!
+endif
+~
+>rand_prog 100~
+mpfocus $r
+if isinhouse($f)
+or isbitset($f) == 22056
+or isghost($f)
+or isimmort($n)
+or name($f) / knight
+or name($n) / mob_21
+or name($n) / mob_33
+  break
+else
+  mpkill $f
+  yell Help!  Enemies on the battlement walls!
+endif
+~
+>fight_prog 25~
+if mobvalue(0)==1
+  if rand(25)
+    cast heatsink $n
+  else
+    cast icebolt $n
+  endif
+endif
+if mobvalue(0)==2
+  if snaffected($n)==59
+   if rand(25)
+     cast firebolt $n
+   else
+     cast \@ethereal flame\@ $n
+   endif
+ endif
+endif
+~
+>load_prog 100~
+mpvaluerand 0 1 2
+if mobvalue(0)==1
+  mpaddskill $i 580 100
+  mpaddskill $i 119 100
+  mpaddskill $i 340 100
+  mpstring mob self short a water templar patroller
+  mpstring mob self long A water templar knight patrols the battlement.
+  string mob self name knight templar water patroller
+else
+  mpaddskill $i 59 100
+  mpaddskill $i 657 100
+  mpaddskill $i 84 100
+  mpstring mob self short a fire templar patroller
+  mpstring mob self long A fire templar knight patrols the battlement.
+  string mob self name knight templar water patroller
+endif
+~
+>trigger_prog 100~
+mpfocus $r
+~
+|
+V4 22055
+archer knight~
+a knight archer~
+A knight archer looks out over the battlements.
+~
+~
+human~
+water scholar~
+ADL 0 DFJZ N 0
+40 20 16d170+976 0d0+0 5d8+20 pierce~
+stab~
+-15 -15 -15 -2
+FHIK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 10 37
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+if isinhouse($n)
+or isbitset($n) == 22056
+or isimmort($n)
+or isghost($n)
+or name($n) / knight
+or name($n) / mob_21
+or name($n) / mob_33
+  break
+else
+  if isnpc($n)
+    if ischarmed($n)
+      break
+    endif
+  endif
+  mpkill $n
+  yell To arms!  $N has gained the wall!
+endif
+~
+>rand_prog 100~
+mpfocus $r
+if isinhouse($f)
+or isbitset($f) == 22056
+or isimmort($f)
+or isghost($f)
+or name($f) / knight
+or name($n) / mob_21
+or name($n) / mob_33
+  break
+else
+  if isnpc($n)
+    if ischarmed($n)
+      break
+    endif
+  endif
+  mpkill $f
+  yell To arms! $F has gained the wall!
+endif
+~
+>trigger_prog 100~
+mpfocus $r
+~
+>load_prog 100~
+mpaddskill $i 520 100
+mpaddskill $i 523 100
+mpaddskill $i 608 100
+~
+|
+V4 22056
+Adbren Knight keeper guard gate~
+Adbren~
+Knight Adbren, Keeper of the Gate, peers down over the wall.
+~
+Clad in gleaming silver armor marked with the symbol of Ilthar, Knight
+Adbren peers sternly out over the edge of the battlements.  He is shorter
+than the rest of the templars and archers that aid him, but his piercing
+gaze and strong brow give him an aura of authority.  A thick, grizzled beard
+runs down his jaws and rounds his chin.  
+~
+ethron~
+water scholar~
+ABTX Q DFJZ N 0
+58 82 1d5+6200 60d10+100 6d7+56 pierce~
+pierce~
+-27 -27 -27 -9
+AEFHIK ABb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 150 37
+AHMVW ABCDEFGHIJK A medium flesh
+>greet_prog 100~
+if isinhouse($n)
+or isbitset($n) == 22056
+or isghost($n)
+or isimmort($n)
+or name($n) / knight
+  break
+endif
+mpkill $n
+ht To arms! $N assaults the fortress!
+~
+>rand_prog 100~
+\\* ATTACK ENEMY PC IN ROOM
+if isanypchere()
+  mpfocus $r
+  if isinhouse($f)
+  or isbitset($f) == 22056
+  or isimmort($f)
+  or isghost($f)
+  or name($f) / knight
+  or isnpc($f)
+    break
+  else
+    mpkill $f
+    ht $F attacks the fortress!  To me, Knights!
+  endif
+  break
+endif
+\\* USE OIL CAULDRON IF ABOVE GATE
+\\ if inroom($i) == 22083
+\\  mpstring mob $i long Knight Adbren, Keeper of the Gate, peers down over the wall.
+\\  if mobvalue(1) > 0
+\\    mpvaluedown 1 1
+\\    if mobvalue(1) == 1
+\\      mpecho $I prepares a cauldron of oil.
+\\      mpat 22058 mpecho High above, a knight sets a cauldron on the parapet ledge.
+\\      break
+\\    endif
+\\  else
+\\    mpgoto 22058
+\\    mptrigger
+\\    mpgoto 22083
+\\    if isinhouse($f)
+\\    or isghost($f)
+\\    or isimmort($f)
+\\    or isbitset($f) == 22056
+\\    or name($f) / knight
+\\    or isnpc($f)
+\\      mpunfocus
+\\      break
+\\    endif
+\\  endif
+\\  if ispc($f)
+\\    mpget char $f dex 2
+\\  else
+\\    mpget mob $f dex 2
+\\  endif
+\\  mpmath 2 -75 + ($2 * 5)
+\\  mpecho $I empties a cauldron of burning oil over edge of the parapet.
+\\  mpat $f mpecho Up on the battlement, a knight tips a cauldron of burning oil!
+\\  mpvaluerand 3 1 100
+\\  mpmath 3 $3 - $2
+\\  if mobvalue(3) < 0
+\\    mpechoat $f You dodge a deluge of burning oil.
+\\    mpat $f mpechoaround $f $F dodges a deluge of burning oil.
+\\    if rand(25)
+\\      mutter
+\\    endif
+\\    mpvalueset 1 5
+\\  else
+\\    mpvalueset 1 10
+\\    if ispc($f)
+\\      mpget char $f curhp 5
+\\      mpdamtype $f 10 20 $3 4
+\\      mpget char $f curhp 6
+\\    else
+\\      mpget mob $f curhp 5
+\\      mpdamtype $f 10 20 $3 4
+\\      mpget mob $f curhp 6
+\\    endif
+\\    mpmath 7 $5 - $6
+\\    mpat 22058 mpdammess $f $7 \@deluge of burning oil\@
+\\    if rand(50)
+\\      mpremaffect $f 400
+\\      mpaddaffect $f 400 51 1 0 0 0
+\\      mpechoat $f The oil clings to you, burning your skin.
+\\      emote chuckles darkly.
+\\    endif
+\\  endif
+\\ else
+\\  mpstring mob $i long Knight Adbren, Keeper of the Gate, guards here. 
+\\ endif
+\\ mpunfocus
+~
+>load_prog 100~
+speak common
+~
+>trigger_prog 100~
+mpfocus $r
+~
+|
+V4 22057
+Endarion knight guard TheRealEndarion~
+Endarion~
+A knight stands guard at the foot of the bridge.
+~
+A massive knight stands at guard before the bridge.  A beard of of
+silvery-white hair covers his cheeks and chin, and his mail bulges outward
+on his arms, chest, and legs with the well-trained muscles of a true
+fighter.  He stolidly looks about, his keen eyes scanning the area.  
+~
+alatharya~
+water scholar~
+ABDTX 0 DFJVZ N 0
+35 20 7d12+1939 1d1+100 4d6+8 bash~
+hit~
+-15 -15 -15 -15
+CFIK AB
+26 0 0 0 0 33 0 0 0 0 0 0 0 0 -33 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHMV ABCDEFGHIJK A medium flesh
+>speech_prog p allow~
+mpunfocus $i
+mpfocus $y2
+if isinhouse($n)
+  if isfocused($i)
+  else
+    mpechoat $n To allow a person in the room entrance into the Knight fortress, say: allow <
+person>
+    break
+  endif
+  if name($f) / knight
+  or isinhouse($f)
+    say Don\@t be silly, $N.
+    break
+  endif
+  if ishere($f)
+    yell $F is to be allowed 24 hours passage!
+    mpat adbren mpforce adbren yell Aye!
+    mpbitset $f 22056 1
+    mpaddaffect $f 479 60 48 0 22056 0
+  else
+    eyebrow
+    say Pardon, but I don\@t see $F here.
+  endif
+else
+  glare $n
+endif
+~
+>greet_prog 100~
+if isinhouse($n)
+else
+ht $N approaches the fortress.
+endif
+~
+>fight_prog 100~
+if mobvalue(0) == 0
+  mpfocus $n
+  if isbitset($f)==22054
+    ht I\@m battling that oathbreaker, $F, on the bridge!
+  else
+    ht The fortress is being attacked by $F!
+  endif
+  mpvalueset 0 4
+  mpunfocus
+  mpremember $n
+endif
+
+~
+>rand_prog 100~
+if mobvalue(0)>0
+  mpvaluedown 0
+endif
+~
+|
+V4 22058
+gatekeeperbot bot gatekeeper gate keeper~
+the gatekeeperbot~
+The gatekeeperbot is here.
+~
+It was a generic bot, with humble beginnings.
+But then one day...
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>greet_prog 100~
+if isbitset($n) == 22061
+  break
+else
+  mpbitset $n 22061 1
+  if class($n) == 7
+  or class($n) == 1
+    mpechoat $n You note a vulnerability in the gate. (CAST METEOR GATE)
+    break
+  endif
+  if class($n) == 4
+  or class($n) == 10
+    mpechoat $n You note a vulnerability in the gate. (CAST LIGHTNING GATE)
+    break
+  endif
+  if class($n) == 6
+    mpechoat $n You note a vulnerability in the gate. (CAST ICEBOLT GATE)
+    break
+  endif
+  if class($n) == 0
+    mpechoat $n You note a vulnerability in the gate. (CAST ICEBLAST GATE)
+    break
+  endif
+  if class($n) == 11
+    mpechoat $n You note a vulnerability in the gate. (CAST FIREBOLT GATE)
+    break
+  endif
+  if class($n) == 5
+    mpechoat $n You note a vulnerability in the gate. (CAST BEAM GATE)
+    break
+  endif
+  mpechoat $n You note the gate would be vulnerable to a battering ram.
+  mpechoat $n The walls could be climbed by ladders, as well.
+endif
+~
+>verb_prog p look~
+if compstr(2) == gate
+or compstr(2) == gates
+or compx() == at gate
+or compx() == at gates
+  mpechoat $n The iron-reinforced oaken gate of the fortress is of sturdy craftmanship.
+  mpechoat $n It would probably weather all but the most determined of assaults.
+  mpforce $n gatestrengthcheck forlook
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog dorepairwork~
+if mobvalue(9) == 1
+  mpforce $n curse
+  mppurge laborer
+  mppurge laborer
+  mppurge laborer
+  mppurge laborer
+  mpecho The laborers run for their lives!
+  break
+endif
+if mobvalue(8) == 1
+  mpforce $n mutter
+  if rand(5)
+    mpforce $n yell Close the gate, will you?  We\@ve got work to do!
+  endif
+  break
+endif
+if isnpc($n)
+  mpmath 1 $1 + 15
+  if rand(25)
+    if rand(50)
+      if rand(50)
+        mpecho $N pounds a beam back into place.
+      else
+        mpecho $N grunts as he attempts to reset the framework.
+      endif
+    else
+      if rand(50)
+        mpecho $N makes a measurement, and begins sawing a beam.
+      else
+        mpecho $N mutters as he pounds the gate with a mallet.
+      endif
+    endif
+  endif
+  if mobvalue(1) >= 1000
+    mpecho The laborers finish their work, and depart.
+    mppurge laborer
+    mppurge laborer
+    mppurge laborer
+    mppurge laborer
+    mpvalueset 1 1000
+  endif
+endif
+~
+>data_prog openoutside~
+Passage beyond this narrow ledge is blocked by a massive wall of granite
+blocks.  The top of the wall is crenellated, and guards can be occasionally
+glimpsed as they patrol above.  Along the bottom of the wall, defensive
+runes and wards are set in the stone.  The ledge extends northward and
+southward, but so does the wall.  The only passage through the wall is at
+this point, through the well-guarded gatehouse.  The angular peak of the
+Fortress of the Eye is visible beyond the wall, with the stylized crystal
+window at the tip resembling an open eye.  To the east, a deep ravine is
+spanned by a slender stone bridge. 
+    
+The gatehouse is open, and the courtyard beyond it visible.
+~
+>data_prog closedoutside~
+Passage beyond this narrow ledge is blocked by a massive wall of granite
+blocks.  The top of the wall is crenellated, and guards can be occasionally
+glimpsed as they patrol above.  Along the bottom of the wall, defensive
+runes and wards are set in the stone.  The ledge extends northward and
+southward, but so does the wall.  The only passage through the wall is at
+this point, through the well-guarded gatehouse.  The angular peak of the
+Fortress of the Eye is visible beyond the wall, with the stylized crystal
+window at the tip resembling an open eye.  To the east, a deep ravine is
+spanned by a slender stone bridge. 
+    
+The gatehouse is closed, sealed by a sturdy wall of ironwood.
+~
+>verb_prog rebuildthegate~
+if ispc($n)
+  mpinterpret $n $x
+  break
+endif
+mpvalueset 8 0
+mpvalueset 9 0
+mpvalueset 1 100
+mpat gateleverbot mpforce gateleverbot mpvalueset 9 0
+mpat gatekeeperbot mpforce gatekeeperbot mpvalueset 8 0
+mpat 22058 mpflag exit west + fake
+mpat 22058 mpflag exit west + secret
+mpdesc 22058 closedoutside
+mpat 22058 mpecho A group of laborers heave the wrecked gate back onto its hinges.
+mpat 22062 mpflag exit east + fake
+mpat 22062 mpflag exit east + secret
+mpdesc 22062 closedinside 
+mpat 22062 mpecho A group of laborers heave the wrecked gate back onto its hinges.
+mpat 22060 mpecho Down below, a group of laborers begins to repair the gate.
+mpat 22064 mpecho Down below, a group of laborers begins to repair the gate.
+mpat 22083 mpecho Down below, a group of laborers begins to repair the gate.
+mpat adbren mpforce adbren up
+mpat adbren mpforce adbren ht The gate is being repaired.
+~
+>verb_prog hail~
+if isinhouse($n)
+  if iscarrying($n) == 1214
+    mpechoat $n You imitate an owl\@s call.
+    mpechoaround $n You hear the faint calling of an owl.
+  else
+    mpechoat $n You hail the knights up on the battlements.
+    mpechoaround $n $N hails the knights up on the battlements.
+  endif
+  mpat 22083 mpforce gateleverbot mpvalueset 7 3
+else
+  mpat 22083 mpforce adbren ht $N is hailing us at the gates.
+  mpechoat $n You hail the knights up on the battlements.
+  mpechoaround $n $N hails the knights up on the battlements.
+  mpecho There is no response from the knights.
+endif 
+~
+>verb_prog p gatestrengthcheck~
+if mobvalue(1)<11
+  if compstr(2)==forlook
+    mpecho The gate has been recently destroyed!
+  else
+    mpvalueset 9 1
+    mpvalueset 8 1
+    mpat gateleverbot mpforce gateleverbot mpvalueset 9 1
+    mpat gateleverbot mpforce gateleverbot mpvalueset 8 1
+    mpat 22058 mpflag exit west - fake
+    mpat 22058 mpflag exit west - secret
+    mpdesc 22058 openoutside
+    mpat 22058 mpecho The gate finally collapses!
+    mpat 22062 mpflag exit east - fake
+    mpat 22062 mpflag exit east - secret
+    mpdesc 22062 openinside
+    mpat 22062 mpecho The gate collapses!
+    mpat 22083 mpecho You hear the gate collapsing down below!
+    mpat 22060 mpecho You hear the gate collapsing down below!
+    mpat 22064 mpecho You hear the gate collapsing down below!
+    mpmload 22074
+    mpforce gaterepairbot mpvalueset 1 150
+    mpat 22083 mpforce Adbren ht The gate has been breached!  Defend the gatehouse!
+    mpat 22083 mpforce Adbren west
+    break
+  endif
+else
+  mpmath 6 $1/10
+  mpstring mob $i short The battered, cracked gate is barely on its hinges.
+  if mobvalue(6) > 15
+    mpstring mob $i short The battered gate has huge dents and shattered timbers.
+  endif
+  if mobvalue(6) > 30
+    mpstring mob $i short The battered gate has very large dents and split timbers.
+  endif
+  if mobvalue(6) > 45
+    mpstring mob $i short The gate has large dents and several cracked timbers.
+  endif
+  if mobvalue(6) > 60
+    mpstring mob $i short The gate has dents and a few cracked timbers.
+  endif
+  if mobvalue(6) > 75
+    mpstring mob $i short The gate has some small dents.
+  endif
+  if mobvalue(6) > 90
+    mpstring mob $i short The gate is in good condition.
+  endif
+  if mobvalue(6) == 100
+    mpstring mob $i short The gate is in perfect condition.
+  endif
+  mpechoat $n $I
+endif
+~
+>load_prog 100~
+mpvalueset 1 1000
+mpflag exit west + fake
+mpflag exit west + secret
+mpdesc 22058 closedoutside
+mpat 22062 mpflag exit east + fake
+mpat 22062 mpflag exit east + secret
+mpdesc 22062 closedinside 
+~
+>data_prog closedinside~
+Thick stone walls made of massive grey rocks rise around the gatehouse,
+ending in a romanesque arch at its top.  Paved with cobblestone
+the gatehouse provides the primary access to and from the fortress.
+A raised metal grated gate hangs to the west, the spear-like
+points at its bottom glistening dully.  A small, narrow staircase winds
+its way around the pulleys and weights that control the gate, and ascends
+to the top of the wall.
+  
+The main gate is closed, to the east.  The gate stands in its thick iron
+hinges, a sturdy construction of ironwood beams and metal supports.
+~
+>data_prog openinside~
+Thick stone walls made of massive grey rocks rise around the gatehouse,
+ending in a romanesque arch at its top.  Paved with cobblestone
+the gatehouse provides the primary access to and from the fortress.
+A raised metal grated gate hangs to the west, the spear-like
+points at its bottom glistening dully.  A small, narrow staircase winds
+its way around the pulleys and weights that control the gate, and ascends
+to the top of the wall.
+  
+To the east, the main gateway to the fortress is open.  Not far from the
+wall, a ravine stretches north and south, spanned by a slender stone bridge.
+~
+>verb_prog battertheknightgatetime~
+if mobvalue(8)==1
+or mobvalue(9)==1
+  mpechoat $f The gatehouse is already clear.
+  mpechoaround $f $F swings a battering ram aimlessly.
+else  
+  mpget char $f str 7
+  mpmath 7 $7 + (-20 + $7)
+  mpmath 4 2 * ($7 * 4)
+  mpmath 5 2 * ($7 * 5)
+  mpvaluerand 7 $4 $5
+  mpmath 1 $1 - ($7 / 10)
+  mpmath 6 $1 / 10
+  mpstring mob $i short $F
+  mpmload 22052
+  mpknockout knightgates
+  mpdammess knightgates $7 \@slam\@
+  mppurge knightgates
+  mpstring mob $i short the gatekeeperbot
+  mplag $f 1
+  mpforce $f gatestrengthcheck
+endif
+~
+>verb_prog p cast~
+if compstr(3)==gates
+or compstr(3)==gate
+or compstr(4)==gates
+or compstr(4)==gate
+or compstr(5)==gates
+or compstr(5)==gate
+  mpvalueup 0 1
+else
+  mpinterpret $n $x
+  break
+endif
+if compstr(2)==iceblast
+or compstr(2)==icebolt
+or compstr(2)==beam
+or compstr(2)==firebolt
+or compstr(2)==meteor
+or compstr(2)==lightning
+  mpvalueup 0 1
+endif
+if mobvalue(0)==1
+  mpechoat $n Only certain elemental damage spells that are precisely cast will damage the gate.
+  mpechoaround $n $N points at the gate and begins to cast a spell, but then stops.
+  mpvalueset 0 0
+  break
+else
+  if mobvalue(8)==1
+  or mobvalue(9)==1
+    mpechoat $n The gatehouse is already clear.
+    break
+  endif
+  mpmload 22052
+  mpknockout knightgates
+  mpinterpret $n $x
+  mpget mob knightgates hp 2
+  mpget mob knightgates curhp 3
+  mpmath 6 $2-$3
+  if mobvalue(6)==0
+    if rand(33)
+      mpechoat $n Knights sneer at your failed spell from the battlement walls above.
+    endif
+    mpvalueset 0 0
+    mppurge knightgates
+    break
+  endif
+  mpmath 1 $1 - (($2-$3)/10)
+   mpmath 6 $1/10
+  mpvalueset 0 0
+  mppurge knightgates
+  mpforce $n gatestrengthcheck
+  endif
+endif
+~
+|
+V4 22059
+knight guard knightguard~
+a Knight of Enirra~
+A Knight of Enirra stands guard at the foot of the stairs.
+~
+A somber figure, this knight\@s pale grey robes flow over his solid frame
+as he stands here at attention.  His countenance a mask of intense
+concentration, his eyes diligently scan the room as he stands vigil at the
+foot of the stairs.  
+~
+human~
+water scholar~
+ADLX 0 DFJZ N 0
+40 20 16d170+976 0d0+0 5d8+20 pierce~
+stab~
+-15 -15 -15 -2
+FHIK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 10 0
+AHMV ABCDEFGHIJK A medium unknown
+V4 22060
+gateleverbot bot gatelever~
+the gateleverbot~
+The gateleverbot is here, watching for pulls.
+~
+Its a generic bot.
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p pull lever~
+mplag $n 1
+if isinhouse($n)
+or isimmort($n)
+or name($n) / knight
+else
+  if mobhere(22056)
+    mpforce Adbren pmote shoves $N away from the lever!
+    mpforce Adbren mpkill $n
+    break
+  endif
+endif
+if mobvalue(9)==1
+  mpechoat $n The lever does nothing, as the gate is destroyed.
+  mpechoaround $n $N tries in vain to move the lever.
+  break
+endif
+if mobvalue(8)==0
+  mpechoat $n You pull the lever and hear the rumbling sound of the gate opening.
+  mpechoaround $n $N pulls the lever, and the gate slowly opens below.
+  mpvalueset 8 1
+  mpat gatekeeperbot mpforce gatekeeperbot mpvalueset 8 1
+  mpat 22058 mpflag exit west - fake
+  mpat 22058 mpflag exit west - secret
+  mpdesc 22058 openoutside
+  mpat 22058 mpecho With a rumble, the gate swings open.
+  mpat 22062 mpflag exit east - fake
+  mpat 22062 mpflag exit east - secret
+  mpdesc 22062 openinside
+  mpat 22062 mpecho With a rumble, the gate swings open.
+  mpvalueset 7 4
+else
+  mpechoat $n You pull the lever and hear the rumbling sound of the gate swinging shut.
+  mpechoaround $n $N pulls the lever, and the gate slowly swings shut below.
+  mpvalueset 8 0
+  mpat gatekeeperbot mpforce gatekeeperbot mpvalueset 8 0
+  mpat 22058 mpflag exit west + fake
+  mpat 22058 mpflag exit west + secret
+  mpdesc 22058 closedoutside
+  mpat 22058 mpecho With a rumble, the gate swings shut.
+  mpat 22062 mpflag exit east + fake
+  mpat 22062 mpflag exit east + secret
+  mpdesc 22062 closedinside 
+  mpat 22062 mpecho With a rumble, the gate swings shut.
+endif
+~
+>data_prog closedoutside~
+Passage beyond this narrow ledge is blocked by a massive wall of granite
+blocks.  The top of the wall is crenellated, and guards can be occasionally
+glimpsed as they patrol above.  Along the bottom of the wall, defensive
+runes and wards are set in the stone.  The ledge extends northward and
+southward, but so does the wall.  The only passage through the wall is at
+this point, through the well-guarded gatehouse.  The angular peak of the
+Fortress of the Eye is visible beyond the wall, with the stylized crystal
+window at the tip resembling an open eye.  To the east, a deep ravine is
+spanned by a slender stone bridge. 
+    
+The gatehouse is closed, sealed by a sturdy wall of ironwood.
+~
+>data_prog openoutside~
+Passage beyond this narrow ledge is blocked by a massive wall of granite
+blocks.  The top of the wall is crenellated, and guards can be occasionally
+glimpsed as they patrol above.  Along the bottom of the wall, defensive
+runes and wards are set in the stone.  The ledge extends northward and
+southward, but so does the wall.  The only passage through the wall is at
+this point, through the well-guarded gatehouse.  The angular peak of the
+Fortress of the Eye is visible beyond the wall, with the stylized crystal
+window at the tip resembling an open eye.  To the east, a deep ravine is
+spanned by a slender stone bridge. 
+    
+The gatehouse is open, and the courtyard beyond it visible.
+~
+>rand_prog 100~
+if mobvalue(7) > 0
+  mpvaluedown 7
+endif
+if mobvalue(7) == 1
+  mpforce adbren pull lever
+endif
+~
+>data_prog closedinside~
+Thick stone walls made of massive grey rocks rise around the gatehouse,
+ending in a romanesque arch at its top.  Paved with cobblestone
+the gatehouse provides the primary access to and from the fortress.
+A raised metal grated gate hangs to the west, the spear-like
+points at its bottom glistening dully.  A small, narrow staircase winds
+its way around the pulleys and weights that control the gate, and ascends
+to the top of the wall.
+  
+The main gate is closed, to the east.  The gate stands in its thick iron
+hinges, a sturdy construction of ironwood beams and metal supports.
+~
+>data_prog openinside~
+Thick stone walls made of massive grey rocks rise around the gatehouse,
+ending in a romanesque arch at its top.  Paved with cobblestone
+the gatehouse provides the primary access to and from the fortress.
+A raised metal grated gate hangs to the west, the spear-like
+points at its bottom glistening dully.  A small, narrow staircase winds
+its way around the pulleys and weights that control the gate, and ascends
+to the top of the wall.
+  
+To the east, the main gateway to the fortress is open.  Not far from the
+wall, a ravine stretches north and south, spanned by a slender stone bridge.
+~
+|
+V4 22061
+neutral middle normal healer~
+a neutral middle normal healer~
+A neutral normal middle healer is here.
+~
+~
+human~
+water scholar~
+A 0 e N 0
+30 15 13d80+923 10d800+700 5d6+15 none~
+hit~
+-9 -9 -9 0
+0 b
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>fight_prog 50~
+mpmload 25401
+dofight_ai normal $4 $N
+~
+>load_prog 100~
+mpmload 25401
+setclass_ai middle 92
+~
+|
+V4 22062
+good hero aggressive healer~
+a good hero aggresive healer~
+A good hero aggressive healer is here.
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+53 26 20d200+950 20d200+950 5d10+26 none~
+hit~
+-23 -23 -23 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 22061 22063 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>fight_prog 50~
+mpmload 25401
+dofight_ai aggressive $4 $N
+~
+>load_prog 100~
+mpmload 25401
+setclass_ai hero 100
+~
+|
+V4 22063
+evil lowbie coward healer~
+evil lowbie coward healer~
+An evil lowbie coward healer is here.
+~
+~
+human~
+water scholar~
+A 0 0 E 0
+16 8 9d30+272 0d0+0 3d5+9 none~
+hit~
+0 0 0 5
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 22061 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>fight_prog 50~
+mpmload 25401
+dofight_ai cowardly $4 $N
+~
+>load_prog 100~
+mpmload 25401
+setclass_ai lowbie 80
+~
+|
+V4 22064
+bot statbot knightdutystatbot~
+a knight statbot~
+A knight statbot is here.
+~
+It is the bot of the future.
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p rosteradd~
+if isbitset($n)==22052
+or isbitset($n)==22053
+or name($n) == irionne priest healer healer-priest
+  tell dovolente check
+  mpoload 1217
+  mpstring obj rostertool long The stat tool for $y2.
+  mpstring obj rostertool name $y2
+  mpat 1261 drop $y2
+  mpechoat $n $y2 is now listed on the duty roster.
+else
+  mpechoat $n You aren\@t a Knight leader!
+  mplag $n 3
+endif
+~
+>time_prog 12~
+mpmload 1215
+mpforce statincrementbot mpbittrigger 22051
+mppurge statincrementbot
+~
+>verb_prog p rosterdel~
+if isbitset($n)==22052
+or isbitset($n)==22053
+  mpmload 1215
+  mpforce statincrementbot mpat 1261 get $y2
+  mppurge statincrementbot
+  mpechoat $n $y2 has been removed from the duty roster.
+else
+  mpechoat $n You aren\@t a Knight leader!
+  mplag $n 3
+endif
+~
+>verb_prog read~
+if compstr(2)==roster
+or compstr(2)==scroll
+or compstr(2)==parchment
+or compstr(2)==sheet
+or compstr(2)==wall
+  if isimmort($n)
+  else
+    mpechoaround $n $N looks at the roster.
+    mplag $n 2
+  endif
+  if isinhouse($n)
+  else
+    mpechoat $n A large triangled-eye sigil shimmers over the surface of the scroll.
+    mpechoat $n The letters beneath seem to wriggle and shift, and are quite illegible.
+    break
+  endif
+  mpfocus $n
+  mpechoat $n ---------------------------------------
+  mpechoat $n |        {CThe Knight Duty Roster{x       |
+  mpechoat $n ---------------------------------------
+  mpat 1261 get all
+  mpat 1261 drop all
+  mpechoat $n ---------------------------------------
+  mpunfocus
+  if isbitset($n)==22052
+  or isbitset($n)==22053
+     if isbitset($n)==22057
+     else
+       mpechoat $n {rOOC: As a Lord/Lady or Captain, you can: rosterdel (name) or rosteradd (name).{x
+       mpbitset $n 22057 1
+     endif
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog p look~
+if compstr(2)==roster
+or compstr(2)==scroll
+or compstr(2)==parchment
+or compstr(2)==sheet
+or compstr(2)==wall
+  if isimmort($n)
+  else
+    mpechoaround $n $N looks at the roster.
+    mplag $n 2
+  endif
+  if isinhouse($n)
+  else
+    mpechoat $n A large triangled-eye sigil shimmers over the surface of the scroll.
+    mpechoat $n The letters beneath seem to wriggle and shift, and are quite illegible.
+    break
+  endif
+  mpfocus $n
+  mpechoat $n ---------------------------------------
+  mpechoat $n |        {CThe Knight Duty Roster{x       |
+  mpechoat $n ---------------------------------------
+  mpat 1261 get all
+  mpat 1261 drop all
+  mpechoat $n ---------------------------------------
+  mpunfocus
+  if isbitset($n)==22052
+  or isbitset($n)==22053
+     if isbitset($n)==22057
+     else
+       mpechoat $n {rOOC: As a Lord/Lady or Captain, you can: rosterdel (name) or rosteradd (name).{x
+       mpbitset $n 22057 1
+     endif
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>take_prog all~
+mpechoat $f $o, $O days of active service.
+~
+|
+V4 22065
+Jyelotha kankoran smith blacksmith black~
+Jyelotha~
+Jyelotha, the kankoran smith, works in the forge.
+~
+Jyelotha is a towering kankoran, standing nearly six and a half feet
+tall.  His fur is a sooty grey color, and is shorn close to his body.  He
+sports a pair of thick leather gloves and a heavy leather apron, both of
+which are stained from numerous close encounters with the furnace.  
+~
+kankoran~
+water scholar~
+AB J Z N 0
+50 25 18d210+950 55d10+100 5d12+27 slash~
+claw~
+-20 -20 -20 -6
+V 0
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 140 0
+AHMV ABCDEFGIJKUV A medium unknown
+>load_prog 100~
+speak common
+~
+>verb_prog p repair~
+if isinhouse($n)
+  mpinterpret $n $x
+else
+  say I work solely for Knights.
+endif
+~
+>verb_prog p estimate~
+if isinhouse($n)
+  mpinterpret $n $x
+else
+  say I work solely for Knights.
+endif
+~
+>verb_prog p examine~
+if isinhouse($n)
+  mpinterpret $n $x
+else
+  say I work solely for Knights.
+endif
+~
+|
+V4 22066
+knightguardbot knightbot~
+Endarion~
+The knightguardbot is here, discriminating against the non-balanced.
+~
+~
+human~
+water scholar~
+ADL 0 DFJLe N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog west~
+if isghost($n)
+or isinhouse($n)
+or isbitset($n) == 22056
+  mpinterpret $n $x
+  break
+endif
+if mobhere(22057)
+  mpvalueup 0 1
+  mplag $n 1
+  if value(0) == 1
+    mpforce TheRealEndarion steps forward, blocking your path.
+    mpforce TheRealEndarion say You cannot pass.
+  endif
+  if value(0) == 2
+    mpforce TheRealendarion say You are not allowed beyond this point.
+  endif
+  if value(0) == 3
+    mpforce TheRealEndarion say Only Knights may pass the bridge.
+  endif
+  if value(0) == 4
+    mpforce TheRealEndarion say Go back, or be held as foe of the Knights!
+  endif
+  if value(0) > 4 
+    mpforce TheRealEndarion mutter
+    mpforce TheRealEndarion mpkill $n
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>rand_prog 25~
+if value(0) > 0
+  mpvaluedown 0 1
+endif
+~
+>trigger_prog 100~
+if isfollow($n) == $f
+  mplag $n 1
+  mpforce $n west
+  mpechoaround $n $N leaves west.
+  mptransfer $n 22056
+  mpat 22056 mpechoaround $n $N has arrived.
+  mpat 22056 mpforce $n look 
+endif
+~
+>verb_prog makehastenotwaste~
+mpfocus $n
+mproomcmd mptrigger all
+mpechoaround $n $N leaves west.
+mptransfer $n 22056
+mpat 22056 mpechoaround $n $N has arrived.
+mpat 22056 mpforce $n look 
+mpunfocus $n
+~
+|
+V4 22067
+aerehya waitress woman aelin~
+Aerehya~
+Aerehya stands near the table, making sure it remains stocked.
+~
+Aerehya is a fair-haired aelin woman, and wears on her clothing the mark
+of Mett.  Her long, thin arms disappear into a pair of thick gloves at her
+hands, and her vestements are covered with hay and dust.  She keeps herself
+busy by tending to the horses and making sure they remain fed and happy. 
+Aerehya is a fair-haired aelin woman, and wears on her clothing the mark of
+Mett.  Dressed elegantly, she stands watch at the tables, making sure they
+are stocked for her fellow knights.  
+~
+aelin~
+water scholar~
+ABL 0 EPT N 0
+40 22 14d170+850 0d0+0 5d8+10 bash~
+punch~
+0 0 0 0
+CFHIKN 0
+26 0 0 0 0 -20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 120 0
+AHMVW ABCDEFGHIJKP AF medium flesh
+>rand_prog 15~
+if rand(50)
+take all.steel table
+take all.bowl table
+take all.bottle table
+take all.fruit table
+take all.dish table
+take all.plate table
+take all.veal table
+mpjunk all
+mpoload 22080 in knightdinnertable
+mpoload 22080 in knightdinnertable 
+mpoload 22080 in knightdinnertable
+mpoload 22081 in knightdinnertable 
+mpoload 22081 in knightdinnertable 
+mpoload 22082 in knightdinnertable 
+mpoload 22082 in knightdinnertable 
+mpoload 22083 in knightdinnertable
+mpoload 22083 in knightdinnertable
+mpoload 22084 in knightdinnertable
+mpoload 22085 in knightdinnertable
+mpoload 22085 in knightdinnertable
+mpoload 22086 in knightdinnertable
+mpoload 22086 in knightdinnertable
+mpoload 22086 in knightdinnertable
+endif
+~
+>load_prog 100~
+speak common
+~
+|
+V4 22068
+enaerailookoutbot lookout bot enaerailookout~
+the Enaerailookoutbot~
+The lookout bot is here. Look out!
+~
+~
+human~
+water scholar~
+ADLX 0 DFJLZ N 0
+53 0 1d1+10 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p look out~
+if isfight($n)
+ mpechoat $n You\@re too busy fighting to look out over the Brintors!
+else
+ mpechoat $n You look out from the apex of the fortress, scanning the Brintor range.
+ mptrans $n 504
+ mpforce $n where
+ mptrans $n 22078
+endif
+~
+>verb_prog p where~
+mpinterpret $n $x
+mpechoat $n To look out into the Brintors, use \@look out\@.
+~
+|
+V4 22069
+bot oath stone oathbot~
+Irionne, Priest of Enaerai~
+The bot known as oathbot stands here, oathing indiscriminately.
+~
+It looks incredibly bored.
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog checkhouse~
+if inhouse($r) == knight
+say $R a knight.
+else
+say $R not a knight.
+endif
+~
+>verb_prog p renegade~
+mpunfocus $i
+if isbitset($n) == 22053
+  mpfocus $y2
+  if isfocused($i)
+    if isbitset($f) == 22053
+      mpechoat $f You are the leader of the Knights, and can\@t make yourself a renegade!
+      break
+    endif
+    if isbitset($f)==22051
+      mpecho The oath stone hums darkly for a moment.
+      mpechoat $f You have been branded a renegade knight by $N!
+      mpechoat $n $F has been declared a renegade knight!
+      mpechoaround $n $N has declared $F to be a renegade knight!
+      mpstring char $f extitle none
+      mpforce $n induct $f none
+      mpbitset $f 22051 0
+      mpbitset $f 22052 0
+      mpbitset $f 22054 1
+      mpbitset $f 22056 0
+      mpmload 1215
+      mpforce statincrementbot mpat 1261 get $F
+      mppurge statincrementbot
+      note to knight
+      note from Irionne, Priest of Enaerai
+      note subject $F a renegade
+      note + $F has broken the knight oath, and has thus been
+      note + declared a renegade by $N before the oathstone.
+      note + As the oath is at the heart of our order, we cannot
+      note + allow such treason and falsehood among us.  It is
+      note + our duty, therefore, to see the renegade utterly ruined and 
+      note + destroyed, even to the point of final death, whereupon
+      note + may the Gods give suiting recompense.
+      note + -Irionne, Priest of Enaerai
+      note post
+     else
+       mpechoat $n You need to specify a knight, in order to declar a renegade knight.
+       break
+    endif
+  else  
+    mpechoat $n $F cannot be named an renegade knight.
+    mpechoat $n {rOOC: Syntax:  renegade <player>{x
+  endif
+else
+  mpechoat $n You do not have the authority to declare someone a renegade knight.
+endif
+~
+>verb_prog worktheknightoath~
+if isbitset($n) == 22052
+or isbitset($n) == 22053
+  if isbitset($n) == 22055
+    mpbitset $n 22055 0
+  else
+    mpechoat $f $N hasn\@t given the ritual acceptance yet.
+    break
+  endif
+  mpecho The oath stone glows faintly for a moment.
+  mpechoaround $n $N is demoted to the rank of Knight by $F.
+  mpechoat $n You are demoted to the rank of Knight by $F.
+  mpbitset $n 22052 0
+  mpbitset $n 22053 0
+  mpflag char $n plr -induct
+  mpstring char $n extitle Knight of Enaerai
+  note to knight
+  note from Irionne, Priest of Enaerai
+  note subject $N given Knight rank
+  note + To the Knights of Enaerai:
+  note + $N now serves the order at Knight rank, having sworn
+  note + before $F at the oathstone.  May $N continue to find
+  note + purpose and dedication in serving the Knights in $s
+  note + new capacity.
+  note + -Irionne, Priest of Enaerai
+  note post
+  break
+else
+  if isbitset($n) == 22051
+    mpechoat $f $N has already taken the oath of Knighthood!
+    break
+  endif
+  if isbalanced($n)
+    if isneutral($n)
+    else
+      mpechoat $f The oath stone remains still and quiet, finding $N unworthy.
+      break
+    endif
+  else
+    mpechoat $f The oath stone remains still and quiet, finding $N unworthy.
+    break
+  endif
+  if isbitset($n) == 22055
+    mpbitset 22055 0
+  else
+    mpechoat $f $N hasn\@t given the ritual acceptance yet.
+    break
+  endif
+  mpbitset $n 22051 1
+  mpechoat $f You administer the oath of Knighthood to $N.
+  mpechoat $n $F administers the oath of Knighthood to you.
+  mpechoaround $n The oath stone begins to glow, and $N takes the oath of Knighthood.
+  mpechoat $n The oath stone begins to glow, and you take the oath of Knighthood.
+  mpforce $f induct $n knight
+  note to knight
+  note subject $N made a Knight
+  note from Irionne, Priest of Enaerai
+  note + Good tidings, Knights!  $N took the oath
+  note + of Knighthood from $F.  Be sure to welcome $N to
+  note + the order, and assist our newest member to learn more
+  note + of our duties and life in the Knighthood.
+  note + -Irionne, Knight of Enaerai
+  note post
+  mpoload 1217
+  mpstring obj rostertool long The stat tool for $N.
+  mpstring obj rostertool name $N
+  mpat 1261 drop $N
+  if class($n)==12
+  or class($n)==13
+  or class($n)==14
+  or class($n)==15
+  or class($n)==23
+  or class($n)==25
+  or class($n)==28
+  or class($n)==29
+    mpechoat $n You receive no formal title at this time, to enable you to act more fully in the Mett division of the Knighthood.
+    mpstring char $n extitle none
+  else
+    mpechoat $n You receive a new title.
+    mpstring char $n extitle Knight of Enaerai 
+   endif
+endif
+~
+>verb_prog workthelordoath~
+if isbitset($n) == 22051
+else
+  mpechoat $f $N must take the Knight oath first.
+  break
+endif
+if isbitset($n) == 22053
+  mpechoat $f $N is already the Knight Lord!
+  break
+endif
+if isbitset($n) == 22055
+  mpbitset 22055 0
+else
+  mpechoat $f $N hasn\@t given the ritual acceptance of the oath yet.
+  break
+endif
+mpbitset $n 22052 0
+mpbitset $n 22053 1
+mpflag char $n plr +induct
+mpechoat $f You administer the oath of Knight Lord to $N.
+mpechoat $n $F administers the oath of Knight Lord to you.
+mpechoaround $n The oath stone begins to glow, and $N takes the oath of the Knight Lord, pledging to direct
+ the Knighthood as Enaerai wills, to preserve the balance in Avendar.
+mpechoat $n The oath stone begins to glow, and you take the oath of the Knight Lord, pledging to direct the Knighthood as 
+Enaerai wills, to preserve the balance in Avendar.
+if ismale($n)
+  mpstring char $n extitle Knight Lord
+else
+  mpstring char $n extitle Knight Lady
+endif
+note to knight
+note from Irionne, Priest of Enaerai
+note subject $N now leads the Order
+note + $N took the oath of the Knight Lord from $F,
+note + and is now charged with supervising all the work
+note + that is done toward our duties to the balance.
+note + All knights, see that you assist $N as best you can
+note + to fulfill $s role as the new leader of our Order.
+note + -Irionne, Priest of Enaerai
+note post
+~
+>verb_prog workthecaptainoath~
+if isbitset($n)==22051
+else
+  mpechoat $f $N must take the Knight oath first.
+  break
+endif
+if isbitset($n)==22052
+  mpechoat $f $N is already a Knight Captain.
+  break
+endif
+if isbitset($n)==22053
+  if isbitset($n)==22055
+    mpbitset 22055 0
+  else
+    mpechoat $f $N hasn\@t given the ritual acceptance yet.
+    break
+  endif
+  mpecho The oath stone glows faintly for a moment.
+  mpechoaround $n $N is demoted to the rank of Knight Captain by $F.
+  mpechoat $n You are demoted to the rank of Knight Captain by $F.
+  mpstring char $n extitle Knight Captain
+  mpbitset $n 22052 1
+  mpbitset $n 22053 0
+  note to knight
+  note from Irionne, Priest of Enaerai
+  note subject $N made Captain
+  note + Greetings to the Knights,
+  note + It has been deemed that $N would better serve the Order as
+  note + Captain at this time, and so $N has been made Knight 
+  note + Captain by $F, before the oath stone.  May $N serve Enaerai
+  note + well in this new capacity.
+  note + -Irionne, Priest of Enaerai
+  note post
+  break
+endif
+mpechoat $f You administer the oath of Knight Captain to $N.
+mpechoat $n $F administers the oath of Knight Captain to you.
+mpechoaround $n The oath stone begins to glow, and $N takes the oath of a Knight Captain, pledging to lead the Knights in 
+$s division as Enaerai would have, under the direction of the Knight Lord or Lady.
+mpechoat $n The oath stone begins to glow, and you take the oath of a Knight Captain, pledging to lead your division as En
+aerai would have you do, under the direction of the Knight Lord or Lady.
+mpbitset $n 22052 1
+mpstring char $n extitle Knight Captain
+note to knight
+note from Irionne, Priest of Enaerai
+note subject $N made Captain
+note + Greetings to the Knights,
+note + $N has proved a worthy Knight, and as there is a need
+note + for a new captain in the Order, has accepted the responsibility
+note + of serving at that rank, and holding those duties.  And so
+note + $N has been made Knight Captain by $F, before the oath stone.
+note + Congratulations to $N for this sign of $s dedication and service.
+note + -Irionne, Priest of Enaerai
+note post
+~
+>speech_prog I accept~
+mpbitset $n 22055 1
+~
+>speech_prog I will~
+mpbitset $n 22055 1
+~
+>verb_prog p oath~
+if isbitset($n) == 22052
+or isbitset($n) == 22053
+  mpunfocus $i
+  mpfocus $y3
+  if isfocused($i)
+  else
+    mpechoat $n {rOOC: Syntax:  oath <knight/captain/lord> <player>{x
+    break
+  endif
+  if ispc($f)
+  else
+    mpechoat $n {rOOC: Syntax:  oath <knight/captain/lord> <player>.{x
+    break
+  endif
+  if ishere($f)
+  else
+    mpechoat $n {rOOC: $F must be present in order to take the oath.{x
+    break
+  endif
+  mpfocus $n
+  if compstr(2) == knight
+    mpforce $y3 worktheknightoath
+    break
+  endif
+  if compstr(2) == captain
+    mpforce $y3 workthecaptainoath
+    break
+  endif
+  if compstr(2) == lord
+    mpforce $y3 workthelordoath
+    break
+  endif
+  mpechoat $n You cannot do that.
+  mpechoat $n {rOOC: Syntax:  oath <knight or captain or lord> <player>{x
+else
+  mpechoat $n You do not have the authority to administer the oath.
+endif
+~
+|
+V4 22070
+guard tall knight iltharguardguy~
+a tall guard~
+A tall guard slowly paces on his patrol.
+~
+Wearing the grey regimentals of a Knight of Enirra marked with the symbol
+of the Eye, this alatharya patroller peers about for trespassers with a
+domineering gaze.  
+~
+alatharya~
+water scholar~
+ABDGT 0 DFJZ N 0
+40 25 16d170+976 40d10+100 5d7+3 pierce~
+pierce~
+-15 -15 -15 -2
+CEFHIKN AB
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 70 37
+AHMV ABCDEFGHIJK A medium flesh
+>hitprcnt_prog 30~
+bandage $i
+~
+>fight_prog 50~
+if rand(10)
+thrust $n
+endif
+if rand(11)
+rally
+endif
+~
+>load_prog 100~
+mpaddskill $i 452 100
+mpaddskill $i 449 100
+mpaddskill $i 442 100
+mpaddskill $i 448 100
+battlecry For the balance!
+mpoload 22072 on $i 16
+~
+>greet_prog 100~
+if ispc($n)
+if isimmort($n)
+or isghost($n)
+break
+else
+if isinhouse($n)
+or isbitset($n) == 22056
+if rand(30)
+nod $n
+endif
+else
+yell Intruders in the fortress! Stop them!
+mpkill $n
+endif
+endif
+else
+break
+endif
+~
+|
+V4 22071
+short nefortu earth scholar idris guard idrisguardguy sentry robed~
+a robed sentry~
+A robed sentry patrols the fortress.
+~
+Wearing thick grey robes of a Knight of Enirra marked with the symbol of
+the Eye, this slender patroller clutches defensively at his staff.  A small
+stone at the end of his staff marks him as an earth scholar.  
+~
+nefortu~
+water scholar~
+AGTX 0 DEFJTZ N 0
+40 20 16d170+976 40d10+100 5d7+3 bash~
+punch~
+-15 -15 -15 -2
+FHIK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 70 37
+AHMVW ABCDEFGHIJKP AH medium flesh
+>fight_prog 100~
+if rand(20)
+cast slip
+else
+if rand(11)
+if snaffected($n) == 387
+cast stonefist
+else
+cast brittleform
+ endif
+endif
+if rand(50)
+if isflying($n)
+cast earthbind $n
+else
+ if snaffected($n) == 380
+ break
+ else
+ cast density
+ endif
+endif
+endif
+endif
+~
+>greet_prog 100~
+if ispc($n)
+if isimmort($n)
+or isghost($n)
+break
+else
+if isinhouse($n)
+or isbitset($n) == 22056
+if rand(30)
+nod $n
+endif
+else
+yell Help! Help! I\@ve got an intruder!
+mpkill $n
+endif
+endif
+else
+break
+endif
+~
+>load_prog 100~
+speak common
+mpaddskill $i 53 100
+mpaddskill $i 387 100
+mpaddskill $i 389 100
+mpaddskill $i 133 100
+mpaddskill $i 380 100
+~
+|
+V4 22072
+guard slender srryn mettguardguy~
+a slender guard~
+A slender guard clings to the shadows, scanning for intruders.
+~
+Wearing thin grey regimentals, this srryn Knight slinks through the
+shadows, his emerald green eyes constantly searching for intruders.  He
+wields two knives, each of which is made out of deep grey steel.  
+~
+srryn~
+water scholar~
+AGTX 0 DFJZ N 0
+40 30 16d170+976 40d10+100 5d7+3 pierce~
+pierce~
+-15 -15 -15 -2
+FHIKMV AB
+26 0 0 0 0 0 0 0 20 -20 0 0 20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 70 37
+AHMVWX ABCDEFGHIJKLPQUVX AC medium flesh
+>fight_prog 50~
+if rand(20)
+if snaffected($n) == 257
+vital
+else
+blindingcloud
+endif
+endif
+if rand(15)
+nerve $n
+endif
+~
+>rand_prog 30~
+hide
+hide
+hide
+sneak
+sneak
+sneak
+~
+>load_prog 100~
+speak common
+mpaddskill $i 264 100
+mpaddskill $i 257 100
+mpaddskill $i 492 100
+mpaddskill $i 490 100
+mpaddskill $i 198 100
+mpaddskill $i 192 100
+mpoload 22073 on $i 16
+mpaddskill $i 255 100
+mpaddskill $i 486 100
+~
+>greet_prog 100~
+if ispc($n)
+if isimmort($n)
+or isghost($n)
+break
+else
+if isinhouse($n)
+or isbitset($n) == 22056
+if rand(30)
+nod $n
+endif
+else
+yell Opposing forces have breached the wall! Slay them!
+mpkill $n
+endif
+endif
+else
+break
+endif
+~
+|
+V4 22073
+bot doormanbot~
+a doorman bot~
+A doorman bot is here, waiting for hails.
+~
+It was a generic bot.
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog hail~
+if isinhouse($n)
+  if iscarrying($n) == 1214
+    mpechoat $n You hail the knights up on the battlements.
+    mpechoaround $n $N hails the knights up on the battlements.
+  else
+    mpechoat $n You hail the knights up on the battlements.
+    mpechoaround $n $N hails the knights up on the battlements.
+  endif
+  mpat 22083 mpforce gateleverbot mpvalueset 7 2
+else
+  mpat 22083 mpforce adbren ht $N is hailing us at the gates.
+endif
+~
+|
+V4 22074
+bot gaterepairbot~
+a gaterepairbot~
+A gaterepairbot is here, planning and orchestrating repair work.
+~
+It\@s a generic bot.  
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+mpvaluedown 1 1
+if mobvalue(1) == 0
+  mpmload 22075
+  mpmload 22075
+  mpmload 22076
+  mpmload 22076
+  mpecho A group of laborers arrives.
+  mpforce gatekeeperbot rebuildthegate  
+  mpat adbren force adbren up
+  mppurge self
+endif
+~
+|
+V4 22075
+human laborer knight~
+a human laborer~
+A human laborer is here, working vigorously to repair the gate.
+~
+Wearing a soiled grey apron, this human laborer has an aura of weariness
+about him.  His long brown hair is tied back from his face and secured with
+a leather band.  
+~
+human~
+water scholar~
+AL 0 0 N 0
+25 12 12d45+707 9d45+500 5d6+11 bash~
+hit~
+-5 -5 -5 2
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 40 0
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 20~
+dorepairwork
+~
+|
+V4 22076
+laborer alatharya knight~
+an alatharya laborer~
+An alatharya laborer is here, working on the gate repairs.
+~
+Wearing a thick grey apron that is soiled at the knees, this tall
+alatharya has an air of dilligence about him.  His silvery hair is tied back
+from his face and secured by a leather string.  His hands are large, yet
+their fingers appear soft and nimble.  
+~
+alatharya~
+water scholar~
+AL 0 Z N 0
+28 14 12d60+813 9d60+600 5d6+13 bash~
+hit~
+-7 -7 -7 1
+0 0
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 40 0
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 20~
+dorepairwork
+~
+|
+V4 22077
+woodcutter wood cutter human~
+a woodcutter~
+A woodcutter methodically chops into a tall pine.
+~
+An older man, this human woodcutter seems relatively content with his
+surroundings.  He wears a bright flannel shirt and thick leather gloves, and
+whistles softly to himself as he works.  
+~
+human~
+water scholar~
+ABL 0 0 N 0
+20 10 12d40+333 8d40+220 4d5+10 none~
+hit~
+-2 -2 -2 4
+FK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 60 0
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 1~
+mpecho $I\@s axe bites deeply into a thick trunk.
+~
+|
+V4 22078
+bot ladder ladderbot enaerailadderbot~
+A fall\@s~
+Now you see ladder bot.  Now you don\@t.
+~
+Helps people up or down ladders.
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog climbthatladdertime~
+if dexterity($f) == 25
+  mpvalueset 0 95
+  mpvalueset successadv quickly and surely
+endif
+if dexterity($f) == 24
+  mpvalueset 0 90
+  mpvalueset successadv skillfully
+endif
+if dexterity($f) == 23
+  mpvalueset 0 80
+  mpvalueset successadv easily
+endif
+if dexterity($f) == 22
+  mpvalueset 0 70
+  mpvalueset successadv are able to
+endif
+if dexterity($f) == 21
+  mpvalueset 0 55
+  mpvalueset successadv manage to
+endif
+if dexterity($f) == 20
+  mpvalueset 0 40
+  mpvalueset successadv barely manage to
+endif
+if dexterity($f) == 19
+  mpvalueset 0 25
+  mpvalueset successadv somehow manage to
+endif
+if dexterity($f) == 18
+  mpvalueset 0 10
+  mpvalueset successadv miraculously
+endif
+mpvaluerand 1 1 100
+if value(1) < $0
+  mpechoaround $f $F climbs up a ladder and over the parapet!
+  if inroom($f) == 22059
+    mptransfer $f 22064
+  endif
+  if inroom($f) == 22058
+    mptransfer $f 22083
+  endif
+  if inroom($f) == 22057
+    mptransfer $f 22060
+  endif
+  mpechoaround $f $F climbs over the parapet!
+  mpechoat $f You %successadv climb up the ladder and clamber over the parapet.
+  mpforce $f look
+else
+  mpechoat $f You are too slow, and the ladder is pushed from the wall!
+  mpget char $f curhp 2
+  mpdamtype $f 10 20 1 1
+  mpget char $f curhp 1
+  mpmath 0 $2 - $1
+  mpdammess $f $0 \@crash\@
+endif
+mppurge self
+~
+|
+V4 22079
+lockbot lock bot~
+the lockbot~
+The lockbot is here.
+~
+It was a generic bot, with humble beginnings.
+But then one day...
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p lock~
+if compstr(2)==self
+ mpechoat $n Why would you want to lock yourself in?
+endif
+~
+|
+V4 22080
+tablebot~
+a tablebot~
+A tablebot is here, supplying you with a balanced meal.
+~
+~
+human~
+water scholar~
+ADLX 0 DFJLPZ N 0
+70 0 10000d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p sleep table~
+mpechoat $n You try to go to sleep at the table, but can\@t seem to get comfortable enough.
+~
+>verb_prog p rest table~
+mpforce $n rest bench
+~
+>verb_prog p sit table~
+mpforce $n sit bench
+~
+>load_prog 100~
+mpseewizi
+~
+>verb_prog p look~
+if compstr(2) == long
+or compstr(2) == food
+or compstr(2) == foods
+or compstr(2) == table
+or compstr(2) == wooden
+or compstr(2) == dining
+mpforce $n examine knightdinnertable
+else
+mpinterpret $n $x
+endif
+~
+>verb_prog p get~
+if compstr(3)/table
+or compstr(3)/wooden
+or compstr(3)/dining
+or compstr(3)/long
+or compstr(3) == 2.
+or compstr(3) == 1.
+if compstr(2) == all
+mpechoat $n There\@s too much to take all at once!
+else
+mpinterpret $n $x
+endif
+else
+mpinterpret $n $x
+endif
+~
+>verb_prog p examine~
+if compstr(2) == long
+or compstr(2) == food
+or compstr(2) == foods
+or compstr(2) == table
+or compstr(2) == wooden
+or compstr(2) == dining
+mpforce $n examine knightdinnertable
+else
+mpinterpret $n $x
+endif
+~
+>verb_prog p take~
+if compstr(3)/table
+or compstr(3)/wooden
+or compstr(3)/dining
+or compstr(3)/long
+or compstr(3) == 2.
+or compstr(3) == 1.
+if compstr(2) == all
+mpechoat $n There\@s too much to take all at once!
+else
+mpinterpret $n $x
+endif
+else
+mpinterpret $n $x
+endif
+~
+|
+V4 22081
+tall caladaran merchant knight jiajjai~
+Jiajjai~
+A tall caladaran merchant draped in the robes of a knight is here.
+~
+A tall caladaran male sits here, his brown-eyed gaze idly surveying the
+commons room.  Dressed in the robes of a knight of Idris, Jiajjai carries
+with him a large rack of items for purchase by fellow knights.  
+~
+caladaran~
+water scholar~
+ABL 0 0 N 0
+45 23 31d84+1161 45d10+100 6d7+23 bash~
+punch~
+-10 -10 -10 -3
+HK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 200 37
+AHMW ABCDEFGIJK AIK medium flesh
+>fight_prog 100~
+if rand(70)
+ if snaffected($n) == 359
+  break
+ else
+  esay proclaims May the winds caress you, and keep you away from us!
+  cast windbind $n
+ endif
+ break
+endif
+if rand(15)
+ cast tempest
+break
+endif
+if rand(30)
+ if snaffected($n) == 350
+  break
+ else
+  esay \@smirks, saying wryly\@ Feeling a bit deluded?
+  cast delusions
+ endif
+ break
+endif
+if rand(11)
+ if snaffected($n) == 356
+  break
+ else
+  esay snarls Did you not hear me? Fine! Then hear nothing!!
+  cast thunderclap $n
+ endif
+ break
+endif
+if rand(12)
+ cast spectral
+ esay snarls The Knights shall never give up fighting for the balance!
+ break
+endif
+if rand(20)
+ mpgoto 21900
+ mpkill lahcik
+ mpgoto 22070
+ esay \@takes a step back from fighting, exclaiming\@ You hear me not. Begone, witless intruders!
+ cast scatter
+ sage self
+break
+endif
+if rand(70)
+ if snaffected($n) == 359
+  break
+ else
+  esay proclaims May the winds caress you, and keep you away from us!
+  cast windbind $n
+ endif
+ break
+endif
+if rand(15)
+ cast tempest
+break
+endif
+if rand(30)
+ if snaffected($n) == 350
+  break
+ else
+  esay \@smirks, saying wryly\@ Feeling a bit deluded?
+  cast delusions
+ endif
+ break
+endif
+if rand(11)
+ if snaffected($n) == 356
+  break
+ else
+  esay snarls Did you not hear me? Fine! Then hear nothing!!
+  cast thunderclap $n
+ endif
+ break
+endif
+if rand(12)
+ cast spectral
+ esay snarls The Knights shall never give up fighting for the balance!
+ break
+endif
+if rand(9)
+ mpgoto 21900
+ mpkill lahcik
+ mpgoto 22070
+ esay \@takes a step back from fighting, exclaiming\@ You hear me not. Begone, witless intruders!
+ mpset room 22070 flags indoors
+ mpset room 22070 flags nogate
+ cast scatter
+ mpset room 22070 flags indoors
+ mpset room 22070 flags nogate
+ sage self
+endif
+~
+>load_prog 100~
+speak common
+mpaddskill $i 350 100
+mpaddskill $i 348 100
+mpaddskill $i 356 100
+mpaddskill $i 359 100
+mpaddskill $i 358 100
+mpseewizi
+~
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if ispc($n)
+if isinhouse($n)
+ if rand(20)
+  pmote gives $N a soft smile and nod.
+  else
+ if rand(10)
+  esay states Hail, $N.
+ endif
+ endif
+else
+ esay \@frowns at $N, saying\@ Get out of here, intruder!
+ yell Intruders in the Commons Room! Help!
+ mpkill $n
+endif
+endif
+endif
+endif
+endif
+endif
+~
+|
+V4 22082
+jadoch trainer kankoran black-furred~
+Jadoch~
+Jadoch the Master at Arms stands ready to train the knights.
+~
+Known throughout all the lands as among the most steadfast of knights,
+Jadoch still serves the order faithfully in his advanced years.  He has a
+thick coat of midnight-black fur, and his age is hinted at in the faint
+greying of the fur around his eyes.  Still quite formidable, his lean form
+stands relaxed yet ready, the posture of one long accustomed to the rigors
+of knighthood.  
+~
+kankoran~
+water scholar~
+ABDJX B DFJVZ N 0
+58 90 14000d1+50 0d0+0 5d12+50 slash~
+slash~
+-30 -30 -30 -30
+FHKV AB
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHMV ABCDEFGHIJKUV ADK large unknown
+>verb_prog yield~
+if isinhouse($n) == 22051
+  if isfighting($i)
+    if isfighting($n)
+      mpechoat $n You yield.
+      mpechoaround $n $N yields.
+      mpgoto $n
+      emote steps back, ending the fight.
+      mpvaluerand 6 1 5
+      if mobvalue(6) == 1
+        say Well done.  You seem to be improving, $N.
+      endif
+      if mobvalue(6) == 2
+        emote nods.
+      endif
+      if mobvalue(6) == 3
+        say Not too bad, $N.
+      endif
+      if mobvalue(6) == 4
+       say Very well.
+      endif
+      if mobvalue(6) == 5
+        esay \@growls softly\@ Pain leads to knowledge in the endless cycle.
+      endif
+      break
+    endif
+  endif
+else
+  esay \@growls\@ I don\@t think so.
+  break
+endif
+mpinterpret $n $x
+~
+>fight_prog 100~
+if isinhouse($n)
+  if snaffected($i) == 769
+  else
+    emote begins to pull his blows and strike with the flat of his blade.
+    mpaddaffect $i 769 60 10 18 -75 0 A \@Sparring\@
+    mpaddaffect $i 769 60 10 19 -75 0 A \@Sparring\@
+  endif
+  if rand(1)
+    if rand(1)
+       mpvaluerand 1 1 5
+       if value(1) == 1
+         esay \@murmurs\@ Not bad.
+       endif
+       if value(1) == 2
+         esay \@grunts\@ Better. 
+       endif
+       if value(1) == 3
+         esay \@says\@ Your previous teachers did a fair job.
+       endif
+       if value(1) == 4
+          say Good. Good.
+       endif
+       if value(1) == 5
+         esay \@grins\@ We\@ll make a warrior out of you yet, $N.
+       endif
+    endif
+  endif
+else
+  if snaffected($i) == 769
+    emote ends sparring, and begins to battle in earnest.
+    mpremaffect 769
+  endif
+  if rand(33)
+    cast icebolt
+  else
+    if rand(4)
+      emote snarls fiercely.
+    endif
+  endif
+endif
+~
+>rand_prog 100~
+if hitprcnt($i) < 80
+  cast \@cure critical\@
+else
+  if rand(1)
+    stretch
+  endif
+endif
+~
+>greet_prog 100~
+if isinhouse($n)
+  if remembers($n)
+    if rand(50)
+      nod $n
+    endif
+  else
+    mpremember $n
+    tell $n Up for some training, $N?  Attack when ready, and yield when you want me to end the fight.
+  endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 570 100
+mpaddskill $i 236 100
+mpaddskill $i 34 100
+mpaddskill $i 580 100
+speak common
+~
+>hitprcnt_prog 40~
+if mobvalue(5) == 0
+  if isinhouse($i)
+  esay \@mutters\@ At times I don\@t miss my days in the field..
+  mpvalueset 1 2
+  mpvalueset 5 1
+  endif
+endif
+~
+|
+V4 22083
+knightdoorbot bot~
+a knightdoorbot~
+A knightdoorbot is here, maybe opening things.
+~
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p open~
+if ispc($n)
+if inroom($i) == 22084
+  mpvalueset dir1 east
+  mpvalueset dir2 west
+else
+  mpvalueset dir1 west
+  mpvalueset dir2 east
+endif
+if isinhouse($n)
+  mpat 22065 mpforce knightcellguard tell $n Aye.
+  mpat 22065 mpforce knightcellguard unlock east
+  mpat 22065 mpforce knightcellguard open east
+  if isopen($n) == %dir2
+    mpat 22065 mptransfer $n
+    mpecho $N leaves %dir2.
+    mpat 22065 mpforce $n look
+    mpat 22065 mpechoround $n $N has arrived.
+    mpat 22065 mpforce knightcellguard close %dir1
+    mpat 22065 mpforce knightcellguard lock %dir1
+  endif
+else
+  mpat 22065 mpforce knightcellguard tell $n Forget about it, $N.
+endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p destroy~
+if isimmort($n)
+  mpnextinterp
+else
+  mpechoat $n You are not allowed to do that here.
+endif
+~
+>speech_prog p open~
+if inroom($i) == 22084
+  mpvalueset dir1 east
+  mpvalueset dir2 west
+else
+  mpvalueset dir1 west
+  mpvalueset dir2 east
+endif
+if isinhouse($n)
+  mpat 22065 mpforce knightcellguard tell $n Aye.
+  mpat 22065 mpforce knightcellguard unlock %dir1
+  mpat 22065 mpforce knightcellguard open %dir1 
+  if isopen($n) == %dir2
+    mpat 22065 mptransfer $n
+    mpecho $N leaves %dir2.
+    mpat 22065 mpforce $n look
+    mpat 22065 mpechoround $n $N has arrived.
+    mpat 22065 mpforce knightcellguard close %dir1
+    mpat 22065 mpforce knightcellguard lock %dir1
+  endif
+else
+  mpat 22065 mpforce knightcellguard tell $n Forget about it, $N.
+endif
+~
+|
+V4 22084
+bot pedestalbot~
+the knight pedestalbot~
+The knight pedestalbot is here, scratching himself absently.
+~
+~
+alatharya~
+water scholar~
+ALT 0 DFJLZe N 0
+80 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog pedestal_stonecheck~
+mpgoto 12067
+if isanypchere($i)
+  mpvalueset 0 -100
+else
+  invault_stonecheck
+endif
+mpgoto 12202
+if isanypchere($i)
+  mpvalueset 1 -100
+else
+  invault_stonecheck
+endif
+mpgoto 12119
+if isanypchere($i)
+  mpvalueset 2 -100
+else
+  invault_stonecheck
+endif
+mpgoto 12011
+if isanypchere($i)
+  mpvalueset 3 -100
+else
+  invault_stonecheck
+endif
+mpgoto 22067
+~
+>verb_prog pedestal_report~
+if value(0) == -100
+  mpechoat $n A sword sigil flares above the Champion pedestal.
+endif
+if value(0) == 1
+  mpechoat $n 1 small glowing sphere appears over the Champion pedestal.
+endif
+if value(0) > 1
+  mpechoat $n $0 small glowing spheres appear over the Champion pedestal.
+endif
+if value(1) == -100
+  mpechoat $n A sword sigil flares above the Shunned pedestal.
+endif
+if value(1) == 1
+  mpechoat $n 1 small glowing sphere appears over the Shunned pedestal.
+endif
+if value(1) > 1
+  mpechoat $n $1 small glowing spheres appear over the Shunned pedestal.
+endif
+if value(2) == -100
+  mpechoat $n A sword sigil flares above the Raider pedestal.
+endif
+if value(2) == 1
+  mpechoat $n 1 small glowing sphere appears over the Raider pedestal.
+endif
+if value(2) > 1
+  mpechoat $n $2 small glowing spheres appear over the Raider pedestal.
+endif
+if value(3) == -100
+  mpechoat $n A sword sigil flares above the Guardian pedestal.
+endif
+if value(3) == 1
+  mpechoat $n 1 small glowing sphere appears over the Guardian pedestal.
+endif
+if value(3) > 1
+  mpechoat $n $3 small glowing spheres appear over the Guardian pedestal.
+endif
+~
+>verb_prog look~
+if compstr(2) == pedestal
+or compstr(2) == pedestals
+or compstr(2) == balance
+or compstr(2) == sphere
+or compstr(2) == spheres
+or compstr(2) == guardian
+or compstr(2) == guardians
+or compstr(2) == champion
+or compstr(2) == champions
+or compstr(2) == raider
+or compstr(2) == raiders
+or compstr(2) == shunned
+or compstr(2) == coven
+  if isinhouse($n)
+  or isimmort($n)
+    pedestal_stonecheck
+    mpechoat $n You look closely at the pedestals.
+    mpechoaround $n $N looks closely at the pedestals.
+    mpforce $n pedestal_report
+    mpvalueset 0 0
+    mpvalueset 1 0
+    mpvalueset 2 0
+    mpvalueset 3 0
+  else
+    mpechoat $n You look closely at the pedestals, but see nothing special.
+    mpechoaround $n $N looks blankly at the pedestals.
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+|
+V4 22085
+bot battlementbot~
+a battlementbot~
+A bot, namely the battlementbot, waves enthusiastically.
+~
+He helps people scan down to the base of the wall.  It\@s like magic,
+really.  
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog scan ~
+if compstr(2) == d
+or compstr(2) == do
+or compstr(2) == dow
+or compstr(2) == down
+  if inroom($n) == 22060
+    mpvalueset 1 22060
+    mpvalueset 2 22057
+  endif
+  if inroom($n) == 22083
+    mpvalueset 1 22083
+    mpvalueset 2 22058
+  endif
+  if inroom($n) == 22064
+    mpvalueset 1 22064
+    mpvalueset 2 22059
+  endif
+  mptransfer $n $2
+  mpat $n mpforce $n look
+  mpat $n mpechoaround $n Up among the crenallations, $N appears and looks down at you.
+  mptransfer $n $1
+else
+  mpinterpret $n $x
+endif
+~
+|
+V4 22099
+enaeraikillrecordbot~
+The enaeraikillrecordbot~
+The notebot of the Knights of Enaerai is here, making everyday miracles.
+~
+His purpose: To check records of Knight kills for balance, and record such.
+~
+human~
+water scholar~
+AL 0 DFJLZ N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>take_prog knightrecordtool~
+mpechoat $f $O 
+~
+>verb_prog reportkillstats~
+mpat 22099 get all
+mpat 22099 drop all
+mppurge self
+~
+|
+#0
+
+
+
+#OBJECTS
+V12
+22051
+scale scales golden orlin~
+a golden scale~
+An intricate golden scale rests upon the pedestal.~
+~
+gold~
+treasure AGJKa 0 P
+0 0 0 0 0
+51 50 500000 2 P
+1
+>verb_prog dohousebalancecheck~
+mpmath 9 ( $3 + $4 + $5 + $6 + $7 + $8) + 2 
+if value(2) > $9
+  mpechoat $n |            {rThe scales are tilted toward the Champions.{x              |
+  break
+endif
+mpmath 9 ( $2 + $4 + $5 + $6 + $7 + $8) + 2 
+if value(3) > $9
+  mpechoat $n |           {rThe scales are tipped toward the Conquestors.{x             |
+  break
+endif
+mpmath 9 ( $2 + $3 + $5 + $6 + $7 + $8) + 2 
+if value(4) > $9
+  mpechoat $n |            {rThe scales are tipped toward the Guardians.{x              |
+  break
+endif
+mpmath 9 ( $2 + $3 + $4 + $6 + $7 + $8) + 2 
+if value(5) > $9
+  mpechoat $n |             {rThe scales are tipped toward the Raiders.{x               |
+  break
+endif
+mpmath 9 ( $2 + $3 + $4 + $5 + $7 + $8) + 2  
+if value(6) > $9
+  mpechoat $n |             {rThe scales are tipped toward the Shunned.{x               |
+  break
+endif
+mpmath 9 ( $2 + $3 + $4 + $5 + $6 + $8) + 2
+if value(7) > $9
+  mpechoat $n |             {rThe scales are tipped toward the Seekers.{x               |
+  break
+endif
+mpmath 9 ( $2 + $3 + $4 + $5 + $6 + $7) + 2
+if value(8) > $9
+  mpechoat $n |            {rThe scales are tipped toward the Merchants.{x              |
+  break
+endif
+mpechoat $n |         The scales show the houses in sufficient balance.           |
+~
+>verb_prog dolawchaosscalecheck~
+if value(1) < -5
+  mpechoat $n |          {rThe scales tilt dangerously in favor of chaos!{x             |
+  break
+endif
+if value(1) < -3
+  mpechoat $n |           The scales tilt significantly toward chaos.               |
+  break
+endif
+if value(1) < 0
+  mpechoat $n |            Chaos tips the scales, but only slightly.                |
+endif
+if value(1) == 0
+  mpechoat $n |          There is perfect balance between law and chaos.            |
+endif
+if value(1) > 5
+  mpechoat $n |           {rThe scales tilt dangerously in favor of law!{x              |
+  break
+endif
+if value(1) > 3
+  mpechoat $n |            The scales tilt significantly toward law.                |
+  break 
+endif
+if value(1) > 0
+  mpechoat $n |             Law tips the scales, but only slightly.                 |
+endif
+~
+>verb_prog dogoodevilscalecheck~
+if value(0) < -5
+  mpechoat $n |           {rThe scales tilt dangerously in favor of evil!{x             |
+  break
+endif
+if value(0) < -3
+  mpechoat $n |            The scales tilt significantly toward evil.               |
+  break
+endif
+if value(0) < 0
+  mpechoat $n |             Evil tips the scales, but only slightly.                |
+endif
+if value(0) == 0
+  mpechoat $n |          There is perfect balance between good and evil.            |
+endif
+if value(0) > 5
+  mpechoat $n |           {rThe scales tilt dangerously in favor of good!{x             |
+  break
+endif
+if value(0) > 3
+  mpechoat $n |            The scales tilt significantly toward good.               |
+  break
+endif
+if value(0) > 0
+  mpechoat $n |             Good tips the scales, but only slightly.                |
+endif
+~
+>verb_prog p look~
+if compstr(2) == scale
+or compstr(2) == orlin
+or compstr(2) == balance
+or compx() == at scale
+or compx() == at orlin
+or compx() == at balance
+  if inhouse($n) == knight
+  or isimmort($n)
+    mplag $n 2
+    loop 0 to 9
+      mpvalueset $v1 0
+    endloop
+    mpmasstrigger
+    if isimmort($n)
+      mpechoaround The scale glimmers faintly.
+    else
+      mpechoaround $n $N consults the golden scale. 
+    endif
+    mpechoat $n +---------------------------------------------------------------------+ 
+    mpechoat $n |              {WT H E    S C A L E    O F   O R L I N{x                  |
+    mpechoat $n +---------------------------------------------------------------------+
+    mpechoat $n |                                                                     |
+    mpforce $n dogoodevilscalecheck
+    mpforce $n dolawchaosscalecheck
+    mpforce $n dohousebalancecheck
+    mpechoat $n |                                                                     |
+    mpechoat $n +---------------------------------------------------------------------+
+  else
+    mpechoaround $n $N attempts in vain to read the golden scale.
+    mpechoat $n You spend a while trying to read the scale.
+    mplag $n 5
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>trigger_prog 100~
+if isimmort($n)
+  break
+else
+  if level($n)<11
+    break
+  else
+    if isgood($n)
+      mpvalueup 0 1
+    endif
+    if isevil($n)
+      mpvaluedown 0 1
+    endif
+    if islawful($n)
+      mpvalueup 1 1
+    endif
+    if ischaotic($n)
+      mpvaluedown 1 1
+    endif
+    if inhouse($n) == champion
+      mpvalueup 2 1
+    endif
+    if inhouse($n) == conquest
+      mpvalueup 3 1
+    endif
+    if inhouse($n) == guardian
+      mpvalueup 4 1
+    endif
+    if inhouse($n) == raider
+      mpvalueup 5 1
+    endif
+    if inhouse($n) == shunned
+      mpvalueup 6 1
+    endif
+    if inhouse($n) == seeker
+      mpvalueup 7 1
+    endif
+    if inhouse($n) == merchant
+      mpvalueup 8 1
+    endif
+  endif
+endif
+~
+|
+V12
+22052
+ladder crude~
+a crude ladder~
+A crude ladder lies here.~
+~
+wood~
+special SX 0 A
+0 0 0 0 0
+1 310 2 4 P
+0
+E
+ladder~
+This ladder is a rather crude construction of limbs and vines.  In an
+appropriate place, and with sufficient dexterity, one could CLIMB the
+LADDER.  
+~
+E
+crude~
+This ladder is a rather crude construction of limbs and vines.  In an
+appropriate place, and with sufficient dexterity, one could CLIMB the
+LADDER.  
+~
+>verb_prog p climb~
+if objtargetcarry($n)
+else
+  mpinterpret $n $x
+  break
+endif
+if inroom($n) == 22057
+or inroom($n) == 22058
+or inroom($n) == 22059
+else
+  mpechoat $n This doesn\@t seem the right place to do that.
+  break
+endif
+if compstr(2) == ladder
+else
+  mpechoat $n Perhaps try climbing the ladder instead?
+  mpechoaround $n $N\@s face flushes.
+  break
+endif
+if isghost($n)
+  mpechoat $n Your feet slip through the rails.
+  mpechoaround $n $N tries in vain to climb the ladder.
+  break
+endif
+mplag $n 3
+mpforce $n drop ladder
+mpechoaround $n $N props the ladder against the wall and begins to climb it.
+mpechoat $n You prop the ladder against the wall and begin to climb it.
+mpmload 22078
+mpforce enaerailadderbot mpfocus $n
+mpforce enaerailadderbot climbthatladdertime
+~
+|
+V12
+22053
+ram battering crude~
+a crude battering ram~
+A crude battering ram fashioned from a fallen log lies here.~
+~
+wood~
+weapon PS 0 AN
+exotic 2 6 0 F
+slam~
+10 350 7 3 P
+0
+A
+17 20
+A
+2 -2
+E
+ram~
+This ram is a crude construction, made from a fallen tree trunk.  In an
+appropriate place, and with sufficient strength, one could SLAM gates or
+doors with it.  
+~
+E
+crude~
+This ram is a crude construction, made from a fallen tree trunk.  In an
+appropriate place, and with sufficient strength, one could SLAM gates or
+doors with it.  
+~
+>verb_prog p slam~
+if isowner($n)
+else
+  mpnextinterp $n $x
+  break
+endif
+if isworn($o)
+else
+  mpechoat $n You must be holding the ram to slam things with it.
+  mpverbstop
+  break
+endif
+if compstr(2)==gate
+or compstr(2)==gates
+else
+  mpechoat $n Slam what with the battering ram?
+  mpverbstop
+  break
+endif
+if inroom($n)==22058
+else
+  mpechoat $n This isn\@t a good place to do that.
+  mpechoaround $n $N swings a battering ram aimlessly.
+  mpverbstop
+  break
+endif
+mpforce gatekeeperbot mpfocus $n
+mpforce $n battertheknightgatetime
+mpverbstop
+~
+>wear_prog 100~
+if israce($n)==alatharya
+  mpechoat $n You wrap a massive hand around the ram, and look for something to slam!
+else
+  mpechoat $n You wrap your arms around the crude ram, and look for something to slam.
+endif
+~
+|
+V12
+22054
+knightrecordtool~
+unmodified knightrecordtool~
+An unmodified knightrecordtool sits here.~
+~
+unknown~
+trash 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+V12
+22055
+longbow bow horn sleek polished slender~
+a sleek horn longbow~
+A longbow fashioned of polished, slender horn lies here.~
+~
+bone~
+bow S 0 AO
+0 B BCE 0 0
+48 75 1310 2 P
+0
+A
+2 1
+A
+19 1
+A
+18 1
+V12
+22056
+rack weapons weapon~
+the weapons rack~
+A superbly-crafted weapons rack is mounted on the western wall.~
+~
+steel~
+container a 0 P
+700 0 0 1500 100
+58 4 0 4 P
+0
+E
+rack~
+This huge weapons rack is mounted on the western wall of the office,
+nearly covering the wall entirely.  It is forged of darkened steel which is
+polished to a dull sheen.  Along the rack, a series of hooks, bars, and
+shelves are padded in thick dark leather, and where the pads end, swirling
+patterns of platinum thread flower along the steel, all drawing towards a
+large platinum crest in the center of the rack. 
+  
+The center crest is engraved from pure polished platinum, and depicts the
+Tristone of Enaerai.  Set behind the crest in swirling darkened steel is a
+relief of two legendary longswords crossed, the ancient longsword forged by
+Thethtil and the Sword of Mir-Adan.  These blades were favored weapons of
+Acelerital Ak\@seral, the Lord Ilthar who commissioned the making of the
+rack.
+~
+E
+weapons~
+This huge weapons rack is mounted on the western wall of the office,
+nearly covering the wall entirely.  It is forged of darkened steel which is
+polished to a dull sheen.  Along the rack, a series of hooks, bars, and
+shelves are padded in thick dark leather, and where the pads end, swirling
+patterns of platinum thread flower along the steel, all drawing towards a
+large platinum crest in the center of the rack. 
+  
+The center crest is engraved from pure polished platinum, and depicts the
+Tristone of Enaerai.  Set behind the crest in swirling darkened steel is a
+relief of two legendary longswords crossed, the ancient longsword forged by
+Thethtil and the Sword of Mir-Adan.  These blades were favored weapons of
+Acelerital Ak\@seral, the Lord Ilthar who commissioned the making of the
+rack.
+~
+V12
+22057
+gate mechanism wheels pulleys~
+the gate mechanism~
+A contraption of wheels and pulleys, the gate mechanism stands here.~
+~
+stone~
+special O 0 P
+0 0 0 0 0
+51 3000 3000 0 P
+0
+V12
+22058
+chess board chessboard oaken oak polished oaken-inlaid~
+an oaken-inlaid chessboard~
+A polished, oaken-inlaid chessboard sits atop a table.  The pieces are ornately crafted, and represent past leaders and notable members of the Champion and Shunned houses.~
+~
+wood~
+special e 0 P
+1 0 0 0 0
+0 0 0 0 P
+0
+E
+pieces~
+Each piece is an intricately carved individual.  To look closer, you may
+view the Kings, Queens, Knights, Bishops, Rooks, or Pawns.  
+~
+E
+pawns~
+The pawns of the Champions are a variety of human, ethron, aelin, and
+ch\@taren figures dressed in warrior\@s garb.  They are carved from pure white
+stone, and their armor glimmers softly in the light of the Commons Room.  
+
+Across from the Champions are the pawns of the Shunned.  A myriad of cloaked
+figures, the faces of the Shunned pawns are barely visible.  When viewed
+from below, you can see that each figure is a shuddeni, srryn, or nefortu
+whose face is either frowning deeply or grimacing with bared teeth.  They
+are carved from pure onyx, and almost seem to draw in light.  
+~
+E
+kings~
+The King of the Champions is an Aelin fighter who bears the sigil of the
+Sapphire Spear.  Known in life as Avistis, he stands tall above the other
+Champion figures, the ch\@lonin sword held high above his head  
+
+The King of the Shunned is a human man, dressed in the robes of an assassin.
+Sydonus\@ face is twisted and distorted, giving him the appearance of a
+half-demon.  He holds a pair of gleamingly sharp daggers across his chest. 
+~
+E
+queens~
+The Queen of the Champions is an aelin woman with frost-encrusted wings. 
+Yesa bears the sigil of a rose-entwined sword, and her face appears firm yet
+kind.  She holds a tall staff parallel to her body and wears a flowing white
+dress.  
+
+The Queen of the Shunned is a human woman with flowing red hair.  Lilisa
+stares coldly across the chessboard, her hands clasped behind her back.  Her
+eyes are inset with rubies, giving her a fiery appearance.  
+~
+E
+knights~
+The knights of the Champions are the human gladiator Akraelyn and the
+human fighter Eintras.  Each stands stoically at either side of Yesa and
+Avistis, Akraelyn grasping a net and a rather large shining white longsword,
+and Eintras holding a tall, gleaming white poleaxe.  
+
+The knights of the Shunned are a pair of past Ravens, Rasniel and Shasarik. 
+Rasniel is a nefortu who holds a pike and spreads his wings protectively
+over Lilisa, who is to his right.  Shasarik, a srryn barbarian, is shown in
+heavy black armor, and holds a book in one arm and a long Reaver of Souls in
+his right hand, and the thick black Scale of the Void Dragon shield in his
+left.  
+~
+E
+bishops~
+The bishops of the Champions are a pair of figures who sport the mark of
+Jolinn.  Malusmi, a female ethron water templar, stands at the left, holding
+the ch\@lonin sword and wearing a gleaming ring engraved with a feather. 
+Sidaleth, a male caladaran earth scholar, stands tall before a bulky earth
+elemental and wields a heavy wooden staff.  
+
+The bishops of the Shunned are a pensive pair.  On the left is Yurhari, an
+aelin whose wings are thin and bat-like.  His face shows many signs of age,
+but his pose is that of a young man.  Vaeshir, a shuddeni draped in a heavy
+black cloak, grits his teeth menacingly and holds up a hand, which is
+wreathed in a carved halo of wispy void magic.  
+~
+E
+rooks~
+The rooks of the champions stand protectively at either side of the
+chessboard.  At the right is a short ethron woman whose hair is messed into
+dreadlocks and nearly reaches to her waist.  Pfusch holds a log to her chest
+with one hand, and wields a dual-pronged trident in her left.  At the
+opposite end of the chessboard is an aelin woman who wears the mark of the
+Sapphire Spear.  Ilisaela glares out imperiously, holding a tall spear.  
+
+The rooks of the Shunned seem to be a mismatched pair.  At the right is
+Kirasect, an angry-looking nefortu whose hands cradle a small nova made of
+ruby.  At the left is a black-cloaked shuddeni.  Azithalaju has a smug smile
+on his face and his eyeless gaze surveys the chessboard coolly.  He holds
+the staff of Memang at his side protectively.  
+~
+V12
+22059
+cot sturdy cots~
+a sturdy cot~
+Several sturdy cots are placed along the walls.~
+~
+wood~
+furniture e 0 P
+20 10000 EHK 140 140
+1 1300 0 4 P
+3
+V12
+22060
+chair wooden chairs~
+a chair~
+Several chairs are placed throughout the room.~
+~
+wood~
+furniture e 0 P
+20 10000 EH 115 115
+1 1300 0 4 P
+0
+V12
+22061
+lord lady~
+the chair of the Knight Lord~
+The chair of the Knight Lord sits near the vertex of the room.~
+~
+ironwood~
+furniture e 0 P
+1 100000 EH 150 150
+1 0 0 2 P
+0
+E
+chair~
+Made with a craftsmanship known only to the ethron druids, this chair is
+made from living ironwood, shaped in various complicated patterns, to give
+it the appearance of being carved.  The symbols are mainly ancient druidical
+symbols of cosmic forces, coupled with the ancient alatharya runes for
+balance and harmony.  Near the chair, along the wall, stands a narrow
+cabinet.  
+~
+V12
+22062
+idris~
+the chair of the Knight of Idris~
+The chair of the Knight of Idris sits at the right of the Knight Lord\@s chair.~
+~
+ironwood~
+furniture e 0 P
+1 100000 EH 150 150
+0 0 0 2 P
+0
+E
+chair~
+Made with a craftsmanship known only to the ethron druids, this chair is
+made from living ironwood, shaped in various complicated patterns, to give
+it the appearance of being carved.  The symbols are those of the Eye of
+Enaerai and the Order of Idris, coupled with the ancient alatharya runes for
+balance and harmony.  
+~
+V12
+22063
+ilthar~
+the chair of the Knight of Ilthar~
+The chair of the Knight Ilthar sits to the left of the Knight Lord\@s chair.~
+~
+ironwood~
+furniture e 0 P
+1 100000 EH 150 150
+0 0 0 2 P
+0
+E
+chair~
+Made with a craftsmanship known only to the ethron druids, this chair is
+made from living ironwood, shaped in various complicated patterns, to give
+it the appearance of being carved.  The symbols are those of the Eye of
+Enaerai and the Order of Ilthar, coupled with the ancient alatharya runes
+for balance and harmony.  
+~
+V12
+22064
+mett~
+the chair of the Knight of Mett~
+The chair of the Knight Mett sits to the left of the Knight Lord\@s chair.~
+~
+ironwood~
+furniture e 0 P
+1 100000 EH 150 150
+0 0 0 2 P
+0
+E
+chair~
+Made with a craftsmanship known only to the ethron druids, this chair is
+made from living ironwood, shaped in various complicated patterns, to give
+it the appearance of being carved.  The symbols are those of the Eye of
+Enaerai and the Order of Mett, coupled with the ancient alatharya runes
+for balance and harmony.  
+~
+V12
+22065
+desk captain\@s ebony~
+the desk~
+An ebony desk is here, surrounded by a few chairs for visitors.~
+~
+wood~
+furniture e 0 P
+1 10000 D 110 110
+1 1300 0 4 P
+3
+E
+desk~
+It is a large, solid piece of craftsmanship, constructed of a finely
+polished ebony.  Part of the desk is more of a cabinet then desk, a storage
+area large enough to hold many supplies of various sorts.  The cabinet is
+marked with a small Eye of Enaerai in gold embossing.  
+~
+V12
+22066
+stone oath~
+the oath stone~
+The oath stone sits beside the chair of the Knight Lord.~
+~
+stone~
+trash e 0 P
+0 0 0 0 0
+60 1000 0 2 P
+0
+E
+stone~
+The oath stone consists of a pair of statuettes, carved from black and
+white marble.  One statue is of a majestic seraph, cut from unblemished
+white stone.  In its hand, it holds an orb of pure darkness.  Opposite it is
+a black marble demon, which clutches a orb of radiant light.  
+~
+E
+oath~
+The oath stone consists of a pair of statuettes, carved from black and
+white marble.  One statue is of a majestic seraph, cut from unblemished
+white stone.  In its hand, it holds an orb of pure darkness.  Opposite it is
+a black marble demon, which clutches a orb of radiant light.  
+~
+V12
+22067
+ring gold tiles eye enirra symbol~
+a ring of gold tiles surrounding the Eye~
+A ring of gold tiles surrounding an Eye of Enirra symbol is set in the floor.~
+~
+unknown~
+furniture e 0 P
+10 100000 CF 100 100
+0 0 0 3 P
+0
+E
+ring gold tiles eye enirra symbol~
+A ring of gold tiles surrounds the Eye, which is situated in the
+geometrical center of the room.  
+~
+V12
+22068
+cot sturdy cots~
+a sturdy cot~
+Four cots are placed at wide intervals here.~
+~
+wood~
+furniture e 0 P
+20 10000 EHK 140 140
+1 1300 0 4 P
+3
+E
+lord~
+This cot is larger than the others.  Its ironwood frame is capped in
+gleaming silver heads, and its foot is engraved with the symbol of the Eye
+of Enaerai below the symbol of the Knight Lord.  
+~
+E
+mett~
+A granite-framed bed emblazoned with the symbol of Mett is here.
+~
+E
+idris~
+A wooden cot engraved with the mark of Idris is here.
+~
+E
+ilthar~
+A metal cot emblazoned with the mark of Ilthar is along the western wall.
+~
+E
+cot~
+Which did you wish to look at, the cot of Ilthar, Idris, Mett, or the Knight Lord?
+~
+V12
+22069
+cabinet lordcabinet~
+a cabinet~
+The cabinet of the Lord of the Knights sits here.~
+~
+wood~
+container ae 0 P
+700 AC 0 1000 100
+60 0 0 4 P
+0
+E
+cabinet~
+You see the cabinet of the Lord of the Knights.
+
+~
+V12
+22070
+scroll worn grey~
+a worn grey scroll~
+A worn grey scroll is here, stamped with the Eye of Enaerai.~
+~
+parchment~
+treasure S 0 AO
+0 0 0 0 0
+0 0 10 0 P
+0
+E
+worn~
+On Restoring the Balance
+by High Lord Tessolos
+
+
+  \#The Knights of Enaerai seek to uphold the balance in
+   Avendar.  By persuasion or by force, and acting as a
+   unified military body, the Knights are ever vigilant
+   that no extreme influence disrupts the equilibrium
+   and natural balance as created when the three great
+   powers first brought Avendar into being.\#
+
+
+When the balance is in jeopardy, what action must Knights take? The lines
+above, penned into the Code by Orlin the Founder, serve as a guide.
+Knights present in the realm, under the direction of any leaders also
+present, together are sworn to act against the imbalance and set it aright.
+
+It is known that the wandering guild adventurers offer the greatest
+potential for destabilizing (and rectifying) the balance.  And so it is
+primarily upon the adventurers of Avendar that the Knights must focus
+their attention, doing all in their power to drive forth those who disrupt
+balance, and to encourage and strengthen the lesser side of the scale.
+
+In some cases, persuasion suffices--those who would remain friendly the
+Knight Order may choose to depart rather than be driven by force.  Many
+a time bloodshed may be avoided through discussion, or making other
+sorts of arrangements or agreements (with those who would hold true to
+such agreements) that also bring the scales back into proper harmony.
+
+But more often, force is required, and thus we are organized into a
+military body, to maximize effiency in that regard.  Those who resist
+the efforts of Knights, to depart the land or face the blades and spells
+of the Knight Order, choose for themselves.  It is known that the ghosts
+of mortals weight but little, if at all, upon the scales, and so the 
+duty of the  Knights is clear with regard to force.
+
+That is not to say that a Knight is required to suicide against a
+superior force, for that would not accomplish the goals of the order, 
+and is foolishness.  But in such a situation, the Knight would of 
+course be actively working, strategizing, and doing everything within
+his or her power to strengthen the force or element opposing the imbalance,
+and preparing himself or herself to be able meet the imbalance 
+with sufficient force to drive it from the land.
+
+Knights who see no easy way to rectify the balance, and then turn to
+their own needs and desires--guild advancement, seeking honors, glory,
+or gold and items of power--dishonor their vows, unless such actions
+will clearly and directly aid them in preparing for and battling
+the superior force.
+
+I have known of Knights who have, with the balance in jeopardy, 
+gone upon their way, working toward guild advancement and 
+otherwise neglecting to give heed to the work of restoration.
+Such faithless and callow fools all eventually wind up the same--as
+oathbreakers, outcasts of the order, and hunted by the true
+servants of balance.
+~
+E
+scroll~
+On Restoring the Balance
+by High Lord Tessolos
+
+  \#The Knights of Enaerai seek to uphold the balance in
+   Avendar.  By persuasion or by force, and acting as a
+   unified military body, the Knights are ever vigilant
+   that no extreme influence disrupts the equilibrium
+   and natural balance as created when the three great
+   powers first brought Avendar into being.\#
+
+When the balance is in jeopardy, what action must Knights take? The lines
+above, penned into the Code by Orlin the Founder, serve as a guide.
+Knights present in the realm, under the direction of any leaders also
+present, together are sworn to act against the imbalance and set it aright.
+
+It is known that the wandering guild adventurers offer the greatest
+potential for destabilizing (and rectifying) the balance.  And so it is
+primarily upon the adventurers of Avendar that the Knights must focus
+their attention, doing all in their power to drive forth those who disrupt
+balance, and to encourage and strengthen the lesser side of the scale.
+
+In some cases, persuasion suffices--those who would remain friendly the
+Knight Order may choose to depart rather than be driven by force.  Many
+a time bloodshed may be avoided through discussion, or making other
+sorts of arrangements or agreements (with those who would hold true to
+such agreements) that also bring the scales back into proper harmony.
+
+But more often, force is required, and thus we are organized into a
+military body, to maximize effiency in that regard.  Those who resist
+the efforts of Knights, to depart the land or face the blades and spells
+of the Knight Order, choose for themselves.  It is known that the ghosts
+of mortals weight but little, if at all, upon the scales, and so the 
+duty of the  Knights is clear with regard to force.
+
+That is not to say that a Knight is required to suicide against a
+superior force, for that would not accomplish the goals of the order, 
+and is foolishness.  But in such a situation, the Knight would of 
+course be actively working, strategizing, and doing everything within
+his or her power to strengthen the force or element opposing the imbalance,
+and preparing himself or herself to be able meet the imbalance 
+with sufficient force to drive it from the land.
+
+Knights who see no easy way to rectify the balance, and then turn to
+their own needs and desires--guild advancement, seeking honors, glory,
+or gold and items of power--dishonor their vows, unless such actions
+will clearly and directly aid them in preparing for and battling
+the superior force.
+
+I have known of Knights who have, with the balance in jeopardy, 
+gone upon their way, working toward guild advancement and 
+otherwise neglecting to give heed to the work of restoration.
+Such faithless and callow fools all eventually wind up the same--as
+oathbreakers, outcasts of the order, and hunted by the true
+servants of balance.
+~
+E
+grey~
+On Restoring the Balance
+by High Lord Tessolos
+
+  \#The Knights of Enaerai seek to uphold the balance in
+   Avendar.  By persuasion or by force, and acting as a
+   unified military body, the Knights are ever vigilant
+   that no extreme influence disrupts the equilibrium
+   and natural balance as created when the three great
+   powers first brought Avendar into being.\#
+
+When the balance is in jeopardy, what action must Knights take? The lines
+above, penned into the Code by Orlin the Founder, serve as a guide.
+Knights present in the realm, under the direction of any leaders also
+present, together are sworn to act against the imbalance and set it aright.
+
+It is known that the wandering guild adventurers offer the greatest
+potential for destabilizing (and rectifying) the balance.  And so it is
+primarily upon the adventurers of Avendar that the Knights must focus
+their attention, doing all in their power to drive forth those who disrupt
+balance, and to encourage and strengthen the lesser side of the scale.
+
+In some cases, persuasion suffices--those who would remain friendly the
+Knight Order may choose to depart rather than be driven by force.  Many
+a time bloodshed may be avoided through discussion, or making other
+sorts of arrangements or agreements (with those who would hold true to
+such agreements) that also bring the scales back into proper harmony.
+
+But more often, force is required, and thus we are organized into a
+military body, to maximize effiency in that regard.  Those who resist
+the efforts of Knights, to depart the land or face the blades and spells
+of the Knight Order, choose for themselves.  It is known that the ghosts
+of mortals weight but little, if at all, upon the scales, and so the 
+duty of the  Knights is clear with regard to force.
+
+That is not to say that a Knight is required to suicide against a
+superior force, for that would not accomplish the goals of the order, 
+and is foolishness.  But in such a situation, the Knight would of 
+course be actively working, strategizing, and doing everything within
+his or her power to strengthen the force or element opposing the imbalance,
+and preparing himself or herself to be able meet the imbalance 
+with sufficient force to drive it from the land.
+
+Knights who see no easy way to rectify the balance, and then turn to
+their own needs and desires--guild advancement, seeking honors, glory,
+or gold and items of power--dishonor their vows, unless such actions
+will clearly and directly aid them in preparing for and battling
+the superior force.
+
+I have known of Knights who have, with the balance in jeopardy, 
+gone upon their way, working toward guild advancement and 
+otherwise neglecting to give heed to the work of restoration.
+Such faithless and callow fools all eventually wind up the same--as
+oathbreakers, outcasts of the order, and hunted by the true
+servants of balance.
+~
+V12
+22071
+tome grey thick~
+a thick grey tome~
+A thick grey tome, marked with a triangled eye, lies here.~
+~
+parchment~
+treasure S 0 A
+0 0 0 0 0
+25 10 100 1 P
+0
+E
+ten~
+THE SIGIL OF ENAERAI
+
+
+Knights receive the sigil of Enaerai, a mark depicting the Eye of
+Enaerai symbol, when they first take the oath of Knighthood upon
+themselves.  For some, particularly those Knights who would find
+themselves within the division of the Mett, the sigil may not be
+visible, but exists nonetheless.
+
+The sigil grants Knights a small measure of protection from holy and
+negative powers, as well as a slight increase of combat abilities.
+It also assists in communications among the Knight Order.  Knights
+may speak to each other in the following manner:
+
+ knighttell <message>  or kt <message>
+
+Those who wear the sigil can also address a note to all Knights by 
+doing the follwing:
+
+
+ note to Knights
+~
+E
+grey~
++---------------------------------------------------------+
+|         THE ORDER OF THE KNIGHTS OF ENAERAI             |
+|                                                         |
+|  The index page of the grey tome lists the following:   |
+|                                                         |
+|    One   -- The Code of the Knights of Enaerai          |
+|    Two   -- The Priest                                  |
+|    Three -- The Knight Guard                            |
+|                                                         |
+|    THE OATH STONE                                       |
+|      Four  -- Administering the Knight Oath             |
+|      Five  -- Administering the Captain Oath            |
+|      Six   -- Administering the Lord Oath               |
+|      Seven -- Demoting a Captain or Lord                |
+|      Eight -- Naming an Renegade Knight                 |
+|                                                         |
+|    Nine  -- Use of the Scale                            |
+|    Ten   -- The Sigil of Enaerai                        |
++---------------------------------------------------------+
+~
+E
+thick~
++---------------------------------------------------------+
+|         THE ORDER OF THE KNIGHTS OF ENAERAI             |
+|                                                         |
+|  The index page of the grey tome lists the following:   |
+|                                                         |
+|    One   -- The Code of the Knights of Enaerai          |
+|    Two   -- The Priest                                  |
+|    Three -- The Knight Guard                            |
+|                                                         |
+|    THE OATH STONE                                       |
+|      Four  -- Administering the Knight Oath             |
+|      Five  -- Administering the Captain Oath            |
+|      Six   -- Administering the Lord Oath               |
+|      Seven -- Demoting a Captain or Lord                |
+|      Eight -- Naming an Renegade Knight                 |
+|                                                         |
+|    Nine  -- Use of the Scale                            |
+|    Ten   -- The Sigil of Enaerai                        |
++---------------------------------------------------------+
+~
+E
+nine~
+USE OF THE SCALE OF ORLIN
+
+The Knight Lord is given charge to care for and instruct Knights in the use
+of the Scale of Orlin.  The Scale of Orlin is a complex instrument, only
+understood by those dedicated to Enaerai and in the knight order.  It
+measures the balance between good and evil, between law and chaos, and
+between the strength of the houses.  It gives priority to the measure in
+that order, as should the Knights.  The scale is used in the following
+manner:
+
+consult scale 
+
+~
+E
+eight~
+NAMING A RENEGADE KNIGHT
+
+Only the Knight Lord may declare a Knight to be renegade and oathbreaker. 
+Normally, Knights accused of oathbreaking are given warning and an
+opportunity to defend themselves (in a simple court, as directed by the
+Lord).  The naming of renegade is a last resort, to declare to the Knight
+that their mortal life, which is sworn to Enaerai, is forfeit.  When a
+Knight is judged to be renegade, and is present in the realm, the Knight
+Lord uses the oathstone in the following manner: 
+
+renegade <name>
+
+~
+E
+seven~
+DEMOTING AN OFFICER OF THE KNIGHTS
+
+For whatever reason, if a leader among the Knights is to be demoted or
+returned to standard Knight status, the administrator, before the oath
+stone, asks the Knight whether they accept the removal of office.  The
+Knight must respond \#I accept\# (and should be so informed), and then the
+administrator binds the act through use of the oath stone, as follows:
+
+oath knight <name> 
+
+~
+E
+six~
+ADMINISTERING THE LORD OATH
+
+At least two Knight Captains must agree on the candidate for the Knight
+Lord position, and the prospective Knight Lord given the oath by another
+Captain, for the oath ceremony and granting of rank to be considered 
+valid before Enaerai.
+
+As with the other oath ceremonies, the candidate stands in the gold ring,
+before a Knight Captain.  The candidate is formally charged with directing
+the Knighthood and taking responsibility for the balance of Avendar before
+Enaerai.  The Captain then questions: \#Will you accept this charge?\# 
+The candidate must respond \#I will\# (and should be informed beforehand that
+those are the necessary words to be uttered, for the oath stone to bind the
+ceremony).
+
+This done, the administrator of the oath uses the oath stone in the
+following manner:
+
+oath lord <name>
+~
+E
+five~
+ADMINISTERING THE CAPTAIN OATH
+
+Traditionally, the candidate for the captaincy stands in the gold ring
+before the Knight Lord (or another Captain, in the Lord\@s absence).  The
+candidate is formally charged with directing and upholding the work of the
+division they are to direct.  The administrator then questions: \#Will you
+pledge to faithfully serve Enaerai and the balance as Knight Captain?\#  The
+candidate must respond \#I will\# (and should be informed beforehand that
+those are the requisite ceremonial words that must be uttered, for the oath
+stone to bind the ceremony).  
+
+This done, the administrator of the oath uses the oath stone in the
+following manner: 
+
+oath captain <name> 
+
+~
+E
+four~
+ADMINISTERING THE KNIGHT OATH
+
+The worthy applicant traditionally stands in the gold ring before the Knight
+Lord (or Captain, in the Lord\@s absence).  The applicant is questioned
+regarding their desire to take the oath, whether it is done of their own
+volition, and whether they understand the consequenses of breaking the oath.
+
+
+If the applicant gives satisfactory answers, the adminstrator of the oath
+questions: \#Will you take the oath upon yourself now?\#  The applicant must
+respond \#I will\# (and should be informed beforehand that those are the
+proper ceremonial words, without which the oath stone will not bind the
+oath).  
+
+This done, the administrator of the oath uses the oath stone in the
+following manner: 
+
+oath knight <name>
+
+~
+E
+three~
+THE KNIGHT GUARD
+
+In the temple of Enaerai, a Knight stands guard at the doors of the
+compound.  He will permit only Knights to pass the doors, and those the
+Knights wish to invite within the compound.  If Knights wish to invite
+someone into the compound, they may say the following: 
+
+escort <name>
+
+The guard will alert all Knights when others attempt to force their way into
+the compound, and will also attack renegades of the Knighthood on sight.  
+~
+E
+two~
+THE PRIEST OF ENAERAI
+
+In the temple of Enaerai in Earendam, a priest tends the altar.  He will
+also occasionally grant his blessings and spells upon Knights who are in the
+temple.  
+
+Like most temple priests, he can heal for a price, but he\@ll also grant
+benedictions and heal wounds for Knights, of his own accord, and when his
+duties permit.  
+
+The priest will also hold items for the Knights, though he will drop
+artifacts of great power (such as the Stones of Power) as such items have
+the potential to influence the balance and should not be in the temple.  
+
+If a Knight wishes to request the last item given to the priest, the Knight
+may do the following: 
+
+request
+
+Finally, when a Knight prays in the presence of the priest in the temple,
+the Knight will be able to discern whether Enaerai is near to the realm of
+mortals and the prayer is heard, or whether she is distant.  If she is
+distant, the priest will take note of the prayer, and Enaerai will receive
+the prayer at a later time, when she once more draws near to the mortal
+realm.  
+~
+E
+one~
+THE CODE OF THE KNIGHTS OF ENAERAI
+
+The Knights of Enaerai seek to uphold the balance in Avendar.  By persuasion
+or by force, and acting as a unified military body, the Knights are ever
+vigilant that no extreme influence disrupts the equilibrium and natural
+balance as created when the three great powers first brought Avendar into
+being.  
+
+The Knights revere Enaerai, who is held as their guiding deity of balance,
+though no active worship is required throughout the Order.  They also
+observe Mettenday, the first calendar day of every month on the standard
+Avendarian calendar, as a day of rest, recuperation, and assembly.  No
+efforts to actively enforce balance are made by the Knights on Mettenday. 
+The Knights are based in the city of Earendam, in a compound adjunct to the
+Temple of Enaerai.  
+
+REQUIREMENTS OF KNIGHTHOOD
+
+Adventurers who are neutral in both alignment and ethos may become Knights
+of Enaerai.  However, scholars who practice the greater spells of spirit or
+void, and templars of those spheres, may not seek entrance to the
+Knighthood.  To join the Knights of Enaerai, seek out members of the order
+and petition them for entrance.  Knights may be recognized by the symbol of
+Enaerai--the eye within a triangle.  
+
+THE OFFICES OF KNIGHTHOOD
+
+The organization of the Knighthood is straightforward, run with the
+efficiency and manner one would expect of a military order.  Knights heed
+the directions of their superiors without question, sacrificing life and
+even soul to the cause.  
+
+The Knight Lord leads the Knights.  He or she is the highest officer and
+supreme commander of the Knights, maintaining the order of the knighthood
+and directing them in actions to right the balance.  
+
+There are up to three captains of the Knights, who vote for the new Lord
+should the office be absent.  Each is also given the leadership of the Mett,
+Idris, or Ilthar divisions of the Knights.  
+
+The Captain of Mett is charged with subterfuge, spying, scouting, and
+providing necessary reconnaissance, as well as leading the rogue component
+and other miscellaneous forces of the Knight body.  
+
+The Captain of Idris pools and compiles knowledge regarding adventurers in
+the land and their effects on the balance, and the balance between houses,
+as well as leading the magical or scholarly forces of the Knight body.  
+
+The Captain of Ilthar is charged with being the second, under the Knight
+Lord, to direct in battle, to administer punishment of final death to
+renegade Knights who have broaken their oaths of Knighthood, and to lead the
+warrior forces of the Knight body.  
+~
+E
+tome~
++---------------------------------------------------------+
+|         THE ORDER OF THE KNIGHTS OF ENAERAI             |
+|                                                         |
+|  The index page of the grey tome lists the following:   |
+|                                                         |
+|    One   -- The Code of the Knights of Enaerai          |
+|    Two   -- The Priest                                  |
+|    Three -- The Knight Guard                            |
+|                                                         |
+|    THE OATH STONE                                       |
+|      Four  -- Administering the Knight Oath             |
+|      Five  -- Administering the Captain Oath            |
+|      Six   -- Administering the Lord Oath               |
+|      Seven -- Demoting a Captain or Lord                |
+|      Eight -- Naming an Renegade Knight                 |
+|                                                         |
+|    Nine  -- Use of the Scale                            |
+|    Ten   -- The Sigil of Enaerai                        |
++---------------------------------------------------------+
+~
+V12
+22072
+gray iron spear enirra~
+a knight\@s spear~
+A grey iron spear marked with the Eye of Enirra is here.~
+~
+iron~
+weapon S 0 AN
+spear 8 4 2 F
+pierce~
+35 150 3900 3 P
+0
+V12
+22073
+thin grey dagger enirra~
+a thin grey dagger~
+A thin grey steel dagger marked with the Eye of Enirra is here.~
+~
+steel~
+weapon Y 0 AN
+dagger 4 7 2 0
+pierce~
+30 20 358 0 P
+0
+V12
+22074
+poleaxe knight guard\@s fine steel~
+a knight guard\@s poleaxe~
+A sturdy poleaxe of fine steel lies here.~
+~
+steel~
+weapon 0 0 AN
+polearm 2 17 3 F
+slash~
+35 160 2087 3 P
+0
+A
+18 -1
+A
+19 1
+V12
+22075
+axe sturdy woodcutter\@s woodcutter~
+a sturdy woodcutter\@s axe~
+A woodcutter\@s sturdy axe lies here.~
+~
+wood~
+weapon 0 0 AN
+axe 8 2 3 0
+chop~
+20 180 863 0 P
+0
+A
+19 1
+A
+18 1
+V12
+22076
+key large brass~
+a large brass key~
+A large brass key sits here.~
+~
+brass~
+key 0 0 A
+0 0 0 0 0
+0 0 0 0 P
+2
+V12
+22077
+wooden bench benches~
+a wooden bench~
+Two wooden benches sit on either side of the table.~
+~
+wood~
+furniture e 0 P
+10 10000000 EH 100 100
+1 0 0 5 P
+1
+V12
+22078
+chair knight lord~
+the chair of the knight lord~
+The chair of the Knight lord sits at the head of the table.~
+~
+ironwood~
+furniture e 0 P
+1 10000000 EH 100 110
+1 0 0 1 P
+1
+V12
+22079
+long wooden table knightdinnertable~
+a wooden table~
+A long wooden table sits in the center of the room.~
+~
+ironwood~
+container e 0 P
+1000000 0 0 40 0
+1 0 0 3 P
+1
+V12
+22080
+metal water pitcher steel~
+a metal water pitcher~
+A metal water pitcher is here.~
+~
+metal~
+drink 0 0 A
+100 100 'water' 0 0
+0 10 0 0 P
+0
+V12
+22081
+bowl broth brothbowl~
+a bowl of broth~
+A bowl of chicken broth sits here.~
+~
+flesh~
+food 0 0 A
+5 50 0 0 0
+10 10 0 0 P
+0
+V12
+22082
+bottle amber ale~
+a bottle of amber ale~
+A large bottle of amber ale sits here.~
+~
+glass~
+drink 0 0 A
+100 100 'ale' 0 1
+10 10 0 0 P
+0
+V12
+22083
+fruit fruits bowl mixed~
+a bowl of mixed fruits~
+A colourful bowl is here, filled with mixed fruits.~
+~
+food~
+food 0 0 A
+10 50 0 0 0
+20 10 0 0 P
+0
+V12
+22084
+dish roasted meat meats~
+a dish of roasted meats~
+A dish of roasted meats sits here, steaming.~
+~
+food~
+food 0 0 A
+32 50 0 0 0
+20 20 0 0 P
+0
+V12
+22085
+plate seared salmon~
+a plate of seared salmon~
+A plate of seared salmon lies here.~
+~
+flesh~
+food 0 0 A
+28 50 0 0 0
+20 15 0 0 P
+0
+V12
+22086
+veal brisket beef steaming plate~
+a plate of seasoned beef~
+A steaming plate of seasoned beef is here.~
+~
+unknown~
+food 0 0 A
+30 50 0 0 0
+30 15 0 0 P
+0
+V12
+22087
+blanket thick grey~
+a thick grey blanket~
+A thick grey blanket lies on the ground.~
+~
+cloth~
+furniture 0 0 A
+1 300 EHK 115 115
+1 100 30 4 P
+0
+E
+bedroll~
+This thick woolen bedroll is designed to help those who must sleep on the
+road.  
+~
+E
+bed~
+This thick woolen bedroll is designed to help those who must sleep on the
+road.  
+~
+E
+roll~
+This thick woolen bedroll is designed to help those who must sleep on the
+road.  
+~
+V12
+22088
+broadsword sword runed steel~
+a runed steel broadsword~
+A broadsword runed with the Eye of Enaerai rests on the ground.~
+~
+steel~
+weapon GJK 0 AN
+sword 4 8 3 0
+slash~
+25 120 400 2 P
+4
+A
+42 1
+A
+41 1
+A
+18 1
+A
+19 1
+V12
+22089
+warhammer hammer runed steel~
+a runed steel warhammer~
+A warhammer runed with the Eye of Enaerai rests on the ground.~
+~
+steel~
+weapon GJK 0 AN
+mace 4 8 1 0
+smashing blow~
+25 130 400 2 P
+4
+A
+42 1
+A
+41 1
+A
+19 1
+A
+18 1
+V12
+22090
+battleaxe axe runed steel~
+a runed steel battleaxe~
+A battleaxe runed with the Eye of Enaerai rests on the ground.~
+~
+steel~
+weapon GJK 0 AN
+axe 3 12 3 0
+axe-swing~
+25 180 400 2 P
+4
+A
+42 1
+A
+41 1
+A
+19 1
+A
+18 1
+V12
+22091
+staff oak runed~
+a runed oak staff~
+An oak staff runed with the Eye of Enaerai rests on the ground.~
+~
+oak~
+weapon GJK 0 AN
+staff 4 8 6 F
+burst of electricity~
+35 80 400 2 P
+4
+A
+41 1
+A
+42 1
+A
+19 1
+A
+18 1
+V12
+22092
+dagger runed steel~
+a runed steel dagger~
+A dagger runed with the Eye of Enaerai rests on the ground.~
+~
+steel~
+weapon GJK 0 AN
+dagger 4 8 2 0
+stab~
+25 30 380 1 P
+4
+A
+41 1
+A
+42 1
+A
+19 1
+A
+18 1
+V12
+22093
+tabard grey silver-grey eye enirra~
+a grey tabard emblazoned with the Eye of Enirra~
+A silver-grey tabard marked with the Eye of Enirra lies here.~
+~
+cloth~
+armor JKS 0 AD
+5 5 5 2 0
+25 3 300 1 P
+9
+A
+12 15
+A
+13 15
+A
+41 1
+A
+42 1
+V12
+22094
+tabard grey silver-grey eye enirra~
+a Knight\@s silver tabard~
+A silver tabard bearing the triangled eye lies here.~
+~
+cloth~
+armor JKS 0 AK
+15 15 15 5 0
+25 3 100000 1 P
+0
+A
+12 30
+A
+13 30
+A
+41 3
+A
+42 3
+A
+19 2
+A
+18 2
+V12
+22095
+shield round marked eye enirra sturdy~
+a round shield marked with the Eye of Enirra~
+A sturdy round shield emblazoned with the Eye of Enirra lies here.~
+~
+steel~
+armor JK 0 AJ
+10 10 10 2 0
+25 120 350 1 P
+0
+A
+18 1
+A
+19 1
+A
+42 1
+A
+41 1
+V12
+22096
+wide tome eye enirra jadochbook~
+a wide tome marked with the Eye of Enirra~
+A wide tome lies here, marked with a silver Eye of Enirra.~
+~
+parchment~
+trash 0 0 A
+0 0 0 0 0
+1 3 0 0 P
+1
+E
+fifth~
+Finally, members of Idris may be called upon to fight.  It is
+the responsibility of every Knight to be willing and able to do
+this.  And, indeed, those of Idris should go into battle before
+those of Mett are required to do so, for it is imperative that
+Knights of Mett maintain their secrecy, lest their future
+usefulness to the cause of Balance be reduced.  If it is necessary
+for those of Idris to battle, all efforts should be made to secure
+documents away safely prior to the fight.  Otherwise, much work may
+be lost, or perhaps even captured and capitalized upon.  Clearly,
+this is not a desirable outcome.
+
+It is an honor to be a Knight of Enaerai.  To be among those
+chosen to uphold the Balance that is so essential to these lands.
+May Enaerai bless us all, and may her Eye ever gaze upon us with
+favor.
+~
+E
+fourth~
+{W***The Responsibility of the Knights of Idris***{x
+
+Alas, despite the clear need for Balance, so many refuse to
+accept it.  In most cases, this is not an active opposition to the
+idea, rather, most prevalent is an apathy or lack of exposure to
+it.  Therefore, the Knights of Enaerai seek to correct this.  There
+are many differing methods for this, among them, simple teaching
+and spreading of the ideas, to convince others of the need.
+Failing this, some may be convinced to act as needed for the
+Balance by making it not worth their while to refuse.  And
+sometimes, though this need not be a last resort, direct violence
+is required.  However the case may be, the overarching goal and
+function of every Knight is to work towards maintaining the
+balance.
+
+The role the Idris branch plays in this is threefold.  Firstly,
+it is the responsibility and function of Idris to consider,
+develop, and spread the concept of Balance in all of its
+manifestations.  This is done, of course, according to the
+teachings of the Great Lady Enaerai, whom every Knight pledges to
+serve at their induction.  Secondly, Knights of Idris should keep
+information on adventurers, insofar as it pertains to their outlook
+on life.  Ideally, this information is largely supplied by the Mett
+branch.  The purpose of this is to provide an outlet for correcting
+the balance when the Scales of Orlin lean overmuch.  The more that
+is known, the more readily action may be taken.
+
+This section continues on the fifth and final page.
+~
+E
+third~
+There are those who, possessed of a more altruistic outlook,
+cannot conceive of the need for Balance because it permits, even 
+requires, darkness and evil.  This idea is intrinsically flawed.
+Consider a world where there was no such thing as \@poor\@.  Every
+inhabitant of this world must have the same number and quality of
+possession as every other.  If this were not true, there would be
+some sort of difference of degree in wealth, and whichever had less
+would be deemed \@poor\@, even if they were by our standards 
+fabulously wealthy.  This is true because titles like \@rich\@ and 
+\@poor\@ are utterly relative to one another.  Yet, even if the case
+where each denizen had the exact same as every other were true, 
+none of them could be called \@rich\@  Not poor, but not rich either.
+In the same way, \@good\@ and \@evil\@ are relative descriptors.  If 
+there was no darkness, no evil, in the lands, then there could be 
+no good, nor any light.  And how can someone who claims to seek
+good actively choose a world in which there was no good or light?
+And so their argument fails.
+
+With just what has so far been presented, one might perceive
+Balance as a necessary burden to carry, a chore that must be
+performed.  In truth, it is a glorious thing, a gift granted to us
+all, not a punishment.  But, one might argue, Balance dictates that
+if you experience joy and pleasure, you must also at some point
+experience pain.  How can that be a gift?
+
+
+He who seeks an understanding of such an apparent paradox should
+refrain from taking food or drink of any kind for an extended
+period of time, until his mouth is parched and his stomache has
+long since ceased rumbling from hunger.  After the time has passed,
+he should partake of a simple meal, perhaps some Nendorian cakes
+and water.  Provided the length of his fast was ample, the joy he 
+feels, and the pleasure of relief in such a meagre banquet, is far
+greater than he would have felt with a sumptuous array had he not
+abstained.  The point of this is to understand the function of pain
+and sacrifice - these things enhance the experiences of joy and
+pleasure.  They bring focus into our lives.  And then a
+comprehension of the gift of Balance is easy to grasp.  Balance is
+that which takes our joys and makes them truly joyful, and our
+pains and makes them truly painful.  In truth, it is that which
+expands the sensation of life itself, for no life is without any
+joy or any pain.  And in that, Balance is a great gift to us all.
+~
+E
+second~
+{W***The Necessity of Balance***{x
+
+Having defined what is actually meant by Balance, the natural
+question that arises is \#Why should this Balance be upheld?\#.  At 
+the simplest level, the answer to this is that it is the natural 
+way.  Evidence of this can be found all throughout nature - in the
+daily interchange of sun and moons, in the lives and deaths of all
+living creatures, in the cycle of seasons.  Even in the fascinating 
+interplay of water and fire - the former will quench the latter,
+but in the process neutralize itself into vapor - can this concept
+of balance be found.  The original Three of the Pantheon, with or
+without realizing it, created the world this way.
+
+And example may be taken from those very Three.  One of the
+light, one of the darkness, one of neither persuasion: in all, 
+perfect balance.  At first glance, this may seem defeated by the
+fact that each followed an orderly way.  But a slightly deeper 
+understanding of the matter reveals that this is necessary, for 
+balance to be acheived.  After all, before the form and order they
+created, there was only chaos.  Their very lawfulness balanced this
+disarray, and neatly completes the example.
+
+Many reject the necessity of Balance, choosing instead to seek
+personal gain. This reveals, however, the narrowness of their
+scope.  For to defy the natural way is to place oneself at risk.
+If excessive, nature itself will rebuke the imbalance.  This very
+instance was exemplified in the raising up of the Goddess Girikha,
+to offset the rigid control of the law.  Thus, ignoring or
+attempting to overpower Balance for personal gain is an act doomed
+to fail, unless somehow that force is stronger than nature itself
+(and by extension, the might of all Three combined).
+
+This section continues on the third page.
+~
+E
+first~
+{W***The Essence of Balance***{x
+
+The term \@Balance\@, particularly as it relates to the Knights of Enaerai,
+has been at times misunderstood.  One of the most common misconceptions of
+this ideal semms to be the thought that there can nothing extreme in one\@s
+life.  That somehow, all colors must be grey, all actions minimal and
+mundane, all food bland, all excitement contained.  But such a lifestyle
+would be unnecessarily unfulfilling.  No, the key to understanding what is
+truly meant by Balance is to realize that for any phenomena, there is, or
+should be, a counter-phenomena.  That is, if one side of the spectrum of
+etremities is experienced, so should the other, in its turn.  Practically
+speaking, this translates into the coexistance of, for example, good and
+evil.  Or perhaps order and disorder.  
+
+To understand this further, consider the analogue of a board of wood evenly
+levelled atop a small rock.  When there is naught upon the board, it is
+balanced.  However, it serves no purpose.  This is analogous to the world
+ere it was populated with life - balanced, yet unfulfilled.  If an object of
+uniform shape and weight is placed in the exact center of the board, the
+setup will remain balanced.  For the sake of the analogy, assume that no
+further objects can be placed atop this one, that is, that none of these are
+stackable.  In that case, the board is level (and therefore acceptable), but
+the system still has not achieved its full potential, as there remains a
+great length of unladen board.  This is similar to the lifestyle described
+in the beginning, that of blandness and relative inaction.  Indeed, it can
+even be easily argued that such a way of life is inherently unbalanced in
+and of itself, but that is not the point of this present explanation.  The
+board has not reached its full potential until its entire length is covered,
+in the middle and at both extremes.  And behold, that though there exist
+objects at the extremities of the board - analogously, at the extremities of
+life - the board remains level and balanced.  That is what is meant by
+\@Balance\@: not the absence of extremes, but rather their equilibrium.  
+~
+E
+book~
+Upon the first page of the tome is emblazoned:
+
+{W************************************{x
+{BThe Essence and Necessity of Balance
+By Jadoch Talykmir, Captain of Idris{x
+{W************************************{x
+
+You may read the first, second, third, fourth,
+or fifth page of this book.
+~
+E
+tome~
+Upon the first page of the tome is emblazoned:
+
+{W************************************{x
+{BThe Essence and Necessity of Balance
+By Jadoch Talykmir, Captain of Idris{x
+{W************************************{x
+
+You may read the first, second, third, fourth,
+or fifth page of this book.
+~
+V12
+22097
+padded sword paddedsword~
+a padded sword~
+A padded sword lies here.~
+~
+wood~
+weapon HJKNPSZa 0 AN
+sword 6 6 3 0
+strike~
+60 1 0 0 P
+100
+A
+18 -5
+A
+19 -5
+V12
+22098
+standard balance flag pole eye enirra~
+the Standard of Balance~
+A grey flag bearing the Eye of Enirra hangs upon a slender pole.~
+~
+wood~
+special AGYa 0 AOP
+0 0 0 0 0
+51 100 0 3 P
+1
+#0
+
+
+
+#ROOMS
+#22051
+A Small Trail~
+The small trail circles along the mountain ledge, offering fairly solid
+footing through the steep and treacherous mountain crags.  The ledge rises
+steeply to the east, where the trail passes over the summit between two tall
+rock spires.  
+~
+~
+0
+0 4 5
+D0
+The ledge ends to the north, at the side of a steep crevice.
+~
+~
+0 0 22052
+D1
+The trail continues on through the mountains.
+~
+~
+0 0 514
+S
+#22052
+The End of a Trail~
+The mountain ledge and narrow path carved into it end here at the eastern
+side of a deep crevice.  The crevice plunges down several hundred meters at
+least, and its base is obscured in a foggy haze.  The foundation of a stone
+bridge is embedded in the end of the ledge.  The slightly arched, slender
+bridge spans the crevice, ending at a high crenellated wall.  
+~
+~
+0
+0 0 5
+D2
+A narrow path runs along a rough ledge.
+~
+~
+0 0 22051
+D3
+A stone bridge arches out over the crevice.
+~
+~
+0 0 22054
+S
+#22053
+A Deep Crevice~
+This crevice, a deep, narrowing fissure between two great rock faces, is
+spanned nearly fifty feet above by a thin stone bridge.  The dark stone rock
+is rough but offers no suitable or usable handholds for climbing out of the
+crevice.  The crevice continues to the south, and to the north it deepens
+and begins to close in above, forming a cave in the solid stone of the
+mountain.  
+~
+~
+0
+0 0 5
+D0
+~
+~
+0 0 22088
+D2
+~
+~
+0 0 22085
+D4
+A thin stone bridge arcs through the air high above you.
+~
+~
+2097160 0 22054
+P
+>verb_prog p up~
+if isflying($n)
+  mpinterpret $n $x
+else
+  mpechoat $n It is impossible to scale the walls of stone.
+endif
+~
+|
+S
+#22054
+A Slender Stone Bridge~
+You are on an arched bridge crafted of granite blocks.  The bridge spans
+a deep crevice which plunges down several hundred meters, where its base is
+obscured in a foggy haze.  Set in the low railing of stone blocks, along
+each side of the bridge, arcane sigils and wards strengthen the stonework. 
+To the west, the bridge connects to a broad ledge lined with a crenellated
+wall.  To the east, the bridge is anchored in the stone of a craggy
+outcropping, upon which a narrow path leads to the main trail through the
+western Brintors. 
+~
+~
+0
+0 4 13
+D1
+The base of the bridge is here.
+~
+~
+0 0 22052
+D3
+~
+~
+0 0 22058
+C KNIGHT~
+S
+#22055
+A Small Trail~
+The side trail runs between two steep walls of stone, following a
+dried-out streambed.  To the east, the trail joins up with the main road
+through the mountains, curving and branching into a maze-like path through
+the tall peaks.  To the west, the trail broadens, and passes into a glade of
+tall pines.  
+~
+~
+0
+0 4 5
+D1
+The trail runs to the east, connecting to the main road through the
+mountains.  
+~
+~
+0 0 503
+D3
+The path broadens into a glade.
+~
+~
+0 0 22087
+S
+#22056
+A Slender Stone Bridge~
+You are on the western end of a slender bridge which provides the only
+direct entrance to the Fortress of the Eye.  The bridge, a slender arched
+construction of carefully crafted sandstone blocks, spans a deep crevice
+which plunges down several hundred meters, where its base is obscured in a
+foggy haze.  Set in the low railing of stone blocks, to either side of the
+bridge, arcane sigils and wards strengthen the stonework and mark the first
+defenses against those who would assault the fortress.  To the west, the
+bridge is anchored in a solid stone ledge.  A sturdy crenellated wall runs
+the length of the ledge, barring passage to the fortress beyond.  Above the
+wall, the upper levels of the fortress are visible.  The fortress, fashioned
+of the same sandstone as the bridge, is pyramidal in shape, with a large
+circle of shining glass set in each face.  
+~
+~
+0
+0 0 13
+D0
+The ground drops off steeply here.
+~
+~
+8 0 22055
+D2
+The ground drops off steeply here.
+~
+~
+8 0 22055
+P
+>trigger_prog 100~
+if isflying($n)
+  if isbitset($n)==22051
+    break
+  else
+    mpecho The defensive wards flare suddenly!
+    mpcast 53 80 $n
+  endif
+endif
+~
+>rand_prog 100~
+mproomcmd mptrigger all
+~
+>verb_prog p north~
+if isflying($n)
+  mpechoaround $n $N flies down over the side of the bridge, into the crevice.
+  mpechoat $n You fly down over the side of the bridge.
+  mpinterpret $n $x
+else
+  mpechoaround $n $N leaps off the side of the bridge!
+  if rand(25)
+    mpforce $n yell Aaaaahhhh!
+  endif
+  mpechoat $n You leap off the bridge, and hit the bottom of the crevice with a thud. {rOuch!{x
+  mpdamage $n 10 20 1
+  mptransfer $n 22055
+  mpat 22055 mpforce $n look
+  mpat 22055 mpechoaround $n $N falls from above, and hits the ground with a thud!
+endif
+~
+>verb_prog p south~
+if isflying($n)
+  mpechoaround $n $N flies down over the side of the bridge, into the crevice.
+  mpechoat $n You fly down over the side of the bridge.
+  mpinterpret $n $x
+else
+  mpechoaround $n $N leaps off the side of the bridge!
+  if rand(25)
+    mpforce $n yell Aaaaahhhh!
+  endif
+  mpechoat $n You leap off the bridge, and hit the bottom of the crevice with a thud. {rOuch!{x
+  mpdamage $n 10 20 1
+  mptransfer $n 22055
+  mpat 22055 mpforce $n look
+  mpat 22055 mpechoaround $n $N falls from above, and hits the ground with a thud!
+endif
+~
+|
+S
+#22057
+The Base of the Wall~
+The thick grey stone wall of the fortress rises to the west, its ramparts
+broken with areas accessible for defensive archers and templars.  The wall
+appears to be almost featureless, its surface made from magically smoothed
+rock.  A steep mountain slope rises to the north, blocking any passage.  The
+fortress gate is visible southward, the only obvious entry to the Fortress. 
+To the east, a deep crevice opens up.  
+~
+~
+0
+0 4 5
+D2
+The gate to the fortress stands southward.
+~
+~
+0 0 22058
+D4
+You see figures patrolling the wall above you.
+~
+~
+2097160 0 22060
+C KNIGHT~
+P
+>verb_prog p up~
+if isflying($n)
+  mpecho Defensive wards set in the wall suddenly flare!
+  if snaffected($n) == 592
+    mpechoat $n Sharp winds buffet you, but you anchor yourself to the wall and scale it!
+    mpinterpret $n $x
+  else
+    mpechoaround $n $N attempts to fly over the wall, but is forced down by sharp winds.
+    mpechoat $n Sharp winds buffet you, forcing you back down.
+  endif
+else
+  mpechoat $n There are no handholds to climb the wall.
+  mpechoaround $n $N tries in vain to climb the wall.
+endif
+mplag $n 2
+~
+|
+S
+#22058
+Before the Fortress Gate~
+Passage beyond this narrow ledge is blocked by a massive wall of granite
+blocks.  The top of the wall is crenellated, and guards can be occasionally
+glimpsed as they patrol above.  Along the bottom of the wall, defensive
+runes and wards are set in the stone.  The ledge extends northward and
+southward, but so does the wall.  The only passage through the wall is at
+this point, through the well-guarded gatehouse.  The angular peak of the
+Fortress of the Eye is visible beyond the wall, with the stylized crystal
+window at the tip resembling an open eye.  To the east, a deep ravine is
+spanned by a slender stone bridge. 
+    
+The gatehouse is closed, sealed by a sturdy wall of ironwood.
+~
+~
+0
+0 4 5
+E
+door~
+A sturdy door made of ironwood is set in the doorway, blocking passage to
+non-Knights.  
+~
+D0
+The wall and ledge extend to the north.
+~
+~
+0 0 22057
+D1
+A slender stone bridge spans the crevice to the east.
+~
+~
+0 0 22054
+D2
+The wall and ledge extend to the south.
+~
+~
+0 0 22059
+D3
+~
+~
+3276808 0 22062
+D4
+You see figures patrolling the wall above you.
+~
+~
+2097160 0 22083
+C KNIGHT~
+P
+>verb_prog west~
+if isghost($n)
+mptransfer $n 22062
+mpechoaround $n $N arrives.
+mpechoat $N You move into the gatehouse.
+else
+mpinterpret $n $x
+endif
+~
+>verb_prog p up~
+if isflying($n)
+  mpecho Defensive wards set in the wall suddenly flare!
+  if snaffected($n) == 592
+    mpechoat $n Sharp winds buffet you, but you anchor yourself to the wall and scale it!
+    mpinterpret $n $x
+  else
+    mpechoaround $n $N attempts to fly over the wall, but is forced down by sharp winds.
+    mpechoat $n Sharp winds buffet you, forcing you back down.
+  endif
+else
+  mpechoat $n There are no handholds to climb the wall.
+  mpechoaround $n $N tries in vain to climb the wall.
+endif
+mplag $n 2
+~
+>verb_prog p ram~
+mpechoat $n Ramming the gate will only give you bruises.
+mpechoat $n It would be better to slam it with a battering ram.
+~
+|
+S
+#22059
+The Base of the Wall~
+The thick grey stone wall of the fortress rises to the west, its ramparts
+broken with areas accessible for defensive archers and templars.  The wall
+appears to be almost featureless, its surface made from magically smoothed
+rock.  A steep mountain slope rises to the south, blocking any passage.  The
+only obvious entry to the fortress, the gate to the fortress, is visible to
+the north.  To the east, a deep crevice opens up.  
+~
+~
+1
+0 4 5
+D0
+The gate to the fortress lies northward.
+~
+~
+0 0 22058
+D4
+You see figures patrolling the wall above you.
+~
+~
+2097160 0 22064
+C KNIGHT~
+P
+>verb_prog p up~
+if isflying($n)
+  mpecho Defensive wards set in the wall suddenly flare!
+  if snaffected($n) == 592
+    mpechoat $n Sharp winds buffet you, but you anchor yourself to the wall and scale it!
+    mpinterpret $n $x
+  else
+    mpechoaround $n $N attempts to fly over the wall, but is forced down by sharp winds.
+    mpechoat $n Sharp winds buffet you, forcing you back down.
+  endif
+else
+  mpechoat $n There are no handholds to climb the wall.
+  mpechoaround $n $N tries in vain to climb the wall.
+endif
+mplag $n 2
+~
+|
+S
+#22060
+North End of the Battlements~
+The wide battlements stand thirty feet above the eastern ground here, its
+ramparts broken to allow defense by knight archers and templars.  The
+battlements themselves are made of a dark grey stone, and continue to the
+south, where the gate mechanism is protected by a tall wall.  A massive wall
+of stone, part of the Brintor Mountains, rises to the north, blocking
+passage.  
+~
+~
+0
+0 50 1
+D2
+The battlements continue.
+~
+~
+0 0 22083
+D5
+The wall runs along a narrow crevice ledge.
+~
+~
+2097160 0 22057
+C KNIGHT~
+S
+#22061
+A Narrow Chapel~
+This small chapel is bathed in a soft glow from the flickering torches
+that line its walls.  A tall, intricately carved statue of Enirra herself
+stands at the back of the room, its features fading from illumination to
+shadow with the fickle flashing of the torches.  The walls are made from
+black-veined white marble.  Each swirl twists toward an altar that stands
+just before the statue.  The altar itself is edged in darkened platinum and
+features a large symbol of the Eye of Enirra on its front.  
+~
+~
+0
+0 58 1
+E
+engraving~
+The name \#Isal, Archmage of Earth\# is engraven at the base of the statue.  
+~
+E
+statue~
+A statue of an armor-clad woman is here, her left arm raised at a
+ninety-degree angle from her body.  In her extended hand, she holds a set of
+golden scales, which shimmer at any breeze in the room, swaying gently. 
+Each fingernail is inlaid with a formed ruby that glints dimly in the light
+of the room.  She is depicted as a human, and her pale complexion has been
+formed of ivory.  Atop her head sits a helm with two massive horns
+protruding from it.  The helm itself has been formed of brilliantly-gleaming
+platinum, while the horn on the right is made of flawless white marble and
+the horn on the left seems to draw light into its deep onyx form.  Wind
+seems to dramatically whip at the smooth hematite curves of her skirt,
+giving her an overall dramatic appearance.  Over her dress, her thick
+obsidian and platinum breastplate shines like a mirror, reflecting back the
+light from the sconces about the room.  At the base of the statue is a small
+engraving. 
+~
+D0
+A number of halls converge here.
+~
+~
+0 0 22068
+A 134217728
+C KNIGHT~
+S
+#22062
+The Gatehouse~
+Thick stone walls made of massive grey rocks rise around the gatehouse,
+ending in a romanesque arch at its top.  Paved with cobblestone
+the gatehouse provides the primary access to and from the fortress.
+A raised metal grated gate hangs to the west, the spear-like
+points at its bottom glistening dully.  A small, narrow staircase winds
+its way around the pulleys and weights that control the gate, and ascends
+to the top of the wall.
+  
+The main gate is closed, to the east.  The gate stands in its thick iron
+hinges, a sturdy construction of ironwood beams and metal supports.
+~
+~
+0
+0 54 0
+D1
+~
+~
+3276808 0 22058
+D3
+A couryard opens before the fortress proper.
+~
+~
+2097152 0 22079
+D4
+~
+~
+0 0 22083
+C KNIGHT~
+P
+>verb_prog east~
+if isghost($n)
+  mpechoaround $n $N floats eastward through the gatehouse.
+  mptransfer $n 22058
+  mpechoaround $n $N arrives, floating through the gatehouse.
+  mpechoat $N You go eastward, and are before the Knight Fortress.
+else
+  mpinterpret $n $x
+endif
+~
+|
+S
+#22063
+A Mess Hall~
+A long wooden table runs through the center of this room, lined by a
+pair of wood benches.  The walls around the table are bedecked with iron
+sconces with burning torches, and a broad slit-like window allows light into
+the room from its far end.  The floor is covered with a light layer of
+faint-smelling woodchips in which a few discarded bones can be seen.  To the
+north, a thick wooden door with an iron handle is set into the wall.  
+~
+~
+0
+0 58 1
+D0
+A wide hallway lit with torches is here.
+~
+~
+3 0 22082
+C KNIGHT~
+S
+#22064
+South End of the Battlements~
+The wide battlements stand thirty feet above the eastern ground here, its
+ramparts broken to allow defense by knight archers and templars.  The
+battlements themselves are made of a dark grey stone, and continue to the
+north, where the gate mechanism stands behind a tall wall.  A massive wall
+of stone, part of the Brintor Mountains, rises to the south, blocking
+passage.  
+~
+~
+0
+0 50 1
+D0
+The battlements continue.
+~
+~
+0 0 22083
+D5
+The wall runs along a narrow crevice ledge.
+~
+~
+2097160 0 22059
+C KNIGHT~
+S
+#22065
+Before the Storeroom~
+Five large torches are arranged around this circular chamber, bathing it
+in a gently flickering light.  This chamber has been made of dark grey
+stone, and features a wooden door in the eastern wall that is marked with
+the word \#Storage.\#  A set of stairs lead upward to a steel-reinforced trap
+door.  
+~
+~
+0
+0 58 1
+D1
+A small storeroom is here.
+~
+~
+66119 22076 22084
+D4
+A steel-reinforced trapdoor leads upward.
+~
+steel-reinforced trapdoor~
+3 0 22068
+C KNIGHT~
+S
+#22066
+A Stone Cell~
+This small stone cell is very cold.  A puddle has formed in its northeast
+corner, which reflects the flickering light from the torches outside the
+chamber eerily.  A small pile of hay is in the southwest corner, and a metal
+ring has been set in the floor.  Etched into the ground is a faintly glowing
+symbol of the Eye of Enaerai.  Embedded in the wall about five and a half
+feet above the ground is a pair of iron manacles that sport a large locking
+mechanism.  A similar pair of manacles is directly below it, its openings
+slightly larger to allow for feet to be placed within them.  A door of iron
+bars leads to a circular chamber to the east.  
+~
+~
+0
+0 8255 1
+C KNIGHT~
+S
+#22067
+The Room of the Scales~
+The walls of this spacious chamber are covered in pale grey onyx tiles,
+upon which are carved many intricate reliefs.  The carvings represent the
+primary symbols of the neutral deities.  Most numerous among them are the
+representations of various sets of scales, shown being consulted by
+important knights of the past.  On the northern wall a single great relief
+highlighted with gold foil depicts the legendary Scale of Orlin.  Standing
+in the center of the room are four slender pedestals, each rune-marked to
+represent one of the great Houses of Avendar.  
+~
+~
+0
+0 58 0
+D2
+A number of halls converge here.
+~
+~
+0 0 22068
+C KNIGHT~
+S
+#22068
+The Center Junction~
+A number of hallways converge here and lead off in each of the cardinal
+directions.  A spiral staircase rises from the center of the room, heading
+upwards.  Each step of the staircase is made of a different colored stone in
+a spectrum of grey tones.  The southern hallway leads to a narrow chapel in
+which a large statue of Enirra stands.  Through the northern hallway is the
+Room of the Scale, where a glowing set of golden scales hang delicately. 
+Wide hallways lead off through the fortress to the east and west.  
+~
+~
+0
+0 58 1
+D0
+A golden scale hangs in a small room.
+~
+steel-reinforced door~
+0 0 22067
+D1
+A wide hallway continues through the fortress.
+~
+~
+0 0 22082
+D2
+A large statue of Enaerai stands behind a darkened platinum altar.
+~
+~
+0 0 22061
+D3
+A wide hallway continues through the fortress.
+~
+~
+0 0 22071
+D4
+A landing is at the top of the stairs here.
+~
+~
+0 0 22075
+D5
+A steel-reinforced trapdoor is set in the floor.
+~
+steel-reinforced trapdoor~
+3 0 22065
+C KNIGHT~
+S
+#22069
+The Barracks~
+A long, narrow room lined with cots stretches northward.  Each small bed
+is covered by a thick grey blanket and has a small, feather-filled pillow at
+its head.  A few beds show signs of frequent use, their hay-filled interiors
+beginning to stick out of their sides.  A flaming torch is set in a wrought
+iron sconce on the wall above and between each bed, their metal emblazoned
+with a symbol of the Eye of Enirra.  A heavy wooden door to the south leads
+to a wide hallway.  
+~
+~
+0
+0 58 1
+D2
+A wide hallway lit with flickering torches is here.
+~
+~
+3 0 22082
+C KNIGHT~
+S
+#22070
+The Commons Room~
+A tall chamber, the commons room is filled with chairs, a few cots, and a
+number of small dining tables.  The chamber is lit with torches, each of
+which hangs from a black wrought iron sconce.  A metal chandelier hangs in
+the center of the room, making it far more well lit than most of the other
+rooms in the fortress.  One table is set aside from the others and has only
+two chairs at either end of it.  Atop this table sits a chess board whose
+playing pieces depict past leaders and prominent members of the Champion and
+Shunned houses.  
+~
+~
+0
+0 58 1
+D2
+A wide hallway heads into the rest of the Fortress.
+~
+~
+0 0 22071
+C KNIGHT~
+P
+>verb_prog p battlerecord ~
+if isbitset($n) == 24010
+  mpechoat $n Record of battle victories against imbalance:
+  mpechoat $n =============================================
+  mpmload 22099
+  mpforce enaeraikillrecordbot mpseewizi
+  mpforce enaeraikillrecordbot mpfocus $n
+  mpforce enaeraikillrecordbot reportkillstats $X
+  mpverbstop
+else
+  mpinterpret $n $x
+  mpverbstop
+endif
+~
+|
+S
+#22071
+A Wide Hallway~
+This wide stone hallway, made of a light grey rock, leads north and east
+through the Fortress.  The hallway is illuminated by a number of flickering
+torches, each held onto the wall by a heavy wrought iron sconce that has
+been engraved with the the triangled eye.  A pair of tall double doors are
+to the south, leading to the assembly hall.  An archway leads into a commons
+room to the north, which is filled with tables and chairs for relaxation.  
+~
+~
+0
+0 58 1
+D0
+The commons room is here.
+~
+~
+0 0 22070
+D1
+A number of hallways converge here.
+~
+~
+0 0 22068
+D2
+A pair of tall double doors lead to the assembly hall.
+~
+tall double doors~
+3 0 22072
+C KNIGHT~
+S
+#22072
+The Assembly Hall~
+The assembly hall is a long room with a vaulted ceiling.  Along the
+northern and southern wall are several tiers of chairs, and above them the
+somber stone walls are splashed with color from the banners representing the
+diverse factions and organizations throughout the land, as well a large
+mosaic map of Avendar fashioned from colored stones.  Along the western
+wall, upon a low dais, stand four large chairs, one for each of the leaders
+of the Knights.  The center of the room is bare, save for an ornate tile
+design.  A large ring formed of gold tiles surrounds the mark of the Eye of
+Enaerai, fashioned in silver tiles.  
+~
+~
+0
+0 58 1
+E
+table~
+A long table is here, its wooden surface covered with a myriad maps,
+battle plans, strategies, and scrolls detailing the current inhabitants of
+the realm.  
+~
+E
+map~
+This map is a perfect copy of the maps given out in the School of Heroes.
+Water is shown by swirled topaz, and each forest is made from a dark green
+jade.  Plains are shown in a lighter malachite color, and the desert and
+savannah are depicted with sandstone.  A large chunk of granite shows each
+of the great cities, and the Fortress of the Eye is marked with a small
+golden Eye of Enaerai.  
+~
+D0
+A pair of tall double doors lead back to the hallway.
+~
+tall double doors~
+3 0 22071
+C KNIGHT~
+S
+#22073
+Office of the Idris~
+The most prevalent sight in the offices of the Knight of Idris are the
+various tomes and scrolls, which are arranged on long shelves set flush with
+the walls.  Used by all members of the order, the room has a desk for the
+Knight, as well as various cushioned chairs and reading stands for other
+scholars.  Also present are a number of mystical artifacts, which are
+securely displayed on the east wall.  The only exit is through a wooden door
+to the south.  
+~
+~
+0
+0 134217786 1
+D2
+A stair landing is here.
+~
+~
+3 0 22075
+C KNIGHT~
+S
+#22074
+Office of the Ilthar~
+The chambers of the Knight of Ilthar are richly furnished with the
+trophies of past holders of the office.  The preserved hide of a dragon is
+stretched across the east wall, and several ornate and ancient weapons are
+displayed prominently to the north and south.  Several chairs sit in front
+of the Knight\@s desk, which is made from beautifully crafted ebony.  The
+only exit from the chamber lies through a stone door to the west.  
+~
+~
+0
+0 134217786 1
+D1
+A stair landing is here.
+~
+~
+3 0 22075
+C KNIGHT~
+S
+#22075
+The Stair Landing~
+A landing between two sets of stairs is at the center of this circular
+chamber.  Surrounded with flickering torches in wrought iron sconces, four
+doors are set in the walls of this round room.  Evident from simple runes
+marking the doors, to the north is the office of the Knight of Idris, to the
+south, the Knight of Mett, and to the west, the Knight of Ilthar.  The
+eastern door, leading to the office of the Knight Lord, is marked with the
+Eye of Enaerai.  The stairway continues upward to the apex of the fortress,
+and downward to an intersection of hallways.  A sheet of parchment is tacked
+to the western wall between the doors to the offices of Mett and Ilthar,
+illuminated from above by a row of candles.  
+~
+~
+0
+0 58 1
+D0
+A door marked with the symbol of Idris is here.
+~
+~
+3 0 22073
+D1
+A door with the mark of the Knight Lord is here.
+~
+~
+3 0 22076
+D2
+A door marked with the symbol of Mett is here.
+~
+~
+3 0 22077
+D3
+A door marked with the symbol of Ilthar is here.
+~
+~
+3 0 22074
+D4
+The stairs continue upward to the apex of the fortress.
+~
+~
+0 0 22078
+D5
+The stairs spiral downward to a meeting of a number of hallways.
+~
+~
+0 0 22068
+C KNIGHT~
+S
+#22076
+Office of the Knight Lord~
+The office of the Knight Lord is a large stone chamber, made from
+smoothed granite bricks.  Triangular walls frame the chamber, with the base
+of the triangle forming the south wall.  To the north, near the vertex of
+the triangle, sits the chair of the Knight Lord, carved from ancient
+ironwood, set with various runic devices.  A small table is next to the
+chair.  The floor of the chamber is tiled with an elaborate Eye of Enaerai,
+with the symbols of Ilthar, Mett, and Idris at each of its corners.  The
+only exit from the chamber is through two massive wooden doors, set in the
+eastern wall.  
+~
+~
+0
+0 134217786 1
+D3
+A stair landing is here.
+~
+~
+3 0 22075
+C KNIGHT~
+S
+#22077
+Office of the Mett~
+This large stone chambers serves as the headquarters for the Knight of
+Mett.  The actual furnishings are rather spare, with a single large desk for
+the Knight, and a few chairs in front of it.  Several large maps are on the
+wall, depicting the cities of Earendam, Var Bandor, Ilodaiya, Krilin, and
+Kor Thrandir, along with a map of mainland Avendar, with some strategic
+locations marked.  A wooden door leads out of the chamber to the north.  
+~
+~
+0
+0 134217786 1
+D0
+A stair landing is here.
+~
+~
+3 0 22075
+C KNIGHT~
+S
+#22078
+The Apex~
+The apex of the pyramidal upper level of the fortress allows one clear
+view of the approach to the stronghold and the mountains around it.  A heavy
+glass symbol of the Eye of Enaerai is set in the eastern wall through which
+one may view the outside world.  Two torches flank the glass, and a matrix
+of seven torches is directly behind it, illuminating the glass Eye.  A set
+of stairs leads downward, back into the body of the fortress.  
+~
+~
+0
+0 58 1
+D5
+The stairs lead back into the body of the fortress.
+~
+~
+0 0 22075
+C KNIGHT~
+S
+#22079
+A Small Courtyard~
+A courtyard open to the sky is here, lined by tall protective grey stone
+walls in each direction.  Grass covers the ground here, yet a stone path has
+been laid to give easy passage to the north, south, east, and west.  The
+sound of clanking metal and the characteristic smell of molten metal roils
+in from the north, where the smithy lies.  Southward, a wide room with a
+long wooden table flanked by a pair of benches is visible through a tall
+doorway.  The gatehouse of the fortress is to the east, and an arched
+gateway leads into the body of the fortress to the west.  
+~
+~
+0
+0 50 13
+D0
+Heat and the stench of molten metal rises from the smithy here.
+~
+~
+0 0 22080
+D1
+The gatehouse of the fortress is here.
+~
+~
+2097152 0 22062
+D2
+A mess hall lies beyond a small doorway.
+~
+~
+0 0 22081
+D3
+A wide hallway leads into the fortress here.
+~
+~
+0 0 22082
+C KNIGHT~
+S
+#22080
+The Smithy~
+A large fire roars within a furnace at the northern end of the smithy. 
+Ironworking implements hang along the walls on large racks, each blackened
+piece looking somewhat like a torturer\@s instrument.  A huge anvil sits near
+the furnace, its upper surface marked with thousands of hammer impacts.  A
+few working tables faced with metal stand around the east and west walls of
+the room, littered with half-finished pieces of weapons and armor.  A
+doorway leads to the south, where a small courtyard is open to the sky.  
+~
+~
+0
+0 58 1
+D2
+A courtyard opens to the sky here.
+~
+~
+0 0 22079
+C KNIGHT~
+S
+#22081
+A Training Room~
+This spacious, vaulted room has long open windows to the north which
+provide a clear view of the courtyard beyond, giving the room an airy,
+well-lighted feel, compared to the rest of the fortress.  On the western and
+eastern walls, torches are set in shining steel sconces, and wooden racks
+stand, holding a few old, broken, and useless melee weapons and pieces of
+armor.  In the center of the room, a wide chalk ring still remains, and on
+the southern wall hang several battered wooden targets.  
+~
+~
+0
+0 58 1
+D0
+A small courtyard is here.
+~
+~
+0 0 22079
+C KNIGHT~
+S
+#22082
+A Wide Hall~
+This wide stone hallway, made of deep grey rock, leads east and west
+through the fortress.  Flickering torches in wrought iron sconces hang along
+its walls, setting the hallway in a faintly flickering light.  A tall
+gateway leads outside to a small courtyard eastward, while a number of
+hallways converge to the west.  Thick wooden doors with black iron handles
+are set into the walls to the north and south.  
+~
+~
+0
+0 58 1
+D0
+A thick wooden door stands here.
+~
+~
+3 0 22069
+D1
+The hallway ends, leading outside to a small courtyard.
+~
+~
+0 0 22079
+D2
+A thick wooden door stands here.
+~
+~
+3 0 22063
+D3
+A number of hallways converge here.
+~
+~
+0 0 22068
+C KNIGHT~
+S
+#22083
+On the Battlements~
+Situated directly above the gates of the fortress, the battlements are
+broader along this portion of the wall.  The gate mechanism stands near the
+back of the battlements, protected by the particularly high ramparts before
+it.  Notches have been cut within the rock, allowing room for archers and
+templars to cast their spells on any attackers below.  The battlements
+continue to the north and south, and drop off just before the gate to the
+east.  A narrow, steep stairway leads down the west side of the wall and
+into the gatehouse.  
+~
+~
+0
+0 50 1
+E
+mechanism~
+The gate mechansim is a work of impressive engineering, formed of
+interlocked wheels, counterweights and pulleys.  At the top, there is a
+sturdy lever connecting to a spin-wheel.  
+~
+D0
+The battlements continue.
+~
+~
+0 0 22060
+D2
+The battlements continue.
+~
+~
+0 0 22064
+D3
+A narrow staircase descends down the western side of the wall.
+~
+~
+2097152 0 22062
+D5
+The wall runs along a narrow crevice ledge.  There is a bridge spanning
+the crevice, not far from the base of the wall.  
+~
+~
+2097160 0 22058
+C KNIGHT~
+P
+>verb_prog west~
+if isinhouse($n)
+or isbitset($n) == 22056
+or isghost($n)
+or isimmort($n)
+or name($n) / knight
+  mpinterpret $n $x
+  break
+endif
+if mobhere(22056)
+  mpechoat $n Adbren blocks your way.
+  break
+else
+  mpinterpret $n $x
+endif
+~
+|
+S
+#22084
+A Small Storeroom~
+The grey stone walls of this claustrophobic room are lined with wooden
+shelves.  Each shelf looks rather hardy, and is held up with large metal
+brackets.  A few bucket-like compartments are on the ground below the
+shelves.  A single torch is set upon the far eastern wall, setting the room
+alight with a dim, softly flickering glow.  A wooden door is to the west,
+leading out to a circular room.  
+~
+~
+0
+0 134225978 1
+D3
+A door leads to a stairway landing here.
+~
+~
+66119 22076 22065
+C KNIGHT~
+S
+#22085
+A Deep Crevice~
+The crevice floor and walls are rough and uneven, making passage along
+it difficult.  The crevice continues to descend as it leads northward, and
+rises and broadens slightly to the south.  A few patches of lichen, yellow
+and sickly brown, provide a contrast to the somber gray of the stone around
+you.  
+~
+~
+0
+0 0 5
+D0
+~
+~
+0 0 22053
+D2
+A small path leads into the mountains.
+~
+~
+0 0 22086
+S
+#22086
+A Small Trail~
+The trail narrows sharply as it descends between two steep walls of
+stone, forming a nearly-enclosed crevice.  To the north, the trail runs
+along the crevice floor, passing over and around the rocky projections and
+boulders.  To the east, the trail is much smoother, broadening into a glade
+of tall pines.  
+~
+~
+0
+0 0 5
+D0
+A crevice is visible in the rock here.
+~
+~
+0 0 22085
+D1
+A small, green glade is here.
+~
+~
+0 0 22087
+S
+#22087
+A Mountain Glade~
+Along this stretch of the small mountain trail, the slopes widens into a
+tiny valley nestled between two mountain ridges.  In the valley stand a
+glade of tall straight evergreens and a few stout hardwoods.  The trail is
+covered in dry brown needles, and the thin air is pungent with the scent of
+the pines.  Throughout the valley are several stumps and a few small piles
+of woodchips.  
+~
+~
+0
+0 0 5
+D1
+The path continues east through the mountains.
+~
+~
+0 0 22055
+D3
+A path winds through the mountains.
+~
+~
+0 0 22086
+P
+>greet_prog 100~
+if isbitset($n) == 22059
+  break
+else
+  mpechoat $n Looking around the glade, you notice several fallen logs, branches, and thick vines.
+  mpechoat $n These things could be used to MAKE a LADDER or RAM.
+  mpbitset $n 22059 1
+endif
+~
+>verb_prog p make~
+if compstr(2) == ram
+or compstr(2) == battering
+or compstr(2) == ladder
+  if isghost($n)
+  or inhouse($n) == knight
+    mpecho You get the feeling that there must be better uses of your time.
+    break
+  endif
+  if isbitset($n) == 22060
+    mpechoat $n You aren\@t fully recovered from the last work you did here.
+    break
+  endif
+  mpbitset $n 22060 1
+  mpaddaffect $n 479 60 6 27 22060 0
+  if compstr(2) == ladder
+    mpechoat $n You take some time to fashion a very crude ladder of branches and vines.
+    mpechoaround $n $N works to make a crude ladder from branches and vines.
+    mpoload 22052 on $n 
+  else
+    mpechoat $n You take some time to fashion a very crude battering ram from a fallen log.
+    mpechoaround $n $N works to make a crude ram from a fallen log.
+    mpoload 22053 on $n 
+  endif
+else
+  mpechoat $n Make what?
+  break
+endif
+~
+|
+S
+#22088
+A Deep Crevice~
+The crevice ends at this point, the walls converging until they form a
+complete arch, concealing the sky from view.  A narrow crack in the base of
+the stone northward opens further into the darkness below the arch.  Small,
+sharp protrusions project from the walls, and the floor is littered with
+small shards of shale.  
+~
+~
+0
+0 13 5
+D0
+A narrow tunnel recedes into darkness.
+~
+~
+0 0 4828
+D2
+~
+~
+0 0 22053
+S
+#22089
+Unused~
+~
+~
+0
+0 8240 0
+D5
+~
+~
+0 0 22054
+S
+#22098
+Knight Bit Room~
+{YKnight Bits:{x
+22051 = is knight                22052 = is captain
+22053 = is lord/lady             22054 = is oathbreaker
+22055 = willing to take oath     22056 = guest of fortress
+22057 = got roster instructions  22058 = got entry warning
+22059 = got woodcutter message   22060 = tired from making
+22061 = got gate message
+22062 = got cell guard message
+~
+~
+0
+0 41012 0
+S
+#22099
+Knight Utility Room~
+Stores: name and kill-for-balance count of Knights.
+~
+~
+0
+0 134774838 0
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 22053 4 2097160
+D 0 22056 0 8
+D 0 22056 2 8
+D 0 22057 4 2097160
+D 0 22058 3 3276808
+D 0 22058 4 2097160
+D 0 22059 4 2097160
+D 0 22060 5 2097160
+D 0 22062 1 3276808
+D 0 22062 3 2097152
+D 0 22063 0 3
+D 0 22064 5 2097160
+D 0 22065 1 66119
+D 0 22065 4 3
+D 0 22068 5 3
+D 0 22069 2 3
+D 0 22071 2 3
+D 0 22072 0 3
+D 0 22073 2 3
+D 0 22074 1 3
+D 0 22075 0 3
+D 0 22075 1 3
+D 0 22075 2 3
+D 0 22075 3 3
+D 0 22076 3 3
+D 0 22077 0 3
+D 0 22079 1 2097152
+D 0 22082 0 3
+D 0 22082 2 3
+D 0 22083 3 2097152
+D 0 22083 5 2097160
+D 0 22084 3 66119
+M 0 22057 1 22054 1
+E 0 22074 0 16
+M 0 22066 1 22054 1
+M 0 22058 1 22058 1
+M 0 22085 3 22060 1
+M 0 22055 3 22060 1
+E 0 22055 0 16
+M 0 22054 3 22060 1
+M 0 22051 1 22061 1
+M 0 22073 1 22062 1
+M 0 22067 1 22063 1
+O 0 22077 0 22063
+O 0 22079 0 22063
+M 0 22080 1 22063 1
+M 0 22085 3 22064 1
+M 0 22055 3 22064 1
+E 0 22055 0 16
+M 0 22054 3 22064 1
+M 0 22053 1 22065 1
+G 0 22076 0
+M 0 22083 2 22066 1
+M 0 22084 1 22067 1
+M 0 22070 1 22068 1
+E 0 1211 0 20
+M 0 22071 1 22068 1
+E 0 1211 0 20
+M 0 22072 1 22068 1
+E 0 1211 0 20
+O 0 22059 0 22069
+O 0 22058 0 22070
+O 0 22059 0 22070
+O 0 22060 0 22070
+M 0 22081 1 22070 1
+G 0 22087 0
+G 0 22088 0
+G 0 22089 0
+G 0 22090 0
+G 0 22091 0
+G 0 22092 0
+G 0 22093 0
+G 0 22094 0
+G 0 22095 0
+O 0 22060 0 22072
+O 0 22061 0 22072
+O 0 22062 0 22072
+O 0 22063 0 22072
+O 0 22064 0 22072
+O 0 22067 0 22072
+P 0 22070 1 22069 1
+P 0 22071 1 22069 1
+O 0 22065 0 22073
+O 0 22069 0 22073
+P 0 22070 1 22069 1
+P 0 22096 1 22069 1
+O 0 22065 0 22074
+O 0 22069 0 22074
+P 0 22070 1 22069 1
+O 0 22056 0 22074
+M 0 22064 1 22075 1
+O 0 22061 0 22076
+P 0 22070 1 22069 1
+O 0 22069 0 22076
+O 0 22065 0 22077
+P 0 22071 1 22069 1
+O 0 22069 0 22077
+M 0 22068 1 22078 1
+M 0 22065 1 22080 1
+M 0 22082 1 22081 1
+E 0 22097 0 16
+M 0 22056 1 22083 1
+M 0 22060 1 22083 1
+M 0 22085 3 22083 1
+M 0 22055 3 22083 1
+E 0 22055 0 16
+M 0 22054 3 22083 1
+M 0 22083 2 22084 1
+M 0 22077 1 22087 1
+E 0 22075 0 16
+S
+
+
+
+#GUILD
+#22054
+'staff'
+#0
+
+#22055
+'staff'
+#0
+
+#22059
+'staff'
+#0
+
+S
+
+
+#SHOPS
+22081 0 0 0 0 0 150 150 0 23 20
+0
+
+
+
+#$

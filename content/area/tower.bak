@@ -1,0 +1,1930 @@
+#AREADATA
+Name The Tower of Testing~
+Builders Jolinn~
+VNUMs 8500 8599
+Credits { 1  5} Jolinn    The Tower of Testing~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+End
+
+
+
+#MOBILES
+V4 8500
+small chained lizard~
+a small lizard~
+A small lizard is chained to the ground here.
+~
+This small spotted lizard has been chained to the ground of this hall. 
+From its size and the relatively short size of its fangs and claws, it
+appears to be not quite fully grown.  
+~
+lizard~
+water scholar~
+ABN 0 0 N 0
+1 0 1d10+5 0d0+0 1d2+1 pierce~
+bite~
+8 8 8 8
+0 AB
+26 0 0 0 0 0 0 0 0 -33 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 50 0
+AGXc ACDEFHKQV A medium unknown
+V4 8501
+large lizard chained ~
+the large lizard~
+A large lizard tugs against its chains.
+~
+This large speckled lizard is chained to the wall here.  It ocassionally
+emits a low growl and tugs against the chain, but seems to lack the strength
+necessary to free itself.  
+~
+human~
+water scholar~
+ABN 0 0 N 0
+2 1 1d20+10 0d0+0 1d2+1 pierce~
+bite~
+7 7 7 7
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 50 0
+AHMVX ABCDEFGHIJK A medium unknown
+>greet_prog 40~
+growl $n
+~
+|
+V4 8502
+imp small brown~
+a small brown imp~
+A small brown imp flutters its scaly wings and scurries about.
+~
+A small scaled humanoid standing about three feet high, this brown imp
+scurries about the room, flapping its leathery wings fitfully.  It works its
+jaw constantly, revealing a row of tiny, needle-like teeth.  
+~
+human~
+water scholar~
+ABD 0 J N 0
+2 2 1d20+1 0d0+0 1d4+3 pierce~
+bite~
+5 5 5 0
+IN AB
+26 0 0 -33 0 0 0 0 0 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 80 0
+ABHMV ABCDEFGHIJKQ A medium unknown
+>fight_prog 1~
+emote shrieks loudly as it strikes!
+~
+>rand_prog 1~
+emote makes a faint burbling sound.
+~
+|
+V4 8503
+brander~
+the school attendant~
+(no long description)
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+60 0 1d100+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+if isbitset($n) == 8503
+else
+mpbitset $n 8503 1
+mpbrand $n 8511
+endif
+~
+|
+V4 8504
+green imp large~
+a large green imp~
+A large green imp flexes its scaly wings and mutters to itself.
+~
+A smallish scaled humanoid standing about four feet tall, this green imp
+paces about irritably, flexing its green, leathery wings and muttering to
+itself.  Its pointed tail lashes back and forth constantly.  
+~
+human~
+water scholar~
+AD 0 J N 0
+5 2 3d20+4 0d0+0 1d6+1 pierce~
+bite~
+5 5 5 0
+IN AB
+26 0 0 -33 0 0 0 0 0 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 80 0
+ABHMV ABCDEFGHIJKQ A medium unknown
+>fight_prog 1~
+if rand(50)
+emote hisses in anger.
+else
+emote flaps its wings to better angle for an attack.
+endif
+~
+|
+V4 8505
+imp black small~
+a black imp~
+A small black imp floats in mid-air.
+~
+This small black imp is hovering effortlessly in mid-air, apparently by
+magical means, as its wings flap only lazily.  Small sparks dance around its
+claws, and it exhibits several needle-sharp teeth in its mouth.  
+~
+human~
+water scholar~
+ADL 0 JT N 0
+5 1 3d20+0 0d0+0 1d6+0 pierce~
+bite~
+6 6 6 6
+0 AB
+26 0 0 -33 0 0 0 0 0 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 85 0
+ABHMV ABCDEFGHIJKQ A medium unknown
+>rand_prog 1~
+emote mutters to itself.
+~
+>fight_prog 1~
+mpechoat $n The black imp gibbers madly, biting at you!
+mpechoaround $N The black imp gibbers madly, biting at $N!
+~
+|
+V4 8506
+Trap~
+the trap~
+The trap is here, waiting to kick your ass
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+60 10000 1d100+10 0d0+0 1d1+29 pierce~
+stab~
+-100 -100 -100 -100
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+mpechoat $n As you pass through this door, you inadvertently snap a tiny wire.
+mpechoaround As $n passes through this door, they inadvertently snap a tiny wire.
+mpecho Knives shoot out of the wall!
+mpkill $n
+~
+|
+V4 8507
+stone guardian~
+the stone guardian~
+The stone guardian stands here in mute silence.
+~
+A tall marble statue of a warrior stands here.  Its bulk and silence are
+somewhat forbidding, and its defensive posture indicates that of a guardian
+who will defend his post to the death.  
+~
+human~
+water scholar~
+AB 0 0 N 0
+5 3 4d12+30 0d0+0 2d4+4 none~
+hit~
+5 5 5 5
+0 0
+26 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 100 0
+AHMV ABCDEFGHIJK A medium stone
+V4 8508
+magic mouth~
+the magic mouth~
+A magic mouth floats here, its lips shaped into an impish grin.
+~
+The magic mouth floats here, testing the wit of adventurers.
+~
+human~
+water scholar~
+ABX B DFH N 0
+30 10 13d100+39 0d0+0 1d1+1 none~
+hit~
+-20 -20 -20 -20
+0 ABCD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>fight_prog 100~
+mpechoat $n The Magic Mouth lunges towards you!
+mpechoaround $n The Magic Mouth lunges towards $N!
+mpvaluerand 0 2 3
+mpdamfrom $n $0 \@quick bite\@ The Magic Mouth
+mpdamage $n 1 2 1
+~
+>verb_prog p kill mouth~
+mpechoat $n An invisible force protects the magic mouth.
+~
+>speech_prog p Riddle~
+say Give food and I will live
+say Give water and I will die
+say What am I?
+~
+>speech_prog p fire~
+mpechoat $n The magic mouth opens a gate, and you are pulled through!
+mpechoaround $n A portal opens, drawing $N inward.
+mptransfer $n 8570
+mpat 8570 mpforce $n look
+~
+>greet_prog 100~
+esay chants Give food and I will live,
+esay chants Give water and I will die!
+esay riddles What am I?
+~
+|
+V4 8509
+school scribe~
+the scribe~
+The scribe of the School of Heroes stands here.
+~
+This scribe records the names of those who pass through the hall of
+challenges, adding their name to the rolls of young adventurers maintained
+by the school.  
+~
+human~
+water scholar~
+AB 0 H N 0
+51 10 10d100+200 0d0+0 1d20+20 bash~
+pound~
+-20 -20 -20 -20
+0 ABCD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>exit_prog 100~
+emote adds your name to the scrolls of heroes.
+~
+>greet_prog 100~
+emote looks up from his writing.
+say \@Congratulations, $N! You have triumphed over the Hall of Challenges.\@
+say \@Your reward and your destiny lie up these stairs.\@
+~
+|
+V4 8510
+school attendant man~
+the school attendant~
+A school attendant stands here, welcoming adventurers.
+~
+Clad in robes of white silk, this attendant rewards the young
+students who have passed through the hall of challenges.
+~
+human~
+water scholar~
+A 0 0 N 0
+50 0 10d100+1000 0d0+0 1d10+30 none~
+hit~
+0 0 0 0
+0 ABCD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 0
+AHMV ABCDEFGHIJK A medium unknown
+V4 8511
+Trapdisarmguy~
+Trapdisarmguy~
+Trapdisarmguy is here. It looks like a real wimp.
+~
+~
+human~
+water scholar~
+AL 0 L N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if mobvalue(0) > 0 
+mpvaluedown 0
+endif
+~
+>verb_prog p look south~
+if mobvalue(0) == 0
+mpechoat $n A fine wire stretches across the doorway to the south.
+else
+mpechoat $n The hallway continues to the south.
+endif
+~
+>rand_prog 100~
+if mobvalue(0) > 0 
+mpvaluedown 0
+endif
+~
+>verb_prog p slice wire~
+mpechoat $n as you cut the wire, a barrage of daggers flashes overhead.
+mpat 8538 mppurge trap
+mpvalueset 0 50
+~
+>verb_prog p cut wire~
+mpechoat $n As you cut the wire, a barrage of daggers flashes overhead.
+mpat 8538 mppurge trap
+mpvalueset 0 50
+~
+>load_prog 100~
+mpseewizi
+~
+|
+V4 8512
+no name~
+the grizzled adventurer~
+A grizzled old adventurer stands here, selling equipment.
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 8540
+tester~
+tester~
+Tester is here, lapsed into a fugue state.
+~
+~
+human~
+water scholar~
+AK 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>all_greet_prog 100~
+say Why hello, $N!
+~
+|
+#0
+
+
+
+#OBJECTS
+V12
+8510
+stone key~
+a stone key~
+A stone key rests on the ground.~
+~
+stone~
+key 0 0 A
+0 0 0 0 0
+0 0 0 0 P
+0
+E
+stone~
+This key is made of carved sandstone.
+~
+E
+key~
+This key is made of carved sandstone.
+~
+V12
+8511
+sigil school heroes~
+the Sigil of the School of Heroes~
+The sigil rests on the ground~
+~
+unknown~
+trash AMP 0 AR
+0 0 0 0 0
+0 0 50960 2 P
+0
+A
+12 10
+A
+13 10
+A
+4 1
+A
+3 1
+A
+13 5
+A
+12 5
+A
+1 1
+#0
+
+
+
+#ROOMS
+#8500
+The God\@s Scrying Pool~
+~
+~
+1
+0 786438 0
+S
+#8501
+Entry Hall to the Tower of Testing~
+The entryway to the tower of testing is a dimly lit vestibule of rough
+hewn stones.  An oil lantern dangles from the ceiling, filling the room with
+shadows.  To either side of you are murals emblazoned with the sigil of the
+School of Heroes, while to the north a hallway begins.  To the south, an
+oaken door leads out of the tower.  A plaque is affixed to the west wall.  
+~
+~
+1
+0 393254 0
+E
+plaque~
+Welcome to the Tower of Testing!
+ 
+Here, your mettle will be tested in physical combat. 
+ 
+If the foes here prove to hard for you, you can always get
+away from combating by using the FLEE command.
+ 
+None of the monsters on the first floor will attack you first,
+or start a fight with you.
+ 
+If you really get in trouble, you can use the RECALL command, which
+will take you to a temple in town.
+~
+D4
+A strange portal leads upwards.
+~
+~
+0 0 3786
+S
+#8502
+A Hallway in the Tower of Testing~
+This stone hallway is lit only by the flickering torches that line the
+way.  The floor seems a sort of smooth marble, but the walls and ceilings
+seem made of a rougher sort of rock, packed together by a rough mortar of
+some sort.  To the north, the hallway continues, while southward it opens
+into a vestibule of some kind.  
+ 
+An iron plaque is affixed to the west wall.
+~
+~
+1
+0 393218 0
+E
+iron~
+Lizards can be found near here.  To attack the lizards, use the KILL
+command.  
+ 
+Ex: Kill Lizard
+ 
+For more help on combat, see:
+ 
+help KILL
+help FLEE
+help WIMPY
+help CAST
+help HIT POINTS
+help DAMAGE
+~
+E
+plaque~
+Lizards can be found near here.  To attack the lizards, use the KILL
+command.  
+   
+Ex: Kill Lizard
+  
+For more help on combat, see:
+  
+help KILL
+help FLEE
+help WIMPY
+help CAST
+help HIT POINTS
+help DAMAGE
+~
+D0
+~
+~
+0 0 8503
+D2
+~
+~
+0 0 3790
+S
+#8503
+A Hallway in the Tower of Testing~
+This stone hallway is lit only by the flickering torches that line the
+way.  The floor seems a sort of smooth marble, but the walls and ceilings
+seem made of a rougher sort of rock, packed together by a rough mortar of
+some sort.  The hallway itself continues both to the north and the south.  
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8504
+D2
+~
+~
+0 0 8502
+S
+#8504
+A Hallway in the Tower of Testing~
+This north-south stone hallway is lit only by the flickering torches that
+line the way.  The floor seems a sort of smooth marble, but the walls and
+ceilings seem made of a rougher sort of rock, packed together by a rough
+mortar of some sort.  In either direction, the hallway continues as before. 
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8505
+D2
+~
+~
+0 0 8503
+S
+#8505
+A Hallway in the Tower of Testing~
+This stone hallway is lit only by the flickering torches that line the
+way.  The floor seems a sort of smooth marble, but the walls and ceiling
+seem made of a rougher sort of rock, packed together by a rough mortar of
+some sort.  To the south, the hallway continues, while to the west a
+rough-hewn opening leads into a much larger chamber.  
+~
+~
+1
+0 393218 0
+D2
+~
+~
+0 0 8504
+D3
+~
+~
+0 0 8506
+S
+#8506
+The First Chamber~
+The first chamber of the tower of testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through their first trials before moving on to more difficult
+challenges.  
+~
+~
+1
+0 393218 0
+D1
+~
+~
+0 0 8505
+D2
+~
+~
+0 0 8507
+D3
+~
+~
+0 0 8515
+S
+#8507
+The First Chamber~
+The first chamber of the tower of testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through their first trials before moving on to more difficult
+challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8506
+D2
+~
+~
+0 0 8508
+D3
+~
+~
+0 0 8514
+S
+#8508
+The First Chamber~
+The first chamber of the tower of testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through their first trials before moving on to more difficult
+challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8507
+D2
+~
+~
+0 0 8509
+D3
+~
+~
+0 0 8513
+S
+#8509
+The First Chamber~
+The first chamber of the tower of testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through their first trials before moving on to more difficult
+challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8508
+D2
+~
+~
+0 0 8510
+D3
+~
+~
+0 0 8512
+S
+#8510
+The First Chamber~
+The first chamber of the tower of testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through their first trials before moving on to more difficult
+challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8509
+D3
+~
+~
+0 0 8511
+S
+#8511
+The First Chamber~
+The first chamber of the tower of testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through their first trials before moving on to more difficult
+challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8512
+D1
+~
+~
+0 0 8510
+D3
+~
+~
+0 0 8520
+S
+#8512
+The First Chamber~
+The first chamber of the tower of testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through their first trials before moving on to more difficult
+challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8513
+D1
+~
+~
+0 0 8509
+D2
+~
+~
+0 0 8511
+D3
+~
+~
+0 0 8519
+S
+#8513
+The First Chamber~
+The first chamber of the tower of testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through their first trials before moving on to more difficult
+challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8514
+D1
+~
+~
+0 0 8508
+D2
+~
+~
+0 0 8512
+D3
+~
+~
+0 0 8518
+S
+#8514
+The First Chamber~
+The first chamber of the tower of testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through their first trials before moving on to more difficult
+challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8515
+D1
+~
+~
+0 0 8507
+D2
+~
+~
+0 0 8513
+D3
+~
+~
+0 0 8517
+S
+#8515
+The First Chamber~
+The first chamber of the tower of testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through their first trials before moving on to more difficult
+challenges.
+~
+~
+1
+0 393218 0
+D1
+~
+~
+0 0 8506
+D2
+~
+~
+0 0 8514
+D3
+~
+~
+0 0 8516
+S
+#8516
+The First Chamber~
+The first chamber of the tower of testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through their first trials before moving on to more difficult
+challenges.
+~
+~
+1
+0 393218 0
+D1
+~
+~
+0 0 8515
+D2
+~
+~
+0 0 8517
+S
+#8517
+The First Chamber~
+The first chamber of the tower of testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through their first trials before moving on to more difficult
+challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8516
+D1
+~
+~
+0 0 8514
+D2
+~
+~
+0 0 8518
+S
+#8518
+The First Chamber~
+The first chamber of the tower of testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through their first trials before moving on to more difficult
+challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8517
+D1
+~
+~
+0 0 8513
+D2
+~
+~
+0 0 8519
+S
+#8519
+The First Chamber~
+The first chamber of the tower of testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through their first trials before moving on to more difficult
+challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8518
+D1
+~
+~
+0 0 8512
+D2
+~
+~
+0 0 8520
+S
+#8520
+Near a Stairwell~
+Set in the southwest corner of the chamber, a spiral staircase leads up
+through the ceiling of the first chamber.  A door leads out of the chamber
+to the west, while the chamber proper stretches to the north and east.  
+~
+~
+1
+0 393222 0
+D0
+~
+~
+0 0 8519
+D1
+~
+~
+0 0 8511
+D4
+~
+~
+0 0 8521
+S
+#8521
+Top of a Stairwell~
+Set in the southwestern corner of the second chamber, a spiral staircase
+leads down through the floor of the chamber.  To the north and east lies the
+second chamber, where young adventurers hone their skills.  
+ 
+A large sign stands here.
+~
+~
+1
+0 393222 0
+E
+sign~
+WARNING!
+ 
+The monsters on the second floor of the tower are sometimes known
+to be aggressive.
+ 
+Monsters here will also chase you, so be wary. You might FLEE
+into an aggressive one, and then have two on your trail!
+ 
+Fortunately, the first floor is protected by a spell which will
+prevent these monsters from following you down the stairs.
+ 
+Be on the lookout for the Hall of Challenges here, and remember,
+if you get in trouble or get lost, you can always RECALL.
+~
+D0
+~
+~
+0 0 8522
+D1
+~
+~
+0 0 8530
+D5
+~
+~
+0 0 8520
+S
+#8522
+The Second Chamber~
+The second chamber of the Tower of Testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through more trials before moving on to more difficult challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8523
+D1
+~
+~
+0 0 8529
+D2
+~
+~
+0 0 8521
+S
+#8523
+The Second Chamber~
+The second chamber of the Tower of Testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through more trials before moving on to more difficult challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8524
+D1
+~
+~
+0 0 8528
+D2
+~
+~
+0 0 8522
+S
+#8524
+The Second Chamber~
+The second chamber of the Tower of Testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through more trials before moving on to more difficult challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8525
+D1
+~
+~
+0 0 8527
+D2
+~
+~
+0 0 8523
+S
+#8525
+The Second Chamber~
+The second chamber of the Tower of Testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through more trials before moving on to more difficult challenges.
+~
+~
+1
+0 393218 0
+D1
+~
+~
+0 0 8526
+D2
+~
+~
+0 0 8524
+S
+#8526
+The Second Chamber~
+The second chamber of the Tower of Testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through more trials before moving on to more difficult challenges.
+~
+~
+1
+0 393218 0
+D1
+~
+~
+0 0 8535
+D2
+~
+~
+0 0 8527
+D3
+~
+~
+0 0 8525
+S
+#8527
+The Second Chamber~
+The second chamber of the Tower of Testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through more trials before moving on to more difficult challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8526
+D1
+~
+~
+0 0 8534
+D2
+~
+~
+0 0 8528
+D3
+~
+~
+0 0 8524
+S
+#8528
+The Second Chamber~
+The second chamber of the Tower of Testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through more trials before moving on to more difficult challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8527
+D1
+~
+~
+0 0 8533
+D2
+~
+~
+0 0 8529
+D3
+~
+~
+0 0 8523
+S
+#8529
+The Second Chamber~
+The second chamber of the Tower of Testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through more trials before moving on to more difficult challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8528
+D1
+~
+~
+0 0 8532
+D2
+~
+~
+0 0 8530
+D3
+~
+~
+0 0 8522
+S
+#8530
+The Second Chamber~
+The second chamber of the Tower of Testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through more trials before moving on to more difficult challenges.  
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8529
+D1
+~
+~
+0 0 8531
+D3
+~
+~
+0 0 8521
+S
+#8531
+The Second Chamber~
+The second chamber of the Tower of Testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through more trials before moving on to more difficult challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8532
+D3
+~
+~
+0 0 8530
+S
+#8532
+The Second Chamber~
+The second chamber of the Tower of Testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through more trials before moving on to more difficult challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8533
+D2
+~
+~
+0 0 8531
+D3
+~
+~
+0 0 8529
+S
+#8533
+The Second Chamber~
+The second chamber of the Tower of Testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through more trials before moving on to more difficult challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8534
+D2
+~
+~
+0 0 8532
+D3
+~
+~
+0 0 8528
+S
+#8534
+The Second Chamber~
+The second chamber of the Tower of Testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through more trials before moving on to more difficult challenges.
+~
+~
+1
+0 393218 0
+D0
+~
+~
+0 0 8535
+D2
+~
+~
+0 0 8533
+D3
+~
+~
+0 0 8527
+S
+#8535
+The Second Chamber~
+The second chamber of the Tower of Testing is a large room, lit by
+lanterns which hang from the ceiling.  It is here that young adventurers
+pass through more trials before moving on to more difficult challenges.
+~
+~
+1
+0 393218 0
+D1
+~
+~
+0 0 8536
+D2
+~
+~
+0 0 8534
+D3
+~
+~
+0 0 8526
+S
+#8536
+Hall of Challenges~
+This hall is brightly lit by magically enchanted stones which are affixed
+to the walls of the room.  The ceiling of the room is covered with an
+enormous mural, depicting the trials of the young adventurers who pass
+through the School of Heroes.  The hallway opens into a large chamber to the
+west, a door opens to the north, and the hall continues to the south.  
+ 
+A large plaque is set in the east wall.
+~
+~
+1
+0 393222 0
+E
+plaque~
+WARNING: Adventurer Take Heed!
+ 
+The Hall of Challenges is not for the weak of Heart.
+ 
+Beware when you tread south: Battles, traps, and tests of wit await you.
+ 
+If you feel you are not prepared, you can return to the entrance to
+the school to the north, or the Second Chamber to the west.
+ 
+Don\@t forget you can always RECALL out if you get in trouble.
+ 
+~
+D0
+~
+~
+0 0 3768
+D2
+~
+~
+0 0 8537
+D3
+~
+~
+0 0 8535
+S
+#8537
+Hallway~
+This hall is brightly lit by magically enchanted stones which are affixed
+to the walls of the room.  The walls and and floors of the room are carved
+sandstone, giving the room the feel of a tunnel.  You can escape the chamber
+to the north, or procede further through the sandstone door to the south.  
+ 
+An iron plaque is inset in the south wall.
+~
+~
+1
+0 393218 0
+E
+iron~
+The guardian blocks the way to the south, holding the key
+you need to proceed in the Hall of Challenges. When you
+have slain the guardian, and opened the door to the south,
+pause for a moment.
+ 
+Many traps will await you in the world at large, so it\@s 
+important you pay attention to your surroundings. One
+way you can do that is to always LOOK in a direction
+before you head there. Simply type: 
+ 
+LOOK <direction>
+ 
+to see if there\@s anything interesting in a given direction.
+ 
+In this case, something seems to be suspicious. Maybe if you
+could figure out to disable the trap....
+~
+E
+plaque~
+The guardian blocks the way to the south, holding the key
+you need to proceed in the Hall of Challenges. When you
+have slain the guardian, and opened the door to the south,
+pause for a moment.
+ 
+Many traps will await you in the world at large, so it\@s 
+important you pay attention to your surroundings. One
+way you can do that is to always LOOK in a direction
+before you head there. Simply type: 
+ 
+LOOK <direction>
+ 
+to see if there\@s anything interesting in a given direction.
+ 
+In this case, something seems to be suspicious. Maybe if you
+could figure out to disable the trap....
+~
+D0
+~
+~
+0 0 8536
+D2
+A fine wire stretches across the doorway to the south.
+~
+~
+7 8510 8538
+S
+#8538
+Hallway~
+This hallway\@s only illumination are two wooden torches, affixed to the
+east and west walls.  These same walls are lined with a small series of
+apperatures which run in a vertical line near the northern exit.  To the
+south, the hallway continues, while a sandstone door lies to the north.  
+~
+~
+1
+0 393218 0
+D0
+~
+~
+7 0 8537
+D2
+~
+~
+0 0 8539
+S
+#8539
+A Blank Chamber~
+This stone chamber is built from smooth blocks of pale granite, four
+bracketed torches ensconced on each wall.  The air is cool and crisp, tinged
+with a hint of magical energy.  No exit to the chamber is evident in any
+direction.  
+~
+~
+1
+0 393222 0
+S
+#8540
+Stairwell~
+This small chamber is dominated a spiral staircase near the south wall,
+which winds its way upward.  No other exit from this room is visible, but
+the wall to the north appears to have been sealed over recently.  
+~
+~
+1
+0 393250 0
+D4
+~
+~
+0 0 8541
+S
+#8541
+The Final Chamber~
+Pillars line this opulently furnished chamber.  A woven red carvet runs
+through the center of this chamber, terminating in a small raised area at
+the north end of the chamber, on which sits a carved stone altar.  Statues
+also line the room, every set of pillars framing a figure hewn from marble. 
+In the north wall, past the altar, a portal provides the only egress from
+the room.  
+~
+~
+1
+0 393250 0
+E
+altar~
+This altar of carved stone is carved with the markings of the gods of
+knowledge, good fortune, and success.  It commemorates those who have passed
+through these halls, and gives thanks to the these gods.  
+~
+D0
+~
+~
+0 0 3768
+S
+#8542
+~
+Rogues: Thieves: One of the world\@s oldest professions, the thief is a
+master of acquisition, stealth, and deception.  Making his living off of
+other\@s wealth, the thief makes his way through the world through the use of
+wits and the occasional judicious use of force.  
+
+ 
+Thief abilities include:
+Waylay, Backstab, Hide, Listen
+~
+~
+1
+0 295428 0
+D0
+~
+~
+0 0 8543
+S
+#8543
+~
+Rogues: Bandits: Bandits are the ruffians of the world of Avendar.  They
+specialize in the use of brute force in acquiring material goods.  Unlike a
+thief, a bandit prides himself not on stealth, but rather the swift
+brutality of a highwayman.  Scorning the elegant solution, the bandit uses
+whatever tools he has at hand to acquire what he wishes.  Do to their
+somewhat brutish tempers, bandits tend not to be noted for obedience to any
+formal notion of law, and consequently often roam the roads of Avendar.  
+ 
+Bandit Abilities Include:
+ 
+Waylay Loot Plunder Stash
+~
+~
+1
+0 294912 0
+D0
+~
+~
+0 0 8544
+D2
+~
+~
+0 0 8542
+S
+#8544
+~
+Rogues: Watchers: Watchers are the bounty hunters of Avendar. 
+Often employed by the noble and the wealthy for hunting the rogues who have
+wronged them, watchers often work for a contract, demanding payment for
+thieves returned alive - or dead.  Due to their association with law
+enforcement, watchers are never chaotic, making their fortune from their
+necessity in civilized society.  
+ 
+ 
+Watcher Abilities Include:
+ 
+Detect theft, Set Trap, Contact Agent, Investigate Death
+~
+~
+1
+0 294912 0
+D0
+~
+~
+0 0 8545
+D2
+~
+~
+0 0 8543
+S
+#8545
+~
+Rogues: Assassins: Masters of death, assassins have perfected the art of
+stealth in the pursuit of their craft.  They strike from the shadows, using
+knife, poison, and dart as their tools.  Assassins each have find their own
+meaning for their actions - some devoted to the extermination of evil,
+others nothing more than the fattening of their own purse, but they all find
+unity in their perfection of the dealing of death.  
+ 
+ 
+Assassin skills include:
+ 
+Poison food, cloak, dart, find weakness
+~
+~
+1
+0 294912 0
+D0
+~
+~
+0 0 8546
+D2
+~
+~
+0 0 8544
+S
+#8546
+~
+Warriors: Swordmasters: Swordmasters are warriors who have devoted their
+life to mastering one weapon - the blade.  Learned in ancient meditative
+techniques, they practice the art of ak\@anginta: thought-to-form, where the
+blade becomes an extension of self, and acquires form.  Using these \#Ginta\#
+or \#forms\#, a swordmaster becomes one of Avendar\@s most formidable
+opponents, displaying a mastery of his weapon unparalled by any other.  
+ 
+ 
+Some Swordmaster skills:
+ 
+ 
+Fourth Attack, Form of the Dragon, Form of the Bear, Form of the Panther
+~
+~
+1
+0 294912 0
+D0
+~
+~
+0 0 8547
+D2
+~
+~
+0 0 8545
+S
+#8547
+~
+Warriors: Barbarians: Savage warriors of the plains, barbarians excel at
+brute force.  Rather than being formally trained in combat they instead
+acquire their lessons from the harsh realities of a life given over to rage
+and war.  Understanding little of civilization, they eschew the path of
+those who embrace the law and instead prefer to remain unbound by excessive
+rules or protocol.  Allowing their rage to consume them, they become
+formidable opponents.  
+ 
+Barbarian skills include:
+ 
+Hew, Savagery, Brutal Damage, Berserk
+~
+~
+1
+0 294912 0
+D0
+~
+~
+0 0 8548
+D2
+~
+~
+0 0 8546
+S
+#8548
+~
+Warriors: Fighters: Fighters are by far the most common type of warriors
+in Avendar.  Trained in the rigors of a life spent campaigning, they are
+true soldiers.  Learned in the arts of combat strategy, fighters are also
+proficient in most of the known weapons of Avendar, even though their
+particular specialty are spears and polearms and other long handled weapons.
+ 
+ 
+Fighter abilities include: 
+ 
+Impale, Fend, Flank Attack, Hamstring
+~
+~
+1
+0 294912 0
+D0
+~
+~
+0 0 8549
+D2
+~
+~
+0 0 8547
+S
+#8549
+~
+Warriors: Gladiators: Gladiators are warriors who have been trained for
+the arena fighting that is so common throughout Avendar.  Learned in a
+variety of dirty and showy techniques designed to incapacitate their
+opponents, they nonetheless are fearsome warriors all their own, often
+specializing in a wide assortment of exotic weapons. 
+ 
+ 
+Gladiator skills include:
+ 
+Gouge, Shin Kick, Entangle, Decapitate
+ 
+~
+~
+1
+0 294916 0
+D0
+~
+~
+0 0 8550
+D2
+~
+~
+0 0 8548
+S
+#8550
+~
+Naturalists: Rangers: The class of rangers is composed of those who have
+made the forest their home, learning and adapting the ways of nature to
+their own needs.  Relying on their own considerable fighting prowess and
+their ability to survive in flourish in almost any sort of terrain, rangers
+often work to both protect their home as well as use it for their own ends. 
+ 
+ 
+Ranger abilities include:
+ 
+Charm animal, camoflauge, tan hide, poultice
+~
+~
+1
+0 294912 0
+D0
+~
+~
+0 0 8551
+D2
+~
+~
+0 0 8549
+S
+#8551
+~
+The order of druids is dedicated to attaining oneness with nature. 
+Drawing their powers from the ancient magics of nature, druids act to
+protect the balance of nature, protecting the purity of the natural world. 
+Embracing from nature, they are said to be able to travel from forest to
+forest, drawing their strength from life itself.  
+ 
+Druid powers include:
+Moon Ray, Speak with Plants, Morph with Animal, Spirit of the Bear
+~
+~
+1
+0 32768 0
+D0
+~
+~
+0 0 8552
+D2
+~
+~
+0 0 8550
+S
+#8552
+~
+Entertainers:
+Bards:
+ 
+~
+~
+1
+0 32768 0
+D0
+~
+~
+0 0 8553
+D2
+~
+~
+0 0 8551
+S
+#8553
+~
+Entertainers:
+Gleemen
+~
+~
+1
+0 32768 0
+D0
+~
+~
+0 0 8554
+D2
+~
+~
+0 0 8552
+S
+#8554
+~
+Scholars: Scholars are sages who have devoted their life to the study of
+the various elemental magics.  Their area of specialization is determined
+early in life, where they choose major and minor sphere of elemental
+influence.  
+ 
+Related Help Files:
+Help WATER
+Help SPIRIT
+Help AIR
+Help FIRE
+Help VOID
+Help EARTH
+ 
+Help GREATER
+Help MAJOR
+Help MINOR
+ 
+Help MAGIC
+~
+~
+1
+0 32768 0
+D0
+~
+~
+0 0 8555
+D2
+~
+~
+0 0 8553
+S
+#8555
+~
+Templars: Templars are warriors who have trained in the ways and means of
+combining sword and spell.  Unlike scholars, who diversify in their studies,
+templars only major in one sphere of elemental influence.  Known far and
+wide as some of the greatest leaders Avendar has produced, templars are
+often seen leading the charge into battle, or directing the forces of
+varying factions.  Due to the amount of time spent studying other matters,
+the alignment and ethos of a templar must be resonant with their elemental
+sphere.  
+ 
+ 
+For more information on templars, see:
+ 
+Help WATER TEMPLARS
+Help SPIRIT TEMPLARS
+Help AIR TEMPLARS
+Help FIRE TEMPLARS
+Help VOID TEMPLARS
+Help EARTH TEMPLARS
+ 
+Help MAGIC
+Help GREATER, MAJOR, MINOR
+~
+~
+1
+0 32768 0
+D0
+~
+~
+0 0 8556
+D2
+~
+~
+0 0 8554
+S
+#8556
+~
+~
+~
+1
+0 32768 0
+D2
+~
+~
+0 0 8555
+S
+#8570
+Hallway~
+This north-south hallway is strangely barren, merely a long hall of grey
+bricks.  The only light trickles in from a chamber to the south.  
+~
+~
+1
+0 131074 0
+D2
+~
+~
+0 0 8540
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 8537 2 7
+D 0 8538 0 7
+M 0 8500 3 8502 1
+M 0 8500 3 8503 1
+M 0 8500 3 8504 1
+M 0 8501 13 8506 1
+M 0 8501 13 8507 1
+M 0 8501 13 8508 1
+M 0 8501 13 8509 1
+M 0 8501 13 8510 1
+M 0 8501 13 8511 1
+M 0 8502 3 8512 1
+M 0 8502 3 8513 1
+M 0 8502 3 8514 1
+M 0 8501 13 8515 1
+M 0 8501 13 8516 1
+M 0 8501 13 8517 1
+M 0 8501 13 8518 1
+M 0 8501 1 8519 1
+M 0 8501 13 8519 1
+M 0 8504 7 8522 1
+M 0 8505 7 8523 1
+M 0 8504 7 8524 1
+M 0 8505 7 8525 1
+M 0 8504 7 8526 1
+M 0 8505 7 8527 1
+M 0 8504 7 8528 1
+M 0 8505 7 8529 1
+M 0 8504 7 8530 1
+M 0 8505 7 8531 1
+M 0 8504 7 8532 1
+M 0 8505 7 8533 1
+M 0 8504 7 8534 1
+M 0 8505 7 8535 1
+M 0 8507 1 8537 1
+G 0 8510 0
+M 0 8511 1 8537 1
+M 0 8506 1 8538 1
+M 0 8508 1 8539 1
+M 0 8509 1 8540 1
+M 0 8503 1 8541 1
+M 0 8510 1 8541 1
+S
+
+
+
+#GUILD
+#8540
+'trip'
+'dirt kicking'
+'knife'
+'dagger'
+'dodge'
+'second attack'
+'fast healing'
+'haggle'
+'hide'
+'spear'
+'sword'
+'dual wield'
+'bash'
+'grapple'
+'bludgeon'
+'hew'
+'impale'
+'berserk'
+'savagery'
+'brutal damage'
+'hamstring'
+'grapple'
+#0
+
+S
+
+
+#SHOPS
+0
+
+
+
+#$

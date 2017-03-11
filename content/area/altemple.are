@@ -1,0 +1,2001 @@
+#AREADATA
+Name Temporary Pirateland Name~
+Builders Neongrey Brazen~
+VNUMs 18451 18599
+Credits [10 25] neon      Temporary Pirateland Name~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 73
+Weather 3 2 1 3 2
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+#0
+
+
+
+#OBJECTS
+V13
+18451
+rock stone mossy moss-covered~
+a moss-covered rock~
+A green-tinged, mossy rock rests on the ground here.~
+~
+stone~
+trash 0 0 0 A
+0 0 0 0 0
+1 100 0 0 P
+0
+E
+rock stone mossy moss-covered~
+This palm-sized rock seems to be a greyish, weather-worn limestone; a few
+layers are visible, one noticably darker than the rest.  A fuzzy, green
+fringe of moss covers about half of it.  
+~
+V13
+18452
+rockpile rock rubble rocks pile crevice~
+a crevice in the rockpile~
+Amidst the pile of rocks, a natural crevice has formed.~
+~
+stone~
+container e 0 0 0
+10 0 0 10 0
+52 1000 0 3 P
+0
+>verb_prog p get~
+if name($n) == brazen
+if compstr($y3) == rockpile
+or compstr($y3) == rock
+or compstr($y3) == rubble
+or compstr($y3) == rocks
+or compstr($y3) == pile
+or compstr($y3) == crevice
+
+mpremovehand brazen
+mpechoat brazen The rocks fall, unerringly {Rcrushing{x your hand!
+mpforce brazen yell Motherfucker!
+endif
+else
+mpnextinterp
+endif
+~
+|
+V13
+18453
+bracelet battered silver~
+a battered silver bracelet~
+A silver bracelet, tarnished near to black in places, has been left here.~
+~
+silver~
+jewelry 0 0 F AM
+0 0 0 0 0
+10 5 930 0 P
+0
+A
+1 1
+A
+18 2
+V13
+18454
+sea lidreau ocean~
+the sea~
+The sea of Lidraeu laps against the shoreline here.~
+~
+water~
+fountain e 0 0 0
+100 10000 'salt water' 0 0
+52 10000 0 5 P
+0
+#0
+
+
+
+#ROOMS
+#18451
+A Secret Base Under the Sea of Lidraeu~
+ITR neon keeps track of things that need to be kept track of
+~
+~
+0
+0 788414 0
+D0
+~
+~
+8 0 18452
+W 5 0 0
+Z 5 5
+S
+#18452
+A Curving Cliff Above the Ocean~
+The cliffs start curving out to sea here, arcing outwards into the
+depths.  The mossy scents of Morn to the east temper the salt tang of the
+sea air.  A little to the northwest, treetops poke up out of a valley
+sheltered between the cliffs.  The outward arm of the cliff slopes off to
+the west, the end barely visible from this vantage point.  To the north,
+better sheltered from the elements, the cliff continues with little more
+apparent hazard than rocks and tree-roots.  
+~
+~
+0
+0 0 4
+E
+northwest treetops valley cove trees sheltered~
+A wide, roughly circular valley is nestled between the cliffs to the
+northwest.  Trees dominate most of it, but past them you can see a bit of a
+stretch of beach and the sea beyond that.  
+~
+D0
+The cliff continues more or less straight to the north.  
+~
+~
+0 0 18458
+D2
+The cliffs stretch off to the south.  
+~
+~
+0 0 15093
+D3
+A vague path begins to form along the cliff a little ways to the west.
+~
+~
+0 0 18453
+W 5 0 0
+Z 5 5
+P
+>rand_prog 1~
+mpvaluerand 1 1 6
+
+if value(1) == 1
+        mpecho You hear a gull cry out in the distance, too far away to be seen.
+        mpvalueset 1 0
+        break
+endif        
+if value(1) == 2
+        if isseason == 0
+        or isseason == 1
+                mpecho The smell of damp earth wafts over to your nostrils from the forests surrounding.
+                else
+                mpecho The harsh smell of salt assaults your nose as a stiff wind momentarily sweeps in from the west.
+        endif
+        mpvalueset 1 0
+        break
+endif        
+if value(1) == 3
+        mpecho You spy a lone gull overhead, madly flapping its way back to sea.
+        mpvalueset 1 0
+        break
+endif        
+if value(1) == 4
+        if precip == 0
+                mpecho Your breath frosts in the air, blowing snowflakes off-course.
+        else
+        if precip == 2
+                mpecho The rain splatters noisily against the ground, creating shallow puddles.
+        endif
+        endif
+        mpvalueset 1 0
+        break
+endif        
+if value(1) > 4
+        mpvalueset 1 0
+        break
+endif
+~
+|
+S
+#18453
+A Vague Path on the Cliffside~
+The roar of the sea is audible here, carried on the salty winds. 
+Although this part of the cliff is not far enough out to be seriously
+damaged by the pounding waves, time has taken its toll enough; the ground
+here is a bit rocky, the footing somewhat uncertain.  Some of the rocks have
+been shoved aside a little, forming something that could very generously be
+called a path that leads down the cliff, into the forested valley below. 
+The cliff itself extends outwards to the west, sloping precariously after a
+little ways.  Eastwards, the cliff widens, butting up against the forest.  
+~
+~
+0
+0 0 4
+E
+valley cove forested trees~
+A wide, roughly circular valley is nestled between the cliffs.  Trees
+dominate most of it, but past them you can see a bit of a stretch of beach
+off to the northwest and the sea beyond that.  
+~
+E
+rocks path rocky~
+Something that approximates a path leads very steeply down the cliff
+here, though not all of the rocks have been moved well enough out of the way
+for it to be a very easy one.  
+~
+D1
+The path ends a little to the east, where the cliff widens.  
+~
+~
+0 0 18452
+D3
+Further to the west, the cliff dips hazardously.  
+~
+~
+0 0 18454
+D5
+A precarious-looking path leads into the valley below.  
+~
+~
+0 0 18467
+W 5 0 0
+Z 5 5
+S
+#18454
+A Broken Section of Cliff~
+The cliffs are far more broken here than either to the east or the west,
+with large boulders strewn about and a section about twenty feet wide sunk
+noticably lower than other nearby parts of the ground.  Far below, the ocean
+batters mercilessly at the cliff, spray rising up as far as the sunken area
+when the wind catches it.  To the north, the trees in the valley below start
+thinning out, though it remains impossible to see through them from here. 
+The cliffs rise both to the east and the west, though the ground rises less
+high on the sea-side.  
+~
+~
+0
+0 0 4
+E
+forested forest valley trees cove north~
+A wide, roughly circular valley is nestled between the cliffs to the
+north.  Trees dominate most of it, starting to thin to the north of you, but
+past them to the west you can see a stretch of beach and the sea beyond
+that.  
+~
+E
+boulders rocks broken ground~
+The footing gets dangerous where the ground dips; one wrong step on or
+between the heavily scattered rocks could easily dislodge them.  
+~
+D1
+A poorly-defined path is visible off to the east.  
+~
+~
+0 0 18453
+D3
+To the west, the cliffs rise up a little again.
+~
+~
+0 0 18455
+W 5 0 0
+Z 5 5
+P
+>greet_prog 100~
+if isflying($n)
+or iswizi($n)
+        break
+//all ghosts fly, so this will catch ghosts, too        
+else
+        mpget char $n dex 0
+        mpmath 1 $0*4
+        if roomvalue(1) >= 90
+                mpvaluerand  1 90 95
+        endif
+        mpvaluerand 2 1 100
+        if value(2) < $1
+                break
+        else
+                mpechoat $n As you put your weight onto one of the rocks, it wobbles out from beneath you, sending you flat on your face!
+                mpechoaround $n As $N steps down onto a rock, it rolls out from beneath $m, sending $m flying!
+                mplag $n 2
+        endif
+endif
+~
+|
+S
+#18455
+Atop a Narrowing Cliff~
+The cliff begins to narrow here, the water turbulent enough on both sides
+to pinch at the rock.  The wind is strong enough to have left the ground
+reasonably smooth, pushing the lightest stones off to the east.  Far to the
+southwest, a lighthouse is faintly visible beyond the waves.  Below you,
+just to the east, is a clear view of the inlet and valley.  The tree cover
+is too dense to see anything further back, but from this angle you can see
+some battered wooden structures jutting from the beach into the water.  Off
+to the west, the cliff begins a slow curve northwards, and easterly the
+cliff appears quite unsafe for travel on foot.  
+~
+~
+0
+0 0 4
+E
+structures docks wooden battered~
+Squinting, you can make out some greyish wooden structures projecting
+from the beach onto the water.  It\@s hard to tell at this distance, but they
+seem to be crude docks.  
+~
+E
+north northeast trees tree cover forest valley inlet~
+To the north, you can see the valley clearly; trees thickly forest the
+eastern side, and a strip of beach marks a divide between that and the
+waters of the inlet.  
+~
+E
+lighthouse southwest~
+Poking up over the waves, you can see a lighthouse off in the distance,
+the beacon occassionally catching at your eye.  
+~
+D1
+The cliff breaks up somewhat further to the east.
+~
+~
+0 0 18454
+D3
+The cliff begins curving northwards to the west.  
+~
+~
+0 0 18456
+W 5 0 0
+Z 5 5
+S
+#18456
+A Bend in the Cliff~
+The roar of the sea nearly chokes out all other noises here, assaulting
+the cliff on both sides.  The northeastern face is smooth as glass, the
+sheer force of the water rushing into the inlet thinning the rock.  The
+western side is crusted with the same salt that fills your mouth with its
+taste, marring the polish it might otherwise have had.  The ground here is
+smooth and barren, free of any sign of wildlife save the occasional gull far
+overhead.  Down in the valley, you can see the rocky beach and treeline,
+though the angle and distance prevents you from seeing much in detail.  The
+cliff narrows somewhat to the east, thinned by the tides.  Northerly, the
+cliff comes to an end.  
+~
+~
+0
+0 0 4
+E
+valley cove inlet northeast forest trees~
+You have a clear look into the valley from here, though there\@s little
+enough you can actually make out.  The thick tree cover makes it hard if not
+impossible to see past that, though your view of the beach and water is
+fairly clear.  You can make out some greyish structures jutting from the
+beach onto the water, looking almost like docks.  
+~
+E
+southwest lighthouse~
+In the distance to the southwest, you can barely see a lighthouse, mostly
+by the light of its beacon.  
+~
+D0
+The cliff tapers to an end off to the north.  
+~
+~
+0 0 18457
+D1
+The cliff begins narrowing to the east.
+~
+~
+0 0 18455
+W 5 0 0
+Z 5 5
+P
+>rand_prog 1~
+if rand(75)
+        mpecho The noise of the ocean crashing against the cliffs below fills your ears, nearly deafening you.
+        mpasound The noise of the ocean crashing against the cliffs below fills your ears, nearly deafening you.
+endif
+~
+|
+S
+#18457
+The End of the Cliff~
+The cliff comes to an end here, a wide gap stretching out northwards and
+another long cliff face visible on the other side.  Below, the water swirls
+turbulently as it rushes through that opening into the inlet, sending spray
+high up into the air.  The wind tugs insistently at your clothing, the roar
+filling your ears and making the footing more difficult despite the mostly
+clear ground.  Down in the inlet, you can see what might be docks extending
+out from the beach into the water, and faint signs of activity up past the
+tree line.  To the south, the cliff begins curving back eastwards.  
+~
+~
+0
+0 0 4
+E
+east valley trees inlet forest tree line~
+Off to the west, you can very faintly see some movement in amongst the
+trees, though it\@s too thick to make out much more detail than that.  Some
+old, greyish docks can be seen if you squint, sunk firmly into the rocky
+beach.  
+~
+D2
+The cliff curves eastwards, to the south.  
+~
+~
+0 0 18456
+W 5 0 0
+Z 5 5
+S
+#18458
+A Cliff Overlooking a Valley~
+The sea is barely visible from here; the thickly-forested valley to the
+west blocks the view somewhat.  Past a beach you can barely see the waters
+of an inlet, cliffs almost encircling it like arms.  The faint chirping of
+birds is faintly audible in the distance from the east, though there is no
+sign of them here.  The ground itself here is relatively smooth; some rocks
+are scattered about, fringed with moss, but there is little other
+interruption that you can see.  The cliff curves out a little to the south,
+beginning to form one of those \@arms\@, and continues relatively straight to
+the north.  
+~
+~
+0
+0 0 4
+E
+valley west trees forest inlet~
+The valley to the west is primarily covered by thick forest, making it
+impossible to look down past them very well.  Further beyond them, you can
+see a strip of beach, and some greyish structures there, though the angle
+makes it impossible to discern more detail than that.  The cliffs curve
+around on both sides, protecting an inlet from the ocean, leaving only a gap
+exposed to the sea.  
+~
+E
+moss rocks ground~
+A few of the rocks on the ground seem to have been there for some time;
+layers of moss crawl up the sides, adding a bright splash of green to the
+otherwise drab ground.  
+~
+D0
+The cliff continues northwards.  
+~
+~
+0 0 18459
+D2
+The cliffs widen to the south, forming a three-way branch.  
+~
+~
+0 0 18452
+W 5 0 0
+Z 5 5
+P
+>hour_prog 100~
+if roomvalue(1) > 0
+        mpvaluedown 1
+endif
+~
+>verb_prog p take~
+if compstr(2) == rock
+or compstr(2) == stone
+or compstr(2) == mossy
+or compstr(2) == moss-covered
+        if isanyobjhere($n)
+                mpnextinterp
+                break
+        else
+                if roomvalue(1) < 10
+                        mpechoat $n You bend, picking up a small rock from the ground.
+                        mpechoaround $n $N bends, picking up a small rock from the ground.
+                        mpoload 18451 on $n
+                        mpvalueup 1
+                else
+                        mpechoat $n You look around, but you don\@t find any small enough rocks.
+                        mpechoaround $n $N bends, looking around the ground, but straightens after a moment.
+                endif
+        endif
+else
+mpnextinterp
+endif
+~
+>verb_prog p get~
+if compstr(2) == rock
+or compstr(2) == stone
+or compstr(2) == mossy
+or compstr(2) == moss-covered
+        if isanyobjhere($n)
+                mpnextinterp
+                break
+        else
+                if roomvalue(1) < 10
+                        mpechoat $n You bend, picking up a small rock from the ground.
+                        mpechoaround $n $N bends, picking up a small rock from the ground.
+                        mpoload 18451 on $n
+                        mpvalueup 1
+                else
+                        mpechoat $n You look around, but you don\@t find any small enough rocks.
+                        mpechoaround $n $N bends, looking around the ground, but straightens after a moment.
+                endif
+        endif
+else
+mpnextinterp
+endif
+~
+|
+S
+#18459
+A Cliff Overlooking a Valley~
+You stand roughly over the midpoint of a wide, circular valley, some ways
+above the trees that fill its eastern half.  Off to the far west, you can
+see a gap in the cliffs that surround it, the waters of Lidreau rushing
+through.  The trees come all the way back to the cliff face, blocking your
+view directly down into the valley; some bushes have even managed to take
+root nearly up to the ground level of the cliff.  On the ground, you can see
+what almost looks like a foot-path, though it does not seem well-used.  The
+trail continues both north and south, fading into uselessness a little ways
+in either direction.  
+~
+~
+0
+0 0 4
+E
+west gap cliffs valley trees forest~
+The valley to the west is primarily covered by thick forest, making it
+impossible to look down past them very well; the bushes make it impossible
+even to look straight down.  Further beyond them, you can see a strip of
+beach, and some thin greyish structures there, though the angle makes it
+impossible to discern more detail than that.  The cliffs curve around on
+both sides, leaving that gap in between, the waters of Lidreau surging
+through.  
+~
+E
+bush bushes~
+Some scrubby green bushes have managed to climb their way up the sides of
+the cliffs, though they thoroughly obscure the view to the ground below.  
+~
+E
+path ground foot-path~
+A very faded trail is visible on the ground, leading a little ways north
+and south of here.  It does not seem well-used, fading after about thirty
+feet in either direction.  
+~
+D0
+The path meanders for a ways to the north, before fading out of sight.  
+~
+~
+0 0 18460
+D2
+The path continues for a ways to the south, before fading from lack of
+use.  
+~
+~
+0 0 18458
+W 5 0 0
+Z 5 5
+S
+#18460
+A Cliff Overlooking a Valley~
+The clifftop widens somewhat here, forming a bit of an overhang.  Some of
+the trees in the valley below are partially covered, their other branches
+reaching skywards.  A single bird\@s nest is nestled in a crack in the rocks,
+near to the edge and padded with mosses.  The faint scent of greenery fills
+the air, an odd complement to the sight of an inlet off in the distance to
+the west.  The cliff starts curving westwards a little ways to the north,
+reaching out to partially block off the sea.  Southwards, the cliff
+continues in a more-or-less straight line.  
+~
+~
+0
+0 0 4
+E
+tree trees valley forest inlet west~
+The valley to the west is primarily covered by thick forest, making it
+impossible to look down past them very well; the overhang prevents you from
+looking straight down, either.  Further beyond them, you can see a strip of
+rocky beach.  The cliffs curve around on both sides, protecting the inlet
+from the ocean, leaving only a gap exposed to the sea.  
+~
+E
+springnest~
+A small nest is sheltered in a crack in the rocks here, padded cozily
+with mosses and grasses.  Several small, speckled egs fill the nest, though
+no other occupants appear to be in sight.  
+~
+E
+summernest~
+A small nest is sheltered in a crack in the rocks here, padded cozily
+with mosses and grasses.  Several young birds occupy the nest, their
+chirping filling the air close by.  
+~
+E
+fallnest~
+A small nest is sheltered in a crack in the rocks here, padded cozily
+with mosses and dry grasses.  While there are signs of some past meals
+littering the nest, none of the birds who reside there are at home right
+now.  
+~
+E
+winternest~
+A small nest is sheltered in a crack in the rocks here, padded with
+mosses and old, dry grasses.  There are no recent signs of occupancy in this
+nest; the spot does little enough to shelter against cold that the birds
+have likely gone south for the winter.  
+~
+D0
+To the north, the cliff comes to a wide branch, beginning a long arc out
+to sea.  
+~
+~
+0 0 18461
+D2
+A faint path becomes visible a short ways to the south.  
+~
+~
+0 0 18459
+W 5 0 0
+Z 5 5
+P
+>verb_prog p look~
+if compstr(2) == nest
+or compstr(2) == crack
+or compstr(2) == cracks
+or compstr(2) == rocks
+or compstr(2) == ground
+        if isseason() == spring
+                mpforce $n look springnest
+                endif
+        if isseason() == summer
+                mpforce $n look summernest
+                endif
+        if isseason() == autumn
+                mpforce $n look autumnnest
+                endif
+        if isseason() == winter
+                mpforce $n look winternest
+                endif
+else
+mpnextinterp
+endif
+~
+|
+S
+#18461
+A Wide Branch in the Cliffs~
+This wide stretch of cliff is almost roughly circular, the ground jutting
+out overtop the corner of a large, green valley to the southwest.  The
+ground here is largely smooth, marred by the occasional hairline crack, a
+few pebbles and stones having broken free.  Northwards, the cliff continues,
+before coming to a sharp halt, a stretch of beach visible in the distance
+beyond that.  The cliff arcs out to the west here, as well, in a long, thin
+stretch around the valley, before eventually curving southwards.  To the
+south, the cliff cups the valley in a vaguely circular fashion, curving
+around a bit, but mostly straight.  
+~
+~
+0
+0 0 4
+E
+valley southwest trees inlet beach forest~
+The valley to the southwest is primarily covered by thick forest, making
+it impossible to look down through them very well.  Further beyond the
+trees, you can see a strip of beach, and some greyish structures there,
+though the angle makes it impossible to discern more detail about them than
+that.  The cliffs curve around on both sides, protecting the inlet from the
+ocean, leaving only a gap exposed to the sea.  
+~
+D0
+The cliffs come to an abrupt halt a ways to the north.  
+~
+~
+0 0 15094
+D2
+The cliffs continue past the valley to the south.  
+~
+~
+0 0 18460
+D3
+To the west, the cliff begins a slow arc out to sea.  
+~
+~
+0 0 18462
+W 5 0 0
+Z 5 5
+S
+#18462
+A Thin Stretch of Cliff~
+The sound of waves crashing against the northern side of the cliff is
+nearly constant, the greyish waters of Lidreau a marked visual contrast to
+the heavily-treed valley to the south.  A few gulls cry out overhead, though
+they mostly stay further out than this.  A little to the west, the south
+side of the cliff becomes very cracked and rocky; a bit of the debris has
+rolled its way here over time.  To the east, the cliff widens, becoming
+almost circular and far smoother, and stretches out to the north and south. 
+~
+~
+0
+0 0 4
+E
+valley tree trees forest~
+The valley to the south is primarily covered by thick forest, making it
+impossible to look down past the trees very well.  Further beyond them, you
+can see a thin strip of rocky beach.  The cliffs curve around on both sides,
+protecting an inlet from the ocean, leaving only a gap exposed to the sea.  
+~
+E
+debris rocks ground~
+A number of rocks have rolled over to this part of the cliff; they seem
+to have come from further west.  Most are reasonably large and heavy, but
+even pebbles have made their way over here, too.  
+~
+D1
+The cliff widens out to the east, forming a three-way branch.  
+~
+~
+0 0 18461
+D3
+The south edge of the cliff becomes very rocky to the south.  
+~
+~
+0 0 18463
+W 5 0 0
+Z 5 5
+S
+#18463
+A Rocky Clifftop~
+The south side of the cliff here is piled high with rubble; it seems an
+unusual amount, though the cliff does seem cracked somewhat here.  To the
+north the ground is smoother, though a faint slope to the south may account
+for this.  The cliff seems to thin almost dangerously on the sea-side,
+though everything appears stable enough.  The trees in the valley to the
+south begin thinning slightly, though the cover is still too much to see
+through.  The cliff extends both westwards and eastwards, the ground
+clearing up in both directions.  
+~
+~
+0
+0 0 4
+E
+valley forest trees inlet south cove~
+The valley to the south is primarily covered by thick forest, making it
+impossible to look down past the trees, even here where they do begin to
+thin.  Further beyond them, you can see a thin strip of rocky beach.  The
+cliffs curve around on both sides, protecting an inlet from the ocean,
+leaving only a gap exposed to the sea.  
+~
+E
+debris rocks pile cliff rubble~
+An unusual amount of rubble is piled up against the cliffside here,
+reaching all the way up to ground level.  The cliff does start to crack
+somewhat on the south side, but the pileup seems a little bit too
+meticulous; while at the top rocks roll to either side, the actual pile
+seems to be very carefully braced, with far fewer hand-and-footholds than
+would be natural.  Some of the rocks have formed a small crevice which
+catches your eye.  
+~
+D1
+The cliff continues further to the east.  
+~
+~
+0 0 18462
+D3
+The cliff begins a slow curve to the south, starting a little ways to the
+west.  
+~
+~
+0 0 18464
+W 5 0 0
+Z 5 5
+S
+#18464
+A Gently-Curving Cliff~
+The cliff begins a slow curve to the south here, turning a bit more
+sharply off to the west.  The breeze from the sea is more constant here,
+occasional bits of spray rising high enough to be felt.  To the south, the
+forest in the valley gives way to beach, a few wooden structures jutting out
+onto the water.  The ground tilts a little bit to the south here, following
+the curvature of the cliff.  It is enough to be noticable, though not much
+more than that; the footing remains relatively steady.  Eastwards, the cliff
+stretches off into the distance.  
+~
+~
+0
+0 0 4
+E
+south beach forest valley inlet~
+The beach is clearly visible from here; far more rock than sand and
+stretching from cliff to cliff.  The forest to the east of the beach
+prevents much of a view back that way, though you can see some barer patches
+that almost look like paths.  Some greyish structures jut out into the water
+from the beach.  
+~
+E
+dock docks grey structures greyish~
+Stretching out from the beach, you can see some structures that look
+almost like docks, constructed of a grey, weather-worn wood.  
+~
+D1
+Rocks start piling up on the side of the cliff to the east.  
+~
+~
+0 0 18463
+D3
+The cliff curves more sharply to the west.  
+~
+~
+0 0 18465
+W 5 0 0
+Z 5 5
+S
+#18465
+A Hard Bend in the Cliff~
+Unlike the cliffs visible further to the east, here they come into a
+sharp turn southwards.  The ground also breaks up somewhat, being much
+higher to the north than the south.  Waves pound ceaselessly at all sides of
+the cliff, the noise roaring in your ears.  Pebbles fall frequently fron the
+rocks down into the ocean, blown over by the wind.  To the southeast, you
+can see a stretch of rocky beach in the distance, wooden structures
+projecting into the cove.  To the south, the cliff comes to its jagged,
+broken end, another cliff visible beyond a wide gap.  
+~
+~
+0
+0 0 4
+E
+valley forest beach trees southeast~
+A rocky beach is clearly visible from here.  The forest to the east of
+the beach prevents much of a view back that way.  Some greyish structures
+jut out into the water from the beach.  
+~
+E
+wood wooden structure structures dock docks~
+Some long, greyish platforms stretch out onto the water from the beach;
+they almost look like docks.  
+~
+D1
+The cliff curves a lot more gently off to the east.  
+~
+~
+0 0 18464
+D2
+The cliff comes to an end to the south, ending abruptly.  
+~
+~
+0 0 18466
+W 5 0 0
+Z 5 5
+S
+#18466
+A Jagged End of a Cliff~
+The cliff ends here with a wide overhang, the face below eroded by the
+constant beating of the waves.  Past a wide gap, another stretch of cliff is
+visible to the south.  The sea rushes through that gap into a cove, swirling
+wildly where its path narrows.  Off to the east, a swath of rocky beach
+begins, and forest swiftly takes hold beyond that.  Far off to the
+southwest, the faint glint of a lighthouse is visible past the wide stretch
+of ocean.  The cliff begins rising unsteadily to the north, bending back
+eastwards sharply.  
+~
+~
+0
+0 0 4
+E
+cove forest beach east trees~
+The beach stretches between the cliffs off to the east.  The forest
+beyond that prevents much of a view back that way, though you can see some
+barer patches that almost look like paths.  Some greyish structures jut out
+into the water from the beach.  
+~
+E
+structures docks grey greyish~
+Some greyish, wooden structures extend out from the beach onto the water;
+they appear to be docks.  
+~
+E
+lighthouse southwest glint~
+Far off to the southwest, you can see the faint glint of a lighthouse
+beacon catching at your eye.  
+~
+D0
+The cliff bends sharply to the north.  
+~
+~
+0 0 18465
+W 5 0 0
+Z 5 5
+S
+#18467
+A Steep Path Against A Cliffside~
+The path hugs close to the cliff face here, almost vertical in places and
+at a high angle the rest of the way.  The wind frequently sends pebbles
+skittering down from above, keeping the footing tricky at best.  Trees press
+close to the other side of the path, a few branches even reaching to the
+rock face, though not enough to seriously impede movement.  The path
+continues its descent to the west, and the clifftop can be reached through a
+steep climb upwards.  
+~
+~
+0
+0 33554432 4
+E
+forest trees valley~
+The forest seems mostly composed of tea trees, the oily, spiky leaves
+reaching as far as the cliff face.  
+~
+D3
+~
+~
+0 0 18468
+D4
+The path leads up to the clifftop.  
+~
+~
+0 0 18453
+W 5 0 0
+Z 5 5
+S
+#18468
+The End of a Steep Path~
+The trail down the cliffside comes to an end here, at a flat, bare patch
+of dirt.  The forest hardly allows even that much space at the bottom,
+though, tea trees pressing close to the cliff even as rocky as it is.  The
+path itself is littered with fallen pebbles and old leaves, keeping the
+footing slippery and precarious, especially higher up.  The faint sounds of
+birds are audible here, though they seem to be coming more from deeper in
+the woods than here on the fringes.  
+~
+~
+0
+0 33554432 3
+D0
+You see the forest thickening to the north.  
+~
+~
+0 0 18469
+D1
+The path ascends sharply to the east.  
+~
+~
+0 0 18467
+W 5 0 0
+Z 5 5
+S
+#18469
+The Fringes of a Forest~
+The forest starts thinning here as the ground turns rocky, the beach
+visible off to the west.  There seems a curious lack of game trails marking
+the ground, though that could be the proximity to the ocean.  Tea tree
+leaves litter the ground as well, which does contribute to the absence of
+tracks.  The forest shelters this spot from most wind, leaving an earthy
+smell clinging to the area.  North and east, the woods continue, the cliffs
+still close to the south.  
+~
+~
+0
+0 0 3
+D0
+The forest continues to the north, still a bit scrubby.  
+~
+~
+0 0 18470
+D1
+The forest grows thicker to the east.  
+~
+~
+0 0 18492
+D2
+A bare patch of dirt marks the start of a path up the cliff.  
+~
+~
+0 0 18468
+D3
+A rocky beach begins to the west.  
+~
+~
+0 0 18476
+W 5 0 0
+Z 5 5
+S
+#18470
+The Fringes of a Forest~
+The forest thins a bit here, where the ground turns rocky, with the beach
+visible off to the west.  There are few game trails on the ground the
+ground, likely due to the proximity to the ocean.  Tea tree leaves litter
+the ground as well, further obscuring any such tracks tracks.  The wind is
+dampened here by the forest, which also ensures that the light which filters
+down from above has a greenish tinge.  The woods continue in all directions
+save west, where the beach begins.  
+~
+~
+0
+0 0 3
+D0
+The forest continues to the north.  
+~
+~
+0 0 18471
+D1
+The forest continues to the east, a vague flickering visible off in the
+distance.  
+~
+~
+0 0 18493
+D2
+The forest grows thinner to the south, closer to the cliffs.  
+~
+~
+0 0 18469
+D3
+You see a rocky beach off to the west.  
+~
+~
+0 0 18475
+W 5 0 0
+Z 5 5
+S
+#18471
+The Edge of the Forest~
+The forest is thin here, the ground turning rocky as the beach draws
+closer.  The ground is littered heavily with the leaves of the tea trees,
+covering over any tracks or paths that might mark the ground.  The trees
+shelter this spot from the wind coming off the sea, but the roar of the
+waves is still audible, drowning out the sounds of any animals.  The forest
+continues around you, the cliff face barely visible through the trees to the
+north and the beach and water off to the west.  
+~
+~
+0
+0 0 3
+D0
+The forest continues to the north, eventually coming up to the cliff.  
+~
+~
+0 0 18472
+D1
+The forest grows thicker to the east, a vague flicker visible to the
+southeast.  
+~
+~
+0 0 18494
+D2
+The forest continues to the south, the ground still litered with leaves.  
+~
+~
+0 0 18470
+D3
+The edge of the beach is close by to the west.  
+~
+~
+0 0 18474
+W 5 0 0
+Z 5 5
+S
+#18472
+The Forest at the Edge of the Cliff~
+The forest runs right up against the edge of a steep, rocky cliff here,
+the beach visible through the trees to the west.  The sound of the water and
+the thick leaves below muffle any sounds of any animals nearby, the trees
+blocking off the worst of the wind.  Beneath the leaves and dirt, the ground
+is a bit rocky yet, from the spread of the beach.  The air has an earthy,
+salty smell from the forest to the south and east, and beach to the west.  
+~
+~
+0
+0 0 3
+D1
+The forest grows even thicker to the east, making it even harder to see
+through.  
+~
+~
+0 0 18495
+D2
+The thin forest continues to the south.  
+~
+~
+0 0 18471
+D3
+The edge of the beach comes very close to the west.  
+~
+~
+0 0 18473
+W 5 0 0
+Z 5 5
+S
+#18473
+A Rocky Stretch of Beach~
+This end of the beach is more a collection of rocks and large pebbles,
+strewn with fallen leaves, dirt, and fibrous tree roots protruding from the
+forest to the east.  Closer to the cliff to the north, the rocks get larger
+and larger, having fallen from above.  An old dock is visible off in the
+distance to the southwest, battered by waves.  A few gulls fly high overhead
+from time to time.  Despite the rocks piled below, there are few enough hand
+and footholds that the cliff could not be climbed.  The beach spreads out to
+the south and west.  
+~
+~
+0
+0 0 4
+D1
+The scrubby tea forest begins a short distance to the east.  
+~
+~
+0 0 18472
+D2
+The rocky beach continues to the south.  
+~
+~
+0 0 18474
+D3
+The beach continues to the west, ground turning pebbly except by the
+cliff.  
+~
+~
+0 0 18480
+W 5 0 0
+Z 5 5
+S
+#18474
+A Rocky Stretch of Beach~
+This part of the beach is more a collection of small rocks and large
+pebbles, strewn with fallen leaves, dirt, and fibrous tree roots protruding
+from the forest to the east.  The sound of the waves is steady here, a
+constant dull roar.  A battered dock is visible off in the distance to the
+west, waves occassionally rising up overtop it it, soaking it.  A few gulls
+fly high overhead from time to time.  The strip of beach runs in all
+directions save to the east.  
+~
+~
+0
+0 0 4
+D0
+The rocky beach comes to an end at the cliff a little ways to the north.  
+~
+~
+0 0 18473
+D1
+The scrubby forest stands closely to the east.  
+~
+~
+0 0 18471
+D2
+The beach continues to the south much the same as here.  
+~
+~
+0 0 18475
+D3
+The beach grows pebbly and smoother to the west.  
+~
+~
+0 0 18479
+W 5 0 0
+Z 5 5
+S
+#18475
+A Rocky Stretch of Beach~
+This end of the beach is more a collection of moderately-sized rocks and
+pebbles, littered with fallen leaves and dirt, and fibrous tree roots
+protruding from the forest to the east.  The sound of the waves is steady
+here, a constant dull roar.  A battered dock is visible off in the distance
+to the west, waves occassionally rising up overtop it it.  A few gulls fly
+overhead, from time to time, too far away to be heard.  The expanse of beach
+runs in all directions save to the east.  
+~
+~
+0
+0 0 4
+D0
+The rocky beach continues to the north.  
+~
+~
+0 0 18474
+D1
+The tea forest rises up to the east.  
+~
+~
+0 0 18470
+D2
+The beach continues to the south, coming up against a cliff.  
+~
+~
+0 0 18476
+D3
+The beach becomes more gravelly to the west.  
+~
+~
+0 0 18478
+W 5 0 0
+Z 5 5
+S
+#18476
+A Rocky Stretch of Beach~
+This end of the beach is hardly worthy of the name, being mostly
+cromprised of pebbles and fist-sized rocks, with tree roots, leaves, and
+dirt having encroached from the east.  The sound of the water is a
+near-constant backdrop here, close but not overwhelming.  A rickety dock is
+visible off in the distance from the northeast, waves occassionally soaking
+it.  Pebbles fall off and on from the clifftop above, though the face itself
+is sheer enough to prevent any serious attempts to climb it.  The beach
+stretches out a ways to the west and north.  
+~
+~
+0
+0 0 4
+D0
+The beach continues to the north, just as rocky.  
+~
+~
+0 0 18475
+D1
+The forest rises to the east, a bit scrubby but thickening before long.  
+~
+~
+0 0 18469
+D3
+The ground gets a little easier on the beach to the west, with more
+pebbles and fewer stones.  
+~
+~
+0 0 18477
+W 5 0 0
+Z 5 5
+S
+#18477
+A Pebbly Stretch of Beach~
+The waters of the sea of Lidraeu lap constantly against the brown, grey,
+and tan pebbles of the beach beach here.  The cliff is close by to the
+south, nearly a sheer face all the way down, only tiny chinks and cracks in
+the rock.  Northwesterly, a pair of docks teeter out onto the ocean, the
+wood made a sickly grey from years of wear.  The beach continues as it is to
+the north, growing much rockier to the east.  Westwards, the bottom of the
+seafloor drops sharply, very quickly going beyond wading depth.  
+~
+~
+0
+0 67108864 6
+D0
+The beach continues northwards, a dock coming to the ground.  
+~
+~
+0 0 18478
+D1
+The beach turns rockier further away from the shoreline.  
+~
+~
+0 0 18476
+D3
+The sea of Lidraeu extends to the west, deepening rapidly.  
+~
+~
+0 0 18484
+W 5 0 0
+Z 5 5
+S
+#18478
+A Pebbled Strip of Beach~
+An old, grey dock comes right up to the pebbly, rocky beach.  The ground
+is a dull mixture of browns, greys, and tans, and not even the way the water
+darkens the colours of the rocks makes them more vibrant.  A few bootprints
+in the pebbles are clearly visible here, though the beach is mostly trampled
+flat.  Waves lap against the dock and the shore off and on, splashing up on
+top of the dock at times.  The beach continues in all other directions,
+turning rockier to the east.  
+~
+~
+0
+0 67108864 6
+D0
+Another dock comes to the shore a ways to the north.  
+~
+~
+0 0 18479
+D1
+The beach goes rocky to the east, with forest beyond that.  
+~
+~
+0 0 18475
+D2
+The beach comes to an end against a cliff to the south.  
+~
+~
+0 0 18477
+D3
+An old, grey dock stretches out to the east.  
+~
+~
+0 0 18483
+W 5 0 0
+Z 5 5
+S
+#18479
+A Pebbled Strip of Beach~
+An old, grey dock runs right up to the beach here, which is mostly small
+pebbles in varying shades of brown, grey, and tan.  A few leaves from the
+forest off to the east have blown this far over, splattering the drab ground
+with colour.  A few bootprints in the pebbles are clearly visible here,
+though the small rocks are mostly trampled flat.  Waves regularly lap
+against the dock and the shore, every now and again splashing up on top of
+the dock.  The beach continues in all other directions, turning rockier to
+the east.  
+~
+~
+0
+0 67108864 6
+D0
+The beach continues to the north, coming up to a cliff.  
+~
+~
+0 0 18480
+D1
+The beach turns rockier to the east, and the forest rises not far beyond
+that.  
+~
+~
+0 0 18474
+D2
+Another dock butts up against the beach to the south.  
+~
+~
+0 0 18478
+D3
+An old, grey dock stretches out onto the sea to the west.  
+~
+~
+0 0 18482
+W 5 0 0
+Z 5 5
+S
+#18480
+A Pebbly Strip of Beach~
+The waters of the sea of Lidraeu lap constantly against the beach here,
+which has little sand and is mostly small pebbles in varying shades of brown,
+grey, and tan.  Larger rocks pile at the bottom of the cliff to the north,
+eventually falling into the sea.  To the southwest, a pair of battered docks
+rise up from the beach, stretching out a ways into the ocean.  The beach
+continues as it is to the south, and grows far rockier to the east. 
+Westwards, the bottom of the seafloor drops sharply, very quickly deepening.
+~
+~
+0
+0 67108864 6
+D1
+The beach grows rockier to the east.  
+~
+~
+0 0 18473
+D2
+To the south, the beach stretches out before you.  
+~
+~
+0 0 18479
+D3
+The sea becomes quite deep to the west.  
+~
+~
+0 0 18481
+W 5 0 0
+Z 5 5
+S
+#18481
+east ocean, north cliff~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 18480
+D2
+~
+~
+0 0 18482
+D3
+~
+~
+0 0 18488
+W 5 0 0
+Z 5 5
+S
+#18482
+north dock~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18481
+D1
+~
+~
+0 0 18479
+D2
+~
+~
+0 0 18483
+D3
+~
+~
+0 0 18487
+W 5 0 0
+Z 5 5
+S
+#18483
+south dock~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18482
+D1
+~
+~
+0 0 18478
+D2
+~
+~
+0 0 18484
+D3
+~
+~
+0 0 18486
+W 5 0 0
+Z 5 5
+S
+#18484
+Below the Southern Cliffside~
+Despite the shore so near to the east, the water here already looks deep
+enough to cover an alatharya twice over, clear enough to see most of the way
+down.  Southwards, the water laps against the cliffside, the rock worn
+almost glass-smooth from years of wear.  The salt-crusted posts of an old,
+grey dock are a little ways to the north, swaying a little dangerously from
+the waves.  The cove stretches out further west, widening a bit before the
+encompassing cliffs eventually sweep inwards to form a narrow gap.  
+~
+~
+0
+0 67108864 7
+D0
+~
+~
+0 0 18483
+D1
+~
+~
+0 0 18477
+D3
+~
+~
+0 0 18485
+W 5 0 0
+Z 5 5
+S
+#18485
+ocean, south corner~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18486
+D1
+~
+~
+0 0 18484
+W 5 0 0
+Z 5 5
+S
+#18486
+ocean, south mid~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18487
+D1
+~
+~
+0 0 18483
+D2
+~
+~
+0 0 18485
+D3
+~
+~
+0 0 18490
+W 5 0 0
+Z 5 5
+S
+#18487
+ocean, north mid~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18488
+D1
+~
+~
+0 0 18482
+D2
+~
+~
+0 0 18486
+D3
+~
+~
+0 0 18489
+W 5 0 0
+Z 5 5
+S
+#18488
+ocean, north corner~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 18481
+D2
+~
+~
+0 0 18487
+W 5 0 0
+Z 5 5
+S
+#18489
+between cliffs, north~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 18487
+D2
+~
+~
+0 0 18490
+D3
+~
+~
+0 0 18491
+W 5 0 0
+Z 5 5
+S
+#18490
+between cliffs, south~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18489
+D1
+~
+~
+0 0 18486
+D3
+~
+~
+0 0 18491
+W 5 0 0
+Z 5 5
+S
+#18491
+lidreau exit~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 18490
+W 5 0 0
+Z 5 5
+S
+#18492
+forest middle, south face, longhouse wall east~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18493
+D3
+~
+~
+0 0 18469
+W 5 0 0
+Z 5 5
+S
+#18493
+forest middle, south-mid, small fire east, longhouse southeast~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18494
+D1
+~
+~
+0 0 18496
+D2
+~
+~
+0 0 18492
+D3
+~
+~
+0 0 18470
+W 5 0 0
+Z 5 5
+S
+#18494
+forest middle, north-mid, small fire southeast, longhouse northeast~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18495
+D1
+~
+~
+0 0 18498
+D2
+~
+~
+0 0 18493
+D3
+~
+~
+0 0 18471
+W 5 0 0
+Z 5 5
+S
+#18495
+forest edge, north cliff, longhouse wall east~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 18494
+D3
+~
+~
+0 0 18472
+W 5 0 0
+Z 5 5
+S
+#18496
+forest campfire, south-mid, longhouse south~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18498
+D1
+~
+~
+0 0 18502
+D2
+~
+~
+0 0 18497
+D3
+~
+~
+0 0 18493
+W 5 0 0
+Z 5 5
+S
+#18497
+southern longhouse~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18496
+W 5 0 0
+Z 5 5
+S
+#18498
+forest middle, campfire south, longhouse north~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18499
+D1
+~
+~
+0 0 18500
+D2
+~
+~
+0 0 18496
+D3
+~
+~
+0 0 18494
+W 5 0 0
+Z 5 5
+S
+#18499
+north longhouse, no campfire south~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 18498
+W 5 0 0
+Z 5 5
+S
+#18500
+forest back, shop a east~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18501
+D1
+~
+~
+0 0 18509
+D2
+~
+~
+0 0 18502
+D3
+~
+~
+0 0 18498
+W 5 0 0
+Z 5 5
+S
+#18501
+forest back, north face, druid hideyhole east~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 18510
+D2
+~
+~
+0 0 18500
+W 5 0 0
+Z 5 5
+S
+#18502
+forest back, south, campfire west, bar and grill east~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18500
+D1
+~
+~
+0 0 18505
+D2
+~
+~
+0 0 18503
+D3
+~
+~
+0 0 18496
+W 5 0 0
+Z 5 5
+S
+#18503
+forest back, south face, shop b east~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18502
+D1
+~
+~
+0 0 18504
+W 5 0 0
+Z 5 5
+S
+#18504
+shop b~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 18503
+W 5 0 0
+Z 5 5
+S
+#18505
+bar and grill - main room~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 18506
+D3
+~
+~
+0 0 18502
+W 5 0 0
+Z 5 5
+S
+#18506
+bar and grill - back hall~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18507
+D2
+~
+~
+0 0 18508
+D3
+~
+~
+0 0 18505
+W 5 0 0
+Z 5 5
+S
+#18507
+bar and grill - storeroom~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 18506
+W 5 0 0
+Z 5 5
+S
+#18508
+bar and grill - bedroom~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18506
+W 5 0 0
+Z 5 5
+S
+#18509
+shop a~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 18500
+W 5 0 0
+Z 5 5
+S
+#18510
+druid hideyhole - ext~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18511
+D3
+~
+~
+0 0 18501
+W 5 0 0
+Z 5 5
+S
+#18511
+druid hideyhole - int~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 18510
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 18451 0 8
+O 0 18452 0 18463
+P 0 18453 1 18452 1
+O 0 18454 0 18477
+O 0 18454 0 18478
+O 0 18454 0 18479
+O 0 18454 0 18480
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

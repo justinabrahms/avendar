@@ -1,0 +1,85 @@
+#!/usr/bin/perl
+use strict;
+
+
+my %classes = (
+0 => "water scholar",
+1 => "earth scholar",
+2 => "void scholar",
+3 => "spirit scholar",
+4 => "air scholar",
+5 => "fire scholar",
+6 => "water templar",
+7 => "earth templar",
+8 => "void templar",
+9 => "spirit templar",
+10 => "air templar",
+11 => "fire templar",
+12 => "thief",
+13 => "watcher",
+14 => "assassin",
+15 => "bandit",
+18 => "fighter",
+19 => "swordmaster",
+20 => "barbarian",
+21 => "gladiator",
+23 => "ranger",
+25 => "bard",
+28 => "psionicist",
+29 => "druid");
+
+my $char = shift;
+$/ = undef;
+
+open (F, "/home/pantheon/avprod/player/$char") or die "Couldn't open $char: $!";
+my $info = <F>;
+
+$info =~   /Plyd\s+(\S+)
+            (?:\n|\r|.)*
+			Race\s(\S+)~[\n\r]*	
+			(?:Clan\s(\S+)~[\n\r]*)?
+			Sex\s+(\S)[\n\r]*
+			(?:\n|\r|.)*
+			Cla\s+(\S+)[\n\r]*
+			(?:\n|\r|.)*
+			Levl\s+(\S+)[\n\r]*
+			(?:\n|\r|.)*
+			Ethos\s+(\S+)
+			(?:\n|\r|.)*
+			Wanted\s+(\S+)
+			(?:\n|\r|.)*
+			Deaths\s+(\S+)
+			(?:\n|\r|.)*
+			PKills\s+(\S+)
+			(?:\n|\r|.)*
+			Ep\s+(\S+)
+			(?:\n|\r|.)*
+			Alig\s+(\S+)
+			/xs;
+
+my ($played, $race, $house, $sex, $class, $level, $ethos, $wanted, $deaths,
+$pkills, $ep, $align) = ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
+$house = "none" unless ($house);
+
+$played = int ($played / 3600);
+
+if ($align > 0) { $align = "good" }
+elsif ($align == 0) { $align = "neutral" }
+elsif ($align < 0) { $align = "evil" }
+
+if ($sex == 1) { $sex = "male" }
+elsif ($sex == 2) { $sex = "female" }
+elsif ($sex == 0) { $sex = "neuter" }
+
+if ($ethos == 2) { $ethos = "chaotic" }
+elsif ($ethos == 1) { $ethos = "neutral" }
+elsif ($ethos == 0) { $ethos = "lawful" }
+
+if ($race eq 'ch\@taren') { $race = "ch'taren" }
+
+$class = $classes{$class};
+
+print "Name: $char\n";
+print "Race: $race, house: $house, sex: $sex, class: $class, level: $level\n";
+print "Ethos: $ethos, wanted: $wanted, deaths: $deaths, pkills: $pkills, ep: $ep\n";
+print "Align: $align\t\tPlayed: $played\n";

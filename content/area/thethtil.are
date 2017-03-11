@@ -1,0 +1,767 @@
+#AREADATA
+Name The Tomb of Thethtil~
+Builders None~
+VNUMs 2200 2399
+Credits [49 51] Joln/Iand The Tomb of Thethtil~
+Danger 0
+Security 1
+Areainfo 59
+Herbs 0
+Weather 0 0 0 0 0
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 2205
+touchcrystal crystal1~
+the crystal~
+The crystal is here, waiting to be fondled.
+~
+~
+human~
+water scholar~
+ADL 0 DFJLZ N 0
+0 0 1d2+6 0d0+0 1d2+0 none~
+hit~
+10 10 10 12
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p touch ~
+if compstr(2) == shard
+or compstr(2) == crystal
+if isbitset($n) == 2204
+mpechoat $n The crystal fails to respond to your touch.
+else
+if isbitset($n) == 2205
+say Path completion stuff.
+else
+if mobvalue(0) == 0
+mpechoat $n As you touch the crystal shard, a wave of energy flashes out from its tip, pulsing with an electric tingle throughout the room!
+mpechoaround $n $N approaches the crystal shard, and touches it daringly. A wave of energy flashes from the crystal, pulsing with an electrical tingle throughout the room!
+mpmload 2206
+mpforce Thethtil mpvalueset 0 1
+mpvalueset 0 100
+else
+mpechoat $n A small tingle runs through you at the crystal\@s touch, but nothing else happens.
+endif
+endif
+endif
+else
+mpinterpret $n $x
+endif
+~
+>rand_prog 100~
+if mobvalue(0) > 0
+mpvaluedown 0 
+endif
+~
+|
+V4 2206
+Thethtil figure translucent~
+a wispy, translucent figure~
+The flickering form of Thethtil hovers here.
+~
+This wispy, translucent figure is an image of the ancient alatharya
+Thethtil.  Immensely old, Thethtil\@s regal face is lined with the marks of
+time and grief.  Most distinct are his eyes, which sparkle with a keen
+intellect unknown among the modern alatharya.  
+~
+human~
+water scholar~
+ADLX 0 DFJZ N 0
+57 28 20d220+1100 0d0+0 5d13+27 none~
+hit~
+-22 -22 -22 -9
+0 ABCD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if mobvalue(0) > 0
+  if mobvalue(0) == 1
+    mpecho Gradually, the misty figure of an alatharya begins to materialize on the circular dais. 
+  endif
+  if mobvalue(0) == 3
+    mpecho As his features begin to resolve into distinctiveness, you recognize the figure as the same as that of the large statue in the room to the south.
+  endif
+  if mobvalue(0) == 5
+    mpecho The translucent figure speaks, lacking the faintness one would expect from the insubstantial.
+  endif
+  if mobvalue(0) == 7
+    say I am Thethtil.
+    mpstring mob self short Thethtil
+  endif
+  if mobvalue(0) == 9
+    say Over ten thousand years ago, I foresaw the holocaust of my people -- what you call the Sundering
+  endif
+  if mobvalue(0) == 11
+    say Knowing that my own people were not wise enough to be caretakers of my greatest creations, I recognized that their time had not yet come.
+  endif
+  if mobvalue(0) == 13
+    say Instead, I set for myself my last, and greatest task.
+  endif
+  if mobvalue(0) == 14
+    say The creation of my own tomb.
+  endif
+  if mobvalue(0) == 15
+    say Within these halls you will find many things. Tests of your mind,
+    your body, and your soul.
+    say My creations, given to those who are worthy.
+  endif
+  if mobvalue(0) == 16
+    say But most importantly... within these halls are my history, and the history of my people.
+    say Here, you can learn the truth of how we fell, that the same mistakes are not repeated.
+  endif
+  if mobvalue(0) == 17
+    say To the west, you will find the Path of the Body. There, you will find tests of your strength, your fighting prowess, and your cunning in battle.
+  endif
+  if mobvalue(0) == 19
+    say To the east, you will find the Path of the Mind. There, you will find tests of your wit, your reason, and your ability to use your mind under the pressures of the unforseen.
+  endif
+  if mobvalue(0) == 21
+    say To the north, you will find the Path of the Soul. There, you will find tests of your virtue, your heart, and the truth of who you are.
+  endif
+  if mobvalue(0) == 23
+    say When you have completed all three paths, return here, and we will speak again.
+  endif
+  if mobvalue(0) == 25
+    say Farewell...
+    mpecho The translucent form of Thethtil fades away.
+    mppurge self
+  endif
+  mpvalueup 0 
+endif
+~
+>fight_prog 100~
+say Perhaps you are not ready to face the challenge after all.
+mpecho The image of Thethtil flickers and fades away. 
+mpbitset $n 2204 1
+mpaddaffect $n 479 60 100 27 2204 0
+mppurge self
+~
+|
+V4 2305
+crystalguy~
+the crystal~
+(no long description)
+~
+~
+human~
+water scholar~
+ADL 0 DFJLZ N 0
+0 0 1d2+6 0d0+0 1d2+0 none~
+hit~
+10 10 10 12
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 2306
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+#0
+
+
+
+#OBJECTS
+V13
+2282
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+#0
+
+
+
+#ROOMS
+#2200
+The Thethtil Fan collection~
+Set amidst the cyclopean arches, gargantuan doors, and clever yet
+oh-so-whimsical traps of the tomb, this room is filled with Thethtil
+paraphanelia.  A large poster depicts Thethtil in concert, while various
+ancient alatharya trading cards lie scattered on the ground.  Thethtil\@s
+appearance in Ancient Tomb Maker\@s monthly is made prominent use of, with a
+framed copy of the front cover on one wall.  
+
+Possible uses:
+
+The Tomb will have a few sentient statues made by Dilalyn at the end of the
+three Trials.  
+
+Thethtil, having predicted the Sundering, created this Tomb as a way to
+exact revenge upon the gods.  
+
+The Tomb houses many pre-Sundering artifacts.  It doesn\@t really make sense,
+though, for them to have survived the Sundering intact if they are
+non-sphere related...  So perhaps Thethtil designed them to be potent
+manifestations of the spheres (so there would be at least one each of air,
+earth, fire, void...  Perhaps water but probably not spirit) .  Also, as he
+was smart enough to predict the Sundering he may have had some insight into
+how it would manifest.  
+
+Possibly re-use one of the alchemical affects that will not be re-used in
+some form.  They will be less OP strictly by nature of being limited and
+hard to get as opposed to brew some random shit into a potion.  
+
+The result of the three Trials can have a cumulative outcome.  Make an
+object that has specific qualities based on completion.  For example, a
+weapon that is normal, then when one trial is completed gains some permanent
+hitroll/damroll boost, then gains some other quality and finally can be
+permanently typed to a particular damage.  
+
+- Multiple endings for the trials, which determine the qualities imbued in
+the resulting object.  
+
+Need to entertain multiple people while one is here getting the result. 
+Maybe use single-use portals to separate the \#active\# person from the rest
+of the group for the final tests.  
+
+~
+~
+0
+0 32772 0
+E
+copy~
+Thethtil\@s blurb on the front cover reads, \#Twice the fun of the Tomb of
+Horrors, or your Money back!\#  
+~
+E
+cover~
+Thethtil\@s blurb on the front cover reads, \#Twice the fun of the Tomb of
+Horrors, or your Money back!\#  
+~
+W 5 0 0
+Z 5 5
+S
+#2201
+Before a Rocky Cliffside~
+The trail comes to an end here, terminating to the north in a rocky
+hillside.  Carved in the side of the cliff is a cyclopean stone door, whose
+true height is obscured by the thick canopy of trees and vines near the
+mountainside.  The portions of the door that are visible display
+craftsmanship that is untouched by weather or time -- crisp carvings stand
+out from the cliffside, framing the door with a band of ancient symbols.  A
+thin trail leads away to the south, passing over a hill and out of sight.  
+
+
+ - Add carvings exdesc. This should be related to how you enter.
+~
+~
+0
+0 4 5
+D0
+~
+~
+34 0 2202
+W 5 0 0
+Z 5 5
+S
+#2202
+A Marble Chamber~
+This chamber is carved out of the stone of solid marble, polished smooth,
+and completely free of imperfections.  Shaped in the fashion of a
+tetrahedron, the most prominent feature of this chamber are three statues,
+build to cover the three corners of the room.  The statues are roughly
+twelve feet in height, and they all look down on a spiral stairwell,
+descending in a well in the center of the room.  While there is no source of
+light in the room, a dim ambient glow fills the air, accentuating the
+craftsmanship of the statues.  In the south wall, a rounded stone door,
+framed by stout pillars, provides another exit from this chamber.  
+~
+~
+0
+0 0 0
+E
+statues~
+The statues are marvels of craftsmanship, and are eached carved of
+different materials.  The statue to the north is made from a single, massive
+sapphire, the one to the southeast of iron, and the statue to the southwest
+of onyx and ruby.  
+~
+E
+statue~
+The statues are marvels of craftsmanship, and are eached carved of
+different materials.  The statue to the north is made from a single, massive
+sapphire, the one to the southeast of iron, and the statue to the southwest
+of onyx and ruby.  
+~
+E
+ruby~
+This onyx statue is of a dragon, coiled serpentlike up the length of the
+wall.  Its windings are as compelling as they are menacing, and the light
+dimly reflects off each individual scale.  Its jaws are interlayed with two
+rows of sharp black teeth, each razor-sharp.  Rubies are set for its eyes,
+and glittering wickedly in the ambient light of the room.  
+~
+E
+onyx~
+This onyx statue is of a dragon, coiled serpentlike up the length of the
+wall.  Its windings are as compelling as they are menacing, and the light
+dimly reflects off each individual scale.  Its jaws are interlayed with two
+rows of sharp black teeth, each razor-sharp.  Rubies are set for its eyes,
+and glittering wickedly in the ambient light of the room.  
+~
+E
+iron~
+This iron statue is of a noble, aristocratic alatharya, topped with a
+perfectly forged crown.  He is depicted wearing stout armor of an unfamiliar
+cut, and a sword is sheathed at his side.  His features are stern and
+commanding, without a single break in their rigorous cast.  
+~
+E
+sapphire~
+This sapphire statue depicts a tall alatharya, clad in robes and has
+regal, elegant features.  He holds a spear in both hands, but his look is
+benevolent, or even slightly sad, rather than martial.  
+~
+D2
+~
+~
+35 0 2201
+D5
+A gargantuan stone stairwell spirals downward.
+~
+~
+0 0 2203
+W 5 0 0
+Z 5 5
+S
+#2203
+A Gargantuan Stairwell~
+The stone steps of this stairwell are made from gargantuan blocks of
+marble.  With fully a foot between steps, the stairs seem to go on
+endlessly, spiraling upwards and downwards in a perfect helix.  An soft
+white glow illuminates the area, emanating from no particular direction, and
+bright enough to make out the stairs underfoot.  
+~
+~
+0
+0 0 0
+D4
+The stairwell spirals upward out of sight.
+~
+~
+0 0 2202
+D5
+~
+~
+0 0 2204
+W 5 0 0
+Z 5 5
+P
+>greet_prog 100~
+if isflying($n)
+  mpechoat $n You waft your way through the center of the spiral stairwell.
+else
+  if rand(50)
+    mpechoat $n You make your way around the spiral stairwell.
+  else
+    mpechoat $n You traverse the stairwell\@s many steps.
+  endif
+  mplag $n 2
+endif
+~
+|
+S
+#2204
+The Hall of the Ancients~
+This titanic hall is a monument to the craftsmanship of its ancient
+maker.  Enormous pillars jut upward on either side of the chamber, rising
+into arches to create semicircular tops of gigantic niches.  In each niche,
+carved out of blocks of marble, are the statues of epic proportion and
+legendary quality.  The largest statue, though, lies to the north, depicted
+as holding the weight of the celing on his shoulders.  Beneath him,
+triumphal arches lead out of the long hall.  The only other exit lies
+upward, where a gargantuan stairwell leads upward from its spot in the south
+wall.  
+~
+~
+0
+0 0 0
+E
+niche~
+The statues are all of alatharya, each carved in marble, and depicted
+with the meticulous care of the master.  The features of the statues are all
+distinctive, but share a commonality of design that points to a familial
+relationship between them.  There appears to be some sort of progression in
+the attire of the statues as they proceed from south to north.  They begin
+attired as warriors and military leaders, but gradually fade into the robes
+and dresses of scholars and artisans.  
+~
+E
+niches~
+The statues are all of alatharya, each carved in marble, and depicted
+with the meticulous care of the master.  The features of the statues are all
+distinctive, but share a commonality of design that points to a familial
+relationship between them.  There appears to be some sort of progression in
+the attire of the statues as they proceed from south to north.  They begin
+attired as warriors and military leaders, but gradually fade into the robes
+and dresses of scholars and artisans.  
+~
+E
+statues~
+The statues are all of alatharya, each carved in marble, and depicted
+with the meticulous care of the master.  The features of the statues are all
+distinctive, but share a commonality of design that points to a familial
+relationship between them.  There appears to be some sort of progression in
+the attire of the statues as they proceed from south to north.  They begin
+attired as warriors and military leaders, but gradually fade into the robes
+and dresses of scholars and artisans.  
+~
+E
+statue~
+Larger than any of the other statues in the room, this one is easily
+thirty feet, reaching to the curved ceiling of the chamber.  Marble, like
+the other statues, its subject is an elderly alatharya, whose face bears the
+strain of one carrying a great burden, symbolized by his support of the
+ceiling.  Most striking, though, are the figure\@s eyes, which gaze sadly
+into the distance, their sparkle lost in the burden of the weight they
+carry.  
+~
+D0
+Another chamber lies beyond the triumphal arches.  
+~
+~
+0 0 2305
+D4
+The gargantuan stairwell spirals upward out of sight.
+~
+~
+0 0 2203
+W 5 0 0
+Z 5 5
+S
+#2206
+A Tiled Corridor~
+Inlaid with colored tiles of some unknown material, this corridor leads
+westward, beginning in a doorway to the east, and continuing about a hundred
+paces, until it reaches a rounded archway.  Painted on the walls is a long
+mural, showing alatharya, hunting with various primitive weapons. 
+Illuminating the room are topaz gems, which are set in regular intervals in
+the walls.  They cast a soft yellow glow, complementing the vivid colors of
+the mural.  
+~
+~
+0
+0 0 0
+E
+mural~
+Tall, noble alatharya hunters are depicted in this mural.  Dressed in
+primitive hides and wearing spears of bone, the mural follows the progress
+of the hunt, as they chase across verdant plains, bringing down several
+deer-like animals.  
+~
+E
+murals~
+Tall, noble alatharya hunters are depicted in this mural.  Dressed in
+primitive hides and wearing spears of bone, the mural follows the progress
+of the hunt, as they chase across verdant plains, bringing down several
+deer-like animals.  
+~
+D1
+~
+~
+0 0 2305
+W 5 0 0
+Z 5 5
+S
+#2265
+~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#2300
+Alatharyan Triads~
+Jolinn__________Iandir__________Ashur
+
+Being * Pattern * Nothingness
+Beginning * History * Ending
+Life * Time * Death
+Awakening/Awareness * Sleep/Rest * Dreaming
+Strength * Speech * Magic
+Fellowship/brotherhood * Law * Rulers
+Humility * Hierarchy * Pride
+Beauty * Clarity * Art
+Love * Honour * Worship
+Volition * Foresight * Fate/Doom
+Robots * Moose * Zombies
+~
+~
+0
+0 32774 0
+W 5 0 0
+Z 5 5
+S
+#2304
+The Hall of the Ancients~
+This titanic hall is a monument to the craftsmanship of its ancient
+maker.  Enormous pillars jut upward on either side of the chamber, rising
+into arches to create semicircular tops of gigantic niches.  In each niche,
+carved out of blocks of marble, are the statues of epic proportion and
+legendary quality.  The largest statue, though, lies to the north, depicted
+as holding the weight of the celing on his shoulders.  Beneath him,
+triumphal arches lead out of the long hall.  The only other exit lies
+upward, where a gargantuan stairwell leads upward from its spot in the south
+wall.  
+~
+~
+0
+0 4 0
+E
+statue~
+Larger than any of the other statues in the room, this one is easily
+thirty feet, reaching to the curved ceiling of the chamber.  Marble, like
+the other statues, its subject is an elderly alatharya, whose faces bears
+the strain one carrying a great burden, symbolized by his support of the
+ceiling.  Most striking, though, are the figure\@s eyes, which gaze sadly
+into the distance, their sparkle lost in the burden of the weight they
+carry.  
+~
+E
+statues~
+The statues are all of alatharya, each carved in marble, and depicted
+with the meticulous care of the master.  The features of the statues are all
+distinctive, but share a commonality of design that points to a familial
+relationship between them.  There appears to be some sort of progression in
+the attire of the statues as they proceed from south to north.  They begin
+attired as warriors and military leaders, but gradually fade into the robes
+and dresses of scholars and artisans.  
+~
+E
+niches~
+The statues are all of alatharya, each carved in marble, and depicted
+with the meticulous care of the master.  The features of the statues are all
+distinctive, but share a commonality of design that points to a familial
+relationship between them.  There appears to be some sort of progression in
+the attire of the statues as they proceed from south to north.  They begin
+attired as warriors and military leaders, but gradually fade into the robes
+and dresses of scholars and artisans.  
+~
+E
+niche~
+The statues are all of alatharya, each carved in marble, and depicted
+with the meticulous care of the master.  The features of the statues are all
+distinctive, but share a commonality of design that points to a familial
+relationship between them.  There appears to be some sort of progression in
+the attire of the statues as they proceed from south to north.  They begin
+attired as warriors and military leaders, but gradually fade into the robes
+and dresses of scholars and artisans.  
+~
+W 5 0 0
+Z 5 5
+S
+#2305
+Beneath a Crystaline Dome~
+A perfect hemisphere of crystal streches overhead, made of interlocking
+facets of some clear and highly refractive gemstone.  An iridescent light
+fills the top of the chamber, bathing the dome in a shimmering pattern of
+multicolored light.  The floor of the chamber consists mainly of a sequence
+of circular steps, which narrow as they rise.  At their top is a stand of
+untarnished gold, which holds a shard of the same crystal as the dome above.
+Between the boundary of the crystal dome and the marble walls of the room is
+a frieze, set in bas relief around the circumference of the room, depicting
+ancient alatharya in various activities.  There are four exits from this
+circular room, one for each cardinal direction.  To the south, there lies a
+triumphal arch, beyond which is visible another chamber.  The other three
+exists are all marble doorways, each adorned only with a sigil, carved in
+the top of their frames.  
+~
+~
+0
+0 0 0
+E
+sigil~
+The sigil on the west door is of a massive hand, palm open.
+The sigil on the north door is of a dragon, roaring in flight.
+The sigil on the east door is of an lidless eye.
+ 
+~
+E
+sigils~
+The sigil on the west door is of a massive hand, palm open.
+The sigil on the north door is of a dragon, roaring in flight.
+The sigil on the east door is of an lidless eye.
+ 
+~
+E
+frieze~
+The marble frieze is made with the same craftsmanship as the other parts
+of the tomb.  It covers the activities of the ancient alatharya in one large
+swath -- depicting them fighting dragons, building cities, arming for war,
+and the rise of a series of great pyramids.  
+~
+E
+marble~
+The marble frieze is made with the same craftsmanship as the other parts
+of the tomb.  It covers the activities of the ancient alatharya in one large
+swath -- depicting them fighting dragons, building cities, arming for war,
+and the rise of a series of great pyramids.  
+~
+E
+pedestal~
+The pedestal is pure gold, but is completely untarnished by time, and is
+polished to a mirrored hue.  A hole is set in its top, in which the crystal
+shard is affixed.  
+~
+E
+gold~
+The pedestal is pure gold, but is completely untarnished by time, and is
+polished to a mirrored hue.  A hole is set in its top, in which the crystal
+shard is affixed.  
+~
+E
+golden~
+The pedestal is pure gold, but is completely untarnished by time, and is
+polished to a mirrored hue.  A hole is set in its top, in which the crystal
+shard is affixed.  
+~
+E
+platform~
+Each of the step is a circular platform, with the next step of smaller
+radius and above the next.  At its base, the circles are about twenty feet
+in radius.  At their top, near the pedestal, they are about five feet in
+radius.  
+~
+E
+circular~
+Each of the step is a circular platform, with the next step of smaller
+radius and above the next.  At its base, the circles are about twenty feet
+in radius.  At their top, near the pedestal, they are about five feet in
+radius.  
+~
+E
+circle~
+Each of the step is a circular platform, with the next step of smaller
+radius and above the next.  At its base, the circles are about twenty feet
+in radius.  At their top, near the pedestal, they are about five feet in
+radius.  
+~
+E
+crystal~
+Do you want to look at the crystal DOME, or the crystal SHARD in the
+pedestal?  
+~
+E
+crystalline~
+Do you want to look at the crystal DOME, or the crystal SHARD in the
+pedestal?  
+~
+E
+dome~
+The patterns of color in the dome seem to change as time passes,
+compelling attention in a manner bordering on the hypnotic.  
+~
+E
+shard~
+The crystal shard is utterly compelling, with a fascinating pattern of
+colors and lights which change as time goes on.  An strange desire draws you
+to touch its crystal surface, as if to make contact with its rainbow hues.  
+~
+D2
+A long chamber lies beyond the arches.
+~
+~
+0 0 2204
+D3
+The sigil on the west door is of a massive hand, palm open.
+~
+~
+0 0 2206
+W 5 0 0
+Z 5 5
+S
+#2306
+Room of Rooms~
+This room\@s desc.
+~
+~
+0
+0 32768 0
+D1
+~
+~
+0 0 2308
+W 5 0 0
+Z 5 5
+S
+#2308
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 2306
+W 5 0 0
+Z 5 5
+S
+#2312
+A Fortified Warehouse~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 2201 0 34
+D 0 2202 2 35
+M 0 2205 1 2305 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

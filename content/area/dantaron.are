@@ -1,0 +1,2553 @@
+#AREADATA
+Name The Dantaron River~
+Builders Iandir Ravn Iacobos~
+VNUMs 1800 1881
+Credits [ ALL ] Iandir    The Dantaron River~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 3 2 2 1 64
+Weave 5 0 0
+Shades 5 5
+Stone 84
+End
+
+
+
+#MOBILES
+V4 1801
+ferry man ferryman~
+the ferryman~
+A ferryman stands on the docks, offering his services for gold.
+~
+A scruffy riverman stands on the dock of the ferry station.  Noticing
+your glance, he gestures toward his barge.  
+{YThe ferryman says \@20 copper for passage.\@
+{x
+~
+human~
+water scholar~
+ABGL 0 DFZ N 0
+40 20 16d170+976 0d0+0 5d10+18 bash~
+punch~
+-15 -15 -15 -2
+FK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+>bribe_prog 20~
+if isfight($i)
+mpechoat $n $I ignores your payment in the heat of battle.
+else
+mpechoat $n You climb aboard the ferryman\@s vessel and are brought safely to the other side.
+mptransfer $n 4491
+mpat 4491 mpforce $n look
+mpat 4491 mpechoaround $n $N arrives from the north bank of the river.
+mpecho $N climbs aboard the ferry and is transported across the river.
+endif
+~
+|
+V4 1802
+bot canyon entrance~
+the canyon entrance bot~
+The canyon entrance bot stands here, making people go into the canyon one at a time.
+~
+If you\@ve seen me, note it to Arkhural.  This is a bug.
+~
+human~
+water scholar~
+AB 0 DFJLZe N 0
+60 0 5d5+100 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 ABCDb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p south~
+if position($n) != 8
+  mpnextinterp
+else
+  if size($n) > large
+    mpechoat $n You are too large to fit into the crevice.
+    mpechoaround $n $N unsuccessfully tries to wedge $mself into the crevice.
+  else
+    mpechoat $n You push past the overhanging vines and slide through the crevice.
+    mpechoaround $n $N pushes past a swath of overhanging vines and slides through the crevice.
+    mpat 12101 mpecho $N emerges from the shadows of the crevice.
+    mpfocus $n
+    mptrans $n 12124
+    mpat 12124 mpforce downbot mptrigger $n
+  endif
+endif
+~
+|
+V4 1803
+otter river~
+a river otter~
+A river otter frolicks in the waters of the Dantaron.
+~
+A large brown river otter swims playfully about through the waters of the
+Dantaron river.  
+~
+dog~
+water scholar~
+AGN 0 0 N 0
+4 1 1d17+30 0d0+0 1d4+1 pierce~
+bite~
+0 0 0 0
+H 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 0 -1
+AGV ACDEFHJKUV A medium unknown
+V4 1804
+bargeman man alatharya alatharyan mob_1804~
+an alatharyan bargeman~
+An alatharyan bargeman stands here, bargepole in hand.
+~
+A tattoed alatharya stands here, wrapped in muscle.  His silvery skin is
+grimy and trailed with perspiration, and he smells as though he has not
+bathed in days.  A long tail of hair hangs down the back of his neck.  A low
+brow and dull, cow-like eyes have a dumb placidity to them.  
+~
+alatharya~
+water scholar~
+AGL 0 Z R 0
+18 9 14d23+487 18d10+100 3d6+9 bash~
+punch~
+-1 -1 -1 3
+I 0
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 1805 0 0 0 0
+stand stand male 70 -1
+AHMV ABCDEFGHIJK A medium unknown
+>fight_prog 100~
+if rand(60)
+if mobvalue(0) == 0
+mpvalueset 0 1
+esay \@growls\@ Arrg! I\@ll bash yer head in, lout!
+mpoload 1805
+wear pin
+endif
+endif
+~
+>verb_prog p load_em_up~
+if isnpc($n)
+  board barge
+endif
+~
+|
+V4 1805
+bargeman man ethron mob_1805~
+an ethron bargeman~
+An ethron bargeman is here.
+~
+A burly ethron is here, skin a pale shade of leaf-green.  An abundance of
+dark green hair cascades down his back, and a large tattoo of a
+lightning-wreathed wolf can be seen on his arm.  His hands are rough and
+calloused, and quite dirty.  
+~
+ethron~
+water scholar~
+AGL 0 0 R 0
+17 9 13d22+446 17d10+100 3d5+9 bash~
+punch~
+-1 -1 -1 3
+I 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 1804 0 0 0 0
+stand stand male 70 -1
+AHMVW ABCDEFGHIJK J medium unknown
+>fight_prog 100~
+if rand(65)
+if mobvalue(0) == 0
+mpvalueset 0 1
+say Hoi! Got us a troublemaker? I\@ll gut you like a fish!
+mpoload 1806
+wear gaff
+endif
+endif
+~
+>verb_prog p load_em_up~
+if isnpc($n)
+  board barge
+endif
+~
+|
+V4 1806
+pilot bargeman nefortu mob_1806~
+a nefortu pilot~
+A nefortu pilot squints about with his one good eye.
+~
+A small nefortu is here, under five feet in height.  His hairless skin is
+a deep nut-brown, and membraneous wings of a paler shade run from his arms
+to his body.  An ugly, doglike snout seem wrinkled in a permanent expression
+of distaste.  One of his eyes is milky white, a deep scar bisecting it and
+continuing down his face.  He wears a tattered cap, bearing the symbol of an
+anchor, with pride disproportionate to the hat\@s shabbiness.
+~
+nefortu~
+water scholar~
+AGL 0 EZ R 0
+35 15 22d45+941 30d10+100 4d8+15 bash~
+punch~
+-9 -9 -9 0
+I 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 
+5 1805 1804 0 0 0
+stand stand male 70 -1
+AHMVW ABCDEFGHIJKP H medium unknown
+>verb_prog p load_em_up~
+if isnpc($n)
+  board barge
+endif
+~
+|
+V4 1807
+barge loader bot~
+barge loader bot~
+Barge loader bot loads and unloads barges, and sends them on their way.
+~
+Its a generic bot.
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 1808
+tow headed tow-headed lighterman human bargehand mob_1808 unloader~
+a tow-headed lighterman~
+A tow-headed lighterman strolls along.
+~
+A big, strong man, this bargehand\@s head is covered in a luxurious crop
+of bright yellow hair, so pale as to be almost white, tied back in a long
+braid.  Long mustachios droop from his cheeks, and a prominent nose sits in
+a ruddy face.  His arms, bared to the elements, are thick with muscle, the
+skin reddened and weatherbeaten.  Numerous tattooes, all more or less
+standard sailors\@ markings, cover his skin.  
+~
+human~
+water scholar~
+AGL 0 Z N 0
+15 7 8d30+261 0d0+0 3d5+8 bash~
+punch~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 35 -1
+AHMV ABCDEFGHIJK A large unknown
+>verb_prog p go_away_bitches~
+if isnpc($n)
+  mpvaluerand 1 0 2
+  if value(1) == 0
+    emote grunts, walking off.
+  endif
+  if value(1) == 1
+    if rand(5)
+      esay sighs Time for something to wet my throat, I reckon.
+    endif
+    emote leaves.
+  endif
+  if value(1) == 2
+    if rand(33)
+      dust
+    endif
+    emote departs.
+  endif
+  mppurge self
+endif
+~
+>verb_prog p unload_bitches~
+if isnpc($n)
+  mpvaluerand 1 0 2
+  if value(1) == 0
+    emote hefts a crate off the barge and onto the docks.
+    mpat 1845 emote hefts a crate off the barge and onto the docks.
+  endif
+  if value(1) == 1
+    emote grunts, squatting to shift a crate onto the docks.
+    mpat 1845 emote grunts, squatting to shift a crate onto the docks.
+  endif
+  if value(1) == 2
+    emote tosses a smallish crate onto the pier with a loud thud.
+    mpat 1845 emote tosses a smallish crate onto the pier with a loud thud.
+  endif
+endif
+~
+|
+V4 1809
+srryn laborer unloader mob_1809~
+a srryn laborer~
+A srryn laborer slinks angrily here.
+~
+This husky srryn is covered in pale, dun brown scales.  Reddish streaks
+highlight his small crest, eyes, and snout.  Coal-black eyes look around
+with surly distaste, his tongue occasionally tasting the air.  His arms and
+legs are bulky with muscle, and bands of leather, usually worn by laborers,
+wrap his wrists and ankles.  
+~
+srryn~
+water scholar~
+AGL 0 Z N 0
+15 7 8d30+261 0d0+0 3d5+8 bash~
+punch~
+0 0 0 0
+MV 0
+26 0 0 0 0 0 0 0 20 -20 0 0 20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 35 -1
+AHMVX ABCDEFGHIJKLQUVX C large unknown
+>verb_prog p go_away_bitches~
+if isnpc($n)
+  mpvaluerand 1 0 2
+  if value(1) == 0
+    emote grunts, walking off.
+  endif
+  if value(1) == 1
+    if rand(5)
+      esay sighs Time for something to wet my throat, I reckon.
+    endif
+    emote leaves.
+  endif
+  if value(1) == 2
+    if rand(33)
+      dust
+    endif
+    emote departs.
+  endif
+  mppurge self
+endif
+~
+>verb_prog p unload_bitches~
+if isnpc($n)
+  mpvaluerand 1 0 2
+  if value(1) == 0
+    emote hefts a crate off the barge and onto the docks.
+    mpat 1845 emote hefts a crate off the barge and onto the docks.
+  endif
+  if value(1) == 1
+    emote grunts, squatting to shift a crate onto the docks.
+    mpat 1845 emote grunts, squatting to shift a crate onto the docks.
+  endif
+  if value(1) == 2
+    emote tosses a smallish crate onto the pier with a loud thud.
+    mpat 1845 emote tosses a smallish crate onto the pier with a loud thud.
+  endif
+endif
+~
+|
+V4 1810
+dockhand hand dock alatharya unloader mob_1810~
+the alatharya dockhand~
+An alatharya dockhand strides along, heading for his next task.
+~
+A towering muscle-bound alatharya, this dockhand moves to his next task
+with massive strides.  Despite appearing sweaty from a long day of unloading
+cargo, he seems to move with the tireless endurance of his race.  
+~
+alatharya~
+water scholar~
+AGL 0 Z N 0
+15 7 8d30+261 0d0+0 3d5+8 bash~
+punch~
+0 0 0 0
+0 0
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 35 -1
+AHMV ABCDEFGHIJK A large unknown
+>verb_prog p go_away_bitches~
+if isnpc($n)
+  mpvaluerand 1 0 2
+  if value(1) == 0
+    emote grunts, walking off.
+  endif
+  if value(1) == 1
+    if rand(5)
+      esay sighs Time for something to wet my throat, I reckon.
+    endif
+    emote leaves.
+  endif
+  if value(1) == 2
+    if rand(33)
+      dust
+    endif
+    emote departs.
+  endif
+  mppurge self
+endif
+~
+>verb_prog p unload_bitches~
+if isnpc($n)
+  mpvaluerand 1 0 2
+  if value(1) == 0
+    emote hefts a crate off the barge and onto the docks.
+  endif
+  if value(1) == 1
+    emote grunts, squatting to shift a crate onto the docks.
+  endif
+  if value(1) == 2
+    emote tosses a smallish crate onto the pier with a loud thud.
+  endif
+endif
+~
+|
+V4 1811
+barge movar bot barge_movar~
+barge mover bot~
+Barge mov{Ya{nr 2 never really loved your mother.
+~
+Its a generic bot.
+Probably misspelled to avoid conflicts with barge 1.
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 1812
+barge disembarker bot mob_1812~
+barge disembarker~
+Barge disembarker bot shoves people overboard.
+~
+Yo.
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+#0
+
+
+
+#OBJECTS
+V13
+1801
+sign wooden large~
+the sign~
+A large, faded wooden sign is here.~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+E
+sign wooden large~
+A large wooden sign of faded, weather-bleached planks leans crookedly in
+the muddy bank of the Dantaron beside a small trail which ascends to the
+plateau above.  Stark, black- and red-painted letters read:
+    
+                                {WWARNING!{n
+      
+      Up the trail to the west lie the accursed {rPlains of Shargob{n.
+                            -To enter is DEATH!-
+~
+V13
+1802
+pole barge long~
+a barge pole~
+A long barge pole lies here.~
+~
+wood~
+weapon S 0 0 AN
+polearm 3 3 1 F
+hit~
+5 200 50 3 P
+0
+A
+18 -2
+E
+pole barge long~
+This pole is extremely long, used to push barges down a river.  
+~
+V13
+1803
+tunic woolen simple wool~
+a simple woolen tunic~
+A simple wool tunic lies here.~
+~
+cloth~
+armor D 0 0 AD
+2 2 2 0 0
+5 40 200 0 P
+0
+A
+13 2
+E
+tunic woolen simple wool~
+This simple woolen tunic is stained from work, but warm.  
+~
+V13
+1804
+cap cloth shabby anchor~
+a shabby cloth cap, embroidered with an anchor~
+A shabby cloth cap, embroidered with an anchor, has been left here.~
+~
+cloth~
+armor 0 0 0 AE
+2 2 2 2 0
+25 8 55 0 P
+0
+A
+4 1
+A
+54 -1
+A
+13 6
+V13
+1805
+pin belaying wooden~
+a belaying pin~
+A wooden belaying pin lies here.~
+~
+wood~
+weapon S 0 0 AN
+mace 8 2 1 0
+clubbing~
+20 170 600 1 P
+0
+A
+19 1
+A
+18 -1
+V13
+1806
+gaff hook wooden pole long~
+a gaff hook~
+A long wooden pole lies here, a metal hook at its end.~
+~
+wood~
+weapon 0 0 0 AN
+polearm 3 7 2 F
+pierce~
+20 100 600 3 P
+0
+A
+19 1
+A
+18 -2
+V13
+1807
+small pier~
+a small pier~
+A small pier juts out into the muddy Dantaron from the north bank.~
+~
+unknown~
+furniture a 0 0 P
+4 20000 BEH 100 100
+52 0 0 0 P
+0
+V13
+1808
+towering pile crate crates wood wooden~
+a towering pile of crates~
+A towering pile of sturdy wooden crates has been stacked here.~
+~
+wood~
+trash 0 0 0 A
+0 0 0 0 0
+10 10000 0 0 P
+400
+E
+towering pile crate crates wood wooden~
+This pile of crates is stacked four tall, bound together with tough
+netting.  It seems somewhat less-than-stable, though it does not show signs
+of toppling.  The crates seem made from the same weatherstained wood,
+hammered together with crude iron spikes.  Unintelligible shipping markings
+have been branded on the sides of each, written in the language of
+destinations, contents, and passages.  
+~
+#0
+
+
+
+#ROOMS
+#1800
+Rage~
+Around are the shambles of what used to be a beautiful room.  The
+furniture is now little more than kindling, spread around the room.  The
+shreads of curtains hang from the lone window in the room, the glass that
+was in it shattered and lying on the floor.  A small fire has been started
+on one of the piles of furniture, and the stench of gasoline lies heavy in
+the air.  The one object remaining intact in the room is a large queen sized
+bed, covered in thick dark blue blankets.  Upon closer examination, you
+realize the corner of the bed has been drenched with some dark liquid that
+looks suspiciously like blood.  At the rate the fire is growing, it doesn\@t
+seem the bed will be left for much longer.  
+~
+~
+1
+0 33334 0
+W 5 0 0
+Z 5 5
+S
+#1801
+By the Earendam Docks~
+The Dantaron River flows from the plains to the east, making its way
+under the city wall of Earendam to the west, and eventually to the Uthlin
+Ocean.  To the north and south the river is lined with the Earendam docks
+area, bustling with merchants unloading cargo and passengers disembarking
+from barges.  Narrow wooden walkways run from one dock to the next, passing
+just overhead.  
+~
+~
+1
+0 4 7
+D1
+~
+~
+0 0 7229
+D3
+~
+~
+0 0 1802
+D4
+~
+~
+0 0 5858
+W 5 0 0
+Z 5 5
+S
+#1802
+By the Earendam Docks~
+The Dantaron River flows from the plains to the east, making its way
+under the city wall of Earendam to the west, and eventually to the Uthlin
+Ocean.  To the north and south the river is lined with the Earendam docks
+area, bustling with merchants unloading cargo and passengers disembarking
+from barges.  Narrow wooden walkways run from one dock to the next, passing
+just overhead.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1801
+D3
+~
+~
+0 0 1803
+D4
+~
+~
+0 0 5857
+W 5 0 0
+Z 5 5
+S
+#1803
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country.  At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1802
+D3
+~
+~
+0 0 1804
+W 5 0 0
+Z 5 5
+S
+#1804
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1803
+D3
+~
+~
+0 0 1805
+W 5 0 0
+Z 5 5
+S
+#1805
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 4 7
+D1
+~
+~
+0 0 1804
+D2
+~
+~
+0 0 1806
+W 5 0 0
+Z 5 5
+S
+#1806
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1805
+D3
+~
+~
+0 0 1807
+W 5 0 0
+Z 5 5
+S
+#1807
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1806
+D3
+~
+~
+0 0 1808
+W 5 0 0
+Z 5 5
+S
+#1808
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1807
+D3
+~
+~
+0 0 1809
+W 5 0 0
+Z 5 5
+S
+#1809
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1808
+D2
+~
+~
+0 0 1810
+W 5 0 0
+Z 5 5
+S
+#1810
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1809
+D3
+~
+~
+0 0 1811
+W 5 0 0
+Z 5 5
+S
+#1811
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1810
+D3
+~
+~
+0 0 1812
+W 5 0 0
+Z 5 5
+S
+#1812
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1813
+D1
+~
+~
+0 0 1811
+W 5 0 0
+Z 5 5
+S
+#1813
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 0 7
+D2
+~
+~
+0 0 1812
+D3
+~
+~
+0 0 1814
+W 5 0 0
+Z 5 5
+S
+#1814
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1813
+D3
+~
+~
+0 0 1815
+W 5 0 0
+Z 5 5
+S
+#1815
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 4 7
+D1
+~
+~
+0 0 1814
+D3
+~
+~
+0 0 1816
+W 5 0 0
+Z 5 5
+S
+#1816
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 4 7
+D0
+~
+~
+0 0 1817
+D1
+~
+~
+0 0 1815
+W 5 0 0
+Z 5 5
+S
+#1817
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 4 7
+D0
+~
+~
+0 0 8813
+D2
+~
+~
+0 0 1816
+D3
+~
+~
+0 0 1818
+W 5 0 0
+Z 5 5
+S
+#1818
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 4 7
+D1
+~
+~
+0 0 1817
+D2
+~
+~
+0 0 10768
+D3
+~
+~
+0 0 1819
+W 5 0 0
+Z 5 5
+S
+#1819
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 4 7
+D1
+~
+~
+0 0 1818
+D2
+~
+~
+0 0 10767
+D3
+~
+~
+0 0 1820
+W 5 0 0
+Z 5 5
+S
+#1820
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1819
+D2
+~
+~
+0 0 10766
+D3
+~
+~
+0 0 1821
+W 5 0 0
+Z 5 5
+S
+#1821
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1820
+D2
+~
+~
+0 0 1822
+W 5 0 0
+Z 5 5
+S
+#1822
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. At times, the Arien Road is visible in the distance to the north. 
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1821
+D3
+~
+~
+0 0 1823
+W 5 0 0
+Z 5 5
+S
+#1823
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country.  Far in the distance, the walls of Var Bandor are visible.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1822
+D2
+~
+~
+0 0 10708
+D3
+~
+~
+0 0 1824
+W 5 0 0
+Z 5 5
+S
+#1824
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. Far in the distance, the walls of Var Bandor are visible.
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1823
+D3
+~
+~
+0 0 1825
+W 5 0 0
+Z 5 5
+S
+#1825
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. Far in the distance, the walls of Var Bandor are visible.
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1824
+D2
+~
+~
+0 0 1826
+W 5 0 0
+Z 5 5
+S
+#1826
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. Far in the distance, the walls of Var Bandor are visible.
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1825
+D3
+~
+~
+0 0 1827
+W 5 0 0
+Z 5 5
+S
+#1827
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country. To the west, the walls of Var Bandor are visible.
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 10730
+D1
+~
+~
+0 0 1826
+D2
+~
+~
+0 0 10730
+D3
+~
+~
+0 0 1828
+W 5 0 0
+Z 5 5
+S
+#1828
+The Dantaron River~
+The winding Dantaron River makes its way through the Arien Plains,
+flowing from Var Bandor to Earendam, and eventually to the Uthlin Ocean. 
+The placid waters carry you through miles of flat, featureless plains
+country.  To the southwest, the walls of Var Bandor are visible.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1827
+D3
+~
+~
+0 0 1829
+W 5 0 0
+Z 5 5
+S
+#1829
+At a Fork in the Dantaron River~
+The Dantaron River flows west to east, passing the city of Var Bandor to
+the southwest.  The muddy waters of the Aragol River flow in from the south,
+joining with the Dantaron at this point.  Farther south along the Aragol are
+the docks of Var Bandor, and to the west is a ferry station.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1828
+D2
+~
+~
+0 0 1846
+D3
+~
+~
+0 0 1830
+W 5 0 0
+Z 5 5
+S
+#1830
+The Dantaron River~
+The winding Dantaron River turns to the east, flowing by the city of Var
+Bandor. The placid, muddy waters ripple gently as they run their course,
+eventually leading to Earendam eastward.  The stone walls of Var Bandor
+tower menacingly to the south, and a short distance ahead another river\@s
+flow joins with the Dantaron.
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1829
+D3
+~
+~
+0 0 1831
+W 5 0 0
+Z 5 5
+S
+#1831
+The Dantaron River~
+The winding Dantaron River turns to the east, flowing by the city of Var
+Bandor.  The placid, muddy waters ripple gently as they run their course,
+eventually leading to Earendam eastward.  The stone walls of Var Bandor
+tower menacingly to the south, and north and south of the river ferry
+stations have been set up.  
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1832
+D1
+~
+~
+0 0 1830
+D2
+~
+~
+0 0 4491
+D3
+~
+~
+0 0 1833
+W 5 0 0
+Z 5 5
+S
+#1832
+A Ferry Station~
+The waters of the Dantaron River flow placidly to the south, a muddy
+brown barrier to merchants, carts, and foot travelers.  A small wooden dock
+has been erected at the water\@s edge, and several large ferries run by
+riverfolk carry passengers back and forth between the Arien Road and the
+outskirts of Var Bandor.  
+A wooden sign stands at the edge of the docks.
+~
+~
+1
+0 0 2
+E
+sign~
+The sign reads:
+20 copper for passage.
+~
+D0
+~
+~
+0 0 8801
+D2
+~
+~
+0 0 1831
+W 5 0 0
+Z 5 5
+S
+#1833
+The Dantaron River~
+The winding Dantaron River turns to the east, flowing by the city of Var
+Bandor.  The placid, muddy waters ripple gently as they run their course,
+eventually leading to Earendam eastward.  The stone walls of Var Bandor
+tower menacingly to the south, and a short distance ahead another river\@s
+flow joins with the Dantaron.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1831
+D3
+~
+~
+0 0 1834
+W 5 0 0
+Z 5 5
+S
+#1834
+The Dantaron River~
+The winding Dantaron River makes its way north from the Var Bandor docks,
+and begins curving around the city to the northeast.  The stone city walls
+rise menacingly to the south.  The placid waters of the Dantaron ripple as
+they flow gently in their course.
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1833
+D2
+~
+~
+0 0 1835
+W 5 0 0
+Z 5 5
+S
+#1835
+The Dantaron River~
+The winding Dantaron River makes its way north from the Var Bandor docks,
+and begins curving around the city to the northeast.  The stone city walls
+rise menacingly to the south.  The placid waters of the Dantaron ripple as
+they flow gently in their course.
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1834
+D3
+~
+~
+0 0 1836
+W 5 0 0
+Z 5 5
+S
+#1836
+The Dantaron River~
+The winding Dantaron River makes its way north from the Var Bandor docks,
+and begins curving around the city to the northeast.  The stone city walls
+rise menacingly to the south.  The placid waters of the Dantaron ripple as
+they flow gently in their course.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1835
+D2
+~
+~
+0 0 1837
+W 5 0 0
+Z 5 5
+S
+#1837
+By the Docks~
+The wooden docks of Var Bandor are arrayed to the south, bustling with
+merchants, travelers, dockhands, and various other people.  The walls of the
+city itself rise beyond the dock area, grand stone edifices designed to
+protect the inhabitants of Var Bandor.  The river Dantaron flows northward
+to curve around the city.  
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1836
+D2
+~
+~
+0 0 4401
+D3
+~
+~
+0 0 1838
+W 5 0 0
+Z 5 5
+S
+#1838
+By the Docks~
+The wooden docks of Var Bandor are arrayed to the east, bustling with
+merchants, travelers, dockhands, and various other people.  The walls of the
+city itself rise beyond the dock area, grand stone edifices designed to
+protect the inhabitants of Var Bandor.  The river Dantaron flows northward
+to curve around the city.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1837
+D2
+~
+~
+0 0 1839
+W 5 0 0
+Z 5 5
+S
+#1839
+By the Docks~
+The wooden docks of Var Bandor are arrayed to the east, bustling with
+merchants, travelers, dockhands, and various other people.  The walls of the
+city itself rise beyond the dock area, grand stone edifices designed to
+protect the inhabitants of Var Bandor.  The river Dantaron flows northward
+to curve around the city.  
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1838
+D1
+~
+~
+0 0 4401
+D2
+~
+~
+0 0 1840
+W 5 0 0
+Z 5 5
+S
+#1840
+By the Docks~
+The wooden docks of Var Bandor are arrayed to the east, bustling with
+merchants, travelers, dockhands, and various other people.  The walls of the
+city itself rise beyond the dock area, grand stone edifices designed to
+protect the inhabitants of Var Bandor.  The river Dantaron flows northward
+to curve around the city.  
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1839
+D1
+~
+~
+0 0 4447
+D2
+~
+~
+0 0 1841
+W 5 0 0
+Z 5 5
+S
+#1841
+By the Docks~
+The wooden docks of Var Bandor are arrayed to the east, bustling with
+merchants, travelers, dockhands, and various other people.  The walls of the
+city itself rise beyond the dock area, grand stone edifices designed to
+protect the inhabitants of Var Bandor.  The river Dantaron flows northward
+to curve around the city.  
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1840
+D1
+~
+~
+0 0 4451
+D2
+~
+~
+0 0 1842
+W 5 0 0
+Z 5 5
+S
+#1842
+By the Docks~
+The wooden docks of Var Bandor are arrayed to the east, bustling with
+merchants, travelers, dockhands, and various other people.  The walls of the
+city itself rise beyond the dock area, grand stone edifices designed to
+protect the inhabitants of Var Bandor.  The river Dantaron flows northward
+to curve around the city.  
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1841
+D1
+~
+~
+0 0 4455
+D2
+~
+~
+0 0 1843
+W 5 0 0
+Z 5 5
+S
+#1843
+By the Docks~
+The wooden docks of Var Bandor are arrayed to the east, bustling with
+merchants, travelers, dockhands, and various other people.  The walls of the
+city itself rise beyond the dock area, grand stone edifices designed to
+protect the inhabitants of Var Bandor.  The river Dantaron flows northward
+to curve around the city.  
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1842
+D1
+~
+~
+0 0 4461
+D2
+~
+~
+0 0 1844
+W 5 0 0
+Z 5 5
+S
+#1844
+By the Docks~
+The wooden docks of Var Bandor are arrayed to the east, bustling with
+merchants, travelers, dockhands, and various other people.  The walls of the
+city itself rise beyond the dock area, grand stone edifices designed to
+protect the inhabitants of Var Bandor.  The river Dantaron flows northward
+to curve around the city.  
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1843
+D1
+~
+~
+0 0 4465
+D2
+~
+~
+0 0 1859
+W 5 0 0
+Z 5 5
+S
+#1845
+A River Barge~
+This barge is a long, flat-bottomed boat, used to transport goods up and
+down the river.  Low sides are scarred and scratched by years of rough
+usage.  The boat is in a state of disarray and generally unkempt.  A small,
+covered pilothouse sits at the aft end, secured with a crude iron padlock. 
+Two thick mooring lines secure the barge to the docks.  
+~
+~
+0
+0 32820 0
+W 5 0 0
+Z 5 5
+S
+#1846
+The Aragol River~
+The muddy waters of the Aragol River flow north from the Var Bandor docks
+to join with the Dantaron River.  The docks area to the south bustles with
+activity, as merchants and dockworkers oversee loading and unloading of
+cargo.  
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1829
+D2
+~
+~
+0 0 1847
+W 5 0 0
+Z 5 5
+S
+#1847
+The Aragol River~
+The muddy waters of the Aragol River flow north from the Var Bandor docks
+to join with the Dantaron River.  The docks area to the south bustles with
+activity, as merchants and dockworkers oversee loading and unloading of
+cargo.
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1846
+D2
+~
+~
+0 0 1848
+W 5 0 0
+Z 5 5
+S
+#1848
+By the Docks~
+The wooden docks of Var Bandor are arrayed to the west, bustling with
+merchants, travelers, dockhands, and various other people.  The walls of the
+city itself rise beyond the dock area, grand stone edifices designed to
+protect the inhabitants of Var Bandor.  The river Aragol flows northward to
+a junction.  
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1847
+D1
+~
+~
+0 0 1849
+W 5 0 0
+Z 5 5
+S
+#1849
+By the Docks~
+The wooden docks of Var Bandor are arrayed to the west, bustling with
+merchants, travelers, dockhands, and various other people.  The walls of the
+city itself rise beyond the dock area, grand stone edifices designed to
+protect the inhabitants of Var Bandor.  The river Aragol flows northward to
+a junction.  
+~
+~
+1
+0 0 7
+D2
+~
+~
+0 0 1850
+D3
+~
+~
+0 0 1848
+W 5 0 0
+Z 5 5
+S
+#1850
+By the Docks~
+The wooden docks of Var Bandor are arrayed to the west, bustling with
+merchants, travelers, dockhands, and various other people.  The walls of the
+city itself rise beyond the dock area, grand stone edifices designed to
+protect the inhabitants of Var Bandor.  The river Aragol flows northward to
+a junction.  Here, the pilings of the docks drive deep into the muddy bottom
+of the water which swirls sluggishly along.  Large cleats are wound with
+thick ropes for mooring, and filthy canvas fenders hang off the edges of the
+docks.
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1849
+D2
+~
+~
+0 0 1851
+D3
+~
+~
+0 0 4414
+W 5 0 0
+Z 5 5
+S
+#1851
+By the Docks~
+The wooden docks of Var Bandor are arrayed to the west, bustling with
+merchants, travelers, dockhands, and various other people.  The walls of the
+city itself rise beyond the dock area, grand stone edifices designed to
+protect the inhabitants of Var Bandor.  The river Aragol flows northward to
+a junction.  Here, the pilings of the docks drive deep into the muddy bottom
+of the water which swirls sluggishly along.  Large cleats are wound with
+thick ropes for mooring, and filthy canvas fenders hang off the edges of the
+docks.
+~
+~
+1
+0 0 7
+E
+recess hole tunnel bases base pilings down~
+Down between the two dock pilings, the recess descends.  It is large
+enough for even an Alatharya to enter.  
+~
+D0
+~
+~
+0 0 1850
+D2
+~
+~
+0 0 1852
+D3
+~
+~
+0 0 4432
+D5
+~
+~
+8 0 22880
+W 5 0 0
+Z 5 5
+S
+#1852
+By the Docks~
+The wooden docks of Var Bandor are arrayed to the west, bustling with
+merchants, travelers, dockhands, and various other people.  The walls of the
+city itself rise beyond the dock area, grand stone edifices designed to
+protect the inhabitants of Var Bandor.  The river Aragol flows northward to
+a junction.  Here, the pilings of the docks drive deep into the muddy bottom
+of the water which swirls sluggishly along.  Large cleats are wound with
+thick ropes for mooring, and filthy canvas fenders hang off the edges of the
+docks.
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1851
+D2
+~
+~
+0 0 1853
+D3
+~
+~
+0 0 4438
+W 5 0 0
+Z 5 5
+S
+#1853
+By the Docks~
+The wooden docks of Var Bandor are arrayed to the west, bustling with
+merchants, travelers, dockhands, and various other people.  The walls of the
+city itself rise beyond the dock area, grand stone edifices designed to
+protect the inhabitants of Var Bandor.  The river Aragol flows northward to
+a junction.  Here, the pilings of the docks drive deep into the muddy bottom
+of the water which swirls sluggishly along.  Large cleats are wound with
+thick ropes for mooring, and filthy canvas fenders hang off the edges of the
+docks.  
+~
+~
+1
+0 0 1
+D0
+~
+~
+0 0 1852
+D2
+~
+~
+0 0 1880
+D3
+~
+~
+0 0 4444
+W 5 0 0
+Z 5 5
+S
+#1854
+The River in the Tunnel~
+The Dantaron River flows through a narrow tunnel at this point, with
+barely room for two boats to pass one another.  The darkness is alleviated
+by sunlight visible to the east and west ends of the tunnel, but vision is
+still limited.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1855
+D3
+~
+~
+0 0 7261
+W 5 0 0
+Z 5 5
+S
+#1855
+The Dantaron River~
+The Dantaron River flows out of the tunnel to the west, passing under the
+walls of the city Earendam.  Above, a bridge passes over the river and leads
+to the outskirts of Earendam.  The river is smooth and sluggish as it flows
+to the east, eventually leading to the Uthlin Ocean.  
+~
+~
+1
+0 0 7
+D2
+~
+~
+0 0 1856
+D3
+~
+~
+0 0 1854
+W 5 0 0
+Z 5 5
+S
+#1856
+The Dantaron River~
+The Dantaron River flows eastward, picking up speed as it flows downhill
+toward the Uthlin Ocean.  While the waters are smooth to the west, they grow
+somewhat rougher to the east.  The walls of the city Earendam are visible in
+the distance, and to the west the gray waters of the Uthlin come into view. 
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1855
+D1
+~
+~
+0 0 1857
+W 5 0 0
+Z 5 5
+S
+#1857
+The Dantaron River~
+The Dantaron River flows eastward, picking up speed as it flows downhill
+toward the Uthlin Ocean.  While the waters are smooth to the west, they grow
+somewhat rougher to the east.  The walls of the city Earendam are visible in
+the distance, and to the west the gray waters of the Uthlin come into view. 
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 23775
+D3
+~
+~
+0 0 1856
+W 5 0 0
+Z 5 5
+S
+#1858
+The Mouth of the Dantaron River~
+The waters of the Dantaron River tumble down the slope from the city
+Earendam to empty into the Uthlin Ocean.  The slightly muddy riverwater
+mixes with the gray saltwater.  The air is filled with the smells and sounds
+of the ocean.  To the west, the walls of Earendam are visible in the
+distance.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 4606
+D3
+~
+~
+0 0 1857
+W 5 0 0
+Z 5 5
+S
+#1859
+The River Dantaron~
+The river Dantaron flows softly here, the current so faint as to be
+barely noticeable.  The water itself is unusually clear, with a sandy bottom
+clearly visible underneath some fifteen feet of water.  To the north, you
+can make out the extensive dock system of Var Bandor, source of most of this
+river\@s traffic.  The river winds west and south here, while to the east
+lies the greenery of the Forest of Nendor.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 1844
+D3
+~
+~
+0 0 1860
+W 5 0 0
+Z 5 5
+S
+#1860
+The Upper Dantaron River~
+The river Dantaron flows softly here, the current so faint as to be
+barely noticeable.  The water itself is unusually clear, with a sandy bottom
+clearly visible underneath some fifteen feet of water.  To the north, you
+can make out the extensive dock system of Var Bandor, source of most of this
+river\@s traffic.  The river winds west and south here, while to the east
+lies the greenery of the Forest of Nendor.
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1859
+D2
+~
+~
+0 0 1861
+W 5 0 0
+Z 5 5
+S
+#1861
+The Upper Dantaron River~
+The river Dantaron flows softly here, the current so faint as to be
+barely noticeable.  The water itself is unusually clear, with a sandy bottom
+clearly visible underneath some fifteen feet of water.  To the north, you
+can make out the extensive dock system of Var Bandor, source of most of this
+river\@s traffic.  The river winds west and south here, while to the east
+lies the greenery of the Forest of Nendor.
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1860
+D1
+~
+~
+0 0 19590
+D3
+~
+~
+0 0 1862
+W 5 0 0
+Z 5 5
+S
+#1862
+The Upper Dantaron River~
+The river Dantaron flows softly here, the current so faint as to be
+barely noticeable.  The water itself is unusually clear, with a sandy bottom
+clearly visible underneath some fifteen feet of water.  To the north, you
+can make out the extensive dock system of Var Bandor, source of most of this
+river\@s traffic.  The river winds west and south here, while to the east
+lies the greenery of the Forest of Nendor.
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1861
+D2
+~
+~
+0 0 1863
+W 5 0 0
+Z 5 5
+S
+#1863
+The Upper Dantaron River~
+The Dantaron flows slowly here, the mild current moving small leaves and
+other organic debris to the north.  The river is quite deep here, and the
+bottom is not visible from the surface, even though the water is quite
+clear.  The course of the river snakes from the north and east to the south
+and east, separating some barren plains to the northwest from the edges of
+the forest of Nendor to the southeast.  
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1862
+D3
+~
+~
+0 0 1864
+W 5 0 0
+Z 5 5
+S
+#1864
+The Upper Dantaron River~
+The Dantaron flows slowly here, the mild current moving small leaves and
+other organic debris to the north.  The river is quite deep here, and the
+bottom is not visible from the surface, even though the water is quite
+clear. The course of the river snakes from the north and east to the south
+and east, separating some barren plains to the northwest from the edges of
+the forest of Nendor to the southeast.
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1863
+D3
+~
+~
+0 0 1865
+W 5 0 0
+Z 5 5
+S
+#1865
+The Upper Dantaron River~
+The Dantaron flows slowly here, the mild current moving small leaves and
+other organic debris to the north.  The river is quite deep here, and the
+bottom is not visible from the surface, even though the water is quite
+clear.  The course of the river snakes from the west and south to the north
+and east, passing under crumbling, grey bluffs to the northwest from the
+edges of the forest of Nendor to the southeast.  On the west bank of the
+river, an ancient ruined dock juts from the land, a faded, ancient road
+running down the steep slope to it.  Beyond the dock, a vast, dead plateau
+spreads to the west.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1864
+D2
+~
+~
+0 0 1866
+D4
+~
+~
+0 0 3077
+W 5 0 0
+Z 5 5
+S
+#1866
+The Upper Dantaron River~
+The Dantaron flows slowly here, the mild current moving small leaves and
+other organic debris to the north.  The river is quite deep here, and the
+bottom is not visible from the surface, even though the water is quite
+clear. The course of the river snakes from the north and east to the south
+and east, separating some barren plains to the northwest from the edges of
+the forest of Nendor to the southeast.
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1865
+D3
+~
+~
+0 0 1867
+W 5 0 0
+Z 5 5
+S
+#1867
+The Upper Dantaron River~
+The river Dantaron flows this region at a moderate rate, strong enough to
+be noticeable without posing any signifigant impediment to travel. 
+Continuing its course, it divides some barren plains to the north from the
+scrubland to the south.  It snakes its way from the northeast to the west
+and south, heading gently upward as it continues on its course.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1866
+D3
+~
+~
+0 0 1868
+W 5 0 0
+Z 5 5
+S
+#1868
+The Upper Dantaron River~
+The river Dantaron flows this region at a moderate rate, strong enough to
+be noticeable without posing any signifigant impediment to travel. 
+Continuing its course, it divides some barren plains to the north from the
+scrubland to the south.  It snakes its way from the northeast to the west
+and south, heading gently upward as it continues on its course.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1867
+D2
+~
+~
+0 0 1869
+W 5 0 0
+Z 5 5
+S
+#1869
+The Upper Dantaron River~
+The river Dantaron flows through this region at a moderate rate, strong
+enough to be noticeable without posing any significant impediment to travel.
+A stream of dark water gushes in from the south, bringing with it a foul
+smell of decay.  The Dantaron flows from the west, disappearing to the
+northeast.  A rugged trail leads up a steep ridge to the east.  
+~
+~
+1
+0 4 7
+D0
+~
+~
+0 0 1868
+D1
+~
+~
+0 0 22502
+D2
+~
+~
+0 0 22501
+D3
+~
+~
+0 0 1870
+W 5 0 0
+Z 5 5
+S
+#1870
+The Upper Dantaron River~
+The river Dantaron flows through this region at a moderate rate, strong
+enough to be noticeable without posing any significant impediment to travel.
+A stream of dark water gushes in from the south, bringing with it a foul
+smell of decay.  The Dantaron flows from the west, disappearing to the
+northeast.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1869
+D3
+~
+~
+0 0 1871
+W 5 0 0
+Z 5 5
+S
+#1871
+The Upper Dantaron River~
+The river Dantaron flows rapidly here, picking up speed as you near the
+source of the river.  The path of the river heads from the northeast to the
+southwest, where the river makes a gradual climb into the mountains.  South
+of the river is a verdant grassland, but to the north little vegetation
+seems to grow, and a chill wind passes over the river.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1870
+D2
+~
+~
+0 0 1872
+W 5 0 0
+Z 5 5
+S
+#1872
+The Upper Dantaron River~
+The river Dantaron flows rapidly here, picking up speed as you near the
+source of the river.  The path of the river heads from the northeast to the
+southwest, where the river makes a gradual climb into the mountains.  South
+of the river is a verdant grassland, but to the north little vegetation
+seems to grow, and a chill wind passes over the river.  
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1871
+D3
+~
+~
+0 0 1873
+W 5 0 0
+Z 5 5
+S
+#1873
+The Upper Dantaron River~
+The river Dantaron flows rapidly here, picking up speed as you near the
+source of the river.  The path of the river heads from the northeast to the
+southwest, where the river makes a gradual climb into the mountains.  South
+of the river is a verdant grassland, but to the north little vegetation
+seems to grow, and a chill wind passes over the river.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1872
+D3
+~
+~
+0 0 1874
+W 5 0 0
+Z 5 5
+S
+#1874
+The Upper Dantaron River~
+The river Dantaron flows rapidly here, picking up speed as you near the
+source of the river.  The path of the river heads from the northeast to the
+southwest, where the river makes a gradual climb into the mountains.  South
+of the river is a verdant grassland, but to the north little vegetation
+seems to grow, and a chill wind passes over the river.  
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1873
+D2
+~
+~
+0 0 1875
+W 5 0 0
+Z 5 5
+S
+#1875
+The Upper Dantaron River~
+The river Dantaron flows rapidly here, picking up speed as you near the
+source of the river.  The path of the river heads from the northeast to the
+southwest, where the river makes a gradual climb into the mountains.  South
+of the river is a verdant grassland, but to the north little vegetation
+seems to grow, and a chill wind passes over the river.
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1874
+D3
+~
+~
+0 0 1876
+W 5 0 0
+Z 5 5
+S
+#1876
+The Upper Dantaron River~
+The river Dantaron flows rapidly here, picking up speed as you near the
+source of the river.  The path of the river heads from the northeast to the
+southwest, where the river makes a gradual climb into the mountains.  South
+of the river is a verdant grassland, but to the north little vegetation
+seems to grow, and a chill wind passes over the river.
+~
+~
+1
+0 0 7
+D1
+~
+~
+0 0 1875
+D3
+~
+~
+0 0 1877
+W 5 0 0
+Z 5 5
+S
+#1877
+Base of a Waterfall~
+Spluttering sheets of glistening, mountain water cascade over the edge of
+a stony crag far above.  At the base of the falls, the water dashes into a
+series of jagged steps and breaks into a layer of fine mist, hovering above
+a foaming, serpentine strip of fast-moving rapids that broadens out as it
+makes its way east.  The river itself marks a clear point of delineation
+between the lush, verdant lands to the south and the barren scrublands to
+the north.  The Dantaron\@s waters lap quietly onto the flat, barren surface
+of the north bank, providing life to a scant handful of twisted scrubs.  On
+the opposite end, the waters smash against a looming cliff wall, resplendent
+with overhung ferns and vines, that forcefully curves them back towards the
+north.  A narrow crevice can be seen in the southern cliff face, obscured by
+a swath of overhung vines.  
+~
+~
+1
+0 67108864 7
+E
+s~
+Behind a clump of thick, intertwined vines, there appears to be a narrow
+crevice, just large enough for one person to squeeze through.  
+~
+E
+south~
+Behind a clump of thick, intertwined vines, there appears to be a narrow
+crevice, just large enough for one person to squeeze through.  
+~
+D1
+~
+~
+0 0 1876
+D2
+~
+~
+8 0 12101
+D4
+~
+~
+0 0 1878
+W 5 0 0
+Z 5 5
+S
+#1878
+Top of the Waterfall~
+Starting from the top of this small mountain, the river Dantaron flows
+down its slope in a stairstep type waterfall.  Looking to the east, you can
+make out much of the course of the river as it snakes its way northeast,
+dividing plain and forest, and eventually reaching Var Bandor.  To the west,
+the river finds it source in a clear mountain lake, surrounded by rocky
+outcroppings.  
+~
+~
+1
+0 0 9
+D3
+~
+~
+0 0 1879
+D5
+~
+~
+0 0 1877
+W 5 0 0
+Z 5 5
+S
+#1879
+A Mountain Lake~
+This clear mountain lake is the source of the River Dantaron.  Filled by
+melting snows and soft rains, it is a clear blue, complete with sandy
+bottom.  Surrounded by rocky outcroppings, the lake is set in some sort of
+caldera, blocking off the view of the surrounding terrain in most
+directions, but the river does pass through a break in the rocks to the
+east, where you can make out the sounds of a waterfall.  Further to the
+west, the lake continues.  
+~
+~
+1
+0 0 6
+D1
+~
+~
+0 0 1878
+D3
+~
+~
+0 0 23000
+T 54
+W 5 0 0
+Z 5 5
+S
+#1880
+The Aragol River~
+The Aragol river runs swiftly over shallow rocks and small, dark pools. 
+To the west, up against the banks of the river, there are trees and brush. 
+It is dark between the trees, and a shadow of a cloud moves across the
+leaves.  Vast plains stretch out on the opposite side of the river, and far
+away, far beyond the plains, rise mountains in the sun.  Northwards, the
+river passes the jutting, wooden docks of Var Bandor.  
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1853
+D2
+~
+~
+0 0 1881
+W 5 0 0
+Z 5 5
+S
+#1881
+The Aragol River~
+The river slows into calm eddies and easy currents as it passes over deep
+salmon pools.  The trees to the west thin as they near the banks of the
+river.  There is a slight chattering from somewhere within them.  On the
+opposite side, the plains are broken by fields of high grass.  They bend and
+weave with the winds.  Beyond the plains, there is a distant line of
+mountains.  
+~
+~
+1
+0 0 7
+D0
+~
+~
+0 0 1880
+D1
+~
+~
+0 0 1882
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 1851 5 8
+D 0 1877 2 8
+O 0 1807 0 1817
+M 0 1801 1 1832 1
+M 0 1803 2 1860 1
+O 0 1801 0 1865
+M 0 1803 2 1866 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

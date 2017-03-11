@@ -1,0 +1,6322 @@
+#AREADATA
+Name The Plains of Shargob~
+Builders Jolinn Iandir Iacobos~
+VNUMs 3000 3199
+Credits [35 51] Joln/Iand The Plains of Shargob~
+Danger 4
+Security 1
+Areainfo 59
+Herbs 0
+Weather 0 4 2 0 8
+Weave 3 0 -1
+Shades 1 5
+Stone 84
+End
+
+
+
+#MOBILES
+V4 3000
+Crab Bot Crabbot~
+the Crab Bot~
+A spawnerbot is here. It looks like a real wimp
+~
+This region is nestled between the crook of the Yagash mountains to the west, and a small plateau
+which rises imemdiately southward. Gazing upward, you can make out some sort of structure atop
+the plateau, but no trail provides a way to ascend to the top leve of the plateau. The soil is more rocky here, and less reminiscent of the other portions of Shargob, which skirt the base of the plateau to the east.
+~
+human~
+water scholar~
+AG 0 LP N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 50~
+mpwander
+~
+>rand_prog 5~
+mpecho A pale gray crab sidles out from behind its cover amidst the rocks.
+mpmload 3002
+~
+>rand_prog 20~
+mpwander
+~
+|
+V4 3001
+Terror Creature Night~
+the night terror~
+The Night terror skitters about the plains.
+~
+Clouded in a fog of darkness, the night terror clicks as it skitters
+along the plains.  Barely visible in the dim lighting, a chill draft follows
+its progress.  
+~
+spirit~
+water scholar~
+AFG 0 DFTZ E 0
+55 26 19d210+1000 0d0+0 5d11+30 negative~
+life drain~
+-24 -24 -24 -7
+FH DKLMRb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ADHLMV ABCDEFGHIJK K medium unknown
+>rand_prog 50~
+mpwander
+~
+>time_prog 4~
+mpecho With the coming of dawn, the night terror fades back into the shadows.
+mpgoto 3000
+~
+>time_prog 19~
+if mobvalue(0)==1
+mpgoto 3038
+endif
+if mobvalue(0)==2
+mpgoto 3054
+endif
+if mobvalue(0)==3
+mpgoto 3094 
+endif
+if mobvalue(0)==4
+mpgoto 3128
+endif
+if mobvalue(0)==5
+mpgoto 3130
+endif
+~
+>time_prog 18~
+mpvaluerand 0 1 5
+~
+>rand_prog 10~
+mpasound An unwholesome skittering echoes across the nearby plains.
+~
+|
+V4 3002
+crab pale gray ~
+a pale crab~
+A pale gray crab sidles its way through the plains.
+~
+This pale crustacean sidles its way through the plains, weaving its way
+in and out of the small rocks of Shargob.  Pale feelers twitch as its scans
+the contents of the room, its pincers snapping hungrily.  
+~
+generic~
+water scholar~
+AG 0 JZ E 0
+35 30 12d110+738 0d0+0 5d7+16 slash~
+claw~
+-12 -2 -12 -3
+E 0
+26 0 0 0 0 -33 0 33 0 0 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV CFK A medium unknown
+>rand_prog 6~
+mpecho The crab turns sidewise and scuttles off behind some cover.
+mpgoto 3160
+~
+>greet_prog 50~
+if ispc($n)
+mpecho Scuttling forward suddenly, the crab strikes!
+mpkill $n
+endif
+ 
+~
+|
+V4 3003
+maglatbot~
+maglatbot~
+Maglatbot
+~
+~
+human~
+water scholar~
+AB 0 DJLZ N 0
+0 0 1d100+100 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+if ispc($n)
+  if inroom($n) == 3116
+    mpechoat $n As you enter the room, a mass of slender tendrils snakes out of the ground!
+    if luck($n) == lucky
+      mpechoat $n The tendrils flail about wildly, but miss you in their blindness.
+      mpechoaround $n The tendrils flail about wildly, but fail to find $N.
+    else
+      mpechoat $n With a quick whip-like motion, the tendrils grab hold of you, and drag you beneath the ground!
+      mpechoaround $n As $N enters the room, a mass of tendrils snakes out of the ground!
+      mpechoaround $n With a quick whip-like motion, the tendrils grab $N, and drag $m beneath the ground
+      mptransfer $n 3151
+      mpat 3151 mpforce $n look
+      mpat 3151 mpforce maglat mpkill $n
+    endif
+  else
+    if inroom($n) == 3105
+      mpechoat $n As you enter the room, a mass of slender tendrils snakes out of the ground!
+      if luck($n) == lucky
+        mpechoat $n The tendrils flail about wildly, but miss you in their blindness.
+        mpechoaround $n The tendrils flail about wildly, but fail to find $N.
+      else
+        mpechoat $n With a quick whip-like motion, the tendrils grab hold of you, and drag you beneath the ground!
+        mpechoaround $n As $N enters the room, a mass of tendrils snakes out of the ground!
+        mpechoaround $n With a quick whip-like motion, the tendrils grab $N, and drag $m beneath the ground
+        mptransfer $n 3150
+        mpat 3150 mpforce $n look
+        mpat 3150 mpforce maglat mpkill $n
+      endif
+    else
+      if inroom($n) == 3110
+        mpechoat $n As you enter the room, a mass of slender tendrils snakes out of the ground!
+        if luck($n) == lucky
+          mpechoat $n The tendrils flail about wildly, but miss you in their blindness.
+          mpechoaround $n The tendrils flail about wildly, but fail to find $N.
+        else
+          mpechoat $n With a quick whip-like motion, the tendrils grab hold of you, and drag you beneath the ground!
+          mpechoaround $n As $N enters the room, a mass of tendrils snakes out of the ground!
+          mpechoaround $n With a quick whip-like motion, the tendrils grab $N, and drag $m beneath the ground
+          mptransfer $n 3149
+          mpat 3149 mpforce $n look
+          mpat 3149 mpforce maglat mpkill $n
+        endif
+      else
+        if inroom($n) == 3100
+          mpechoat $n As you enter the room, a mass of slender tendrils snakes out of the ground!
+          if luck($n) == lucky
+            mpechoat $n The tendrils flail about wildly, but miss you in their blindness.
+            mpechoaround $n The tendrils flail about wildly, but fail to find $N.
+          else
+            mpechoat $n With a quick whip-like motion, the tendrils grab hold of you, and drag you beneath the ground!
+            mpechoaround $n As $N enters the room, a mass of tendrils snakes out of the ground!
+            mpechoaround $n With a quick whip-like motion, the tendrils grab $N, and drag $m beneath the ground
+            mptransfer $n 3148
+            mpat 3148 mpforce $n look
+            mpat 3148 mpforce maglat mpkill $n
+          endif
+        else
+          if inroom($n) == 3083
+            mpechoat $n As you enter the room, a mass of slender tendrils snakes out of the ground!
+            if luck($n) == lucky
+              mpechoat $n The tendrils flail about wildly, but miss you in their blindness.
+              mpechoaround $n The tendrils flail about wildly, but fail to find $N.
+            else
+              mpechoat $n With a quick whip-like motion, the tendrils grab hold of you, and drag you beneath the ground!
+              mpechoaround $n As $N enters the room, a mass of tendrils snakes out of the ground!
+              mpechoaround $n With a quick whip-like motion, the tendrils grab $N, and drag $m beneath the ground
+              mptransfer $n 3147
+              mpat 3147 mpforce $n look
+              mpat 3147 mpforce maglat mpkill $n
+            endif
+          else
+            if inroom($n) == 3080
+              mpechoat $n As you enter the room, a mass of slender tendrils snakes out of the ground!
+              if luck($n) == lucky
+                mpechoat $n The tendrils flail about wildly, but miss you in their blindness.
+                mpechoaround $n The tendrils flail about wildly, but fail to find $N.
+              else
+                mpechoat $n With a quick whip-like motion, the tendrils grab hold of you, and drag you beneath the ground!
+                mpechoaround $n As $N enters the room, a mass of tendrils snakes out of the ground!
+                mpechoaround $n With a quick whip-like motion, the tendrils grab $N, and drag $m beneath the ground
+                mptransfer $n 3146
+                mpat 3146 mpforce $n look
+                mpat 3146 mpforce maglat mpkill $n
+              endif
+            else
+              if inroom($n) == 3020
+                mpechoat $n As you enter the room, a mass of slender tendrils snakes out of the ground!
+                if luck($n) == lucky
+                  mpechoat $n The tendrils flail about wildly, but miss you in their blindness.
+                  mpechoaround $n The tendrils flail about wildly, but fail to find $N.
+                else
+                  mpechoat $n With a quick whip-like motion, the tendrils grab hold of you, and drag you beneath the ground!
+                  mpechoaround $n As $N enters the room, a mass of tendrils snakes out of the ground!
+                  mpechoaround $n With a quick whip-like motion, the tendrils grab $N, and drag $m beneath the ground
+                  mptransfer $n 3145
+                  mpat 3145 mpforce $n look
+                  mpat 3145 mpforce maglat mpkill $n
+                endif
+              else
+                if inroom($n) == 3040
+                  mpechoat $n As you enter the room, a mass of slender tendrils snakes out of the ground!
+                  if luck($n) == lucky
+                    mpechoat $n The tendrils flail about wildly, but miss you in their blindness.
+                    mpechoaround $n The tendrils flail about wildly, but fail to find $N.
+                  else
+                    mpechoat $n With a quick whip-like motion, the tendrils grab hold of you, and drag you beneath the ground!
+                    mpechoaround $n As $N enters the room, a mass of tendrils snakes out of the ground!
+                    mpechoaround $n With a quick whip-like motion, the tendrils grab $N, and drag $m beneath the ground
+                    mptransfer $n 3144
+                    mpat 3144 mpforce $n look
+                    mpat 3144 mpforce maglat mpkill $n
+                  endif
+                else
+                  if inroom($n) == 3025
+                    mpechoat $n As you enter the room, a mass of slender tendrils snakes out of the ground!
+                    if luck($n) == lucky
+                      mpechoat $n The tendrils flail about wildly, but miss you in their blindness.
+                      mpechoaround $n The tendrils flail about wildly, but fail to find $N.
+                    else
+                      mpechoat $n With a quick whip-like motion, the tendrils grab hold of you, and drag you beneath the ground!
+                      mpechoaround $n As $N enters the room, a mass of tendrils snakes out of the ground!
+                      mpechoaround $n With a quick whip-like motion, the tendrils grab $N, and drag $m beneath the ground
+                      mptransfer $n 3143
+                      mpat 3144 mpforce $n look
+                      mpat 3143 mpforce maglat mpkill $n
+                    endif
+                  else
+                    if inroom($n) == 3022
+                      mpechoat $n As you enter the room, a mass of slender tendrils snakes out of the ground!
+                      if luck($n) == lucky
+                        mpechoat $n The tendrils flail about wildly, but miss you in their blindness.
+                        mpechoaround $n The tendrils flail about wildly, but fail to find $N.
+                      else
+                        mpechoat $n With a quick whip-like motion, the tendrils grab hold of you, and drag you beneath the ground!
+                        mpechoaround $n As $N enters the room, a mass of tendrils snakes out of the ground!
+                        mpechoaround $n With a quick whip-like motion, the tendrils grab $N, and drag $m beneath the ground!
+                        mptransfer $n  3142 
+                        mpat 3142 mpforce $n look
+                        mpat 3142 mpforce maglat mpkill $n
+                      endif
+                    endif
+                  endif
+                endif
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>death_prog 100~
+mpmload 3005
+~
+|
+V4 3004
+maglat tendril writhe~
+the maglat~
+The maglat\@s tendrils writhe hungrily as they fill the room.
+~
+An enormous bundle of thick tendrils surrounds the central jaws of the
+maglat.  Gummy secretions coat the floor near it, where its central location
+provides easy digestion of those who are drawn through the trap ceiling
+directly above it.  
+~
+centipede~
+water scholar~
+ABFGX 0 DJZ E 0
+51 25 18d200+920 0d0+0 5d10+25 bash~
+lashing tendrils~
+-21 -21 -21 -5
+0 0
+26 0 0 0 0 -20 20 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMOV ABCDEFGHIJK A large unknown
+>verb_prog up~
+if isghost($n)
+or isimmort($n)
+mpechoat $n The tendrils of the maglat grab at you, but pass through your insubstantial form.
+if inroom($i) ==3142 
+mptrans $n 3022
+mpat 3022 mpforce $n look
+endif
+if inroom($i) ==3143
+mptrans $n  3025  
+mpat 3025 mpforce $n look
+endif
+if inroom($i) == 3144
+mptrans $n 3040 
+mpat 3040 mpforce $n look
+endif
+if inroom($i)==3145
+mptrans $n 3020  
+mpat 3145 mpforce $n look
+endif
+if inroom($i) ==3146
+mptrans $n 3080 
+mpat 3080 mpforce $n look
+endif
+if inroom($i) == 3147
+mptrans $n 3083 
+mpat 3083 mpforce $n look
+endif
+if inroom($i) ==3148
+mptrans $n 3100  
+mpat 3100 mpforce $n look
+endif
+if inroom($i)==3149
+mptrans $n 3110 
+mpat 3110 mpforce $n look
+endif
+if inroom($i) ==3150 
+mptrans $n 3105  
+mpat 3105 mpforce $n look
+endif
+if inroom($i) ==3151
+mptrans $n 3116  
+mpat 3116 mpforce $n look
+endif
+else
+mpechoat $n You try to escape the pit, but the maglat\@s tendrils drag you back down!
+mpechoaround $n $N tries to clamber of of the pit, but is dragged back down by the maglat tendrils!
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+>death_prog 100~
+mpseewizi
+mpmload 3005
+if inroom($i) ==3142 
+mpat 3022  mppurge maglatbot
+endif
+if inroom($i) ==3143
+mpat 3025  mppurge maglatbot
+endif
+if inroom($i) == 3144
+mpat 3040  mppurge maglatbot
+endif
+if inroom($i)==3145
+mpat 3020  mppurge maglatbot
+endif
+if inroom($i) ==3146
+mpat 3080  mppurge maglatbot
+endif
+if inroom($i) == 3147
+mpat 3083  mppurge maglatbot
+endif
+if inroom($i) ==3148
+mpat 3100  mppurge maglatbot
+endif
+if inroom($i)==3149
+mpat 3110  mppurge maglatbot
+endif
+if inroom($i) ==3150 
+mpat 3105  mppurge maglatbot
+endif
+if inroom($i) ==3151
+mpat 3116  mppurge maglatbot
+endif
+ 
+~
+|
+V4 3005
+exitbot~
+exitbot~
+The exitbot had no long desc till Iandir gave it one.
+~
+Iandir was tired of seeing (No long description), so he described the
+exitbot.  
+~
+human~
+water scholar~
+AB 0 DFJLZ N 0
+0 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog up~
+if mobhere(3004)
+else
+mpechoat $n The walls of the pit collapse around you as you clamber out of the pit.
+if inroom($i) ==3142 
+mptrans $n 3022
+mpat 3022 mpforce $n look
+endif
+if inroom($i) ==3143
+mptrans $n  3025  
+mpat 3025 mpforce $n look
+endif
+if inroom($i) == 3144
+mptrans $n 3040 
+mpat 3040 mpforce $n look
+endif
+if inroom($i)==3145
+mptrans $n 3020  
+mpat 3020 mpforce $n look
+endif
+if inroom($i) ==3146
+mptrans $n 3080 
+mpat 3080 mpforce $n look
+endif
+if inroom($i) == 3147
+mptrans $n 3083 
+mpat 3083 mpforce $n look
+endif
+if inroom($i) ==3148
+mptrans $n 3100  
+mpat 3100 mpforce $n look
+endif
+if inroom($i)==3149
+mptrans $n 3110 
+mpat 3110 mpforce $n look
+endif
+if inroom($i) ==3150 
+mptrans $n 3105  
+mpat 3105 mpforce $n look
+endif
+if inroom($i) ==3151
+mptrans $n 3116  
+mpat 3116 mpforce $n look
+endif
+endif
+~
+>rand_prog 100~
+if mobhere(3004)
+mppurge self
+else
+endif
+~
+|
+V4 3006
+Tentacles fungi maybe~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 3007
+Big Demon Guy~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 3008
+purge crab guy~
+the crab purge guy~
+A crab purge guy is here, waiting to be referred to as \#the crabinator\#.
+~
+~
+human~
+water scholar~
+A 0 L N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+mppurge
+~
+|
+V4 3009
+ancient templar Elieth~
+Elieth~
+An ancient templar sits cross-legged on the ground.
+~
+This human is exceptionally tall, towering over six and a half feet. 
+Rail-thin, his bones stand out prominently, from his gaunt chest to his
+sallow cheeks.  His attire is especially humble; his upper body is bare, and
+unevenly stitched hide leggings cover much of the rest.  His hair is matted
+and grey, long enough to reach his narrow waist.  Despite his unsettling
+appearance, his shining eyes are keen, alert, and devastating in their
+intensity-- lit with an eerie blue light that knows not the passing of ages.
+~
+human~
+water scholar~
+ABX 0 CDGJZ G 0
+60 45 20d220+1100 20d220+1100 5d13+55 holy~
+shining fist~
+-25 -25 -25 -50
+FHK ABb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK AEK medium unknown
+>rand_prog 100~
+if value(2) == 1
+        $d
+        mpnextdata
+        break
+endif
+if value(9) > 0
+        mpvaluedown 9
+endif
+~
+>greet_prog 100~
+if isghost($n)
+or remembers($n)
+else
+        if isgood($n)
+                mpremember $n
+                if isunderlimit(3000)
+                        tell $n Friend, I stay here in hopes of discovering a way to free these lands from their agony.
+                        tell $n However, I do not possess the strength to challenge the Deathless King.
+                        tell $n Should he be defeated, bring me his hand, that I might try once more to unweave its evil.
+                else
+                        tell $n Although I was closer this time than the last, I was not able to unravel the King\@s curse.
+                        tell $n While I could attempt the ritual again, I do not feel confident in its success.
+                        tell $n If you obtain his hand, bring it to me, and I will still try.
+                endif
+        endif
+endif
+~
+>give_prog all~
+if number() == 8267
+        mpvalueset 2 1
+        mppurge hand
+        mpfocus $n 1
+        if isunderlimit(3000)
+                say Thank you for bringing this, $F1.  Long have I prayed to Calaera; now I shall try to unweave the curse.
+                mpsetdata ritual_underlimit
+        else
+                say Another try, then.  I am weakened from the last, but I shall do my best.
+                mpsetdata ritual_overlimit
+        endif
+else
+        say I need nothing that the Ishia cannot provide.
+        give 1. $n
+endif
+~
+>data_prog ritual_underlimit~
+pmote places the Hand of Gogoth upon the ground, drawing a circle around it in the dirt with a jagged fingernail.
+pmote closes his eyes and concentrates intently, hands outstretched.
+pmote opens them again suddenly, both eyes pupilless and lit with fiery blue light!
+mpecho The Hand of Gogoth shines with intense blue light, black mist rising from it!
+mpecho The blue light quickly turns black as pitch, and a bolt of dark energy strikes Elieth and he reels backward!
+pmote gathers his senses, his eyes having returned to normal.
+pmote shakes his head, the Hand of Gogoth nowhere to be found.
+say I have done my best but the rite did not succeed.  However, this attempt has given me new insight.  Let me reward you for your help.
+esay intones Ar\@niari a sy\@ilaiachtara!
+pmote creates a blazing twin-bladed ax\@niara from the aether.
+mpoload 3000
+say Take this with you.  The favor of Calaera has empowered it to fight the war against evil.
+give grewardweapon $f1
+pmote goes silent, and returns to his meditation.
+mpvalueset 2 0
+~
+>data_prog ritual_overlimit~
+pmote places the Hand of Gogoth upon the ground, drawing a circle around it in the dirt with a jagged fingernail.
+pmote closes his eyes and concentrates intently, hands outstretched.
+pmote opens them again suddenly, both eyes pupilless and lit with bright blue light!
+mpecho The Hand of Gogoth shines with blue light, black mist rising from it!
+mpecho The blue light quickly turns black as pitch, and a bolt of dark energy strikes Elieth and he reels backward!
+pmote gathers his senses, his eyes having returned to normal.
+pmote shakes his head, the Hand of Gogoth nowhere to be found.
+say I have done my best, but I cannot break the evil of the King\@s curse.  However, I will still try to reward your help.
+esay intones Ar\@niari a sy\@ilaiachtara!
+pmote creates a twin-bladed ax\@niara from the aether.
+mpoload 3004
+say Take this with you.  It is not as powerful as if I were at full strength, but it should still carry some of the Ishia\@s blessing.
+give gconsolationweapon $f1
+pmote goes silent, and returns to his meditation.
+mpvalueset 2 0
+~
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if isflying($i)
+else
+        invoke sigil
+endif
+if rand(50)
+        mpvaluerand 8 1 4
+        if value(8) == 1
+                cast \@ray of light\@
+        endif
+        if value(8) == 2
+                if snaffected($n) == 698
+                        cast \@ray of light\@
+                else
+                        cast \@wrath of kyana\@
+                endif
+        endif
+        if value(8) == 3
+                if cansee($n) == $i
+                        cast \@soul flare\@
+                        mpvalueset 9 1
+                else
+                        cast \@ray of light\@
+                endif
+        endif
+        if value(8) == 4
+                if snaffected($i) == 696
+                        cast \@ray of light\@
+                else
+                        sortie
+                        mpvalueset 9 1
+                endif
+        endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 157 100
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 687 100
+mpaddskill $i 688 100
+mpaddskill $i 696 100
+mpaddskill $i 698 100
+mpaddskill $i 1094 100
+battlecry The strength of the Ishia flows through me!
+mpoload 6333 on $i 20
+~
+|
+V4 3010
+byaeghyaki demon abomination massive chitin chitin-plated plated~
+Byaeghyaki~
+A massive, chitin-plated abomination sprawls obscenely in the crevasse.
+~
+A massive, vaguely insectoid abomination of chitin plates and sharp,
+jagged pincers sprawls obscenely on the floor of the crevasse.  Its black
+armor gleams dully in the dim light, and as it shifts slightly, a horrible
+clattering emanates from the pile of joints and sharp edges.  An unearthly
+stench surrounds the demon.  
+~
+demon~
+water scholar~
+ABFX 0 DFZ E 0
+62 30 8000d1+1 0d0+0 5d15+1 none~
+hit~
+-30 -30 -30 -10
+AEK BG
+26 0 0 33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+ACHMV ABCDEFGHIJKP A medium unknown
+>greet_prog 100~
+mpechoat $n A massive, chitin-plated abomination rushes at you, bowling you over!
+mpechoaround $n Byaeghyaki rushes at $N, bowling $m over!
+mplag $n 1
+mpkill $n
+~
+|
+V4 3011
+trigger triggernator~
+Lord Falirn~
+The triggernator dares you to say \#What\# one more goddamn time.
+~
+~
+human~
+water scholar~
+AB B DFJLPZ N 0
+55 0 10d10+10 0d0+0 10d10+10 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+if isbitset($n) == 1320
+else
+  if isbitset($n) == 1317
+    if iscarrying($n) == 1327
+      mpecho The jagged black stone begins to glow with an eerie black light!
+      if iswielding($n) == 1327
+        mpforce $n remove jaggedstone
+      endif
+      mpforce $n drop jaggedstone
+      mpecho The jagged black stone drops to the clay floor, and sinks in, fusing with the other stones!
+      mppurge jaggedstone
+      mpbitset $n 1318 1
+    endif
+  endif
+endif
+~
+|
+V4 3012
+omigur humanoid gray squat~
+Omigur~
+A bulky, squat humanoid with grayish skin and massive claws snarls viciously.
+~
+Omigur is a short, broad, muscular humanoid monstrosity with glaring red
+eyes.  Its tough skin is an appaling shade of gray, and its thick hands are
+armed with scythe-like claws.  It snarls and grunts to itself as it sniffs
+the air for intruders.  
+~
+human~
+water scholar~
+ABFX 0 DFJVZ E 0
+60 50 6000d1+1 0d0+0 10d15+5 slash~
+claw~
+-30 -30 -30 -30
+CFKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 3013
+obeliskloaderbot bot loaderbot symbolbot~
+the obeliskloaderbot~
+An obeliskloaderbot, Jolinn? This is bad comedy!
+~
+~
+human~
+water scholar~
+ADL 0 DFJLZ N 0
+55 0 23d234+2342 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p study~
+if compstr(2) == symbol
+or compstr(2) == lost
+or compstr(2) == cipher
+or compstr(2) == pnakur
+  if skill1250($n) > 0
+    if hassymbol($n) == 13
+      mpechoat $n That symbol is one with which you are already familiar.
+    else
+      mpforce $n look symbolvision
+      mpaddsymbol $n 13
+      mplag $n 4
+      break
+    endif
+  else
+    mpechoat $n You lack the knowledge to fully comprehend this symbol.
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>load_prog 100~
+mpvaluerand 0 3020 3030
+mpgoto $0
+mpoload 3013 in room
+~
+|
+V4 3014
+symbolbot bot xixzyrbot~
+Xixzyr symbolbot~
+The symbolbot can\@t spell Xixzyr either.
+~
+~
+human~
+water scholar~
+ADL 0 DL N 0
+0 0 23d23+232 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p study~
+if mobhere(3010)
+  mpechoat $n You can\@t study anything with Byaeghyaki here!
+  break
+endif
+if isghost($n)
+  You need to be corporeal to fully understand the Cracks.
+  break
+endif
+if compstr(2) == symbol
+or compstr(2) == cracks
+or compstr(2) == disjointed
+or compstr(2) == Xixzyr
+  if skill1250($n) > 0
+    if hassymbol($n) == 19
+      mpechoat $n That symbol is one with which you are already familiar.
+    else
+      mpforce $n look symbolvision
+      mpaddsymbol $n 19
+      mplag $n 4
+      break
+    endif
+  else
+    mpechoat $n You lack the knowledge to fully comprehend this symbol.
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+|
+V4 3020
+avatar tall black bat flames~
+the Avatar of Bayyal~
+A tall black figure with great bat wings seems consumed by flames.
+~
+An immense black figure cloaked in flames spreads and flexes its batlike
+wings, and hisses in rage at the world.  Its face seems vaguely to resemble
+that of a great black nefortu, but its height belies its appearance.  
+~
+nefortu~
+water scholar~
+ABX 0 DEFTZ E 0
+60 60 10000d1+1 1000d2+1 15d11+50 fire~
+flame~
+0 0 0 0
+FHK ABH
+26 0 0 30 30 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMW ABCDEFGIJKP H medium unknown
+V4 3021
+avatar tall black bat flames~
+the Avatar of Bayyal~
+A tall black figure with great bat wings seems consumed by flames.
+~
+An immense black figure cloaked in flames spreads and flexes its batlike
+wings, and hisses in rage at the world.  Its face seems vaguely to resemble
+that of a great black nefortu, but its height belies its appearance.
+~
+nefortu~
+water scholar~
+ABX 0 DEFTZ E 0
+60 60 7000d1+1 1000d1+1 11d11+50 fire~
+flame~
+0 0 0 0
+FK 0
+26 0 0 20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMW ABCDEFGIJKP H medium unknown
+#0
+
+
+
+#OBJECTS
+V13
+3000
+blazing twin-bladed twin bladed ax\@niara weapon grewardweapon~
+a blazing twin-bladed ax\@niara~
+A two-bladed weapon of pure energy is here, radiating intense white light.~
+The ax\@niara is a weapon design with a storied legacy amongst the ancient
+ch\@taren.  However, in the modern age, it is specifically associated with
+the devoted of Calaera-- who draw upon both Her power and their own inner
+strength to create it.  The most powerful of these weapons can only be
+called forth by those of immense favor with the Ishia, and only then may
+they be touched by other than Her chosen.  
+~
+energy~
+weapon ABGIKLa 0 0 AN
+exotic 8 7 15 0
+searing light~
+55 90 0 2 P
+1
+A
+19 4
+A
+13 40
+E
+blazing twin-bladed twin bladed ax~
+The ax\@niara is the product of ancient ch\@taren Spirit magic.  It has a
+secure, central grip with two long, curving blades extending outward.  The
+weapon has no materiality, a construct formed of pure, shining light. 
+Intense white light radiates from it, making it difficult to look upon for
+long.  
+~
+O searing light~
+V13
+3001
+Maglat Corpse~
+maglat corpse~
+Maglat corpse~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+V13
+3002
+chitinous black armor~
+the chitinous black armor~
+A piece of chitinous black armor lies on the ground.~
+~
+chitin~
+armor Q 0 0 AD
+15 15 15 5 0
+51 20 68662 2 P
+1
+A
+19 4
+A
+18 4
+E
+chitinous~
+Dark black and reeking of a strange foulness, a sickly aura seems to
+surround this piece of armor.  
+~
+E
+armor~
+Dark black and reeking of a strange foulness, a sickly aura seems to
+surround this piece of armor.  
+~
+E
+black~
+~
+>rand_prog 100~
+if isworn($o)
+if snaffected($o) == 39
+else
+opechoat $o You are overcome with a sense of dread.
+opaddaffect 39 95 -1 24 7 1024
+endif
+endif
+~
+>remove_prog 100~
+opechoat $n The chitinous breastplate clings to you as attempt to pry it away from your body.
+opremaffect 39
+oplag $n 2
+ 
+~
+>wear_prog 100~
+opechoat $n As you fasten the chitinous breastplate to your body, you are overcome with a sense of dread.
+opaddaffect 39 95 -1 24 7 1024
+~
+|
+V13
+3003
+plates metallic set coolbeans~
+a set of metallic plates~
+Some metallic plates are stuck within the wall, covered in the secretions.~
+~
+metal~
+treasure CEG 0 0 AO
+0 0 0 0 0
+52 100 35607 1 P
+0
+A
+4 -3
+A
+12 10
+A
+41 5
+E
+set~
+These plates are made of some odd metallic material, dense yet easily
+marked.  They carry a greenish grey tint.  An odd flowing, jagged script
+covers them, written in no language you can dicern.  
+~
+E
+metallic~
+These plates are made of some odd metallic material, dense yet easily
+marked.  They carry a greenish grey tint.  An odd flowing, jagged script
+covers them, written in no language you can dicern.  
+~
+E
+plates~
+These plates are made of some odd metallic material, dense yet easily
+marked.  They carry a greenish grey tint.  An odd flowing, jagged script
+covers them, written in no language you can dicern.  
+~
+>take_prog plates metallic set coolbeans~
+if objvalue(0) == 0
+opvalueset 0 1
+mpstring obj coolbeans long A set of metallic plates lie untended.
+endif
+~
+|
+V13
+3004
+twin bladed twin-bladed ax\@niara two-bladed weapon pure white light gconsolationweapon~
+a twin-bladed ax\@niara~
+A two-bladed weapon of pure white light is here.~
+~
+energy~
+weapon ABGIKLPa 0 0 AN
+exotic 5 9 15 0
+searing light~
+52 90 0 0 P
+0
+A
+19 2
+A
+18 2
+E
+twin bladed twin-bladed ax\@niara two-bladed weapon pure white light~
+The ax\@niara is the product of ancient ch\@taren Spirit magic.  It has a
+secure, central grip with two long, curving blades extending outward.  The
+weapon has no materiality, a construct formed of pure, shining light.  
+~
+O searing light~
+V13
+3005
+bracer ancient black iron~
+an ancient black bracer~
+An ancient bracer crafted of black iron rests here.~
+~
+iron~
+armor HMZ 0 0 AM
+6 6 6 6 0
+52 30 77880 1 P
+5
+A
+13 25
+A
+12 25
+A
+19 3
+A
+18 4
+>verb_prog p s y n r a e l 2~
+opvalueset 1 1
+~
+>verb_prog p s y n r a e l~
+opzap $n
+~
+>rand_prog 1~
+if ispc($o)
+  if isheld($o)
+    opvaluerand 0 1 35
+    if objvalue(1) == 1
+      break
+    endif
+    if objvalue(0) == 1
+      opforce $o growl
+    endif
+    if objvalue(0) == 2
+      opforce $o grimace
+    endif
+    if objvalue(0) == 3
+      opforce $o gurgle
+    endif
+    if objvalue(0) == 4
+      opforce $o evil
+    endif
+    if objvalue(0) == 5
+      opforce $o twitch
+    endif
+    if objvalue(0) == 6
+      opforce $o chort
+    endif
+    if objvalue(0) == 7
+      opforce $o fidget
+    endif
+    if objvalue(0) == 8
+      opforce $o snarl
+    endif
+    if objvalue(0) == 9
+      opforce $o stammer
+    endif
+    if objvalue(0) == 10
+      opforce $o cringe
+    endif
+    if objvalue(0) == 11
+      opforce $o fume
+    endif
+    if objvalue(0) == 12
+      opforce $o curse
+    endif
+    if objvalue(0) == 13
+      opforce $o snarl
+    endif
+    if objvalue(0) == 14
+      opforce $o babble
+    endif
+    if objvalue(0) == 15
+      opforce $o roll
+    endif
+    if objvalue(0) == 16
+      opforce $o aa
+    endif
+    if objvalue(0) == 17
+      opforce $o bark
+    endif
+    if objvalue(0) == 18
+      opforce $o squirm
+    endif
+    if objvalue(0) == 19
+      opforce $o aa
+    endif
+    if objvalue(0) == 20
+      opforce $o evil
+    endif
+    if objvalue(0) == 21
+      opvaluerand 1 1 50
+      if objvalue(1) == 15
+        opforce $o say I want to kill you.
+      endif
+      if objvalue(1) == 16
+        opforce $o say Die! Die! Die! Die die die die die!
+      endif
+      if objvalue(1) == 17
+        opforce $o say It... it... burns!
+      endif
+    endif
+  endif
+endif
+~
+|
+V13
+3013
+obelisk dark~
+a half-buried obelisk~
+A dark obelisk lies half-buried in the barren plains.~
+~
+stone~
+trash CEG 0 0 P
+0 0 0 0 0
+55 0 0 4 P
+1
+E
+obelisk~
+Rising nearly ten feet into the air, much of the obelisk seems to rest
+below the ashy grey clay.  Pale fungus grows about it, obscuring many of the
+graven runes scored into it.  As you look, an odd cipher pulls at the edges
+of your mind, the script beckoning your gaze.  
+~
+E
+dark~
+Rising nearly ten feet into the air, much of the obelisk seems to rest
+below the ashy grey clay.  Pale fungus grows about it, obscuring many of the
+graven runes scored into it.  As you look, an odd cipher pulls at the edges
+of your mind, the script beckoning your gaze.  
+~
+E
+cipher~
+As you gaze, you recognize the script scored into the obelisk to be the
+Lost Cipher of Pnakur.  It is difficult to extract any meaning from the
+incredibly complex script that makes up the Lost Cipher of Pnakur.  Whatever
+coherence or pattern that can be found from line to line, word to word, or
+even character to character has been obliterated by someone or something
+blotting out key portions, rendering the whole unintelligible.  
+
+A sense of dark power seems to exude from the symbol.  Perhaps you could
+learn more if you were to study it.  
+~
+E
+script~
+As you gaze, you recognize the script scored into the obelisk to be the
+Lost Cipher of Pnakur.  It is difficult to extract any meaning from the
+incredibly complex script that makes up the Lost Cipher of Pnakur.  Whatever
+coherence or pattern that can be found from line to line, word to word, or
+even character to character has been obliterated by someone or something
+blotting out key portions, rendering the whole unintelligible.  
+
+A sense of dark power seems to exude from the symbol.  Perhaps you could
+learn more if you were to study it.  
+~
+E
+pnakur~
+As you gaze, you recognize the script scored into the obelisk to be the
+Lost Cipher of Pnakur.  It is difficult to extract any meaning from the
+incredibly complex script that makes up the Lost Cipher of Pnakur.  Whatever
+coherence or pattern that can be found from line to line, word to word, or
+even character to character has been obliterated by someone or something
+blotting out key portions, rendering the whole unintelligible.  
+
+A sense of dark power seems to exude from the symbol.  Perhaps you could
+learn more if you were to study it.  
+~
+E
+lost~
+As you gaze, you recognize the script scored into the obelisk to be the
+Lost Cipher of Pnakur.  It is difficult to extract any meaning from the
+incredibly complex script that makes up the Lost Cipher of Pnakur.  Whatever
+coherence or pattern that can be found from line to line, word to word, or
+even character to character has been obliterated by someone or something
+blotting out key portions, rendering the whole unintelligible. 
+
+A sense of dark power seems to exude from the symbol.  Perhaps you could
+learn more if you were to study it.  
+~
+E
+symbol~
+As you gaze, you recognize the script scored into the obelisk to be the
+Lost Cipher of Pnakur.  It is difficult to extract any meaning from the
+incredibly complex script that makes up the Lost Cipher of Pnakur.  Whatever
+coherence or pattern that can be found from line to line, word to word, or
+even character to character has been obliterated by someone or something
+blotting out key portions, rendering the whole unintelligible. 
+
+A sense of dark power seems to exude from the symbol.  Perhaps you could
+learn more if you were to study it.  
+~
+E
+symbolvision~
+You gaze intently at the characters on the obelisk, attempting to divine
+meaning from them.  As you struggle you find yourself no longer in the grey
+plains of Shargob..  
+
+All around you runes and writing whirl as you float suspended within them. 
+The runes writhe and swirl, tearing at the edges of your sanity as you try
+to understand the meaning of them.  
+
+As you hang, you being to see order in the chaos.  Horrible, beautiful form.
+The runes and glyphs suddenly make perfect sense, and for a single euphoric
+moment, you KNOW.  Truth flows over you in a darkly triumphant wave.  
+
+As you bask in the unholy truth about you, you feel your understanding
+struck as if by a hammer.  A mental blow sends you reeling, striking the
+blasphemous knowledge from your mind.  More follow, and what form you could
+find in the swirling glyphs is lost.  The runes continue to scrape at your
+sanity as you attempt understand, to regain the pure truth you once held to
+no avail.  You feel the cords of sanity within your mind begin to snap and
+pitch your head back in a sobbing moan..  
+
+You suddenly jolt back into reality, the Lost Cipher of Pnakur scored into
+your mind, with the vague sense you have..  Lost something.  
+~
+V13
+3014
+basin stone small shallow pool~
+a small stone basin~
+A shallow stone basin sits beneath the stalactite, catching each precious drop.~
+~
+unknown~
+fountain e 0 0 P
+50 50 'water' 0 0
+52 0 0 5 P
+0
+V13
+3015
+vambraces astral~
+(Translucent) bulky, milky-white astral vambraces~
+Bulky, milky-white astral vambraces.~
+~
+energy~
+armor MPZ 0 0 AH
+30 30 30 30 0
+52 30 0 0 P
+1
+V13
+3016
+armor astral plate~
+(Translucent) a set of milky-white astral plate armor~
+Astral plate armor.  Should never be seen long.~
+~
+energy~
+armor MPZ 0 0 AFGK
+30 30 30 30 0
+52 30 0 0 P
+1
+V13
+3017
+pauldrons astral~
+(Translucent) bulky, milky-white astral pauldrons~
+Pauldrons.~
+~
+energy~
+armor MPZ 0 0 AI
+30 30 30 30 0
+52 30 0 0 P
+1
+V13
+3018
+astral helm war-helm boar boar\@s head~
+(Translucent) a fitted war-helm, shaped like a boar\@s head~
+War-helm, boar\@ds head.~
+~
+energy~
+armor MPZ 0 0 AE
+30 30 30 30 0
+52 30 0 0 P
+1
+A
+19 6
+A
+18 6
+V13
+3019
+no name~
+(no short description)~
+(no description)~
+~
+energy~
+armor MPZ 0 0 A
+30 30 30 30 0
+52 40 0 0 P
+0
+V13
+3020
+belt glittering pure~
+a glittering belt of forged pure silver, inset with turquoise~
+Belt, silver.~
+~
+energy~
+armor MPZ 0 0 AL
+30 30 30 30 0
+52 40 0 0 P
+0
+A
+19 10
+A
+18 10
+V13
+3021
+hammer lucern diamond plated silver~
+an enormous diamond-headed lucern hammer, plated in silver~
+A silver plated lucern hammer with a diamond head is here.~
+~
+energy~
+weapon MPZf 0 0 AN
+polearm 7 6 1 F
+crushing smash~
+52 40 0 0 P
+1
+O crushing smash~
+V13
+3022
+sphere silver~
+a small, silver sphere~
+Silver sphere~
+~
+silver~
+armor MPZ 0 0 AQ
+30 30 30 30 0
+52 40 0 0 P
+0
+V13
+3090
+Sog\@s food ring ling~
+sog\@s food ling~
+Sog\@s food ling is here, filling stuff up.~
+~
+metal~
+trash Ad 0 0 AS
+0 0 0 0 0
+52 0 0 2 P
+0
+>rand_prog 100~
+opset char $o hunger 100
+opset char $o thirst 100
+
+opset char $o adrenaline 0
+~
+|
+#0
+
+
+
+#ROOMS
+#3000
+The Shargob Lounge~
+A comfy room decorated with stylish Shargob furnishings, the Lounge is a
+place for twisted, demonic beings of all sorts to relax after a tough day of
+slaughtering innocent travelers.  
+~
+~
+1
+0 565254 0
+W 5 0 0
+Z 5 5
+S
+#3001
+The Edge of Shargob~
+The bulk of the Qilarn forest begins to the north.  Off to the west loom
+the steep peaks of the Yagashes, which run north and south along the edge of
+the plains.  This particular area is still dominated by the features of the
+Plains of Shargob -- the soil is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains continue to skirt the forest to the east, while
+southward the mountains shade the already dim cast of the plains.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3002
+D2
+~
+~
+0 0 3011
+W 5 0 0
+Z 5 5
+S
+#3002
+The Edge of Shargob~
+The barren plains of Shargob begin to recede here, coming to an end as
+the bulk of the Qilarn forest begins to the north.  Further off to the west
+loom the steep peaks of the Yagashes, framing the western region of Shargob.
+This particular area is still dominated by the features of the Plains of
+Shargob -- the soil is an ashy gray clay, supporting little life save a few
+pale, clinging fungi, which grow on the small rocks that lie here and there.
+The plains continue to skirt the forest to the east and west, but a small
+trail leads through the growth of the forest to the north.  Southward, the
+ashen cast of the plains becomes more oppressive, as the geography of the
+edge fades into the featureless gray monotony of Shargob proper.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 1373
+D1
+~
+~
+0 0 3003
+D2
+~
+~
+0 0 3012
+D3
+~
+~
+0 0 3001
+W 5 0 0
+Z 5 5
+S
+#3003
+The Edge of Shargob~
+The barren plains of Shargob begin to recede here, coming to an end as
+the bulk of the Qilarn forest begins to the north.  This particular area is
+still dominated by the features of the Plains of Shargob -- the soil is an
+ashy gray clay, supporting little life save a few pale, clinging fungi,
+which grow on the small rocks that lie here and there.  The plains continue
+to skirt the forest to the east and west, where the undergrowth prevents
+further travel to the north.  Southward, the ashen cast of the plains
+becomes more oppressive, as the geography of the edge fades into the
+featureless gray monotony of Shargob proper.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3004
+D2
+~
+~
+0 0 3013
+D3
+~
+~
+0 0 3002
+W 5 0 0
+Z 5 5
+S
+#3004
+The Edge of Shargob~
+The barren plains of Shargob begin to recede here, coming to an end as
+the bulk of the Qilarn forest begins to the north.  This particular area is
+still dominated by the features of the Plains of Shargob -- the soil is an
+ashy gray clay, supporting little life save a few pale, clinging fungi,
+which grow on the small rocks that lie here and there.  The plains continue
+to skirt the forest to the east and west, but a small trail leads through
+the growth of the forest to the north.  Southward, the ashen cast of the
+plains becomes more oppressive, as the geography of the edge fades into the
+featureless gray monotony of Shargob proper.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 1374
+D1
+~
+~
+0 0 3005
+D2
+~
+~
+0 0 3014
+D3
+~
+~
+0 0 3003
+W 5 0 0
+Z 5 5
+S
+#3005
+The Edge of Shargob~
+The barren plains of Shargob begin to recede here, coming to an end as
+the bulk of the Qilarn forest begins to the north.  This particular area is
+still dominated by the features of the Plains of Shargob -- the soil is an
+ashy gray clay, supporting little life save a few pale, clinging fungi,
+which grow on the small rocks that lie here and there.  The plains continue
+to skirt the forest to the east and west, where the undergrowth prevents
+further travel to the north.  Southward, the ashen cast of the plains
+becomes more oppressive, as the geography of the edge fades into the
+featureless gray monotony of Shargob proper.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3006
+D2
+~
+~
+0 0 3015
+D3
+~
+~
+0 0 3004
+W 5 0 0
+Z 5 5
+S
+#3006
+The Edge of Shargob~
+The barren plains of Shargob begin to recede here, coming to an end as
+the bulk of the Qilarn forest begins to the north.  This particular area is
+still dominated by the features of the Plains of Shargob -- the soil is an
+ashy gray clay, supporting little life save a few pale, clinging fungi,
+which grow on the small rocks that lie here and there.  The plains continue
+to skirt the forest to the east and west, but a small trail leads through
+the growth of the forest to the north.  Southward, the ashen cast of the
+plains becomes more oppressive, as the geography of the edge fades into the
+featureless gray monotony of Shargob proper.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 1375
+D2
+~
+~
+0 0 3016
+D3
+~
+~
+0 0 3005
+W 5 0 0
+Z 5 5
+S
+#3007
+At the Base of the Yagashes~
+The plains of Shargob begin to fade here, ashen gray soil gradually
+changing into the stony browns and greys of more rocky terrain.  Almost
+immediately west, the Yagash mountains begin their steep ascent, blocking
+near fully half the sky.  Northward lies the bulk of the Qilarn forests, a
+shock of green against the drabness of the plains.  To the south, the edge
+of the plains skirt the Yagashes, while eastward lies more of the plains
+proper.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3008
+D2
+~
+~
+0 0 3019
+D3
+~
+~
+0 0 3181
+W 5 0 0
+Z 5 5
+S
+#3008
+The Plains of Shargob~
+The bulk of the Qilarn forest begins to the north.  Off to the west loom
+the steep peaks of the Yagashes, which run north and south along the edge of
+the plains.  This particular area is still dominated by the features of the
+Plains of Shargob -- the soil is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains continue to skirt the forest to the east, while
+southward the mountains shade the already dim cast of the plains.
+~
+~
+1
+0 8192 2
+D2
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3020
+D1
+~
+~
+0 0 3009
+D3
+~
+~
+0 0 3007
+W 5 0 0
+Z 5 5
+S
+#3009
+The Plains of Shargob~
+The bulk of the Qilarn forest begins to the north.  Off to the west loom
+the steep peaks of the Yagashes, which run north and south along the edge of
+the plains.  This particular area is still dominated by the features of the
+Plains of Shargob -- the soil is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains continue to skirt the forest to the east, while
+southward the mountains shade the already dim cast of the plains.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3021
+D1
+~
+~
+0 0 3010
+D3
+~
+~
+0 0 3008
+W 5 0 0
+Z 5 5
+S
+#3010
+The Plains of Shargob~
+The bulk of the Qilarn forest begins to the north.  Off to the west loom
+the steep peaks of the Yagashes, which run north and south along the edge of
+the plains.  This particular area is still dominated by the features of the
+Plains of Shargob -- the soil is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains continue to skirt the forest to the east, while
+southward the mountains shade the already dim cast of the plains.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3011
+D2
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3022
+D3
+~
+~
+0 0 3009
+W 5 0 0
+Z 5 5
+S
+#3011
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same to the east, west,
+and south, but northward you can make out the faint green lines of the
+forest of Qilarn.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3023
+D3
+~
+~
+0 0 3010
+D0
+~
+~
+0 0 3001
+D1
+~
+~
+0 0 3012
+W 5 0 0
+Z 5 5
+S
+#3012
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same to the east, west,
+and south, but northward you can make out the faint green lines of the
+forest of Qilarn.
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3002
+D2
+~
+~
+0 0 3024
+D1
+~
+~
+0 0 3013
+D3
+~
+~
+0 0 3011
+W 5 0 0
+Z 5 5
+S
+#3013
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same to the east, west,
+and south, but northward you can make out the faint green lines of the
+forest of Qilarn.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3012
+D1
+~
+~
+0 0 3014
+D2
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3025
+D0
+~
+~
+0 0 3003
+W 5 0 0
+Z 5 5
+S
+#3014
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same to the east, west,
+and south, but northward you can make out the faint green lines of the
+forest of Qilarn.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3026
+D0
+~
+~
+0 0 3004
+D3
+~
+~
+0 0 3013
+D1
+~
+~
+0 0 3015
+W 5 0 0
+Z 5 5
+S
+#3015
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same to the east, west,
+and south, but northward you can make out the faint green lines of the
+forest of Qilarn.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3014
+D2
+~
+~
+0 0 3027
+D0
+~
+~
+0 0 3005
+D1
+~
+~
+0 0 3016
+W 5 0 0
+Z 5 5
+S
+#3016
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same to the east, west,
+and south, but northward you can make out the faint green lines of the
+forest of Qilarn.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3017
+D3
+~
+~
+0 0 3015
+D0
+~
+~
+0 0 3006
+D2
+~
+~
+0 0 3028
+W 5 0 0
+Z 5 5
+S
+#3017
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same to the east, west,
+and south, but northward you can make out the faint green lines of the
+forest of Qilarn.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3018
+D2
+~
+~
+0 0 3029
+D3
+~
+~
+0 0 3016
+W 5 0 0
+Z 5 5
+S
+#3018
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same to the west and
+south, but northward you can make out the faint green lines of the forest of
+Qilarn.  From the east comes a faint breeze, and you can begin to make out
+the banks of the Dantaron.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3030
+D3
+~
+~
+0 0 3017
+W 5 0 0
+Z 5 5
+S
+#3019
+At the Base of the Yagashes~
+The plains of Shargob begin to fade here, ashen gray soil gradually
+changing into the stony browns and greys of more rocky terrain.  Almost
+immediately west, the Yagash mountains begin their steep ascent, blocking
+near fully half the sky.  The plains skirt the mountains to the north and
+south, while eastward lies more of the plains proper.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3031
+D1
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3020
+D0
+~
+~
+0 0 3007
+W 5 0 0
+Z 5 5
+S
+#3020
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3021
+D3
+~
+~
+0 0 3019
+D2
+~
+~
+0 0 3032
+D0
+~
+~
+0 0 3008
+W 5 0 0
+Z 5 5
+S
+#3021
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3033
+D1
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3022
+D0
+~
+~
+0 0 3009
+D3
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3020
+W 5 0 0
+Z 5 5
+S
+#3022
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3023
+D3
+~
+~
+0 0 3021
+D2
+~
+~
+0 0 3034
+D0
+~
+~
+0 0 3010
+W 5 0 0
+Z 5 5
+S
+#3023
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D3
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3022
+D0
+~
+~
+0 0 3011
+D1
+~
+~
+0 0 3024
+D2
+~
+~
+0 0 3035
+W 5 0 0
+Z 5 5
+S
+#3024
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3036
+D3
+~
+~
+0 0 3023
+D1
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3025
+D0
+~
+~
+0 0 3012
+W 5 0 0
+Z 5 5
+S
+#3025
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3026
+D0
+~
+~
+0 0 3013
+D3
+~
+~
+0 0 3024
+D2
+~
+~
+0 0 3037
+W 5 0 0
+Z 5 5
+S
+#3026
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3014
+D2
+~
+~
+0 0 3038
+D3
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3025
+D1
+~
+~
+0 0 3027
+W 5 0 0
+Z 5 5
+S
+#3027
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3026
+D2
+~
+~
+0 0 3039
+D0
+~
+~
+0 0 3015
+D1
+~
+~
+0 0 3028
+W 5 0 0
+Z 5 5
+S
+#3028
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3029
+D0
+~
+~
+0 0 3016
+D2
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3040
+D3
+~
+~
+0 0 3027
+W 5 0 0
+Z 5 5
+S
+#3029
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3030
+D2
+~
+~
+0 0 3041
+D3
+~
+~
+0 0 3028
+D0
+~
+~
+0 0 3017
+W 5 0 0
+Z 5 5
+S
+#3030
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same to the west and
+south, but from the east comes a faint breeze, and you can begin to make out
+the banks of the Dantaron.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3029
+D1
+~
+~
+0 0 3030
+D0
+~
+~
+0 0 3018
+W 5 0 0
+Z 5 5
+S
+#3031
+At the Bottom of the Rise~
+This region is nestled between the crook of the Yagash mountains to the
+west, and a small plateau that begins to rise upwards to the south.  The
+soil is more rocky here, and less reminiscent of the other portions of
+Shargob, which lie off to the east.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3032
+D0
+~
+~
+0 0 3019
+D2
+~
+~
+0 0 3044
+W 5 0 0
+Z 5 5
+S
+#3032
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3031
+D0
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3020
+D1
+~
+~
+0 0 3033
+D2
+~
+~
+0 0 3045
+W 5 0 0
+Z 5 5
+S
+#3033
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3032
+D1
+~
+~
+0 0 3034
+D2
+~
+~
+0 0 3046
+D0
+~
+~
+0 0 3021
+W 5 0 0
+Z 5 5
+S
+#3034
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D0
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3022
+D2
+~
+~
+0 0 3047
+D1
+~
+~
+0 0 3035
+D3
+~
+~
+0 0 3033
+W 5 0 0
+Z 5 5
+S
+#3035
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3036
+D2
+~
+~
+0 0 3048
+D3
+~
+~
+0 0 3034
+D0
+~
+~
+0 0 3023
+W 5 0 0
+Z 5 5
+S
+#3036
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3049
+D0
+~
+~
+0 0 3024
+D3
+~
+~
+0 0 3035
+D1
+~
+~
+0 0 3037
+W 5 0 0
+Z 5 5
+S
+#3037
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3036
+D1
+~
+~
+0 0 3038
+D0
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3025
+D2
+~
+~
+0 0 3050
+W 5 0 0
+Z 5 5
+S
+#3038
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3039
+D0
+~
+~
+0 0 3026
+D2
+~
+~
+0 0 3051
+D3
+~
+~
+0 0 3037
+W 5 0 0
+Z 5 5
+S
+#3039
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D1
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3040
+D3
+~
+~
+0 0 3038
+D2
+~
+~
+0 0 3052
+D0
+~
+~
+0 0 3027
+W 5 0 0
+Z 5 5
+S
+#3040
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3039
+D1
+~
+~
+0 0 3041
+D2
+~
+~
+0 0 3053
+D0
+~
+~
+0 0 3028
+W 5 0 0
+Z 5 5
+S
+#3041
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3042
+D2
+~
+~
+0 0 3054
+D3
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3040
+D0
+~
+~
+0 0 3029
+W 5 0 0
+Z 5 5
+S
+#3042
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same to the west and
+south, but fom the east comes a faint breeze, and you can begin to make out
+the banks of the Dantaron.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3055
+D0
+~
+~
+0 0 3030
+D3
+~
+~
+0 0 3041
+W 5 0 0
+Z 5 5
+S
+#3043
+Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3047
+D1
+~
+~
+0 0 3047
+D2
+~
+~
+0 0 3043
+D3
+~
+~
+0 0 3056
+W 5 0 0
+Z 5 5
+S
+#3044
+At the Bottom of a Rise~
+This region is nestled between the crook of the Yagash mountains to the
+west, and a small plateau which rises immediately southward.  Gazing upward,
+you can make out some sort of structure atop the plateau, but no trail
+provides a way to ascend to the top level.  The soil is more rocky here, and
+less reminiscent of the other portions of Shargob, which skirt the base of
+the plateau to the east.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3045
+D0
+~
+~
+0 0 3031
+W 5 0 0
+Z 5 5
+S
+#3045
+At the Bottom of a Rise~
+A plateau rises up gradually to the south of here, topped in a flat
+shelf.  Gazing upward, you can make out some sort of structure atop the
+plateau, but no trail provides a way to ascend to the top level.  The soil
+is more rocky here, and less reminiscent of the other portions of Shargob,
+which lie north and east.  Off to the west the plains come to an end as the
+Yagash mountains jut up sharply out of the plains.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3046
+D0
+~
+~
+0 0 3032
+D3
+~
+~
+0 0 3044
+W 5 0 0
+Z 5 5
+S
+#3046
+At the Bottom of a Rise~
+A plateau rises up gradually to the southwest of here, topped in a flat
+shelf.  Gazing upward, you can make out some sort of structure atop the
+plateau, but no trail provides a way to ascend to the top level.  The soil
+is more rocky here, and less reminiscent of the other portions of Shargob,
+which lie north and east.  Off to the west the plains come to an end as the
+Yagash mountains jut up sharply out of the plains, while the edge of the
+plateau continues to the south.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3045
+D2
+~
+~
+0 0 3056
+D0
+~
+~
+0 0 3033
+D1
+~
+~
+0 0 3047
+W 5 0 0
+Z 5 5
+S
+#3047
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3058
+D3
+~
+~
+0 0 3046
+D0
+~
+~
+0 0 3034
+D1
+~
+~
+0 0 3048
+W 5 0 0
+Z 5 5
+S
+#3048
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3035
+D1
+~
+~
+0 0 3049
+D3
+~
+~
+0 0 3047
+D2
+~
+~
+0 0 3059
+W 5 0 0
+Z 5 5
+S
+#3049
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3050
+D3
+~
+~
+0 0 3048
+D0
+~
+~
+0 0 3036
+D2
+~
+~
+0 0 3060
+W 5 0 0
+Z 5 5
+S
+#3050
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3037
+D3
+~
+~
+0 0 3049
+D2
+~
+~
+0 0 3061
+D1
+~
+~
+0 0 3051
+W 5 0 0
+Z 5 5
+S
+#3051
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3062
+D0
+~
+~
+0 0 3038
+D3
+~
+~
+0 0 3050
+D1
+~
+~
+0 0 3052
+W 5 0 0
+Z 5 5
+S
+#3052
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3063
+D0
+~
+~
+0 0 3039
+D1
+~
+~
+0 0 3053
+D3
+~
+~
+0 0 3051
+W 5 0 0
+Z 5 5
+S
+#3053
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3064
+D3
+~
+~
+0 0 3052
+D0
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3040
+D1
+~
+~
+0 0 3054
+W 5 0 0
+Z 5 5
+S
+#3054
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3055
+D0
+~
+~
+0 0 3041
+D2
+~
+~
+0 0 3065
+W 5 0 0
+Z 5 5
+S
+#3055
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same to the west and
+south, but fom the east comes a faint breeze, and you can begin to make out
+the banks of the Dantaron.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3042
+D1
+~
+~
+0 0 3055
+D2
+~
+~
+0 0 3066
+W 5 0 0
+Z 5 5
+S
+#3056
+At the Bottom of a Rise~
+A plateau rises up gradually to the west of here, topped in a flat shelf.
+Gazing upward, you can make out some sort of structure atop the plateau, but
+no trail provides a way to ascend to the top level.  The soil is more rocky
+here, and less reminiscent of the other portions of Shargob, which lie
+eastward.  The plains follow the edge of the plateau to a corner in the
+north, while to the south there is evidence of a road of some sort.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3046
+D1
+~
+~
+0 0 3043
+D2
+~
+~
+0 0 3057
+W 5 0 0
+Z 5 5
+S
+#3057
+Near the End of an Ancient Road~
+You are standing on what appears to have once been an ancient road.  Pale
+grey stones are pounded into the earth here, the surface of the road still
+smooth despite the surrounding desolation.  The road itself stretches
+further east, an almost straight line across the barren plains of Shargob. 
+The terrain is slightly less regular to the north and south, where the flat
+stone of the road fades into a monotonous sea of small stones and
+outcroppings rising above the ashy gray plains.  To the west, the road
+begins to fade into obscurity as the plains approach the edge of the Yagash
+mountains.  What remains of the road slopes up a small plateau to the west,
+where you can make out the beginnings of some sort of ruins.  
+~
+~
+1
+0 8196 2
+D0
+~
+~
+0 0 3056
+D1
+~
+~
+0 0 3058
+D2
+~
+~
+0 0 3068
+D4
+~
+~
+0 0 3067
+W 5 0 0
+Z 5 5
+S
+#3058
+An Ancient Road~
+You are standing on what appears to have once been an ancient road.  Pale
+grey stones are pounded into the earth here, the surface of the road still
+smooth despite the surrounding desolation.  The road itself stretches
+further east and west, an almost straight line across the barren plains of
+Shargob.  The terrain is slightly less regular to the north and south, where
+the flat stone of the road fades into a monotonous sea of small stones and
+outcroppings rising above the ashy gray plains.  
+~
+~
+1
+0 8196 2
+D0
+~
+~
+0 0 3047
+D1
+~
+~
+0 0 3059
+D2
+~
+~
+0 0 3069
+D3
+~
+~
+0 0 3057
+W 5 0 0
+Z 5 5
+S
+#3059
+An Ancient Road~
+You are standing on what appears to have once been an ancient road.  Pale
+grey stones are pounded into the earth here, the surface of the road still
+smooth despite the surrounding desolation.  The road itself stretches
+further east and west, an almost straight line across the barren plains of
+Shargob.  The terrain is slightly less regular to the north and south, where
+the flat stone of the road fades into a monotonous sea of small stones and
+outcroppings rising above the ashy gray plains.  
+~
+~
+1
+0 8196 2
+D0
+~
+~
+0 0 3048
+D1
+~
+~
+0 0 3060
+D2
+~
+~
+0 0 3070
+D3
+~
+~
+0 0 3058
+W 5 0 0
+Z 5 5
+S
+#3060
+An Ancient Road~
+You are standing on what appears to have once been an ancient road.  Pale
+grey stones are pounded into the earth here, the surface of the road still
+smooth despite the surrounding desolation.  The road itself stretches
+further east and west, an almost straight line across the barren plains of
+Shargob.  The terrain is slightly less regular to the north and south, where
+the flat stone of the road fades into a monotonous sea of small stones and
+outcroppings rising above the ashy gray plains.  
+~
+~
+1
+0 8196 2
+D0
+~
+~
+0 0 3049
+D1
+~
+~
+0 0 3061
+D2
+~
+~
+0 0 3071
+D3
+~
+~
+0 0 3059
+W 5 0 0
+Z 5 5
+S
+#3061
+An Ancient Road~
+You are standing on what appears to have once been an ancient road.  Pale
+grey stones are pounded into the earth here, the surface of the road still
+smooth despite the surrounding desolation.  The road itself stretches
+further east and west, an almost straight line across the barren plains of
+Shargob.  The terrain is slightly less regular to the north and south, where
+the flat stone of the road fades into a monotonous sea of small stones and
+outcroppings rising above the ashy gray plains.  
+~
+~
+1
+0 8196 2
+D0
+~
+~
+0 0 3050
+D1
+~
+~
+0 0 3062
+D2
+~
+~
+0 0 3072
+D3
+~
+~
+0 0 3060
+W 5 0 0
+Z 5 5
+S
+#3062
+A Bend in an Ancient Road~
+You are standing at a curve in what appears to have once been an ancient
+road.  Pale grey stones are pounded into the earth here, the surface of the
+road still smooth despite the surrounding desolation.  The terrain is
+slightly less regular to the east and north, where the flat stone of the
+road fades into a monotonous sea of small stones and outcroppings rising
+above the ashy gray plains.  The road itself curves to the south, and
+stretches off in the distance to the west.  
+~
+~
+1
+0 8196 2
+D0
+~
+~
+0 0 3051
+D1
+~
+~
+0 0 3063
+D2
+~
+~
+0 0 3073
+D3
+~
+~
+0 0 3061
+W 5 0 0
+Z 5 5
+S
+#3063
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3064
+D0
+~
+~
+0 0 3052
+D3
+~
+~
+0 0 3062
+D2
+~
+~
+0 0 3074
+W 5 0 0
+Z 5 5
+S
+#3064
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3053
+D3
+~
+~
+0 0 3063
+D1
+~
+~
+0 0 3065
+D2
+~
+~
+0 0 3075
+W 5 0 0
+Z 5 5
+S
+#3065
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3054
+D3
+~
+~
+0 0 3064
+D2
+~
+~
+0 0 3076
+D1
+~
+~
+0 0 3066
+W 5 0 0
+Z 5 5
+S
+#3066
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same to the north and
+west, but from the east comes a faint breeze, and you can begin to make out
+the banks of the Dantaron.  Looking to the south, you can almost discern a
+faint change of coloration in the clay, and fewer small pebbles on the
+ground.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3055
+D2
+~
+~
+0 0 3077
+D3
+~
+~
+0 0 3066
+W 5 0 0
+Z 5 5
+S
+#3067
+Before a Ruined Gate~
+This area is near the edge of a mid-sized plateau, which overlooks the
+plains of Shargob to the east.  By far the most prevalent feature, though,
+is the beginnings of what appear to be a ruined city to the west.  Most of
+an exceptionally tall wall remains intact to the west, over which you can
+see the occasional crumbling structure jutting into the sky.  A large gate
+once led west, but a huge pile of rubble blocks the way west.  Northward,
+part of the wall has collapsed, also impeding further travel with the huge
+remains of stone blocks which stand in the way.  A small path follows the
+walls of the city to the south, and a thin trail leads off the edge of the
+plateau to the east, leading down to what appears to be a road of some kind.
+~
+~
+1
+0 8196 2
+E
+gate~
+The mighty gates appear to have once been grand structures, but now the
+shattered remains are choked with rubble.  
+~
+D2
+~
+~
+0 0 3078
+D5
+~
+~
+0 0 3057
+W 5 0 0
+Z 5 5
+S
+#3068
+At the Bottom of a Rise~
+A plateau rises up gradually to the west of here, topped in a flat shelf.
+Gazing upward, you can make out some sort of structure atop the plateau, but
+no trail provides a way to ascend to the top level.  The soil is more rocky
+here, and less reminiscent of the other portions of Shargob, which lie
+eastward.  The plains follow the edge of the plateau to a corner in the
+south, while to the north there is evidence of a road of some sort.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3079
+D0
+~
+~
+0 0 3057
+D1
+~
+~
+0 0 3069
+D4
+~
+~
+0 0 3078
+W 5 0 0
+Z 5 5
+S
+#3069
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3068
+D2
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3080
+D1
+~
+~
+0 0 3070
+D0
+~
+~
+0 0 3058
+W 5 0 0
+Z 5 5
+S
+#3070
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3081
+D3
+~
+~
+0 0 3069
+D1
+~
+~
+0 0 3071
+D0
+~
+~
+0 0 3059
+W 5 0 0
+Z 5 5
+S
+#3071
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3070
+D2
+~
+~
+0 0 3082
+D1
+~
+~
+0 0 3072
+D0
+~
+~
+0 0 3060
+W 5 0 0
+Z 5 5
+S
+#3072
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3071
+D1
+~
+~
+0 0 3073
+D2
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3083
+D0
+~
+~
+0 0 3061
+W 5 0 0
+Z 5 5
+S
+#3073
+A Bend in an Ancient Road~
+You are standing at a curve in what appears to have once been an ancient
+road.  Pale grey stones are pounded into the earth here, the surface of the
+road still smooth despite the surrounding desolation.  The terrain is
+slightly less regular to the east and north, where the flat stone of the
+road fades into a monotonous sea of small stones and outcroppings rising
+above the ashy gray plains.  The road itself curves to the north, and
+stretches off in the distance to the east.  
+~
+~
+1
+0 8196 2
+D0
+~
+~
+0 0 3062
+D1
+~
+~
+0 0 3074
+D2
+~
+~
+0 0 3084
+D3
+~
+~
+0 0 3072
+W 5 0 0
+Z 5 5
+S
+#3074
+An Ancient Road~
+You are standing on what appears to have once been an ancient road.  Pale
+grey stones are pounded into the earth here, the surface of the road still
+smooth despite the surrounding desolation.  The road itself stretches
+further east and west, an almost straight line across the barren plains of
+Shargob.  The terrain is slightly less regular to the north and south, where
+the flat stone of the road fades into a monotonous sea of small stones and
+outcroppings rising above the ashy gray plains.  
+~
+~
+1
+0 8196 2
+D0
+~
+~
+0 0 3063
+D1
+~
+~
+0 0 3075
+D2
+~
+~
+0 0 3085
+D3
+~
+~
+0 0 3073
+W 5 0 0
+Z 5 5
+S
+#3075
+An Ancient Road~
+You are standing on what appears to have once been an ancient road.  Pale
+grey stones are pounded into the earth here, the surface of the road still
+smooth despite the surrounding desolation.  The road itself stretches
+further east and west, an almost straight line across the barren plains of
+Shargob.  The terrain is slightly less regular to the north and south, where
+the flat stone of the road fades into a monotonous sea of small stones and
+outcroppings rising above the ashy gray plains.  
+~
+~
+1
+0 8196 2
+D0
+~
+~
+0 0 3064
+D1
+~
+~
+0 0 3076
+D2
+~
+~
+0 0 3086
+D3
+~
+~
+0 0 3074
+W 5 0 0
+Z 5 5
+S
+#3076
+An Ancient Road~
+You are standing on what appears to have once been an ancient road.  Pale
+grey stones are pounded into the earth here, the surface of the road still
+smooth despite the surrounding desolation.  The road itself stretches
+further east and west, an almost straight line across the barren plains of
+Shargob.  The terrain is slightly less regular to the north and south, where
+the flat stone of the road fades into a monotonous sea of small stones and
+outcroppings rising above the ashy gray plains.  
+~
+~
+1
+0 8196 2
+D0
+~
+~
+0 0 3065
+D1
+~
+~
+0 0 3077
+D2
+~
+~
+0 0 3087
+D3
+~
+~
+0 0 3075
+W 5 0 0
+Z 5 5
+S
+#3077
+An Ancient Road~
+You are standing on what appears to have once been an ancient road.  Pale
+grey stones are pounded into the earth here, the surface of the road still
+smooth despite the surrounding desolation.  The road itself stretches
+further west, an almost straight line across the barren plains of Shargob. 
+The terrain is slightly less regular to the north and south, where the flat
+stone of the road fades into a monotonous sea of small stones and
+outcroppings rising above the ashen gray plains.  To the east the plateau
+ends in crumbling stony bluffs overlooking the broad Dantaron river.  
+~
+~
+1
+0 8196 2
+D0
+~
+~
+0 0 3066
+D2
+~
+~
+0 0 3088
+D3
+~
+~
+0 0 3076
+D5
+~
+~
+0 0 1865
+W 5 0 0
+Z 5 5
+S
+#3078
+Near the Walls of an Ancient City~
+This area is near the edge of a mid-sized plateau, which overlooks the
+plains of Shargob to the east.  By far the most prevalent feature, though,
+is the beginnings of what appear to be a ruined city to the west.  Most of
+an exceptionally tall wall remains intact to the west, over which you can
+see the occasional crumbling structure jutting into the sky.  To the north,
+you can see a break in the wall indicating what appears to be a gate of some
+kind, while the path turns a corner around the wall to the south.  
+~
+~
+1
+0 8196 2
+E
+wall~
+The crumbling city wall appears to have once been a mighty barrier, but
+now sits in ruins. 
+~
+D0
+~
+~
+0 0 3067
+D2
+~
+~
+0 0 3091
+D5
+~
+~
+0 0 3068
+W 5 0 0
+Z 5 5
+S
+#3079
+At the Bottom of a Rise~
+A plateau rises up gradually to the west of here, topped in a flat shelf.
+Gazing upward, you can make out some sort of structure atop the plateau, but
+no trail provides a way to ascend to the top level.  The soil is more rocky
+here, and less reminiscent of the other portions of Shargob, which lie
+eastward.  The plains follow the edge of the plateau further to the north
+and to the south, where the plateau turns westward.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3092
+D1
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3080
+D0
+~
+~
+0 0 3068
+D4
+~
+~
+0 0 3091
+W 5 0 0
+Z 5 5
+S
+#3080
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3069
+D2
+~
+~
+0 0 3093
+D3
+~
+~
+0 0 3079
+D1
+~
+~
+0 0 3081
+W 5 0 0
+Z 5 5
+S
+#3081
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D3
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3080
+D2
+~
+~
+0 0 3094
+D1
+~
+~
+0 0 3082
+D0
+~
+~
+0 0 3070
+W 5 0 0
+Z 5 5
+S
+#3082
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3095
+D3
+~
+~
+0 0 3081
+D1
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3083
+D0
+~
+~
+0 0 3071
+W 5 0 0
+Z 5 5
+S
+#3083
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3084
+D3
+~
+~
+0 0 3082
+D0
+~
+~
+0 0 3072
+D2
+~
+~
+0 0 3096
+W 5 0 0
+Z 5 5
+S
+#3084
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3085
+D3
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3083
+D2
+~
+~
+0 0 3097
+D0
+~
+~
+0 0 3073
+W 5 0 0
+Z 5 5
+S
+#3085
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3074
+D3
+~
+~
+0 0 3084
+D2
+~
+~
+0 0 3098
+D1
+~
+~
+0 0 3086
+W 5 0 0
+Z 5 5
+S
+#3086
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3075
+D1
+~
+~
+0 0 3087
+D2
+~
+~
+0 0 3099
+D3
+~
+~
+0 0 3085
+W 5 0 0
+Z 5 5
+S
+#3087
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3086
+D1
+~
+~
+0 0 3088
+D0
+~
+~
+0 0 3076
+D2
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3100
+W 5 0 0
+Z 5 5
+S
+#3088
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3087
+D0
+~
+~
+0 0 3077
+D2
+~
+~
+0 0 3101
+D3
+~
+~
+0 0 3087
+W 5 0 0
+Z 5 5
+S
+#3089
+At the Bottom of a Rise~
+A plateau rises up gradually to the south of here, topped in a flat
+shelf.  Gazing upward, you can make out some sort of structure atop the
+plateau, but no trail provides a way to ascend to the top level.  The soil
+is more rocky here, and less reminiscent of the other portions of Shargob,
+which lie south and east.  Off to the west the plains come to an end as the
+Yagash mountains jut up sharply out of the plains.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3090
+D2
+~
+~
+0 0 3103
+D3
+~
+~
+0 0 3199
+D4
+~
+~
+0 0 8103
+W 5 0 0
+Z 5 5
+S
+#3090
+At the Bottom of a Rise~
+A plateau rises up gradually to the south of here, topped in a flat
+shelf.  Gazing upward, you can make out some sort of structure atop the
+plateau, but no trail provides a way to ascend to the top level.  The soil
+is more rocky here, and less reminiscent of the other portions of Shargob,
+which lie south and east.  Off to the west the plains come to an end as the
+Yagash mountains jut up sharply out of the plains.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3092
+D2
+~
+~
+0 0 3104
+D3
+~
+~
+0 0 3089
+W 5 0 0
+Z 5 5
+S
+#3091
+Near the Corner of an Ancient City~
+This area is near the edge of a mid-sized plateau, which overlooks the
+plains of Shargob to the east.  By far the most prevalent feature, though,
+is the beginnings of what appear to be a ruined city to the northwest.  Most
+of an exceptionally tall wall remains intact to the northwest, over which
+you can see the occasional crumbling structure jutting into the sky.  To the
+north and west small trails skirt the area between the walls of the city and
+the edge of the plateau.  
+~
+~
+1
+0 8196 2
+D0
+~
+~
+0 0 3078
+D3
+~
+~
+0 0 8103
+D5
+~
+~
+0 0 3079
+W 5 0 0
+Z 5 5
+S
+#3092
+At the Bottom of a Rise~
+A plateau rises up gradually to the southwest of here, topped in a flat
+shelf.  Gazing upward, you can make out some sort of structure atop the
+plateau, but no trail provides a way to ascend to the top level.  The soil
+is more rocky here, and less reminiscent of the other portions of Shargob,
+which lie south and east.  Off to the west the plains come to an end as the
+Yagash mountains jut up sharply out of the plains, while the edge of the
+plateau continues to the north.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3090
+D0
+~
+~
+0 0 3079
+D1
+~
+~
+0 0 3093
+D2
+~
+~
+0 0 3104
+W 5 0 0
+Z 5 5
+S
+#3093
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3094
+D2
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3105
+D0
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3080
+D3
+~
+~
+0 0 3092
+W 5 0 0
+Z 5 5
+S
+#3094
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3106
+D1
+~
+~
+0 0 3095
+D3
+~
+~
+0 0 3093
+D0
+~
+~
+0 0 3081
+W 5 0 0
+Z 5 5
+S
+#3095
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions
+save the south, where the surface of the ground is split by some sort of
+fissure.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3082
+D1
+~
+~
+0 0 3096
+D2
+~
+~
+0 0 3107
+D3
+~
+~
+0 0 3094
+W 5 0 0
+Z 5 5
+S
+#3096
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3095
+D0
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3083
+D1
+~
+~
+0 0 3097
+D2
+~
+~
+0 0 3108
+W 5 0 0
+Z 5 5
+S
+#3097
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3109
+D3
+~
+~
+0 0 3096
+D1
+~
+~
+0 0 3098
+D0
+~
+~
+0 0 3084
+W 5 0 0
+Z 5 5
+S
+#3098
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3097
+D0
+~
+~
+0 0 3085
+D2
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3110
+D1
+~
+~
+0 0 3099
+W 5 0 0
+Z 5 5
+S
+#3099
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3111
+D1
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3100
+D3
+~
+~
+0 0 3098
+D0
+~
+~
+0 0 3086
+W 5 0 0
+Z 5 5
+S
+#3100
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3112
+D1
+~
+~
+0 0 3101
+D0
+~
+~
+0 0 3087
+D3
+~
+~
+0 0 3099
+W 5 0 0
+Z 5 5
+S
+#3101
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3113
+D3
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3100
+D1
+~
+~
+0 0 3101
+D0
+~
+~
+0 0 3088
+W 5 0 0
+Z 5 5
+S
+#3102
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions,
+save for a faint trail that seems to be etched into the dirt to the west.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3103
+D2
+~
+~
+0 0 3114
+D3
+~
+~
+0 0 22601
+W 5 0 0
+Z 5 5
+S
+#3103
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3102
+D2
+~
+~
+0 0 3115
+D0
+~
+~
+0 0 3199
+D1
+~
+~
+0 0 3104
+W 5 0 0
+Z 5 5
+S
+#3104
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.
+~
+~
+1
+0 8192 2
+D2
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3116
+D0
+~
+~
+0 0 3092
+D1
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3105
+D3
+~
+~
+0 0 3103
+W 5 0 0
+Z 5 5
+S
+#3105
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3104
+D2
+~
+~
+0 0 3117
+D0
+~
+~
+0 0 3093
+D1
+~
+~
+0 0 3106
+W 5 0 0
+Z 5 5
+S
+#3106
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions
+save the east, where the surface of the ground is split by some sort of
+fissure.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3094
+D3
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3105
+D2
+~
+~
+0 0 3118
+D1
+~
+~
+0 0 3107
+W 5 0 0
+Z 5 5
+S
+#3107
+Beginning of a Crevasse~
+The plains of Shargob give way suddenly here, as a crevasse splits the
+surface of the hard clay ground.  A small trail leads downward into the
+depths of the crevasse, from which a foul strench wafts into the air. 
+Southward lies above the top of the crevasse, and the plains begin again to
+the north, east, and west.  
+~
+~
+1
+0 8192 9
+D0
+~
+~
+0 0 3095
+D1
+~
+~
+0 0 3108
+D2
+~
+~
+0 0 3119
+D3
+~
+~
+0 0 3106
+D5
+~
+~
+0 0 3138
+W 5 0 0
+Z 5 5
+S
+#3108
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions
+save the west, where the surface of the ground is split by some sort of
+fissure.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3109
+D0
+~
+~
+0 0 3096
+D2
+~
+~
+0 0 3120
+D3
+~
+~
+0 0 3107
+W 5 0 0
+Z 5 5
+S
+#3109
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3108
+D1
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3110
+D0
+~
+~
+0 0 3097
+D2
+~
+~
+0 0 3121
+W 5 0 0
+Z 5 5
+S
+#3110
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3109
+D2
+~
+~
+0 0 3122
+D0
+~
+~
+0 0 3098
+D1
+~
+~
+0 0 3111
+W 5 0 0
+Z 5 5
+S
+#3111
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D3
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3110
+D2
+~
+~
+0 0 3123
+D0
+~
+~
+0 0 3099
+D1
+~
+~
+0 0 3112
+W 5 0 0
+Z 5 5
+S
+#3112
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D0
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3100
+D3
+~
+~
+0 0 3111
+D2
+~
+~
+0 0 3124
+D1
+~
+~
+0 0 3113
+W 5 0 0
+Z 5 5
+S
+#3113
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3125
+D0
+~
+~
+0 0 3101
+D1
+~
+~
+0 0 3113
+D3
+~
+~
+0 0 3112
+W 5 0 0
+Z 5 5
+S
+#3114
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3114
+D3
+~
+~
+0 0 3114
+D0
+~
+~
+0 0 3102
+D1
+~
+~
+0 0 3115
+W 5 0 0
+Z 5 5
+S
+#3115
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3103
+D3
+~
+~
+0 0 3114
+D2
+~
+~
+0 0 3115
+D1
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3116
+W 5 0 0
+Z 5 5
+S
+#3116
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3116
+D2
+~
+~
+0 0 3116
+D1
+~
+~
+0 0 3117
+W 5 0 0
+Z 5 5
+S
+#3117
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D3
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3116
+D1
+~
+~
+0 0 3118
+D0
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3105
+D2
+~
+~
+0 0 3126
+W 5 0 0
+Z 5 5
+S
+#3118
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions
+save the east, where the surface of the ground is split by some sort of
+fissure.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3106
+D1
+~
+~
+0 0 3119
+D2
+~
+~
+0 0 3127
+D3
+~
+~
+0 0 3117
+W 5 0 0
+Z 5 5
+S
+#3119
+Above a Crevasse~
+You fly above a crevasse here, a dark rift in the otherwise placid
+surface of Shargob.  Looking downard, the area below the ground darkens
+quickly, and a foul stench wafts upward into the sky.  You can fly over more
+of the crevasse to the south, while the ground resumes to the east and west.
+Northward lies the beginning of crevasse, a shallow fissure cut into the clay
+ground of Shargob.  
+~
+~
+1
+0 8192 9
+D0
+~
+~
+0 0 3107
+D1
+~
+~
+0 0 3120
+D2
+~
+~
+0 0 3128
+D3
+~
+~
+0 0 3118
+D5
+~
+~
+0 0 3139
+W 5 0 0
+Z 5 5
+S
+#3120
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions
+save the west, where the surface of the ground is split by some sort of
+fissure.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3129
+D3
+~
+~
+0 0 3119
+D1
+~
+~
+0 0 3121
+D0
+~
+~
+0 0 3108
+W 5 0 0
+Z 5 5
+S
+#3121
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3109
+D1
+~
+~
+0 0 3122
+D3
+~
+~
+0 0 3120
+D2
+~
+~
+0 0 3130
+W 5 0 0
+Z 5 5
+S
+#3122
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3123
+D3
+~
+~
+0 0 3121
+D0
+A slight indentation in the ground catches your eye.
+~
+~
+0 0 3110
+D2
+~
+~
+0 0 3131
+W 5 0 0
+Z 5 5
+S
+#3123
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3123
+D3
+~
+~
+0 0 3122
+D0
+~
+~
+0 0 3111
+W 5 0 0
+Z 5 5
+S
+#3124
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3124
+D1
+~
+~
+0 0 3125
+D0
+~
+~
+0 0 3112
+D3
+~
+~
+0 0 3123
+W 5 0 0
+Z 5 5
+S
+#3125
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3125
+D1
+~
+~
+0 0 3125
+D0
+~
+~
+0 0 3125
+D3
+~
+~
+0 0 3124
+W 5 0 0
+Z 5 5
+S
+#3126
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3127
+D0
+~
+~
+0 0 3117
+D2
+~
+~
+0 0 3132
+D3
+~
+~
+0 0 3117
+W 5 0 0
+Z 5 5
+S
+#3127
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions
+save the east, where the surface of the ground is split by some sort of
+fissure.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3118
+D1
+~
+~
+0 0 3128
+D2
+~
+~
+0 0 3133
+D3
+~
+~
+0 0 3126
+W 5 0 0
+Z 5 5
+S
+#3128
+Above a Crevasse~
+You fly above a crevasse here, a dark rift in the otherwise placid
+surface of Shargob.  Looking downard, the area below the ground darkens
+quickly, and a foul stench wafts upward into the sky.  To the north lies
+more of the crevasse, while the ground resumes in all other directions.  
+~
+~
+1
+0 8192 9
+D0
+~
+~
+0 0 3119
+D1
+~
+~
+0 0 3129
+D2
+~
+~
+0 0 3134
+D3
+~
+~
+0 0 3127
+D5
+~
+~
+0 0 3140
+W 5 0 0
+Z 5 5
+S
+#3129
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions
+save the west, where the surface of the ground is split by some sort of
+fissure.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3135
+D3
+~
+~
+0 0 3128
+D1
+~
+~
+0 0 3130
+D0
+~
+~
+0 0 3120
+W 5 0 0
+Z 5 5
+S
+#3130
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3131
+D3
+~
+~
+0 0 3129
+D0
+~
+~
+0 0 3121
+D2
+~
+~
+0 0 3136
+W 5 0 0
+Z 5 5
+S
+#3131
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3122
+D2
+~
+~
+0 0 3137
+D3
+~
+~
+0 0 3130
+W 5 0 0
+Z 5 5
+S
+#3132
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3126
+D2
+~
+~
+0 0 3126
+D1
+~
+~
+0 0 3133
+D3
+~
+~
+0 0 3132
+W 5 0 0
+Z 5 5
+S
+#3133
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D2
+~
+~
+0 0 3133
+D1
+~
+~
+0 0 3134
+D3
+~
+~
+0 0 3132
+D0
+~
+~
+0 0 3127
+W 5 0 0
+Z 5 5
+S
+#3134
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions
+save the north, where the surface of the ground is split by some sort of
+fissure.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3135
+D3
+~
+~
+0 0 3133
+D0
+~
+~
+0 0 3128
+D2
+~
+~
+0 0 3134
+W 5 0 0
+Z 5 5
+S
+#3135
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D3
+~
+~
+0 0 3134
+D2
+~
+~
+0 0 3135
+D0
+~
+~
+0 0 3129
+D1
+~
+~
+0 0 3136
+W 5 0 0
+Z 5 5
+S
+#3136
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3130
+D3
+~
+~
+0 0 3135
+D1
+~
+~
+0 0 3137
+D2
+~
+~
+0 0 3136
+W 5 0 0
+Z 5 5
+S
+#3137
+The Plains of Shargob~
+The barren plains of Shargob stretch off in all directions here, open
+space all about.  The soil here is an ashy gray clay, supporting little life
+save a few pale, clinging fungi, which grow on the small rocks that lie here
+and there.  The plains remain almost precisely the same in all directions.  
+~
+~
+1
+0 8192 2
+D0
+~
+~
+0 0 3131
+D2
+~
+~
+0 0 3136
+D3
+~
+~
+0 0 3136
+W 5 0 0
+Z 5 5
+S
+#3138
+Entrance to the Crevasse~
+Little light trickles into this crevasse, whose jagged walls prevent most
+of the light from reaching the ground.  The walls of the crevasse are seem
+blasted from the hard-baked clay of Shargob, giving the edges an almost
+rock-like appearance.  A small set of handholds allows access out of the
+crevasse upwards, while the floor slants slowly downward to the south. 
+Wafting through the chamber is a sort of cloying stench, which seems to grow
+stronger to the south.  
+~
+~
+1
+0 8192 12
+D2
+~
+~
+0 0 3139
+D4
+~
+~
+0 0 3107
+W 5 0 0
+Z 5 5
+S
+#3139
+Inside the Crevasse~
+Little light trickles into this crevasse, whose jagged walls prevent most
+of the light from reaching the ground.  The walls of the crevasse are seem
+blasted from the hard-baked clay of Shargob, giving the edges an almost
+rock-like appearance.  Above you is the sky, but there don\@t appear to be
+adequate handholds to support climbing.  The floor of the crevasse slants
+here, heading downward to the south, and ascending to the north.  Wafting
+through the chamber is a sort of cloying stench, which seems to grow
+stronger to the south.  
+~
+~
+1
+0 8192 12
+D0
+~
+~
+0 0 3138
+D2
+~
+~
+0 0 3140
+D4
+~
+~
+0 0 3119
+W 5 0 0
+Z 5 5
+S
+#3140
+Inside the Crevasse~
+Little light trickles into this crevasse, whose jagged walls prevent most
+of the light from reaching the ground.  The walls of the crevasse are seem
+blasted from the hard-baked clay of Shargob, giving the edges an almost
+rock-like appearance.  Above you is the sky, but there don\@t appear to be
+adequate handholds to support climbing.  To the north, the floor begins a
+slow ascent, but beneath your feet it breaks apart, giving way to a deeper
+part of the crevasse.  Wafting up from the floor is an extraordinarily foul
+stench, which seems to cling to everything in the room.  
+~
+~
+1
+0 8192 12
+D0
+~
+~
+0 0 3139
+D4
+~
+~
+0 0 3128
+D5
+~
+~
+0 0 3141
+W 5 0 0
+Z 5 5
+S
+#3141
+Deeper in the Crevasse~
+Deep into the crevasse, this area seems almost scooped out of the hard
+clay walls, rather than naturally worn with time.  The floor is sandy with
+ground bits of clay, and here and there bits and pieces of organic debris
+litter the floor -- a bone here, shrivelled skin there, even bits of chitin.
+A nauseating stench pervades the room, seeping into every crack and crevice,
+filling everything with the foulness.  An exit from the chamber lies up some
+handholds in the wall, or through a small crack to the south.  
+
+Toward the center of the room, the disjointed cracks seem to take terrible
+form.  
+~
+~
+1
+0 8200 12
+E
+symbolvision~
+As you study the cracks, the cave walls about you seem to fade and you
+find yourself upon an ashen grey plain.  
+
+Extending endlessly with no landmarks in sight, the waste spreads in all
+directions.  The earth lacks even the clinging fungi of the Shargob.  A low
+humming fills the air, source indeterminate, and a duststorm seems to rage
+in the horizon.  As you take in surroundings a horrible realization occurs
+to you, although you know not where from- You are upon the plains of Xixzyr
+bordering the barren Waste of Oame.  
+
+You feel panic grip your heart as you search for escape in a futile effort. 
+As you do so, you realize the humming has grown louder, becoming a maddening
+buzz.  Looking again to the horizon you see the dust storm fast approaching,
+but realize it is not sand that makes it, but countless demonic, stinging
+insects.  
+
+With a scream borne of purest terror, your turn and flee the swarm, the
+buzzing growing loud in your ears.  The insects are quick in their pursuit,
+however, and the swarm descends upon you with cruel abandon.  
+
+Pain erupts in a thousand spots as stingers lance your flesh and you feel
+your blood boil as foul, alien toxins run through your body.  You swat
+blindly at the abominations, your vision lost, your vain effort seeming only
+to encourage their torture.  You feel your strength ebb, and you crumple to
+the ground in pain too exquisite to comprehend, seeking escape in death.  
+
+You suddenly are back within the crevasse in Shargob, the Cracks of Xixzyr
+etched in your mind.  
+~
+E
+xixzyr~
+Violent, disjointed strokes seem to make some arcane figure within the
+stone.  There are six jagged lines which form the main body of the symbol,
+but numerous smaller geometric features jut off from the inscription like
+angry breaks in the ground.  
+
+The lines of the figure pulse with their own dark power.  Perhaps you could
+learn more were you to study them.  
+~
+E
+disjointed~
+Violent, disjointed strokes seem to make some arcane figure within the
+stone.  There are six jagged lines which form the main body of the symbol,
+but numerous smaller geometric features jut off from the inscription like
+angry breaks in the ground.  
+
+The lines of the figure pulse with their own dark power.  Perhaps you could
+learn more were you to study them.  
+~
+E
+cracks~
+Violent, disjointed strokes seem to make some arcane figure within the
+stone.  There are six jagged lines which form the main body of the symbol,
+but numerous smaller geometric features jut off from the inscription like
+angry breaks in the ground.  
+
+The lines of the figure pulse with their own dark power.  Perhaps you could
+learn more were you to study them.  
+~
+D2
+~
+~
+0 0 3180
+D4
+~
+~
+0 0 3140
+W 5 0 0
+Z 5 5
+S
+#3142
+A Maglat\@s Lair~
+This round room has been burrowed out of the hard clay of Shargob,
+forming what appears to be a maglat lair.  Gummy secretions shore up most of
+the flaking walls, and forms part of the support for the thin false ceiling
+through which victims are drawn.  The air seems rank and humid, and a sort
+of rotting odor fills the area.  
+~
+~
+1
+0 8251 0
+D4
+~
+~
+0 0 3022
+C CHAMPION~
+W 5 0 0
+Z 5 5
+S
+#3143
+A Maglat\@s Lair~
+This round room has been burrowed out of the hard clay of Shargob,
+forming what appears to be a maglat lair.  Gummy secretions shore up most of
+the flaking walls, and forms part of the support for the thin false ceiling
+through which victims are drawn.  The air seems rank and humid, and a sort
+of rotting odor fills the area.  
+~
+~
+1
+0 8255 0
+D4
+~
+~
+0 0 3025
+W 5 0 0
+Z 5 5
+S
+#3144
+A Maglat\@s Lair~
+This round room has been burrowed out of the hard clay of Shargob,
+forming what appears to be a maglat lair.  Gummy secretions shore up most of
+the flaking walls, and forms part of the support for the thin false ceiling
+through which victims are drawn.  The air seems rank and humid, and a sort
+of rotting odor fills the area.  
+~
+~
+1
+0 8255 0
+D4
+~
+~
+0 0 3040
+W 5 0 0
+Z 5 5
+S
+#3145
+A Maglat\@s Lair~
+This round room has been burrowed out of the hard clay of Shargob,
+forming what appears to be a maglat lair.  Gummy secretions shore up most of
+the flaking walls, and forms part of the support for the thin false ceiling
+through which victims are drawn.  The air seems rank and humid, and a sort
+of rotting odor fills the area.  
+~
+~
+1
+0 8251 0
+D4
+~
+~
+0 0 3020
+W 5 0 0
+Z 5 5
+S
+#3146
+A Maglat\@s Lair~
+This round room has been burrowed out of the hard clay of Shargob,
+forming what appears to be a maglat lair.  Gummy secretions shore up most of
+the flaking walls, and forms part of the support for the thin false ceiling
+through which victims are drawn.  The air seems rank and humid, and a sort
+of rotting odor fills the area.  
+~
+~
+1
+0 8251 0
+D4
+~
+~
+0 0 3080
+W 5 0 0
+Z 5 5
+S
+#3147
+A Maglat\@s Lair~
+This round room has been burrowed out of the hard clay of Shargob,
+forming what appears to be a maglat lair.  Gummy secretions shore up most of
+the flaking walls, and forms part of the support for the thin false ceiling
+through which victims are drawn.  The air seems rank and humid, and a sort
+of rotting odor fills the area.  
+~
+~
+1
+0 8251 0
+D4
+~
+~
+0 0 3083
+W 5 0 0
+Z 5 5
+S
+#3148
+A Maglat\@s Lair~
+This round room has been burrowed out of the hard clay of Shargob,
+forming what appears to be a maglat lair.  Gummy secretions shore up most of
+the flaking walls, and forms part of the support for the thin false ceiling
+through which victims are drawn.  The air seems rank and humid, and a sort
+of rotting odor fills the area.  
+~
+~
+1
+0 8251 0
+D4
+~
+~
+0 0 3100
+W 5 0 0
+Z 5 5
+S
+#3149
+A Maglat\@s Lair~
+This round room has been burrowed out of the hard clay of Shargob,
+forming what appears to be a maglat lair.  Gummy secretions shore up most of
+the flaking walls, and forms part of the support for the thin false ceiling
+through which victims are drawn.  The air seems rank and humid, and a sort
+of rotting odor fills the area.  
+~
+~
+1
+0 8251 0
+D4
+~
+~
+0 0 3110
+W 5 0 0
+Z 5 5
+S
+#3150
+A Maglat\@s Lair~
+This round room has been burrowed out of the hard clay of Shargob,
+forming what appears to be a maglat lair.  Gummy secretions shore up most of
+the flaking walls, and forms part of the support for the thin false ceiling
+through which victims are drawn.  The air seems rank and humid, and a sort
+of rotting odor fills the area.  
+~
+~
+1
+0 8251 0
+D4
+~
+~
+0 0 3105
+T 19
+W 5 0 0
+Z 5 5
+S
+#3151
+A Maglat\@s Lair~
+This round room has been burrowed out of the hard clay of Shargob,
+forming what appears to be a maglat lair.  Gummy secretions shore up most of
+the flaking walls, and forms part of the support for the thin false ceiling
+through which victims are drawn.  The air seems rank and humid, and a sort
+of rotting odor fills the area.  
+~
+~
+1
+0 8251 0
+D4
+~
+~
+0 0 3116
+W 5 0 0
+Z 5 5
+S
+#3152
+Ant Lion Room 2~
+~
+~
+1
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#3153
+~
+~
+~
+1
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#3154
+Omigur\@s Lair~
+A cramped hole carved deep within the grayish clay earth, this low hole
+appears to be some sort of feral lair.  Claw marks accentuate the crumbling
+walls, and shards of bone are scattered about.  A roughly dug tunnel leads
+upwards from the lair.  
+~
+~
+5
+0 524313 12
+D4
+~
+~
+0 0 3157
+W 5 0 0
+Z 5 5
+S
+#3155
+~
+~
+~
+1
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#3156
+~
+~
+~
+1
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#3157
+A Narrow Tunnel~
+A narrow tunnel is dug through the grayish earth, apparently by some sort
+of clawed beast.  Shards of bone can be found mixed with the clay and dust
+on the floor of the tunnel.  The cramped earthen passage slants sharply
+downward, or leads upward to the surface.  
+~
+~
+1
+0 25 12
+D4
+~
+~
+0 0 3115
+D5
+~
+~
+0 0 3154
+W 5 0 0
+Z 5 5
+S
+#3158
+~
+~
+~
+1
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#3159
+~
+~
+~
+1
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#3160
+The Crab Purgatory~
+Crabs get purged here.
+~
+~
+1
+0 557174 0
+W 5 0 0
+Z 5 5
+S
+#3161
+~
+~
+~
+1
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#3162
+~
+~
+~
+1
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#3180
+A Stony Chamber~
+The air in this chamber is very chill, and more stagnant than would seem
+possible for even this crevasse.  Scooped out of the same gray clay as the
+rest of the plains of Shargob, its walls are nevertheless encrusted with a
+sort of black, rocky growth.  Arranged in a circle on the floor are more of
+these rocks, which seem arranged by some crude hand to set them in their
+place in the sand.  The only exit lies through a small crack in the wall to
+the north.  
+~
+~
+1
+0 8200 12
+D0
+~
+~
+0 0 3141
+W 5 0 0
+Z 5 5
+S
+#3181
+A Trail in the Yagashes~
+This thin trail ascends into the stony reaches of the Yagashes.  The
+torturous path twists and turns through jagged spires of sharp rock, and
+passes over treacherous gravel underfoot.  The trail continues its ascent to
+the west, and heads downward to the plains of Shargob to the east.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 3007
+D3
+~
+~
+0 0 3182
+W 5 0 0
+Z 5 5
+S
+#3182
+End of a Trail in the Yagashes~
+This thin trail comes to an end here, terminating in an abrupt drop to
+the west.  Set amidst the sharp spires of the Yagashes, the trail is
+relatively clear here, with the exception of a vertical slash in the wall of
+the mountains to the north.  Lying on the ground, split in two, are the
+pieces of a block of ancient silver, evidently designed to block entrance to
+the northern cave.  The trail descends to the east, passing into rougher
+terrain.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 3183
+D1
+~
+~
+0 0 3181
+W 5 0 0
+Z 5 5
+S
+#3183
+A Cavernous Chamber~
+This cavernous chamber shows signs of long use.  A variety of hide rugs
+lie on the floor, haphazardly strewn amidst piles of old rags.  A huge
+stalactite descends from the center of the ceiling, tapering to a narrow
+point.  Water drips, ever so slowly, from the jagged tip of the stalactite,
+falling into a small stone basin.  They only exit from the chamber is to the
+south, where a jagged opening allows light to filter into the chamber.  
+~
+~
+0
+0 54 0
+E
+basin~
+The basin has a very small amount of water in it.  
+~
+D2
+~
+~
+0 0 3182
+W 5 0 0
+Z 5 5
+S
+#3199
+At the Bottom of a Rise~
+This region is nestled between the crook of the Yagash mountains to the
+west, and a small plateau which rises immediately northward.  Gazing upward,
+you can make out some sort of structure atop the plateau, but no trail
+provides a way to ascend to the top level.  The soil is more rocky here, and
+less reminiscent of the other portions of Shargob, which skirt the base of
+the plateau to the east.  
+~
+~
+1
+0 8192 2
+D1
+~
+~
+0 0 3089
+D2
+~
+~
+0 0 3102
+D4
+~
+~
+0 0 8101
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+M 0 3013 1 3000 1
+M 0 3001 5 3000 5
+M 0 3001 5 3000 5
+M 0 3001 5 3000 5
+M 0 3001 5 3000 5
+M 0 3001 5 3000 5
+R 0 3001 2
+M 0 3000 50 3001 1
+R 0 3003 3
+M 0 3000 50 3003 1
+R 0 3005 3
+M 0 3000 50 3006 1
+R 0 3007 2
+M 0 3000 50 3007 1
+R 0 3008 3
+R 0 3009 3
+M 0 3000 50 3009 1
+R 0 3010 3
+R 0 3011 4
+M 0 3000 50 3011 1
+R 0 3012 4
+R 0 3013 4
+M 0 3000 50 3013 1
+R 0 3014 4
+M 0 3444 1 3014 1
+R 0 3015 4
+M 0 3000 50 3015 1
+R 0 3016 4
+R 0 3017 3
+M 0 3000 50 3017 1
+R 0 3018 2
+R 0 3019 3
+R 0 3020 4
+M 0 3003 10 3020 1
+R 0 3021 4
+M 0 3000 50 3021 1
+R 0 3022 4
+M 0 3003 10 3022 1
+R 0 3023 4
+R 0 3024 4
+M 0 3000 50 3024 1
+R 0 3025 4
+M 0 3003 10 3025 1
+R 0 3026 4
+M 0 3000 50 3026 1
+R 0 3027 4
+R 0 3028 4
+M 0 3000 50 3028 1
+R 0 3029 4
+M 0 3000 50 3030 1
+R 0 3030 4
+R 0 3031 3
+R 0 3032 4
+M 0 3000 50 3032 1
+R 0 3033 4
+R 0 3034 4
+M 0 3000 50 3034 1
+R 0 3035 4
+R 0 3036 4
+M 0 3000 50 3036 1
+R 0 3037 4
+R 0 3038 4
+R 0 3039 4
+M 0 3000 50 3039 1
+R 0 3040 4
+M 0 3003 10 3040 1
+R 0 3041 4
+M 0 3000 50 3041 1
+R 0 3042 3
+R 0 3044 2
+R 0 3045 3
+R 0 3046 4
+M 0 3000 50 3046 1
+M 0 3000 50 3047 1
+R 0 3047 4
+R 0 3048 4
+M 0 3000 50 3048 1
+R 0 3049 4
+M 0 3000 50 3049 1
+R 0 3050 4
+M 0 3000 50 3050 1
+R 0 3051 4
+M 0 3000 50 3051 1
+R 0 3052 4
+M 0 3000 50 3052 1
+R 0 3053 4
+M 0 3000 50 3053 1
+R 0 3054 4
+R 0 3055 3
+M 0 3000 50 3055 1
+R 0 3055 4
+R 0 3063 4
+M 0 3000 50 3063 1
+R 0 3064 4
+R 0 3065 4
+M 0 3000 50 3065 1
+R 0 3066 4
+M 0 3000 50 3066 1
+R 0 3068 4
+M 0 3000 50 3068 1
+R 0 3069 4
+M 0 3000 50 3069 1
+R 0 3070 4
+M 0 3000 50 3070 1
+R 0 3071 4
+M 0 3000 50 3071 1
+R 0 3072 4
+M 0 3000 50 3072 1
+R 0 3079 4
+M 0 3000 50 3079 1
+R 0 3080 4
+M 0 3003 10 3080 1
+R 0 3081 4
+M 0 3000 50 3081 1
+R 0 3082 4
+M 0 3000 50 3082 1
+R 0 3083 4
+M 0 3003 10 3083 1
+R 0 3084 4
+M 0 3000 50 3084 1
+R 0 3085 4
+R 0 3086 4
+M 0 3000 50 3086 1
+R 0 3087 4
+R 0 3088 3
+M 0 3000 50 3088 1
+R 0 3092 4
+R 0 3093 4
+R 0 3094 4
+R 0 3095 4
+R 0 3096 4
+R 0 3097 4
+R 0 3098 4
+R 0 3099 4
+R 0 3100 4
+M 0 3003 10 3100 1
+R 0 3101 4
+R 0 3102 2
+M 0 3000 50 3102 1
+R 0 3103 4
+M 0 3000 50 3103 1
+R 0 3104 4
+M 0 3000 50 3104 1
+R 0 3105 4
+M 0 3003 10 3105 1
+R 0 3106 4
+M 0 3000 50 3106 1
+R 0 3108 4
+M 0 3000 50 3108 1
+R 0 3109 4
+R 0 3110 4
+M 0 3003 10 3110 1
+R 0 3111 4
+M 0 3000 50 3111 1
+R 0 3112 4
+M 0 3000 50 3112 1
+R 0 3113 4
+R 0 3114 4
+M 0 3000 50 3115 1
+R 0 3115 4
+M 0 3003 10 3116 1
+R 0 3116 4
+R 0 3117 4
+M 0 3000 50 3117 1
+M 0 3000 50 3118 1
+R 0 3120 4
+M 0 3000 50 3120 1
+R 0 3121 4
+M 0 3000 50 3121 1
+R 0 3122 4
+M 0 3000 50 3122 1
+R 0 3123 4
+M 0 3000 50 3124 1
+R 0 3124 4
+R 0 3125 4
+R 0 3126 3
+R 0 3127 4
+M 0 3000 50 3127 1
+R 0 3129 4
+M 0 3000 50 3129 1
+R 0 3130 4
+R 0 3131 3
+M 0 3000 50 3131 1
+R 0 3132 4
+M 0 3000 50 3133 1
+R 0 3133 4
+M 0 3000 50 3134 1
+R 0 3134 4
+M 0 3000 50 3135 1
+R 0 3135 4
+R 0 3136 4
+R 0 3137 2
+M 0 3000 50 3137 1
+M 0 3014 1 3141 1
+M 0 3010 1 3141 1
+G 0 3002 0
+M 0 3004 10 3142 1
+M 0 3004 10 3143 1
+M 0 3004 10 3144 1
+M 0 3004 10 3145 1
+M 0 3004 10 3146 1
+M 0 3004 10 3147 1
+M 0 3004 10 3148 1
+M 0 3004 10 3149 1
+M 0 3004 10 3150 1
+O 0 3003 0 3151
+M 0 3004 10 3151 1
+M 0 3012 1 3154 1
+E 0 3005 0 15
+M 0 3008 1 3160 1
+M 0 3011 1 3180 1
+M 0 3009 1 3183 1
+O 0 3014 0 3183
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

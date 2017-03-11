@@ -1,0 +1,3061 @@
+#AREADATA
+Name The Traveling Carnival~
+Builders Rystaia~
+VNUMs 23800 23899
+Credits [ ALL ] Rystaia   Traveling Carnival~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 23800
+swedishchef~
+the swedish chef~
+The swedish chef stands here yelling \#Bork bork bork!\#
+~
+~
+human~
+water scholar~
+AB 0 DFJLZ N 0
+60 0 10d10+1 0d0+0 0d0+0 slash~
+slash~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium gold
+>data_prog locmob4~
+0
+~
+>data_prog locmob3~
+0
+~
+>data_prog place4~
+8872
+8873
+8871
+8843
+~
+>data_prog place3~
+8861
+8862
+8831
+8832
+~
+>data_prog locmob2~
+0
+~
+>data_prog locmob1~
+0
+~
+>rand_prog 100~
+mpvalueup 3
+if mobvalue(3) > 24
+  mpsetdata locmob$1
+  mpvalueset 8 $d
+  if mobvalue(8) <= 0
+    break
+  endif
+  mpvaluerand 8 1 $d 
+  loop 2 to $8
+    mpnextdata   
+    mpnextdata
+  endloop
+  mpvaluerand 9 1 100
+  mpvaluedown 9 $d
+  if mobvalue(9) <= 0
+    mpnextdata
+    mpfocus carnivalmob$d
+    if isfocused()
+    else
+      mpvalueset 8 $d
+      mpnextdata
+      mpat $d mpmload $8
+      mpvalueup 2
+    endif
+  endif
+  mpvalueset 3 0
+endif
+~
+>time_prog 19~
+mpvalueup 0
+if mobvalue(0) == 60
+//
+// The following section of code transfers out all PCs in the area.
+//
+  mpsetdata place$1
+  loop 23801 to 23804
+    mpgoto $v1
+    mproomcmd mptrigger all
+  endloop
+  loop 23824 to 23825
+    mpgoto $v1
+    mproomcmd mptrigger all
+  endloop
+  mpnextdata
+  mpgoto 23805
+  mproomcmd mptrigger all
+  mpgoto 23822
+  mproomcmd mptrigger all
+  mpnextdata
+  loop 23806 to 23813
+    mpgoto $v1
+    mproomcmd mptrigger all
+  endloop
+  mpnextdata
+  loop 23814 to 23821
+    mpgoto $v1
+    mproomcmd mptrigger all
+  endloop
+  mpsetdata place$1
+//
+// The following loop eliminates the world portals.
+//
+  loop 1 to 4
+    mpat $d mppurge carnivalportal
+    mpnextdata
+  endloop
+//
+// The following loop eliminates all existing region-specific tourists.
+//
+  loop 1 to $2
+    mptrans carnivallocmob$1
+    mppurge carnivallobmob$1
+  endloop
+  mpvalueset 2 0
+endif
+if mobvalue(0) == 62
+  mpvalueset 0 0
+  mpvalueup 1
+  if mobvalue(1) > 5
+    mpvalueset 1 1
+  endif
+//
+// The following section of code places new portals at the desired
+// locations in avendar, as specificed by data_prog place<region #>.
+//
+  mpsetdata place$1
+  loop 1 to 4
+    mpmath 9 23799 + $v1
+    mpat $d mpoload $9
+    mpvalueset 8 $v1
+    if mobvalue(8) == 1
+      mpat 23814 mpset obj carnivalportal v3 $d
+    endif
+    if mobvalue(8) == 2
+      mpat 23801 mpset obj carnivalportal v3 $d
+    endif
+    if mobvalue(8) == 3
+      mpat 23813 mpset obj carnivalportal v3 $d
+    endif
+    if mobvalue(8) == 4
+      mpat 23805 mpset obj carnivalportal v3 $d
+    endif
+    mpnextdata
+  endloop
+//
+// The following code is designed the load region-specific tourist mobs.
+// The format of the locmob# data_progs should be:
+// First line: # of mobs in the list
+// Each entry: % chance of that mob appearing
+//             # of the mob
+//             # of the room it appears in
+// Note that each associated mob should have the names \#carnivalmob<vnum>\#
+// and \#carnivallocmob<region #>\# among their name list.
+//
+  mpsetdata locmob$1
+  mpvalueset 8 $d
+  if mobvalue(8) <= 0
+    break
+  endif
+  mpvaluerand 8 1 $d 
+  loop 2 to $8
+    mpnextdata   
+    mpnextdata
+  endloop
+  mpvaluerand 9 1 100
+  mpvaluedown 9 $d
+  if mobvalue(9) <= 0
+    mpnextdata
+    mpfocus carnivalmob$d
+    if isfocused()
+    else
+      mpvalueset 8 $d
+      mpnextdata
+      mpat $d mpmload $8
+      mpvalueup 2
+    endif
+  endif
+  mpvalueset 3 0
+endif
+~
+>load_prog 100~
+mpseewizi
+mpvalueset 2 0
+mpvalueset 0 0
+mpvalueset 3 0
+mpvaluerand 1 1 5
+//
+// The following section of code places new portals at the desired
+// locations in avendar, as specificed by data_prog place<region #>.
+//
+mpsetdata place$1
+loop 1 to 4
+  mpmath 9 23799 + $v1
+  mpat $d mpoload $9
+  mpvalueset 8 $v1
+  if mobvalue(8) == 1
+    mpat 23814 mpset obj carnivalportal v3 $d
+  endif
+  if mobvalue(8) == 2
+    mpat 23801 mpset obj carnivalportal v3 $d
+  endif
+  if mobvalue(8) == 3
+    mpat 23813 mpset obj carnivalportal v3 $d
+  endif
+  if mobvalue(8) == 4
+    mpat 23805 mpset obj carnivalportal v3 $d
+  endif
+  mpnextdata
+endloop
+//
+// The following code is designed the load region-specific tourist mobs.
+// The format of the locmob# data_progs should be:
+// First line: # of mobs in the list
+// Each entry: % chance of that mob appearing
+//             # of the mob
+//             # of the room it appears in
+// Note that each associated mob should have the names \#carnivalmob<vnum>\#
+// and \#carnivallocmob<region #>\# among their name list.
+//
+mpsetdata locmob$1
+mpvaluerand 8 1 $d 
+loop 2 to $8
+  mpnextdata   
+  mpnextdata
+endloop
+mpvaluerand 9 1 100
+mpvaluedown 9 $d
+if mobvalue(9) <= 0
+  mpnextdata
+  mpfocus carnivalmob$d
+  if isfocused()
+  else
+    mpvalueset 8 $d
+    mpnextdata
+    mpat $d mpmload $8
+    mpvalueup 2
+  endif
+endif
+~
+>trigger_prog 100~
+if ispc($n)
+  mpechoat $n You are forced to leave as the tent comes down around you as the carnival moves on.
+  mptrans $n $d
+endif
+~
+>data_prog place2~
+8872
+8873
+8871
+8843
+~
+>data_prog place1~
+8861
+8862
+8831
+8832
+~
+|
+V4 23801
+man head carny tall heavyset~
+the head carny~
+A tall heavyset man stands at the entrance to the tent.
+~
+The man is about middle age, his dark brown hair greying at the temples. 
+Sharp creases at the corners of the eyes and mouth tell of years of
+laughter, and his flushed complexion hints at the ale consumed during those
+years as well.  He stands tall and with authority, his age not at all
+dimming the clever gleam in his eye as he scans the crowd.  
+~
+human~
+water scholar~
+ABG 0 DFZ G 0
+30 15 13d80+989 30d10+100 5d6+15 bash~
+punch~
+-9 -9 -9 -1
+FI AB
+26 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23802
+woman gypsy fortune-teller fortune teller~
+the gypsy fortune-teller~
+A slim and lithely beautiful woman is here, her large black eyes watching but guarded.
+~
+The woman is slim and beautiful, her dark skin smooth and perfect.  Her
+long black hair falls unbound down her back, and ripples slightly as she
+moves.  She wears brightly coloured clothes, and many pieces of jewelry that
+clatter together and jingle when she gestures.  
+~
+human~
+water scholar~
+AB 0 DFZ E 0
+50 25 18d200+950 50d10+100 5d10+25 energy~
+magic~
+-21 -21 -21 -7
+IN AB
+26 0 0 33 0 0 0 0 0 0 0 0 33 0 0 0 0 33 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23803
+hjotra old woman~
+Hjotra~
+An old woman is standing here, proudly overlooking her collection of exotic animals.
+~
+Hjotra is quite old, her back humped as she leans heavily on her cane. 
+Her face is pale and her skin looks dry, and almost seems to be rotting
+away.  But though she is feeble in stature, she has captured and maintained
+the animals in her menagerie for decades.  
+~
+human~
+water scholar~
+ABG 0 Dc E 0
+45 23 31d84+1161 45d10+100 6d7+23 bash~
+punch~
+-5 -5 -5 2
+F AB
+26 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJK A medium food
+>time_prog 10~
+mpvalueset 0 1
+~
+>time_prog 20~
+mpvalueset 0 1
+~
+>rand_prog 100~
+if mobvalue(0) > 0
+  if isfight($i)
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+  goto 23801
+endif
+if mobvalue(0) == 2
+  esay \@says loudly,\@ Gather around, and follow me... I will tell you the tales of wonder and woe that are behind the mystical creatues assembled within my menagrie!
+endif
+if mobvalue(0) == 4
+  if mobhere(23809)
+    emote nods to herself.
+  else
+    emote frowns briefly.
+  endif
+endif
+if mobvalue(0) == 5
+  if mobhere(23809)
+    say First, we begin with a beautiful and shy creature, the failee.  It is said the failee race has prowled the world since before the sundering.
+    point failee
+  else
+    say Follow along now.
+    mpvalueset 0 12
+    east
+  endif
+endif
+if mobvalue(0) == 6
+  say Their coat is thick and warm, and said to grant protection against harmful magics.  For this reason, clothing made of their fur is highly prized.
+endif
+if mobvalue(0) == 9
+  say As you can imagine, this coupled with the fact that failee tend to mate for life, and breed only very seldom...
+  emote sighs with feigned sadness.
+endif
+if mobvalue(0) == 10
+  esay continues, ... has made the sight of a failee in the wild an extremely rare occurance today.
+endif
+if mobvalue(0) == 11
+  say Let us continue.
+  east
+endif
+if mobvalue(0) == 13
+  if mobhere(23808)
+    say The blink dog is one of the few remnants of the ch\@taren civilization.
+  else
+    emote shakes her head in dismay.
+    say This way.
+    mpvalueset 0 22
+    north
+  endif
+endif
+if mobvalue(0) == 14
+  say In the native lands of the ch\@taren, these dogs were loyal companions, and would bond themselves to a chosen person.
+endif
+if mobvalue(0) == 15
+  say Thereafter, the two could not be seperated, barring magical means.  It was only natural that when the ch\@taren crossed over into our world, they brought with them these good-natured animals.
+endif
+if mobvalue(0) == 17
+  esay \@continues, in a slightly quieter voice,\@ In the hundreds of years since the crossing, however, there have been less than a dozen cases of bonding.
+endif
+if mobvalue(0) == 19
+  say The cause for this is unknown for certain, but it seems likely it\@s because bonding was fairly uncommon in the first place, and there are not many blink dogs still living in Avendar today.
+endif
+if mobvalue(0) == 21
+  say This way, please.
+  north
+endif
+if mobvalue(0) == 23
+  if mobhere(23806)
+    say The allil is an extraordinarily delicate bird, found only in the most temperate reigons of Avendar.
+    smile allil
+  else
+    west
+    mpvalueset 0 30
+  endif
+endif
+if mobvalue(0) == 25
+  say It\@s constitution is so frail and precise that sudden changes in temperature can greatly upset its metabolism, and eventually lead to death.
+endif
+if mobvalue(0) == 27
+  esay \@says, smiling,\@ Allil\@s tend to favour gardens as their homes.  It is said that any garden in which an allil resides will blossom more beautifully, and smell more sweetly than any other.
+endif
+if mobvalue(0) == 29
+  beckon
+  west
+endif
+if mobvalue(0) == 31
+  if mobhere(23807)
+  else
+    sigh
+    west
+    mpvalueset 0 41
+  endif
+endif
+if mobvalue(0) == 32
+  esay begins, The manitcore!  A bizarre product of nature or perhaps the result of the meddlings of a deranged wizard?
+endif
+if mobvalue(0) == 33
+  say Regardless of its origin, the few that roam the land are feared, and for good reason!
+endif
+if mobvalue(0) == 34
+  say When a wild manticore first spots its prey, it shoots them with a spine from its tale, in an attempt to weaken them.
+endif
+if mobvalue(0) == 36
+  esay \@lowers her voice dramatically,\@ Three rows of razor sharp teeth line its mouth, and it is said that the best way to tell if a manticore attacked someone...
+endif
+if mobvalue(0) == 38
+  esay finishes, ... is by the fact that nothing remains except a large puddle of blood.
+  emote shudders slightly.
+endif
+if mobvalue(0) == 40
+  say Let\@s move on.
+  west
+endif
+if mobvalue(0) == 42
+  if mobhere(23805)
+    say The vesler, or as it is more commonly known, the three-eyed serpent, is extremely rare on this continent.  It\@s native lands lie in warmer climates to the south and east.
+  else
+    south
+    mpvalueset 0 52
+  endif
+endif
+if mobvalue(0) == 44
+  say His patchy green skin camouflages perfectly with the tropical surroundings the vesler favours, and they can grow as long as 10 feet!
+endif
+if mobvalue(0) == 46
+  say The placement of its three eyes gives it the ability to see the entire area around it, with no blind spots.
+endif
+if mobvalue(0) == 47
+  esay continues, The real danger in facing a vesler snake is in the strength of its venom.
+endif
+if mobvalue(0) == 48
+  say Aside from the numbing pain, the poison is said to have serious side effects, such as blindness and paralysis.
+endif
+if mobvalue(0) == 49
+  emote grins slightly.
+endif
+if mobvalue(0) == 51
+  esay \@says grandly,\@ And of course, the best for last.
+  south
+endif
+if mobvalue(0) == 53
+  if mobhere(23804)
+    say The unicorn: A proud and noble beast, possessing exceptional talents of magical nature.
+  else
+    emote pales to a pasty white.
+    esay stutters, Actually, that is the end of the tour for today.  Good night.
+    mplag hjotra 1
+    east
+    mpvalueset 0 0
+  endif
+endif
+if mobvalue(0) == 55
+  say Myths state that only the pure of heart and intent may approach a unicorn without invoking its wrath.
+endif
+if mobvalue(0) == 56
+  esay \@says smugly,\@ While this is the case for the pure-blooded unicorn...
+endif
+if mobvalue(0) == 57
+  emote smiles fondly at the captive unicorn.
+endif
+if mobvalue(0) == 58
+  say The average unicorn is not so choosy about its companions.  Time and circumstance has dilluted the magical nature of some of the beasts, so they are now little more than glorified horses.
+endif
+if mobvalue(0) == 61
+  say That is the end of our tour.  Please feel free to wander among my pets, and study those that you would never find in mundane surroundings!
+endif
+if mobvalue(0) == 62
+  east
+  mpvalueset 0 0
+endif
+~
+|
+V4 23804
+unicorn white~
+the unicorn~
+A beautiful shimmering white unicorn stands here.
+~
+The unicorn seems almost to eminate goodness and light, its soft coat a
+shimmering white.  Somehow it manages to stay clean in the dirty cage that
+holds it, though it looks somewhat underfed.  Intelligent dark blue eyes
+gaze out at the people who come to stare at the animals, questioning and
+sad.  
+~
+generic~
+water scholar~
+ABG 0 D G 0
+35 18 12d110+738 35d10+100 5d7+18 pierce~
+pierce~
+-12 -12 -12 -1
+FIK ABL
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23805
+snake serpent blue vesler three three-eyed~
+the vesler snake~
+A long, thin snake slithers along the floor.
+~
+The vesler snake is rather long, but thin and sinuous.  It has mottled
+dark green and blue scales, which gleam in the light.  Three dark brown eyes
+are set in its head like a crown, allowing it to view all sides at once.  
+~
+snake~
+water scholar~
+AB 0 F G 0
+25 13 12d45+707 25d10+100 4d5+12 pierce~
+bite~
+-5 -5 -5 2
+HMV AB
+26 0 0 0 0 0 0 0 0 -33 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMVXYc ABCDEFGHIJKLQVX A medium flesh
+V4 23806
+allil bird rainbow shimmering~
+the allil~
+A bird with feathers of a shimmering rainbow sits quietly on its perch.
+~
+The bird seems relatively young, its feathers still soft.  It seems
+almost to be painted, the head a deep and luxurious red, down to the royal
+purple of the tail feathers.  A soft sound eminates from its beak, low and
+melodious, when it makes any noise at all.  
+~
+song bird~
+water scholar~
+ABG 0 T G 0
+3 2 2d3+50 3d10+100 1d2+2 pierce~
+bite~
+4 4 4 -2
+FH AB
+26 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMVW ABCDEFGHIJKP A medium flesh
+V4 23807
+manticore~
+the manticore~
+A ferocious manticore prowls its cage restlessly.
+~
+Barely contained by it\@s cage, the huge manticore prowls about with
+deadly grace.  He has the powerfully muscled body of a lion, and the darting
+quick scorpions tail with it\@s lethal venom.  Combined with the large,
+leathery wings folded on his back and the face of a man, the manticore is
+both fearsome and horrible to behold.  
+~
+generic~
+water scholar~
+ABG 0 0 G 0
+25 12 12d45+777 25d10+100 4d6+11 pierce~
+bite~
+-5 -5 -5 2
+FI AB
+26 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23808
+dog blink~
+the blink dog~
+A pale yellow dog sits quietly in it\@s cage.
+~
+The blink dog regards the outside of his cage with large dark eyes, his
+pale yellow fur darkened slightly at the edges.  He seems to flicker
+slightly every now and then, and a brief expression of pain flashes across
+the dogs face.  
+~
+dog~
+water scholar~
+ABG 0 DJUZ N 0
+40 20 16d170+976 40d10+100 5d8+20 pierce~
+bite~
+-15 -15 -15 -2
+FHI AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMV ABCDEFGHIJKUV A medium unknown
+V4 23809
+failee wildcat silver~
+the failee~
+A beautiful silver furred wildcat paces about its cage.
+~
+The failee is covered in a soft silver fur that shimmers in the light. 
+It\@s ears and paws are faintly blue tinged at the tips, and it\@s eyes are a
+dark grey.  It\@s movements are just about entirely inaudible; effortlessly
+silent in it\@s pacing.  
+~
+human~
+water scholar~
+AB 0 0 G 0
+15 8 8d30+261 15d10+100 3d5+8 bash~
+punch~
+0 0 0 1
+FH AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23810
+man Melliv bald tall~
+Melliv~
+A tall, bald man stands here, watching over the people in the tent.
+~
+Melliv is a tall, braod-shouldered and competant looking man.  He
+doesn\@t look to be very elderly, but his head is completely bald, a contrast
+to the thick and full black beard that covers most of the lower half of his
+face.  When he speaks, his voice is quite deep, as he explains the history
+and nature of the various freaks in his tent, and his eyes betray a more
+compassionate nature.  
+~
+human~
+water scholar~
+ABG 0 0 G 0
+25 13 12d45+707 25d10+100 4d5+12 bash~
+punch~
+-5 -5 -5 2
+F AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23811
+kankoran man furless~
+the furless kankoran~
+A lean looking furless kankoran stands in the corner of the tent.
+~
+The kankoran seems normal for his kind, wild and lean looking, except for
+the complete lack of fur on his body.  His skin is dark mottled
+brownish-pink, with extremely large pores, and seems oddly stretched across
+his body, painfully tight looking.  His dark brown eyes retain a trace of
+the wildness of his kind, but his manner is placid and disheartened.  
+~
+kankoran~
+water scholar~
+ABG 0 Z N 0
+10 5 5d22+167 10d10+100 2d5+5 bash~
+punch~
+4 4 4 7
+FV AB
+26 0 0 0 0 0 0 0 -33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJKUV D medium unknown
+V4 23812
+woman fat lady~
+the fat lady~
+An extremely fat woman sits here, impassively looking back at the crowd.
+~
+The woman is quite large, her pale skin flowing in fold after fold of
+flesh.  Her eyes seem quite small in comparison, tiny little beads almost
+obscured by her low brow and pudgy cheeks.  Her hair is left to fall down
+behind her, unbrushed and unclean looking.  Occaisionally she will eat some
+of the food she keeps with her, straining slightly to reach her mouth.  
+~
+human~
+water scholar~
+ABG 0 0 N 0
+3 2 1d6+24 3d10+100 1d3+2 bash~
+punch~
+9 8 9 9
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23813
+man illustrated tattooed tall~
+the illustrated man~
+A tall man, his body covered completely with tattoos, stands here.
+~
+The man is tall and limber, moving with an uncanny grace.  His body of
+covered with all sorts of tattoos, from the intricate patterns which cover
+his fingers to the large dragon that covers his entire back.  His eyes look
+out from the palms of a pair of hands tattooed onto his head, and they
+regard with world with a dark cynicism.  
+~
+human~
+water scholar~
+ABG 0 0 E 0
+30 15 13d80+923 30d10+100 5d6+15 bash~
+punch~
+-9 -9 -9 0
+CFI AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23814
+man alatharya mage short~
+the mage~
+A short alatharya man clad in robes mutters arcane words to his audience.
+~
+The man, a suspiciously short alatharya, seems in perpetual movement as
+he waves his arms in the casting of some spell or another.  About seven feet
+in height, the mage keeps his white hair tied back from his face.  Although
+he does possess the silvery tint to his skin of the alatharya people, his
+lack of stature and strength causes him to look more like a tall painted
+human.  
+~
+human~
+water scholar~
+ABG 0 0 N 0
+20 10 12d40+333 20d10+100 4d5+10 bash~
+punch~
+-2 -2 -2 4
+F AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23815
+human man midget tiny~
+the midget~
+A tiny human looks beligerantly up at the crowd.
+~
+The man is quite short, no more than three and a half feet tall.  A dark
+mop of brown hair covers his head, and his eyes are an ordinary blue.  He
+looks quite normal except for the fact that his head would barely reach most
+adult humans waists.  He seems rather displeased with his stature, his mouth
+set in a sullen line as he glares at those who come to gawk.  
+~
+human~
+water scholar~
+ABG 0 0 N 0
+5 3 1d17+42 5d10+100 2d3+2 bash~
+punch~
+7 7 7 8
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23816
+juggler man~
+the juggler~
+A juggler dextrously juggles many coloured balls.
+~
+The man is tall and slight, his brown hair long and held back in a pony
+tail.  He moves with grace and speed, catching each ball and throwing them
+up agin in smooth, deft motions.  His blue eyes sparkle as he juggles, and
+it is clear that he enjoys his work.  
+~
+human~
+water scholar~
+ABG 0 0 N 0
+10 5 5d22+167 10d10+100 2d5+5 bash~
+punch~
+4 4 4 7
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+mpvalueset 1 1
+mpvalueset 2 1
+mpvalueset 3 1
+~
+>rand_prog 100~
+if mobvalue(1) > 1  
+or mobvalue(2) > 1
+or mobvalue(3) > 1
+  if mobvalue(1) > 1
+    mpvalueup 1
+  endif
+  if mobvalue(1) == 4  
+    pmote deftly catches each ball with a flourish.  Grinning he winks at $R and starts into a new pattern of circles.
+    mpvalueset 1 1
+  endif
+  if mobvalue(2) > 1
+    mpvalueup 2
+  endif
+  if mobvalue(2) == 4
+    mpecho Bowing dramatically, the juggler pulls a long sparkling black silk cloth from his sleeve, which he proceeds to tie securely around his eyes.
+  endif
+  if mobvalue(2) == 5
+    emote begins to juggle again, throwing each ball up and managing to catch it neatly, despite his blindness.
+  endif
+  if mobvalue(2) == 8
+    mpecho With a final flourish, the juggler unties his blindfold with one hand, while juggling the balls in his other.
+    mpvalueset 2 1
+    emote bows smoothly, juggling the balls behind his back.
+  endif
+  if mobvalue(3) > 1
+    mpvalueup 3
+  endif
+  if mobvalue(3) == 4
+    mpecho With a quick twist of his head, the juggler bites into the apple he was juggling, removing it from the intricate pattern of balls.
+  endif
+  if mobvalue(3) == 5
+    emote begins to munch on the apple between throws of the balls, and he seems to enjoy it greatly.
+  endif
+  if mobvalue(3) == 8
+    emote finishes off the apple and tosses it into the nearby trash bin without altering his juggling pattern slightly.
+    say Mmm, that was tasty!  I\@m sorry, but it was my only apple!  But our lovely Seina has candied apples and many other goodies for sale by the entrance of the tent!
+    emote points east between catching and throwing up the brightly coloured balls.
+    mpvalueset 3 1
+  endif
+  else
+    mpvaluerand 0 1 50
+    if mobvalue(0) == 1
+      emote begins to throw the juggling balls higher and higher, until it seems he will be hitting the ceiling of the tent with them.
+      mpvalueset 1 2
+    endif
+    if mobvalue(0) == 2
+      emote kicks his leg up, and begins to deftly catch and throw the juggling balls with one arm under his knee.
+    endif
+    if mobvalue(0) == 3
+      emote begins to juggle in an intricate pattern, looping in front and behind his back.
+    endif
+    if mobvalue(0) == 4
+      mpecho With a wide grin at his audience, the juggler neatly catches the balls he was juggling and sets them aside for a moment.
+      mpvalueset 2 2
+    endif
+    if mobvalue(0) == 5
+      mpecho Throwing the balls higher into the air, the juggler quickly pulls an apple out of his pocket and begins to juggle it with the other balls.
+      mpvalueset 3 2
+    endif
+  endif
+endif
+~
+|
+V4 23817
+woman juggler~
+the juggler~
+A slim woman with bright red hair juggles some torches for the amusement of the carnival goers.
+~
+The woman is a slim package of energy, flipping each torch up in the air
+and catching it seemingly without effort or attention as she gazes around
+her.  Her red hair is cut short, and compliments her bright green eyes which
+glow with enthusiasm.  
+~
+human~
+water scholar~
+ABG 0 0 N 0
+15 8 8d30+261 15d10+100 3d5+8 bash~
+punch~
+0 0 0 1
+FI AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23818
+clown~
+the clown~
+A clown, sporting brightly coloured clothing, tumbles past.
+~
+His clothes stuffed with hay to give him a fat comical look, the clown
+leers and giggles as he jumps around through the crowd.  On his face has
+been painted a huge smile making him seem constantly happy and amused.  
+~
+human~
+water scholar~
+ABG 0 0 G 0
+5 3 1d17+42 5d10+100 2d3+2 bash~
+punch~
+7 7 7 8
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23819
+clown clownjones~
+the clown~
+A clown, comically tragic, wanders desolately along.
+~
+His clothes stuffed with hay like his counterpart, this clown seems to be
+the victim of life.  Though he wears bright colours, his clothes are ripped,
+with hay falling out of the holes.  On his face he wears an exagerated
+frown, painted dark red, and a painted blue teardrop is on his left cheek.  
+~
+human~
+water scholar~
+ABG 0 0 N 0
+3 2 1d6+24 3d10+100 1d3+2 bash~
+punch~
+9 8 9 9
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23820
+ringmaster~
+the ringmaster~
+His voice booming across the noise of the carnival, the ringmaster stands here.
+~
+Unremarkable in stature or appearance, the ringmaster nevertheless
+manages to capture his audiences attention with his grand manner and booming
+voice.  He directs attention to the various rings with a gesture and a few
+words, and is able to convey the importance of each with a few words.  
+~
+human~
+water scholar~
+ABG 0 0 N 0
+36 18 12d110+728 35d10+100 5d7+18 bash~
+punch~
+-12 -12 -12 -1
+FIK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23821
+acrobat~
+the acrobat~
+An acrobat moves deftly through her routine, taking up most of the floor.
+~
+The acrobat is lithe and slim, her form defined by her whipcord strength
+and tight muscles.  She moves with a conscious grace, every movement precise
+and controlled.  Her routine is well planned, and with her deep
+concentration she preforms excellently.  
+~
+human~
+water scholar~
+ABG 0 0 N 0
+10 5 5d22+167 10d10+100 2d5+5 bash~
+punch~
+4 4 4 7
+FI AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23822
+acrobat acrojones~
+the acrobat~
+Moving with quick, deft motions, an acrobat flips past.
+~
+Moving effortlessly, the acrobat flips and tumbles about the area, often
+bringing delighted gasps from the watching crowds.  He wears a slight grin,
+enjoying the attention and the work equally.  
+~
+human~
+water scholar~
+ABG 0 0 N 0
+10 5 5d22+167 10d10+100 2d5+5 bash~
+punch~
+4 4 4 7
+FI AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23823
+tiger~
+the tiger~
+A tawny tiger prowls about his cage, growling ferociously.
+~
+The tiger is a beautiful example of its kind, prowling around with a
+deadly grace.  Its fur is a dark golden orange, and though it seems a little
+too thin, it looks quite strong.  
+~
+cat~
+water scholar~
+ABG 0 Z N 0
+20 10 12d40+333 20d10+100 4d5+10 slash~
+claw~
+-2 -2 -2 4
+FHM AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMV ABCDEFGHIJKQUV A medium unknown
+V4 23824
+lion~
+the lion~
+A large lion glowers at the audience.
+~
+The lion glowers and growls at the people around it, it\@s reddish brown
+mane full and soft around its face.  Its lean body is covered in a pale tan
+coloured fur, and seems powerful as it crouches.  
+~
+cat~
+water scholar~
+ABG 0 Z N 0
+20 10 12d40+333 20d10+100 4d5+10 slash~
+claw~
+-2 -2 -2 4
+FHV 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMV ABCDEFGHIJKQUV A medium unknown
+V4 23825
+elephant~
+the elephant~
+A large grey elephant towers above the crowd.
+~
+The elephant is very large and grey, its skin rough and somewhat papery. 
+It stands almost indifferent to the masses around it, swinging its trunk
+lazily and staring blankly ahead.  
+~
+generic~
+water scholar~
+ABG 0 0 N 0
+30 15 22d45+941 30d10+100 4d8+15 bash~
+punch~
+-2 -2 -2 4
+C 0
+26 0 0 0 0 30 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23826
+Solana woman young~
+Solana~
+A pretty young woman stands behind a table of treats.
+~
+Long red hair falls down Solana\@s back, held from her face by a few thin,
+bound braids.  Her eyes are a deep grey, the colour of a stormy evening, and
+they are lit by her sweet smile.  She speaks softly, barely loud enough to
+be heard over the crowd, and her voice is musical and warm.  
+~
+human~
+water scholar~
+ABG 0 0 N 0
+25 13 19d35+818 25d10+100 4d6+13 bash~
+punch~
+0 0 0 1
+F AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+>act_prog p buys some honeyed ham.~
+mpvaluerand 0 1 10
+if mobvalue(0) == 1
+  mpechoat $n Solana beams a sweet smile at you.
+  mpechoaround $n Solana beams a sweet smile at $N.
+endif
+if mobvalue(0) == 2
+  say Enjoy your food!
+  smile
+endif
+if mobvalue(0) == 3
+  esay \@says brightly,\@ The ham is sweetened with honey all the way from the forests of
+Morn!  I\@m sure you\@ll enjoy it.
+endif
+~
+>rand_prog 5~
+mpvaluerand 0 1 5
+if mobvalue(0) == 1
+  say Won\@t you try some of our honeyed ham?  It\@s delicious!
+  smile
+endif
+if mobvalue(0) == 2
+  say Thirsty?  Our lemonade is sweet but tangy!  It\@s a great thirst quencher.
+  emote proffers a cold glass of lemonade.
+endif
+if mobvalue(0) == 3
+  say A candied apple is a great treat to snack on while you look around the carnival!
+  emote points to the row of candied apples lined up before her.
+endif
+~
+>act_prog p buys a cup of tangy lemonade.~
+mpvaluerand 0 1 10
+if mobvalue(0) == 1
+  mpechoat $n Solana beams a sweet smile at you.
+  mpechoaround $n Solana beams a sweet smile at $N.
+endif
+if mobvalue(0) == 2
+  esay \@says brightly,\@ Our lemonade is quite refreshing!
+endif
+if mobvalue(0) == 3
+  say I helped make the lemonade myself, it\@s quite good!
+  beam $n
+endif
+~
+>act_prog p buys a small cup of honey mead.~
+mpvaluerand 0 1 10
+if mobvalue(0) == 1
+  mpechoat $n Solana beams a sweet smile at you.
+  mpechoaround $n Solana beams a sweet smile at $N.
+endif
+if mobvalue(0) == 2
+  if iscarrying($n) == 23803
+    say Wash down the candied apple you bought earlier with our mead, it tastes great!
+  else
+    say Our honey mead tastes even better when you\@re washing down a bite of candied 
+apple!
+  endif
+endif
+if mobvalue(0) == 3
+  esay \@says sweetly,\@ Now don\@t have too much mead...
+  mpechoat $n Solana smiles warmly at you.
+  mpechoaround $n Solana smiles warmly at $N.
+endif
+~
+>act_prog p buys a candied apple.~
+mpvaluerand 0 1 10
+if mobvalue(0) == 1
+  mpechoat $n Solana beams a sweet smile at you.
+  mpechoaround $n Solana beams a sweet smile at $N.
+endif
+if mobvalue(0) == 2
+  say Here you go, sweetie, enjoy!
+  smile $n
+endif
+if mobvalue(0) == 3
+  if iscarrying($n) == 23806
+    say You\@ll love sipping your mead while you snack on this candied apple.  It tastes 
+great!
+    grin $n
+  else
+    say Our honey mead tastes even better when you\@re washing down a bite of candied 
+apple!
+    grin $n
+  endif
+endif
+~
+>act_prog p buys a piece of sugar bread.~
+mpvaluerand 0 1 10
+if mobvalue(0) == 1
+  mpechoat $n Solana beams a sweet smile at you.
+  mpechoaround $n Solana beams a sweet smile at $N.
+endif
+if mobvalue(0) == 2
+  say We bake our bread fresh, everyday!
+endif
+if mobvalue(0) == 3
+  if charisma($n) > 17
+    if sex($n) == 1
+      esay whispers, And an extra piece, because you\@re so cute!
+      mpoload 23805
+      give bread $n
+    endif
+  endif
+endif
+~
+|
+V4 23827
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+AG 0 DF N 0
+40 20 16d170+976 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -2
+FI 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23828
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+AG 0 DF N 0
+40 20 16d170+976 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -2
+FI 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23829
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+AG 0 DF N 0
+40 20 16d170+976 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -2
+FI 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23830
+Vira woman ethron knifeho~
+A pretty, well-endowed ethron woman stands posed against a large board.~
+A pretty, well-endowed ethron woman stands posed against a large board, knives outlining part of her form.
+~
+Clothed in only a few scraps of fabric, Vira stands against the tall
+board, waiting for her partner to throw the knives that will eventually
+outline her entire form.  Which each thunk of a knife imbedding into the
+board besides her, Vira lets of a small shriek, as though in fear.  Many of
+the passersby stop to watch her, admiring the accuracy of Thyallal\@s
+knife-throwing, or his target.  
+~
+ethron~
+water scholar~
+ABG 0 0 N 0
+10 5 5d22+167 10d10+100 2d5+5 bash~
+punch~
+4 4 4 7
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMVW ABCDEFGHIJK AJ medium unknown
+V4 23831
+Thyallal man aelin knife-thrower~
+Thyallal~
+An aelin man stands here, weighing a knife in his hand as he prepares to throw it.
+~
+Handsome and dark, Thyallal handles his knives with a calm competancy,
+and an eye for showmanship.  His hair is black with a faint bluish shine to
+it in the lights from the carnival, and falls softly over his forehead. 
+Dark blue eyes watch his partner Vira, as he readies to throw another knife,
+the motion a smooth rippling of muscles as the knife thunks next to Vira,
+the noise echoed by sighs and excited murmurs from the audience.  
+~
+aelin~
+water scholar~
+ABG 0 ET N 0
+25 13 12d45+707 25d10+100 4d5+12 bash~
+punch~
+-5 -5 -5 2
+EFK AB
+26 0 0 0 0 -20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGHIJKP AF medium flesh
+>time_prog 23~
+mpvalueset 0 1
+~
+>rand_prog 100~
+if mobvalue(0) > 0
+  if mobhere(23830)
+    mpvalueup 0
+  else
+    mpvalueset 0 0
+  endif
+endif
+if mobvalue(0) == 2
+  speak common
+  esay \@turns to face the crowd and calls out,\@ Come, watch, and behold!
+endif
+if mobvalue(0) == 3
+  say I have trained at the art of knife throwing for years, traveling the world and meeting the masters of the craft.
+endif
+if mobvalue(0) == 5
+  emote gestures with a flourish towards the ethron woman standing against a large painted board.
+endif
+if mobvalue(0) == 6
+  say Now, I place these skills at your disposal.  I will be outlining my beautiful assitant, and dearest love, Vira with my blades!
+endif
+if mobvalue(0) == 8
+  emote bows deeply, and turns to face Vira, a look of deep concentration settling on his face.
+endif
+if mobvalue(0) == 10
+  emote flips the knife he is holding, so he now grips the blade, and pauses a moment.
+endif
+if mobvalue(0) == 12
+  mpecho Keeping a measuring eye on Vira, Thyallal quickly snaps his arm forward.
+endif
+if mobvalue(0) == 13
+  mpecho The knife flips end over end, and lands neatly by Vira\@s waist.
+endif
+if mobvalue(0) == 14
+  mpecho Vira gives a faint squeak as another knife thunks into the wood besides her.
+endif
+if mobvalue(0) == 15
+  mpecho Thyallal speeds up his throwing, and with graceful efficiency, hurls four more knives in quick succession.
+endif
+if mobvalue(0) == 17
+  mpvaluerand 9 1 200
+  if mobvalue(9) == 200
+    mpvalueset 0 30
+  else
+    mpecho Vira shies away as a knife slams into the wood on her left side.
+  endif
+endif
+if mobvalue(0) == 18
+  mpecho With only two knives left, Thyallal shifts his grip and holds one in either hand.
+endif
+if mobvalue(0) == 20
+  mpecho In a burst of motion, Thyallal throws both his knives simultaneously towards Vira!
+endif
+if mobvalue(0) == 21
+  mpecho The two thrown knives land with a satisfying thunk on either side of Vira\@s head.
+endif
+if mobvalue(0) == 22
+  emote turns back to his audience, and bows again,
+endif
+if mobvalue(0) == 23
+  say My thanks to you all!  Please, enjoy the rest of the carnival!
+  mpvalueset 0 0
+endif
+if mobvalue(0) == 30
+  mpecho With a faint tearing sound, one of the knives pierces the side of Vira\@s dress, pinning it to the board behind her.
+endif
+if mobvalue(0) == 32
+  mpecho Vira grabs the knife with both hands and yanks it out of the wood.
+endif
+if mobvalue(0) == 33
+  mpforce vira speak common
+  mpforce vira esay \@says shakily,\@ That\@s it, I need a rest!
+endif
+if mobvalue(0) == 34
+  mpecho Vira hurries towards the entrance of the tent.
+  mppurge vira
+endif
+if mobvalue(0) == 35
+  esay \@calls out,\@ Vira, wait!
+  emote heads towards the tent entrance.
+  mppurge self
+endif
+~
+>time_prog 16~
+mpvalueset 0 1
+~
+|
+V4 23832
+Whylim man face painter face-painter~
+Whylim~
+The face-painter sits in front of an array of pots of oil and pigment.
+~
+Curly blond hair covers Whylim\@s head, and sometimes falls over his face,
+which is itself clear of paint.  His hands however are stained with dabs of
+various colours, making it seem almost as if he is wearing a pair of
+patchwork gloves.  Whylim\@s fingers are long and deft, and when he sets to
+working on painting the face of those who sit at his table, he does so with
+skill.  
+~
+human~
+water scholar~
+ABG 0 0 N 0
+15 8 8d30+261 15d10+100 3d5+8 bash~
+punch~
+0 0 0 1
+F AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit stand male 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23833
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23834
+Caenis man alatharya tamer~
+Caenis~
+A tall, burly alatharya man is here, covered with scars.
+~
+Covered with scars of all sizes, the alatharya looks like he has been
+through more than one tough fight, most likely with his charges, the lions. 
+Caenis\@ skin is a dark bronze colour, the scars thin pale lines of contrast,
+and his head is completely shaven.  Pale blue eyes watch his surroundings
+with a careful concentration, and when they turn to his lions and tigers,
+there is no fear in them, only a faint glimmer of pride.  
+~
+alatharya~
+water scholar~
+ABG 0 Z N 0
+36 18 12d110+728 35d10+100 5d7+18 bash~
+punch~
+-12 -12 -12 -1
+CFI 0
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23835
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+AG 0 0 N 0
+20 10 12d40+333 20d10+100 4d5+10 bash~
+punch~
+-2 -2 -2 4
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23836
+woman~
+the woman~
+A woman stands here, thin needles and pins sticking out from her body.
+~
+The woman paces slightly, always standing as she faces the crowd, since
+needles are stuck into her at all sides and angles.  Seeming to almost wear
+a suit of the little shards of metal, her face betrays no expression of pain
+at the various pins sticking out of her.  As a final touch, beneath each eye
+extend six needles on each side, resembling grotesque metal eyelashes.  
+~
+human~
+water scholar~
+ABDGL 0 0 N 0
+25 13 12d45+707 25d10+100 4d5+12 bash~
+punch~
+-5 -5 -5 2
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23837
+man games gamesman~
+the gamesman~
+A man stands by a small booth, cheerfully calling to the passersby to try their skill.
+~
+Slightly pudgy, the man walks back and forth by his booth, calling to
+people to play his game.  He absently juggles some coloured balls in one
+hand as he walks, showing him to have more agility than his size would
+credit him with.  
+~
+human~
+water scholar~
+ABG 0 Z N 0
+36 18 12d110+728 35d10+100 5d7+18 bash~
+punch~
+-12 -12 -12 -1
+F AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGHIJKP A medium unknown
+>rand_prog 100~
+if ishere($f)
+  mpvalueup 6
+  if mobvalue(6) == 6
+    esay \@says cheerfully\@ You just throw the ball at the pyramid of bottles.
+  else
+    if mobvalue(6) == 10
+      say I\@m sorry, but if you\@re not going to play, you\@ll have to give others a chance.
+      mpechoat $f The gamesman restacks the bottles, and returns his gaze to the crowd.
+      mpforget $f
+      mpvalueset 6 0
+      mpvalueset 0 0
+      mpunfocus
+    endif
+  endif
+else
+  mpunfocus
+  mpvalueset 6 0
+  mpvalueset 0 0
+endif
+~
+>bribe_prog 80~
+bribe_prog 80
+if isfocused($i)
+  say Someone else is playing right now, ask again when they\@re done!
+  mpget char $n gold 4
+  mpvalueup 4 80
+  mpset char $n gold $4
+  mpechoat $n The gamesman returns your gold.
+else
+  mpfocus $n
+  if sex($n) == 2
+    if remembers($n)
+      mpechoat $n The gamesman steps back smiling, and gestures you towards the booth.
+      mpechoat $n You step up to the small booth.
+      mpechoaround $n $N steps up to the small booth.
+    else
+      say Step right up, miss, the game is simple!  You have three balls with which to knock over all six of those bottles.  Just throw them as hard as you can!  Good luck!
+      mpremember $n
+      mpechoat $n You step up to the small booth.
+      mpechoaround $n $N steps up to the small booth.
+    endif
+  else
+    if remembers($n)
+      mpechoat $n The gamesman steps back smiling, and gestures you towards the booth.
+      mpechoat $n You step up to the small booth.
+      mpechoaround $n $N steps up to the small booth.
+    else
+      say Step right up, sir, the game is simple!  You have three balls with which to knock over all six of those bottles.  Just throw them as hard as you can!  Good luck!
+      mpremember $n
+      mpechoat $n You step up to the small booth.
+      mpechoaround $n $N steps up to the small booth.
+    endif
+  endif
+  mpvalueset 2 6
+  mpvalueset 0 3
+  mpvalueset 6 0
+endif
+~
+>verb_prog p throw ball~
+if mobvalue(0) > 0
+  if valname($n) == $f
+    mpget char $n str 1
+    mpget char $n dex 9
+    mpvalueup 1 $9
+    mpvalueup 1 $9
+    mpget char $n level 9
+    mpvalueup 1 $9
+    loop 1 to $2
+      mpvalueup 1 5
+    endloop
+    mpvaluedown 1 30
+    mpvaluerand 3 1 200
+    if mobvalue(3) > $1
+      if mobvalue(2) == 1
+        mpechoat $n You hurl a ball towards the remaining bottle, missing it completely!
+        mpechoaround $n $N hurls a ball towards towards the remaining bottle, missing it completely!
+      else
+        mpechoat $n You hurl a ball towards the bottles, missing them completely!
+        mpechoaround $n $N hurls a ball towards the bottles, missing them completely!
+      endif
+    else
+      if mobvalue(2) == 1
+        mpechoat $n You hurl a ball towards the remaining bottle, knocking it down!
+        mpechoaround $n $N hurls a ball towards the remaining bottle, knocking it down!
+        mpvaluedown 2 1
+      else
+        mpvalueset 4 0
+        loop 1 to $2
+          mpmath 4 ((($2 - $v1) + 1) + $4)
+        endloop
+        mpvaluerand 5 1 $4
+        mpvalueset 9 0
+        mpvalueset 8 0
+        loop 1 to $2
+          if mobvalue(8) == 0
+            mpmath 9 ((($2 - $v1) + 1) + $9)
+            if mobvalue(5) <= $9
+              if mobvalue(2) == $v1
+                mpechoat $n You hurl a ball towards the bottles, knocking all of them down!
+                mpechoaround $n $N hurls a ball towards the bottles, knocking all of them down!
+              else
+                mpechoat $n You hurl a ball towards the bottles, knocking $v1 of them down!
+                mpechoaround $n $N hurls a ball towards the bottles, knocking $v1 of them down!
+              endif
+              mpvaluedown 2 $v1
+              mpvalueset 8 1
+            endif
+          endif
+        endloop
+      endif 
+    endif
+    mpvaluedown 0 1
+    if mobvalue(2) == 0
+      esay \@says excitedly\@ Astounding!  You got them all!  Here is your prize.
+      mpoload 19588
+      give doll $n
+      esay \@says jovially\@ Enjoy!  Please come again.
+      mpunfocus
+      mpvalueset 0 0
+      mpvalueset 6 0
+      break
+    endif
+    if mobvalue(0) == 0
+      say Oh, I\@m sorry.. that was your last ball.  Thanks for playing, please come again!
+      mpunfocus
+      mpvalueset 6 0
+    endif
+    break
+  endif
+endif
+mpnextinterp
+~
+|
+V4 23838
+nefortu woman~
+the nefortu~
+A nefortu with an extra set of wings extending beneath her first flies here.
+~
+The nefortu woman flies somewhat choppily, her extra set of wings
+flapping every now and then in a spasmodic motion.  She looks uncomfortable
+by the scrutiny she is under, and seems to try and ignore the crowd while
+still making sure the jerking of her second pair of wings doesn\@t cause her
+to bump into any of them.  
+~
+nefortu~
+water scholar~
+ABG 0 ETZ N 0
+20 10 12d40+333 20d10+100 4d5+10 bash~
+punch~
+-2 -2 -2 4
+F AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMW ABCDEFGIJKP H medium unknown
+V4 23839
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+AG 0 0 N 0
+20 10 12d40+333 20d10+100 4d5+10 bash~
+punch~
+-2 -2 -2 4
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23899
+soldier grim liveried stout executioner guard mob_23899~
+a grim, liveried soldier~
+A grim, stout, soldier stands guard.
+~
+This soldier is clearly a long-time veteran, his greying hair and scarred
+visage telling of extended service.  His is built powerfully, though not
+showily so; his strength is an attribute, not a point of heraldry.  It
+simply _is_.  He holds himself in much the same way, shoulders set,
+expression matter-of-fact and inscrutable.  
+~
+human~
+water scholar~
+ALT 0 DFJZ N 0
+50 25 18d200+920 0d0+0 5d12+25 none~
+hit~
+-20 -20 -20 -6
+CEHK 0
+26 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+#0
+
+
+
+#OBJECTS
+V13
+23800
+tent striped huge main entrance carnivalportal~
+the entrance~
+Music and the soft sound of many voices can be heard through the heavy material of a huge striped tent set up here.~
+~
+cloth~
+portal Y 0 0 P
+0 0 0 23814 0
+1 1 0 4 P
+0
+V13
+23801
+tent blue entrance flaps bright carnivalportal~
+the entrance~
+A bright blue tent is set solidly into the ground, long cords holding the flaps open.~
+~
+cloth~
+portal Ya 0 0 P
+0 0 0 23801 0
+1 1 0 4 P
+0
+V13
+23802
+tent green entrance carnivalportal~
+the entrance~
+A large green tent is set up here, the entrance open and inviting.~
+~
+cloth~
+portal Ya 0 0 P
+0 0 0 23813 0
+1 1 0 4 P
+0
+V13
+23803
+tent red entrance small dark carnivalportal~
+the entrance~
+A small, dark red tent sits here, the entrance dark and shrouded.~
+~
+cloth~
+portal SYa 0 0 AP
+0 0 0 23805 0
+1 4 16 4 P
+0
+V13
+23804
+ham hot honey plate small meat sauce honeyed~
+some honeyed ham~
+A small plate of meat lies here, covered in a sweet smelling sauce.~
+~
+food~
+food S 0 F A
+50 50 0 0 0
+1 20 60 1 P
+0
+V13
+23805
+bread piece slice sugar~
+a piece of sugar bread~
+A slice of bread rests here, lightly sprinkled with sugar.~
+~
+food~
+food S 0 F A
+18 50 0 0 0
+1 7 25 1 P
+0
+V13
+23806
+mead honey cup wood wooden small~
+a small cup of honey mead~
+A small wooden cup of honey mead sits here.~
+~
+wood~
+drink S 0 F A
+6 5 'mead' 0 1
+1 5 40 1 P
+0
+V13
+23807
+lemonade cup tangy~
+a cup of tangy lemonade~
+A cup of lemonade sits here.~
+~
+wood~
+drink S 0 F A
+7 6 'lemonade' 0 1
+1 6 35 1 P
+0
+V13
+23808
+knife well balanced well-balanced throwing short sharp handle~
+a well-balanced throwing knife~
+A short sharp knife rests here, the handle weighted and smooth.~
+~
+steel~
+weapon 0 0 F AN
+dagger 4 6 2 0
+pierce~
+22 50 4399 1 P
+0
+A
+18 4
+V13
+23809
+outfit fuchsia costume small skimpy fabric~
+a skimpy fuchsia outfit~
+A small costume of fuchsia fabric rests here.~
+~
+cloth~
+armor S 0 F AD
+4 4 4 0 0
+10 20 610 2 P
+0
+A
+54 2
+V13
+23810
+ball crystal~
+a crystal ball~
+A beautiful crystal ball flickers with an inner light.~
+~
+crystal~
+treasure AS 0 0 AO
+0 0 0 0 0
+30 50 19052 2 P
+0
+A
+12 35
+A
+3 1
+V13
+23811
+sign wood wooden~
+a wooden sign~
+A brightly painted wooden sign sits in front of the tent.~
+~
+wood~
+trash Ya 0 0 P
+0 0 0 0 0
+1 1 0 2 P
+0
+E
+sign~
+Come one and all to the MOST bizarre
+collection of FREAKS and ODDITIES in
+            Avendar!
+  **  Only 100 gold per person!  **
+~
+E
+sign~
+~
+V13
+23812
+sign wood wooden~
+a wooden sign~
+A brightly painted wooden sign sits in front of the tent.~
+~
+wood~
+trash Ya 0 0 P
+0 0 0 0 0
+1 1 0 2 P
+0
+E
+sign~
+Enter a world of mysterious creatures
+the likes of which you have never seen!
+    ** Only 125 gold per person! **
+~
+V13
+23813
+sign wood wooden~
+a wooden sign~
+A brightly painted wooden sign sits in front of the tent.~
+~
+wood~
+trash Ya 0 0 P
+0 0 0 0 0
+1 1 0 2 P
+0
+E
+sign~
+Enter and enjoy the most fantastic carnival
+In all of Avendar!  Games of skill, and feats
+   of courage, come in and experiance it!
+      ** Only 150 gold per person! **
+~
+V13
+23814
+ring pearl silver~
+a pearl ring~
+A beautiful pearl ring, with detailed silver inlays, has been set here.~
+~
+silver~
+armor F 0 F AB
+5 5 5 5 0
+40 5 9938 0 P
+50
+A
+12 30
+A
+13 10
+V13
+23815
+earrings gold glittering sparkling pair~
+a pair of sparkling gold earrings~
+A pair of glittering gold earrings lie on the ground.~
+~
+gold~
+armor 0 0 F AE
+7 7 7 0 0
+40 6 5458 2 P
+0
+A
+20 -1
+A
+13 15
+V13
+23816
+bracelets gold hoop bracelet~
+some gold hoop bracelets~
+A small pile of gold hoop bracelets lie sparkling on the ground.~
+~
+gold~
+jewelry G 0 F AM
+0 0 0 0 0
+40 10 2838 1 P
+5
+A
+2 2
+A
+17 -7
+V13
+23817
+dress exotic patterned silk pile~
+an exotic patterned dress~
+A brightly patterned dress of silk lies in a pile on the ground.~
+~
+silk~
+armor 0 0 F AD
+8 8 8 0 0
+40 30 3720 2 P
+0
+A
+20 -3
+V13
+23818
+breeches blue silk pair tight~
+a pair of tight blue silk breeches~
+A pair of blue silk breeches have been neatly folded and left here.~
+~
+silk~
+armor 0 0 F AF
+5 5 5 0 0
+15 20 1763 2 P
+0
+A
+18 2
+A
+1 1
+A
+2 1
+V13
+23819
+breeches red silk pile pair tight~
+a pair of tight red silk breeches~
+A pair of red silk breeches have been left in pile on the ground.~
+~
+silk~
+armor 0 0 F AF
+5 5 5 0 0
+15 20 2933 2 P
+0
+A
+20 -2
+A
+5 1
+A
+2 1
+V13
+23820
+whip tough leather long~
+a tough leather whip~
+A long handled and tough looking whip lies here.~
+~
+leather~
+weapon 0 0 F AN
+whip 5 4 2 0
+sting~
+20 65 1666 2 P
+0
+A
+19 1
+A
+18 2
+A
+1 1
+V13
+23821
+vest silk brocaded bright~
+a bright brocaded vest~
+A brightly coloured silk vest lies here.~
+~
+silk~
+armor 0 0 0 AD
+5 5 4 0 0
+14 30 1087 2 P
+0
+A
+18 1
+V13
+23822
+collar tight binding small piece leather~
+a tight, binding collar~
+A small piece of leather has been formed into a collar.~
+~
+leather~
+trash EGMPU 0 F AC
+0 0 0 0 0
+30 30 0 2 P
+0
+A
+20 5
+A
+1 -3
+A
+2 -3
+V13
+23823
+torch flaming flame hot~
+a flaming torch~
+A torch burns with a bright hot flame.~
+~
+wood~
+light AS 0 F AO
+0 0 120 0 0
+1 10 0 1 P
+0
+V13
+23824
+balls ball juggling five set coloured~
+some juggling balls~
+A set of five brightly coloured balls sit here.~
+~
+cloth~
+trash S 0 F AO
+0 0 0 0 0
+3 70 2808 2 P
+0
+A
+2 3
+V13
+23825
+violin old~
+a violin~
+An old violin rests here.~
+~
+wood~
+instrument S 0 0 AO
+B 0 0 0 0
+14 40 1577 2 P
+0
+A
+17 -4
+A
+12 10
+V13
+23826
+exit tent carnivalportal~
+the exit~
+The exit to the tent stands open, allowing in a refreshing breeze from outside.~
+~
+cloth~
+portal SYa 0 0 P
+0 0 0 0 0
+1 0 0 4 P
+0
+V13
+23829
+exit tent~
+the exit~
+A dark red tent sits apart, the entrance shrouded and dark.~
+~
+cloth~
+portal SYa 0 0 P
+0 0 0 23805 0
+1 1 0 4 P
+0
+V13
+23830
+suit needles~
+a suit of needles~
+A suit made entirely of needles lies here.~
+~
+steel~
+armor 0 0 F AD
+1 0 2 1 0
+10 100 4710 2 P
+0
+A
+18 -4
+A
+19 2
+A
+2 -3
+V13
+23831
+apple candied candy~
+the candied apple~
+A delicious looking apple covered in a candy coating has been left here.~
+~
+food~
+food S 0 F A
+10 50 0 0 0
+1 4 16 1 P
+0
+V13
+23832
+bracelet barbed steel~
+a barbed bracelet~
+A barbed bracelet of steel has been left here.~
+~
+steel~
+armor 0 0 F AM
+1 0 1 1 0
+9 10 607 1 P
+0
+A
+19 1
+A
+2 -1
+V13
+23833
+wand pale sparkling~
+a sparkling wand~
+A pale sparkling wand floats here.~
+~
+energy~
+wand 0 0 F AO
+15 10 4 'create rose' 0
+15 10 0 1 P
+0
+V13
+23834
+robe decorated grey~
+a decorated robe~
+A grey robe decorated with various symbols is piled here.~
+~
+cloth~
+armor S 0 F AK
+5 5 5 0 0
+15 0 895 2 P
+0
+A
+1 2
+V13
+23835
+cloak stiff hardened~
+a hardened cloak~
+A stiff cloak lies here.~
+~
+cloth~
+armor FGS 0 0 AK
+10 1 2 0 0
+10 40 897 2 P
+0
+V13
+23836
+ring gold sparkling~
+a sparkling gold ring~
+A beautiful gold ring lies here.~
+~
+gold~
+jewelry AGY 0 F AB
+0 0 0 0 0
+44 8 14938 0 P
+0
+A
+17 -5
+A
+20 -4
+V13
+23837
+band cloth red~
+a red band of cloth~
+A bright red band of cloth lies coiled up on the ground.~
+~
+cloth~
+armor S 0 F AE
+5 5 5 2 0
+25 4 3299 2 P
+0
+A
+18 3
+A
+19 1
+A
+2 1
+V13
+23840
+rose red beautiful~
+a beautiful red rose~
+A beautiful red rose lies here, glistening and perfect.~
+~
+plant~
+trash 0 0 0 A
+0 0 0 0 0
+1 2 0 2 P
+0
+V13
+23896
+iron gibbet noose obj_23896~
+an iron gibbet~
+An iron gibbet stands starkly in the center of the ring.~
+~
+unknown~
+furniture a 0 0 P
+2 10000 B 50 100
+52 0 0 0 P
+0
+V13
+23897
+lower ring bench benches tier stone~
+the lower ring of stone benches~
+A ring of stone benches forms a slightly-raised tier.~
+~
+unknown~
+furniture ae 0 0 P
+20 10000 E 98 98
+52 0 0 0 P
+0
+V13
+23898
+upper ring bench benches tier stone~
+the upper ring of stone benches~
+A ring of stone benches forms a slightly-raised tier.~
+~
+unknown~
+furniture ae 0 0 P
+20 10000 E 98 98
+52 0 0 0 P
+0
+V13
+23899
+chair stone slab stone-slab plain heavy granite slabs obj_23899~
+a stone-slab chair~
+A heavy chair hewn from granite slabs sits at the edge of the ring.~
+~
+stone~
+furniture a 0 0 P
+1 1000 E 100 100
+52 2000 0 0 P
+0
+E
+chair stone slab stone-slab plain heavy granite slabs obj_23899~
+This heavy chair is rather thronelike in its design and proportions,
+though it is adorned not in the slightest.  Mortarless joinings form a heavy
+back, sides, and seat; it has not legs, but rather a squat, heavy plinth for
+a base.  
+~
+#0
+
+
+
+#ROOMS
+#23800
+God ROOOOOOM~
+~
+~
+1
+0 4751670 0
+W 5 0 0
+Z 5 5
+S
+#23801
+The Entrance to the Menagerie~
+The bright blue of the tent walls give the entire inside a faint bluish
+cast, though the ceiling is a fair height up.  Open to allow entrance to the
+carnival goers, the air the tent flap lets in is not enough to rid the smell
+of animals that is heavy in the tent, making the air stuffy.  The animals
+themselves are relatively silent, though the occaisional strange sound is
+heard from the depths of the tent.  A strong, sturdy metal cage is set a bit
+to the side, the ground covered with dry straw, and the tent continues to
+the north, east, and west.  
+~
+~
+1
+0 72 0
+D0
+The tent continues.
+~
+~
+0 0 23802
+D1
+You see the southeast corner of the tent.
+~
+~
+0 0 23804
+D3
+You see the southwest corner of the tent.
+~
+~
+0 0 23824
+W 5 0 0
+Z 5 5
+S
+#23802
+The Menagerie~
+The smell of animals is stronger here than the entrance of the tent, and
+those not used to it find it slightly unpleasant.  A path has been marked
+through the tent, with small signs along the way that remind the carnival-
+goers not to get too close to the creatures within the cages.  The light
+that illuminates the area glints off a cage which has been set a bit to the
+side, the bottom of it covered in hay.  The tent continues to the east, west
+and south.  
+~
+~
+1
+0 524296 0
+D1
+You see the northeast corner of the tent.
+~
+~
+0 0 23803
+D2
+You see the southwest corner of the tent, and the entrance.
+~
+~
+0 0 23801
+D3
+You see the northwest corner of the tent.
+~
+~
+0 0 23825
+W 5 0 0
+Z 5 5
+S
+#23803
+The Menagerie~
+The smell of animals is stronger here than the entrance of the tent, and
+those not used to it find it slightly unpleasant.  A path has been marked
+through the tent, with small signs along the way that remind the carnival-
+goers not to get too close to the creatures within the cages.  The light
+that illuminates the area glints off a cage which has been set in the
+corner, the bottom of it covered in hay.  The tent continues to the west\# and
+south.  
+~
+~
+1
+0 524296 0
+D2
+You see the southeast corner of the tent.
+~
+~
+0 0 23804
+D3
+The tent continues.
+~
+~
+0 0 23802
+W 5 0 0
+Z 5 5
+S
+#23804
+The Menagerie~
+The smell of animals is stronger here than the entrance of the tent, and
+those not used to it find it slightly unpleasant.  A path has been marked
+through the tent, with small signs along the way that remind the carnival-
+goers not to get too close to the creatures within the cages.  The light
+that illuminates the area glints off a cage which has been set in the
+corner, the bottom of it covered in hay.  The tent continues to the west and
+north.  
+~
+~
+1
+0 524296 0
+D0
+You see the northeast corner of the tent.
+~
+~
+0 0 23803
+D3
+You see the entrance to the tent.
+~
+~
+0 0 23801
+W 5 0 0
+Z 5 5
+S
+#23805
+The Fortune-Tellers Tent~
+The inside of the tent is quite close, the dark red canvas making the
+room seem smaller than it is.  All light from outside is shut out, leaving
+the room mostly lit by the candlelight dancing and flickering around the
+table in the center.  The air is heavy with the scents of sage and some
+musky aroma that is hard to identify.  To the rear of the tent, a beaded
+curtain reflects the light from the candles, and cuts off what must be a
+small room in the back.  Besides that exit to the north, the only other way
+out of the tent is through the flap that covers the entrance to the south.  
+~
+~
+1
+0 524296 0
+D0
+You see a beaded curtain.
+~
+curtain~
+3 0 23822
+W 5 0 0
+Z 5 5
+S
+#23806
+The Freak Show~
+The walls of the tent are a dark green canvas, but the ceiling has been
+patched many times in various colours, and so the roof overhead is quite
+bright and multi-hued.  Murmurs of conversation can be heard from all over
+the tent, and the occaisional gasp of surprise or disgust can faintly be
+heard as new atrocities of nature are viewed.  As you travel farther into
+the tent, it grows warmer, and the air smells faintly of persperation and
+food.  The tent continues to the north, and the entrance lies to the east.  
+~
+~
+1
+0 524296 0
+D0
+~
+~
+0 0 23807
+D1
+You see the entrance to the tent.
+~
+~
+0 0 23813
+W 5 0 0
+Z 5 5
+S
+#23807
+The Freak Show~
+The walls of the tent are a dark green canvas, but the ceiling has been
+patched many times in various colours, and so the roof overhead is quite
+bright and multi-hued.  Murmurs of conversation can be heard from all over
+the tent, and the occaisional gasp of surprise or disgust can faintly be
+heard as new atrocities of nature are viewed.  As you travel farther into
+the tent, it grows warmer, and the air smells faintly of persperation and
+food.  The tent continues to the east and south, leading to more exhibits.  
+~
+~
+1
+0 524296 0
+D1
+The tent continues.
+~
+~
+0 0 23808
+D2
+~
+~
+0 0 23806
+W 5 0 0
+Z 5 5
+S
+#23808
+The Freak Show~
+The walls of the tent are a dark green canvas, but the ceiling has been
+patched many times in various colours, and so the roof overhead is quite
+bright and multi-hued.  Murmurs of conversation can be heard from all over
+the tent, and the occaisional gasp of surprise or disgust can faintly be
+heard as new atrocities of nature are viewed.  As you travel farther into
+the tent, it grows warmer, and the air smells faintly of persperation and
+food.  The tent continues to the east and west, and the entrance lies to the
+south.  
+~
+~
+1
+0 524296 0
+D1
+The tent continues.
+~
+~
+0 0 23809
+D2
+You see the entrance to the tent.
+~
+~
+0 0 23813
+D3
+~
+~
+0 0 23807
+W 5 0 0
+Z 5 5
+S
+#23809
+The Freak Show~
+The walls of the tent are a dark green canvas, but the ceiling has been
+patched many times in various colours, and so the roof overhead is quite
+bright and multi-hued.  Murmurs of conversation can be heard from all over
+the tent, and the occaisional gasp of surprise or disgust can faintly be
+heard as new atrocities of nature are viewed.  As you travel farther into
+the tent, it grows warmer, and the air smells faintly of persperation and
+food.  The tent continues to the east, west, and south, leading to more
+exhibits.  
+~
+~
+1
+0 524296 0
+D1
+You see the northeast corner of the tent.
+~
+~
+0 0 23810
+D2
+The tent continues.
+~
+~
+0 0 23812
+D3
+The tent continues.
+~
+~
+0 0 23808
+W 5 0 0
+Z 5 5
+S
+#23810
+The Freak Show~
+The walls of the tent are a dark green canvas, but the ceiling has been
+patched many times in various colours, and so the roof overhead is quite
+bright and multi-hued.  Murmurs of conversation can be heard from all over
+the tent, and the occaisional gasp of surprise or disgust can faintly be
+heard as new atrocities of nature are viewed.  As you travel farther into
+the tent, it grows warmer, and the air smells faintly of persperation and
+food.  The tent continues to the west and south, leading to more exhibits.  
+~
+~
+1
+0 524296 0
+D2
+You see the southeast corner of the tent.
+~
+~
+0 0 23811
+D3
+The tent continues.
+~
+~
+0 0 23809
+W 5 0 0
+Z 5 5
+S
+#23811
+The Freak Show~
+The walls of the tent are a dark green canvas, but the ceiling has been
+patched many times in various colours, and so the roof overhead is quite
+bright and multi-hued.  Murmurs of conversation can be heard from all over
+the tent, and the occaisional gasp of surprise or disgust can faintly be
+heard as new atrocities of nature are viewed.  As you travel farther into
+the tent, it grows warmer, and the air smells faintly of persperation and
+food.  The tent continues to the west and north, leading to more exhibits.  
+~
+~
+1
+0 524296 0
+D0
+You see the northeast corner of the tent.
+~
+~
+0 0 23810
+D3
+The tent continues.
+~
+~
+0 0 23812
+W 5 0 0
+Z 5 5
+S
+#23812
+The Freak Show~
+The walls of the tent are a dark green canvas, but the ceiling has been
+patched many times in various colours, and so the roof overhead is quite
+bright and multi-hued.  Murmurs of conversation can be heard from all over
+the tent, and the occaisional gasp of surprise or disgust can faintly be
+heard as new atrocities of nature are viewed.  As you travel farther into
+the tent, it grows warmer, and the air smells faintly of persperation and
+food.  The tent continues to the north and east, and the entrance lies to
+the west.  
+~
+~
+1
+0 524296 0
+D0
+The tent continues.
+~
+~
+0 0 23809
+D1
+You see the southeast corner of the tent.
+~
+~
+0 0 23811
+D3
+You see the entrance to the tent.
+~
+~
+0 0 23813
+W 5 0 0
+Z 5 5
+S
+#23813
+The Entrance to the Freak Show Tent~
+The walls of the tent are a dark green canvas, but the ceiling has been
+patched many times in various colours, and so the roof overhead is quite
+bright and multi-hued.  A banded piece of cloth holds the tent flap open to
+allow in the customers and also a cooling breeze from outside.  Murmurs of
+conversation can be heard from all over the tent, and the occaisional gasp
+of surprise or disgust can faintly be heard as new atrocities of nature are
+viewed.  The tent seems quite spacious, though somewhat busy, and continues
+to the east, west, and north.  
+~
+~
+1
+0 524296 0
+D0
+The tent continues.
+~
+~
+0 0 23808
+D1
+The tent continues.
+~
+~
+0 0 23812
+D3
+~
+~
+0 0 23806
+W 5 0 0
+Z 5 5
+S
+#23814
+The Entrance to the Main Tent~
+The main tent is the largest of all in the carnival.  Wide stripes of
+yellow and orange, and the occasional purple, travel up the walls of the
+tent, and the ceiling is a bright rainbow of colour.  Also the busiest of
+all the tents, the mix of conversation, yells of the carnies, and calls of
+the animals, puts the noise level at a dull roar.  The tent continues to the
+east, west, and north with various acts and activities.  
+~
+~
+1
+0 524296 0
+D0
+The tent continues.
+~
+~
+0 0 23817
+D1
+You see the southeast corner of the tent.
+~
+~
+0 0 23815
+D3
+The tent continues.
+~
+~
+0 0 23821
+W 5 0 0
+Z 5 5
+S
+#23815
+The Main Tent~
+The main tent is, not surprisingly, the largest of all in the carnival. 
+Wide stripes of yellow and orange, and the occasional purple, travel up the
+walls of the tent, and the ceiling is a bright rainbow of colour.  Also the
+busiest of all the tents, the mix of conversation, yells of the carnies, and
+calls of the animals, puts the noise level at a dull roar.  The tent
+continues to the west and north with various acts and activities.  
+~
+~
+1
+0 524296 0
+D0
+You see the northeast corner of the tent.
+~
+~
+0 0 23816
+D3
+You see the entrance to the tent.
+~
+~
+0 0 23814
+W 5 0 0
+Z 5 5
+S
+#23816
+The Main Tent~
+The main tent is, not surprisingly, the largest of all in the carnival. 
+Wide stripes of yellow and orange, and the occasional purple, travel up the
+walls of the tent, and the ceiling is a bright rainbow of colour.  Also the
+busiest of all the tents, the mix of conversation, yells of the carnies, and
+calls of the animals, puts the noise level at a dull roar.  The tent
+continues to the west and south with various acts and activities.  
+~
+~
+1
+0 524296 0
+D2
+You see the southeast corner of the tent.
+~
+~
+0 0 23815
+D3
+The tent continues.
+~
+~
+0 0 23817
+W 5 0 0
+Z 5 5
+S
+#23817
+The Main Tent~
+The main tent is, not surprisingly, the largest of all in the carnival. 
+Wide stripes of yellow and orange, and the occasional purple, travel up the
+walls of the tent, and the ceiling is a bright rainbow of colour.  Also the
+busiest of all the tents, the mix of conversation, yells of the carnies, and
+calls of the animals, puts the noise level at a dull roar.  The tent
+continues to the east, west, and south with various acts and activities.  
+~
+~
+1
+0 524296 0
+D1
+You see the northeast corner of the tent.
+~
+~
+0 0 23816
+D2
+You see the entrance to the tent.
+~
+~
+0 0 23814
+D3
+The tent continues.
+~
+~
+0 0 23819
+W 5 0 0
+Z 5 5
+S
+#23818
+The Main Tent~
+The main tent is, not surprisingly, the largest of all in the carnival. 
+Wide stripes of yellow and orange, and the occasional purple, travel up the
+walls of the tent, and the ceiling is a bright rainbow of colour.  Also the
+busiest of all the tents, the mix of conversation, yells of the carnies, and
+calls of the animals, puts the noise level at a dull roar.  The tent
+continues to the east and south with various acts and activities.  
+~
+~
+1
+0 524296 0
+D1
+The tent continues.
+~
+~
+0 0 23819
+D2
+~
+~
+0 0 23820
+W 5 0 0
+Z 5 5
+S
+#23819
+The Main Tent~
+The main tent is, not surprisingly, the largest of all in the carnival. 
+Wide stripes of yellow and orange, and the occasional purple, travel up the
+walls of the tent, and the ceiling is a bright rainbow of colour.  Also the
+busiest of all the tents, the mix of conversation, yells of the carnies, and
+calls of the animals, puts the noise level at a dull roar.  The tent
+continues to the east, west, and south with various acts and activities.  
+~
+~
+1
+0 524296 0
+D1
+~
+~
+0 0 23817
+D2
+~
+~
+0 0 23821
+D3
+~
+~
+0 0 23818
+W 5 0 0
+Z 5 5
+S
+#23820
+The Main Tent~
+The main tent is, not surprisingly, the largest of all in the carnival. 
+Wide stripes of yellow and orange, and the occasional purple, travel up the
+walls of the tent, and the ceiling is a bright rainbow of colour.  Also the
+busiest of all the tents, the mix of conversation, yells of the carnies, and
+calls of the animals, puts the noise level at a dull roar.  The tent
+continues to the east and north with various acts and activities.  
+[ 1] M[23837] the gamesman  in room             R[23820]  1- 1 The Main Tent
+Deleted this buggy mob, if you want you can remake him here.
+~
+~
+1
+0 524296 0
+D0
+~
+~
+0 0 23818
+D1
+The tent continues.
+~
+~
+0 0 23821
+W 5 0 0
+Z 5 5
+S
+#23821
+The Main Tent~
+The main tent is, not surprisingly, the largest of all in the carnival. 
+Wide stripes of yellow and orange, and the occasional purple, travel up the
+walls of the tent, and the ceiling is a bright rainbow of colour.  Also the
+busiest of all the tents, the mix of conversation, yells of the carnies, and
+calls of the animals, puts the noise level at a dull roar.  The tent
+continues to the east, west, and north with various acts and activities.  
+~
+~
+1
+0 524296 0
+D0
+The tent continues.
+~
+~
+0 0 23819
+D1
+You see the entrance to the tent.
+~
+~
+0 0 23814
+D3
+~
+~
+0 0 23820
+W 5 0 0
+Z 5 5
+S
+#23822
+The Back Room of the Fortune-Tellers Tent~
+The room is larger than it seemed it could be, judging from the outside
+of the tent, though still not very spacious.  The dark red canvas is
+streaked with a black substance that comes off at the touch, possibly soot,
+and the ceiling is entirely black.  The smells of musk and sage are laced
+with a faint underlying scent which is almost sickeningly sweet.  Heavy and
+close, the area is quite dark, much darker than it naturally should be with
+the light from the room to the south.  
+~
+~
+1
+0 524296 0
+D2
+You see a heavy curtain.
+~
+curtain~
+3 0 23805
+W 5 0 0
+Z 5 5
+S
+#23823
+~
+> rand_prog 100
+if inroom($i) == 23823
+  if mobvalue(1) == 0
+    mpvalueset 1 7
+    break
+  endif
+  if mobvalue(1) == 1
+    mpvalueset 0 10
+    mpgoto $2
+  endif
+else
+  mpvaluedown 0
+  if mobvalue(0) <= 0
+    mppurge self
+  endif
+endif
+  
+> death_prog 100
+mpat 23823 mpmload <insert vnum of self here>
+mpat 23823 mpset mob 2.<mobname> mobvalue 0 10
+mpat 23823 mpset mob 2.<mobname> mobvalue 2 $2
+~
+~
+0
+0 557060 0
+W 5 0 0
+Z 5 5
+S
+#23824
+The Menagerie~
+The smell of animals is stronger here than the entrance of the tent, and
+those not used to it find it slightly unpleasant.  A path has been marked
+through the tent, with small signs along the way that remind the carnival-
+goers not to get too close to the creatures within the cages.  The light
+that illuminates the area glints off a cage which has been set in the
+corner, the bottom of it covered in hay.  The tent continues to the east and
+north.  
+~
+~
+0
+0 524296 0
+D0
+You see the northwest corner of the tent.
+~
+~
+0 0 23825
+D1
+You see the entrance to the tent.
+~
+~
+0 0 23801
+W 5 0 0
+Z 5 5
+S
+#23825
+The Menagerie~
+The smell of animals is stronger here than the entrance of the tent, and
+those not used to it find it slightly unpleasant.  A path has been marked
+through the tent, with small signs along the way that remind the carnival-
+goers not to get too close to the creatures within the cages.  The light
+that illuminates the area glints off a cage which has been set in the
+corner, the bottom of it covered in hay.  The tent continues to the east and
+south.  
+~
+~
+0
+0 524296 0
+D1
+The tent continues.
+~
+~
+0 0 23802
+D2
+You see the southwest corner of the tent.
+~
+~
+0 0 23824
+W 5 0 0
+Z 5 5
+S
+#23899
+An Open-Air Court~
+This empty lot has been recently cleared, raw edges of masonry still
+showing between the buildings to the west and east.  Two low tiers of seats,
+paved in flat granite cobbles, ring a space perhaps five paces in diameter. 
+The tiers slope very gently down towards the center.  So much bare rock
+makes for harsh acoustics; any sounds echo baldly off the stone,
+reverberating crisply in the smallish amphitheatre.  A low stone wall of
+piled blocks separates the open lot from the Aragol Street to the south.  
+~
+~
+0
+0 8246 1
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 23899 spec_executioner
+S
+
+
+
+#RESETS
+D 0 23805 0 3
+D 0 23822 2 3
+M 0 23809 1 23801 1
+E 0 23822 0 3
+M 0 23803 1 23801 1
+M 0 23807 1 23802 1
+E 0 23822 0 3
+M 0 23806 1 23803 1
+E 0 23822 0 3
+M 0 23808 1 23804 1
+E 0 23822 0 3
+M 0 23802 1 23805 1
+E 0 23815 0 6
+E 0 23816 0 14
+E 0 23817 0 5
+E 0 23814 0 2
+E 0 23836 0 1
+M 0 23814 1 23806 1
+E 0 23833 0 17
+E 0 23834 0 12
+M 0 23815 1 23807 1
+M 0 23813 1 23808 1
+M 0 23812 1 23809 1
+G 0 23804 0
+G 0 23804 0
+G 0 23805 0
+G 0 23806 0
+M 0 23836 1 23810 1
+E 0 23830 0 5
+E 0 23832 0 14
+M 0 23811 1 23811 1
+M 0 23838 1 23812 1
+M 0 23810 1 23813 1
+M 0 23826 1 23814 1
+G 0 23804 0
+G 0 23805 0
+G 0 23831 0
+G 0 23806 0
+G 0 23807 0
+M 0 23817 1 23815 1
+E 0 23823 0 17
+G 0 23823 0
+G 0 23823 0
+M 0 23818 1 23816 1
+M 0 23819 1 23816 1
+M 0 23822 1 23817 1
+E 0 23819 0 7
+M 0 23821 1 23817 1
+E 0 23818 0 7
+M 0 23831 1 23818 1
+E 0 23808 0 17
+G 0 23808 0
+G 0 23808 0
+E 0 23837 0 6
+M 0 23830 1 23818 1
+E 0 23809 0 5
+M 0 23834 1 23819 1
+E 0 23820 0 16
+M 0 23824 1 23819 1
+M 0 23823 1 23819 1
+M 0 23832 1 23821 1
+M 0 23816 1 23821 1
+E 0 23824 0 17
+M 0 23800 1 23823 1
+M 0 23804 1 23824 1
+E 0 23822 0 3
+M 0 23805 1 23825 1
+E 0 23822 0 3
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+23826 19 17 0 0 0 100 0 0 23 0
+0
+
+
+
+#$

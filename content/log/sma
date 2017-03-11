@@ -1,0 +1,55 @@
+#!/usr/bin/perl 
+# sma = smart mass audit, Copyright 2002, Giant Slug Systems
+
+=comment
+1. For each player, perform a normal audit.
+2. If two players are found, perform a socket check
+   a. If less than 3 shared sockets, skip
+3. Calculate total value of shared items
+   a. If less than 10,000(?), skip
+4. Report results
+=cut
+
+opendir(DIR, "/home/pantheon/avprod/player/") or die "$!";
+while (defined($file = readdir(DIR))) {
+    next unless $file =~ /^[A-Z]/;
+    next unless -T "/home/pantheon/avprod/player/$file";
+#    print "\nauditing $file\n";
+    checkout($file);
+}
+
+closedir(DIR);
+
+
+sub checkout {
+	my $p = shift;
+	my @lines = `/home/pantheon/avprod/log/audit $p`;
+	foreach my $l (@lines) {
+		if ($l =~ /(\S+) has items from (\S+)/) {
+			my ($p1, $p2) = ($1, $2);
+			my @sharedsockets = `/home/pantheon/avprod/log/scheck $p1 $p2`;
+			next if @sharedsockets < 3; 
+			my @costs = `/home/pantheon/avprod/log/getcost $p1 $p2`;
+			my $totalcost;
+			foreach my $c (@costs) {
+				$c =~ /cost: (\S+)/;
+				$totalcost += $1;
+				$totalnum++;
+			}
+			next if $totalcost < 10000;
+=comment
+			print "$p1 has items from $p2.";
+			print " ", scalar @sharedsockets, " sockets shared. ";
+			print "$totalnum items worth: $totalcost.\n"; 
+=cut
+
+			my $string = "$p1 has items from $p2. " .
+			"They share " . scalar @sharedsockets . " sockets. " .
+			"Items worth: $totalcost.\n";
+			$hash{$string}++;
+			
+		}
+	}
+}
+print sort keys %hash;
+

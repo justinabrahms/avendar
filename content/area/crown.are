@@ -1,0 +1,1611 @@
+#AREADATA
+Name Temple of the Crown~
+Builders Iandir~
+VNUMs 600 630
+Credits [ ALL ] Iandir    Temple of the Crown~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 5 2 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 600
+adralya caladaran tall~
+Adralya~
+A tall caladaran in robes, Adralya stands at the Temple entrance.
+~
+Adralya, the Avatar of Iandir, is widely known as the first mortal to
+bear the Sigil of the Crown.  In mortality, Adralya exemplified the
+principles of Order, organizing the forces of justice to combat chaos
+everywhere, as well as developing Avendar\@s first justice system.  Adralya
+has now ascended to become an Avatar, serving his Lord for eternity. 
+~
+caladaran~
+water scholar~
+ABGPTX 0 DFHJNOVZc N 0
+65 500 28000d1+1 0d0+0 5d8+130 bash~
+pound~
+-50 -50 -50 -50
+AFHK ABHJKLNQ
+26 0 0 66 66 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMW ABCDEFGIJK AI medium unknown
+>hitprcnt_prog 20~
+mpcast 133 60
+mpcast 133 60
+~
+>hitprcnt_prog 35~
+mpcast 133 60
+~
+>load_prog 100~
+speak common
+~
+>death_prog 100~
+note to iandir
+note subj $n
+note + $n killed me!
+note post
+mpecho As Adralya falls to the ground, his form is engulfed in a flash of light!
+mpecho Adralya\@s form turns to stone, then back to flesh, and he steps forth, restored.
+say I am the holy avatar of Lord Iandir! You cannot defeat me so easily!
+mpmload 600
+~
+>load_prog 100~
+mpsetskilled
+mpseewizi
+~
+>hitprcnt_prog 40~
+mpcast 77 51
+mpcast 77 51
+mpcast 77 51
+mpcast 77 51
+mpcast 77 51
+mpecho Adralya closes his eyes and hums softly.
+mpecho Adralya looks better!
+mpcast 77 51
+mpcast 77 51
+~
+>fight_prog 100~
+if remembers($n)
+else
+if ispc($n)
+note to Iandir
+note subj $n attacked me
+note post
+mpremember $n
+endif
+endif
+mpvaluerand 0 1 2
+if mobvalue(0) == 1
+mpvaluerand 0 1 6
+if mobvalue(0) == 1
+mpcast 133 90
+endif
+if mobvalue(0) == 2
+mpcast 387 65
+endif
+if mobvalue(0) == 3
+mpcast 380 65
+endif
+if mobvalue(0) == 4
+mpcast 392 65
+endif
+if mobvalue(0) == 5
+mpcast 382 65
+endif
+if mobvalue(0) == 6
+mpcast 389 65
+endif
+endif
+~
+>verb_prog east~
+if iscarrying($n) == 1271
+or iscarrying($n) == 1272
+or iscarrying($n) == 1273
+mptransfer $n 606
+mpechoat $n Adralya unlocks and opens the gate and leads you inside the temple.
+mpechoaround $n Adralya unlocks and opens the gate and leads $N inside the temple.
+mpat 606 mpforce $n look
+else
+say I\@m afraid I can\@t let you pass, $N. You do not bear the Crown.
+endif
+~
+|
+V4 601
+arolhu general~
+General Arolhu~
+General Arolhu stands alertly at his station in the Inner Chamber.
+~
+General Arolhu is a large human with gray hair and a flowing
+salt-and-pepper beard.  Dressed in military armor, he stands as a sentinel
+in the Inner Chamber, eternally serving his Lord.  In life, General Arolhu
+lead the armies of men against the ravening srryn hordes in the War of Fire.
+Arolhu elevated the principles of Order and Leadership to such a degree that
+he was granted an extended lifespan by Iandir, and eventually Avatar status.
+~
+human~
+water scholar~
+ABGPTX 0 DFHNOVZc N 0
+65 2500 29000d1+1 0d0+0 10d10+220 holy~
+divine power~
+-50 -50 -50 -50
+ACEFHKN ABHIJKLNPQ
+26 0 0 33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>fight_prog 100~
+if isimmort($n)
+else
+mpvaluerand 0 1 12
+if mobvalue(0) == 1
+mpecho General Arolhu calls down the powers of Iandir!
+mpechoat $n A bolt of pure energy {rdoes UNSPEAKABLE things to{x you!
+mpechoaround $n A bolt of pure energy {rdoes UNSPEAKABLE things to{x $N!
+mpdamage $n 500 1 1
+endif
+if mobvalue(0) > 1
+bash
+endif
+endif
+~
+>greet_prog 100~
+if ispc($n)
+if iscarrying($n) == 1271
+else
+if iscarrying($n) == 1272
+else
+if iscarrying($n) == 1273
+else
+growl $n
+\@Violator! You shall not survive your trespass of these sacred halls!
+mpkill $n
+endif
+endif
+endif
+endif
+~
+>death_prog 100~
+note to iandir
+note subj $n
+note + $n killed me!
+note post
+~
+>verb_prog east~
+if iscarrying($n) == 1273
+mptransfer $n 619
+mpat trigger mpforce trigger mpat $n mpforce $n look
+mpecho $N leaves east.
+else
+say You may not enter the Chamber of the Gold Crown!
+endif
+~
+>verb_prog south~
+if iscarrying($n) == 1272
+mptransfer $n 617
+mpat trigger mpforce trigger mpat $n mpforce $n look
+else
+if iscarrying($n) == 1273
+mptransfer $n 617
+mpat trigger mpforce trigger mpat $n mpforce $n look
+else
+say You may not enter the Chamber of the Silver Crown!
+endif
+endif
+~
+>verb_prog north~
+if iscarrying($n) == 1271
+mptransfer $n 615
+mpat trigger mpforce trigger mpat $n mpforce $n look
+mpecho $N leaves north.
+else
+if iscarrying($n) == 1272
+mptransfer $n 615
+mpat trigger mpforce trigger mpat $n mpforce $n look
+mpecho $N leaves north.
+else
+if iscarrying($n) == 1273
+mptransfer $n 615
+mpat trigger mpforce trigger mpat $n mpforce $n look
+mpecho $N leaves north.
+else
+say You may not enter the Chamber of the Iron Crown!
+endif
+endif
+endif
+~
+>load_prog 100~
+mpsetskilled
+mpseewizi
+~
+|
+V4 602
+cigarbot cigar~
+the cigarbot~
+President Clinton\@s cigar is here, soaking wet.
+~
+~
+human~
+water scholar~
+AB 0 DFJLZ N 0
+0 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+if iscarrying($n) == 1271
+else
+if iscarrying($n) == 1272
+else
+if iscarrying($n) == 1273
+else
+mpgoto 614
+if mobhere(601)
+mpgoto $n
+mptransfer $n 614
+mpat 614 mpforce arolhu \@You may not enter!
+else
+mpgoto $n
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+600
+mace jandiska stone enormous~
+the Mace of the Jandiska~
+An enormous stone mace carved with ancient symbols rests here.~
+~
+stone~
+weapon HKMSZ 0 0 AN
+mace 8 7 1 F
+smash~
+60 190 1055400 2 P
+1
+A
+17 -20
+E
+mace~
+The Mace of the Jandiska is an ancient ancestral weapon wielded for
+centuries by the descendents of the great caladaran prophet.  
+~
+E
+jandiska~
+The Mace of the Jandiska is an ancient ancestral weapon wielded for
+centuries by the descendants of the great caladaran prophet.  
+~
+>rand_prog 100~
+if iscarrying($o) == 1271
+or iscarrying($o) == 1272
+or iscarrying($o) == 1273
+else
+  if iscarrying($o) == 4206
+  else
+    mpechoat $o You are striken by a curse, for stealing an artifact of Iandir!
+    mpoload 4206 on $o
+    mpoload 4207 on $o
+  endif
+endif
+~
+>wear_prog 100~
+if ispc($n)
+if islawful($n)
+else
+opzap $n
+opechoat $n You are zapped by the Mace of the Jandiska and drop it.
+opechoaround $n $N is zapped by the Mace of the Jandiska and drops it.
+endif
+endif
+~
+|
+V13
+601
+blade consecrated thin long~
+the consecrated Blade of Iandir~
+A long, thin blade shines with divine power.~
+~
+steel~
+weapon ABJK 0 0 AN
+sword 8 7 3 0
+slice~
+70 100 2071250 2 P
+1
+A
+19 6
+A
+13 60
+>rand_prog 100~
+if objvalue(0) > 0
+opvaluedown 0
+endif
+if objvalue(0) == 1
+opecho The consecrated Blade of Iandir flashes brightly, and disappears.
+oppurge self
+endif
+~
+>wear_prog 100~
+if ispc($n)
+if islawful($n)
+else
+opechoat $n You are zapped by the consecrated Blade of Iandir and drop it.
+opechoaround $n $N is zapped by the consecrated Blade of Iandir and drops it.
+opzap $n
+endif
+endif
+~
+>take_prog 100~
+if objvalue(0) == 0
+opvalueset 0 9000
+endif
+~
+|
+V13
+602
+tome large lectern~
+a large tome~
+A large tome stands upon a lectern.~
+~
+unknown~
+trash O 0 0 0
+0 0 0 0 0
+55 0 0 2 P
+0
+E
+soldier~
+The second rank attained by a Crownbearer is that of Soldier.  The
+Soldier of the Crown is charged with demonstrating his staunch allegiance;
+with continuing his efforts in the service of Order; and with the task of
+gaining the highest rank in his guild, that he may serve the Crown more
+fully.  Those Soldiers who have shown unfaltering loyalty, have actively
+worked to further the causes of Order, and have attained their guild\@s
+highest rank, will be awarded the Silver Crown, and promoted to the rank of
+Keeper.  
+~
+E
+tome~
+You may read about the duties of the two ranks of the Iron Crown:
+Initiate
+Soldier
+~
+E
+initiate~
+The first rank held by a Crownbearer is that of Initiate.  The Initiate
+has impressed Iandir sufficiently to receive the Iron Crown, but must strive
+to fully incorporate the principles of the Crown into his life.  The
+Initiate\@s most important duties are to meticulously study the principles
+proclaimed in the Hall of Ideals, and to further prove his worth as a
+servant of Iandir.  After actively demonstrating that he is steadfast and
+faithful to his oaths, an Initiate will be promoted to the rank of Soldier. 
+~
+E
+lectern~
+You may read about the duties of the two ranks of the Iron Crown:
+Initiate
+Soldier
+~
+V13
+603
+tome large lectern~
+a large tome~
+A large tome stands upon a lectern.~
+~
+unknown~
+trash O 0 0 0
+0 0 0 0 0
+55 0 0 2 P
+0
+E
+lord~
+The first rank of the Gold Crown is that of Lord.  A Lord of the Crown is
+a truly exceptional champion of Order, who had distinguished himself in the
+service of Iandir.  Lords of the Crown are expected to demonstrate a
+flawless example of strict observance to the lower ranks and the general
+populace.  A Lord will continue to vigorously pursue the spread of Order in
+word and deed, and offer leadership and guidance to the Order of the Crown,
+and to the people of Avendar.  The most qualified of the Lords of the Crown
+is chosen for the office of High Lord.  
+~
+E
+tome~
+You may read about the duties of the two ranks of the Gold Crown:
+Lord
+High Lord
+~
+E
+lectern~
+You may read about the duties of the two ranks of the Gold Crown:
+Lord
+High Lord
+~
+E
+high~
+A High Lord of the Crown is the ultimate office achievable by a mortal
+servant of the Crown.  A High Lord is a mortal so trusted by Iandir that he
+has been charged with temporal leadership of the Order.  The High Lord is,
+below Iandir himself, the final authority on all matters within the Order. 
+He is further responsible for leading the work of all Crownbearers, the
+spreading of Order throughout Avendar.  
+~
+V13
+604
+tome large lectern~
+a large tome~
+A large tome stands upon a lectern.~
+~
+unknown~
+trash O 0 0 0
+0 0 0 0 0
+55 0 0 2 P
+0
+E
+lectern~
+You may read about the duties of the two ranks of the Silver Crown:
+Keeper
+Knight
+~
+E
+tome~
+You may read about the duties of the two ranks of the Silver Crown:
+Keeper
+Knight
+~
+E
+keeper~
+The first rank of the Silver Crown is that of Keeper.  A Keeper of the
+Crown has proven himself through service in the lower ranks, and is granted
+the higher authority and power that comes with the Silver Crown.  A Keeper
+is expected to watch over those who bear the Iron Crown, offering
+assistance, training, and guidance where necessary.  A Keeper is also
+expected to continually prove himself by pursuing the spread of Order, and
+continuing to perfect his observance of all the principles of Order.  Those
+Keepers who demonstrate mastery of the principles of Order will be promoted
+to the rank of Knight.  
+~
+E
+knight~
+The second rank of the Silver Crown is that of Knight.  A Knight of the
+Crown has shown himself to be among the elite of the Crownbearers, and is
+rewarded with according rank and authority.  A Knight of the Crown, in
+addition to continuing the duties of a Keeper, is charged with leadership of
+the Order in the absence of any higher-ranking Crownbearers.  A Knight of
+the Crown who performs exceptionally in one or more of the three principles
+of Order, or a Knight who performs an extraordinary feat of heroism, may be
+rewarded with the Sigil of the Gold Crown, and rank of Lord.  
+~
+V13
+605
+key ironperfect~
+a perfect iron key~
+A long iron key, utterly without flaw, sits here.~
+~
+iron~
+key N 0 0 A
+0 0 0 0 0
+60 5 0 0 P
+1
+#0
+
+
+
+#ROOMS
+#600
+Before the Golden Stairway~
+The cobbled streets of Earendam open into a plaza of carefully-laid
+marble tiles, so skillfully executed that it is difficult to find the seams
+of the stone squares.  To the east, a broad stairway, its sixty-foot wide
+steps inlaid with gold, rises gradually above the level of the street.  At
+its zenith, the fabulous spires of the Temple of the Crown blaze in the sun.
+~
+~
+1
+0 262148 1
+D3
+~
+~
+0 0 7368
+D4
+The fabulous golden stairs lead up to the Temple of Iandir.
+~
+~
+0 0 601
+W 5 0 0
+Z 5 5
+S
+#601
+Above the Golden Stairway~
+A sixty-foot wide stairway, inlaid with gold, stretches to the west,
+descending gradually to a marble-tiled plaza.  The sun dances off the
+dazzling stairs, its golden light reflecting onto nearby buildings.  To the
+east stands the magnificent Temple of the Crown.  The face of the Temple is
+formed of gray marble, carved in elegant and intricate patterns.  Three
+curving spires rise from the top of the structure a spire of iron to the
+north, a spire of silver to the south, and a fabulous spire of shining gold
+rising in the center.  A broad walkway of marble leads to the gates of the
+Temple to the east.  
+~
+~
+1
+0 262144 1
+D1
+The stairs lead up to the Temple of Iandir to the east.
+~
+~
+0 0 603
+D5
+The fabulous golden stairs lead down to the streets of Earendam.
+~
+~
+0 0 600
+W 5 0 0
+Z 5 5
+S
+#602
+Before the Temple of the Crown~
+The marble walkway leads to the north edge of the Temple of the Crown, a
+sheer drop leading down to the streets of Earendam to the north and west. 
+The glorious Temple of the Crown rises to the east, its face carved in
+elegant, curving patterns.  High above, the Temple\@s three spires gleam in
+the sun, with the spire of iron directly overhead.  To the south, the
+walkway leads to the gates of the Temple.  Above, the face of the Temple is
+adorned with lines inlaid in gold, proclaiming the principles of the Order
+of the Crown.  
+~
+~
+1
+0 262144 1
+E
+inlaid~
+Law is the foundation of the principle of Order.  In observance of Law,
+the cities of Avendar prosper; in its absence, the fabric of civilization
+crumbles.  
+~
+E
+face~
+Law is the foundation of the principle of Order.  In observance of Law,
+the cities of Avendar prosper; in its absence, the fabric of civilization
+crumbles.  
+~
+E
+principles~
+Law is the foundation of the principle of Order.  In observance of Law,
+the cities of Avendar prosper; in its absence, the fabric of civilization
+crumbles.  
+~
+E
+gold~
+Law is the foundation of the principle of Order.  In observance of Law,
+the cities of Avendar prosper; in its absence, the fabric of civilization
+crumbles.  
+~
+E
+lines~
+Law is the foundation of the principle of Order.  In observance of Law,
+the cities of Avendar prosper; in its absence, the fabric of civilization
+crumbles.  
+~
+D2
+~
+~
+0 0 603
+W 5 0 0
+Z 5 5
+S
+#603
+Before the Temple Gates~
+The magnificent Temple of the Crown rises immediately to the east, its
+marble face carved in elegant, sweeping patterns.  High above, the Temple\@s
+three spires gleam in the sun, with the glorious spire of gold directly
+overhead.  To the north and south, a marble walkway continues along the face
+of the Temple.  To the south, the walkway leads to a massive golden
+stairway.  To the east are a pair of iron gates, trimmed with silver and
+gold.  Above the gates of the Temple, a series of lines inlaid with gold
+proclaim the principles that govern the Order of the Crown.  
+~
+~
+1
+0 262144 1
+E
+principles~
+Leadership is the purest application of the principle of Order.  Those
+who command and organize are the truest servants of Iandir.  
+~
+E
+inlaid~
+Leadership is the purest application of the principle of Order.  Those
+who command and organize are the truest servants of Iandir.  
+~
+E
+gold~
+Leadership is the purest application of the principle of Order.  Those
+who command and organize are the truest servants of Iandir.  
+~
+E
+series~
+Leadership is the purest application of the principle of Order.  Those
+who command and organize are the truest servants of Iandir.  
+~
+E
+lines~
+Leadership is the purest application of the principle of Order.  Those
+who command and organize are the truest servants of Iandir.  
+~
+D0
+The face of the Temple of the Crown is to the north.
+~
+~
+0 0 602
+D1
+The Temple gates lead inside.
+~
+gates~
+3 0 605
+D2
+The face of the Temple of the Crown is to the south.
+~
+~
+0 0 604
+D3
+~
+~
+0 0 601
+W 5 0 0
+Z 5 5
+S
+#604
+Before the Temple of the Crown~
+The marble walkway leads to the south edge of the Temple of the Crown, a
+sheer drop leading down to the streets of Earendam to the south and west. 
+The glorious Temple of the Crown rises to the east, its face carved in
+elegant, curving patterns.  High above, the Temple\@s three spires gleam in
+the sun, with the spire of silver directly overhead.  To the north, the
+walkway leads to the gates of the Temple.  Above, the face of the Temple is
+adorned with lines inlaid in gold, proclaiming the principles of the Order
+of the Crown.  
+~
+~
+1
+0 262144 1
+E
+gold~
+Honesty is the purest manifestation of the principle of Order.  One who
+is true in word and deed engenders Order in all he does.  
+~
+E
+principles~
+Honesty is the purest manifestation of the principle of Order.  One who
+is true in word and deed engenders Order in all he does.  
+~
+E
+lines~
+Honesty is the purest manifestation of the principle of Order.  One who
+is true in word and deed engenders Order in all he does.  
+~
+E
+face~
+Honesty is the purest manifestation of the principle of Order.  One who
+is true in word and deed engenders Order in all he does.  
+~
+E
+inlaid~
+Honesty is the purest manifestation of the principle of Order.  One who
+is true in word and deed engenders Order in all he does.  
+~
+D0
+~
+~
+0 0 603
+W 5 0 0
+Z 5 5
+S
+#605
+Inside the Temple Gates~
+The iron gates of the Temple open into an elegantly appointed foyer.  The
+floor and walls are decorated with inlaid designs featuring iron, silver,
+and gold Crown insignia.  A vaulted ceiling arches overhead, and the sun
+shines brightly through bevelled windows.  The foyer opens into a much
+larger hallway to the east, and the Temple gates open to the west.  
+~
+~
+1
+0 262202 0
+D1
+The Temple gates lead inside the Temple of the Crown.
+~
+~
+196647 605 606
+D3
+The Temple gates lead back outside.
+~
+gates~
+3 0 603
+W 5 0 0
+Z 5 5
+S
+#606
+The Hall of Principles~
+A long, wide hallway stretches from the east to the west, every foot
+decorated by simple patterns inlaid with strips of iron, silver, and gold. 
+The floor is paved with multi-colored tiles which form large mosaics
+depicting the symbol of the Crown.  Sunlight streams in through decorative
+windows near the hallway\@s arched ceiling.  Lines of engraved writing fill
+the north and south walls, declaring the principles that govern the Bearers
+of the Crown.  
+~
+~
+1
+0 262202 0
+E
+lines~
+At its most basic, the principle of Honesty is a guiding concept in the
+life of one who follows the Crown.  If you are to embody Order, your speech
+must not stray from the absolute truth; to speak a falsehood would be to
+betray all that you claim to believe in.  Perfect Honesty is perhaps the
+truest sign of the deep integrity striven for by a Crownbearer.  
+~
+E
+engraved~
+At its most basic, the principle of Honesty is a guiding concept in the
+life of one who follows the Crown.  If you are to embody Order, your speech
+must not stray from the absolute truth; to speak a falsehood would be to
+betray all that you claim to believe in.  Perfect Honesty is perhaps the
+truest sign of the deep integrity striven for by a Crownbearer.  
+~
+E
+writing~
+At its most basic, the principle of Honesty is a guiding concept in the
+life of one who follows the Crown.  If you are to embody Order, your speech
+must not stray from the absolute truth; to speak a falsehood would be to
+betray all that you claim to believe in.  Perfect Honesty is perhaps the
+truest sign of the deep integrity striven for by a Crownbearer.  
+~
+E
+principles~
+At its most basic, the principle of Honesty is a guiding concept in the
+life of one who follows the Crown.  If you are to embody Order, your speech
+must not stray from the absolute truth; to speak a falsehood would be to
+betray all that you claim to believe in.  Perfect Honesty is perhaps the
+truest sign of the deep integrity striven for by a Crownbearer.  
+~
+D1
+The Hall of Principles continues.
+~
+~
+0 0 607
+D3
+The Temple gates lead outside.
+~
+~
+65572 0 605
+W 5 0 0
+Z 5 5
+S
+#607
+The Hall of Principles~
+A long, wide hallway stretches from the east to the west, every foot
+decorated by simple patterns inlaid with strips of iron, silver, and gold. 
+The floor is paved with multi-colored tiles which form large mosaics
+depicting the symbol of the Crown.  Sunlight streams in through decorative
+windows near the hallway\@s arched ceiling.  Lines of engraved writing fill
+the north and south walls, declaring the principles that govern the Bearers
+of the Crown.  
+~
+~
+1
+0 262202 0
+E
+lines~
+The principle of Law is the very foundation of Order.  Those who follow
+the Crown must observe the Laws of Avendar meticulously, for any who break
+these Laws defy Order itself.  The slightest violation of the Laws will most
+likely be punished by removal from the Order of the Crown.  
+~
+E
+engraved~
+The principle of Law is the very foundation of Order.  Those who follow
+the Crown must observe the Laws of Avendar meticulously, for any who break
+these Laws defy Order itself.  The slightest violation of the Laws will most
+likely be punished by removal from the Order of the Crown.
+~
+E
+writing~
+The principle of Law is the very foundation of Order.  Those who follow
+the Crown must observe the Laws of Avendar meticulously, for any who break
+these Laws defy Order itself.  The slightest violation of the Laws will most
+likely be punished by removal from the Order of the Crown.
+~
+E
+principles~
+The principle of Law is the very foundation of Order.  Those who follow
+the Crown must observe the Laws of Avendar meticulously, for any who break
+these Laws defy Order itself.  The slightest violation of the Laws will most
+likely be punished by removal from the Order of the Crown.
+~
+D1
+The Hall of Principles continues.
+~
+~
+0 0 608
+D3
+The Hall of Principles continues.
+~
+~
+0 0 606
+W 5 0 0
+Z 5 5
+S
+#608
+The Hall of Principles~
+A long, wide hallway stretches to the west, every foot decorated by
+simple patterns inlaid with strips of iron, silver, and gold.  The floor is
+paved with multi-colored tiles which form large mosaics depicting the symbol
+of the Crown.  Sunlight streams in through decorative windows near the
+hallway\@s arched ceiling.  Lines of engraved writing fill the north and
+south walls, declaring the principles that govern the Bearers of the Crown. 
+To the east, a wide set of stairs leads gradually downward to the next hall.
+~
+~
+1
+0 262202 0
+E
+lines~
+Leadership is the purest application of the principle of Order, and
+perhaps the most difficult to attain.  It is the means by which the people
+of Avendar are organized and inspired. 
+The basic application of Leadership is the chain of command. A Crownbearer
+must recognize authority at all times, and remain obedient to those in 
+command.
+ 
+The Ranks of Crownbearers are as follows, from least to greatest:
+Ranks of the Iron Crown:
+Initiate
+Soldier
+Ranks of the Silver Crown:
+Keeper
+Knight
+Ranks of the Gold Crown:
+Lord
+High Lord
+~
+E
+engraved~
+Leadership is the purest application of the principle of Order, and
+perhaps the most difficult to attain.  It is the means by which the people
+of Avendar are organized and inspired. 
+The basic application of Leadership is the chain of command. A Crownbearer
+must recognize authority at all times, and remain obedient to those in 
+command.
+ 
+The Ranks of Crownbearers are as follows, from least to greatest:
+Ranks of the Iron Crown:
+Initiate
+Soldier
+Ranks of the Silver Crown:
+Keeper
+Knight
+Ranks of the Gold Crown:
+Lord
+High Lord
+~
+E
+writing~
+Leadership is the purest application of the principle of Order, and
+perhaps the most difficult to attain.  It is the means by which the people
+of Avendar are organized and inspired. 
+The basic application of Leadership is the chain of command. A Crownbearer
+must recognize authority at all times, and remain obedient to those in 
+command.
+ 
+The Ranks of Crownbearers are as follows, from least to greatest:
+Ranks of the Iron Crown:
+Initiate
+Soldier
+Ranks of the Silver Crown:
+Keeper
+Knight
+Ranks of the Gold Crown:
+Lord
+High Lord
+~
+E
+principles~
+Leadership is the purest application of the principle of Order, and
+perhaps the most difficult to attain.  It is the means by which the people
+of Avendar are organized and inspired. 
+The basic application of Leadership is the chain of command. A Crownbearer
+must recognize authority at all times, and remain obedient to those in 
+command.
+ 
+The Ranks of Crownbearers are as follows, from least to greatest:
+Ranks of the Iron Crown:
+Initiate
+Soldier
+Ranks of the Silver Crown:
+Keeper
+Knight
+Ranks of the Gold Crown:
+Lord
+High Lord
+~
+D3
+The Hall of Principles continues.
+~
+~
+0 0 607
+D5
+The Hall of Principles continues.
+~
+~
+0 0 609
+W 5 0 0
+Z 5 5
+S
+#609
+The Hall of Principles~
+A long, wide hallway stretches to the east, brightly lit by sunlight
+streaming in from windows high overhead.  The iron, silver, and gold
+patterns decorating these walls are somewhat more complicated than the
+simpler patterns in the hall above, representing the more advanced
+principles taught in this area.  The floor is paved with multi-colored tiles
+which form large mosaics depicting the symbol of the Crown.  Lines of
+engraved writing fill the north and south walls, declaring the principles
+that govern the Bearers of the Crown.  A broad stairway leads gradually
+upward to the hall above.  
+~
+~
+1
+0 262202 0
+E
+lines~
+A higher embodiment of the principle of Honesty is the act of giving
+one\@s word.  As a Crownbearer masters the concepts of Order, he will find
+himself willing to give his word on certain matters.  The word of a
+Crownbearer, once explicitly given, will not be broken, even if the
+Crownbearer must die to keep it.  For this reason, you should be cautious
+about the phrasing of any vows you make.  It is to be noted that one\@s given
+word is not as binding as the higher Unbreakable Oath, discussed in the hall
+below.  
+~
+E
+engraved~
+A higher embodiment of the principle of Honesty is the act of giving
+one\@s word.  As a Crownbearer masters the concepts of Order, he will find
+himself willing to give his word on certain matters.  The word of a
+Crownbearer, once explicitly given, will not be broken, even if the
+Crownbearer must die to keep it.  For this reason, you should be cautious
+about the phrasing of any vows you make.  It is to be noted that one\@s given
+word is not as binding as the higher Unbreakable Oath, discussed in the hall
+below.
+~
+E
+writing~
+A higher embodiment of the principle of Honesty is the act of giving
+one\@s word.  As a Crownbearer masters the concepts of Order, he will find
+himself willing to give his word on certain matters.  The word of a
+Crownbearer, once explicitly given, will not be broken, even if the
+Crownbearer must die to keep it.  For this reason, you should be cautious
+about the phrasing of any vows you make.  It is to be noted that one\@s given
+word is not as binding as the higher Unbreakable Oath, discussed in the hall
+below.
+~
+E
+principles~
+A higher embodiment of the principle of Honesty is the act of giving
+one\@s word.  As a Crownbearer masters the concepts of Order, he will find
+himself willing to give his word on certain matters.  The word of a
+Crownbearer, once explicitly given, will not be broken, even if the
+Crownbearer must die to keep it.  For this reason, you should be cautious
+about the phrasing of any vows you make.  It is to be noted that one\@s given
+word is not as binding as the higher Unbreakable Oath, discussed in the hall
+below.
+~
+D1
+The Hall of Principles continues.
+~
+~
+0 0 610
+D4
+The Hall of Principles continues.
+~
+~
+0 0 608
+W 5 0 0
+Z 5 5
+S
+#610
+The Hall of Principles~
+A long, wide hallway stretches to the east and west, brightly lit by
+sunlight streaming in from windows high overhead.  The iron, silver, and
+gold patterns decorating these walls are somewhat more complicated than the
+simpler patterns in the hall above, representing the more advanced
+principles taught in this area.  The floor is paved with multi-colored tiles
+which form large mosaics depicting the symbol of the Crown.  Lines of
+engraved writing fill the north and south walls, declaring the principles
+that govern the Bearers of the Crown.  
+~
+~
+1
+0 262202 0
+E
+lines~
+Above the restriction of absolute obedience to the Laws of Avendar, a
+truly ardent follower of the Crown will encourage others to keep the Laws. 
+As the Crownbearer masters the principles of Order, he will feel it his duty
+to verbally or otherwise discourage potential crimes, and to emphasize the
+benefits of observance.  
+~
+E
+engraved~
+Above the restriction of absolute obedience to the Laws of Avendar, a
+truly ardent follower of the Crown will encourage others to keep the Laws. 
+As the Crownbearer masters the principles of Order, he will feel it his duty
+to verbally or otherwise discourage potential crimes, and to emphasize the
+benefits of observance.
+~
+E
+writing~
+Above the restriction of absolute obedience to the Laws of Avendar, a
+truly ardent follower of the Crown will encourage others to keep the Laws. 
+As the Crownbearer masters the principles of Order, he will feel it his duty
+to verbally or otherwise discourage potential crimes, and to emphasize the
+benefits of observance.
+~
+E
+principles~
+Above the restriction of absolute obedience to the Laws of Avendar, a
+truly ardent follower of the Crown will encourage others to keep the Laws. 
+As the Crownbearer masters the principles of Order, he will feel it his duty
+to verbally or otherwise discourage potential crimes, and to emphasize the
+benefits of observance.
+~
+D1
+The Hall of Principles continues.
+~
+~
+0 0 611
+D3
+The Hall of Principles continues.
+~
+~
+0 0 609
+W 5 0 0
+Z 5 5
+S
+#611
+The Hall of Principles~
+A long, wide hallway stretches to the west, brightly lit by sunlight
+streaming in from windows high overhead.  The iron, silver, and gold
+patterns decorating these walls are somewhat more complicated than the
+simpler patterns in the hall above, representing the more advanced
+principles taught in this area.  The floor is paved with multi-colored tiles
+which form large mosaics depicting the symbol of the Crown.  Lines of
+engraved writing fill the north and south walls, declaring the principles
+that govern the Bearers of the Crown.  A wide stairway leads gradually
+downward to the next hall.  
+~
+~
+1
+0 262202 0
+E
+lines~
+Above the mere observance of the chain of command, the demands of
+Leadership require that the Crownbearer gain the Trust of others by
+demonstrating his Reliability.  
+Trust is the basis of Leadership.  Subordinates will not follow one they
+do not trust.  The trust of another is a difficult thing to build, and
+often may only be gained by demonstrating that one may be relied upon.
+A Crownbearer may demonstrate his Reliability by remaining steadfast in
+all things he does.  Those who place themselves in your command must not
+find this Trust betrayed, either by deliberate betrayal, or by incompetent
+leadership. If a party agrees to follow a Crownbearer, then meets his doom
+through the leading Crownbearer\@s foolishness, Trust is destroyed and the
+Crownbearer\@s fitness for command is in question. 
+~
+E
+engraved~
+Above the mere observance of the chain of command, the demands of
+Leadership require that the Crownbearer gain the Trust of others by
+demonstrating his Reliability.  
+Trust is the basis of Leadership.  Subordinates will not follow one they
+do not trust.  The trust of another is a difficult thing to build, and
+often may only be gained by demonstrating that one may be relied upon.
+A Crownbearer may demonstrate his Reliability by remaining steadfast in
+all things he does.  Those who place themselves in your command must not
+find this Trust betrayed, either by deliberate betrayal, or by incompetent
+leadership. If a party agrees to follow a Crownbearer, then meets his doom
+through the leading Crownbearer\@s foolishness, Trust is destroyed and the
+Crownbearer\@s fitness for command is in question. 
+~
+E
+writing~
+Above the mere observance of the chain of command, the demands of
+Leadership require that the Crownbearer gain the Trust of others by
+demonstrating his Reliability.  
+Trust is the basis of Leadership.  Subordinates will not follow one they
+do not trust.  The trust of another is a difficult thing to build, and
+often may only be gained by demonstrating that one may be relied upon.
+A Crownbearer may demonstrate his Reliability by remaining steadfast in
+all things he does.  Those who place themselves in your command must not
+find this Trust betrayed, either by deliberate betrayal, or by incompetent
+leadership. If a party agrees to follow a Crownbearer, then meets his doom
+through the leading Crownbearer\@s foolishness, Trust is destroyed and the
+Crownbearer\@s fitness for command is in question. 
+~
+E
+principles~
+Above the mere observance of the chain of command, the demands of
+Leadership require that the Crownbearer gain the Trust of others by
+demonstrating his Reliability.  
+Trust is the basis of Leadership.  Subordinates will not follow one they
+do not trust.  The trust of another is a difficult thing to build, and
+often may only be gained by demonstrating that one may be relied upon.
+A Crownbearer may demonstrate his Reliability by remaining steadfast in
+all things he does.  Those who place themselves in your command must not
+find this Trust betrayed, either by deliberate betrayal, or by incompetent
+leadership. If a party agrees to follow a Crownbearer, then meets his doom
+through the leading Crownbearer\@s foolishness, Trust is destroyed and the
+Crownbearer\@s fitness for command is in question. 
+~
+D3
+The Hall of Principles continues.
+~
+~
+0 0 610
+D5
+The Hall of Principles continues.
+~
+~
+0 0 612
+W 5 0 0
+Z 5 5
+S
+#612
+The Hall of Principles~
+A long, wide hallway stretches to the east, brightly lit by sunlight
+streaming in from windows high overhead.  The iron, silver, and gold
+patterns decorating the walls are highly intricate in this hall, emphasizing
+the elevated principles taught in this area.  The floor is paved with
+multi-colored tiles which form large mosaics depicting the symbol of the
+Crown.  Lines of engraved writing fill the north and south walls, declaring
+the principles that govern the Bearers of the Crown.  A broad stairway to
+the west, leads upward to the previous hall.  
+~
+~
+1
+0 262202 0
+E
+lines~
+The highest manifestation of the principle of Honesty is the legendary
+Unbreakable Oath.  When a Crownbearer swears to an Unbreakable Oath, he
+commits himself to strive for life to wholly fulfill his commitment.  A
+Crownbearer who violates an Unbreakable Oath forfeits his very soul. 
+Obviously a much greater commitment than giving one\@s word, the Unbreakable
+Oath supercedes giving of the word in another way: Intent.  An Unbreakable
+Oath generally encompasses a range of commitments.  For example, a
+Crownbearer might give his word not to attack a certain enemy.  He would
+then avoid combat with this enemy, but might inform others of his enemy\@s
+location, or otherwise offer support to people hunting his enemy.  In
+contrast, a Crownbearer might swear an Unbreakable Oath to protect a certain
+person.  This Oath would then influence all the Crownbearer\@s actions and
+decisions, for he would give his life repeatedly in the defense of that
+person.  To swear an Unbreakable Oath, the Crownbearer speaks the words \#I
+swear by the Unbreakable Oath\#, then speaks the words he wishes to swear to.
+Done thusly, an Oath\@s validity is acknowledged by the Sigil of the Crown.  
+~
+E
+engraved~
+The highest manifestation of the principle of Honesty is the legendary
+Unbreakable Oath.  When a Crownbearer swears to an Unbreakable Oath, he
+commits himself to strive for life to wholly fulfill his commitment.  A
+Crownbearer who violates an Unbreakable Oath forfeits his very soul. 
+Obviously a much greater commitment than giving one\@s word, the Unbreakable
+Oath supercedes giving of the word in another way: Intent.  An Unbreakable
+Oath generally encompasses a range of commitments.  For example, a
+Crownbearer might give his word not to attack a certain enemy.  He would
+then avoid combat with this enemy, but might inform others of his enemy\@s
+location, or otherwise offer support to people hunting his enemy.  In
+contrast, a Crownbearer might swear an Unbreakable Oath to protect a certain
+person. This Oath would then influence all the Crownbearer\@s actions and
+decisions, for he would give his life repeatedly in the defense of that
+person. To swear an Unbreakable Oath, the Crownbearer speaks the words \#I
+swear by the Unbreakable Oath\#, then speaks the words he wishes to swear to.
+Done thusly, an Oath\@s validity is acknowledged by the Sigil of the Crown.
+~
+E
+writing~
+The highest manifestation of the principle of Honesty is the legendary
+Unbreakable Oath.  When a Crownbearer swears to an Unbreakable Oath, he
+commits himself to strive for life to wholly fulfill his commitment.  A
+Crownbearer who violates an Unbreakable Oath forfeits his very soul. 
+Obviously a much greater commitment than giving one\@s word, the Unbreakable
+Oath supercedes giving of the word in another way: Intent.  An Unbreakable
+Oath generally encompasses a range of commitments.  For example, a
+Crownbearer might give his word not to attack a certain enemy.  He would
+then avoid combat with this enemy, but might inform others of his enemy\@s
+location, or otherwise offer support to people hunting his enemy.  In
+contrast, a Crownbearer might swear an Unbreakable Oath to protect a certain
+person. This Oath would then influence all the Crownbearer\@s actions and
+decisions, for he would give his life repeatedly in the defense of that
+person. To swear an Unbreakable Oath, the Crownbearer speaks the words \#I
+swear by the Unbreakable Oath\#, then speaks the words he wishes to swear to.
+Done thusly, an Oath\@s validity is acknowledged by the Sigil of the Crown.
+~
+E
+principles~
+The highest manifestation of the principle of Honesty is the legendary
+Unbreakable Oath.  When a Crownbearer swears to an Unbreakable Oath, he
+commits himself to strive for life to wholly fulfill his commitment.  A
+Crownbearer who violates an Unbreakable Oath forfeits his very soul. 
+Obviously a much greater commitment than giving one\@s word, the Unbreakable
+Oath supercedes giving of the word in another way: Intent.  An Unbreakable
+Oath generally encompasses a range of commitments.  For example, a
+Crownbearer might give his word not to attack a certain enemy.  He would
+then avoid combat with this enemy, but might inform others of his enemy\@s
+location, or otherwise offer support to people hunting his enemy.  In
+contrast, a Crownbearer might swear an Unbreakable Oath to protect a certain
+person. This Oath would then influence all the Crownbearer\@s actions and
+decisions, for he would give his life repeatedly in the defense of that
+person. To swear an Unbreakable Oath, the Crownbearer speaks the words \#I
+swear by the Unbreakable Oath\#, then speaks the words he wishes to swear to.
+Done thusly, an Oath\@s validity is acknowledged by the Sigil of the Crown.  
+~
+D1
+The Hall of Principles continues.
+~
+~
+0 0 613
+D4
+The Hall of Principles continues.
+~
+~
+0 0 611
+W 5 0 0
+Z 5 5
+S
+#613
+The Hall of Principles~
+A long, wide hallway stretches to the east and west, brightly lit by
+sunlight streaming in from windows high overhead.  The iron, silver, and
+gold patterns decorating the walls are highly intricate in this hall,
+emphasizing the elevated principles taught in this area.  The floor is paved
+with multi-colored tiles which form large mosaics depicting the symbol of
+the Crown.  Lines of engraved writing fill the north and south walls,
+declaring the principles that govern the Bearers of the Crown.  
+~
+~
+1
+0 262202 0
+E
+lines~
+Those most committed to the principles of Order will find themselves not
+only obeying the Laws and encouraging others to do so, but actively
+enforcing the Laws as well.  A true follower of the Crown will act as an
+avenging force against those who betray Order by breaking the Laws of
+Avendar.  
+~
+E
+engraved~
+Those most committed to the principles of Order will find themselves not
+only obeying the Laws and encouraging others to do so, but actively
+enforcing the Laws as well.  A true follower of the Crown will act as an
+avenging force against those who betray Order by breaking the Laws of
+Avendar.
+~
+E
+writing~
+Those most committed to the principles of Order will find themselves not
+only obeying the Laws and encouraging others to do so, but actively
+enforcing the Laws as well.  A true follower of the Crown will act as an
+avenging force against those who betray Order by breaking the Laws of
+Avendar.
+~
+E
+principles~
+Those most committed to the principles of Order will find themselves not
+only obeying the Laws and encouraging others to do so, but actively
+enforcing the Laws as well.  A true follower of the Crown will act as an
+avenging force against those who betray Order by breaking the Laws of
+Avendar.
+~
+D1
+The Hall of Principles continues.
+~
+~
+0 0 623
+D3
+The Hall of Principles continues.
+~
+~
+0 0 612
+W 5 0 0
+Z 5 5
+S
+#614
+The Inner Chamber~
+A broad stairway from the west leads upward into this large inner
+chamber, its vaulted ceiling ablaze with gold trim.  The floor is inlaid
+with twisting patterns of gold, silver, and iron.  To the north is the
+Chamber of Iron, to the south the Chamber of Silver, and to the east, the
+Chamber of Gold.  West, a door leads directly to the entrance of the Temple
+of the Crown.  
+~
+~
+1
+0 262202 0
+D0
+The Chamber of Iron is to the north.
+~
+~
+0 0 615
+D1
+The Hall of Principles continues.
+The Chamber of Gold is to the east.
+~
+~
+0 0 619
+D2
+The Chamber of Silver is south.
+~
+~
+0 0 617
+D3
+The Hall of Principles continues.
+~
+~
+3 0 605
+D5
+The Hall of Principles continues.
+~
+~
+0 0 623
+W 0 2 0
+Z 5 5
+S
+#615
+The Chamber of the Iron Crown~
+The walls of this wide chamber are made of dark gray marble, nearly the
+same shade as the iron symbols and patterns that are inlaid across their
+breadth.  The Chamber of the Iron Crown has been designated by Iandir as an
+area for those bearing the Iron Crown to meditate and study their duties. 
+Bookshelves line the walls, filled with the history of the Order of the
+Crown, as well as great books of many ages.  To the south lies the Inner
+Chamber, and the Chamber of the Iron Crown continues north.  
+~
+~
+1
+0 262202 0
+D0
+~
+~
+0 0 616
+D2
+~
+~
+0 0 614
+W 5 0 0
+Z 5 5
+S
+#616
+The Chamber of the Iron Crown~
+The walls of this wide chamber are made of dark gray marble, nearly the
+same shade as the iron symbols and patterns that are inlaid across their
+breadth.  The Chamber of the Iron Crown has been designated by Iandir as an
+area for those bearing the Iron Crown to meditate and study their duties. 
+Bookshelves line the walls, filled with the history of the Order of the
+Crown, as well as great books of many ages.  The Chamber continues to the
+south.  
+~
+~
+1
+0 262202 0
+D2
+~
+~
+0 0 615
+W 5 0 0
+Z 5 5
+S
+#617
+The Chamber of the Silver Crown~
+The walls of this wide chamber are made of light gray marble, nearly the
+same shade as the silver symbols and patterns that are inlaid across their
+breadth.  The Chamber of the Silver Crown has been designated by Iandir as
+an area for those bearing the Silver Crown to meditate and study their
+duties.  Bookshelves line the walls, filled with the history of the Order of
+the Crown, as well as great books of many ages.  The Chamber continues
+south, and the Inner Chamber is north.  
+~
+~
+1
+0 262202 0
+D0
+~
+~
+0 0 614
+D2
+~
+~
+0 0 618
+W 5 0 0
+Z 5 5
+S
+#618
+The Chamber of the Silver Crown~
+The walls of this wide chamber are made of light gray marble, nearly the
+same shade as the silver symbols and patterns that are inlaid across their
+breadth.  The Chamber of the Silver Crown has been designated by Iandir as
+an area for those bearing the Silver Crown to meditate and study their
+duties.  Bookshelves line the walls, filled with the history of the Order of
+the Crown, as well as great books of many ages.  The Chamber continues
+north.  
+~
+~
+1
+0 262202 0
+D0
+~
+~
+0 0 617
+W 5 0 0
+Z 5 5
+S
+#619
+The Chamber of the Gold Crown~
+The walls of this wide chamber are made of pure white marble, harmonizing
+nicely with the gold symbols and patterns that are inlaid across their
+breadth.  The Chamber of the Gold Crown has been designated by Iandir as an
+area for those bearing the Gold Crown to meditate and study their duties. 
+Bookshelves line the walls, filled with the history of the Order of the
+Crown, as well as great books of many ages.  The Chamber continues east, and
+the Inner Chamber is to the west.  
+~
+~
+1
+0 262202 0
+D1
+~
+~
+0 0 620
+D3
+~
+~
+0 0 614
+W 5 0 0
+Z 5 5
+S
+#620
+The Chamber of the Gold Crown~
+The walls of this wide chamber are made of pure white marble, harmonizing
+nicely with the gold symbols and patterns that are inlaid across their
+breadth.  The Chamber of the Gold Crown has been designated by Iandir as an
+area for those bearing the Gold Crown to meditate and study their duties. 
+Bookshelves line the walls, filled with the history of the Order of the
+Crown, as well as great books of many ages.  The Chamber continues west.  
+~
+~
+1
+0 262202 0
+D3
+~
+~
+0 0 619
+W 5 0 0
+Z 5 5
+S
+#621
+~
+~
+~
+1
+0 32768 0
+D1
+~
+~
+0 0 622
+W 5 0 0
+Z 5 5
+S
+#622
+~
+~
+~
+1
+0 32768 0
+D3
+~
+~
+0 0 621
+W 5 0 0
+Z 5 5
+S
+#623
+The Hall of Principles~
+A long, wide hallway stretches to the west, brightly lit by sunlight
+streaming in from windows high overhead.  The iron, silver, and gold
+patterns decorating the walls are highly intricate in this hall, emphasizing
+the elevated principles taught in this area.  The floor is paved with
+multi-colored tiles which form large mosaics depicting the symbol of the
+Crown.  Lines of engraved writing fill the north and south walls, declaring
+the principles that govern the Bearers of the Crown.  A broad stairway leads
+upward to the east.  
+~
+~
+1
+0 262202 0
+E
+lines~
+Those followers of the Crown who attain the highest level of Leadership
+are those few who can truly inspire those in their command.  The ability to
+inspire includes the ability to draw others to oneself as well as the
+ability to drive those in one\@s command to higher levels of performance. 
+These are the elements of true Leadership, and are rarely found within the
+people of Avendar.  Crownbearers should strive to cultivate these attributes
+as far as possible.  
+~
+D3
+The Hall of Principles continues.
+~
+~
+0 0 613
+D4
+The Hall of Principles continues.
+~
+~
+0 0 614
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 600 spec_executioner
+S
+
+
+
+#RESETS
+D 0 603 1 3
+D 0 605 1 196647
+D 0 605 3 3
+D 0 606 3 65572
+D 0 614 3 3
+M 0 600 1 605 1
+E 0 1273 0 20
+E 0 600 0 16
+G 0 605 0
+M 0 601 1 614 1
+E 0 601 0 16
+E 0 1273 0 20
+O 0 602 0 615
+O 0 604 0 617
+O 0 603 0 619
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

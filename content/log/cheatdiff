@@ -1,0 +1,39 @@
+#!/usr/bin/perl -w
+# cheatdiff creates a current cheaters report and emails it.
+# This is not meant to be run from the command line!
+
+use strict;
+
+my $oc1;
+my %old;
+my @report;
+
+open (F, "/home/pantheon/iandir/cheaters") or die "$!";
+my @oldcheat = <F>;
+close F;
+
+my @newcheat = `/home/pantheon/avprod/log/sma`;
+
+foreach my $cheat (@oldcheat) {
+    $cheat =~ /(\S+ has items from \S+)\./;
+    $oc1 = $1;
+    $old{$oc1}++;
+}
+
+foreach my $cheat (@newcheat) {
+    $cheat =~ /(\S+ has items from \S+)\./;
+    $oc1 = $1;
+    next if exists ($old{$oc1});
+#    print $cheat;
+	push (@report, $cheat);
+}
+
+exit unless (@report);
+
+open (F, ">/home/pantheon/iandir/cheaters") or die "$!";
+print F @newcheat;
+close F or die "$!";
+
+open (MAIL, "|/bin/mail jolinn\@ender.com evendir\@rogers.com thane53\@yahoo.com") or die "$!";
+print MAIL @report;
+close MAIL;

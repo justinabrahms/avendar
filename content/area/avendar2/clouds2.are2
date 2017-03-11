@@ -1,0 +1,4333 @@
+#NAME The Spirit Palace
+#BUILDERS Rystaia Iacobos
+#VNUMS 2158 2199
+#CREDITS [30 51] Rystaia   The Spirit Palace
+#AREAINFO 63
+#WEATHER 2 2 2
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG The librarian's assistant stands here, gathering books.
+
+#SHORT Thalin
+#BEGIN_INTERACTABLE
+#NAME Thalin assistant
+#BEGIN_DESCRIPTION
+Thalin seems young, but wise none-the-less.  His gawky movements are
+strangly paired with his delicate touch as he carefully picks up books left
+in the hallway.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 500 0
+#SPEED 20
+#RESIST charm # 33
+#ACT 133
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 16 170 976
+#MANADICE 40 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE AEK
+#SIZE 2
+#INDEX 2160
+#PROG_TYPE death_prog 100
+#PROG_BODY 
+mpflag exit east - fake
+
+#END_PROG
+#PROG_TYPE verb_prog east
+#PROG_BODY 
+if mobhere(2160)
+if class($n) == 3
+if adrenaline($n) > 0 
+say You should calm down before going into the library.
+else
+if isfight($n)
+mpechoat $n No way! You're too busy fighting!
+else
+mptransfer $n 2186
+mpat 2186 mpforce $n look 
+endif
+endif
+else
+say Only those who study the magics of spirit may go into the library.
+endif
+else
+mptransfer $n 2186
+mpat 2186 mpforce $n look 
+if class($n) == 9
+if adrenaline($n) > 0 
+say You should calm down before going into the library.
+else
+if isfight($n)
+mpechoat $n No way! You're too busy fighting!
+else
+mptransfer $n 2186
+mpat 2186 mpforce $n look 
+endif
+endif
+endif
+else
+mptransfer $n 2186
+mpat 2186 mpforce $n look
+endif
+
+#END_PROG
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG The head librarian sits at his desk, watching the staircase closely.
+
+#SHORT Morihd
+#BEGIN_INTERACTABLE
+#NAME morihd librarian
+#BEGIN_DESCRIPTION
+Morihd's face is creased with lines, making him look older than time. 
+His pale grey hair flows down to the collar of his dark grey robe, and a
+stern look never seems to leave his face.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 500 0
+#SPEED 25
+#RESIST summon # 100
+#RESIST charm # 100
+#ACT 133
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 18 200 920
+#MANADICE 50 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 80
+#FACTION 0
+#LANGUAGE ADEFIJK
+#SIZE 2
+#INDEX 2161
+#PROG_TYPE death_prog 100
+#PROG_BODY 
+mpflag exit up fake
+
+#END_PROG
+#PROG_TYPE verb_prog up
+#PROG_BODY 
+if mobhere(2161)
+if class($n) == 3
+if adrenaline($n) > 0 
+say You should calm down before going upstairs.
+else
+if isfight($n)
+mpechoat $n No way! You're too busy fighting!
+else
+mptransfer $n 2183
+mpat 2183 mpforce $n look 
+endif
+endif
+else
+say Only those who study the magics of spirit may go upstairs.
+endif
+else
+mptransfer $n 2183
+mpat 2183 mpforce $n look 
+if class($n) == 9
+if adrenaline($n) > 0 
+say You should calm down before going upstairs.
+else
+if isfight($n)
+mpechoat $n No way! You're too busy fighting!
+else
+mptransfer $n 2183
+mpat 2183 mpforce $n look 
+endif
+endif
+endif
+else
+mptransfer $n 2183
+mpat 2183 mpforce $n look
+endif
+
+#END_PROG
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG Mistress Korlian stands here, preparing to teach her next class.
+
+#SHORT Mistress Korlian
+#BEGIN_INTERACTABLE
+#NAME mistress korlian
+#BEGIN_DESCRIPTION
+Mistress Korlian is a beautiful woman, and has no doubt had more than one
+student leave a rose for her.  She smiles sweetly, but you feel that
+underneath that soft smile is a core of strength.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 2
+#ALIGNMENT 500 0
+#SPEED 24
+#RESIST summon # 100
+#RESIST charm # 100
+#ACT 37
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 20 230 1100
+#MANADICE 58 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 110
+#FACTION 0
+#LANGUAGE AEJK
+#SIZE 2
+#INDEX 2162
+#PROG_TYPE rand_prog 1
+#PROG_BODY 
+mpecho Mistress Korlian whispers a few words of power, and is surrounded by a pale glow for an instant.
+
+#END_PROG
+#PROG_TYPE rand_prog 3
+#PROG_BODY 
+mpecho Mistress Korlian idly trails a finger along a petal of the blue rose.
+
+#END_PROG
+#PROG_TYPE rand_prog 2
+#PROG_BODY 
+mpecho Mistress Korlian summons a scholar, and gives him a message to take to the Arch-Mage.
+
+#END_PROG
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG Master Nayshan looks at you patiently.
+
+#SHORT Master Nayshan
+#BEGIN_INTERACTABLE
+#NAME Master Nayshan
+#BEGIN_DESCRIPTION
+Master Nayshan stands here calmly, almost unnaturally still.  His golden
+skin shimmers slightly in the light, and his wide grey eyes regard the world
+with an infinite patience.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE ch'taren
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 500 0
+#SPEED 22
+#RESIST summon # 100
+#RESIST charm # 100
+#RESIST physical # 33
+#RESIST unholy # -20
+#ACT 37
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 20 220 1100
+#MANADICE 55 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 120
+#FACTION 0
+#LANGUAGE ABDEFHIJK
+#SIZE 2
+#INDEX 2163
+#PROG_TYPE rand_prog 2
+#PROG_BODY 
+mpecho Master Nayshan erases the diagram on the board, and redraws it carefully.
+
+#END_PROG
+#PROG_TYPE rand_prog 1
+#PROG_BODY 
+emote goes over the notes handed in to him, shaking his head ruefully.
+
+#END_PROG
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG The arch-mage Shilrin sits here in contemplation.
+
+#SHORT Arch-Mage Shilrin
+#BEGIN_INTERACTABLE
+#NAME shilrin arch-mage mage archmage
+#BEGIN_DESCRIPTION
+Shilrin seems lost in thought as she stares out her window over the realm
+of Avendar.  No one knows how old she is, but faint signs of age darken her
+golden skin and pale hair.  An intangible aura of power surrounds her, the
+leavings of years in study of her art.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE ch'taren
+#GUILD water scholar
+#GENDER 2
+#ALIGNMENT 500 0
+#SPEED 30
+#RESIST summon # 100
+#RESIST charm # 100
+#RESIST physical # 33
+#RESIST poison # 33
+#RESIST unholy # -20
+#RESIST holy # 33
+#RESIST energy # 33
+#RESIST disease # 33
+#RESIST light # 33
+#RESIST illusion # 33
+#ACT 1380
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 8000 1 1000
+#MANADICE 90 20 800
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB magic
+#POSITION 8
+#WEALTH 200
+#FACTION 0
+#LANGUAGE AEJK
+#SIZE 2
+#INDEX 2164
+#PROG_TYPE load_prog 100
+#PROG_BODY 
+mpgoto 7311
+
+#END_PROG
+#PROG_TYPE fight_prog 100
+#PROG_BODY 
+if value(0) > 0
+  mpvaluedown 0
+  break
+endif
+if isfight($r) == $i
+  if snaffected($r) == 425
+    if snaffected($r) == 93
+      mpcast 131 60
+    else
+      if class($r) < 12
+      or class($r) == 29
+        mpcast 93 60 $r
+      endif
+    endif
+  else
+    mpcast 425 60 $r
+    mpvalueset 0 1
+  endif
+endif
+
+#END_PROG
+#PROG_TYPE load_prog 100
+#PROG_BODY 
+speak common
+
+#END_PROG
+#PROG_TYPE rand_prog 100
+#PROG_BODY 
+if mobvalue(0) > 0
+  mpvalueup 0
+endif
+if mobvalue(0) == 4
+  mpkill $f
+  mpvalueset 0 0
+endif
+if rand(20)
+if mobvalue(7) > 0
+mpvaluedown 7
+endif
+endif
+
+#END_PROG
+#PROG_TYPE greet_prog 100
+#PROG_BODY 
+if isevil($n)
+if ispc($n)
+tell $n Leave now, and do not taint my palace any further.
+mpvalueset 0 1
+mpfocus $n
+endif
+endif
+if isgood($n)
+if ispc($n)
+if sex($n) == 1
+tell $n Greetings, brother of the light.
+endif
+if sex($n) == 2
+tell $n Greetings, sister of the light.
+endif
+if sex($n) == 0
+tell $n Greetings, creature of the light.
+endif
+if snaffected($n) == 7
+break
+else
+if mobvalue(7) > 0
+break
+else
+mpaddaffect $n 7 55 40 18 7 0
+mpaddaffect $n 7 55 40 24 -7 0
+if snaffected($n) == 108
+else
+mpaddaffect $n 108 55 40 0 0 8192
+endif
+mpechoat $n Arch-Mage Shilrin grants you the favor of her god.
+mpvalueset 7 500
+endif
+endif
+endif
+endif
+if isneutral($n)
+if ispc($n)
+tell $n Greetings, Balancewalker.
+endif
+endif
+
+#END_PROG
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A small ethron girl stands here, awed by the majesty of the palace.
+
+#SHORT an ethron student
+#BEGIN_INTERACTABLE
+#NAME girl student ethron
+#BEGIN_DESCRIPTION
+The ethron girl seems very out of element, looking around in amazement at
+the many sights in the palace.  She wears a homemade woven necklace around
+her neck, a token to remind her of her home while she is away.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE ethron
+#GUILD water scholar
+#GENDER 2
+#ALIGNMENT 500 0
+#SPEED 12
+#ACT 80
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 11 50 424
+#MANADICE 25 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 30
+#FACTION 0
+#LANGUAGE J
+#SIZE 2
+#INDEX 2165
+#PROG_TYPE rand_prog 3
+#PROG_BODY 
+emote fingers her necklace nervously, and tried to remember her home.
+
+#END_PROG
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A scholar walks through the palace, lost in thought.
+
+#SHORT a scholar
+#BEGIN_INTERACTABLE
+#NAME scholar
+#BEGIN_DESCRIPTION
+A young man, the scholar seems distracted, his sky blue eyes distant has
+he walks along.  Light blond hair feathers over his forehead, and his pale
+skin indicates he spends much of his time indoor studying.  Indeed, though
+he seems distracted, his face shows an unusual intelligence for one of his
+age.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 500 0
+#SPEED 20
+#ACT 16
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 16 170 976
+#MANADICE 40 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE AIK
+#SIZE 2
+#INDEX 2166
+#PROG_TYPE rand_prog 2
+#PROG_BODY 
+emote suddenly smiles.
+say Ah, of course!
+
+#END_PROG
+#PROG_TYPE rand_prog 1
+#PROG_BODY 
+emote mutters thoughtfully to himself.
+
+#END_PROG
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A spirit scholar strolls by, looking carefree.
+
+#SHORT a scholar
+#BEGIN_INTERACTABLE
+#NAME scholar
+#BEGIN_DESCRIPTION
+A quite good looking man of about 25 or so smiles back at you, his face
+alight with happiness.  Mussed dark brown hair tops his head, and his grey
+eyes have a bit of a roguish glint.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 500 0
+#SPEED 22
+#ACT 16
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 10 148 835
+#MANADICE 45 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE AK
+#SIZE 2
+#INDEX 2167
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A scholar passes through, on her way to visit Master Nayshan.
+
+#SHORT a scholar
+#BEGIN_INTERACTABLE
+#NAME scholar
+#BEGIN_DESCRIPTION
+Long black hair surrounds the small dark face of the scholar.  She walks
+briskly towards the classrooms, to ask Master Nayshan for some help on the
+spell he taught her yesterday.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 2
+#ALIGNMENT 500 0
+#SPEED 22
+#ACT 16
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 10 148 835
+#MANADICE 45 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE AK
+#SIZE 2
+#INDEX 2168
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A scholar carrying a pile of books weaves through the room.
+
+#SHORT a frazzled scholar
+#BEGIN_INTERACTABLE
+#NAME scholar
+#BEGIN_DESCRIPTION
+The ch'taren student looks like he hasn't slept in a while, his golden
+skin pale and hair in a mess.  He weaves about, trying desperately to see
+over his huge pile of books.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE ch'taren
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 500 0
+#SPEED 22
+#RESIST magical # -33
+#RESIST physical # 33
+#ACT 64
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 10 148 835
+#MANADICE 45 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE AE
+#SIZE 2
+#INDEX 2169
+#PROG_TYPE rand_prog 2
+#PROG_BODY 
+mpecho A book falls from the top of the pile the scholar carries, and he nearly upsets all of them as he bends to retrieve it.
+
+#END_PROG
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A man sits here, using the ample references of the library.
+
+#SHORT the researcher
+#BEGIN_INTERACTABLE
+#NAME man researcher
+#BEGIN_DESCRIPTION
+The man is about middle-age, and he sits here reading through some of the
+many books the library keeps open to the public.  Occasionally he pauses in
+his reading to jot down a note, or thoughtfully scratch his chin.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 500 0
+#SPEED 22
+#ACT 64
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 10 148 835
+#MANADICE 45 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE AF
+#SIZE 2
+#INDEX 2170
+#PROG_TYPE rand_prog 5
+#PROG_BODY 
+mpvaluerand 0 1 5
+if mobvalue(0) == 1
+emote scratches his chin as he turns to the next page in his book.
+endif
+
+#END_PROG
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A ch'taren woman works on perfecting a new spell.
+
+#SHORT a scholar
+#BEGIN_INTERACTABLE
+#NAME scholar woman ch'taren
+#BEGIN_DESCRIPTION
+The woman frowns in concentration, as she studies a scroll she holds. 
+Her golden skin seems slightly flushed, as though she were attempting some
+labourous physical task, rather than casting a spell.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE ch'taren
+#GUILD water scholar
+#GENDER 2
+#ALIGNMENT 500 0
+#SPEED 20
+#RESIST physical # 33
+#RESIST unholy # -20
+#ACT 80
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 16 170 976
+#MANADICE 40 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE AE
+#SIZE 2
+#INDEX 2171
+#PROG_TYPE rand_prog 1
+#PROG_BODY 
+mpcast 415 45
+emote gestures, and a sparkling shield of force surrounds her for a moment.
+
+#END_PROG
+#PROG_TYPE rand_prog 3
+#PROG_BODY 
+mpvaluerand 0 1 8
+if mobvalue(0) < 4
+mpecho The air suddenly charges with power as the ch'taren scholar reaches the climax of her spell.
+else
+if mobvalue(0) == 4
+emote rests a moment, taxed from her hard work.
+endif
+endif
+
+#END_PROG
+#PROG_TYPE rand_prog 3
+#PROG_BODY 
+
+#END_PROG
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A scholar sits here, looking dreamily out a window.
+
+#SHORT a scholar
+#BEGIN_INTERACTABLE
+#NAME scholar
+#BEGIN_DESCRIPTION
+The girl stares out the window looking over the clouds, instead of going
+about her studying.  Long light brown hair surrounds her heart-shaped face,
+and a pair of green eyes seem to be looking at something no one else can
+see.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 2
+#ALIGNMENT 500 0
+#SPEED 20
+#RESIST charm # 33
+#ACT 80
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 16 170 976
+#MANADICE 40 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 105
+#FACTION 0
+#LANGUAGE AEJK
+#SIZE 2
+#INDEX 2172
+#PROG_TYPE greet_prog 25
+#PROG_BODY 
+mpechoat $r A scholar looks up from the window at you, curiously.
+tell $r What brings you here?
+
+#END_PROG
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A caladaran scholar sits here in study.
+
+#SHORT a caladaran scholar
+#BEGIN_INTERACTABLE
+#NAME scholar caladaran
+#BEGIN_DESCRIPTION
+The caladaran scholar sits peacefully, studying on of the many books in
+the library.  He studies hard, enjoying the learning experience, though
+he'll never be able to master all that is spirit magic.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE caladaran
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 500 0
+#SPEED 20
+#RESIST charm # 33
+#ACT 80
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 16 170 976
+#MANADICE 40 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE AIK
+#SIZE 2
+#INDEX 2173
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A spirit templar practices the art of using sword and spell together.
+
+#SHORT a spirit templar
+#BEGIN_INTERACTABLE
+#NAME spirit templar
+#BEGIN_DESCRIPTION
+The templar works at the timing of her spells, lunging forward, then
+drawing back to cast.  Her long blonde hair is held back from her face yet
+some wisps escape to fall into her eyes, but nothing seems to break her
+concentration.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 2
+#ALIGNMENT 500 0
+#SPEED 25
+#ACT 80
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 18 200 920
+#MANADICE 50 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE AK
+#SIZE 2
+#INDEX 2174
+#PROG_TYPE rand_prog 2
+#PROG_BODY 
+mpecho The templar shakes her head ruefully, and resumes her position.
+
+#END_PROG
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG Deshmin, leader of the Spirit Templars, stands here.
+
+#SHORT Deshmin
+#BEGIN_INTERACTABLE
+#NAME deshmin leader templar
+#BEGIN_DESCRIPTION
+Deshmin stands proudly, almost arrogant except for the friendly grin that
+stretches across his face.  He takes after his mother, the arch-mage, in his
+build and is dedicated to serving her and the cause of the light.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE ch'taren
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 500 0
+#SPEED 22
+#RESIST charm # 100
+#RESIST physical # 20
+#RESIST cold # 33
+#RESIST poison # 33
+#RESIST unholy # -20
+#RESIST mental # 20
+#ACT 64
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 5000 1 1000
+#MANADICE 55 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE AEK
+#SIZE 2
+#INDEX 2175
+#PROG_TYPE load_prog 100
+#PROG_BODY 
+mpgoto 7346
+
+#END_PROG
+#PROG_TYPE load_prog 100
+#PROG_BODY 
+speak common
+
+#END_PROG
+#PROG_TYPE rand_prog 1
+#PROG_BODY 
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+emote lazily polishes his dagger.
+else
+if mobvalue(0) == 2
+smile $r
+else
+emote watches the entrance to the palace, standing at attention.
+endif
+endif
+
+#END_PROG
+#PROG_TYPE greet_prog 15
+#PROG_BODY 
+mpecho Deshmin nods to you.
+say Greetings.. may the Light guide you always.
+emote grins mischieviously.
+say And let it bring you happiness.
+
+#END_PROG
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A spirit templar watches his fighting style in the mirror.
+
+#SHORT a spirit templar
+#BEGIN_INTERACTABLE
+#NAME spirit templar
+#BEGIN_DESCRIPTION
+The man is bathed in a fine sheen of sweat as he works to improve his
+skill with his chosen weapon, the flail.  He keeps a careful eye on the
+mirrors, checking for any mistake he may have in his form or style as he
+swings and parries again and again.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 500 0
+#SPEED 22
+#ACT 80
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 10 148 835
+#MANADICE 45 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE AK
+#SIZE 2
+#INDEX 2176
+#PROG_TYPE rand_prog 1
+#PROG_BODY 
+mpecho The templar stops a moment, and checks his smile in the mirror.
+
+#END_PROG
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A scholar sits here, studying intently.
+
+#SHORT a scholar
+#BEGIN_INTERACTABLE
+#NAME scholar
+#BEGIN_DESCRIPTION
+The woman absently pushes her bright red hair out of her face as she
+reads the book which has captured her intrest.  Upon closer examination, you
+realize it is not a book of spirit lore, but rather an amusing tale of the
+long ago hero.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 2
+#ALIGNMENT 500 0
+#SPEED 20
+#ACT 80
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 16 170 976
+#MANADICE 40 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE AK
+#SIZE 2
+#INDEX 2177
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A kankoran spirit templar strolls through the palace.
+
+#SHORT a spirit templar
+#BEGIN_INTERACTABLE
+#NAME kankoran spirit templar
+#BEGIN_DESCRIPTION
+His grey fur is combed neatly, and a sparkle in his eye makes it seem as
+if he is holding in laughter.  What he finds amusing is not as apparent, but
+his step and manner indicate that he finds the world to be quite an
+entertaining place.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE kankoran
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 500 0
+#SPEED 22
+#RESIST heat # -33
+#RESIST cold # 33
+#ACT 16
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 10 148 835
+#MANADICE 45 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE ADK
+#SIZE 2
+#INDEX 2178
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A ch'taren woman walks by, humming tunelessly to herself.
+
+#SHORT a scholar
+#BEGIN_INTERACTABLE
+#NAME scholar woman ch'taren
+#BEGIN_DESCRIPTION
+The woman nods to you as she notices your attention, and continues to hum
+to herself.  She seems in a good mood, her golden skin shimmering with
+warmth.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE ch'taren
+#GUILD water scholar
+#GENDER 2
+#ALIGNMENT 500 0
+#SPEED 22
+#RESIST physical # 33
+#RESIST unholy # -20
+#ACT 16
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 10 148 835
+#MANADICE 45 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 110
+#FACTION 0
+#LANGUAGE AEK
+#SIZE 2
+#INDEX 2179
+#PROG_TYPE rand_prog 10
+#PROG_BODY 
+mpvaluerand 0 1 9
+if mobvalue(0) == 1
+  emote hums a few bars of Sitheus' Folly.
+endif
+if mobvalue(0) == 2
+  emote hums a bit of The Ethron King.
+endif
+if mobvalue(0) == 3
+  emote hums some of The Princess and the Auctioneer, singing some of the words under her breath.
+endif
+if mobvalue(0) == 4
+  emote smiles in memory as she softly hums Druid in the Moonlight.
+endif
+if mobvalue(0) == 5
+  emote hums a quiet version of Dantaron River.
+endif
+if mobvalue(0) == 6
+  emote hums the first few bars of The Farmer of Limbo, but ends laughing too hard to continue.
+endif
+if mobvalue(0) == 7
+  emote hums a fast version of Cally, My Dear.
+endif
+if mobvalue(0) == 8
+  emote quietly begins to sing Lady of the Roses, her voice mellow and sweet.
+endif
+
+#END_PROG
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A scholar sits at a large desk, intently copying from an old dusty book.
+
+#SHORT the scholar
+#BEGIN_INTERACTABLE
+#NAME scholar
+#BEGIN_DESCRIPTION
+The scholar has his brow furrowed in concentration as he reads through
+the old book in his hands.  His long black hair keeps falling into his face,
+but he pays no notice and pushes it away absent-mindedly as he turns another
+page.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 500 0
+#SPEED 20
+#ACT 17
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 16 170 976
+#MANADICE 40 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 50
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#INDEX 2180
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#LONG A bard strolls by, a sack over his shoulder, and instrument in hand.
+
+#SHORT the travelling bard
+#BEGIN_INTERACTABLE
+#NAME the travelling bard
+#BEGIN_DESCRIPTION
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 0
+#ALIGNMENT 0 0
+#SPEED 0
+#ACT 0
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 0 0 0
+#MANADICE 0 0 0
+#DAMTYPE bashing
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB hit
+#POSITION 8
+#WEALTH 0
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#INDEX 2181
+#END_MOBILE
+#BEGIN_OBJECT
+#SHORT a comfortable chair
+#LONG A comfortable white chair sits in a pool of light.
+#BEGIN_INTERACTABLE
+#NAME chair white
+#DESCRIPTION A comfortable white chair sits in a pool of light.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL wood
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#BEGIN_TYPE furniture ##
+#VALUE max_people # 1
+#VALUE max_weight # 3000
+#VALUE flags # 1168
+#VALUE heal_bonus # 150
+#VALUE mana_bonus # 150
+#END_TYPE
+#LEVEL 1
+#WEIGHT 1300
+#COST 0
+#SIZE 4
+#CONDITION 100
+#LIMIT 3
+#BEGIN_TRIGGERABLE
+#INDEX 2160
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a rose-coloured globe
+#LONG A beautiful glowing ball of rose coloured glass has been left here.
+#BEGIN_INTERACTABLE
+#NAME globe rose glass ball
+#DESCRIPTION A beautiful glowing ball of rose coloured glass has been left here.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL glass
+#BEGIN_AFFECTABLE
+#GLOW 50
+#FLAGS 134217728
+#AFFECT 1 -1 constitution #
+#AFFECT 7 30  #
+#AFFECT 1 1 intelligence #
+#AFFECT 8 -5  #
+#AFFECT 12 -2  #
+#END_AFFECTABLE
+#WEAR hand
+#BEGIN_TYPE treasure ##
+#END_TYPE
+#LEVEL 30
+#WEIGHT 40
+#COST 17783
+#SIZE 2
+#CONDITION 100
+#LIMIT 1
+#BEGIN_TRIGGERABLE
+#INDEX 2161
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a wooden cabinet
+#LONG A heavy wood cabinet sits here.
+#BEGIN_INTERACTABLE
+#NAME cabinet wood
+#DESCRIPTION A heavy wood cabinet sits here.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL wood
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#BEGIN_TYPE container ##
+#VALUE max_weight # 2000
+#VALUE max_size # 50
+#VALUE multiplier # 1
+#VALUE key_vnum # 0
+#VALUE flags # 7
+#END_TYPE
+#LEVEL 1
+#WEIGHT 400
+#COST 0
+#SIZE 4
+#CONDITION 100
+#LIMIT 0
+#BEGIN_TRIGGERABLE
+#INDEX 2162
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a pegasus figurine
+#LONG A small carving of a pegasus stands proudly.
+#BEGIN_INTERACTABLE
+#NAME pegasus figurine carving
+#DESCRIPTION A small carving of a pegasus stands proudly.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL ivory
+#BEGIN_AFFECTABLE
+#FLAGS 135267584
+#AFFECT 12 -3  #
+#END_AFFECTABLE
+#WEAR hand
+#BEGIN_TYPE treasure ##
+#END_TYPE
+#LEVEL 30
+#WEIGHT 10
+#COST 6240
+#SIZE 2
+#CONDITION 100
+#LIMIT 0
+#BEGIN_TRIGGERABLE
+#INDEX 2163
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a book
+#LONG A heavy book lies here on a table.
+#BEGIN_INTERACTABLE
+#NAME book heavy
+#DESCRIPTION A heavy book lies here on a table.
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS third
+#EXTRA_DESCRIPTION Opening the book to the third section, you read:
+
+ The Bears of Goran
+
+Though their presence has been lost in time due to their reclusive nature,
+the wood of Goran is populated with these large, intelligent animals.
+Thought to be a creation of Lord Jolinn, the Bears of Goran are highly
+civilized and more than one traveller lost in the woods has been aided by
+these light-following creatures.
+
+Beyond their dedication to helping those in their wood, and their ties with
+the Titans, little is known about these bears, including why they prefer to
+remain so cut off from the rest of civilization.
+
+#END_EEXTRA_DESCRIPTION
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS second
+#EXTRA_DESCRIPTION Opening the book to the second section, you read:
+
+ The Vesler Snake
+
+Rumoured to live in distant swamps on another continent, the vesler snake,
+also known as the one-eyed snake, has one of the most toxic venoms of any
+land bound creature.  Used by alchemists and assassins of yore, just one
+nick of a blade coated in the venom is said to render the victim paralyzed,
+if not dead.  Those who have survived encounters with the vesler snake's
+venom are often left blinded or retain partial paralysis.  Reliable
+information on the snake is difficult to find, as the vesler was hunted
+into near extinction, not only for its potent venom but also for its
+beautiful blue shimmering blue scales, which are highly prized and priced
+by any knowledgeable on the subject.
+
+
+#END_EEXTRA_DESCRIPTION
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS first
+#EXTRA_DESCRIPTION Opening the book to the first section, you read:
+
+ The Blade of Varmein (The Blade of Magic)
+
+Forged in times past the Blade of Varmein, or as it is more commonly
+known, the Blade of Magic, was created by one of the ancient Alatharya's
+greatest craftsmen and scholars.  What scraps of information remain tell
+of years of preparation and powerful rituals the like of which modern
+Avendar has never seen.  The end result was the Blade of Varmein, most
+likely named after its creator, a weapon which contained the perfect meld
+of magic and steel.  So strong was the force of energy put into this
+blade that holding it was akin to holding a slice of pure magic.  Kept in
+the ancient capital, it was displayed in their tower of artifacts as a
+symbol of the perfect unity of magic and the material plane.
+
+When the Sundering occurred, a terrible explosion tore apart the tower the
+Blade of Varmein was kept in, as the blade was so pure that it was also
+divided.  The explosion was so great that none in the tower survived
+and nothing remained but a fine sand, the remnants of the stone of which
+it had been built.  Rumours have circulated since that the blade remains
+on Avendar this day, but in many pieces scattered throughout the world.
+Myth and fairytale tell of six blades which united will again form the
+ancient weapon, but those familiar with the subject believe a seventh
+blade to be needed to unite the six, a center for the power to be focused
+through.
+
+As to what will happen if the blades are reunited, that is even more of
+a mystery.  According to fairytale, the world will once again have access
+to the pure form of magic lost so long ago.  Legend, however, warns of a
+day in the future when the children of the Three seek to undo what They
+have done, and merge the six powers into one once more.  This day, the
+legends predict, will be the end of all that is Avendar.  Most who study
+the histories doubt something so extreme and a few adventurers of past
+have sought to find these mythical blades, though none have yet found
+concrete evidence that the Blade of Varmein exists in any form at all.
+
+#END_EEXTRA_DESCRIPTION
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS book
+#EXTRA_DESCRIPTION The book is quite heavy, bound and rebound a few times, but with care. 
+The title is etched on the front in goldleaf, worn away at some points by
+years of handling.  
+
+     Myth, Legend, and Fact:
+   A Compilation of Knowledge
+    From the  Sea of Lidreau
+      to the Uthlin Ocean
+
+ By Kreighlit, Scholar of Earth
+ and Seeker of Knowledge
+
+Opening the book, you see three sections marked by a velvet ribbon.
+
+The first is titled "The Blade of Varmein".
+The second is titled "The Vesler Snake".
+The third is titled "The Bears of Goran".
+
+#END_EEXTRA_DESCRIPTION
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL paper
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#END_AFFECTABLE
+#BEGIN_TYPE map ##
+#END_TYPE
+#LEVEL 1
+#WEIGHT 40
+#COST 540
+#SIZE 1
+#CONDITION 100
+#LIMIT 0
+#BEGIN_TRIGGERABLE
+#INDEX 2164
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT the Staff of Spirit
+#LONG A beautiful staff of light illumes the room.
+#BEGIN_INTERACTABLE
+#NAME staff spirit light
+#DESCRIPTION A beautiful staff of light illumes the room.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL energy
+#BEGIN_AFFECTABLE
+#GLOW 50
+#FLAGS 137366784
+#AFFECT 1 2 wisdom #
+#AFFECT 1 2 intelligence #
+#AFFECT 8 30  #
+#AFFECT 7 50  #
+#END_AFFECTABLE
+#WEAR hand
+#BEGIN_TYPE weapon ##
+#VALUE dice # 6
+#VALUE dice_size # 7
+#VALUE flags # 32
+#STRING weapon_type # staff ##
+#STRING damverb # wrath ##
+#STRING hittype # blunt ##
+#STRING damtype # holy ##
+#END_TYPE
+#LEVEL 60
+#WEIGHT 50
+#COST 280932
+#SIZE 3
+#CONDITION 100
+#LIMIT 1
+#BEGIN_TRIGGERABLE
+#INDEX 2165
+#PROG_TYPE fight_prog 4
+#PROG_BODY
+if isworn($o)
+opvaluerand 0 1 5
+opecho The Staff of Spirit glows for a moment.
+if objvalue(0) == 1
+opcast 141 51
+endif
+if objvalue(0) == 2
+opcast 425 51
+endif
+if objvalue(0) == 3
+opcast 130 51
+endif
+if objvalue(0) == 4
+opcast 131 51
+endif
+if objvalue(0) == 5
+opcast 93 51
+endif
+endif
+endif
+
+#END_PROG
+#PROG_TYPE remove_prog 100
+#PROG_BODY
+opremaffect 412
+opechoat $n You feel your heavenly guardian depart.
+
+#END_PROG
+#PROG_TYPE wear_prog 100
+#PROG_BODY
+opaddaffect 412 51 -1 0 0 541200
+opechoat $n A translucent pair of wings form behind you briefly, then dissolve into nothing.
+
+#END_PROG
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT the Robe of Ages
+#LONG A robe of woven energy lies here.
+#BEGIN_INTERACTABLE
+#NAME robe ages energy
+#DESCRIPTION A robe of woven energy lies here.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL energy
+#BEGIN_AFFECTABLE
+#FLAGS 134217740
+#AFFECT 8 50  #
+#AFFECT 7 30  #
+#AFFECT 12 -3  #
+#END_AFFECTABLE
+#WEAR about
+#BEGIN_TYPE armor ##
+#VALUE piercing # 11
+#VALUE blunt # 13
+#VALUE slashing # 12
+#VALUE other # 11
+#END_TYPE
+#LEVEL 53
+#WEIGHT 30
+#COST 328500
+#SIZE 2
+#CONDITION 100
+#LIMIT 2
+#BEGIN_TRIGGERABLE
+#INDEX 2166
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a bracelet of pure silver
+#LONG A heavy bracelet of silver glints in the light.
+#BEGIN_INTERACTABLE
+#NAME bracelet silver pure
+#DESCRIPTION A heavy bracelet of silver glints in the light.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL silver
+#BEGIN_AFFECTABLE
+#FLAGS 134217984
+#AFFECT 8 25  #
+#AFFECT 12 -5  #
+#END_AFFECTABLE
+#WEAR wrist
+#BEGIN_TYPE jewelry ##
+#END_TYPE
+#LEVEL 51
+#WEIGHT 20
+#COST 60500
+#SIZE 1
+#CONDITION 100
+#LIMIT 9
+#BEGIN_TRIGGERABLE
+#INDEX 2167
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a ring of sunlight
+#LONG A ring of golden light warms the room.
+#BEGIN_INTERACTABLE
+#NAME ring sunlight light golden
+#DESCRIPTION A ring of golden light warms the room.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL energy
+#BEGIN_AFFECTABLE
+#GLOW 50
+#FLAGS 134219016
+#AFFECT 7 50  #
+#AFFECT 12 -4  #
+#END_AFFECTABLE
+#WEAR finger
+#BEGIN_TYPE treasure ##
+#END_TYPE
+#LEVEL 50
+#WEIGHT 5
+#COST 157000
+#SIZE 0
+#CONDITION 100
+#LIMIT 9
+#BEGIN_TRIGGERABLE
+#INDEX 2168
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT an etched silver ring
+#LONG A delicate silver ring is barely visible against the ground.
+#BEGIN_INTERACTABLE
+#NAME ring silver etched
+#DESCRIPTION A delicate silver ring is barely visible against the ground.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL silver
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#AFFECT 7 20  #
+#AFFECT 8 15  #
+#AFFECT 1 1 intelligence #
+#AFFECT 1 1 dexterity #
+#END_AFFECTABLE
+#WEAR finger
+#BEGIN_TYPE armor ##
+#VALUE piercing # 5
+#VALUE blunt # 7
+#VALUE slashing # 5
+#VALUE other # 3
+#END_TYPE
+#LEVEL 43
+#WEIGHT 3
+#COST 14750
+#SIZE 0
+#CONDITION 100
+#LIMIT 40
+#BEGIN_TRIGGERABLE
+#INDEX 2169
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a shimmering white robe
+#LONG A white robe shimmers against the ground.
+#BEGIN_INTERACTABLE
+#NAME robe white shimmering
+#DESCRIPTION A white robe shimmers against the ground.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL silk
+#BEGIN_AFFECTABLE
+#GLOW 50
+#FLAGS 134217984
+#AFFECT 7 50  #
+#END_AFFECTABLE
+#WEAR about
+#BEGIN_TYPE armor ##
+#VALUE piercing # 9
+#VALUE blunt # 9
+#VALUE slashing # 8
+#VALUE other # 5
+#END_TYPE
+#LEVEL 45
+#WEIGHT 30
+#COST 66900
+#SIZE 2
+#CONDITION 100
+#LIMIT 65
+#BEGIN_TRIGGERABLE
+#INDEX 2170
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a velvet blue band
+#LONG A band of blue velvet lies here.
+#BEGIN_INTERACTABLE
+#NAME band blue velvet
+#DESCRIPTION A band of blue velvet lies here.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL velvet
+#BEGIN_AFFECTABLE
+#FLAGS 134217984
+#AFFECT 8 35  #
+#AFFECT 10 3  #
+#AFFECT 1 1 constitution #
+#END_AFFECTABLE
+#WEAR head
+#BEGIN_TYPE armor ##
+#VALUE piercing # 9
+#VALUE blunt # 11
+#VALUE slashing # 9
+#VALUE other # 9
+#END_TYPE
+#LEVEL 50
+#WEIGHT 5
+#COST 61750
+#SIZE 2
+#CONDITION 100
+#LIMIT 20
+#BEGIN_TRIGGERABLE
+#INDEX 2171
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a pure white blade
+#LONG A pure white blade has been set here.
+#BEGIN_INTERACTABLE
+#NAME blade white pure
+#DESCRIPTION A pure white blade has been set here.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL steel
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#AFFECT 11 3  #
+#AFFECT 10 2  #
+#AFFECT 8 10  #
+#END_AFFECTABLE
+#WEAR hand
+#BEGIN_TYPE weapon ##
+#VALUE dice # 5
+#VALUE dice_size # 7
+#VALUE flags # 0
+#STRING weapon_type # sword ##
+#STRING damverb # searing light ##
+#STRING hittype # slashing ##
+#STRING damtype # light ##
+#END_TYPE
+#LEVEL 45
+#WEIGHT 80
+#COST 34500
+#SIZE 2
+#CONDITION 100
+#LIMIT 20
+#BEGIN_TRIGGERABLE
+#INDEX 2172
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a silver dagger
+#LONG A silver dagger is partially obscured on the floor.
+#BEGIN_INTERACTABLE
+#NAME dagger silver
+#DESCRIPTION A silver dagger is partially obscured on the floor.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL silver
+#BEGIN_AFFECTABLE
+#FLAGS 134217984
+#AFFECT 7 15  #
+#AFFECT 10 4  #
+#AFFECT 11 1  #
+#END_AFFECTABLE
+#WEAR hand
+#BEGIN_TYPE weapon ##
+#VALUE dice # 2
+#VALUE dice_size # 22
+#VALUE flags # 0
+#STRING weapon_type # dagger ##
+#STRING damverb # wrath ##
+#STRING hittype # piercing ##
+#STRING damtype # holy ##
+#END_TYPE
+#LEVEL 50
+#WEIGHT 20
+#COST 70500
+#SIZE 1
+#CONDITION 100
+#LIMIT 15
+#BEGIN_TRIGGERABLE
+#INDEX 2173
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a dagger inset with a single sapphire
+#LONG A beautiful but deadly looking dagger gleams beckoningly.
+#BEGIN_INTERACTABLE
+#NAME dagger sapphire
+#DESCRIPTION A beautiful but deadly looking dagger gleams beckoningly.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL steel
+#BEGIN_AFFECTABLE
+#GLOW 50
+#FLAGS 134218000
+#AFFECT 11 4  #
+#AFFECT 10 2  #
+#AFFECT 1 2 dexterity #
+#END_AFFECTABLE
+#WEAR hand
+#BEGIN_TYPE weapon ##
+#VALUE dice # 5
+#VALUE dice_size # 9
+#VALUE flags # 0
+#STRING weapon_type # dagger ##
+#STRING damverb # freezing bite ##
+#STRING hittype # piercing ##
+#STRING damtype # cold ##
+#END_TYPE
+#LEVEL 52
+#WEIGHT 30
+#COST 250250
+#SIZE 1
+#CONDITION 100
+#LIMIT 1
+#BEGIN_TRIGGERABLE
+#INDEX 2174
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a polished flail
+#LONG A well-cared for flail sits here.
+#BEGIN_INTERACTABLE
+#NAME flail polished
+#DESCRIPTION A well-cared for flail sits here.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL steel
+#BEGIN_AFFECTABLE
+#GLOW 50
+#FLAGS 134217984
+#AFFECT 7 10  #
+#AFFECT 8 10  #
+#AFFECT 10 1  #
+#AFFECT 11 2  #
+#END_AFFECTABLE
+#WEAR hand
+#BEGIN_TYPE weapon ##
+#VALUE dice # 7
+#VALUE dice_size # 5
+#VALUE flags # 0
+#STRING weapon_type # flail ##
+#STRING damverb # pound ##
+#STRING hittype # blunt ##
+#STRING damtype # bashing ##
+#END_TYPE
+#LEVEL 40
+#WEIGHT 60
+#COST 15000
+#SIZE 2
+#CONDITION 100
+#LIMIT 50
+#BEGIN_TRIGGERABLE
+#INDEX 2175
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a polished breastplate
+#LONG A polished breastplate shines in the light.
+#BEGIN_INTERACTABLE
+#NAME breastplate polished
+#DESCRIPTION A polished breastplate shines in the light.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL steel
+#BEGIN_AFFECTABLE
+#FLAGS 135266304
+#AFFECT 1 1 intelligence #
+#AFFECT 10 2  #
+#AFFECT 11 1  #
+#END_AFFECTABLE
+#WEAR torso
+#BEGIN_TYPE armor ##
+#VALUE piercing # 10
+#VALUE blunt # 10
+#VALUE slashing # 10
+#VALUE other # 6
+#END_TYPE
+#LEVEL 40
+#WEIGHT 120
+#COST 5750
+#SIZE 2
+#CONDITION 100
+#LIMIT 50
+#BEGIN_TRIGGERABLE
+#INDEX 2176
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT an enchanted chainmail shirt
+#LONG A pile of chainmail lies here.
+#BEGIN_INTERACTABLE
+#NAME shirt chainmail enchanted
+#DESCRIPTION A pile of chainmail lies here.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL steel
+#BEGIN_AFFECTABLE
+#GLOW 50
+#FLAGS 134217984
+#AFFECT 11 3  #
+#AFFECT 7 20  #
+#AFFECT 8 15  #
+#END_AFFECTABLE
+#WEAR torso
+#BEGIN_TYPE armor ##
+#VALUE piercing # 12
+#VALUE blunt # 12
+#VALUE slashing # 10
+#VALUE other # 10
+#END_TYPE
+#LEVEL 53
+#WEIGHT 80
+#COST 43500
+#SIZE 2
+#CONDITION 100
+#LIMIT 9
+#BEGIN_TRIGGERABLE
+#INDEX 2177
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a pair of blue dragonscale leggings
+#LONG A heavy pair of blue dragonscale leggings lie here.
+#BEGIN_INTERACTABLE
+#NAME leggings blue dragonscale
+#DESCRIPTION A heavy pair of blue dragonscale leggings lie here.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL dragonscale
+#BEGIN_AFFECTABLE
+#FLAGS 135266304
+#AFFECT 1 1 dexterity #
+#AFFECT 10 3  #
+#AFFECT 1 1 strength #
+#AFFECT 11 2  #
+#END_AFFECTABLE
+#WEAR legs
+#BEGIN_TYPE armor ##
+#VALUE piercing # 10
+#VALUE blunt # 10
+#VALUE slashing # 10
+#VALUE other # 5
+#END_TYPE
+#LEVEL 42
+#WEIGHT 90
+#COST 13700
+#SIZE 2
+#CONDITION 100
+#LIMIT 40
+#BEGIN_TRIGGERABLE
+#INDEX 2178
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a silvery blue cape
+#LONG A dark blue cape shimmers silver against the ground.
+#BEGIN_INTERACTABLE
+#NAME cape blue silvery
+#DESCRIPTION A dark blue cape shimmers silver against the ground.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL velvet
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#AFFECT 8 35  #
+#AFFECT 7 15  #
+#AFFECT 11 2  #
+#END_AFFECTABLE
+#WEAR about
+#BEGIN_TYPE armor ##
+#VALUE piercing # 10
+#VALUE blunt # 10
+#VALUE slashing # 10
+#VALUE other # 10
+#END_TYPE
+#LEVEL 50
+#WEIGHT 50
+#COST 69250
+#SIZE 2
+#CONDITION 100
+#LIMIT 20
+#BEGIN_TRIGGERABLE
+#INDEX 2179
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a pair of soft leather boots
+#LONG A pair of soft black boots lie here.
+#BEGIN_INTERACTABLE
+#NAME boots soft black leather
+#DESCRIPTION A pair of soft black boots lie here.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL leather
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#AFFECT 7 20  #
+#AFFECT 9 30  #
+#AFFECT 10 2  #
+#AFFECT 11 1  #
+#END_AFFECTABLE
+#WEAR feet
+#BEGIN_TYPE armor ##
+#VALUE piercing # 8
+#VALUE blunt # 9
+#VALUE slashing # 8
+#VALUE other # 3
+#END_TYPE
+#LEVEL 45
+#WEIGHT 40
+#COST 9750
+#SIZE 2
+#CONDITION 100
+#LIMIT 30
+#BEGIN_TRIGGERABLE
+#INDEX 2180
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a pair of blue dragonscale gauntlets
+#LONG A supple pair of dragonscale gauntlets lie here.
+#BEGIN_INTERACTABLE
+#NAME gauntlets blue dragonscale
+#DESCRIPTION A supple pair of dragonscale gauntlets lie here.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL dragonscale
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#AFFECT 1 1 strength #
+#AFFECT 1 1 dexterity #
+#AFFECT 10 2  #
+#AFFECT 11 2  #
+#END_AFFECTABLE
+#WEAR hands
+#BEGIN_TYPE armor ##
+#VALUE piercing # 10
+#VALUE blunt # 10
+#VALUE slashing # 10
+#VALUE other # 5
+#END_TYPE
+#LEVEL 42
+#WEIGHT 50
+#COST 10750
+#SIZE 1
+#CONDITION 100
+#LIMIT 40
+#BEGIN_TRIGGERABLE
+#INDEX 2181
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a tough scalemail shirt
+#LONG A pile of battered scalemail lies in a puddle.
+#BEGIN_INTERACTABLE
+#NAME shirt scalemail tough
+#DESCRIPTION A pile of battered scalemail lies in a puddle.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL steel
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#AFFECT 8 15  #
+#AFFECT 11 2  #
+#AFFECT 10 2  #
+#AFFECT 1 2 constitution #
+#END_AFFECTABLE
+#WEAR torso
+#BEGIN_TYPE armor ##
+#VALUE piercing # 8
+#VALUE blunt # 8
+#VALUE slashing # 8
+#VALUE other # 3
+#END_TYPE
+#LEVEL 42
+#WEIGHT 60
+#COST 14500
+#SIZE 2
+#CONDITION 100
+#LIMIT 100
+#BEGIN_TRIGGERABLE
+#INDEX 2182
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a pair of scalemail sleeves
+#LONG A dusty pair of scalemail sleeves lie here.
+#BEGIN_INTERACTABLE
+#NAME sleeves scale scalemail
+#DESCRIPTION A dusty pair of scalemail sleeves lie here.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL steel
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#AFFECT 8 10  #
+#AFFECT 11 1  #
+#AFFECT 10 2  #
+#AFFECT 1 1 constitution #
+#END_AFFECTABLE
+#WEAR arms
+#BEGIN_TYPE armor ##
+#VALUE piercing # 8
+#VALUE blunt # 8
+#VALUE slashing # 8
+#VALUE other # 4
+#END_TYPE
+#LEVEL 40
+#WEIGHT 60
+#COST 6500
+#SIZE 2
+#CONDITION 100
+#LIMIT 0
+#BEGIN_TRIGGERABLE
+#INDEX 2183
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a woven necklace
+#LONG A necklace of woven leather and beads waits for its owner.
+#BEGIN_INTERACTABLE
+#NAME necklace woven leather bead
+#DESCRIPTION A necklace of woven leather and beads waits for its owner.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL leather
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#AFFECT 1 1 wisdom #
+#AFFECT 8 10  #
+#AFFECT 12 -2  #
+#END_AFFECTABLE
+#WEAR neck
+#BEGIN_TYPE jewelry ##
+#END_TYPE
+#LEVEL 30
+#WEIGHT 8
+#COST 14200
+#SIZE 1
+#CONDITION 100
+#LIMIT 0
+#BEGIN_TRIGGERABLE
+#INDEX 2184
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT an ancient crafted bracer
+#LONG A crafted golden bracer lies here, collecting dust.
+#BEGIN_INTERACTABLE
+#NAME bracer crafted ancient golden gold
+#DESCRIPTION A crafted golden bracer lies here, collecting dust.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL gold
+#BEGIN_AFFECTABLE
+#GLOW 50
+#FLAGS 134218752
+#AFFECT 7 30  #
+#AFFECT 1 3 wisdom #
+#AFFECT 8 20  #
+#END_AFFECTABLE
+#WEAR wrist
+#BEGIN_TYPE armor ##
+#VALUE piercing # 7
+#VALUE blunt # 7
+#VALUE slashing # 7
+#VALUE other # 11
+#END_TYPE
+#LEVEL 46
+#WEIGHT 10
+#COST 21150
+#SIZE 1
+#CONDITION 100
+#LIMIT 5
+#BEGIN_TRIGGERABLE
+#INDEX 2185
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT an old pair of spectacles
+#LONG A thick pair of old spectacles lies in the dust.
+#BEGIN_INTERACTABLE
+#NAME spectacles old
+#DESCRIPTION A thick pair of old spectacles lies in the dust.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL metal
+#BEGIN_AFFECTABLE
+#FLAGS 135266304
+#AFFECT 1 1 intelligence #
+#AFFECT 1 1 wisdom #
+#AFFECT 8 10  #
+#END_AFFECTABLE
+#WEAR head
+#BEGIN_TYPE treasure ##
+#END_TYPE
+#LEVEL 35
+#WEIGHT 5
+#COST 8000
+#SIZE 2
+#CONDITION 100
+#LIMIT 0
+#BEGIN_TRIGGERABLE
+#INDEX 2186
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a velvet bound book
+#LONG A velvet bound book lays here.
+#BEGIN_INTERACTABLE
+#NAME book velvet bound
+#DESCRIPTION A velvet bound book lays here.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL velvet
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#END_AFFECTABLE
+#WEAR hand
+#BEGIN_TYPE trash ##
+#END_TYPE
+#LEVEL 30
+#WEIGHT 40
+#COST 42
+#SIZE 2
+#CONDITION 100
+#LIMIT 0
+#BEGIN_TRIGGERABLE
+#INDEX 2187
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT an opal amulet
+#LONG A glittering opal lies here, trailing a silvery chain.
+#BEGIN_INTERACTABLE
+#NAME amulet opal chain silvery
+#DESCRIPTION A glittering opal lies here, trailing a silvery chain.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL opal
+#BEGIN_AFFECTABLE
+#FLAGS 138412032
+#AFFECT 7 45  #
+#END_AFFECTABLE
+#WEAR neck
+#BEGIN_TYPE jewelry ##
+#END_TYPE
+#LEVEL 50
+#WEIGHT 10
+#COST 61600
+#SIZE 1
+#CONDITION 100
+#LIMIT 9
+#BEGIN_TRIGGERABLE
+#INDEX 2188
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a scaled shield
+#LONG A shield of scales sits here.
+#BEGIN_INTERACTABLE
+#NAME shield scaled scales
+#DESCRIPTION A shield of scales sits here.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL scale
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#AFFECT 8 10  #
+#AFFECT 7 10  #
+#END_AFFECTABLE
+#WEAR hand
+#BEGIN_TYPE armor ##
+#VALUE piercing # 8
+#VALUE blunt # 9
+#VALUE slashing # 9
+#VALUE other # 3
+#END_TYPE
+#LEVEL 41
+#WEIGHT 40
+#COST 4150
+#SIZE 2
+#CONDITION 100
+#LIMIT 0
+#BEGIN_TRIGGERABLE
+#INDEX 2189
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a rumpled scroll
+#LONG A rumpled scroll flutters on the ground.
+#BEGIN_INTERACTABLE
+#NAME scroll rumpled
+#DESCRIPTION A rumpled scroll flutters on the ground.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL paper
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#END_AFFECTABLE
+#BEGIN_TYPE scroll ##
+#VALUE rating # 40
+#STRING spell # detect evil ##
+#VALUE rating # 40
+#STRING spell # protection evil ##
+#VALUE rating # 40
+#STRING spell # armor ##
+#END_TYPE
+#LEVEL 35
+#WEIGHT 2
+#COST 10000
+#SIZE 1
+#CONDITION 100
+#LIMIT 0
+#BEGIN_TRIGGERABLE
+#INDEX 2190
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a smooth scroll
+#LONG A smooth scroll sits on a wooden stand.
+#BEGIN_INTERACTABLE
+#NAME scroll smooth
+#DESCRIPTION A smooth scroll sits on a wooden stand.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL paper
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#END_AFFECTABLE
+#BEGIN_TYPE scroll ##
+#VALUE rating # 38
+#STRING spell # mass flying ##
+#VALUE rating # 38
+#STRING spell # mass invis ##
+#VALUE rating # 38
+#STRING spell # group teleport ##
+#END_TYPE
+#LEVEL 50
+#WEIGHT 2
+#COST 55000
+#SIZE 1
+#CONDITION 100
+#LIMIT 5
+#BEGIN_TRIGGERABLE
+#INDEX 2191
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a silver potion
+#LONG A vial of strange silver liquid fills the air with a sweet scent.
+#BEGIN_INTERACTABLE
+#NAME potion vial silver strange liquid
+#DESCRIPTION A vial of strange silver liquid fills the air with a sweet scent.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL glass
+#BEGIN_AFFECTABLE
+#GLOW 50
+#FLAGS 134217728
+#END_AFFECTABLE
+#BEGIN_TYPE potion ##
+#VALUE rating # 45
+#STRING spell # regeneration ##
+#VALUE rating # 45
+#STRING spell # cure critical ##
+#END_TYPE
+#LEVEL 45
+#WEIGHT 5
+#COST 13000
+#SIZE 1
+#CONDITION 100
+#LIMIT 8
+#BEGIN_TRIGGERABLE
+#INDEX 2192
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT the tome
+#LONG A heavy tome sits on an old wooden stand in the center of the room.
+#BEGIN_INTERACTABLE
+#NAME wooden stand heavy tome
+#DESCRIPTION A heavy tome sits on an old wooden stand in the center of the room.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL paper
+#BEGIN_AFFECTABLE
+#GLOW 50
+#FLAGS 272
+#END_AFFECTABLE
+#BEGIN_TYPE trash ##
+#END_TYPE
+#LEVEL 51
+#WEIGHT 120
+#COST 400
+#SIZE 2
+#CONDITION 100
+#LIMIT 1
+#BEGIN_TRIGGERABLE
+#INDEX 2193
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT the books
+#LONG Some large books are set out on stands.
+#BEGIN_INTERACTABLE
+#NAME book books large stands
+#DESCRIPTION Some large books are set out on stands.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL paper
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#BEGIN_TYPE trash ##
+#END_TYPE
+#LEVEL 40
+#WEIGHT 340
+#COST 0
+#SIZE 2
+#CONDITION 100
+#LIMIT 0
+#BEGIN_TRIGGERABLE
+#INDEX 2194
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT an old dusty book
+#LONG An old dusty book lies on the ground.
+#BEGIN_INTERACTABLE
+#NAME book old dusty
+#DESCRIPTION An old dusty book lies on the ground.
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS three
+#EXTRA_DESCRIPTION Many years after the War of Night, when the Spirit Palace had become
+fairly well established, it was noticed that some strange activity was
+happening in the caves of Mount Enrien.  Unsettled by this, as it was
+very close to the prison of the demon lord Kzroth, a few scholars were
+sent to explore and establish what had happened.
+
+In the mountain they found a group who referred to themselves as "Kohli"
+and appeared to be the last remanents of a race which had lived for many
+years deep underground.  Observing the kohli while invisible, it was
+eventually deduced that some massive, evil creature had forced them from
+their homes, and was responsible for their now sparse population.  The
+amber dragon, upon hearing the details, realized it was the void dragon
+Tzet-Sabanthe.  Knowing the pure corruption and evil that the dark dragon
+was, the amber dragon sought it and drove it off, unwilling to allow it
+to destroy an entire race.  The kohli, thankful and awestruck, came to
+worship the amber dragon as their diety, and elected to stay in their
+new city, close to their god.  It was not until sometime later that the
+details of this were discovered, however, due to the generally seclusive
+nature of the amber dragon.
+
+#END_EEXTRA_DESCRIPTION
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS two
+#EXTRA_DESCRIPTION The Spirit Palace, in all its beauty and glory, has attracted many who
+hate it for those it houses.  Between the six magics a balance has always
+existed, keeping a peace that is understood by most powerful scholars.
+Envy and hate cloud reason, however, and during the rule of the fifth
+great Arch-Mage, Gaene Vosatair, dark stirrings were heard.  A group of
+void and fire scholars broke from their guilds to create their own sect,
+the Maevis'Hra, which loosely translates into "Bringers of Darkness".
+Hoping to eliminate the presence of the golden light that is Spirit,
+they performed many dark rituals, a twisted meld of pain and darkness.
+Believing themselves strong enough to fight this small sect, the many
+schools of spirit around Avendar prepared to defend themselves, and those
+at the palace settled down for war.
+
+To the spirit scholars, triumph was never in doubt.  The Arch-Mage,
+however, had underestimated the Maevis'Hra and their fanatical devotion
+to their cause.  The night the Maevis'Hra struck has been burned into
+legend as the greatest tragedy ever to befall the scholars of Spirit.
+All over Avendar spirit schools were besieged by scholars and their vile
+demons.  The guild in Drellan Myr fell early, burned to the ground by
+unnatural fires, and not leaving any survivors.  For the Spirit Palace
+was saved the darkwalkers strongest ally, the demon lord Kzroth, a being of
+fire and destruction.  He cut through the palace defences easily,
+feasting on the bodies of those he killed, and growing stronger for each
+one.
+
+Knowing the demon must be stopped, or it would most likely succeed in
+destroying the palace, Arch-Mage Vosatair went out to fight him alone,
+giving his body up to become a true avatar.  By giving all his soul to
+his transformation, he became more powerful than any before him, burning
+up his own life energy.  The battle between the Arch-Mage and Kzroth was
+long, but eventually Kzroth was weakened enough to be trapped.  The
+remaining Maevis'Hra fled at his defeat, and Kzroth was locked in a
+magically warded cell within the mountain.  When the cell was closed,
+the Arch-Mage fell and as the consuming light dissipated, so did he, until
+nothing remained of either.
+
+#END_EEXTRA_DESCRIPTION
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS one
+#EXTRA_DESCRIPTION The Spirit Palace was first suggested about a decade after the magics of
+air had been let loose upon the land.  Realizing the destructive force
+of pure entropy, and the seeming weakening of the barrier between the magic
+of air and the prime material in the clouds around the ancient Mountain
+Enrien, a young human scholar suggested a place of work and magic be
+built nearby.  Not only would this palace serve to watch over the beings
+of chaos that roamed this energy-charged place, but it would also be a
+symbol of the strength and hope that spirit magic itself represented.
+The young man, Heclan Nayber, would become the first Arch-Mage of the
+Spirit Palace, and its first leader.  Always wise beyond his years, his
+decision was oft proven a good one as time progressed.
+
+#END_EEXTRA_DESCRIPTION
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS book
+#EXTRA_DESCRIPTION Dusty and quite old, the book looks to have passed through many hands
+during its time in the library.  The title on the front has long since worn
+away, but upon opening the book, the title is clearly written in a heavy
+hand.  
+
+    A History of the Spirit Tower
+
+Three pages have been marked by students of the past.
+
+(Read one, two, three)
+
+#END_EEXTRA_DESCRIPTION
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL paper
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#END_AFFECTABLE
+#BEGIN_TYPE trash ##
+#END_TYPE
+#LEVEL 40
+#WEIGHT 50
+#COST 450
+#SIZE 2
+#CONDITION 100
+#LIMIT 0
+#BEGIN_TRIGGERABLE
+#INDEX 2195
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT a patterned yellow belt
+#LONG A long piece of patterned yellow cloth has been left here.
+#BEGIN_INTERACTABLE
+#NAME belt yellow piece patterned cloth long
+#DESCRIPTION A long piece of patterned yellow cloth has been left here.
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL cloth
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#AFFECT 12 -2  #
+#AFFECT 7 15  #
+#END_AFFECTABLE
+#WEAR waist
+#BEGIN_TYPE armor ##
+#VALUE piercing # 6
+#VALUE blunt # 6
+#VALUE slashing # 6
+#VALUE other # 4
+#END_TYPE
+#LEVEL 37
+#WEIGHT 20
+#COST 4750
+#SIZE 2
+#CONDITION 100
+#LIMIT 0
+#BEGIN_TRIGGERABLE
+#INDEX 2196
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT (no short description)
+#LONG (no description)
+#BEGIN_INTERACTABLE
+#NAME no name
+#DESCRIPTION (no description)
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL unknown
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#BEGIN_TYPE trash ##
+#END_TYPE
+#LEVEL 0
+#WEIGHT 0
+#COST 0
+#SIZE 2
+#CONDITION 100
+#LIMIT 0
+#BEGIN_TRIGGERABLE
+#INDEX 2197
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#SHORT the Sigil of the Soaring Pegasus
+#LONG ..
+#BEGIN_INTERACTABLE
+#NAME ..
+#DESCRIPTION ..
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL flesh
+#BEGIN_AFFECTABLE
+#FLAGS 480
+#AFFECT 8 30  #
+#AFFECT 12 -5  #
+#END_AFFECTABLE
+#WEAR branded
+#BEGIN_TYPE armor ##
+#VALUE piercing # 10
+#VALUE blunt # 10
+#VALUE slashing # 10
+#VALUE other # 10
+#END_TYPE
+#LEVEL 52
+#WEIGHT 1
+#COST 49117
+#SIZE 0
+#CONDITION 100
+#LIMIT 0
+#BEGIN_TRIGGERABLE
+#INDEX 2199
+#END_TRIGGERABLE
+#END_OBJECT
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Training Room
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+This large room is for young spirit mages to train and test themselves in
+their newly learned spells, and to sometimes stay the night if what they
+need to learn will take more than one session to grasp.  The walls raise up,
+made of some sort of material the seems a cross between white marble and the
+misty clouds outside.  A small table and chair made of the same material sit
+against the far wall, and off in the corner a white bed stands, looking
+comfortable and warm.  The whole room glows with light, whether a residue of
+practiced spells or by design, it is difficult to tell.  A single door leads
+north, back to the main part of the palace.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES You see the door to the hallway.
+
+#DOOR_INFO 3 0 2161
+#INDEX 0
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Training Room
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+This large room is for young spirit mages to train and test themselves
+in their newly learned spells, and to sometimes stay the night if what they
+need to learn will take more than one session to grasp.  The walls raise up,
+made of some sort of material the seems a cross between white marble and the
+misty clouds outside.  A small table and chair made of the same material sit
+against the far wall, and off in the corner a white bed stands, looking
+comfortable and warm.  The whole room glows with light, whether a residue of
+practiced spells or by design, it is difficult to tell.  A single door leads
+north, back to the main part of the palace.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES You see the door to the hallway.
+
+#DOOR_INFO 3 0 2160
+#INDEX 1
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Hallway
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The hallway turns here, leading north and west, the corridors emitting a
+soft light.  A soft dark red carpet, covered in tiny little designs, muffles
+your step as you continue through the palace.  The walls are bare, unlike in
+most parts of the palace, and a small door leads south, into one of the
+training rooms.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2169
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES You see the door to a training room.
+
+#DOOR_INFO 3 0 2159
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2161
+#INDEX 2
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Hallway
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The hallway runs east and west of here, the corridors emitting a soft
+light.  A soft dark red carpet, covered in tiny little designs, muffles your
+step as you continue through the palace.  A series of portraits line the
+northern wall, opposite a plain doorway.  Each portrait depicts the former
+rulers of the palace of the spirit, leading back to the founder, a wise
+looking old man.  
+
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS portrait portraits
+#EXTRA_DESCRIPTION The first portrait shows the most recent leader before Shilrin, the
+current arch-mage.  Like Shilrin, the former leader was a ch'taren, as many
+of the other people depicted in the portraits are.  All of the people
+depicted are either human, ch'taren, or ethron in hertitage.  It is strange
+that the founder of the spirit palace was a human, but he looks wise and
+knowing, and was reputedly a good leader.  
+
+#END_EXTRA_DESCRIPTION
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2160
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES You see the door to a training room.
+
+#DOOR_INFO 3 0 2158
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES You see a split in the hallway.
+
+#DOOR_INFO 0 0 2162
+#INDEX 3
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Hallway
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The hallway runs east and west of here, the corridors emitting a soft
+light.  A soft dark red carpet, covered in tiny little designs, muffles your
+step as you continue through the palace.  The occasional tapestry on the
+wall breaks the bareness of the white walls, the skillful weavings sometimes
+whimsical, sometimes seeming lifelike enough to step out from the picture. 
+North lies the classrooms where the guildmasters teach those who travel to
+the palace to learn.  
+
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS tapestry tapestries
+#EXTRA_DESCRIPTION The tapestry that draws your eye on this wall depicts what appears to be
+a tall, beautiful white tower, towering over a large field of red roses
+which spread out around it.  The top of the building is lost in the midsts
+of the clouds, through which bright beams of sunlight can be seen.  
+
+#END_EXTRA_DESCRIPTION
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS tapestry
+#EXTRA_DESCRIPTION 
+#END_EXTRA_DESCRIPTION
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES You see the doorway to the classrooms.
+
+#DOOR_INFO 1 0 2167
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES You see a hallway.
+
+#DOOR_INFO 0 0 2161
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES You see the huge entranceway to the palace.  
+
+#DOOR_INFO 0 0 2192
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES You see a hallway.
+
+#DOOR_INFO 0 0 2163
+#INDEX 4
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Hallway
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The hallway runs east and west of here, the corridors emitting a soft
+light.  A soft dark red carpet, covered in tiny little designs, muffles your
+step as you continue through the palace.  A large portrait hangs on the
+north wall, facing a plain doorway.  The portrait is apparently of one of
+the archmagi of spirit, now controller of the palace of the spirit, her
+knowing gaze keeping vigilant watch.  
+
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS portrait
+#EXTRA_DESCRIPTION Arch-Mage Shilrin is plain, but her intelligence shines through her eyes,
+even in the painting.  The painter has surrounded her in a radiance that is
+very appropriate, making her look almost holy in her connection and faith in
+her magic.  
+
+#END_EXTRA_DESCRIPTION
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES You see a split in the hallway.
+
+#DOOR_INFO 0 0 2162
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES You see the door to a training room.
+
+#DOOR_INFO 3 0 2191
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2164
+#INDEX 5
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Hallway
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The hallways turns here, leading north and east, the corridors emitting a
+soft light.  A soft dark red carpet, covered in tiny little designs, muffles
+your step as you continue through the palace.  The walls are bare, unlike in
+most parts of the palace, and a small door leads south, into one of the
+training rooms.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2165
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2163
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES You see the door to a training room.
+
+#DOOR_INFO 3 0 2190
+#INDEX 6
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Hallway
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The hallway continues here, the dark red carpet leading north to the west
+tower, and south to the main part of the castle.  The walls of the corridor
+are covered with detailed murals, showing the entrance of spirit magic into
+the world of Avendar.  
+
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS mural
+#EXTRA_DESCRIPTION The first image of the mural shows the ch'taren pouring through a gateway
+to the horrified gaze of void scholars.  The ch'taren move into the second
+part of the mural, where other races are shown with the ch'taren, trying to
+learn the essence of spirit magic.  The final part of the mural shows many
+different races in various stages of many wonderous spells, as the use of
+spirit magic spread throughout Avendar.  
+
+#END_EXTRA_DESCRIPTION
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2174
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2164
+#INDEX 7
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Classroom
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+A few tables and chairs are set here, arranged to face the center of the
+room, where a large desk sits.  The walls are bare and unadorned, and the
+curved ceiling seems to amplify the voice of the person standing in the
+center.  The only impractical thing in the whole room is a single rose set
+on the desk, its pale blue colour standing out against the pure white of the
+rest of the room.  East lies the way back to the hall, and to the other
+classroom.  
+
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS rose blue
+#EXTRA_DESCRIPTION The rose glows faintly, it's beautiful pale blue colour the result of
+nothing natural.  The petals and stem seem shaped perfectly, each detail
+delicate and smooth.  
+
+#END_EXTRA_DESCRIPTION
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES You see the entrance to the classrooms.
+
+#DOOR_INFO 0 0 2167
+#INDEX 8
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME The Entrance to the Classrooms
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+A small bookcase is set against the wall, filled with books for quick
+reference for the students.  A comfortable looking chair sits next to the
+bookcase, facing south into the hallway.  West and east lie classrooms for
+young students of spirit, small so the teachers can dedicate their attention
+to the students personally.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES You see Mistress Korlian's classroom.  
+
+#DOOR_INFO 0 0 2168
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES You see the doorway to the hallway.
+
+#DOOR_INFO 1 0 2162
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES You see Master Nayshan's classroom.
+
+#DOOR_INFO 0 0 2166
+#INDEX 9
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Classroom
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+A few tables and chairs are set here, arranged to face the center of the
+room, where a large desk sits.  A large diagram is drawn on the far wall,
+showing the place of spirit relative to the other elements, and smaller
+diagrams line the other walls.  The room pulses with the powers taught
+here, faint motes of light sparkling in one corner of the room, and the exit
+leading back to the hallway lies to the west.  
+
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS diagram
+#EXTRA_DESCRIPTION Air
+         | 
+Spirit  |  / Fire
+        |/
+        /|
+Water /  |   Void
+         |
+       Earth
+
+#END_EXTRA_DESCRIPTION
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES You see the entrance to the classrooms.
+
+#DOOR_INFO 0 0 2167
+#INDEX 10
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Hallway
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The hallway is bright and cheerful as you continue to follow the dark red
+carpet.  The bustle of aspiring spirit scholars can be heard to the south,
+but as the hallway continues north the noise becomes more and more faint.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2170
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2160
+#INDEX 11
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME The Entrance to the Library
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The tall pillars mark the entrance to the library, one of the best in all
+of Avendar, and certainly the best for anything related to spirit magic. 
+There is a thick silence covering the area, broken only by the occasional
+sound of a book being set down on a table.  The light feeling of the rest of
+the palace continues here as well, but everything seems muted and
+constrained for the sake of concentration.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES The library continues.
+
+#DOOR_INFO 0 0 2171
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES The library continues.
+
+#DOOR_INFO 0 0 2173
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES You see a hallway.
+
+#DOOR_INFO 0 0 2169
+#INDEX 12
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME The Library
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+Heavy bookcases line the walls and crisscross the floor.  They seem to be
+filled with books of every sort, from farming to alchemy to sewing. 
+Elegantly scripted signs explain what sort of books are in each bookcase. 
+There appear to be hundreds of books on any topic you could possibly
+imagine.  The entrance to the library lies to the south, and the library
+continues on to the east.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES The library continues.
+
+#DOOR_INFO 0 0 2172
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES You see the entrance to the library.
+
+#DOOR_INFO 0 0 2170
+#INDEX 13
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME The Library
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+Heavy bookcases line the walls and crisscross the floor.  Some desks have
+been set up to the south, and throughout the tall towers of books, some
+comfortable chairs are scattered.  The library continues on to the west, and
+to the south a staircase leads up to the next level of the library, where
+all the spirit tomes are kept.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES The library continues.
+
+#DOOR_INFO 0 0 2173
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES The library continues.
+
+#DOOR_INFO 0 0 2171
+#INDEX 14
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME The Library
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+A few bookcases are set up in the northern part of the room, but most of
+the room is taken up with a huge desk, apparently where the librarian works,
+and a staircase leading upstairs to the second level of the library.  Anyone
+who desires knowledge is allowed in the main part of the library, but only
+those following the path of spirit are allowed to go up and study the
+magical tomes stored there.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES The library continues.
+
+#DOOR_INFO 0 0 2172
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES You see the entrance to the library.
+
+#DOOR_INFO 0 0 2170
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES You see the stairs leading up to the second level of the library.
+
+#DOOR_INFO 131072 0 2183
+#INDEX 15
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Bend in the Hallway
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The hall is well lit from the faint glow coming from the pure white
+walls.  Deep blue carpet leads west down the hallway, and north to the plain
+doorway of one of the bedrooms.  South, deep red carpet trails away, heading
+towards the main part of the palace.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES You see the door to Master Nayshan's room.
+
+#DOOR_INFO 3 0 2175
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2165
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2177
+#INDEX 16
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME Master Nayshan's Room
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+This room is plain, the bed neatly made, and the chair pushed under the
+desk.  A large painting is set on the wall, a bizarre yet strangely
+beautiful landscape.  The bed posts and desk are all covered in intricate
+carvings, some of which seem so detailed they must have taken decades to
+complete.  A window looks north over the world of Avendar, and a small door
+leads south to the rest of the palace.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES You see the door to the hallway.
+
+#DOOR_INFO 3 0 2174
+#INDEX 17
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME Mistress Korlian's Room
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The room is almost too crowded, whatever space not strictly needed for
+walking is taken up with a bookcase or a strange object of some sort.  The
+dark blue carpet is barely visible, only in thin paths from the door on the
+southern wall to the bed and desk.  A beautiful view of Avendar is almost
+totally obscured by a large stand filled with books and knicknacks.  A large
+pile of books sits precariously on a bunch of clothes set on the desk, one
+wrong movement to send everything falling.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES You see the door to the hallway.
+
+#DOOR_INFO 3 0 2177
+#INDEX 18
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME Bottom of the West Tower
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+A wide staircase leads up to the next level of the west tower of the
+spirit palace.  The stairs look almost slippery, they're so smooth.  North
+lies the doorway to one of the bedrooms, and the dark blue carpet leads away
+east to the hallway back to the main part of palace.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES You see the door to Mistress Korlian's room.
+
+#DOOR_INFO 3 0 2176
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2174
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES The stairs curve up to the second level of the tower.
+
+#DOOR_INFO 0 0 2178
+#INDEX 19
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Small Hallway
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+A wide set of stairs leads down to the bottom level of the tower, the
+steps shiny and smooth.  The hallway is well lit with the light from the
+walls, and a small window on the south wall looks out over the main part of
+the palace, to the cloudy panorama beyond.  Dark blue carpet covers the
+floor, muting your footsteps as you pass.  North lies a small door, leading
+to the librarian's bedroom, and the hallway continues on to the east.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES You see the door to Morihd's room.
+
+#DOOR_INFO 3 0 2179
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2181
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES The stairs curve down to the first level of the tower.
+
+#DOOR_INFO 0 0 2177
+#INDEX 20
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME Morihd's Room
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+This room belongs to the head librarian, and seems little used.  The bed
+set against the west wall is neatly made, and except a robe lying on a
+chair, the room appears to be uninhabited.  The dark blue carpet absorbs the
+sound of your footsteps, and the quiet of the room seems very suited for its
+owner.  A window looks out north over the world below, and a larger window
+looks west, over the bridge of mist.  A small door leads south to the
+hallway.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 8218
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES You see the door to the hallway.
+
+#DOOR_INFO 3 0 2178
+#INDEX 21
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME Thalin's Room
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+This room belongs to the librarian's assistant, his possessions few and
+scattered throughout the room.  A comfortable bed is set against the west
+wall, but most of the room is dominated by a huge bookcase filled with a few
+books, mostly a large collection of figurines.  Besides the extensive
+collection, there seem to be little else of personal value in the room.  A
+small door leads south into the tower, and a window looks out north to the
+world of Avendar below.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES You see the door to the hallway.
+
+#DOOR_INFO 3 0 2181
+#INDEX 22
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Small Hallway
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+A curved staircase leads up to the top level of the west tower, the
+bedroom of the spirit master.  The soft glow of the walls beckons you east
+down a long hallway, and west to the steps leading downstairs.  A small door
+leads north to the librarian assisstant's room, and a little window looks
+out over the palace to the south.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES You see the door to Thalin's room.
+
+#DOOR_INFO 3 0 2180
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 1 0 2137
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2178
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES You see the entrance to Arch-Magi Shilrin's room.
+
+#DOOR_INFO 3 0 2182
+#INDEX 23
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME The Arch-Magi's Room
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The room is suffused with light, both from the walls, and from the
+windows looking out towards each of the four compass points.  North you can
+see the vast realm of Avendar spread out like a beautiful carpet, from the
+green forests of Nendor to the distant blue sparkle of the Uthlin Ocean. 
+West the shimmer of a bridge of mist catches your eye, and east lies a view
+of the opposite tower, glowing in the sunlight.  The arch-mage can overlook
+all of the cloudy world the spirit mages live in at the southern window, and
+a desk sitting infront of the window indicates she does just that.  The room
+is sparsly but richly furnished, and the only exit appears to be the
+twisting staircase leading back down the tower.  
+
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS south
+#EXTRA_DESCRIPTION Looking out the window, you see the soft, eternally calm white clouds
+around the spirit palace.  The creatures of light that have made their home
+in the clouds pass in and out of view, as do various scholars from the
+palace.  The areas seems perpetually filled with light and peace, giving the
+aura of calm to all who pass through.  
+
+#END_EXTRA_DESCRIPTION
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES You see the stairs leading down to the second level of the tower.
+
+#DOOR_INFO 3 0 2181
+#INDEX 24
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME The Second Level of the Library
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The heavy bookcases here almost shimmer with power, so many books of
+magic knowledge and lore stored together.  The bookcases are spread further
+apart than in the lower level, and there are many desks set up for the
+scholars to sit and study the tomes.  The library continues to the north and
+west, and a staircase leads downstairs to the main part of the library.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 305178
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES You see rows of desks.
+
+#DOOR_INFO 0 0 2184
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES The library continues.
+
+#DOOR_INFO 0 0 2186
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES You see the stairs leading down to the main part of the library.
+
+#DOOR_INFO 0 0 2173
+#INDEX 25
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME The Second Level of the Library
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+Many desks are set up here, each equipped with a large pile of parchment
+and a few bottles of ink.  Here the scholars can sit and study the books of
+magic, and copy down whatever information they need for their research.  The
+library continues to the south and the more valuble and rare books lie to
+the west.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 305178
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES The library continues.
+
+#DOOR_INFO 0 0 2183
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES You see several stands set up.
+
+#DOOR_INFO 0 0 2185
+#INDEX 26
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME The Second Level of the Library
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The heavy bookcases of the rest of library are few here, most of the
+space taken up with wooden stands holding open incredibly thick and heavy
+books.  Chairs are scattered throughout the room, for the scholars to sit on
+as they study these large tomes.  East lie some desks and south the library
+continues.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 305178
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES You see rows of desks.
+
+#DOOR_INFO 0 0 2184
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES The library continues.
+
+#DOOR_INFO 0 0 2186
+#INDEX 27
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME The Second Level of the Library
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+Heavy bookcases stand in the eastern part of the room, and a desk is set
+to the west by the entrance to a long hallway.  A narrow staircase leads up
+to the top level of the tower where the most rare and powerful books of
+magic are kept.  The library continues to the east and north, where some
+stands are set up to hold the heavier books.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 305178
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES You see several stands set up.
+
+#DOOR_INFO 0 0 2185
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES The library continues.
+
+#DOOR_INFO 0 0 2183
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES You see a hallway.
+
+#DOOR_INFO 1 0 2189
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES You see the stairs to the top level of the library.
+
+#DOOR_INFO 0 0 2187
+#INDEX 28
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME The Top Level of the Library
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+Thick wooden stands are set up, holding some heavy books that glow
+faintly with power.  The windows in the room are covered with dark blue
+curtains, but the room is still well lit with the glow of magic.  Aside from
+the stands, the room is empty, with just a narrow staircase leading
+downstairs.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 305152
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES You see the stairs to the second level of the library.
+
+#DOOR_INFO 0 0 2186
+#INDEX 29
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Small Hallway
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The hallway is almost more like a bridge, the walls and ceiling made so
+thin they are transparent.  Comfortable chairs and short tables are set
+along the hallway, the area meant entirely for relaxation and reading.  To
+the west lies the entrance to a tower, and the dark blue carpet heads east
+along the hall to the library.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2189
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2137
+#INDEX 30
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Small Hallway
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The hallway is almost more like a bridge, the walls and ceiling made so
+thin they are transparent.  Comfortable chairs and short tables are set
+along the hallway, the area meant entirely for relaxation and reading. 
+Further to the west lies the entrance to a tower, and the dark blue carpet
+heads east to the library.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES You see the library.
+
+#DOOR_INFO 131073 0 2186
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES The hallway continues.
+
+#DOOR_INFO 0 0 2188
+#INDEX 31
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Training Room
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+This large room is for spirit templars to train and test themselves in
+their newly learned skills, and to sometimes sometimes stay the night if
+what they need to learn will take more than one session to grasp.  The walls
+raise up, made of some sort of material the seems a cross between white
+marble and the misty clouds outside.  A small table and chair made of the
+same material sit against the far wall, and off in the corner a white bed
+stands, looking comfortable and warm.  A thin mat covers the floor in the
+east corner of the room, facing a mirror for the students to examine their
+technique.  The whole room glows with light, whether a residue of practiced
+spells or by design, it is difficult to tell.  A single door leads north,
+back to the main part of the palace.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR forest
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES You see the doorway to the hall.
+
+#DOOR_INFO 3 0 2164
+#INDEX 32
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME A Training Room
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+This large room is for spirit templars to train and test themselves in
+their newly learned skills, and to sometimes sometimes stay the night if
+what they need to learn will take more than one session to grasp.  The walls
+raise up, made of some sort of material the seems a cross between white
+marble and the misty clouds outside.  A small table and chair made of the
+same material sit against the far wall, and off in the corner a white bed
+stands, looking comfortable and warm.  A thin mat covers the floor in the
+east corner of the room, facing a mirror for the students to examine their
+technique.  The whole room glows with light, whether a residue of practiced
+spells or by design, it is difficult to tell.  A single door leads north,
+back to the main part of the palace.  
+
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES You see the doorway to the hall.
+
+#DOOR_INFO 3 0 2163
+#INDEX 33
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_INTERACTABLE
+#NAME The Entranceway
+#BEGIN_DESCRIPTION
+#DESCRIPTION
+The walls, ceiling and floor are perfectly smooth, and glow a soft
+white.  They seem to be made of a soft yet solid material, a combination of
+cool hard marble, and the light wispy clouds outside.  Intricate tapestries
+line the walls, depicting beautiful scenes of elegant magical creatures, and
+white clad mages preforming miracles.  The hallway continues to the north,
+into the Palace of the Spirit, and south, a large set of double doors lead
+into the bright daylight outside.  
+
+#BEGIN_EXTRA_DESCRIPTION
+#KEYWORDS tapestry tapestries
+#EXTRA_DESCRIPTION The numerous tapestries lining the walls show creatures of the light,
+like the pegasi and other beings in the clouds, and others, like a pure
+silver dragon depicted in the one closest to the entranceway.  The mystical
+creatures are often accompanied with a spirit scholar either communicating
+with it, or preforming spirit magic under the creatures approving eyes.  
+
+#END_EXTRA_DESCRIPTION
+#END_DESCRIPTION
+#END_INTERACTABLE
+#DANGER 1
+#BEGIN_AFFECTABLE
+#FLAGS 10266
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES You see an intersection in the hallways.
+
+#DOOR_INFO 0 0 2162
+#INDEX 34
+#END_ROOM
+#BEGIN_SPECIALS
+#END_SPECIALS
+
+
+
+#BEGIN_RESETS
+D 0 2158 0 3 0
+D 0 2159 0 3 0
+D 0 2160 2 3 0
+D 0 2161 2 3 0
+D 0 2162 0 1 0
+D 0 2163 2 3 0
+D 0 2164 2 3 0
+D 0 2167 2 1 0
+D 0 2173 4 131072 0
+D 0 2174 0 3 0
+D 0 2175 2 3 0
+D 0 2176 2 3 0
+D 0 2177 0 3 0
+D 0 2178 0 3 0
+D 0 2179 2 3 0
+D 0 2180 2 3 0
+D 0 2181 0 3 0
+D 0 2181 1 1 0
+D 0 2181 4 3 0
+D 0 2182 5 3 0
+D 0 2186 3 1 0
+D 0 2189 1 131073 0
+D 0 2190 0 3 0
+D 0 2191 0 3 0
+M 0 2171 1 2158 1
+I 0 2190 0 0 0
+M 0 2172 1 2159 1
+I 0 2192 0 0 0
+M 0 2166 1 2160 1
+M 0 2179 1 2161 1
+I 0 2191 0 0 0
+M 0 2175 1 2162 1
+I 0 2174 0 1 0
+I 0 2177 0 1 0
+I 0 2178 0 1 0
+I 0 2179 0 1 0
+I 0 2180 0 1 0
+I 0 2181 0 1 0
+I 0 2199 0 1 0
+I 0 2173 0 1 0
+M 0 2167 1 2165 1
+M 0 2162 1 2166 1
+I 0 2169 0 1 0
+I 0 2170 0 1 0
+I 0 2171 0 1 0
+M 0 2163 1 2168 1
+I 0 2170 0 1 0
+I 0 2169 0 1 0
+I 0 2185 0 1 0
+M 0 2168 1 2169 1
+M 0 2170 1 2170 1
+M 0 2165 1 2171 1
+I 0 2184 0 1 0
+M 0 2169 1 2172 1
+M 0 2161 1 2173 1
+I 0 2186 0 1 0
+O 0 2161 0 2175 0
+O 0 2162 0 2176 0
+I 0 2163 1 0 1
+I 0 2164 1 0 1
+M 0 2164 1 2182 1
+I 0 2188 0 1 0
+I 0 2165 0 1 0
+I 0 2166 0 1 0
+I 0 2167 0 1 0
+I 0 2168 0 1 0
+I 0 2199 0 1 0
+M 0 2180 1 2184 1
+I 0 2195 0 0 0
+I 0 2196 0 1 0
+O 0 2194 0 2185 0
+M 0 2173 1 2186 1
+M 0 2178 1 2186 1
+O 0 2193 0 2187 0
+M 0 2177 1 2188 1
+O 0 2160 0 2188 0
+M 0 2160 1 2189 1
+O 0 2160 0 2189 0
+M 0 2176 1 2190 1
+I 0 2175 0 1 0
+I 0 2176 0 1 0
+M 0 2174 1 2191 1
+I 0 2172 0 1 0
+I 0 2182 0 1 0
+I 0 2183 0 1 0
+I 0 2189 0 1 0
+#END_RESETS
+
+
+
+#BEGIN_GUILDS
+#BEGIN_GUILD
+#INDEX 2162
+#SKILL mass peace
+#SKILL rune of spirit
+#END_GUILD
+
+#BEGIN_GUILD
+#INDEX 2163
+#SKILL create foci
+#END_GUILD
+
+#BEGIN_GUILD
+#INDEX 2164
+#SKILL astral projection
+#SKILL avenging seraph
+#SKILL avatar
+#SKILL mass peace
+#END_GUILD
+
+#END_GUILDS
+
+
+#BEGIN_SHOPS
+#END_SHOPS
+
+
+

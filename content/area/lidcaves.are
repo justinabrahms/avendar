@@ -1,0 +1,3653 @@
+#AREADATA
+Name The Lidraeun Caves~
+Builders Rannock~
+VNUMs 19300 19399
+Credits {45 51} Rannock   The Lidraeun Caves~
+Danger 0
+Security 1
+Areainfo 59
+Herbs 0
+Weather 3 4 0 1 1
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 19300
+fish small grey~
+a small grey fish~
+A small grey fish flits about the waters.
+~
+The small, silvery grey fish with black tail fins, swims about swiftly.  
+~
+generic~
+water scholar~
+AGN 0 0 N 0
+1 0 1d2+6 0d0+0 1d2+0 none~
+hit~
+9 9 9 9
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+Ab AFKX A tiny unknown
+V4 19301
+mass giant crustaceal flesh lidraeutentaclemass~
+a demonic tentacled mass~
+A giant mass of dark flesh and crustaceal shell plates is lumped against the wall.
+~
+A giant mass of dark flesh, covered in dark brown shell plates, covers
+the wall.  Long tentacles protruding from between shell plates squirm in the
+cold ocean waters, each covered in dark, rock-like scales.  
+~
+demon~
+water scholar~
+ABLX 0 FJTZ E 0
+57 29 20d220+1100 57d10+100 5d16+31 bash~
+smash~
+-25 -25 -25 -7
+AK ABb
+26 0 0 0 0 0 0 0 0 10 0 0 0 0 0 0 0 0 10 -10 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACHS ABCDEFGHIJKNPX A huge unknown
+>fight_prog 100~
+mpvaluerand 4 0 3
+if rand(50)
+ mpvalueset 1 0
+ mpvalueset 2 0
+ mpvalueset 8 0
+ mpvalueset 9 0
+ mpvalueset 3 1
+ mproomcmd mptrigger all
+ mpvalueset 7 0
+ if mobvalue(8) < $9
+  mpvalueset 7 1
+ endif
+endif
+if rand(25)
+ mpechoat $n A demonic tentacled mass lashes out at you, sending you flying.
+ mpechoaround $n A demonic tentacled mass lashes out at $N, sending $m flying.
+ mplag $n 1
+endif
+if rand(10)
+ if mobvalue(7) == 0
+  if mobvalue(2) < $1
+   mpecho A thickly plated tentacle suddenly breaks forth from a hole in the rock wall.
+   mpmload 19312
+  endif
+ else
+ if mobvalue(2) < 4
+   mpecho A thickly plated tentacle suddenly breaks forth from a hole in the rock wall.
+   mpmload 19312
+  endif
+ endif
+endif
+if rand(100)
+ if mobvalue(7) == 0
+ else
+  mpecho A demonic tentacled mass flares all its tentacles.
+  mpvalueset 3 2
+  mproomcmd mptrigger all
+ endif
+endif
+~
+>trigger_prog 100~
+if ispc($n)
+ if mobvalue(3) == 1
+  mpvalueup 1
+  if class($n) < 12
+   mpvalueup 8
+  endif
+  if class($n) > 11
+   mpvalueup 9
+  endif
+ endif
+ if mobvalue(3) == 2
+  if rand(50)
+   mpvaluerand 9 0 2
+   if mobvalue(9) == 0
+    mpechoat $n A demonic tentacled mass slashes you with a tentacle, sending you flying!
+    mpechoaround $n A demonic tentacled mass slashes $N with a tentacle, sending $m flying!
+    mplag $n 1
+   endif
+   if mobvalue(9) == 1
+    mpechoat $n A tentacle bashes into you, sending you flying!
+    mpechoaround $n A tentacle bashes into $N, sending $m flying!
+    mplag $n 1
+   endif
+   if mobvalue(9) == 2
+    mpechoat $n A tentacle swirls quickly through the water, striking you soundly!
+    mpechoaround $n A tentacle swirls quickly through the water, striking $N soundly!
+    mplag $n 1
+   endif
+  endif
+ endif
+else
+ if mobvalue(3) == 1
+  if number($n) == 19312
+   mpvalueup 2
+  endif
+ endif
+endif
+mpvalueset 3 0
+~
+|
+V4 19302
+mass small crustaceal flesh~
+a tentacled mass spawn~
+A small mass of dark flesh and large crustaceal shell plates is sprawled across the floor.
+~
+A small mass of dark flesh, covered in large dark brown shell plates,
+covers a small section of the floor.  Short tentacles protruding from
+between shell plates squirm in the cold ocean waters, each covered in dark,
+rock-like scales.  
+~
+generic~
+water scholar~
+ABLX 0 FJTZ E 0
+35 18 12d110+738 35d10+100 5d6+20 bash~
+crush~
+-12 -12 -12 -1
+U ABb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+S NX A medium unknown
+V4 19303
+ikrrijaj aged shuddeni archmage~
+Ikrrijaj~
+Ikrrijaj, an aged shuddeni archmage, stands here.
+~
+~
+shuddeni~
+water scholar~
+ABL 0 ADJZ E 0
+53 27 19d210+950 53d10+100 5d10+29 bash~
+punch~
+-23 -23 -23 -6
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 20 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMVW ABCDEFGHIJK G medium unknown
+V4 19304
+demon demonic crustaceal warrior cdssummon~
+a crustaceal demon warrior~
+A demonic warrior, covered in crustaceal plates stands warily here.
+~
+A hunched, human figure, with long, lithe arms and legs, is covered in
+thick crustaceal plates.  The skin that hangs from its arms and legs is
+covered with dark sores.  
+~
+demon~
+water scholar~
+AGL 0 DTZ E 0
+42 21 15d178+949 42d10+100 5d9+20 bash~
+smash~
+-16 -16 -16 -3
+F B
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+ACHIMQV ABCDEFGHIJKPUX A medium chitin
+V4 19305
+demon demonic sorceror crustaceal cdssummon~
+a crustaceal demon sorceror~
+A demonic sorceror, covered in thin crustaceal plates, is here.
+~
+A hunched, human figure, with long, lithe arms and legs, is covered in
+thin, cracked crustaceal plates.  The skin that hangs from its arms and legs
+is covered with dark sores.  
+~
+demon~
+water scholar~
+AGL 0 DTZ E 0
+40 20 16d170+976 40d10+100 5d8+20 pierce~
+thrust~
+-15 -15 -15 -2
+F B
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+ACHIMQV ABCDEFGHIJKPUX A medium chitin
+V4 19306
+fish thickly scaled large~
+a thickly scaled fish~
+A large, thickly scaled fish swims about here.
+~
+This large fish is covered with thick, dark grey scales.  
+~
+generic~
+water scholar~
+AGN 0 T N 0
+5 2 1d17+42 5d10+100 2d3+2 pierce~
+bite~
+7 7 7 8
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGbc AEFKOX A medium unknown
+V4 19307
+fish pale long~
+a long pale fish~
+A long, pale fish swims slowly about.
+~
+A long, pale fish, swims sluggishly through the water.  A number of wispy
+fins flow from its side, rippling in the water.  
+~
+generic~
+water scholar~
+AGN 0 T N 0
+2 1 1d3+15 0d0+0 1d2+1 pierce~
+bite~
+9 9 9 9
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGb AEFKOX A medium unknown
+V4 19308
+eel green dark~
+a dark green eel~
+A dark green eel swims cautiously about.
+~
+A dark green eel circles warily through the water.  A few black spots
+bespeckle its skin.  As well, its glassy eyes are strangely pale.  
+~
+generic~
+water scholar~
+AGN 0 T N 0
+3 1 1d6+24 0d0+0 1d3+2 pierce~
+bite~
+9 9 9 9
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGRc AFKOX A medium unknown
+V4 19309
+push-bot~
+a push-bot~
+A push-bot stands here, preparing to push the statue.
+~
+~
+human~
+water scholar~
+ABL 0 L N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 19310
+reminder-bot~
+a reminder-bot~
+A reminder-bot is here, saying \@19311 == obj to go east\@.
+~
+~
+human~
+water scholar~
+ABL 0 L N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 19311
+slayer-bot~
+a slayer-bot~
+A lidraeun caves slayer-bot.
+~
+~
+human~
+water scholar~
+A 0 L N 0
+1 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium unknown
+V4 19312
+tentacle thickly plated lidraeutentacle~
+a thickly plated tentacle~
+A thickly plated tentacle juts from the rock wall.
+~
+The dark flesh of this large tentacle is plated sparsely with thick shell
+plates and sores.  
+~
+generic~
+water scholar~
+ABL 0 0 E 0
+45 23 15d190+911 0d0+0 5d8+21 slash~
+slash~
+-18 -18 -18 -4
+K a
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AL 0 0 medium unknown
+>rand_prog 50~
+if isfight($i)
+else
+ mpvalueset 1 0
+ mpvalueset 3 1
+ mproomcmd mptrigger all
+ mpvaluerand 2 0 $1
+ mpvalueset 4 0
+ mpvalueset 3 2
+ mproomcmd mptrigger all
+endif
+~
+>trigger_prog 100~
+if ispc($n)
+ if mobvalue(3) == 1
+  mpvalueup 1
+ else
+  if mobvalue(4) == $2
+   mpkill $n
+  endif
+  mpvalueup 4
+ endif
+endif
+~
+|
+V4 19313
+abysmal demon~
+an abysmal demon~
+An abysmal demon crouches here, squirming and shifting.
+~
+Born of the undersea abyss, the bipedal form of this demon is covered
+with squirming tentacles and crustaceal claws.  A thin body allows it to
+skitter quickly across the sea floor, and to hide in narrow rock crevices. 
+As well, the thin membrane webbing beneath its arms would allow it to travel
+cleanly through water.  
+
+~
+demon~
+water scholar~
+AGHL 0 DF E 0
+42 21 15d180+949 42d10+100 5d9+20 pierce~
+scratch~
+-15 -15 -15 -2
+FIKU B
+26 0 0 0 0 0 0 0 0 0 0 0 0 40 0 0 0 0 0 -40 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+ACHMQV ABCDEFGHIJKNPU 0 medium unknown
+>rand_prog 100~
+if sector($i) != underwater
+    emote flails its limbs about, convulsing and hissing violently.
+    mpdamage $i 5000 5000 5000
+endif
+mpvalueset 5 1
+mpvalueset 6 0
+mpvalueset 3 2
+mproomcmd mptrigger all
+mpvalueset 3 0
+if isfighting($i)
+    if mobvalue(6) > $5
+flee
+mpvalueset 0 1
+if rand(20)
+    mpvalueset 0 0
+    tell rannock ahawoi $0
+endif
+    endif
+else
+    if mobvalue(6) > $5
+    or mobvalue(0) == 1
+if isopen($i) == down
+down
+else
+if isopen($i) == west
+west
+else
+if isopen($i) == south
+south
+else
+if isopen($i) == east
+east
+else
+if isopen($i) == north
+north
+else
+if isopen($i) == up
+up
+endif
+endif
+endif
+endif
+endif
+endif
+mpvalueset 0 1
+if rand(20)
+    tell rannock ahawoi $0
+    mpvalueset 0 0
+endif
+    else
+if mobvalue(5) > 1
+    if rand(30)
+if objhere(10)
+or objhere(11)
+    emote clasps the corpse, and begins to rummage through it.
+    mpvaluerand 1 2 5
+    loop 1 to $1
+mpvaluerand 2 1 5
+get $2. corpse
+    endloop
+endif 
+    else
+if isanypchere($i)
+    mpvalueset 3 1
+    mproomcmd mptrigger all
+    mpvalueset 3 0
+endif
+    endif
+endif
+    endif
+endif
+~
+>trigger_prog 100~
+if mobvalue(3) == 1
+    if ispc($n)
+if position($n) < 5
+    emote leaps upon $N and begins frantically rummaging through $s belongings.
+    mpsetskilled
+    mpvaluerand 1 2 6
+    loop 1 to $1
+steal 1. $n
+    endloop
+    mpsetunskilled
+    mpvalueset 3 0
+    mpvalueset 0 1
+    if isopen($i) == down
+down
+else
+    if isopen($i) == west
+west
+else
+    if isopen($i) == south
+south
+else
+    if isopen($i) == east
+east
+else
+    if isopen($i) == north
+north
+else
+    if isopen($i) == up
+up
+endif
+    endif
+endif
+endif
+endif
+endif
+endif
+    endif
+endif
+if mobvalue(3) == 2
+    if ispc($n)
+mpvalueup 6
+endif
+    if isnpc($n)
+if number($n) == 19313
+or number($n) == 19315
+    mpvalueup 5
+endif
+    endif
+endif
+~
+|
+V4 19314
+worm slate grey~
+a slate grey worm~
+A large, slate grey worm slithers sightlessly here.
+~
+This large deep sea worm thrashes about mindlessly.  One end of the worm
+possesses a small mouth, lined with a sort of jagged teeth.  
+~
+centipede~
+water scholar~
+AG 0 Z E 0
+42 21 17d195+972 42d10+100 5d9+20 pierce~
+bite~
+-16 -16 -16 -2
+0 0
+26 0 0 0 0 0 0 0 0 33 0 0 0 33 -33 0 0 33 33 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMORV ABCDEFGHIJK 0 medium flesh
+V4 19315
+demon abysmal shaman~
+an abysmal demon shaman~
+An abysmal demon shaman floats here.
+~
+Born of the undersea abyss, the bipedal form of this demon is covered
+with squirming tentacles and crustaceal claws.  A thin body allows it to
+skitter quickly across the sea floor, and to hide in narrow rock crevices. 
+As well, the thin membrane webbing beneath its arms would allow it to travel
+cleanly through water.  
+~
+demon~
+water scholar~
+AFGH 0 DF E 0
+45 23 15d190+911 45d10+100 5d9+20 pierce~
+scratch~
+-18 -18 -18 -4
+FIKU B
+26 0 0 0 0 0 0 0 0 0 0 0 0 40 0 0 0 0 0 -40 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+ACHMQV ABCDEFGHIJKNPU 0 medium flesh
+#0
+
+
+
+#OBJECTS
+V13
+19300
+mast ship rotted splintered~
+a splintered, rotted ship mast~
+A rotted ship mast, splintered in many places, lies broken on the rocks.~
+~
+wood~
+treasure a 0 0 0
+0 0 0 0 0
+10 0 0 0 P
+0
+V13
+19301
+pile rotted broken boards~
+a pile of rotted broken ship boards~
+A tremendous pile of rotted, broken boards is scattered across the rock.~
+~
+wood~
+trash a 0 0 0
+0 0 0 0 0
+10 0 0 2 P
+0
+V13
+19302
+staff abyss long darkness~
+the Staff of the Abyss~
+A long staff lies here, emanating darkness.~
+~
+metal~
+weapon CEGY 0 0 AN
+staff 11 3 1 F
+smash~
+50 138 76925 3 P
+10
+A
+19 3
+A
+12 40
+A
+18 2
+E
+staff~
+A number of black strips are wrapped around the dark blue metal shaft,
+emanating darkness.  
+~
+E
+abyss~
+A number of black strips are wrapped around the dark blue metal shaft,
+emanating darkness.  
+~
+E
+long~
+A number of black strips are wrapped around the dark blue metal shaft,
+emanating darkness.  
+~
+E
+darkness~
+A number of black strips are wrapped around the dark blue metal shaft,
+emanating darkness.  
+~
+V13
+19303
+shroud burial wrapped~
+a wrapped burial shroud~
+A burial shroud lies here.~
+~
+cloth~
+armor EJ 0 0 AI
+9 9 9 5 0
+45 10 7939 2 P
+5
+A
+18 2
+A
+12 15
+A
+20 -2
+E
+shroud~
+Intricate stitching adorns these burial clothes.  
+~
+E
+burial~
+Intricate stitching adorns these burial clothes.  
+~
+E
+wrapped~
+Intricate stitching adorns these burial clothes.  
+~
+V13
+19304
+mast rotted sail broken~
+a broken mast~
+A broken mast, rotted sail still attached, lies on the rocks.~
+~
+wood~
+trash 0 0 0 0
+0 0 0 0 0
+1 0 0 2 P
+0
+V13
+19305
+chain two sickled two-sickled~
+a two-sickled chain~
+A chain with sickles on either end lies here.~
+~
+metal~
+weapon 0 0 F AN
+exotic 3 13 3 D
+slice~
+45 80 9750 2 P
+0
+E
+chain~
+Two menacing iron sickles are attached to either end of this tarnished
+silver chain.  
+~
+E
+two~
+Two menacing iron sickles are attached to either end of this tarnished
+silver chain.  
+~
+E
+sickled~
+Two menacing iron sickles are attached to either end of this tarnished
+silver chain.  
+~
+E
+two-sickled~
+Two menacing iron sickles are attached to either end of this tarnished
+silver chain.  
+~
+V13
+19306
+gloves razor plated pair black~
+a pair of razor-plated black gloves~
+A pair of gloves, plated with razors, lies here.~
+~
+metal~
+armor AEG 0 0 AH
+9 9 9 0 0
+40 40 2362 1 P
+0
+E
+gloves~
+Sharp razors, angled slightly, plate this pair of black gloves.  
+~
+E
+pair~
+Sharp razors, angled slightly, plate this pair of black gloves.  
+~
+E
+plated~
+Sharp razors, angled slightly, plate this pair of black gloves.  
+~
+E
+razor~
+Sharp razors, angled slightly, plate this pair of black gloves.  
+~
+E
+black~
+Sharp razors, angled slightly, plate this pair of black gloves.  
+~
+V13
+19307
+coil swirling smoky darkness~
+a coil of swirling, smoky darkness~
+A coil of smoky darkness lies here, swirling quickly.~
+~
+smoke~
+armor CEY 0 F AB
+8 8 8 4 0
+40 10 38849 0 P
+0
+A
+12 10
+A
+41 5
+A
+42 5
+E
+coil~
+This smoky darkness swirls around, forming a nearly solid coil.  
+~
+E
+smoky~
+This smoky darkness swirls around, forming a nearly solid coil.  
+~
+E
+darkness~
+This smoky darkness swirls around, forming a nearly solid coil.  
+~
+E
+swirling~
+This smoky darkness swirls around, forming a nearly solid coil.  
+~
+V13
+19308
+lidraeuncaveswormitem~
+a sickness~
+.~
+~
+unknown~
+trash FNYade 0 0 0
+0 0 0 0 0
+45 0 0 1 P
+0
+V13
+19309
+sigil hunter hunter\@s arrow~
+the Sigil of the Hunter\@s Arrow~
+A sigil of the Hunter\@s Arrow lies here.~
+~
+unknown~
+armor MYa 0 0 AR
+9 9 9 9 0
+40 0 3150 0 P
+0
+V13
+19310
+sigil hunter hunter\@s spear~
+the Sigil of the Hunter\@s Spear~
+A sigil of the Hunter\@s Spear is here.~
+~
+unknown~
+armor MYa 0 0 AR
+12 12 12 12 0
+50 0 4200 0 P
+0
+V13
+19311
+band rusted iron~
+a rusted iron band~
+A rusted iron band lies here.~
+~
+iron~
+armor CEGM 0 0 AM
+9 9 9 6 0
+40 10 25491 1 P
+0
+A
+13 5
+A
+41 5
+A
+12 20
+E
+rusted~
+An iron band, badly rusted, is engraved with a small onyx rune.  
+~
+E
+iron~
+An iron band, badly rusted, is engraved with a small onyx rune.  
+~
+E
+band~
+An iron band, badly rusted, is engraved with a small onyx rune.  
+~
+V13
+19312
+fish large grey slitted~
+a large slitted fish~
+A large grey fish, covered in bloody slits, lies here.~
+~
+flesh~
+food 0 0 0 AO
+10 50 0 0 0
+10 30 0 1 P
+0
+V13
+19313
+breastplate rusted iron~
+a rusted iron breastplate~
+A rusted iron breastplate lies here.~
+~
+iron~
+armor 0 0 F AD
+4 3 4 0 0
+10 85 82 2 P
+0
+E
+breastplate~
+This iron breastplate, adorned with a bleached insignia, is covered with
+rust.  
+~
+E
+iron~
+This iron breastplate, adorned with a bleached insignia, is covered with
+rust.  
+~
+E
+rusted~
+This iron breastplate, adorned with a bleached insignia, is covered with
+rust.  
+~
+V13
+19314
+leggings rusted iron pair~
+a pair of rusted iron leggings~
+A pair of rusted iron leggings lies here.~
+~
+iron~
+armor 0 0 F AF
+4 3 4 0 0
+10 30 82 2 P
+0
+E
+leggings~
+This pair of iron legging plates bound with rotted leather is covered
+with rust.  
+~
+E
+iron~
+This pair of iron legging plates bound with rotted leather is covered
+with rust.  
+~
+E
+rusted~
+This pair of iron legging plates bound with rotted leather is covered
+with rust.  
+~
+E
+pair~
+This pair of iron legging plates bound with rotted leather is covered
+with rust.  
+~
+V13
+19315
+helm iron rusted~
+a rusted iron helm~
+A rusted iron helm lies here.~
+~
+iron~
+armor 0 0 F AE
+4 4 4 0 0
+10 20 90 2 P
+0
+E
+iron~
+This iron helm, adorned with a bleached red insignia, is covered with
+rust.  
+~
+E
+rusted~
+This iron helm, adorned with a bleached red insignia, is covered with
+rust.  
+~
+E
+helm~
+This iron helm, adorned with a bleached red insignia, is covered with
+rust.  
+~
+V13
+19316
+skeleton cracked broken~
+a cracked and broken skeleton~
+A cracked and broken skeleton lies here.~
+~
+bone~
+container 0 0 F AO
+300 0 0 300 105
+35 20 0 2 P
+0
+E
+skeleton~
+The heavily damaged skeleton is covered with a thick, yellow substance,
+as well as a few bits of cloth.  
+~
+E
+broken~
+The heavily damaged skeleton is covered with a thick, yellow substance,
+as well as a few bits of cloth.  
+~
+V13
+19317
+ribcage splintered~
+a splintered ribcage~
+A splintered human ribcage lies here.~
+~
+bone~
+container 0 0 F AO
+100 0 0 100 110
+10 10 0 2 P
+0
+E
+ribcage~
+The bones of this ribcage are splintered, as well as covered with a thick
+rot.  
+~
+E
+splintered~
+The bones of this ribcage are splintered, as well as covered with a thick
+rot.  
+~
+V13
+19318
+skeleton shattered~
+a shattered skeleton~
+A shattered skeleton lies here.~
+~
+bone~
+container 0 0 F AO
+300 0 0 300 105
+10 50 0 2 P
+0
+E
+skeleton~
+The ribcage and skull of this skeleton have been shattered.  
+~
+E
+shattered~
+The ribcage and skull of this skeleton have been shattered.  
+~
+V13
+19319
+halberd slightly rusted silver~
+a slightly rusted silver halberd~
+A silver halberd, slightly rusted, lies here.~
+~
+silver~
+weapon 0 0 F AN
+polearm 11 2 2 F
+pierce~
+30 180 358 3 P
+0
+E
+halberd~
+A slight amount of rust obscures the shine of the silver halberd\@s blade.  
+~
+E
+slightly~
+A slight amount of rust obscures the shine of the silver halberd\@s blade.  
+~
+E
+rusted~
+A slight amount of rust obscures the shine of the silver halberd\@s blade.  
+~
+E
+silver~
+A slight amount of rust obscures the shine of the silver halberd\@s blade.  
+~
+V13
+19320
+cloak rotting shredded white~
+a rotting, shredded white cloak~
+A shredded, rotting cloak lies here.~
+~
+cloth~
+armor 0 0 F AD
+6 7 6 0 0
+25 30 475 2 P
+0
+E
+white~
+The edges of this rotting, shredded cloak are singed heavily.  
+~
+E
+rotting~
+The edges of this rotting, shredded cloak are singed heavily.  
+~
+E
+shredded~
+The edges of this rotting, shredded cloak are singed heavily.  
+~
+E
+cloak~
+The edges of this rotting, shredded cloak are singed heavily.  
+~
+V13
+19321
+shirt silver chainmail~
+a shirt of silver chainmail~
+A shirt of silver chainmail lies here.~
+~
+silver~
+armor 0 0 F AD
+8 8 8 0 0
+30 100 600 2 P
+0
+E
+chainmail~
+This shirt of silver chainmail is sparsely rusted.  
+~
+E
+silver~
+This shirt of silver chainmail is sparsely rusted.  
+~
+E
+shirt~
+This shirt of silver chainmail is sparsely rusted.  
+~
+V13
+19322
+skeleton headless smashed~
+a smashed, headless skeleton~
+A smashed, headless skeleton lies here.~
+~
+bone~
+container 0 0 F AO
+250 0 0 250 110
+50 60 0 2 P
+0
+V13
+19323
+bag cloth potion~
+a cloth potion bag~
+A cloth potion bag lies here.~
+~
+cloth~
+container 0 0 F AO
+40 A 0 40 100
+30 15 0 2 P
+0
+E
+bag~
+This potion bag is woven of thin, grey cloth.  
+~
+E
+potion~
+This potion bag is woven of thin, grey cloth.  
+~
+E
+cloth~
+This potion bag is woven of thin, grey cloth.  
+~
+V13
+19324
+potion broken glass bottle~
+a broken glass potion bottle~
+A broken glass potion bottle lies here.~
+~
+glass~
+trash 0 0 F AO
+0 0 0 0 0
+10 5 0 2 P
+0
+E
+potion~
+Numerous cracks and holes cover this glass potion bottle.  
+~
+E
+broken~
+Numerous cracks and holes cover this glass potion bottle.  
+~
+E
+glass~
+Numerous cracks and holes cover this glass potion bottle.  
+~
+E
+bottle~
+Numerous cracks and holes cover this glass potion bottle.  
+~
+V13
+19325
+chest ashen onyx studded~
+an onyx studded ashen chest~
+An onyx studded ashen chest rests here.~
+~
+wood~
+trash Ya 0 0 0
+0 0 0 0 0
+60 0 0 2 P
+0
+V13
+19326
+obisidian chip~
+an obsidian chip~
+An obsidian chip lies here.~
+~
+obsidian~
+trash 0 0 F AO
+0 0 0 0 0
+5 5 0 2 P
+0
+E
+chip~
+The rounded faces of this obsidian chip are strangely lustrous.  
+~
+E
+obsidian~
+This rough piece of pumice is porous, and extremely light.  
+~
+V13
+19327
+chest gold studded oak~
+a gold lined oak chest~
+An oak chest, lined with gold, lies here.~
+~
+oak~
+container Ya 0 0 0
+5000 0 0 3000 100
+60 0 0 4 P
+0
+V13
+19328
+crest golden scratched relief~
+a golden crest with a scratched relief~
+A golden crest with a scratched relief lies here.~
+~
+gold~
+trash 0 0 0 AO
+0 0 0 0 0
+40 40 0 2 P
+0
+E
+crest~
+A scratched relief of an aelin clad in robes adorns is set on the crest\@s
+face.  
+~
+E
+golden~
+A scratched relief of an aelin clad in robes adorns is set on the crest\@s
+face.  
+~
+E
+relief~
+A scratched relief of an aelin clad in robes adorns is set on the crest\@s
+face.  
+~
+E
+scratched~
+A scratched relief of an aelin clad in robes adorns is set on the crest\@s
+face.  
+~
+V13
+19329
+gauntlets blessed assilsana steel shining~
+the blessed gauntlets of Assilsana~
+A pair of shining steel gauntlets lies here.~
+~
+steel~
+armor AGIKY 0 0 AH
+10 10 10 8 0
+51 120 98795 1 P
+4
+A
+12 30
+A
+41 10
+A
+20 -2
+A
+18 3
+E
+gauntlets~
+White light pours forth from these steel gauntlets, forged and blessed by
+a powerful archmage.  
+~
+E
+blessed~
+White light pours forth from these steel gauntlets, forged and blessed by
+a powerful archmage.  
+~
+E
+assilsana~
+White light pours forth from these steel gauntlets, forged and blessed by
+a powerful archmage.  
+~
+E
+shining~
+White light pours forth from these steel gauntlets, forged and blessed by
+a powerful archmage.  
+~
+E
+steel~
+White light pours forth from these steel gauntlets, forged and blessed by
+a powerful archmage.  
+~
+V13
+19330
+stone brown rune etched black~
+a brown stone etched with a black rune~
+A brown stone etched with a black rune lies here.~
+~
+stone~
+trash ACEGJMY 0 0 AO
+0 0 0 0 0
+50 15 0 2 P
+1
+A
+19 -3
+A
+18 -3
+A
+17 5
+A
+12 -40
+A
+13 -40
+E
+stone~
+A fine black rune is carved on the face of this brown stone.  
+~
+E
+brown~
+A fine black rune is carved on the face of this brown stone.  
+~
+E
+rune~
+A fine black rune is carved on the face of this brown stone.  
+~
+E
+black~
+A fine black rune is carved on the face of this brown stone.  
+~
+E
+etched~
+A fine black rune is carved on the face of this brown stone.  
+~
+V13
+19331
+mace shining silver~
+a shining silver mace~
+A shining silver mace lies here.~
+~
+silver~
+weapon AG 0 0 AN
+mace 3 13 1 0
+smash~
+45 225 9750 2 P
+0
+V13
+19332
+cloud swirling smoky darkness~
+a cloud of swirling, smoky darkness~
+A cloud of smoky darkness swirls about the murky depths.~
+~
+smoke~
+trash 0 0 0 0
+0 0 0 0 0
+50 100 0 2 P
+0
+E
+cloud~
+Tendrils of smoky darkness course through this cloud.  A central nexus
+seems to keep the darkness in check, and crackles with brimming void
+energies.  
+~
+E
+swirling~
+Tendrils of smoky darkness course through this cloud.  A central nexus
+seems to keep the darkness in check, and crackles with brimming void
+energies.  
+~
+E
+smoky~
+Tendrils of smoky darkness course through this cloud.  A central nexus
+seems to keep the darkness in check, and crackles with brimming void
+energies.  
+~
+E
+darkness~
+Tendrils of smoky darkness course through this cloud.  A central nexus
+seems to keep the darkness in check, and crackles with brimming void
+energies.  
+~
+V13
+19333
+pillar short stone~
+a short stone pillar~
+A short stone pillar stands here, a thin circle carved into its surface.~
+~
+stone~
+container Ya 0 0 0
+500 0 0 200 100
+60 0 0 4 P
+0
+V13
+19334
+pit treasure depression~
+a treasure pit~
+A depression in the solidified magma serves as a treasure pit.~
+~
+stone~
+container Ya 0 0 0
+6000 0 0 500 100
+60 0 0 4 P
+0
+V13
+19335
+pumice chunk grey~
+a chunk of grey pumice~
+A chunk of grey pumice lies here.~
+~
+stone~
+trash 0 0 F AO
+0 0 0 0 0
+5 5 0 2 P
+0
+E
+grey~
+This rough piece of pumice is porous, and extremely light.  
+~
+E
+chunk~
+This rough piece of pumice is porous, and extremely light.  
+~
+E
+pumice~
+This rough piece of pumice is porous, and extremely light.  
+~
+V13
+19336
+talisman crude bone wood~
+a crude talisman~
+A crudely crafted talisman of bone and wood lies here.~
+~
+bone~
+trash 0 0 0 AO
+0 0 0 0 0
+10 10 0 2 P
+0
+E
+talisman~
+Several short bone shards and framents of wood are bundled together with
+cords of thick, scaly skin.  A great number of these cords have been
+fastened loosely to the center of the talisman.  
+~
+E
+crude~
+Several short bone shards and framents of wood are bundled together with
+cords of thick, scaly sk in.  A great number of these cords have been
+fastened loosely to the center of the talisman.  
+~
+E
+bone~
+Several short bone shards and framents of wood are bundled together with
+cords of thick, scaly sk in.  A great number of these cords have been
+fastened loosely to the center of the talisman.  
+~
+E
+wood~
+Several short bone shards and framents of wood are bundled together with
+cords of thick, scaly sk in.  A great number of these cords have been
+fastened loosely to the center of the talisman.  
+~
+V13
+19337
+spear whale bone whale-bone~
+a whale-bone spear~
+A spear carved from whale bone lies here.~
+~
+bone~
+weapon 0 0 F AN
+spear 7 5 2 F
+thrust~
+45 160 9750 3 P
+0
+E
+spear~
+This spear is carved from lidraeun whale bone, and tipped with several
+serrated bits of metal.  
+~
+E
+whale~
+This spear is carved from lidraeun whale bone, and tipped with several
+serrated bits of metal.  
+~
+E
+bone~
+This spear is carved from lidraeun whale bone, and tipped with several
+serrated bits of metal.  
+~
+E
+whale-bone~
+This spear is carved from lidraeun whale bone, and tipped with several
+serrated bits of metal.  
+~
+V13
+19338
+pouch scaly skin~
+a scaly skin pouch~
+A pouch made of scaly skin lies here.~
+~
+scale~
+container 0 0 0 AO
+10 AC 0 10 100
+10 4 0 2 P
+0
+E
+skin~
+This large pouch made of an unidentifiable scaly skin has a small bone
+affixed to the side to seal it shut.  
+~
+E
+scaly~
+This large pouch made of an unidentifiable scaly skin has a small bone
+affixed to the side to seal it shut.  
+~
+E
+pouch~
+This large pouch made of an unidentifiable scaly skin has a small bone
+affixed to the side to seal it shut.  
+~
+V13
+19339
+hook bone~
+a bone hook~
+A simple bone hook lies here.~
+~
+bone~
+trash 0 0 0 AO
+0 0 0 0 0
+1 1 0 2 P
+0
+E
+bone~
+This bone hook is covered with numerous scratches and much rot.  
+~
+E
+hook~
+This bone hook is covered with numerous scratches and much rot.  
+~
+V13
+19340
+cord skin~
+a cord of skin~
+A cord of skin, twightly wound, lies here.~
+~
+flesh~
+trash 0 0 0 AO
+0 0 0 0 0
+1 1 0 2 P
+0
+E
+skin~
+Rot covers this tightly twisted cord of skin.  
+~
+E
+cord~
+Rot covers this tightly twisted cord of skin.  
+~
+V13
+19341
+skeleton srryn crushed~
+a crushed srryn skeleton~
+A crushed srryn skeleton lies here.~
+~
+bone~
+container 0 0 F AO
+300 0 0 300 105
+10 50 0 2 P
+0
+E
+crushed~
+This srryn skeleton has been badly crushed from numerous angles.  
+~
+E
+srryn~
+This srryn skeleton has been badly crushed from numerous angles.  
+~
+E
+skeleton~
+This srryn skeleton has been badly crushed from numerous angles.  
+~
+V13
+19342
+skeleton burned human~
+a burned human skeleton~
+A badly burned human skeleton lies here.~
+~
+bone~
+container 0 0 F AO
+300 0 0 300 105
+10 50 0 2 P
+0
+E
+human~
+The bones of this skeleton are horribly charred and shattered.  
+~
+E
+skeleton~
+The bones of this skeleton are horribly charred and shattered.  
+~
+E
+burned~
+The bones of this skeleton are horribly charred and shattered.  
+~
+V13
+19343
+statue fractured warrior shield~
+a fractured statue of a warrior~
+A fractured statue of a warrior lies here.~
+~
+stone~
+trash AYa 0 0 0
+0 0 0 0 0
+50 0 0 2 P
+0
+E
+shield~
+This statue depicts a warrior bearing a shield, inset with a cracked
+white crystal.  
+~
+E
+warrior~
+This statue depicts a warrior bearing a shield, inset with a cracked
+white crystal.  
+~
+E
+statue~
+This statue depicts a warrior bearing a shield, inset with a cracked
+white crystal.  
+~
+E
+fractured~
+This statue depicts a warrior bearing a shield, inset with a cracked
+white crystal.  
+~
+>rand_prog 7~
+mpvaluerand 0 0 3
+if objvalue(0) == 0
+    mpecho The crystal embedded in a fractured statue of a warrior\@s shield shudders slightly.
+endif
+if objvalue(0) == 1
+    mpecho Tendrils of energy snake from a fractured statue of a warrior, then dissolve.
+endif
+if objvalue(0) == 2
+    mpecho A fractured statue of a warrior seems momentarily to move, but quickly grows still.
+endif
+if objvalue(0) == 3
+    mpecho A circular energy form takes shape behind a fractured statue of a warrior, then is swallowed by the abysmally dark waters.
+endif
+~
+|
+V13
+19344
+longsword melted partially~
+a partially melted longsword~
+A partially melted longsword lies here.~
+~
+iron~
+weapon 0 0 F AN
+sword 3 14 3 0
+slash~
+50 180 30574 2 P
+0
+E
+partially~
+This blade, and the polished silver crest on its hilt, have been
+partially melted.  
+~
+E
+melted~
+This blade, and the polished silver crest on its hilt, have been
+partially melted.  
+~
+E
+longsword~
+This blade, and the polished silver crest on its hilt, have been
+partially melted.  
+~
+V13
+19345
+forearm hand skeletal charred~
+a charred, skeletal forearm and hand~
+A charred, skeletal hand clutching a partially melted longsword lies here.~
+~
+bone~
+trash 0 0 F AO
+0 0 0 0 0
+1 5 0 2 P
+0
+E
+charred~
+These bones are very badly charred and burned.  
+~
+E
+skeletal~
+These bones are very badly charred and burned.  
+~
+E
+forearm~
+These bones are very badly charred and burned.  
+~
+E
+hand~
+These bones are very badly charred and burned.  
+~
+V13
+19346
+spear slender serrated iron oak~
+a slender oak spear~
+A slender oak spear with a serrated iron tip lies here.~
+~
+oak~
+weapon 0 0 F AN
+spear 10 3 2 0
+pierce~
+40 150 3900 3 P
+0
+E
+oak~
+Several lengths of shredded cloth are wrapped about the oaken shaft of
+this spear.  A number of sharp, serrated points adorn the iron tip of the
+spear.  
+~
+E
+slender~
+Several lengths of shredded cloth are wrapped about the oaken shaft of
+this spear.  A number of sharp, serrated points adorn the iron tip of the
+spear.  
+~
+E
+serrated~
+Several lengths of shredded cloth are wrapped about the oaken shaft of
+this spear.  A number of sharp, serrated points adorn the iron tip of the
+spear.  
+~
+E
+iron~
+Several lengths of shredded cloth are wrapped about the oaken shaft of
+this spear.  A number of sharp, serrated points adorn the iron tip of the
+spear.  
+~
+E
+spear~
+Several lengths of shredded cloth are wrapped about the oaken shaft of
+this spear.  A number of sharp, serrated points adorn the iron tip of the
+spear.  
+~
+V13
+19347
+cairn carefully built stone depressions~
+a carefully built stone cairn~
+A cairn with five small depressions is carefully stacked here.~
+~
+stone~
+trash Ya 0 0 0
+0 0 0 0 0
+10 0 0 2 P
+0
+V13
+19348
+staff whale bone carved whale-bone~
+a carved whale-bone staff~
+A carved whale-bone staff lies here.~
+~
+bone~
+weapon 0 0 F AN
+staff 6 6 1 0
+smash~
+45 110 9750 3 P
+0
+E
+carved~
+This staff is made from a large whale bone.  A number of images have been
+carved into the sides, most notably a large lattice of swirling lines. 
+Several minute figures also appear at the base of the staff.  
+~
+E
+whale~
+This staff is made from a large whale bone.  A number of images have been
+carved into the sides, most notably a large lattice of swirling lines. 
+Several minute figures also appear at the base of the staff.  
+~
+E
+staff~
+This staff is made from a large whale bone.  A number of images have been
+carved into the sides, most notably a large lattice of swirling lines. 
+Several minute figures also appear at the base of the staff.  
+~
+E
+bone~
+This staff is made from a large whale bone.  A number of images have been
+carved into the sides, most notably a large lattice of swirling lines. 
+Several minute figures also appear at the base of the staff.  
+~
+E
+whale-bone~
+This staff is made from a large whale bone.  A number of images have been
+carved into the sides, most notably a large lattice of swirling lines. 
+Several minute figures also appear at the base of the staff.  
+~
+V13
+19349
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+V13
+19350
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+V13
+19351
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+V13
+19352
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+V13
+19353
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+#0
+
+
+
+#ROOMS
+#19300
+A Narrow Underwater Tunnel~
+A narrow tunnel, its walls of rough, dark gray rock, descends through the
+thundering waters of the open ocean above.  Water swirls between the
+constrictions of the tunnel walls, stirring the meager plant life growing
+between rock crevices.  The water becomes significantly cooler in the dark
+below, as cold water, untouched by the sun, drains upward through the tunnel
+opening above, where the rock walls curve sharply outward to the ocean
+floor.  
+~
+~
+0
+0 4194304 11
+D5
+The narrow underwater tunnel continues.  
+~
+~
+0 0 19301
+W 5 0 0
+Z 5 5
+S
+#19301
+A Narrow Underwater Tunnel~
+A narrow tunnel, its walls of rough, dark gray rock, descends through the
+cold Lidraeun waters.  Water swirls between the constrictions of the tunnel
+walls, stirring the meager plant life growing between rock crevices.  The
+water becomes significantly cooler below, where a massive cave expands
+outward in all directions, untouched by the sun as it drains upward through
+the narrow tunnel.  
+~
+~
+0
+0 4194304 11
+D4
+The narrow underwater tunnel rises towards the ocean surface.  
+~
+~
+0 0 19300
+D5
+The narrow underwater tunnel expands into a cavern.  
+~
+~
+0 0 19302
+W 5 0 0
+Z 5 5
+S
+#19302
+An Expansive Underwater Cave~
+From the narrow tunnel above, the dark grey rock walls sprawl outward to
+form a vast underwater cavern.  Cold, dark waters, untouched by the sun,
+swirl about the cavern, carrying bits of plant material.  Dim shafts of
+light filter through the dusky waters of the tunnel above, but are only
+strong enough to illuminate the rock immediatly surrounding the cave
+opening, leaving the rest of the cavern in darkness.  
+~
+~
+0
+0 4194305 11
+D0
+The expansive underwater cavern continues.  
+~
+~
+0 0 19304
+D1
+The expansive underwater cavern continues.  
+~
+~
+0 0 19306
+D2
+The expansive underwater cavern continues.  
+~
+~
+0 0 19308
+D3
+The expansive underwater cavern continues.  
+~
+~
+0 0 19310
+D4
+A narrow tunnel cuts through the rock of the cavern ceiling.  
+~
+~
+0 0 19301
+D5
+~
+~
+0 0 19319
+W 5 0 0
+Z 5 5
+S
+#19303
+An Expansive Underwater Cave~
+From the narrow tunnel in the ceiling to the southeast, the dark grey
+rock walls sprawl outward to form a vast underwater cavern.  Cold, dark
+waters, untouched by the sun, swirl sluggishly about the cavern, carrying
+bits of plant material.  Dim shafts of light filter through the dusky waters
+of the tunnel in the ceiling to the southeast, but are only strong enough to
+illuminate the rock immediatly surrounding the cave opening, leaving the
+rest of the cavern in darkness.  To the north and west, the cavern ends, the
+jagged rocks of its walls turning a slow corner, and continuing to the east,
+south, and below.  A large swath of the northern wall is charred and cracked
+heavily.  
+~
+~
+0
+0 4194305 11
+D1
+The expansive underwater cavern continues.  
+~
+~
+0 0 19304
+D2
+The expansive underwater cavern continues.  
+~
+~
+0 0 19310
+D5
+The expansive underwater cavern continues.  
+~
+~
+0 0 19311
+W 5 0 0
+Z 5 5
+S
+#19304
+An Expansive Underwater Cave~
+From the narrow tunnel in the ceiling to the south, the dark grey rock
+walls sprawl outward to form a vast underwater cavern.  Cold, dark waters,
+untouched by the sun, swirl sluggishly about the cavern, carrying bits of
+plant material.  Dim shafts of light filter through the dusky waters of the
+tunnel in the ceiling to the south, but are only strong enough to illuminate
+the rock immediatly surrounding the cave opening, leaving the rest of the
+cavern in darkness.  To the north, the cavern ends, the jagged rocks of its
+walls sprawling into darkness to the east, west, and below.  
+~
+~
+0
+0 0 0
+D1
+The expansive underwater cavern continues.  
+~
+~
+0 0 19305
+D2
+The expansive underwater cavern continues.  
+~
+~
+0 0 19302
+D3
+The expansive underwater cavern continues.  
+~
+~
+0 0 19303
+D5
+The expansive underwater cavern continues.  
+~
+~
+0 0 19312
+W 5 0 0
+Z 5 5
+S
+#19305
+An Expansive Underwater Cave~
+From the narrow tunnel in the ceiling to the southwest, the dark grey
+rock walls sprawl outward to form a vast underwater cavern.  Cold, dark
+waters, untouched by the sun, swirl sluggishly about the cavern, carrying
+bits of plant material.  Dim shafts of light filter through the dusky waters
+of the tunnel in the ceiling to the southwest, but are only strong enough to
+illuminate the rock immediatly surrounding the cave opening, leaving the
+rest of the cavern in darkness.  To the north and east, the cavern ends, the
+jagged rocks of its walls turning a slow corner, and continuing to the west,
+south, and below.  
+~
+~
+0
+0 4194305 11
+D2
+The expansive underwater cavern continues.  
+~
+~
+0 0 19306
+D3
+The expansive underwater cavern continues.  
+~
+~
+0 0 19304
+D5
+The expansive underwater cavern continues.  
+~
+~
+0 0 19313
+W 5 0 0
+Z 5 5
+S
+#19306
+An Expansive Underwater Cave~
+From the narrow tunnel in the ceiling to the west, the dark grey rock
+walls sprawl outward to form a vast underwater cavern.  Cold, dark waters,
+untouched by the sun, swirl sluggishly about the cavern, carrying bits of
+plant material.  Dim shafts of light filter through the dusky waters of the
+tunnel in the ceiling to the west, but are only strong enough to illuminate
+the rock immediatly surrounding the cave opening, leaving the rest of the
+cavern in darkness.  To the east, the cavern ends, the jagged rocks of its
+walls sprawling to the north, south, and below.  
+~
+~
+0
+0 4194305 11
+D0
+The expansive underwater cavern continues.  
+~
+~
+0 0 19305
+D2
+The expansive underwater cavern continues.  
+~
+~
+0 0 19307
+D3
+The expansive underwater cavern continues.  
+~
+~
+0 0 19302
+D5
+The expansive underwater cavern continues.  
+~
+~
+0 0 19314
+W 5 0 0
+Z 5 5
+S
+#19307
+An Expansive Underwater Cave~
+From the narrow tunnel in the ceiling to the northwest, the dark grey
+rock walls sprawl outward to form a vast underwater cavern.  Cold, dark
+waters, untouched by the sun, swirl sluggishly about the cavern, carrying
+bits of plant material.  Dim shafts of light filter through the dusky waters
+of the tunnel in the ceiling to the northwest, but are only strong enough to
+illuminate the rock immediatly surrounding the cave opening, leaving the
+rest of the cavern in darkness.  To the south and east, the cavern wall
+lies, its jagged rocks turning a slow corner, and continuing to the west,
+north, and below.  
+~
+~
+0
+0 4194305 11
+D0
+The expansive underwater cavern continues.  
+~
+~
+0 0 19306
+D3
+The expansive underwater cavern continues.  
+~
+~
+0 0 19308
+D5
+The expansive underwater cavern continues.  
+~
+~
+0 0 19315
+W 5 0 0
+Z 5 5
+S
+#19308
+An Expansive Underwater Cave~
+From the narrow tunnel in the ceiling to the north, the dark grey rock
+walls sprawl outward to form a vast underwater cavern.  Cold, dark waters,
+untouched by the sun, swirl sluggishly about the cavern, carrying bits of
+plant material.  Dim shafts of light filter through the dusky waters of the
+tunnel in the ceiling to the north, but are only strong enough to illuminate
+the rock immediatly surrounding the cave opening, leaving the rest of the
+cavern in darkness.  To the south, the cavern wall lies, the jagged rocks
+sprawling into darkness to the east, west, and below.  
+~
+~
+0
+0 4194305 11
+D0
+The expansive underwater cavern continues.  
+~
+~
+0 0 19302
+D1
+The expansive underwater cavern continues.  
+~
+~
+0 0 19307
+D3
+The expansive underwater cavern continues.  
+~
+~
+0 0 19309
+D5
+The expansive underwater cavern continues.  
+~
+~
+0 0 19316
+W 5 0 0
+Z 5 5
+S
+#19309
+An Expansive Underwater Cave~
+From the narrow tunnel in the ceiling to the northeast, the dark grey
+rock walls sprawl outward to form a vast underwater cavern.  Cold, dark
+waters, untouched by the sun, swirl sluggishly about the cavern, carrying
+bits of plant material.  Dim shafts of light filter through the dusky waters
+of the tunnel in the ceiling to the northeast, but are only strong enough to
+illuminate the rock immediatly surrounding the cave opening, leaving the
+rest of the cavern in darkness.  To the south and west, the cavern ends, the
+jagged rocks of its walls turning a slow corner, and continuing to the east,
+north, and below.  
+~
+~
+0
+0 4194305 11
+D0
+The expansive underwater cavern continues.  
+~
+~
+0 0 19310
+D1
+The expansive underwater cavern continues.  
+~
+~
+0 0 19308
+D5
+The expansive underwater cavern continues.  
+~
+~
+0 0 19317
+W 5 0 0
+Z 5 5
+S
+#19310
+An Expansive Underwater Cave~
+From the narrow tunnel in the ceiling to the east, the dark grey rock
+walls sprawl outward to form a vast underwater cavern.  Cold, dark waters,
+untouched by the sun, swirl sluggishly about the cavern, carrying bits of
+plant material.  Dim shafts of light filter through the dusky waters of the
+tunnel in the ceiling to the east, but are only strong enough to illuminate
+the rock immediatly surrounding the cave opening, leaving the rest of the
+cavern in darkness.  To the west, the cavern ends, the jagged rocks of its
+walls sprawling to the north, south, and below.  
+~
+~
+0
+0 4194305 11
+D0
+The expansive underwater cavern continues.  
+~
+~
+0 0 19303
+D1
+The expansive underwater cavern continues.  
+~
+~
+0 0 19302
+D2
+The expansive underwater cavern continues.  
+~
+~
+0 0 19309
+D5
+The expansive underwater cavern continues.  
+~
+~
+0 0 19318
+W 5 0 0
+Z 5 5
+S
+#19311
+An Expansive Underwater Cave~
+The monstrous rock wall of the cavern lies to the northwest, spanning
+upward and outward in all directions.  Slowly, it curves into a jagged floor
+that sprawls to the east and south, until the dark waters of the cavern
+envelope it.  The frigid water turns sluggishly throughout the cavern,
+carrying miniscule bits of plant material.  A few feeble one leafed plants
+grow from between the dark grey rocks below, being pulled gently by the weak
+current.  A number of shallow troughs are etched into the larger slabs of
+stone, cracked and surrounded by bits of stone.  Half incinerated bone
+fragments are scattered about, mixed with the mucky sand.  
+~
+~
+0
+0 4194305 11
+D1
+The expansive underwater cavern continues.  
+~
+~
+0 0 19312
+D2
+The expansive underwater cavern continues.  
+~
+~
+0 0 19318
+D4
+The expansive underwater cavern continues.  
+~
+~
+0 0 19303
+W 5 0 0
+Z 5 5
+S
+#19312
+An Expansive Underwater Cave~
+The monstrous rock wall of the cavern lies to the north, spanning upward
+and outward in all directions.  Slowly, it curves into a jagged floor that
+sprawls to the east, south, and west, until the dark waters of the cavern
+envelope it.  The frigid water turns sluggishly throughout the cavern,
+carrying miniscule bits of plant material.  A few feeble one leafed plants
+grow from between the dark grey rocks below, being pulled gently by the weak
+current.  A number of shallow troughs are etched into the larger slabs of
+stone, cracked and surrounded by bits of stone.  A thin layer of muddy sand
+and debris covers the cave floor.  
+~
+~
+0
+0 4194305 11
+D1
+The expansive underwater cavern continues.  
+~
+~
+0 0 19313
+D2
+The expansive underwater cavern continues.  
+~
+~
+0 0 19319
+D3
+The expansive underwater cavern continues.  
+~
+~
+0 0 19311
+D4
+The expansive underwater cavern continues.  
+~
+~
+0 0 19304
+W 5 0 0
+Z 5 5
+S
+#19313
+An Expansive Underwater Cave~
+The monstrous rock wall of the cavern lies to the northeast, spanning
+upward and outward in all directions.  Slowly, it curves into a jagged floor
+that sprawls to the west and south, until the dark waters of the cavern
+envelope it.  The frigid water turns sluggishly throughout the cavern,
+carrying miniscule bits of plant material.  A few feeble one leafed plants
+grow from between the dark grey rocks below, being pulled gently by the weak
+current.  A number of shallow troughs are etched into the larger slabs of
+stone, cracked and surrounded by bits of stone.  A thin layer of slimy sand
+and debris covers the cave floor.  
+~
+~
+0
+0 4194305 11
+D2
+The expansive underwater cavern continues.  
+~
+~
+0 0 19314
+D3
+The expansive underwater cavern continues.  
+~
+~
+0 0 19312
+D4
+The expansive underwater cavern continues.  
+~
+~
+0 0 19305
+W 5 0 0
+Z 5 5
+S
+#19314
+An Expansive Underwater Cave~
+The monstrous rock wall of the cavern lies to the east, spanning upward
+and outward in all directions.  Slowly, it curves into a jagged floor that
+sprawls to the west, south, and north, until the dark waters of the cavern
+envelope it.  The frigid water turns sluggishly throughout the cavern,
+carrying miniscule bits of plant material.  A few feeble one leafed plants
+grow from between the dark grey rocks below, being pulled gently by the weak
+current.  A number of shallow troughs are etched into the larger slabs of
+stone, cracked and surrounded by bits of stone.  A large, erratically shaped
+tunnel cuts into the rock low along the eastern wall.  A number of scorched
+bones and shattered skeletal fragments are scattered throughout the muddy
+sand.  
+~
+~
+0
+0 4194305 11
+D0
+The expansive underwater cavern continues.  
+~
+~
+0 0 19313
+D1
+A narrow tunnel cuts into the dark rock wall.  
+~
+~
+0 0 19332
+D2
+The expansive underwater cavern continues.  
+~
+~
+0 0 19315
+D3
+The expansive underwater cavern continues.  
+~
+~
+0 0 19319
+D4
+The expansive underwater cavern continues.  
+~
+~
+0 0 19306
+W 5 0 0
+Z 5 5
+S
+#19315
+An Expansive Underwater Cave~
+The monstrous rock wall of the cavern lies to the southeast, spanning
+upward and outward in all directions.  Slowly, it curves into a jagged floor
+that sprawls to the west and north, until the dark waters of the cavern
+envelope it.  The frigid water turns sluggishly throughout the cavern,
+carrying miniscule bits of plant material.  A few feeble one leafed plants
+grow from between the dark grey rocks below, being pulled gently by the weak
+current.  A number of shallow troughs are etched into the larger slabs of
+stone, cracked and surrounded by bits of stone.  A thin layer of murky sand
+and debris covers the cave floor.  
+~
+~
+0
+0 4194305 11
+D0
+The expansive underwater cavern continues.  
+~
+~
+0 0 19314
+D3
+The expansive underwater cavern continues.  
+~
+~
+0 0 19316
+D4
+The expansive underwater cavern continues.  
+~
+~
+0 0 19307
+W 5 0 0
+Z 5 5
+S
+#19316
+An Expansive Underwater Cave~
+The monstrous rock wall of the cavern lies to the south, spanning upward
+and outward in all directions.  Slowly, it curves into a jagged floor that
+sprawls to the east, north, and west, until the dark waters of the cavern
+envelope it.  The frigid water turns sluggishly throughout the cavern,
+carrying miniscule bits of plant material.  A few feeble one leafed plants
+grow from between the dark grey rocks below, being pulled gently by the weak
+current.  A number of shallow troughs are etched into the larger slabs of
+stone, cracked and surrounded by bits of stone.  A thin layer of swampy sand
+and debris covers the cave floor.  
+~
+~
+0
+0 4194305 11
+D0
+The expansive underwater cavern continues.  
+~
+~
+0 0 19319
+D1
+The expansive underwater cavern continues.  
+~
+~
+0 0 19315
+D3
+The expansive underwater cavern continues.  
+~
+~
+0 0 19317
+D4
+The expansive underwater cavern continues.  
+~
+~
+0 0 19308
+W 5 0 0
+Z 5 5
+S
+#19317
+An Expansive Underwater Cave~
+The monstrous rock wall of the cavern lies to the west, spanning upward
+and outward in all directions.  Slowly, it curves into a jagged floor that
+sprawls to the east and north, until the dark waters of the cavern envelope
+it.  The frigid water turns sluggishly throughout the cavern, carrying
+miniscule bits of plant material.  A few feeble one leafed plants grow from
+between the dark grey rocks below, being pulled gently by the weak current. 
+A number of shallow troughs are etched into the larger slabs of stone,
+cracked and surrounded by bits of stone.  High along the western wall, a
+tunnel digs abruptly into the rock.  A thin layer of slimy sand and debris
+covers the cave floor.  
+~
+~
+0
+0 4194305 11
+D0
+The expansive underwater cavern continues.  
+~
+~
+0 0 19318
+D1
+The expansive underwater cavern continues.  
+~
+~
+0 0 19316
+D3
+High along the western wall, a tunnel digs abruptly into the rock.  
+~
+~
+0 0 19320
+D4
+The expansive underwater cavern continues.  
+~
+~
+0 0 19309
+W 5 0 0
+Z 5 5
+S
+#19318
+An Expansive Underwater Cave~
+The monstrous rock wall of the cavern lies to the west, spanning upward
+and outward in all directions.  Slowly, it curves into a jagged floor that
+sprawls to the east, south, and north, until the dark waters of the cavern
+envelope it.  The frigid water turns sluggishly throughout the cavern,
+carrying miniscule bits of plant material.  A few feeble one leafed plants
+grow from between the dark grey rocks below, being pulled gently by the weak
+current.  A number of shallow troughs are etched into the larger slabs of
+stone, cracked and surrounded by bits of stone.  A thin layer of miry sand
+and debris covers the cave floor.  
+~
+~
+0
+0 4194305 11
+D0
+~
+~
+0 0 19311
+D1
+~
+~
+0 0 19319
+D2
+~
+~
+0 0 19317
+D4
+~
+~
+0 0 19310
+W 5 0 0
+Z 5 5
+S
+#19319
+An Expansive Underwater Cave~
+The jagged rocks of the underwater cave floor sprawl outward in all
+directions, diminishing as the dark water envelopes them.  The frigid water
+turns sluggishly throughout the cavern, carrying miniscule bits of plant
+material.  A few feeble one leafed plants grow from between the dark grey
+rocks below, being pulled gently by the weak current.  A number of shallow
+troughs are etched into the larger slabs of stone, cracked and surrounded by
+bits of stone.  A thin layer of murky sand and debris covers the cave floor.
+~
+~
+0
+0 4194305 11
+D0
+The expansive underwater cavern continues.  
+~
+~
+0 0 19312
+D1
+The expansive underwater cavern continues.  
+~
+~
+0 0 19314
+D2
+The expansive underwater cavern continues.  
+~
+~
+0 0 19316
+D3
+The expansive underwater cavern continues.  
+~
+~
+0 0 19318
+D4
+The expansive underwater cavern continues.  
+~
+~
+0 0 19302
+W 5 0 0
+Z 5 5
+S
+#19320
+An Underwater Tunnel~
+An expansive tunnel cuts through the rock, filled with nearly stagnant,
+frigid waters.  A meager current pulls to the east, carrying tiny bits of
+plant material into the expansive cavern that expands beyond the tunnel end.
+The tunnel curves slowly down, disappearing in the dark ocean water.  As
+well, a number of deep scratches describe the jagged surface of the tunnel,
+spiraling and crossing at random angles.  
+~
+~
+0
+0 4194305 11
+D1
+The tunnel gives way to an expansive cavern 
+~
+~
+0 0 19317
+D5
+The underwater tunnel continues.  
+~
+~
+0 0 19321
+W 5 0 0
+Z 5 5
+S
+#19321
+An Underwater Tunnel~
+An expansive tunnel cuts through the rock, filled with nearly stagnant,
+frigid waters.  A meager current flows from the west, carrying tiny bits of
+plant material into the tunnel above.  The tunnel curves slowly westward
+from above, disappearing into the dark ocean water in both directions.  As
+well, a number of deep scratches describe the jagged surface of the tunnel,
+spiraling and crossing at random angles.  
+~
+~
+0
+0 4194305 11
+D3
+The underwater tunnel continues.  
+~
+~
+0 0 19322
+D4
+The underwater tunnel continues.  
+~
+~
+0 0 19320
+W 5 0 0
+Z 5 5
+S
+#19322
+An Underwater Tunnel~
+An expansive tunnel cuts through the rock, filled with nearly stagnant,
+frigid waters.  A meager current flows from below, carrying tiny bits of
+plant material into the tunnel continuing to the east.  The tunnel curves
+slowly downward as well as narrowing significantly, from the east,
+disappearing into the dark ocean water in both directions.  As well, a
+number of deep scratches describe the jagged surface of the tunnel,
+spiraling and crossing at random angles.  
+~
+~
+0
+0 4194305 11
+D1
+The underwater tunnel continues.  
+~
+~
+0 0 19321
+D5
+The underwater tunnel continues.  
+~
+~
+0 0 19323
+W 5 0 0
+Z 5 5
+S
+#19323
+An Underwater Tunnel~
+A narrowing tunnel cuts through the rock, filled with nearly stagnant,
+frigid waters.  A meager current flows from below, carrying tiny bits of
+plant material into the tunnel continuing above.  The tunnel follows a
+nearly straight path both above and below, disappearing into the dark ocean
+water in both directions.  As well, a number of deep scratches describe the
+jagged surface of the tunnel, spiraling and crossing at random angles.  
+~
+~
+0
+0 4194305 11
+D4
+The underwater tunnel continues.  
+~
+~
+0 0 19322
+D5
+The underwater tunnel continues.  
+~
+~
+0 0 19324
+W 5 0 0
+Z 5 5
+S
+#19324
+A Large Underwater Cave~
+A large cavern expands from the tunnel above.  Deep crevices and jagged
+rocks adorn the dark grey walls that lie to the south and the west.  A
+narrow tunnel cuts through the rock of the ceiling, drawing the sluggishly
+turning current into it.  Small bits of rock and splintered wood drift
+slowly through the current.  A few pale mosses grow sparsely on the rocks to
+the north, where the cavern floor begins to fall off sharply.  The cavern
+continues to the east as well.  
+~
+~
+0
+0 0 0
+D0
+The cavern floor falls away sharply.  
+~
+~
+0 0 19326
+D1
+The large cave continues.  
+~
+~
+0 0 19328
+D4
+A tunnel cuts into the jagged ceiling rock.  
+~
+~
+0 0 19323
+W 5 0 0
+Z 5 5
+S
+#19325
+An Alcove in a Large Underwater Cave~
+The rock walls and ceiling of the cave narrow here, creating a small
+alcove.  The small alcove continues below, disappearing into the pitch black
+waters.  Below and to the east, the cave floor drops off further yet, into a
+dark pit.  A warm current sweeps swiftly into the narrow alcove space from
+below, while a colder current pulls far more slowly to the east, carrying
+bits of splintered wood and rock.  
+~
+~
+0
+0 4194305 11
+D1
+The alcove expands outwards into a large cave, above a dark pit.  
+~
+~
+0 0 19326
+D5
+The narrow rock alcove continues.  
+~
+~
+0 0 19329
+W 5 0 0
+Z 5 5
+S
+#19326
+A Large Underwater Cave~
+The cavern floor drops off sharply here, into a deep pit enveloped by the
+dark ocean waters.  The jagged rocks and dark, cracked crevices of the
+surrounding floor are adorned sparsely with pale, meager mosses.  To the
+west, the floor rises sharply to meet the ceiling.  To the east and south,
+the cave continues into dark waters.  Bits of wood and rock float through
+the sluggishly turning current that is fed by a warm updraft from the pit
+below.  
+~
+~
+0
+0 4194305 11
+D1
+The floor rises abruptly as the cave continues.  
+~
+~
+0 0 19327
+D2
+The floor rises abruptly as the cave continues.  
+~
+~
+0 0 19324
+D3
+A dark alcove lies beneath the cave ceiling.  
+~
+~
+0 0 19325
+D5
+The cave floor vanishes in a dark pit.  
+~
+~
+0 0 19330
+W 5 0 0
+Z 5 5
+S
+#19327
+A Large Underwater Cave~
+The dark rock wall of the cavern lies to the northeast, spanning upward
+to the ceiling, then out to the west and south.  Slowly, it curves into a
+jagged floor that sprawls to the west and north, until the dark waters of
+the cavern envelope it.  The frigid water turns sluggishly throughout the
+cavern, carrying miniscule bits of material.  A few feeble pale mosses grow
+on the surfaces of the dark grey rocks below, being pulled gently by the
+weak current.  A number of shallow troughs are etched into the larger slabs
+of stone, cracked and surrounded by bits of stone.  
+~
+~
+0
+0 4194305 11
+D2
+The large cavern continues.  
+~
+~
+0 0 19328
+D3
+The floor of the large cavern begins to drop off quickly.  
+~
+~
+0 0 19326
+W 5 0 0
+Z 5 5
+S
+#19328
+A Large Underwater Cave~
+The dark rock wall of the cavern lies to the southeast, spanning upward
+to the ceiling, then out to the west and north.  Slowly, it curves into a
+jagged floor that sprawls to the west and north, until the dark waters of
+the cavern envelope it.  The frigid water turns sluggishly throughout the
+cavern, carrying miniscule bits of material.  A few feeble pale mosses grow
+on the surfaces of the dark grey rocks below, being pulled gently by the
+weak current.  A number of shallow troughs are etched into the larger slabs
+of stone, cracked and surrounded by bits of stone.  
+~
+~
+0
+0 4194305 11
+D0
+The large cavern continues.  
+~
+~
+0 0 19327
+D3
+The large cavern continues.  
+~
+~
+0 0 19324
+W 5 0 0
+Z 5 5
+S
+#19329
+An Alcove in a Large Underwater Cave~
+The rock walls and floor of the cave narrow here, creating a small
+alcove.  The small alcove continues above, disappearing into the pitch black
+waters.  Below and to the east, the cave floor drops off further yet, into a
+dark pit.  A warm current sweeps swiftly into the narrow alcove space from
+below, while a colder current pulls far more slowly to the east, carrying
+bits of splintered wood and rock.  
+~
+~
+0
+0 4194305 11
+D1
+The alcove expands outwards into a large cave, above a dark pit.  
+~
+~
+0 0 19330
+D4
+The narrow rock alcove continues.  
+~
+~
+0 0 19325
+W 5 0 0
+Z 5 5
+S
+#19330
+A Large Underwater Cave~
+A ledge of jagged, dark rock rises sharply to the east, eventually
+forming the cave floor.  A slightly warm current of waters flows from the
+pit below, carrying bits of flesh and dust.  A number of deep troughs
+describe the cylindrical shape of the eastern wall, as well as a few deep
+crevices.  To the west, the walls of the cave narrow, and the floor rises
+abruptly from the pit below to form a narrow alcove.  
+~
+~
+0
+0 4194305 11
+D3
+The walls of the cave narrow to form an alcove in the rock.  
+~
+~
+0 0 19329
+D4
+The pit continues.  
+~
+~
+0 0 19326
+D5
+The cave falls deeper into a dark pit.  
+~
+~
+0 0 19331
+W 5 0 0
+Z 5 5
+S
+#19331
+A Deep Underwater Pit~
+Walls of dark grey rock taper off into the pit floor below.  A number of
+deep troughs are etched into the jagged rocks, twisting and writhing in
+bizarre shapes.  A warm current of water cycles upwards, carrying dust and
+bits of flesh with it.  A few small patches of pale moss grow on some of the
+larger rocks in the pit, particularly towards the perimeter of the pit.  
+~
+~
+0
+0 4194305 11
+D4
+The pit continues, and widens outwards.  
+~
+~
+0 0 19330
+W 5 0 0
+Z 5 5
+S
+#19332
+A Wide Underwater Tunnel~
+An erratically shaped tunnel cuts through the rock, filled with slow
+moving, frigid waters.  A meager current pulls to the west, carrying tiny
+bits of plant material into the expansive cavern that opens beyond the
+tunnel end.  The tunnel curves slowly down, disappearing in the dark ocean
+water.  As well, a number of deep scratches describe the jagged surface of
+the tunnel, spiraling and crossing at random angles.  
+~
+~
+0
+0 4194305 11
+D3
+An expansive cavern opens beyond the tunnel end.  
+~
+~
+0 0 19314
+D5
+The underwater tunnel continues.  
+~
+~
+0 0 19333
+W 5 0 0
+Z 5 5
+S
+#19333
+A Wide Underwater Tunnel~
+An erratically shaped tunnel cuts through the rock, filled with nearly
+stagnant, frigid waters.  A meager current flows from below, carrying tiny
+bits of plant material into the tunnel continuing above.  The tunnel follows
+a nearly straight path both above and below, disappearing into the dark
+ocean water in both directions.  As well, a number of deep scratches
+describe the jagged surface of the tunnel, spiraling and crossing at random
+angles.  
+~
+~
+0
+0 4194305 11
+D4
+The underwater tunnel continues.  
+~
+~
+0 0 19332
+D5
+The underwater tunnel continues.  
+~
+~
+0 0 19334
+W 5 0 0
+Z 5 5
+S
+#19334
+A Wide Underwater Tunnel~
+An erratically shaped tunnel cuts through the rock, filled with nearly
+stagnant, frigid waters.  A meager current flows from below, where a small
+cave expands from the tunnel, carrying tiny bits of plant material into the
+tunnel continuing above.  The tunnel follows a nearly straight path both
+above and below, disappearing into the dark ocean water in both directions. 
+As well, a number of deep scratches describe the jagged surface of the
+tunnel, spiraling and crossing at random angles.  
+~
+~
+0
+0 4194305 11
+D4
+The underwater tunnel continues.  
+~
+~
+0 0 19333
+D5
+A small cave expands from the underwater tunnel.  
+~
+~
+0 0 19335
+W 5 0 0
+Z 5 5
+S
+#19335
+A Small Underwater Cave ~
+A small cavern expands from the tunnel above.  Deep crevices and jagged
+rocks adorn the dark grey walls that lie to the north and the west.  A
+narrow tunnel cuts through the rock of the ceiling, drawing the sluggishly
+turning current into it.  Small bits of rock and splintered wood drift
+slowly through the cave.  The cave floor lies below, where the cavern
+continues, nearly eclipsed by the dark water.  Below and to the east, the
+walls expand outwards, while below and to the south, a large rock shelf juts
+forth from the wall.  
+~
+~
+0
+0 4194305 11
+D1
+The small cave continues.  
+~
+~
+0 0 19336
+D2
+A rock shelf juts forth from the wall.  
+~
+~
+0 0 19338
+D4
+A narrow tunnel cuts through the rock.  
+~
+~
+0 0 19334
+D5
+The small cave continues.  
+~
+~
+0 0 19339
+W 5 0 0
+Z 5 5
+S
+#19336
+A Small Underwater Cave ~
+Deep crevices and jagged rocks adorn the dark grey walls that lie to the
+north and the east.  A frigid, sluggish current pulls through the cave from
+below towards the west.  Small bits of dust slowly through the cave, carried
+by the current.  The cave floor lies below, where the cavern continues,
+nearly eclipsed by the dark water.  To the west, south, and below, the walls
+expand outward, while below and to the south, a large rock shelf juts forth
+from the wall.  
+~
+~
+0
+0 4194305 11
+D2
+The small cave continues.  
+~
+~
+0 0 19337
+D3
+The small cave continues.
+~
+~
+0 0 19335
+D5
+The small cave continues.  
+~
+~
+0 0 19340
+W 5 0 0
+Z 5 5
+S
+#19337
+A Small Underwater Cave ~
+Deep crevices and jagged rocks adorn the dark grey walls that lie to the
+south and the east.  A frigid, sluggish current pulls through the cave from
+below, and flows northward.  Small bits of dust float slowly through the
+cave, carried by the current.  The cave floor lies below, where the cavern
+continues, nearly eclipsed by the dark water.  Below and to the north, the
+walls expand outward, while below and to the south, a large rock shelf juts
+forth from the wall.  
+~
+~
+0
+0 0 11
+D0
+The small cave continues.  
+~
+~
+0 0 19336
+D3
+A rock shelf juts forth from the wall.  
+~
+~
+0 0 19338
+D5
+The small cave continues.  
+~
+~
+0 0 19341
+W 5 0 0
+Z 5 5
+S
+#19338
+On a Rock Shelf~
+The dark rock wall of the cavern lies to the southwest, spanning upward
+to the low ceiling, then out to the east and north.  A shelf of rock juts
+forth from the wall, and ends abruptly at the cliff edge to the north and
+east.  The frigid water turns sluggishly throughout the cavern, carrying
+miniscule bits of dust.  A number of shallow troughs are etched into the
+larger slabs of stone, cracked and surrounded by bits of stone.  
+~
+~
+0
+0 4194305 11
+D0
+The small cave continues, and the shelf drops off.  
+~
+~
+0 0 19335
+D1
+The small cave continues, and the shelf drops off.  
+~
+~
+0 0 19337
+W 5 0 0
+Z 5 5
+S
+#19339
+A Small Underwater Cave ~
+Deep crevices and jagged rocks adorn the dark grey walls that lie to the
+north and the west.  A frigid, sluggish current pulls through the cave from
+the east, flowing upward.  Small bits of dust float slowly through the cave,
+carried by the current.  The cave ceiling lies above, where the cavern
+continues, nearly eclipsed by the dark water.  To the west, north, and
+above, the walls expand outward, while to the south, a large rock cliff
+rises abruptly from the ground, and sprawls upward into the dark waters.  
+~
+~
+0
+0 4194305 11
+D1
+The small cave continues.  
+~
+~
+0 0 19340
+D4
+The small cave continues.  
+~
+~
+0 0 19335
+W 5 0 0
+Z 5 5
+S
+#19340
+A Small Underwater Cave ~
+Deep crevices and jagged rocks adorn the dark grey walls that lie to the
+north and the east.  A frigid, sluggish current pulls through the cave from
+the east, flowing westward.  Small bits of dust float slowly through the
+cave, carried by the current.  The cave ceiling lies above, where the cavern
+continues, nearly eclipsed by the dark water.  To the west, south, and
+above, the walls expand outward, while to the southwest, a large rock cliff
+rises abruptly from the ground, and sprawls upward into the dark waters.  
+~
+~
+0
+0 4194305 11
+D2
+The small cave continues.  
+~
+~
+0 0 19341
+D3
+The small cave continues.  
+~
+~
+0 0 19339
+D4
+The small cave continues.  
+~
+~
+0 0 19336
+W 5 0 0
+Z 5 5
+S
+#19341
+A Small Underwater Cave ~
+Deep crevices and jagged rocks adorn the dark grey walls that lie to the
+south and the east, A frigid, sluggish current pulls through the cave from
+below, flowing northward.  Small bits of dust float slowly through the cave,
+carried by the current.  The cave ceiling lies above, where the cavern
+continues, nearly eclipsed by the dark water.  To the east, south, and
+above, the walls expand outward, while to the west, a large rock cliff rises
+abruptly from the ground, and sprawls upward into the dark waters.  A wide
+underwater tunnel cuts through the rock below.  
+~
+~
+0
+0 4194305 11
+D0
+The small cave continues.  
+~
+~
+0 0 19340
+D4
+The small cave continues.  
+~
+~
+0 0 19337
+D5
+A wide underwater tunnel cuts through the cave floor.  
+~
+~
+0 0 19343
+W 5 0 0
+Z 5 5
+S
+#19343
+A Wide Underwater Tunnel~
+A wide, erratically shaped tunnel cuts through the rock, filled with
+nearly stagnant, frigid waters.  A meager current flows from below, carrying
+tiny bits of plant material into the tunnel continuing above.  The tunnel
+follows a nearly straight path from above, where a small cave expands from
+the tunnel, to below, where it vanishes in the dark ocean water.  As well, a
+number of deep scratches describe the jagged surface of the tunnel,
+spiraling and crossing at random angles.  
+~
+~
+0
+0 4194305 11
+D4
+A small cave lies beyond the tunnel.  
+~
+~
+0 0 19341
+D5
+The wide tunnel continues.  
+~
+~
+0 0 19344
+W 5 0 0
+Z 5 5
+S
+#19344
+A Wide Underwater Tunnel~
+An erratically shaped tunnel cuts through the rock, filled with nearly
+stagnant, frigid waters.  A meager current flows from below, carrying tiny
+bits of plant material into the tunnel continuing above.  The tunnel follows
+a nearly straight path both above and below, where it begins to narrow,
+disappearing into the dark ocean water in both directions.  As well, a
+number of deep scratches describe the jagged surface of the tunnel,
+spiraling and crossing at random angles.  
+~
+~
+0
+0 4194305 11
+D4
+The wide tunnel continues.  
+~
+~
+0 0 19343
+D5
+The wide tunnel continues.  
+~
+~
+0 0 19345
+W 5 0 0
+Z 5 5
+S
+#19345
+A Narrow Underwater Tunnel~
+A narrow, erratically shaped tunnel cuts through the rock, filled with
+slow moving, frigid waters.  A meager current flows from the south, carrying
+tiny bits of plant material upward.  The tunnel curves slowly south,
+disappearing in the dark ocean water.  As well, a number of deep scratches
+describe the jagged surface of the tunnel, spiraling and crossing at random
+angles.  
+~
+~
+0
+0 4194305 11
+D2
+The narrow tunnel continues.  
+~
+~
+0 0 19346
+D4
+The tunnel continues.  
+~
+~
+0 0 19344
+W 5 0 0
+Z 5 5
+S
+#19346
+A Narrow Underwater Tunnel~
+A narrow, erratically shaped tunnel cuts through the rock, filled with
+nearly stagnant, frigid waters.  A meager current flows from the south,
+carrying tiny bits of plant material into the tunnel continuing to the
+north.  The tunnel follows a nearly straight path both to the south and
+north, where it begins to widen, disappearing into the dark ocean water in
+both directions.  As well, a number of deep scratches describe the jagged
+surface of the tunnel, spiraling and crossing at random angles.  
+~
+~
+0
+0 4194305 11
+D0
+The narrow tunnel continues.  
+~
+~
+0 0 19345
+D2
+The narrow tunnel continues.  
+~
+~
+0 0 19347
+W 5 0 0
+Z 5 5
+S
+#19347
+A Wide Underwater Tunnel~
+A wide, erratically shaped tunnel cuts through the rock, filled with
+slow moving, frigid waters.  A meager current flows from above, carrying
+tiny bits of plant material northward.  The tunnel curves slowly upward,
+disappearing in the dark ocean water.  As well, a number of deep scratches
+describe the jagged surface of the tunnel, spiraling and crossing at random
+angles.  
+~
+~
+0
+0 4194305 11
+D0
+The wide tunnel continues.  
+~
+~
+0 0 19346
+D4
+The tunnel continues.  
+~
+~
+0 0 19348
+W 5 0 0
+Z 5 5
+S
+#19348
+A Wide Underwater Tunnel~
+A wide, erratically shaped tunnel cuts through the rock, filled with
+slow moving, frigid waters.  A meager current flows from the east, carrying
+tiny bits of plant material below.  The tunnel curves slowly downward,
+disappearing in the dark ocean water.  As well, a number of deep scratches
+describe the jagged surface of the tunnel, spiraling and crossing at random
+angles.  
+~
+~
+0
+0 4194305 11
+D1
+The wide tunnel continues.  
+~
+~
+0 0 19349
+D5
+The wide tunnel continues.  
+~
+~
+0 0 19347
+W 5 0 0
+Z 5 5
+S
+#19349
+A Wide Underwater Tunnel~
+A wide, erratically shaped tunnel cuts through the rock, filled with
+slow moving waters.  A meager current flows from below, carrying tiny bits
+of plant material to the west.  The tunnel curves slowly downward,
+disappearing in the dark ocean water.  As well, a number of deep scratches
+describe the jagged surface of the tunnel, spiraling and crossing at random
+angles.  A few small streams of bubbles flow forth from crevices on the
+walls.  
+~
+~
+0
+0 4194305 11
+D3
+The wide tunnel continues.  
+~
+~
+0 0 19348
+D5
+The wide tunnel continues.  
+~
+~
+0 0 19355
+W 5 0 0
+Z 5 5
+S
+#19350
+Inside an Extinct Lava Vent~
+Carved out of the deep ocean rock, this extinct lava vent is lined with
+solidified magma flows.  Immediatly to the south, the lava formed walls
+narrow quickly, ending the frigid volcanic cave.  Great volcanic rocks from
+the collapsed caldera block exit from the vent to the north, where a slow
+current pulls the dark, salty ocean waters.  
+~
+~
+0
+0 4194305 11
+D0
+~
+~
+0 0 19353
+D1
+~
+~
+0 0 19351
+W 5 0 0
+Z 5 5
+S
+#19351
+Inside an Extinct Lava Vent~
+Carved out of the deep ocean rock, this extinct lava vent is lined with
+solidified magma flows.  Immediatly to the south, the lava formed walls
+narrow quickly, ending the frigid volcanic cave.  Great volcanic rocks from
+the collapsed caldera block exit from the vent to the north, where a slow
+current pulls the dark, salty ocean waters.  
+~
+~
+0
+0 4194305 11
+D0
+~
+~
+0 0 19352
+D3
+~
+~
+0 0 19350
+W 5 0 0
+Z 5 5
+S
+#19352
+Inside an Extinct Lava Vent~
+Carved out of the deep ocean rock, this extinct lava vent is lined with
+solidified magma flows.  To the south, the lava formed walls narrow quickly,
+ending the frigid volcanic cave.  Great volcanic rocks from the collapsed
+caldera block exit from the vent to the north, where a slow current pulls
+the dark, salty ocean waters.  
+~
+~
+0
+0 4194305 11
+D2
+~
+~
+0 0 19351
+D3
+~
+~
+0 0 19353
+W 5 0 0
+Z 5 5
+S
+#19353
+Inside an Extinct Lava Vent~
+Carved out of the deep ocean rock, this extinct lava vent is lined with
+solidified magma flows.  To the south, the lava formed walls narrow quickly,
+ending the frigid volcanic cave.  Great volcanic rocks from the collapsed
+caldera block exit from the vent to the north, where a slow current pulls
+the dark, salty ocean waters.  
+~
+~
+0
+0 4194305 11
+D1
+~
+~
+0 0 19352
+D2
+~
+~
+0 0 19350
+W 5 0 0
+Z 5 5
+S
+#19354
+The Demon Lounge~
+A number of well upholstered wooden benches float through the amorphous,
+watery void of the Demon\@s Lounge.  Soft, easy listening music warbles
+gently through the water.  
+~
+~
+0
+0 5275703 11
+W 5 0 0
+Z 5 5
+S
+#19355
+.~
+A wide, erratically shaped tunnel cuts through the rock, filled with
+slow moving waters.  A warmer, swifter current flows from the east, carrying
+tiny bits of plant material upward.  The tunnel curves slowly eastward,
+where tremendous vaults are carved into the ceiling, in the dark ocean
+water.  As well, a number of deep scratches describe the jagged surface of
+the tunnel, spiraling and crossing at random angles.  
+~
+~
+0
+0 4194305 11
+D1
+A tunnel continues.  
+~
+~
+0 0 19356
+D4
+The tunnel continues.  
+~
+~
+0 0 19349
+W 5 0 0
+Z 5 5
+S
+#19356
+.~
+Walls of rough, dark grey rock span the edges of this expansive tunnel. 
+Tall, roughly carved rock pillars rise from the floor, and cross the ceiling
+of the tunnel, forming crude vaults.  To the east, the vaults continue,
+becoming a more prominent feature, while the dark waters continue through
+the tunnel to the west.  Bits of debris flow quickly through the chamber,
+carrying on a slightly warmer current to the west.  Tremendous troughs are
+deeply dug in the stone of the walls at random angles.  
+~
+~
+0
+0 4194305 11
+D3
+The tunnel begins to curve upward.  
+~
+~
+0 0 19355
+W 5 0 0
+Z 5 5
+S
+#19357
+!~
+Walls of rough, dark grey rock span the edges of this expansive tunnel. 
+Tall, roughly carved rock pillars rise from the floor, and cross the ceiling
+of the tunnel, forming crude vaults.  To the east, the vaults continue,
+becoming a more prominent feature, while the dark waters continue through
+the tunnel to the west.  Bits of debris float sluggishly through the
+stagnant waters in the chamber.  
+~
+~
+0
+0 4194309 11
+W 5 0 0
+Z 5 5
+S
+#19358
+!~
+Walls of rough, dark grey rock span the edges of this expansive tunnel. 
+Tall, roughly carved rock pillars rise from the floor, and cross the ceiling
+of the tunnel, forming crude vaults.  To the east, the vaults continue,
+becoming a more prominent feature, while the dark waters continue through
+the tunnel to the west.  Bits of debris float sluggishly through the
+stagnant waters in the chamber.  
+~
+~
+0
+0 4194309 11
+W 5 0 0
+Z 5 5
+S
+#19359
+!~
+Walls of rough, dark grey rock span the edges of this expansive tunnel. 
+Tall, roughly carved rock pillars rise from the floor, and cross the ceiling
+of the tunnel, forming crude vaults.  To the east, the tunnel ends, while to
+the west, the tunnel vanishes into the pitch black ocean waters.  A large
+pit lies in the center of the rough floor, surrounded by large boulders, and
+filled with charred and splintered bones.  
+~
+~
+0
+0 4194309 11
+W 5 0 0
+Z 5 5
+S
+#19360
+.~
+~
+~
+0
+0 4194309 11
+W 5 0 0
+Z 5 5
+S
+#19361
+.~
+Walls of rough, dark grey rock span the edges of this expansive tunnel. 
+Tall, roughly carved rock pillars rise from the floor, and cross the ceiling
+of the tunnel, forming crude vaults.  Intricate statues and figureheads are
+carved from the pillars and along the ceiling vaults.  To the east, the
+tunnel ends, while to the west, the tunnel vanishes into the pitch black
+ocean waters.  Small chambers branch from the tunnel to the north and south.
+~
+~
+0
+0 4194309 11
+W 5 0 0
+Z 5 5
+S
+#19362
+.~
+~
+~
+0
+0 4194309 11
+W 5 0 0
+Z 5 5
+S
+#19363
+~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#19364
+~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#19365
+~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#19366
+~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#19367
+~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#19368
+~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#19369
+~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#19370
+~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#19371
+~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+O 0 19317 0 19311
+P 0 19320 1 19317 1
+O 0 19341 0 19311
+O 0 19342 0 19311
+O 0 19346 0 19311
+O 0 19343 0 19314
+O 0 19345 0 19314
+O 0 19344 0 19314
+O 0 19322 0 19314
+O 0 19316 0 19328
+P 0 19315 1 19316 1
+P 0 19314 1 19316 1
+P 0 19313 1 19316 1
+M 0 19302 4 19331 1
+O 0 19347 0 19338
+O 0 19318 0 19347
+P 0 19319 1 19318 1
+P 0 19321 1 19318 1
+O 0 19332 0 19347
+M 0 19314 1 19347 1
+E 0 19348 0 16
+O 0 19334 0 19350
+P 0 19308 1 19334 1
+P 0 19307 1 19334 1
+P 0 19335 3 19334 3
+P 0 19326 4 19334 4
+P 0 19305 2 19334 2
+M 0 19304 1 19354 1
+E 0 19337 0 16
+G 0 19305 0
+M 0 19311 1 19354 1
+O 0 19322 0 19355
+P 0 19323 1 19322 1
+P 0 19324 1 19323 1
+M 0 19301 1 19356 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

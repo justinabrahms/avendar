@@ -1,0 +1,8618 @@
+#AREADATA
+Name The Southern Fens~
+Builders Arenhamuur Iacobos Tzajai~
+VNUMs 22500 22599
+Credits [45 51] Arenham   The Southern Fens~
+Danger 0
+Security 1
+Areainfo 59
+Herbs 1934118
+Weather 3 1 0 0 16
+Weave 5 0 0
+Shades 5 5
+Stone 84
+End
+
+
+
+#MOBILES
+V4 22500
+huge turtle swamp~
+the swamp turtle~
+A huge turtle rests within its lair. 
+~
+A huge swamp turtle resides in its lair.  Decaying grass, moss, and
+leaves are stuck to its shell, giving it some small camouflage.  The huge
+jaws are chipped along the edge, allowing thick drool to drip down to the
+cave floor.  
+~
+generic~
+water scholar~
+ABFN 0 V N 0
+53 27 19d200+1000 0d0+0 5d10+35 pierce~
+chomp~
+-24 -24 -24 -7
+FH ABa
+26 0 0 0 0 50 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGXc ACDEFHKQ A huge unknown
+>fight_prog 20~
+if rand(10)
+  mpechoaround $n $I snaps at $N with its huge jaws, {rCRUSHING{x $s leg!
+  mpechoat $n $I snaps at you with its huge jaws, {rCRUSHING{x your leg!
+  boneshatter $n leg
+  mpdamtype $n 10 20 20 1  
+else 
+  if rand(30)
+    mpechoaround $n $I snaps at $N with its huge jaws, {rCRUSHING{x $s arm!
+    mpechoat $n $I snaps at you with its huge jaws, {rCRUSHING{x your arm!
+    boneshatter $n arm
+    mpdamtype $n 10 20 20 1
+  else 
+    mpechoaround $n $I snaps at $N with its huge jaws, missing narrowly.
+    mpechoat $n You dodge the swamp turtle\@s snapping jaws!
+  endif
+endif
+~
+>greet_prog 80~
+if isfight($i)
+  mpechoat $n $I snaps at you!
+  mpechoaround $n $I snaps at $N!
+else
+  mpechoaround $n $I snaps viscously at $N!
+  mpechoat $n $I sees you and reaches out, snapping at you with its huge jaws!
+  boneshatter $n
+endif
+~
+>load_prog 100~
+mpaddskill self 456 100
+~
+|
+V4 22501
+large beetle insect water~
+a water beetle~
+A large insect glides above the surface of the fens.
+~
+A large insect glides slowly above the water.  The thick scum of the
+water, coupled with the beetle\@s large feet, prevent it from sinking.  A
+foul smell emanates from the creature.  
+~
+generic~
+water scholar~
+ACDG 0 M N 0
+30 15 13d80+923 0d0+0 5d6+15 pierce~
+pierce~
+-9 -9 -9 0
+FH 0
+26 0 0 0 0 -15 0 0 0 0 0 0 0 0 0 0 0 30 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+0 0 A medium unknown
+>death_prog 100~
+mpecho The beetle\@s corpse spatters!
+mpgoto 22572
+~
+|
+V4 22502
+huge worm cave~
+the cave worm~
+A huge worm lies coiled up at the back of the cave.
+~
+This tremendous worm lies coiled in its cave.  Its skin is coated with a
+thick layer of oily slime from the fens.  Small eyes are set just above a
+mouth bristling with teeth.  Saliva drips from the corners of the worm\@s
+mouth, hitting the cave floor with a hiss and a puff of smoke.  
+~
+generic~
+water scholar~
+ABFN 0 MVc N 0
+53 27 19d200+1000 0d0+0 2d10+35 acid~
+acidic bite~
+-24 -24 -24 -7
+FHMO ABKa
+26 0 0 0 0 30 -15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+0 0 A huge unknown
+>fight_prog 10~
+if rand(60)
+or dexterity($n) < 20
+  mpechoat $n $I whips its massive body around you, constricting tightly!
+  mpechoaround $n $I whips its massive body around $N, constricting tightly!
+  mpechoat $n You struggle for breath, fighting the pressure!
+  mpechoaround $n $N pounds weakly against the constricting coils, struggling for breath!
+  mpget char $n curhp 2
+  mpdamtype $n 10 20 50 1
+  mpget char $n curhp 1
+  mpmath 0 $2 - $1
+  mpdammess $n $0 \@coil squeeze\@
+  mplag $n 3
+else 
+  mpechoat $n $I whips its massive body around you, attempting to grasp you in its coils!
+  mpechoaround $n $I whips its massive body around $N!
+  mpechoat $n You leap over the worm\@s body, avoiding its grasp!
+  mpechoaround $n $N leaps over the worm\@s body, avoiding its grasp!
+endif
+~
+|
+V4 22503
+thin reptilian head serpent swamp~
+the swamp serpent~
+A thin, reptilian head is visible above the surface of the water.
+~
+A long, sinuous, form glides silently under the water.  Its head is
+clearly visible above the surface.  Black scales cover its skin, their
+surfaces dull from the murky waters.  Vertical black pupils surrounded by
+sickly yellow irises, track all nearby movement with deadly precision.  
+~
+snake~
+water scholar~
+AFGNX 0 MVb N 0
+40 20 16d170+976 0d0+0 5d9+20 pierce~
+bite~
+-15 -15 -15 -2
+FHMU ABa
+26 0 0 0 0 0 0 0 15 -15 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGXYc ADEFKLQVX A large unknown
+V4 22504
+huge serpent swamp~
+the swamp serpent~
+A huge serpent moves through the dark water of the fens.
+~
+This long creature roams along the channel of the fens.  The length of
+its body is covered with slick, mottled scaled, their color changing from
+black, to brown, to a pasty white.  The serpent\@s head consists of two small
+eyes set over a huge mouth, lined with several rows of razor sharp teeth. 
+Midway down its body, there is a hint of some sort of flipper, though the
+main source of motion seems to be in the manner of a snake.  
+~
+generic~
+water scholar~
+AFLNX 0 FMb E 0
+45 23 15d190+911 0d0+0 2d9+22 pierce~
+bite~
+-18 -18 -18 -4
+FH ABLa
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+0 0 A large unknown
+V4 22505
+man ancient servant~
+an ancient servant~
+An ancient man hovers above the surface of the channel.
+~
+This ancient man\@s face and hands are spotted and wrinkled, signs of his
+advanced age.  A pair of cold blue eyes stare out from beneath a wizened
+brow, and his thin lips are pursed in a half-frown.  He is dressed in some
+form of livery, set at his post to lead would-be adventurers off.  
+~
+human~
+water scholar~
+ABDKXc 0 DFT E 0
+60 34 50d200+4000 0d0+0 8d10+25 bash~
+punch~
+-24 -24 -24 -7
+CEFIKN AB
+26 0 0 40 40 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 -1
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+if ispc($n)
+mpecho $I nods.
+mpechoat $n $I peers at you intently.
+tell $n Go no further, adventurer. The fens are dangerous, and my master is not fond of visitors.
+chuckle
+tell $n Of course, should you survive to meet him, he will undoubtedly express his discontent with you personally.
+endif
+~
+|
+V4 22506
+channelbitch6 channel bitch 6~
+channel bitch 6~
+Channel bitch 6
+~
+The channel bitch is here, simulating current and biting players\@ balls
+off.  
+~
+human~
+water scholar~
+ABc 0 DFL E 0
+60 1 1d2+6 0d0+0 1d2+2 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A giant unknown
+>data_prog echoechoecho~
+mpzecho The fetid stench of the fens fills the area as the wind shifts.
+mpzecho The fetid stench of the fens fills the area as the breeze shifts.
+mpzecho The fetid stench of the fens fills the area as the wind shifts.
+mpzecho The acrid stench of the fens settles in around you.
+mpzecho An acrid wisp of faintly yellow fog breezes past.
+mpzecho The hot, muggy air grows slightly hazy with yellowish fog.
+mpzecho Pale, thin yellow fog swirls sluggishly over the ground.
+mpzecho The reek and decay of the fens lingers heavily in your nostrils.
+mpzecho The feeble breeze filters past, heavy and ripe with decay.
+mpzecho The feeble breeze filters slowly past, fetid and ripe with decay.
+~
+>speech_prog p Sythrak is a wh0re!~
+mpzecho The fetid stench of the fens fills the area as the wind shifts.
+~
+>rand_prog 1~
+mpvaluerand 0 1 10
+mpsetdata echoechoecho
+loop 0 to $0
+  mpnextdata
+endloop
+$d
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+>trigger_prog 40~
+if isflying($n)
+mpecho The channel\@s swift current sweeps a floating island downstream.
+else
+if isfight($n)
+mpechoat $n The current tugs at you.
+mpechoaround The current tugs at $n.
+mplag $n 2
+else
+if ispc($n)
+mpechoat $n You are caught in the swift current of the channel, sweeping you downstream!
+mpechoaround $n $N is swept downstream by the swift current!
+mptransfer $n 22501
+mpforce $n look
+endif
+endif
+endif
+~
+|
+V4 22507
+dull brown dragonfly dragon fly~
+the dragonfly~
+A dull brown dragonfly flies about.
+~
+A dragonfly about the size of a sparrow flies about.  Unlike its cousins
+bred in healthier climates, it is colored a uniform, ugly brown, matching
+the water of the fens.  The insect\@s movements are accompanied by a buzzing
+sound, caused by the tattered edges of its wings.  
+~
+generic~
+water scholar~
+AG 0 T N 0
+10 5 5d22+167 0d0+0 2d5+5 pierce~
+bite~
+4 4 4 7
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 0 -1
+0 0 A small unknown
+>death_prog 100~
+mpecho The dragonfly\@s corpse spatters!
+mpgoto 22572
+~
+>rand_prog 100~
+if value(9) == 9
+  emote floats to the ground, wings beating more and more slowly.
+  mpflag mob self act + nowander
+  mpstring mob self long A dull brown dragonfly twitches on the floor.
+  mpvalueset 9 8
+  break
+endif
+if rand(40)
+if value(9) == 6
+  mpecho $I\@s legs curl beneath it, and it rolls over...dead.
+  mpoload 22585 in room
+  mppurge self
+endif
+if value(9) == 7
+  emote twitches feebly, then lies still.
+  mpvalueset 9 6
+endif
+if value(9) == 8
+  mpvalueset 9 7
+endif
+endif
+~
+|
+V4 22508
+Ghaunda tower guardian~
+Ghaunda~
+Ghaunda the tower guardian watches over the approaches to the valley.
+~
+A huge, winged beast paces restlessly about the ruin.  Walking on two
+legs, much like a man, membranous black wings jut out from his back, and
+long, oddly jointed arms end in needle sharp claws.  A creature of the void
+bound by an unknown wizard, Ghaunda was posted here after the war of night
+to watch the approach to the valley.  Ghaunda tore down the tower built for
+him, choosing instead to nest in a ruin.  
+~
+demon~
+water scholar~
+ABFLPTX 0 BDFTV E 0
+58 38 50d300+3000 0d0+0 8d10+30 cold~
+freezing bite~
+-27 -27 -27 -9
+CFHKN ABb
+26 0 0 0 0 0 0 0 0 0 0 0 0 15 -10 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+ACH ABCDEFGHIJKP A huge unknown
+>fight_prog 8~
+if rand(40)
+  mpechoat $n Ghaunda the tower guardian rises up to his full height, spreading huge, bat-like wings, covering you in shadow.
+  mpechoaround $n Ghaunda the tower guardian rises up to his full height, spreading huge, bat-like wings, covering $N in shadow.
+  mpechoat $n You quail in the sudden shadow.
+  mpechoaround $n $N quails in the sudden shadow.
+  mpcast 122 58 $n
+else 
+  mpechoat $n Ghaunda the tower guardian rises up to his full height, spreading huge, bat-like wings, covering you in shadow.
+  mpechoaround $n Ghaunda the tower guardian rises up to his full height, spreading huge, bat-like wings, covering $N in shadow.
+  mpechoat $n Ghaunda the tower guardian dives forward suddenly, smashing you with his icy wings!
+  mpechoaround $n Ghaunda the tower guardian dives forward suddenly, smashing $N with his icy wings!
+  mpvaluerand 1 50 200
+  mpvaluerand 2 50 200
+  mpdealdamage $n $I buffeting bash $1 cold $2
+  mplag $n 2
+endif
+~
+|
+V4 22509
+vine thorn~
+a thorn-covered vine~
+A vine lies across the trail, its runners covered with thorns.
+~
+A long vine lies stretched across the trail.  Its surface, covered in
+thorns, maintains the springy flexibility of its neighbors, though the curse
+resident in the valley has animated it.  
+~
+generic~
+water scholar~
+AB 0 L N 0
+40 20 16d170+976 0d0+0 5d8+20 slash~
+slash~
+-15 -15 -15 -2
+FHK ABLP
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+0 0 A large unknown
+>rand_prog 10~
+if mobvalue(2) == 83 
+mpwizi
+mpvalueset 2 0
+endif
+~
+>greet_prog 75~
+if isfight($i)
+else
+if ispc($n)
+if class($n) == 29
+else
+if class($n) == 23
+else
+mpunwizi
+mpechoat $n As you enter the room, a vine covering the trail wraps around your leg!
+mpechoaround $n A vine writhes beneath $N\@s feet, attacking $m!
+mpforce $n yell Help! I\@m being attacked by a thorn covered vine!
+mpkill $n
+mpvalueset 2 83
+endif
+endif
+endif
+endif
+~
+|
+V4 22510
+channel bitch 10~
+channel bitch 10~
+Channel bitch 10
+~
+The channel bitch is here, simulating current and biting players\@ balls
+off.  
+~
+human~
+water scholar~
+ABc 0 DFL E 0
+60 1 1d2+6 0d0+0 1d2+2 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A giant unknown
+>rand_prog 5~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {rSTRIKING{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {rSTRIKING{x $N!
+mpdamage $n 10 10 10
+endif
+endif
+~
+>greet_prog 10~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {rSTRIKING{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {rSTRIKING{x $N!
+mpdamage $n 10 10 10
+endif
+endif
+~
+>trigger_prog 20~
+if isflying($n)
+mpecho The channel\@s swift current sweeps a floating island downstream.
+else
+if isfight($n)
+mpechoat $n The current tugs at you.
+mpechoaround The current tugs at $N.
+mplag $n 2
+else
+if ispc($n)
+mpechoat $n You are caught in the swift current of the channel, sweeping you downstream!
+mpechoaround $n $N is swept downstream by the swift current!
+mptransfer $n 22506
+mpforce $n look
+endif
+endif
+endif
+~
+>greet_prog 29~
+if ispc($n)
+mpmload 22504
+mpforce serpent mpkill $n
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 22511
+channel bitch 11~
+channel bitch 11~
+Channel bitch 11
+~
+The channel bitch is here, simulating current and biting players\@ balls
+off.  
+~
+human~
+water scholar~
+ABc 0 DFL E 0
+60 1 1d2+6 0d0+0 1d2+2 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A giant unknown
+>rand_prog 5~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {rSTRIKING{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {rSTRIKING{x $N!
+mpdamage $n 10 10 10
+endif
+endif
+~
+>greet_prog 10~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {rSTRIKING{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {rSTRIKING{x $N!
+mpdamage $n 10 10 10
+endif
+endif
+~
+>trigger_prog 20~
+if isflying($n)
+mpecho The channel\@s swift current sweeps a floating island downstream.
+else
+if isfight($n)
+mpechoat $n The current tugs at you.
+mpechoaround The current tugs at $N.
+mplag $n 2
+else
+if ispc($n)
+mpechoat $n You are caught in the swift current of the channel, sweeping you downstream!
+mpechoaround $n $N is swept downstream by the swift current!
+mptransfer $n 22510
+mpforce $n look
+endif
+endif
+endif
+~
+>greet_prog 29~
+if ispc($n)
+mpmload 22504
+mpforce serpent mpkill $n
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 22512
+large badger twisted~
+a large, twisted badger~
+A large badger, its fur shaggy and tangled, chatters angrily.
+~
+This badger\@s fur is tangled and shaggy.  Thorns, twigs, and grasses are
+caught up in it, giving it a feral look.  Its yellow eyes glare accusingly
+at its surroundings, casting frequent glances behind it.  Its back appears
+to have been gnawed on some time in the past, twisting its entire body.  
+~
+generic~
+water scholar~
+ACGLN 0 0 N 0
+25 15 12d45+707 0d0+0 3d5+8 pierce~
+bite~
+0 0 0 5
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 0 -1
+0 0 A medium unknown
+V4 22513
+large helpless bird~
+a large, helpless bird~
+A large bird lies helpless in the muddy water, its feathers matted and dirty. 
+~
+A large bird lies here, covered in the murky waters of the fens.  Its
+once-white feathers are matted together, rendering it flightless.  
+~
+generic~
+water scholar~
+ADHL 0 0 N 0
+20 10 12d40+333 0d0+0 4d5+10 pierce~
+peck~
+-2 -2 -2 4
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+0 0 A small unknown
+>death_prog 100~
+emote sinks swiftly into the mire.
+mpgoto 22572
+~
+>rand_prog 1~
+if isanypchere($i)
+mpecho $I cries out helplessly, struggling in the murky water.
+endif
+~
+|
+V4 22514
+snake venomous~
+a venomous snake~
+A snake lies coiled here, its forked tongue darting in and out of its mouth.
+~
+A pitted reptilian head rears up from the center of a huge coiled body. 
+Long, dagger-like fangs drip clear venom onto the ground, sizzling
+ominously.  Vertical pupils stare strait ahead, coldly observing the world
+around it.  
+~
+snake~
+water scholar~
+ABN 0 M N 0
+40 22 16d170+976 0d0+0 5d8+20 pierce~
+bite~
+-15 -15 -15 -2
+FH 0
+26 0 0 0 0 0 0 0 0 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGXYc ADEFKLQVX A large unknown
+>fight_prog 6~
+if ispc($n)
+if isbitset($n) == 22525 1
+if rand(60)
+mpechoat $n You begin to tremble as poison courses through your veins!
+mpechoaround $n $N begins to tremble!
+mplag $n 3
+else
+mpechoat $n You begin to tremble violently as poison courses through your veins!
+mpechoaround $n $N begins to tremble violently!
+mpechoat $n You gasp as you feel the poison coursing through your veins!
+mpechoaround $n $N gasps as $s face begins to grow pale!
+mpechoat $n You draw a long, shuddering breath, collapsing as the deadly venom tears at your heart!
+mpechoaround $n $N collapses!
+mpslay $n
+endif
+endif
+endif
+~
+>fight_prog 5~
+if ispc($n)
+if rand(70)
+mpechoat $n You narrowly avoid $I\@s fangs!
+mpechoaround $n $N narrowly avoids $I\@s poisonous fangs!
+else
+if snaffected($n) == 330
+else
+mpechoat $n $I strikes at you, sinking its fangs deeply into your body!
+mpechoaround $n $I strikes at $N, sinking its fangs deeply into $s body!
+mpcast 105 40 $n 
+mpbitset $n 22525 1
+mpaddaffect 479 60 60 27 22525 0
+endif
+endif
+endif
+~
+|
+V4 22515
+leech~
+a leech~
+A leech floats in the calm waters of the fens.
+~
+Floating in the calmer waters of the fens, a large leech preys on the
+unsuspecting and the weak.  Its pale skin is covered in its own excretions,
+and its mouth works constantly, forever trying to attach itself to a host.  
+~
+generic~
+water scholar~
+ABF 0 M N 0
+20 10 12d40+333 0d0+0 4d5+10 bash~
+suction~
+-2 -2 -2 4
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+0 0 A small unknown
+>death_prog 100~
+if rand(90)
+mpecho Dead, a leech sinks into the murk.
+mpgoto 22572
+endif
+~
+>greet_prog 15~
+mpechoat $n You notice $I as it attempts to plant itself on your skin!
+mpechoaround $n $I attempts to attach itself to $N!
+mpkill $n
+~
+|
+V4 22516
+large black cricket~
+a large black cricket~
+A large, black cricket rests in the underbrush, chirping loudly.
+~
+A large cricket rests in the underbrush.  Its black body gleams lightly,
+reflecting a rainbow of colors through the film of water accumulated from
+the fens.  
+~
+generic~
+water scholar~
+AB 0 0 N 0
+10 5 5d22+167 0d0+0 2d5+5 pierce~
+bite~
+4 4 4 7
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+0 0 A tiny unknown
+V4 22517
+bat large gray~
+a large gray bat~
+A large gray bat hangs from the cliff.
+~
+A large bat with dark gray fur and thin, membranous wings hangs sedately
+from the cliff face.  Small, glowing red eyes remain unblinking in the dim
+light.  
+~
+bat~
+water scholar~
+AB 0 DFTXZ N 0
+20 10 12d40+333 0d0+0 4d5+10 pierce~
+bite~
+-2 -2 -2 4
+FH 0
+26 0 0 0 0 0 0 0 -5 5 0 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMV ABCDEFGHIJKP A small unknown
+>death_prog 100~
+if rand(60)
+mpecho The corpse crashes into the murk, sinking swiftly.
+mpgoto 22572
+endif
+~
+|
+V4 22518
+tick huge~
+a tick~
+A huge, thick-bodied tick crawls about the underbrush.
+~
+A huge tick, nearly the size of a human child, crawls through the
+underbrush.  Its body is thick and bloated, swollen by the blood of its
+prey.  Small, faceted eyes peer dimly at their surroundings, searching for
+another meal.  
+~
+generic~
+water scholar~
+AB 0 0 N 0
+35 18 12d110+738 0d0+0 5d8+20 pierce~
+bite~
+-12 -12 -12 -1
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>death_prog 100~
+mpecho A tick\@s corpse spatters!
+mpgoto 22572
+~
+|
+V4 22519
+basalt guardian lone figure~
+the basalt guardian~
+A lone figure hewn from basalt stands here, its stony face devoid of any features.
+~
+Carved from pure basalt, this figure stands a full seven feet in height. 
+An aura of power seems to shimmer about it, accentuating the natural force
+of its movements.  Neither particularly fast nor slow, the being seems to
+move methodically, wasting little effort.  Its rocky countenance is devoid
+of all features; where the face would be, there is only smooth stone.  
+~
+elemental~
+water scholar~
+ABFPX 0 D E 0
+58 29 50d9+5000 50d9+5000 20d9+60 bash~
+crush~
+-25 -25 -25 -8
+K ABR
+26 0 0 0 25 0 0 0 -10 0 0 0 50 0 0 0 50 0 0 0 0 50 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 200 -1
+AHMV ABCDEFGHIJK K medium flesh
+>rand_prog 100~
+if isfighting($i)
+  break
+endif
+// These spells are regularly maintained
+if snaffected($i) != 1146
+  cast \@clay shield\@
+  break
+endif
+if snaffected($i) != 369
+  cast \@shell of stone\@
+  break
+endif
+if snaffected($i) != 375
+  cast \@stabilize\@
+  break
+endif
+if snaffected($i) != 592
+  cast \@anchor\@
+  break
+endif
+// The remaining spells are only cast if recently fought
+if value(0) <= 0
+  break
+endif
+mpvaluedown 0
+if snaffected($i) != 368
+  if roomaffected($i) == 368
+  else
+    cast \@wall of stone\@ north
+    break
+  endif
+endif
+if snaffected($i) != 1168
+  cast \@cry of the broken lands\@
+  break
+endif
+if snaffected($i) != 377
+  if roomaffected($i) == 377
+  else
+    cast \@rock to mud\@
+    break
+  endif
+endif
+~
+>fight_prog 100~
+mpvalueset 0 20
+if value(1) > 0
+  mpvaluedown 1
+  break
+endif
+mpvaluerand 2 0 10
+if value(2) == 0
+  cast \@mudfoot curse\@
+  break
+endif
+if value(2) == 1
+  cast \@sandspray\@
+  break
+endif
+if value(2) == 2
+  cast \@quake\@
+  break
+endif
+if value(2) == 3
+  cast \@crush\@
+  mpvalueset 1 6
+  break
+endif
+if value(2) == 4
+  cast \@metal to stone\@
+  break
+endif
+if value(2) == 5
+  cast \@density\@
+  break
+endif
+if value(2) == 6
+  cast \@brittleform\@
+  break
+endif
+if hitprcnt($i) <= 20
+  healme_please
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100   // second attack
+mpaddskill $i 1146 100  // clay shield
+mpaddskill $i 1147 100  // mudfoot curse
+mpaddskill $i 120 100  // sandspray
+mpaddskill $i 1153 100  // shell of stone
+mpaddskill $i 592 100  // anchor
+mpaddskill $i 387 100  // brittleform
+mpaddskill $i 375 100  // stabilize
+mpaddskill $i 1154 100  // quake
+mpaddskill $i 1155 100  // rock to mud
+mpaddskill $i 1156 100  // crush
+mpaddskill $i 382 100  // metal to stone
+mpaddskill $i 380 100  // density
+mpaddskill $i 368 100  // wall of stone
+mpaddskill $i 1168 100  // cry of the broken lands
+mpaddskill $i 164 100  // staff
+mpaddskill $i 177 100  // parry
+mpaddskill $i 190 100  // fast healing
+mpaddskill $i 194 100   // meditation
+mpaddskill $i 277 100  // trance
+~
+|
+V4 22521
+channel bitch 21~
+channel bitch 21~
+Channel bitch 21
+~
+The channel bitch is here, simulating current and biting players\@ balls
+off.  
+~
+human~
+water scholar~
+ABc 0 DFL E 0
+60 1 1d2+6 0d0+0 1d2+2 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A giant unknown
+>rand_prog 5~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>greet_prog 10~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>trigger_prog 20~
+if isflying($n)
+mpecho The channel\@s swift current sweeps a floating island downstream.
+else
+if isfight($n)
+mpechoat $n The current tugs at you.
+mpechoaround The current tugs at $N.
+mplag $n 2
+else
+if ispc($n)
+mpechoat $n You are caught in the swift current of the channel, sweeping you downstream!
+mpechoaround $n $N is swept downstream by the swift current!
+mptransfer $n 22511
+mpforce $n look
+endif
+endif
+endif
+~
+>greet_prog 29~
+if ispc($n)
+mpmload 22504
+mpforce serpent mpkill $n
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 22522
+channel bitch 22~
+channel bitch 22~
+Channel bitch 22
+~
+The channel bitch is here, simulating current and biting players\@ balls
+off.  
+~
+human~
+water scholar~
+ABc 0 DFL E 0
+60 1 1d2+6 0d0+0 1d2+2 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A giant unknown
+>rand_prog 5~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>greet_prog 10~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>trigger_prog 20~
+if isflying($n)
+mpecho The channel\@s swift current sweeps a floating island downstream.
+else
+if isfight($n)
+mpechoat $n The current tugs at you.
+mpechoaround The current tugs at $N.
+mplag $n 2
+else
+if ispc($n)
+mpechoat $n You are caught in the swift current of the channel, sweeping you downstream!
+mpechoaround $n $N is swept downstream by the swift current!
+mptransfer $n 22521
+mpforce $n look
+endif
+endif
+endif
+~
+>greet_prog 29~
+if ispc($n)
+mpmload 22504
+mpforce serpent mpkill $n
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 22523
+channel bitch 23~
+channel bitch 23~
+Channel bitch 23
+~
+The channel bitch is here, simulating current and biting players\@ balls
+off.  
+~
+human~
+water scholar~
+ABc 0 DFL E 0
+60 1 1d2+6 0d0+0 1d2+2 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A giant unknown
+>rand_prog 5~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>greet_prog 10~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>trigger_prog 20~
+if isflying($n)
+mpecho The channel\@s swift current sweeps a floating island downstream.
+else
+if isfight($n)
+mpechoat $n The current tugs at you.
+mpechoaround The current tugs at $N.
+mplag $n 2
+else
+if ispc($n)
+mpechoat $n You are caught in the swift current of the channel, sweeping you downstream!
+mpechoaround $n $N is swept downstream by the swift current!
+mptransfer $n 22522
+mpforce $n look
+endif
+endif
+endif
+~
+>greet_prog 29~
+if ispc($n)
+mpmload 22504
+mpforce serpent mpkill $n
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 22524
+channel bitch 24~
+channel bitch 24~
+Channel bitch 24
+~
+The channel bitch is here, simulating current and biting players\@ balls
+off.  
+~
+human~
+water scholar~
+ABc 0 DFL E 0
+60 1 1d2+6 0d0+0 1d2+2 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A giant unknown
+>rand_prog 5~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>greet_prog 10~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>trigger_prog 20~
+if isflying($n)
+mpecho The channel\@s swift current sweeps a floating island downstream.
+else
+if isfight($n)
+mpechoat $n The current tugs at you.
+mpechoaround The current tugs at $N.
+mplag $n 2
+else
+if ispc($n)
+mpechoat $n You are caught in the swift current of the channel, sweeping you downstream!
+mpechoaround $n $N is swept downstream by the swift current!
+mptransfer $n 22523
+mpforce $n look
+endif
+endif
+endif
+~
+>greet_prog 29~
+if ispc($n)
+mpmload 22504
+mpforce serpent mpkill $n
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 22525
+channel bitch 25~
+channel bitch 25~
+Channel bitch 25
+~
+The channel bitch is here, simulating current and biting players\@ balls
+off.  
+~
+human~
+water scholar~
+ABc 0 DFL E 0
+60 1 1d2+6 0d0+0 1d2+2 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A giant unknown
+>rand_prog 5~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>greet_prog 10~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>trigger_prog 20~
+if isflying($n)
+mpecho The channel\@s swift current sweeps a floating island downstream.
+else
+if isfight($n)
+mpechoat $n The current tugs at you.
+mpechoaround The current tugs at $N.
+mplag $n 2
+else
+if ispc($n)
+mpechoat $n You are caught in the swift current of the channel, sweeping you downstream!
+mpechoaround $n $N is swept downstream by the swift current!
+mptransfer $n 22524
+mpforce $n look
+endif
+endif
+endif
+~
+>greet_prog 29~
+if ispc($n)
+mpmload 22504
+mpforce serpent mpkill $n
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 22526
+channel bitch 26~
+channel bitch 26~
+Channel bitch 26
+~
+The channel bitch is here, simulating current and biting players\@ balls off.;.f
+~
+human~
+water scholar~
+ABc 0 DFL E 0
+60 1 1d2+6 0d0+0 1d2+2 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A giant unknown
+>rand_prog 5~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>greet_prog 10~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>trigger_prog 20~
+if isflying($n)
+mpecho The channel\@s swift current sweeps a floating island downstream.
+else
+if isfight($n)
+mpechoat $n The current tugs at you.
+mpechoaround The current tugs at $N.
+mplag $n 2
+else
+if ispc($n)
+mpechoat $n You are caught in the swift current of the channel, sweeping you downstream!
+mpechoaround $n $N is swept downstream by the swift current!
+mptransfer $n 22525
+mpforce $n look
+endif
+endif
+endif
+~
+>greet_prog 29~
+if ispc($n)
+mpmload 22504
+mpforce serpent mpkill $n
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 22527
+channel bitch 27~
+channel bitch 27~
+Channel bitch 27
+~
+The channel bitch is here, simulating current and biting players\@ balls off.;.f
+~
+human~
+water scholar~
+ABc 0 DFL E 0
+60 1 1d2+6 0d0+0 1d2+2 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A giant unknown
+>rand_prog 5~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>greet_prog 10~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>trigger_prog 20~
+if isflying($n)
+mpecho The channel\@s swift current sweeps a floating island downstream.
+else
+if isfight($n)
+mpechoat $n The current tugs at you.
+mpechoaround The current tugs at $N.
+mplag $n 2
+else
+if ispc($n)
+mpechoat $n You are caught in the swift current of the channel, sweeping you downstream!
+mpechoaround $n $N is swept downstream by the swift current!
+mptransfer $n 22526
+mpforce $n look
+endif
+endif
+endif
+~
+>greet_prog 29~
+if ispc($n)
+mpmload 22504
+mpforce serpent mpkill $n
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 22528
+channel bitch 28~
+channel bitch 28~
+Channel bitch 28
+~
+The channel bitch is here, simulating current and biting players\@ balls off.;.f
+~
+human~
+water scholar~
+ABc 0 DFL E 0
+60 1 1d2+6 0d0+0 1d2+2 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A giant unknown
+>rand_prog 5~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>greet_prog 10~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>trigger_prog 20~
+if isflying($n)
+mpecho The channel\@s swift current sweeps a floating island downstream.
+else
+if isfight($n)
+mpechoat $n The current tugs at you.
+mpechoaround The current tugs at $N.
+mplag $n 2
+else
+if ispc($n)
+mpechoat $n You are caught in the swift current of the channel, sweeping you downstream!
+mpechoaround $n $N is swept downstream by the swift current!
+mptransfer $n 22527
+mpforce $n look
+endif
+endif
+endif
+~
+>greet_prog 29~
+if ispc($n)
+mpmload 22504
+mpforce serpent mpkill $n
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 22529
+channel bitch 29~
+channel bitch 29~
+Channel bitch 29
+~
+The channel bitch is here, simulating current and biting players\@ balls off.;.f
+~
+human~
+water scholar~
+ABc 0 DFL E 0
+60 1 1d2+6 0d0+0 1d2+2 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A giant unknown
+>rand_prog 5~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>greet_prog 10~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>trigger_prog 20~
+if isflying($n)
+mpecho The channel\@s swift current sweeps a floating island downstream.
+else
+if isfight($n)
+mpechoat $n The current tugs at you.
+mpechoaround The current tugs at $N.
+mplag $n 2
+else
+if ispc($n)
+mpechoat $n You are caught in the swift current of the channel, sweeping you downstream!
+mpechoaround $n $N is swept downstream by the swift current!
+mptransfer $n 22528
+mpforce $n look
+endif
+endif
+endif
+~
+>greet_prog 29~
+if ispc($n)
+mpmload 22504
+mpforce serpent mpkill $n
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 22530
+channel bitch 30~
+channel bitch 30~
+Channel bitch 30
+~
+The channel bitch is here, simulating current and biting players\@ balls off.;.f
+~
+human~
+water scholar~
+ABc 0 DFL E 0
+60 1 1d2+6 0d0+0 1d2+2 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A giant unknown
+>rand_prog 5~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>greet_prog 10~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>trigger_prog 20~
+if isflying($n)
+mpecho The channel\@s swift current sweeps a floating island downstream.
+else
+if isfight($n)
+mpechoat $n The current tugs at you.
+mpechoaround The current tugs at $N.
+mplag $n 2
+else
+if ispc($n)
+mpechoat $n You are caught in the swift current of the channel, sweeping you downstream!
+mpechoaround $n $N is swept downstream by the swift current!
+mptransfer $n 22529
+mpforce $n look
+endif
+endif
+endif
+~
+>greet_prog 29~
+if ispc($n)
+mpmload 22504
+mpforce serpent mpkill $n
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 22531
+channel bitch 31~
+channel bitch 31~
+Channel bitch 31
+~
+The channel bitch is here, simulating current and biting players\@ balls off.;.f
+~
+human~
+water scholar~
+ABc 0 DFL E 0
+60 1 1d2+6 0d0+0 1d2+2 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A giant unknown
+>rand_prog 5~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>greet_prog 10~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>trigger_prog 20~
+if isflying($n)
+mpecho The channel\@s swift current sweeps a floating island downstream.
+else
+if isfight($n)
+mpechoat $n The current tugs at you.
+mpechoaround The current tugs at $N.
+mplag $n 2
+else
+if ispc($n)
+mpechoat $n You are caught in the swift current of the channel, sweeping you downstream!
+mpechoaround $n $N is swept downstream by the swift current!
+mptransfer $n 22530
+mpforce $n look
+endif
+endif
+endif
+~
+>greet_prog 29~
+if ispc($n)
+mpmload 22504
+mpforce serpent mpkill $n
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 22532
+channel bitch 32~
+channel bitch 32~
+Channel bitch 32
+~
+The channel bitch is here, simulating current and biting players\@ balls off.;.f
+~
+human~
+water scholar~
+ABc 0 DFL E 0
+60 1 1d2+6 0d0+0 1d2+2 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A giant unknown
+>rand_prog 5~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>greet_prog 10~
+if isghost($n)
+else
+if ispc($n)
+mpechoat $n The surface of the channel swirls violently around you!
+mpechoaround $n The surface of the channel swirls violently around $N!
+mpechoat $n A huge, gaping maw rises up from the water, {r***STRIKING***{x you!
+mpechoaround $n A huge, gaping maw rises up from the water, {r***STRIKING***{x $N!
+mpdamage $n 20 10 10
+endif
+endif
+~
+>trigger_prog 20~
+if isflying($n)
+mpecho The channel\@s swift current sweeps a floating island downstream.
+else
+if isfight($n)
+mpechoat $n The current tugs at you.
+mpechoaround The current tugs at $N.
+mplag $n 2
+else
+if ispc($n)
+mpechoat $n You are caught in the swift current of the channel, sweeping you downstream!
+mpechoaround $n $N is swept downstream by the swift current!
+mptransfer $n 22531
+mpforce $n look
+endif
+endif
+endif
+~
+>greet_prog 29~
+if ispc($n)
+mpmload 22504
+mpforce serpent mpkill $n
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 22540
+guard guardsman elite member guardsman pguard peguard patrician\@s~
+an elite guardsman~
+An elite member of the Patrician\@s guard stands here vigilantly.
+~
+Obviously a warrior, this man is one of the Patrician\@s elite guard.  No
+man serves in the elite guard of Earendam without being a veteran of
+countless battles, and this fighter has the scars to show for them.  Now, at
+the prime of his life and at the acme of his battle prowess, he serves the
+Patrician.  
+~
+human~
+water scholar~
+ALTX 0 0 N 0
+53 70 1d1+4000 0d0+0 5d10+25 slash~
+slash~
+0 0 0 0
+FHK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 11338 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 22541
+dark cloud mosquitoes mosquito swarm~
+the mosquito swarm~
+A dark cloud of buzzing mosquitoes fills the area.
+~
+Millions of tiny mosquitoes hover above the surface of the fens, each
+individual insect adding to the buzzing sound.  
+~
+generic~
+water scholar~
+AGXc 0 TW N 0
+1 0 1d1+1 0d0+0 5d10+1 pierce~
+bite~
+-27 -27 -27 -9
+0 ABCD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+0 0 A huge unknown
+>death_prog 100~
+if mobvalue(0) == 1
+  mpecho The fiery blaze engulfs the mosquito swarm!
+endif
+if mobvalue(0) == 2
+  mpecho The cone of cold engulfs the mosquito swarm!
+endif
+if mobvalue(0) == 3
+  mpecho The blast of flame engulfs the mosquito swarm!
+endif
+mpgoto 22572
+~
+>verb_prog p cast~
+if compstr(2)/fireball
+or compstr(2)/cone of cold
+or compstr(2)/blast
+  if compstr(2)/fireball
+    if skill63($n) > 1
+      mpflag mob self imm - magic
+      mpvalueset 0 1
+    endif  
+  endif
+  if compstr(2)/cone of cold
+    if skill569($n) > 1
+      mpflag mob self imm - magic
+      mpvalueset 0 2
+    endif
+  endif
+  if compstr(2)/blast
+    if skill661($n) > 1
+      mpflag mob self imm - magic
+      mpvalueset 0 3
+    endif
+  endif
+  mpnextinterp
+else
+  mpnextinterp
+endif
+~
+>fight_prog 100~
+mpechoat $n You swing at the cloud of mosquitoes, but your efforts are futile.
+mpechoaround $n $N takes a few swings at the mosquito cloud before giving up.
+mpgoto self
+~
+>trigger_prog 20~
+if ispc($n)
+if class($n) == 29
+else
+if isbitset($n) == 22510 1
+else
+mpechoat $n Mosquitoes from the swarm buzz around you, {rbiting{x you.
+mpechoaround $n Mosquitoes from the swarm buzz around $N, {rbiting{x $m.
+mpdamage $n 1 1 1
+mplag $n 1
+endif
+endif
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 22542
+druid Durlanu wandering herbalist human~
+Durlanu~
+A tall human wanders the shores of the fens, collecting herbs.
+~
+A tall human, dressed in the garb of the druids of Nendor, wanders the
+edge of the fens.  He carries with him a pouch full of herbs, filled with
+odd looking twigs and crushed leaves.  He nods slightly as he catches your
+glance.  
+~
+human~
+water scholar~
+ABGLPX 0 DFTV N 0
+57 60 40d200+8000 20d30+100 5d9+90 bash~
+punch~
+-27 -27 -27 -9
+EFIJKN ABR
+26 0 0 15 15 0 0 0 0 0 0 0 0 -10 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 150 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 5~
+if isfight($i)
+else
+if inroom($i) == 22515
+if rand(70)
+west
+else
+mpecho Durlanu looks south across the surface of the water.
+mpecho Durlanu rises off the ground as he assumes the aspect of the hawk.
+mpecho The hawk flies south across the murky water of the fens.
+mpgoto 22571
+mpecho A large hawk streaks in from the north.
+mpecho The hawk shimmers slightly, assuming the aspect of Durlanu.
+endif
+else
+if inroom($i) == 22514
+if rand(30)
+east
+else
+west
+endif
+else
+if inroom($i) == 22509
+if rand(30)
+east
+else
+west
+endif
+else
+if inroom($i) == 22509
+if rand(40)
+east
+else
+west
+endif
+else
+if inroom($i) == 22513
+if rand(50)
+east
+else
+west
+endif
+else
+if inroom($i) == 22512
+if rand(50)
+east
+else
+mpecho Durlanu looks west across the surface of the water.
+mpecho Durlanu rises off the ground as he assumes the aspect of the hawk.
+mpecho The hawk flies west across the channel.
+mpgoto 22519
+mpecho A large hawk streaks in from the east.
+mpecho The hawk shimmers slightly, assuming the aspect of Durlanu.
+endif
+else
+if inroom($i) == 22519
+if rand(70)
+west
+else
+mpecho Durlanu looks east across the surface of the water.
+mpecho Durlanu rises off the ground as he assumes the aspect of the hawk.
+mpecho The hawk flies east across the channel.
+mpgoto 22512
+mpecho A large hawk streaks in from the west.
+mpecho The hawk shimmers slightly, assuming the aspect of Durlanu.
+endif
+else
+if inroom($i) == 22520
+if rand(70)
+east
+else
+mpecho Durlanu looks south across the surface of the water.
+mpecho Durlanu rises off the ground as he assumes the aspect of the hawk.
+mpecho The hawk flies south across the murky water of the fens.
+mpgoto 22575
+mpecho A large hawk streaks in from the north.
+mpecho The hawk shimmers slightly, assuming the aspect of Durlanu.
+endif
+else
+if inroom($i) == 22575
+if rand(70)
+east
+else
+mpecho Durlanu looks north across the surface of the water.
+mpecho Durlanu rises off the ground as he assumes the aspect of the hawk.
+mpecho The hawk flies north across the murky water of the fens.
+mpgoto 22520
+mpecho A large hawk streaks in from the south.
+mpecho The hawk shimmers slightly, assuming the aspect of Durlanu.
+endif
+else
+if inroom($i) == 22574
+if rand(30)
+west
+else
+east
+endif
+else
+if inroom($i) == 22573
+if rand(35)
+west
+else
+east
+endif
+else
+if inroom($i) == 22572
+if rand(40)
+west
+else
+east
+endif
+else
+if inroom($i) == 22532
+if rand(50)
+west
+else
+east
+endif
+else
+if inroom($i) == 22568
+if rand(40)
+west
+else
+east
+endif
+else
+if inroom($i) == 22569
+if rand(30)
+west
+else
+east
+endif
+else
+if inroom($i) == 22570
+if rand(50)
+west
+else
+east
+endif
+else
+if inroom($i) == 22571
+if rand(30)
+west
+else
+mpecho Durlanu looks north across the surface of the water.
+mpecho Durlanu rises off the ground as he assumes the aspect of the hawk.
+mpecho The hawk flies north across the murky water of the fens.
+mpgoto 22515
+mpecho A large hawk streaks in from the south.
+mpecho The hawk shimmers slightly, assuming the aspect of Durlanu.
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+~
+>fight_prog 20~
+if rand(40)
+mpcast 543 60
+else
+if mobvalue(0) == 1
+mpcast 278 60
+else
+mpcast 285 60
+endif
+endif
+~
+>time_prog 6~
+mpvalueset 0 0
+~
+>time_prog 20~
+mpvalueset 0 1
+~
+>fight_prog 5~
+if snaffected($n) == 538
+else
+emote strikes the ground sharply with his staff!
+mpcast 538 60
+endif
+~
+|
+V4 22543
+srryn swamp shaman~
+a srryn swamp shaman~
+A srryn shaman wades through the mires.
+~
+This srryn shaman wades through the Southern Fens, basking in the decay
+of the mires.  His dark brown scales have been ritualistically scarred and
+his chest branded with the saurian symbols of Sythrak\@s worship.  His jagged
+yellow teeth are rotted and his eyes are a rheumy white, though neither
+seems to trouble him, or even hamper him in his tasks.  
+~
+srryn~
+water scholar~
+AGT BL DJZ E 0
+50 25 34d100+1173 50d10+100 6d8+25 slash~
+slash~
+-21 -21 -21 -6
+CFIKMNV AB
+26 0 0 0 0 0 0 0 20 -20 0 0 20 0 0 0 0 50 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 30 -1
+AHMX ABCDEFGIJKLQUVX AC medium flesh
+>data_prog altar~
+say It is an altar to decay, consumption and rot. The leavings of that which has passed to the Dragon\@s gift.
+say A corpse placed before it is the offering. Invoke the name of our Saurian Lord and receive his blessings.
+esay \@gives an ugly grin\@ Any will do, though He does hunger for the flesh of adventurers most of all.
+stand
+mpvalueset 2 0
+~
+>speech_prog altar offering~
+if mobvalue(2) == 1
+break
+endif
+if ispc($n)
+if israce($n) == srryn
+rest
+say Yes, the altar of swampwood deep within the fens...
+mpvalueset 2 1
+mpsetdata altar
+endif
+endif
+~
+>data_prog work~
+esay \@gestures around him\@ This fen, you see? This rotting mire?
+say These will be the swamps of our people. The coldbloods. The scalekin.
+say Many of our kind seek to spread our power through violence, putting the warm-fleshed to the sword.
+esay \@taps a claw to his head\@  But I am cunning, you see. Like our Lord.
+say I shall expand this mire, let it creep and consume. Devour and decay.
+say The lands of Avendar shall be a mire, fitting only for our kind.
+say The lesser races shall fall to fever, starving and the rotting damp.
+say I shall spread the rot, and tend the {yaltar{Y, for the glory of Sythrak and the saurian race!{x
+stand
+mpsetdata 2 0
+~
+>speech_prog work~
+if mobvalue(2) == 1
+break
+endif
+if ispc($n)
+
+if israce($n) == srryn
+sit
+mpvalueset 2 1
+esay \@hisses as he rests\@ Yes. The work of Sythrak... I will tell you.
+mpsetdata work
+endif
+endif
+~
+>data_prog wisdom~
+esay \@speaks, heedless of where he rests\@ I can tell you of the wisdom of Sythrak and of the mire.
+say The Lord of the Mires is cunning, for he seized control of that which rots.
+say The other gods, too proud to battle over \@scraps\@, let him to it, not understanding.
+say You see, the Dragon\@s gift comes to all things, and that which dies, decays.
+esay \@grins, showing his jagged, rotted fangs\@ In this way do all things pass into Sythrak\@s realm!
+say And I do his {ywork{Y here. I tend the fens and his {yaltar{Y.{x
+esay \@exclaims\@ Glory to Sythrak! Glory to the Saurian Lord!
+stand
+mpvalueset 2 0
+~
+>speech_prog wisdom yes ~
+if mobvalue(2) == 1
+break
+endif
+if ispc($n)
+if israce($n) == srryn
+grunt
+mpvalueset 2 1
+rest
+mpsetdata wisdom
+endif
+endif
+~
+>rand_prog 100~
+if mobvalue(2) == 1
+$d
+mpnextdata
+endif
+if rand(2)
+if mobvalue(2) == 0
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+emote pauses, placing his clawed hands down as he chants magical words of decay.
+endif
+if mobvalue(0) == 2
+emote glances around, then sprinkles a foul black powder into the fens.
+endif
+if mobvalue(0) == 3
+emote basks in the filth and decay of the mire, jaw ajar.
+endif
+endif
+endif
+~
+>greet_prog 100~
+if mobvalue(2) == 0
+if ispc($n)
+if remembers($n)
+break
+endif
+mpremember $n
+if israce($n) == srryn
+emote hisses in greeting.
+tell $n Greetings, scale-kin. Have you come to me for wisdom?
+else
+hiss $n
+endif
+endif
+endif
+~
+>fight_prog 10~
+emote chants words of pestilence and decay!
+mpvaluerand 1 1 3
+if mobvalue(1) == 1
+mpcast 104 50
+endif
+if mobvalue(1) == 2
+mpcast 105 50
+endif
+if mobvalue(1) == 3
+mpcast 673 55
+endif
+~
+|
+V4 22544
+hen~
+hen~
+Hen
+~
+~
+human~
+water scholar~
+A 0 V N 0
+55 0 100d100+100 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+FHK D
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 22545
+altarbot decay bot~
+altarbot to decay~
+The altarbot to decay wants to know the magic words.
+~
+~
+srryn~
+water scholar~
+ABDL 0 Le N 0
+60 30 38d138+1080 60d10+100 7d9+30 none~
+~
+-27 -27 -27 -9
+MV 0
+26 0 0 0 0 0 0 0 20 -20 0 0 20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMX ABCDEFGIJKLQUVX 0 medium flesh
+>speech_prog sythrak~
+if israce($n) == srryn
+if objhere(11)
+mpechoat $n You feel great power flow into you as the Lord of Mires accepts your sacrifice!
+mpechoaround $N A wavy heat seems to radiate from a swampwood altar, surrounding $N!
+mpcast 398 60 $n
+break
+endif
+if objhere(10)
+mpechoat $n You feel a blessing from the Lord of Mires for your corpse-offering.
+mpechoaround $n As $N speaks, a wavy heat radiates from the swampwood altar.
+mpcast 84 20 $n
+break
+endif
+if objhere(116)
+mpechoat $n You feel a blessing from the Lord of Mires for your dessicated offering.
+mpechoaround $n As $N speaks, a wavy heat radiates from the swampwood altar.
+mpcast 71 60 $n
+break
+endif
+mpechoat $n You feel uncomfortable invoking Sythrak\@s name here without a proper offering.
+else
+mpechoat $n You feel uncomfortable invoking Sythrak\@s name here.
+endif
+~
+|
+V4 22555
+aranthas~
+Aranthas the Bold~
+Aranthas the Bold is here, watching over the Tower of Aramril
+~
+Aranthas the Bold stands here, clad in the armor of a Champion of
+Avendar.  One of the last Titans to work actively in the world, he has
+worked tirelessly to aid the Champions in their long battle against evil. 
+The firstborn of the titan king Anirim, he has numbered among the Champions
+since the beginning, and now spends his days defending the tower and Vault. 
+~
+human~
+water scholar~
+A 0 HN N 0
+60 0 40d50+10000 0d0+0 10d15+40 slash~
+slash~
+0 0 0 0
+CFHIKN 0
+26 0 0 40 40 0 0 0 0 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 200 -1
+AHMV ABCDEFGHIJK 0 large flesh
+V4 22556
+basalt guardian looming armored figure black armor~
+a basalt guardian~
+A looming figure in black armor stands guard here.
+~
+This looming figure is clad from head to toe in black armor, what little
+flesh that is visible as black and hard as basalt stone.  Luminous crystal
+eyes gleam with a blue light from within its dark helm.  This guardian
+construct of basalt-stone and black armor keeps a tireless vigil over the
+ruins of its creator.  
+~
+doll~
+water scholar~
+ABFT 0 JZ N 0
+54 27 36d114+1155 54d10+100 6d9+27 bash~
+smash~
+-23 -23 -23 -7
+CFHK ABILMNPQR
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AEHJMVc ABCDEFGHIJK 0 medium flesh
+V4 22557
+fell spectre misty bluish-black bluish black~
+a fell spectre~
+A misty, bluish-black spectre seethes here, form indistinct.
+~
+The misty blue-black darkness before you seems to twist of its own
+accord, heedless of the currents of the wind.  The intangible vapor that
+forms the fell spectre lashes out viciously as it floats, twitching with a
+desperate hunger.  A feel of unsettling wrongness pervades the air about
+this abomination, a damp chill a tangible accompaniment to the sensation.  A
+pair of burning azure motes flare within the creature, swinging through it
+with a feral rage.  
+~
+spirit~
+water scholar~
+AFLOXY 0 DFTUZc E 0
+55 40 36d118+1147 55d10+100 7d8+50 cold~
+unsettling touch~
+-24 -24 -24 -7
+AFHK DKLPQRb
+26 0 0 30 0 0 0 0 -30 90 0 0 0 90 -30 0 0 0 0 -10 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ADHLMV ABCDEFGHIJK K medium flesh
+>verb_prog p unlock~
+if compstr(2) == down
+or compstr(2) == dow
+or compstr(2) == do
+or compstr(2) == d
+or compstr(2) == trapdoor
+mpechoat $n A fell spectre prevents you from doing that!
+endif
+~
+>verb_prog p open~
+if compstr(2) == down
+or compstr(2) == dow
+or compstr(2) == do
+or compstr(2) == d
+or compstr(2) == trapdoor
+mpechoat $n A fell spectre prevents you from doing that!
+endif
+~
+>hit_prog 100~
+if rand(70)
+mpvaluerand 1 1 3
+if mobvalue(0) == 1
+mpechoat $n The touch of the fell spectre chills you to the core!
+if mobvalue(1) == 1
+mpcast 20 99 $n
+endif
+if mobvalue(1) == 2
+mpcast 340 99 $n
+endif
+if mobvalue(1) == 3
+mpcast 341 99 $n
+endif
+endif
+if mobvalue(0) == 2
+mpechoat $n The touch of the fell spectre pulses with negative energy.
+if mobvalue(1) == 1
+mpcast 8 99 $n
+endif
+if mobvalue(1) == 2
+mpcast 39 99 $n
+endif
+if mobvalue(1) == 3
+mpcast 678 99 $n
+endif
+endif
+endif
+~
+>rand_prog 100~
+if snaffected($i) == 346
+else
+mpaddaffect $i 346 35 -1 0 0 2
+endif
+if snaffected($i) == 600
+else
+mpaddaffect $i 600 60 -1 0 0 0
+endif
+~
+>load_prog 100~
+mpaddaffect $i 346 60 -1 0 0 2
+mpaddaffect $i 600 60 -1 0 0 0
+~
+>fight_prog 100~
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+mpset mob self damtype 5
+endif
+if mobvalue(0) == 2
+mpset mob self damtype 9
+endif
+if mobvalue(0) == 3
+mpset mob self damtype 12
+endif
+if snaffected($i) == 346
+else
+mpaddaffect $i 346 35 -1 0 0 2
+endif
+if snaffected($i) == 600
+else
+mpaddaffect $i 600 60 -1 0 0 0
+endif
+~
+|
+V4 22558
+massive skeletal serpent bone snake bonesnake~
+a massive skeletal bonesnake~
+A massive skeletal serpent coils in the center of the chamber.
+~
+Unlike its living namesake, this massive serpent is completely without
+flesh.  Its sturdy skeletal bulk is over twenty feet in length, topped with
+a serpentine skull.  Its fanged maw drips a virulent poison that spatters
+the floor as it snaps its jaws.  
+~
+snake~
+water scholar~
+ABFGOX 0 DFPV E 0
+53 27 1d1+4000 53d10+100 6d9+50 pierce~
+bite~
+-22 -22 -22 -6
+ACDEFHMN ABPQRb
+26 0 0 10 30 -30 20 0 50 90 50 0 20 50 -20 0 0 0 0 -10 -20 50 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHXYc ADEFKLQVX A large bone
+>fight_prog 100~
+if rand(20)
+if ispc($r)
+mpechoat $r A massive skeletal bonesnake entangles you in its coils!
+mpechoaround $r A massive skeletal bonesnake entangles $R in its coils!
+mplag $r 3
+else
+mpechoat $n A massive skeletal bonesnake entangles you in its coils!
+mpechoaround $n A massive skeletal bonesnake entangles $N in its coils!
+mplag $n 3
+endif
+endif
+~
+>hit_prog 100~
+if rand(20)
+mpechoat $n Having bitten you, a massive skeletal bonesnake injects you with paralyzing venom!
+mpremaffect $n 105
+mpaddaffect $n 105 55 20 1 -3 32 O
+endif
+~
+|
+V4 22559
+dispel magic runes bot lesser~
+the flickering runes~
+The lesser dispel-magic-runes bot.
+~
+~
+human~
+water scholar~
+ADL 0 JLe N 0
+60 30 38d138+1080 60d10+100 7d9+30 none~
+~
+-27 -27 -27 -9
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>greet_prog 100~
+if ispc($n)
+  if isimmort($n)
+  else
+    if isghost($n)
+    else
+      if rand(15)
+        mpechoat $n A rune in the wall flickers as you move near it.
+        mpechoaround $n A rune in the wall flickers as $N moves near it.
+        mpcast 50 51 $n
+      endif
+    endif
+  endif
+else
+  if name($n) == dull brown dragonfly dragon fly
+    mpforce dragonfly echo As $N flies in, it slows visibly, wings twitching rather than flying.
+    mpforce dragonfly mpvalueset 9 9
+  endif
+endif
+~
+|
+V4 22560
+dispel magic runes bot lesser~
+the flickering runes~
+The greater dispel-magic-runes bot.
+~
+~
+human~
+water scholar~
+ADL 0 JLe N 0
+60 30 38d138+1080 60d10+100 7d9+30 none~
+~
+-27 -27 -27 -9
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+else
+mpcast 50 90 $n
+mpcast 50 90 $n
+mpcast 50 90 $n
+mpcast 50 90 $n
+mpcast 50 90 $n
+mpcast 50 90 $n
+endif
+~
+|
+V4 22561
+rubble bot~
+the rubble bot~
+The rubble bot blocks the way down if Ghaunda is here.
+~
+~
+human~
+water scholar~
+ABDL 0 Le N 0
+60 30 38d138+1080 60d10+100 7d9+30 none~
+~
+-27 -27 -27 -9
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+if mobvalue(0) == 1
+if mobhere(22508)
+mpforce ghaunda emote roars in fury, sweeping heavy rubble over the trap door.
+mpat 22568 mpecho A great crash sounds from above you, as if something heavy fell on the trap door.
+mpat 22569 mpecho You hear a crash of stone from the west.
+mpat 22570 mpecho You hear a rumble from the west.
+mpat 22571 mpecho The ground rumbles slightly.
+mpvalueset 0 0
+mpat trappingbotpal mpforce trappingbotpal mpvalueset 0 0
+endif
+endif
+~
+>verb_prog p clear rubble~
+if isghost($n)
+mpechoat $n But you\@re a ghost!
+break
+endif
+if isfighting($n)
+mpechoat $n Not now! You\@re too busy fighting!
+break
+endif
+if mobvalue(0) == 1
+mpechoat $n The rubble has already been cleared.
+else
+mpvaluerand 1 18 30
+if strength($n) > $1
+mpechoat $n With a great effort, you clear the heavy rubble!
+mpechoaround $n With great effort, $N clears the heavy rubble!
+mplag $n 4
+mpvalueset 0 1
+mpat trappingbotpal mpforce trappingbotpal mpvalueset 0 1
+mpat trappingbotpal mpecho You hear something heavy shift above.
+else
+mpechoat $n You pant and strain, but fail to clear the heavy rubble.
+mpechoaround $n $N pants and strains, but fails to clear the heavy rubble.
+mplag $n 3
+endif
+endif
+~
+>verb_prog p open~
+if compstr(2) == down
+or compstr(2) == dow
+or compstr(2) == do
+or compstr(2) == d
+or compstr(2) == trapdoor
+ if mobvalue(0) == 1
+  mpinterpret $n $x
+ else
+  mpechoat $n you\@ll have to clear the rubble, first!
+ endif 
+else
+ mpinterpret $n $x
+endif
+~
+|
+V4 22562
+trapping bot trappingbotpal~
+the trapping bot~
+This trapping bot makes it hard to open up.
+~
+~
+human~
+water scholar~
+ABDL 0 Le N 0
+60 30 38d138+1080 60d10+100 7d9+30 none~
+~
+-27 -27 -27 -9
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p open~
+if compstr(2) == up
+or compstr(2) == u
+or compstr(2) == trapdoor
+ if mobvalue(0) == 1
+mpinterpret $n $x
+ else
+  mpechoat $n The door is blocked from the other side!
+ endif 
+else
+ mpinterpret $n $x
+endif
+~
+|
+V4 22563
+bot flicker flickerbot~
+Flickerbot~
+Flickerbot is a red herring.
+~
+~
+human~
+water scholar~
+ABDL 0 Le N 0
+60 30 38d138+1080 60d10+100 7d9+30 none~
+~
+-27 -27 -27 -9
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+if value(1) == 1
+  mpecho The block falls dark once more.
+  mppurge self
+endif
+if value(1) == 0
+  mpecho A light almost seems to kindle in the pyramid for an instant, but it leaks out the crack.
+  mpvalueset 1 1
+endif
+~
+|
+V4 22564
+bot vine vines vinebot~
+Vinebot~
+Vines grow here, groping unwary travelers.  Ew...
+~
+~
+human~
+water scholar~
+ABDL 0 Le N 0
+60 30 38d138+1080 60d10+100 7d9+30 none~
+~
+-27 -27 -27 -9
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>data_prog HowWeWork~
+Vinebot loads vinefobs on any resting PCs.
+Vinefob purges if not in this room.
+Vinefob waits until they\@re sleeping, then loads vines, forcing vinebot to emote sneakily.
+Vines focus and start tightening, gaining in power and abilities the longer they\@re on.
+~
+>verb_prog p echo_em~
+if isnpc($n)
+if iswizi($n)
+mpat 330 mpunwizi
+  mpvalueset who encircling
+  if position($f) == 4
+    mpstring mob self short Quickly,
+    mpvalueset who encircling the sleeping
+    //690:lucid dreaming, 496: wariness, 493:light sleep
+    if snaffected($f) == 690
+    or snaffected($f) == 496
+    or snaffected($f) == 493
+      mpechoat $f Your heightened senses tells you that something is amiss.
+    endif
+    if rand(5)
+      if rand(50)
+        mpechoat $f You feel something sliding over you.
+      else
+        mpechoat $f Something tightens around your waist.
+      endif
+    endif
+  endif
+  if position($f) == 5
+    mpstring mob self short Slowly,
+    mpvalueset who encircling the supine
+  endif
+  if position($f) == 6
+    mpstring mob self short Tentatively,
+  endif
+  if position($f) == 7
+    mpstring mob self short Sneakily,
+  endif
+  if position($f) == 8
+    mpstring mob self short Hungrily,
+  endif
+emote a vine snakes out from the wall, %who $F!
+mpstring mob self vinebot
+mpat 330 mpwizi
+endif
+endif
+~
+>data_prog adjectives~
+dark green
+ropy
+thick
+slender
+curling
+gnarled
+leafy
+sickly
+~
+>trigger_prog 100~
+if ispc($n)
+  if isimmort($n)
+  or isghost($n)
+  else
+    if position($n) > 3
+      if position($n) < 7
+        if iscarrying($n) == 22589
+        else
+          mpoload 22589 on $n
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+  mproomcmd mptrigger all
+  if rand(1)
+    if rand(10)
+      mpstring mob self short the vines
+      mpat 330 mpunwizi
+      mpvaluerand 8 1 4
+      if value(8) == 1
+        emote move slightly, as though by a breeze.
+      endif
+      if value(8) == 2
+        emote rustle imperceptibly.
+      endif
+      if value(8) == 3
+        emote seem to shift slightly.
+      endif
+      if value(8) == 4
+        mpstring mob self short You
+        emote seem to see something moving at the corner of your vision.
+      endif
+      mpat 330 mpwizi
+      mpstring mob self short Vinebot
+    endif
+  endif
+endif
+~
+|
+V4 22565
+vine entwining mob_22565~
+an entwining vine~
+An entwining vine reaches out from the wall.
+~
+This ropy vine, strong and fibrous, stretches out from the mass of vines
+growing along the wall.  Small, serrated, diamond-shaped leaves are a
+sickly, pale green from the poor light, and the plant seems to be starving
+for light and nutrients.  The vine seems almost...  Animated, swaying slowly
+back and forth.  
+~
+generic~
+water scholar~
+AL 0 d N 0
+20 10 50d10+125 20d10+100 3d7+10 bash~
+thrashing lash~
+-3 -3 -3 3
+EN BLPQRXb
+26 0 0 0 -20 0 0 0 -65 0 0 0 0 10 0 0 0 0 0 10 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+0 0 0 medium flesh
+>verb_prog p west~
+mpseewizi
+if compstr(1) == w
+or compstr(1) == we
+or compstr(1) == wes
+or compstr(1) == west
+  if isfighting($f)
+    mpnextinterp
+  else
+    if isfocused($i)
+      if name($n) / $f
+        mpvaluerand 4 1 3
+        if value(4) == 1
+          pmote snatches as $F moves west!
+          mplag $f 2
+          mpechoat $f You stumble, but manage to stay free of the vine.
+        endif
+        if value(4) == 2
+          pmote swipes, preventing $F from leaving!
+          murder $f
+        endif
+        if value(4) == 3
+          pmote snatches as $F tries to leave!
+          mpaddskill $i 186 100
+          trip $f
+        endif
+        if rand(33)
+          mpmload 22565
+          mpforce mob_22565 mpfocus $f
+          mpmload 22565
+          mpforce mob_22565 mpfocus $f          
+          mpmload 22565
+          mpforce mob_22565 mpfocus $f
+          get_em_all
+        endif
+      else
+        mpnextinterp
+      endif
+    else
+      mpnextinterp
+    endif
+  endif
+else
+  mpnextinterp
+endif
+mpunseewizi
+~
+>verb_prog p south~
+mpseewizi
+if compstr(1) == s
+or compstr(1) == so
+or compstr(1) == sou
+or compstr(1) == sout
+or compstr(1) == south
+  if isfighting($f)
+    mpnextinterp
+  else
+    if isfocused($i)
+      if name($n) / $f
+        mpvaluerand 4 1 3
+        if value(4) == 1
+          pmote snatches as $F moves south!
+          mplag $f 2
+          mpechoat $f You stumble, but manage to stay free of the vine.
+        endif
+        if value(4) == 2
+          pmote swipes, preventing $F from leaving!
+          murder $f
+        endif
+        if value(4) == 3
+          pmote snatches as $F tries to leave!
+          mpaddskill $i 186 100
+          trip $f
+        endif
+      else
+        mpnextinterp
+      endif
+    else
+      mpnextinterp
+    endif
+  endif
+else
+  mpnextinterp
+endif
+mpunseewizi
+~
+>verb_prog p get_em_all~
+if isnpc($n)
+if isfocused($i)
+  if rand(10)
+    emote suddenly whips out in frenzied hunger!
+  endif
+  murder $f
+endif
+endif
+~
+>data_prog lashings~
+disarm
+offhand
+offhand
+disarm
+strip
+strip
+choke
+choke
+ensnare
+ensnare
+lash
+lash
+lash
+disarm
+~
+>fight_prog 100~
+if inroom($i) != 22569
+  emote withers abruptly and dies.
+  mppurge self
+endif
+mpseewizi
+if rand(5)
+  if rand(5)
+    mpvaluerand 4 1 3
+    if value(4) == 1
+      mpmload 22568
+      mpforce mob_22568 mpfocus $f
+    endif
+    if value(4) == 2
+      disarm
+    endif
+    if value(4) == 3
+      choke
+      disarm
+    endif
+  else
+    mpvalueset 4 0
+    if value(1) > 3
+      mpvalueset 5 3
+    endif
+    if value(1) > 9
+      mpvalueset 5 13
+    endif 
+    mpsetdata lashings
+    mpvaluerand 4 1 $5
+    loop 0 to $4
+      mpnextdata
+    endloop
+    $d
+  endif
+endif
+mpunseewizi
+~
+>data_prog adjectives~
+dark green
+ropy
+thick and fibrous
+slender
+curling
+gnarled and knotted
+leafy
+sickly
+~
+>rand_prog 100~
+if inroom($i) != 22569
+    emote withers abruptly and dies.
+    mppurge self
+endif
+if isfocused($i)
+  mpseewizi
+  if ishere($f)
+    if value(1) == 0
+        mpaddskill $i 469 100
+        mpaddskill $i 436 100
+        mpaddskill $i 435 100
+        mpaddskill $i 441 100
+        mpaddskill $i 171 100
+        mpaddskill $i 235 100
+        mpvalueset adj narrow
+        mpvaluerand 0 1 8
+        mpsetdata adjectives
+        loop 0 to $0
+          mpnextdata
+        endloop
+        mpvalueset adj $d
+        mpvalueset 1 1
+        if rand(33)
+            mpstring mob self short a %adj vine
+        endif
+        if rand(80)
+            mpstring mob self long A %adj vine loops tightly around $F.
+        else
+            mpstring mob self long An entwining vine loops tightly about $F.
+        endif
+        mpstring mob self name vine entwining mob_22565 %adj
+        pmote tightens around $F.
+    else
+        if value(1) > 1
+          if value(1) < 20
+            mpvalueup 1
+            if rand(60)
+                if value(1) == 3
+                or value(1) == 6
+                    pmote tightens its hold on $F.
+                    mplag $f 2
+                endif
+                if value(1) > 6
+                    mpaddaffect self 71 60 -1 18 $1 0 0
+                endif
+                if value(1) == 9
+                    mpoload 22590 on $i 16
+                endif
+                if value(1) == 12
+                    mpflag mob self act + warrior
+                    mpflag mob self off + fast
+                endif
+                if value(1) == 13
+                    mpechoat $f Something tightens painfully around your neck!
+                    mpmurder $f
+                    get_em_all
+                endif
+            endif
+          endif
+        endif
+    endif
+  else
+    if rand(30)
+      emote slowly pulls back into the wall, vanishing among the other vines.
+      mppurge self
+    endif
+  endif
+endif
+mpunseewizi
+~
+|
+V4 22568
+vine bot vinebot II mob_22568~
+Vinebot II~
+Vinebot two bites and runs.
+~
+~
+human~
+water scholar~
+ABDL 0 Le N 0
+60 30 38d138+1080 60d10+100 7d9+30 none~
+~
+-27 -27 -27 -9
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+if inroom($i) != 22569
+  if isfocused($i)
+  if ishere($f)
+    mpstring mob self short A thick, thorny vine
+    pmote whips out of the mass of vines, snapping towards $F!
+    if dexterity($f) > 19
+      if rand(30)
+        mpechoaround $f $F dodges the thorny vine!
+        mpechoat $f You dodge the thorny vine!
+        mppurge self
+      endif
+    endif
+    pmote strikes $F!
+    mpaddaffect $f 105 51 12 2 -2 4096
+  endif
+  endif
+endif
+mppurge self
+~
+|
+V4 22569
+thin reptilian head serpent swamp mob_22569~
+the swamp serpent~
+A swamp serpent slithers malevolently here.
+~
+Black scales cover the skin of this swamp serpent, their surfaces dull
+and muddied.  Vertical black pupils surrounded by sickly yellow irises track
+all nearby movement with deadly precision.  The body is long and slightly
+flattened, better for swimming with.  The broad, triangular head has two
+pits behind the jawbone.  
+~
+snake~
+water scholar~
+ALNX L MVb N 0
+40 15 15d150+800 0d0+0 5d9+20 pierce~
+bite~
+-15 -15 -15 -2
+FHMU ABa
+26 0 0 0 0 0 0 0 15 -15 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGXYc ADEFKLQVX A large unknown
+#0
+
+
+
+#OBJECTS
+V13
+22500
+crushing jaws~
+its crushing jaws~
+The huge jaws of the swamp turtle lie here.~
+~
+unknown~
+weapon PQd 0 0 N
+mace 5 10 2 0
+chomp~
+53 0 0 2 P
+0
+O chomp~
+V13
+22501
+sword longsword long black~
+a black longsword inscribed with blue runes~
+A longsword lies here, its blade inscribed with strange, blue runes. ~
+~
+steel~
+weapon AEG 0 0 AN
+sword 6 7 5 0
+freezing bite~
+58 180 175000 2 P
+15
+A
+19 3
+A
+18 3
+O freezing bite~
+V13
+22502
+amulet black glowing runes~
+a black amulet with glowing blue runes~
+A black medallion, inscribed with strange, glowing runes, hangs from a necklace of steel links.~
+~
+steel~
+jewelry AEJP 0 0 AC
+0 0 0 0 0
+60 100 0 1 P
+1
+A
+42 50
+V13
+22503
+ring black steel signet~
+a black steel signet ring~
+A ring of black steel bearing an ancient crest is here.~
+~
+steel~
+armor AE 0 0 AB
+10 10 10 10 0
+60 10 11700 0 P
+1
+A
+17 -10
+A
+19 2
+A
+18 2
+V13
+22504
+halberd black blue glowing runes~
+a black halberd inscribed with blue runes~
+A halberd lies here, its blade inscribed with strange, blue runes. ~
+~
+steel~
+weapon AEG 0 0 AN
+polearm 6 7 2 F
+pierce~
+58 200 97385 3 P
+15
+A
+19 2
+A
+18 2
+O pierce~
+V13
+22505
+black breastplate runes elite~
+a black breastplate inscribed with blue runes~
+A dark steel breastplate is here, its surface inscribed with strange, glowing runes.~
+~
+steel~
+armor AE 0 0 AD
+11 11 11 6 0
+58 200 8900 2 P
+20
+A
+19 2
+A
+18 2
+V13
+22506
+black leggings runes elite~
+black leggings inscribed with blue runes~
+A pair of dark steel leggings is here, the surface inscribed with strange, glowing runes.~
+~
+steel~
+armor AE 0 0 AF
+10 10 10 6 0
+58 130 9080 2 P
+20
+A
+18 2
+A
+19 2
+V13
+22507
+shell swamp turtle bone breastplate~
+the shell of the swamp turtle~
+A massive bone shell, formed into the shape of a breastplate, lies here.~
+~
+bone~
+armor Q 0 0 AD
+10 10 10 5 0
+51 100 27857 2 P
+10
+A
+33 5
+A
+19 2
+A
+18 2
+V13
+22508
+long dagger tooth worm~
+the tooth of a cave worm~
+A long tooth is here, covered in acid.~
+~
+bone~
+weapon Q 0 0 AN
+dagger 6 7 7 0
+acidic bite~
+58 60 97000 1 P
+2
+A
+19 2
+A
+18 1
+O acidic bite~
+V13
+22509
+sapling~
+the leaves of the sapling are laden with pungent smelling berries.~
+The leaves of the sapling are laden with pungent-smelling berries.~
+~
+wood~
+container e 0 0 P
+10 0 0 20 0
+40 0 0 4 P
+0
+V13
+22510
+pile rock rocks~
+the rock pile~
+A tumble of rocks is piled against the cliff face.~
+~
+unknown~
+container 0 0 0 P
+100 0 0 500 0
+10 10000 0 4 P
+1
+V13
+22511
+ring small quartz~
+a small ring of quartz~
+A small ring of glowing quartz is here.~
+~
+quartz~
+treasure A 0 F AB
+0 0 0 0 0
+20 5 6580 0 P
+80
+A
+12 10
+A
+13 10
+V13
+22512
+black armguards runes elite~
+black armguards inscribed with blue runes~
+A pair of dark steel armguards is here, the surface inscribed with strange, glowing runes.~
+~
+steel~
+armor AE 0 0 AI
+9 9 9 5 0
+58 50 9375 2 P
+20
+A
+19 2
+A
+18 2
+V13
+22513
+black helmet runes elite~
+a black helmet inscribed with blue runes~
+A dark steel helmet is here, the surface inscribed with strange, glowing runes.~
+~
+steel~
+armor AE 0 0 AE
+9 9 9 5 0
+58 50 8275 2 P
+20
+A
+19 2
+A
+18 2
+V13
+22514
+black boots runes elite~
+black boots inscribed with blue runes~
+A pair of dark steel boots is here, the surface inscribed with strange, glowing runes.~
+~
+steel~
+armor AE 0 0 AG
+9 9 9 5 0
+58 45 8275 2 P
+20
+A
+19 2
+A
+18 2
+V13
+22515
+cowled robe hooded~
+a deeply cowled robe~
+A hooded black robe with a blue hem is here.~
+~
+cloth~
+container DE 0 0 AK
+400 A 0 400 25
+55 5 180000 2 P
+5
+A
+18 3
+A
+19 3
+A
+17 -10
+V13
+22516
+spear black blue glowing runes~
+a black spear inscribed with blue runes~
+A spear lies here, its shaft inscribed with strange, blue runes.~
+~
+steel~
+weapon AE 0 F AN
+spear 6 7 2 F
+pierce~
+51 200 150000 3 P
+15
+A
+18 2
+A
+19 2
+O pierce~
+V13
+22517
+tree limb~
+a broken off tree limb~
+A broken off tree limb lies here.~
+~
+wood~
+weapon 0 0 F AN
+mace 2 9 1 0
+pound~
+5 15 0 2 P
+0
+O pound~
+V13
+22518
+berry bright red~
+a bright red berry~
+A bright red berry is here.~
+~
+plant~
+treasure 0 0 F AO
+0 0 0 0 0
+0 20 0 2 P
+0
+>verb_prog p eat berry~
+if isowner($n)
+  opbitset $n 22510 1
+  opechoat $n You eat a bright red berry.
+  opechoaround $n $N eats a bright red berry.
+  opaddaffect 479 60 24 27 22510 0
+  oppurge self
+  opverbstop
+  break
+else
+  opinterpet $n $x
+endif
+~
+|
+V13
+22519
+vine ropy length~
+a length of ropy vine~
+A length of ropy vine lies is here.~
+~
+plant~
+weapon Q 0 0 AN
+whip 1 10 3 0
+lash~
+0 45 3900 2 P
+0
+O lash~
+V13
+22520
+ghaundasword sword longsword black runes~
+a black longsword inscribed with blue runes~
+A longsword lies here, its blade inscribed with strange, blue runes.~
+~
+steel~
+weapon AEG 0 0 AN
+sword 9 4 5 0
+freezing bite~
+55 180 65000 2 P
+8
+A
+18 2
+A
+19 2
+O freezing bite~
+>fight_prog 5~
+if isworn($o)
+  if objvalue(2) == 0
+    opecho The blue runes on a black longsword flash brightly!
+    opvalueset 2 1
+    opset obj ghaundasword v3 9
+    mpstring obj ghaundasword damverb tenebrous slash
+  else
+    if objvalue(2) == 1
+      opecho The blue runes on a black longsword flash brightly!
+      opvalueset 2 0
+      opset obj ghaundasword v3 5
+      mpstring obj ghaundasword damverb freezing bite
+    endif
+  endif
+endif
+~
+|
+V13
+22521
+spear black runes elitespear~
+a black spear inscribed with blue runes~
+A spear lies here, its shaft inscribed with strange, blue runes.~
+~
+steel~
+weapon AEG 0 F AN
+spear 9 4 5 F
+freezing bite~
+51 180 65000 3 P
+10
+A
+18 2
+A
+19 2
+O freezing bite~
+>fight_prog 5~
+if isworn($o)
+if objvalue(2) == 0
+opecho The blue runes on a black spear flash brightly!
+opvalueset 2 1
+opset obj elitespear v3 9
+mpstring obj elitespear damverb life drain
+else
+if objvalue(2) == 1
+opecho The blue runes on a black spear flash brightly!
+opvalueset 2 0
+opset obj elitespear v3 5
+mpstring obj elitespear damverb freezing bite
+endif
+endif
+endif
+~
+|
+V13
+22522
+halberd black runes elitehalberd~
+a black halberd inscribed with blue runes~
+A halberd lies here, its shaft inscribed with strange, blue runes.~
+~
+steel~
+weapon AEG 0 0 AN
+polearm 9 4 5 F
+freezing bite~
+51 180 65000 3 P
+10
+A
+18 2
+A
+19 2
+O freezing bite~
+>fight_prog 5~
+if isworn($o)
+if objvalue(2) == 0
+opecho The blue runes on a black halberd flash brightly!
+opvalueset 2 1
+opset obj elitehalberd v3 9
+mpstring obj elitehalberd damverb life drain
+else
+if objvalue(2) == 1
+opecho The blue runes on a black halberd flash brightly!
+opvalueset 2 0
+opset obj elitehalberd v3 5
+mpstring obj elitehalberd damverb freezing bite
+endif
+endif
+endif
+~
+|
+V13
+22523
+red berries~
+some red berries~
+A few red berries lie here.~
+~
+plant~
+pill 0 0 F A
+30 'cure critical' '' '' ''
+30 1 0 0 P
+0
+V13
+22524
+thorny thorn vine bark~
+a bit of thorny vine bark~
+A bit of thorny bark is here, white sap clinging to the thorns.~
+~
+plant~
+pill 0 0 F A
+25 '' 'bark skin' 'poison' ''
+40 1 0 0 P
+0
+V13
+22525
+dark algae~
+some dark algae~
+A small, damp pile of dark green algae is here.~
+~
+plant~
+pill 0 0 F A
+51 'water breathing' 'cure critical' '' ''
+51 1 10000 0 P
+0
+V13
+22526
+darkened staff thorny thorn wood~
+a darkened staff of thorny wood~
+A dark staff of thorn-covered wood lies here.~
+~
+wood~
+weapon MPZ 0 0 AN
+staff 5 9 1 F
+smash~
+55 150 215000 3 P
+4
+A
+19 1
+A
+13 20
+A
+12 20
+O smash~
+V13
+22527
+vest woven wood dark~
+a dark vest of woven wood~
+A finely crafted vest of woven wood lies here.~
+~
+wood~
+armor B 0 0 AD
+5 5 5 5 0
+57 150 250000 2 P
+1
+A
+20 -2
+A
+19 2
+A
+18 2
+>wear_prog 100~
+if snaffected($n) == 551
+mpremaffect 551
+mpechoat $n You feel a vest of woven wood meld with your skin.
+mpechoaround $n $N\@s vest of woven wood melds seemlessly with $N\@s skin.
+mpaddaffect 551 60 -1 17 -68 0
+mpaddaffect 551 60 -1 32 11 0
+else
+mpechoat $n You feel a vest of woven wood meld with your skin.
+mpechoaround $n $N\@s vest of woven wood melds seemlessly with $N\@s skin.
+mpaddaffect 551 60 -1 17 -68 0
+mpaddaffect 551 60 -1 32 11 0
+endif
+~
+>remove_prog 100~
+mpechoat $n The vest separates from your skin.
+mpechoaround $n The vest separates from $N\@s skin.
+mpremaffect 551
+~
+|
+V13
+22528
+necklace moon pendant lunus~
+a pendant of Lunus~
+A bright silver chain is looped through the silvery depiction of Lunus.~
+~
+silver~
+jewelry 0 0 F AC
+0 0 0 0 0
+35 10 8280 1 P
+20
+A
+20 -3
+A
+18 2
+>fight_prog 1~
+if isworn($o)
+if objvalue(0) == 1
+opecho A pendant of Lunus gleams softly.
+opcast 34 50
+endif
+endif
+~
+>rand_prog 1~
+if isworn($o)
+if objvalue(0) == 1
+opecho A pendant of Lunus gleams softly.
+opcast 34 50
+endif
+endif
+~
+>time_prog 20~
+opvalueset 0 1
+~
+>time_prog 6~
+opvalueset 0 0 
+~
+|
+V13
+22529
+ancient black sword grael-ayer grael ayer~
+the ancient black sword, \@Grael-Ayer\@~
+An ancient sword with a black blade pulses with an angry rhythm.~
+~
+energy~
+weapon BHMZ 0 0 AN
+sword 4 12 2 0
+pierce~
+60 140 325000 2 P
+1
+E
+runes~
+There are lots of runes on this and stuff.
+~
+O pierce~
+V13
+22530
+belt woven leaves sturdy~
+a belt woven from sturdy leaves~
+A belt, expertly woven from tough leaves, has been left here.~
+~
+plant~
+container 0 0 F AL
+30 0 0 20 90
+51 10 0 2 P
+8
+V13
+22531
+slender bracelet black steel~
+a slender bracelet of black steel~
+A bracelet of black steel has been left here.~
+~
+steel~
+jewelry 0 0 F AM
+0 0 0 0 0
+51 10 14195 0 P
+4
+A
+18 2
+A
+19 2
+A
+12 10
+E
+bracelet~
+This bracelet is formed of gleaming black steel.  The band is marked with
+glowing blue runes that seem to float just below the surface.  
+~
+V13
+22532
+rotting swampwood altar wood rotted~
+a rotting swampwood altar~
+An altar of rotted wood is set here, enshrined amidst the decay.~
+~
+wood~
+furniture S 0 0 P
+1 1000 AEGK -10 -10
+40 2000 0 3 P
+0
+E
+rotting swampwood altar wood rotted~
+This swampwood altar festers with decay.  Saurian imagery is carved into
+its rotting sides; tooth, fang and slitted eye.  The moss hanging from the
+dead tree branches above drapes over the altar like a curtain and creeping
+fungus grows about the base.  A few stray bones lie about the altar, cracked
+and marrowless.  
+~
+V13
+22533
+small plate marble scroll~
+a small plate of marble~
+A small plate of marble lies here.~
+~
+marble~
+scroll G 0 0 A
+58 'diamond skin' '' '' ''
+50 7 0 0 P
+10
+E
+small plate marble scroll~
+This small, thin plate of marble has been shaved and polished down. 
+Arcane runes cover its surface.  
+~
+V13
+22534
+intact granite bookcase~
+a granite bookcase~
+An intact granite bookcase stands near the reading bench, along the north wall.~
+~
+granite~
+container Ya 0 0 P
+0 ABCD 22535 0 0
+15 0 0 0 P
+0
+E
+intact granite bookcase~
+Like the reading bench next to it, this stone bookcase is unusually
+intact compared to the rest of the tower.  This may simply be a consequence
+of the protection offered by the remnants of the northern wall, which has
+managed to crumble more slowly than the rest of the structure.  Simple but
+sturdy, this bookcase bears the monogram \#A. E.\# etched into its base.
+~
+V13
+22535
+ring granite keyring keys key~
+a granite keyring~
+A ring hung with several granite keys lies here.~
+~
+granite~
+key XY 0 0 AO
+0 0 0 0 0
+15 4 0 1 P
+0
+V13
+22536
+heavy clay tablet~
+a heavy clay tablet~
+A heavy clay tablet sits here, pitted and chipped.~
+~
+stone~
+trash TX 0 0 AO
+0 0 0 0 0
+50 120 0 2 P
+0
+E
+heavy clay tablet~
+This pitted tablet bears only one marking, a series of runes etched in
+its center: 
+
+   ********************
+ ************************
+***                    ***
+***    _/\\    /\\  /\\   ***
+***   /_\\    /\\/   /\\  ***
+***  /      /     /\\   ***
+***                    ***
+ ************************
+   ********************
+
+Perhaps if you were to {Wstudy{x the runes, you might learn more.
+~
+>verb_prog p study~
+if isghost($n)
+or isnpc($n)
+  mpnextinterp
+  break
+endif
+if isowner($n)
+else
+  mpnextinterp
+  break
+endif
+if compx() == runes
+or compx() == rune
+  mpechoaround $n $N stares intently at $I for a long moment.
+  // Check for stonecraft
+  if skill1152($n) <= 0
+    mpechoat $n You study the ancient rune for a long moment, but it is meaningless to you.
+  else
+    // Check for stoneshaper
+    if skill1157($n) <= 0
+      mpechoat $n You recognize the pattern as an ancient rune of earth, but grow swiftly weary of trying to understand it; the rune is too complex for your skills.
+    else
+      // Check for already learned the rune
+      if isbitset($n) == 291
+        mpechoat $n You study the rune of Calcify, but learn nothing new.
+      else
+        mpechoat $n You study the ancient rune for a long moment, and slowly a new understanding of runic magic fills you.
+        mpechoat $n You have learned the rune of Calcify!
+        mpbitset $n 291 1
+      endif
+    endif
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+22537
+clay staff~
+a clay staff carved with runes~
+A clay staff carved with runes lies here.~
+~
+stone~
+staff 0 0 F AO
+8 8 8 'fortify' 0
+30 80 400 2 P
+4
+E
+clay staff~
+This simple clay staff has been carved with runes, and emits a faint
+sense of humming power.  
+~
+V13
+22538
+basalt wand steel steel-handled~
+a steel-handled basalt wand~
+A basalt wand with a handle of steel has been left here.~
+~
+stone~
+wand Y 0 F AO
+50 2 2 'metal to stone' 0
+35 42 800 1 P
+1
+E
+basalt wand steel steel-handled~
+This straight, long wand has been carved from basalt, mounted atop a
+smooth handle of pure steel.  
+~
+V13
+22539
+obsidian staff diamond~
+an obsidian staff inset with a diamond~
+An obsidian staff inset with a diamond gleams darkly here.~
+Though the true origins of this particular staff are steeped in mystery,
+many suspect it was originally forged by the ancient alatharyan magi
+themselves, in the days before the Sundering.  Critics of this theory note
+that while it is certainly true that those scholars had an unparalleled
+mastery of magic and could easily have forged such a piece, they would not
+have been likely to squander their time on what, for them, would have been a
+trivial forging.  
+
+Regardless of the truth of its creation, it is known that sometime around
+the War of Night the staff fell into the hands of the archmage Ankern
+Earthblight, before his eventual defeat and exile into the boglands at the
+base of the Mlejians.  It remained with him there while he rebuilt his
+power, and was presumed lost to the marsh after he was once again repelled. 
+~
+obsidian~
+weapon 0 0 0 AN
+staff 11 3 1 F
+smash~
+51 74 49739 2 P
+1
+A
+19 1
+A
+12 20
+A
+13 20
+E
+obsidian staff diamond~
+This long shaft of obsidian has been polished smooth enough to gleam
+faintly, showing off the line of runes etched along its length.  These runes
+run up to the glittering diamond inset in the staff, proceeding to encircle
+it completely.  
+~
+O smash~
+>rand_prog 100~
+if isfighting($o)
+  break
+endif
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 15
+    mpecho Left idle, the power infused in the diamond begins to drain away.
+    mpset obj $i extra 2
+  endif
+  if value(0) == 11
+    mpecho The upper runes on $I grow quiet once more.
+  endif
+  if value(0) == 7
+    mpecho As the power drains out of $I, the rest of the runes cease their humming.
+    mpset obj $i extra 0
+  endif
+endif
+~
+>fight_prog 100~
+if sector($o) == swim
+or sector($o) == noswim
+or sector($o) == air
+  break
+endif
+if isworn($o)
+  mpvalueup 0
+  if value(0) == 8
+    mpecho Several runes along the lower half of $I begin to hum.
+    mpset obj $i extra 2
+  endif
+  if value(0) == 12
+    mpecho Gathering energy, the upper runes on $I also begin to hum.
+  endif
+  if value(0) == 16
+    mpecho With all the runes on $I humming loudly, the gem starts to glow!
+    mpset obj $i extra 3
+  endif
+  if value(0) == 20
+    if rand(5)
+      mpechoat $o An aura of power erupts suddenly from $I, enfolding you!
+      mpechoaround $o An aura of power erupts suddenly from $I, enfolding $O!
+      mpcast 371 51
+    else
+      mpecho A lance of power erupts suddenly from $I, forming into a massive stone fist!
+      mpcast 133 51
+      mpvalueset 0 0
+    endif
+    mpecho Their energy spent, the runes on $I quiet once more.
+    mpset obj $i extra 0
+  endif
+endif
+~
+|
+V13
+22540
+thin mantle black stone~
+a black mantle inscribed with blue runes~
+A thin mantle of heavy black stone is here, inscribed with strange, glowing runes.~
+~
+obsidian~
+armor AEY 0 F AK
+12 8 12 8 0
+58 175 17444 2 P
+5
+A
+12 30
+A
+20 -1
+E
+thin mantle black stone~
+Magically banded together from thin obsidian plates, this mantle manages
+to achieve an acceptable level of flexibility despite its stony composition.
+Neither buckles nor ties are visible between the rocky slats, indicating
+masterful craftsmanship.  The otherwise smooth, polished surface has been
+scored with several runes.  
+~
+V13
+22541
+large crystal~
+a large crystal on a basalt pedestal~
+A large crystal sits on a basalt pedestal, glowing faintly.~
+~
+crystal~
+trash Aa 0 0 P
+0 0 0 0 0
+50 0 0 0 P
+0
+E
+large crystal~
+This towering crystal stands nearly a human\@s height, mounted atop a
+squarish pedestal carved from basalt.  Though not faceted, the gem
+nonetheless catches the light, glinting and gleaming with an inner fire. 
+Whorls and loops of tiny runes have been etched into the crystal, curling
+all about its perimeter.  
+~
+>tick_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    mpset obj $i extra 67108865
+    mpecho The light about $I flickers, then brightens noticeably.
+  endif
+endif
+~
+>verb_prog p healme_please~
+if value(0) > 0
+or ispc($n)
+  mpnextinterp
+  break
+endif
+mpecho $N pivots suddenly, placing a stony hand atop $I, which flares into sudden light!
+mpecho A moment later the light subsides, leaving $I dim but $N looking far more intact.
+mpgrant $n 4000 4000 0
+mpset obj $i extra 67108864
+mpvalueset 0 120
+~
+|
+V13
+22555
+sigil balance silver scales~
+a set of silver scales~
+A perfectly balanced set of scales, worked in silver, is branded on your right arm.~
+~
+silver~
+jewelry A 0 0 AR
+0 0 0 0 0
+1 0 0 0 P
+0
+A
+17 -10
+A
+36 10
+A
+37 10
+A
+42 10
+A
+41 10
+A
+4 2
+A
+3 2
+V13
+22556
+sigil balance golden scales~
+a set of golden scales~
+A perfectly balanced set of scales, worked in gold, is branded on your right arm.~
+~
+gold~
+jewelry A 0 0 AR
+0 0 0 0 0
+2 0 0 0 P
+0
+A
+4 2
+A
+3 2
+A
+41 10
+A
+42 10
+A
+37 10
+A
+36 10
+A
+17 -15
+V13
+22557
+sigil hammer silver~
+a silver hammer~
+A silver hammer, embossed with an outline of a set of scales, is branded on your right arm.~
+~
+silver~
+jewelry 0 0 0 AR
+0 0 0 0 0
+1 0 0 0 P
+0
+A
+2 2
+A
+1 2
+A
+17 -10
+A
+36 10
+A
+37 10
+A
+42 10
+A
+41 10
+V13
+22558
+sigil balance golden hammer~
+a golden hammer~
+A golden hammer, embossed with an outline of a set of scales, is branded on your right arm.~
+~
+gold~
+jewelry 0 0 0 AR
+0 0 0 0 0
+2 0 0 0 P
+0
+A
+2 2
+A
+1 2
+A
+17 -10
+A
+36 10
+A
+37 10
+A
+42 10
+A
+41 10
+V13
+22559
+top crumbling basalt obelisk~
+the top of a crumbling basalt obelisk~
+The top of a crumbling basalt obelisk protrudes from the soft ground.~
+~
+stone~
+trash EGYa 0 0 P
+0 0 0 0 0
+52 6564 0 0 P
+1
+E
+top crumbling basalt obelisk~
+This small, four-sided pyramid of weathered, crumbling basalt appears to
+be the top of an obelisk which has sunk into the marshy ground.  The stone
+is pitted and caked with the yellow sulphur which fills the air with the
+thick reek.  Barely two feet tall, the obelisk might be as wide as three
+feet at its base.  
+~
+V13
+22560
+converu spear~
+a shaft of blazing white light~
+A long shaft of blazing white light hovers in midair.~
+~
+energy~
+weapon AIKLMZa 0 0 AN
+spear 15 15 10 0
+divine power~
+60 150 0 0 P
+1
+A
+32 50
+A
+31 50
+A
+18 50
+A
+19 50
+O divine power~
+V13
+22561
+black tabard sewn blue runes silk~
+a black tabard sewn with blue runes~
+A black silk tabard lies here, blue runes sewn into the fabric.~
+You recognize this as crafted by the magics of a long-dead magus who once
+ruled over the area now known as the fens.  
+~
+silk~
+armor AC 0 F AD
+3 0 3 15 0
+50 10 125000 0 P
+20
+A
+13 40
+A
+12 40
+A
+41 3
+A
+37 3
+E
+tabard black sewn blue runes silk~
+This tabard is woven from black silk, fine and light.  Woven into the
+edges of the fabric are blue runic designs, which pulse with a soft glow. 
+The cloth is cool to the touch, offering no warmth.  
+~
+V13
+22562
+ring obsidian engraved~
+an engraved obsidian ring~
+An engraved obsidian ring lies here.~
+The arcane markings on the ring suggest it was once the property of a
+magus who once ruled a keep within the fens.  It is said he and his lands
+were destroyed in a great act of hubris, althought what that act is remains
+unclear.  
+~
+obsidian~
+jewelry CG 0 F AB
+0 0 0 0 0
+45 1 25000 0 P
+80
+A
+13 20
+A
+12 40
+A
+18 2
+E
+engraved obsidian ring~
+Arcane-looking marks have been carved into the band of this obsidian ring.  
+~
+E
+engraving~
+The arcane marks appear to imbue the ring with magic.  
+~
+V13
+22563
+scroll old arcane~
+an old arcane scroll~
+An old scroll with arcane writing on it lies here.~
+You recall in the old stories that servants of the magus who ruled over
+the fens often used such scrolls to punish the disloyal.  
+~
+parchment~
+scroll G 0 F AO
+30 'iceshard' 'iceshard' 'iceshard' 'curse'
+30 1 5000 0 P
+750
+E
+old arcane scroll~
+This scroll is lettered with arcane writing.  It appears to be magical.  
+~
+V13
+22564
+old chest~
+an old chest~
+An old chest sits amidst the ruins.~
+~
+wood~
+container S 0 0 P
+1000 ACD 22566 10 105
+40 0 0 0 P
+0
+E
+old chest~
+This old wooden chest sits amongst the ruins.  It has been weathered by
+the elements and overgrown by thorny vines, but still seems to be quite
+solid.  It appears to be affixed to the stones beneath it, immovable.  
+~
+V13
+22565
+small metal chest dull~
+a small metal chest~
+A dull metal chest is partially concealed by the plant growth.~
+~
+steel~
+container b 0 0 P
+100 ABCD 22567 10 100
+50 100 0 1 P
+0
+E
+small metal chest dull~
+This small metal chest, inset with a complex lock, is weathered and
+pitted from exposure.  Mostly hidden by the dense growth around the ruins it
+is easy to overlook.  It appears to be affixed to the stone beneath it,
+unmoveable.  
+~
+V13
+22566
+old iron key~
+an old iron key~
+An old iron key lies here.~
+~
+iron~
+key P 0 F AO
+0 0 0 0 0
+40 0 0 0 P
+0
+E
+old iron key~
+This iron key is old and fragile.
+~
+V13
+22567
+old steel key~
+an old steel key~
+An old steel key lies here.~
+~
+steel~
+key NP 0 F AO
+0 0 0 0 0
+50 0 0 0 P
+0
+E
+old steel key~
+This old steel key is fragile from age.  
+~
+V13
+22568
+ring fibrous woven plant plague-eating plague eating~
+a fibrous ring of plague-eating~
+A ring of woven plant fibers lies here.~
+Made by the Swamplords of Sythrak, foul dedicants of decay and disease,
+this ring absorbs and redirects plagues cast upon its wearer.  This
+particular ring seems to only to devour more common plagues, with more
+magical poxes and more potent fevers being beyond its power.  
+~
+plant~
+armor CGS 0 F AB
+2 2 2 2 0
+45 1 5000 0 P
+40
+A
+45 -2
+A
+13 10
+A
+12 10
+E
+ring fibrous woven plant plague-eating plague eating~
+This ring is made of a fibrous strands of green and brown plant material,
+tightly woven into a band.  The ring is damp with fetid swampwater, never
+seeming to dry for long.  
+~
+>fight_prog 100~
+if isworn($o)
+if rand(10)
+if objvalue(0) == 1
+opecho A fibrous ring of plague-eating releases its absorbed disease!
+opcast 104 99
+opvalueset 0 0
+endif
+endif
+if snaffected($o) == 104
+if objvalue(0) == 1
+if rand(3)
+opechoat $o A fibrous ring of plague-eating atteopts to absorb your plague, but is already full.
+endif
+else
+mpechoat $o A fibrous ring of plague-eating absorbs your plague, preparing to release it upon another.
+mpechoaround $o A fibrious ring of plague-eating seems to draw in $O\@s illness.
+opremaffect $o 104
+opvalueset 0 1
+endif
+endif
+endif
+~
+|
+V13
+22569
+halberd ironwood festering~
+a festering ironwood halberd~
+A halberd with a festering ironwood blade lies here.~
+This halberd appears to have been empowered by a Swamplord of Sythrak,
+allowing its rotted blade to maintain its edge despite being rotted and
+filthy.  
+~
+ironwood~
+weapon CEGS 0 F AN
+polearm 3 15 3 FH
+slash~
+50 200 92173 3 P
+35
+A
+45 -1
+E
+halberd ironwood festering~
+This halberd is made wholly of ironwood with strips of metal for further
+reinforcement.  The fire-hardened blade is pitted and festering with filth,
+appearing diseased.  
+~
+O slash~
+>hit_prog 1~
+if isworn($o)
+mpechoat $n $O\@s festering ironwood halberd leaves a unclean wound.
+opoload 20306 on $n
+endif
+~
+|
+V13
+22570
+sigil saurian tooth~
+the Sigil of the Saurian Tooth~
+You see the mark of a reptilian tooth.~
+~
+flesh~
+armor AMa 0 0 AR
+4 4 4 4 0
+52 0 5554 0 P
+0
+A
+1 1
+A
+24 -3
+A
+19 2
+V13
+22571
+silvery bracer pain-drinking pain drinking barbs~
+a silvery bracer of pain-drinking~
+A silvery bracer with barbs at its edges lies here.~
+It is said that when a mystical metal fell from the sky, two groups of
+scholars set upon it, each finding it and the others at the same time.  The
+first was a group of rigid dedicants of earth, void and law.  The second was
+a primal conclave of chaos fire and spirit.  Knowing that no side could
+easily best the other, they agreed to work in concert upon the precious
+alloy from the stars.  
+
+So in turn, each worked their craft upon the bracer.  Secretly, each party
+wove magics to foil the other into the bracer they had forged until their
+artifact was a mighty proof against many attacks.  The bracer twisted many
+of the magics of void, earth and fire, empowering its wearer even as they
+suffered through the affects of the maledictions.  
+
+When each side learned of what the other had done, it was war.  The bracer
+changed hands many times, tipping the balance of the conflict each time,
+before it disappeared.  Rumors speak that it fell into the hands of a
+tyrant-lord who once ruled the area now known as the Fens, ages past.  
+~
+mei\@tzec~
+armor GMYZa 0 0 AM
+10 10 10 20 0
+60 100 100000 1 P
+1
+A
+13 10
+A
+19 3
+E
+etchings~
+The etchings, upon further inspection, are faintly engraved runes.  They
+vary from the rigid and blocky to the chaotic and swirling.  
+~
+E
+silvery bracer pain-drinking pain drinking barbs~
+This bracer, made to protect the forearm, is made from a silvery metal of
+extreme sturdiness.  Dozens of tiny hooks of the same metal line the edges
+of it, and it appears that anyone donning it will have a difficult, if not
+impossible, time getting it off.  Its surface appears smooth, but one can
+feel very faint etchings in the steel.  
+~
+>rand_prog 100~
+if isworn($o)
+  if snaffected($o) == 105
+    if snaffected($o) == 73
+    //Poison -> giant strength
+    else
+      opaddaffect $o 73 50 -1 1 4 0 0
+        opvalueset 1 1
+        opecho A silvery bracer of pain-drinking pulses.
+        opechoat $o Your body feeds upon the poison, muscles growing in strength!
+        opechoaround $o $O\@s muscles bulge!
+    endif
+  endif
+  if objvalue(1) == 1
+    if snaffected($o) == 105
+    else
+      opremaffect 73
+      opechoat $n Without the poison to sustain it, your magical strength fades.
+      opvalueset 1 0
+    endif
+  endif
+  if snaffected($o) == 104
+  or snaffected($o) == 107
+  or snaffected($o) == 62
+    if snaffected($o) == 428
+    //Plague,pox,fever -> focus mind
+    else
+      opaddaffect $o 428 50 -1 0 0 0 0
+      opvalueset 2 1
+      opecho A silvery bracer of pain-drinking pulses.
+      opechoat $o Your diseased-afflicted mind grants you a mad clarity!
+      opechoaround $o $O\@s eyes glitter with a mad clarity!
+    endif
+  endif
+  if objvalue(2) == 1
+    if snaffected($o) == 104
+    or snaffected($o) == 107
+    or snaffected($o) == 62
+    else
+      opremaffect 428
+      opechoat $o Your feverish clarity fades.
+      opvalueset 2 0
+    endif
+  endif
+  if snaffected($o) == 306
+    if snaffected($o) == 76
+    //Agony -> haste
+    else
+      opaddaffect 76 50 -1 2 4 2097152
+      opvalueset 3 1
+      opecho A silvery bracer of pain-drinking pulses.
+      opechoat $o Your agonized twitching takes on frightful speed!
+      opechoaround $o $O\@s agonized jerking takes on frightful speed!
+    endif
+  endif
+  if objvalue(3) == 1
+    if snaffected($o) == 306
+    else
+      opremaffect 76
+      opechoat $o You slow down as your agonized thrashing abates.
+      opechoaround $o $O slows down as their agonized thrashings abate.
+      opvalueset 3 0
+    endif
+  endif
+  if snaffected($o) == 400
+  or snaffected($o) == 668
+    if snaffected($o) == 117
+    //Consume,aggravate wounds -> regeneration
+    else
+      opaddaffect $o 117 50 -1 0 0 268435456
+      opvalueset 4 1
+      opecho A silvery bracer of pain-drinking pulses.
+      opechoat $o Your burning flesh boils over to mend your wounds.
+      opechoaround $o $O\@s burning flesh boils over to mend their wounds.
+    endif
+  endif
+  if objvalue(4) == 1
+    if snaffected($o) == 400
+    or snaffected($o) == 668
+    else
+      opremaffect 117
+      opechoat $o Your flesh ceases to burn, boil and regenerate.
+      opechoaround $o $O\@s flesh ceases to burn, boil and regenerate.
+      opvalueset 4 0
+    endif
+  endif
+  if snaffected($o) == 584
+  or snaffected($o) == 380
+    if snaffected($o) == 375
+    //Ramc sucks
+    //petrify,density -> stabilize
+    else
+      opaddaffect $o 375 50 -1 0 0 0
+      opvalueset 5 1
+      opecho A silvery bracer of pain-drinking pulses.
+      opechoat $o As your weight draws you to the ground, you feel yourself taking root.
+    endif
+  endif
+  if objvalue(5) == 1
+    if snaffected($o) == 584
+    or snaffected($o) == 380
+    else
+      opremaffect 375
+      opechoat $o Without your extra weight, you fell less stable.
+      opvalueset 5 0
+    endif
+  endif
+endif
+~
+>wear_prog 100~
+opechoat $n As you wear the bracer, the barbs dig into your skin and hold fast.
+opechoaround $n $N winces as he dons a silvery bracer of pain-drinking
+~
+|
+V13
+22572
+prism long diamond~
+a long diamond prism~
+A long diamond prism lies here, refracting the light.~
+~
+diamond~
+wand G 0 0 AO
+51 3 3 'prismatic spray' 0
+51 5 30000 1 P
+3
+A
+20 -2
+A
+47 2
+E
+long diamond prism~
+This diamond prism is several fingerlengths long and about as big around
+as an aelin finger.  It refracts light along its length, casting splashes of
+rainbow light.  
+~
+V13
+22573
+ball smooth obsidian blue-streaked streaked~
+a ball of blue-streaked obsidian~
+A smooth obsidian ball lies here, streaked with blue.~
+~
+obsidian~
+treasure GS 0 F AQ
+0 0 0 0 0
+40 5 10000 0 P
+15
+A
+37 1
+A
+41 1
+A
+12 10
+A
+20 -2
+E
+ball smooth obsidian blue-streaked streaked~
+This ball of polished obsidian is small enough to fit in a child\@s hand. 
+Veins of midnight blue streak its otherwise glossy, black surface.  
+~
+V13
+22574
+iron chest~
+an iron chest~
+An iron chest is set into the floor of the chamber.~
+~
+iron~
+container S 0 0 P
+100 ABCD 22575 100 100
+53 0 0 2 P
+0
+E
+iron chest~
+This iron chest is set into the very bedrock below.  Warding runes cover
+its surface, and a skeletal serpent is engraved around its keyhole.  
+~
+V13
+22575
+key bone~
+a bone key~
+A bone key lies here.~
+~
+bone~
+key NPS 0 F AO
+0 0 0 0 0
+50 1 0 0 P
+0
+A
+5 -1
+E
+key bone~
+This key is made of brittle, crumbling bone.
+~
+V13
+22576
+key mist misty~
+a key of mist~
+A misty key lies here.~
+~
+water~
+key FGNP 0 F AO
+0 0 0 0 0
+50 0 0 0 P
+0
+E
+key mist misty~
+This key is made from a mist.  It appears to slowly be evaporating even
+as you hold it.  
+~
+V13
+22577
+iron chest long~
+a long iron chest~
+A long iron chest is set against the wall, obscured by vines.~
+~
+iron~
+container FGc 0 0 P
+100 ABCD 22576 100 100
+53 0 0 2 P
+0
+E
+iron chest long~
+This iron chest is small, but several feet long, as if to hold a long,
+narrow item.  It is almost entirely hidden by vines and engraved with runes
+of concealing magic.  
+~
+V13
+22578
+staff banded blue blue-banded rowan wood steel~
+a blue-banded rowan staff~
+A staff of rowan wood, banded with blue steel, lies here.~
+~
+wood~
+staff ABS 0 F AO
+60 5 5 'sanctuary' 0
+50 80 45000 3 P
+30
+E
+staff banded blue blue-banded rowan wood steel~
+This staff is has been carved from pale rowan wood and its surface
+polished smooth.  It is several feet in length and banded by strips of
+blue-tinted steel.  The bands give off a faint sapphire glow, and its entire
+length hums with magical power.  
+~
+V13
+22579
+basalt table ancient~
+an ancient basalt table~
+An ancient basalt table squats here.~
+~
+stone~
+container ae 0 0 P
+10000 0 0 15 100
+50 0 0 3 P
+0
+E
+depression~
+The dust around this sharp, triangular depression has been disturbed more
+recently than the other filth.  The depression itself is shallow, barely
+more than a millicubit or two deep.  Roughly a handsbreath in length, each
+side is the same length as the others.  
+~
+E
+basalt table ancient~
+This squat table is roughly hewn from black, coarse basalt.  Trapezoidal,
+aged supports raise the surface off the floor.  An odd depression, its
+carving precise and sharp, contrasts oddly with the rest of the workmanship.
+The top of the table and the slanted sides of the supports are dust-covered.
+~
+V13
+22580
+white band interlinked marble tile tiles belt obj_22580~
+a white band of interlinked marble tiles~
+A band of interlinked white marble tiles lies here.~
+~
+marble~
+armor GPa 0 0 ALP
+5 5 5 5 0
+52 185 0 0 P
+1
+A
+19 1
+A
+18 1
+A
+12 125
+A
+13 40
+A
+4 -1
+A
+54 5
+>fight_prog 100~
+if isworn($o)
+if rand(1)
+  if rand(20)
+    mpecho $I vibrates suddenly.
+    if rand(85)
+      if sector($o) == air
+        mpcast 53 52
+      else
+        if sector($o) == underwater
+or sector($o) == noswim
+or sector($o) == swim
+          mpechoat $o Your belt conjures a gout of mud which swirls ineffectually through the water.
+        else
+          mpcast 389 55
+        endif
+      endif
+    else
+      mpmload 22569
+      mpforce mob_22569 mpfocus $n
+      mpforce mob_22569 mpseewizi
+      mpforce mob_22569 emote tumbles out of thin air.
+      mpforce mob_22569 pmote twists, eyes locking onto $N.  The serpent strikes!
+      mpforce mob_22569 mpmurder $n
+      mpforce mob_22569 mpkill $n
+      mpforce mob_22569 mpunseewizi
+    endif
+  endif
+endif
+endif
+~
+|
+V13
+22581
+small plate marble scroll~
+a small plate of marble~
+A small plate of marble lies here.~
+~
+marble~
+scroll G 0 0 A
+55 'voidwalk' '' '' ''
+50 7 0 0 P
+10
+E
+small plate marble scroll~
+This small, thin plate of marble has been shaved and polished down. 
+Arcane runes cover its surface.  
+~
+V13
+22582
+small plate marble scroll~
+a small plate of marble~
+A small plate of marble lies here.~
+~
+marble~
+scroll G 0 0 A
+51 'curse' 'thunderclap' '' ''
+50 7 0 0 P
+10
+E
+small plate marble scroll~
+This small, thin plate of marble has been shaved and polished down. 
+Arcane runes cover its surface.  
+~
+V13
+22583
+table wooden~
+a wooden table~
+A wooden table.~
+~
+wood~
+container Se 0 0 P
+400 0 0 20 100
+30 500 0 3 P
+0
+E
+wooden~
+This wooden table, standing in the center of the house, is carved from
+sturdy oak.  Around it sit four relatively simple ladder-back chairs, each
+made of the same material.  
+~
+E
+table~
+This wooden table, standing in the center of the house, is carved from
+sturdy oak.  Around it sit four relatively simple ladder-back chairs, each
+made of the same material.  
+~
+V13
+22584
+old broken shovel splintered~
+a broken shovel~
+A broken shovel lies here, hilt old and splintered off.~
+~
+iron~
+weapon 0 0 F AN
+exotic 3 6 1 0
+whack~
+5 60 20 2 P
+0
+E
+bloodstain blood stain~
+You can only see a tiny bit of old blood on the handle.  
+~
+E
+old broken shovel splintered~
+This old shovel, the wood damp, slimy, and swollen from prolonged
+exposure to swamp air, has been splintered off not too far from the head. 
+Apparently rather aged, the shovel is made from a crude, old-fashioned scoop
+of hammered iron, furred with reddish rust.  
+
+A fragment of a bloodstain can be seen on the shovel handle, just where it
+was shorn off.  
+~
+O whack~
+V13
+22585
+corpse dull brown dragonfly fly the_corpse~
+the corpse of the dragonfly~
+A dull brown dragonfly lies here on its back, legs curled up.~
+~
+unknown~
+trash 0 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+corpse dull brown dragonfly fly the_corpse~
+This dragonfly lies still and dead, the chitin-covered insect a dull,
+muddy brown.  No sign of violence can be seen on the bug\@s body.  
+~
+>rand_prog 100~
+mpvaluedown 1
+if value(0) == 0
+  mpvalueset 1 40
+  mpvalueset 0 1
+endif
+if value(1) == 1
+  mppurge self
+endif
+~
+|
+V13
+22586
+lantern shattered~
+a shattered lantern~
+A shattered lantern lies here, covered with dust.~
+The glass is etched with the mark of a Var Bandor glassmaker.  It seems
+to have sold for five gold pieces, judging by the almost-effaced wax mark on
+the bottom.  
+~
+brass~
+trash 0 0 F AO
+0 0 0 0 0
+0 1 30 1 P
+0
+E
+lantern shattered~
+This simple brass lantern consists of a glass bulb for oil mounted with a
+wick.  The brass base and conical hood are tarnished and dark.  The oil
+reservoir and glass wind-shield are cracked and shattered, the lantern
+apparently having been thrown or dropped in haste or anger.  A large dent
+mars the side of the lantern where it fell.
+~
+V13
+22587
+cracked pyramid pyramidical statuette basalt obj_22587~
+a cracked, pyramidical statuette of basalt~
+A cracked, pyramidical statuette of basalt lies half-buried among the debris.~
+~
+stone~
+key X 0 0 AO
+0 0 0 0 0
+52 0 0 0 P
+1
+E
+statuette~
+This small pyramid has four faces, each an equilateral triangle roughly a
+handsbreadth wide.  Precisely carved from rough basalt, the pyramid has
+apparently suffered extensive damage.  Small cracks cover its surface.  A
+large, simple rune is etched in each of the faces, but they are still and
+dark.  A wide crack runs through the center of the statuette.  
+~
+E
+rune runes crack~
+With the damage done to the pyramid, the runes appear to be deactivated.  
+~
+E
+cracked pyramid pyramidical statueette basalt obj_22587~
+This small pyramid has four faces, each an equilateral triangle roughly a
+handsbreadth wide.  Precisely carved from rough basalt, the pyramid has
+apparently suffered extensive damage.  Small cracks cover its surface.  A
+large, simple rune is etched in each of the faces, but they are still and
+dark.  A wide crack runs through the center of the statuette.  
+~
+>verb_prog p put~
+if objtargetcarry()
+  if objhere(22579)
+    if compstr(3) == basalt
+    or compstr(3) == table
+    or compstr(3) == ancient
+      if isfighting($n)
+        mpechoat $n You can\@t.  You\@re fighting!
+      else
+        if mobhere(22557)
+          mpechoat $n The fell spirit blocks you!
+          mpforce bluish-black mpkill $n
+        else
+          mpechoat $n You set the pyramid into the depression into the table.
+          mpechoaround $n $N reaches forward, inserting a pyramidical block into a depression on the table.
+          mpmload 22563
+          mpinterpret $n $x
+        endif
+      endif
+    else
+      mpnextinterp
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+22588
+rotting tome mouldering~
+a rotting tome~
+A rotting tome lies here, mouldering.~
+~
+parchment~
+trash S 0 F AO
+0 0 0 0 0
+40 0 0 1 P
+0
+A
+5 -1
+E
+pagetwo~
+My mortal servants turn even as my serfs do, my warriors are overwhelmed
+and the very heart of my power assailed.  All the cause of these so-called
+Sunderers of Chains.  Do these fools not realize that the chains they so
+eupemistically break are the very things that hold this world together?  It
+is no matter, Tal-Pui-Nir shall allow them to savor no victory.  
+
+If this land is not ruled by Tal-Pui-Nir, let no man hold dominion over it. 
+I shall crack the Alatharya artifact whose very power I have so skillfully
+manipulated.  Let the rune-engine shatter and bring a second sundering to
+this land.  It matters not, if I cannot have it.  Let those who rose against
+me know the ultimate consequence of their actions with a searing finality. 
+Though it may mean my end, I shall rest easy knowing that my deathless
+guardians hold vigil over my most precious artifacts.  Those who would seek
+the power of Tal-Pui-Nir shall find only their tomb.  
+~
+E
+pageone~
+The rabble is roused and gathered at the gates.  Roused to action, no
+doubt, by those zealous insurrectionists who offer madness under the guise
+of freedom.  Do they not understand the freedom offered by Tal-Pui-Nir?  A
+freedom from chance, from distraction.  They speak of freedom when they hold
+the crowds in their thrall and whip them into a towering bloodthirst.  What
+do they hope to accomplish?  To usurp this rightful rule before the Black
+Throne?  To invoke fear?  No.  Fear, like compassion, like mercy, is for
+lesser men.  Never for Tal-Pui-Nir.  
+
+I shall go and quell this mob and its mewling masters.  Let them know the
+shame of fear, and the glory of submission.  
+~
+E
+rotting tome mouldering~
+This tome is damp and mold-eaten, its pages mostly destroyed or
+unreadable.  It appears to have once contained mystic diagrams and assorted
+arcana, though any insights are lost to decay.  Nearing the end, there are a
+few readable pages, appearing to be writing, rather than spellcraft.  
+
+PAGEONE
+PAGETWO
+~
+V13
+22589
+vines vine fob vinefob~
+vines~
+Vines cling at this PC.~
+~
+unknown~
+special Sde 0 0 A
+0 0 0 0 0
+52 0 0 0 P
+0
+>rand_prog 100~
+if inroom($o) == 22569
+  if position($o) > 3
+    if position($o) == 8
+      if snaffected($o) == 439
+      or snaffected($o) == 538
+        mpvalueset 2 4
+      else
+        break
+      endif
+    endif
+    if position($o) == 7
+      mpvalueset 2 27
+    endif
+    if position($o) < 7
+      mpvalueset 2 10
+    endif
+    if rand($2)
+      if position($o) == 4
+        mpvaluerand 3 -3 -1
+        mpvalueset 4 25
+      else
+        if position($o) == 5
+          mpvaluerand 3 -2 -1
+          mpvalueset 4 8
+        else
+          if position($o) == 6
+          or position($o) == 7
+            mpvalueset 3 -1
+            mpvalueset 4 10
+          else
+            mpvalueset 3 -1
+            mpvalueset 4 4
+          endif
+        endif
+      endif
+      mpvaluerand 7 0 4
+      mpmath 8 $4 + $7
+      mpforce vinebot mpfocus $o
+      mpforce vinebot echo_em
+      if dexterity($o) < $8
+        mpmload 22565
+        mpforce mob_22565 mpfocus $o
+        if rand(50)
+          mpaddaffect $o 439 30 20 2 $3 0 0
+        else
+          mpaddaffect $o 538 30 20 2 $3 0 0
+        endif
+        if position($o) == 7
+          if isfighting($o) \\ mob_22565
+            mpechoat $o Already distracted by the hungrily-swaying vines, you do not notice another until it is too late!
+          else
+            mpechoat $o Distracted by your opponent, you do not notice the tightening vine until it is too late!
+          endif
+        endif
+      else
+        mpforce vinebot mpat 330 mpunwizi
+        mpstring mob vinebot short $O
+        mpvaluerand 1 1 5
+        if value(1) == 1
+          mpforce vinebot emote avoids the slow-moving vine.
+        endif
+        if value(1) == 2
+          mpforce vinebot emote ducks beneath the grasping vine.
+        endif
+        if value(1) == 3
+          if position($o) > 6
+            mpforce vinebot emote steps over the clutching vine.
+          else
+            mpforce vinebot emote leans sharply, out of the way of the seeking vine.
+          endif
+        endif
+        if value(1) == 4
+          mpforce vinebot emote beats back the tightening vine.
+        endif
+        if value(1) == 5
+          mpforce vinebot emote slips out from the hungry vine\@s clutches.
+        endif
+        mpstring mob vinebot short Vinebot
+        mpforce vinebot mpat 330 mpwizi
+      endif
+    endif  
+  endif
+else
+  if snaffected($o) == 538
+    mpechoaround $o $O struggles out of several thick, entwining vines, casting them aside.
+    mpechoat $o Away from the vines, you manage to unwrap the still-clinging vegetation from your arms.
+    mpremaffect $o 538
+  endif
+  if snaffected($o) == 439
+    mpechoaround $o $O manages to extricate themselves from a mass of vines which wrap $S legs.
+    mpechoat $o You manage to extricate yourself from a mass of vines which wrap your legs.
+    mpremaffect $o 439
+  endif
+  mppurge self
+endif
+~
+>data_prog vinevalues~
+//Val1 is a randomizer
+      //Val2 is the % chance of the vinefob firing
+      //Val3 is the -dex the negative effects will give
+      //Val4 is the base save vs. vines, based on position
+      //Val7 is a random save modifier, 0-3
+      //Val8 is the final save (sum of v4+v7)
+      //if dex is less than val8, the vines wrap
+~
+|
+V13
+22590
+tendril tendrils~
+its gnarled tendrils~
+Whips, for cool vine stuff.~
+~
+wood~
+weapon df 0 0 AN
+whip 5 7 1 0
+lashing whip~
+52 0 0 0 P
+0
+O lashing whip~
+V13
+22591
+wand avatar~
+avatar wand~
+Avatar wand~
+~
+unknown~
+wand 0 0 0 AO
+0 3 3 'avatar' 0
+1 0 0 1 P
+0
+V13
+22592
+basalt heavy casket monstrance obj_22592~
+a heavy basalt monstrance~
+A small casket carved from heavy basalt sits here.~
+~
+stone~
+container EGXYZa 0 0 AO
+100 ABCD 0 100 100
+52 205 0 0 P
+1
+E
+base_inscription~
+The dark basalt stone has been carved deeply with angular, large letters
+which appear to be full of ash.  They spell out: 
+~
+E
+basalt heavy casket monstrance obj_22592~
+This heavy reliquary is carved from a cube of blackish grey basalt stone.
+Squat, clawed feet support the plinthlike base, and an overhang of stone
+runs around the top.  Ziggurats and pyramids are raised in low relief on all
+four sides, with an obelisk displayed prominently on the front.  The top is
+the most interesting side by far.  A cylinder has been built into the top,
+sunk so as to show only a small section.  A raised flange holds the cylinder
+in place.  The cylinder itself is made from eleven marble disks, carved from
+pale white stone.  Each disk appears to rotate freely from the others. 
+Letters adorn the surfaces of the disks, each separated by a notch.  Were
+one so inclined, one might be able to rotate the disks and {ydial{n a word
+into the cylinder.  
+
+A harshly-carved inscription scars the stone above the cylinder.
+~
+E
+obelisk~
+The obelisk carved on the front of the casket is tall and pointed, yet
+the proportions are somehow inexplicably squat.  Tiny lines representing
+writing have been scratched into the stone on the front of the obelisk,
+though not in actual words or letters; they are purely emblematic.  
+~
+>verb_prog p look~
+//FUCK YOU, MPDESC
+if isowner($n)
+  if compstr(2) == inscription
+    if value(2) == 1
+      mpsetdata ROT13_inscrip
+    endif
+    if value(2) == 2
+      mpsetdata ROT1_inscrip
+    endif
+    if value(2) == 3
+      mpsetdata ROT3_inscrip
+    endif
+    loop 0 to $3
+      mpnextdata
+    endloop
+    mpforce $n look base_inscription
+    mpechoat $n {D.{W       $d{n
+    mpverbstop
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>data_prog whatsup~
+Values:
+0: Status of monstrance:
+0: completely untouched
+1: closed, values set
+2: got it!  opening!
+3: opened
+        4: doomed to explode
+1: Number of tries
+0: fine
+1: ominous hum
+2: implodes
+2: Which ROT cypher:
+1:13
+2:1
+3:3
+3: Which line:
+1: 1 [thunderhead]
+2: 2 [despair]
+3: 5 [clockworks]
+4: 7 [defiled]
+5: 11 [illusion]
+6: 12 [talon]
+7: 13 [deathless]
+4: Wrong/right answer
+0: wrong
+1: right
+~
+>rand_prog 100~
+if value(0) == 0
+  mpvalueset 0 1
+  mpvaluerand 2 1 3
+  mpvaluerand 3 1 7
+endif
+if value(4) == 1
+  mpvalueset 4 0
+  mpvalueset 0 3
+  mpecho $I\@s top rotates open with a grating rumble.
+  mpset obj $i extra noremove
+  mpset obj $i extra nouncurse
+  mpset obj $i v1 closed
+  mpset obj $i v1 locked
+  mpvalueset 1 4
+  mpoload 22594 in self
+  if isunderlimit(22580)
+    mpoload 22580 in self
+  else
+    if rand(33)
+      mpoload 22581 in self
+    else
+      if rand(50)
+        mpoload 22582 in self
+      else
+        mpoload 22533 in self
+      endif
+    endif
+  endif
+endif
+if inroom($o) == 22568
+  if value(5) == 0
+    mpechoat $o The monstrance vibrates ominously as you approach the entrance.
+    mpechoat $o You get the feeling that it would be a poor idea to remove the monstrance from the dungeon.
+    mpvalueset 5 1
+  endif
+endif
+if inroom($o) < 22568
+or inroom($o) > 22571
+  mpvalueset 1 3
+endif
+if value(1) == 3
+  if rand(33)
+    mpecho $I explodes violently!
+    mpvaluerand 1 99 450
+    mpdamtype $o 1 10 $1 4
+    mpdammess $o $1 \@searing explosion\@
+  else
+    mpechoat $o $I shudders in your arms, a muffled explosion and a spurt of ash filling the room!
+    mpechoaround $o $I shudders in $O\@s arms, a muffled explosion and a spurt of ash filling the room!
+    mpasound A muffled explosion sounds nearby.
+  endif
+  mpoload 22593 on $o
+  mppurge self
+endif
+~
+>verb_prog p dial~
+if isowner($n)
+  if compstr(2) == 
+    mpechoat $n What did you want to dial the disks to say?
+  else
+    if value(1) < 3
+      if value(0) == 1
+        if value(2) == 1
+          mpsetdata ROT13_answers
+        endif
+        if value(2) == 2
+          mpsetdata ROT1_answers
+        endif
+        if value(2) == 3
+          mpsetdata ROT3_answers
+        endif
+        loop 0 to $3
+          mpnextdata
+        endloop
+        mpechoat $n You carefully dial \@$y2\@ into the marble disks, rotating each into place.
+        mpechoaround $n $N spends several moments carefully rotating dials on top of $I.
+        mplag $n 1
+        if compstr(2) == $d
+          mpechoat $n The monstrance emits three echoing clicks.
+          mpechoaround $n Three clicks echo through the air.
+          mpvalueset 1 2
+          mpvalueset 4 1
+        else
+          mpvalueup 1
+          if value(1) == 1
+            mpechoat $n $I begins to hum, vibrating ominously.
+            mpset obj $i extra hum
+          endif
+          if value(1) == 2
+            mpechoat $n $I hums more loudly.
+          endif
+          if value(1) == 3
+            mpecho $I buzzes loudly in $O\@s arms!
+            mpvalueset 0 4
+          endif    
+        endif
+      else
+        mpechoat $n The dials will not turn.
+      endif
+    else
+      mpechoat $n The dials will not turn.    
+    endif
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p opstat~
+if objtargetcarry()
+  if name($n) == Tzajai
+  or name($n) == Iacobos
+  or name($n) == Kestrel
+    mpnextinterp
+  else
+    mpechoat $n That Object has no Programs set.
+  endif
+else
+  mpnextinterp
+endif
+~
+>data_prog ROT3_inscrip~
+null
+null
+l dp wkh zklfk gdunhqv rq wkh krulcrq
+jorrp lv pb khudog zlwk pb eolqg kxqwvpdq
+lq pb zdvwhv ri dqflhqw qrqh vkdoo exw
+l dp wkh eduh erqhv ri wkh hduwk dqg qxgh
+iru d idovh lw zloo vshqg lwvhoi xwwhuob
+eorrgb wkh zklfk zulqjv olih iurp wkh brxqj
+zkroob plqh lv jlbhq wkh vohhsv ri djhv
+~
+>data_prog ROT1_inscrip~
+null
+null
+j bn uif xijdi ebslfot po uif ipsjapo
+hmppn jt nz ifsbme xjui nz cmjoe ivoutnbo
+jo nz xbtuft pg bodjfou opof tibmm cvu
+j bn uif cbsf cpoft pg uif fbsui boe ovef 
+gps b gbmtf ju xjmm tqfoe jutfmg vuufsmz
+cmppez uif xijdi xsjoht mjgf gspn uif zpvoh
+xipmmz njof jt hjwfo uif tmffqt pg bhft
+~
+>data_prog ROT13_inscrip~
+null
+null
+v nz gur juvpu qnexraf ba gur ubevmba
+tybbz vf zl urenyq jvgu zl oyvaq uhagfzna
+va zl jnfgrf bs napvrag abar funyy ohg
+v nz gur oner obarf bs gur rnegu naq ahqr
+sbe n snyfr vg jvyy fcraq vgfrys hggreyl
+oybbql gur juvpu jevatf yvsr sebz gur lbhat
+jubyyl zvar vf tvira gur fyrrcf bs ntrf
+~
+>data_prog ROT3_answers~
+null
+null
+wkxqghukhdg
+ghvsdlu
+forfnzrunv
+ghilohg
+looxvlrq
+wdorq
+ghdwkohvv
+~
+>data_prog ROT1_answers~
+null
+null
+uivoefsifbe
+eftqbjs
+dmpdlxpslt
+efgjmfe
+jmmvtjpo
+ubmpo
+efbuimftt
+~
+>data_prog ROT13_answers~
+null
+null
+guhaqreurnq
+qrfcnve
+pybpxjbexf
+qrsvyrq
+vyyhfvba
+gnyba
+qrnguyrff
+~
+>data_prog right_answers~
+null
+null
+[thunderhead]
+[despair]
+[clockworks]
+[defiled]
+[illusion]
+[talon]
+[deathless]
+~
+|
+V13
+22593
+ruined basalt blackened casket monstrance~
+a ruined, blackened basalt monstrance~
+A ruined, blackened basalt casket lies here.~
+~
+stone~
+trash PU 0 0 AO
+0 0 0 0 0
+10 125 0 0 P
+0
+E
+ruined basalt blackened casket monstrance~
+This basalt casket appears utterly ruined.  Cracks line the surface,
+though the structure is still, overall, sound.  Ash and smoke leak from the
+fissures, and whenever the piece is moved the disheartening clatter of
+glass, metal, and other debris can be heard rattling around inside.  
+~
+V13
+22594
+marble vial fly flight~
+a marble vial~
+A marble vial lies here.~
+~
+marble~
+potion S 0 0 A
+90 'fly' 'shield' '' ''
+52 10 1004 1 P
+0
+E
+marble vial fly flight~
+This marble vial is relatively nondescript, carved from white stone and
+with a lid of the same substance.  Faint engravings line the vial\@s
+exterior, the designs vague and squiggly.  
+~
+V13
+22598
+scroll~
+aren\@s scroll~
+Aren\@s scroll~
+~
+unknown~
+scroll 0 0 0 A
+20 'fireball' 'ghost' 'ghost' 'ghost'
+0 0 0 1 P
+0
+V13
+22599
+none~
+a sword forged by Arenhamuur~
+A huge turtle rests within its lair.~
+~
+energy~
+trash MZ 0 0 ANO
+0 0 0 0 0
+60 0 0 2 P
+2
+A
+33 100
+A
+17 -10000
+A
+30 100
+A
+31 100
+A
+32 100
+A
+18 30
+A
+19 30
+#0
+
+
+
+#ROOMS
+#22528
+A Dark Channel~
+Black water cuts a path through the floating vegetation of the fens. 
+Flowing from west to east, the swift current remains relatively clear of
+obstructions, sweeping debris downstream.  Beneath the channel, long dark
+shapes glide about, their movements causing eddies on the surface.  Clumps
+of rotting grass and other debris choke the surface of the fens on both
+sides of the channel.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 22567
+D1
+~
+~
+0 0 22527
+D2
+~
+~
+0 0 22576
+D3
+~
+~
+0 0 22529
+W 5 0 0
+Z 5 5
+S
+#22529
+A Dark Channel~
+Black water cuts a path through the floating vegetation of the fens. 
+Flowing from the south and bending sharply eastward, the swift current
+remains relatively clear of obstructions.  Beneath the channel, long dark
+shapes glide about, their movements causing eddies on the surface.  Clumps
+of rotting grass and other debris choke the surface of the fens on both
+sides of the channel.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 22566
+D1
+~
+~
+0 0 22528
+D2
+~
+~
+0 0 22530
+D3
+~
+~
+0 0 22586
+W 5 0 0
+Z 5 5
+S
+#22530
+A Dark Channel~
+Black water cuts a path through the floating vegetation of the fens. 
+Flowing from the east and bending sharply northward, the swift current
+remains relatively clear of obstructions.  Beneath the channel, long dark
+shapes glide about, their movements causing eddies on the surface.  Clumps
+of rotting grass and other debris choke the surface of the fens on both
+sides of the channel.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 22529
+D1
+~
+~
+0 0 22531
+D2
+~
+~
+0 0 22587
+D3
+~
+~
+0 0 22588
+W 5 0 0
+Z 5 5
+S
+#22531
+A Dark Channel North of an Island~
+Dark water flows between clumps of floating vegetation.  The channel
+flows from the south, held to its banks there by the solid ground of the
+island.  To the north and east is the shifting quagmire of the fens.  The
+swift channel bends sharply west, cutting a clear path toward the Dantaron. 
+Dark shadows glide silently beneath the surface, their movements stirring
+the water.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 22576
+D1
+~
+~
+0 0 22582
+D2
+~
+~
+0 0 22532
+D3
+~
+~
+0 0 22530
+W 5 0 0
+Z 5 5
+S
+#22532
+The Beginning of a Dark Channel~
+A dark river channel begins here, its rank, fetid water flowing out of an
+earthen embankment.  Reeking of death and decay, the water runs swiftly out
+toward the fens to the north.  High walls of earth rear up on either side of
+the channel, deeply eroded by the passage of the filthy water.  Huge trees
+overhang the embankment to the east and west, the leaves a leprous yellow. 
+Under the trees, the dense underbrush consists almost exclusively of
+thistles, tightly packed, foot long thorns preventing passage.  A small
+trail leads up over the embankment to the south.  
+~
+~
+2
+0 0 6
+D0
+~
+~
+0 0 22531
+D4
+An embankment overlooks the fens.
+~
+~
+0 0 22597
+W 5 0 0
+Z 5 5
+S
+#22533
+On Murky Waters~
+The dark, putrid water of the fens lies undisturbed by wind or current. 
+The surface, covered by putrescent knots of grass and algae, spreads out in
+all directions.  A thick mist rises up from the water, obscuring the horizon
+and reeking of decay.  Drops of brownish dew form on the blades of grass
+floating in the water, falling occasionally to the dark surface, the
+dripping sound echoing across the fens.  
+~
+~
+2
+0 0 6
+D0
+~
+~
+0 0 22513
+D1
+~
+~
+0 0 22536
+D3
+~
+~
+0 0 22535
+D2
+~
+~
+0 0 22536
+W 5 0 0
+Z 5 5
+S
+#22534
+On Murky Waters~
+The black water of the fens is covered by rotting, rank grass.  Small
+islands of decaying vegetation float on the surface of the fens.  Fog rises
+from the surface of the warm, fetid water, filling the air with a smell of
+decay.  The unfettered islands drift about, stirred by the motions of the
+dark shapes moving silently beneath the surface.  
+~
+~
+2
+0 0 6
+D2
+~
+~
+0 0 22534
+D0
+~
+~
+0 0 22534
+D3
+~
+~
+0 0 22522
+D1
+~
+~
+0 0 22535
+W 5 0 0
+Z 5 5
+S
+#22535
+On Murky Waters~
+Small knots of grass float on top of the dark water of the fens.  Moved
+about by gentle current, the anchorless islands bump against each other. 
+Twisted saplings grow on some of the larger islands, their bark black as the
+water from which they drink.  One larger sapling lies in the water, the knot
+of debris holding it tipped sideways.  A thick mist rises form the surface,
+obscuring the horizon.  
+~
+~
+2
+0 0 6
+D2
+~
+~
+0 0 22524
+D3
+~
+~
+0 0 22534
+D1
+~
+~
+0 0 22533
+D0
+~
+~
+0 0 22511
+W 5 0 0
+Z 5 5
+S
+#22536
+On Murky Waters~
+The dark water of the fens laps quietly against the shore to the north. 
+Small islands, comprised of grass and other debris, float upon the surface. 
+Thick mist rises above the fens, blurring the horizon and tinting it brown. 
+Dark shapes move silently beneath the water, their movements stirring the
+islands and forming small whirlpools, which suck down smaller bits of grass
+and algae.  
+~
+~
+2
+0 0 6
+D3
+~
+~
+0 0 22533
+D2
+~
+~
+0 0 22526
+D0
+~
+~
+0 0 22513
+D1
+~
+~
+0 0 22537
+W 5 0 0
+Z 5 5
+S
+#22537
+On Murky Waters~
+The dark, putrid water of the fens lies undisturbed by wind or current. 
+The surface, covered by putrescent knots of grass and algae, spreads out in
+all directions.  A thick mist rises up from the water, obscuring the horizon
+and reeking of decay.  Drops of brownish dew form on the blades of grass
+floating in the water, falling occasionally to the dark surface, the
+dripping sound echoing across the fens.  
+~
+~
+2
+0 0 6
+D0
+~
+~
+0 0 22514
+D1
+~
+~
+0 0 22538
+D3
+~
+~
+0 0 22536
+D2
+~
+~
+0 0 22526
+W 5 0 0
+Z 5 5
+S
+#22538
+On Murky Waters~
+The dark water of the fens laps quietly against the shore to the north. 
+Small islands, comprised of grass and other debris, float upon the surface. 
+Thick mist rises above the fens, blurring the horizon and tinting it brown. 
+Dark shapes move silently beneath the water, their movements stirring the
+islands and forming small whirlpools, which suck down smaller bits of grass
+and algae.  
+~
+~
+2
+0 0 6
+D1
+~
+~
+0 0 22539
+D2
+~
+~
+0 0 22548
+D3
+~
+~
+0 0 22537
+W 5 0 0
+Z 5 5
+S
+#22539
+On Murky Waters~
+The black water of the fens is covered by rotting, rank grass.  Small
+islands of decaying vegetation float on the surface of the fens.  Fog rises
+from the surface of the warm, fetid water, filling the air with a smell of
+decay.  The unfettered islands drift about, stirred by the motions of the
+dark shapes moving silently beneath the surface.  
+~
+~
+2
+0 0 6
+D0
+~
+~
+0 0 22515
+D2
+~
+~
+0 0 22542
+D3
+~
+~
+0 0 22538
+D1
+~
+~
+0 0 22540
+W 5 0 0
+Z 5 5
+S
+#22540
+Tangled Underbrush Near the Edge of the Fens~
+Huge bushes grow against a high cliff face.  Thorns, nearly a foot long,
+sprout from the bushes, resisting movement in all directions.  A thin trail
+follows the base of the cliff, choked by vines and briars.  Thick fog drifts
+in from the fens west of the trail, covering everything with oily, brown
+dew.  The yellow rock of the cliff, pocked and scarred by years of exposure
+to the acidic moisture in the fens, rises high above the fog bank.  
+~
+~
+2
+0 0 3
+D0
+~
+~
+0 0 22541
+D2
+~
+~
+0 0 22542
+D3
+~
+~
+0 0 22539
+W 5 0 0
+Z 5 5
+S
+#22541
+A Narrow Path Through a Crevice~
+The trail winds through a narrow crevice in the cliffs surrounding the
+valley.  The mist permeating the air dissipates further into the crevice,
+leaving the pitted rock of the cliffs open to view.  Patches of fungi grow
+in the deeper shadows of the cliff, feeding on the rotting remains of the
+trees that fall down from above.  Thick thorn bushes encroach upon the trail
+inside the valley to the south.  The trail widens into a twisted forest to
+the north.  
+~
+~
+2
+0 0 3
+D0
+~
+~
+0 0 19641
+D2
+~
+~
+0 0 22540
+W 5 0 0
+Z 5 5
+S
+#22542
+Tangled Underbrush~
+A small trail winds through dense briars.  The cliffs surrounding the
+small valley tower high above, leaving the trail cloaked in darkness. 
+Foot-long thorns extend out from the underbrush, slowing passage along the
+trail.  The trail leads west and north through the bushes.  Thick fog swirls
+in a gentle breeze above, lapping against the face of the cliff to the east
+and south.  
+~
+~
+2
+0 0 3
+D0
+~
+~
+0 0 22540
+D3
+~
+~
+0 0 22543
+W 5 0 0
+Z 5 5
+S
+#22543
+Tangled Underbrush Near the Edge of the Fens~
+Huge bushes grow against a high cliff face.  Thorns, nearly a foot long,
+sprout from the bushes, resisting movement in all directions.  A thin trail
+follows the base of the cliff, choked by vines and briars.  Thick fog drifts
+in from the fens west of the trail, covering everything with oily, brown
+dew.  The yellow rock of the cliff, pocked and scarred by years of exposure
+to the acidic moisture in the fens, rises high above the fog bank.  
+~
+~
+2
+0 0 3
+D1
+~
+~
+0 0 22542
+D2
+~
+~
+0 0 22544
+D3
+~
+~
+0 0 22548
+W 5 0 0
+Z 5 5
+S
+#22544
+Tangled Underbrush Near the Edge of the Fens~
+Huge bushes grow against a high cliff face.  Thorns, nearly a foot long,
+sprout from the bushes, resisting movement in all directions.  A thin trail
+follows the base of the cliff, choked by vines and briars.  Thick fog drifts
+in from the fens south of the trail, covering everything with oily, brown
+dew.  The yellow rock of the cliff, pocked and scarred by years of exposure
+to the acidic moisture in the fens, rises high above the fog bank.  
+~
+~
+2
+0 0 3
+D0
+~
+~
+0 0 22543
+D2
+~
+~
+0 0 22547
+W 5 0 0
+Z 5 5
+S
+#22545
+On Murky Waters~
+Small knots of grass float on top of the dark water of the fens.  Moved
+about by gentle current, the anchorless islands bump against each other. 
+Twisted saplings grow on some of the larger islands, their bark black as the
+water from which they drink.  One larger sapling lies in the water, the knot
+of debris holding it tipped sideways.  A thick mist rises form the surface,
+obscuring the horizon.  
+~
+~
+2
+0 0 6
+D3
+~
+~
+0 0 22545
+D1
+~
+~
+0 0 22546
+D2
+~
+~
+0 0 22578
+D0
+~
+~
+0 0 22549
+W 5 0 0
+Z 5 5
+S
+#22546
+On Murky Waters~
+Thick fog rises from the dark water of the fens.  The small floating
+islands of rotting grass are covered with dew from the mist.  Long shapes
+move silently beneath the surface, made indistinct by the hazy water.  A
+small sapling has taken root on one of the larger islands, its limbs laden
+with small yellow berries.  The leaves of the sapling are dappled with red
+spots.  Similar spots of red decorate the island upon which the tree grows. 
+~
+~
+2
+0 0 6
+D1
+~
+~
+0 0 22547
+D2
+~
+~
+0 0 22580
+D3
+~
+~
+0 0 22545
+W 5 0 0
+Z 5 5
+S
+#22547
+On Murky Waters~
+The dark, putrid water of the fens lies undisturbed by wind or current. 
+The surface, covered by putrescent knots of grass and algae, spreads out in
+all directions.  A thick mist rises up from the water, obscuring the horizon
+and reeking of decay.  Drops of brownish dew form on the blades of grass
+floating in the water, falling occasionally to the dark surface, the
+dripping sound echoing across the fens.  
+~
+~
+2
+0 0 6
+D0
+~
+~
+0 0 22544
+D1
+~
+~
+0 0 22544
+D2
+~
+~
+0 0 22581
+D3
+~
+~
+0 0 22546
+W 5 0 0
+Z 5 5
+S
+#22548
+On Murky Waters~
+The dark water of the fens laps quietly against the shore to the east. 
+Small islands, comprised of grass and other debris, float upon the surface. 
+Thick mist rises above the fens, blurring the horizon and tinting it brown. 
+Dark shapes move silently beneath the water, their movements stirring the
+islands and forming small whirlpools, which suck down smaller bits of grass
+and algae.  
+~
+~
+2
+0 0 6
+D1
+~
+~
+0 0 22544
+D0
+~
+~
+0 0 22538
+D2
+~
+~
+0 0 22548
+D3
+~
+~
+0 0 22549
+W 5 0 0
+Z 5 5
+S
+#22549
+On Murky Waters~
+Small knots of grass float on top of the dark water of the fens.  Moved
+about by gentle current, the anchorless islands bump against each other. 
+Twisted saplings grow on some of the larger islands, their bark black as the
+water from which they drink.  One larger sapling lies in the water, the knot
+of debris holding it tipped sideways.  A thick mist rises form the surface,
+obscuring the horizon.  
+~
+~
+2
+0 0 6
+D1
+~
+~
+0 0 22548
+D3
+~
+~
+0 0 22550
+D0
+~
+~
+0 0 22550
+D2
+~
+~
+0 0 22545
+W 5 0 0
+Z 5 5
+S
+#22550
+On Murky Waters~
+Thick fog rises from the dark water of the fens.  The small floating
+islands of rotting grass are covered with dew from the mist.  Long shapes
+move silently beneath the surface, made indistinct by the hazy water.  A
+small sapling has taken root on one of the larger islands, its limbs laden
+with small yellow berries.  The leaves of the sapling are dappled with red
+spots.  Similar spots of red decorate the island upon which the tree grows. 
+~
+~
+2
+0 0 6
+D0
+~
+~
+0 0 22537
+D3
+~
+~
+0 0 22526
+D2
+~
+~
+0 0 22549
+D1
+~
+~
+0 0 22538
+W 5 0 0
+Z 5 5
+S
+#22551
+On Murky Waters~
+The black water of the fens is covered by rotting, rank grass.  Small
+islands of decaying vegetation float on the surface of the fens.  Fog rises
+from the surface of the warm, fetid water, filling the air with a smell of
+decay.  The unfettered islands drift about, stirred by the motions of the
+dark shapes moving silently beneath the surface.  
+~
+~
+2
+0 0 6
+D2
+~
+~
+0 0 22552
+D1
+~
+~
+0 0 22521
+D3
+~
+~
+0 0 22553
+D0
+~
+~
+0 0 22520
+W 5 0 0
+Z 5 5
+S
+#22552
+On Murky Waters~
+The dark, putrid water of the fens lies undisturbed by wind or current. 
+The surface, covered by putrescent knots of grass and algae, spreads out in
+all directions.  A thick mist rises up from the water, obscuring the horizon
+and reeking of decay.  Drops of brownish dew form on the blades of grass
+floating in the water, falling occasionally to the dark surface, the
+dripping sound echoing across the fens.  
+~
+~
+2
+0 0 6
+D1
+~
+~
+0 0 22522
+D3
+~
+~
+0 0 22555
+D2
+~
+~
+0 0 22552
+D0
+~
+~
+0 0 22551
+W 5 0 0
+Z 5 5
+S
+#22553
+On Murky Waters~
+The black water of the fens is covered by rotting, rank grass.  Small
+islands of decaying vegetation float on the surface of the fens.  Fog rises
+from the surface of the warm, fetid water, filling the air with a smell of
+decay.  The unfettered islands drift about, stirred by the motions of the
+dark shapes moving silently beneath the surface.  
+~
+~
+2
+0 0 6
+D2
+~
+~
+0 0 22555
+D0
+~
+~
+0 0 22520
+D1
+~
+~
+0 0 22551
+D3
+~
+~
+0 0 22558
+W 5 0 0
+Z 5 5
+S
+#22554
+On Murky Waters~
+The dark water of the fens laps quietly against the shore to the south. 
+Small islands, comprised of grass and other debris, float upon the surface. 
+Thick mist rises above the fens, blurring the horizon and tinting it brown. 
+Dark shapes move silently beneath the water, their movements stirring the
+islands and forming small whirlpools, which suck down smaller bits of grass
+and algae.  
+~
+~
+2
+0 0 6
+D1
+~
+~
+0 0 22593
+D0
+~
+~
+0 0 22596
+W 5 0 0
+Z 5 5
+S
+#22555
+On Murky Waters~
+Small knots of grass float on top of the dark water of the fens.  Moved
+about by gentle current, the anchorless islands bump against each other. 
+Twisted saplings grow on some of the larger islands, their bark black as the
+water from which they drink.  One larger sapling lies in the water, the knot
+of debris holding it tipped sideways.  A thick mist rises form the surface,
+obscuring the horizon.  
+~
+~
+2
+0 0 6
+D1
+~
+~
+0 0 22552
+D3
+~
+~
+0 0 22558
+D2
+~
+~
+0 0 22556
+D0
+~
+~
+0 0 22553
+W 5 0 0
+Z 5 5
+S
+#22556
+On Murky Waters~
+Thick fog rises from the dark water of the fens.  The small floating
+islands of rotting grass are covered with dew from the mist.  Long shapes
+move silently beneath the surface, made indistinct by the hazy water.  A
+small sapling has taken root on one of the larger islands, its limbs laden
+with small yellow berries.  The leaves of the sapling are dappled with red
+spots.  Similar spots of red decorate the island upon which the tree grows. 
+~
+~
+2
+0 0 6
+D1
+~
+~
+0 0 22552
+D0
+~
+~
+0 0 22555
+D2
+~
+~
+0 0 22562
+D3
+~
+~
+0 0 22559
+W 5 0 0
+Z 5 5
+S
+#22557
+On Murky Waters~
+The black water of the fens is covered by rotting, rank grass.  Small
+islands of decaying vegetation float on the surface of the fens.  Fog rises
+from the surface of the warm, fetid water, filling the air with a smell of
+decay.  The unfettered islands drift about, stirred by the motions of the
+dark shapes moving silently beneath the surface.  
+~
+~
+2
+0 0 6
+D2
+~
+~
+0 0 22564
+D1
+~
+~
+0 0 22562
+D3
+~
+~
+0 0 22556
+D0
+~
+~
+0 0 22557
+W 5 0 0
+Z 5 5
+S
+#22558
+Tangled Underbrush Near the Edge of the Fens~
+Huge bushes grow against a high cliff face.  Thorns, nearly a foot long,
+sprout from the bushes, resisting movement in all directions.  A thin trail
+follows the base of the cliff, choked by vines and briars.  Thick fog drifts
+in from the fens east of the trail, covering everything with oily, brown
+dew.  The yellow rock of the cliff, pocked and scarred by years of exposure
+to the acidic moisture in the fens, rises high above the fog bank.  
+~
+~
+2
+0 0 3
+D1
+~
+~
+0 0 22553
+D2
+~
+~
+0 0 22559
+W 5 0 0
+Z 5 5
+S
+#22559
+Tangled Underbrush Near the Edge of the Fens~
+Huge bushes grow against a high cliff face.  Thorns, nearly a foot long,
+sprout from the bushes, resisting movement in all directions.  A thin trail
+follows the base of the cliff, choked by vines and briars.  Thick fog drifts
+in from the fens east of the trail, covering everything with oily, brown
+dew.  The yellow rock of the cliff, pocked and scarred by years of exposure
+to the acidic moisture in the fens, rises high above the fog bank.  
+~
+~
+2
+0 0 3
+D0
+~
+~
+0 0 22558
+D1
+~
+~
+0 0 22556
+D2
+~
+~
+0 0 22560
+W 5 0 0
+Z 5 5
+S
+#22560
+Tangled Underbrush Near the Edge of the Fens~
+Thick bushes grow about the edge of the fens.  Thorns, nearly a foot
+long, grow at odd angles into the narrow path leading through the brambles. 
+Large tracks are visible on the damp, black soil beneath the thorn bushes. 
+Still mist rises off the fens to the east, obscuring the cliff face above. 
+The rank odor of rotting vegetation trails in from the fens.  There is a
+dark opening in the brambles to the west, and the underbrush continues to
+the north.  
+~
+~
+2
+0 0 3
+E
+tracks~
+These tracks sink deep into the black soil of the fens.  The tracks are
+spaced wide apart, with a line centered between the footprints leading west.
+~
+D0
+~
+~
+0 0 22559
+D1
+~
+~
+0 0 22563
+D3
+Large tracks lead into the cave opening. 
+~
+~
+0 0 22561
+W 5 0 0
+Z 5 5
+S
+#22561
+A Small Damp Cave~
+A shallow cave extends westward into the cliff.  The uneven rock walls
+form a rough circle, meeting the damp earth of the cave floor amidst a
+litter of rubble.  A rank odor comes from the southwest corner of the cave,
+where a pile of refuse is heaped halfway to the ceiling.  Large tracks cover
+the floor in the center of the cave.  A single set of tracks leads in from
+the cave entrance.  
+~
+~
+2
+0 0 12
+D1
+~
+~
+0 0 22560
+W 5 0 0
+Z 5 5
+S
+#22562
+On Murky Waters~
+The dark water of the fens laps quietly against the shore to the west. 
+Small islands, comprised of grass and other debris, float upon the surface. 
+Thick mist rises above the fens, blurring the horizon and tinting it brown. 
+Dark shapes move silently beneath the water, their movements stirring the
+islands and forming small whirlpools, which suck down smaller bits of grass
+and algae.  
+~
+~
+2
+0 0 6
+D3
+~
+~
+0 0 22560
+D2
+~
+~
+0 0 22563
+D0
+~
+~
+0 0 22556
+D1
+~
+~
+0 0 22557
+W 5 0 0
+Z 5 5
+S
+#22563
+On Murky Waters~
+Thick fog rises from the dark water of the fens.  The small floating
+islands of rotting grass are covered with dew from the mist.  Long shapes
+move silently beneath the surface, made indistinct by the hazy water.  A
+small sapling has taken root on one of the larger islands, its limbs laden
+with small yellow berries.  The leaves of the sapling are dappled with red
+spots.  Similar spots of red decorate the island upon which the tree grows. 
+~
+~
+2
+0 0 6
+D0
+~
+~
+0 0 22562
+D2
+~
+~
+0 0 22595
+D1
+~
+~
+0 0 22564
+D3
+~
+~
+0 0 22560
+W 5 0 0
+Z 5 5
+S
+#22564
+On Murky Waters~
+Small knots of grass float on top of the dark water of the fens.  Moved
+about by gentle current, the anchorless islands bump against each other. 
+Twisted saplings grow on some of the larger islands, their bark black as the
+water from which they drink.  One larger sapling lies in the water, the knot
+of debris holding it tipped sideways.  A thick mist rises form the surface,
+obscuring the horizon.  
+~
+~
+2
+0 0 6
+D0
+~
+~
+0 0 22557
+D1
+~
+~
+0 0 22565
+D3
+~
+~
+0 0 22563
+D2
+~
+~
+0 0 22590
+W 5 0 0
+Z 5 5
+S
+#22565
+On Murky Waters~
+The dark, putrid water of the fens lies undisturbed by wind or current. 
+The surface, covered by putrescent knots of grass and algae, spreads out in
+all directions.  A thick mist rises up from the water, obscuring the horizon
+and reeking of decay.  Drops of brownish dew form on the blades of grass
+floating in the water, falling occasionally to the dark surface, the
+dripping sound echoing across the fens.  
+~
+~
+2
+0 0 6
+D2
+~
+~
+0 0 22586
+D0
+~
+~
+0 0 22523
+D1
+~
+~
+0 0 22566
+D3
+~
+~
+0 0 22564
+W 5 0 0
+Z 5 5
+S
+#22566
+On Murky Waters~
+The black water of the fens is covered by rotting, rank grass.  Small
+islands of decaying vegetation float on the surface of the fens.  Fog rises
+from the surface of the warm, fetid water, filling the air with a smell of
+decay.  The unfettered islands drift about, stirred by the motions of the
+dark shapes moving silently beneath the surface.  
+~
+~
+2
+0 0 6
+D2
+~
+~
+0 0 22565
+D3
+~
+~
+0 0 22565
+D1
+~
+~
+0 0 22567
+D0
+~
+~
+0 0 22566
+W 5 0 0
+Z 5 5
+S
+#22567
+On Murky Waters~
+Thick fog rises from the dark water of the fens.  The small floating
+islands of rotting grass are covered with dew from the mist.  Long shapes
+move silently beneath the surface, made indistinct by the hazy water.  A
+small sapling has taken root on one of the larger islands, its limbs laden
+with small yellow berries.  The leaves of the sapling are dappled with red
+spots.  Similar spots of red decorate the island upon which the tree grows. 
+~
+~
+2
+0 0 6
+D2
+~
+~
+0 0 22567
+D0
+~
+~
+0 0 22525
+D3
+~
+~
+0 0 22566
+D1
+~
+~
+0 0 22549
+W 5 0 0
+Z 5 5
+S
+#22568
+Beneath the Tower Ruins~
+This chamber is carved into the very foundation of the ruined tower. 
+Rubble is strewn about the floor and stone dust has long settled since the
+violence that created the ruins was finished.  The granite walls are carved
+with runes of warding, though cracks in the wall have ruined some of them,
+many still flicker with a pale blue light.  An exceedingly faint breeze seems
+to blow through the cracks, filling the room with the stench of the fens.  A
+trapdoor is set into the ceiling, an old ladder leading up it, and a hall
+branches from the room to the east.  
+~
+~
+3
+0 8243 12
+E
+rune runes glyph glyphs ward wards warding pale blue~
+Many simplistic runes are carved into the crumbling, moss-specked walls. 
+Though some lie dark and extinguished, the granite on which they are carved
+cracked with time, most still flicker a pale blue.  
+~
+D1
+A runed hall curves to the south.
+~
+~
+0 0 22569
+D4
+A trapdoor is set into the ceiling.
+~
+trapdoor~
+65639 22567 22518
+M 50 H 100 V 100
+W 5 0 0
+Z 5 5
+S
+#22569
+Beneath the Tower Ruins~
+This hallway is carved into the very foundation of the ruined tower. 
+Rubble is strewn about the floor and stone dust has long settled since the
+violence that created the ruins above came to an end.  The granite walls are
+carved with runes of warding.  Though cracks in the stone have ruined some
+of the glyphs, many many still flicker with a pale blue light.  An
+exceedingly faint breeze seems to blow through the cracks, filling the room
+with the stench of the fens.  The wide hall curves, connecting rooms as it
+goes from west to south.  Narrow vines grow out the cracks, creeping along
+the floor.
+~
+~
+3
+0 8243 12
+E
+rune runes glyph glyphs ward wards warding pale blue~
+Many simplistic runes are carved into the crumbling, moss-specked walls. 
+Though some lie dark and extinguished, the granite on which they are carved
+cracked with time, most still flicker a pale blue.  
+~
+D2
+The runed hall leads to an ancient laboratory.
+~
+~
+0 0 22570
+D3
+The runed hall leads to a chamber.
+~
+~
+0 0 22568
+M 50 H 100 V 100
+W 5 0 0
+Z 5 5
+S
+#22570
+An Ancient Laboratory~
+This ancient laboratory is carved into the very foundation of the ruined
+tower.  Rubble is strewn about the floor and stone dust has long settled on
+the decaying equipment since the violence that created the ruins above came
+to an end.  The granite walls are carved with runes of warding.  Though
+cracks in the stone have ruined some of the glyphs, many many still flicker
+with a pale blue light.  Equipment long ruined by the humid air and creeping
+moss stands on basalt tables.  Vines creep down the walls and over the
+floor, obscuring the ground beneath you.  
+~
+~
+4
+0 8242 0
+E
+rune runes glyph glyphs ward wards warding pale blue~
+Many simplistic runes are carved into the crumbling, moss-specked walls. 
+Though some lie dark and extinguished, the granite on which they are carved
+cracked with time, most still flicker a pale blue.  
+~
+D0
+A runed hall curves to the west.
+~
+~
+0 0 22569
+D5
+A trapdoor is partially concealed by the vines.
+~
+trapdoor~
+65639 22567 22571
+M 50 H 100 V 100
+W 5 0 0
+Z 5 5
+S
+#22571
+A Stone-Walled Chamber~
+This ancient chamber is carved into the very rock beneath the foundations
+of the ruined tower.  A ladder carved into the stone leads up to a trapdoor
+in the ceiling above.  The walls walls are carved with runes of warding. 
+Though cracks in the stone have ruined some of the glyphs, many many still
+flicker and pulse with a sickly blue light.  The fetid, humid air of the
+fens seems to filter in through the cracks, making breathing unpleasant.  
+~
+~
+5
+0 1056818 0
+E
+rune runes glyph glyphs ward wards warding pale blue~
+Many simplistic runes are carved into the crumbling, moss-specked walls. 
+Though some lie dark and extinguished, the granite on which they are carved
+cracked with time, most still flicker a strong, sickly blue.  An aura of
+nullity surrounds the wards, a simple (yet strong) absence of energy.  
+~
+D4
+A trapdoor is set into the ceiling above.
+~
+trapdoor~
+65639 22567 22570
+M 0 H 100 V 100
+W 5 0 0
+Z 5 5
+S
+#22572
+The Bottom of the Mire~
+Deep within the bottom of the mire all is dark and you can feel the swamp
+water pressing down on you.  Struggle as you might, you cannot fight your
+way to the surface through the quicksand-like murk.  The unseen ground is
+soft, sucking you down like all other things that sink here to die.  
+~
+~
+3
+0 5 11
+M -30 H -30 V -30
+W 5 0 0
+Z 5 5
+S
+#22573
+The Ruins of an Ancient Tower~
+Mighty slabs of basalt lay strewn about this clearing, a testament to the
+glory this tower must once have commanded.  Now it lies largely in ruins,
+with most of the foundation crumbled or missing.  The few remaining stone
+buttresses barely serve to hold up the second story, which has long since
+been opened to the sky.  Ropy vines snake their way up what is left of the
+walls, encouraged by the humid atmosphere and unrepressed by any gardener\@s
+hand.  Both a cracked doorway and half-vanished wall lead back north to what
+may once have been an entryway to the tower, while a sloping pile of rubble
+provides access to the upper floor.  
+~
+~
+2
+0 1 0
+D0
+A cracked doorway leads to some overgrown ruins.
+~
+~
+0 0 22599
+D4
+A sloping pile of rubble leads up to the second story of the ruins.
+~
+~
+0 0 22574
+W 5 0 0
+Z 5 5
+S
+#22574
+Atop the Ruins of an Ancient Tower~
+Though this level of the tower now lies exposed to the open sky, a
+mostly-destroyed staircase and fragments of walls indicate that it may once
+have merely been the second floor of a much taller structure.  This place
+appears to have once been a library of sorts; ruined stone bookcases lie
+cracked and pitted on their sides, and the remnants of several display cases
+have been broken open and scattered about.  An intact reading bench carved
+from granite sits against what is left of the north wall; the southern side
+has no wall left at all.  To the south in the distance the jagged peaks of
+the Mlejian Mountains can just barely be made out through the mists and fog
+of the fens, while a sloping pile of rubble leads back down to the ground
+floor of the tower.  
+~
+~
+2
+0 0 14
+D5
+A sloping pile of rubble leads down to the base of the tower.
+~
+~
+0 0 22573
+W 5 0 0
+Z 5 5
+S
+#22576
+On Murky Waters~
+The dark, putrid water of the fens lies undisturbed by wind or current. 
+The surface, covered by putrescent knots of grass and algae, spreads out in
+all directions.  A thick mist rises up from the water, obscuring the horizon
+and reeking of decay.  Drops of brownish dew form on the blades of grass
+floating in the water, falling occasionally to the dark surface, the
+dripping sound echoing across the fens.  
+~
+~
+2
+0 0 6
+D0
+~
+~
+0 0 22528
+D1
+~
+~
+0 0 22577
+D2
+~
+~
+0 0 22531
+D3
+~
+~
+0 0 22587
+W 5 0 0
+Z 5 5
+S
+#22577
+On Murky Waters~
+Small knots of grass float on top of the dark water of the fens.  Moved
+about by gentle current, the anchorless islands bump against each other. 
+Twisted saplings grow on some of the larger islands, their bark black as the
+water from which they drink.  One larger sapling lies in the water, the knot
+of debris holding it tipped sideways.  A thick mist rises form the surface,
+obscuring the horizon.  
+~
+~
+2
+0 0 6
+D1
+~
+~
+0 0 22578
+D2
+~
+~
+0 0 22583
+D0
+~
+~
+0 0 22527
+D3
+~
+~
+0 0 22576
+W 5 0 0
+Z 5 5
+S
+#22578
+A Damp Island~
+This solitary island rises abover the black water of the fens.  Rotting,
+rank grass and other decaying vegetation covers the damp ground.  Fog rises
+from the surface of the warm, fetid waters surrounding it, filling the air
+with a smell of decay.  Dead trees cluster in the center of the island,
+strings of moss hanging from their branches.  
+~
+~
+2
+0 0 14
+D1
+~
+~
+0 0 22579
+D0
+~
+~
+0 0 22545
+D3
+~
+~
+0 0 22577
+D2
+~
+~
+0 0 22584
+W 5 0 0
+Z 5 5
+S
+#22579
+On Murky Waters~
+Thick fog rises from the dark water of the fens.  The small floating
+islands of rotting grass are covered with dew from the mist.  Long shapes
+move silently beneath the surface, made indistinct by the hazy water.  A
+small sapling has taken root on one of the larger islands, its limbs laden
+with small yellow berries.  The leaves of the sapling are dappled with red
+spots.  Similar spots of red decorate the island upon which the tree grows. 
+~
+~
+2
+0 0 6
+D0
+~
+~
+0 0 22546
+D2
+~
+~
+0 0 22584
+D1
+~
+~
+0 0 22580
+D3
+~
+~
+0 0 22578
+W 5 0 0
+Z 5 5
+S
+#22580
+On Murky Waters~
+The dark, putrid water of the fens lies undisturbed by wind or current. 
+The surface, covered by putrescent knots of grass and algae, spreads out in
+all directions.  A thick mist rises up from the water, obscuring the horizon
+and reeking of decay.  Drops of brownish dew form on the blades of grass
+floating in the water, falling occasionally to the dark surface, the
+dripping sound echoing across the fens.  
+~
+~
+2
+0 0 6
+D1
+~
+~
+0 0 22581
+D2
+~
+~
+0 0 22585
+D0
+~
+~
+0 0 22547
+D3
+~
+~
+0 0 22579
+W 5 0 0
+Z 5 5
+S
+#22581
+On Murky Waters~
+Small knots of grass float on top of the dark water of the fens.  Moved
+about by gentle current, the anchorless islands bump against each other. 
+Twisted saplings grow on some of the larger islands, their bark black as the
+water from which they drink.  One larger sapling lies in the water, the knot
+of debris holding it tipped sideways.  A thick mist rises form the surface,
+obscuring the horizon.  
+~
+~
+2
+0 0 6
+D1
+~
+~
+0 0 22547
+D3
+~
+~
+0 0 22580
+D0
+~
+~
+0 0 22581
+D2
+~
+~
+0 0 22585
+W 5 0 0
+Z 5 5
+S
+#22582
+On Murky Waters~
+The dark water of the fens laps quietly against the shore to the south. 
+Small islands, comprised of grass and other debris, float upon the surface. 
+Thick mist rises above the fens, blurring the horizon and tinting it brown. 
+Dark shapes move silently beneath the water, their movements stirring the
+islands and forming small whirlpools, which suck down smaller bits of grass
+and algae.  
+~
+~
+2
+0 0 6
+D0
+~
+~
+0 0 22531
+D3
+~
+~
+0 0 22531
+W 5 0 0
+Z 5 5
+S
+#22583
+On Murky Waters~
+The dark, putrid water of the fens lies undisturbed by wind or current. 
+The surface, covered by putrescent knots of grass and algae, spreads out in
+all directions.  A thick mist rises up from the water, obscuring the horizon
+and reeking of decay.  Drops of brownish dew form on the blades of grass
+floating in the water, falling occasionally to the dark surface, the
+dripping sound echoing across the fens.  
+~
+~
+2
+0 0 6
+D3
+~
+~
+0 0 22582
+D1
+~
+~
+0 0 22584
+D0
+~
+~
+0 0 22577
+D2
+~
+~
+0 0 22583
+W 5 0 0
+Z 5 5
+S
+#22584
+On Murky Waters~
+The dark water of the fens laps quietly against the shore to the south. 
+Small islands, comprised of grass and other debris, float upon the surface. 
+Thick mist rises above the fens, blurring the horizon and tinting it brown. 
+Dark shapes move silently beneath the water, their movements stirring the
+islands and forming small whirlpools, which suck down smaller bits of grass
+and algae.  
+~
+~
+2
+0 0 6
+D0
+~
+~
+0 0 22578
+D3
+~
+~
+0 0 22583
+D1
+~
+~
+0 0 22584
+W 5 0 0
+Z 5 5
+S
+#22585
+On Murky Waters~
+Thick fog rises from the dark water of the fens.  The small floating
+islands of rotting grass are covered with dew from the mist.  Long shapes
+move silently beneath the surface, made indistinct by the hazy water.  A
+small sapling has taken root on one of the larger islands, its limbs laden
+with small yellow berries.  The leaves of the sapling are dappled with red
+spots.  Similar spots of red decorate the island upon which the tree grows. 
+~
+~
+2
+0 0 6
+D0
+~
+~
+0 0 22580
+D3
+~
+~
+0 0 22584
+W 5 0 0
+Z 5 5
+S
+#22586
+On Murky Waters~
+The black water of the fens is covered by rotting, rank grass.  Small
+islands of decaying vegetation float on the surface of the fens.  Fog rises
+from the surface of the warm, fetid water, filling the air with a smell of
+decay.  The unfettered islands drift about, stirred by the motions of the
+dark shapes moving silently beneath the surface.  
+~
+~
+2
+0 0 6
+D2
+~
+~
+0 0 22587
+D0
+~
+~
+0 0 22565
+D3
+~
+~
+0 0 22589
+W 5 0 0
+Z 5 5
+S
+#22587
+On Murky Waters~
+Thick fog rises from the dark water of the fens.  The small floating
+islands of rotting grass are covered with dew from the mist.  Long shapes
+move silently beneath the surface, made indistinct by the hazy water.  A
+small sapling has taken root on one of the larger islands, its limbs laden
+with small yellow berries.  The leaves of the sapling are dappled with red
+spots.  Similar spots of red decorate the island upon which the tree grows. 
+~
+~
+2
+0 0 6
+D0
+~
+~
+0 0 22586
+D2
+~
+~
+0 0 22588
+D3
+~
+~
+0 0 22587
+D1
+~
+~
+0 0 22576
+W 5 0 0
+Z 5 5
+S
+#22588
+On Murky Waters~
+Small knots of grass float on top of the dark water of the fens.  Moved
+about by gentle current, the anchorless islands bump against each other. 
+Twisted saplings grow on some of the larger islands, their bark black as the
+water from which they drink.  One larger sapling lies in the water, the knot
+of debris holding it tipped sideways.  A thick mist rises form the surface,
+obscuring the horizon.  
+~
+~
+2
+0 0 6
+D2
+~
+~
+0 0 22530
+D3
+~
+~
+0 0 22592
+D1
+~
+~
+0 0 22530
+D0
+~
+~
+0 0 22587
+W 5 0 0
+Z 5 5
+S
+#22589
+On Murky Waters~
+The dark, putrid water of the fens lies undisturbed by wind or current. 
+The surface, covered by putrescent knots of grass and algae, spreads out in
+all directions.  A thick mist rises up from the water, obscuring the horizon
+and reeking of decay.  Drops of brownish dew form on the blades of grass
+floating in the water, falling occasionally to the dark surface, the
+dripping sound echoing across the fens.  
+~
+~
+2
+0 0 6
+D1
+~
+~
+0 0 22586
+D0
+~
+~
+0 0 22564
+D3
+~
+~
+0 0 22590
+D2
+~
+~
+0 0 22591
+W 5 0 0
+Z 5 5
+S
+#22590
+On Murky Waters~
+Thick fog rises from the dark water of the fens.  The small floating
+islands of rotting grass are covered with dew from the mist.  Long shapes
+move silently beneath the surface, made indistinct by the hazy water.  A
+small sapling has taken root on one of the larger islands, its limbs laden
+with small yellow berries.  The leaves of the sapling are dappled with red
+spots.  Similar spots of red decorate the island upon which the tree grows. 
+~
+~
+2
+0 0 6
+D2
+~
+~
+0 0 22591
+D0
+~
+~
+0 0 22563
+D1
+~
+~
+0 0 22589
+D3
+~
+~
+0 0 22594
+W 5 0 0
+Z 5 5
+S
+#22591
+On Murky Waters~
+The black water of the fens is covered by rotting, rank grass.  Small
+islands of decaying vegetation float on the surface of the fens.  Fog rises
+from the surface of the warm, fetid water, filling the air with a smell of
+decay.  The unfettered islands drift about, stirred by the motions of the
+dark shapes moving silently beneath the surface.  
+~
+~
+2
+0 0 6
+D3
+~
+~
+0 0 22594
+D0
+~
+~
+0 0 22589
+D2
+~
+~
+0 0 22592
+D1
+~
+~
+0 0 22591
+W 5 0 0
+Z 5 5
+S
+#22592
+On Murky Waters~
+The dark water of the fens laps quietly against the shore to the south. 
+Small islands, comprised of grass and other debris, float upon the surface. 
+Thick mist rises above the fens, blurring the horizon and tinting it brown. 
+Dark shapes move silently beneath the water, their movements stirring the
+islands and forming small whirlpools, which suck down smaller bits of grass
+and algae.  
+~
+~
+2
+0 0 6
+D1
+~
+~
+0 0 22588
+D0
+~
+~
+0 0 22591
+W 5 0 0
+Z 5 5
+S
+#22593
+On Murky Waters~
+Small knots of grass float on top of the dark water of the fens.  Moved
+about by gentle current, the anchorless islands bump against each other. 
+Twisted saplings grow on some of the larger islands, their bark black as the
+water from which they drink.  One larger sapling lies in the water, the knot
+of debris holding it tipped sideways.  A thick mist rises form the surface,
+obscuring the horizon.  
+~
+~
+2
+0 0 6
+D0
+~
+~
+0 0 22594
+D3
+~
+~
+0 0 22554
+W 5 0 0
+Z 5 5
+S
+#22594
+On Murky Waters~
+The dark water of the fens laps quietly against the shore to the west. 
+Small islands, comprised of grass and other debris, float upon the surface. 
+Thick mist rises above the fens, blurring the horizon and tinting it brown. 
+Dark shapes move silently beneath the water, their movements stirring the
+islands and forming small whirlpools, which suck down smaller bits of grass
+and algae.  
+~
+~
+2
+0 0 6
+D3
+~
+~
+0 0 22596
+D0
+~
+~
+0 0 22595
+D2
+~
+~
+0 0 22593
+D1
+~
+~
+0 0 22591
+W 5 0 0
+Z 5 5
+S
+#22595
+On Murky Waters~
+Small knots of grass float on top of the dark water of the fens.  Moved
+about by gentle current, the anchorless islands bump against each other. 
+Twisted saplings grow on some of the larger islands, their bark black as the
+water from which they drink.  One larger sapling lies in the water, the knot
+of debris holding it tipped sideways.  A thick mist rises form the surface,
+obscuring the horizon.  
+~
+~
+2
+0 0 6
+D1
+~
+~
+0 0 22590
+D2
+~
+~
+0 0 22596
+D3
+~
+~
+0 0 22596
+D0
+~
+~
+0 0 22563
+W 5 0 0
+Z 5 5
+S
+#22596
+Tangled Underbrush~
+A small trail winds through dense briars.  The cliffs surrounding the
+small valley tower high above, leaving the trail cloaked in darkness. 
+Foot-long thorns extend out from the underbrush, slowing passage along the
+trail.  The trail leads west through the bushes.  Thick fog swirls in a
+gentle breeze above, lapping against the face of the cliff to the south. 
+North and east, the dark water of the fens lies motionless in the calm air. 
+~
+~
+2
+0 0 3
+D0
+~
+~
+0 0 22595
+D1
+~
+~
+0 0 22594
+D3
+~
+~
+0 0 22560
+W 5 0 0
+Z 5 5
+S
+#22597
+An Embankment Overlooking a Dark Channel~
+The vast blight of the fens is visible from your vantage point on the
+embankment.  Thick fog hides the full extent of its foul and acrid waters. 
+A foul breeze wafts up from the channel below, carrying with it the stench
+of death and decay.  The earth here is solid and trampled down by humanoid
+bootprints.  An overgrown trail leads south down the ramp of earth, and
+below a dark channel flows.  
+~
+~
+3
+0 4 14
+D2
+And overgrown trail leads down the embankment.  
+~
+~
+0 0 22598
+D5
+A dark channel flows below the embankment.
+~
+~
+0 0 22532
+W 5 0 0
+Z 5 5
+S
+#22598
+An Overgrown Trail~
+This plant-choked trail heads down from the embankment, curving to the
+ruins of some structure to the west.  Huge trees border the trail, the
+leaves a leprous yellow.  Under the trees, the dense underbrush consists
+almost exclusively of thistles, tightly packed, foot long thorns preventing
+passage.  A foul breeze rustles through the undergrowth, carrying with it
+the stench of death and decay.  
+~
+~
+2
+0 0 14
+D0
+The path leads up to an earthen embankment.
+~
+~
+0 0 22597
+D3
+The overgrown trail ends in a plant-choked ruin.  
+~
+~
+0 0 22599
+W 5 0 0
+Z 5 5
+S
+#22599
+An Overgrown Ruin~
+A single crumbling wall of dark grey stone stands in this overgrown
+clearing, rubble strewn about it.  Creeping thorn-vines and sickly-looking
+ferns grow over the ruins, choking the area with plant life.  Huge trees
+surround the area, their leaves a leprous yellow.  Under the trees, the
+dense underbrush consists almost exclusively of thistles, tightly packed,
+foot long thorns preventing passage.  A trail leads through a break in the
+foliage to the east, while the remnants of an ancient tower loom to the
+south.  
+~
+~
+2
+0 0 14
+D1
+An overgrown trail leads through the break in the foliage.  
+~
+~
+0 0 22598
+D2
+The remnants of an ancient tower loom to the south.
+~
+~
+0 0 22573
+W 5 0 0
+Z 5 5
+S
+#22500
+Arenhamuur\@s quarters~
+A spartan chamber of dark stone, Arenhamuur\@s quarters reside inside the
+cliff overlooking the fens.  A small, comfortable cot lies in the corner,
+and a deeply recessed window overlooks a dark channel.  
+~
+~
+0
+0 557060 0
+W 5 0 0
+Z 5 5
+S
+#22501
+A Dark Channel Between High Cliffs~
+The river runs north and south between high stone cliffs.  Black water,
+filled with the rotten debris from upstream, laps at the edge of the cliffs,
+leaving the rock stained and pitted.  Small eddies swirl dangerously in the
+stream, sucking the carcasses of insects and the remains of tree limbs down
+into the depths.  The river widens downstream, combining with the purer
+waters of the Dantaron.  Upstream, the channel continues through the deeply
+cut walls of the cliff.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 1869
+D2
+~
+~
+0 0 22506
+W 5 0 0
+Z 5 5
+S
+#22502
+At the Base of a Ridge~
+A thin trail winds its way from the bank of the river Dantaron up the
+steep cliff to the east.  Huge trees block the view of the open sky, though
+the damp ground attests to the fact that the rain can find it\@s way through
+the canopy.  Thick moss covers the base of the largest of the trees,
+extending up the trunks nearly to the first branches high above you.  
+~
+~
+1
+0 0 4
+D3
+~
+~
+0 0 1869
+D4
+~
+~
+0 0 22503
+W 5 0 0
+Z 5 5
+S
+#22503
+A Thin Trail Leading Up a Ridge~
+The branches of the trees hang low over the path.  Small patches of rock
+are visible on the side of the ridge, colored yellow in the ever-present
+damp.  The trees are somewhat thinner overhead, the rock of the ridge
+appearing more often than the fine black soil.  Above, the trees and
+underbrush prevent motion on the steep incline.  The trail itself follows
+the side of the ridge to the south, or down on a shallower grade.  
+~
+~
+1
+0 0 4
+D2
+~
+~
+0 0 22504
+D5
+~
+~
+0 0 22502
+W 5 0 0
+Z 5 5
+S
+#22504
+A Thin Trail Leading Up a Ridge~
+Midway up a high cliff, the trail winds its way amongst the underbrush. 
+Thorny bushes hold tenuously to the cracks in the pale yellow stone.  The
+trees above, swaying in the breeze, lack the girth of the forest giants
+below you, their fallen limbs decorating the stone face of the cliff.  One
+of the trees from above, larger than the rest, lies just below the trail,
+bits of earth still clinging to its exposed roots.  The path the limb took
+down from the top is clearly marked by the swath of flattened brush leading
+up to the top of the cliff.  
+~
+~
+1
+0 0 4
+D0
+~
+~
+0 0 22503
+D4
+~
+~
+0 0 22505
+W 5 0 0
+Z 5 5
+S
+#22505
+Atop a High Ridge~
+The narrow trail along the top of the ridge winds its way eastward,
+bordered by thin, scraggly trees.  The pale yellow rock of the edifice is
+shattered to the south, broken and cracked by the eons-old efforts of roots
+and wind, leaving an impassable tumble of white and yellow boulders.  A
+large tree limb, fallen from one of the larger trees, has cleared a path
+toward the bottom of the ridge to the north.  
+~
+~
+1
+0 0 4
+D1
+~
+~
+0 0 22517
+D5
+~
+~
+0 0 22504
+W 5 0 0
+Z 5 5
+S
+#22506
+A Dark Channel Between High Cliffs~
+The river runs north and south between high stone cliffs.  Black water,
+filled with the rotten debris from upstream, laps at the edge of the cliffs,
+leaving the rock stained and pitted.  Small eddies swirl dangerously in the
+stream, sucking the carcasses of insects and the remains of tree limbs down
+into the depths.  The cliffs on the western bank end abruptly south of here,
+allowing the channel to widen somewhat.  Downstream, the channel continues,
+the gap between the east and west banks narrowing.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 22501
+D2
+~
+~
+0 0 22510
+W 5 0 0
+Z 5 5
+S
+#22507
+The South Face of a High Ridge~
+A wide ledge juts out from the side of the cliff here, forming a
+convenient camping spot.  A large tree on the western side of the ledge
+leans over a small pool of water.  Small bubbles rise to the top of the
+warm, murky water of the pool, adding the smell of sulfur to the air.  A
+cleft in the cliff face to the north provides a path toward the top.  The
+ledge narrows to the east.  
+~
+~
+1
+0 0 4
+D1
+~
+~
+0 0 22508
+D4
+~
+~
+0 0 22517
+M 105 H 105 V 100
+W 5 0 0
+Z 5 5
+S
+#22508
+A Narrow Ledge Along a Cliff Face~
+A narrow shelf of rock leads westward along the face of the cliff.  The
+cliff rises sharply above, its pale yellow face pocked by small holes.  The
+slope is less steep below, the bare earth and tumbled rock forming a gradual
+incline toward the base of the cliff.  A rank odor, smelling of rotting
+vegetation and sulfur, rises up the slope.  The ledge narrows into
+nothingness to the east.  
+~
+~
+1
+0 0 4
+D3
+~
+~
+0 0 22507
+D5
+~
+~
+0 0 22509
+W 5 0 0
+Z 5 5
+S
+#22509
+Beneath a High Cliff at the Edge of the Fens~
+The ground beneath the cliff is relatively dry.  Sickly brown grasses
+have gained purchase here, keeping the dark waters to your south from
+claiming more of the earth.  There are some twisted trees overhanging the
+water, a few branches hanging lifeless and brittle as they brush the rank
+and poisonous water.  Small insects litter the convergence of water and
+land, some dead, others eagerly snacking on the corpses.  The beach
+continues to the east and west, and a slope of tumbled boulders leads up the
+cliff to the north.  The fens extend far to the south.  
+~
+~
+1
+0 0 3
+D1
+~
+~
+0 0 22514
+D2
+~
+~
+0 0 22537
+D3
+~
+~
+0 0 22513
+D4
+~
+~
+0 0 22508
+W 5 0 0
+Z 5 5
+S
+#22510
+A Dark Channel Near the Edge of the Fens~
+The river channel runs north and south, bordered on the east by a high
+cliff face.  Bits of rotting grass and yellow foam float downstream toward
+the Dantaron, carried by the swift current.  The water is sluggish where it
+meets the western bank, allowing stacks of the yellow and brown foam to
+accumulate.  Dangerous eddies near the eastern side of the channel suck
+floating insects and foliage down beneath the surface.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 22506
+D2
+~
+~
+0 0 22511
+D3
+~
+~
+0 0 22519
+W 5 0 0
+Z 5 5
+S
+#22511
+A Dark Channel Near the Edge of the Fens~
+The dark channel flows from the west, heading north toward the canyon. 
+Sickly yellow grasses grow on the western bank.  The murky water of the fens
+can be seen to the south, a thick layer of oily detritus seeping
+continuously into the channel, bringing with it the foul smell of rotting
+vegetation.  Long, dark shapes move about beneath the surface of the water,
+causing eddies on the surface.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 22510
+D1
+~
+~
+0 0 22512
+D2
+~
+~
+0 0 22534
+D3
+~
+~
+0 0 22521
+W 5 0 0
+Z 5 5
+S
+#22512
+At the Edge of the Fens~
+A narrow path runs between the edge of the fens to the south and the base
+of the high cliff to the north.  Sickly yellow grasses hold tenuously to the
+earth, keeping the dank waters of the fens from gaining further ground.  The
+path narrows to the east as the distance between cliff and water decreases. 
+There is a dark, swiftly moving channel to the west, disappearing into a
+narrow canyon as it flows northwards.  
+~
+~
+1
+0 0 3
+D1
+~
+~
+0 0 22513
+D2
+~
+~
+0 0 22533
+D3
+~
+~
+0 0 22511
+W 5 0 0
+Z 5 5
+S
+#22513
+At the Edge of the Fens~
+A thin path runs between the edge of the fens and the thorny bushes at
+the base of the cliff.  Scraggly trees shadow the path, their leaves spotted
+a leprous yellow.  The corpses of small insects litter the convergence of
+water and land, a few living ones eagerly snacking on the easy pickings.  A
+heavy mist rises from the fens extending to the south.  
+~
+~
+1
+0 0 3
+D1
+~
+~
+0 0 22509
+D2
+~
+~
+0 0 22536
+D3
+~
+~
+0 0 22512
+W 5 0 0
+Z 5 5
+S
+#22514
+At the Edge of the Fens~
+A thin path runs between the edge of the fens and the thorny bushes at
+the base of the cliff.  Scraggly trees shadow the path, their leaves spotted
+a leprous yellow.  The corpses of small insects litter the convergence of
+water and land, a few living ones eagerly snacking on the easy pickings.  A
+heavy mist rises from the fens extending to the south.  
+~
+~
+1
+0 0 3
+D1
+~
+~
+0 0 22515
+D3
+~
+~
+0 0 22509
+W 5 0 0
+Z 5 5
+S
+#22515
+At the Edge of the Fens~
+A thin path runs between the edge of the fens and the thorny bushes at
+the base of the cliff.  Scraggly trees shadow the path, their leaves spotted
+a leprous yellow.  A small gap is visible in the bushes to the north,
+opening up into a cave.  A huge tangle of thorny bushes blocks the path to
+the east.  The wind, eddying off the cliff face, carries with it a smell of
+rotting vegetation.  
+~
+~
+1
+0 0 3
+D0
+Long tendrils of some wet, sticky substance hang from the cave entrance.  
+~
+~
+0 0 22516
+D2
+~
+~
+0 0 22539
+D3
+~
+~
+0 0 22514
+W 5 0 0
+Z 5 5
+S
+#22516
+A Small Damp Cave~
+A shallow cave extends northward into the cliff.  The uneven rock walls
+form a rough circle, meeting the damp earth of the cave floor amidst a
+litter of rubble.  A rank odor comes from the northeast corner of the cave,
+where a pile of refuse is heaped halfway to the ceiling.  The ceiling above
+the entrance, lower than the rest of the cavern, is decorated with long
+tendrils of some wet, sticky substance.  
+~
+~
+2
+0 0 12
+D2
+~
+~
+0 0 22515
+W 5 0 0
+Z 5 5
+S
+#22517
+Atop a High Ridge~
+The trail follows the top of the ridge east and west, winding amongst
+boulders, bushes, and scraggly trees.  The south face of the cliff is split
+by a deep cleft, providing a rough path toward the base.  To the north, the
+flattened top of the ridge ends abruptly in a sheer drop.  The air is muggy
+and reeks of decay.  Coarse, dying swampgrass lines the thin, pounded dirt
+path on either side, the stiff reeds blocking passage over the sides of the
+ridge.  
+~
+~
+1
+0 0 4
+D1
+Large tracks lead toward a tall circle of stones in the east.
+~
+~
+0 0 22518
+D3
+~
+~
+0 0 22505
+D5
+~
+~
+0 0 22507
+W 5 0 0
+Z 5 5
+S
+#22518
+A Ruin Atop a High Ridge~
+A circle of mammoth stones rises from the ground, each one reaching
+nearly twenty feet into the air.  The base of each stone is covered by light
+gray green moss, blending smoothly with the dark gray stone above.  Large
+tracks lead through a gap in the circle, where a nest of sorts is built of
+twigs and moss.  A narrow trail continues along the top of the ridge to the
+west.  Rubble is piled toward the edge of the ruined tower.  
+~
+~
+2
+0 0 4
+E
+rubble~
+Looking closer, a trapdoor is partially covered by rubble.  One could
+attempt to clear the rubble.  
+~
+E
+nest twig twigs moss~
+This large nest appears to be less of a constructed resting-place and
+more of an impact crater.  The depression in the ground is roughly nine feet
+in diameter, and half again as deep.  Moss and twigs are humped around the
+edges, and the inside surface is worn down by constant use.  
+~
+E
+tracks~
+Tracks with four toes, three in front and one in back, lead into the
+circle of stones.  Deep gouges lie in the earth, fully a hand\@s span deep.
+~
+D3
+~
+~
+0 0 22517
+D5
+A trapdoor is partially covered by rubble.
+~
+trapdoor~
+65639 22567 22568
+W 5 0 0
+Z 5 5
+S
+#22519
+At the Edge of the Fens~
+A wide shoreline lies between the fens to the south and a high cliff to
+the north.  Pale yellow grasses grow in clumps on the ground, starved for
+sunlight by both the high cliff and the mist over the fens.  A few rocks lie
+scattered about, some having rolled as far as the edge of the water to the
+south.  There is a dark channel to the east, the quickly moving current
+keeping it clear of the floating vegetation of the fens to the south.  The
+shoreline continues along the cliff face to the west.  
+~
+~
+1
+0 0 3
+D1
+~
+~
+0 0 22510
+D2
+~
+~
+0 0 22551
+D3
+~
+~
+0 0 22520
+W 5 0 0
+Z 5 5
+S
+#22520
+At the Edge of the Fens~
+A wide shoreline lies between the fens to the south and a high cliff to
+the north.  Pale yellow grasses grow in clumps on the ground, starved for
+sunlight by both the high cliff and the mist over the fens.  A few rocks lie
+scattered about, some having rolled as far as the edge of the water to the
+south.  To the west, the cliff turns sharply, meeting the putrid water of
+the fens and cutting off travel.  
+~
+~
+1
+0 0 3
+D1
+~
+~
+0 0 22519
+D2
+~
+~
+0 0 22551
+W 5 0 0
+Z 5 5
+S
+#22521
+A Dark Channel~
+Black water cuts a path through the floating vegetation of the fens. 
+Flowing from the south and bending sharply east, the swift current remains
+relatively clear of obstructions.  Tough yellow grasses dot the solid ground
+to the north.  A pocked and scarred cliff face rears up beyond the northern
+shore, its stone surface colored a pale yellow.  Beneath the channel, long
+dark shapes glide about, their movements causing eddies on the surface.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 22519
+D1
+~
+~
+0 0 22511
+D2
+~
+~
+0 0 22522
+D3
+~
+~
+0 0 22551
+W 5 0 0
+Z 5 5
+S
+#22522
+A Dark Channel~
+Black water cuts a path through the floating vegetation of the fens. 
+Flowing from south to north, the swift current remains relatively clear of
+obstructions, sweeping debris downstream.  Beneath the channel, long dark
+shapes glide about, their movements causing eddies on the surface.  Clumps
+of rotting grass and other debris choke the surface of the fens on both
+sides of the channel.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 22521
+D1
+~
+~
+0 0 22534
+D2
+~
+~
+0 0 22523
+D3
+~
+~
+0 0 22552
+W 5 0 0
+Z 5 5
+S
+#22523
+A Dark Channel~
+Black water cuts a path through the floating vegetation of the fens. 
+Flowing from the east and bending sharply northward, the swift current
+remains relatively clear of obstructions.  Beneath the channel, long dark
+shapes glide about, their movements causing eddies on the surface.  Clumps
+of rotting grass and other debris choke the surface of the fens on both
+sides of the channel.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 22522
+D1
+~
+~
+0 0 22524
+D2
+~
+~
+0 0 22565
+D3
+~
+~
+0 0 22557
+W 5 0 0
+Z 5 5
+S
+#22524
+A Dark Channel~
+Black water cuts a path through the floating vegetation of the fens. 
+Flowing from east to west, the swift current remains relatively clear of
+obstructions, sweeping debris downstream.  Beneath the channel, long dark
+shapes glide about, their movements causing eddies on the surface.  Clumps
+of rotting grass and other debris choke the surface of the fens on both
+sides of the channel.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 22534
+D1
+~
+~
+0 0 22525
+D2
+~
+~
+0 0 22566
+D3
+~
+~
+0 0 22523
+W 5 0 0
+Z 5 5
+S
+#22525
+A Dark Channel~
+Black water cuts a path through the floating vegetation of the fens. 
+Flowing from east to west, the swift current remains relatively clear of
+obstructions, sweeping debris downstream.  Beneath the channel, long dark
+shapes glide about, their movements causing eddies on the surface.  Clumps
+of rotting grass and other debris choke the surface of the fens on both
+sides of the channel.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 22533
+D1
+~
+~
+0 0 22526
+D2
+~
+~
+0 0 22567
+D3
+~
+~
+0 0 22524
+W 5 0 0
+Z 5 5
+S
+#22526
+A Dark Channel~
+Black water cuts a path through the floating vegetation of the fens. 
+Flowing from the south and bending sharply westward, the swift current
+remains relatively clear of obstructions.  Beneath the channel, long dark
+shapes glide about, their movements causing eddies on the surface.  Clumps
+of rotting grass and other debris choke the surface of the fens on both
+sides of the channel.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 22536
+D1
+~
+~
+0 0 22537
+D2
+~
+~
+0 0 22527
+D3
+~
+~
+0 0 22525
+W 5 0 0
+Z 5 5
+S
+#22527
+A Dark Channel~
+Black water cuts a path through the floating vegetation of the fens. 
+Flowing from the west and bending sharply northward, the swift current
+remains relatively clear of obstructions.  Beneath the channel, long dark
+shapes glide about, their movements causing eddies on the surface.  Clumps
+of rotting grass and other debris choke the surface of the fens on both
+sides of the channel.  
+~
+~
+1
+0 0 6
+D0
+~
+~
+0 0 22526
+D1
+~
+~
+0 0 22545
+D2
+~
+~
+0 0 22577
+D3
+~
+~
+0 0 22528
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 22569 spec_poison
+M 22503 spec_poison
+M 22504 spec_poison
+M 22505 spec_cast_void
+M 22515 spec_poison
+M 22518 spec_poison
+S
+
+
+
+#RESETS
+D 0 22568 4 65639
+D 0 22570 5 65639
+D 0 22571 4 65639
+D 0 22518 5 65639
+M 0 22528 1 22528 1
+M 0 22529 1 22529 1
+M 0 22530 1 22530 1
+M 0 22531 1 22531 1
+M 0 22532 1 22532 1
+M 0 22507 50 22533 1
+R 0 22533 4
+M 0 22503 10 22533 1
+R 0 22534 4
+M 0 22507 50 22535 1
+R 0 22535 4
+M 0 22515 10 22535 1
+R 0 22536 4
+M 0 22501 10 22536 1
+M 0 22507 50 22537 1
+R 0 22537 4
+M 0 22503 10 22537 1
+R 0 22538 3
+M 0 22501 10 22538 1
+M 0 22507 50 22539 1
+R 0 22539 4
+M 0 22509 10 22540 1
+G 0 22519 0
+M 0 22518 5 22540 1
+M 0 22507 50 22541 1
+M 0 22518 5 22541 1
+M 0 22541 2 22542 1
+M 0 22509 10 22542 1
+G 0 22519 0
+M 0 22507 50 22543 1
+M 0 22509 10 22543 1
+G 0 22519 0
+M 0 22507 50 22544 1
+M 0 22509 10 22544 1
+G 0 22519 0
+M 0 22518 5 22544 1
+R 0 22545 4
+M 0 22515 10 22545 1
+M 0 22507 50 22546 1
+R 0 22546 3
+O 0 22509 0 22546
+P 0 22518 1 22509 1
+R 0 22547 4
+M 0 22503 10 22547 1
+M 0 22507 50 22548 1
+R 0 22548 4
+M 0 22501 10 22548 1
+M 0 22507 50 22549 1
+R 0 22549 4
+M 0 22515 10 22549 1
+R 0 22550 4
+O 0 22509 0 22550
+P 0 22518 1 22509 1
+M 0 22507 50 22551 1
+R 0 22551 4
+M 0 22513 5 22551 1
+R 0 22552 4
+M 0 22503 10 22552 1
+M 0 22507 50 22553 1
+R 0 22553 4
+R 0 22554 3
+M 0 22501 10 22554 1
+M 0 22507 50 22555 1
+R 0 22555 4
+M 0 22515 10 22555 1
+R 0 22556 4
+O 0 22509 0 22556
+P 0 22518 1 22509 1
+M 0 22507 50 22557 1
+R 0 22557 4
+M 0 22509 10 22558 1
+G 0 22519 0
+M 0 22507 50 22559 1
+M 0 22509 10 22559 1
+G 0 22519 0
+M 0 22509 10 22560 1
+G 0 22519 0
+M 0 22500 1 22561 1
+G 0 22507 0
+E 0 22500 0 16
+M 0 22507 50 22561 1
+R 0 22562 4
+M 0 22501 10 22562 1
+M 0 22507 50 22563 1
+R 0 22563 4
+O 0 22509 0 22563
+P 0 22518 1 22509 1
+R 0 22564 4
+M 0 22515 10 22564 1
+M 0 22507 50 22565 1
+R 0 22565 4
+M 0 22503 10 22565 1
+R 0 22566 4
+M 0 22507 50 22567 1
+R 0 22567 4
+O 0 22509 0 22567
+P 0 22518 1 22509 1
+M 0 22562 1 22568 1
+M 0 22559 3 22568 1
+O 0 22584 0 22568
+M 0 22559 3 22569 1
+O 0 22577 0 22569
+P 0 22578 1 22577 1
+O 0 22586 0 22569
+M 0 22564 1 22569 1
+O 0 22579 0 22570
+P 0 22588 1 22579 1
+M 0 22559 3 22570 1
+M 0 22557 1 22570 1
+G 0 22576 0
+O 0 22587 0 22570
+M 0 22560 1 22571 1
+O 0 22574 0 22571
+P 0 22573 1 22574 1
+P 0 22572 1 22574 1
+P 0 22571 1 22574 1
+M 0 22558 1 22571 1
+G 0 22575 0
+O 0 22592 0 22571
+M 0 22519 1 22573 1
+G 0 22535 0
+E 0 22539 0 16
+G 0 22538 0
+E 0 22540 0 12
+O 0 22541 0 22573
+O 0 22534 0 22574
+P 0 22536 1 22534 1
+P 0 22537 1 22534 1
+R 0 22576 4
+M 0 22503 10 22576 1
+M 0 22507 50 22577 1
+R 0 22577 4
+M 0 22515 10 22577 1
+M 0 22545 1 22578 1
+O 0 22532 0 22578
+R 0 22578 4
+M 0 22507 50 22579 1
+R 0 22579 4
+O 0 22509 0 22579
+P 0 22518 1 22509 1
+R 0 22580 4
+M 0 22503 10 22580 1
+M 0 22507 50 22581 1
+R 0 22581 4
+M 0 22515 10 22581 1
+M 0 22501 10 22582 1
+R 0 22582 3
+M 0 22507 50 22583 1
+R 0 22583 4
+M 0 22503 10 22583 1
+R 0 22584 4
+M 0 22543 1 22584 1
+E 0 22570 0 20
+E 0 22569 0 16
+E 0 22568 0 1
+M 0 22501 10 22584 1
+M 0 22507 50 22585 1
+R 0 22585 4
+O 0 22509 0 22585
+P 0 22518 1 22509 1
+R 0 22586 3
+M 0 22507 50 22587 1
+R 0 22587 4
+O 0 22509 0 22587
+P 0 22518 1 22509 1
+R 0 22588 4
+M 0 22515 10 22588 1
+M 0 22507 50 22589 1
+R 0 22589 4
+M 0 22503 10 22589 1
+R 0 22590 4
+M 0 22541 2 22590 1
+O 0 22509 0 22590
+P 0 22518 1 22509 1
+M 0 22515 10 22590 1
+M 0 22507 50 22591 1
+R 0 22591 4
+R 0 22592 3
+M 0 22501 10 22592 1
+M 0 22507 50 22593 1
+R 0 22593 3
+M 0 22515 10 22593 1
+R 0 22594 4
+M 0 22501 10 22594 1
+M 0 22507 50 22595 1
+R 0 22595 4
+M 0 22513 5 22595 1
+M 0 22509 10 22596 1
+G 0 22519 0
+M 0 22518 5 22596 1
+M 0 22556 2 22597 2
+G 0 22566 0
+E 0 22514 0 8
+E 0 22506 0 7
+E 0 22513 0 6
+E 0 22512 0 10
+E 0 22505 0 5
+E 0 22516 0 16
+M 0 22556 2 22597 2
+E 0 22505 0 5
+E 0 22516 0 16
+E 0 22521 0 16
+E 0 22513 0 6
+G 0 22567 0
+E 0 22506 0 7
+E 0 22512 0 10
+O 0 22565 0 22599
+P 0 22561 999 22565 1
+O 0 22564 0 22599
+P 0 22562 999 22564 1
+P 0 22563 999 22564 1
+M 0 22505 1 22501 1
+E 0 22515 0 5
+E 0 22503 0 2
+E 0 22531 0 14
+M 0 22512 1 22503 1
+O 0 22517 0 22504
+M 0 22506 1 22506 1
+O 0 22510 0 22509
+P 0 22511 1 22510 1
+M 0 22510 1 22510 1
+M 0 22511 1 22511 1
+M 0 22517 5 22513 1
+O 0 22559 0 22514
+M 0 22517 5 22515 1
+M 0 22542 1 22515 1
+E 0 22528 0 3
+E 0 22527 0 5
+E 0 22526 0 16
+G 0 22523 0
+G 0 22525 0
+E 0 22530 0 13
+P 0 22524 9999 22530 1
+M 0 22502 1 22516 1
+G 0 22508 0
+M 0 22561 1 22518 1
+M 0 22508 1 22518 1
+E 0 22520 0 16
+E 0 22502 0 3
+M 0 22517 5 22519 1
+M 0 22514 1 22520 1
+M 0 22521 1 22521 1
+M 0 22522 1 22522 1
+M 0 22523 1 22523 1
+M 0 22524 1 22524 1
+M 0 22525 1 22525 1
+M 0 22526 1 22526 1
+M 0 22526 1 22526 1
+M 0 22527 1 22527 1
+S
+
+
+
+#GUILD
+#22505
+"fatebones"
+"masquerade"
+"fever winds"
+"call raven"
+#0
+
+S
+
+
+#SHOPS
+22542 0 26 0 0 0 100 100 6 20 0
+0
+
+
+
+#$

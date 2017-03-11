@@ -1,0 +1,5795 @@
+#AREADATA
+Name The Caliphate of Dullaek Pak~
+Builders Dovolente~
+VNUMs 25600 25699
+Credits [  51 ] Dovolente The Djinn Caliphate~
+Danger 2
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 0 0 0
+Weave 1 -2 0
+Shades 4 0
+End
+
+
+
+#MOBILES
+V4 25600
+djinni djinn dullaek pak caliph~
+Dullaek Pak~
+The Djinn Caliph, Dullaek Pak, hovers upon his throne.
+~
+Dullaek Pak, the greater djinni, rises before you in a vast blur which
+flickers between two images.  The first is an enormous, barrel-chested
+humanoid more than twelve meters tall, muscled and bronze-skinned, with an
+intense hawkish face and wild locks of black hair.  The second is a whirling
+silver wind funnel, laced with flashing sparks of raw energy.  
+
+Caliph of the border region between the the elemental plane of air and the
+prime plane, Pak rules his domain with the wild, fierce glee.  His morals and
+purposes are things more elemental than mortal, thus beyond the understanding
+of mortal beings.
+~
+generic~
+water scholar~
+ABGPX B DFJTZ N 0
+60 45 10000d1+1 50d100+2000 5d5+80 lightning~
+shocking fist~
+-20 -20 -20 -20
+CEFHK ABJLQU
+26 0 0 10 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -30 -30 -30 0 0 
+5 0 0 0 0 0
+stand stand male 800 -1
+HKMOV K K huge air
+>rand_prog 100~
+if mobvalue(0) == 0
+  mpvalueup 0 1
+  wear shroud
+endif
+if isfight($r) == aerial2 aerial servant
+  esay \@bellows\@ You will not harm my servants!
+  cast \@wind blast\@ $r down
+endif
+~
+>load_prog 100~
+mpaddskill $i 157 100
+mpaddskill $i 358 100
+mpaddskill $i 17 100
+mpaddskill $i 356 100
+mpaddskill $i 609 100
+mpaddskill $i 600 100
+mpaddskill $i 354 100
+mpaddskill $i 604 100
+mpaddskill $i 612 100
+speak arcane
+~
+>trigger_prog 100~
+if ispc($n)
+else
+  break
+endif
+mpget char $n curhp 3
+mpget char $n hp 2
+if mobvalue(3) > 350
+  mpechoat $f $3/$2: $N
+else
+  mpechoat $f {R$3{x/$2: $N
+endif
+~
+>verb_prog morts~
+mpfocus $n
+mpget mob self curhp 4
+mpget mob self hp 5
+mpechoat $f $4/$5: Dullaek Pak
+mpechoat $f ------------------------
+mproomcmd mptrigger all
+~
+|
+V4 25601
+aerial1 aerial servant~
+an aerial servant~
+An aerial servant silently guards the Hall.
+~
+The aerial servant is a blur of movement, vaguely humanoid in shape.  It
+is quite translucent, and shimmers in and out of the visible spectrum of
+light.  Around the servant, the air feels slightly cooler and shifts
+strangely, as if an unseen breeze were circling constantly around the
+creature.  
+~
+generic~
+water scholar~
+AFL 0 BFJPTUZ N 0
+53 26 20d200+950 20d200+950 5d10+26 bash~
+blast of wind~
+-23 -23 -23 -6
+FHK LQ
+26 0 0 5 5 0 0 0 0 0 50 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+CHKL 0 0 medium air
+>verb_prog greet_pakstyle~
+mpat pak mpforce pak yell What is this?  Puny mortals, daring to enter my hall?
+mpzecho A deep, bellowing laugh roars around you like the torrential winds of a hurricane.
+pray Dullaek Pak yells, in arcane \@What is this?  Puny mortals, daring to enter my hall?\@
+pray Red alert!  Someone switch into Dullaek Pak and toy with the puny mortals!
+~
+>load_prog 100~
+mpaddskill $i 366 100
+mpaddskill $i 89 100
+mpaddskill $i 354 100
+mpaddskill $i 87 100
+mpaddskill $i 344 100
+mpaddskill $i 354 100
+~
+|
+V4 25602
+aerial2 aerial servant~
+an aerial servant~
+An aerial servant is here, waiting in attendance.
+~
+The aerial servant is a blur of movement, vaguely humanoid in shape.  It
+is quite translucent, and shimmers in and out of the visible spectrum of
+light.  Around the servant, the air feels slightly cooler and shifts
+strangely, as if an unseen breeze were circling constantly around the
+creature.  
+~
+generic~
+water scholar~
+AL 0 BFJPTUZ N 0
+53 26 20d200+950 20d200+950 5d10+26 bash~
+blast of wind~
+-23 -23 -23 -6
+FHK LQ
+26 0 0 5 5 0 0 0 0 0 50 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 25600 0 0 0
+stand stand none 0 -1
+CHKL 0 0 medium air
+>load_prog 100~
+mpaddskill $i 366 100
+mpaddskill $i 89 100
+mpaddskill $i 354 100
+mpaddskill $i 87 100
+mpaddskill $i 344 100
+mpaddskill $i 354 100
+~
+|
+V4 25603
+aerial3 aerial servant~
+an aerial servant~
+An aerial servant silently guards the Hall.
+~
+The aerial servant is a blur of movement, vaguely humanoid in shape.  It
+is quite translucent, and shimmers in and out of the visible spectrum of
+light.  Around the servant, the air feels slightly cooler and shifts
+strangely, as if an unseen breeze were circling constantly around the
+creature.  
+~
+generic~
+water scholar~
+A 0 BFJPTUZ N 0
+53 26 20d200+950 20d200+950 5d10+26 bash~
+blast of wind~
+-23 -23 -23 -6
+FHK LQ
+26 0 0 5 5 0 0 0 0 0 50 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+CHKL 0 0 medium air
+>load_prog 100~
+mpaddskill $i 366 100
+mpaddskill $i 89 100
+mpaddskill $i 354 100
+mpaddskill $i 87 100
+mpaddskill $i 344 100
+mpaddskill $i 354 100
+~
+|
+V4 25604
+alex~
+the airdescbot~
+The airdescbot is here, making and changing descs.
+~
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+if mobvalue(0) == 0
+  mpvalueset 0 25600
+endif
+loop 1 to 5
+  if mobvalue(0) <= 25679
+    mpvalueup 0 1
+  endif
+  mpvaluerand 1 1 5
+  if mobvalue(1) == 1
+    mpdesc $0 desc1
+    mpat $0 mpecho Winds whirl erratically, twisting and pulling at you.
+  endif
+  if mobvalue(1) == 2
+    mpdesc $0 desc2 
+    mpat $0 mpecho Thunder roars in the distance, and echoes all around you.
+  endif
+  if mobvalue(1) == 3
+    mpdesc $0 desc3
+    mpat $0 mpecho A swirl of shimmering haze spins around you, then dissipates.
+  endif
+  if mobvalue(1) == 4
+    mpdesc $0 desc4
+    mpat $0 mpecho You feel a sudden sense of vertigo as the winds twist about you.
+  endif
+  if mobvalue(1) == 5
+    mpdesc $0 desc5
+    mpat $0 mpecho A cloudy form passes by you, turns and blinks, then vanishes.
+  endif
+  if mobvalue(0) == 25680
+    mpvalueset 0 25600
+  endif
+endloop
+break
+~
+>data_prog desc5~
+Meandering banks of many-hued clouds, wispy tendrils of swirling vapors,
+and gyrating whirls of smoke surround you.  In the distance, vague humanoid
+blurs weave along obscure currents to destinations unseen.  Great whirling
+vortexes appear and disappear, accompanied by halos of jagged lightning. 
+All around you, breezes spin, zephyrs tug and twist, and sudden gales
+embrace you in frenetic blasts of air.  
+~
+>data_prog desc4~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+>data_prog desc3~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+>data_prog desc2~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+>data_prog desc1~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+|
+V4 25605
+efreeti greater kiu~
+a greater kiu efreeti~
+A greater kiu efreeti billows furiously through the air.
+~
+A vaguely humanoid mass of swirling wind and vapor, the greater kiu
+efreeti appears to flit randomly about.  The only static feature on its form
+is its pair of golden eyes, which glow out brightly from the area where a
+normal being would have a head.  
+~
+generic~
+water scholar~
+AFLT 0 DJTVZe N 0
+55 40 19d210+1000 19d210+1000 5d11+25 bash~
+gust~
+-24 -24 -24 -7
+CEFHK J
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+CHKL 0 0 medium air
+V4 25606
+bot maelstrombot~
+the dark maelstrom~
+The maelstrombot is here, hawking one-way tickets to Death.
+~
+It\@s a generic bot.  
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+52 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>trigger_prog 100~
+if isimmort($n)
+or isghost($n)
+else
+  if remembers($n)
+  else
+    mpremember $n
+    if ispc($n)
+      pray I will now kill $N in 25687.  Good-bye, $N.
+    endif
+  endif
+  mpget char $n curhp 2
+  mpdamtype $n 10 20 50 4
+  mpget char $n curhp 1
+  mpmath 0 5 + ($2 - $1)
+  mpdammess $n $0 \@blistering vapor\@
+endif
+~
+>rand_prog 100~
+mproomcmd mptrigger all
+~
+|
+V4 25607
+elemental lightning electricity being lesser~
+a lesser lightning elemental~
+A being of pure electricity crackles with energy.
+~
+This vaguely humanoid form crackles and flashes sporadically.  Light
+rises and falls from it, illuminating the clouds around its form as it
+blinks about.  
+~
+elemental~
+water scholar~
+AF 0 DTZ N 0
+50 26 20d220+1100 55d10+100 5d11+30 lightning~
+shock~
+-24 -24 -24 -7
+FHK JO
+26 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+CHL G K medium unknown
+V4 25608
+elemental lightning greater mass energy~
+a greater lightning elemental~
+A mass of shimmering energy sparkles and flares through the air.
+~
+This massive, vaguely humanoid elemental\@s form crackles and flashes
+sporadically.  Light rises and falls from it, illuminating the clouds around
+its form as it blinks about.  
+~
+elemental~
+water scholar~
+AFT 0 DTZ N 0
+57 32 20d220+1100 55d10+100 5d11+40 lightning~
+shock~
+-24 -24 -24 -7
+FHK JO
+26 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+CHL G K medium unknown
+V4 25609
+wind air elemental being lesser~
+a lesser air elemental~
+A being of gusting wind whirls through.
+~
+This creature is formed of raw currents of air which hold a fairly
+humanoid shape, at least from the waist up.  Below the waist, it narrows
+into a single tapering, twisting tendril.  It hovers in mid-air, totally
+unaffected by any exterior breeze or wind.  
+~
+elemental~
+water scholar~
+AF 0 BDTZ N 0
+50 25 18d200+920 50d10+100 5d10+25 bash~
+gust~
+-21 -21 -21 -6
+EFHK JO
+26 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+CHKL 0 K medium unknown
+V4 25610
+elemental greater air wind blur~
+a greater air elemental~
+A massive shimmering blur of wind whirls through.
+~
+This creature is formed of raw currents of air which hold a fairly
+humanoid shape, at least from the waist up.  Below the waist, it narrows
+into a single tapering, twisting tendril.  It hovers in mid-air, totally
+unaffected by any exterior breeze or wind.  
+~
+elemental~
+water scholar~
+AFT 0 BDTZ N 0
+58 35 18d200+920 50d10+100 5d10+35 bash~
+gust~
+-21 -21 -21 -6
+EFHK JO
+26 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+CHKL 0 K medium unknown
+V4 25611
+sylph beautiful pixie pixie-like~
+a sylph~
+A beautiful pixie-like creature soars through the air.
+~
+The sylph is a slender and beautiful pixie-like creature, with pale skin,
+faded blue hair, and pale blue eyes.  She hovers in the wind, seeming to be
+right at home within the lively and tempestuous currents of the plane of
+air.  
+~
+generic~
+water scholar~
+AL 0 DFTUZ N 0
+40 20 16d170+976 14d170+850 5d8+20 bash~
+kick~
+-15 -15 -15 -2
+FIKU J
+26 0 0 5 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 200 -1
+HM ABCDEFGHIJKP 0 medium flesh
+>rand_prog 1~
+if ispc($r)
+else
+  if isanypchere($i)
+    break
+  endif
+endif
+mpvaluerand 1 1 5
+if mobvalue(1) == 1
+ mpstring mob $i long A pixie-like creature flies gaily through the wild winds.
+ mpechoaround $r $I flies up to tweak $R\@s nose, then flits away giggling.
+ mpechoat $r $I winks at you.
+endif
+if mobvalue(1) == 2
+ mpstring mob $i long A pixie-like creature spins circles in mid-air.
+  mpechoaround $r $I approaches and sniffs at $R, and then makes a face.
+  mpechoat $r $I grins at you. 
+endif
+if mobvalue(1) == 3
+ mpstring mob $i long A pixie-like creature floats quietly in mid-air.
+ mpechoaround $r $I points at $R, and giggles so hard she nearly tumbles over.
+ mpechoat $r $I smiles kindly at you.
+endif
+if mobvalue(1) == 4
+ mpstring mob $i long A pixie-like creature flies back and forth, seeming bored.
+ mpechoat $r $I approaches you and brushes your cheek with a friendly kiss.
+ mpechoaround $r $I imitates $R for a moment, then laughs gaily.
+endif
+if mobvalue(1) == 5
+ mpstring mob $i long A pixie-like creature looks about warily.
+ mpechoat $r $I approaches you, looks at you intently, and then flits away.
+ mpechoaround $r $I wobbles and weaves almost drunkenly around $R, then laughs.
+endif
+~
+>load_prog 100~
+mpaddskill $i 23 100
+~
+>fight_prog 15~
+if snaffected($n) == 23
+else
+  cast clumsiness
+endif
+~
+|
+V4 25612
+efreeti lesser kiu~
+a lesser kiu efreeti~
+A small efreeti whirls through the gusts of wind.
+~
+A vaguely humanoid mass of swirling wind and vapor, the greater kiu
+efreeti appears to flit randomly about.  The only static feature on its form
+is its pair of golden eyes, which glow out brightly from the area where a
+normal being would have a head.  
+~
+generic~
+water scholar~
+AFL 0 DJTVZe N 0
+45 28 19d210+500 19d210+1000 5d11+15 bash~
+gust~
+-24 -24 -24 -7
+FHK J
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+CHKL 0 0 medium air
+V4 25613
+djinni young~
+a young djinni~
+A djinni hovers on top of a whirling funnel cloud.
+~
+The djinni grins mischievously as sparkles of energy cascade around it. 
+It whirls through the winds of the elemental of plane of air with a gleeful
+abandon, and returns your look with a challenging stare of his own.  
+~
+generic~
+water scholar~
+ADFL 0 DFTU N 0
+60 30 22d240+1300 60d10+100 5d12+40 energy~
+magic~
+-27 -27 -27 -9
+CDFHK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 300 -1
+CH ABCDEFGHIJK A large air
+V4 25614
+wind air gargantuan elemental being~
+a gargantuan air elemental~
+A gargantuan being of whirling air blows about.
+~
+A titanic pulsating swirl, the gargantuan air elemental is so huge that
+it blocks nearly everything else from your view.  It has no clear form, and
+its outlines weave and roll as if it is barely harnessing an inner tempest. 
+~
+elemental~
+water scholar~
+AFT 0 BDTZ N 0
+60 38 18d200+6000 50d10+100 5d10+35 bash~
+gust~
+-21 -21 -21 -6
+EH JO
+26 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+CHKL 0 K medium unknown
+>death_prog 100~
+mpecho The elemental convulses, diminishing as smaller elementals begin to break away from it!
+mpmload 25609
+mpmload 25609
+mpmload 25609
+mpmload 25609
+mpmload 25609
+mpmload 25609
+mpgoto 25600
+say And so I die
+sniff
+say But my decendants live on and battle $N, who killed me!
+~
+|
+V4 25615
+bot dreamagentbot~
+a dream agent bot~
+A dream agent bot is here.
+~
+It\@s a generic bot.  
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>trigger_prog 100~
+if position($n) == 4
+else
+  break
+endif
+if isbitset($n) == 25602
+  if rand(85)
+    break
+  endif
+endif
+if isbitset($n) == 22051
+or class($n) == 4
+or class($n) == 10
+or class($n) == 23
+or class($n) == 29
+or ischaotic($n)
+or israce($n) == kankoran
+  mpmload 25616
+  mpforce dreamtourbot mpfocus $n
+  mpforce dreamtourbot mpsetdata chaosdream
+  mpstring mob dreamtourbot long A dreamtourbot is giving $N a dream.
+  tell Enaerai $N is dreaming the dream.
+  tell Pfusch $N is dreaming the dream.
+endif
+~
+>rand_prog 100~
+mpvalueup 0 1
+if mobvalue(0) == 300
+  emote winces as he squeezes out an mpmasstrigger.
+  mpvalueset 0 0
+  mpmasstrigger
+endif
+~
+|
+V4 25616
+bot dreamtourbot~
+a dream tour bot~
+A dream tour bot stands here, leading folks along their dream.
+~
+It\@s a generic bot.  
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>data_prog chaosdream~
+1
+mpechoat $f Your normal dreams are disturbed by strange, vague images and sensations. 
+1
+mpechoat $f You gaze up into the night sky, and it is black, devoid of stars. 
+1
+1
+1
+mpechoat $f In your dream, three brilliant, blazing stars appear on the eastern horizon.
+1
+1
+mpechoat $f You see that the three bright stars are flanked by two other lesser stars. 
+1
+1
+1
+mpechoat $f On the western horizon, as if in response or challenge, three faint stars appear. 
+1
+1
+1
+mpechoat $f Directly overhead, in the center of the heavens, two faint stars glimmer. 
+1
+1
+1
+mpechoat $f Below the heavenly expanse, a great plain is covered in dry grass and patches of snow.
+1
+1
+1
+mpechoat $f You see in the grass the ruins of an ancient shrine, shrouded in the undergrowth. 
+1
+1
+mpechoat $f You see a great gale buffet the shrine, fierce winds scouring away the debris of centuries. 
+1
+1
+mpechoat $f A thin, lean she-wolf emerges from the ruins, and begins to stalk through the grass of the plain. 
+1
+1
+1
+mpechoat $f The wolf begins to grow in size and strength, and begins to lope through the grass. 
+1
+1
+mpechoat $f The wolf begins to run like the wind, her eyes twin flashes of lightning. 
+note to Enaerai Dovolente
+mpechoat $f You see the wolf suddenly make a great leap, and her form begins to blur! 
+note subject $F has had the dream.
+mpechoat $f The she-wolf fades in mid-leap into a gust of violent wind, and an unearthly howl rings out over the plain. 
+mpechoat $f Up above, in the dark of the midnight sky, a faint new star appears on the western horizon. 
+note + $F had the dream.
+mpbitset $f 25602 1
+note send
+mpechoat $f The strange images fade away, and you return to normal slumber.
+mppurge self
+~
+>rand_prog 100~
+if position($f) == 4
+  mpnextdata
+  $d
+else
+  mppurge self
+endif
+~
+|
+V4 25617
+galespherebot bot~
+the Galesphere~
+The galespherebot is here.
+~
+It\@s a generic bot.  
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog galewhacktime~
+mpget char $f curhp 2
+mpdamtype $f 10 10 70 16
+mpget char $f curhp 1
+mpmath 0 $2 - $1
+mpdammess $f $0 \@raw power\@
+mppurge self
+~
+|
+V4 25618
+turbulentcurrentbot bot~
+a turbulent current bot~
+The turbulent current bot is here.
+~
+Green.  Very green.
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+loop 1 to 7
+  mpvalueup 0
+  if mobvalue(0) == 31
+    mpsetdata turbcurrent
+    mpvalueset 0 0
+  endif
+  mpgoto 256$d
+  mpnextdata
+  mpecho A turbulent wind current blows $dward.
+  mpnextdata
+endloop
+~
+>data_prog turbcurrent~
+89
+east
+22
+north
+42
+up
+41
+east
+45
+east
+49
+down
+50
+east
+54
+north
+74
+up
+73
+south
+53
+south
+33
+south
+13
+west
+09
+west
+05
+west
+01
+down
+02
+down
+03
+down
+04
+east
+08
+east
+12
+east
+16
+north
+36
+up
+35
+north
+55
+north
+75
+down
+76
+south
+56
+east
+60
+south
+40
+south
+20
+south
+~
+>load_prog 100~
+mpsetdata turbcurrent
+~
+|
+V4 25619
+fiercecurrentbot bot~
+a fierce current bot~
+The fierce current bot is here.
+~
+Orange.
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+loop 1 to 3
+  mpvalueup 0
+  if mobvalue(0) == 15
+    mpsetdata fiercecurrent
+    mpvalueset 0 0
+  endif
+  mpgoto 256$d
+  mpnextdata
+  mpecho A fierce wind current blows $dward.
+  mpnextdata
+endloop
+~
+>data_prog fiercecurrent~
+91
+west
+37
+south
+17
+down
+18
+west
+14
+north
+34
+west
+30
+down
+31
+north
+51
+north
+71
+down
+72
+south
+52
+south
+32
+west
+28
+west
+24
+west
+~
+>load_prog 100~
+mpsetdata fiercecurrent
+~
+|
+V4 25620
+unsteadycurrentbot bot~
+an unsteady current bot~
+The unsteady current bot is here.
+~
+Puce.
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>data_prog unsteadycurrent~
+90
+east
+43
+down
+44
+east
+48
+north
+68
+up
+67
+up
+66
+south
+46
+down
+47
+south
+27
+south
+07
+east
+11
+east
+15
+east
+19
+north
+39
+north
+59
+north
+79
+north
+~
+>rand_prog 100~
+loop 1 to 3
+  mpvalueup 0
+  if mobvalue(0) == 17
+    mpsetdata unsteadycurrent
+    mpvalueset 0 0
+  endif
+  mpgoto 256$d
+  mpnextdata
+  mpecho An unsteady wind current blows $dward.
+  mpnextdata
+endloop
+~
+>load_prog 100~
+mpsetdata unsteadycurrent
+~
+|
+V4 25621
+windblastbot bot~
+a violent gust~
+A windblast bot is here, shoving you around.
+~
+Tall, light, and handsome.
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 20~
+if isanypchere($i)
+  cast \@wind blast\@ $r
+else
+  cast \@wall of air\@
+endif
+~
+>load_prog 100~
+mpaddskill $i 612 100
+mpaddskill $i 604 100
+~
+|
+V4 25622
+imp mist~
+a mist imp~
+A mist imp glides past, intent on its mission.
+~
+The mist imp appears as thin, 5-foot humanoid with small wings.  Its face
+has exaggerated features, including a hooked nose, pointed ears, wide eyes,
+and a long, protruding chin.  Its skin continually oozes the stuff from
+which it was made.  
+~
+generic~
+water scholar~
+AET 0 BDT E 0
+40 20 16d170+976 14d170+850 5d8+20 slash~
+claw-swipe~
+-15 -15 -15 -2
+EFGHK 0
+26 0 0 -10 50 0 0 0 0 0 50 0 0 0 0 50 0 0 0 50 0 100 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCHJKPUV K medium flesh
+V4 25623
+greeterbot bot~
+greeterbot~
+A greeterbot stands here, shaking your hand enthusiastically.
+~
+Nothing special.
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+if remembers($r)
+  break
+else
+  mpremember $r
+  mpechoat $r You orient yourself according to your body position, feet \#down\# and forward \#north\#.
+endif
+if isbitset($r) == 25603
+ /* has received air archmage challenge
+else
+  break
+endif
+if isbitset($r) == 25604
+  /* has come to the Caliphate before
+  break
+else
+  mpbitset $r 25604 1
+  mpechoat $r {gZanala tells you \@Well done!  Well done indeed!\@{x
+  mpechoat $r {gZanala tells you \@Perhaps this will help you and your friends survive.\@{x
+  mpecho A floating disc suddenly appears.  It twists, dropping several items, then vanishes.
+  mpoload 25614 in room
+  mpoload 25615 in room
+  mpoload 25615 in room
+  mpoload 25615 in room
+  mpoload 25615 in room
+  mpoload 25615 in room
+  mpechoat $r {gZanala tells you \@A greater challenge, now--let me see you wearing Pak\@s Windshroud!\@{x
+endif
+~
+|
+V4 25628
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 25669
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 25681
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+#0
+
+
+
+#OBJECTS
+V13
+25600
+sphere galesphere~
+the Galesphere~
+A small sphere hovers in midair, trembling slightly.~
+~
+air~
+special ABGYa 0 0 APQ
+0 0 0 0 0
+60 1 0 0 P
+1
+A
+12 500000
+A
+4 -3
+A
+2 3
+A
+18 20
+A
+19 20
+>rand_prog 100~
+if ispc($o)
+  if isworn($o)
+  opechoat $o You feel the power of the Galesphere tear at your mortal form!
+  opmload 25617
+  opforce galespherebot mpfocus $o
+  opforce galespherebot galewhacktime
+  endif
+endif
+~
+>remove_prog 100~
+mpechoat $o You feel the god-like powers of the Galesphere withdraw from your mind.
+~
+>wear_prog 100~
+mpechoat $o You are suddenly disoriented, as your mind and senses are brutally extended!
+~
+|
+V13
+25601
+braid mist thick lash maelstrom~
+the Lash of the Maelstrom~
+A thick braid of roiling mist writhes uncontrollably.~
+~
+air~
+weapon BFG 0 0 AN
+whip 4 12 11 0
+maelstrom lash~
+60 1 392053 0 P
+0
+A
+19 2
+A
+18 8
+A
+2 2
+A
+17 -20
+V13
+25602
+portal funnel cloud wild~
+the wild funnel cloud~
+A wild funnel cloud spins through the storm.~
+~
+unknown~
+portal BGa 0 0 P
+10000 0 0 25689 0
+60 0 0 0 P
+0
+>rand_prog 100~
+if mobhere(2018)
+else
+  mpvalueup 0 1
+  if value(0) == 2
+  mpecho The funnel quickly dissipates.
+  mppurge self
+endif
+~
+|
+V13
+25603
+armband silver djinni\@s djinni~
+a djinni\@s silver armband~
+An armband of pure polished silver lies here.~
+~
+silver~
+armor AG 0 0 AM
+16 5 16 20 0
+60 2 52300 0 P
+5
+A
+38 5
+A
+20 -5
+A
+18 1
+A
+19 1
+V13
+25604
+shroud windshroud dullaek pak wispy~
+the Windshroud of Dullaek Pak~
+A wispy, billowing shroud floats here.~
+In the elemental plane of air, one of the border lords to the prime
+plane, the greater djinn Dullaek Pak, had his sylph harem spend centuries
+weaving the billowing shroud.  
+~
+air~
+armor FGS 0 0 ADEFIK
+80 80 80 40 0
+60 0 1500000 4 P
+1
+A
+20 -10
+A
+19 15
+A
+18 15
+A
+32 3
+A
+31 3
+V13
+25605
+pool bubbling~
+a bubbling pool~
+A strange bubbling pool is in the center of the Hall of Mists.~
+~
+water~
+fountain ae 0 0 P
+0 0 'water' 0 0
+60 0 0 4 P
+0
+V13
+25606
+djinn madness~
+djinn madness~
+Djinn madness.~
+~
+unknown~
+trash d 0 0 A
+0 0 0 0 0
+0 0 0 0 P
+0
+>rand_prog 100~
+if position($o) == 0
+or position($o) == 1
+or position($o) == 2
+or position($o) == 3
+or position($o) == 7
+or isghost($o)
+  break
+endif
+if isnpc($r)
+  mpcast 89 51 $r
+else
+  if isrange($o) == $r
+    mpcast 89 51 $r
+  endif
+endif
+~
+|
+V13
+25607
+diadem sylph\@s sylph braided smoke mist~
+a sylph\@s diadem~
+A diadem of braided smoke and mist lies here.~
+This diadem is an artifact from the elemental plane of air.  Its
+artificer is unknown, but it was clearly desiged for a sylph, and has
+properties which would enhance the chaotic magics inherent in beings of the
+plane of air.  
+~
+smoke~
+jewelry GSY 0 0 AE
+0 0 0 0 0
+60 0 260259 0 P
+2
+A
+12 75
+A
+52 -5
+A
+33 5
+>fight_prog 7~
+if isworn($o)
+  mpcast 358 51
+endif
+~
+|
+V13
+25608
+belt imp imp\@s mist silk blue~
+a mist imp\@s belt~
+A belt of the finest blue silk lies here.~
+This item was created for a mist imp, one of the creatures used by beings
+of power in the transactions between the elemental plane of air and the
+void.  It makes the imp completely impossible to follow by normal means. 
+Others wearing the belt, not attuned to its power by nature, may find their
+control over the belt haphazard at best.  
+~
+silk~
+armor FGMS 0 0 AL
+2 2 2 2 0
+51 5 0 0 P
+2
+>rand_prog 100~
+if isworn($o)
+  if value(0) > 0
+    mpvalueup 0 1 
+    if roomflag($o) == no_recall
+    or roomflag($o) == nogate
+      mpechoat $o Your belt trembles slightly.
+      mpvalueset 0 0
+      break
+    endif
+    mpcast 137 51
+    if value(0) == 15
+      mpvalueset 0 0
+    endif
+    break
+  endif
+  if rand(1)
+    mpvaluerand 0 5 10
+  endif
+endif
+~
+>speech_prog go~
+if isworn($o)
+  if value(0) == 0
+    mpvaluerand 0 5 10
+  endif
+endif
+~
+|
+V13
+25609
+scroll translucent Dullaek Pak~
+the Scroll of Dullaek Pak~
+A translucent scroll floats here.~
+This scroll was made by a djinn noble, and has powers which far surpass
+most mystical scrolls.  
+
+~
+air~
+scroll BGS 0 0 AO
+60 'gaseous form' 'tempest' 'scatter' 'greater invis'
+44 0 0 0 P
+1
+V13
+25610
+window mist storm raging thunderstorm mistportal~
+a window of mist~
+A window of mist has opened along the wall, revealing a raging thunderstorm.~
+~
+air~
+portal Gae 0 0 P
+20 0 0 2144 0
+60 10000 0 3 P
+0
+V13
+25611
+window mist tower slender mistportal~
+a window of mist~
+A window of mist has opened along the wall, revealing the tip of a slender tower.~
+~
+air~
+portal Gae 0 0 P
+20 0 0 4202 0
+60 10000 0 3 P
+0
+V13
+25612
+window mist cloudbank rolling mistportal~
+a window of mist~
+A window of mist has opened along the wall, revealing a rolling cloudbank.~
+~
+air~
+portal Gae 0 0 P
+20 0 0 22249 0
+60 10000 0 3 P
+0
+V13
+25613
+window mist swirling tempest mistportal~
+a window of mist~
+A window of mist has opened along the wall, revealing a swirling tempest.~
+~
+air~
+portal Gae 0 0 P
+20 0 0 4012 0
+60 10000 0 3 P
+0
+V13
+25614
+wand crystal pure electrical protection~
+a wand of electrical protection~
+A wand of pure crystal lies here.~
+~
+crystal~
+wand AGS 0 0 AO
+51 10 10 'protection from lightning' 0
+51 80 20000 0 P
+10
+V13
+25615
+potion Z clear glass Zanala\@s Traveling Draught~
+a potion of Zanala\@s Traveling Draught~
+A clear glass potion engraved with a Z.~
+~
+glass~
+potion A 0 0 AO
+51 'mass invis' 'mass flying' '' ''
+51 0 0 0 P
+0
+V13
+25616
+Ring Air Continuance Translucent~
+the Ring of Air Continuance~
+A translucent ring floats above the ground.~
+This is an ancient ring crafted by multiple Air Archmages in the years
+between the wars of Fire and Night.  It is said that the effects of certain
+air spells are prolonged almost indefinitly when an archmage wears the ring.
+~
+air~
+jewelry ABGSa 0 0 AB
+0 0 0 0 0
+60 0 200200 0 P
+0
+A
+31 4
+A
+20 -4
+A
+12 50
+A
+4 2
+A
+3 2
+>rand_prog 20~
+if isworn($o)
+else
+  break
+endif
+if class($o) != 4
+or level($o) < 51
+  mpechoat $o You are unable to control the magic of the ring of Air Continuance!
+  mpechoaround $o The Ring of Air Continuance floats away from $O.
+  opzap $o
+  break
+endif
+if snaffected($o) == 362
+  mpremaffect $o 362
+  mpremaffect $o 362
+  mpaddaffect $o 362 60 10 0 0 524288
+  mpaddaffect $o 362 60 10 0 0 1048576
+endif
+if snaffected($o) == 354
+  mpremaffect $o 354
+  mpaddaffect $o 354 60 10 0 0 0
+endif
+~
+|
+V13
+25662
+woven bark armguards pair~
+a pair of woven bark armguards~
+A pair of woven bark armguards lie here.~
+~
+steel~
+armor 0 0 0 AI
+6 6 6 3 0
+20 80 950 2 P
+0
+A
+17 -2
+A
+13 5
+#0
+
+
+
+#ROOMS
+#25600
+Caliphate Control Room~
+=================================================================
+{YMAP:{x mirajama.tripod.com/caliphate.jpg
+  
+{YProgged Commands{x
+To make the portal appear in the Enrien storm (2146): {Wportal make{x
+To make the portal disappear: {Wportal remove{x
+  
+{YBits{x
+25600 pool 1, 25601 pool 2, 25602 dream, 25603 Zanala\@s message
+25604 Funnel success message
+25605 Did Windshroud Quest
+~
+~
+0
+0 138420276 0
+W 5 0 0
+Z 5 5
+P
+>verb_prog portal~
+if compstr(2)==make
+  mpat 2146 mpoload 25602
+  mpat 2146 mpecho A wild, swirling funnel cloud suddenly forms within the storm!
+  mpechoat $n Portal placed in the storm of Enrien.
+endif
+if compstr(2)==remove
+  mpat 2146 mppurge funnel
+  mpat 2146 mpecho The wild, swirling funnel cloud dissipates.
+  mpechoat $n Portal removed from the storm of Enrien.
+endif
+~
+>rand_prog 1~
+if rand(15)
+  mpcast 90 60
+endif
+~
+|
+S
+#25601
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25621
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25605
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25661
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25617
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25604
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25602
+W 5 0 0
+Z 5 5
+S
+#25602
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25622
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25606
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25662
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25618
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25601
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25603
+W 5 0 0
+Z 5 5
+S
+#25603
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25623
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25607
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25663
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25619
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25602
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25604
+W 5 0 0
+Z 5 5
+S
+#25604
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25644
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25608
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25664
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25616
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25603
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25601
+W 5 0 0
+Z 5 5
+S
+#25605
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25625
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25609
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25665
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25601
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25608
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25606
+W 5 0 0
+Z 5 5
+S
+#25606
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25626
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25610
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25666
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25602
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25605
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25607
+W 5 0 0
+Z 5 5
+S
+#25607
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25627
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25611
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25667
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25603
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25606
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25608
+W 5 0 0
+Z 5 5
+S
+#25608
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25648
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25612
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25668
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25604
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25607
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25605
+W 5 0 0
+Z 5 5
+S
+#25609
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25629
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25613
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25669
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25605
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25612
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25610
+W 5 0 0
+Z 5 5
+S
+#25610
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25630
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25614
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25670
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25606
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25609
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25611
+W 5 0 0
+Z 5 5
+S
+#25611
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25631
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25615
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25671
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25607
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25610
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25612
+W 5 0 0
+Z 5 5
+S
+#25612
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25632
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25616
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25672
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25608
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25611
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25609
+W 5 0 0
+Z 5 5
+S
+#25613
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25633
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25617
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25673
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25609
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25616
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25614
+W 5 0 0
+Z 5 5
+S
+#25614
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25634
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25618
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25674
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25610
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25613
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25615
+W 5 0 0
+Z 5 5
+S
+#25615
+A Chaotic Wind~
+Meandering banks of many-hued clouds, wispy tendrils of swirling vapors,
+and gyrating whirls of smoke surround you.  In the distance, vague humanoid
+blurs weave along obscure currents to destinations unseen.  Great whirling
+vortexes appear and disappear, accompanied by halos of jagged lightning. 
+All around you, breezes spin, zephyrs tug and twist, and sudden gales
+embrace you in frenetic blasts of air.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25635
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25619
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25675
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25611
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25614
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25616
+W 5 0 0
+Z 5 5
+S
+#25616
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25636
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25604
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25676
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25612
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25615
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25613
+W 5 0 0
+Z 5 5
+S
+#25617
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25637
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25601
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25677
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25613
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25619
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25618
+W 5 0 0
+Z 5 5
+S
+#25618
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25638
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25602
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25678
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25614
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25617
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25619
+W 5 0 0
+Z 5 5
+S
+#25619
+A Chaotic Wind~
+Meandering banks of many-hued clouds, wispy tendrils of swirling vapors,
+and gyrating whirls of smoke surround you.  In the distance, vague humanoid
+blurs weave along obscure currents to destinations unseen.  Great whirling
+vortexes appear and disappear, accompanied by halos of jagged lightning. 
+All around you, breezes spin, zephyrs tug and twist, and sudden gales
+embrace you in frenetic blasts of air.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25639
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25603
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25639
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25615
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25618
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25617
+W 5 0 0
+Z 5 5
+S
+#25620
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25640
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25604
+D2
+A hazy structure rises before you, the most solid thing visible within
+the shifting winds.  
+~
+~
+0 0 25681
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25616
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25619
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25617
+W 5 0 0
+Z 5 5
+S
+#25621
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25641
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25625
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25601
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25637
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25623
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25622
+W 5 0 0
+Z 5 5
+S
+#25622
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25642
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25626
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25602
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25638
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25621
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25623
+W 5 0 0
+Z 5 5
+S
+#25623
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25643
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25627
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25603
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25639
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25622
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25621
+W 5 0 0
+Z 5 5
+S
+#25624
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25644
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25628
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25604
+D3
+An ominous, dark maelstrom blots out light, to the west.
+~
+~
+0 0 25687
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25623
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25621
+W 5 0 0
+Z 5 5
+S
+#25625
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25645
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25629
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25605
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25621
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25627
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25626
+W 5 0 0
+Z 5 5
+S
+#25626
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25646
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25630
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25606
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25622
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25625
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25627
+W 5 0 0
+Z 5 5
+S
+#25627
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25647
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25631
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25607
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25623
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25626
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25625
+W 5 0 0
+Z 5 5
+S
+#25628
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25648
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25632
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25608
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25624
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25627
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25625
+W 5 0 0
+Z 5 5
+S
+#25629
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25649
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25633
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25609
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25625
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25632
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25630
+W 5 0 0
+Z 5 5
+S
+#25630
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25650
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25634
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25610
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25626
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25629
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25631
+W 5 0 0
+Z 5 5
+S
+#25631
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25651
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25635
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25611
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25627
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25630
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25632
+W 5 0 0
+Z 5 5
+S
+#25632
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25652
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25636
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25612
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25628
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25631
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25629
+W 5 0 0
+Z 5 5
+S
+#25633
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25653
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25637
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25613
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25629
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25636
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25634
+W 5 0 0
+Z 5 5
+S
+#25634
+A Chaotic Wind~
+Meandering banks of many-hued clouds, wispy tendrils of swirling vapors,
+and gyrating whirls of smoke surround you.  In the distance, vague humanoid
+blurs weave along obscure currents to destinations unseen.  Great whirling
+vortexes appear and disappear, accompanied by halos of jagged lightning. 
+All around you, breezes spin, zephyrs tug and twist, and sudden gales
+embrace you in frenetic blasts of air.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25654
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25638
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25614
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25630
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25633
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25635
+W 5 0 0
+Z 5 5
+S
+#25635
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25655
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25639
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25615
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25631
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25634
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25636
+W 5 0 0
+Z 5 5
+S
+#25636
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25656
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25632
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25616
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25632
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25635
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25633
+W 5 0 0
+Z 5 5
+S
+#25637
+A Chaotic Wind~
+Meandering banks of many-hued clouds, wispy tendrils of swirling vapors,
+and gyrating whirls of smoke surround you.  In the distance, vague humanoid
+blurs weave along obscure currents to destinations unseen.  Great whirling
+vortexes appear and disappear, accompanied by halos of jagged lightning. 
+All around you, breezes spin, zephyrs tug and twist, and sudden gales
+embrace you in frenetic blasts of air.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25657
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25621
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25617
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25633
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25639
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25638
+W 5 0 0
+Z 5 5
+S
+#25638
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25658
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25622
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25618
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25634
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25637
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25639
+W 5 0 0
+Z 5 5
+S
+#25639
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25659
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25623
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25619
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25635
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25638
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25637
+W 5 0 0
+Z 5 5
+S
+#25640
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25660
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25632
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25620
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25636
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25639
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25637
+W 5 0 0
+Z 5 5
+S
+#25641
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25661
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25645
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25621
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25657
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25644
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25642
+W 5 0 0
+Z 5 5
+S
+#25642
+A Chaotic Wind~
+Meandering banks of many-hued clouds, wispy tendrils of swirling vapors,
+and gyrating whirls of smoke surround you.  In the distance, vague humanoid
+blurs weave along obscure currents to destinations unseen.  Great whirling
+vortexes appear and disappear, accompanied by halos of jagged lightning. 
+All around you, breezes spin, zephyrs tug and twist, and sudden gales
+embrace you in frenetic blasts of air.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25662
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25646
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25622
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25658
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25641
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25643
+W 5 0 0
+Z 5 5
+S
+#25643
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25663
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25647
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25623
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25642
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25644
+W 5 0 0
+Z 5 5
+S
+#25644
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25664
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25648
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25604
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25660
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25643
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25641
+W 5 0 0
+Z 5 5
+S
+#25645
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25665
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25649
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25625
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25641
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25648
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25646
+W 5 0 0
+Z 5 5
+S
+#25646
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25666
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25650
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25626
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25642
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25645
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25647
+W 5 0 0
+Z 5 5
+S
+#25647
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25667
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25651
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25627
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25643
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25646
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25648
+W 5 0 0
+Z 5 5
+S
+#25648
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25668
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25652
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25608
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25644
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25647
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25645
+W 5 0 0
+Z 5 5
+S
+#25649
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25669
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25653
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25629
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25645
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25652
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25650
+W 5 0 0
+Z 5 5
+S
+#25650
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25670
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25654
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25630
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25646
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25649
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25651
+W 5 0 0
+Z 5 5
+S
+#25651
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25671
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25655
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25631
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25647
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25650
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25652
+W 5 0 0
+Z 5 5
+S
+#25652
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25672
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25656
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25632
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25648
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25651
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25649
+W 5 0 0
+Z 5 5
+S
+#25653
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25673
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25657
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25633
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25649
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25656
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25654
+W 5 0 0
+Z 5 5
+S
+#25654
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25674
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25658
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25634
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25650
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25653
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25655
+W 5 0 0
+Z 5 5
+S
+#25655
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25675
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25643
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25635
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25651
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25654
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25656
+W 5 0 0
+Z 5 5
+S
+#25656
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25676
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25660
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25636
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25652
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25655
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25653
+W 5 0 0
+Z 5 5
+S
+#25657
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25677
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25641
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25637
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25653
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25660
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25658
+W 5 0 0
+Z 5 5
+S
+#25658
+A Chaotic Wind~
+Meandering banks of many-hued clouds, wispy tendrils of swirling vapors,
+and gyrating whirls of smoke surround you.  In the distance, vague humanoid
+blurs weave along obscure currents to destinations unseen.  Great whirling
+vortexes appear and disappear, accompanied by halos of jagged lightning. 
+All around you, breezes spin, zephyrs tug and twist, and sudden gales
+embrace you in frenetic blasts of air.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25678
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25642
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25638
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25654
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25657
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25660
+W 5 0 0
+Z 5 5
+S
+#25659
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25679
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25643
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25639
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25655
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25658
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25660
+W 5 0 0
+Z 5 5
+S
+#25660
+A Chaotic Wind~
+Meandering banks of many-hued clouds, wispy tendrils of swirling vapors,
+and gyrating whirls of smoke surround you.  In the distance, vague humanoid
+blurs weave along obscure currents to destinations unseen.  Great whirling
+vortexes appear and disappear, accompanied by halos of jagged lightning. 
+All around you, breezes spin, zephyrs tug and twist, and sudden gales
+embrace you in frenetic blasts of air.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25680
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25644
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25640
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25656
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25658
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25657
+W 5 0 0
+Z 5 5
+S
+#25661
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25601
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25665
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25641
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25677
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25664
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25662
+W 5 0 0
+Z 5 5
+S
+#25662
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25602
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25666
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25642
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25678
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25661
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25663
+W 5 0 0
+Z 5 5
+S
+#25663
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25603
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25667
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25643
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25675
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25662
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25664
+W 5 0 0
+Z 5 5
+S
+#25664
+A Chaotic Wind~
+Meandering banks of many-hued clouds, wispy tendrils of swirling vapors,
+and gyrating whirls of smoke surround you.  In the distance, vague humanoid
+blurs weave along obscure currents to destinations unseen.  Great whirling
+vortexes appear and disappear, accompanied by halos of jagged lightning. 
+All around you, breezes spin, zephyrs tug and twist, and sudden gales
+embrace you in frenetic blasts of air.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25604
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25668
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25644
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25680
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25663
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25661
+W 5 0 0
+Z 5 5
+S
+#25665
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25605
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25669
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25645
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25661
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25668
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25666
+W 5 0 0
+Z 5 5
+S
+#25666
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25606
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25670
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25646
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25662
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25665
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25667
+W 5 0 0
+Z 5 5
+S
+#25667
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25607
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25671
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25647
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25663
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25666
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25668
+W 5 0 0
+Z 5 5
+S
+#25668
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25608
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25672
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25648
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25664
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25667
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25665
+W 5 0 0
+Z 5 5
+S
+#25669
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25609
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25673
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25649
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25665
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25672
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25670
+W 5 0 0
+Z 5 5
+S
+#25670
+A Chaotic Wind~
+Meandering banks of many-hued clouds, wispy tendrils of swirling vapors,
+and gyrating whirls of smoke surround you.  In the distance, vague humanoid
+blurs weave along obscure currents to destinations unseen.  Great whirling
+vortexes appear and disappear, accompanied by halos of jagged lightning. 
+All around you, breezes spin, zephyrs tug and twist, and sudden gales
+embrace you in frenetic blasts of air.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25610
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25674
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25650
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25666
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25669
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25671
+W 5 0 0
+Z 5 5
+S
+#25671
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25611
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25675
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25651
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25667
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25670
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25672
+W 5 0 0
+Z 5 5
+S
+#25672
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25612
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25676
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25652
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25668
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25671
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25669
+W 5 0 0
+Z 5 5
+S
+#25673
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25613
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25677
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25653
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25669
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25676
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25674
+W 5 0 0
+Z 5 5
+S
+#25674
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25614
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25678
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25654
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25670
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25673
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25675
+W 5 0 0
+Z 5 5
+S
+#25675
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25615
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25663
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25655
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25671
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25674
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25676
+W 5 0 0
+Z 5 5
+S
+#25676
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25616
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25680
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25656
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25672
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25675
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25673
+W 5 0 0
+Z 5 5
+S
+#25677
+A Chaotic Wind~
+Dappled clouds and convoluting wreathes of mist and fog swirl about the
+elemental plane of air.  Strong winds buffet you and disappear, replaced by
+gentle zephyrs which in turn grow into howling gusts.  There is no downward
+pull of gravity, and though light glows and recedes with the clouds and fog,
+there are no suns nor moons to account for the illumination.  Unearthly,
+piercing shrieks and deep, shuddering moans occasionally rise up over the
+whistling of the wind, though it is unclear from what direction or source.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25617
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25661
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25657
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25673
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25680
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25678
+W 5 0 0
+Z 5 5
+S
+#25678
+A Chaotic Wind~
+Mist and haze enfold you in convoluted eddies and currents as you pass
+through the elemental plane of air.  In the distance, vortexes of brilliant,
+shifting color reel around twisting, gyrating clouds and massive cyclones of
+smoky haze, all in a chaotic mottle of color, motion, and howling,
+whispering, shrieking sounds.  Faint blurs of humanoid-like form meander in
+the distance, weaving through the tempestuous billows.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25618
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25662
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25658
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25674
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25677
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25680
+W 5 0 0
+Z 5 5
+S
+#25679
+A Chaotic Wind~
+Wind billows furiously around you, randomly shifting direction from
+moment to moment.  In every direction, unending sky reaches out to the
+limits of perception.  Tumbling, twisting clouds and funnels of smoke spin
+in the distance, following unseen, erratic currents.  Your senses are
+assaulted by a cacophony of moans, whistles, and howls, as well as fleeting
+scents both wrenchingly foul and exotically fair.  
+~
+~
+0
+0 4726832 9
+D0
+A cyclonic funnel parts, allowing you access into its very center.  
+~
+~
+0 0 25688
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25663
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25659
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25675
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25678
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25680
+W 5 0 0
+Z 5 5
+S
+#25680
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25660
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25664
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25660
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25676
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25678
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25677
+W 5 0 0
+Z 5 5
+S
+#25681
+The Hall of Mists~
+You are upon a walkway of billowing, shifting mist.  Around you, the
+walls of a stately residence of sorts sweep in graceful curves, all
+fashioned from the same shifting and hazy substance.  Streaks and colors of
+every hue between jet black and marble white pulsate and swirl within the
+nebulous clouds.  To the south, the walls of the palatial residence are
+roofed in a rotating, frenetic swirl of ominous thunder clouds.  
+~
+~
+0
+0 4202544 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25620
+D2
+The palatial structure, topped by ominous thunder clouds, holds its form
+in the chaotic winds.  
+~
+~
+0 0 25682
+W 5 0 0
+Z 5 5
+P
+>greet_prog 100~
+if value(0) == 0
+  if isimmort($n)
+  or isnpc($n)
+  or isghost($n)
+  else
+    mpforce aerial1 greet_pakstyle
+    mpvalueset 0 1
+  endif
+endif
+~
+|
+S
+#25682
+The Hall of Mists~
+You are within the Hall of Mists, a nebulous, graceful palace in the
+elemental plane of air.  The walls are a cloudy, swirling mix of stark
+grays, jet blacks, and pure whites.  This appears to be the central room of
+the hall--a vast circular chamber with a high vaulted ceiling, formed of
+ominous rotating storm clouds.  A strange blue pool in the center of the
+hall rests within the misty floor, bubbling occasionally, with a thick haze
+above it.  Pillar-like structures, flickers of blue flame wreathed in
+columns of smoke, form a broad circle around the pool.  
+~
+~
+0
+0 4202544 9
+E
+pool~
+The pool bubbles and hisses in a most ominous fashion.  The haze that has
+formed above it sparkles with flashes of energy.  
+~
+E
+pillar~
+The pillars slowly bend with the flicker of flame within them.  They have
+no apparent purposes.  
+~
+E
+structures~
+The pillars slowly bend with the flicker of flame within them.  They have
+no apparent purposes.  
+~
+D0
+The Hall extends outward into a walkway of shifting mist.
+~
+~
+0 0 25681
+D1
+The Hall extends outward into a walkway of shifting mist.
+~
+~
+0 0 25684
+D2
+The Hall of Mists continues into a wide room.
+~
+~
+0 0 25685
+D3
+The Hall extends outward into a walkway of shifting mist.
+~
+~
+0 0 25683
+W 5 0 0
+Z 5 5
+P
+>verb_prog p drink~
+if compstr(2) == pool
+or compstr(2) == djinn
+or compstr(2) == 
+  if isbitset($n) == 25601
+    mpechoat $n The waters bubble into vapor at your touch.
+    mplag $n 1
+    break
+  endif 
+  if isbitset($n) == 25600
+  else
+    if wisdom($n) > 17
+      mpechoat $n You suddenly think that drinking from strange pools in other planes isn\@t terribly wise.
+      mpbitset $n 25600 1
+      break
+    endif
+  endif
+  mpechoaround $n $N kneels and sips from the Pool of the Djinn!
+  mpinterpret $n $x
+  mpbitset $n 25601 1
+  if rand(10)
+    if ischaotic($n)
+    else
+      mpechoat $N You feel strangely altered!  Conflicting emotions and thoughts swell within you!
+      mpset char $n ethos chaotic
+      mpechoat Dovolente Stupid, stupid $N just became chaotic by drinking from the Djinn Pool.
+      mpechoat Enaerai Stupid, stupid $N just became chaotic by drinking from the Djinn Pool.
+    endif
+  endif
+  if snaffected($n) == 169
+    mpremaffect $n 169
+  endif
+  mpechoat $n You feel a surge of chaos rise within you!
+  mpechoaround $n $N\@s eyes fill with a strange light!
+  mpaddaffect $n 169 51 -1 19 25 67108864
+  mpaddaffect $n 169 51 -1 17 100 67108864
+  mpaddaffect $n 169 51 -1 18 25 67108864
+  mpoload 25606 on $n
+  if snaffected($n) == 362
+    mpremaffect $n 362
+  endif
+  mpechoat $n You feel your body grow impossibly light!
+  mpechoaround $n $N becomes insubstantial!
+  mpaddaffect $n 362 51 -1 0 0 1048576
+  mpaddaffect $n 362 51 -1 0 0 524288
+  mpstring char $n long The shimmering djinn-like form of $N is here.
+else
+  mpinterpret $n $x
+endif
+~
+|
+S
+#25683
+The Hall of Mists~
+You are upon a walkway of billowing, shifting mist.  Around you, the
+walls of a stately residence of sorts sweep in graceful curves, all
+fashioned from the same shifting and hazy substance.  Streaks and colors of
+every hue between jet black and marble white pulsate and swirl within the
+nebulous clouds.  To the east, the walls of the palatial residence are
+roofed in a rotating, frenetic swirl of ominous thunder clouds.  
+~
+~
+0
+0 4202544 9
+D1
+The palatial structure, topped by ominous thunder clouds, holds its form
+in the chaotic winds.  
+~
+~
+0 0 25682
+W 5 0 0
+Z 5 5
+P
+>rand_prog 20~
+mpcast 612 100
+~
+|
+S
+#25684
+The Hall of Mists~
+You are upon a walkway of billowing, shifting mist.  Around you, the
+walls of a stately residence of sorts sweep in graceful curves, all
+fashioned from the same shifting and hazy substance.  Streaks and colors of
+every hue between jet black and marble white pulsate and swirl within the
+nebulous clouds.  To the west, the walls of the palatial residence are
+roofed in a rotating, frenetic swirl of ominous thunder clouds.  
+~
+~
+0
+0 4202544 9
+D3
+The palatial structure, topped by ominous thunder clouds, holds its form
+in the chaotic winds.  
+~
+~
+0 0 25682
+W 5 0 0
+Z 5 5
+S
+#25685
+Before the Cyclone~
+You stand below a high, elevated dais.  Wispy tendrils of swirling vapor
+rise up around you from the mist-like floor, and form a stairway of sorts to
+the dais.  A howling wind sounds from the dais, and far above, you see a
+whirling funnel stir the dark storm clouds of the ceiling, like a whirling
+spoon stirring a steaming, bubbling pot.  To the north, the Hall of Mists
+opens into a vast pillared chamber.  
+~
+~
+0
+0 4202544 9
+D0
+The great chamber of the Hall of Mists is to the north.
+~
+~
+0 0 25682
+D4
+The stairs lead upward to a high dais.
+~
+~
+0 0 25686
+W 5 0 0
+Z 5 5
+S
+#25686
+The Cyclone Throne~
+The vapors and haze of the Hall of Mists spiral up into a narrow,
+whirling funnel.  The funnel loops and swirls, forming the chaotic, shifting
+throne of the Djinn Caliph.  It then rises higher and higher, extending out
+to stir the mass of ominous dark clouds which cover the hall.  Occasionally
+the mist of the walls clarifies in one location or another, and like a
+window reveals scenes from elsewhere in Avendar.  Aerial servants appear and
+disappear in inscrutable silence.  
+~
+~
+0
+0 4202544 9
+D5
+Wispy tendrils of mist form a shifting stairway that leads back to the
+floor of the Hall of Mist.  
+~
+~
+0 0 25685
+W 0 -2 0
+Z 5 5
+P
+>rand_prog 25~
+if value(0) > 0
+  mppurge mistportal
+  mpecho The window of mist closes.
+  mpvalueset 0 0
+else
+  if rand(75)
+    break
+  endif
+  mpvaluerand 0 1 4
+  loop 1 to 5
+    if value(0) == $1
+      mpvaluerand 0 1 4
+    endif
+  endloop
+  mpvalueset 1 $0
+  if value(0) == 1
+    mpoload 25610 in room
+  endif
+  if value(0) == 2
+    mpoload 25611 in room
+  endif
+  if value(0) == 3
+    mpoload 25612 in room
+  endif
+  if value(0) == 4
+    mpoload 25613 in room
+  endif
+  mpecho A window of mist opens.
+endif
+~
+|
+S
+#25687
+A Dark Maelstrom~
+Erratic currents of air weave through a swirling cyclonic funnel of
+smoke, creating a dark, mottled maelstrom.  An overwhelming stench of sulfur
+permeates the air, and occasional low rumbles that sound like deep guttural
+belches echo around you.  A fine mist of superheated mist saturates the air.
+~
+~
+0
+0 4726837 9
+D0
+The maelstrom surrounds you.
+~
+~
+0 0 25687
+D1
+The maelstrom surrounds you.
+~
+~
+0 0 25687
+D2
+The maelstrom surrounds you.
+~
+~
+0 0 25687
+D3
+The maelstrom surrounds you.
+~
+~
+0 0 25687
+D4
+The maelstrom surrounds you.
+~
+~
+0 0 25687
+D5
+The maelstrom surrounds you.
+~
+~
+0 0 25687
+W 5 0 0
+Z 5 5
+S
+#25688
+A Storm of Kiu Efreets~
+A giant cyclone surrounds you, spinning in a multicolored, chaotic blur
+of howling fury.  The vortex is formed of countless smaller swirling
+columns, efreets that rage together in sweeping, winding whirls.  The air is
+relatively calm and still in the center of the vortex, though the clamoring
+howls of the efreets reverberate shatteringly.  
+~
+~
+0
+0 4726836 9
+D0
+The cyclone surrounds you.
+~
+~
+0 0 25688
+D1
+The cyclone surrounds you.
+~
+~
+0 0 25688
+D2
+The cyclone surrounds you.
+~
+~
+0 0 25688
+D3
+The cyclone surrounds you.
+~
+~
+0 0 25688
+D4
+The cyclone surrounds you.
+~
+~
+0 0 25688
+D5
+The cyclone surrounds you.
+~
+~
+0 0 25688
+W 5 0 0
+Z 5 5
+P
+>rand_prog 25~
+if isanypchere()
+mpmload 25605
+mpecho A greater kiu efreeti approaches, howling wildly!
+endif
+~
+|
+S
+#25689
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25622
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25622
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25622
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25622
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25622
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25622
+W 5 0 0
+Z 5 5
+S
+#25690
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25643
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25643
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25643
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25643
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25643
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25643
+W 5 0 0
+Z 5 5
+S
+#25691
+A Chaotic Wind~
+You are in an unbound panorama of air, with no land visible in any
+direction.  It seems that a very weak pull of gravity is focused all around
+you, coming from many different directions at once, and that darkness and
+light shift without any sun, moons, or stars to account for the change. 
+Clouds in striations of every hue swirl and tumble in the distance, and the
+wind whistles piercingly around you, tugging in one direction and then
+another.  
+~
+~
+0
+0 4726832 9
+D0
+The chaotic winds seem endless.
+~
+~
+0 0 25637
+D1
+The chaotic winds seem endless.
+~
+~
+0 0 25637
+D2
+The chaotic winds seem endless.
+~
+~
+0 0 25637
+D3
+The chaotic winds seem endless.
+~
+~
+0 0 25637
+D4
+The chaotic winds seem endless.
+~
+~
+0 0 25637
+D5
+The chaotic winds seem endless.
+~
+~
+0 0 25637
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 25600 spec_cast_air
+M 25613 spec_cast_air
+S
+
+
+
+#RESETS
+M 0 25604 1 25600 1
+M 0 25618 1 25600 1
+M 0 25619 1 25600 1
+M 0 25620 1 25600 1
+M 0 25605 15 25602 2
+M 0 25605 15 25602 2
+M 0 25605 15 25604 2
+M 0 25622 2 25605 2
+E 0 25608 0 13
+M 0 25613 3 25612 1
+E 0 25603 0 15
+M 0 25613 3 25623 1
+E 0 25603 0 14
+M 0 25605 15 25630 1
+M 0 25613 3 25632 1
+E 0 25603 0 15
+M 0 25605 15 25642 2
+M 0 25607 10 25657 10
+M 0 25607 10 25657 10
+M 0 25607 10 25657 10
+M 0 25607 10 25657 10
+M 0 25607 10 25657 10
+M 0 25607 10 25657 10
+M 0 25607 10 25657 10
+M 0 25607 10 25657 10
+M 0 25607 10 25657 10
+M 0 25607 10 25657 10
+M 0 25608 5 25657 5
+M 0 25608 5 25657 5
+M 0 25608 5 25657 5
+M 0 25608 5 25657 5
+M 0 25608 5 25657 5
+M 0 25609 10 25658 10
+M 0 25609 10 25658 10
+M 0 25609 10 25658 10
+M 0 25609 10 25658 10
+M 0 25609 10 25658 10
+M 0 25609 10 25658 10
+M 0 25609 10 25658 10
+M 0 25609 10 25658 10
+M 0 25609 10 25658 10
+M 0 25609 10 25658 10
+M 0 25610 5 25658 5
+M 0 25610 5 25658 5
+M 0 25610 5 25658 5
+M 0 25610 5 25658 5
+M 0 25610 5 25658 5
+M 0 25614 2 25658 2
+M 0 25614 2 25658 2
+M 0 25611 24 25664 6
+M 0 25611 24 25664 6
+M 0 25611 24 25664 6
+M 0 25611 24 25664 6
+M 0 25611 24 25664 6
+M 0 25611 24 25664 6
+M 0 25611 24 25670 12
+M 0 25611 24 25670 12
+M 0 25611 24 25670 12
+M 0 25611 24 25670 12
+M 0 25611 24 25670 12
+M 0 25611 24 25670 12
+M 0 25611 24 25670 12
+M 0 25611 24 25670 12
+M 0 25611 24 25670 12
+M 0 25611 24 25670 12
+M 0 25611 24 25670 12
+M 0 25611 24 25670 12
+M 0 25605 15 25672 2
+M 0 25605 15 25673 2
+M 0 25605 15 25675 2
+M 0 25612 8 25680 8
+M 0 25612 8 25680 8
+M 0 25612 8 25680 8
+M 0 25612 8 25680 8
+M 0 25612 8 25680 8
+M 0 25612 8 25680 8
+M 0 25612 8 25680 8
+M 0 25612 8 25680 8
+M 0 25601 3 25681 1
+O 0 25605 0 25682
+M 0 25611 24 25684 6
+M 0 25611 24 25684 6
+E 0 25607 0 6
+M 0 25611 24 25684 6
+M 0 25611 24 25684 6
+M 0 25611 24 25684 6
+M 0 25611 24 25684 6
+M 0 25601 5 25685 2
+M 0 25601 5 25685 2
+M 0 25600 1 25686 1
+E 0 25601 0 16
+G 0 25604 0
+G 0 25609 0
+M 0 25602 3 25686 2
+M 0 25602 3 25686 2
+M 0 25606 1 25687 1
+M 0 25623 1 25689 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

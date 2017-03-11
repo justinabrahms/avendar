@@ -1,0 +1,5459 @@
+#AREADATA
+Name Undead City~
+Builders Iandir~
+VNUMs 8100 8227
+Credits [15 25] Iandir    The Undead City~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 5 0 -1
+Shades 0 5
+Stone 82
+End
+
+
+
+#MOBILES
+V4 8101
+undead zombie citizen~
+the withered zombie~
+An ancient, withered zombie stares blankly.
+~
+A withered corpse standing upright is all that remains of this hard-working
+peasant, one of the field workers that served the King Gogoth. The living
+corpse stares blankly ahead of itself, mindlessly heeding the vile commands
+of the Lich King.
+~
+human~
+water scholar~
+AFGO 0 DJZ E 0
+20 10 12d40+318 0d0+0 4d6+10 slash~
+claw~
+0 0 0 0
+FK BLPQ
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+V4 8102
+undead zombie soldier~
+the zombie soldier~
+A withered zombie clad in a rotting soldier\@s uniform stands here.
+~
+The corpse of a member of the city watch, this zombie is clad in a military
+uniform, and stands silently at his post, scanning for intruding life to
+destroy.
+~
+human~
+water scholar~
+AFO 0 DJ E 0
+25 12 12d45+707 0d0+0 5d7+15 slash~
+slash~
+-2 -2 -2 2
+FJK BLPQ
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+V4 8103
+zombie palace guard undead~
+the zombie palace guard~
+An undead palace guard stands watch.
+~
+The corpse that stands before you is dressed in the armor of King Gogoth\@s
+palace guard, and wields the traditional weapon, an iron spear. More lively
+in its motions than the lesser zombies, the zombie palace guard is none-
+theless a hideous sight.
+~
+human~
+water scholar~
+AFGLO 0 DJ E 0
+32 15 12d80+898 0d0+0 5d6+15 slash~
+slash~
+-4 -4 -4 0
+CFJKU BLPQ
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+V4 8104
+zombie undead priest~
+the undead priest~
+A rotting undead priest stands here.
+~
+A hunched figure dressed in decaying priests\@ robes, this undead priest was
+once the chaplain of the Gogothian Temple. A goodly man in life, his energy
+is now twisted to the evil purposes of the Lich King.
+~
+human~
+water scholar~
+ABFGO 0 DHJ E 0
+35 30 12d80+738 0d0+0 5d8+20 bash~
+pound~
+-10 -10 -10 -5
+0 BLPQ
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 122 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+V4 8105
+plague plagued zombie diseased~
+the plagued zombie~
+A plagued zombie stands here, covered with sores and scabs.
+~
+A figure dressed in a long black robe, the plagued zombie is covered with
+sores and scabs. It seems to radiate an evil aura as it moves about the
+city spreading disease and pestilence.
+~
+human~
+water scholar~
+ABDGO 0 DJXZ E 0
+20 -20 4547d1+4 0d0+0 1d10+1 bash~
+pound~
+0 0 0 0
+0 ABLP
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>fight_prog 100~
+if ispc($n)
+mpcast 104 38
+flee
+flee
+endif
+~
+>greet_prog 100~
+if ispc($n)
+mpremember $n
+if remembers($n)
+mpkill $n
+mpcast 104 35
+flee
+flee
+flee
+endif
+endif
+~
+>rand_prog 10~
+west
+~
+>rand_prog 20~
+east
+~
+>rand_prog 30~
+south
+~
+>rand_prog 40~
+north
+~
+|
+V4 8106
+watcher~
+the invisible watcher~
+The invisible watcher stands here, waiting to spring his trap.
+~
+D
+~
+human~
+water scholar~
+AB 0 DFLPTUVa E 0
+50 10 1000d1+1000 100d10+2 1d10+50 slash~
+slash~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>all_greet_prog 100~
+mpat 8184 mpforce jjj n
+mpat 8184 mpforce kkk s
+mpat 8184 mpforce lll d
+
+~
+|
+V4 8107
+undead zombie citizen jjj~
+the withered zombie~
+An ancient, withered zombie stares blankly.
+~
+A withered corpse standing upright is all that remains of this hard-working
+peasant, one of the field workers that served the King Gogoth. The living
+corpse stares blankly ahead of itself, mindlessly heeding the vile commands
+of the Lich King.
+~
+human~
+water scholar~
+AFGLO 0 DJ E 0
+20 10 12d40+318 0d0+0 4d6+10 slash~
+claw~
+0 0 0 0
+FK BLPQ
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+V4 8108
+undead zombie citizen kkk~
+the withered zombie~
+An ancient, withered zombie stares blankly.
+~
+A withered corpse standing upright is all that remains of this hard-working
+peasant, one of the field workers that served the King Gogoth. The living
+corpse stares blankly ahead of itself, mindlessly heeding the vile commands
+of the Lich King.
+~
+human~
+water scholar~
+AFGLO 0 DJ E 0
+20 10 12d40+318 0d0+0 4d6+10 slash~
+claw~
+0 0 0 0
+FK BLPQ
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>act_prog p Before the Ruined Gates~
+mpat 8105 mpecho There is a rustling sound behind you.
+~
+|
+V4 8109
+undead zombie citizen lll~
+the withered zombie~
+An ancient, withered zombie stares blankly.
+~
+A withered corpse standing upright is all that remains of this hard-working
+peasant, one of the field workers that served the King Gogoth. The living
+corpse stares blankly ahead of itself, mindlessly heeding the vile commands
+of the Lich King.
+~
+human~
+water scholar~
+AFGLO 0 DJ E 0
+20 10 12d40+318 0d0+0 4d6+10 slash~
+claw~
+0 0 0 0
+FK BLPQ
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABHIMV ABCDEFGHIJK A medium unknown
+V4 8110
+ceiling~
+the collapsing ceiling~
+The collapsing ceiling trick mob is here.
+~
+~
+human~
+water scholar~
+ABGL 0 DFLZ N 0
+51 4000 5d100+10 0d0+0 1d50+1 bash~
+crush~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 85~
+mpkill $n
+~
+|
+V4 8111
+Dhrorin phalanx sergeant fighter alatharya~
+Dhrorin~
+Dhrorin the Phalanx Sergeant is here.
+~
+A sturdy alatharyan soldier stands before you, clad in a dented suit of
+armor.  His dark hais is cut close to his head, clearing the space in front
+of his stern features.  His breathing is ragged, as if he has been in battle
+for a very long time.  
+~
+alatharya~
+water scholar~
+AGTX 0 JTZ N 0
+20 10 12d40+333 0d0+0 4d6+12 slash~
+slash~
+-13 -13 -13 -8
+CEFHIKNQ 0
+26 0 0 0 0 33 0 0 0 0 0 0 0 0 -33 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 111 78
+AHMVW ABCDEFGHIJKP A medium unknown
+>hitprcnt_prog 10~
+if mobvalue(0) == 5
+else
+ mpvalueset 0 5
+endif
+~
+>hitprcnt_prog 20~
+if mobvalue(0) == 4
+else
+ mpvalueset 0 4
+endif
+~
+>hitprcnt_prog 30~
+if mobvalue(0) == 3
+else
+ mpvalueset 0 3
+endif
+~
+>hitprcnt_prog 40~
+if mobvalue(0) == 2
+else
+ mpvalueset 0 2
+endif
+~
+>rand_prog 100~
+if mobvalue(0) > 0
+ say I must rest for a bit, my wounds prevent me from continuing. 
+ mpsetskilled
+ sleep
+ if mobvalue(0) == 1
+  mpvalueset 1 30
+ endif
+ if mobvalue(0) == 2
+  mpvalueset 1 50
+ endif
+ if mobvalue(0) == 3
+  mpvalueset 1 70
+ endif
+ if mobvalue(0) == 4
+  mpvalueset 1 90
+ endif
+ if mobvalue(0) == 5
+  mpvalueset 1 110
+ endif
+ mpvalueset 0 0
+endif
+if mobvalue(1) > 0
+ mpvaluedown 1
+else
+ mpsetunskilled
+ stand
+endif
+if mobvalue(2) > 0
+ mpvaluedown 2
+endif
+if mobvalue(2) == 0 
+ if mobvalue(0) == 0
+  mpwander
+  mpvalueset 2 10
+ endif
+endif
+~
+>hitprcnt_prog 50~
+if mobvalue(0) == 1
+else
+ mpvalueset 0 1
+endif
+~
+>death_prog 100~
+mpat 8213 mpforce adventurebot mpvaluedown 0
+mpecho Dhrorin takes two steps foreward, then collapses onto the ground.
+mpforce enainon mpvalueup 3
+mpforce navaeir follow enainon
+mpforce enainon get gold
+~
+>entry_prog 100~
+if rand(20)
+ say Foul beings, return to the nether realm from whence you came!
+endif
+mpmload 8101
+mpkill zombie
+mpforce navaeir mpkill zombie
+mpforce enainon mpkill zombie
+~
+>fight_prog 15~
+mpsetskilled
+impale
+mpsetunskilled
+~
+|
+V4 8112
+Navaeir mage spirit scholar ch\@taren~
+Navaeir~
+Navaeir the Journeyman of Spirit is here.
+~
+A feeble man, his golden skin shimmering in the faint light, stands
+before you.  A feverish intensity burns within his eyes, a sense of
+incomparable life and vivacity.  The long white robes that cover his small
+frame are in tatters, dark marks surrounding the tears.  
+~
+ch\@taren~
+water scholar~
+ABGX 0 FJUZ G 0
+30 10 10d40+290 35d10+100 4d6+12 bash~
+punch~
+-5 -5 -5 2
+KQ 0
+26 0 0 -33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 110 78
+AHKMV ABCDEFGIJK E medium unknown
+>fight_prog 100~
+if ispc($n)
+ mpvaluerand 9 1 15
+ if mobvalue(9) == 1
+  mpcast 143 30
+ endif
+ if mobvalue(9) == 2
+  mpcast 141 20
+ endif
+ if mobvalue(9) == 3
+  mpechoat $n Navaeir zaps you with an icy wand!
+  mpechoaround $n Navaeir zaps $N with an icy wand!
+  mpcast 81 30
+ endif
+else
+ mpvaluerand 9 1 10
+ if mobvalue(9) == 1
+  mpechoaround $n Navaeir zaps $N with an icy wand!
+  mpcast 81 30
+ endif
+endif
+~
+>death_prog 100~
+mpat 8213 mpforce adventurebot mpvaluedown 0
+mpecho A faint white mist escapes from Navaeir\@s mouth as he slumps to the ground.
+~
+>rand_prog 6~
+if rand(50)
+ if mobvalue(2) == 0
+  mpforce Dhrorin say Navaeir, imbue my body with your spiritual strength.
+ endif
+else
+ if mobvalue(3) == 0
+  mpforce Enainon say My body grows tired, Navaeir. If you could grant it your strength, I would be most indebted to you.
+ endif
+endif
+~
+>rand_prog 5~
+emote closes his eyes and begins to glow.
+mpcast 110 30
+mpcast 97 30
+mpcast 3 30
+mpcast 125 30
+mpcast 73 30
+~
+>rand_prog 4~
+if rand(50)
+ if mobvalue(0) == 0
+  mpforce Dhrorin say Navaeir, would you surround me with your mystical armor?
+ endif
+else
+ if mobvalue(1) == 0
+  mpforce Enainon say Navaeir, if you would be so kind, grant me your magical armor.
+ endif
+endif
+~
+>rand_prog 100~
+if mobvalue(0) > 1
+ mpvaluedown 0
+endif
+if mobvalue(1) > 1
+ mpvaluedown 1
+endif
+if mobvalue(2) > 1
+ mpvaluedown 2
+endif
+if mobvalue(3) > 1
+ mpvaluedown 3
+endif
+if rand(5)
+ if rand(50)
+  if mobvalue(2) == 0
+   mpforce Dhrorin say Navaeir, imbue my body with your spiritual strength.
+  endif
+ else
+  if mobvalue(3) == 0
+   mpforce Enainon say My body grows tired, Navaeir. If you could grant it your strength, I would be most indebted to you.
+  endif
+ endif
+endif
+if rand(10)
+emote closes his eyes and begins to glow.
+mpcast 110 30
+mpcast 97 30
+mpcast 3 30
+mpcast 125 30
+mpcast 73 30
+endif
+if rand(5)
+ if rand(50)
+  if mobvalue(0) == 0
+   mpforce Dhrorin say Navaeir, would you surround me with your mystical armor?
+  endif
+ else
+  if mobvalue(1) == 0
+   mpforce Enainon say Navaeir, if you would be so kind, grant me your magical armor.
+  endif
+ endif
+endif
+~
+>speech_prog p My body grows tired, Navaeir. If you could grant it your strength, I would be most indebted to you.~
+if isnpc($n)
+  say You need not even ask, Enainon.
+  mpcast 7 30 $n
+  mpcast 73 30 $n
+  mpvalueset 3 10
+else 
+say I\@m sorry, but you are not of this party, and my mind is exhausted enough without having to aid strangers.
+endif
+~
+>speech_prog p Navaeir, imbue my body with your spiritual strength.~
+if isnpc($n)
+  say My spirit shall aid you, Dhrorin.
+  mpcast 7 30 $n
+  mpcast 73 30 $n
+  mpvalueset 2 10
+else 
+say I\@m sorry, but you are not of this party, and my mind is exhausted enough without having to aid strangers.
+endif
+~
+>speech_prog p Navaeir, if you would be so kind, grant me your magical armor.~
+if isnpc($n)
+  say Of course, Enainon.
+  mpcast 3 30 $n
+  mpcast 125 30 $n
+  mpvalueset 1 10
+else 
+say I\@m sorry, but you are not of this party, and my mind is exhausted enough without having to aid strangers.
+endif
+~
+>speech_prog p Navaeir, would you surround me with your mystical armor?~
+if isnpc($n)
+  say With pleasure, Dhrorin.
+  mpcast 3 30 $n
+  mpcast 125 30 $n
+  mpvalueset 0 10
+else 
+say I\@m sorry, but you are not of this party, and my mind is exhausted enough without having to aid strangers.
+endif
+~
+|
+V4 8113
+Enainon templar wizard water human~
+Enainon~
+Enainon the Templar Journeyman is here.
+~
+A squat human, his rugged face covered in sweat drenched hair, is here,
+breathing heavily.  His tarnished armor has numerous holes in it, the edges
+charred to a dark color.  
+~
+human~
+water scholar~
+ABGX 0 JZ G 0
+20 10 12d40+333 35d10+100 4d6+12 bash~
+punch~
+-5 -5 -5 2
+FIKQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 111 78
+AHMV ABCDEFGHIJK A medium unknown
+>entry_prog 100~
+if mobvalue(3) == 1
+ if rand(20)
+  say Your foul stench shall no longer plague this city, demon!
+ endif
+ mpmload 8101
+ mpkill zombie
+ mpforce navaeir mpkill zombie
+endif
+~
+>rand_prog 100~
+if mobvalue(0) > 0
+ say My bones grow weary, let me rest a bit. 
+ mpsetskilled
+ sleep
+ if mobvalue(0) == 1
+  mpvalueset 1 30
+ endif
+ if mobvalue(0) == 2
+  mpvalueset 1 50
+ endif
+ if mobvalue(0) == 3
+  mpvalueset 1 70
+ endif
+ if mobvalue(0) == 4
+  mpvalueset 1 90
+ endif
+ if mobvalue(0) == 5
+  mpvalueset 1 110
+ endif
+ mpvalueset 0 0
+endif
+if mobvalue(1) > 0
+ mpvaluedown 1
+else
+ mpsetunskilled
+ stand
+endif
+if mobvalue(2) > 0
+ mpvaluedown 2
+endif
+if mobvalue(3) == 1
+ if mobvalue(2) == 0 
+  if mobvalue(0) == 0
+   mpwander
+   mpvalueset 2 10
+  endif
+ endif 
+endif
+~
+>death_prog 100~
+mpat 8213 mpforce adventurebot mpvaluedown 0
+mpecho Enainon clutches at his wounds tightly, then falls to the ground.  
+mpforce navaeir get gold
+if mobvalue(3) == 1
+ mpecho {YEnainon says \@Navaeir... fly from here...\@{x
+ mpforce navaeir nod
+ mpforce navaeir emote utters the words, \@hzrzsafh\@.
+ mpecho Navaeir vanishes!
+ mpforce navaeir mpgoto 9589
+endif
+~
+>fight_prog 10~
+if isnpc($n)
+ if rand(10)
+  say Return to the foul darkness that you came from!
+ endif
+ mpcast 335 20
+endif
+~
+|
+V4 8114
+bot party loading adventurebot~
+loader bot~
+An adventure party loading bot is here, waiting to kick your ass.
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 5~
+if mobvalue(0) == 0
+ mpmload 8111
+ mpforce dhrorin mpseewizi
+ mpforce dhrorin mpoload 8128
+ mpforce dhrorin wield pike
+ mpforce dhrorin mpoload 8129
+ mpforce dhrorin wear suit
+ mpmload 8112
+ mpforce navaeir mpseewizi
+ mpforce navaeir mpoload 8130
+ mpforce navaeir wear wand
+ mpforce navaeir mpoload 8131
+ mpforce navaeir wear brooch
+ mpmload 8113
+ mpforce enainon mpseewizi
+ mpforce enainon mpoload 8132
+ mpforce enainon wear coif
+ mpforce enainon mpoload 8133
+ mpforce enainon wear flail
+ mpforce navaeir follow dhrorin
+ mpforce enainon follow dhrorin
+ mpvalueset 0 3
+endif
+~
+|
+V4 8115
+undead child zombie unsettling~
+an undead child~
+The unsettling form of an undead child plays here in the streets.
+~
+This grisly thing is a caricature of a living child.  Still suffused with
+an eerie unlife, it shuffles along, long-dead bones covered in a cloak of
+rotting flesh.  Distracted, most of its attention seems to be devoted to
+sketching sinister designs in the dust.  
+~
+human~
+water scholar~
+ADG 0 F E 0
+10 20 5d22+167 0d0+0 2d5+5 slash~
+claw~
+0 0 0 0
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>death_prog 100~
+mpoload 8152
+~
+|
+V4 8120
+joshbot~
+Joshbot~
+Joshbot is standing here, tending his children.
+~
+~
+human~
+water scholar~
+AB 0 DFJLZ N 0
+55 0 5d5+5 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p pry drawer~
+if mobvalue(0) == 1
+mpechoat $n The desk drawer has already been pried loose.
+endif
+if mobvalue(0) == 0
+if strength($n) < 17
+mpechoat $n You\@re not strong enough to pry the desk drawer loose.
+mpechoaround $n $N attempts to pry the desk drawer loose, but can\@t move it.
+else
+mppurge desk
+mpoload 8151
+mpechoat $n You pry the desk drawer loose!
+mpechoaround $n $N pries the desk drawer loose!
+mpoload 8140 in desk
+mpoload 8141 in desk
+mpoload 8142 in desk
+mpvalueset 0 1
+endif
+endif
+~
+>verb_prog p pry desk~
+if mobvalue(0) == 1
+mpechoat $n The desk drawer has already been pried loose.
+endif
+if mobvalue(0) == 0
+if strength($n) < 17
+mpechoat $n You\@re not strong enough to pry the desk drawer loose.
+mpechoaround $n $N attempts to pry the desk drawer loose, but can\@t move it.
+else
+mppurge desk
+mpoload 8151
+mpechoat $n You pry the desk drawer loose!
+mpechoaround $n $N pries the desk drawer loose!
+mpoload 8140 in desk
+mpoload 8141 in desk
+mpoload 8142 in desk
+mpvalueset 0 1
+endif
+endif
+~
+>verb_prog p pry desk drawer~
+if mobvalue(0) == 1
+mpechoat $n The desk drawer has already been pried loose.
+endif
+if mobvalue(0) == 0
+if strength($n) < 17
+mpechoat $n You\@re not strong enough to pry the desk drawer loose.
+mpechoaround $n $N attempts to pry the desk drawer loose, but can\@t move it.
+else
+mppurge desk
+mpoload 8151
+mpechoat $n You pry the desk drawer loose!
+mpechoaround $n $N pries the desk drawer loose!
+mpoload 8140 in desk
+mpoload 8141 in desk
+mpoload 8142 in desk
+mpvalueset 0 1
+endif
+endif
+~
+|
+V4 8150
+test~
+test!~
+Test!
+~
+~
+human~
+water scholar~
+AB BJ DL N 0
+50 25 34d100+1173 50d10+100 6d8+25 none~
+hit~
+0 0 0 0
+W N
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>speech_prog test~
+mpecho I am focused on $f.
+mpecho I am going to try to focus on $n.
+mpfocus $n
+mpecho I am focused on $f.
+~
+>fight_prog 100~
+mpecho t = $t
+~
+>verb_prog p testcollect~
+mpget mob $i platinum 0
+mpvalueset inplat $0
+mpget mob $i gold 0
+mpvalueset ingold $0
+mpget mob $i silver 0
+mpvalueset insilv $0
+mpget mob $i copper 0
+mpvalueset incop $0
+mpecho I have %inplat platinum, %ingold gold, %insilv silver, %incop copper.
+mpmath totalcop %incop + 10 * %insilv + 100 * %ingold + 1000 * %inplat
+mpmath giveback (%totalcop * 2)/5
+mpmath outplat %giveback / 1000
+mpmath giveback %giveback - %outplat * 1000
+mpmath outgold %giveback / 100
+mpmath giveback %giveback - %outgold * 100
+mpmath outsilv %giveback / 10
+mpmath giveback %giveback - %outgold * 10
+mpecho Handing back %outplat platinum, %outgold gold, %outsilv silver, %giveback copper.
+mpset mob self copper %giveback
+mpset mob self platinum %outplat
+mpset mob self gold %outgold
+mpset mob self silver %outsilv
+give %giveback copper $n
+give %outsilv silver $n
+give %outgold gold $n
+give %outplat platinum $n
+~
+>speech_prog p valueup~
+mpvalueset 1 40
+mpecho $1
+mpvalueup 1 50
+mpecho $1
+mpvaluedown 1 30
+mpecho $1
+~
+>speech_prog bitset~
+if isbitset($n) == 21000
+  mpecho Aye, it\@s set.
+else
+  mpecho No, it\@s not.
+endif
+~
+>attack_prog 100~
+mpecho $i is cool!
+mpecho $n is attacking!
+mpecho $t is being attacked!
+~
+>verb_prog p test~
+mpvalueset astr Hooray
+mpconcat astr astr \@ for proggies!\@
+mpecho %astr
+mpdesc here astr
+~
+>verb_prog looptest~
+if mobvalue(0) == 0
+  mpecho If.
+endif
+loop 0 to 4
+mpecho Looping...
+mpecho $v1
+loop 5 to 7
+mpecho $v2
+endloop
+endloop
+mpecho Fin.
+~
+>speech_prog p math test~
+mpvalueset 2 100
+mpvalueset 3 100
+mpmath 1 ($3 * 100) / ($2 * 100)
+mpecho $1
+~
+>speech_prog p isoverlimit~
+if isoverlimit(11364)
+  mpecho Yes.
+else
+  mpecho No.
+endif
+~
+>speech_prog himhertest~
+m = $m
+~
+>speech_prog p Can I have some water~
+mpecho I hope you die of thirst on the Plains of Shargob.
+~
+>speech_prog p Match testing commence.~
+if regex() == Match (testasd|tester) commence.
+  mpecho Matched.
+else
+  mpecho No match.
+endif
+~
+>speech_prog la~
+say my focus is $F
+~
+>speech_prog p Am I charmed?~
+if ischarmed($n)
+  mpecho Yes, you are charmed.
+else
+  mpecho No, you are not charmed.
+endif
+~
+>speech_prog p Are we grouped?~
+if isgroup($i) == $n
+  mpecho Yes, we are grouped.
+else
+  mpecho No, we are not grouped.
+endif
+~
+>speech_prog shoot west~
+mpsetskill 520 100
+~
+>speech_prog p do the math~
+mpmath 0 -200 - ((850-1000)/10)
+mpecho The answer is $0
+~
+>speech_prog p loop test~
+loop 1 to 5
+  mpecho $v1
+endloop
+~
+>give_prog all~
+if recentowner() == Rystaia
+  mpecho Yes, Rystaia recently owned this.
+  give $o $n
+endif
+~
+>give_prog all~
+drop 1.
+if perminvis($o)
+  mpecho Yes, it\@s perm invis.
+else
+  mpecho No, it\@s not perm invis.
+endif
+~
+>death_prog 100~
+mpecho I was just killed by: $N
+~
+>speech_prog p ~
+if regex() == [^[:space:]]* (like|love)s? (apple|orange)s
+mpecho I like them too.
+else
+mpecho I hate you.
+endif
+~
+>speech_prog chickens~
+mpecho I hear chickens!  RUN!
+~
+>speech_prog p double recursion test~
+mpvalueset 1 3
+mpvalueset 2 1
+mpvalueset 3 42
+mpecho S1 is $1
+mpecho S2 is $2
+mpecho S3 is $3
+mpecho SS2 is $$2
+mpecho SSS2 is $$$2
+~
+>speech_prog p Test, set me a snare!~
+mpecho Setting snare!
+mpaddskill $i 519 100
+setsnare
+mpremskill $i 519
+~
+>speech_prog p Am I grouped with Jolinn?~
+mpfocus Jolinn
+if isgroup($n) == $f
+  mpecho Yes, you are grouped with Jolinn.
+else
+  mpecho No, you are not grouped with Jolinn.
+endif
+~
+>speech_prog p Kneel before me, test!~
+if language($n) == shuddeni
+say As you wish, oh great one!
+kneel $n
+else
+say I only obey those who speak in the ways of the eyeless!
+endif
+~
+>speech_prog p Test, is this room dark?~
+if roomflag($n) == dark
+mpecho Yes, this room is dark.
+else
+mpecho No, this room is not dark.
+endif
+~
+>speech_prog p the answer is~
+mpmath 0 55 * (2 ^ 2 + 1) / 255
+mpecho $0
+~
+>speech_prog p Is this nogate?~
+if roomflag($i) == nogate
+  mpecho Yes, this room is nogate.
+else
+  mpecho No, this room is no nogate.
+endif
+~
+>speech_prog p COMPSTRTEST~
+if compstr(2) == You
+  mpecho Only youuuuuuuuuuuuuu!
+endif
+~
+>speech_prog p COMPXTEST~
+if compx(2) == You
+mpecho Only youuuuuuuuuuu!
+endif
+~
+>speech_prog p Number~
+mpvalueset 0 $y2
+mpecho The number is $0
+if mobvalue(0) >= 5
+  mpecho The number is greater than or equal to five.
+else
+  mpecho The number less than five.
+endif
+~
+>speech_prog p mana raise~
+mpget char $n mana 0
+mpvalueup 0 5
+mpset char $n mana $0
+~
+>speech_prog p randtest~
+mpecho r is $R
+~
+>data_prog testdata~
+Testdata
+1 2 3
+~
+>speech_prog p Test, hit me with some data.~
+mpsetdata testdata
+mpecho $d
+mpnextdata
+mpecho $d
+~
+>give_prog all~
+mpecho Give_prog activated.
+if objtype() == 5
+mpecho Ah, a fine weapon.  Thank you.
+else
+mpecho you bastard.  I only want weapons.
+endif
+mpecho Give_prog ending.
+~
+>verb_prog p test~
+if compx() == for us
+or compx() == for you
+  mpecho God bless us, every one.
+endif
+~
+>speech_prog p I hate this thing~
+say blah, me too
+~
+>verb_prog p testing~
+mpecho Alert, alert, we are testing mpinterpret.
+mpinterpret $n $x
+~
+>speech_prog p focustest~
+mpfocus $r
+if isfocused($i)
+  say I am focused on $F
+else
+  say I am not focused.
+endif
+~
+>speech_prog p Give me freedom, or give me death!~
+if rand(50)
+  say I will give you... freedom!
+  mpaddaffect $n 716 57 24 0 100 0
+else
+  say I will give you... death!
+  mpslay $n
+endif
+~
+>trigger_prog 100~
+say hi
+~
+>speech_prog What am~
+if compstr(1) == What
+if compstr(3) == am
+if compstr(4) == I?
+mpget char $n $y2 0
+say You are $y2 $0!
+break
+endif
+endif
+endif
+mpinterpret $n $x
+~
+>speech_prog p Help me, test!  I\@m poisoned!~
+say You are poisoned no more!
+mpremaffect 105 $n
+~
+>speech_prog p Can I waylay?~
+if skill203($n) == 0
+say Not at all.
+else
+if skill203($n) < 50
+say Not too well.
+else
+say You can waylay just fine.
+endif
+endif
+~
+>all_death_prog 100~
+mpecho Somebody died!
+mpecho n is $N
+mpecho t is $T
+~
+>greet_prog 100~
+if class($n) == 29
+say yes
+endif
+~
+>speech_prog p Show me the values, bitch!~
+loop 1 to 3
+say $v1
+loop 100 to 101
+say $v2
+endloop
+endloop
+// Noooo...
+mpecho I\@m sorry dave...
+
+mpecho I\@m afraid I can\@t do that.
+~
+|
+V4 8155
+zombie jesus sweet~
+Sweet Zombie Jesus~
+A zombie from the corpse of Jesus is here.
+~
+~
+human~
+water scholar~
+AT 0 V N 0
+0 0 10000d1+500 0d0+0 1d2000+1 none~
+hit~
+0 0 0 0
+H 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 8156
+Kalchin necromancer shuddeni emaciated~
+Kalchin the Necromancer~
+An emaciated shuddeni is fettered to the wall.
+~
+Kalchin the Necromancer is chained here, bound in the ruins of Gogoth for
+a long-forgotten offense.  His wrinkled gray skin is wrapped in tattered
+shreds of ancient, filthy fabric.  Fragile-looking bones are clearly visible
+beneath his starved flesh, but the hatred in his eyeless face has lost none
+of its potency over the years.  
+~
+shuddeni~
+water scholar~
+ABK 0 ADFJ E 0
+52 26 1d1+6000 52d10+100 6d9+26 negative~
+black magic~
+-22 -22 -22 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 20 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMW ABCDEFGIJ AGK medium flesh
+>sub_prog check_can_choose_path~
+mpvalueset 9 0
+if isnpc($n)
+or level($n) < 30
+or not majorsphere($n) == void
+or not minorsphere($n) == void
+or not chosenpath($n) == none
+  break
+endif
+mpvalueset 9 1
+~
+>sub_prog do_reset~
+mpvalueset 0 0
+mpvalueset 1 0
+mpunfocus 0
+~
+>load_prog 100~
+speak arcane
+~
+>verb_prog p suicide yes~
+if isfocused($i)
+  mpvalueset 0 3
+  mpvalueset 1 0
+  mpechoat $f Darkness clouds your vision as life slips away...
+  mpechoaround $f $F slumps lifelessly to the ground.
+  mpaddaffect $f 0 51 30 0 0 33554432 O
+  mptransfer $f 631
+  mpflag mob self aff wizi
+  mpat $f mpforce $f look
+  mpat $f mplag $f 4
+  mpflag mob self aff wizi
+endif
+~
+>data_prog choice~
+esay \@states simply\@ Death.
+say Death is the essence of the void.
+esay notes You must pass through both, to understand either.
+emote shifts slightly, rattling his chains.
+esay \@admonishes\@ Go on, then. Kill yourself, here and now, and learn of necromancy.
+esay \@adds coldly\@ I\@ll wait. I have the time.
+peer $f
+~
+>data_prog shpiel~
+esay muses Necromancy, the art of arts.
+say It is for those of us who turn our backs on eternity, so as to linger here a little longer.
+esay \@rattles his chain, a cold smile on his face\@ For whatever that may gain us.
+esay warns Don\@t imagine that you\@ll find answers, once past the Threshold. But cross it you must.
+esay \@adds\@ That is the sacrifice we make for our art. The sacrifice we make, to Know.
+pmote lifts his face and studies $F intently.
+esay \@asks\@ Is it one you are willing to make?
+~
+>speech_prog Yes~
+// Check whether the char can choose a path
+mpcallsub check_can_choose_path $n
+if value(9) == 0
+  break
+endif
+// State handlers
+if value(0) == 1
+  mpvalueset 0 2
+  mpsetdata shpiel
+  mpfocus $n 0
+  break
+endif
+if value(0) == 2
+  mpsetdata choice
+endif
+~
+>greet_prog 100~
+// Check whether the char can choose a path
+mpcallsub check_can_choose_path $n
+if value(9) == 0
+  pmote glances at $N, then looks back down.
+  break
+endif
+// Check state
+if value(0) == 0
+  pmote raises himself up in his chains, studying $N.
+  esay \@croaks in a hoarse voice\@ You there. I know why you have come. You wish to learn from me...yes?
+  mpfocus $n 0
+  mpvalueset 0 1
+  break
+endif
+// Check whether the player returned after suicide
+if not isfocused($i)
+or not name($f) == $n
+or value(0) != 3
+  break
+endif
+// Finish the path choosing
+mpechoat $f Kalchin whispers something, and your spirit is forced inexorably back into your body.
+mpechoaround $f Kalchin whispers something.
+mpremaffect $f 0
+mpset skill $f \@greater void necromancer\@ 1
+mpset char $f chosenpath necromancer
+mpstring char $f title default
+esay \@states grimly\@ And so you begin to understand.
+esay \@directs\@ Go, and make use of what time you have left.
+mpechoat $f {WYou have chosen the Path of the Necromancer.{x
+pray $F has killed $Mself, and chosen the Path of the Necromancer
+mpcallsub do_reset
+~
+>rand_prog 100~
+if isfighting($i)
+or not isfocused($i)
+  break
+endif
+if not ishere($f)
+  if value(0) == 3
+    mpvalueup 1 1
+if value(1) >= 1000
+  mpcallsub do_reset
+endif
+  else
+    hmph
+mpcallsub do_reset
+  endif
+  break
+endif
+$d
+mpnextdata
+~
+|
+V4 8198
+blinder~
+blinder~
+Blinder
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+60 0 100d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+mpat medef mpfocus medef
+if iscarrying($f) == 4206
+else
+  mpat $f mpoload 4206 on $f
+endif
+~
+|
+V4 8199
+jub~
+Smithers~
+Smithers is here.
+~
+~
+human~
+water scholar~
+AB 0 JZ N 0
+900 0 10000d1+1 0d0+0 0d0+0 bash~
+punch~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+mpvaluerand 0 1 24000
+mpmload $0
+o
+~
+>speech_prog p release the hounds!~
+if isfocused($i)
+mpat $f mpmload 4800
+mpat $f mpmload 4800
+mpat $f mpmload 4800
+mpat $f mpmload 4800
+mpecho Smithers releases the rarely-seen Alaskan deerhounds!
+mpat $f mpechoat $f A rarely-seen Alaskan deerhound has arrived to deal with you!
+mpat $f mpechoaround $f A rarely-seen Alaskan deerhound has arrived to deal with $F!
+mpat $f mpforce deerhound say Hooooooooooooooooo!
+mpat $f mpechoat $f A rarely-seen Alaskan deerhound has arrived to deal with you!
+mpat $f mpechoaround $f A rarely-seen Alaskan deerhound has arrived to deal with $F!
+mpat $f mpforce deerhound say Hooooooooooooooooo!
+mpat $f mpechoat $f A rarely-seen Alaskan deerhound has arrived to deal with you!
+mpat $f mpechoaround $f A rarely-seen Alaskan deerhound has arrived to deal with $F!
+mpat $f mpforce deerhound say Hooooooooooooooooo!
+mpat $f mpechoat $f A rarely-seen Alaskan deerhound has arrived to deal with you!
+mpat $f mpechoaround $f A rarely-seen Alaskan deerhound has arrived to deal with $F!
+mpat $f mpforce deerhound say Hooooooooooooooooo!
+mpat $f mpforce deerhound mpkill $f
+mpat $f mpforce 2.deerhound mpkill $f
+mpat $f mpforce 3.deerhound mpkill $f
+mpat $f mpforce 4.deerhound mpkill $f
+else
+say I\@m not focused. Fool.
+endif
+ 
+~
+>speech_prog p release the tophats!~
+if isfocused($i)
+mpat $f mpmload 851
+mpat $f mpmload 851
+mpat $f mpmload 851
+mpat $f mpmload 851
+mpecho Smithers releases a frothing mob of men in tophats!
+mpat $f mpechoat $f A man in a tophat has arrived to deal with you!
+mpat $f mpechoaround $f A man in a tophat has arrived to deal with $F!
+mpat $f mpechoat $f A man in a tophat has arrived to deal with you!
+mpat $f mpechoaround $f A man in a tophat has arrived to deal with $F!
+mpat $f mpechoat $f A man in a tophat has arrived to deal with you!
+mpat $f mpechoaround $f A man in a tophat has arrived to deal with $F!
+mpat $f mpechoat $f A man in a tophat has arrived to deal with you!
+mpat $f mpechoaround $f A man in a tophat has arrived to deal with $F!
+mpat $f mpforce aristocratic mpkill $f
+mpat $f mpforce 2.aristocratic mpkill $f
+mpat $f mpforce 3.aristocratic mpkill $f
+mpat $f mpforce 4.aristocratic mpkill $f
+else
+\@I\@m not focused, sir.
+endif
+~
+>speech_prog p Release the finches!~
+if isfocused($i)
+mpat $f mpmload 15072
+mpat $f mpmload 15072
+mpat $f mpmload 15072
+mpat $f mpmload 15072
+mpecho Smithers releases a voracious flock of finches!
+mpat $f mpechoat $f A ferocious white finch has arrived to deal with you!
+mpat $f mpechoaround $f A ferocious white finch has arrived to deal with $F!
+mpat $f mpechoat $f A ferocious white finch has arrived to deal with you!
+mpat $f mpechoaround $f A ferocious white finch has arrived to deal with $F!
+mpat $f mpechoat $f A ferocious white finch has arrived to deal with you!
+mpat $f mpechoaround $f A ferocious white finch has arrived to deal with $F!
+mpat $f mpechoat $f A ferocious white finch has arrived to deal with you!
+mpat $f mpechoaround $f A ferocious white finch has arrived to deal with $F!
+mpat $f mpforce finch mpkill $f
+mpat $f mpforce 2.finch mpkill $f
+mpat $f mpforce 3.finch mpkill $f
+mpat $f mpforce 4.finch mpkill $f
+else
+\@I\@m not focused, sir.
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+8101
+fountain poison~
+a crumbling fountain~
+A crumbling fountain stands here, filled with foul water.~
+~
+stone~
+fountain S 0 0 0
+0 0 'water' 0 0
+10 100 0 5 P
+0
+>load_prog 100~
+oppurge 2.desk
+~
+|
+V13
+8102
+flail corroded~
+the corroded flail~
+A corroded flail lies here.~
+~
+steel~
+weapon E 0 F AN
+flail 4 7 1 0
+crush~
+20 120 358 2 P
+0
+A
+12 -10
+O crush~
+V13
+8103
+cornmeal corn moldy meal~
+some moldy cornmeal~
+Some molding cornmeal sits here.~
+~
+food~
+food ES 0 0 A
+15 50 0 A 0
+50 1 0 1 P
+0
+E
+meal~
+Preserved by the curse of the Undead City, this corn meal has molded for
+over 200 years. It is slimy to the touch, and smells rancid.
+~
+E
+cornmeal~
+Preserved by the curse of the Undead City, this corn meal has molded for
+over 200 years. It is slimy to the touch, and smells rancid.
+~
+E
+corn~
+Preserved by the curse of the Undead City, this corn meal has molded for
+over 200 years. It is slimy to the touch, and smells rancid.
+~
+V13
+8104
+jar foul fouled water~
+a fouled jar of water~
+A fouled jar of water rests here.~
+~
+glass~
+drink ES 0 F A
+2 2 'water' 1 0
+50 1 0 1 P
+0
+E
+jar~
+This jar of brownish water has rested in the Undead City for over 200
+years. Its potability is highly questionable.
+~
+E
+water~
+This jar of brownish water has rested in the Undead City for over 200
+years. Its potability is highly questionable.
+~
+V13
+8105
+meat decayed rotting~
+some decayed meat~
+A rotting piece of meat decays here.~
+~
+carrion~
+food ES 0 0 A
+15 50 0 A 0
+0 0 0 1 P
+0
+E
+meat~
+This rotting piece of meat, origin indeterminate, has been preserved by
+the curse of the Undead City for over 200 years. Its edibility is highly
+in doubt.
+~
+V13
+8106
+bread loaf moldy~
+a molding loaf of bread~
+An ancient loaf of bread molds here.~
+~
+food~
+food ES 0 0 A
+15 50 0 A 0
+0 1 0 1 P
+0
+E
+bread~
+This molding loaf of bread has been preserved for 200 years by the curse
+of the Undead City. Its current state of edibility is dubious.
+~
+E
+loaf~
+This molding loaf of bread has been preserved for 200 years by the curse
+of the Undead City. Its current state of edibility is dubious.
+~
+V13
+8107
+chair broken~
+a broken chair~
+A broken chair sits here, rotting.~
+~
+wood~
+furniture S 0 F A
+0 0 0 0 0
+0 400 0 4 B
+0
+V13
+8108
+cart broken~
+a broken cart~
+A broken cart sits here.~
+~
+wood~
+furniture S 0 F A
+0 0 0 0 0
+0 400 0 4 P
+0
+V13
+8109
+leg broken table~
+a broken table leg~
+A broken table leg sits here.~
+~
+wood~
+trash ES 0 F AN
+0 0 0 0 0
+0 20 0 2 P
+0
+V13
+8110
+stone piece~
+a piece of stone~
+A piece of stone lies here.~
+~
+stone~
+trash ES 0 F A
+0 0 0 0 0
+0 200 0 2 P
+0
+V13
+8111
+board splintered~
+a splintered board~
+A splintered board lies here.~
+~
+wood~
+trash ES 0 F A
+0 0 0 0 0
+0 50 0 2 P
+0
+V13
+8112
+anvil~
+an ancient anvil~
+An ancient anvil sits here.~
+~
+iron~
+furniture E 0 F A
+0 0 0 0 0
+0 3000 0 4 P
+0
+V13
+8113
+amulet tarnished silver~
+a tarnished silver amulet~
+A tarnished silver amulet lies here.~
+~
+silver~
+armor C 0 F AC
+2 2 2 2 0
+15 20 710 1 P
+0
+A
+12 10
+A
+4 -3
+V13
+8114
+jewels sack~
+a sack of jewels~
+A sack of semi-precious jewels sits here.~
+~
+gem~
+treasure ES 0 F A
+0 0 0 0 0
+5 50 500 0 P
+0
+V13
+8115
+pottery broken~
+some broken pottery~
+Some broken pottery sits here.~
+~
+earth~
+trash E 0 F A
+0 0 0 0 0
+0 20 0 2 P
+0
+V13
+8116
+sword broken~
+a broken sword~
+A broken sword lies on the ground.~
+~
+steel~
+weapon E 0 F AN
+sword 7 1 3 0
+slash~
+1 50 553 2 P
+0
+A
+19 1
+A
+18 -3
+O slash~
+V13
+8117
+spear broken~
+a broken spear~
+A spear with a broken shaft lies here.~
+~
+wood~
+weapon ES 0 F AN
+spear 5 1 2 F
+stab~
+1 30 545 3 P
+0
+A
+19 1
+A
+18 -3
+O stab~
+V13
+8118
+book ruined~
+a ruined book~
+A ruined, now-illegible book lies here.~
+~
+parchment~
+trash ES 0 F AO
+0 0 0 0 0
+0 0 1170 2 P
+0
+A
+12 10
+A
+13 -10
+V13
+8119
+robe rotting priest\@s priest~
+a rotting priest\@s robe~
+A rotting priest\@s robe sits here.~
+~
+cloth~
+armor ES 0 F AK
+5 5 5 5 0
+10 20 4703 2 P
+0
+A
+19 1
+A
+1 -2
+A
+12 20
+V13
+8120
+spear ancient rusted~
+an ancient, rusted spear~
+An ancient, rusted spear is here.~
+~
+steel~
+weapon CE 0 F AN
+spear 4 6 2 F
+pierce~
+25 80 0 3 P
+0
+A
+18 1
+A
+19 2
+O pierce~
+V13
+8121
+platemail plate mail rusted ancient~
+a suit of ancient, rusted platemail~
+A suit of ancient platemail rusts here.~
+~
+steel~
+armor CE 0 F AD
+5 5 8 8 0
+25 100 0 2 P
+0
+A
+19 2
+A
+13 5
+A
+2 -1
+A
+18 -1
+A
+12 -5
+V13
+8122
+symbol broken holy~
+a broken holy symbol~
+A broken holy symbol glows with unholy light.~
+~
+iron~
+light ACE 0 F AO
+0 0 999 0 0
+10 20 4719 1 P
+0
+A
+13 10
+A
+17 5
+A
+12 10
+V13
+8123
+pants rotting~
+some rotting pants~
+A pair of pants rots here.~
+~
+cloth~
+armor CDES 0 F AF
+0 0 0 0 0
+10 0 4139 2 P
+0
+A
+19 1
+A
+14 -10
+A
+20 -3
+V13
+8124
+dagger broken~
+a broken dagger~
+A broken dagger sits in the dirt.~
+~
+steel~
+weapon 0 0 F AN
+dagger 2 5 2 0
+pierce~
+4 30 23 1 P
+0
+O pierce~
+V13
+8125
+bracer dented bronze~
+a dented bronze bracer~
+A bracer of dented bronze sits here.~
+~
+bronze~
+armor 0 0 F AM
+2 2 2 0 0
+3 20 903 1 P
+0
+A
+19 1
+A
+18 1
+V13
+8126
+iron rod stock rusted~
+a piece of rusted iron stock~
+A rusted rod of iron sits on the ground.~
+~
+iron~
+trash 0 0 F A
+0 0 0 0 0
+1 100 0 2 P
+0
+V13
+8127
+ring brass tarnished~
+a tarnished brass ring~
+A tarnished brass ring sits on the ground.~
+~
+brass~
+armor C 0 F AB
+2 2 2 0 0
+15 10 2385 0 P
+0
+A
+13 -5
+A
+12 15
+V13
+8128
+pike steel worn~
+a worn steel pike~
+A worn pike, forged of cold steel, is here.~
+~
+steel~
+weapon 0 0 0 AN
+spear 4 6 2 F
+pierce~
+20 170 714 3 P
+0
+A
+19 1
+O pierce~
+V13
+8129
+suit chainmail reddish~
+a suit of reddish chainmail~
+A torn chainmail suit, composed of reddish steel links, is here.~
+~
+steel~
+armor 0 0 0 A
+4 4 4 0 0
+20 200 4952 0 P
+0
+A
+1 2
+A
+13 15
+V13
+8130
+wand icy~
+an icy wand~
+A sleek blue wand, coated in ice, is here.~
+~
+aquamarine~
+wand 0 0 0 AO
+20 5 3 'iceblast' 0
+20 20 0 1 P
+0
+V13
+8131
+brooch amber tarnished~
+a tarnished amber brooch~
+A delicate brooch of golden amber, covered in a visible layer of grime, is here.~
+~
+amber~
+jewelry 0 0 0 AC
+0 0 0 0 0
+20 10 8074 1 P
+0
+A
+12 20
+A
+17 -5
+V13
+8132
+coif chainmail~
+a chainmail coif~
+A dusty coif of chainmail is here.~
+~
+iron~
+armor 0 0 0 AE
+4 4 4 0 0
+20 60 948 2 P
+0
+A
+19 1
+A
+18 1
+V13
+8133
+flail weathered iron~
+a weathered iron flail~
+A long flail, made of weathered iron, is here.~
+~
+iron~
+weapon 0 0 0 AN
+flail 3 7 1 0
+beating~
+20 160 4303 2 P
+0
+A
+19 2
+O beating~
+V13
+8140
+stick withered wand~
+a withered stick~
+A withered stick sits here.~
+~
+wood~
+wand AGS 0 0 AO
+15 4 4 'parch' 0
+10 10 400 1 P
+0
+V13
+8141
+scroll golden-leafed golden leaf~
+a golden-leafed scroll~
+A golden-leafed scroll is here.~
+~
+parchment~
+scroll 0 0 0 A
+1 'create spring' '' '' ''
+11 5 0 1 P
+0
+E
+scroll~
+The scroll depicts a flowing spring, encircled by mystic writing.  
+~
+V13
+8142
+vial potion deep blue liquid clear~
+a vial of deep blue liquid~
+A clear vial filled with deep blue liquid is here.~
+~
+glass~
+potion S 0 0 AO
+5 'cure light' 'giant strength' '' ''
+5 10 400 1 P
+0
+V13
+8149
+dagger~
+dagger~
+A dagger lies here.~
+~
+unknown~
+weapon 0 0 0 AN
+dagger 2 10 -1 0
+hit~
+0 80 42 1 P
+0
+O hit~
+V13
+8150
+desk cracked blackened weathered large~
+a cracked and blackened desk~
+A large black desk, weathered and cracked with age, stands against the wall.~
+~
+unknown~
+container 0 0 0 0
+10 ABCD 0 3 0
+35 0 0 4 P
+0
+E
+large~
+The desk drawer is wedged shut, locking the contents in.  It looks as if
+you could pry the drawer open.  
+~
+E
+blackened~
+The desk drawer is wedged shut, locking the contents in.  It looks as if
+you could pry the drawer open.  
+~
+E
+cracked~
+The desk drawer is wedged shut, locking the contents in.  It looks as if
+you could pry the drawer open.  
+~
+E
+black~
+The desk drawer is wedged shut, locking the contents in.  It looks as if
+you could pry the drawer open.  
+~
+E
+desk~
+The desk drawer is wedged shut, locking the contents in.  It looks as if
+you could pry the drawer open.  
+~
+>verb_prog pry drawer~
+~
+|
+V13
+8151
+desk cracked blackened weathered large~
+a cracked and blackened desk~
+A large black desk, weathered and cracked with age, stands against the wall.~
+~
+unknown~
+container 0 0 0 0
+100 A 0 100 0
+0 0 0 4 P
+0
+V13
+8152
+femur bone undead child~
+the femur bone of an undead child~
+A small, yellowed femur bone lies here.~
+~
+bone~
+trash 0 0 0 AO
+0 0 0 0 0
+10 30 0 0 P
+0
+V13
+8158
+lamp~
+a lampshade~
+(no description)~
+~
+unknown~
+trash 0 0 0 AE
+0 0 0 0 0
+0 0 0 2 P
+0
+V13
+8166
+ring ac~
+a ring of ac~
+A ring of AC is here.~
+~
+unknown~
+trash 0 0 0 AB
+0 0 0 0 0
+0 0 649176 2 P
+0
+A
+17 -200
+V13
+8190
+hot tub~
+the hot tub~
+An inviting hot tub is here.~
+~
+unknown~
+furniture 0 0 0 A
+0 0 0 0 0
+0 0 0 2 P
+0
+V13
+8191
+potion gate testing test~
+potion of testing gate~
+Potion.~
+~
+unknown~
+potion 0 0 0 AO
+30 'gate' 'ghost' 'ghost' 'ghost'
+50 0 0 1 P
+0
+V13
+8192
+blessing fob~
+blessing fob~
+A blessing fob.~
+~
+unknown~
+trash d 0 0 A
+0 0 0 0 0
+60 0 0 0 P
+0
+>rand_prog 100~
+mpechoaround $o $O is bathed in golden radiance!
+  mpechoat $o You are bathed in golden radiance!
+  mpechoat $o You feel more protected.
+  mpechoat $o You feel stronger.
+  mpechoat $o You feel more resistant to spells.
+  mpaddaffect $o 769 53 10 17 -200 0 A \@The Armor of the Gods\@
+  mpaddaffect $o 769 53 10 13 200 0 A \@The Armor of the Gods\@
+  mpaddaffect $o 769 53 10 24 -20 0 A \@The Armor of the Gods\@
+  mpgrant $o 200 0 0
+  mppurge self
+~
+|
+V13
+8193
+vial feline sweetener~
+a vial of feline sweetener~
+A vial of feline sweetener is here.~
+~
+unknown~
+potion 0 0 0 AO
+60 'charm person' 'ghost' 'ghost' 'ghost'
+0 0 0 0 P
+0
+V13
+8194
+voidgolem~
+a voidgolem fob~
+Void golem.~
+~
+cloth~
+trash d 0 0 AS
+0 0 0 0 0
+0 0 0 2 P
+0
+A
+2 -5
+A
+1 -5
+A
+14 -300
+A
+12 -600
+A
+13 -500
+>fight_prog 20~
+mpechoat $o Tendrils of void shoot from your hands!
+  mpechoaround $o Tendrils of void shoot from $O\@s hands!
+  mpcast 50 50
+
+~
+>rand_prog 100~
+if name($o) == Jidriln
+  mpstring char jidriln short Jidriln the Void Golem
+  mpstring char jidriln long A horrifying creature of steel and void, in the shape of a caladaran, stands before you.
+endif
+if name($o) == Biezkul
+  mpstring char biezkul short Biezkul the Void Golem
+  mpstring char biezkul long A horrifying creature of steel and void, in the shape of a shuddeni, stands before you.
+endif
+if isbitset($o) == 8194
+else
+  mpbitset $o 8194 1
+  mpechoat $o You are suddenly seized by a wracking pain, as tendrils of darkness suddenly explode out of your flesh.
+  mpechoat $o The tendrils expand, devouring your mortal body in an agonizing chill.
+  mpechoat $o Your flesh is replaced with cold, blackened steel. Regularly spaced gaps in the steel show nothing but blackest void.
+  mpechoat $o Beyond the numbing pain, a more subtle shift seems to occur, as what is left of your soul seems to shrivel that much more.
+endif
+
+~
+|
+V13
+8195
+spear foobar~
+the Spear of Iandir~
+The Spear of Iandir is here.~
+~
+unknown~
+weapon f 0 0 AN
+spear 1000 5 10 F
+divine power~
+65 100 473931393 3 P
+0
+A
+18 1100
+A
+19 1100
+O divine power~
+V13
+8196
+antidag anti dag~
+antidag~
+Antidag.~
+~
+unknown~
+armor AB 0 0 AB
+0 0 0 0 0
+50 0 0 0 P
+0
+A
+19 -8000
+A
+18 -1000
+A
+19 -1000
+V13
+8197
+potion big~
+a potion of zgegshattershieldwasafuckedspell~
+A big potion is here.~
+~
+steel~
+potion AGMP 0 0 A
+50 'painful thoughts' '' '' ''
+55 90 0 1 P
+0
+V13
+8198
+nothing~
+unused~
+Unused~
+~
+cloth~
+treasure GPa 0 0 AK
+0 0 0 0 0
+51 40 5000 2 P
+1
+A
+31 5
+A
+12 50
+A
+13 15
+E
+robes~
+These robes are thick and warm, but equally somber and decidely serious. 
+They are generally of the type and cut favored by wandering caladaran sages,
+but even more plain.  The only sign that the robes are more than they appear
+are a band of potent runes, sewn around the inside hem.  
+~
+E
+somber~
+These robes are thick and warm, but equally somber and decidely serious. 
+They are generally of the type and cut favored by wandering caladaran sages,
+but even more plain.  The only sign that the robes are more than they appear
+are a band of potent runes, sewn around the inside hem.  
+~
+E
+sage~
+These robes are thick and warm, but equally somber and decidely serious. 
+They are generally of the type and cut favored by wandering caladaran sages,
+but even more plain.  The only sign that the robes are more than they appear
+are a band of potent runes, sewn around the inside hem.  
+~
+>wear_prog 100~
+opecho HOOOO
+~
+>rand_prog 100~
+opset char $o hunger 100
+opset char $o thirst 100
+~
+|
+V13
+8199
+dag dagger~
+dag~
+Dag.~
+~
+gem~
+weapon A 0 0 AN
+dagger 8 7 3 0
+grep~
+40 5 3380000 1 P
+666
+A
+9 5
+A
+13 100
+O grep~
+>take_prog dag~
+mpecho YOW
+~
+>verb_prog drink~
+if objtargetcarry()
+ mpinterpret $n $x
+ if isheld($n)
+ else
+  mpechoat $n As you sip the dagger, you feel more healthy!
+  mpgrant $n 30 0 0
+endif
+   opverbstop
+else
+ mpnextinterp
+endif
+~
+>speech_prog la~
+mpget char $n level 0
+mpvalueset lvl $0
+mpecho setting lvl to %lvl
+  if isfighting($n)
+    mpcast 2 %lvl $t
+  else
+    mpcast 2 %lvl $n
+  endif
+
+~
+>speech_prog boo~
+opecho BOO!
+opecho BOO!
+mpecho Booooo
+mpecho I was saying Boooo-urns!
+~
+|
+#0
+
+
+
+#ROOMS
+#8192
+A Barren Avenue~
+This stretch of street is relatively free of filth and rubble.  However,
+the buildings are still in ruins, and the scent of decay is everywhere.  To
+the east and west lie impassable ruins.  
+~
+~
+1
+0 0 1
+D0
+The barren avenue continues.
+~
+~
+0 0 8194
+D2
+The barren avenue continues.
+~
+~
+0 0 8190
+W 5 0 0
+Z 5 5
+S
+#8193
+A Mouldering Building~
+The inside of this building has been claimed by rot and mold.  Whatever
+furnishings once existed are now represented by a carpet of rotting wood,
+and shattered pottery lies everywhere.  
+~
+~
+1
+0 8 0
+D1
+The barren avenue continues.
+~
+~
+0 0 8194
+W 5 0 0
+Z 5 5
+S
+#8194
+A Barren Avenue~
+This stretch of street is relatively free of filth and rubble.  However,
+the buildings are still in ruins, and the scent of decay is everywhere.  To
+the east is an impassable ruin, and a mouldering building lies to the west. 
+A crumbling intersection lies to the north.  
+~
+~
+1
+0 0 1
+D0
+You see a crumbling intersection.
+~
+~
+0 0 8195
+D2
+The barren avenue continues.
+~
+~
+0 0 8192
+D3
+A mouldering building lies here.
+~
+~
+0 0 8193
+W 5 0 0
+Z 5 5
+S
+#8195
+A Crumbling Intersection~
+A large crumbling fountain marks this intersection.  Destroyed buildings
+are on all sides.  To the north, a street leads to a blackened, sinister
+palace.  To the east and west runs a crumbling street.  A barren avenue runs
+south.  
+~
+~
+1
+0 0 1
+D0
+The street continues to the palace.
+~
+~
+0 0 8221
+D1
+A crumbling street heads east.
+~
+~
+0 0 8179
+D2
+A barren avenue runs south from here.
+~
+~
+0 0 8194
+D3
+A crumbling street heads west.
+~
+~
+0 0 8196
+W 5 0 0
+Z 5 5
+S
+#8196
+A Crumbling Street~
+This section of city street makes its way between rows of crumbling
+ruins. The broken cobblestones shift and clatter beneath your feet, and a
+stench-filled breeze blows from the east.
+~
+~
+1
+0 0 1
+D1
+A crumbling intersection is here.
+~
+~
+0 0 8195
+D3
+The crumbling street continues.
+~
+~
+0 0 8197
+W 5 0 0
+Z 5 5
+S
+#8197
+A Crumbling Street~
+This section of city street makes its way between rows of crumbling
+ruins.  The broken cobblestones shift and clatter beneath your feet, and a
+stench-filled breeze blows from the east.  A ruined building stands to the
+north.  
+~
+~
+1
+0 0 1
+D0
+A ruined building stands here.
+~
+~
+0 0 8198
+D1
+The crumbling street continues.
+~
+~
+0 0 8196
+D3
+The crumbling street continues.
+~
+~
+0 0 8199
+W 5 0 0
+Z 5 5
+S
+#8198
+A Ruined Store~
+Where once there was a prosperous store, there is now gloom and decay. 
+Broken shelves lay piled upon the floor, and spoiled goods litter the room. 
+The crumbling street lies to the south.  
+~
+~
+1
+0 8 0
+D2
+A crumbling street lies here.
+~
+~
+0 0 8197
+W 5 0 0
+Z 5 5
+S
+#8199
+A Crumbling Street~
+This section of city street makes its way between rows of crumbling
+ruins.  The broken cobblestones shift and clatter beneath your feet, and a
+stench-filled breeze blows from the east.  An ancient temple stands to the
+south.  
+~
+~
+1
+0 0 1
+D1
+The crumbling street continues.
+~
+~
+0 0 8197
+D2
+A ruined temple lies south.
+~
+~
+0 0 8201
+D3
+The crumbling street continues.
+~
+~
+0 0 8206
+W 5 0 0
+Z 5 5
+S
+#8200
+The Ruins of An Ancient Chapel~
+Cracked and mold-covered walls sag inward in this ancient chapel.  Broken
+religious symbols and defiled scriptures lie piled in the northwest corner,
+and pews have been chopped into pieces.  To the south is a black door.  
+~
+~
+1
+0 8 0
+D1
+The temple ruins continue.
+~
+~
+0 0 8201
+D2
+The temple ruins continue.
+~
+~
+3 0 8203
+W 5 0 0
+Z 5 5
+S
+#8201
+The Ruins of an Ancient Temple~
+A fountain filled with murky water decorates the blasted entrance hall to
+this ancient temple.  Filth coats the walls and floor, and torn tapestries
+rot on the floor.  To the east you see a temple altar, and the temple
+continues to the west and south.  
+~
+~
+1
+0 8 0
+D0
+A crumbling street lies north.
+~
+~
+0 0 8199
+D1
+You see a shattered black altar.
+~
+~
+0 0 8202
+D2
+The temple ruins continue.
+~
+~
+0 0 8204
+D3
+You see a defiled chapel.
+~
+~
+0 0 8200
+W 5 0 0
+Z 5 5
+S
+#8202
+By the Ancient Temple Altar~
+The cracked walls of this temple room are coated with filth and mold. 
+Standing in the center is an altar carved from black stone, the top third of
+which has been shattered by some great blow.  Shards of black stone litter
+the room, and the floor all around the altar is heavily damaged.  
+~
+~
+1
+0 9 0
+D2
+The ceiling to the south appears to be collapsing.
+~
+~
+0 0 8205
+D3
+The temple ruins continue.
+~
+~
+0 0 8201
+W 5 0 0
+Z 5 5
+S
+#8203
+A Room in an Ancient Temple~
+This room is filled with rotting, mold-covered priests\@ robes, tattered
+books of scripture, and various broken holy items.  The smell of rot is
+overpowering.  
+~
+~
+1
+0 8 0
+D0
+You see a defiled chapel.
+~
+~
+3 0 8200
+D1
+The temple ruins continue.
+~
+~
+3 0 8204
+W 5 0 0
+Z 5 5
+S
+#8204
+The Ruins of an Ancient Temple~
+The floor in this section of the temple is covered with debris from
+various collapses.  It appears that a hallway once lead south, but it is now
+blocked by a pile of rock.  To the west, a black door leads into a temple
+room.  
+~
+~
+1
+0 8 0
+D0
+The temple ruins continue.
+~
+~
+0 0 8201
+D1
+The ceiling to the east appears to be collapsing.
+~
+~
+0 0 8205
+D3
+The temple ruins continue.
+~
+~
+3 0 8203
+W 5 0 0
+Z 5 5
+S
+#8205
+The Ruins of an Ancient Temple~
+The damage to this section of the temple is severe, and sections of the
+ceiling look prone to collapse at any moment.  Large piles of stone mark
+previous collapses, and the walls sag inward.  
+~
+~
+1
+0 8 0
+D0
+The temple ruins continue.
+~
+~
+0 0 8202
+D3
+The temple ruins continue.
+~
+~
+0 0 8204
+W 5 0 0
+Z 5 5
+S
+#8206
+A Crumbling Street~
+This section of city street makes its way between rows of crumbling
+ruins.  The broken cobblestones shift and clatter beneath your feet, and a
+stench-filled breeze blows from the east.  A ruined building stands to the
+north.  
+~
+~
+1
+0 0 1
+D0
+A ruined building stands here.
+~
+~
+0 0 8207
+D1
+The crumbling street continues.
+~
+~
+0 0 8199
+D3
+The crumbling street continues.
+~
+~
+0 0 8209
+W 5 0 0
+Z 5 5
+S
+#8207
+A Ruined Building~
+The inside of this building has been claimed by rot and mold.  Whatever
+furnishings once existed are now represented by a carpet of rotting wood,
+and shattered pottery lies everywhere.  
+~
+~
+1
+0 8 0
+D2
+The crumbling street lies south.
+~
+~
+0 0 8206
+W 5 0 0
+Z 5 5
+S
+#8208
+A Buried Structure~
+This building has been buried in the stones of other collapses.  The
+windows and north exit reveal only piles of wood and rock.  You can exit
+through the wall to the west.  
+~
+~
+1
+0 8 0
+D3
+A hole in the wall leads west.
+~
+~
+0 0 8210
+W 5 0 0
+Z 5 5
+S
+#8209
+A Crumbling Street~
+This section of city street makes its way between rows of crumbling
+ruins.  The broken cobblestones shift and clatter beneath your feet, and a
+stench-filled breeze blows from the east.  
+~
+~
+1
+0 0 1
+D1
+The crumbling street continues.
+~
+~
+0 0 8206
+D3
+The crumbling street continues.
+~
+~
+0 0 8211
+W 5 0 0
+Z 5 5
+S
+#8210
+A Destroyed Building~
+This building has been torn apart by some calamity.  The front wall is
+completely gone, and sections of the other walls are missing.  Any
+furnishings are buried beneath the remains of the wall.  A large hole in the
+east wall leads to another building.  
+~
+~
+1
+0 8 0
+D1
+You can enter another building through the destroyed east wall.
+~
+~
+0 0 8208
+D2
+The crumbled street continues.
+~
+~
+0 0 8211
+W 5 0 0
+Z 5 5
+S
+#8211
+A Crumbling Street~
+This section of city street makes its way between rows of crumbling
+ruins.  The broken cobblestones shift and clatter beneath your feet, and a
+stench-filled breeze blows from the east.  
+~
+~
+1
+0 0 1
+D0
+A destroyed building lies to the north.
+~
+~
+0 0 8210
+D1
+~
+~
+0 0 8209
+D2
+A ruined home lies here.
+~
+~
+0 0 8212
+D3
+The crumbling street intersects with another street.
+~
+~
+0 0 8217
+W 5 0 0
+Z 5 5
+S
+#8212
+A Ruined House~
+This house if filled with decimated reminders of a comfortable home life.
+A broken table sits in the middle of the room, covered with the spoiled
+remnants of an ancient meal.  To the west, a door exits to the street, and
+to the north, an empty doorway lets in the stench of the city.  
+~
+~
+1
+0 8 0
+D0
+The crumbling street continues.
+~
+~
+0 0 8211
+D3
+The door leads to the street.
+~
+~
+3 0 8216
+W 5 0 0
+Z 5 5
+S
+#8213
+A Dead End in a Burned Street~
+Burned-out buildings line this blackened street, and ashes coat the
+cobblestones.  Charred timbers make the progress slow, and the death-stench
+mingles with the ash.  The street ends abruptly in a huge pile of rubble.  
+~
+~
+1
+0 0 1
+D1
+The burned out street continues.
+~
+~
+0 0 8214
+W 5 0 0
+Z 5 5
+S
+#8214
+A Burned Street~
+Burned-out buildings line this blackened street, and ashes coat the
+cobblestones.  Charred timbers make the progress slow, and the death-stench
+mingles with the ash.  The street turns to the west here.  
+~
+~
+1
+0 0 1
+D0
+The burned street continues.
+~
+~
+0 0 8215
+D3
+A dead end on the burned street.
+~
+~
+0 0 8213
+W 5 0 0
+Z 5 5
+S
+#8215
+A Burned Street~
+Burned-out buildings line this blackened street, and ashes coat the
+cobblestones.  Charred timbers make the progress slow, and the death-stench
+mingles with the ash.  
+~
+~
+1
+0 0 1
+D0
+The burned street continues.
+~
+~
+0 0 8216
+D2
+The burned street continues.
+~
+~
+0 0 8214
+W 5 0 0
+Z 5 5
+S
+#8216
+A Burned Street~
+Burned-out buildings line this blackened street, and ashes coat the
+cobblestones. Charred timbers make the progress slow, and the death-stench
+mingles with the ash.
+~
+~
+1
+0 0 1
+D0
+The burned street continues.
+~
+~
+0 0 8217
+D1
+~
+~
+3 0 8212
+D2
+The burned street continues.
+~
+~
+0 0 8215
+W 5 0 0
+Z 5 5
+S
+#8217
+A Burned Intersection~
+The crumbling street dead-ends in a burned-out section of the city. 
+Blackened buildings line the street to the north and south, and ashes lie
+everywhere.  The smell of fire, however, is long gone, and the stink of
+decay is ever-present.  
+~
+~
+1
+0 0 1
+D0
+A burned street continues.
+~
+~
+0 0 8218
+D1
+~
+~
+0 0 8211
+D2
+A burned street continues.
+~
+~
+0 0 8216
+W 5 0 0
+Z 5 5
+S
+#8218
+A Burned Street~
+Burned-out buildings line this blackened street, and ashes coat the
+cobblestones.  Charred timbers make the progress slow, and the death-stench
+mingles with the ash.  
+~
+~
+1
+0 0 1
+D0
+The burned street continues.
+The burned street continues.
+~
+~
+0 0 8219
+D2
+The burned street continues.
+The burned street continues.
+~
+~
+0 0 8217
+W 5 0 0
+Z 5 5
+S
+#8219
+A Burned Street~
+Burned-out buildings line this blackened street, and ashes coat the
+cobblestones.  Charred timbers make the progress slow, and the death-stench
+mingles with the ash.  The road to the north is blocked by a collapsed ruin,
+and another street heads east.  
+~
+~
+1
+0 0 1
+D1
+A dead end.
+~
+~
+0 0 8220
+D2
+The burned street continues.
+~
+~
+0 0 8218
+W 5 0 0
+Z 5 5
+S
+#8220
+A Dead End on a Side Street~
+This small side street ends abruptly in a large pile of rubble.  Burned
+ruins block the path to the north and south, and the burned road lies to the
+west.  
+~
+~
+1
+0 0 1
+D3
+A burned street lies here.
+~
+~
+0 0 8219
+W 5 0 0
+Z 5 5
+S
+#8221
+The Street to the Palace~
+This street leads up an incline to the blackened, rotting palace to the
+north.  The stink of decay worsens noticeably as you near the evil keep.  
+~
+~
+1
+0 0 1
+D0
+The street heads north to the palace.
+~
+~
+0 0 8222
+D2
+The street continues away from the palace.
+~
+~
+0 0 8195
+W 5 0 0
+Z 5 5
+S
+#8222
+The Street to the Palace~
+This street leads up an incline to the blackened, rotting palace to the
+north.  The stink of decay worsens noticeably as you near the evil keep.  
+~
+~
+1
+0 0 1
+D0
+The street continues toward the palace.
+~
+~
+0 0 8223
+D2
+The street heads north to the palace.
+~
+~
+0 0 8221
+W 5 0 0
+Z 5 5
+S
+#8223
+The Street to the Palace~
+This street leads up an incline to the blackened, rotting palace to the
+north. The stink of decay worsens noticeably as you near the evil keep.  
+~
+~
+1
+0 0 1
+D0
+The street continues to the palace.
+~
+~
+0 0 8225
+D2
+The street leads away from the palace.
+~
+~
+0 0 8222
+W 5 0 0
+Z 5 5
+S
+#8224
+A Rotting Guardhouse~
+Mold and mildew have overtaken this ancient guardhouse.  Broken pole arms
+lie on the floor, and ancient rotting uniforms hang on the walls.  The stone
+walls glisten with fungus.  
+~
+~
+1
+0 8 1
+D1
+The road to the palace is there.
+~
+~
+0 0 8225
+W 5 0 0
+Z 5 5
+S
+#8225
+Before the Palace Gates~
+You stand just south of two enormous black doors set in the wall of the
+palace.  The aura of death is all around, and the smell is nearly
+unbearable.  Two guardhouses lie to the east and west, and the palace gates
+are to the north.  
+~
+~
+1
+0 0 1
+D0
+The palace gates are here.
+~
+~
+0 0 8227
+D1
+A rotting guardhouse lies here.
+~
+~
+0 0 8226
+D2
+The street continues away from the palace.
+~
+~
+0 0 8223
+D3
+A rotting guardhouse lies here.
+~
+~
+0 0 8224
+W 5 0 0
+Z 5 5
+S
+#8226
+A Rotting Guardhouse~
+Mold and mildew have overtaken this ancient guardhouse.  Broken pole arms
+lie on the floor, and ancient rotting uniforms hang on the walls.  The stone
+walls glisten with fungus.  
+~
+~
+1
+0 8 1
+D3
+The road to the palace lies here.
+~
+~
+0 0 8225
+W 5 0 0
+Z 5 5
+S
+#8227
+The Palace Gates~
+You stand before a towering palace, constructed of crumbling black stone.
+Two enormous black doors stand barring the entrance, and an unearthly odor
+comes from inside, noticeable even over the stench of the city.  The
+lichen-coated black walls seem to radiate evil.  
+~
+~
+1
+0 0 1
+D0
+The gates lead inside the palace.
+~
+~
+3 0 8228
+D2
+~
+~
+0 0 8225
+W 5 0 0
+Z 5 5
+S
+#8100
+The Necromantium~
+This room is filled with rotting, withered body parts, flasks of ichor,
+and other unspeakable necromantic items.  You spy a book laying on a table,
+with the title \#How to Create a _Real_ Undead Area, None of This Arboria
+Crap\#.  
+~
+~
+1
+0 557580 0
+W 5 0 0
+Z 5 5
+S
+#8101
+Before the Ruined Gates~
+You stand before the twisted and ruined gates of this city.  Formerly
+imposing, the huge doors have been shattered by some unknown power.  The
+fetid stench of decay pours out of the city.  You can follow the crumbling
+wall to the east or west, or enter the city to the north.  To the south, a
+shelf of land drops to reveal a vast, dead plateau.  
+~
+~
+1
+0 0 1
+E
+gate~
+The ruined gates appear to have once been mighty guardians of the city,
+but now stand shattered.  
+~
+E
+wall~
+The crumbling city wall appears to have once been a mighty barrier, but
+now sits in ruins.  
+~
+D0
+You see a desolated city street.
+~
+~
+0 0 8105
+D1
+You can follow the city wall.
+~
+~
+0 0 8103
+D3
+You can follow the city wall.
+~
+~
+0 0 8102
+D5
+~
+~
+0 0 3199
+W 5 0 0
+Z 5 5
+S
+#8102
+Before the Crumbling Wall~
+Following the crumbling city wall west, you come to a point where the
+damage is so advanced that you can actually pass through the wall to the
+north.  The rubble of another collapse blocks your way to the west, and the
+stench of death continues to fill your nostrils.  To the south, a shelf of
+land drops to reveal a vast, dead plain.  
+~
+~
+1
+0 0 1
+D0
+You see a ruined guard house.
+~
+~
+0 0 8104
+D1
+~
+~
+0 0 8101
+W 5 0 0
+Z 5 5
+S
+#8103
+Before the Crumbling Wall~
+You stand before the crumbling walls of a ruined city.  Many stones are
+broken or missing, but this section of wall seems fairly sound.  To the
+south, the edge of a plateau drops to reveal a vast, dead plain.  West, a
+ruined gate leads into the city, and east the plateau continues.  
+~
+~
+1
+0 0 1
+E
+wall~
+The crumbling city wall appears to have once been a mighty barrier, but
+now sits in ruins. 
+~
+D1
+~
+~
+0 0 3091
+D3
+You see a ruined city gate.
+~
+~
+0 0 8101
+D5
+~
+~
+0 0 3089
+W 5 0 0
+Z 5 5
+S
+#8104
+A Decaying Guardhouse~
+Once a guard house, this room is now a picture of decay.  Broken
+furniture lies in a corner, and shattered beer mugs decorate the floor.  A
+large hole in the city wall permits exit south, and the city streets are to
+the east.  
+~
+~
+1
+0 8 1
+D1
+You see a desolated city street.
+~
+~
+0 0 8105
+D2
+You can pass through the crumbled wall at this point.
+~
+~
+0 0 8102
+W 5 0 0
+Z 5 5
+S
+#8105
+Inside the Ruined Gates~
+The stench continues to fill your nostrils as you enter the city itself,
+and the signs of ruin are everywhere.  An ancient and broken cart lies
+against one wall, and the cobblestones of the street are shattered or
+missing.  To the east and west you see rotting guard houses, and to the
+north the street continues.  
+~
+~
+1
+0 0 1
+D0
+You see a desolated city street.
+~
+~
+0 0 8107
+D1
+You see a rotting guard house.
+~
+~
+0 0 8106
+D2
+You see the ruined city gate.
+~
+~
+0 0 8101
+D3
+You see a rotting guard house.
+~
+~
+0 0 8104
+W 5 0 0
+Z 5 5
+S
+#8106
+A Decaying Guardhouse~
+Once a city guardhouse, this stone-walled room is now a picture of decay.
+A ruined desk sits in one corner, abandoned and filth-coated.  A thick layer
+of dust coats the floor and walls.  To the west is a desolated city street. 
+~
+~
+1
+0 8 1
+D3
+You see a desolated city street.
+~
+~
+0 0 8105
+W 5 0 0
+Z 5 5
+S
+#8107
+A Desolated City Street~
+Piles of rubble, broken carts and wagons, and other debris fill this
+desolated city street.  To the east and west are the ruins of collapsed
+buildings, now impassable.  The stones of the street are cracked, many
+having shattered completely.  The street continues to the north, winding
+through the remains of ruined buildings.  To the south, the remains of an
+enormous gate tower over the street.  
+~
+~
+1
+0 0 1
+D0
+You see a desolated city street.
+~
+~
+0 0 8109
+D2
+You see a ruined city gate.
+~
+~
+0 0 8105
+W 5 0 0
+Z 5 5
+S
+#8108
+A Ruined House~
+This house if filled with decimated reminders of a comfortable home life.
+A broken table sits in the middle of the room, covered with the spoiled
+remnants of an ancient meal.  The floor is strewn with rotted pieces of wood
+and other less identifiable items.  The unspeakable stink of the city
+permeates the house, seeping in through cracks in the stone walls.  
+~
+~
+1
+0 9 0
+D1
+You see a desolated street.
+~
+~
+0 0 8109
+W 5 0 0
+Z 5 5
+S
+#8109
+A Desolated City Street~
+The desolated street continues to wind its way through the destruction. 
+Ruined buildings line the street on both sides.  The air of the city is
+perfectly still, and the all-pervading stench of death fills your every
+breath.  To the west you see a rotting house, and east of the street are
+more impassable ruins.  
+~
+~
+1
+0 0 1
+D0
+The desolated street continues.
+~
+~
+0 0 8111
+D2
+The desolated street continues.
+~
+~
+0 0 8107
+D3
+You see a ruined house.
+~
+~
+0 0 8108
+W 5 0 0
+Z 5 5
+S
+#8110
+A Rotting House~
+While the structure is relatively intact, the interior of this house
+shows signs of massive decay.  Ragged curtains befoul the windows, and
+shattered furniture adorns the floor.  The walls of the house are crumbling
+stones, sealed by cracked and deteriorating mortar.  A battered door to the
+east leads into the desolated street.  
+~
+~
+1
+0 8 0
+D1
+You see a desolated street.
+~
+~
+3 0 8111
+W 5 0 0
+Z 5 5
+S
+#8111
+A Desolated City Street~
+The desolated street continues to wind its way through the destruction. 
+Ruined buildings line the street on both sides.  The air of the city is
+perfectly still, and the all-pervading stench of death fills your every
+breath.  To the east and west are the doors of relatively intact houses.  
+~
+~
+1
+0 0 1
+D0
+The desolated city street continues.
+~
+~
+0 0 8113
+D1
+A rotting house.
+~
+~
+3 0 8112
+D2
+The desolated city street continues.
+~
+~
+0 0 8109
+D3
+A rotting house.
+~
+~
+3 0 8110
+W 5 0 0
+Z 5 5
+S
+#8112
+A Rotting House~
+While the structure is relatively intact, the interior of this house
+shows signs of massive decay.  Ragged curtains befoul the windows, and
+shattered furniture adorns the floor.  The walls of the house are crumbling
+stones, sealed by cracked and deteriorating mortar.  A battered door to the
+west leads into the desolated street.  
+~
+~
+1
+0 8 0
+D3
+You see a desolated city street.
+~
+~
+3 0 8111
+W 5 0 0
+Z 5 5
+S
+#8113
+A Desolated Street~
+Piles of rubble, broken carts and wagons, and other debris fill this
+desolated city street.  The cobblestones of the streets are more or less
+intact, but a few sections have been torn up entirely.  To either side of
+the street destroyed buildings sit, rotting on their ancient foundations. 
+The street continues to the south, and to the north is a desolated
+intersection.  The ruin to the east appears to have been a store at one
+time.  
+~
+~
+1
+0 0 1
+D0
+The street continues north to a desolated intersection.
+~
+~
+0 0 8115
+D1
+You see a decaying store.
+~
+~
+0 0 8114
+D2
+The desolated street continues south.
+~
+~
+0 0 8111
+W 5 0 0
+Z 5 5
+S
+#8114
+A Decaying Store~
+Where once there was a prosperous store, there is now gloom and decay. 
+Broken shelves lay piled upon the floor, and spoiled goods litter the room. 
+The wooden walls of the building are splintered and rotting, one more
+embodiment of the corruption all around.  The shattered doorframe leads to
+the street through the west wall.  
+~
+~
+1
+0 8 0
+D3
+You see the desolated street.
+~
+~
+0 0 8113
+W 5 0 0
+Z 5 5
+S
+#8115
+A Desolated Street~
+The desolated city street winds its way through the ruins of Gogoth,
+interrupted by piles of rubble, broken carts and wagons, and other debris. 
+Shattered buildings line the ancient avenue, standing in various states of
+collapse.  To the east and west lie completely destroyed houses, impassible.
+To the north is a desolated intersection, and the street continues south.  
+~
+~
+1
+0 0 1
+D0
+A crumbling fountain marks an intersection.
+~
+~
+0 0 8116
+D2
+The desolated street continues.
+~
+~
+0 0 8113
+W 5 0 0
+Z 5 5
+S
+#8116
+A Desolated Intersection~
+A foul wind whips through this intersection, the crossing of two ancient
+and ruined city streets.  East and west, the paved remnants of streets lead
+through the debris.  To the south, a desolated street leads to the gates of
+Gogoth, and a stark avenue leads north into the heart of the city.  
+~
+~
+1
+0 0 1
+D0
+A stark, bare avenue leads north.
+~
+~
+0 0 8181
+D1
+A ruined street leads east.
+~
+~
+0 0 8128
+D2
+A desolated street heads south.
+~
+~
+0 0 8115
+D3
+The street to the west is barely passable through the rubble.
+~
+~
+0 0 8117
+W 5 0 0
+Z 5 5
+S
+#8117
+A Rubble-Filled Street~
+A rubble-filled street winds to the east and west, picking its way
+through the remains of ancient destroyed buildings.  The buildings to the
+north and south have collapsed, making the street barely passable through
+the wreckage.  A foul wind blows from the east, carrying the stench of
+death.  
+~
+~
+1
+0 0 1
+D1
+You see a desolated intersection.
+~
+~
+0 0 8116
+D3
+The rubble-filled street continues.
+~
+~
+0 0 8118
+W 5 0 0
+Z 5 5
+S
+#8118
+A Rubble-Filled Street~
+The rubble-filled street continues east and west, twisting through the
+wreckage.  Partially collapsed buildings to the north and south add to the
+debris, and the stench-filled wind continues to blow through the ruins of
+Gogoth.  
+~
+~
+1
+0 0 1
+D0
+A partially collapsed building of some sort.
+~
+~
+3 0 8122
+D1
+The rubble-filled street continues.
+~
+~
+0 0 8117
+D2
+A partially collapsed building of some sort.
+~
+~
+0 0 8119
+D3
+The rubble-filled street continues.
+~
+~
+0 0 8120
+W 5 0 0
+Z 5 5
+S
+#8119
+A Partially-Collapsed Building~
+The north wall of this building has completely collapsed, and the roof is
+sagging badly.  Stones and debris fill the floor, and there is no clue of
+the building\@s previous function.  Through the remains of the north wall, a
+fetid wind rushes into the building, and the rubble-filled street is
+visible.  
+~
+~
+1
+0 8 0
+D0
+The rubble-filled street continues.
+~
+~
+0 0 8118
+W 5 0 0
+Z 5 5
+S
+#8120
+A Rubble-Filled Street~
+The street continues to twist throught the rubble.  The front of the
+building to the north has collapsed, allowing entrance, and the building to
+the south is completely ruined.  East and west the street picks its way
+through piles of stone and debris.  
+~
+~
+1
+0 0 1
+D0
+The front of this building has collapsed.
+~
+~
+0 0 8121
+D1
+The rubble-filled street continues.
+~
+~
+0 0 8118
+D3
+The rubble-filled street continues.
+~
+~
+0 0 8123
+W 5 0 0
+Z 5 5
+S
+#8121
+A Partially-Collapsed Building~
+The east and south walls of this building have completely collapsed,
+filling the floor with rubble and debris.  Open to the street, the building
+is filled with the foul wind that permeates the city.  To the east, the
+collapsed wall allows entry to the adjacent building, and you may pick your
+way through the rubble to the south.  
+~
+~
+1
+0 0 1
+D1
+This wall has collapsed, allowing you to continue east.
+~
+~
+0 0 8122
+D2
+The building\@s front has collapsed, and the rubble-filled street continues.
+~
+~
+0 0 8120
+W 5 0 0
+Z 5 5
+S
+#8122
+A Partially-Collapsed Building~
+The west wall of this building has completely collapsed, filling the
+floor with rubble and stone debris.  The roof sags badly overhead, and the
+few remaining supports creak dangerously.  To the west, the collapse allows
+entry to the adjacent building.  A doorway leads south into the street.  
+~
+~
+1
+0 8 0
+D2
+The rubble-filled street continues.
+~
+~
+3 0 8118
+D3
+The wall on this side is completely collapsed, and you can continue west.
+~
+~
+0 0 8121
+W 5 0 0
+Z 5 5
+S
+#8123
+A Rubble-Filled Street~
+The street continues to twist through the rubble.  The building to the
+north is in complete ruin, and the building to the south has partially
+collapsed.  East and west, the stone-choked street leads through piles of
+debris.  A fetid wind blows over the city, carrying with it the stench of
+death.  
+~
+~
+1
+0 0 1
+D1
+The rubble-filled street continues.
+~
+~
+0 0 8120
+D2
+A partially-collapsed building.
+~
+~
+0 0 8124
+D3
+The rubble-filled street continues.
+~
+~
+0 0 8125
+W 5 0 0
+Z 5 5
+S
+#8124
+A Partially-Collapsed Smithy~
+This ancient building appears to have been a smithy at one point.  The
+crumbling walls are blackened by long-ago fires, and the rusting remains of
+a smith\@s equipment are strewn about.  A ruined forge sits at the south end,
+and rubble from the collapsed north wall covers the rest of the room.  
+~
+~
+1
+0 8 0
+D0
+The rubble-filled street continues.
+~
+~
+0 0 8123
+W 5 0 0
+Z 5 5
+S
+#8125
+The End of the Rubble-Filled Street~
+The street ends in a heap of stones that is surely impassable.  To the
+north, it looks like you could pick your way through this
+partially-collapsed building.  
+~
+~
+1
+0 0 1
+D0
+It looks like you can pick your way through the collapsed building to the north.
+~
+~
+0 0 8126
+D1
+The rubble-filled street continues.
+~
+~
+0 0 8123
+W 5 0 0
+Z 5 5
+S
+#8126
+A Collapsed Building~
+You stand amidst the rubble of a completely collapsed building, the
+destroyed walls forming heaps of stone all about.  It appears you can pick
+your way through to the west and south.  A stench-filled wind blows through.
+~
+~
+1
+0 8 0
+D2
+The rubble-filled street dead-ends in a pile of rocks.
+~
+~
+0 0 8125
+D3
+The building to the west has partially collapsed, and the roof doesn\@t look very stable.
+~
+~
+0 0 8127
+W 5 0 0
+Z 5 5
+S
+#8127
+A Collapsing Jewelry Store~
+You stand in a long-ruined jewelry store with crumbling stone walls.  The
+roof of the building appears quite unstable, prone to collapse at any
+moment.  Scattered about the floor are broken cases and chests, with various
+jewels spilling out.  To the east, a shattered wall allows entry to an
+adjacent building.  
+~
+~
+1
+0 8 0
+D1
+You can pick your way through the collapsed building to the east.
+~
+~
+0 0 8126
+W 5 0 0
+Z 5 5
+S
+#8128
+A Ruined Street~
+This section of street is almost completely ruined, the cobblestones torn
+up and scattered about.  A foul wind blows through this area, bringing with
+it the stench of decay.  To the north and south are completely collapsed
+buildings.  
+~
+~
+1
+0 0 1
+D1
+The ruined street continues.
+~
+~
+0 0 8129
+D3
+You see a desolated intersection.
+~
+~
+0 0 8116
+W 5 0 0
+Z 5 5
+S
+#8129
+A Dead-End On A Ruined Street~
+The ruined street ends abruptly, as the remains of a building block the
+way east.  Destroyed buildings stand to the north and south, and the ruined
+street continues to the west.  
+~
+~
+1
+0 0 1
+D0
+A destroyed store lies to the north.
+~
+~
+0 0 8131
+D2
+A destroyed building lies to the south.
+~
+~
+0 0 8130
+D3
+The ruined street continues.
+~
+~
+0 0 8128
+W 5 0 0
+Z 5 5
+S
+#8130
+A Ruined Building~
+The front of this building is completely gone, and the stench-filled wind
+whips through.  The remaining walls are covered with mold, and the east wall
+holds a relatively intact door.  
+~
+~
+1
+0 8 0
+D0
+The ruined street ends in a rubble pile.
+~
+~
+0 0 8129
+D1
+The door leads into another shattered building.
+~
+~
+3 0 8132
+W 5 0 0
+Z 5 5
+S
+#8131
+A Destroyed Building~
+The front of this building is completely gone, and the stench-filled wind
+whips through.  The remaining walls are covered with mold, and the floor is
+filled with debris.  
+~
+~
+1
+0 8 0
+D2
+The ruined street ends at a rubble pile.
+~
+~
+0 0 8129
+W 5 0 0
+Z 5 5
+S
+#8132
+A Destroyed Building~
+The north entrance to this building is completely buried by rubble, the
+remains of some ancient catastrophe.  The east wall has fallen, and a door
+to the west leads to another building.  
+~
+~
+1
+0 8 0
+D1
+To the east is another destroyed building.
+~
+~
+0 0 8133
+D3
+To the west is another destroyed building.
+~
+~
+3 0 8130
+W 5 0 0
+Z 5 5
+S
+#8133
+A Destroyed Tavern~
+This building contains the remnants of a tavern.  Broken tables crowd the
+floor, and shattered bottles lie everywhere.  The mold and decay produce a
+fetid stink that fills your breath.  
+~
+~
+1
+0 8 0
+D0
+To the north, you can return to the ruined street.
+~
+~
+0 0 8134
+D3
+To the west lies another ruined building.
+~
+~
+0 0 8132
+W 5 0 0
+Z 5 5
+S
+#8134
+A Ruined Street~
+The street to the west ends suddenly in a heap of rubble.  To the north,
+a collapsed building blocks the way, and a ruined tavern is to the south.  
+~
+~
+1
+0 0 1
+D1
+The ruined street continues.
+~
+~
+0 0 8135
+D2
+South is a ruined tavern.
+~
+~
+0 0 8133
+W 5 0 0
+Z 5 5
+S
+#8135
+A Ruined Street~
+The cobblestones of this street have been torn up, and are scattered
+everywhere.  To the north and south are the impassable ruins of buildings,
+and the ruined street continues to the east and west.  
+~
+~
+1
+0 0 1
+D1
+The ruined street continues.
+~
+~
+0 0 8136
+D3
+The ruined street continues.
+~
+~
+0 0 8134
+W 5 0 0
+Z 5 5
+S
+#8136
+A Ruined Street~
+This section of street has been torn apart, the cobblestones displaced
+and scattered.  To the north a door leads into a somewhat intact building,
+and to the south is the missing front of a partially collapsed building.  
+~
+~
+1
+0 0 1
+D0
+This building looks mostly intact.
+~
+~
+3 0 8138
+D1
+The ruined street continues.
+~
+~
+0 0 8140
+D2
+The front of this building is gone, and the insides are destroyed.
+~
+~
+0 0 8137
+D3
+The ruined street continues.
+~
+~
+0 0 8135
+W 5 0 0
+Z 5 5
+S
+#8137
+A Rotting Building~
+While the structure is relatively intact, the interior of this house
+shows signs of massive decay.  Ragged curtains befoul the windows, and
+shattered furniture adorns the floor.
+~
+~
+1
+0 8 0
+D0
+The ruined street continues.
+~
+~
+0 0 8136
+W 5 0 0
+Z 5 5
+S
+#8138
+A Ruined Building~
+The walls of this ancient building have been cracked and damaged, but are
+still standing.  Ruined shelves line the north wall, with many rotting
+boards littering the floor.  Resting upon the remains of the shelves are
+cracked and empty scroll cases.  The stones of the floor have been upturned,
+and many are shattered.  
+~
+~
+1
+0 8 0
+D2
+The ruined street continues.
+~
+~
+3 0 8136
+W 5 0 0
+Z 5 5
+S
+#8139
+An Ancient Building~
+An ancient crumbling stone building has been built on the side of the
+building to the east; the walls of the building sag where the decaying
+mortar has turned to powder, and a shattered door hangs in the doorway.  The
+ceiling displays large gaps, through which a foul wind blows fitfully.  
+~
+~
+1
+0 8 0
+D0
+The ruined street continues.
+~
+~
+3 0 8140
+W 5 0 0
+Z 5 5
+S
+#8140
+A Ruined Street~
+This section of street has been torn apart, the cobblestones displaced
+and scattered.  Another ancient street heads north, and an intact building
+lies to the south.  
+~
+~
+1
+0 0 1
+D0
+An ancient street heads north.
+~
+~
+0 0 8146
+D1
+The ruined street continues.
+~
+~
+0 0 8141
+D2
+An ancient building lies here.
+~
+~
+3 0 8139
+D3
+The ruined street continues.
+~
+~
+0 0 8136
+W 5 0 0
+Z 5 5
+S
+#8141
+A Ruined Street~
+This section of street has been destroyed, the cobblestones ripped up and
+scattered about.  To the north and south are impassable ruins, and the
+street continues east and west.  
+~
+~
+1
+0 0 1
+D1
+The ruined street continues.
+~
+~
+0 0 8142
+D3
+The ruined street continues.
+~
+~
+0 0 8140
+W 5 0 0
+Z 5 5
+S
+#8142
+A Ruined Street~
+This section of street has been destroyed, the cobblestones ripped up and
+scattered about.  To the north is a partially collapsed building, tho the
+south is an intact building, and the ruined street continues east.  
+~
+~
+1
+0 0 1
+D0
+A decaying house stands here.
+~
+~
+0 0 8145
+D1
+The ruined street continues.
+~
+~
+0 0 8144
+D2
+An intact building lies here.
+~
+~
+3 0 8143
+D3
+The ruined street continues.
+~
+~
+0 0 8141
+W 5 0 0
+Z 5 5
+S
+#8143
+A Decaying Building~
+The inside of this building has been claimed by rot and mold.  Whatever
+furnishings once existed are now represented by a carpet of rotting wood,
+and shattered pottery lies everywhere.  
+~
+~
+1
+0 8 0
+D0
+The ruined street continues.
+~
+~
+3 0 8142
+W 5 0 0
+Z 5 5
+S
+#8144
+A Ruined Street~
+The ruined street ends abruptly in a large pile of debris from the
+collapse of a section of city wall.  The rubble as destroyed the buildings
+to the north and south, and completely blocks the way east.  
+~
+~
+1
+0 0 1
+D3
+The ruined street continues.
+~
+~
+0 0 8142
+W 5 0 0
+Z 5 5
+S
+#8145
+A Decaying House~
+The inside of this building has been claimed by rot and mold.  Whatever
+furnishings once existed are now represented by a carpet of rotting wood,
+and shattered pottery lies everywhere.  
+~
+~
+1
+0 8 0
+D2
+The ruined street continues.
+~
+~
+0 0 8142
+W 5 0 0
+Z 5 5
+S
+#8146
+An Ancient City Street~
+Trash and debris litters this section of street, and all around you are
+signs of decay.  Cracked cobblestones shift beneath your feet, and the smell
+of ancient death is everywhere.  
+~
+~
+1
+0 0 1
+D0
+The ancient street continues.
+~
+~
+0 0 8147
+D2
+A ruined street lies to the south.
+~
+~
+0 0 8140
+W 5 0 0
+Z 5 5
+S
+#8147
+An Ancient City Street~
+Trash and debris litters this section of street, and all around you are
+signs of decay.  Cracked cobblestones shift beneath your feet, and the smell
+of ancient death is everywhere.  To the east is a ruined warehouse, and to
+the west are some impassable ruins.  
+~
+~
+1
+0 0 1
+D0
+The ancient street continues.
+~
+~
+0 0 8151
+D1
+The warehouse roof looks particularly unstable in this direction.
+~
+~
+0 0 8148
+D2
+The ancient street continues.
+~
+~
+0 0 8146
+W 5 0 0
+Z 5 5
+S
+#8148
+A Ruined Warehouse~
+This abandoned warehouse contains a mass of crumbling wooden crates,
+filled with spoiled goods.  The walls of the warehouse are falling down, and
+the roof supports in this room look particularly unsteady.  
+~
+~
+1
+0 8 0
+D0
+The ancient warehouse continues.
+~
+~
+0 0 8152
+D1
+The ancient warehouse continues.
+~
+~
+0 0 8149
+D3
+~
+~
+0 0 8147
+W 5 0 0
+Z 5 5
+S
+#8149
+A Ruined Warehouse~
+This abandoned warehouse contains a mass of crumbling wooden crates,
+filled with spoiled goods.  The walls of the warehouse are falling down, and
+pieces of the ceiling have fallen in.  
+~
+~
+1
+0 8 0
+D0
+The ancient warehouse continues.
+~
+~
+0 0 8153
+D3
+The warehouse roof looks particularly unstable in this direction.
+~
+~
+0 0 8148
+W 5 0 0
+Z 5 5
+S
+#8150
+A Rotting Building~
+While the structure is relatively intact, the interior of this house
+shows signs of massive decay.  Ragged curtains befoul the windows, and
+shattered furniture adorns the floor.  
+~
+~
+1
+0 8 0
+D1
+The ancient street continues.
+~
+~
+0 0 8151
+W 5 0 0
+Z 5 5
+S
+#8151
+An Ancient City Street~
+Trash and debris litters this section of street, and all around you are
+signs of decay.  Cracked cobblestones shift beneath your feet, and the smell
+of ancient death is everywhere.  To your east is a ruined warehouse, and to
+your west you can enter another rotted building.  
+~
+~
+1
+0 0 1
+D0
+The ancient street continues.
+~
+~
+0 0 8155
+D1
+An ancient warehouse rots here.
+~
+~
+0 0 8152
+D2
+The ancient street continues.
+~
+~
+0 0 8147
+D3
+Another rotting building stands here.
+~
+~
+0 0 8150
+W 5 0 0
+Z 5 5
+S
+#8152
+A Ruined Warehouse~
+This abandoned warehouse contains a mass of crumbling wooden crates,
+filled with spoiled goods.  The walls of the warehouse are falling down, and
+pieces of the ceiling have fallen in.  
+~
+~
+1
+0 8 0
+D1
+The ancient warehouse continues.
+~
+~
+0 0 8153
+D2
+The warehouse roof looks particularly unstable in this direction.
+~
+~
+0 0 8148
+D3
+~
+~
+0 0 8151
+W 5 0 0
+Z 5 5
+S
+#8153
+A Ruined Warehouse~
+This abandoned warehouse contains a mass of crumbling wooden crates,
+filled with spoiled goods.  The walls of the warehouse are falling down, and
+pieces of the ceiling have fallen in.  
+~
+~
+1
+0 8 0
+D2
+The ancient warehouse continues.
+~
+~
+0 0 8149
+D3
+The ancient warehouse continues.
+~
+~
+0 0 8152
+W 5 0 0
+Z 5 5
+S
+#8154
+An Intact Building~
+The inside of this building has been claimed by rot and mold.  Whatever
+furnishings once existed are now represented by a carpet of rotting wood,
+and shattered pottery lies everywhere.  
+~
+~
+1
+0 8 0
+D1
+An ancient city street heads north and south.
+~
+~
+3 0 8155
+W 5 0 0
+Z 5 5
+S
+#8155
+An Ancient City Street~
+Trash and debris litters this section of street, and all around you are
+signs of decay.  Cracked cobblestones shift beneath your feet, and the smell
+of ancient death is everywhere.  To the west is a mostly intact building,
+and to the east are impassable ruins.  
+~
+~
+1
+0 0 1
+D0
+The ancient street continues.
+~
+~
+0 0 8158
+D2
+The ancient street continues.
+~
+~
+0 0 8151
+D3
+A building stands here.
+~
+~
+3 0 8154
+W 5 0 0
+Z 5 5
+S
+#8156
+An Alley Between Two Ruins~
+The dark alley ends in a blank stone wall.  Filth is piled everywhere,
+and the stench is overpowering.  
+~
+~
+1
+0 0 0
+D1
+The dark alley continues.
+~
+~
+0 0 8157
+W 5 0 0
+Z 5 5
+S
+#8157
+An Alley Between Two Ruins~
+This narrow alley runs between two crumbling, ancient buildings.  The
+ground is caked with nameless filth, and the stench is overpowering.  
+~
+~
+1
+0 0 0
+D1
+An ancient city street goes north and south.
+~
+~
+0 0 8158
+D3
+The dark alley continues.
+~
+~
+0 0 8156
+W 5 0 0
+Z 5 5
+S
+#8158
+An Ancient City Street~
+Trash and debris litters this section of street, and all around you are
+signs of decay.  Cracked cobblestones shift beneath your feet, and the smell
+of ancient death is everywhere.  To the west, a forgotten alley ducks
+between two ruins.  
+~
+~
+1
+0 0 1
+D0
+The ancient street continues.
+~
+~
+0 0 8159
+D2
+The ancient street continues.
+~
+~
+0 0 8155
+D3
+A dark alley lies here.
+~
+~
+0 0 8157
+W 5 0 0
+Z 5 5
+S
+#8159
+An Ancient City Street~
+Trash and debris litters this section of street, and all around you are
+signs of decay.  Cracked cobblestones shift beneath your feet, and the smell
+of ancient death is everywhere.  To the east is an ancient building.  
+~
+~
+1
+0 0 1
+D0
+The ancient street continues.
+~
+~
+0 0 8162
+D1
+An ancient building stands here.
+~
+~
+3 0 8160
+D2
+The ancient street continues.
+~
+~
+0 0 8158
+W 5 0 0
+Z 5 5
+S
+#8160
+An Ancient Building~
+An ancient crumbling stone building has been built on the side of the
+building to the east the walls of the building sag where the decaying mortar
+has turned to powder, and a shattered door hangs in the doorway.  The
+ceiling displays large gaps, through which a foul wind blows fitfully.  
+~
+~
+1
+0 8 0
+D3
+The ancient city street continues north and south.
+~
+~
+3 0 8159
+W 5 0 0
+Z 5 5
+S
+#8161
+A Ruined Armory~
+The walls of this ruined armory are covered with empty weapon racks, and
+the floor is populated with rusted, shattered blades and useless mouldering
+hilts.  The walls have been slashed at in several places, and the counter is
+broken into shards.  
+~
+~
+1
+0 8 0
+D3
+The ancient city street continues north and south.
+~
+~
+3 0 8162
+W 5 0 0
+Z 5 5
+S
+#8162
+An Ancient City Street~
+Trash and debris litters this section of street, and all around you are
+signs of decay.  Cracked cobblestones shift beneath your feet, and the smell
+of ancient death is everywhere.  Another street leads west, and a building
+lies to the east.  
+~
+~
+1
+0 0 1
+D0
+The ancient street continues.
+~
+~
+0 0 8163
+D1
+A ruined armory stands here.
+~
+~
+3 0 8161
+D2
+The ancient street continues.
+~
+~
+0 0 8159
+D3
+~
+~
+0 0 8170
+W 5 0 0
+Z 5 5
+S
+#8163
+An Ancient City Street~
+Trash and debris litters this section of street, and all around you are
+signs of decay.  Cracked cobblestones shift beneath your feet, and the smell
+of ancient death is everywhere.  Ruins block the way east and west.  
+~
+~
+1
+0 0 1
+D0
+The ancient street continues.
+~
+~
+0 0 8164
+D2
+The ancient street continues.
+~
+~
+0 0 8162
+W 5 0 0
+Z 5 5
+S
+#8164
+An Ancient City Street~
+Trash and debris litters this section of street, and all around you are
+signs of decay.  Cracked cobblestones shift beneath your feet, and the smell
+of ancient death is everywhere.  To the north the ancient street is blocked
+by a section of collapsed city wall, and a side street leads east.  
+~
+~
+1
+0 0 1
+D1
+A side street ends about 100 yards to the east.
+~
+~
+0 0 8165
+D2
+The ancient street continues.
+~
+~
+0 0 8163
+W 5 0 0
+Z 5 5
+S
+#8165
+A Side Street~
+This small side street ends abruptly in a huge pile of rubble.  The only
+exit is to the west.  
+~
+~
+1
+0 0 1
+D3
+The ancient street ends in a pile of rubble.
+~
+~
+0 0 8164
+W 5 0 0
+Z 5 5
+S
+#8170
+A Crumbling Street~
+This section of city street makes its way between rows of crumbling
+ruins.  The broken cobblestones shift and clatter beneath your feet, and a
+stench-filled breeze blows from the east.  Two collapsed ruins block the way
+north and south.  
+~
+~
+1
+0 0 1
+D1
+The crumbling street meets with another ancient street.
+~
+~
+0 0 8162
+D3
+The crumbling street continues.
+~
+~
+0 0 8172
+W 5 0 0
+Z 5 5
+S
+#8171
+A Mouldering Building~
+An ancient mouldering building remains standing after hundreds of years
+of decay.  The walls are coated with dark fungus and slime, and the
+floorboards have rotted and crumbled.  Splinters of broken furniture litter
+the floor, and the stink of death fills the house.  
+~
+~
+1
+0 8 0
+D0
+The crumbling street is north.
+~
+~
+0 0 8172
+W 5 0 0
+Z 5 5
+S
+#8172
+A Crumbling Street~
+This section of city street makes its way between rows of crumbling
+ruins.  The broken cobblestones shift and clatter beneath your feet, and a
+stench-filled breeze blows from the east.  A mouldering building lies to the
+south.  
+~
+~
+1
+0 0 1
+D1
+The crumbling street continues.
+~
+~
+0 0 8170
+D2
+A mouldering building is south.
+~
+~
+0 0 8171
+D3
+The crumbling street continues.
+~
+~
+0 0 8173
+W 5 0 0
+Z 5 5
+S
+#8173
+A Crumbling Street~
+This section of city street makes its way between rows of crumbling
+ruins.  The broken cobblestones shift and clatter beneath your feet, and a
+stench-filled breeze blows from the east.  A ruined edifice stands to the
+north.  
+~
+~
+1
+0 0 1
+D0
+~
+~
+0 0 8175
+D1
+The crumbling street continues.
+~
+~
+0 0 8172
+D3
+The crumbling street continues.
+~
+~
+0 0 8177
+W 5 0 0
+Z 5 5
+S
+#8174
+A Ruined Edifice~
+The once-grand marble walls of this building rise to a sagging roof.  The
+remains of a meeting hall are aparent in this room, but all furnishings are
+gone.  
+~
+~
+1
+0 8 0
+D1
+The ruin continues.
+~
+~
+0 0 8175
+W 5 0 0
+Z 5 5
+S
+#8175
+A Ruined Edifice~
+The once-grand marble walls of this building rise to a sagging roof. 
+Fallen support columns block the way east, and the ruin continues to the
+north and west.  
+~
+~
+1
+0 8 0
+D0
+The ruin continues.
+~
+~
+0 0 8176
+D2
+The crumbling street continues.
+~
+~
+0 0 8173
+D3
+The ruin continues.
+~
+~
+0 0 8174
+W 5 0 0
+Z 5 5
+S
+#8176
+A Mouldering Library~
+Falling bookshelves line the walls, and most books have spilled onto the
+floor.  The few books still shelved are rendered illegible by must, mold,
+and rain.  
+~
+~
+1
+0 8 0
+D2
+The ruin continues south.
+~
+~
+0 0 8175
+W 5 0 0
+Z 5 5
+S
+#8177
+A Crumbling Street~
+This section of city street makes its way between rows of crumbling
+ruins. The broken cobblestones shift and clatter beneath your feet, and a
+stench-filled breeze blows from the east.
+~
+~
+1
+0 0 1
+D1
+The crumbling street continues.
+~
+~
+0 0 8173
+D3
+The crumbling street continues.
+~
+~
+0 0 8178
+W 5 0 0
+Z 5 5
+S
+#8178
+A Crumbling Street~
+This section of city street makes its way between rows of crumbling
+ruins. The broken cobblestones shift and clatter beneath your feet, and a
+stench-filled breeze blows from the east.
+~
+~
+1
+0 0 1
+D1
+The crumbling street continues.
+~
+~
+0 0 8177
+D3
+The crumbling street continues.
+~
+~
+0 0 8179
+W 5 0 0
+Z 5 5
+S
+#8179
+A Crumbling Street~
+This section of city street makes its way between rows of crumbling
+ruins. The broken cobblestones shift and clatter beneath your feet, and a
+stench-filled breeze blows from the east.
+~
+~
+1
+0 0 1
+D1
+The crumbling street continues.
+~
+~
+0 0 8178
+D3
+A crumbling intersection is here.
+~
+~
+0 0 8195
+W 5 0 0
+Z 5 5
+S
+#8180
+A Rotting House~
+The front of this building is completely gone, and the stench-filled wind
+whips through.  The remaining walls are covered with mold, and the floor is
+filled with debris.  
+~
+~
+1
+0 8 0
+D1
+The barren avenue lies here.
+~
+~
+0 0 8181
+W 5 0 0
+Z 5 5
+S
+#8181
+A Barren Avenue~
+This stretch of street is relatively free of filth and rubble.  However,
+the buildings are still in ruins, and the scent of decay is everywhere.  To
+the west is a rotting house.  
+~
+~
+1
+0 0 1
+D0
+The barren avenue contiues.
+~
+~
+0 0 8182
+D2
+You see a desolated intersection.
+~
+~
+0 0 8116
+D3
+A rotting house lies here.
+~
+~
+0 0 8180
+W 5 0 0
+Z 5 5
+S
+#8182
+A Barren Avenue~
+This stretch of street is relatively free of filth and rubble.  However,
+the buildings are still in ruins, and the scent of decay is everywhere.  To
+the east is a somewhat intact house.  
+~
+~
+1
+0 0 1
+D0
+The barren avenue continues.
+~
+~
+0 0 8186
+D1
+A somewhat intact house is here.
+~
+~
+3 0 8183
+D2
+The barren avenue continues.
+~
+~
+0 0 8181
+W 5 0 0
+Z 5 5
+S
+#8183
+An Intact House~
+The walls of this house are mostly intact, but the interior has been
+destroyed.  A broken hearth glistens with mold, and shattered furniture is
+strewn about the floor.  
+~
+~
+1
+0 8 0
+D3
+The barren avenue continues.
+~
+~
+3 0 8182
+W 5 0 0
+Z 5 5
+S
+#8184
+A Zombie Hiding Room~
+The zombies wait here, then pounce on people when they go in the city.  
+~
+~
+1
+0 557058 0
+D0
+~
+~
+0 0 8101
+D2
+~
+~
+0 0 8104
+D5
+~
+~
+0 0 8105
+W 5 0 0
+Z 5 5
+S
+#8185
+A Mouldering Building~
+The inside of this building has been claimed by rot and mold.  Whatever
+furnishings once existed are now represented by a carpet of rotting wood,
+and shattered pottery lies everywhere.  
+~
+~
+1
+0 8 0
+D1
+A barren street continues.
+~
+~
+0 0 8186
+W 5 0 0
+Z 5 5
+S
+#8186
+A Barren Avenue~
+This stretch of street is relatively free of filth and rubble.  However,
+the buildings are still in ruins, and the scent of decay is everywhere.
+To the east and west lie mouldering buildings.
+~
+~
+1
+0 0 1
+D0
+The barren avenue continues.
+~
+~
+0 0 8190
+D1
+An ancient building moulders here.
+~
+~
+0 0 8187
+D2
+The barren avenue continues.
+~
+~
+0 0 8182
+D3
+An ancient building moulders here.
+~
+~
+0 0 8185
+W 5 0 0
+Z 5 5
+S
+#8187
+A Mouldering Building~
+The west wall of this building has completely collapsed, and the roof is
+sagging badly.  Stones and debris fill the floor, and there is no clue of
+the building\@s previous function.  
+~
+~
+1
+0 8 0
+D3
+A barren street continues.
+~
+~
+0 0 8186
+W 5 0 0
+Z 5 5
+S
+#8188
+A Rotting Back Room~
+This back room was once some sort of utility room.  Ancient, ruined tools
+lie scattered about, and a wooden workbench is chopped into splinters.  
+~
+~
+1
+0 8 0
+D1
+A rotting building with collapsing floorboards lies here.
+~
+~
+0 0 8189
+W 5 0 0
+Z 5 5
+S
+#8189
+A Rotting Building~
+The wooden walls of this rotting building have decayed to the point that
+much of the material is no more than dust.  The floorboards are particularly
+unsteady, and it seems as though there is a cellar underneath.  Some kind of
+back room lies to the west.  
+~
+~
+1
+0 8 0
+D1
+A barren avenue continues.
+~
+~
+0 0 8190
+D3
+Some kind of back room lies here.
+~
+~
+0 0 8188
+W 5 0 0
+Z 5 5
+S
+#8190
+A Barren Avenue~
+This stretch of street is relatively free of filth and rubble.  However,
+the buildings are still in ruins, and the scent of decay is everywhere.  To
+the east and west lie mouldering buildings.  
+~
+~
+1
+0 0 1
+D0
+The barren avenue continues.
+~
+~
+0 0 8192
+D1
+~
+~
+0 0 8191
+D2
+The barren avenue continues.
+~
+~
+0 0 8186
+D3
+A rotting building stands here, doorless. The floorboards look unsteady.
+~
+~
+0 0 8189
+W 5 0 0
+Z 5 5
+S
+#8191
+An Ancient Building~
+The walls of this ancient building have been cracked and damaged, but are
+still standing, although the door has been ripped down.  The interior is
+completely torn out, and there is no clue as to the building\@s former
+purpose.  The death-stench of the city intensifies in this enclosed area.  
+~
+~
+1
+0 8 0
+D3
+A barren street continues.
+~
+~
+0 0 8190
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 8104 spec_cast_void
+S
+
+
+
+#RESETS
+D 0 8200 2 3
+D 0 8203 0 3
+D 0 8203 1 3
+D 0 8204 3 3
+D 0 8212 3 3
+D 0 8216 1 3
+D 0 8227 0 3
+D 0 8110 1 3
+D 0 8111 1 3
+D 0 8111 3 3
+D 0 8112 3 3
+D 0 8118 0 3
+D 0 8122 2 3
+D 0 8130 1 3
+D 0 8132 3 3
+D 0 8136 0 3
+D 0 8138 2 3
+D 0 8139 0 3
+D 0 8140 2 3
+D 0 8142 2 3
+D 0 8143 0 3
+D 0 8154 1 3
+D 0 8155 3 3
+D 0 8159 1 3
+D 0 8160 3 3
+D 0 8161 3 3
+D 0 8162 1 3
+D 0 8182 1 3
+D 0 8183 3 3
+M 0 8102 35 8192 1
+E 0 8102 0 16
+M 0 8102 35 8193 1
+E 0 8102 0 16
+O 0 8109 0 8193
+M 0 8102 35 8195 1
+E 0 8102 0 16
+M 0 8105 1 8195 1
+M 0 8102 35 8197 1
+E 0 8102 0 16
+M 0 8102 35 8198 1
+E 0 8102 0 16
+O 0 8122 0 8200
+O 0 8101 0 8201
+M 0 8104 1 8202 1
+O 0 8119 0 8203
+M 0 8110 3 8205 1
+M 0 8102 35 8206 1
+E 0 8102 0 16
+M 0 8102 35 8207 1
+E 0 8102 0 16
+M 0 8102 35 8208 1
+E 0 8102 0 16
+M 0 8102 35 8209 1
+E 0 8102 0 16
+M 0 8102 35 8210 1
+E 0 8102 0 16
+M 0 8102 35 8211 1
+E 0 8102 0 16
+M 0 8102 35 8212 1
+M 0 8102 35 8213 1
+E 0 8102 0 16
+M 0 8114 1 8213 1
+M 0 8102 35 8214 1
+E 0 8102 0 16
+M 0 8102 35 8215 1
+E 0 8102 0 16
+M 0 8102 35 8216 1
+E 0 8102 0 16
+M 0 8102 35 8217 1
+E 0 8102 0 16
+M 0 8102 35 8218 1
+E 0 8102 0 16
+M 0 8102 35 8219 1
+E 0 8102 0 16
+M 0 8102 35 8220 1
+E 0 8102 0 16
+M 0 8102 35 8221 1
+E 0 8102 0 16
+M 0 8102 1 8223 35
+E 0 8102 0 16
+M 0 8103 50 8224 2
+E 0 8120 0 16
+E 0 8121 0 5
+M 0 8103 50 8225 2
+E 0 8120 0 16
+E 0 8121 0 5
+M 0 8103 50 8226 2
+E 0 8120 0 16
+E 0 8121 0 5
+M 0 8103 50 8227 2
+E 0 8120 0 16
+E 0 8121 0 5
+M 0 8101 50 8106 1
+O 0 8108 0 8107
+M 0 8106 1 8107 1
+M 0 8101 50 8108 1
+M 0 8101 50 8109 1
+O 0 8107 0 8110
+M 0 8101 50 8110 1
+M 0 8101 50 8111 1
+O 0 8109 0 8112
+M 0 8101 1 8113 1
+M 0 8101 50 8113 1
+M 0 8101 1 8114 1
+M 0 8101 50 8114 1
+M 0 8101 1 8115 1
+M 0 8101 50 8115 1
+M 0 8101 1 8116 1
+M 0 8101 50 8116 1
+O 0 8101 0 8116
+M 0 8101 50 8117 1
+M 0 8101 50 8118 1
+M 0 8101 50 8119 1
+O 0 8110 0 8119
+M 0 8101 50 8120 1
+O 0 8111 0 8121
+M 0 8101 50 8121 1
+M 0 8101 50 8122 1
+M 0 8101 50 8123 1
+M 0 8101 50 8124 1
+O 0 8112 0 8124
+O 0 8126 0 8124
+O 0 8126 0 8124
+M 0 8101 50 8125 1
+M 0 8101 50 8126 1
+M 0 8101 50 8127 1
+O 0 8113 0 8127
+O 0 8114 0 8127
+M 0 8110 3 8127 1
+M 0 8101 50 8129 1
+M 0 8101 50 8131 1
+O 0 8104 0 8131
+M 0 8101 50 8132 1
+O 0 8107 0 8133
+M 0 8101 50 8134 1
+M 0 8101 50 8135 1
+M 0 8101 50 8136 1
+O 0 8115 0 8137
+M 0 8101 50 8138 1
+O 0 8150 0 8138
+M 0 8120 1 8138 1
+M 0 8101 50 8139 1
+M 0 8101 50 8140 1
+M 0 8101 50 8142 1
+M 0 8101 50 8143 1
+M 0 8101 50 8145 1
+O 0 8115 0 8145
+M 0 8101 50 8147 1
+M 0 8110 3 8148 1
+M 0 8101 50 8150 1
+M 0 8101 50 8152 1
+M 0 8101 50 8155 1
+M 0 8101 50 8156 1
+M 0 8101 50 8158 1
+M 0 8102 35 8160 1
+M 0 8101 50 8161 1
+O 0 8116 0 8161
+O 0 8117 0 8161
+M 0 8101 50 8162 1
+M 0 8101 50 8163 1
+M 0 8102 35 8164 1
+E 0 8102 0 16
+M 0 8101 50 8165 1
+M 0 8115 1 8165 1
+M 0 8101 50 8170 1
+O 0 8124 0 8171
+O 0 8125 0 8171
+M 0 8102 35 8172 1
+E 0 8102 0 16
+M 0 8101 50 8173 1
+M 0 8156 1 8174 1
+M 0 8101 50 8175 1
+M 0 8102 35 8175 1
+E 0 8102 0 16
+M 0 8101 50 8176 1
+O 0 8118 0 8176
+O 0 8127 0 8176
+M 0 8102 35 8177 1
+E 0 8102 0 16
+M 0 8101 50 8178 1
+M 0 8102 35 8179 1
+E 0 8102 0 16
+M 0 8101 50 8180 1
+M 0 8101 50 8181 1
+M 0 8101 50 8182 1
+M 0 8102 35 8183 1
+O 0 8123 0 8183
+M 0 8107 1 8184 1
+M 0 8108 1 8184 1
+M 0 8109 1 8184 1
+M 0 8102 35 8185 1
+M 0 8102 35 8186 1
+E 0 8102 0 16
+M 0 8102 35 8187 1
+O 0 8110 0 8187
+M 0 8102 35 8188 1
+E 0 8102 0 16
+M 0 8102 35 8190 1
+E 0 8102 0 16
+M 0 8102 35 8191 1
+E 0 8102 0 16
+S
+
+
+
+#GUILD
+#8199
+"cure light"
+"cure serious"
+"create spring"
+"heatsink"
+"create food"
+"create water"
+"purify"
+"cure poison"
+"cure disease"
+"cure critical"
+"iceshard"
+"water breathing"
+"holy water"
+"cleanse food"
+"rune of life"
+"iceblast"
+"communion"
+"currents"
+"protection from poison"
+"protection from fire"
+"flood"
+"water elemental summon"
+"iceblast"
+"mend wounds"
+"mass heal"
+"whirlpool"
+"heal"
+"sanctuary"
+"frostbite"
+"rebirth"
+"meld with water"
+"revitalize"
+"ice storm"
+"scry"
+"resurrection"
+#0
+
+#8156
+"direfeast"
+"deathswarm"
+"bone reaper"
+"phylactery"
+"Grave Beat"
+"barrowmist"
+"revenant"
+"corpsesense"
+"corpsesense"
+"deathswarm"
+"revenant"
+#0
+
+S
+
+
+#SHOPS
+8150 8 0 0 0 0 100 100 0 23 10000000
+0
+
+
+
+#$

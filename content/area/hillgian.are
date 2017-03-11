@@ -1,0 +1,1607 @@
+#AREADATA
+Name Hill Giant Tribe~
+Builders Iandir~
+VNUMs 8375 8419
+Credits [15 35] Iandir    The Hill Giant Tribe~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 5 0 0
+Shades 5 5
+Stone 82
+End
+
+
+
+#MOBILES
+V4 8400
+beast trash~
+the trash beast~
+A tentacled beast sits concealed in the trash.
+~
+A large, lumpish body with a toothy mouth, five squat legs, and four
+long, spiked tentacles is nestled in amongst the trash and refuse.  
+~
+generic~
+water scholar~
+ACGL 0 DFJQZ N 0
+33 10 12d61+734 5d5+20 6d7+15 pierce~
+chomp~
+0 0 0 0
+0 LQ
+26 0 0 0 33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 90 -1
+AGHMV CFJKLN A medium flesh
+V4 8401
+child giant hill~
+a hill giant child~
+A hill giant child runs about the village.
+~
+A mere seven feet in height, this young hill giant male runs around the
+village, playing with the wolves, and learning the ways of the hunters.
+~
+giant~
+water scholar~
+AG 0 0 E 0
+15 3 8d30+261 0d0+0 3d5+8 bash~
+punch~
+0 0 0 0
+JN 0
+26 0 0 0 0 0 0 0 20 20 -20 0 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 30 25
+AHMV ABCDEFGHIJK A medium unknown
+V4 8402
+giant hill female~
+a female hill giant~
+A female hill giant works on her daily tasks.
+~
+This large female hill giant stands nearly eleven feet. Clad in bear skins,
+she walks about the village working on her chores.
+~
+giant~
+water scholar~
+AG 0 0 E 0
+20 6 12d50+454 0d0+0 4d5+10 bash~
+punch~
+-2 -2 -2 -2
+KN 0
+26 0 0 0 0 0 0 0 33 33 -33 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 25
+AHMV ABCDEFGHIJK A large unknown
+V4 8403
+hunter hill giant~
+a hill giant hunter~
+A large hill giant clad in bear skins prepares to hunt for the village\@s food.
+~
+Standing thirteen feet, this large hill giant swings his spiked club in
+anticipation of the upcoming hunt.
+~
+giant~
+water scholar~
+AG 0 0 E 0
+23 8 14d50+436 0d0+0 5d5+15 bash~
+pound~
+-4 -4 -4 -4
+CFJK 0
+26 0 0 0 0 0 0 0 33 33 -33 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 25
+AHMV ABCDEFGHIJK A large unknown
+V4 8404
+wolf timber~
+a timber wolf~
+A large trained timber wolf growls menacingly.
+~
+Trained by the hill giants, and used for hunting, the large timber wolves
+of the village patrol for strangers.
+~
+wolf~
+water scholar~
+AGN 0 Z E 0
+25 10 14d60+141 0d0+0 5d5+18 pierce~
+bite~
+-4 -4 -4 -4
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AGV ACDEFJKQV A medium unknown
+V4 8405
+chieftain hill giant hakonun~
+the hill giant chieftain~
+The hill giant chieftain stands imposingly, clutching his iron spear.
+~
+The hill giant chief towers above you, fully fourteen feet tall. His thick
+arms are covered with scars won in duels for leadership of the tribe. His
+large belly is covered with hair, and stains from his last meal.
+~
+giant~
+water scholar~
+AGL P 0 E 0
+35 18 25d57+1041 35d10+100 5d7+18 bash~
+pound~
+-12 -12 -12 -1
+CDFHIKN 0
+26 0 0 0 0 0 0 0 33 33 -33 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 99 25
+AHMV ABCDEFGHIJK A large unknown
+>speech_prog aid~
+if isfriend($n)
+  mpget mob self level 2
+  mpget char $n level 3
+  mpmath 1 $3 - $2
+  mpsetdata DataTemplate
+  if value(1) > $d
+    if snaffected($n) == 302
+      esay \@snorts\@ Didn\@t I just give you something recently?
+      break
+    else
+      loop 1 to 3
+        mpnextdata
+      endloop
+      loop 1 to 8
+        $d
+        mpnextdata
+      endloop
+      mpaddaffect $n 302 51 7 0 0 0
+    endif
+  else
+  endif
+endif
+~
+>data_prog DataTemplate~
+0
+say We\@ve heard of your fight against Krilin even here, $N.
+esay \@gestures expansively, saying\@ Lemme know if you need any {Waid{Y, I could help you some.{n
+mpset mob self gold 5
+give 5 gold $n
+FILLER
+remove spear
+give spear $n
+say Use it to mess \@em up over in Krilin.
+emote grunts and nods.
+FILLER
+FILLER
+FILLER
+~
+>greet_prog 100~
+if ispc($n)
+  if remembers($n)
+    break
+  else
+    if isfriend($n)
+      mpget mob self level 2
+      mpget char $n level 3
+      mpmath 1 $3 - $2
+      mpsetdata DataTemplate
+      if value(1) > $d
+        loop 1 to 2
+          mpnextdata
+          $d
+        endloop
+        mpremember $n
+      else
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 8406
+guard hill giant~
+a hill giant guard~
+One of the chieftain\@s guards glowers at you.
+~
+Trained in battle, the hill giant chieftain\@s guards are a cut above the
+hunters in the tribe.
+~
+giant~
+water scholar~
+AGL 0 0 E 0
+30 9 14d66+461 5d50+1 7d6+20 bash~
+pound~
+0 0 0 0
+CDFIKN 0
+26 0 0 0 0 0 0 0 33 33 -33 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 70 25
+AHMV ABCDEFGHIJK A large unknown
+V4 8407
+bear mountain large~
+a large mountain bear~
+A large mountain bear stalks about the hill giant village.
+~
+This enormous mountain bear has been trained by the hill giants and kept as
+a pet. It recognizes your scent as foreign, and begins treading toward you.
+~
+bear~
+water scholar~
+AFGN 0 0 E 0
+30 11 13d61+548 50d10+50 5d6+15 slash~
+claw~
+-5 -5 -5 -5
+DEO AB
+26 0 0 0 0 33 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGV ABCDEFHJKUV A large unknown
+>entry_prog 100~
+growl
+~
+>greet_prog 100~
+growl $n
+~
+>fight_prog 5~
+growl
+~
+|
+V4 8408
+giant rammer hill mob_8408~
+a hill giant rammer~
+A tall hill giant pushes the ram along.
+~
+This hill giant warrior stands well over ten feet tall, and his
+darkly-tanned body is covered in rippling muscles.  His eyes are narrow and
+his fat lips are set in a permanent frown.  Bone spikes adorn his ears and
+nose, and primitive, tribal tattoos have been punctured into his neck and
+arms.  Animal grease has been rubbed into his skin, keeping him warm.  The
+grease glistens, giving off a rancid smell.  
+~
+giant~
+water scholar~
+ALTX 0 0 E 0
+46 23 31d87+1166 46d10+100 6d8+23 bash~
+smash~
+-18 -18 -18 -4
+FHIK A
+26 0 0 0 0 0 0 0 20 20 -20 0 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 25
+AHMV ABCDEFGHIJK A huge flesh
+#0
+
+
+
+#OBJECTS
+V13
+8375
+battered silver locket~
+a battered silver locket~
+A silver locket, battered and worn, lies coiled here.~
+~
+silver~
+jewelry c 0 0 AC
+0 0 0 0 0
+12 3 0 0 P
+0
+A
+13 3
+E
+battered silver locket~
+This simple locket is made of some silver alloy, giving it a whiter sheen
+than most silver.  It has been battered and nicked in many places, but still
+bears the painted portrait of a young girl, pale of skin and dark of hair. 
+The initials \@L.  E.  \@ have been inscribed into the back.  
+~
+V13
+8401
+spear iron~
+the chieftain\@s iron spear~
+An iron spear used by the hill giant chieftain is here.~
+~
+iron~
+weapon 0 0 F AN
+spear 4 8 2 F
+stab~
+35 100 1560 3 P
+0
+V13
+8402
+club spiked~
+a large spiked club~
+A large spiked club, carved from a tree trunk, rests here.~
+~
+wood~
+weapon S 0 F AN
+mace 3 8 1 0
+crush~
+25 350 125 2 P
+0
+V13
+8403
+vial filth encrusted~
+a filth-encrusted vial~
+A filth-encrusted vial sits here.~
+~
+glass~
+potion S 0 F A
+30 'pass door' '' '' ''
+30 10 500 1 P
+0
+V13
+8404
+scroll tarnished case~
+a scroll in a tarnished case~
+A tarnished scroll case rests here.~
+~
+parchment~
+scroll S 0 F A
+30 'heat metal' '' '' ''
+30 0 400 1 P
+0
+V13
+8405
+scalp chieftain~
+the scalp of the hill giant chieftain~
+A massive bloody scalp, cut from the corpse of a hill giant, is here.~
+~
+flesh~
+trash QS 0 0 A
+0 0 0 0 0
+1 10 0 2 P
+0
+V13
+8406
+scalp normalscalp~
+the scalp of a hill giant~
+A bloody scalp, cut from the corpse of a hill giant, is here.~
+~
+flesh~
+trash QS 0 0 A
+0 0 0 0 0
+0 10 0 2 P
+0
+V13
+8407
+belt bearskin~
+a bearskin belt~
+A wide belt fashioned from a dirty bearskin is here.~
+~
+hide~
+armor S 0 F AL
+4 4 4 0 0
+23 50 1085 2 P
+0
+A
+19 1
+A
+1 1
+V13
+8408
+skull cracked human~
+a cracked human skull~
+A cracked and worn human skull has been painted with shamanic symbols.~
+~
+bone~
+trash ES 0 F AO
+0 0 0 0 0
+15 30 10296 2 P
+0
+A
+4 -2
+A
+19 2
+V13
+8409
+ram battering iron studded massive obj_8409~
+a massive, iron-studded battering ram~
+A massive, iron-studded battering ram trundles on tree trunk wheels.~
+~
+unknown~
+trash a 0 0 P
+0 0 0 0 0
+51 0 0 0 P
+0
+E
+ram battering iron studded massive obj_8409~
+This massive ram is over ten feet in height.  Built from a crude, though
+sturdy, framework of tightly-lashed logs, the ram\@s scaffold has been
+reinforced with iron spikes.  Wet, fresh hides have been nailed all around
+the triangular log frame to keep fire off of it.  Slung from the top by
+heavy, braided ropes is a burnished, gleaming log of ironwood.  Cured and
+hardened in smoke and grease, it is almost as hard as the metal whose name
+it bears.  A forged steel cap tips the head, shaped into a wedge-like spike.
+~
+#0
+
+
+
+#ROOMS
+#8375
+The Rocky Path~
+The mountain path here is cluttered with stones fallen from the low
+cliffs that rise to the north and south.  It still looks fairly well-used,
+and there are signs of a regularly frequented camp--logs pulled around a
+fire, a small pile of bones that have been stripped of meat, an animal fur. 
+The path continues to the east and west.
+~
+~
+1
+0 4 4
+D1
+~
+~
+0 0 596
+D3
+The rocky path continues.
+~
+~
+0 0 8376
+W 5 0 0
+Z 5 5
+S
+#8376
+A Bend in a Rocky Path~
+The mountainside you have been following juts north at this point,
+forcing the trail to bend around it.  The way is hindered by numerous stones
+that have fallen from the cliffside.  
+~
+~
+1
+0 0 4
+D0
+The rocky path continues.
+~
+~
+0 0 8377
+D1
+The rocky path continues.
+~
+~
+0 0 8375
+W 5 0 0
+Z 5 5
+S
+#8377
+A Rocky Path~
+As the path curves around the southern cliff, a large stockade becomes
+visible to the west.  Smoke curls up from several fires within.  The path
+has been cleared of stones to the west, and it continues around a cliff to
+the south.  
+~
+~
+1
+0 0 4
+D2
+The rocky path continues.
+~
+~
+0 0 8376
+D3
+The stockade lies to the west.
+~
+~
+0 0 8378
+W 5 0 0
+Z 5 5
+S
+#8378
+Approaching the Stockade~
+As the path approaches the stockade to the west it becomes a well-trodden
+dirt road.  The stockade walls appear to be made of unfinished logs, and
+although the construction is rough, it looks sturdy.  
+~
+~
+1
+0 0 4
+D1
+The rocky path continues.
+~
+~
+0 0 8377
+D3
+The path leads to the stockade gates.
+~
+~
+0 0 8379
+W 5 0 0
+Z 5 5
+S
+#8379
+Outside the Stockade~
+The dirt road leads to the stockade entrance.  Two large gates, built
+from enormous logs, stand open.  Visible inside the stockade are several
+crude huts and a large log building.  Smoke rises from cooking fires within.
+Two animal skulls adorn each gate.  
+~
+~
+1
+0 0 4
+E
+gate~
+Constructed of huge logs, they are too heavy to move.
+~
+E
+gates~
+Constructed of huge logs, they are too heavy to move.
+~
+D1
+The dirt path leads away from the stockade.
+~
+~
+0 0 8378
+D3
+The gates lead inside the stockade.
+~
+~
+0 0 8402
+W 5 0 0
+Z 5 5
+S
+#8380
+A Crude Hut~
+This crudely-built log hut is spacious by human standards.  Piles of
+dirty furs cover the floor, and a half-eaten deer haunch sits in the dirt. 
+The trunk of a tree, carved into a club, leans against the rear wall.  The
+air in this dwelling is thick with the smells of sweat and unbathed bodies. 
+~
+~
+1
+0 8 0
+D2
+A large bonfire blazes away.
+~
+~
+0 0 8384
+W 5 0 0
+Z 5 5
+S
+#8381
+Between Two Dwellings~
+You stand in a small space between two crude log dwellings.  Several deer
+skins are stretching on a wooden rack affixed to the stockade wall to the
+north.  The ground here is covered with bones, scraps of fur, and pieces of
+wood.  
+~
+~
+1
+0 0 4
+D2
+The village continues south.
+~
+~
+0 0 8385
+W 5 0 0
+Z 5 5
+S
+#8382
+A Crude Hut~
+This large log structure houses several adult hill giants.  The walls are
+made of unpeeled trunks, insulated with moss and twigs.  The dirt floor is
+covered with smelly hides, and more hides hang on the walls.  A side of raw
+venison sits in the dirt.  
+~
+~
+1
+0 8 0
+D2
+The hut opens to the village.
+~
+~
+0 0 8386
+W 5 0 0
+Z 5 5
+S
+#8383
+A Crude Hut~
+A spacious dwelling crafted out of logs, this hut appears to house three
+or more adult hill giants.  Bear skins hang on the walls, and the floors are
+covered with stinking deer hides. 
+~
+~
+1
+0 8 0
+D1
+The hut opens to the east, facing a large bonfire.
+~
+~
+0 0 8384
+W 5 0 0
+Z 5 5
+S
+#8384
+A Large Cooking Fire~
+A large pile of logs is blazing here, generating large amounts of heat
+and smoke.  A mountain goat is turning on a metal spear used for a spit. 
+Wooden dwellings are to the north and west, and the village continues south
+and east.  
+~
+~
+1
+0 0 4
+D0
+A large log hut opens to the west.
+~
+~
+0 0 8380
+D1
+The village continues.
+~
+~
+0 0 8385
+D2
+The village continues.
+~
+~
+0 0 8392
+D3
+A large log hut opens to the west.
+~
+~
+0 0 8383
+W 5 0 0
+Z 5 5
+S
+#8385
+The Hill Giant Village~
+You stand in the middle of the hill giant village.  Hill giants of all
+sizes move about between log huts and cooking fires, occasionally eyeing you
+warily.  To the south is a large central structure, to the northeast and
+northwest are two smaller buildings, and a large fire blazes immediately
+west.  
+~
+~
+1
+0 0 4
+D0
+A small area between two log dwellings.
+~
+~
+0 0 8381
+D1
+The village stretches onward.
+~
+~
+0 0 8386
+D2
+The village stretches onward.
+~
+~
+0 0 8393
+D3
+A huge bonfire blazes away.
+~
+~
+0 0 8384
+W 5 0 0
+Z 5 5
+S
+#8386
+The Hill Giant Village~
+Standing in the middle of the hill giant village, you see large crude
+huts, constructed of unfinished logs, lining the stockade walls.  A larger
+log building to the south dominates the center of the village.  Blazing
+bonfires roast deer immediately south of you, and off to the west.  
+~
+~
+1
+0 0 4
+D0
+A crude log dwelling is north.
+~
+~
+0 0 8382
+D2
+A large bonfire is to the south.
+~
+~
+0 0 8394
+D3
+The village continues west.
+~
+~
+0 0 8385
+W 5 0 0
+Z 5 5
+S
+#8387
+A Crude Hut~
+A spacious dwelling crafted out of logs, this hut appears to house three
+or more adult hill giants.  Bear skins hang on the walls, and the floors are
+covered with stinking deer hides.  
+~
+~
+1
+0 8 0
+D2
+The hut exits to the village.
+~
+~
+0 0 8395
+W 5 0 0
+Z 5 5
+S
+#8388
+A Crude Hut~
+This crudely-built log hut is spacious by human standards.  Piles of
+dirty furs cover the floor, and a half-eaten deer haunch sits in the dirt. 
+The trunk of a tree, carved into a club, leans against the rear wall.  The
+air in this dwelling is thick with the smells of sweat and unbathed bodies. 
+~
+~
+1
+0 8 0
+D2
+The exit to the hut lies south.
+~
+~
+0 0 8396
+W 5 0 0
+Z 5 5
+S
+#8389
+The Offal Heap~
+The dirt trail leads to a large heap of offal, bones, and trash.  The
+stench of animal waste and rotting meat washes over you.  Among the refuse
+you can spot several broken weapons, and some dented and ruined armor.  
+~
+~
+1
+0 0 4
+D1
+A thin dirt trail leads back to the village.
+~
+~
+0 0 8390
+W 5 0 0
+Z 5 5
+S
+#8390
+A Thin Trail~
+Outside the barricade, a thin dirt trail winds down a slope to the west. 
+At the bottom of the slope you can see a heap of refuse, bones, tattered
+animal skins, and other trash.  A gate opens to the east, leading back into
+the village.  
+~
+~
+1
+0 0 4
+D1
+The gate opens back into the village.
+~
+~
+3 0 8391
+D3
+The trail leads down to a trash heap.
+~
+~
+0 0 8389
+W 5 0 0
+Z 5 5
+S
+#8391
+Inside the Stockade~
+A rear gate is set in this stretch of the stockade wall.  The ground is
+cleared between the two huts that stand to the north and south.  The hill
+giant village spreads to the east, with several columns of smoke rising from
+large cooking fires.  
+~
+~
+1
+0 0 4
+D1
+The village spreads to the east.
+~
+~
+0 0 8392
+D3
+A dirt path leads west.
+~
+~
+3 0 8390
+W 5 0 0
+Z 5 5
+S
+#8392
+The Hill Giant Village~
+You stand in the middle of the hill giant village.  Hill giants in other
+areas eye your actions warily.  The well-packed dirt of the common area is
+strewn with sticks, crudely carved wooden tools, and the bones of past
+meals.  A large cooking fire is to the north, a rear gate is to the west,
+and the village continues east and south.  
+~
+~
+1
+0 0 4
+D0
+A fire blazes away.
+~
+~
+0 0 8384
+D1
+The village continues.
+~
+~
+0 0 8393
+D2
+The village continues.
+~
+~
+0 0 8398
+D3
+A gate lies to the west.
+~
+~
+0 0 8391
+W 5 0 0
+Z 5 5
+S
+#8393
+The Hill Giant Village~
+You stand in the middle of the hill giant village.  Hill giants in other
+areas eye your actions warily.  The well-packed dirt of the common area is
+strewn with sticks, crudely carved wooden tools, and the bones of past
+meals.  A large cooking fire is to the east, a log hut is to the north, and
+the village continues to the west.  
+~
+~
+1
+0 0 4
+D0
+The village continues.
+~
+~
+0 0 8385
+D1
+A large fire blazes away.
+~
+~
+0 0 8394
+D3
+The village continues.
+~
+~
+0 0 8392
+W 5 0 0
+Z 5 5
+S
+#8394
+A Large Cooking Fire~
+An enormous fire blazes away, with several deer turning on spits and
+dripping grease into the flames.  Thick smoke rises from the fire, making
+your eyes water, and obscuring your view of the village.  
+~
+~
+1
+0 0 4
+D0
+Through the smoke, you see the village continuing.
+~
+~
+0 0 8386
+D1
+Through the smoke, you see the village continuing.
+~
+~
+0 0 8395
+D3
+Through the smoke, you see the village continuing.
+~
+~
+0 0 8393
+W 5 0 0
+Z 5 5
+S
+#8395
+The Hill Giant Village~
+You stand in the middle of the hill giant village.  Hill giants in other
+areas eye your actions warily.  The well-packed dirt of the common area is
+strewn with sticks, crudely carved wooden tools, and the bones of past
+meals.  A large cooking fire is to the west, a log hut is to the north, and
+the village continues to the east.  
+~
+~
+1
+0 0 4
+D0
+A log hut opens to the north.
+~
+~
+0 0 8387
+D1
+The hill giant village spreads east.
+~
+~
+0 0 8396
+D2
+The entrance to the Chieftain\@s lodge is south.
+~
+~
+0 0 8401
+D3
+To the west is a large cooking fire.
+~
+~
+0 0 8394
+W 5 0 0
+Z 5 5
+S
+#8396
+The Hill Giant Village~
+You stand at the east end of the hill giant village.  A crude hut opens
+to the north, and other huts and cooking fires lie to the west.  The logs of
+the stockade wall rise immediately east of you, and the entrance to the
+stockade is south.  
+~
+~
+1
+0 0 4
+D0
+A crude hut is to the north.
+~
+~
+0 0 8388
+D2
+The entrance to the village is south.
+~
+~
+0 0 8402
+D3
+The hill giant village spreads west.
+~
+~
+0 0 8395
+W 5 0 0
+Z 5 5
+S
+#8397
+A Crude Hut~
+This large log structure houses several adult hill giants.  The walls are
+made of unpeeled trunks, insulated with moss and twigs.  The dirt floor is
+covered with smelly hides, and more hides hang on the walls.  A side of raw
+venison sits in the dirt.
+~
+~
+1
+0 8 0
+D1
+~
+~
+0 0 8398
+W 5 0 0
+Z 5 5
+S
+#8398
+The Hill Giant Village~
+You stand in the middle of the hill giant village.  To the west is a
+dwelling built from logs, and to the east is a large lodge house.  The
+hard-packed dirt of the common area is scattered with bones and scraps of
+fur.  
+~
+~
+1
+0 0 4
+D0
+The village continues.
+~
+~
+0 0 8392
+D2
+The village continues.
+~
+~
+0 0 8404
+D3
+A large log hut is west.
+~
+~
+0 0 8397
+W 5 0 0
+Z 5 5
+S
+#8399
+The Chieftain\@s Bonfire~
+This corner of the Cheiftain\@s lodge is used for cooking his personal
+meals.  A large fire blazes away, with smoke drifting out through a large
+hole in the roof, and a wild boar roasts on a spit.  To the south, a large
+throne is visible.  
+~
+~
+1
+0 8 0
+D1
+The lodge entrance is east.
+~
+~
+0 0 8400
+D2
+The chieftain\@s throne is to the south.
+~
+~
+0 0 8405
+W 5 0 0
+Z 5 5
+S
+#8400
+The Entrance to the Chieftain\@s Lodge~
+The large door opens into a huge lodge built from logs.  The ceilings
+rise at least fourteen feet.  The floor is hard-packed dirt strewn with
+filthy deer skins.  To the west, a bonfire blazes, and to the south several
+weapon racks make up an armory.  
+~
+~
+1
+0 8 0
+D1
+The door leads outside.
+~
+~
+3 0 8401
+D2
+An armory is to the south.
+~
+~
+0 0 8406
+D3
+A large fire is to the west.
+~
+~
+0 0 8399
+W 5 0 0
+Z 5 5
+S
+#8401
+The Hill Giant Village~
+A large log building to the west dominates the center of the hill giant
+village.  Two animal skulls are hung on either side of a large door leading
+inside the lodge.  To the east, the entrance to the village is visible, and
+to the north and south are rows of log huts.  
+~
+~
+1
+0 0 4
+D0
+The village continues.
+~
+~
+0 0 8395
+D1
+The village entrance is visible in the distance.
+~
+~
+0 0 8402
+D2
+The village continues.
+~
+~
+0 0 8407
+D3
+The door leads inside the lodge.
+~
+~
+3 0 8400
+W 5 0 0
+Z 5 5
+S
+#8402
+Inside the Stockade~
+Standing inside the gates of the stockade, the hill giant village spreads
+before you.  Several crude huts lie to the north and south, with huge
+cooking fires blazing in front of them.  To the west stands a large log
+building.  In the distance, hill giants walk between huts, or to and from
+the fires.  
+~
+~
+1
+0 0 4
+D0
+The hill giant village continues.
+~
+~
+0 0 8396
+D1
+The path leads outside the stockade.
+~
+~
+0 0 8379
+D2
+The hill giant village continues.
+~
+~
+0 0 8408
+D3
+The hill giant village continues.
+~
+~
+0 0 8401
+W 5 0 0
+Z 5 5
+S
+#8403
+Between Two Huts~
+You stand between two roughly constructed log huts.  Several tree trunks
+are leaned against the stockade wall to the west, apparently for future
+construction.  
+~
+~
+1
+0 0 4
+D1
+The village continues east.
+~
+~
+0 0 8404
+W 5 0 0
+Z 5 5
+S
+#8404
+The Hill Giant Village~
+You stand in the middle of the hill giant village.  To the west is a
+dwelling built from logs, and to the east is a large lodge house.  The
+hard-packed dirt of the common area is scattered with bones and scraps of
+fur.  
+~
+~
+1
+0 0 4
+D0
+The village continues.
+~
+~
+0 0 8398
+D2
+The village continues.
+~
+~
+0 0 8410
+D3
+A space between two dwellings is west.
+~
+~
+0 0 8403
+W 5 0 0
+Z 5 5
+S
+#8405
+The Chieftain\@s Throne~
+A large wooden throne, draped with animal skins, towers in the southwest
+corner of the lodge.  Two skulls impaled on spears stand to either side of
+the great chair.  A pile of bones, remnants of the chieftain\@s last meal,
+sits nearby.  From here, the hill giant chieftain rules the tribe with an
+iron fist.  
+~
+~
+1
+0 8 0
+D0
+A bonfire blazes to the north.
+~
+~
+0 0 8399
+D1
+Giant clubs and iron spears lean against the wall to the east.
+~
+~
+0 0 8406
+W 5 0 0
+Z 5 5
+S
+#8406
+The Chieftain\@s Armory~
+This corner of the chieftain\@s lodge is used as an armory for the hill
+giant tribe.  Several iron spears, reserved for the chieftain\@s use, lean
+against the wall, and there are many spiked clubs carved from tree trunks.  
+~
+~
+1
+0 8 0
+D0
+The entrance to the lodge is north.
+~
+~
+0 0 8400
+D3
+The chieftain\@s throne is west.
+~
+~
+0 0 8405
+W 5 0 0
+Z 5 5
+S
+#8407
+The Hill Giant Village~
+A large log building to the west dominates the center of the hill giant
+village.  To the north you can see the entrance to the building.  Log huts
+line the north and south walls of the stockade, and plumes of smoke from
+several cooking fires rise beyond the walls of the lodge house.  
+~
+~
+1
+0 0 4
+D0
+The entrance to the lodge house is north.
+~
+~
+0 0 8401
+D1
+The village continues.
+~
+~
+0 0 8408
+D2
+The village continues.
+~
+~
+0 0 8413
+W 5 0 0
+Z 5 5
+S
+#8408
+The Hill Giant Village~
+A large log building to the west dominates the center of the hill giant
+village.  To the north you can see the entrance to the village, a log hut
+is to the south, and plumes of smoke from several cooking fires rise beyond
+the walls of the lodge house.  
+~
+~
+1
+0 0 4
+D0
+The village entrance is north.
+~
+~
+0 0 8402
+D2
+A log hut is south.
+~
+~
+0 0 8414
+D3
+The village continues.
+~
+~
+0 0 8407
+W 5 0 0
+Z 5 5
+S
+#8409
+A Crude Hut~
+This crudely-built log hut is spacious by human standards.  Piles of
+dirty furs cover the floor, and a half-eaten deer haunch sits in the dirt. 
+The trunk of a tree, carved into a club, leans against the rear wall.  The
+air in this dwelling is thick with the smells of sweat and unbathed bodies. 
+~
+~
+1
+0 8 0
+D1
+The village continues east.
+~
+~
+0 0 8410
+W 5 0 0
+Z 5 5
+S
+#8410
+A Large Cooking Fire~
+A large pile of logs is blazing here, generating large amounts of heat
+and smoke.  A mountain goat is turning on a metal spear used for a spit. 
+Wooden dwellings are to the south and west, and the village continues north
+and east.  
+~
+~
+1
+0 0 4
+D0
+The village continues.
+~
+~
+0 0 8404
+D1
+The village continues.
+~
+~
+0 0 8411
+D2
+South is a large log hut.
+~
+~
+0 0 8415
+D3
+West is a large log hut.
+~
+~
+0 0 8409
+W 5 0 0
+Z 5 5
+S
+#8411
+The Hill Giant Village~
+You stand in the middle of the hill giant village.  Hill giants in other
+areas eye your actions warily.  The well-packed dirt of the common area is
+strewn with sticks, crudely carved wooden tools, and the bones of past
+meals.  A large cooking fire is to the west, a log hut is to the south, and
+the village continues to the east.  
+~
+~
+1
+0 0 4
+D1
+The village continues.
+~
+~
+0 0 8412
+D2
+South is a large log hut.
+~
+~
+0 0 8416
+D3
+The village continues.
+~
+~
+0 0 8410
+W 5 0 0
+Z 5 5
+S
+#8412
+The Hill Giant Village~
+You stand in the middle of the hill giant village.  Hill giants in other
+areas eye your actions warily.  The well-packed dirt of the common area is
+strewn with sticks, crudely carved wooden tools, and the bones of past
+meals.  A space between two dwellings is to the south, and the village
+continues east and west.  
+~
+~
+1
+0 0 4
+D1
+The village continues.
+~
+~
+0 0 8413
+D2
+South is a large log hut.
+~
+~
+0 0 8417
+D3
+The village continues.
+~
+~
+0 0 8411
+W 5 0 0
+Z 5 5
+S
+#8413
+The Hill Giant Village~
+You stand in the middle of the hill giant village.  Hill giants in other
+areas eye your actions warily.  The well-packed dirt of the common area is
+strewn with sticks, crudely carved wooden tools, and the bones of past
+meals. South is a large log hut.
+~
+~
+1
+0 0 4
+D0
+The village continues.
+~
+~
+0 0 8407
+D2
+South is a large log hut.
+~
+~
+0 0 8418
+D3
+The village continues.
+~
+~
+0 0 8412
+W 5 0 0
+Z 5 5
+S
+#8414
+A Crude Hut~
+This large log structure houses several adult hill giants.  The walls are
+made of unpeeled trunks, insulated with moss and twigs.  The dirt floor is
+covered with smelly hides, and more hides hang on the walls.  A side of raw
+venison sits in the dirt.  
+~
+~
+1
+0 8 0
+D0
+The village continues north.
+~
+~
+0 0 8408
+W 5 0 0
+Z 5 5
+S
+#8415
+A Crude Hut~
+A spacious dwelling crafted out of logs, this hut appears to house three
+or more adult hill giants.  Bear skins hang on the walls, and the floors are
+covered with stinking deer hides.  
+~
+~
+1
+0 8 0
+D0
+The hut opens to the north.
+~
+~
+0 0 8410
+W 5 0 0
+Z 5 5
+S
+#8416
+A Crude Hut~
+This large log structure houses several adult hill giants.  The walls are
+made of unpeeled trunks, insulated with moss and twigs.  The dirt floor is
+covered with smelly hides, and more hides hang on the walls.  A side of raw
+venison sits in the dirt.
+~
+~
+1
+0 8 0
+D0
+The hut opens to the north.
+~
+~
+0 0 8411
+W 5 0 0
+Z 5 5
+S
+#8417
+Between Two Dwellings~
+You stand in a small space between two crude log dwellings.  Several deer
+skins are stretching on a wooden rack affixed to the stockade wall to the
+south.  The ground here is covered with bones, scraps of fur, and pieces of
+wood.  
+~
+~
+1
+0 0 0
+D0
+The village continues north.
+~
+~
+0 0 8412
+W 5 0 0
+Z 5 5
+S
+#8418
+A Crude Hut~
+A spacious dwelling crafted out of logs, this hut appears to house three
+or more adult hill giants.  Bear skins hang on the walls, and the floors are
+covered with stinking deer hides. 
+~
+~
+1
+0 8 0
+D0
+The hut opens to the north.
+~
+~
+0 0 8413
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 8400 spec_poison
+S
+
+
+
+#RESETS
+D 0 8390 1 3
+D 0 8391 3 3
+D 0 8400 1 3
+D 0 8401 3 3
+M 0 8403 9 8378 1
+E 0 8402 0 16
+G 0 8406 0
+M 0 8403 9 8378 1
+E 0 8402 0 16
+G 0 8406 0
+E 0 8407 0 13
+M 0 8404 9 8379 1
+M 0 8401 10 8380 1
+M 0 8402 10 8380 1
+M 0 8401 10 8382 1
+M 0 8402 10 8382 1
+M 0 8402 10 8383 1
+M 0 8403 9 8384 1
+E 0 8402 0 16
+G 0 8406 0
+E 0 8407 0 13
+M 0 8401 10 8385 1
+M 0 8401 10 8386 1
+M 0 8402 10 8387 1
+M 0 8402 10 8388 1
+M 0 8400 1 8389 1
+G 0 8403 0
+G 0 8404 0
+O 0 8375 0 8389
+M 0 8401 10 8391 1
+M 0 8404 9 8392 1
+M 0 8403 9 8394 1
+E 0 8402 0 16
+G 0 8406 0
+M 0 8404 9 8394 1
+M 0 8401 10 8395 1
+M 0 8403 9 8395 1
+E 0 8402 0 16
+G 0 8406 0
+E 0 8407 0 13
+M 0 8402 10 8397 1
+M 0 8403 9 8398 1
+E 0 8402 0 16
+G 0 8404 0
+G 0 8406 0
+M 0 8404 9 8398 1
+M 0 8406 6 8399 1
+G 0 8406 0
+M 0 8407 6 8399 1
+M 0 8406 6 8400 1
+G 0 8406 0
+M 0 8406 6 8400 1
+G 0 8406 0
+M 0 8407 6 8400 1
+M 0 8404 9 8401 1
+M 0 8403 9 8402 1
+E 0 8402 0 16
+G 0 8406 0
+G 0 8408 0
+M 0 8401 10 8404 1
+M 0 8403 9 8404 1
+E 0 8402 0 16
+E 0 8407 0 13
+G 0 8406 0
+M 0 8407 6 8404 1
+M 0 8405 1 8405 1
+E 0 8401 0 16
+G 0 8405 0
+M 0 8406 6 8405 1
+G 0 8406 0
+M 0 8406 6 8405 1
+G 0 8406 0
+M 0 8407 6 8405 1
+M 0 8406 6 8406 1
+G 0 8406 0
+M 0 8407 6 8406 1
+M 0 8407 6 8406 1
+M 0 8401 10 8407 1
+M 0 8404 9 8407 1
+M 0 8402 10 8409 1
+M 0 8404 9 8410 1
+M 0 8403 9 8411 1
+E 0 8402 0 16
+G 0 8406 0
+M 0 8404 9 8412 1
+M 0 8403 9 8413 1
+E 0 8402 0 16
+E 0 8407 0 13
+G 0 8406 0
+M 0 8404 9 8413 1
+M 0 8402 10 8414 1
+M 0 8402 10 8415 1
+M 0 8401 10 8416 1
+M 0 8402 10 8416 1
+M 0 8401 10 8418 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

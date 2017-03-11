@@ -1,0 +1,6990 @@
+#AREADATA
+Name The Hidden Canyon~
+Builders Sitheus Arkhural  Landeyda Iacobos Tzajai Korodrath~
+VNUMs 12100 12150
+Credits [House] Sith/Arkh The Hidden Canyon~
+Danger 2
+Security 9
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 5 -1 0
+Shades 5 5
+Stone 85
+End
+
+
+
+#MOBILES
+V4 12100
+gambler shuddeni obese hideously raidergambler~
+a hideously obese shuddeni~
+A hideously obese shuddeni sits here by the bonfire, rolling a pair of dice.
+~
+Garbed in little more than breeches and a breezy tunic, this shuddeni\@s
+horrendous paunch is plainly visible.  The wrinkled flabs of gray skin droop
+over the edge of his overly-tight belt, protected only by the filmy gauze of
+his tunic.  His legs, in comparison, seem little more than twigs, barely
+able to support his amorphous bulk.  His eyeless gaze seems perpetually
+focused upon the pair of dice within his hands.  
+~
+shuddeni~
+water scholar~
+ABX 0 ADFJZ E 0
+60 18 20d110+800 0d0+0 6d7+18 none~
+hit~
+-12 -12 -12 -1
+EFKN ABb
+26 0 0 0 20 0 0 0 0 0 0 0 0 20 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+rest rest male 150 -1
+AHMVW ABCDEFGHIJK AG medium unknown
+>speech_prog take~
+if compstr(1)/I
+or compstr(2)/I
+or compstr(3)/I
+or compstr(4)/I
+or compstr(5)/I
+or compstr(6)/I
+or compstr(7)/I
+or compstr(1) == my
+or compstr(2) == my
+or compstr(3) == my
+or compstr(4) == my
+or compstr(5) == my
+or compstr(6) == my
+or compstr(7) == my
+or compstr(1) == winnings
+or compstr(2) == winnings
+or compstr(3) == winnings
+or compstr(4) == winnings
+or compstr(5) == winnings
+or compstr(6) == winnings
+or compstr(7) == winnings
+  if isfocused()
+    if ispc($n)
+      if valname($n) == $f
+        if mobvalue(6) != 0
+          sigh
+          if mobvalue(6) == 1
+            mpvalueup 0 $0
+          endif
+          if mobvalue(6) == 2
+            mpvalueset 8 $0
+            mpvalueup 0 $8
+            mpvalueup 0 $8
+          endif
+          if mobhere(12118)
+            mptrans rgambler 9589
+          endif
+          mpset mob raidergambler gold $0
+          give $0 gold $f
+          mpmload 12118
+          \@Be off with you.
+          mpunfocus
+          RESET
+          mpvalueset 1 0
+          mpvalueset 3 0
+          mpvalueset 4 0
+          mpvalueset 6 0
+        endif
+      else
+        mpecho A hideously obese shuddeni snaps, \@I wasn\@t talking to you.\@
+      endif
+    endif
+  endif      
+endif
+~
+>speech_prog refresh remind tell~
+if compstr(1) == me
+or compstr(2) == me
+or compstr(3) == me
+or compstr(4) == me
+or compstr(5) == me
+or compstr(6) == me
+or compstr(7) == me
+or compstr(1) == rules
+or compstr(2) == rules
+or compstr(3) == rules
+or compstr(4) == rules
+or compstr(5) == rules
+or compstr(6) == rules
+or compstr(7) == rules
+or compstr(1) == memory
+or compstr(2) == memory
+or compstr(3) == memory
+or compstr(4) == memory
+or compstr(5) == memory
+or compstr(6) == memory
+or compstr(7) == memory
+  if isfocused()
+    if ispc($n)
+      if valname($n) == $f
+        if mobvalue(4) == 2
+          emote makes a faint movement of annoyance.
+          \@If I must.
+          mpvalueset 4 3
+          mpvalueset 3 10
+        endif
+      else
+        \@Not right now.  Can\@t you see I\@m busy?
+      endif
+    endif
+  endif
+endif
+~
+>speech_prog yes yeah yea aye yep~
+if isfocused()
+  if ispc($n)
+    if valname($n) == $f
+      if mobvalue(4) == 1
+      or mobvalue(4) == 4
+        nod
+        \@If you ever need me to refresh your memory, just ask.
+        mpbitset $n 12100 1
+        mpvalueset 4 2
+        mpvalueset 3 10
+      endif
+    endif
+  endif
+endif
+~
+>hitprcnt_prog 50~
+flee
+if ishere($n)
+else
+mpoload 12112 in room
+mpgoto 15082
+endif
+~
+>verb_prog p nod~
+mpinterpret $n $x
+if isfocused()
+  if ispc($n)
+    if valname($n) == $f
+      if mobvalue(4) == 1
+      or mobvalue(4) == 4
+        nod
+        \@If you ever need me to refresh your memory, just ask.
+        mpbitset $n 12100 1
+        mpvalueset 4 2
+        mpvalueset 3 10
+      endif
+    endif
+  endif
+endif
+~
+>verb_prog p shake~
+mpinterpret $n $x
+if isfocused()
+  if ispc($n)
+    if valname($n) == $f
+      if mobvalue(4) == 1
+      or mobvalue(4) == 4
+        if mobvalue(4) == 1
+          mutter
+          \@Ok, I\@ll go through it once with you.
+        endif
+        if mobvalue(4) == 4
+          mpecho A strange growling sound emanates from a hideously obese shuddeni.
+          \@I\@ll go through it once more then.
+        endif
+        mpvalueset 4 3
+        mpvalueset 3 10
+      endif
+    endif
+  endif
+endif
+~
+>load_prog 100~
+mpseewizi
+speak common
+~
+>speech_prog no nay~
+if isfocused()
+  if ispc($n)
+    if valname($n) == $f
+      if mobvalue(4) == 1
+      or mobvalue(4) == 4
+        if mobvalue(4) == 1
+          mutter
+          \@Ok, I\@ll go through it once with you.
+        endif
+        if mobvalue(4) == 4
+          mpecho A strange growling sound emanates from a hideously obese shuddeni.
+          \@I\@ll go through it once more then.
+        endif
+        mpvalueset 4 3
+        mpvalueset 3 10
+      endif
+    endif
+  endif
+endif
+~
+>speech_prog for with~
+if isfocused()
+  if ispc($n)
+    if valname($n) == $f
+      if mobvalue(4) == 2
+        mpecho A hideously obese shuddeni nods.
+        mpvalueset 4 5
+        mpvalueset 3 10
+      endif
+    endif
+  endif
+endif
+~
+>speech_prog bet wager~
+if compstr(1)/I
+or compstr(2)/I
+or compstr(3)/I
+or compstr(4)/I
+or compstr(1) == place
+or compstr(2) == place
+or compstr(3) == place
+or compstr(4) == place
+or compstr(5) == place
+or compstr(6) == place
+or compstr(7) == place
+or compstr(1) == make
+or compstr(2) == make
+or compstr(3) == make
+or compstr(4) == make
+or compstr(5) == make
+or compstr(6) == make
+or compstr(7) == make
+  if ispc($n)
+    if inhouse($n) == raider
+      if isfocused()
+        if valname($n) == $f
+          if mobvalue(0) == 0
+            \@Just give me the gold then, and we can start.
+          else
+            \@You already made a bet, you simpering idiot.
+          endif
+        else
+          \@You\@ll get your turn.  Just let me finish cleaning $f out.
+        endif
+      else
+        \@Fine.  You\@ll have to pay up front though, for obvious reasons.
+      endif
+    else
+      emote quickly looks you over.
+      \@Fine.  Just pay up front.
+    endif
+  endif
+endif
+~
+>speech_prog against~
+if isfocused()
+  if ispc($n)
+    if valname($n) == $f
+      if mobvalue(4) == 2
+        \@Have it your way, then.
+        mpvalueset 4 6
+        mpvalueset 3 10
+      endif
+    endif
+  endif
+endif
+~
+>speech_prog up~
+if compstr(1)/I
+or compstr(2)/I
+or compstr(3)/I
+or compstr(4)/I
+or compstr(5)/I
+or compstr(6)/I
+or compstr(7)/I
+or compstr(1) == stakes
+or compstr(2) == stakes
+or compstr(3) == stakes
+or compstr(4) == stakes
+or compstr(5) == stakes
+or compstr(6) == stakes
+or compstr(7) == stakes
+if isfocused()
+  if valname($n) == $f
+    if mobvalue(6) != 0
+      mpecho The corners of a hideously obese shuddeni\@s mouth curl into a thin smile.
+      if mobvalue(6) == 1
+        \@Alright then.  If you win, you\@ll get triple your money.
+        \@If I win, you get nothing.
+        mpvalueset 1 2
+      endif
+      if mobvalue(6) == 2
+        \@Alright then.  If you win, you\@ll get one of my creations.
+        mpvalueset 1 3
+      endif
+      mpvalueset 4 2
+      mpvalueset 3 10
+    endif
+  else
+    mpecho {YA hideously obese shuddeni snaps, \@I wasn\@t talking to you.\@{x
+  endif
+endif
+endif
+
+~
+>speech_prog p a r k h~
+\\@$f
+~
+>exit_prog 100~
+if isfocused()
+  if valname($n) == $f
+    t $f Well, if you\@re going to just walk out like that, then I suppose I will just keep your gold.
+    mpforce rgambler mpunfocus
+    mpunfocus
+    mpvalueset 1 0
+    mpvalueset 3 0
+    mpvalueset 4 0
+    mpvalueset 6 0
+  endif
+endif
+~
+>rand_prog 100~
+if mobvalue(3) > 0
+  mpvaluedown 3
+endif
+if isfocused()
+  if mobvalue(3) == 3
+    if mobvalue(4) == 6
+      if mobvalue(2) == 7
+      or mobvalue(2) == $7
+        if mobvalue(2) == 7
+          if mobvalue(1) == 1
+            mutter
+            mpvalueup 0 $0
+            mpset mob raidergambler gold $0
+            if mobhere(12118)
+              mptrans rgambler 9589
+            endif
+            give $0 gold $f
+            mpmload 12118
+            \@Be off with you.
+            mpunfocus
+            mpvalueset 1 0
+            mpvalueset 3 0
+            mpvalueset 4 0
+          endif
+          if mobvalue(1) == 2
+            if mobvalue(6) == 1
+              sigh
+              \@Wait, before you take your money, consider another offer!
+              \@Play again, and if you win, I will let you take your pick of my finest items!
+              \@What say you, will you take your winnings or up the stakes?
+              mpvalueset 6 2
+            else
+              mpecho A sound of profound loss arises from the throat of a hideously obese shuddeni.
+              \@Stop! Before you take your money, consider this offer!
+              \@Play again, and if you win, I will triple your money, rather than doubling it!
+              \@What say you, will you take your winnings or up the stakes?
+              mpvalueset 6 1
+            endif
+            mpvalueset 3 0
+          endif
+          if mobvalue(1) == 3
+            mpvaluerand 1 1 10
+            if mobhere(12118)
+              mptrans rgambler 9589
+            endif
+            if mobvalue(1) < 5
+              mpoload 12113
+              mpoload 12111 in drawpouch
+              mpoload 12111 in drawpouch
+              mpoload 12111 in drawpouch
+              give drawpouch $f
+            endif
+            if mobvalue(1) == 5
+              mpoload 12114
+              give slippers $f
+            endif
+            if mobvalue(1) == 6
+            or mobvalue(1) == 7
+              mpoload 12115
+              give grooves $f
+            endif
+            if mobvalue(1) > 7
+              mpoload 12116
+              give amulet $f
+            endif
+            \@Be gone now, you heartless thief.
+            mpmload 12118
+            mpunfocus
+            mpvalueset 1 0
+            mpvalueset 3 0
+            mpvalueset 4 0
+            mpvalueset 6 0
+          endif
+        else
+          grin
+          \@Better luck next time.
+          mpechoat $n A hideously obese shuddeni pockets your money.
+          mpechoaround $n A hideously obese shuddeni pockets $N\@s money.
+          mpforce rgambler mpunfocus
+          mpunfocus
+          mpvalueset 1 0
+          mpvalueset 3 0
+          mpvalueset 4 0
+        endif  
+      else
+        emote picks up the dice and begins to rattle them in his hand.
+        mpvalueset 3 6
+      endif      
+    endif
+    if mobvalue(4) == 5
+      if mobvalue(2) == 7
+      or mobvalue(2) == $7
+        if mobvalue(2) == 7
+          grin
+          \@Better luck next time.
+          mpechoat $n A hideously obese shuddeni pockets your money.
+          mpechoaround $n A hideously obese shuddeni pockets $N\@s money.
+          mpunfocus
+          mpforce rgambler mpunfocus
+          mpvalueset 1 0
+          mpvalueset 3 0
+          mpvalueset 4 0
+        else
+          if mobvalue(1) == 1
+            mutter
+            mpvalueup 0 $0
+            mpset mob raidergambler gold $0
+            if mobhere(12118)
+              mptrans rgambler 9589
+            endif
+            give $0 gold $f
+            mpmload 12118
+            \@Be off with you.
+            mpunfocus
+            mpvalueset 1 0
+            mpvalueset 3 0
+            mpvalueset 4 0
+          endif
+          if mobvalue(1) == 2
+            if mobvalue(6) == 1
+              sigh
+              \@Wait, before you take your money, consider another offer!
+              \@Play again, and if you win, I will let you take your pick of my finest items!
+              \@What say you, will you take your winnings or up the stakes?
+              mpvalueset 6 2
+            else
+              mpecho A sound of profound loss arises from the throat of a hideously obese shuddeni.
+              \@Stop! Before you take your money, consider this offer!
+              \@Play again, and if you win, I will triple your money instead of simply doubling it!
+              \@What say you, will you take your winnings or up the stakes?
+              mpvalueset 6 1
+            endif
+            mpvalueset 3 0
+          endif
+          if mobvalue(1) == 3
+            mpvaluerand 1 1 10
+            if mobhere(12118)
+              mptrans rgambler 9589
+            endif
+            if mobvalue(1) < 5
+              mpoload 12113
+              mpoload 12111 in drawpouch
+              mpoload 12111 in drawpouch
+              mpoload 12111 in drawpouch
+              give drawpouch $f
+            endif
+            if mobvalue(1) == 5
+              mpoload 12114
+              give slippers $f
+            endif
+            if mobvalue(1) == 6
+            or mobvalue(1) == 7
+              mpoload 12115
+              give grooves $f
+            endif
+            if mobvalue(1) > 7
+              mpoload 12116
+              give amulet $f
+            endif
+            \@Be gone now, you heartless thief.
+            mpmload 12118
+            mpunfocus
+            mpvalueset 1 0
+            mpvalueset 3 0
+            mpvalueset 4 0
+            mpvalueset 6 0
+          endif
+        endif
+      else
+        emote picks up the dice and begins to rattle them in his hand.
+        mpvalueset 3 6
+      endif
+    endif
+    if mobvalue(4) == 3
+      \@Now, are you ready to play?
+      mpvalueset 4 4
+    endif
+  endif
+  if mobvalue(3) == 5
+    if mobvalue(4) > 4
+      emote rolls a pair of ivory dice, bouncing them off the edge of the bonfire.
+      mpvaluerand 2 1 6
+      mpvaluerand 5 1 6
+      mpvalueup 2 $5
+      if mobvalue(4) == 5
+        if mobvalue(2) == $7
+          if rand(10)
+            mpvaluerand 2 1 6
+            mpvaluerand 5 1 6
+            mpvalueup 2 $5
+          endif
+        endif
+      endif
+      if mobvalue(4) == 6
+        if mobvalue(2) == 7
+          if rand(10)
+            mpvaluedown 2 1
+          endif
+        endif
+      endif
+      mpecho The dice add up to $2.
+    endif
+    if mobvalue(4) == 3
+      \@If it\@s any other number, then that number becomes the \#point.\#
+      \@When I next roll the point, I win.
+      \@However, if I roll a 7 before the point, I lose.
+    endif
+  endif
+  if mobvalue(3) == 7
+    if mobvalue(4) == 6
+      if mobvalue(2) == 7
+      or mobvalue(2) == 11
+        grin
+        \@Better luck next time.
+        emote pockets your money.
+        mpunfocus
+        mpforce rgambler mpunfocus
+        mpvalueset 1 0
+        mpvalueset 3 0
+        mpvalueset 4 0
+      endif
+      if mobvalue(2) == 2
+      or mobvalue(2) == 3
+      or mobvalue(2) == 12
+        if mobvalue(1) == 1
+          mutter
+          mpvalueset 8 $0
+          mpvalueup 0 $8
+          mpvalueup 0 $8
+          mpset mob raidergambler gold $0
+          if mobhere(12118)
+            mptrans rgambler 9589
+          endif
+          give $0 gold $f
+          mpmload 12118
+          \@Be off with you.
+          mpunfocus
+          mpvalueset 1 0
+          mpvalueset 3 0
+          mpvalueset 4 0
+        endif
+        if mobvalue(1) == 2
+          if mobvalue(6) == 1
+            sigh
+            \@Wait, before you take your money, consider another offer!
+          else
+            mpecho A sound of profound loss arises from the throat of a hideously obese shuddeni.
+            \@Stop! Before you take your money, consider this offer!
+          endif
+          \@Play again, and if you win, I will let you take some of my most prized possessions!
+          \@What say you, will you take your winnings or up the stakes?
+          mpvalueset 6 2
+          mpvalueset 3 0
+        endif
+        if mobvalue(1) == 3
+          mpvaluerand 1 1 10
+          if mobhere(12118)
+            mptrans rgambler 9589
+          endif
+          if mobvalue(1) < 5
+            mpoload 12113
+            mpoload 12111 in drawpouch
+            mpoload 12111 in drawpouch
+            mpoload 12111 in drawpouch
+            give drawpouch $f
+          endif
+          if mobvalue(1) == 5
+            mpoload 12114
+            give slippers $f
+          endif
+          if mobvalue(1) == 6
+          or mobvalue(1) == 7
+            mpoload 12115
+            give grooves $f
+          endif
+          if mobvalue(1) > 7
+            mpoload 12116
+            give amulet $f
+          endif
+          \@Be gone now, you heartless thief.
+          mpmload 12118
+          mpunfocus
+          mpvalueset 1 0
+          mpvalueset 3 0
+          mpvalueset 4 0
+          mpvalueset 6 0
+        endif
+      endif
+      if mobvalue(2) == 4
+      or mobvalue(2) == 5
+      or mobvalue(2) == 6
+      or mobvalue(2) == 8
+      or mobvalue(2) == 9
+      or mobvalue(2) == 10
+        mpvalueset 7 $2
+        \@The point has been established.  It\@s $7.
+      endif     
+    endif   
+    if mobvalue(4) == 5
+      if mobvalue(2) == 7
+      or mobvalue(2) == 11
+        if mobvalue(1) == 1
+          mutter
+          mpvalueset 8 $0
+          mpvalueup 0 $8
+          mpvalueup 0 $8
+          mpset mob raidergambler gold $0
+          if mobhere(12118)
+            mptrans rgambler 9589
+          endif
+          give $0 gold $f
+          \@Be off with you.
+          mpmload 12118
+          mpunfocus
+          mpvalueset 1 0
+          mpvalueset 3 0
+          mpvalueset 4 0
+        endif
+        if mobvalue(1) == 2
+          if mobvalue(6) == 1
+            sigh
+            \@Wait, before you take your money, consider another offer!
+          else
+            mpecho A sound of profound loss arises from the throat of a hideously obese shuddeni.
+            \@Stop! Before you take your money, consider this offer!
+          endif
+          \@Play again, and if you win, I will let you take some of my most prized possessions!
+          \@What say you, will you take your winnings or up the stakes?
+          mpvalueset 6 2
+          mpvalueset 3 0
+        endif
+        if mobvalue(1) == 3
+          mpvaluerand 1 1 10
+          if mobhere(12118)
+            mptrans rgambler 9589
+          endif
+          if mobvalue(1) < 5
+            mpoload 12113
+            mpoload 12111 in drawpouch
+            mpoload 12111 in drawpouch
+            mpoload 12111 in drawpouch
+            give drawpouch $f
+          endif
+          if mobvalue(1) == 5
+            mpoload 12114
+            give slippers $f
+          endif
+          if mobvalue(1) == 6
+          or mobvalue(1) == 7
+            mpoload 12115
+            give grooves $f
+          endif
+          if mobvalue(1) > 7
+            mpoload 12116
+            give amulet $f
+          endif
+          \@Be gone, you heartless thief.
+          mpmload 12118
+          mpunfocus
+          mpvalueset 1 0
+          mpvalueset 3 0
+          mpvalueset 4 0
+          mpvalueset 6 0
+        endif
+      endif
+      if mobvalue(2) == 2
+      or mobvalue(2) == 3
+      or mobvalue(2) == 12
+        if mobvalue(6) != 0
+          emote wipes a bead of sweat from his forehead.
+        else
+          grin
+        endif
+        \@That\@s craps for you, $f.
+        mpechoat $n A hideously obese shuddeni pockets your money, then returns to his dice.
+        mpechoaaround $n A hideously obese shuddeni pockets $n\@s money, then returns to his dice.
+        mpunfocus
+        mpforce rgambler mpunfocus
+        mpvalueset 1 0
+        mpvalueset 3 0
+        mpvalueset 4 0
+        mpvalueset 6 0
+      endif
+      if mobvalue(2) == 4
+      or mobvalue(2) == 5
+      or mobvalue(2) == 6
+      or mobvalue(2) == 8
+      or mobvalue(2) == 9
+      or mobvalue(2) == 10
+        mpvalueset 7 $2
+        \@The point has been established.  It\@s $7.
+      endif
+    endif
+    if mobvalue(4) == 3
+      \@The first roll is called the \#Come Out\# roll.
+      \@If I roll a 7 or 11, that\@s an automatic win for me.
+      \@If I roll a 2, 3, or a 12, then that\@s a loss
+    endif
+  endif
+  if mobvalue(3) == 9
+    if mobvalue(4) > 4
+      emote rolls a pair of ivory dice, bouncing them off the edge of the bonfire.
+      mpvaluerand 2 1 6
+      mpvaluerand 5 1 6
+      mpvalueup 2 $5
+      if mobvalue(4) == 5
+        if mobvalue(2) == 7
+          if rand(20)
+            mpvalueup 2 1
+          endif
+        endif
+      endif
+      if mobvalue(4) == 6
+        if mobvalue(2) == 2
+        or mobvalue(2) == 3
+        or mobvalue(2) == 12
+          if rand(20)
+            mpvaluerand 2 1 6
+            mpvaluerand 5 1 6
+            mpvalueup 2 $5
+          endif
+        endif
+      endif
+      mpecho The dice add up to $2.
+    endif
+    if mobvalue(4) == 3
+      \@This is a betting game.  You bet either for, or against, the shooter, which is me.
+    endif
+    if mobvalue(4) == 2
+      \@Now, are you going to be betting for or against me?
+    endif
+    if mobvalue(4) == 0
+      \@I assume you know how to play the game, correct?
+      mpvalueset 4 1
+    endif
+  endif
+endif
+~
+|
+V4 12101
+girl aelin slender raidergirl~
+a slender aelin girl~
+A slender aelin girl sits at the edge of the pool.
+~
+Your gaze rests upon a slender aelin girl, garbed in a low cut blouse of
+silky material.  Her fair wings, though somewhat disheveled in appearance,
+give her a modestly angelic appearance.  Her pale white skin glistens
+beneath droplets of shimmering water.  Slowly, she turns her lucid green
+eyes towards you, silently beckoning for your attention.  
+~
+aelin~
+water scholar~
+ABDL 0 DEFTZ E 0
+30 11 14d95+725 0d0+0 5d6+15 pierce~
+scratch~
+-5 -5 -5 -5
+FH AB
+26 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit sit female 30 -1
+AHKMVW ABCDEFGIJKP F medium unknown
+>bribe_prog 500~
+if isinhouse($n)
+  mpechoat $n You and the trollop head for a secluded part of the canyon.
+  mpechoaround $n $N and the trollop head for a secluded part of the canyon.
+  mpechoat $n She shows you several secrets of the aelin and puts a big smile on your face.
+  mpechoaround $n They look as if they are wrestling and after a bit of time they both return with smiles on their faces.
+endif
+~
+>speech_prog p a r k h~
+\\@$f
+~
+>exit_prog 100~
+if isfocused()
+  if valname($n) == $f
+    if mobvalue(3) > 0
+      if mobvalue(3) < 7
+        emote sniffs loudly, then stalks back to the edge of the pool.
+      else
+        if mobvalue(3) < 9
+          emote sullenly goes back to her seat by the pool side.
+        else
+          emote turns her gaze back to the pool\@s reflective surface.
+        endif
+      endif
+      mpvalueset 3 0
+      mpunfocus
+    endif
+  endif
+endif
+if remembers($n)
+  mpforget $n
+endif
+~
+>trigger_prog 100~
+if isfocused()
+else
+  if ispc($n)
+    if isinhouse($n)
+      if remembers($n)
+      else
+        mpfocus $n
+        mpremember $n
+      endif
+    endif
+  endif
+endif
+~
+>rand_prog 100~
+if mobvalue(0) == 0
+  if mobvalue(2) == 0
+    if isfocused()
+      if mobvalue(3) == 10
+        mpechoat $f A slender aelin girl locks her gaze upon you.
+        mpechoaround $f A slender aelin girl\@s eyes meet with those of $F.
+      endif
+      if mobvalue(3) == 8
+        mpecho A slender aelin girl slowly rises from her seat by the edge of the pool.
+        mpstring mob raidergirl long A slender aelin girl stands seductively by the edge of the pool.
+      endif
+      if mobvalue(3) == 6
+        mpechoat $f A slender aelin girl gracefully stalks her way across the pool, her eyes never leaving you.
+        mpechoaround $f A slender aelin girl gracefully stalks her way across the pool, her gaze never leaving $F.
+        mpstring mob raidergirl long A slender aelin girl is here, slowly wading across the pool.
+      endif
+      if mobvalue(3) == 4
+        mpechoat $f A slender aelin girl stops mere inches away from you, wrapping her silky arms about your neck.
+        mpechoaround $f A slender aelin girl stops inches away from $F, and wraps her arms about $F\@s neck.
+        mpstring mob raidergirl long A slender aelin girl stands close to $f, her arms wrapped about $f\@s neck.
+      endif
+      if mobvalue(3) == 2
+        mpechoat $f {YA slender aelin girl whispers in your ear, \@500 gold, and you can do anything you want with me...\@{x
+        mpechoaround $f A slender aelin girl whispers something in $F\@s ear.
+      endif
+      if mobvalue(3) == 1
+        mpechoat $f A slender aelin girl abruptly releases you and walks back to the edge of the pool.
+        mpechoaround $f A slender aelin girl abruptly releases $F and walks back to the edge of the pool.
+        mpunfocus
+        mpstring mob raidergirl long A slender aelin girl sits by the edge of the pool.
+      endif
+    endif
+  endif
+  if mobvalue(2) == 1
+    mpstring mob raidergirl long A slender aelin girl sits by the edge of the pool.
+    mpvalueset 2 0
+  endif
+  if mobvalue(3) == 0
+    if isanypchere($i)
+      if rand(5)
+        mpvalueset 3 10
+        mproomcmd mptrigger all
+        break
+      endif
+      if rand(5)
+        mpvaluerand 1 1 3
+        if mobvalue(1) == 1
+          emote slowly dips her foot into a shallow pool, sending ripples across the placid surface.
+        endif
+        if mobvalue(1) == 2
+          emote playfully splashes you with water from the pool.
+        endif
+        if mobvalue(1) == 3
+          emote slowly traces circles into the placid surface of a shallow pool.
+        endif
+      endif
+    endif
+  endif
+endif
+if mobvalue(3) > 0
+  mpvaluedown 3
+endif
+if mobvalue(0) > 0
+  mpvaluedown 0
+endif
+~
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if ispc($n)
+if isinhouse($n)
+if sex($n) == 2
+else
+mpechoat $n A slender aelin girl gazes at you with longing.
+endif
+else
+if mobvalue(0) == 0
+if mobvalue(3) >  0
+if mobvalue(3) < 5
+mpechoat $f At $N\@s entrance, a slender aelin girl leaps away from you, screaming in terror!
+mpvalueset 3 0
+else
+mpecho A slender aelin girl leaps out of the pool, screaming in terror!
+endif
+mpunfocus
+else
+mpecho A slender aelin girl leaps out of the pool, screaming in terror!
+endif
+mpstring mob raidergirl long A slender aelin girl cowers against the side of the canyon.
+mpvalueset 2 1
+endif
+mpvalueset 0 30
+endif
+endif
+endif
+~
+|
+V4 12102
+sentry hooded raiderguard~
+a hooded sentry~
+A hooded sentry stands watch over the northern pass.
+~
+Clad in dark, camouflage hues, this rugged bandit stands guard over the
+northern pass.  Thickly built and steely eyed, the sentry attends to his
+task with the grim determination that none shall pass by uninvited.  A dark
+veil covers most of his face, leaving nothing more than his eyeline visible.
+~
+human~
+water scholar~
+ABDTX 0 DFJZ N 0
+35 18 25d57+1041 35d10+100 5d6+18 bash~
+crush~
+-10 -10 -10 -10
+EFIK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+>trigger_prog 100~
+if ischarmed($n)
+else
+  if inhouse($n) == Raider
+  or isbitset($n) == 12101
+  else
+    if iswielding($i) == 12128
+      stab $n
+    else
+      mpkill $n
+    endif
+  endif
+endif
+~
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+ break
+else
+  if ischarmed($n)
+  else
+    if inhouse($n) == Raider
+    or isbitset($n) == 12101
+      if level($n) > 45
+        if rand(2)
+          mpechoat $n You notice a hooded sentry quietly nodding his head in acknowledgement from the shadows.
+        endif
+      endif
+    else
+      if snaffected($i) == 244
+        if rand(20)
+          ambush $n
+        else
+          mpkill $n
+        endif
+        if isfight($i)
+        else
+          mpforce $n yell Help! I\@m being attacked by $I!
+          mpkill $n
+        endif
+      else
+        mpforce $n yell Help!  I\@m being attacked by $I!
+        mpkill $n
+      endif
+      mpvalueset 2 0
+      mpvalueset 3 0
+    endif
+  endif
+endif
+~
+>rand_prog 100~
+mpvalueset 0 0
+if snaffected($i) == 244
+else
+  camo
+endif
+if isanypchere()
+  mproomcmd mptrigger all
+endif
+~
+>load_prog 100~
+mpaddskill $i 244 100
+mpaddskill $i 247 100  
+mpaddskill $i 203 80   
+mpaddskill $i 175 80   
+mpaddskill $i 512 100  
+mpaddskill $i 511 100  
+mpaddskill $i 321 100
+mpaddskill $i 517 100
+mpaddskill $i 252 100
+mpaddskill $i 170 100
+mpaddskill $i 171 100
+mpaddskill $i 199 100
+mpaddskill $i 22 100
+~
+|
+V4 12103
+guard alatharya alatharyan raideralath~
+an alatharyan guard~
+An alatharyan guard stands here, keeping a wary eye on the merchandise.
+~
+A towering alatharyan guard stands before you, watching over the
+merchandise of his employer.  His blood-shot eyes look slightly dulled,
+giving him a slightly numb look.  His arms, thick as steel chords, are
+crossed in front of his chest.  
+~
+alatharya~
+water scholar~
+ABTX 0 DFJVZa N 0
+60 35 20d240+1100 0d0+0 4d12+50 bash~
+crush~
+-35 -35 -35 -15
+CDEFHK AB
+26 0 0 0 0 33 0 0 0 0 0 0 0 0 -33 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+>fight_prog 6~
+mpechoat $n An alatharyan guard brings his spiked cudgel down upon your head, {rCRUSHING{x you!
+mpechoaround $n An alatharyan guard brings his spiked cudgel down upon $N\@s head, {rCRUSHING{x $m!
+mpdamage 5 5 80
+~
+>fight_prog 5~
+if israce($n) == SHUDDENI
+else
+mpechoat $n An alatharyan guard brutally smashes his cudgel into your eyes!
+mpechoaround $n An alatharyan guard brutally smashes his cudgel into $N\@s eyes!
+mpdamage 1 1 15
+mpcast 8 60
+endif
+~
+|
+V4 12104
+Dhalija aelin~
+Dhalija~
+Dhalija, the Wing of Twilight, is here guarding the Vault vigilantly.
+~
+A dark Aelin flies lazily here at the edge of the torchlight.  She
+protects the Raider\@s vault vigilantly, because she is paid quite well to do
+the job and takes much pride in her work.  Her distaste for those things
+good has led her to this point in her life and would not turn back for
+anything to the way of the Light.  
+~
+aelin~
+water scholar~
+ABGSX 0 DEFJQTZ E 0
+55 2 1500d1+0 0d0+0 5d9+10 pierce~
+stab~
+-17 -17 -17 -17
+AFHKN AB
+26 0 20 0 0 -20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMW ABCDEFGIJKP AF medium unknown
+>fight_prog 9~
+mpvaluerand 6 1 4
+if mobvalue(6) == 1
+dirt
+endif
+if mobvalue(6) == 2
+vital
+endif
+if mobvalue(6) == 3
+circlestab
+endif
+if mobvalue(6) == 4
+slice
+endif
+~
+>load_prog 100~
+speak common
+mpaddskill $i 492 100
+mpaddskill $i 471 100
+mpaddskill $i 474 100
+mpaddskill $i 170 100
+~
+>trigger_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if ispc($n)
+if isinhouse($n)
+else
+mpforce $n yell Help! I\@m being attacked by Dhalija the Wing of Twilight!
+mpkill $n
+endif
+endif
+endif
+~
+>rand_prog 100~
+mproomcmd mptrigger all
+~
+>fight_prog 100~
+mpforce raiderbot mpvalueset 1 220
+mpforce harloth mpvalueset 3 100
+~
+>speech_prog p Dhalija, I want something from the vault.~
+mutter
+say Ask Harloth, he\@s in charge now.
+mpsetskilled
+hide
+mpsetunskilled
+~
+>speech_prog p Dhalija, I want something from the vault~
+mutter
+say Ask Harloth, he\@s in charge now.
+mpsetskilled
+hide
+mpsetunskilled
+~
+>speech_prog p Dhalija, Show me the vault~
+mpvaultshow $n
+~
+>give_prog all~
+if ispc($n)
+  if islimited($o)
+    mpvaultdrop $o
+  else
+    say This item is worthless to us!
+    give $o $n
+  endif
+else
+  wear relief
+endif
+~
+>speech_prog p Dhalija, Show me the vault.~
+mpvaultshow $n
+~
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if ispc($n)
+if isinhouse($n)
+else
+mpforce $n yell Help! I\@m being attacked by Dhalija the Wing of Twilight!
+mpstring mob raiderbot short Dhalija
+mpforce raiderbot ht $N threatens the integrity of the Vault!
+mpsetskilled
+steal 1. $n
+mpsetunskilled
+mpkill $n
+endif
+endif
+endif
+~
+|
+V4 12105
+Shughoth shuddeni~
+Shughoth~
+Shughoth, the Flame of Twilight, is here guarding the Vault with his magic.
+~
+A dark-gray colored Shuddeni is here, seemingly paying no heed to his
+surroundings while twiddling a tiny flame across his fingertips.  To think
+that he is unaware of his environment is foolish.  He is paid along with the
+other three guardians a handsome salary to guard the Raider\@s vault, and he
+does so to the best of his ability for he likes nothing better than to
+destroy.  
+~
+shuddeni~
+water scholar~
+ABGX 0 ADFJZ E 0
+55 0 2000d1+0 1000d3+1000 5d9+15 pierce~
+scratch~
+-16 -16 -16 -16
+AF AB
+26 0 0 0 0 0 0 0 20 0 0 0 0 20 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMW ABCDEFGIJKP AG medium unknown
+>load_prog 100~
+speak common
+~
+>trigger_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if ispc($n)
+if isinhouse($n)
+else
+mpforce $n yell Help! I\@m being attacked by Shughoth the Flame of Twilight!
+mpkill $n
+endif
+endif
+endif
+~
+>rand_prog 100~
+mproomcmd mptrigger all
+~
+>fight_prog 100~
+mpforce raiderbot mpvalueset 1 220
+mpforce harloth mpvalueset 3 100
+if rand(10)
+  mpcast 205 55
+  break
+endif
+if rand(10)
+  mpcast 59 55
+  break
+endif
+if rand(3)
+  mpcast 400 55
+endif
+~
+>speech_prog p Shughoth, I want something from the vault.~
+mpechoat $n Shughoth scowls at you.
+say Ask the idiot alatharyan, he\@s in charge of the pit now.
+mpforce harloth emote grunts at Shughoth.
+~
+>speech_prog p Shughoth, I want something from the vault~
+mpechoat $n Shughoth scowls at you.
+say Ask the idiot alatharyan, he\@s in charge of the pit now.
+mpforce harloth emote grunts at Shughoth.
+~
+>speech_prog p Shughoth, Show me the vault~
+mpvaultshow $n
+~
+>give_prog all~
+if ispc($n)
+  if islimited($o)
+    mpvaultdrop $o
+  else
+    say This item is worthless to us!
+    give $o $n
+  endif
+else
+  wear relief
+endif
+~
+>speech_prog p Shughoth, Show me the vault.~
+mpvaultshow $n
+~
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if ispc($n)
+if isinhouse($n)
+mpechoat $n Shughoth barely gives you a nod of his head.
+else
+mpseewizi
+mpforce $n yell Help! I\@m being attacked by Shughoth the Flame of Twilight!
+mpstring mob raiderbot short Shughoth
+mpforce raiderbot ht $N seeks to infiltrate the Vault!
+mpkill $n
+endif
+endif
+endif
+~
+|
+V4 12106
+Harloth alatharya alatharyan~
+Harloth~
+Harloth, the Hand of Twilight, is ferociously guarding the Vault.
+~
+A huge Alatharyan stands here with his hands on his hips.  He looks like
+an impassable force with his muscles bulging wildly with even a simple
+movement of his hands.  Scars cover his body, battle marks to show his
+toughness.  He emits a low growl and continues to stand watch over the place
+he is paid to guard.  
+~
+alatharya~
+water scholar~
+ABGTX 0 DFHJZ N 0
+55 8 4000d1+0 0d0+0 5d10+25 bash~
+crush~
+-20 -20 -20 -20
+ACDFIJKLO AB
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A large unknown
+>load_prog 100~
+speak common
+~
+>trigger_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if ispc($n)
+if isinhouse($n)
+else
+mpforce $n yell Help! I\@m being attacked by Harloth the Hand of Twilight!
+mpkill $n
+endif
+endif
+endif
+~
+>fight_prog 100~
+mpvalueset 3 100
+mpvaluerand 2 1 15
+if mobvalue(2) == 15
+ mpechoat $n Harloth grabs you forcefully, and tosses you to the ground!
+ mpechoaround $n Harloth grabs $N, and tosses $m to the ground!
+ mplag $n 2
+ mpdamage $n 3 8 10
+endif
+mpforce raiderbot mpvalueset 1 220
+~
+>speech_prog p Harloth, I want something from the vault.~
+if mobvalue(3) > 0
+ \@The pit is under attack. Go away.
+else
+ if isinhouse($n)
+  if isfocused($i)
+   grunt
+   say $F was first.
+  else
+   mpvalueset 0 5
+   mpfocus $n
+   mpvaultprep $n
+  endif
+ else
+  say This is Raider treasure, $N.
+ endif
+endif
+~
+>speech_prog p Harloth, I want something from the vault~
+if mobvalue(3) > 0
+ \@The pit is under attack. Go away.
+else
+ if isinhouse($n)
+  if isfocused($i)
+   grunt
+   say $F was first.
+  else
+   mpvalueset 0 5
+   mpfocus $n
+   mpvaultprep $n
+  endif
+ else
+  say This is Raider treasure, $N.
+ endif
+endif
+~
+>rand_prog 100~
+if isfocused($i)
+ if mobvalue(0) == 0
+  grunt
+  \@I am ready.  Choose your item.
+  mpvaluedown 0
+ else
+  mpvaluedown 0
+ endif
+endif
+if mobvalue(3) > 0
+ mpvaluedown 3
+endif
+mproomcmd mptrigger all
+~
+>exit_prog 100~
+if valname($n) == $f
+tell $f I\@ll get this later then.
+mpunfocus
+mpvalueset 0 0
+endif
+~
+>speech_prog p Bring me:~
+if isfocused($i)
+if mobvalue(0) > 0 
+grunt
+say Wait.
+else
+mpvaultgive $f $x
+mpunfocus
+mpvalueset 0 0
+endif
+endif
+~
+>speech_prog p Harloth, Show me the vault~
+mpvaultshow $n
+~
+>give_prog all~
+if ispc($n)
+  if islimited($o)
+    mpvaultdrop $o
+  else
+    say This item is worthless to us!
+    give $o $n
+  endif
+else
+  wear relief
+endif
+~
+>speech_prog p Harloth, Show me the vault.~
+mpvaultshow $n
+~
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if ispc($n)
+if isinhouse($n)
+mpechoat $n Harloth grunts noncommitally at you.
+else
+mpforce $n yell Help! I\@m being attacked by Harloth the Hand of Twilight!
+mpseewizi
+mpstring mob raiderbot short Harloth
+mpforce raiderbot ht Raid!!!
+mpkill $n
+endif
+endif
+endif
+~
+|
+V4 12107
+Thianna female human~
+Thianna~
+Thianna, the Body of Twilight, guards the Vault with her magic.
+~
+A small human stands here near the Raider\@s vault.  She is dressed all in
+blue and seems out of place; however, as many people in the realm can vouch
+for, money will bring anyone to do a duty for them.  She thumbs unconciously
+at her hem and waits for somebody to heal.  
+~
+human~
+water scholar~
+ABGX 0 DFHJZ N 0
+55 1 2500d1+0 1000d3+1000 9d5+25 bash~
+punch~
+-16 -16 -16 -16
+AFK AB
+26 0 0 0 0 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 150 -1
+AHMV ABCDEFGHIJK A medium unknown
+>trigger_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if ispc($n)
+if isinhouse($n)
+else
+mpforce $n yell Help! I\@m being attacked by Thianna the Body of Twilight!
+mpkill $n
+endif
+endif
+endif
+~
+>rand_prog 100~
+mproomcmd mptrigger all
+~
+>fight_prog 100~
+mpforce raiderbot mpvalueset 1 220
+mpforce harloth mpvalueset 3 100
+mpvaluerand 1 1 100
+if mobvalue(1) < 7
+ emote concentrates, then continues to fight.
+ mpcast 77 55
+ mpcast 77 55 shughoth
+ mpcast 77 55 harloth
+ mpcast 77 55 dhalija
+endif
+if mobvalue(1) > 6
+ if mobvalue(1) < 12
+  mpcast 81 50
+ endif
+endif
+~
+>speech_prog p Thianna, I want something from the vault~
+mpechoat $n Thianna gives you a cool stare.
+say Perhaps you should ask Harloth, who is now in charge of sorting through the pit.
+~
+>speech_prog p Thianna, I want something from the vault.~
+mpechoat $n Thianna gives you a cool stare.
+say Perhaps you should ask Harloth, who is now in charge of sorting through the pit.
+~
+>speech_prog p Thianna, Show me the vault~
+mpvaultshow $n
+~
+>give_prog all~
+if ispc($n)
+  if islimited($o)
+    mpvaultdrop $o
+  else
+    say This item is worthless to us!
+    give $o $n
+  endif
+else
+  wear relief
+endif
+~
+>speech_prog p Thianna, Show me the vault.~
+mpvaultshow $n
+~
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if ispc($n)
+if isinhouse($n)
+say Greetings, $N.
+else
+mpforce $n yell Help! I\@m being attacked by Thianna the Body of Twilight!
+mpstring mob raiderbot short Thianna
+mpforce raiderbot ht $N seeks to enter out Vault!
+mpkill $n
+endif
+endif
+endif
+~
+|
+V4 12108
+scout forward grizzled raideralert~
+the forward scout~
+A grizzled scout, clad in dark camouflage, keeps watch over the crevice to the north.
+~
+The surrounding light glints poisonously off of the scout\@s beady,
+obsequious little eyes.  Paired with a sharp, hook-like nose, the forward
+scout\@s stubbly, dirt-encrusted face exudes an almost rodent-like quality. 
+His body, small and compact, is drawn taut as a bowstring.  As he maintains
+his unflinching watch upon the northern crevice, the forward scout remains
+almost completely motionless.  
+~
+human~
+water scholar~
+AB 0 DFJZ N 0
+35 11 12d120+800 0d0+0 5d7+18 pierce~
+pierce~
+-10 -10 -10 -10
+EFIJKN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if snaffected($i) == 244
+else
+  camouflage
+endif
+if objhere(12000)
+  if isanypchere()
+  else
+    get faceted
+    mpat 12119 drop faceted
+  endif
+endif
+if isanypcarea()
+else
+  if mobvalue(2) == 1
+    mpat 12150 ht The canyon is empty now.
+    mpvalueset 2 0
+  endif
+  loop 1 to 4
+    mpat $v1.raiderbandit mpforce raiderbandit mpvalueset 3 0
+    mpat $v1.raiderthief mpforce raiderthief mpvalueset 3 0
+  endloop
+endif
+if mobvalue(1) == 1
+  mpzecho The sound of a finch echoes off the canyon walls.
+  endif
+if mobvalue(1) > 1
+  mpzecho  distinct finch calls echo off of the canyon walls.
+endif
+mpvalueset 1 0
+if mobvalue(2) == 1
+  mpzecho The cry of a hawk echoes off the canyon walls.
+endif
+if mobvalue(2) > 1
+  mpzecho  distinct hawk cries echo off of the canyon walls.
+endif
+mpvalueset 1 0
+mpvalueset 2 0
+~
+>verb_prog p west~
+mpnextinterp
+mpvalueset 3 1
+mpfocus $n
+if ischarmed($n)
+else
+  if isinhouse($n)
+  or isbitset($n) == 12101
+  else
+    mpat 12150 ht $N moves deeper into the canyon.
+    loop 1 to 4
+      mpat $v1.raiderbandit mpforce raiderbandit mpvalueset 3 1
+      mpat $v1.raiderthief mpforce raiderthief mpvalueset 3 1
+    endloop
+    camo
+  endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 244 100
+~
+>greet_prog 100~
+if isimmort($n)
+break
+else
+if ischarmed($n)
+else
+  if inhouse($n) == raider
+  or isbitset($n) == 12101
+    if snaffected($i) == 244
+    else  
+      if isbitset($n) == 12119
+        pmote steps quickly out of $N\@s path, bowing his head in deference.
+        break
+      endif
+      if rand(1)
+        if level($n) > 45
+          if isbitset($n) == 12101
+            pmote sneers furtively at $N as he steps out of $s path.
+          else
+            pmote steps out of $N\@s path, inclining his head in deference.
+          endif
+        endif
+      endif
+    endif
+    if ispc($n)
+      mpvalueup 1
+    endif
+  else
+    mpat 12150 ht $N has entered the canyon.
+    camo
+    mpvalueup 2
+  endif
+endif
+endif
+~
+|
+V4 12109
+rogue hooded raiderbandit~
+a hooded rogue~
+A hooded rogue is here, patrolling the canyon floor.
+~
+A tall rogue, defined by a distinct set of muscles, patrols the canyon
+floor.  Garbed in a dress of dusty grey cloth, the rogue\@s head is covered
+loosely by a shadowy hood.  A pair of thin, curved scabbards are slung
+across the rogue\@s back, crossing over each other at the spine.  A pair of
+keen blue eyes peer out from beneath the hood, roving the canyon floor for
+signs of possible intruders.  
+~
+human~
+water scholar~
+ABG 0 DFJZ N 0
+40 20 16d170+976 90d90+8000 5d6+18 slash~
+slash~
+-15 -15 -15 -2
+CFK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+mpvalueset 0 0
+if mobvalue(3) == 1
+ if snaffected($i) == 244
+ or snaffected($i) == 192
+ else
+   camo
+   if snaffected($i) == 244
+   else
+     if snaffected($i) == 192
+     else
+       hide
+     endif
+   endif
+ endif
+ mpvalueset 3 0
+else
+  if rand(2)
+    vis
+    mpwander
+    mpvalueset 3 1
+  endif
+endif
+if isanypchere()
+  mproomcmd mptrigger all
+endif
+~
+>load_prog 100~
+mpaddskill $i 244 100
+mpaddskill $i 247 100  
+mpaddskill $i 203 80   
+mpaddskill $i 175 80   
+mpaddskill $i 512 100  
+mpaddskill $i 511 100  
+mpaddskill $i 321 100
+mpaddskill $i 517 100
+mpaddskill $i 252 100
+mpaddskill $i 170 100
+mpaddskill $i 171 100
+mpaddskill $i 199 100
+mpaddskill $i 22 100
+mpaddskill $i 192 100
+~
+>trigger_prog 100~
+if position($n) == 4
+  if inhouse($n) == raider
+  else
+    if mobvalue(2) == 1
+      if iswielding($i) == 12128
+        stab $n
+      else
+        mpkill $n
+      endif
+    endif
+    if mobvalue(2) == 0
+      ht $F has been knocked unconscious.
+      steal potion $n
+      mpvalueup 2
+    endif
+  endif
+endif
+~
+>fight_prog 100~
+if rand(10)
+mpvaluerand 0 1 4
+if mobvalue(0) == 1
+pummel
+endif
+if mobvalue(0) == 2
+kick
+endif
+if mobvalue(0) == 3
+dirt
+endif
+if mobvalue(0) == 4
+disarm
+endif
+endif
+~
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if ischarmed($n)
+else
+if inhouse($n) == raider
+or isbitset($n) == 12101
+if snaffected($i) == 244
+else  
+if isbitset($n) == 12119
+pmote steps quickly out of $N\@s path, bowing his head in deference.
+break
+endif
+if rand(1)
+if level($n) > 45
+pmote steps out of $N\@s path, inclining his head in deference.
+endif
+if level($n) < 30
+pmote bumps into $N forcefully.
+mpechoat $n {YA well-built rogue glares at you and says \@Watch your step, runt.\@{x
+mpechoaround $n {YA well-built rogue glares at $N and says \@Watch your step, runt.\@{x
+        endif
+endif
+endif
+else
+if isfocused()
+if valname($n) == $f
+mpforce $n yell Help! $I is trying to stab me!
+stab $n
+break
+endif
+endif
+if level($n) > 40
+if snaffected($i) == 244
+or snaffected($i) == 192
+ambush $n
+if isfight($i)
+else
+mpforce $n yell Help! $I is trying to stab me!
+stab $n
+endif
+else
+        mpforce $n yell Help!  I\@m being attacked by $I!
+mpkill $n
+endif
+else
+mpforce $n yell Help!  I\@m being attacked by $I!
+mpkill $n
+endif
+mpvalueset 2 0
+mpvalueset 3 0
+endif
+endif
+endif
+~
+|
+V4 12110
+kankoran inebriated~
+an inebriated kankoran~
+A drunk kankoran sits here, gazing silently into the fire.
+~
+A kankoran Raider drinks near the bonfire.  One hand rests dangerously on
+his weapon next to him, more for the fact that in his state he would likely
+injure himself with it.  
+~
+kankoran~
+water scholar~
+ABG 0 DFJPZ E 0
+30 11 13d80+593 0d0+0 5d6+20 slash~
+claw~
+-6 -6 -6 -6
+CEINV AB
+26 0 0 0 0 0 0 0 -33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 90 -1
+AHMV ABCDEFGIJKUV D medium unknown
+>rand_prog 8~
+get all rack
+mpjunk all
+mpoload 12119 in raiderrack
+mpoload 12119 in raiderrack
+mpoload 12119 in raiderrack
+mpoload 12119 in raiderrack
+mpoload 12120 in raiderrack
+mpoload 12118 raiderrack
+mpoload 12118 raiderrack
+mpoload 12118 raiderrack
+mpoload 12118 raiderrack
+if rand(2)
+mpecho An inebriated kankoran stumbles over to an iron rack and slides on a few extra pieces of meat.
+endif
+~
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if ispc($n)
+if isinhouse($n)
+else
+mpforce $n yell Help! I\@m being attacked by an inebriated kankoran!
+mpkill $n
+endif
+endif
+endif
+~
+|
+V4 12111
+scout wandering raiderthief~
+a wandering scout~
+A wandering scout traverses the canyon, keeping a wary eye out for enemies.
+~
+A figure, swathed in garments of coarse, dirt-encrusted linen, traverses
+the canyon grounds.  A dusty scabbard, bearing a curved blade of sizable
+proportion, is slung haphazardly about his lean waist.  A rumpled cap of
+wound cloth hangs loosely about his head, shading his pock-marked face.  His
+sharp eyes keep watch over the canyon, ever alert for the presence of
+intruders.  
+~
+human~
+water scholar~
+AG 0 DFJZ N 0
+35 17 17d90+1046 90d90+8000 4d7+15 slash~
+slash~
+-10 -10 -10 -10
+FKNU AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 75 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+mpvalueset 0 0
+if mobvalue(3) == 1
+  if snaffected($i) == 192
+  else
+    hide
+    if snaffected($i) == 192
+      mpvalueset 3 0
+    else
+      if rand(2)
+        vis
+        mpwander
+        mpvalueset 3 1
+      endif
+    endif
+  endif
+else
+  if rand(2)
+    vis
+    mpwander
+    mpvalueset 3 1
+  endif
+endif
+if isfocused()
+  if ishere($f)
+    if position($f) == 4
+      if mobvalue(2) == 0
+        if mobvalue(4) == 0
+          mpsetdata bags
+          mpvalueset 4 1
+        endif
+        if rand(50)
+          cutpurse $f $d
+          mpnextdata
+        else
+          steal potion $f
+        endif
+        mpvalueset 2 2
+      endif
+    endif
+  endif
+endif
+~
+>data_prog bags~
+bag
+pouch
+sack
+pack
+~
+>fight_prog 100~
+if rand(10)
+mpvaluerand 0 1 5
+if mobvalue(0) == 1
+trip
+endif
+if mobvalue(0) == 2
+slice
+endif
+if mobvalue(0) == 3
+circle
+endif
+if mobvalue(0) == 4
+dirt
+endif
+if mobvalue(0) == 5
+slice
+endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 192 100
+mpaddskill $i 203 100
+mpaddskill $i 199 100
+mpaddskill $i 198 100
+mpaddskill $i 243 100
+mpaddskill $i 471 100
+mpaddskill $i 472 100
+mpaddskill $i 473 100
+mpaddskill $i 176 100
+mpaddskill $i 171 100
+mpaddskill $i 714 100
+mpaddskill $i 244 100
+mpaddskill $i 474 100
+mpaddskill $i 22 100
+~
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if ischarmed($n)
+else
+if isinhouse($n)
+or isbitset($n) == 12101
+if snaffected($i) == 244
+else  
+if isbitset($n) == 12119
+pmote steps quickly out of $N\@s path, bowing his head in deference.
+break
+endif
+if rand(1)
+if level($n) > 45
+pmote steps out of $N\@s path, inclining his head in deference.
+endif
+if level($n) < 30
+pmote bumps into $N forcefully.
+mpechoat $n {YA wandering scout mutters under his breath \@Bloody wet-nosed scrubs, always gettin\@ in the bloody way\@{X
+endif
+endif
+endif
+else
+if isfocused($i)
+if valname($n) == $f
+mpforce $n yell Help! $I is trying to stab me!
+stab $n
+break
+endif
+endif
+ if level($n) > 40
+if snaffected($i) == 244
+or snaffected($i) == 192
+mpforce $n yell Help! $I is trying to stab me!
+stab $n
+else
+mpforce $n yell Help!  I\@m being attacked by $I!
+mpkill $n
+endif
+else
+mpforce $n yell Help!  I\@m being attacked by $I!
+mpkill $n
+endif
+mpvalueset 2 0
+mpvalueset 3 0
+endif
+endif
+endif
+~
+|
+V4 12112
+scantily-clad servant~
+a scantily-clad servant~
+A scantily-clad servant rests here next to the High Chair.
+~
+A small, lithe female rests here next to the High Chair.  She is ready to
+give the Raider Leader whatever he or she desires.  
+~
+human~
+water scholar~
+ABG 0 DFJZ N 0
+25 12 12d46+735 0d0+0 4d7+15 bash~
+slap~
+-5 -5 -5 -5
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 2 -1
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if ispc($n)
+if isinhouse($n)
+ else
+  mpforce $n yell Help! I\@m being attacked by a scantily-clad servant!
+  mpkill $n
+ endif
+endif
+endif
+~
+|
+V4 12113
+shaman srryn aging~
+the srryn shaman~
+An aging srryn, dressed in the garb of a shaman, is here, preparing poultices.
+~
+A squat looking srryn, covered in the tattered remains of a once
+fine-looking cloak, squats upon the earthen floor.  A multititude of
+necklaces dangle from around his neck, some imbued with shamanistic
+symbolism, some with little more than bright colors.  A pair of livid scars,
+apparently self-inflicted, form a cross, centered upon the milky center of
+his right eye.  Paid in advance by the Raider House, he stands ready to bind
+the wounds of any Raider in need.  
+~
+srryn~
+water scholar~
+ABXa B DFJZ E 0
+57 26 20d220+1100 0d0+0 5d10+30 slash~
+claw~
+-25 -25 -25 -7
+FIJMV AB
+26 0 0 0 0 0 0 0 33 -33 0 0 33 0 0 0 0 33 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 70 -1
+AHMVX ABCDEFGHIJKLQUVX ACK medium unknown
+>verb_prog p buy~
+if isinhouse($n)
+  mpnextinterp
+else
+  mpechoat $n The srryn shaman studiously ignores you.
+endif
+~
+>verb_prog p list~
+if compstr(1) == l
+or compstr(1) == li
+  mpnextinterp
+else
+  if isinhouse($n)
+    mpnextinterp
+  else
+    mpechoat $n The srryn shaman studiously ignores you.
+  endif
+endif
+~
+>data_prog heal~
+emote gathers an assortment of herbs and shimmering dusts from off the floor.
+emote places the assorted substances inside of a granite mortar, grinding them into a coarse powder.
+emote adds a small amount of water to the powder, then pours the viscous substance onto an iron heating plate.
+emote dabs a claw into the thickening paste, then begins to spread it upon a dirty cloth.
+~
+>data_prog Mobvalues~
+/* Mobvalues:
+        Value 0:  Illness Type
+                #1: Healing
+                #2: Blindness
+                #3: Curse
+                #4: Refresh
+                #5: Poison
+                #6: Disease
+                #10: No illness
+        Value 1: Timer
+        Value 2: Number of people in healing queue
+        Value 3: Speedy healing <off/on>
+        Value 4: Trigger_prog toggle <mpmemvup everyone/mpfocus on highest priority player>
+        Value 5: Priority checker in the trigger_prog loop
+        Value 7: Focused, but without an illness <off/on> */
+~
+>bribe_prog 50~
+if isinhouse($n)
+  pmote wordlessly drops the coins into a fold of his robe, then begins to hasten his actions.
+  mpvalueset 3 1
+else
+  pmote accepts $N\@s money with a chortle and a sly nod of his head.
+endif
+~
+>verb_prog p heal~
+if isinhouse($n)
+  if compstr(2) == 
+    mpecho {YThe srryn shaman hisses \@I am capable of healing pain, blindness, curses, aches, poisons, and numerous diseases.\@{X
+    esay hisses Simply speak of your ills before me, and I shall do what I can to alleviate them.
+    esay \@says in a low hiss\@ I am additionally capable of resurrecting those that have lost their grip upon their bodies.
+    ooc $n Simply type \#heal resurrect\#.
+    break
+  endif
+  if compstr(2) == resurrect
+    mpnextinterp
+    break
+  endif
+  if compstr(2) != 
+  or compstr(2) != resurrect
+    mpechoat $n You can\@t do that here.
+  endif
+else
+  esay hisses My services are only for paying members of this Canyon, $N.
+endif
+~
+>load_prog 100~
+speak common
+~
+>speech_prog p a r k h~
+sa $f
+~
+>speech_prog eyes blind blinded blindness vision sight sightless see~
+if compstr(1)/I
+or compstr(2)/I
+or compstr(3)/I
+or compstr(4)/I
+or compstr(5)/I
+or compstr(6)/I
+or compstr(7)/I
+or compstr(1) == me
+or compstr(2) == me
+or compstr(3) == me
+or compstr(4) == me
+or compstr(5) == me
+or compstr(6) == me
+or compstr(7) == me
+or compstr(1) == restore
+or compstr(2) == restore
+or compstr(3) == restore
+or compstr(4) == restore
+or compstr(5) == restore
+or compstr(6) == restore
+or compstr(7) == restore
+or compstr(1) == can\@t
+or compstr(2) == can\@t
+or compstr(3) == can\@t
+or compstr(4) == can\@t
+or compstr(5) == can\@t
+or compstr(6) == can\@t
+or compstr(7) == can\@t
+if israce($n) == SHUDDENI
+  mpecho {YThe srryn shaman hisses, \@Even though you don\@t have eyes?\@{x
+else
+  if isinhouse($n)
+    if mobvalue(0) == 0
+      if isfocused()
+        if valname($n) == $f
+          mpecho {YThe srryn shaman hisses, \@I\@ll see what I can do.  Stand still.\@{x
+          mpvalueset 0 2
+          mpvalueset 1 4
+        else
+          mpecho {YThe srryn shaman hisses, \@I\@m busy.  Wait your turn like everyone else.\@{x
+          if remembers($n)
+          else 
+            mpremember $n
+            mproomcmd mptrigger all
+            mpvalueup 2
+          endif
+        endif
+      else
+        if rand(50)
+          mpecho {YThe srryn shaman hisses, \@I\@ll see what I can do.  Stand still.\@{x
+        else
+          nod
+        endif 
+        mpfocus $n
+        mpvalueset 0 2
+        mpvalueset 1 4
+      endif
+    else
+      if rand(50)
+        mpecho {YThe srryn shaman hisses, \@I\@m busy.  Wait your turn like everyone else.\@{x
+      else
+        mpechoat $n The srryn shaman studiously ignores you.
+        mpechoaround $n The srryn shaman studiously ignores $N.
+      endif
+      if remembers($n)
+      else 
+        mpremember $n
+        mproomcmd mptrigger all
+        mpvalueup 2
+      endif
+    endif
+  else
+    mpecho {YThe srryn shaman hisses, \@Tell Harloth.  I\@m sure he cares.\@{x
+  endif
+endif
+endif
+~
+>speech_prog hurry fast faster speed quick quicken haste hasten time expedite~
+if compstr(1) == You
+or compstr(2) == You
+or compstr(3) == You
+or compstr(4) == You
+or compstr(5) == You
+or compstr(6) == You
+or compstr(7) == You
+or compstr(1) == up
+or compstr(2) == up
+or compstr(3) == up
+or compstr(4) == up
+or compstr(5) == up
+or compstr(6) == up
+or compstr(7) == up
+or compstr(1) == make
+or compstr(2) == make
+or compstr(3) == make
+or compstr(4) == make
+or compstr(5) == make
+or compstr(6) == make
+or compstr(7) == make
+or compstr(1) == shaman
+or compstr(1) == shaman
+or compstr(1) == shaman
+or compstr(1) == shaman
+or compstr(1) == shaman
+or compstr(1) == shaman
+or compstr(1) == shaman
+if isinhouse($n)
+  if mobvalue(0) == 0
+    if isfocused()
+      if valname($n) == $f
+        esay hisses If you want this to go faster, you\@ll have to tell me what ails you.
+      else
+        esay hisses If you want this to go faster, tell $f here to tell me his problem.
+      endif
+    else
+      mpechoat $n The srryn shaman glances at you.
+      mpechoaround $n The srryn shaman glances at $N.
+      emote rolls his eyes in disgust.
+    endif
+  else
+    esay hisses Perhaps if you made it worth my while.
+  endif
+endif
+endif
+~
+>trigger_prog 100~
+if ispc($n)
+  if isinhouse($n)
+    if mobvalue(4) == 0
+      mpmemvup $n
+    else
+      loop 1 to 15
+        if remembers($n)
+          if mobvcheck($n) == $v1
+            if mobvalue(5) < $v1
+              mpvalueset 5 $v1
+              mpfocus $n
+            endif
+          endif
+        endif
+      endloop
+    endif
+  endif
+endif
+~
+>speech_prog uncurse cursed cursed accurse accursed damn damned~
+if compstr(1)/I
+or compstr(2)/I
+or compstr(3)/I
+or compstr(4)/I
+or compstr(5)/I
+or compstr(5)/I
+or compstr(6)/I
+or compstr(1) == me
+or compstr(2) == me
+or compstr(3) == me
+or compstr(4) == me
+or compstr(5) == me
+or compstr(6) == me
+or compstr(7) == me
+or compstr(1) == cure
+or compstr(2) == cure
+or compstr(3) == cure
+or compstr(4) == cure
+or compstr(5) == cure
+or compstr(6) == cure
+or compstr(7) == cure
+or compstr(1) == purify
+or compstr(2) == purify
+or compstr(3) == purify
+or compstr(4) == purify
+or compstr(5) == purify
+or compstr(6) == purify
+or compstr(7) == purify
+if isinhouse($n)
+  if mobvalue(0) == 0
+    if isfocused()
+      if valname($n) == $f
+        mpecho {YThe srryn shaman hisses, \@I\@ll see what I can do.  Stand still.\@{x
+        mpvalueset 0 3
+        mpvalueset 1 10
+      else
+        mpecho {YThe srryn shaman hisses, \@I\@m busy.  Wait your turn like everyone else.\@{x
+        if remembers($n)
+        else 
+          mpremember $n
+          mproomcmd mptrigger all
+          mpvalueup 2
+        endif
+      endif
+    else
+      if rand(50)
+        mpecho {YThe srryn shaman hisses, \@I\@ll see what I can do.  Stand still.\@{x
+      else
+        nod
+      endif 
+      mpfocus $n
+      mpvalueset 0 3
+      mpvalueset 1 10
+    endif
+  else
+    if rand(50)
+      mpecho {YThe srryn shaman hisses, \@I\@m busy.  Wait your turn like everyone else.\@{x
+    else
+      mpechoat $n The srryn shaman studiously ignores you.
+      mpechoaround $n The srryn shaman studiously ignores $N.
+    endif
+    if remembers($n)
+    else 
+      mpremember $n
+      mproomcmd mptrigger all
+      mpvalueup 2
+    endif
+  endif
+else
+  mpecho {YThe srryn shaman hisses, \@Tell Harloth about your worries. Maybe he will care for you.\@{x
+endif
+endif
+~
+>speech_prog poison poisoned venom arsenic nightshade leech~
+if compstr(1)/I
+or compstr(2)/I
+or compstr(3)/I
+or compstr(4)/I
+or compstr(5)/I
+or compstr(6)/I
+or compstr(7)/I
+or compstr(1) == me
+or compstr(2) == me
+or compstr(3) == me
+or compstr(4) == me
+or compstr(5) == me
+or compstr(6) == me
+or compstr(7) == me
+or compstr(1) == cure
+or compstr(2) == cure
+or compstr(3) == cure
+or compstr(4) == cure
+or compstr(5) == cure
+or compstr(6) == cure
+or compstr(7) == cure
+or compstr(1) == purify
+or compstr(2) == purify
+or compstr(3) == purify
+or compstr(4) == purify
+or compstr(5) == purify
+or compstr(6) == purify
+or compstr(7) == purify
+or compstr(1) == remove
+or compstr(2) == remove
+or compstr(3) == remove
+or compstr(4) == remove
+or compstr(5) == remove
+or compstr(6) == remove
+or compstr(7) == remove
+or compstr(1) == heal
+or compstr(2) == heal
+or compstr(3) == heal
+or compstr(4) == heal
+or compstr(5) == heal
+or compstr(6) == heal
+or compstr(7) == heal
+or compstr(1) == put
+or compstr(2) == put
+or compstr(3) == put
+or compstr(4) == put
+or compstr(5) == put
+or compstr(6) == put
+or compstr(7) == put
+if isinhouse($n)
+  if mobvalue(0) == 0
+    if isfocused()
+      if valname($n) == $f
+        esay hisses I\@ll see what I can do.  Stand still.
+        mpvalueset 0 5
+        mpvalueset 1 8
+      else
+        esay hisses I\@m busy.  Wait your turn like everyone else.
+        if remembers($n)
+        else 
+          mpremember $n
+          mproomcmd mptrigger all
+          mpvalueup 2
+        endif
+      endif
+    else
+      if rand(50)
+        esay hisses I\@ll see what I can do.  Stand still.
+      else
+        nod
+      endif 
+      mpfocus $n
+      mpvalueset 0 5
+      mpvalueset 1 8
+    endif
+  else
+    if rand(50)
+      esay hisses I\@m busy.  Wait your turn like everyone else.
+    else
+      mpechoat $n The srryn shaman studiously ignores you.
+      mpechoaround $n The srryn shaman studiously ignores $N.
+    endif
+    if remembers($n)
+    else 
+      mpremember $n
+      mproomcmd mptrigger all
+      mpvalueup 2
+    endif
+  endif
+else
+  esay hisses Tell Harloth.  I\@m sure he cares.
+endif
+endif
+~
+>speech_prog hurt hurting pain agony suffer suffering wound wounded poultice~
+if compstr(1)/I
+or compstr(2)/I
+or compstr(3)/I
+or compstr(4)/I
+or compstr(5)/I
+or compstr(6)/I
+or compstr(7)/I
+or compstr(1) == me
+or compstr(2) == me
+or compstr(3) == me
+or compstr(4) == me
+or compstr(5) == me
+or compstr(6) == me
+or compstr(7) == me
+or compstr(1) == hurt
+or compstr(2) == hurt
+or compstr(3) == hurt
+or compstr(4) == hurt
+or compstr(5) == hurt
+or compstr(6) == hurt
+or compstr(7) == hurt
+or compstr(1) == heal
+or compstr(2) == heal
+or compstr(3) == heal
+or compstr(4) == heal
+or compstr(5) == heal
+or compstr(6) == heal
+or compstr(7) == heal
+or compstr(1) == prepare
+or compstr(2) == prepare
+or compstr(3) == prepare
+or compstr(4) == prepare
+or compstr(5) == prepare
+or compstr(6) == prepare
+or compstr(7) == prepare
+or compstr(1) == make
+or compstr(2) == make
+or compstr(3) == make
+or compstr(4) == make
+or compstr(5) == make
+or compstr(6) == make
+or compstr(7) == make
+if isinhouse($n)
+  if mobvalue(0) == 0
+    if isfocused()
+      if valname($n) == $f
+        esay hisses I\@ll see what I can do.  Stand still.
+        mpvalueset 0 1
+        mpvalueset 1 10
+      else
+        esay hisses I\@m busy.  Wait your turn like everyone else.
+        if remembers($n)
+        else
+          mpremember $n
+          mproomcmd mptrigger all
+          mpvalueup 2
+        endif
+      endif
+    else
+      if rand(50)
+        esay hisses I\@ll see what I can do.  Stand still.
+      else
+        nod
+      endif
+      mpfocus $n
+      mpvalueset 0 1
+      mpvalueset 1 10
+    endif
+  else
+    if rand(50)
+      esay hisses I\@m busy.  Wait your turn like everyone else.
+    else
+      mpechoat $n The srryn shaman studiously ignores you.
+      mpechoaround $n The srryn shaman studiously ignores $N.
+    endif
+    if remembers($n)
+    else
+      mpremember $n
+      mproomcmd mptrigger all
+      mpvalueup 2
+    endif
+  endif
+else
+  esay hisses Tell Harloth.  I\@m sure he cares.
+endif
+endif
+~
+>speech_prog plague plagued disease diseased pox poxed virus ill illness malady taint pestilence boil sore~
+if compstr(1)/I
+or compstr(2)/I
+or compstr(3)/I
+or compstr(4)/I
+or compstr(5)/I
+or compstr(6)/I
+or compstr(7)/I
+or compstr(1) == me
+or compstr(2) == me
+or compstr(3) == me
+or compstr(4) == me
+or compstr(5) == me
+or compstr(6) == me
+or compstr(7) == me
+or compstr(1) == cure
+or compstr(2) == cure
+or compstr(3) == cure
+or compstr(4) == cure
+or compstr(5) == cure
+or compstr(6) == cure
+or compstr(7) == cure
+or compstr(1) == purify
+or compstr(2) == purify
+or compstr(3) == purify
+or compstr(4) == purify
+or compstr(5) == purify
+or compstr(6) == purify
+or compstr(7) == purify
+or compstr(1) == remove
+or compstr(2) == remove
+or compstr(3) == remove
+or compstr(4) == remove
+or compstr(5) == remove
+or compstr(6) == remove
+or compstr(7) == remove
+or compstr(1) == heal
+or compstr(2) == heal
+or compstr(3) == heal
+or compstr(4) == heal
+or compstr(5) == heal
+or compstr(6) == heal
+or compstr(7) == heal
+if isinhouse($n)
+  if mobvalue(0) == 0
+    if isfocused()
+      if valname($n) == $f
+        esay hisses, \@I\@ll see what I can do.  Stand still.\@
+        mpvalueset 0 6
+        mpvalueset 1 6
+      else
+        esay hisses, \@I\@m busy.  Wait your turn like everyone else.\@
+        if remembers($n)
+        else 
+          mpremember $n
+          mproomcmd mptrigger all
+          mpvalueup 2
+        endif
+      endif
+    else
+      if rand(50)
+        esay hisses, \@I\@ll see what I can do.  Stand still.\@
+      else
+        nod
+      endif 
+      mpfocus $n
+      mpvalueset 0 6
+      mpvalueset 1 6
+    endif
+  else
+    if rand(50)
+      esay hisses, \@I\@m busy.  Wait your turn like everyone else.\@
+    else
+      mpechoat $n The srryn shaman studiously ignores you.
+      mpechoaround $n The srryn shaman studiously ignores $N.
+    endif
+    if remembers($n)
+    else 
+      mpremember $n
+      mproomcmd mptrigger all
+      mpvalueup 2
+    endif
+  endif
+else
+  esay hisses, \@Tell Harloth.  I\@m sure he cares.\@
+endif
+endif
+~
+>speech_prog tired ache aching sore feet movement refresh exhausted fatigue fatigued weary faint breath~
+if compstr(1)/I
+or compstr(2)/I
+or compstr(3)/I
+or compstr(4)/I
+or compstr(5)/I
+or compstr(6)/I
+or compstr(7)/I
+or compstr(1) == me
+or compstr(2) == me
+or compstr(3) == me
+or compstr(4) == me
+or compstr(5) == me
+or compstr(6) == me
+or compstr(7) == me
+or compstr(1) == soothe
+or compstr(2) == soothe
+or compstr(3) == soothe
+or compstr(4) == soothe
+or compstr(5) == soothe
+or compstr(6) == soothe
+or compstr(7) == soothe
+or compstr(1) == relieve
+or compstr(2) == relieve
+or compstr(3) == relieve
+or compstr(4) == relieve
+or compstr(5) == relieve
+or compstr(6) == relieve
+or compstr(7) == relieve
+or compstr(1) == alleviate
+or compstr(2) == alleviate
+or compstr(3) == alleviate
+or compstr(4) == alleviate
+or compstr(5) == alleviate
+or compstr(6) == alleviate
+or compstr(7) == alleviate
+if isinhouse($n)
+  if mobvalue(0) == 0
+    if isfocused()
+      if valname($n) == $f
+        esay hisses, \@I\@ll see what I can do.  Stand still.\@
+        mpvalueset 0 4
+        mpvalueset 1 4
+      else
+        esay hisses, \@I\@m busy.  Wait your turn like everyone else.\@
+        if remembers($n)
+        else 
+          mpremember $n
+          mproomcmd mptrigger all
+          mpvalueup 2
+        endif
+      endif
+    else
+      if rand(50)
+        esay hisses, \@I\@ll see what I can do.  Stand still.\@
+      else
+        nod
+      endif 
+      mpfocus $n
+      mpvalueset 0 4
+      mpvalueset 1 4
+    endif
+  else
+    if rand(50)
+      esay hisses, \@I\@m busy.  Wait your turn like everyone else.\@
+    else
+      mpechoat $n The srryn shaman studiously ignores you.
+      mpechoaround $n The srryn shaman studiously ignores $N.
+    endif
+    if remembers($n)
+    else 
+      mpremember $n
+      mproomcmd mptrigger all
+      mpvalueup 2
+    endif
+  endif
+else
+  esay hisses, \@Tell Harloth. I\@m sure he cares.\@
+endif
+endif
+~
+>exit_prog 100~
+if valname($n) == $f
+  if mobvalue(0) == 5
+    if mobvalue(1) < 6
+      mpechoat $f The srryn shaman removes the leech from your skin before you go.
+      mpechoaround $f The srryn shaman removes the leech from $f\@s skin.
+    endif
+  endif
+  tell $f Fine, leave. But do not expect me to let my medicine rot while you are away.
+  mpvalueset 0 0
+  mpvalueset 1 0
+  if mobvalue(2) > 0
+    if remembers($n)
+      mpvaluedown 2
+      mpforget $n
+    endif
+  endif
+  mpunfocus
+endif
+~
+>rand_prog 100~
+if mobvalue(0) == 1
+  if mobvalue(1) == 1
+    mpechoat $f The srryn shaman briskly applies the reeking poultice to your wounds.
+    mpechoaround $f The srryn shaman briskly applies the reeking poultice to $F\@s wounds.
+    cast \@heal\@ $f
+    mpunfocus
+    mpvalueset 0 0
+    mpvalueset 1 0
+  endif
+  if mobvalue(1) == 3
+    emote dabs a claw into the thickening paste, then begins to spread it upon a dirty cloth.
+  endif
+  if mobvalue(1) == 5
+    emote adds a small amount of water to the powder, then pours the viscous substance onto an iron heating plate.
+  endif
+  if mobvalue(1) == 7
+    emote places the assorted substances inside of a granite mortar, grinding them into a coarse powder.
+  endif
+  if mobvalue(1) == 9
+    emote gathers an assortment of herbs and shimmering dusts from off the floor.
+  endif
+endif
+if mobvalue(0) == 2
+  if mobvalue(1) == 1
+    if snaffected($f) == 8
+      mpechoat $f Your eyes suddenly begin to feel warm.
+    else
+      mpechoat $f The srryn shaman passes his hand over your eyes.
+      mpechoat $f Your eyes suddenly begin to feel warm.
+    endif
+    mpechoaround $f The srryn shaman passes his hand over $F\@s eyes.
+    cast \@cure blindness\@ $f
+    mpvalueset 0 0
+    mpvalueset 1 0
+    mpunfocus
+  endif
+  if mobvalue(1) == 3
+    if snaffected($f) == 8
+      mpechoat $f You can hear someone chanting softly under its breath.
+    else
+      mpechoat $f The srryn shaman closes his eyes and begins to slowly chant beneath his breath.
+    endif
+    mpechoaround $f The srryn shaman closes his eyes and begins to slowly chant beneath his breath.
+  endif
+endif
+if mobvalue(0) == 3
+  if mobvalue(1) == 1
+    mpechoat $f The srryn shaman touches your forehead with the bleached fingerbone.
+    mpechoaround $f The srryn shaman touches $F\@s forehead with a bleached fingerbone.
+    mpecho The fingerbone begins to turn black, then crumbles into a fine dust. 
+    cast \@remove curse\@ $f
+    mpvalueset 0 0
+    mpvalueset 1 0
+    mpunfocus
+  endif
+  if mobvalue(1) == 3
+    mpecho The color slowly seeps out of the fingerbone as the srryn shaman immerses it in the bubbling mix.
+  endif
+  if mobvalue(1) == 5
+    emote reaches inside the skull of a giant crocodile and retrieves an ashen fingerbone.
+  endif
+  if mobvalue(1) == 7
+    emote tosses the dripping extremities into a bubbling pot, mumbling to himself as he does so.
+  endif
+  if mobvalue(1) == 9
+    emote gathers a small amount of severed animal appendages from an opaque bottle.
+  endif
+endif
+if mobvalue(0) == 4
+  if mobvalue(1) == 1
+    mpechoat $f The srryn shaman places the bitter tasting root in your mouth.
+    mpechoaround $f The srryn shaman places the small black root in $f\@s mouth.
+    cast \@refresh\@ $f
+    mpvalueset 0 0
+    mpunfocus
+  endif 
+  if mobvalue(1) == 3
+    emote grabs a small black root from the floor, then dips it quickly into a bubbling pot.
+  endif
+endif
+if mobvalue(0) == 5
+  if mobvalue(1) == 1
+    mpechoat $f The srryn shaman sprinkles a dash of salt upon the bloated leech, then pulls it from your arm.
+    mpechoaround $f The srryn shaman sprinkles a dash of salt upon the bloated leech, then pulls it from $F\@s arm.
+    cast \@cure poison\@ $f
+    mpvalueset 0 0
+    mpvalueset 1 0
+    mpunfocus
+  endif
+  if mobvalue(1) == 3
+    mpechoat $f You can feel the leech slowly draining you of blood.
+    mpechoaround $f The dark leech upon $F begins to swell in size.
+    mpdamage $f 1 10 5
+  endif
+  if mobvalue(1) == 5
+    mpechoat $f The srryn shaman grabs you forcefully, then applies the leech to your skin.
+    mpechoaround $f The srryn shaman grabs $F forcefully, then applies the dark leech to $F\@s skin.
+  endif
+  if mobvalue(1) == 7
+    emote reaches inside a small jar and pulls out a dark leech.
+  endif
+endif
+if mobvalue(0) == 6
+  if mobvalue(1) == 1
+    mpechoat $f The srryn shaman tosses the assorted herbs into the fire, forcing you to inhale the noxious vapors.
+    mpechoaround $f The srryn shaman tosses the assorted herbs into the fire.
+    cast \@cure disease\@ $f
+    mpvalueset 0 0
+    mpvalueset 1 0
+    mpunfocus
+  endif
+  if mobvalue(1) == 3
+    emote slowly fans the burning embers before him, until tips of orange flame begin to appear.
+  endif
+  if mobvalue(1) == 5
+    emote gathers an assortment of herbs from the ground.
+  endif
+endif
+if mobvalue(0) == 10
+  if mobvalue(1) == 1
+    mpecho {YThe srryn shaman hisses \@I no longer have the desire to hear of your pains, $F.\@{x
+    mpvalueset 0 0
+    mpvalueset 1 0
+    mpunfocus
+  endif
+  if mobvalue(1) == 3
+    if mobvalue(3) == 0
+      pmote hisses with ill-concealed impatience.
+    endif
+  endif
+  if mobvalue(1) == 6
+    mpecho {YThe srryn shaman turns to $F and hisses \@Now, what seems to be ailing you, $F?\@{x
+    mpforget $f
+    mpvaluedown 2
+  endif
+endif
+if mobvalue(0) == 0
+  if mobvalue(2) > 0
+    mpvalueset 4 1
+    mproomcmd mptrigger all
+    mpvalueset 4 0
+    mpvalueset 0 10
+    mpvalueset 1 7
+  endif
+  mpvalueset 3 0
+endif
+if mobvalue(1) > 0
+  if mobvalue(3) == 0
+    mpvaluedown 1
+  endif
+  if mobvalue(3) == 1
+    if mobvalue(1) == 10
+    or mobvalue(1) == 8
+    or mobvalue(1) == 6
+    or mobvalue(1) == 4
+    or mobvalue(1) == 2
+    or mobvalue(1) == 1
+      mpvaluedown 1
+    else
+      mpvaluedown 1 2
+    endif
+  endif
+endif
+
+~
+>greet_prog 100~
+if isinhouse($n)
+ mpechoat $n The srryn shaman looks at you briefly, then returns to his poultices.
+endif
+~
+|
+V4 12114
+malenrion ethron wizened bent mob_12114~
+Malenrion~
+A wizened, bent ethron, Malenrion keeps a sharp watch here.
+~
+Malenrion Filarwen sits here in well-earned repose, a slight paunch
+accentuated by his bent, aged shoulders, now slumped into a hunch from his
+advanced years.  Pale green skin is cobwebbed with a fine network of lines,
+and wisps of pale hair seem ghostly and insubstantial.  His eyes, however,
+remain bright and sharp, their dark irises alert and perceptive.  
+
+The ethron formerly held the position of Highlord for many decades, serving
+with wile and tact over several generations of active Raiders.  His
+political machinations and interpersonal maneuverings, both with mortal and
+demon, served the interests of the Canyon and himself admirably for some
+time.  Known and feared in his time as a dedicant of the greed-avatar
+Khamurn, he still bears the sigil with an almost subdued pride.  
+
+At the moment of his death, Khamurn visited him for a final time, offering
+him immortality; for a price, as always.  What the price or barter between
+the two was is not known, though widely rumored.  In the end, Malenrion
+returned to the Canyon under the terms of a demonic pact, content to
+continue handling and amassing wealth as chief merchant among the
+Raiderkind.  
+~
+ethron~
+water scholar~
+ABX 0 DJZc E 0
+80 27 30d230+1300 10d10+1300 5d10+35 bash~
+punch~
+-35 -35 -35 -10
+EFIJKN AB
+26 0 0 33 33 0 0 0 0 0 0 0 0 0 -10 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 200 -1
+AHMVW ABCDEFGHIJK J medium unknown
+>fight_prog 100~
+if rand(2)
+  mpcast 52 55
+else
+  if rand(4)
+    mpcast 39 55
+  endif
+endif
+~
+>verb_prog p sell~
+if ispc($n)
+  if isinhouse($n)
+    mpinterpret $n $x
+  else
+    \@I don\@t cater to your kind.
+  endif
+endif
+~
+>trigger_prog 100~
+if isfight($n)
+else
+mpecho An alatharyan guard screams and attacks!
+mpforce raideralath mpkill $f
+endif
+~
+>fight_prog 100~
+if mobhere(12103)
+if mobvalue(1) == 0
+mpfocus $n
+mptrigger raideralath
+mpvalueset 1 1
+mpunfocus
+endif
+endif
+~
+>verb_prog p cutpurse~
+if compstr(2) == fence
+or compstr(2) == dark
+or compstr(2) == thin
+or compstr(2) == man
+  sa Nice try.
+  smirk
+  mpkill $n
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog p steal~
+if compstr(3) == fence
+or compstr(3) == dark
+or compstr(3) == thin
+or compstr(3) == man
+  sa Nice try.
+  smirk
+  mpkill $n
+else
+  mpinterpret $n $x
+endif
+~
+>rand_prog 50~
+if mobvalue(0) > 0
+  mpvaluedown 0
+endif
+if mobvalue(1) == 1
+  mpvalueset 1 0
+endif
+~
+>hitprcnt_prog 95~
+if mobvalue(0) < 3
+ mpsetskilled
+ uppercut
+ steal gold $n
+ steal gold $n
+ steal gold $n
+ steal gold $n
+ mpsetunskilled
+ mpvalueup 0
+endif
+~
+>time_prog 23~
+~
+|
+V4 12115
+raider bot raiderbot~
+raider bot~
+A raider bot, kicking your ass, etc.
+~
+Whee
+~
+human~
+water scholar~
+AB 0 FL N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if mobvalue(1) == 0
+ if mobhere(12105)
+ else
+  mpmload 12105
+  mpforce shughoth mpoload 12105
+  mpforce shughoth hold piece 
+  mpforce shughoth mpseewizi
+ endif
+ if mobhere(12107)
+ else
+  mpmload 12107
+  mpforce thianna mpoload 12106
+  mpforce thianna hold piece
+  mpforce thianna mpseewizi
+ endif
+ if mobhere(12106)
+ else
+  mpmload 12106
+  mpforce harloth mpoload 12108
+  mpforce harloth hold core
+  mpforce harloth mpseewizi
+ endif
+ if mobhere(12104)
+ else
+  mpmload 12104
+  mpforce dhalija mpoload 12107
+if isoverlimit(12128)
+else
+mpforce dhalija mpoload 12128
+mpforce dhalija hold razor-edged
+mpforce dhalija mpaddskill self 492 100
+mpforce dhalija mpaddskill self 471 100
+mpforce dhalija mpaddskill self 474 100
+mpforce dhalija mpaddskill self 170 100
+endif
+  mpforce dhalija hold piece 
+  mpforce dhalija mpseewizi
+ endif
+endif
+if mobvalue(1) > 0
+ mpvaluedown 1
+endif
+~
+|
+V4 12116
+boulder trap large~
+a large boulder~
+A boulder trap is here, dropping boulders on people.
+~
+~
+nefortu~
+water scholar~
+AB 0 DEFJLPTZ E 0
+60 28 20d220+1100 0d0+0 5d13+27 none~
+hit~
+-22 -22 -22 -9
+FJKN ABb
+26 0 0 33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMW ABCDEFGIJKP AH medium unknown
+>rand_prog 100~
+if mobvalue(0) > 0
+  mpvaluedown 0
+endif
+~
+>trigger_prog 100~
+mpvaluerand 3 50 100
+mpdamtype $n $3 1 0 1
+mpdammess $n $3 \@crush\@
+mplag $n 4
+~
+>greet_prog 100~
+if ispc($n)
+  if inhouse($n) == raider
+  else
+    if isghost($n)
+    else
+     if mobvalue(0) == 0
+       mpecho A large boulder rolls over the top of the ledge.
+       mproomcmd mptrigger all
+       mpecho You slowly shake off the effects of the boulder.
+       mpvalueset 0 14
+     endif
+    endif
+  endif
+endif
+~
+|
+V4 12117
+bot Ark pissed~
+the Ark is pissed bot~
+The Ark is pissed bot is here, being pissed.
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>trigger_prog 100~
+if ispc($n)
+else
+mppurge $n
+endif
+~
+>exit_prog 100~
+mpunfocus
+~
+>rand_prog 100~
+if mobvalue(0) > 0
+mpvaluedown 0
+endif
+if mobvalue(0) == 1
+mptransfer $f 12118
+mpat 12118 mpforce $f look
+endif
+mproomcmd mptrigger all
+~
+>verb_prog p quit~
+mpechoat $n The gods frown upon your actions.
+mptransfer $n 12118
+mpat 12118 mpforce $n look
+~
+|
+V4 12118
+bot down downbot~
+the down bot~
+The down bot makes people go down, even though they wanted to go south.  Tricky, eh?
+~
+~
+human~
+water scholar~
+AB 0 DFJLZe N 0
+60 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 ABCDb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>trigger_prog 100~
+mpflag exit down - fake
+mpforce $n down
+mpflag exit down + fake
+~
+>rand_prog 100~
+mproomcmd mptrigger all
+~
+|
+V4 12119
+dart bot~
+a dart bot~
+A dart bot stands here, shooting darts at intruders.
+~
+~
+human~
+water scholar~
+AB 0 FJLZ N 0
+0 0 1d500+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 30~
+if ispc($n)
+  if isghost($n)
+  else
+    if isinhouse($n)
+    else
+      mpecho A dart flies in through the side of a tent flap!
+      mpechoat $n A sharp dart\@s pierce {rscratches{x you!
+      mpechoaround $n A sharp dart\@s pierce {rscratches{x $N!
+      mpdamtype $n 1 4 0 11
+      if snaffected($n) == 104
+      else
+        mpaddaffect $n 104 40 2 1 -5 8388608
+        mpechoat $n You scream in agony as plague sores erupt from your skin.
+        mpechoaround $n $N screams in agony as plague sores erupt from $s skin.
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 12120
+trainer alatharya one-eyed~
+a one-eyed alatharyan trainer~
+A one-eyed alatharya stands here, bearing a net in hand.
+~
+A mass of scarred muscle stands before you, stripped to the waist. 
+Brandishing a heavily weighted iron net in one hand, and a leather bullwhip
+in the other, the alatharyan trainer stands stolidly in the center of his
+space.  A vicious scar runs beneath a blackened eyepatch, lending his
+grizzled face an inveterate toughness.  
+~
+alatharya~
+water scholar~
+ABDJTX 0 DFJZ N 0
+58 90 14000d1+50 0d0+0 5d12+70 slash~
+lash~
+-30 -30 -30 -30
+CFIK AB
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A large unknown
+>load_prog 100~
+mpaddskill $i 157 100
+mpaddskill $i 175 100
+mpaddskill $i 166 100
+mpaddskill $i 439 100
+mpaddskill $i 440 100
+mpaddskill $i 728 100
+mpaddskill $i 441 100
+mpaddskill $i 436 100
+mpaddskill $i 171 100
+mpaddskill $i 236 100
+mpaddskill $i 438 100
+~
+>hitprcnt_prog 70~
+if mobvalue(0) == 0
+say You want to play rough, do ya?
+mpvalueset 0 1
+endif
+~
+>rand_prog 5~
+if mobvalue(0) > 0
+if hitprcnt($i) > 80
+mpvalueset 0 0
+mpvalueset 1 0
+remove chain
+wield cesti
+endif
+endif
+~
+>fight_prog 100~
+if mobvalue(0) == 3
+  if iswielding($i) == 12123
+  else
+    wield chain
+    mpstring mob self long A one-eyed alatharya stands here, a chain in one hand, and a net in the other.
+  endif
+  if iswielding($i) == 12125
+    mpfocus $n
+    mpgoto $f
+    rem cesti
+    mpkill $f
+  endif
+else
+  if iswielding($i) == 12123
+    rem chain
+  endif
+  if iswielding($i) == 12125
+  else
+    wear cesti
+    mpstring mob self long A one-eyed alatharya stands here, bearing a net in his hand.
+  endif
+endif
+if mobvalue(0) == 1
+  mpvalueup 0
+else
+  if mobvalue(0) == 2
+    say I hope you like pain.
+    mpfocus $n
+    mpgoto $f
+    remove cesti
+    wield chain
+    mpkill $f
+    mpstring mob self long A one-eyed alatharya stands here, a chain in one hand, and a net in the other.
+    mpvalueset 0 3
+  endif
+endif
+if mobvalue(1) == 0
+  if isinhouse($n)
+    say Stand tall, $N, and let\@s see if you can take this beating like a man.
+  else
+    say I\@ve crushed midgets like you in my sleep.
+    mpvalueset 0 3
+    mpfocus $n
+    mpgoto $f
+    remove cesti
+    mpkill $f
+    wield chain
+    mpstring mob self long A one-eyed alatharya stands here, a chain in one hand, and a net in the other.
+  endif
+  mpvalueset 1 1
+endif
+if mobvalue(0) == 3
+  if snaffected($n) == 236
+  else
+    if israce($n) == SHUDDENI
+    else
+      if rand(20)
+        mpsetskilled
+        gouge
+        mpsetunskilled
+      endif
+    endif
+  endif
+endif
+~
+>verb_prog p train~
+if compstr(2) == int
+or compstr(2) == wis
+or compstr(2) == mana
+or compstr(2) == chr
+  mpechoat $n You can\@t do that here.
+else
+  mpinterpret $n $x
+endif
+~
+|
+V4 12121
+rogue hooded feldyn~
+a hooded rogue~
+A hooded figure stands here.
+~
+A hooded human is here, its identity cunningly hidden.
+~
+human~
+water scholar~
+ABDT B CGJPTVZe E 0
+60 80 20d220+3547 1d1+900 5d13+27 pierce~
+stab~
+-22 -22 -22 -9
+FHIJK ABLU
+26 0 0 30 20 0 0 0 0 0 0 0 0 0 -5 0 0 0 0 -5 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 200 -1
+AHMV ABCDEFGHIJK ABCDEFGHIJK medium unknown
+>trigger_prog 100~
+if isfighting($i)
+if mobvalue(3) == 0
+  esay \@sneers angrily\@ I don\@t have time for this crap.
+  emote is suddenly no longer there.
+  mpgoto 12150
+endif
+endif
+~
+>hitprcnt_prog 15~
+mptrigger
+~
+>fight_prog 100~
+if hitprcnt($i) < 15
+  mptrigger
+endif
+~
+>verb_prog garbme1~
+mpoload 11362 on $i 16
+mpoload 19125 on $i 12
+mpoload 5911 on $i 8
+mpoload 12132 on $i 2
+~
+>data_prog hooded~
+A hooded human is here, its identity cunningly hidden.  
+~
+>data_prog unhooded~
+Oily black hair is cropped closely about this rogue\@s hard, angular face.
+A thick tangle of unshorn stubble envelops most of his dark, weathered skin,
+extending from his high cheekbones down to the bottom of his protruding jaw.
+His eyes are a murky grey, and seem quick and perceptive, set beneath a
+thick brow.  His nose is slightly too large, its hooked shape dominating the
+rest of his face.  A man of considerable height, standing nearly six and a
+half feet tall, he bears himself with the casual slouch of a man evading
+notice.  
+~
+>load_prog 100~
+mpaddskill $i 165 100
+mpaddskill $i 160 100
+mpaddskill $i 155 100
+mpaddskill $i 203 100
+mpaddskill $i 158 100
+mpaddskill $i 162 100
+mpaddskill $i 244 100
+mpaddskill $i 252 100
+mpaddskill $i 247 100
+mpaddskill $i 196 100
+mpaddskill $i 248 100
+mpaddskill $i 192 100
+mpaddskill $i 170 100
+mpaddskill $i 199 100
+mpaddskill $i 175 100
+mpaddskill $i 22 100
+mpaddskill $i 512 100
+mpaddskill $i 513 100
+mpaddskill $i 514 100
+mpaddskill $i 515 100
+mpaddskill $i 516 100
+mpaddskill $i 517 100
+mpaddskill $i 511 100
+mpaddskill $i 321 100
+mpaddskill $i 171 100
+mpaddskill $i 168 100
+mpaddskill $i 186 100
+mpaddskill $i 171 100
+mpaddskill self 254 100
+mpaddskill self 196 100
+induct feldyn raider
+mpaddaffect $i 496 60 -1 0 0 2097152 n
+~
+>verb_prog p slay~
+if ispc($n)
+  mpnextinterp
+else
+  if compstr(1) == slay
+  mpfocus $y2
+  if mobvalue(0) == 0
+    mpechoat $f A hooded rogue glides behind you, and with a single deft movement, slides a blade between your ribs.
+    if sex($f) == 0
+      mpechoaround $f A hooded rogue glides behind $F, and with a single deft movement, slides a blade between its ribs.
+    endif
+    if sex($f) == 1
+      mpechoaround $f A hooded rogue glides behind $F, and with a single deft movement, slides a blade between his ribs.
+    endif
+    if sex($f) == 2
+      mpechoaround $f A hooded rogue glides behind $F, and with a single deft movement, slides a blade between her ribs.
+    endif
+  else
+    mpechoat $f A grizzled human rogue glides behind you, and with a single deft movement, slides a blade between your ribs.
+    if sex($f) == 0
+      mpechoaround $f A grizzled human rogue glides behind $F, and with a single deft movement, slides a blade between its ribs.
+    endif
+    if sex($f) == 1
+      mpechoaround $f A grizzled human rogue glides behind $F, and with a single deft movement, slides a blade between his ribs.
+    endif
+    if sex($f) == 2
+      mpechoaround $f A grizzled human rogue glides behind $F, and with a single deft movement, slides a blade between her ribs.
+    endif
+  endif
+  mpslay $f
+  else
+    mpnextinterp
+  endif
+endif
+~
+>verb_prog p goto~
+if ispc($n)
+  mpnextinterp
+else
+  if compstr(1) == goto
+    mpgoto $y2
+    if mobvalue(0) == 0
+      mpecho A hooded rogue glides out of the shadows.
+    else
+      mpecho A grizzled human rogue glides out of the shadows.
+    endif
+  else
+    mpnextinterp
+  endif
+endif
+~
+>verb_prog p hood~
+if ispc($n)
+  mpnextinterp
+else
+  if mobvalue(0) == 0
+    mpecho A grizzled human rogue removes his hood.
+    mpstring mob self name grizzled human rogue feldyn
+    mpstring mob self short a grizzled human rogue
+    mpstring mob self long A grizzled human rogue is here.
+    mpdesc self unhooded
+    mpvalueset 0 1
+  else
+    mpecho A grizzled human rogue dons a dark hood, concealing his true appearance.
+    mpstring mob self name hooded rogue feldyn
+    mpstring mob self short a hooded rogue
+    mpstring mob self long A hooded figure stands here.
+    mpdesc self hooded
+    mpvalueset 0 0
+  endif
+endif
+~
+|
+V4 12122
+tarzanbot bot tarzan~
+the tarzanbot~
+The tarzanbot is here, letting people swing across.
+~
+~
+human~
+water scholar~
+AB 0 DFJLZe N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>load_prog 100~
+mpvalueset 0 3
+~
+>trigger_prog 100~
+if isnpc($n)
+  if name($n) == tarzanbot
+    mpvalueup 0
+  endif
+endif
+~
+>verb_prog p look~
+if compstr(2) == vines
+  if mobvalue(0) == 0
+    mpforce $n look v0
+  endif
+  if mobvalue(0) == 1
+    mpforce $n look v1
+    mpechoat $n One of the vines lies within reach.  Perhaps you could grab it.
+  endif
+  if mobvalue(0) > 1
+    mpforce $n look v1
+    mpechoat $n $0 vines lie just within reach.  Perhaps you could grab one of them.
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p grab vine~
+if position($n) != 8
+  mpinterpret $n west
+else
+  if mobvalue(0) > 0
+    mpechoat $n You grab onto a vine and swing across the chasm!
+    mpechoaround $n $N grabs onto a vine and swings across the chasm!
+    mplag $n 1
+    mpvaluedown 0
+    mpat 12106 mpecho $N suddenly swings into view, carried across the chasm by a vine!
+    mptransfer $n 12106
+    mpat $n mpforce $n look
+    mpat $n mpforce georgebot mpvalueup 0
+  else
+    mpechoat $n There are none within reach.
+  endif
+endif
+~
+|
+V4 12123
+georgebot bot george~
+the georgebot~
+The georgebot, georgebot, georgebot of the jungle is here, being a friend to you and me.
+~
+~
+human~
+water scholar~
+AB 0 DFJLZe N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p grab vine~
+if position($n) != 8
+  mpinterpret $n west
+else
+  if mobvalue(0) > 0
+    mpechoat $n You grab onto a vine and swing across the chasm!
+    mpechoaround $n $N grabs onto a vine and swings across the chasm!
+    mplag $n 1
+    mpvaluedown 0
+    mpat 12104 mpecho $N suddenly swings into view, carried across the chasm by a vine!
+    mptransfer $n 12104
+    mpat $n mpforce $n look
+    mpat $n mpforce tarzanbot mpvalueup 0
+  else
+    mpechoat $n There are none within reach.
+  endif
+endif
+~
+>verb_prog p look~
+if compstr(2) == vines
+  if mobvalue(0) == 0
+    mpforce $n look v0
+  endif
+  if mobvalue(0) == 1
+    mpforce $n look v1
+    mpechoat $n One of the vines lies within reach.  Perhaps you could grab it.
+  endif
+  if mobvalue(0) > 1
+    mpforce $n look v1
+    mpechoat $n $0 vines lie just within reach.  Perhaps you could grab one of them.
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V4 12124
+rogue hood hooded feldynthug~
+a hooded rogue~
+A hooded rogue stands here, stance deceptively relaxed.
+~
+A tall rogue is here, cloaked and cowled in a loose, dusty-grey cloth
+striped and fringed with darker brownish-grey fabric.  Little more can be
+told of the rogue\@s physique beyond the obvious muscle tone beneath the
+strong shoulders, and the wary, ready stance.  
+~
+human~
+water scholar~
+ABGL 0 DFJZ N 0
+46 23 31d87+1166 46d10+100 6d8+23 slash~
+slash~
+-18 -18 -18 -4
+CFKU AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 1889 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 12125
+goose dust dusty brown lesser~
+a lesser dust goose~
+A dusty brown goose waddles about nervously.
+~
+A dusty brown goose with dingy looking feathers waddles about nervously.
+~
+water fowl~
+water scholar~
+ADN 0 Tb N 0
+2 3 4d5+40 5d10+100 2d2+3 slash~
+chomp~
+5 5 5 5
+MUV AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 20 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 0 -1
+AGHMVWX ABCDEFGHIJKLPQUVX 0 medium flesh
+V4 12126
+hooded rogue ex-raider-painman~
+a hooded rogue~
+A hooded figure stands here.
+~
+A hooded human is here, its identity cunningly hidden.
+~
+human~
+water scholar~
+ABDT B CGJPTVZe E 0
+60 80 20d220+3547 1d1+900 5d13+27 pierce~
+stab~
+-22 -22 -22 -9
+FHIJK ABLU
+26 0 0 30 20 0 0 0 0 0 0 0 0 0 -5 0 0 0 0 -5 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 200 -1
+AHMV ABCDEFGHIJK ABCDEFGHIJK medium unknown
+V4 12127
+bridge bot bridgebot mob_12127~
+bridge bot~
+A bridge bot, dumping your ass.
+~
+Whee
+~
+human~
+water scholar~
+AB 0 FL N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>trigger_prog 100 ~
+if value(1) == 1
+  if isflying($n)
+  or isimmort($n)
+  or name($n) / raider
+  else
+    mpvalueup 5
+    if value(5) > 2
+      mpvalueset 1 2
+    endif
+  endif
+endif
+if value(1) == 3
+  if isflying($n)
+  or isimmort($n)
+  or name($n) / raider
+  else
+    if rand(80)
+      mpechoat $n The strain of too many people on the bridge causes the bridge to shudder, knocking you into the rushing water below!
+      mpechoaround $n The strain of too many people on the bridge causes the bridge to shudder, knocking $N into the rushing water below!
+      mpvaluerand 6 1 3
+      mplag $n $6
+      mpvaluerand 6 1871 1877
+      mptrans $n $6
+      mpforce $n look
+    endif
+  endif
+endif
+~
+>greet_prog 100~
+if isflying($n)
+or isimmort($n)
+or name($n) / raider
+  break
+else
+  mpvalueup 5
+  mpechoat $n The rope bridge creaks under your weight.
+  mpechoaround $n The rope bridge creaks under $N\@s weight.
+endif
+if value(5) > 2
+  mpvalueset 1 3
+  mproomcmd mptrigger all
+  mpvalueset 5 0
+endif
+~
+>rand_prog 100~
+mpvalueset 5 0
+mpvalueset 1 1
+mproomcmd mptrigger all
+if value(1) == 2
+  mpvalueset 1 3
+endif
+mproomcmd mptrigger all
+~
+|
+V4 12150
+conqtranspoint~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 L N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+#0
+
+
+
+#OBJECTS
+V13
+12100
+relief setting sun twilight~
+a wooden relief of a twilight landscape~
+A wooden relief is here with a setting sun carved on it.~
+~
+wood~
+treasure GPS 0 0 AO
+0 0 0 0 0
+1 40 0 2 P
+1
+E
+relief~
+On the back of the relief, is inscribed the words, \@And so the sun sets.\@
+~
+>speech_prog p And so the sun sets.~
+if isinhouse($n)
+  opechoat The relief does nothing for you.
+else
+  if  isowner($n)
+    if inroom($n) == 12118
+      opechoat $n The sun in the relief sets and you feel yourself transported.
+      opechoaround $n Something happens on the relief $N holds, and he vanishes.
+      optransfer $n 12119
+      opforce $n look
+endif
+endif
+endif
+~
+|
+V13
+12101
+dagger curved blackened metal~
+a curved dagger with a blackened metal blade~
+A long, curved dagger with a blackened metal blade.~
+~
+iron~
+weapon BCEHMPU 0 0 AN
+dagger 5 8 2 0
+stab~
+50 10 30000 1 P
+0
+V13
+12102
+pool shallow~
+a shallow pool~
+A shallow pool, filled by rainwater dripping off the canyon walls.~
+~
+stone~
+fountain Oa 0 0 P
+-1 -1 'water' 0 0
+0 0 0 5 P
+0
+V13
+12103
+portal~
+a portal to crap.~
+A portal is here.~
+~
+unknown~
+portal 0 0 0 0
+0 ACDEHIJKLMNOPQRSTUVWXYZabcdef ACDEHIJKLMNOPQRSTUVWXYZabcdef 0 0
+0 0 0 4 P
+0
+V13
+12104
+cudgel iron spiked~
+a spiked iron cudgel~
+An iron cudgel is here, the spiked tip coated in a layer of green fluid.~
+~
+iron~
+weapon NPZ 0 F AN
+mace 5 6 1 F
+crush~
+50 220 0 2 P
+5
+V13
+12105
+piece fractured wooden relief twilight~
+a fractured piece of a wooden relief~
+A fractured piece of a wooden relief of a twilight landscape lies here.~
+~
+wood~
+key DGQSU 0 0 AO
+0 0 0 0 0
+1 10 0 0 P
+0
+V13
+12106
+piece splintered wooden relief twilight~
+a splintered piece of a wooden relief~
+A splintered piece of a wooden relief of a twilight landscape is here.~
+~
+wood~
+key GQSU 0 0 AO
+0 0 0 0 0
+1 10 0 0 P
+0
+V13
+12107
+piece jagged wooden relief twilight obj_12107~
+a jagged piece of a wooden relief~
+A jagged piece of a wooden relief of a twilight landscape is here.~
+~
+wood~
+key GQSX 0 0 AO
+0 0 0 0 0
+1 10 0 0 P
+0
+V13
+12108
+core wooden relief twilight~
+the core of a wooden relief~
+The core of a wooden relief of a twilight landscape is here.~
+~
+wood~
+key GQSX 0 0 AO
+0 0 0 0 0
+1 15 0 0 P
+0
+E
+core~
+You hold in your hands the central piece of the wooden relief.  Jagged
+edges along its sides indicate that the relief was broken violently into
+several pieces.  Etched into the core are bits of an illustration, and the
+words, \@And so the sun sets.\@ 
+~
+>speech_prog p and so the sun sets.~
+if isinhouse($n)
+  opechoat $n The pieces begin to quiver, but nothing happens.
+else
+  if isowner($n)
+    if hasrelief($n)
+      if inroom($n) == 12118
+        if sex($n) == 1
+          mpvalueset sex he
+        else
+          if sex($n) == 2
+            mpvalueset sex she
+          else
+            mpvalueset sex it
+          endif
+        endif
+          opecho The four pieces lock together, forming the complete relief.
+          opechoat $n The sun in the relief sets, and you feel yourself being transported. 
+          opechoaround $n Something happens on the relief $N holds, and %sex vanishes.
+          optransfer $n 12119
+          opforce $n look
+          opechoat $n The wooden relief trembles in your grasp, then dissolves.
+          opat 12119 opforce ark mpfocus $n
+          opat 12119 opforce ark mpvalueset 0 40
+          oppurge obj_12107
+          oppurge obj_12107
+          oppurge obj_12107
+          oppurge self
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>speech_prog p and so the sun sets~
+if isinhouse($n)
+  opechoat $n The pieces begin to quiver, but nothing happens.
+else
+  if isowner($n)
+    if hasrelief($n)
+      if inroom($n) == 12118
+        if sex($n) == 1
+          mpvalueset sex he
+        else
+          if sex($n) == 2
+            mpvalueset sex she
+          else
+            mpvalueset sex it
+          endif
+        endif
+          opecho The four pieces lock together, forming the complete relief.
+          opechoat $n The sun in the relief sets, and you feel yourself being transported. 
+          opechoaround $n Something happens on the relief $N holds, and %sex vanishes.
+          optransfer $n 12119
+          opforce $n look
+          opechoat $n The wooden relief trembles in your grasp, then dissolves.
+          opat 12119 opforce ark mpfocus $n
+          opat 12119 opforce ark mpvalueset 0 40
+          oppurge obj_12107
+          oppurge obj_12107
+          oppurge obj_12107
+          oppurge self
+        endif
+      endif
+    endif
+  endif
+endif
+~
+|
+V13
+12109
+chair high wooden plain~
+the High Chair~
+A wooden chair, with golden inlays upon the armrests, is placed here atop a slight rise.~
+~
+wood~
+furniture Ya 0 0 P
+1 1000 F 300 300
+0 0 0 4 P
+0
+E
+chair~
+A high backed wooden chair, simple in its design, sits here atop a slight
+rise in the canyon floor.  The chair is of simple design, with no drastic
+curves in its body.  Breaking from the mundanity of the chair are faded
+golden inlays within the chair\@s armrests.  It is said that there were
+originally twelve different chairs, one for each of the Circle of Twelve. 
+When Aralor, the first Raider Lord came to power, he destroyed all but this
+one, the simplest of them all, keeping it as a symbol of the simplistic
+background of the Raider House.  
+~
+E
+wooden~
+A high backed wooden chair, simple in its design, sits here atop a slight
+rise in the canyon floor.  The chair is of simple design, with no drastic
+curves in its body.  Breaking from the mundanity of the chair are faded
+golden inlays within the chair\@s armrests.  It is said that there were
+originally twelve different chairs, one for each of the Circle of Twelve. 
+When Aralor, the first Raider Lord came to power, he destroyed all but this
+one, the simplest of them all, keeping it as a symbol of the simplistic
+background of the Raider House.  
+~
+E
+high~
+A high backed wooden chair, simple in its design, sits here atop a slight
+rise in the canyon floor.  The chair is of simple design, with no drastic
+curves in its body.  Breaking from the mundanity of the chair are faded
+golden inlays within the chair\@s armrests.  It is said that there were
+originally twelve different chairs, one for each of the Circle of Twelve. 
+When Aralor, the first Raider Lord came to power, he destroyed all but this
+one, the simplest of them all, keeping it as a symbol of the simplistic
+background of the Raider House.  
+~
+E
+plain~
+A high backed wooden chair, simple in its design, sits here atop a slight
+rise in the canyon floor.  The chair is of simple design, with no drastic
+curves in its body.  Breaking from the mundanity of the chair are faded
+golden inlays within the chair\@s armrests.  It is said that there were
+originally twelve different chairs, one for each of the Circle of Twelve. 
+When Aralor, the first Raider Lord came to power, he destroyed all but this
+one, the simplest of them all, keeping it as a symbol of the simplistic
+background of the Raider House.  
+~
+>verb_prog p sit~
+if compstr(1) == sit
+  if compstr(2) == chair
+  or compstr(2) == high
+  or compstr(2) == wooden
+  or compstr(2) == plain
+    if isbitset($n) == 12119
+      mpnextinterp
+    else
+      opechoat $n The High Chair flares with a brilliant red light as you attempt to sit in it.
+      opechoaround $n The High Chair flares with a brilliant red light as $N attempts to sit in it.
+      opdamage $n 1 54 176
+      opechoat $n The power of the High Chair {r=== OBLITERATES ==={x you!
+      opechoaround $n The power of the High Chair {r=== OBLITERATES ==={x $N!
+      opaddaffect $n 39 60 10 0 0 1024
+      opechoat $n You feel unclean.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+12110
+bag padded sleeping~
+a padded sleeping bag~
+A padded sleeping bag lies on the floor.~
+~
+cloth~
+furniture S 0 0 A
+1 400 K 120 120
+20 80 1000 4 P
+0
+V13
+12111
+pellet black glass blackpellet~
+a pellet of black glass~
+A pellet of black gas, filled with swirling vapors, is here.~
+~
+glass~
+gem SU 0 0 AO
+0 0 0 0 0
+20 10 0 0 P
+0
+E
+pellet~
+A small pellet, no larger than a human thumb, is here.  Within the
+cylindrical bit of glass, you can make out dense clouds of black smoke,
+swirling within the relatively miniscule confinement.  It looks as if it was
+designed to be thrown.  
+~
+E
+black~
+A small pellet, no larger than a human thumb, is here.  Within the
+cylindrical bit of glass, you can make out dense clouds of black smoke,
+swirling within the relatively miniscule confinement.  It looks as if it was
+designed to be thrown.  
+~
+E
+glass~
+A small pellet, no larger than a human thumb, is here.  Within the
+cylindrical bit of glass, you can make out dense clouds of black smoke,
+swirling within the relatively miniscule confinement.  It looks as if it was
+designed to be thrown.  
+~
+E
+blackpellet~
+A small pellet, no larger than a human thumb, is here.  Within the
+cylindrical bit of glass, you can make out dense clouds of black smoke,
+swirling within the relatively miniscule confinement.  It looks as if it was
+designed to be thrown.  
+~
+>verb_prog p toss~
+if compstr(2) == pellet
+or compstr(2) == glass
+or compstr(2) == black
+or compstr(2) == blackpellet
+  if isowner($n)
+    if isworn($o)
+      opechoaround $n $N throws a black glass pellet to the ground!
+      opechoat $n You throw a black glass pellet to the ground!
+      opvaluerand 0 0 2
+      if objvalue(0) == 0
+        opecho A small wisp of smoke rises from the shattered pellet.
+      else
+        opcast 129 50
+        opremaffect 129
+      endif
+      oppurge self
+      opverbstop
+      break
+    else
+      opechoat $n You have to be holding that in order to toss it!
+    endif
+  else
+    opinterpret $n $x
+  endif
+else
+  opinterpret $n $x
+endif
+~
+>verb_prog p throw~
+if compstr(2) == pellet
+or compstr(2) == glass
+or compstr(2) == black
+or compstr(2) == blackpellet
+  if isowner($n)
+    if isworn($o)
+      opechoaround $n $N throws a black glass pellet to the ground!
+      opechoat $n You throw a black glass pellet to the ground!
+      opvaluerand 0 0 2
+      if objvalue(0) == 0
+        opecho A small wisp of smoke rises from the shattered pellet.
+      else
+        opcast 129 50
+        opremaffect 129
+      endif
+      oppurge self
+      opverbstop
+      break
+    else
+      opechoat $n You have to be holding that in order to toss it!
+    endif
+  else
+    opinterpret $n $x
+  endif
+else
+  opinterpret $n $x
+endif
+~
+|
+V13
+12112
+dice pair ivory~
+a pair of ivory dice~
+A gleaming pair of ivory dice are here.~
+~
+ivory~
+treasure S 0 F A
+0 0 0 0 0
+20 5 0 0 P
+0
+>verb_prog p throw~
+if isowner($n)
+  if compstr(2) == dice
+  or compstr(2) == pair
+  or compstr(2) == ivory
+    if iscarrying($n) == 12112
+      opvaluerand 2 2 12
+      opechoat $n You roll a pair of ivory dice.
+      opechoaround $n $N rolls a pair of ivory dice.
+      if objvalue(2) == 8
+      or objvalue(2) == 11
+        opecho The pair of dice show an $2.
+        mpverbstop
+      else
+        opecho The pair of dice show a $2.
+        mpverbstop
+      endif
+    else
+      opechoat $n You need a pair of dice, first.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p roll~
+if isowner($n)
+  if compstr(2) == dice
+  or compstr(2) == pair
+  or compstr(2) == ivory
+    if iscarrying($n) == 12112
+      opvaluerand 2 2 12
+      opechoat $n You roll a pair of ivory dice.
+      opechoaround $n $N rolls a pair of ivory dice.
+      if objvalue(2) == 8
+      or objvalue(2) == 11
+        opecho The pair of dice show an $2.
+        mpverbstop
+      else
+        opecho The pair of dice show a $2.
+        mpverbstop
+      endif
+    else
+      opechoat $n You need a pair of dice, first.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p toss~
+if isowner($n)
+  if compstr(2) == dice
+  or compstr(2) == pair
+  or compstr(2) == ivory
+    if iscarrying($n) == 12112
+      opvaluerand 2 2 12
+      opechoat $n You roll a pair of ivory dice.
+      opechoaround $n $N rolls a pair of ivory dice.
+      if objvalue(2) == 8
+      or objvalue(2) == 11
+        opecho The pair of dice show an $2.
+        mpverbstop
+      else
+        opecho The pair of dice show a $2.
+        mpverbstop
+      endif
+    else
+      opechoat $n You need a pair of dice, first.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+12113
+pouch small leather drawpouch~
+a small leather pouch~
+A small leather pouch, with an open drawstring, is here.~
+~
+leather~
+container S 0 0 A
+5 AC 0 1 0
+20 20 0 2 P
+0
+V13
+12114
+slippers silk phase phase-silk~
+a pair of phase-silk slippers~
+A pair of phase-silk slippers, interwoven with blades of grass, are here.~
+~
+silk~
+armor S 0 0 AG
+0 0 0 0 0
+20 50 0 2 P
+0
+>remove_prog 100~
+opechoat $n Your feet slip effortlessly out of a pair of phase-silk slippers.
+opremaffect 198
+~
+>wear_prog 100~
+if objvalue(0) == 0
+  opset obj self timer 20
+  opvalueset 0 1
+endif
+opechoat $n Your feet slip easily into a pair of phase-silk slippers.
+opaddaffect 198 99 -1 00 32768
+~
+|
+V13
+12115
+dagger slender grooves~
+a slender dagger, inset with shimmering grooves~
+A slender dagger of black steel, inset with shimmering grooves, is here.~
+~
+iron~
+weapon E 0 0 AN
+dagger 5 7 2 0
+scratch~
+20 110 10000 1 P
+0
+>fight_prog 10~
+if isworn($o)
+  if objvalue(1) == 0
+    opvaluerand 0 5 16
+    opvalueset 1 1
+  endif
+  if objvalue(0) > 0 
+    if snaffected($n) == 306
+    else
+      opecho A viscous green liquid flows through the grooves of $O\@s dagger! 
+      opaddaffect $n 306 40 3 1 -3 0 
+      opechoat $n You scream in agony as pain wracks your body!
+      opechoaround $n $N screams in agony as pain wracks $s body!
+      opvaluedown 0
+      if objvalue(0) == 0
+        opechoat $o The last of the liquid within the dagger\@s grooves filters out through the blade.
+      endif
+    endif
+  endif
+endif
+~
+|
+V13
+12116
+amulet silver glimmering~
+an amulet of glimmering silver~
+An amulet of pure silver lies here, glimmering in the light.~
+~
+silver~
+armor AG 0 0 AC
+0 0 0 0 0
+30 100 25000 1 P
+0
+>remove_prog 100~
+if snaffected($n) == 602
+  opremaffect 602
+  opechoat $n As you remove an amulet of glimmering silver, you feel less able to blink out of existence.
+endif
+~
+>wear_prog 100~
+if objvalue(1) == 0
+  opvaluerand 0 6 16
+  opvalueset 1 1
+endif
+if objvalue(0) > 0
+  if snaffected($o) == 602
+  else
+    opcast 602 40
+    opvaluedown 0
+  endif
+endif
+~
+|
+V13
+12117
+rack iron raiderrack~
+a rack~
+An iron rack sits by the edge of the fire, roasting chunks of meat.~
+~
+iron~
+container e 0 0 P
+500 0 0 500 0
+0 0 0 4 P
+0
+V13
+12118
+duck roast~
+a roast duck~
+A roast duck, still dripping with bits of melted fat, is here.~
+~
+flesh~
+food 0 0 F A
+80 50 0 0 0
+1 20 0 1 P
+0
+V13
+12119
+pig suckling roast~
+a suckling pig~
+A roasted pig, with a golden apple in its mouth, is here.~
+~
+flesh~
+food 0 0 F A
+120 50 0 0 0
+1 70 0 1 P
+0
+V13
+12120
+ribs rack full barbecue~
+a full rack of barbecued ribs~
+A full rack of barbecued ribs, slathered in a dark brown sauce, is here.~
+~
+flesh~
+food 0 0 F A
+90 50 0 0 0
+1 30 0 1 P
+0
+V13
+12121
+flask fluid noxious green~
+a flask of noxious green fluid~
+A stoppered flask, filled to the brim with a noxious green fluid, is here.~
+~
+alcohol~
+trash S 0 0 A
+0 0 0 0 0
+1 10 0 2 P
+0
+V13
+12122
+thick wooden keg~
+a thick wooden keg~
+A thick wooden keg rests by the edge of the bonfire, dispensing a malty amber liquid.~
+~
+wood~
+fountain OSYe 0 0 P
+0 0 'beer' 0 0
+52 500 0 5 P
+0
+E
+wooden~
+A thick wooden barrel rests here upon its side, set a fair distance away
+from the roaring bonfire.  Pieced together from strips of a rough white
+pine, the keg is bound together with corroded iron bands.  A metal spigot
+protrudes from the end of the keg, dripping a frothy amber liquid.  
+~
+E
+thick~
+A thick wooden barrel rests here upon its side, set a fair distance away
+from the roaring bonfire.  Pieced together from strips of a rough white
+pine, the keg is bound together with corroded iron bands.  A metal spigot
+protrudes from the end of the keg, dripping a frothy amber liquid.  
+~
+E
+keg~
+A thick wooden barrel rests here upon its side, set a fair distance away
+from the roaring bonfire.  Pieced together from strips of a rough white
+pine, the keg is bound together with corroded iron bands.  A metal spigot
+protrudes from the end of the keg, dripping a frothy amber liquid.  
+~
+V13
+12123
+chain blackened razor tipped~
+a blackened razor-tipped chain~
+A coil of blackened chain, its end weighted down with a snarl of razors, lies here.~
+~
+hide~
+weapon CEGNP 0 0 AN
+whip 6 8 3 0
+lash~
+55 170 500000 2 P
+2
+A
+18 5
+A
+19 3
+V13
+12124
+net barbed steel wire~
+a barbed net of steel wire~
+A mesh of steel wire, crafted with twisted barbs, lies in a heap.~
+~
+steel~
+net C 0 F AO
+0 0 0 0 0
+45 90 110000 3 P
+5
+A
+19 4
+V13
+12125
+cesti spined battered pair~
+a battered pair of padded cesti~
+A pair of padded practice cesti, battered and worn over time, are here.~
+~
+leather~
+weapon S 0 F AH
+exotic 5 5 1 0
+punch~
+40 60 250 2 P
+0
+A
+19 -70
+V13
+12126
+coffer large mahogany chest raiderchest~
+a large mahogany coffer~
+An ornately carved coffer of aged mahogany lies in the northeast corner of the tent.~
+~
+wood~
+container S 0 0 P
+5000 BCD 0 5000 0
+50 500 0 4 P
+0
+>verb_prog p enter~
+if objvalue(0) == 1
+  if compstr(2) == secret
+  or compstr(2) == hidden
+  or compstr(2) == entrance
+  or compstr(2) == crack
+    mpfocus $n
+    mplag $n 2
+    mpechoat $n You slip into the crack with a small splash, and find yourself carried away by the Dantaron\@s currents.
+    mpvalueset 0 4
+    mproomcmd mptrigger all
+    mpvalueset 0 1
+    mptrans $n 22566
+    mpechoat $n You reach the river surface, gasping for breath.
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p look~
+if objvalue(0) == 1
+  if compstr(2) == secret
+  or compstr(2) == hidden
+  or compstr(2) == entrance
+  or compstr(2) == crack
+    mpechoat $n A sizable crack, large enough around for an average human to enter, is
+    mpechoat $n now visible.  Vague traces of light filter into the hidden recesses,
+    mpechoat $n illuminating the surface of a body of water.  
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>trigger_prog 100~
+if name($n) == $f
+else
+if cansee($n) == $f
+  if objvalue(0) == 0
+    mpechoat $n $F pushes a large mahogany coffer back on top of the hidden exit.
+  endif
+  if objvalue(0) == 1
+    mpechoat $n $F drags a large mahogany coffer to the side, revealing a hidden entrance.
+  endif
+  if objvalue(0) == 2
+    mpechoat $n $F tugs forcefully at a large mahogany coffer, but it doesn\@t budge.
+  endif
+  if objvalue(0) == 3
+    mpechoat $n $F shoves at a large mahogany coffer, but it doesn\@t budge.
+  endif
+  if objvalue(0) == 4
+    mpechoat $n $F enters a hidden entrance in the northeast corner of the tent.
+  endif
+else
+  if inhouse($f) == RAIDER
+  or class($f) == 12
+  or class($f) == 13
+  or class($f) == 14
+  or class($f) == 15
+    if rand(5)
+      if objvalue(0) == 0
+      or objvalue(0) == 1
+        mpechoat $n You hear a slight grating noise coming from the northeast corner.
+      endif
+      if objvalue(0) == 4
+        mpechoat $n You hear a small splash from the northeast corner.
+      endif
+    endif
+  else
+    if rand(50)
+      if objvalue(0) == 0
+      or objvalue(0) == 1
+        mpechoat $n You hear a slight grating noise coming from the northeast corner.
+      endif
+      if objvalue(0) == 4
+        mpechoat $n You hear a small splash from the northeast corner.
+      endif
+    endif
+  endif
+endif
+endif
+~
+>verb_prog p move~
+if compstr(1) == move
+  if compstr(2) == coffer
+  or compstr(2) == large
+  or compstr(2) == mahogany
+  or compstr(2) == chest
+    mpfocus $n
+    mpvaluerand 2 3 15
+    mplag $n 1
+    if objvalue(0) == 0
+      if strength($n) > $2
+        mpechoat $n You drag the large mahogany coffer to the side, revealing a secret entrance!
+        mpstring obj coffer long An ornately carved coffer of aged mahogany has been moved to the side, revealing a secret entrance.
+        mpvalueset 0 1
+        mproomcmd mptrigger all
+      else
+        mpechoat $n You tug at the large mahogany coffer, but it won\@t budge.
+        mpvalueset 0 2
+        mproomcmd mptrigger all
+        mpvalueset 0 0
+      endif
+    else
+      if strength($n) > $2
+        mpechoat $n You push a large mahogany coffer back on top of the hidden exit.
+        mpstring obj coffer long An ornately carved coffer of aged mahogany lies in the northeast corner of the tent.
+        mpvalueset 0 0
+        mproomcmd mptrigger all
+      else
+        mpechoat $n You shove at a large mahogany coffer, but it won\@t budge.
+        mpvalueset 0 3
+        mproomcmd mptrigger all
+        mpvalueset 0 1
+      endif
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+12127
+censer jewelled smokecenser~
+a jewelled censer~
+A jewelled censer hangs majestically from the top of the tent, softly spewing plumes of purple smoke.~
+~
+metal~
+trash e 0 0 P
+0 0 0 0 0
+50 0 0 2 P
+0
+E
+censer~
+A golden censer, encrusted with glittering jewels, hangs from the top of
+the tent.  Suspended by a delicate chain of immaculate gold, it swings
+softly with the movements of the tent.  Glowing embers can be seen inside,
+softly spewing plumes of scented purple smoke.  The censer looks like it
+could be easily toppled or knocked over.  
+~
+E
+jewelled~
+A golden censer, encrusted with glittering jewels, hangs from the top of
+the tent.  Suspended by a delicate chain of immaculate gold, it swings
+softly with the movements of the tent.  Glowing embers can be seen inside,
+softly spewing plumes of scented purple smoke.  The censer looks like it
+could be easily toppled or knocked over.  
+~
+E
+smokecenser~
+A golden censer, encrusted with glittering jewels, lies discarded upon
+the ground.  Normally suspended from the top of the tent by a delicate chain
+of immaculate gold, it appears to have been forcefully knocked from its
+perch.  The censer is for the most part empty, slowly leaking out wispy
+trails of purple smoke.  It could easily be replaced, and refilled with
+incense.  
+~
+>verb_prog p examine~
+if compstr(2) == jewelled
+or compstr(2) == censer
+  if objvalue(1) == 0
+    mpnextinterp
+  else
+    mpforce $n look smokecenser
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p look~
+if compstr(2) == jewelled
+or compstr(2) == censer
+  if objvalue(1) == 0
+    mpnextinterp
+  else
+    mpforce $n look smokecenser
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p replace~
+if compstr(1) == replace
+  if compstr(2) == censer
+  or compstr(2) == jewelled
+    if objvalue(1) == 1
+      if isfighting($n)
+        mpechoat $n You can\@t replace the censer while you\@re fighting.
+      else
+        mpechoat $n You take some incense from the top of the coffer, and place it inside of the fallen censer.
+        mpechoaround $n $N takes some incense from the top of the coffer, and places it inside of the fallen censer.
+        mpechoat $n You hang the censer from the top of the tent.
+        mpechoaround $n $N takes the fallen censer, and hangs it from the top of the tent.
+        mpstring obj censer long A jewelled censer hangs majestically from the top of the tent, softly spewing plumes of purple smoke.
+        opvalueset 1 0
+      endif
+    else
+      mpechoat $n The censer doesn\@t need any more incense.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p refill~
+if compstr(1) == refill
+  if compstr(2) == censer
+  or compstr(2) == jewelled
+    if objvalue(1) == 1
+      if isfighting($n)
+        mpechoat $n You can\@t refill the censer while you\@re fighting.
+      else
+        mpechoat $n You take some incense from the top of the coffer, and place it inside of the fallen censer.
+        mpechoaround $n $N takes some incense from the top of the coffer, and places it inside of the fallen censer.
+        mpechoat $n You hang the censer from the top of the tent.
+        mpechoaround $n $N takes the fallen censer, and hangs it from the top of the tent.
+        mpstring obj censer long A jewelled censer hangs majestically from the top of the tent, softly spewing plumes of purple smoke.
+        opvalueset 1 0
+      endif
+    else
+      mpechoat $n The censer doesn\@t need any more incense.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p topple~
+if compstr(1) == topple
+  if compstr(2) == censer
+  or compstr(2) == jewelled
+    if objvalue(1) == 0
+      mpfocus $n
+      mplag $f 1
+      mpechoat $f With a quick swing of your arm, you knock the smoking censer to the ground!
+      mpechoaround $f With a quick swing of $s arm, $F knocks the smoking censer to the ground!
+      mpecho Upon impact, clouds of dark purple smoke begin to erupt from the censer!
+      mpcast 129 50
+      mpstring obj smokecenser long A jewelled censer lies empty upon the ground, slowly leaking out trails of smoke.
+      opvalueset 1 1
+    else
+      mpechoat $n The censer is on the ground, and will need to be refilled again.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p bash~
+if compstr(1) == bash
+  if compstr(2) == censer
+  or compstr(2) == jewelled
+    if objvalue(1) == 0
+      mpfocus $n
+      mplag $f 1
+      mpechoat $f With a quick swing of your arm, you knock the smoking censer to the ground!
+      mpechoaround $f With a quick swing of $s arm, $F knocks the smoking censer to the ground!
+      mpecho Upon impact, clouds of dark purple smoke begin to erupt from the censer!
+      mpcast 129 50
+      mpstring obj smokecenser long A jewelled censer lies empty upon the ground, slowly leaking out trails of smoke.
+      opvalueset 1 1
+    else
+      mpechoat $n The censer is on the ground, and will need to be refilled again.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p knock~
+if compstr(1) == knock
+  if compstr(2) == censer
+  or compstr(2) == jewelled
+    if objvalue(1) == 0
+      mpfocus $n
+      mplag $f 1
+      mpechoat $f With a quick swing of your arm, you knock the smoking censer to the ground!
+      mpechoaround $f With a quick swing of $s arm, $F knocks the smoking censer to the ground!
+      mpecho Upon impact, clouds of dark purple smoke begin to erupt from the censer!
+      mpcast 129 50
+      mpstring obj smokecenser long A jewelled censer lies empty upon the ground, slowly leaking out trails of smoke.
+      opvalueset 1 1
+    else
+      mpechoat $n The censer is on the ground, and will need to be refilled again.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+12128
+razor edged razor-edged dagger~
+a razor-edged dagger~
+A dagger with a razor edge rests here, decorated with flecks of red.~
+~
+metal~
+weapon NP 0 0 AN
+dagger 5 6 2 0
+pierce~
+55 20 0 1 P
+0
+V13
+12129
+leaderitem chitin necklace red-orange thick orange red~
+a necklace of thick red-orange chitin~
+A thick band of chitin rests here, glistening with the colors of flame.~
+~
+chitin~
+treasure EGJLS 0 0 ACP
+0 0 0 0 0
+55 10 114257 2 P
+1
+A
+36 15
+A
+23 -5
+V13
+12130
+note folded carefully~
+a carefully folded note~
+A carefully folded note is here.~
+~
+parchment~
+writing 0 0 0 A
+1 5000 0 0 0
+1 0 0 0 P
+0
+E
+note~
+A message is on the inside of the note.  The edges of the characters are
+sharp, apparently drawn in either carelessness, or great haste.  Perhaps you
+should try reading it.  
+~
+E
+folded~
+A message is on the inside of the note.  The edges of the characters are
+sharp, apparently drawn in either carelessness, or great haste.  Perhaps
+you should try reading it.  
+~
+V13
+12132
+ring heavy square gold golden signet setting sun thick pure feldynsring~
+a heavy square gold signet ring~
+A thick, heavy ring of pure gold lies here, a setting sun laid out as a signet.~
+This is the ring of the first Raider Lord, Aralor.  After systematically
+eliminating the other contenders for his position amongst the original
+Circle of Twelve, Aralor stood as the undisputed leader of the Canyon. 
+Anticipating the onset of old age, Aralor knew that he could remain the
+leader of the Canyon for as long as he could fend off the rising tide of
+challengers.  
+
+Unwilling to relinquish his hold on power, Aralor appealed to the dark gods
+that had empowered the Raiders.  His prayers and sacrifices were soon
+answered.  Not only was he granted the immortality he sought, but he was
+further gifted with strength beyond that of mortal men, and a supernatural
+relation with the shadows of the world.  Aralor rejoiced and marvelled at
+his new powerse, believing that they ensured that he would never fade from
+the face of Avendar.  
+
+But power comes with a price.  For in attaining his powers, Aralor had
+unwittingly ascended to the status of a demigod, and was now bound by the
+divine law that binds all immortals.  No longer could he freely inflict
+himself upon the world like a cancerous plague.  Instead, the sole object of
+his desires now lay behind an invisible shield whose laws and workings lay
+beyond his grasp.  
+~
+gold~
+armor BEJMZ 0 0 AB
+20 20 20 20 0
+52 9 12674 0 P
+1
+A
+2 2
+A
+20 -3
+A
+40 10
+A
+13 50
+A
+19 5
+A
+18 9
+E
+ring heavy square gold golden signet setting sun thick pure feldynsring~
+This heavy ring, oddly square, is made of pure gold.  A simple signet
+displays a setting sun, the rays inlaid with obsidian and garnets.  It
+vibrates with contained power, the buttery gold gleaming faintly.  
+~
+>take_prog 100~
+mpechoat $n {WBLING{n
+~
+|
+V13
+12133
+statue marble dusky crouch crouched humanoid dasflagstatue~
+a dusky marble statue~
+A dusky marble statue of a crouched humanoid rests here.~
+~
+marble~
+treasure BCEGYa 0 0 P
+0 0 0 0 0
+51 3652 0 3 P
+1
+E
+statue marble dusky crouch crouched humanoid dasflagstatue~
+This statue, made from lustreless black marble, is roughly four and a
+half feet in height.  It depicts a startlingly realistic humanoid of
+indisctint heritage, portrayed in a half-crouch.  An exquisite expression of
+pain mars the figure\@s features, eyes screwed up in agony and mouth twisted
+in an obscene grimace.  
+
+From the figure\@s hunched back three claws are sculpted in the act of
+pushing their ways through the flesh and bone.  Curved and wickedly tipped,
+they seem to possess some pent-up energy of their own, even though the
+statue is cold and absolutely motionless.  
+
+A definite sense of menace surrounds the statue, a nameless malice akin to a
+caged, angry beast.  
+~
+V13
+12134
+vial fluid sickly black catalyst~
+a vial of catalyst~
+A vial filled with a sickly black fluid rests on the ground.~
+~
+glass~
+treasure 0 0 0 AO
+0 0 0 0 0
+10 10 315 2 P
+0
+>verb_prog p do_unfocus~
+if name($o) == $n
+  mpunfocus $y2
+  mpaddaffect $n 67 1 0 27 0 542288
+  mpremaffect $n 67
+endif
+~
+>verb_prog p do_focus_22721~
+if name($o) == $n
+  mpfocus $y2
+  mpstring char $n long $N is here, helping to carry a large statue.
+endif
+~
+|
+V13
+12135
+painting canvas slashed rolled~
+a slashed canvas painting~
+A canvas painting, slashed from the frame, has been rolled up and left here.~
+~
+cloth~
+treasure S 0 0 A
+0 0 0 0 0
+51 98 35067 0 P
+0
+V13
+12136
+hide srryn primitive tapestry mass paints paint bead beadwork~
+a primitive srryn tapestry~
+A hide covered in a mass of simple paints and beadwork has been left here.~
+~
+hide~
+trash 0 0 0 AO
+0 0 0 0 0
+45 65 0 0 P
+1
+E
+hide srryn primitive tapestry mass paints paint bead beadwork~
+This simple hide, clearly quite old, has been ravaged by time.  The
+leather is cracked and crumbling, the simple berry-juice and fat-based
+paints faded with the centuries.  Strips of fringed hide are strung with
+glazed, chunky clay beads.  The paint itself seems to be a collection of
+jagged runes of power, detailing some ritual.  
+~
+V13
+12140
+chalice ancient gold golden dust~
+an ancient golden chalice~
+An ancient golden chalice sits here, covered in dust.~
+~
+gold~
+jewelry A 0 0 AO
+0 0 0 0 0
+51 34 4507 0 P
+0
+E
+chalice ancient gold golden dust~
+This heavy chalice is made from pure beaten gold.  Clearly old and
+valueable, the masterful craftsmanship of the piece shows.  Several careful
+markings have been made upon the gold in a grease pencil, apparently of
+curatorial interest.  
+~
+V13
+12141
+statue statuette delicate crystal aelin wing wings~
+a delicate crystal statuette~
+A delicate crystal statuette of an aelin with outstretched wings sits here.~
+~
+crystal~
+jewelry 0 0 0 AO
+0 0 0 0 0
+51 69 4589 0 P
+0
+E
+statue statuette delicate crystal aelin wing wings~
+This statuette is roughly a foot tall, made from delicate leaden crystal.
+Depicting an aelin with outstretched arms and raised wings, the statue has
+been tied with several small tags and bits of string, apparently markers for
+reference by museum staff.  
+~
+V13
+12142
+ex raider ex-raider pain fob~
+ex-raider pain fob~
+The ex-raider pain fob.~
+~
+unknown~
+trash MYZad 0 0 AS
+0 0 0 0 0
+52 0 0 0 P
+0
+V13
+12143
+chest plate chestplate fitted kor thrandir thrantian small~
+a fitted Kor Thrandir chestplate~
+A small, fitted chestplate, designed for a person of short stature, lies here.~
+~
+steel~
+armor IKa 0 0 AD
+15 15 15 15 0
+60 150 69500 1 P
+1
+A
+19 2
+A
+41 5
+A
+13 23
+A
+18 3
+E
+chest plate chestplate fitted kor thrandir thrantian small~
+This small, fitted chestplate is hammered from thrice-forged steel. 
+Polished to a gleaming shine, the masterful work of the chest- and
+back-plate shows.  Designed for one of small yet bulky stature, the
+chestplate is slightly detailed on the front to mirror the musculature of
+the chest.  The symbol of Kor Thrandir is worked on the front in raised gold
+metalwork, and short, hinged pauldrons allow the armor to attach to a set of
+sleeves.  A short mail fringe hangs from the bottom, and the inside is
+well-padded with bands of leather and wool.
+~
+>fight_prog 1~
+if isworn($o)
+  if rand(1)
+    is israce($n) == SHUDDENI
+      mpechoat $o {WYour chestplate quivers with energy, and a misty white flare of energy surges from its seal!{n
+      mpechoaround $o {W$O\@s chestplate shudders, and a misty white flare of energy surges from the seal on the front!{n
+      mpcast 688 20
+    endif
+  endif
+endif
+~
+|
+V13
+12144
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+12145
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+12148
+flashing red mote~
+a flashing red mote~
+Arkhural\@s RP Sigil~
+~
+energy~
+armor HMZd 0 0 AS
+0 0 0 0 0
+70 0 0 0 P
+1
+>data_prog neffemale~
+A young nefortu female is here, her ashen gray body taut.  Her small
+frame, slightly muscled with tightly drawn skin, is sharply defined.
+Muscles are evident beneath her skin, and bones are sharply pronounced.
+Slender forearms end in small, clawed hands.  Her four fingers on each hand
+sports a sharp claw.  A pair of wings erupt from between her shoulder
+blades, stretching out to either side.  Held straight, they reach close to
+six feet in width, supporting her small, four foot frame.  Her face, tight
+with defined features, is sharply angled.  From her ears, which are sharply
+pointed, to her nose, which is small and sharply accented.  Pronounced
+cheekbones frame her eyes, which are two small, black orbs.  Her bald head
+is covered in the same ash-grey skin.
+~
+>data_prog kankfemale~
+A coat the colour of untouched snow a young kankoran girl is before you. 
+Her alabastrine coat is thick, lush and well-groomed though at her throat
+and spreading to her shoulders and the top of her breastbone is a patch of
+obsidian fur, her only blemish.  Her eyes are an extremely washed-out blue,
+nearly silver.  Her ears are short, wide and tufted at their tips and her
+muzzle slender and the hairs quite short.  Her stature is middling height
+for a girl her age her frame lean, sleek and lithe.  
+~
+>data_prog chtarenfemale~
+A young ch\@taren woman, beautiful golden skin faintly translucent, stands
+here.  Her delicate frame, slender and tall, radiates the accomplished
+elegance of her race.  Simple, yet well-tailored and well-fitting clothing
+graces her figure, flowing along the serpentine curves of her body.  Two
+pauldrons of pure white leather sit on each shoulder, one emblazoned with a
+small pegasus of silver, the other with small sapphires in the pattern of a
+spear.  Not entirely stable, her form shimmers and wavers occasionally.  Her
+movements, fluid and almost cat-like in their coordination and precision, are
+somehow as indescribably alien as her otherworldly beauty.
+~
+>data_prog caladfemale~
+A tall female caladaran stands before you, her grey hair pulled back
+neatly into a ponytail at the back of her neck.  The ponytail has been
+secured by a small stone, and the crown of her head is encircled with a ring
+of thin stone.  Her skin is rough and barklike like that of most caladarans,
+yet her face has a softer texture, appearing more like a dark-skinned human.
+A few signs of aging can be seen about her eyes, though she bears the marks
+with an air of elegance.  Her hands are tipped with long, slender fingers,
+and are attached at the end of spindly, thin arms.  Her dark brown eyes look
+as young as anyone\@s and reflect the light of the locale, glinting with a
+hint of inner knowing.  
+~
+>data_prog aelinfemale2~
+Here standing before you is a young Aelin girl, her hair jet black with a
+set of long slender braids on either side of her face.  Small curved ears
+escape through the dense blackness.  Her facial features are complimented
+with her bright blue eyes and small child-like nose.  Her pale skin has only
+the slightest golden hew to it showing little time spent in the sun. 
+Draping her body is a long dark gray robe that allows only her wings to be
+revealed.  Nearly half the size of her small frame a pair of feathered white
+and black speckled wings hold her aloft.  
+~
+>data_prog aelinfemale~
+Slim-waisted your eyes rest upon a comely aelin woman.  Her hair cropped
+short is the color of metallic silver.  Her eyes are soft and grey, her nose
+small and slightly upturned and her mouth small while her lips are full. 
+Slim dainty wings match the color of her hair and bear a slight sheen.  Her
+frame is lithe, sleek and willowy her stature average height.  Her skin,
+smooth alabaster, is unmarred though bears an array of streaks and smudges
+wherever there is a lack of clothing or armour.  A thin band of onyx
+encircles her right bicep.  
+~
+>data_prog humanfemale~
+Before you stands a older slender human female.  Upon setting your gaze
+upon her you notice her long jet black hair with streaks of gray.  Yet there
+is a gray spot in particular above her right eye.  Her face is in the
+perfect shape of a oval.  Her eyes clear as water, with a tint of green
+circling in the depth of them.  The wrinkles in the corners of her eyes
+betray her true age.  Her nose is petite and curves upward towards the tip. 
+She has small pink lips that is always curved upwards in a smile.  Her hands
+are small and thin like the rest of her body.  Her skin is softly tanned and
+radiates a glow of confidence about herself.  
+~
+>data_prog srrynmale2~
+His muscles bulging and rippling, this medium-sized srryn moves about
+with a mixture of stealth and presence.  His darkened body is anything but
+pretty.  Many of his once shiny black scales have long since cracked and
+dulled under a multitude of punishing blows.  Disregarding the obviously
+trained warrior\@s nature of his stance and movements, you detect an almost
+scholarly intelligence present behind his opaque, red eyes.  His pronounced
+claws have been sharpened to razors, and carved into each of them is a
+small, amazingly-detailed picture of a haunting, eyeless mask enveloped in
+darkness.  
+~
+>data_prog srrynmale~
+Before you looms a massive beast, both towering in height and bulky with
+giant strength.  Ferocity covers his features, darkening his face.  His eyes
+are a deep crimson and almost seem alive with fire.  Within his mouth are
+great fangs, and his long, forked tongue darts out from behind them.  Flared
+nostrils add to his unfriendly appearance, as he seems domineering and
+arrogant.  His arms are long and packed with muscle.  Sharp claws mark the
+end of each, deadly weapons themselves along with the one he carries.  His
+long legs are just as large, capable of both quick and powerful movements. 
+Covering his entire body are thick red scales, as dark as his eyes.  
+~
+>data_prog kankmale~
+Standing nearly six and a half feet in height is a kankoran.  From his
+neatly groomed short fur, it is plain to see he is heavily muscled.  His fur
+is a rich golden reddish color, with a small patch of silver fur near the
+middle of his back.  There are a few smaller patches of white fur around his
+hands and feet, and a small patch of white fur under his left eye.  His eyes
+are a piercing black, devoid of life, his face emotionless.  He is clothed
+in dark leather, with a light cape of black linen tied around his neck, and
+two scabbards about his waist.  
+~
+>data_prog ethronmale~
+A tall ethron, his dark hair cut short and untended, glances about
+warily.  Worn armor covers his body, the ethron caring not for matching what
+he wears.  His hands hold a huge staff, battered and dented from years of
+battle and defense, thrown carelessly from one hand to another.  Strapped on
+his back is a huge knapsack, stitches and patches covering most of the
+leather that was.  On his arms, black bracers pulsate in tune to his
+movement, a soft laughter emitting from the darkness of which they were
+crafted.  His eyes gleam a pale and faded blue, age now beginning to rest
+upon them.  His mouth and chin are covered by a blackened cloth, burns
+slightly in view around the edges.  
+~
+>data_prog chtarenmale~
+A slender, golden-skinned man is here, his body vaguely translucent. 
+Sparkling silver hair is pulled back from his face in a tight ponytail, the
+color matching that of his gleaming eyes.  The features of his face are soft
+and unthreatening, a smile often gracing his lips.  Not particularly
+muscular, this ch\@taren carries himself with an odd air of implacable
+strength.  
+~
+>data_prog caladmale~
+A tall creature is here, it appears to be a little more than 6 feet tall.
+His hair is long and have been plaited, almost like the branches on a willow
+tree.  His arms and legs are long and thin, yet they appear strong and
+nimble.  His body, like his legs and arms, is thin and it is a bit short
+when compared to his long limbs.  Lightless eyes, as black as coal, stare
+out blankly from his wooden face.  
+~
+>data_prog shuddenimale2~
+A gaunt shuddeni, his skin stretching over bones and tendons, watches you
+quietly.  Veins can be seen under the surface of his pallid, ashen grey
+skin, slowly pulsing and pumping blood through his small frame.  His small
+head is balanced upon a slim neck, hairless and smooth.  A crooked nose
+looks as though it was once broken, and his thin lips are cracked and
+peeling.  A smooth, empty space is all that can be seen above his nose, his
+face devoid of eyes.  Thin, bony fingers extend from his small hands, wrists
+extending out of the sleeves of a stone grey cape, covering most of his body
+and armors.  
+~
+>data_prog shuddenimale~
+Before you stands an abnormally tall shuddeni, dressed in elegantly kept
+black silks.  He bears himself with the calm assurance of one inshakably
+confident of his own ability.  Broad about the shoulders, his chest narrows
+down towards a trim waist line.  A richly embroidered cloak is draped
+loosely about his body, held together by an onyx medallion.  By his side
+hangs a lacquered black scabbard, thin and curving in shape.  Lithe and
+graceful in his movements, there is a distinctly serpentine quality about
+his mien.  
+~
+>data_prog nefmalesch~
+Nemosr appears small in stature, even for a nefortu.  His v-shaped face
+is dominated by bulbous green eyes and wide, pointed ears that intrude
+slightly into the form of his head.  A pair of deep-brown wings, size to
+match his frame, extend from his shoulders and end in tiny bony points.  His
+movements are graceless at best, often taking on a bouncing effect as he
+propels himself along, half jumping, half flapping his wings.  Dressed not
+so much in bulky armor than in miscellaneous fineries, he appears to prefer
+shiny and valuable-looking wares over ones which might provide his person
+heavy defense or magical enhancement.  A certain darkness looms over him, as
+if the external light sources in the area around him wane in his presence.  
+~
+>data_prog nefmale~
+A figure of looming darkness glides along before you.  Clad in the
+bleakest of dark black robes, a symbol of a crescent moon has been sewn onto
+the front.  The nefortu wears no ornate jewelery of the such, but rather
+presents a noble look with the calm air about him.  His eyes seem ever clear
+with a hint of caution within them.  His skin glows a pale white has light
+shines off its reflective black surface.  A pair of leathery wings arch
+outwards from his back to meet in the end with their tips barely crossing. 
+He glides along the ground with a commanding presence of magic and strength.
+~
+>data_prog alathmale~
+Here you see a looming shape, whose massive stature blocks out the sky. 
+Muscles like boulders tumble down his arms and chest.  His legs are like oak
+trees, planted firm, unmovable.  His movements displace the very air, and
+the ground thuds at the impact of his comings and goings.  Above his brow,
+linked beads black and brown hang, creating a sheet covering his eyes,
+though he moves as if he sees without hinder.  Below his chisled nose, his
+mouth is grimly set.  
+~
+>data_prog aelinmalesch~
+Standing in your field of vision is a rather tall aelin man.  His hair,
+unlike most aelin is dark.  This fellow\@s is black, matching the robing
+which covers the entirety of his body.  The rest of his head is nothing
+short of beautiful.  You would almost say that it was feminine, in its
+grace.  Almost.  The body itself is of average build.  His arms aren\@t
+overly large, fitting with his body rather well.  His hands, however, have
+the look of one who uses them in various enchantments.  Obviously, this
+fellow is a scholar.  His robing stands open, showing what armor he wears. 
+It has slots cut into the back of it, allowing his spotless white wings to
+protrude.  
+~
+>data_prog aelinmale~
+A regal looking aelin man hovers before you, his wings fluttering
+silently.  Noble heritage is evident in his general countenance, resulting
+in a finely boned, fair skinned specimin.  His wings hold him slightly aloft
+the ground, beating behind his narrow shoulders.  Lacking defined muscles,
+his limbs appear weak upon first glance.  His fair, alabaster skin is drawn
+smoothly over his short frame.  Free of blemishes or scars, his skin seems
+almost surreal.  A sharp, finely boned face draws your gaze almost
+instinctively, with eyes of slate grey looking out from under thin eyebrows
+and a shock of fire red hair.  
+~
+>data_prog humanmale2~
+Oily black hair is cropped closely about this rogue\@s hard, angular face.
+A thick tangle of unshorn stubble envelops most of his dark, weathered skin,
+extending from his high cheekbones down to the bottom of his protruding jaw.
+His eyes are a murky grey, and seem quick and perceptive, set beneath a
+thick brow.  His nose is slightly too large, its hooked shape dominating the
+rest of his face.  A man of considerable height, standing nearly six and a
+half feet tall, he bears himself with the casual slouch of a man evading
+notice.  
+~
+>data_prog humanmale~
+A swarthy man stands here.  His sleek build suits his medium frame well. 
+Glossy black hair has been cut short, and kept neat and clean.  Lightless
+eyes, black as coal, gaze ferociously at his surroundings.  Cleanly shaved
+and free from imperfection, his masterful face is turned into a sinister
+picture by the compassionless smile set in stone.  Dressed in snug black
+leather, he stands imperiously.  His movements are slow and deliberate.  The
+calmness with which he carries himself seems like it might wane at any
+minute.  
+~
+>verb_prog p level~
+if isowner($n)
+  if compstr(1) == level
+    mpvalueset level $y2
+    if value(level) > 1
+      if value(level) < 52
+        mpstring char $o extitle none
+        mpstring char $o pretitle none
+        mpforce $o at 1 advance self $y2
+        mpstring char $o title default
+        mpechoat $n {g**** Title changed ****{x
+        if sex($n) == 1
+          if israce($n) == HUMAN
+            if rand(50)
+              mpdesc $n humanmale
+            else
+              mpdesc $n humanmale2
+            endif
+          endif
+          if israce($n) == AELIN
+            if class($n) > 6
+              mpdesc $n aelinmale
+            else
+              mpdesc $n aelinmalesch
+            endif
+          endif
+          if israce($n) == ALATHARYA
+            mpdesc $n alathmale
+          endif
+          if israce($n) == NEFORTU
+            if class($n) > 6
+              mpdesc $n nefmale
+            else
+              mpdesc $n nefmalesch
+            endif
+          endif
+          if israce($n) == SHUDDENI
+            if rand(50)
+              mpdesc $n shuddenimale
+            else
+              mpdesc $n shuddenimale2
+            endif
+          endif
+          if israce($n) == CALADARAN
+            mpdesc $n caladmale
+          endif
+          if israce($n) == ETHRON
+            mpdesc $n ethronmale
+          endif
+          if israce($n) == CH\@TAREN
+            mpdesc $n chtarenmale
+          endif
+          if israce($n) == KANKORAN
+            mpdesc $n kankmale
+          endif
+          if israce($n) == SRRYN
+            if rand(50)
+              mpdesc $n srrynmale
+            else
+              mpdesc $n srrynmale2
+            endif
+          endif
+        endif
+        if sex($n) == 2
+          if israce($n) == HUMAN
+            mpdesc $n humanfemale
+          endif
+          if israce($n) == AELIN
+            if rand(50)
+              mpdesc $n aelinfemale
+            else
+              mpdesc $n aelinfemale2
+            endif
+          endif
+          if israce($n) == ALATHARYA
+            mpdesc $n alathfemale
+          endif
+          if israce($n) == NEFORTU
+            mpdesc $n neffemale
+          endif
+          if israce($n) == SHUDDENI
+            mpdesc $n shuddenifemale
+          endif
+          if israce($n) == CALADARAN
+            mpdesc $n caladfemale
+          endif
+          if israce($n) == ETHRON
+            mpdesc $n ethronfemale
+          endif
+          if israce($n) == CH\@TAREN
+            mpdesc $n chtarenfemale
+          endif
+          if israce($n) == KANKORAN
+            mpdesc $n kankfemale
+          endif
+          if israce($n) == SRRYN
+            mpdesc $n srrynfemale
+          endif
+        endif
+        mpset char $n hp 10000
+        mpset char $n mana 10000
+        mpechoat $n {gUnless this character is sexless, the desc has been changed.{x
+        mpechoat $n Identity change completed.
+        mpechoat $n Type \#outfit\# to be equipped.
+      else
+        mpechoat $n Please choose a level from 1-51.
+      endif
+    else
+      mpechoat $n Please choose a level from 1-51.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p ethos~
+if isowner($n)
+  if compstr(1) == ethos
+    if compstr(2) == l
+    or compstr(2) == lawful
+    or compstr(2) == n
+    or compstr(2) == neutral
+    or compstr(2) == c
+    or compstr(2) == chaotic
+      mpset char $n ethos $X
+      mpechoat $n {g**** Ethos changed ****{x
+      mpechoat $n {rWARNING: There is no error-checking.  Double-check the help files for race/ethos compatibility.{x
+      mpechoat $n Last command: level <1-51>
+    else
+      mpechoat $n Syntax: ethos <l/n/c>
+      mpechoat $n {cL{x: Lawful, {cN{x: Neutral. {cC{x: Chaotic.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p align~
+if isowner($n)
+  if compstr(1) == align
+    if compstr(2) == 1000
+    or compstr(2) == 0
+    or compstr(2) == -1000
+      if snaffected($n) == 566
+        mpechoat $n Your alignment has already been masked.
+      else
+        mpget char $n align 1
+        mpaddaffect $n 566 90 -1 0 $1 0
+        mpset char $n align $X
+        mpechoat $n {g**** Alignment obscured ****{x
+        mpechoat $n {rNOTE: Alignment is being obscured, not changed.{x
+        mpechoat $n {rWARNING: There is no error-checking.  Double-check the help files for race/align compatibility.{x
+        mpechoat $n Next command: ethos <l/n/c>
+        mpechoat $n {cL{x: Lawful, {cN{x: Neutral. {cC{x: Chaotic.
+      endif
+    else
+      mpechoat $n Syntax: align <1000/0/-1000>
+      mpechoat $n {c1000{x: Good. {c0{x: Neutral. {c-1000{x: Evil.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p class~
+if isowner($n)
+  if compstr(1) == class
+    if compx() == water scholar
+    or compx() == earth scholar
+    or compx() == void scholar
+    or compx() == spirit scholar
+    or compx() == air scholar
+    or compx() == fire scholar
+    or compx() == water templar
+    or compx() == earth templar
+    or compx() == void templar
+    or compx() == spirit templar
+    or compx() == air templar
+    or compx() == fire templar
+    or compstr(2) == thief
+    or compstr(2) == watcher
+    or compstr(2) == assassin
+    or compstr(2) == bandit
+    or compstr(2) == fighter
+    or compstr(2) == swordmaster
+    or compstr(2) == barbarian
+    or compstr(2) == ranger
+    or compstr(2) == bard
+    or compstr(2) == psionicist
+    or compstr(2) == druid
+      mpset char $n class $X
+      mpechoat $n {g**** Class changed ****{x
+      mpechoat $n {rWARNING: There is no error-checking.  Double-check the help files for race/class compatibility.{x
+      mpechoat $n Next command: align <1000/0/-1000>
+      mpechoat $n {c1000{x: Good. {c0{x: Neutral. {c-1000{x: Evil.
+    else
+      mpechoat $n Syntax: class <name of class>
+      mpechoat $n {cChoose{x: Water scholar, Earth Scholar, Void Scholar, Spirit Scholar, Air scholar, Fire scholar,
+      mpechoat $n Water templar, Earth templar, Void templar, Spirit templar, Air templar, Fire templar, Thief,
+      mpechoat $n Watcher, Assassin, Bandit, Fighter, Swordmaster, Barbarian, Ranger, Bard, Psionicist, Druid.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p sex~
+if isowner($n)
+  if compstr(1) == sex
+    if compstr(2) == 0
+    or compstr(2) == 1
+    or compstr(2) == 2
+      mpset char $n sex $y2
+      mpechoat $o {g**** Sex changed ****{x
+      mpechoat $n Next command: class <name of class>
+      mpechoat $n Choose: Water scholar, Earth Scholar, Void Scholar, Spirit Scholar, Air scholar, Fire scholar,
+      mpechoat $n Water templar, Earth templar, Void templar, Spirit templar, Air templar, Fire templar, Thief,
+      mpechoat $n Watcher, Assassin, Bandit, Fighter, Swordmaster, Barbarian, Ranger, Bard, Psionicist, Druid.
+    else
+      mpechoat $n Syntax: Sex <0-2>
+      mpechoat $n {c0{x: Sexless. {c1{x: Male. {c2{x: Female.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p race~
+if isowner($n)
+  if compstr(1) == race
+    if compstr(2) == human
+    or compstr(2) == aelin
+    or compstr(2) == alatharya
+    or compstr(2) == nefortu
+    or compstr(2) == shuddeni
+    or compstr(2) == caladaran
+    or compstr(2) == ethron
+    or compstr(2) == ch\@taren
+    or compstr(2) == kankoran
+    or compstr(2) == srryn
+      mpset char $o race $X
+      mpechoat $o {g**** Race changed ****{x
+      mpechoat $o Next command: Sex <0-2>
+      mpechoat $o {c0{x: Sexless. {c1{x: Male. {c2{x: Female.
+    else
+      mpechoat $o Syntax: race <choose race>
+      mpechoat $o Choose from: human, aelin, alatharya, nefortu, shuddeni, caladaran, ethron, ch\@taren, kankoran, srryn.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p shift~
+if isowner($n)
+  if compstr(1) == shift
+    if compstr(2) == 
+      mpechoat $n Syntax: shift <new name>
+    else
+      mpforce $o rename self $y2
+      if name($o) == $y2
+        mpechoat $o {g**** Name changed ****.{x
+        mpechoat $o Please enter: race \@<race name>\@
+        mpechoat $o Choose from: human, aelin, alatharya, nefortu, shuddeni, caladaran, ethron, ch\@taren, kankoran, srryn.
+      endif
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>data_prog Arkhural~
+A shuddeni of magnificent stature stands before you, swathed in flowing
+dark robes, trimmed with gold lace.  Despite the preternatural stillness in
+the air, the robes seem to snap and writhe with a life of their own,
+twisting about his figure like a nest of vipers.  At either end of his waist
+can be found one of a matching pair of glistening blades.  
+
+Almost as tall in height as an alatharyan warrior, the figure before you is
+powerfully built.  The muscles in his cheeks seem clearly drawn out beneath
+the surface of his pale, grey skin.  The smooth, tightly drawn flesh is
+stretched over a thick, over-arching brow and sunken eyesockets, leaving a
+clear impression of the skeletal and muscular structure beneath.  A hint of
+a malevolent smile can at times be seen upon his face nothing more than the
+baring of a set of wolf-like teeth.  
+~
+>verb_prog p revert~
+if compstr(1) == revert
+  if isowner($n)
+    mpecho A dark mist begins to seep from the ground, enveloping $O in an impenetrable haze.
+    mpdesc $o Arkhural
+    mpset char $o race shuddeni
+    mpset char $o sex 1
+    mpset char $o class swordmaster
+    mpremaffect $n 566
+    mpset char $o ethos chaotic
+    if level($n) == 59
+    else
+      mpforce $o at 3 advance self 59
+    endif
+    mpecho As the mist dissipates, the form of a magnificent shuddeni warrior emerges.
+    if name($n) == Arkhural
+    else
+      mpforce $o rename self Arkhural
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>rand_prog 100~
+if objvalue(3) == 1
+  mpfocus arkh
+  if ishere($f)
+  else
+    mpat arkh mpecho The hooded apparition shimmers, then dissipates into a thick crimson mist.
+  endif
+  mpforce arkh mpfocus none
+  mpforce arkh mpgoto 3160
+endif
+if objvalue(3) == 2
+  if ishere($f)
+    mpecho With swift finality, $O clenches his hands into a white-knuckled fist.
+  else
+    mpat $f mpecho With swift finality, the apparition clenches its hands into a white-knuckled fist.
+  endif
+  mpat $f mpecho {rStreams of blood begin to seep from the clenched fist, dripping down the side of the upheld arm.{x
+  mpechoat $f {rAs you fall to the ground, your vision explodes into a crimson haze, as you feel your heart burst within your chest.{x
+  mpechoaround $f $F goes limp, falling lifelessly to the ground.
+  mpat $f mpslay $f
+endif
+if objvalue(3) == 4
+  if ishere($f)
+    mpecho A hint of a smile appears on $O\@s face, as he slowly closes his fingers around an unseen object.
+  else
+    mpat $f mpecho A hint of a smile appears on the apparition\@s face, as it slowly closes its bony fingers around an unseen object.
+  endif
+  mpat $f mpecho {cAn icy blue light begins to glow dimly from within the pale, spindly fingers.{x
+  if ismale($f)
+    mpechoaround $f $F staggers, then drops to his knees, his hand clutching feverishly at his heart.
+  else
+    mpechoaround $f $F staggers, then drops to her knees, her hand clutching feverishly at her heart.
+  endif
+  mpechoat $f You feel your insides grow cold, as an icy sensation grips you by the heart.
+endif
+if objvalue(3) > 0
+  opvaluedown 3
+endif
+~
+>verb_prog p secho~
+if compstr(1) == secho
+  if isowner($n)
+    opecho $X
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p sdo~
+if compstr(1) == sdo
+  if isowner($n)
+    $X
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p sforce~
+if compstr(1) == sforce
+  if isowner($n)
+    opfocus $y2
+    opforce $f $y3 $y4 $y5 $y6 $y7 $y8 $y9 $y10 $y11 $y12 $y13 $y14 $y15
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p sload~
+if compstr(1) == sload
+  if isowner($n)
+    opoload $y2 on $n
+  else
+    opinterpret $n $x
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p strans~
+if compstr(1) == strans
+  if isowner($n)
+    opfocus $y2
+    optrans $f $y3
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p sslay~
+if compstr(1) == sslay
+  if isowner($n)
+    mpfocus $y2
+    if ishere($f)
+      mpforce $o pmote extends an open hand towards $F, palm facing skyward.
+    else
+      mpforce $o pmote extends an open hand, palm facing the heavens.
+      mpat $f mpecho A hooded apparition materializes before you, its hand held open before it.
+    endif
+    mpat $f mpmload 17000
+    mpforce arkh mpseewizi
+    mpforce arkh mpfocus $f
+    opvalueset 3 6
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+12149
+glittering sigil golden pentagram khamurn hexagon star~
+a glittering sigil of a golden hexagon star~
+A glittering sigil of a golden hexagon star is broken.  Report it.~
+~
+gold~
+armor CGJKPSUYa 0 0 AR
+0 0 0 0 0
+52 3 0 0 P
+0
+A
+54 1
+A
+18 1
+A
+12 25
+E
+glittering sigil golden pentagram khamurn~
+This glittering golden hexagon star has been grafted into your skin, the
+metal applied while red-hot.  The flesh around the sigil is inflamed and
+angry.  Something green gleams dully beneath the shimmering gold, an
+unhealthy, sickly color.  
+~
+E
+hexagon star~
+This glittering golden hexagon star has been grafted into your skin, the
+metal applied while red-hot.  The flesh around the sigil is inflamed and
+angry.  Something green gleams dully beneath the shimmering gold, an
+unhealthy, sickly color.  
+~
+V13
+12150
+switchblade switch blade bun-bun bun~
+the switchblade of Bun-bun~
+A regular switchblade is here.~
+~
+metal~
+weapon 0 0 0 AN
+dagger 250 5 2 0
+stab~
+70 20 0 1 P
+1
+>verb_prog p mega-lop~
+if isowner($n)
+  if isheld($n)
+    if objvalue(0) == 1
+      opfocus $y2
+      if ispc($f)
+        opechoat $n You fly at $F with open switchblade!
+        opechoaround $n $N flies at $F with open switchblade!
+        optrans $y2 $n
+        opslay $y2
+        optrans $y2 $n
+        opslay $y2
+        optrans $y2 $n
+        opslay $y2
+        optrans $y2 $n
+        opslay $y2
+        optrans $y2 $n
+        opslay $y2
+        optrans $y2 $n
+        opslay $y2
+        optrans $y2 $n
+        opslay $y2
+        optrans $y2 $n
+        opslay $y2
+        optrans $y2 $n
+        opslay $y2
+        optrans $y2 $n
+        opslay $y2
+        optrans $y2 $n
+      else
+        opechoat $n The mega-lop should only be used for evil.
+      endif
+      opunfocus
+    else
+      opechoat $n But the switchblade of Bun-bun is closed!
+    endif
+  else
+    opinterpret $n $x
+  endif
+else
+  opinterpret $n $x
+endif
+~
+>verb_prog p close switchblade~
+if isowner($n)
+  if isheld($n)
+    if objvalue(0) == 1
+      opvalueset 0 0
+      opechoat $n You snap the switchblade of Bun-Bun shut.
+      opechoaround $n $N snaps the switchblade of Bun-Bun shut.
+      opstring obj bun-bun long A regular switchblade is here.
+    else
+      opechoat $n The switchblade of Bun-Bun is already closed.
+    endif
+  else
+    opinterpret $n $x
+  endif
+else
+  opinterpret $n $x
+endif
+~
+>verb_prog p lop~
+if isowner($n)
+  if isheld($n)
+    if objvalue(0) == 1
+      opfocus $y2
+      opechoat $n You fly at $F with open switchblade, lopping off its head!
+      opechoaround $n $N flies at $F and lops off its head!
+      opslay $y2
+      opunfocus
+    else
+      opechoat $n But the switchblade of Bun-bun is closed!
+    endif
+  else
+    opinterpret $n $x
+  endif
+else
+  opinterpret $n $x
+endif
+~
+>verb_prog p open switchblade~
+if isowner($n)
+  if isheld($n)
+    if objvalue(0) == 0
+      opvalueset 0 1
+      opechoat $n You flick open the switchblade of Bun-Bun.
+      opechoaround $n Ka-klick.
+      opstring obj bun-bun long A regular switchblade is here, its razor sharp blade fully extended.
+    else
+      opechoat $n The switchblade of Bun-Bun is already open.
+    endif
+  else
+    opinterpret $n $x
+  endif
+else
+  opinterpret $n $x
+endif
+~
+|
+#0
+
+
+
+#ROOMS
+#12100
+The Raider Imm Room.~
+Bits:
+12119 = Leader bit, needed for chair
+12100 = misc
+12101 = Allowed entrance
+12102 = Has heard the Bird of Prey speech
+12103 - Ex-Raider vital strike roulette fun
+12104 - Ex-Raider stabbing (raw damage) fun
+12105 - Ex-Raider maledicts (kneeshatter, slice, light vitals, paranoia) fun
+12106 - Ex-Raider waylays (with chance to steal/bind/gag) fun
+12107 - Ex-Raider flavor (says, shadow echoes, stuff like that)
+~
+~
+1
+0 4751366 0
+W 5 0 0
+Z 5 5
+S
+#12101
+Beyond the Crevice~
+After the initial point of narrowness, the crevice cuts a sharp zig-zag
+through the cliff face, finally opening up into a widening, rough-hewn
+archway, overhung with lush vines, ferns and creepers.  The ground is
+densely covered by a blanket of closely planted ferns and bushes.  Rays of
+crepuscular light from the south fall upon a handful of leafy, exotic trees,
+tall enough to barely scrape against the rising ceiling.  A faintly beaten
+footpath can be seen, winding its way to the southwest.  Farther to the
+south, a steep precipice overlooks a darkly verdant canyon, hemmed in by
+craggy walls to the east and west.  
+~
+~
+1
+0 50 5
+E
+n~
+A narrow crevice, wide enough for a large man to edge through, cuts a
+zig-zag through the northern cliff face.  
+~
+E
+north~
+A narrow crevice, wide enough for a large man to edge through, cuts a
+zig-zag through the northern cliff face.  
+~
+D0
+~
+~
+8 0 1877
+D3
+A faintly beaten footpath winds its way through the dense shrubbery to
+the west.  
+~
+~
+0 0 12104
+D4
+~
+~
+131080 0 12124
+C RAIDER~
+W 5 0 0
+Z 5 5
+P
+>verb_prog p up~
+mpechoat $n Alas, you cannot go that way.
+~
+|
+S
+#12102
+A Small Recess in the Canyon Wall~
+You stand within a small recess in the canyon wall.  It looks to be some
+sort of guard post, where anyone standing here has a great view of the path
+leading down from the heights which hang over the canyon.  The alcove is
+definitely hand-made and not natural, chisel marks can be seen driven into
+the rock at all different kinds of angles.  The canyon floor lies to the
+east.  
+~
+~
+1
+0 50 4
+D1
+You can leave the recess to the main path of the canyon.  
+~
+~
+0 0 12108
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12103
+Beside the High Chair~
+You stand in a recessed section of the tent, extended towards the east. 
+A jewelled censer dangles from the ceiling, slowly releasing billows of dark
+purple smoke.  Brightly colored cushions line the ground, covering the floor
+in a rainbow of silken tassels.  A large mahogany coffer rests in the
+northeastern corner, its golden bindings covered in ornate archaic script. 
+On top of the glistening chest, a bundle of rolled incense rests atop a pad
+of scented cloth.  From the northern end, the rushing waters of the Dantaron
+river can be heard cresting against the banks.  The tent flaps are closed
+off in all directions, save back westward.  
+~
+~
+1
+0 58 0
+E
+incense~
+Resting on top of the mahogany coffer, coils of incense lie rolled inside
+of a luxurious red cloth.  They can be used to refill the jewelled censer,
+should it run out.  
+~
+E
+bundle~
+Resting on top of the mahogany coffer, coils of incense lie rolled inside
+of a luxurious red cloth.  They can be used to refill the jewelled censer,
+should it run out.  
+~
+D3
+The high chair lies to your west.  
+~
+~
+0 0 12120
+M 115 H 115 V 115
+C RAIDER~
+W 5 0 0
+Z 5 5
+P
+>verb_prog p rest~
+if compstr(2) == 
+  if position($n) != 5
+    if position($n) != 7
+      mpechoat $n You rest yourself upon the silken cushions.
+      mpechoaround $n $N rests $mself upon the silken cushions.
+    endif
+  endif
+endif
+mpnextinterp
+~
+>verb_prog p sit~
+if compstr(2) == 
+  if position($n) != 6
+    if position($n) != 7
+      mpechoat $n You sit down upon the silken cushions.
+      mpechoaround $n $N sits down upon the silken cushions.
+    endif
+  endif
+endif
+mpnextinterp
+~
+>verb_prog p sleep~
+if compstr(2) == 
+  if position($n) != 4
+    if position($n) != 7
+      mpechoat $n You fall asleep upon the silken cushions.
+      mpechoaround $n $N falls asleep upon the silken cushions.
+    endif
+  endif
+endif
+mpnextinterp
+~
+|
+S
+#12104
+Abrupt End of the Footpath~
+Rough, naturally hewn walls of rock and dirt rise up on either side,
+hemming in the north and the west ends.  Up above, a row of large boulders
+rest precariously at the tip of the western ledge.  The ground is densely
+covered by a blanket of closely planted ferns and bushes.  Broad rays of
+light cut through the open patches of a leafy canopy, which scrapes against
+the rocky beams that arch overhead.  The footpath winds its way from the
+east, ending abruptly at a sharp precipice to the south, at the bottom of
+which, a rushing inlet feeding into the Dantaron can be seen.  A wooden
+suspension bridge, tied down by four wooden pegs on this side, sways with
+the breeze over the precipice.  Several vines can also be seen hanging from
+rocky arches crossing over the chasm.  
+~
+crab5012~
+1
+0 134217778 4
+D1
+A faintly beaten footpath winds its way eastward through the dense
+shrubbery.  
+~
+~
+0 0 12101
+D2
+To the south, a wooden suspension bridge sways gently with the breeze.  
+~
+~
+0 0 12105
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12105
+A Suspension Bridge~
+Rays of light cut through the gaps between rocky archways up above and
+the myriad of vines hanging from them, their harsh glare landing upon the
+ever swaying body of the suspension bridge.  The base of the bridge is made
+up rows of long wooden planks, unevenly slapped together, and suspended upon
+a lightly woven frame of rope.  Roughly wide enough for two full-sized men
+to cross side by side, the hastily slapped together bridge nevertheless
+looks far from stable, and liable to break apart at any moment.  The
+frazzled hemp hand-rails do little to help the illusion of the bridge\@s
+stability.  A constant roar echoes from far below, coming from a rushing
+stream flowing to the east, feeding into the fens and the Dantaron.  
+~
+~
+1
+0 54 13
+D0
+To the north, you can leave the crevice.  
+~
+~
+0 0 12104
+D2
+You can continue through the crevice to the south.  
+~
+~
+0 0 12106
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12106
+An Outcropping Above the Canyon~
+You stand atop a large rock outcropping that looms over a secluded
+canyon.  Large, verdant cliffs hem the canyon in on all sides, protecting it
+from sight.  Down below, the dark outlines of several camouflage tents can
+be seen against the lush backdrop of the canyon floor.  To the north, a
+wooden suspension bridge hangs over a deep, yawning chasm.  At its bottom,
+the gap is filled with a torrent of rushing waters that flow towards the
+east, feeding into the fens and the Dantaron.  Several vines can also be
+seen hanging from rocky arches crossing over the chasm.  To the south, a
+winding path leads down into canyon.  
+~
+~
+1
+0 50 4
+E
+v0~
+Pleated vines, thick as ropes, hang suspended from the rocky archways
+above.  None of them seem to be within reach.  
+~
+E
+v1~
+Pleated vines, thick as ropes, hang from the rocky archways above.
+~
+D0
+You can enter a crevice to the north and exit the canyon.  
+~
+~
+0 0 12105
+D5
+You can wind downwards along a rocky trail to the canyon floor.  
+~
+~
+0 0 12107
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12107
+A Winding Path Into the Canyon~
+The way down this small, rocky path is mildly treacherous, but easily
+traversed by anyone with any semblance of agility.  Smoke and floating
+cinders from a large fire below waft listlessly through the air by your face
+as you stand on the path.  Sounds of several revelers drinking below and
+whispers of carnal delights from the mouths of trollops bounce around the
+canyon wildly.  You can continue down the path or head to the overhand above
+the canyon.  
+~
+~
+1
+0 50 4
+D4
+You can ascend the trail to the outcropping of rock that hovers above the
+canyon.  
+~
+~
+0 0 12106
+D5
+You can descend the rocky trail to the canyon floor.  
+~
+~
+0 0 12108
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12108
+On the Canyon Floor~
+The canyon floor stretches far into the distance, dotted with rows of
+hastily erected tents.  Sheer cliff walls, worn away by centuries of
+erosion, rise sharply to the east and west.  A lengthy shadow, cast by a
+rocky overhang, falls sharply across the canyon floor.  Sparks of flickering
+light float down from above, issued from the the bonfire raging to the
+south.  A small recess has been carved into the western face of the canyon
+wall.  A gravelly path leads to the south and to the east.  
+~
+~
+1
+0 50 4
+D1
+A thin, gravelly path to the east curves its way behind the tents.
+~
+~
+0 0 12121
+D2
+You can head south along the canyon floor pathway.  
+~
+~
+0 0 12109
+D3
+You see a recess in the canyon wall.  
+~
+~
+0 0 12102
+D4
+You can ascend a rocky path to the area above the canyon.  
+~
+~
+0 0 12107
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12109
+Beside the Roaring Bonfire~
+The center of the canyon is dominated by a massive bonfire, its flaming
+tendrils licking at the sky.  Thick black smoke billows languidly from the
+crackling inferno, blanketing the sky with an ashen haze.  Irregularly cut
+logs and branches jut out fom the base of the fire.  Chipped mugs, smelling
+distinctly of cheap alcohol, are strewn haphazardly about the blackened pit
+at the bonfire\@s base.  Racks of roasting meat turn by the edge of the
+flames, held aloft by grease coated spits.  A thick wooden keg rests off to
+the side of the bonfire, an amber liquid dripping from its faucet.  Two
+wooden tents lie next to a path that runs southward towards one large tent. 
+~
+~
+1
+0 50 4
+D0
+You can head north away from the bonfire.  
+~
+~
+0 0 12108
+D2
+You can head south away from the bonfire along the pathway.  
+~
+~
+0 0 12110
+C RAIDER~
+W 5 0 0
+Z 5 5
+P
+>verb_prog p RESET~
+mpunfocus
+mpvalueset 0 0
+mpecho Reset!
+~
+>verb_prog p give~
+if ispc($n)
+  if compstr(4) == hideously
+  or compstr(4) == obese
+  or compstr(4) == shuddeni
+  or compstr(4) == gambler
+    if mobhere(12100)
+      if compstr(3) == gold
+        if isinhouse($n)
+          if isfocused()
+            if valname($n) == $f
+              mpforce raidergambler \@Finish the game at hand, first.
+            else
+              mpforce raidergambler esay \@waves his hand at $n, saying\@ Let me finish cleaning out $F first.
+            endif
+          else
+            if goldamt($n) > $y2
+            or goldamt($n) == $y2
+              mpforce raidergambler mpvalueset 0 $y2
+              mpvalueset 0 $y2
+              if value(0) > 1000
+              or value(0) == 1000
+                if value(0) < 5000
+                  mpinterpret $n $x
+                  mpforce raidergambler \@Alright, let\@s get this underway.
+                  mpforce raidergambler mpfocus $n
+                  mpfocus $n
+                  mpforce raidergambler mpvalueset 1 1
+                  mpforce raidergambler mpvalueset 3 10
+                  if isbitset($n) == 12100
+                    mpforce raidergambler mpvalueset 4 2
+                  endif
+                endif
+                if value(0) == 5000
+                or value(0) > 5000
+                  mpinterpret $n $x
+                  mpecho A glimmer of a smile flashes across the face of a hideously obese shuddeni.
+                  mpforce raidergambler esay \@chuckles greedily\@ Let\@s get started then.
+                  mpforce raidergambler mpfocus $n
+                  mpfocus $n
+                  mpforce raidergambler mpvalueset 1 2
+                  mpforce raidergambler mpvalueset 3 10
+                  if isbitset($n) == 12100
+                    mpforce raidergambler mpvalueset 4 2
+                  endif
+                endif 
+              else
+                mpechoat $n A hideously obese shuddeni glances at your money, then spits on it contemptuously.
+                mpechoaround $n A hideously obese shuddeni glances at $N\@s money, then spits on it contemptuously.
+                if sex($n) == 2
+                  mpforce raidergambler esay sneers Look here, little girl.
+                else
+                  mpforce raidergambler esay sneers Look here, little boy.
+                endif
+                mpforce raidergambler \@We don\@t play for pocket change in these parts.
+                mpforce raidergambler \@If you want to play, you\@ll have to bet some real cash.
+              endif
+            else
+              mpforce raidergambler \@We don\@t play with imaginary money here.
+            endif
+          endif
+        else
+          if goldamt($n) > $y2
+            mpinterpret $n $x
+            mpforce raidergambler esay chortles Thanks, sucker.
+          else
+            growl
+            mpforce raidergambler \@We don\@t play with imaginary money here.
+          endif
+        endif
+      else
+        mpnextinterp
+      endif
+    else
+      mpnextinterp
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+S
+#12110
+In Between Two Tents~
+The small packed-dirt path passes between two brownish-colored tents
+here.  Their front flaps are open and flitting mildly in the canyon breeze. 
+As one of the flaps opens partway, you can see the counters of wares that
+the shopkeepers have on display inside the tents.  You can head into the
+tents, to the east or west, or head south to the large tent at the end of
+the canyon.  
+~
+~
+1
+0 50 4
+D0
+The large bonfire roars brightly to the north.  
+~
+~
+0 0 12109
+D1
+You can enter a brown-colored tent to the east.  
+~
+~
+0 0 12111
+D2
+A large tent casts shadows in front of its entrance to the south.  
+~
+~
+0 0 12113
+D3
+~
+~
+0 0 12112
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12111
+Inside the Tent~
+You stand within the confines of a shadowy tent.  A flickering candle in
+the corner of the tent casts both light and shadows upon the cloth walls. 
+The back of the tent is filled with neatly stacked crates, probably
+containing contraband.  The tent flaps open to the west.  
+~
+~
+1
+0 58 0
+D3
+You can head west out of the tent.  
+~
+~
+0 0 12110
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12112
+Inside the Tent~
+A long, wooden counter separates the back of the room from the front. 
+Wooden shelves have been set up in the back, with slots carved in for the
+purpose of holding pawned items.  Various trinkets have been strewn across
+the counter, left to be filed away at another time.  The tent flaps open to
+the east.  
+~
+~
+1
+0 58 0
+D1
+~
+~
+0 0 12110
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12113
+In Front of a Large Tent~
+A large tent sits stoutly to the south.  It is the same brownish color as
+the two smaller tents, but is dual-canopied.  Two, large potted plants sit
+on either side of the tent opening, but look as if they have not been tended
+in days.  The tent flaps are held back, leaving the entrance wide-open, with
+two dirks stuck through the tent material.  A small path winds around the
+large tent to the west.  You can enter the tent to the south or the small
+tent to the east.  
+~
+~
+1
+0 50 4
+D0
+You can head north between two tents towards the bonfire.  
+~
+~
+0 0 12110
+D1
+You can enter a brown-colored tent to the east.  
+~
+~
+0 0 12114
+D2
+You can enter the large, brown-colored tent to the south.  
+~
+~
+0 0 12115
+D3
+You can edge around the large tent along a small path.  
+~
+~
+0 0 12116
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12114
+Inside the Tent~
+As you step into this small brown tent, the pungent scent of incense
+greets you.  Smoking embers are arranged in a pit in the center of the tent,
+obviously the source of the smell.  Arranged around the base of the tent are
+an odd assortment of blackened roots and bleached bones, each arranged in a
+careful design.  A row of multi-colored jars lines the back end of the tent,
+each one filled with an assortment of severed animal appendages and
+glistening powders.  The far end of the tent is occupied by the skull of a
+gigantic crocodile.  The tent flaps open to the west.  
+~
+~
+1
+0 58 0
+D3
+~
+~
+0 0 12113
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12115
+Inside the Large Tent~
+Just inside the entrance of the large tent, there are several large
+potted palm trees, but they look as untended as the pots outside the
+entrance.  The warm air from the fire blows even as far as here, as the
+entranceway flaps softly.  You can see the High Chair to the south of here,
+on a raised wooden dais.  You can exit the tent to the north.  
+~
+~
+1
+0 58 0
+D0
+You can exit the large tent to the north.  
+~
+~
+0 0 12113
+D2
+You see a ornate wooden chair on a wooden platform to the south.  
+~
+~
+0 0 12120
+C RAIDER~
+W 5 0 0
+Z 5 5
+P
+>greet_prog 100~
+if ispc($n)
+  if name($n) == Arkhural
+    mpbrand $n 10147
+  else
+    mpnextinterp
+  endif
+endif
+~
+>verb_prog p rpstat~
+if name($n) == Arkhural
+  mpnextinterp
+else
+  mpechoat $n This room has no programs set.
+endif
+~
+|
+S
+#12116
+Path Around the Large Tent~
+This small path winds around the side of the large tent, then turns south
+towards the back of the canyon.  Several small pebbles and stones are packed
+deeply into the ground, giving the path a smooth integrity.  A few stray
+pieces of ash from the fire to the northeast, float around your head.  You
+can head along the path to the south or east, in front of the large tent.  
+~
+~
+1
+0 50 4
+D1
+You can head to the area in front of the large tent to the east.  
+~
+~
+0 0 12113
+D2
+A small path borders the side of the large tent.  
+~
+~
+0 0 12117
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12117
+In Front of the Storage Pit~
+The storage pit, used by the Raiders, lies to the south.  Even from here,
+the lighted torches at the corners of the pit, shed light upon the area. 
+The large tent is to the east, but it is only the side, there are not
+entrances in and the material seems to extend deep into the ground.  You can
+go south to the storage pit or north around the side of the large tent.  
+~
+~
+1
+0 58 0
+D0
+You can head alongside the large tent in the northerly direction.  
+~
+~
+0 0 12116
+D2
+A large storage pit lies to the south.  
+~
+~
+0 0 12118
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12118
+Above the Storage Pit~
+This narrow room at the end of the Canyon houses the storage pit of the
+Raiders.  Dug down into the crumbly grey stone, the pit is covered with many
+heavy boards, lashed and nailed together.  Two large torches burn brightly,
+though their placement fills the room with inconstant shadows.  The walls
+slant in a westward direction, blocking the view of the sky here.  The
+canyon opens up to the north, and a small alcove has been carved into the
+wall to the west.  
+~
+~
+1
+0 58 4
+D0
+A small path leads away from the storage pit to the north.  
+~
+~
+0 0 12117
+D3
+~
+~
+0 0 12125
+C RAIDER~
+W 0 -1 0
+Z 5 5
+S
+#12119
+Inside the Storage Pit~
+You stand inside the dug-out pit that the Raiders use for stashing their
+loot and the fabled stones of power.  The hard-packed ground makes the
+sturdy walls of the pit.  It is covered by a set of wooden planks tied
+together and thrown across the top of the pit.  You can exit up through the
+door cut into the planks.  
+~
+~
+3
+0 8368 0
+D4
+~
+~
+0 0 12118
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12120
+High Chair of the Raider Lord~
+The High Chair is reserved for the Raider Lord, leader of the House.  It
+is merely a wooden chair with some gold inlays, but holds more symbolic
+meaning than anything.  If any members of the House are found lounging in
+it, it will surely mean their deaths by the hands of the leader.  A small
+alcove lies to the east or you can head north towards the entranceway.  
+~
+~
+1
+0 58 0
+D0
+You can head north towards the exit to the tent.  
+~
+~
+0 0 12115
+D1
+You can step away from the high chair to the east.  
+~
+~
+0 0 12103
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12121
+A Path Behind the Tents~
+A thin path branches off from the main avenue of the canyon walk,
+circling its way around the mass of tents.  Hemmed in by a sheer cliff wall
+to the north and a flapping tent canvas to the south, the actual path is no
+more than two spans wide.  Rivulets of water from the Dantaron trickle down
+the walls, forming small puddles by the side of the trail.  Winding its way
+against the sandstone cliffs, the path continues to the east.  
+~
+~
+0
+0 50 4
+D1
+~
+~
+0 0 12122
+D3
+The canyon progresses to the west.
+~
+~
+0 0 12108
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12122
+A Path Behind the Tents~
+A thin path branches off from the main avenue of the canyon walk,
+circling its way around the mass of tents.  Hemmed in by a sheer cliff wall
+to the north and a flapping tent canvas to the south, the actual path is no
+more than two spans wide.  Rivulets of water from the Dantaron trickle down
+the walls, forming small puddles by the side of the trail.  Winding its way
+against the sandstone cliffs, the path winds its way back westward.  To the
+south, the trail descends into a steep incline, ending in a large, man-made
+pit.  
+~
+~
+0
+0 50 4
+D2
+To the south, the path descends into a large, man-made pit.
+~
+~
+0 0 12123
+D3
+The path continues to the west.
+~
+~
+0 0 12121
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12123
+The Training Pen~
+The incline to the north suddenly widens into a large earthen pit, ringed
+with spiked body-shields.  Roughly ten spans deep, the training pen is a
+circular arena, roughly dug from the earth.  A thick layer of dirt covers
+the ground, sending up clouds of dust with each step.  High above, rocky
+crags jut out from the cliff wall, casting a lengthening shadow across the
+battle grounds.  The pen is suffused with the musky scent of blood and
+sweat.  
+~
+~
+0
+0 51 4
+E
+body-shields~
+About the edge of the pen, body-sized shields are placed end to
+end,covering up the earthen walls.  Roughly five spans tall, each one bears
+a single steel spike, jutting out of the center of the shield.  
+~
+E
+shields~
+About the edge of the pen, body-sized shields are placed end to end,
+covering up the earthen walls.  Roughly five spans tall, each one bears a
+single steel spike, jutting out of the center of the shield.  
+~
+D0
+A gravelly path leads upwards to the north.
+~
+~
+0 0 12122
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12124
+A Narrow Crevice~
+You shouldn\@t be here.  Note to immortal what happened, then recall.
+~
+~
+0
+0 4227099 0
+D5
+~
+~
+131080 0 12101
+W 5 0 0
+Z 5 5
+S
+#12125
+A Fortified Alcove~
+This small alcove has been carved into the crumbly stone of the canyon
+wall.  Vines grow lush and thick about the top of the entrance.  The floor
+of packed dirt is strewn with gnawed bones and wood shavings, apparently the
+site of many an idle hour.  A low, crude wall of stones has been stacked
+partway through the alcove, hiding the back of the alcove from view to the
+east.  The alcove narrows gradually towards the back, the stone showing the
+many pickaxe scars.  To the east, you are provided with an excellent vantage
+point overlooking the board-covered storage pit.
+~
+~
+2
+0 58 12
+D1
+~
+~
+0 0 12118
+C RAIDER~
+W 5 0 0
+Z 5 5
+S
+#12150
+The Raiders\@ Dressing Room~
+Rogue background (tentative):
+
+The rogue, known to many as \@hoody\@ or \@Feldyn\@, is in actuality, the first
+Raider Lord, Aralor.  After systematically eliminating the other contenders
+for his position amongst the original Circle of Twelve, Aralor stood as the
+undisputed leader of the Canyon.  Anticipating the onset of old age, Aralor
+knew that he could remain the leader of the Canyon for as long as he could
+fend off the rising tide of challengers.  
+
+Unwilling to relinquish his hold on power, Aralor appealed to the dark gods
+that had empowered the Raiders.  His prayers and sacrifices were soon
+answered.  Not only was he granted the immortality he sought, but he was
+further gifted with strength beyond that of mortal men, and a supernatural
+relation with the shadows of the world.  Aralor rejoiced and marvelled at
+his new powerse, believing that they ensured that he would never fade from
+the face of Avendar.  
+
+But power comes with a price.  For in attaining his powers, Aralor had
+unwittingly ascended to the status of a demigod, and was now bound by the
+divine law that binds all immortals.  No longer could he freely inflict
+himself upon the world like a cancerous plague.  Instead, the sole object of
+his desires now lay behind an invisible shield whose laws and workings lay
+beyond his grasp.  
+
+Aralor pleaded with the dark gods for a renegotiation, but after the passing
+of several years, he concluded that this was not to be.  Since then, Aralor
+has bided his time, perfecting his skills, and scouring the land for ancient
+lore regarding his divine bondage.  He maintains a passing interest in the
+Raider Canyon, ensuring its permanence in the lands.  However, his long life
+has given him perspective and understanding of the cyclical nature of the
+balance between the Houses.  He hopes to gain an understanding of the laws
+that bind him, and then, true to nature, subvert them, that he may once
+again inflict himself upon the lands.  
+~
+messenger1692~
+1
+0 135036934 0
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 12101 0 8
+D 0 12101 4 131080
+D 0 12124 5 131080
+M 0 12108 1 12101 1
+M 0 12102 2 12101 2
+E 0 12104 0 16
+M 0 12102 2 12101 2
+E 0 12128 0 16
+O 0 12102 0 12102
+M 0 12101 1 12102 1
+M 0 12111 3 12102 1
+E 0 12128 0 16
+M 0 12109 4 12103 1
+E 0 12128 0 16
+O 0 12126 0 12103
+P 0 12129 1 12126 1
+O 0 12127 0 12103
+M 0 12122 2 12104 1
+M 0 12123 1 12106 1
+M 0 12111 3 12107 1
+E 0 12128 0 16
+M 0 12109 1 12108 1
+E 0 12128 0 16
+O 0 12117 0 12109
+P 0 12120 1 12117 1
+P 0 12119 4 12117 4
+P 0 12119 4 12117 4
+P 0 12118 4 12117 4
+P 0 12118 4 12117 4
+M 0 12110 1 12109 1
+M 0 12100 1 12109 1
+E 0 12112 0 17
+O 0 12122 0 12109
+M 0 12109 4 12110 1
+E 0 12128 0 16
+M 0 12114 1 12111 1
+E 0 12149 0 20
+M 0 12103 3 12111 1
+E 0 12104 0 16
+M 0 12103 3 12112 1
+E 0 12104 0 16
+M 0 12109 4 12113 1
+E 0 12128 0 16
+M 0 12113 1 12114 1
+G 0 45 0
+M 0 12119 1 12117 1
+M 0 12109 4 12117 1
+E 0 12128 0 16
+M 0 12115 1 12118 1
+M 0 12117 1 12119 1
+M 0 12112 1 12120 1
+O 0 12109 0 12120
+M 0 12111 3 12121 1
+E 0 12128 0 16
+M 0 12120 1 12123 1
+E 0 12124 0 17
+E 0 12125 0 9
+G 0 12123 0
+M 0 12118 1 12124 1
+M 0 12121 1 12150 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+12113 0 0 0 0 0 100 100 0 23 0
+12114 9 5 8 33 32 140 120 0 24 1000000
+12116 0 0 0 0 0 100 100 0 0 0
+0
+
+
+
+#$

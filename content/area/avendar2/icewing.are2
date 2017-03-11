@@ -1,0 +1,1849 @@
+#BEGIN_AREADATA
+#NAME Tural's Icewing
+#BUILDERS Dovolente Iacobos
+#VNUMS 24151 24159
+#CREDITS [ ALL ] Dov/Iacob Tural's Icewing
+#AREAINFO 59
+#WEATHER 3 3 0
+#END_AREADATA
+
+
+
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME elemental tide
+#SHORT a small tide elemental
+#LONG A small tide elemental.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+The tide elemental is a fluid being who appears to be composed completely
+of water, though the water occasionally glimmers in various subdued hues. 
+Generally holding to a bearish, four-legged shape, its unsteady form
+sometimes creates or combines limbs.  A constant ripple surges through the
+creature from one end to the other, as if there were energy constrained in
+the elemental's form which is trying to escape.  
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE generic
+#GUILD water scholar
+#GENDER 0
+#ALIGNMENT 0 0
+#SPEED 10
+#RESIST cold # 75
+#RESIST drowning # 100
+#ACT 68
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 15 26 572
+#MANADICE 20 10 100
+#DAMTYPE drowning
+#DAMVERB watery embrace
+#POSITION 8
+#WEALTH 0
+#FACTION 0
+#LANGUAGE 0
+#SIZE 1
+#BEGIN_PROGGABLE
+#VNUM 24151
+#PROG_TYPE rand_prog 50
+#PROG_BODY 
+mpvalueup 0 1
+if value(0) == 15
+or istime() == 4
+or istime() == 16
+  mpecho $I flows back over the rails and into the ocean.
+  mppurge self
+  break
+endif
+if rand(50)
+  \ do elemental
+else
+  \ move
+  if rand(25)
+    east
+  else
+    west
+  endif
+  break
+endif
+\ elemental stuff
+if rand(5)
+  if rand(50)
+    emote flows quickly about as if searching for something.
+  else
+    emote ripples into an amorphous puddle and begins to steam slightly.
+  endif
+endif
+mpfocus $r 
+if isghost($f)
+or name($f) / elemental
+\ or isimmort($f)
+  break
+endif
+if level($f) < 11
+  if rand(15)
+    emote circles around $F.
+  endif
+  if rand(15)
+    mpechoaround $f $I approaches $F bubbles faintly.
+    mpechoat $f $I approaches you and bubbles faintly.
+  endif
+  break
+else
+  mpechoat $f $I attacks you!
+  mpechoaround $f $I rises up and strikes mindlessly at $F!
+  mpkill $f
+endif
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME elemental tide
+#SHORT a large tide elemental
+#LONG A large tide elemental.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+The tide elemental is a fluid being who appears to be composed completely
+of water, though the water occasionally glimmers in various subdued hues. 
+Generally holding to a bearish, four-legged shape, its unsteady form
+sometimes creates or combines limbs.  A constant ripple surges through the
+creature from one end to the other, as if there were energy constrained in
+the elemental's form which is trying to escape.  
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE generic
+#GUILD water scholar
+#GENDER 0
+#ALIGNMENT 0 0
+#SPEED 20
+#RESIST cold # 75
+#RESIST drowning # 100
+#ACT 68
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 28 70 1116
+#MANADICE 40 10 100
+#DAMTYPE drowning
+#DAMVERB drowning flow
+#POSITION 8
+#WEALTH 0
+#FACTION 0
+#LANGUAGE K
+#SIZE 3
+#BEGIN_PROGGABLE
+#VNUM 24152
+#PROG_TYPE rand_prog 50
+#PROG_BODY 
+mpvalueup 0 1
+if value(0) == 15
+or istime() == 4
+or istime() == 16
+  mpecho $I flows back over the rails and into the ocean.
+  mppurge self
+  break
+endif
+if rand(50)
+  \ do elemental
+else
+  \ move
+  if rand(25)
+    east
+  else
+    west
+  endif
+  break
+endif
+\ elemental stuff
+if rand(5)
+  if rand(50)
+    emote flows quickly about as if searching for something.
+  else
+    emote ripples into an amorphous puddle and begins to steam slightly.
+  endif
+endif
+mpfocus $r 
+if isghost($f)
+or name($f) / elemental
+\ or isimmort($f)
+  break
+endif
+if level($f) < 11
+  if rand(15)
+    emote circles around $F.
+  endif
+  if rand(15)
+    mpechoaround $f $I approaches $F bubbles faintly.
+    mpechoat $f $I approaches you and bubbles faintly.
+  endif
+  break
+else
+  mpechoat $f $I attacks you!
+  mpechoaround $f $I rises up and strikes mindlessly at $F!
+  mpkill $f
+endif
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME pirate nefortu nefortean
+#SHORT a nefortean pirate
+#LONG A nefortean pirate flutters around menacingly.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+This scraggly-looking nefortu has large, laid-back ears which are pierced
+with copper studs and bronze rings.  His clothes are tattered, and there
+several black gaps in his leering, evil grin where teeth are chipped or
+missing.  
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE nefortu
+#GUILD fire templar
+#GENDER 1
+#ALIGNMENT 0 0
+#SPEED 10
+#RESIST sound # -20
+#ACT 68
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 15 26 572
+#MANADICE 20 10 100
+#DAMTYPE slash
+#DAMVERB slash
+#POSITION 8
+#WEALTH 80
+#FACTION 0
+#LANGUAGE H
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 24153
+#PROG_TYPE rand_prog 50
+#PROG_BODY 
+mpvalueup 0 1
+if value(0) == 15
+or istime() == 4
+or istime() == 16
+  mpecho $I leaps back to $l ship.
+  mppurge self
+  break
+endif
+if rand(50)
+  \ do pirate stuff
+else
+  \ move
+  if rand(50)
+    east
+  else
+    west
+  endif
+endif
+\ pirate stuff
+if rand(5)
+  if rand(50)
+    emote laughs darkly.
+  else
+    esay 'snarls' Give us everything you've got, you worthless dogs!
+  endif
+endif
+mpfocus $r 
+if isghost($f)
+or isimmort($f)
+or name($f) / pirate
+  break
+endif
+if level($f) < 11
+  if rand(15)
+    shove $f
+  endif
+  if rand(15)
+    esay 'mutters' Not worth my time.
+  endif
+  break
+else
+  mpkill $f
+endif
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME pirate human
+#SHORT a human pirate
+#LONG A human pirate strides about, a wicked gleam in her eye.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+This woman might make a dashing and romantic figure, with her slender
+feminine form and haughty pirate bearing, if it weren't for some rather
+homely features--she has a few missing teeth and a crooked nose.  She seems
+calm and controlled in the midst of the boarding mayhem.  
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 2
+#ALIGNMENT 0 0
+#SPEED 13
+#ACT 0
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 19 35 818
+#MANADICE 25 10 100
+#DAMTYPE slash
+#DAMVERB slash
+#POSITION 8
+#WEALTH 80
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 24154
+#PROG_TYPE rand_prog 50
+#PROG_BODY 
+mpvalueup 0 1
+if value(0) == 15
+or istime() == 4
+or istime() == 16
+  mpecho $I leaps back to $l ship.
+  mppurge self
+  break
+endif
+if rand(50)
+  \ do pirate stuff
+else
+  \ move
+  if rand(50)
+    east
+  else
+    west
+  endif
+endif
+\ pirate stuff
+if rand(5)
+  if rand(50)
+    emote looks about disdainfully.
+  else
+    esay 'says calmly' We claim this ship. Get off or die.
+  endif
+endif
+mpfocus $r 
+if isghost($f)
+or isimmort($f)
+or name($f) / pirate
+  break
+endif
+if level($f) < 11
+  if rand(15)
+    sneer $f
+  endif
+  if rand(15)
+    esay 'murmurs at $F' Wouldn't even make a good cabin boy.
+  endif
+  break
+else
+  mpkill $f
+endif
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME pirate alatharya
+#SHORT an alatharya pirate
+#LONG An alatharya pirate trudges about, looking for something to smash.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+This massive pirate is bare from the waist up, and his solid silvery
+torso and thick arms are crisscrossed with pale scars.  His nose bears a
+large copper stud, and thick bronze bands ring his arms.  A look of mindless
+animal fury and hunger is upon his face.  
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE alatharya
+#GUILD gladiator
+#GENDER 1
+#ALIGNMENT 0 0
+#SPEED 15
+#RESIST bash # 20
+#RESIST holy # -20
+#RESIST mental # -20
+#ACT 0
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 22 45 941
+#MANADICE 30 10 100
+#DAMTYPE bash
+#DAMVERB smash
+#POSITION 8
+#WEALTH 50
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 24155
+#PROG_TYPE rand_prog 50
+#PROG_BODY 
+mpvalueup 0 1
+if value(0) == 15
+or istime() == 4
+or istime() == 16
+  mpecho $I leaps back to $l ship.
+  mppurge self
+  break
+endif
+if rand(50)
+  \ do pirate stuff
+else
+  \ move
+  if rand(50)
+    east
+  else
+    west
+  endif
+endif
+\ pirate stuff
+if rand(5)
+  if rand(50)
+    emote flexes his muscles and gives a mighty roar.
+  else
+    esay 'roars' Who dies next?
+  endif
+endif
+mpfocus $r 
+if isghost($f)
+or name($f) / pirate
+\ or isimmort($f)
+  break
+endif
+if level($f) < 11
+  if rand(15)
+    jeer $f
+  endif
+  if rand(15)
+    esay 'rumbles at $F' This pup ain't worth the effort.
+  endif
+  break
+else
+  mpkill $f
+endif
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME sailor human icewingcrew
+#SHORT a sailor
+#LONG A sailor moves about purposefully.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Walking with a rolling gait, the sailor moves about busily, helping to
+keep the Icewing in perfect sailing condition.  He wears better clothing and
+seemed somewhat more refined than the sailors of non-sailruned ships.  
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 0 0
+#SPEED 8
+#ACT 65552
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 7 28 237
+#MANADICE 15 10 100
+#DAMTYPE bash
+#DAMVERB punch
+#POSITION 8
+#WEALTH 80
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 24156
+#PROG_TYPE rand_prog 100
+#PROG_BODY 
+mpfocus $r
+if name($f) / pirate
+  mpvaluerand 1 1 4
+  if value(1) == 1
+    mpvalueset warcry Die, pirate scum!
+  endif
+  if value(1) == 2
+    mpvalueset warcry Death to the sea-rats!
+  endif
+  if value(1) == 3
+    mpvalueset warcry Jolinn help us!
+  endif
+  if value(1) == 4
+    mpvalueset warcry Aahhhhhh!
+  endif
+  yell %warcry
+  mpkill $f
+  break
+endif
+if rand(1)
+  mpvaluerand 1 1 4
+  if value(1) == 1
+    emote begins to murmur to himself.
+  endif
+  if value(1) == 2
+    emote secures a line with a series of impressive knots.
+  endif
+  if value(1) == 3
+    emote pauses a moment and stretches stiffly.
+  endif
+  if value(1) == 4
+    snort $r
+  endif
+endif
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME captain Heru Denarocio icewingcrew
+#SHORT the captain
+#LONG The captain of the Icewing stands at the rudder.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+The captain, Heru Denarocio, is a short human dressed in the robes of an
+air scholar.  With his erect, alert bearing and keen eye, he nearly exudes
+an aura of dignified command.  He has curly black hair and a bushy
+moustache, and his blue eyes are almost hidden buy the thick black brows
+above.  He stands near the rudder, one hand stretching out as if to steady
+it.  
+
+His father, Tural Denarocio, was a water scholar and the original owner of
+the Icewing.  He converted the vessel from a conventional ship to sail-rune,
+and spent many profitable years running cargo across the Uthlin for various
+merchants, during which the ship gained renown for its speed and the quality
+of its enchantments.  He eventually turned the ship over to his son.  Heru
+has found that passenger ships make better profit in the current market and
+has made a name for himself as an excellent scholar-captain who holds to a
+tight schedule and runs a tight ship.  
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE human
+#GUILD air scholar
+#GENDER 1
+#ALIGNMENT 0 0
+#SPEED 40
+#RESIST summon # 100
+#RESIST magic # 75
+#RESIST weapon # 75
+#ACT 9217
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 34 103 10000
+#MANADICE 51 10 100
+#DAMTYPE pierce
+#DAMVERB stab
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 24157
+#PROG_TYPE verb_prog encounter_check
+#PROG_BODY 
+if rand(75)
+  mpvaluerand 0 1 10
+  if value(0) == 1
+  or value(0) == 2
+  or value(0) == 3
+    yell Pirates! Passengers to the cabin, crewmen stand with me!
+    loop 1 to 5
+      mpat 24155 mpforce icewingcrew down
+      mpat 24151 mpforce icewingcrew east
+      mpat 24152 mpforce icewingcrew east
+      mpat 24153 mpforce icewingcrew east
+    endloop
+    mpvalueset 1 10
+    mpvalueset 2 1
+  endif
+  if value(0) == 4
+    yell Tide elementals! Passengers to the cabin if you value your hides!
+    loop 1 to 5
+      mpat 24155 mpforce icewingcrew down
+      mpat 24151 mpforce icewingcrew east
+      mpat 24152 mpforce icewingcrew east
+      mpat 24153 mpforce icewingcrew east
+    endloop
+    mpvalueset 1 8
+    mpvalueset 2 2
+  endif
+  if value(0) == 5
+    yell Griffinriders! Into the cabin if you don't want trouble!
+    mpvalueset 1 4
+    mpvalueset 2 3
+  endif
+  if value(0) == 6
+    yell Flying stingfish! Passengers to the cabin if you value your hides!
+    mpvalueset 1 8
+    mpvalueset 2 6
+  endif
+  if value(0) == 7
+    yell Gods have mercy!  The Leviathan is practically under us!
+    mpvalueset 1 5
+    mpvalueset 2 7
+  endif
+  if value(0) > 7
+    yell Hold tight to something, we're entering some rough swells!
+    mpvalueset 1 2
+    mpvalueset 2 4
+  endif
+endif
+
+#END_PROG
+#PROG_TYPE fight_prog 25
+#PROG_BODY 
+if name($n) / pirate
+  if rand(25)
+    if rand(50)
+      yell You louse-covered sea-rats!  Die!
+    else
+      yell This is the last ship you'll board, pirate scum!
+    endif
+  endif
+  mpechoat $n $I summons a spectral fist to strike you!
+  mpechoaround $n $I summons a spectral fist to strike $N!
+  mpcast 352 100
+  break
+endif
+if mobhere(24158)
+  mpechoat $n $I summons a spectral fist to strike you!
+  mpechoaround $n $I summons a spectral fist to strike $N!
+  mpcast 352 100
+else
+  yell Help!
+  mpechoat $n Several tough-looking sailors arrive to aid the captain!
+  mpvaluerand 3 4 7
+  loop 1 to $3
+    mpmload 24158 
+    mpforce toughsailor mpkill $n
+  endloop
+endif
+
+#END_PROG
+#PROG_TYPE trigger_prog 100 
+#PROG_BODY 
+if isghost($n)
+\ or isimmort($n) (remove comment after beta testing)
+  break
+endif
+mpseewizi
+if value(2) == 4
+  if isnpc($n)
+    break
+  else
+    mpoload 24155 on $n
+  endif
+endif
+if value(2) == 6
+  mpoload 24157 on $n
+endif
+mpunseewizi
+
+#END_PROG
+#PROG_TYPE verb_prog encounter_leviathan
+#PROG_BODY 
+mpzecho The ocean churns chaotically as the leviathan passes by the ship!
+mpmload 25397
+
+#END_PROG
+#PROG_TYPE verb_prog encounter_griffinriders
+#PROG_BODY 
+loop 24151 to 24155
+  mpat $v1 mpecho A griffin swoops by, and a rider leaps down from its back.
+  mpat $v1 mpmload 25396
+endloop
+
+#END_PROG
+#PROG_TYPE rand_prog 100
+#PROG_BODY 
+if value(1) > 0
+  mpvaluedown 1 1
+  if value(1) == 1
+    if value(2) == 1
+      encounter_pirates
+    endif
+    if value(2) == 2
+      encounter_elementals
+    endif
+    if value(2) == 3
+      encounter_griffinriders
+    endif
+    if value(2) == 4
+      encounter_swells
+    endif
+    if value(2) == 6
+      encounter_stingfish
+    endif
+    if value(2) == 7
+      encounter_leviathan
+    endif
+  endif
+else
+  if rand(2)
+    mpvaluerand 4 1 2
+    if istime() >= 1
+      if istime() < 6
+        mpvaluerand 4 3 4
+      endif
+    endif
+    if istime() >= 13
+      if istime() < 18
+        mpvaluerand 4 3 4
+      endif
+    endif
+    if value(4) == 1
+      mpecho $I yawns absently and looks out over the waves.
+      mpvalueset shipemote The timbers of the ship creak slightly.
+    endif
+    if value(4) == 2
+      mpecho $I peers up at the rigging with a critical eye.
+      mpvalueset shipemote Several noisy gulls settle down into the rigging.
+    endif
+    if value(4) == 3
+      mpecho $I makes an arcane gesture and runes on the main sail begin to hum.
+      mpvalueset shipemote A line of runes along main sail begins to hum faintly.
+    endif
+    if value(4) == 4
+      mpecho $I murmurs a word in arcane. The wind shifts slighty.
+      mpvalueset shipemote The sail-runes flicker as the winds shift direction.
+    endif
+    mpat 24151 mpecho %shipemote
+    mpat 24152 mpecho %shipemote
+    mpat 24153 mpecho %shipemote
+    mpat 24155 mpecho %shipemote
+  endif
+endif
+
+#END_PROG
+#PROG_TYPE verb_prog encounter_elementals
+#PROG_BODY 
+loop 24151 to 24154
+  mpat $v1 mpecho The waves swell over the rails and form into tide elementals!
+  mpat $v1 mpmload 24151
+  mpat $v1 mpmload 24152
+endloop
+
+#END_PROG
+#PROG_TYPE verb_prog encounter_pirates
+#PROG_BODY 
+loop 24151 to 24154
+  mpat $v1 mpecho The pirate ship closes in and several pirates leap aboard!
+  loop 24153 to 24155
+    mpat $v1 mpmload $v2
+  endloop
+endloop
+
+#END_PROG
+#PROG_TYPE verb_prog encounter_stingfish
+#PROG_BODY 
+loop 24151 to 24155
+  mpat $v1 mpecho A school of flying stingfish pass over and around the ship.
+  mpat $v1 mproomcmd mptrigger all
+endloop
+
+#END_PROG
+#PROG_TYPE verb_prog encounter_swells
+#PROG_BODY 
+loop 24151 to 24158
+  mpat $v1 mpecho The ship rocks back and forth as it cuts through the swells.
+  mpat $v1 mproomcmd mptrigger all
+endloop
+
+#END_PROG
+#PROG_TYPE time_prog 1
+#PROG_BODY 
+encounter_check
+
+#END_PROG
+#PROG_TYPE time_prog 13
+#PROG_BODY 
+encounter_check
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME sailor tough icewingcrew toughsailor
+#SHORT a tough-looking sailor
+#LONG A tough-looking sailor from Tural's Icewing stands here.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE human
+#GUILD gladiator
+#GENDER 1
+#ALIGNMENT 0 0
+#SPEED 26
+#ACT 65536
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 34 103 1170
+#MANADICE 51 10 100
+#DAMTYPE slash
+#DAMVERB slash
+#POSITION 8
+#WEALTH 50
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 24158
+#PROG_TYPE fight_prog 75
+#PROG_BODY 
+if name($n) / icewingcrew
+  mutter $n
+  shove $n
+  emote returns to his duties.
+  mppurge self
+endif
+
+#END_PROG
+#PROG_TYPE rand_prog 10
+#PROG_BODY 
+emote returns to his duties.
+mppurge self
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME sailor first mate icewingcrew
+#SHORT the first mate on the Icewing
+#LONG The first mate on Tural's Icewing stands here.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A burly sailor dressed in rather expensive leathers stands here.  The
+first mate on the Tural's Icewing, he bears the scars from more than a few
+battles, and has the imposing presence of a tried warrior who has seen far
+more of victory than defeat.  He goes about his duties, assisting the
+captain when on board, and collecting the 5-gold passenger fee from
+travelers when on the docks.  
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 0 0
+#SPEED 40
+#RESIST summon # 100
+#RESIST magic # 75
+#RESIST weapon # 75
+#ACT 9217
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 34 103 10000
+#MANADICE 51 10 100
+#DAMTYPE bash
+#DAMVERB punch
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 24159
+#PROG_TYPE bribe_prog 500
+#PROG_BODY 
+if inroom($i) == 24153
+  esay 'bows and says' It's nice to see folk who appreciate good service.
+  mplag $n 2
+  break
+endif
+if istime() < 12
+  mpvalueset time noon
+  mpvalueset message midday breeze and reach Alensha by nightfall
+else
+  mpvalueset time midnight
+  mpvalueset message early tide and reach Earendam by dawn
+endif
+tell $n The ship will set sail at %time.
+tell $n We'll ride the %message.
+mpechoat $n You board Tural's Icewing.
+mpechoaround $n $N boards Tural's Icewing.
+mpat 24153 mptransfer $n
+mpat 24153 mpechoaround $n $N arrives.
+mpwizi
+mpat 24153 mpforce $n look
+mpunwizi
+
+#END_PROG
+#PROG_TYPE time_prog 12
+#PROG_BODY 
+mpvalueset 4 23712
+icewing_departure
+
+#END_PROG
+#PROG_TYPE time_prog 0
+#PROG_BODY 
+mpvalueset 4 25433
+icewing_departure
+
+#END_PROG
+#PROG_TYPE time_prog 18
+#PROG_BODY 
+mpvalueset 4 25433
+icewing_arrival
+
+#END_PROG
+#PROG_TYPE time_prog 6
+#PROG_BODY 
+mpvalueset 4 23712
+icewing_arrival
+
+#END_PROG
+#PROG_TYPE trigger_prog 100
+#PROG_BODY 
+prog delete trigger_prog 100
+if name($n) / icewingcrew
+or isimmort($n)
+  break
+endif
+if position($n) < 4
+  mpechoat $n Being incapacitated, you are unable to disembark from the ship.
+  break
+endif
+if position($n) == 4
+or position($n) == 5
+or position($n) == 6
+  mpforce $n stand
+endif
+if position($n) == 7
+  mpechoat $n You break off the fight as the ship pulls in to port.
+  mpechoaroun $n $N breaks off the fight as the ship pulls in to port.
+endif
+mpechoat $n You head down to the dock.
+mpechoaround $n $N leaves for the dock.
+mpat $4 mptransfer $n 
+mpat $4 mpforce $n look
+mpat $4 mpechoaround $n $N arrives from Tural's Icewing.
+
+#END_PROG
+#PROG_TYPE trigger_prog 100
+#PROG_BODY 
+prog delete trigger_prog 100
+if name($n) / icewingcrew
+or isimmort($n)
+  break
+endif
+if position($n) < 4
+  mpechoat $n Being incapacitated, you are unable to disembark from the ship.
+  break
+endif
+if position($n) == 4
+or position($n) == 5
+or position($n) == 6
+  force $n stand
+endif
+if position($n) == 7
+  mpechoat $n You break off the fight as the ship pulls in to port.
+  mpechoaroun $n $N breaks off the fight as the ship pulls in to port.
+endif
+mpechoat $n You head down to the dock.
+mpechoaround $n $N leaves for the dock.
+mpat $4 mptransfer $n 
+mpat $4 mpforce $n look
+mpat $4 mpechoaround $n $N disembarks from Tural's Icewing.
+
+#END_PROG
+#PROG_TYPE verb_prog icewing_departure
+#PROG_BODY 
+if istime() == 0
+  mpvalueset destination Earendam
+else
+  mpvalueset destination Alensha
+endif 
+mpecho $I boards his ship and the Icewing moves out to sea.
+mpat $4 mpasound The Icewing sets out towards the open seas.
+mpgoto 24153
+mpecho $I arrives.
+loop 24151 to 24158
+  mpat $v1 mpecho The ship sets sail towards %destination, heading out into open seas.
+endloop
+
+#END_PROG
+#PROG_TYPE verb_prog icewing_arrival
+#PROG_BODY 
+if istime() == 6
+  mpvalueset porttype harbor
+  mpvalueset portname the Earendam harbor
+else
+  mpvalueset porttype bay
+  mpvalueset portname Shao Bay
+endif 
+mpat $4 mpasound A slender two-masted sailboat eases into the %porttype.
+mpat $4 mpecho A slender two-masted sailboat eases into the %porttype.
+loop 24151 to 24158
+  mpat $v1 mpecho The ship eases into %portname.
+  mpat $v1 mproomcmd mptrigger all
+endloop
+mpecho $I heads down onto the dock.
+mpgoto $4
+mpecho $I arrives.
+
+#END_PROG
+#PROG_TYPE trigger_prog 100
+#PROG_BODY 
+if name($n) / icewingcrew
+or isimmort($n)
+  break
+endif
+if position($n) < 4
+  mpechoat $n Being incapacitated, you are unable to disembark from the ship.
+  break
+endif
+if position($n) == 4
+or position($n) == 5
+or position($n) == 6
+  force $n stand
+endif
+if position($n) == 7
+  mpechoat $n You break off the fight as the ship pulls in to port.
+endif
+mpechoat $n $I ushers you down to the dock.
+mpechoaround $n $N leaves for the dock.
+if value(1) == 0
+  mpvalueset 2 23712
+else
+  mpvalueset 2 25433
+endif
+mpat $2 mptransfer $n 
+mpat $2 mpforce $n look
+mpat $2 mpechoaround $n $N disembarks from Tural's Icewing.
+
+#END_PROG
+#PROG_TYPE fight_prog 20
+#PROG_BODY 
+if mobhere(24158)
+  bash $n
+  break
+else
+  yell Help!
+  mpechoat $n Several tough-looking sailors arrive to aid the first mate!
+  mpvaluerand 3 2 5
+  loop 1 to $3
+    mpmload 24158 
+    mpforce toughsailor mpkill $n
+  endloop
+endif
+
+#END_PROG
+#PROG_TYPE greet_prog 100
+#PROG_BODY 
+if inroom($i) == 23789
+or inroom($i) == 25433
+  if inroom($i) == 23789
+    mpvalueset location Alensha
+  endif
+  if inroom($i) == 25433
+    mpvalueset location Earendam
+  endif
+  mpvaluerand 0 1 4
+  if value(0) == 1
+    mpvalueset quip You'll not find a faster ship than Tural's Icewing.
+  endif
+  if value(0) == 2
+    mpvalueset quip A more reasonable price for a passenger ship, you'll not find.
+  endif
+  if value(0) == 3
+    mpvaeluset quip No doubt we are charging half what we should.
+  endif
+  if value(0) == 4
+    mpvaeluset quip Be aware that there are some risks when crossing the wide seas.
+  endif
+  if remembers($n)
+  or isbitset($n) == 24151
+    if rand(25)
+      nod $n
+    else
+      if rand(50)
+        look $n
+      endif
+    endif
+  else
+    look $n
+    tell $n Good day to you.  Passage to %location is 5 gold.
+    tell $n %quip
+    mpremeber $n
+  endif
+endif
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_OBJECT
+#BEGIN_INTERACTABLE
+#NAME ship small sleek two masted two-masted icewing turalsicewing
+#SHORT a small two-masted ship
+#LONG A small, sleek ship with two masts lies at anchor.
+#BEGIN_DESCRIBABLE
+#ED_KEY ship small sleek two masted two-masted icewing turalsicewing
+#BEGIN_ED_DESC
+This ship is immediately recognizable as air or water scholar-craft by
+its unusual, rigid sails of powder blue.  Fanned out like a sea-horse's fin,
+these sails are enchanted to influence the winds about them as required, the
+many tiny runes giving the blue sails the faintest shimmering, flickering
+silver aura.  She rests high in the water, her light hull painted a striped
+blue and white.  The lines of the ship are graceful and dagger-sleek,
+clearly designed wholly for immense speed.  Large brass letters on the
+transom read 'Tural's Icewing'.  
+#END_ED_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL wood
+#BEGIN_AFFECTABLE
+#FLAGS 3145728
+#END_AFFECTABLE
+#BEGIN_TYPE boat ##
+#END_TYPE
+#LEVEL 51
+#WEIGHT 9999
+#COST 0
+#SIZE 4
+#CONDITION 100
+#LIMIT 1
+#BEGIN_PROGGABLE
+#VNUM 24151
+#PROG_TYPE verb_prog purgeyeicewings
+#PROG_BODY
+mppurge self
+
+#END_PROG
+#END_PROGGABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#BEGIN_INTERACTABLE
+#NAME mizzen mast mizzenmast second_mast
+#SHORT the mizzenmast
+#LONG The mizzenmast stretches to the sky, raked backwards at a sharp angle.
+#BEGIN_DESCRIBABLE
+#ED_KEY intricate silvery rune
+#BEGIN_ED_DESC
+This intricate rune is carved deeply into the mast, the enchanted paint
+seeming to glow with arcane energy.  The silvery rune seems to swirl and
+shimmer with mercurial activity, emitting a decidedly cool, still aura of
+protection.  
+#END_ED_DESC
+#ED_KEY mizzen mast mizzenmast second_mast
+#BEGIN_ED_DESC
+The smaller, second mast of Tural's Icewing is made from a tall, straight
+spruce trunk, planed and sanded smooth.  Well-sealed against the ravages of
+time and weather, the mast has been angled backwards to a curious degree,
+the mast showing the tiniest amount of flex.  The mast is stabilized and
+secured in its seat in the deck at the upper end by numerous halliards,
+vertical ropes which have been tensioned iron-taut.  The base vanishes down
+through the deck.  Light, airy spars branch out at the top of the mast,
+supporting ribbed, almost reptilian sails of a powder blue.  Two woven,
+ladder-like sections of rigging touch either side of the ship here,
+stretching upwards to join high on the mizzen.  An intricate, silvery rune
+set into the mast gleams softly with its own light.  
+#END_ED_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL unknown
+#BEGIN_AFFECTABLE
+#FLAGS 2097152
+#END_AFFECTABLE
+#BEGIN_TYPE trash ##
+#END_TYPE
+#LEVEL 52
+#WEIGHT 0
+#COST 0
+#SIZE 4
+#CONDITION 100
+#LIMIT 1
+#BEGIN_PROGGABLE
+#VNUM 24152
+#END_PROGGABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#BEGIN_INTERACTABLE
+#NAME main mast mainmast prime_mast
+#SHORT the mainmast
+#LONG The mainmast sprouts upwards from the deck, straight and true.
+#BEGIN_DESCRIBABLE
+#ED_KEY main mast mainmast prime_mast
+#BEGIN_ED_DESC
+The large primary mast of Tural's Icewing is made from a tall, straight
+spruce trunk, planed and sanded smooth.  Well-sealed against the ravages of
+time and weather, the mast is two feet around where it vanishes into the
+deck, tapering to a slim six inches at the upper end.  The mast is
+stabilized and secured in its seat in the deck at the upper end by numerous
+halliards, vertical ropes which have been tensioned iron-taut.  Light, airy
+spars branch out at the top of the mast, supporting ribbed, almost reptilian
+sails of a powder blue.  Two woven, ladder-like sections of rigging touch
+either side of the ship here, stretching upwards to join high on the mizzen.
+An intricate, silvery rune set into the mast gleams softly with its own
+light.  
+#END_ED_DESC
+#ED_KEY intricate silvery rune
+#BEGIN_ED_DESC
+This intricate rune is carved deeply into the mast, the enchanted paint
+seeming to glow with arcane energy.  The silvery rune seems to swirl and
+shimmer with mercurial activity, emitting a decidedly cool, still aura of
+protection.  
+#END_ED_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL unknown
+#BEGIN_AFFECTABLE
+#FLAGS 2097152
+#END_AFFECTABLE
+#BEGIN_TYPE trash ##
+#END_TYPE
+#LEVEL 52
+#WEIGHT 0
+#COST 0
+#SIZE 4
+#CONDITION 100
+#LIMIT 1
+#BEGIN_PROGGABLE
+#VNUM 24153
+#END_PROGGABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#BEGIN_INTERACTABLE
+#NAME large tiller handle white leather
+#SHORT the tiller
+#LONG A large tiller protrudes over the taffrail.
+#BEGIN_DESCRIBABLE
+#ED_KEY large tiller handle white leather
+#BEGIN_ED_DESC
+This large tiller curves over the taffrail down into the water, the
+sturdy ash handle wrapped in white leather.  A strong, thick mounting of
+brass secures the tiller to the sternpost, the well-oiled bearing letting
+the handle move freely.  A complex series of counterweighted cables and
+securing lines run from the tiller into small holes in the deck, allowing
+one man to handle the sizeable piece even in heavy seas.  The tiller ends in
+a broad, blade-like rudder, painted an immaculate white, which provides the
+necessary force to steer the sleek ship.  
+#END_ED_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL unknown
+#BEGIN_AFFECTABLE
+#FLAGS 2097152
+#END_AFFECTABLE
+#BEGIN_TYPE trash ##
+#END_TYPE
+#LEVEL 52
+#WEIGHT 0
+#COST 0
+#SIZE 4
+#CONDITION 100
+#LIMIT 1
+#BEGIN_PROGGABLE
+#VNUM 24154
+#END_PROGGABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#BEGIN_INTERACTABLE
+#NAME bout sea-sickness sickness
+#SHORT a bout of sea-sickness
+#LONG A bout of sea-sickness.
+#BEGIN_DESCRIBABLE
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL unknown
+#BEGIN_AFFECTABLE
+#FLAGS 234881024
+#END_AFFECTABLE
+#BEGIN_TYPE special ##
+#END_TYPE
+#LEVEL 1
+#WEIGHT 0
+#COST 0
+#SIZE 0
+#CONDITION 100
+#LIMIT 0
+#BEGIN_PROGGABLE
+#VNUM 24155
+#PROG_TYPE rand_prog 100
+#PROG_BODY
+if value(0) == 0
+  mpvaluerand 0 5 15
+endif
+mpvaluedown 0 1
+if value(0) == 1
+  \ do check
+else
+  break
+endif
+if inroom($o) > 24150
+  if inroom($o) < 24159
+    mpechoat $o The ship rocks as it cuts through the swelling waves.
+    if isbitset($o) == 24151
+      \ already did the 1-time natural resistance check
+    else
+      mpbitset $o 24151 1
+      if rand(33)
+        mpechoat $o You have natural sea-legs and don't mind the ship movements.
+        mpbitset 24152 1
+        mppurge self
+        break
+      endif
+    endif
+    if isbitset($o) == 24152
+      \ doesn't get sick, has accustomized
+      mppurge self
+      break
+    else
+      if rand(15) 
+        \ got accustomized
+        mpechoat $o You are slowly starting to get used to the motion of the ship.
+        mpbitset $o 24152 1
+        mppurge self
+        break
+      endif
+      if rand(50)
+        mpechoat $o You feel terribly seasick.
+        mpechoaround $o $O's face pales.  
+      else
+        mpechoat $o The world spins unsteadily as seasickness overwhelms you.
+        mpechoaround $o $O looks extremely seasick.
+     endif
+     mplag $o 3
+    endif
+  endif
+endif
+  else
+    mppurge self
+    break
+  endif
+else
+  mppurge self
+  break
+endif
+
+#END_PROG
+#END_PROGGABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#BEGIN_INTERACTABLE
+#NAME hammock canvas
+#SHORT a canvas hammock
+#LONG A canvas hammock is bolted to the beams overhead.
+#BEGIN_DESCRIBABLE
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL cloth
+#BEGIN_AFFECTABLE
+#FLAGS 67108864
+#END_AFFECTABLE
+#BEGIN_TYPE furniture ##
+#VALUE max_people # 6
+#VALUE max_weight # 500
+#VALUE flags # 3576
+#VALUE heal_bonus # 120
+#VALUE mana_bonus # 120
+#END_TYPE
+#LEVEL 15
+#WEIGHT 300
+#COST 0
+#SIZE 0
+#CONDITION 100
+#LIMIT 0
+#BEGIN_PROGGABLE
+#VNUM 24156
+#END_PROGGABLE
+#END_OBJECT
+#BEGIN_OBJECT
+#BEGIN_INTERACTABLE
+#NAME target stingfish
+#SHORT a stingfish target
+#LONG A stingfish target
+#BEGIN_DESCRIBABLE
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL unknown
+#BEGIN_AFFECTABLE
+#FLAGS 234881024
+#END_AFFECTABLE
+#BEGIN_TYPE special ##
+#END_TYPE
+#LEVEL 1
+#WEIGHT 0
+#COST 0
+#SIZE 0
+#CONDITION 100
+#LIMIT 0
+#BEGIN_PROGGABLE
+#VNUM 24157
+#PROG_TYPE rand_prog 33
+#PROG_BODY
+if value(0) == 0
+  mpvalueset 0 1
+  mpvaluerand 4 6 9
+endif
+mpvaluedown 4 1
+if value(4) == 2
+  mppurge self
+  break
+endif
+if inroom($o) == 24151
+or inroom($o) == 24152
+or inroom($o) == 24153
+or inroom($o) == 24154
+or inroom($o) == 24155
+ \ deal with stingfish
+else
+  mppurge self
+  break
+endif
+if iswearslotfull($o) == 11
+  mpechoat $o You deflect a flying stingfish with your shield.
+  mpechoaround $O $O uses a shield to deflect a flying stingfish.
+  mpecho The stingfish falls to the deck and begins to wriggle about.
+  mpmload 25395
+  break
+else
+  mpget char $o dex 5
+  mpmath 5 ($5 * 5) - 55
+  if rand($5)
+    mpechoat $o You dodge a flying stingfish.
+    mpechoaround $o $O dodges a flying stingfish.
+  else
+    mpechoat $o A flying stingfish grazes you as it flits past!
+    mpechoaround A flying stingfish grazes $O!
+    mpget char $o curhp 1
+    mpdamtype $o 4 4 1 2
+    mpget char $o curhp 2
+    mpmath 3 $1 - $2
+    mpdammess $o $3 'stingfish pierce'
+    if rand(15)
+      mpecho The stingfish falls to the deck and begins to wriggle about.
+      mpmload 25395
+    endif
+  endif
+endif
+
+#END_PROG
+#END_PROGGABLE
+#END_OBJECT
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+The magnificent, dagger-sleek lines of the packet ship Tural's Icewing
+stretch gracefully aft from your position on the ship's forecastle.  The
+forecastle is a wedge-shaped section of deck, solid oak deck timbers have
+been ruthlessly holystoned to a silvery-white perfection, and the slim side
+rails lacquered a yellow-gold.  Forward, a straight spruce bowsprit
+stretches forward proudly, the noble curve of the ship's prow slicing
+through the water.  Above you, a spreading forest of ribbed, powder-blue
+sails branch out oddly from the two masts, the structured sails reminiscent
+of a sea-horse's fins.  A short ladder descends five feet down onto the
+narrow maindeck.  The ship's design and immaculate appearance indicate quite
+clearly that all priority has been given to making this ship as fast as
+possible, her lines lean and fit.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE The Forecastle of the Icewing
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR road
+#ALTITUDE 0
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES A short ladder descends the five feet to the long, slim maindeck.
+
+#DOOR_INFO 0 0 24152
+#BEGIN_PROGGABLE
+#VNUM 24151
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+The dagger-sleek lines of the packet ship Tural's Icewing stretch fore
+and aft from your position.  The maindeck is barely eighteen feet abeam at
+its widest point, the ship clearly designed for one thing: speed.  The solid
+oak deck planks are ruthlessly holystoned to a silvery-white perfection, and
+the gracefully curving side rails lacquered a gleaming golden yellow.  The
+straight mainmast rises high into the air, a branch-like network of
+powder-blue sails spreading high above.  Countless vertical sheets and
+halliards form a web of parallel lines, converging at various places high on
+the masts.  The maindeck continues to the east, and one may climb up onto
+the forecastle to the west by means of a small, vertical ladder.  
+
+#END_DESC
+#ED_KEY runes
+#BEGIN_ED_DESC
+#ED_DES The runes are similar to the standard sail-runes used on mage sailcraft.  
+
+#END_ED_DESC
+#END_DESCRIBABLE
+#TITLE The Maindeck of the Icewing
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR road
+#ALTITUDE 0
+#ED_KEY runes
+#ED_DES The runes are similar to the standard sail-runes used on mage sailcraft.  
+
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES The maindeck of the Icewing continues, eventually climbing up to the
+quarterdeck.  
+
+#DOOR_INFO 0 0 24153
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES A steep, ladderlike stair climbs five feet up the sloped side of the
+forecastle.
+
+#DOOR_INFO 0 0 24151
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 8 0 24155
+#BEGIN_PROGGABLE
+#VNUM 24152
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+The dagger-sleek lines of the packet ship Tural's Icewing stretch fore
+and aft from your position.  The maindeck is barely eighteen feet abeam at
+its widest point, the ship clearly designed for one thing: speed.  The solid
+oak deck planks are ruthlessly holystoned to a silvery-white perfection, and
+the gracefully curving side rails lacquered a gleaming golden yellow.  The
+smaller mizzenmast springs from the deck and angles sharply aft, the
+unconventional rig allowing for incredible celerity.  Countless vertical
+sheets and halliards form a web of parallel lines, converging at various
+places high on the masts.  The quarterdeck rises overhead to the east,
+accessible by a steep, ladderlike stair.  The maindeck continues to the
+west.  A large wooden hatch opens near the base of the mast, heading
+belowdecks.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE The Maindeck of the Icewing
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR road
+#ALTITUDE 0
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES A steep, ladderlike stair climbs eight feet up the sloped side of the
+quarterdeck where the tiller can be seen, brasswork gleaming brightly.  
+
+#DOOR_INFO 0 0 24154
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES The maindeck of the Icewing continues, eventually climbing up the
+forecastle.  
+
+#DOOR_INFO 0 0 24152
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES A forest of sails and rigging climb into the sky.
+
+#DOOR_INFO 8 0 24155
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 3 0 24156
+#BEGIN_PROGGABLE
+#VNUM 24153
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+The quarterdeck of the Icewing, the highest point on the deck, is a small
+square barely fourteen feet to a side.  A slim rail arches gracefully to
+above waist height, the wood lacquered to a shine.  Stretching forward is
+the slender, dagger-sleek length of the swift packet ship.  Even the most
+untrained eye can tell that this ship is designed for speed; the mizzenmast
+closest to you is raked back at a sharp angle by iron-taut halliards which
+stretch down to the sides.  The foremast supports several curiously immobile
+yards which in turn bear the oddly rigid sails.  Structural, stiffly
+flexible ribs curve delicately up from the yards, stretching the powder-blue
+sails between them.  The overall effect is reminiscent of a sea-horse's fan,
+the foremast overshadowing the smaller mizzen with its bat-like spread of
+sail.  A steep, ladder-like stair leads down to the maindeck.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE The Quarterdeck of the Icewing
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR road
+#ALTITUDE 0
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES A ladderlike stair descends the eight feet to the long, slim maindeck.  
+
+#DOOR_INFO 0 0 24153
+#BEGIN_PROGGABLE
+#VNUM 24154
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A forest of cables, spars, and broad, rigid sails stretches away from you
+in a confusing but ordered system.  Above and around you, powder-blue sails
+are spread on sturdily flexible ribs, tiny runes embroidered along the edges
+of the sailcloth with shimmering silver yarn.  The pure silvery-white deck
+is over thirty feet below you, seeming to be part of a different world
+entirely.  The motion of the ship is much more marked up here, each pitch
+and roll causing the masts to lean over in one direction or another.  Above,
+the lines and spars become thinner and the footing uncertain as the rigging
+continues up into the perilous, oddly-configured tops, the lofty footing
+becoming more and more tricky before finally opening out onto the sky.  The
+netlike band of footropes head down to the deck from here.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE The Rigging of the Icewing
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR road
+#ALTITUDE 0
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES The rigging descends to the deck far below.
+
+#DOOR_INFO 8 0 24153
+#BEGIN_PROGGABLE
+#VNUM 24155
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+This low, dim passageway runs the length of the ship, the confined space
+smelling musty and damp.  Timbers creak in a constant, steady, rhythm all
+about you, and other subtle sounds of the daily ships' functioning reach
+your ears.  The planks which form the deck, bulkheads, and overhead are
+smooth-planed oak and ash, caulked securely with strips of cork and gummy
+tar.  A steep, ladderlike stair climbs up to the open deck, the hatchway
+leading out through a low coaming.  A small door leads into a cabin to the
+east, and the small corridor passes several small niches and cable tiers on
+its way to the hold.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE Belowdecks on Tural's Icewing
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES A small door opens into the main cabin.
+
+#DOOR_INFO 3 0 24157
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES The passageway fades in the dim light, heading forward to the hold.
+
+#DOOR_INFO 0 0 24158
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 3 0 24153
+#BEGIN_PROGGABLE
+#VNUM 24156
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+This cabin is barely five feet tall, the low beams forcing all but the
+shortest adventurers to stoop under the perilously solid beams.  Bulkheads
+and deck of planed ash are swept clean and kept free of damp.  A hanging
+canvas hammock is slung from iron bolts in the overhead, and a small
+washtable, nailed to the wall, holds a small ewer and washbasin fixed in
+holes on its surface.  A strip of glass a foot tall and three wide serves as
+a feeble gallery-window, the largest possible in a ship even of this size. 
+Out the window is visible the curve of the tiller as it descends to the
+water, but otherwise the view is unobstructed.  A small portal to the west
+opens into a narrow passageway.  The air is filled with the slow, rhythmic
+creak of the ship and other, more subtle sounds of the ship's daily life.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE The Cabin of the Icewing
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 1
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 3 0 24156
+#BEGIN_PROGGABLE
+#VNUM 24157
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+This cramped space is almost entirely dark.  The faintest bit of light
+filters in from the passageway that leads east, but the cargo hold of the
+Icewing is otherwise unilluminated.  Several large casks and barrels are
+securely lashed with thick ropes run through sturdy iron bolts in the walls.
+Large crates of food are similarly stowed, everything packed in such a way
+as to provide the exact proper distribution of balance and ballast for the
+ship's sailing trim.  Accessibility and packing efficiency seem to be
+considerably lower priorities.  The hold smells of dank, slightly stagnant
+damp, as well as the dusty, slightly salty tang of any enclosed space on a
+seagoing vessel.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE The Hold of the Icewing
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 1
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 24156
+#BEGIN_PROGGABLE
+#VNUM 24158
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Bits:
+24151 - paid passenger fee
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE Ship Info
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 10270
+#END_AFFECTABLE
+#SECTOR inside
+#ALTITUDE 0
+#BEGIN_PROGGABLE
+#VNUM 24159
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_SPECIALS
+#END_SPECIALS
+
+
+
+#BEGIN_RESETS
+D 0 24152 4 8 0
+D 0 24153 4 8 0
+D 0 24153 5 3 0
+D 0 24155 5 8 0
+D 0 24156 1 3 0
+D 0 24156 4 3 0
+D 0 24157 3 3 0
+M 0 24156 5 24151 1
+O 0 24153 0 24152 0
+M 0 24156 5 24152 1
+M 0 24159 1 24153 1
+O 0 24152 0 24153 0
+M 0 24156 5 24153 1
+M 0 24157 1 24154 1
+O 0 24154 0 24154 0
+M 0 24156 5 24154 1
+M 0 24156 5 24155 1
+O 0 24156 0 24157 0
+#END_RESETS
+
+
+
+#BEGIN_GUILDS
+#END_GUILDS
+
+
+#BEGIN_SHOPS
+#END_SHOPS
+
+
+

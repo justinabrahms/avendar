@@ -1,0 +1,4308 @@
+#AREADATA
+Name The Occupied Spirit Palace~
+Builders Dovolente Ramc Iacobos~
+VNUMs 5458 5499
+Credits [  51 ] Staff     Trashed Spirit Palace~
+Danger 2
+Security 1
+Areainfo 59
+Herbs 0
+Weather 0 0 0 0 0
+End
+
+
+
+#MOBILES
+V4 5458
+chaja brute mob_5458~
+a chaja brute~
+A chaja brute stands here, armored head to toe.
+~
+Large even by chaja standards, this grey-skinned humanoid is broad and
+squat.  Armor covers him from head to toe; the only exposed skin is visible
+through the narrow slots in his angled full helm.  He clanks with the
+slightest movement, and seems to move rather slowly with the weight of metal
+he bears.  A pair of dark eyes gleam malevolently from within the shadows of
+his helm.  Two large shields are clutched in his hands, seemingly chained to
+his vambraces with manacle-like links.  
+~
+chaja~
+water scholar~
+AGL P JZ E 0
+50 1 40d120+7000 50d10+100 6d8+15 bash~
+shield bash~
+-21 -21 -21 -6
+JKOR 0
+26 0 0 10 70 10 0 0 -5 0 0 0 0 0 -5 0 0 0 0 -10 0 0 0 0 0 0 0 
+5 7637 7638 7639 0 0
+stand stand male 22 58
+AHMVW ABCDEFGHIJK AG medium unknown
+>rand_prog 100~
+mpvalueset 9 0
+if rand(30)
+  mproomcmd mptrigger all
+endif
+~
+>trigger_prog 100~
+if value(9) == 0
+  if name($n) / chaja
+  or name($n) / shuddeni
+  or name($n) / sssoldier
+  or isbitset($n) == 336
+    if isfighting($n)
+      rescue $n
+      if isnpc($n)
+        mpforce $n mpkill $F
+        mpforce $n mpmurder $F
+        mpforce $n murder $F
+      endif
+      mpvalueset 9 1
+    endif
+  endif
+endif
+if name($n) / sasoldier
+or name($n) / seraph
+or israce($n) == ch\@taren
+or isfriend($n) == 59
+or isenemy($n) == 58
+or isenemy($n) == 19
+  if israce($n) == ch\@taren
+    yell Death to ch\@taren!
+  else
+    if rand(1)
+      yell Death and blood!
+    endif
+  endif
+  mpkill $n
+  murder $n
+  break
+else
+  if ispc($n)
+    if isbitset($n) == 336
+    or israce($n) == chaja
+    or israce($n) == shuddeni
+    or isimmort($n)
+    else
+      if rand(1)
+        yell Death and blood!
+      endif
+      mpkill $n
+      murder $n
+    endif
+  endif
+endif
+~
+>verb_prog p garbme~
+if iswizi($n)
+or isimmort($n)
+if value(0) == 0
+  mpvalueset 0 1
+  mpoload 4492 on $i
+  mpoload 4493 on $i
+  mpoload 4494 on $i
+  mpoload 4495 on $i
+  mpoload 4496 on $i
+  mpoload 4496 on $i
+  mpoload 4497 on $i
+  mpoload 4499 on $i
+  mpoload 4491 on $i
+  mpset obj blankblackiron wear 129
+  mpstring obj blankblackiron short a pair of black iron gauntlets
+  mpstring obj blankblackiron long A pair of black iron gauntlets lie here.
+  mpstring obj blankblackiron name pair black iron gauntlet gauntlets
+  mpoload 4491 on $i
+  mpset obj blankblackiron wear 257
+  mpstring obj blankblackiron short a pair of black iron platemail sleeves
+  mpstring obj blankblackiron long A pair of black iron platemail sleeves lie here.
+  mpstring obj blankblackiron name pair black iron plate mail platemail sleeves
+  mpoload 4491 on $i
+  mpset obj blankblackiron wear 1025
+  mpstring obj blankblackiron short a heavy brigandine cloak of darkened hide
+  mpstring obj blankblackiron long A heavy brigandine cloak of darkened hide lies here.
+  mpstring obj blankblackiron name heavy cloak brigandine darkened hide
+  mpoload 4491 on $i
+  mpset obj blankblackiron wear 2049
+  mpstring obj blankblackiron short a wide belt of forged iron
+  mpstring obj blankblackiron long A wide belt of forged iron lies here.
+  mpstring obj blankblackiron name wide belt forged iron
+  mpoload 4491 on $i
+  mpset obj blankblackiron wear 4097
+  mpstring obj blankblackiron short a square, plated vambrace of black iron
+  mpstring obj blankblackiron long A square, plated vambrace of black iron lies here.
+  mpstring obj blankblackiron name square plated vambrace black iron
+  mpoload 4491 on $i
+  mpset obj blankblackiron wear 4097
+  mpstring obj blankblackiron short a square, plated vambrace of black iron
+  mpstring obj blankblackiron long A square, plated vambrace of black iron lies here.
+  mpstring obj blankblackiron name square plated vambrace black iron
+  mpat 6100 wear all
+  mpaddskill $i 514 100
+  mpaddskill $i 572 75
+  mpaddskill $i 162 90
+  mpaddskill $i 160 100
+  mpaddskill $i 165 100
+  mpaddskill $i 164 100
+  mpaddskill $i 447 100
+  mpaddskill $i 579 100
+  mpaddskill $i 177 90
+  mpaddskill $i 178 90
+  mpaddskill $i 449 90
+endif
+else
+  mpnextinterp
+endif
+~
+>fight_prog 100~
+mpremaffect $i 252
+mpfocus $f
+mpvalueset 9 0
+if tanking($i)
+else
+  mproomcmd mptrigger all
+  break
+endif
+mpvaluerand 1 1 100
+if value(1) < 4
+  shieldbash
+endif
+if value(1) == 5
+or value(1) == 6
+  mproomcmd mptrigger all
+  break
+endif
+if value(1) == 8
+or value(1) == 9
+or value(1) == 10
+  if cansee($i) == $n
+    pmote lowers a shoulder and charges, smashing his shields into $N!
+    mpget char $N dex 2
+    mpvaluerand 3 15 26
+    if value(3) >= $2
+      mpget char $N curhp 4
+      mpdamtype $n 5 5 25 1
+      mpget char $N curhp 5
+      mpmath 1 $4 - $5
+      mpdammess $n $1 \@shield smash\@
+      if rand(5)
+        mpechoat $n The shield\@s iron boss crashes into your nose!
+        mpechoaround $n The shield\@s iron boss crashes into $N\@s nose!
+        mpoload 7154 on $n
+      endif
+    else
+      mpechoat $n You dodge one of the shields.
+      mpecharound $n $N dodges one of the shields.
+    endif
+    mpvaluerand 3 15 26
+    if value(3) >= $2
+      mpget char $N curhp 4
+      mpdamtype $n 5 5 25 1
+      mpget char $N curhp 5
+      mpmath 1 $4 - $5
+      mpdammess $n $1 \@shield smash\@
+    else
+      mpechoat $n You dodge the other shield.
+      mpecharound $n $N dodges the other shield.
+    endif
+  endif
+endif
+~
+|
+V4 5459
+squad bot squadbot~
+squadbot~
+Squadbot makes Scourge squads go, go, go!
+~
+Its a generic bot.
+~
+human~
+water scholar~
+AL 0 DFJLZ N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+mpecho A squad of chaja trot in.
+mpmload 5458
+garbme
+mpoload 2107 on brute 18
+loop 1 to 5
+mpvaluerand 1 1 61
+if value(1) < 2
+  mpmload 7638
+  mpoload 513 on chaja 16
+endif
+if value(1) > 1
+  if value(1) <= 10
+    mpmload 5483
+  endif
+endif
+if value(1) > 10
+  if value(1) <= 30
+    mpmload 5490
+    mpoload 5484 on chaja 16
+  endif
+endif
+if value(1) > 30
+  if value(1) <= 45
+    mpmload 5491
+    mpoload 5485 on chaja 16
+    mpflag mob chaja act nowander
+  endif
+endif
+if value(1) > 45
+  if value(1) <= 60
+    mpmload 5492
+    mpoload 5483 on chaja 16
+    mpaddskill chaja 437 100
+    mpflag mob chaja act nowander
+  endif
+endif
+if value(1) == 61
+  mpmload 5470
+  mpoload 1540 on chaja 16
+  mpoload 4496 on chaja 3
+  mpoload 4493 on chaja 7
+  mpoload 4495 on chaja 5
+endif
+mpset mob chaja level 43
+mpforce chaja follow brute
+mpforce brute group chaja
+mpoload 2107 on chaja 18
+endloop
+mppurge self
+~
+|
+V4 5460
+swarm cloud huge black fly flies swarms~
+a swarm of flies~
+A cloud of huge black flies swarms over the corpses.
+~
+This cloud of abnormally large flies buzzes about the room in a
+flock-like swarm.  Each one is nearly a half an inch long, with hairy,
+bristly legs and bulbous, faceted eyes of venemous orange.  Their parchmenty
+wings can only be seen as a blur while in flight.  
+~
+generic~
+water scholar~
+AGLXc 0 TW N 0
+1 0 1d1+1 0d0+0 5d10+1 pierce~
+bite~
+-27 -27 -27 -9
+0 ABD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+0 0 A huge unknown
+>fight_prog 100~
+if rand(90)
+ mpechoat $n Realizing there are hundreds upon hundreds, you stop trying to swat the flies.
+ mpechoaround $n $N sighs, and stops trying to swat the flies.
+ mpgoto 21900
+ mpgoto 2158
+endif
+~
+>rand_prog 4~
+mpvaluerand 0 0 3
+if value(0) == 0
+  mpecho The swarm of flies buzzes over the corpses.
+endif
+if value(0) == 1
+  mpecho The swarm of flies settles on the corpses, thick and black.
+endif
+if value(0) == 2
+  mpecho The swarm of flies swirls through the air around you.
+endif
+if value(0) == 3
+  mpecho Flies zip past your head, circling through the small room in a dervish of activity.
+endif
+endif
+~
+|
+V4 5461
+chaja body guard bodyguard bodyguardbot~
+a chaja bodyguardbot~
+A chaja bodyguardbot
+~
+It\@s a generic bot.  
+~
+human~
+water scholar~
+AL 0 DFJLPZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 1~
+if mobhere(7638)
+else
+  if rand(10)
+    mppurge self
+  endif
+endif
+~
+>load_prog 100~
+if rand(33)
+  mpmload 7638
+  mpforce bodyguard mpoload 513 on self 16
+  mpaddskill bodyguard 181 90
+  mpaddskill bodyguard 433 90
+  mpaddskill bodyguard 456 90
+  mpaddskill bodyguard 514 90
+  mpaddskill bodyguard 252 90
+endif
+if rand(33)
+  mpmload 7638
+  mpforce bodyguard mpoload 513 on self 16
+  mpaddskill bodyguard 181 80
+  mpaddskill bodyguard 433 80
+  mpaddskill bodyguard 456 80
+  mpaddskill bodyguard 514 80
+  mpaddskill bodyguard 252 80
+endif
+if rand(33)
+  mpmload 7638
+  mpforce bodyguard mpoload 513 on self 16
+  mpaddskill bodyguard 181 70
+  mpaddskill bodyguard 433 70
+  mpaddskill bodyguard 456 70
+  mpaddskill bodyguard 514 70
+  mpaddskill bodyguard 252 70
+endif
+~
+|
+V4 5462
+mistress korlian~
+Mistress Korlian~
+Mistress Korlian stands here, preparing to teach her next class.
+~
+Mistress Korlian is a beautiful woman, and has no doubt had more than one
+student leave a rose for her.  She smiles sweetly, but you feel that
+underneath that soft smile is a core of strength.  
+~
+human~
+water scholar~
+ABDJKb 0 DFHJNTZ G 0
+58 24 20d230+1100 58d10+100 5d11+31 bash~
+punch~
+-25 -26 -26 -8
+FKQ AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 110 0
+AHMV ABCDEFGHIJK AEJK medium unknown
+V4 5463
+Master Nayshan~
+Master Nayshan~
+Master Nayshan looks at you patiently.
+~
+Master Nayshan stands here calmly, almost unnaturally still.  His golden
+skin shimmers slightly in the light, and his wide grey eyes regard the world
+with an infinite patience.  
+~
+ch\@taren~
+water scholar~
+ABDJKb 0 DFHJNTUZ G 0
+55 22 20d220+1100 55d10+100 5d11+30 bash~
+punch~
+-24 -24 -24 -7
+FKQ AB
+26 0 0 0 33 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 120 0
+AHKMV ABCDEFGIJK ABDEFHIJK medium unknown
+V4 5464
+shilrin arch-mage mage shilrinbitch~
+Arch-Mage Shilrin~
+The arch-mage Shilrin sits here in contemplation.
+~
+Shilrin seems lost in thought as she meditates.  No one knows how old she
+is, but faint signs of age darken her golden skin and pale hair.  An
+intangible aura of power surrounds her, the leavings of years in study of
+her art.  She seems deeply distraught over the loss of the Spirit Palace.  
+~
+ch\@taren~
+water scholar~
+ADKLPX 0 DFGHJNTUZc G 0
+60 30 8000d1+1000 90d20+800 5d12+55 energy~
+magic~
+-25 -25 -25 -14
+EFKQ AB
+26 0 0 0 33 0 0 0 0 0 0 0 33 -20 33 33 0 33 0 33 0 33 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 200 0
+AHKMV ABCDEFGIJK AEJK medium unknown
+V4 5465
+girl student ethron~
+a bruised ethron student~
+A small ethron girl is here, bruised and bleeding.
+~
+The ethron girl seems very out of element, looking around in amazement at
+the horrors in the palace.  She wears scraps of homemade woven cloth around
+her neck, a token to remind her of her home during her enslavement.  
+~
+ethron~
+water scholar~
+AGL 0 JNTZ G 0
+10 5 8d11+212 10d10+100 2d5+5 bash~
+punch~
+3 3 3 6
+FQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 30 0
+AHMVW ABCDEFGHIJKP J medium unknown
+V4 5466
+girl student ethron~
+a bruised ethron student~
+A small ethron girl is here, bruised and bleeding.
+~
+The ethron girl seems very out of element, looking around in amazement at
+the horrors in the palace.  She wears scraps of homemade woven cloth around
+her neck, a token to remind her of her home during her enslavement.  
+~
+ethron~
+water scholar~
+AGL 0 JNTZ G 0
+10 5 8d11+212 10d10+100 2d5+5 bash~
+punch~
+3 3 3 6
+FQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 30 0
+AHMVW ABCDEFGHIJKP J medium unknown
+>rand_prog 1~
+Emote fingers her worn clothing nervously and tries to remember her home.
+~
+|
+V4 5467
+human starved half-starved half~
+a half-starved human~
+A half-starved human looks about miserably.
+~
+A man who might be considered good-looking, were he not filthy and
+half-starved, looks about hopelessly.  Matted, dirty brown hair tops his
+head, and the look in his grey eyes seems far too old for his years.  
+~
+human~
+water scholar~
+AG 0 DNTZ G 0
+15 8 12d18+371 15d10+100 3d5+8 bash~
+punch~
+0 0 0 4
+FQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 0
+AHMV ABCDEFGHIJK AK medium unknown
+>rand_prog 1~
+emote glances about hungrily.
+~
+|
+V4 5468
+scholar spirit enslaved~
+an enslaved spirit scholar~
+An enslaved spirit scholar lies here, whimpering to herself.
+~
+Long black hair surrounds the small dark face of the scholar.  She
+whimpers continuously, interjecting nonsensical words into her pitiful
+cries.  Her eyes reveal that she has gone quite mad.  
+~
+human~
+water scholar~
+AG 0 NT G 0
+25 13 19d35+818 25d10+100 4d6+13 bash~
+punch~
+-6 -6 -6 1
+FQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 0
+AHMV ABCDEFGHIJK AK medium unknown
+>rand_prog 1~
+esay \@whimpers\@ Spirit wrath. Spirit wrath. Spirit wrath.
+~
+|
+V4 5469
+scholar~
+a frazzled scholar~
+A scholar carrying a pile of books weaves through the room.
+~
+The ch\@taren student looks like he hasn\@t slept in a while, his golden
+skin pale and hair in a mess.  He weaves about, trying desperately to see
+over his huge pile of books.  
+~
+ch\@taren~
+water scholar~
+AL 0 NTU G 0
+45 22 10d148+835 45d10+100 5d9+23 bash~
+punch~
+-18 -18 -18 -4
+FQ 0
+26 0 0 -33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHKMV ABCDEFGHIJK AE medium unknown
+V4 5470
+chaja taskmaster mob_5470~
+a chaja taskmaster~
+A chaja taskmaster prowls through here, glaring about.
+~
+This burly chaja is relatively short for his race, standing somewhere in
+the realm of seven feet in height.  Broad and muscled, though, he is still
+formidable.  Wide shoulders and a thick neck combine with a low, jutting
+brow to provide a decidedly brutish appearance.  His arms are a solid mass
+of scars, band after band of inflamed, abused tissue.  Twists and barbs of
+thick wire protrude from his skin in many places, sickly fluid seeping from
+around the rusting metal.  
+~
+chaja~
+water scholar~
+AB Q DJZ E 0
+58 15 20d230+3800 0d0+0 5d10+25 slash~
+slash~
+-9 -9 -9 2
+CFIKN 0
+26 0 0 0 5 0 0 0 0 0 0 0 0 20 0 0 0 20 0 -20 0 0 0 0 0 0 0 
+5 5476 5470 0 0 0
+stand stand male 130 58
+AHMVW ABCDEFGHIJK G medium unknown
+>greet_prog 100~
+if ispc($n)
+  if isimmort($n)
+  or israce($n) == shuddeni
+  or israce($n) == chaja
+  or isbitset($n) == 336
+  or level($n) < 40
+  else
+    murder $n
+  endif
+endif
+~
+>speech_prog focus~
+if isimmort($n)
+  say $F
+  say $F0
+  say $F1
+endif
+~
+>verb_prog p yes_i_was_sleeping~
+if name($n) / mob_5476
+or isimmort($n)
+  if value(4) == 0
+    esay \@bellows loudly\@ WAKE UP!
+    mpvalueset 4 1
+  endif
+  mpseewizi
+  mpvaluerand 5 1 12
+  if value(5) == 1
+    mpforce $n emote blinks stupidly, wavering on its feet.
+  endif
+  if value(5) == 2
+    mpforce $n yawn
+  endif
+  if value(5) == 3
+    mpforce $n emote leaps into the air with a yowl of surprise!
+  endif
+  if value(5) == 4
+    mpforce $n emote whirls its head around, beady eyes narrowed.
+  endif
+  if rand(20)
+    mpforce $n murder $r
+  else
+    mpforce $n murder $F
+  endif
+  mpunseewizi
+else
+  mpnextinterp
+endif
+~
+>verb_prog p target_acquired~
+if valname($i) == $n
+or isimmort($n)
+      if value(3) != 9
+        if value(1) == 0
+          mpvalueset where north
+        endif
+        if value(1) == 1
+          mpvalueset where east
+        endif
+        if value(1) == 2
+          mpvalueset where south
+        endif
+        if value(1) == 3
+          mpvalueset where west
+        endif
+        if value(1) == 4
+          mpvalueset where up
+        endif
+        if value(1) == 5
+          mpvalueset where down
+        endif
+        mpoload 24023
+        throw spear $F %where
+      endif
+else
+  mpnextinterp
+endif
+~
+>rand_prog 100~
+mpflag mob self aff - sneak
+if rand(10)
+  if isfocused($i)
+    if ishere($f)
+      murder $f
+    else
+      //Will turn on sneak, scout in all directions for one room for the
+      //focused player, then throw a spear at the player.  Value 3 holds
+      //the direction to throw the spear in.  Could be optimized.
+      mpflag mob self aff + sneak
+      mpgetroomvnum 0
+      mpvalueset 3 9
+      north
+      if ishere($f)
+        mpvalueset 3 0
+        mpgoto $0
+        target_acquired
+        break
+      endif
+      east
+      if ishere($f)
+        mpvalueset 3 1
+        mpgoto $0
+        target_acquired
+        break
+      endif
+      south
+      if ishere($f)
+        mpvalueset 3 2
+        mpgoto $0
+        target_acquired
+        break
+      endif
+      west
+      if ishere($f)
+        mpvalueset 3 3
+        mpgoto $0
+        target_acquired
+        break
+      endif
+      up
+      if ishere($f)
+        mpvalueset 3 4
+        mpgoto $0
+        target_acquired
+        break
+      endif
+      down
+      if ishere($f)
+        mpvalueset 3 5
+        mpgoto $0
+        target_acquired
+      endif
+    endif
+  else
+    mpfocus $r
+    if isfocused($i)
+      if name($f) / sasoldier
+      or name($f) / seraph
+      or israce($f) == ch\@taren
+      or isfriend($f) == 59
+      or isenemy($f) == 58
+      or isenemy($f) == 19
+        if israce($f) == ch\@taren
+          yell Death to ch\@taren!
+        else
+          if rand(1)
+            yell Death and blood!
+          endif
+        endif
+        mpkill $f
+        murder $f
+        break
+      endif
+    endif
+    mpunfocus $f
+    if rand(20)
+      mpwander
+    endif
+  endif
+endif
+~
+>fight_prog 100~
+//Focuses on a player, will drive/rout
+mpfocus $n
+if iswearslotfull($i) == 16
+else
+  get poleaxe
+  wear poleaxe
+endif
+if rand(8)
+  if ispc($n)
+    mpvaluerand 1 1 5
+    if value(1) == 1
+    or value(1) == 4
+    or value(1) == 5
+      mpvaluerand 1 0 3
+      if isopen($i) == $0
+        if value(1) == 0
+          mpvalueset where north
+        endif
+        if value(1) == 1
+          mpvalueset where east
+        endif
+        if value(1) == 2
+          mpvalueset where south
+        endif
+        if value(1) == 3
+          mpvalueset where west
+        endif
+        drive $N %where
+      endif
+    endif
+    if value(1) == 2
+      snarl
+      rout $n
+    endif
+    if value(1) == 3
+      pmote slashes the barbs protruding from his skin at $N!
+      emote misses.
+    endif
+  endif
+else
+  if ispc($n)
+  if inroom($i) > 5469
+    if inroom($i) < 5474
+      if mobhere(5476)
+        mpvalueset 4 0
+        anyone_sleeping
+      endif
+    endif
+  endif
+  endif
+endif
+~
+>load_prog 100~
+mpaddskill self 179 75
+mpaddskill self 849 75
+mpaddskill self 182 80
+mpaddskill self 444 80
+mpaddskill self 161 100
+mpoload 1540 on $i 16
+if isunderlimit(7615)
+  mpoload 7615 on $i 10
+endif
+if isunderlimit(7616)
+  mpoload 7616 on $i 7
+endif
+~
+|
+V4 5471
+scholar woman ch\@taren~
+a scholar~
+A ch\@taren woman works on perfecting a new spell.
+~
+The woman frowns in concentration, as she studies a scroll she holds. 
+Her golden skin seems slightly flushed, as though she were attempting some
+labourous physical task, rather than casting a spell.  
+~
+ch\@taren~
+water scholar~
+AGL 0 NTU G 0
+40 20 16d170+976 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -2
+FQ 0
+26 0 0 0 33 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 0
+AHKMV ABCDEFGHIJK AE medium unknown
+V4 5472
+scholar~
+a scholar~
+A scholar sits here, looking dreamily out a window.
+~
+The girl stares out the window looking over the clouds, instead of going
+about her studying.  Long light brown hair surrounds her heart-shaped face,
+and a pair of green eyes seem to be looking at something no one else can
+see.  
+~
+human~
+water scholar~
+AGL 0 NT G 0
+40 20 16d170+976 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -2
+FQ 0
+26 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 105 0
+AHMV ABCDEFGHIJK AEJK medium unknown
+V4 5473
+caladaran enslaved manacled gaunt researcher~
+an enslaved caladaran researcher~
+A manacled, gaunt caladaran stares blankly.
+~
+The caladaran scholar sits peacefully, studying on of the many books in
+the library.  He studies hard, enjoying the learning experience, though
+he\@ll never be able to master all that is spirit magic.  
+~
+caladaran~
+water scholar~
+AGL 0 NT G 0
+15 8 12d18+371 15d10+100 3d5+8 bash~
+punch~
+0 0 0 4
+FQ 0
+26 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHMVW ABCDEFGHIJKP AIK medium unknown
+V4 5474
+shuddeni hateblade~
+a shuddeni hateblade~
+A shuddeni garbed in stealthy black lurks here.
+~
+This shuddeni thief lurks about the remains of the spirit palace.  An
+acolyte of the priests of hate, the hateblade keeps a watch for both
+intruders and unruly chaja.  
+~
+shuddeni~
+water scholar~
+AGL L AFJPQZ E 0
+47 24 32d90+1170 47d10+100 6d8+24 slash~
+slash~
+-19 -19 -19 -5
+FIJKR b
+26 0 0 0 0 0 0 0 0 0 0 0 0 20 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 370 0 0 0 0
+stand stand either 100 58
+AHMVW ABCDEFGHIJK AK medium unknown
+>data_prog pilfer~
+steal 3. $f
+steal 6. $f
+steal 2. $f
+backstab $f
+mpkill $f
+mpvalueset 0 0
+
+~
+>rand_prog 100~
+if hitprcnt($i) < 15
+  if value(1) == 0
+    ooc self Hurt, dropping loot, purging.  To turn this off in the future, type \@mpvalueset 1 1\@.
+    mpgoto 5480
+    drop all
+    mppurge self
+    break
+  endif
+endif
+if iswearslotfull($i) == 16
+else
+  mpoload 19523
+  wear dagger
+endif
+if value(9) == 0
+  mpaddskill $i 198 90
+  mpaddskill $i 192 100
+  mpaddskill $i 203 90
+  mpaddskill $i 22 95
+  mpaddskill $i 199 65
+  mpaddskill $i 167 95
+  mpvalueset 9 1
+endif
+if rand(50)
+  if snaffected($i) == 192
+  else
+    hide
+  endif
+  if snaffected($i) == 198
+  else
+    sneak
+  endif
+endif
+if ispc($f)
+  if ishere($f)
+    if snaffected($f) == 203
+      if position($f) == 4
+        if value(0) == 1 //switched into steal/stab mode or not
+          $d
+          mpnextdata
+        else
+          mpvalueset 0 1
+          mpsetdata pilfer
+        endif
+      else
+        if rand(2)
+          stab $f
+        endif
+      endif
+    else
+      if rand(15)
+        waylay $f
+      endif
+    endif
+  else
+    if rand(40)
+      mptrackstep
+    endif
+  endif    
+endif
+~
+>fight_prog 100~
+if rand(27)
+  flee
+  flee
+  hide
+  mpgrant $i 60 0 0
+endif
+~
+>greet_prog 100~
+if ispc($n)
+  if isimmort($n)
+  or israce($n) == shuddeni
+  or israce($n) == chaja
+  or isbitset($n) == 336
+  or level($n) < 40
+  else
+    if snaffected($n) == 203
+      stab $n
+    else
+      waylay $n
+      mpfocus $n
+    endif
+  endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 198 90
+mpaddskill $i 192 100
+mpaddskill $i 203 90
+mpaddskill $i 22 95
+mpaddskill $i 199 65
+mpaddskill $i 167 95
+~
+|
+V4 5475
+deshmin captain deshminbitch~
+Deshmin~
+Deshmin, Captain of the Spirit Palace, stands here.
+~
+Deshmin stands proudly, almost arrogant except for the friendly grin that
+stretches across his face.  He takes after his mother, the arch-mage, in his
+build and is dedicated to serving her and the cause of the light.  
+~
+ch\@taren~
+water scholar~
+AEL 0 CDFHNTUVZc G 0
+55 22 5000d1+1000 55d10+100 5d11+30 bash~
+punch~
+-24 -24 -24 -7
+EFJKQ B
+26 0 0 0 20 0 0 0 0 33 0 0 33 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHKMV ABCDEFGHIJK AEK medium unknown
+V4 5476
+warrior chaja mob_5476~
+a chaja warrior~
+A chaja warrior sleeps soundly.
+~
+This chaja warrior is the basic fodder for the shuddeni frontlines.  His
+large and hairy body is scarred from wounds and whip-lashes.  
+~
+chaja~
+water scholar~
+ALT 0 FJZ E 0
+30 15 22d45+941 30d10+100 4d8+15 slash~
+slash~
+-9 -9 -9 0
+CDEFHK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 2174 0 0 0 0
+sleep sleep male 35 58
+AHMVW ABCDEFGHIJK G medium unknown
+>trigger_prog 100~
+if isenemy($n)
+or name($n) / seraph
+or name($n) / sasoldier
+or israce($n) == ch\@taren
+or isfriend($n) == 59
+or isenemy($n) == 58
+or isenemy($n) == 19
+  if rand(25)
+    yell Die, $N, Enemy of the Scourge!
+  endif
+  mpkill $n
+else
+  if ispc($n)
+    if isbitset($n) == 336
+    or israce($n) == chaja
+    or israce($n) == shuddeni
+    or isimmort($n)
+    else
+      mpkill $n
+    endif
+  endif
+endif
+~
+>rand_prog 100~
+if position($i) == 4
+  if rand(1)
+    if rand(50)
+      mpecho $I shifts slightly in its sleep.
+    else
+      mpecho $I blinks, scratches itself, then falls back asleep.
+    endif
+  endif
+else
+  mproomcmd mptrigger all
+endif
+~
+>verb_prog p anyone_sleeping~
+if name($n) / mob_5470
+or isimmort($n)
+  if position($i) == 4
+    mpat 9700 wake
+    yes_i_was_sleeping
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V4 5477
+shuddeni hateshade~
+a shuddeni hateshade~
+A shuddeni dressed in dark clothing lurks here.
+~
+This shuddeni assassin lurks about the remains of the spirit palace.  An
+acolyte of the priests of hate, the hateshade keeps a watch for both
+intruders and unruly chaja.  
+~
+shuddeni~
+water scholar~
+AG M ADFJPQZ E 0
+47 24 32d90+1170 47d10+100 6d8+24 pierce~
+stab~
+-19 -19 -19 -5
+FHKNR ABb
+26 0 0 0 0 0 0 0 0 0 0 0 0 20 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 370 0 0 0 0
+stand stand either 100 58
+AHMVW ABCDEFGHIJK AK medium unknown
+>load_prog 100~
+mpaddskill $i 198 90
+mpaddskill $i 192 100
+mpaddskill $i 256 100
+mpaddskill $i 492 75
+mpaddskill $i 482 90
+mpaddskill $i 486 90
+mpaddskill $i 255 80
+~
+>fight_prog 100~
+if rand(20)
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+blinding $n
+endif
+if mobvalue(0) == 2
+nerve
+endif
+if mobvalue(0) == 3
+vital
+endif
+else
+if rand(20)
+flee
+endif
+endif
+~
+>rand_prog 100~
+if rand(40)
+if snaffected($i) == 192
+else
+hide
+endif
+if snaffected($i) == 198
+else
+sneak
+endif
+endif
+~
+>greet_prog 100~
+if ispc($n)
+  if isimmort($n)
+  or israce($n) == shuddeni
+  or israce($n) == chaja
+  or isbitset($n) == 336
+  or level($n) < 40
+  else
+    if rand(20)
+      muffle $n vital $n
+    else
+      mpkill $n
+    endif
+  endif
+endif
+~
+|
+V4 5478
+slug cave cslug white~
+the cave slug~
+A foot-long cave slug crawls amongst the fungus.
+~
+Measuring a foot in length, this white cave slug crawls slowly amongst
+the fungus of the room, rasping away with its long tongue and sharp teeth.  
+~
+human~
+water scholar~
+AGX 0 DFJZ N 0
+15 8 12d18+371 15d10+100 3d5+8 pierce~
+bite~
+0 0 0 4
+0 b
+26 0 0 -33 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMSV ABCDEFGHIJKLM A medium unknown
+V4 5479
+pale white vines mass stranglevine strangle vine~
+a mass of stranglevine~
+Pale white vines fill this room, budding with pulpy fruit.
+~
+This mass of white vines fills the room.  Farmed by the shuddeni for its
+sour fruit, the vines also have the added benifit of being exceedingly
+aggressive against non-shuddeni.  More than one chaja slave has fallen prey
+to the plants, however.  
+~
+generic~
+water scholar~
+AB 0 F N 0
+40 20 16d170+976 0d0+0 5d8+20 bash~
+constriction~
+-15 -15 -15 -2
+FHN ABLPb
+26 0 0 0 0 10 33 -33 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+0 0 A large plant
+>greet_prog 100~
+if ispc($n)
+if isimmort($n)
+else
+if israce($n) == shuddeni
+else
+mpecho The vines suddenly burst to life, entangling $N!
+mpkill $n
+mplag $n 1
+endif
+endif
+endif
+~
+>verb_prog p pick fruit~
+if mobvalue(0) == 3
+mpechoat $n There is no ripe fruit to pick.
+else
+mpvalueup 0
+mpechoat $n You pick a pale, pulpy fruit.
+mpechoaround $n $N picks a pale, pulpy fruit from the vines.
+mpoload 2188 on $n
+endif
+~
+>time_prog 0~
+if mobvalue(0) == 0
+else
+mpvaluedown 0
+mpecho Another fruit ripens.
+endif
+~
+>fight_prog 10~
+mpechoat $n The stranglevine entangles you!
+mpechoaround $n The stranglevine entangles $N!
+mplag $n 2
+~
+|
+V4 5480
+scholar~
+the scholar~
+A scholar sits at a large desk, intently copying from an old dusty book.
+~
+The scholar has his brow furrowed in concentration as he reads through
+the old book in his hands.  His long black hair keeps falling into his face,
+but he pays no notice and pushes it away absent-mindedly as he turns another
+page.  
+~
+human~
+water scholar~
+ABG 0 D G 0
+40 20 16d170+976 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -2
+FHQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 0
+AHMV ABCDEFGHIJK A medium flesh
+V4 5481
+the travelling bard~
+the travelling bard~
+A bard strolls by, a sack over his shoulder, and instrument in hand.
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium flesh
+V4 5482
+telebot~
+Telebot~
+(no long description)
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+60 30 38d138+1080 60d10+100 7d9+30 none~
+~
+-27 -27 -27 -9
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 5483
+warrior chaja mob_5483~
+a chaja warrior~
+A chaja warrior stands here, on alert.
+~
+This chaja warrior is the basic fodder for the shuddeni frontlines.  His
+large and hairy body is scarred from wounds and whip-lashes.  Grey skin is
+rough and scabbed.  
+~
+chaja~
+water scholar~
+ALT 0 FJZ E 0
+43 10 22d45+941 30d10+100 4d8+15 slash~
+slash~
+-9 -9 -9 0
+CDEFHK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 2174 2075 0 0 0
+stand stand male 35 58
+AHMVW ABCDEFGHIJK G medium unknown
+V4 5484
+shuddeni battlemage mage ksatha~
+a Ksatha battlemage~
+A shuddeni battlemage draped in bone-yellow robes stands here.
+~
+Dressed in rich robes, this shuddeni mage has gathered power for many
+years within his Sept, and now wield great influence.  His deeply wrinkled
+skin looks sickly pale, and his eyeless face scowls about, as if searching
+for a hidden danger--or an unexpected advantage.  
+~
+shuddeni~
+water scholar~
+ABG Q ADFJTZ E 0
+55 28 36d118+1147 36d100+1000 7d8+28 negative~
+negative blast~
+-24 -24 -24 -7
+FHK 0
+26 0 0 50 50 0 0 0 0 0 0 0 0 33 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 150 58
+AHMVW ABCDEFGHIJK G medium unknown
+>trigger_prog 100~
+if isenemy($n)
+or name($n) / seraph
+or name($n) / sasoldier
+or israce($n) == ch\@taren
+or isfriend($n) == 59
+or isenemy($n) == 58
+or isenemy($n) == 19
+  if rand(25)
+    yell Die, $N, Enemy of the Scourge!
+  endif
+  mpkill $n
+else
+  if ispc($n)
+    if isbitset($n) == 336
+    or israce($n) == chaja
+    or israce($n) == shuddeni
+    or isimmort($n)
+    else
+      mpkill $n
+    endif
+  endif
+endif
+~
+>greet_prog 50~
+mptrigger $n
+~
+>rand_prog 100~
+mptrigger $r
+~
+>load_prog 100~
+mpaddskill $i 52 100
+mpaddskill $i 39 100
+mpaddskill $i 8 100
+mpaddskill $i 104 100
+mpaddskill $i 107 100
+mpaddskill $i 306 100
+~
+>fight_prog 100~
+if value(0) == 0
+  mpvalueset 0 1
+  if rand(20)
+    if rand(50)
+      cackle $n
+    else
+      sneer $n
+    endif
+  endif
+  if rand(50)
+    cast drain
+  else
+    mpvaluerand 1 1 5
+    if value(1) == 1
+      cast curse
+    endif
+    if value(1) == 2
+      cast blindness
+    endif
+    if value(1) == 3
+      cast plague
+    endif
+    if value(1) == 4
+      cast pox
+    endif
+    if value(1) == 5
+      cast agony
+    endif
+  endif
+else
+  mpvalueset 0 0
+endif
+~
+|
+V4 5485
+shuddeni ttou battlemage mage~
+a Ttou battlemage~
+A shuddeni battlemage draped in grey and orange robes stands here.
+~
+Dressed in rich robes, this shuddeni mage has gathered power for many
+years within his Sept, and now wield great influence.  His deeply wrinkled
+skin looks sickly pale, and his eyeless face scowls about, as if searching
+for a hidden danger--or an unexpected advantage.  
+~
+shuddeni~
+water scholar~
+ABG Q ADFJTZ E 0
+55 28 36d118+1147 55d10+100 7d8+28 fire~
+blast of fire~
+-24 -24 -24 -7
+FHKR 0
+26 0 0 50 50 0 0 0 0 0 0 0 0 33 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 150 58
+AHMVW ABCDEFGHIJK G medium unknown
+>trigger_prog 100~
+if isenemy($n)
+or name($n) / seraph
+or name($n) / sasoldier
+or israce($n) == ch\@taren
+or isfriend($n) == 59
+or isenemy($n) == 58
+or isenemy($n) == 19
+  if rand(25)
+    yell Die, $N, Enemy of the Scourge!
+  endif
+  mpkill $n
+else
+  if ispc($n)
+    if isbitset($n) == 336
+    or israce($n) == chaja
+    or israce($n) == shuddeni
+    or isimmort($n)
+    else
+      mpkill $n
+    endif
+  endif
+endif
+~
+>greet_prog 50~
+mptrigger $n
+~
+>rand_prog 100~
+mptrigger $r
+~
+>fight_prog 100~
+if value(0) == 0
+  mpvalueset 0 1
+  if rand(20)
+    if rand(50)
+      cackle $n
+    else
+      sneer $n
+    endif
+  endif
+  if rand(50)
+    cast drain
+  else
+    mpvaluerand 1 1 5
+    if value(1) == 1
+      cast curse
+    endif
+    if value(1) == 2
+      cast blindness
+    endif
+    if value(1) == 3
+      cast plague
+    endif
+    if value(1) == 4
+      cast pox
+    endif
+    if value(1) == 5
+      cast agony
+    endif
+  endif
+else
+  mpvalueset 0 0
+endif
+~
+>load_prog 100~
+mpaddskill $i 52 100
+mpaddskill $i 39 100
+mpaddskill $i 8 100
+mpaddskill $i 104 100
+mpaddskill $i 107 100
+mpaddskill $i 306 100
+~
+|
+V4 5486
+shuddeni battlemage mage addaash~
+an Addaash battlemage~
+A shuddeni battlemage draped in crimson robes stands here.
+~
+Dressed in rich robes, this shuddeni mage has gathered power for many
+years within his Sept, and now wield great influence.  His deeply wrinkled
+skin looks sickly pale, and his eyeless face scowls about, as if searching
+for a hidden danger--or an unexpected advantage.  
+~
+shuddeni~
+water scholar~
+ABG Q ADFJTZ E 0
+55 28 36d118+1147 36d118+1147 7d8+28 fire~
+blast of fire~
+-24 -24 -24 -7
+FHKR 0
+26 0 0 50 50 0 0 0 0 0 0 0 0 33 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 150 58
+AHMVW ABCDEFGHIJK G medium unknown
+>trigger_prog 100~
+if isenemy($n)
+or name($n) / seraph
+or name($n) / sasoldier
+or israce($n) == ch\@taren
+or isfriend($n) == 59
+or isenemy($n) == 58
+or isenemy($n) == 19
+  if rand(25)
+    yell Die, $N, Enemy of the Scourge!
+  endif
+  mpkill $n
+else
+  if ispc($n)
+    if isbitset($n) == 336
+    or israce($n) == chaja
+    or israce($n) == shuddeni
+    or isimmort($n)
+    else
+      mpkill $n
+    endif
+  endif
+endif
+~
+>greet_prog 50~
+mptrigger $n
+~
+>rand_prog 100~
+mptrigger $r
+~
+>fight_prog 100~
+if value(0) == 0
+  mpvalueset 0 1
+  if rand(10)
+    if rand(50)
+      hiss $n
+    else
+      damn $n
+    endif
+  endif
+  mpvaluerand 1 1 11
+  if value(1) == 1
+  or value(1) == 2
+  or value(1) == 3
+    cast \@beam of fire\@
+  endif
+  if value(1) == 4
+    cast incineration
+  endif
+  if value(1) == 5
+    cast smolder
+  endif
+  if value(1) == 6
+    cast \@ethereal flame\@
+  endif
+  if value(1) == 7
+    cast \@heat metal\@
+  endif
+  if value(1) == 8
+  or value(1) == 9
+  or value(1) == 10
+    cast \@fire blast\@
+  endif
+  if value(1) == 11
+    cast \@parch\@
+  endif 
+else
+  mpvalueset 0 0
+endif
+~
+>load_prog 100~
+mpaddskill $i 205 100
+mpaddskill $i 402 100
+mpaddskill $i 406 100
+mpaddskill $i 59 100
+mpaddskill $i 78 100
+mpaddskill $i 102 100
+mpaddskill $i 405 100
+~
+|
+V4 5487
+shuddeni Yithoul battlemage mage~
+a Yithoul battlemage~
+A shuddeni battlemage draped in black robes stands here.
+~
+Dressed in rich robes, this shuddeni mage has gathered power for many
+years within his Sept, and now wield great influence.  His deeply wrinkled
+skin looks sickly pale, and his eyeless face scowls about, as if searching
+for a hidden danger--or an unexpected advantage.  
+~
+shuddeni~
+water scholar~
+ABG Q ADFJTZ E 0
+55 28 36d118+1147 55d10+100 7d8+28 negative~
+negative blast~
+-24 -24 -24 -7
+FHKR 0
+26 0 0 50 50 0 0 0 0 0 0 0 0 33 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 150 58
+AHMVW ABCDEFGHIJK G medium unknown
+>trigger_prog 100~
+if isenemy($n)
+or name($n) / seraph
+or name($n) / sasoldier
+or israce($n) == ch\@taren
+or isfriend($n) == 59
+or isenemy($n) == 58
+or isenemy($n) == 19
+  if rand(25)
+    yell Die, $N, Enemy of the Scourge!
+  endif
+  mpkill $n
+else
+  if ispc($n)
+    if isbitset($n) == 336
+    or israce($n) == chaja
+    or israce($n) == shuddeni
+    or isimmort($n)
+    else
+      mpkill $n
+    endif
+  endif
+endif
+~
+>greet_prog 50~
+mptrigger $n
+~
+>rand_prog 100~
+mptrigger $r
+~
+>fight_prog 100~
+if value(0) == 0
+  mpvalueset 0 1
+  if rand(20)
+    if rand(50)
+      cackle $n
+    else
+      sneer $n
+    endif
+  endif
+  if rand(50)
+    cast drain
+  else
+    mpvaluerand 1 1 5
+    if value(1) == 1
+      cast curse
+    endif
+    if value(1) == 2
+      cast blindness
+    endif
+    if value(1) == 3
+      cast plague
+    endif
+    if value(1) == 4
+      cast pox
+    endif
+    if value(1) == 5
+      cast agony
+    endif
+  endif
+else
+  mpvalueset 0 0
+endif
+~
+>load_prog 100~
+mpaddskill $i 52 100
+mpaddskill $i 39 100
+mpaddskill $i 8 100
+mpaddskill $i 104 100
+mpaddskill $i 107 100
+mpaddskill $i 306 100
+~
+|
+V4 5488
+templar shuddeni void~
+a shuddeni templar~
+A shuddeni void templar stands here.
+~
+A shuddeni void templar with a snarling face and pale, wrinkled skin
+stands ready for action.  
+~
+shuddeni~
+water scholar~
+A M ADJZ E 0
+52 26 35d107+1167 52d10+100 6d9+26 slash~
+slash~
+-22 -22 -22 -6
+EFHKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 33 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 100 58
+AHMW ABCDEFGIJKP G medium unknown
+>trigger_prog 100~
+if isenemy($n)
+or name($n) / seraph
+or name($n) / sasoldier
+or israce($n) == ch\@taren
+or isfriend($n) == 59
+or isenemy($n) == 58
+or isenemy($n) == 19
+  if rand(25)
+    yell Die, $N, Enemy of the Scourge!
+  endif
+  mpkill $n
+else
+  if ispc($n)
+    if isbitset($n) == 336
+    or israce($n) == chaja
+    or israce($n) == shuddeni
+    or isimmort($n)
+    else
+      mpkill $n
+    endif
+  endif
+endif
+~
+>greet_prog 50~
+mptrigger $n
+~
+>rand_prog 100~
+mptrigger $r
+~
+>fight_prog 100~
+if value(0) == 0
+  mpvalueset 0 1
+  if rand(20)
+    if rand(50)
+      sneer $n
+    else
+      evil $n
+    endif
+  endif
+  if rand(50)
+    cast harm
+  else
+    mpvaluerand 1 1 5
+    if value(1) == 1
+      cast curse
+    endif
+    if value(1) == 2
+      cast blindness
+    endif
+    if value(1) == 3
+      assume asp
+    endif
+    if value(1) == 4
+      assume wraith
+    endif
+    if value(1) == 5
+      cast pestilence
+    endif
+  endif
+else
+  mpvalueset 0 0
+endif
+~
+|
+V4 5489
+shuddeni swordmaster~
+a shuddeni swordmaster~
+A shuddeni swordmaster stands here.
+~
+A shuddeni swordmaster with a snarling face and pale, wrinkled skin
+stands ready for action.  
+~
+shuddeni~
+water scholar~
+AT M ADJZ E 0
+52 26 35d107+1167 52d10+100 6d9+26 slash~
+slash~
+-22 -22 -22 -6
+EFKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 33 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 100 58
+AHMW ABCDEFGIJK G medium unknown
+>trigger_prog 100~
+if ispc($n)
+  if isenemy($n)
+    if rand(25)
+      yell Die, $N, Enemy of the Scourge!
+    endif
+    mpkill $n
+  endif
+else
+  if name($n) / sasoldier
+    mpkill $n
+  endif
+endif
+~
+>greet_prog 50~
+mptrigger $n
+~
+>rand_prog 100~
+mptrigger $r
+~
+>fight_prog 100~
+wear sword
+if rand(33)
+  pmote subtly shifts his stance.
+  mpvaluerand 2 1 19
+  if mobvalue(2) == 1
+    assume cat
+  endif
+  if mobvalue(2) == 2
+    assume monkey
+  endif
+if mobvalue(2) == 3
+assume viper
+endif
+if mobvalue(2) == 4
+assume eagle
+endif
+if mobvalue(2) == 5
+assume hawk
+endif
+if mobvalue(2) == 6
+assume bull
+endif
+if mobvalue(2) == 7
+assume rose
+endif
+if mobvalue(2) == 8
+assume serpent
+endif
+if mobvalue(2) == 9
+assume mongoose
+endif
+if mobvalue(2) == 10
+assume boar
+endif
+if mobvalue(2) == 11
+assume reed
+endif
+if mobvalue(2) == 12
+assume crab
+endif
+if mobvalue(2) == 13
+assume spider
+endif
+if mobvalue(2) == 14
+assume panther
+endif
+if mobvalue(2) == 15
+assume whirlwind
+endif
+if mobvalue(2) == 16
+assume mockingbird
+endif
+if mobvalue(2) == 17
+assume dragon
+endif
+if mobvalue(2) == 18
+assume bear
+endif
+if mobvalue(2) == 19
+assume wasp
+endif
+else
+endif
+if rand(5)
+  offhand
+endif
+~
+|
+V4 5490
+chaja spearman~
+a chaja spearman~
+A chaja spearman stands guard.
+~
+A large, gray-skinned humanoid with a snarling, fanged mouth and long
+black hair, the chaja guard watches over the area carefully.  
+~
+chaja~
+water scholar~
+AGLT 0 FJZ E 0
+52 23 30d80+800 45d10+100 6d7+20 slash~
+slash~
+-18 -18 -18 -4
+EFHIK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 22 58
+AHMVW ABCDEFGHIJK G medium unknown
+>trigger_prog 100~
+if isenemy($n)
+or name($n) / seraph
+or name($n) / sasoldier
+or israce($n) == ch\@taren
+or isfriend($n) == 59
+or isenemy($n) == 58
+or isenemy($n) == 19
+  if rand(25)
+    yell Die, $N, Enemy of the Scourge!
+  endif
+  mpkill $n
+else
+  if ispc($n)
+    if isbitset($n) == 336
+    or israce($n) == chaja
+    or israce($n) == shuddeni
+    or isimmort($n)
+    else
+      mpkill $n
+    endif
+  endif
+endif
+~
+>greet_prog 50~
+mptrigger $n
+~
+>rand_prog 100~
+mptrigger $r
+~
+|
+V4 5491
+axeman chaja~
+a chaja axeman~
+A chaja axeman walks about, snarling.
+~
+A large, gray-skinned humanoid with a snarling, fanged mouth and long
+black hair, the chaja guard watches over the area carefully.  
+~
+chaja~
+water scholar~
+AGT 0 FJZ E 0
+45 23 31d84+1161 45d10+100 6d7+23 slash~
+slash~
+-18 -18 -18 -4
+EFHIKR 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 22 58
+AHMVW ABCDEFGHIJK G medium unknown
+>fight_prog 5~
+mpaddskill $i 226 90
+hew
+~
+>trigger_prog 100~
+if isenemy($n)
+or name($n) / seraph
+or name($n) / sasoldier
+or israce($n) == ch\@taren
+or isfriend($n) == 59
+or isenemy($n) == 58
+or isenemy($n) == 19
+  if rand(25)
+    yell Die, $N, Enemy of the Scourge!
+  endif
+  mpkill $n
+else
+  if ispc($n)
+    if isbitset($n) == 336
+    or israce($n) == chaja
+    or israce($n) == shuddeni
+    or isimmort($n)
+    else
+      mpkill $n
+    endif
+  endif
+endif
+~
+>greet_prog 50~
+mptrigger $n
+~
+>rand_prog 100~
+mptrigger $r
+~
+|
+V4 5492
+chaja swordsman~
+a chaja swordsman~
+A chaja swordsman stands here, iron blade at the ready.
+~
+A large, gray-skinned humanoid with a snarling, fanged mouth and long
+black hair, the chaja guard watches over the area carefully.  
+~
+chaja~
+water scholar~
+AGT 0 FJZ E 0
+45 23 31d84+1161 45d10+100 6d7+23 slash~
+slash~
+-18 -18 -18 -4
+CEFHIKNR 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 22 58
+AHMVW ABCDEFGHIJK G medium unknown
+>fight_prog 3~
+cross
+~
+>trigger_prog 100~
+if isenemy($n)
+or name($n) / seraph
+or name($n) / sasoldier
+or israce($n) == ch\@taren
+or isfriend($n) == 59
+or isenemy($n) == 58
+or isenemy($n) == 19
+  if rand(25)
+    yell Die, $N, Enemy of the Scourge!
+  endif
+  mpkill $n
+else
+  if ispc($n)
+    if isbitset($n) == 336
+    or israce($n) == chaja
+    or israce($n) == shuddeni
+    or isimmort($n)
+    else
+      mpkill $n
+    endif
+  endif
+endif
+~
+>greet_prog 50~
+mptrigger $n
+~
+>rand_prog 100~
+mptrigger $r
+~
+>load_prog 100~
+mpaddskill $i 157 100
+mpaddskill $i 208 100
+mpaddskill $i 216 100
+mpaddskill $i 224 100
+mpaddskill $i 464 100
+mpaddskill $i 214 100
+mpaddskill $i 223 100
+mpaddskill $i 468 100
+mpaddaffect $n 157 50 -1 0 0 0
+mpaddskill $i 469 100
+mpaddskill $i 222 100
+mpaddskill $i 217 100
+mpaddskill $i 213 100
+mpaddskill $i 212 100
+mpaddskill $i 221 100
+mpaddskill $i 215 100
+mpaddskill $i 218 100
+mpaddskill $i 219 100
+mpaddskill $i 209 100
+mpaddskill $i 220 100
+mpaddskill $i 211 100
+mpaddskill $i 210 100
+mpaddskill $i 465 100
+mpaddskill $i 437 100
+~
+|
+V4 5493
+shuddeni flame addaash~
+the Addaash Flame~
+A shuddeni draped in flame-red robes stands here.
+~
+This shuddeni stands in a billowing assemblage of flame-red robes.  Wings
+of fire flare up behind him, and a slight trail of smoke weaves a sinuous
+circle around his head.  
+~
+shuddeni~
+water scholar~
+ADLPX BQ ABDJTZ E 0
+60 25 3000d1+200 3000d1+200 5d8+100 fire~
+burst of flame~
+-20 -20 -20 -20
+FHKR b
+26 0 0 50 50 0 0 0 0 0 0 0 0 33 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 199 58
+AHMW ABCDEFGIJ AGK medium unknown
+>death_prog 100~
+if iscarrying($i) == 11387
+speak common
+emote twists suddenly, body convulsing as death starts to overcome it.
+drop key
+esay \@gurgles, trying to scoop the key back up\@ Not the key! It took me so long to reclai...
+emote falls silent, and still.
+endif
+~
+>trigger_prog 100~
+if ispc($n)
+  if isenemy($n)
+    if rand(25)
+      yell Die, $N, Enemy of the Scourge!
+    endif
+    mpkill $n
+  endif
+else
+  if name($n) / sasoldier
+    mpkill $n
+  endif
+endif
+~
+>greet_prog 50~
+mptrigger $n
+~
+>rand_prog 100~
+mptrigger $r
+~
+>fight_prog 100~
+if hitprcnt($i) < 5
+  say Ajyigr
+  break
+endif
+if value(0) == 0
+  mpvalueset 0 1
+  if rand(10)
+    if rand(50)
+      hiss $n
+    else
+      sneer $n
+    endif
+  endif
+  mpvaluerand 1 1 11
+  if value(1) == 1
+  or value(1) == 2
+  or value(1) == 3
+  or value(1) == 7
+    cast \@beam of fire\@
+  endif
+  if value(1) == 4
+  or value(1) == 5
+  or value(1) == 6
+    cast incineration
+  endif
+  if value(1) == 8
+  or value(1) == 9
+  or value(1) == 10
+  or value(1) == 11
+    cast \@fire blast\@
+  endif
+else
+  mpvalueset 0 0
+endif
+~
+>load_prog 100~
+mpaddskill $i 205 100
+mpaddskill $i 402 100
+mpaddskill $i 406 100
+mpaddskill $i 59 100
+mpaddskill $i 78 100
+mpaddskill $i 102 100
+mpaddskill $i 405 100
+~
+|
+V4 5494
+shuddeni tall ttou whip mob331~
+the Ttou Whip~
+A tall shuddeni armored in chaja hide-and-bone stands here.
+~
+This shuddeni, unusually tall and gaunt even for his kind, wears a
+complete set of chaja hide-and-bone armor.  The black, boiled hide is
+stretched taut against the yellow bone and decorated with angular crimson
+slashes.  His thin, blood-red mouth is set in the arrogant sneer of those
+accustomed to receiving absolute obedience.  
+~
+shuddeni~
+water scholar~
+ADLPX BQ ABDJTZ E 0
+60 25 6000d1+200 3000d1+200 5d8+100 slash~
+whip~
+-20 -20 -20 -20
+FHKR b
+26 0 0 50 50 0 0 0 0 0 0 0 0 33 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 199 58
+AHMW ABCDEFGIJ AGK medium unknown
+>trigger_prog 100~
+if ispc($n)
+  if isenemy($n)
+    if rand(25)
+      yell Die, $N, Enemy of the Scourge!
+    endif
+    mpkill $n
+  endif
+else
+  if name($n) / sasoldier
+    mpkill $n
+  endif
+endif
+~
+>greet_prog 50~
+mptrigger $n
+~
+>rand_prog 100~
+mptrigger $r
+~
+|
+V4 5495
+priestess high shuddeni ksatha mob_5495~
+the high priestess of Ksatha~
+The high priestess of Ksatha stands here, a permanent snarl on her face.
+~
+The high priestess of the Ksatha Temple stands arrayed in robes of
+bone-yellow, embroidered upon with the symbol of the reverse pentagram.  Her
+lower face is horrifically twisted, as if a snarl were taken, twisted to
+extremes, and frozen into her flesh.  
+~
+shuddeni~
+water scholar~
+ADLPX BQ ABDJTUZ E 0
+60 25 3000d1+200 3000d1+200 5d8+75 negative~
+void-taint~
+-20 -20 -20 -20
+FHK b
+26 0 0 50 50 0 0 0 0 0 0 0 0 33 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 199 58
+AHMW ABCDEFGIJ AGK medium unknown
+>speech_prog p I pledge~
+if ispc($n)
+  if isbitset($n) == 336
+    tell $n We have received your pledge already, $N.
+  else
+    tell $n I hear and seal your pledge, $N.  May the surface wither.
+    mpbitset $n 336 1
+  endif
+  if iscarrying($n) == 2107
+  else
+    mpoload 2107
+    emote conjures a point of darkness in her palm.
+    give mote $N
+  endif
+endif
+~
+>trigger_prog 100~
+if isenemy($n)
+or name($n) / seraph
+or name($n) / sasoldier
+or israce($n) == ch\@taren
+or isfriend($n) == 59
+or isenemy($n) == 58
+or isenemy($n) == 19
+  if rand(25)
+    yell Die, $N, Enemy of the Scourge!
+  endif
+  mpkill $n
+else
+  if ispc($n)
+    if isbitset($n) == 336
+    or israce($n) == chaja
+    or israce($n) == shuddeni
+    or isimmort($n)
+    else
+      mpkill $n
+    endif
+  endif
+endif
+~
+>greet_prog 50~
+mptrigger $n
+~
+>rand_prog 100~
+mptrigger $r
+~
+>rand_prog 1~
+if rand(20)
+  cast supress
+endif
+~
+>fight_prog 100~
+if value(0) == 0
+  mpvalueset 0 1
+  if rand(20)
+    if rand(50)
+      cackle $n
+    else
+      sneer $n
+    endif
+  endif
+  if rand(50)
+    cast drain
+  else
+    mpvaluerand 1 1 5
+    if value(1) == 1
+      cast curse
+    endif
+    if value(1) == 2
+      cast blindness
+    endif
+    if value(1) == 3
+      cast plague
+    endif
+    if value(1) == 4
+      cast pox
+    endif
+    if value(1) == 5
+      cast agony
+    endif
+  endif
+else
+  mpvalueset 0 0
+endif
+~
+>load_prog 100~
+mpaddskill $i 52 100
+mpaddskill $i 39 100
+mpaddskill $i 8 100
+mpaddskill $i 104 100
+mpaddskill $i 107 100
+mpaddskill $i 306 100
+mpaddskill $i 310 100
+mpoload 5493 on $i
+~
+|
+V4 5496
+priest high shuddeni Yithoul mob330~
+the high priest of Yithoul~
+The high priest of Yithoul stands shrouded in black robes.
+~
+The high priest of the Yithoul Temple is draped in long black robes.  His
+heavily wrinkled face bears the marks of decades of twisted cruelty and
+arrogance.  
+~
+shuddeni~
+water scholar~
+ADLPX BQ ABDJTUZ E 0
+60 30 38d138+1080 60d10+100 7d9+30 negative~
+void-taint~
+-27 -27 -27 -9
+FHK b
+26 0 0 50 50 0 0 0 0 0 0 0 0 33 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 199 58
+AHMW ABCDEFGIJ AGK medium unknown
+>trigger_prog 100~
+if ispc($n)
+  if isenemy($n)
+    if rand(25)
+      yell Die, $N, Enemy of the Scourge!
+    endif
+    mpkill $n
+  endif
+else
+  if name($n) / sasoldier
+    mpkill $n
+  endif
+endif
+~
+>greet_prog 50~
+mptrigger $n
+~
+>rand_prog 100~
+mptrigger $r
+if rand(5)
+cast supress
+endif
+~
+>fight_prog 100~
+if value(0) == 0
+  mpvalueset 0 1
+  if rand(20)
+    if rand(50)
+      cackle $n
+    else
+      sneer $n
+    endif
+  endif
+  if rand(50)
+    cast drain
+  else
+    mpvaluerand 1 1 5
+    if value(1) == 1
+      cast curse
+    endif
+    if value(1) == 2
+      cast blindness
+    endif
+    if value(1) == 3
+      cast plague
+    endif
+    if value(1) == 4
+      cast pox
+    endif
+    if value(1) == 5
+      cast agony
+    endif
+  endif
+else
+  mpvalueset 0 0
+endif
+~
+>load_prog 100~
+mpaddskill $i 52 100
+mpaddskill $i 39 100
+mpaddskill $i 8 100
+mpaddskill $i 104 100
+mpaddskill $i 107 100
+mpaddskill $i 306 100
+mpaddskill $i 310 100
+~
+|
+V4 5497
+hound abuha massive wolf wolf-like beast~
+a massive hound of Abuha~
+A massive, wolf-like beast, jet-black and hairless, stalks the halls.
+~
+In form like a great, hairless wolf, the hound of Abuha stands fully
+five feet at the shoulder, its muscular legs and back offset by its
+emaciated, almost skeletal, rib cage, face and protruding spine.  The
+beast\@s skin is black, and its eyes deep-set burning coals, as though the
+conflagration which consumed its flesh now dwindled in those flickering
+orbs.  Its long muzzle is thick with serrated teeth, which gleam white
+against its snarling, jet-black jowls.  
+~
+demon~
+water scholar~
+AGL N DFJZ E 0
+50 25 34d100+1173 50d10+100 6d8+25 pierce~
+bite~
+-21 -21 -21 -6
+FHUV BLQ
+26 90 90 75 0 0 0 0 0 0 0 0 0 33 -15 0 0 0 0 0 0 0 0 -33 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 58
+ACGHMV ABCDEFGHIJKPQV A large flesh
+>trigger_prog 100~
+if ispc($n)
+  if isenemy($n)
+    if rand(25)
+      snarl $n
+    endif
+    mpkill $n
+  endif
+else
+  if name($n) / sasoldier
+    mpkill $n
+  endif
+endif
+~
+>greet_prog 50~
+mptrigger $n
+~
+>rand_prog 100~
+mptrigger $r
+~
+|
+V4 5498
+yaril black huge creature~
+the black yaril~
+A huge creature formed of grasping appendages and slashing teeth flops about.
+~
+A huge black creature formed mostly of grasping appendages and long,
+slashing teeth flops obscenely about the remains of the spirit palace.  It
+emits foul grunting noises now and then, and seems to leave a trail of mucus
+behind it as it drags itself along.  
+~
+human~
+water scholar~
+AGX 0 JZ E 0
+54 55 20d230+1000 0d0+0 5d12+40 slash~
+slash~
+-25 -25 -25 -10
+EHK ABNb
+26 0 0 0 0 0 0 0 0 0 0 0 0 40 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 58
+AHMV ABCDEFGHIJK A medium unknown
+>fight_prog 5~
+if ispc($n)
+else
+mpvaluerand 0 1 6
+if mobvalue(0) == 1
+mpforce $n yell Wild yaril! Put it down!
+endif
+if mobvalue(0) == 2
+mpforce $n yell Another yaril turned! Slay it! Slay it!
+endif
+if mobvalue(0) == 3
+mpforce $n yell Dragon\@s curses, it turns! Cursed yaril!
+endif
+if mobvalue(0) == 4
+mpforce $n yell What fool bound this yaril? It is free! Kill!
+endif
+if mobvalue(0) == 5
+mpforce $n yell Outrageous incompetance!
+endif
+if mobvalue(0) == 6
+mpforce $n yell Fools! Fools!
+endif
+endif
+~
+>rand_prog 4~
+mpkill $r
+~
+>rand_prog 10~
+mpvalueset 1 0
+~
+>greet_prog 100~
+if ispc($n)
+if isimmort($n)
+else
+if israce($n) == shuddeni
+or israce($n) == chaja
+else
+if mobvalue(1) == 0
+mpecho Sensing a non-shuddeni, the black yaril rushes forward, gibbering insanely!
+mpvalueset 1 1
+mpkill $n
+endif
+endif
+endif
+endif
+~
+|
+V4 5499
+fire ball small firetrap~
+a floating ball of fire~
+A small ball of fire hovers in the center of the room.
+~
+A small ball of flame hovers here, spitting embers fitfully.
+~
+human~
+water scholar~
+AB 0 DFJTZ N 0
+30 -10 22d45+941 30d10+100 1d1+10 fire~
+flame~
+-9 -9 -9 0
+0 ABHb
+26 0 0 0 0 0 0 0 0 -100 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>trigger_prog 100~
+mpcast 59 99 $n
+~
+>greet_prog 100~
+if ispc($n)
+if israce($n) == shuddeni
+or israce($n) == chaja
+or isbitset($n) == 336
+else
+mpecho As an intruder draws too close, the ball of flame bursts into a brilliant explosion!
+mpcast 661 99
+mpcast 129 99
+mproomcmd mptrigger all
+mpzecho An explosion sounds from somewhere within the palace!
+mppurge self
+break
+endif
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V12
+5460
+chair white~
+a comfortable chair~
+A comfortable white chair sits in a pool of light.~
+~
+wood~
+furniture 0 0 0
+1 3000 EHK 150 150
+1 1300 0 4 P
+3
+V12
+5461
+shattered pile rose colored rose-colored shard shards glass~
+a shattered pile of rose-colored glass~
+A shattered pile of rose-colored glass shards is strewn across the floor.~
+~
+glass~
+trash A 0 A
+0 0 0 0 0
+30 4 0 2 P
+1
+E
+shattered pile rose colored rose-colored shard shards glass~
+Apparently once a delicate glass globe, these pieces are all that is left
+of the original artifact.  Shattered into dozens of tiny, curved shards, the
+glass gleams disconsolately.  
+~
+V12
+5462
+cabinet teak heavy shattered wooden wood~
+a shattered wooden cabinet~
+A heavy teak cabinet squats here, cloven in two.~
+~
+wood~
+container a 0 P
+2000 B 0 50 1
+1 400 0 4 P
+0
+E
+cabinet teak heavy shattered wooden wood~
+This heavy teak cabinet, once polished and varnished with loving care,
+has been ruthlessly scratched and clawed.  The doors lie open, hinges jammed
+or shattered in their position.  The piece of furniture has been cloven in
+two with great violence, the comparatively pale wood splinters stark as
+gaping wounds.  
+~
+V12
+5463
+pegasus figurine carving~
+a pegasus figurine~
+A small carving of a pegasus stands proudly.~
+~
+ivory~
+treasure IKY 0 AO
+0 0 0 0 0
+30 10 6240 2 P
+0
+A
+20 -3
+V12
+5464
+whip black ominous ancient Eyiicr obj330~
+the ancient black whip, \#Eyiicr\#~
+An ominous black whip embedded with demon teeth lies here.~
+~
+poison~
+weapon BCEJSaf 0 AN
+whip 7 7 8 0
+venomous lash~
+60 60 1250000 2 P
+1
+A
+13 10
+A
+19 4
+A
+18 4
+V12
+5465
+staff spirit light~
+the Staff of Spirit~
+A beautiful staff of light illumes the room.~
+~
+energy~
+weapon AIKLSYa 0 AN
+staff 6 7 10 F
+wrath~
+60 50 280932 3 P
+1
+A
+4 2
+A
+3 2
+A
+13 30
+A
+12 50
+V12
+5466
+robe ages energy~
+the Robe of Ages~
+A robe of woven energy lies here.~
+~
+energy~
+armor BD 0 AK
+11 13 12 11 0
+53 30 328500 2 P
+2
+A
+13 50
+A
+12 30
+A
+20 -3
+V12
+5467
+bracelet silver pure~
+a bracelet of pure silver~
+A heavy bracelet of silver glints in the light.~
+~
+silver~
+jewelry I 0 AM
+0 0 0 0 0
+51 20 60500 1 P
+9
+A
+13 25
+A
+20 -5
+V12
+5468
+ring sunlight light golden~
+a ring of sunlight~
+A ring of golden light warms the room.~
+~
+energy~
+treasure ADIK 0 AB
+0 0 0 0 0
+50 5 157000 0 P
+9
+A
+12 50
+A
+20 -4
+V12
+5469
+smoke haze grey pool pools floor~
+a haze of dense smoke~
+A dense, grey haze of smoke pools along the floor here.~
+~
+silver~
+armor a 0 0
+5 7 5 3 0
+43 3 14750 0 P
+40
+A
+12 20
+A
+13 15
+A
+3 1
+A
+2 1
+V12
+5470
+amulet bloodstone stone blood local dispersion obj336~
+an amulet of local dispersion~
+A bloodstone amulet covered in flame-red runes lies here.~
+~
+gold~
+treasure G 0 AC
+0 0 0 0 0
+60 5 0 0 P
+0
+A
+19 3
+A
+4 -1
+E
+runes~
+The runes spell out this word:
+
+ ajyigr
+~
+>speech_prog ajyigr~
+if isworn($o)
+  mpmload 339
+  mpforce mob339 mpfocus $o
+  opcast 397 51
+endif
+~
+>verb_prog fireupdispersion~
+opcast 661 51
+~
+|
+V12
+5471
+fetish scorched bone~
+a fetish of scorched bone~
+A scorched bone fetish lies here.~
+This item is made from bones taken from a great dragon, and seared in the
+very inferno itself deep in the Yithoul temple.  While anyone can wear it,
+the fetish grants greatest power to one whose blood was used in its
+creation- in this case the void magus Ksaukach.  
+
+While such sympathetic magic strengthens Ksaukach, the bond could also be
+used to weaken him, if properly manipulated by one knowledgable in breaking
+down void magic.  
+~
+dragonbone~
+armor GSY 0 AM
+2 2 2 20 0
+50 5 34335 1 P
+20
+A
+13 15
+A
+31 2
+A
+2 3
+A
+12 40
+E
+scorched bone fetish~
+This fetish is made of the bones of some great beast, shaved down,
+scorched black and broken to form a crude bracer.  Dried sinew, likely from
+the same creature, wraps around the bones, allowing it to be affixed about
+the forearm.  
+~
+V12
+5472
+corpse master nayshan flayed crucified wall~
+a flayed, crucified corpse~
+The corpse of Master Nayshan is nailed to the wall here.~
+~
+steel~
+container 0 0 0
+100 0 0 100 100
+45 80 34500 2 P
+1
+A
+19 3
+A
+18 2
+A
+13 10
+E
+corpse master nayshan flayed crucified wall~
+The body of the once-famous Master Nayshan has been cruelly cut up,
+sagging limply from the many broad-headed iron nails which affix it to the
+wall.  The arms and legs are spread-eagled, broken in several places.  Long,
+thin strips of skin and muscle dangle from the body, flayed and peeled away.
+The shattered jaw hangs open, several smaller viscera cut from elsewhere
+placed obscenely within.  The eyes are torn and ragged, bits of the pulpy
+tissue hanging from the sockets.  
+~
+V12
+5473
+dagger silver~
+a silver dagger~
+A silver dagger is partially obscured on the floor.~
+~
+silver~
+weapon I 0 AN
+dagger 2 22 10 0
+wrath~
+50 20 70500 1 P
+15
+A
+12 15
+A
+18 4
+A
+19 1
+V12
+5474
+dagger sapphire~
+a dagger inset with a single sapphire~
+A beautiful but deadly looking dagger gleams beckoningly.~
+~
+steel~
+weapon AGI 0 AN
+dagger 5 9 5 0
+freezing bite~
+52 30 250250 1 P
+1
+A
+19 4
+A
+18 2
+A
+2 2
+V12
+5475
+flail steel black~
+a black steel flail~
+A black steel flail lies here.~
+~
+steel~
+weapon E 0 AN
+flail 12 3 1 0
+pound~
+50 60 11239 2 P
+0
+A
+18 1
+A
+19 2
+V12
+5476
+shard black crystal~
+a shard of black crystal~
+A black shard of crystal lies here, casting a blueish glow.~
+This is a stone through which the death throes of countless tortured
+shuddeni prisoners have been channeled.  The crystal is now used to keep the
+demonic minions of the Shuddeni Scourge in check.  Bound to their Yarils,
+its very existence ensures their compliance to their creators, no matter
+where it is.  
+
+It was seized by adventurers and given to the forces of light, who weakened
+the binding magics.  The shuddeni who controlled Yarils with this stones
+power will now be hard pressed to keep them from revolting violently.  
+~
+crystal~
+gem AGYa 0 APQ
+0 0 0 0 0
+51 0 10000 1 P
+1
+A
+3 1
+A
+4 -1
+A
+12 15
+E
+black shard crystal~
+This jagged shard of crystal is a hand in length.  Though black in color
+the crystal is translucent.  Glancing through it briefly, objects and people
+viewed through it seem distorted.  Without peering through, though, it is
+difficult to tell.  A bluish glow emanantes from it, casting an eerie
+radiance about its surroundings.  
+~
+>remove_prog 100~
+mpremaffect $n 42
+mpremaffect $n 43
+~
+>verb_prog p peer crystal~
+if isworn($n)
+if rand(30)
+if snaffected($n) == 625
+else
+mpaddaffect $o 625 60 8 27 0 0
+endif
+endif
+if snaffected($n) == 42
+or snaffected($n) == 43
+mpechoat $n You peer through the crystal, but nothing seems to happen.
+mpechoaround $n $N peers through a shard of black crystal.
+break
+endif
+if isgood($n)
+mpechoat $n As you peer through the shard of black crystal, red creeps into your vision.
+mpechoaround $n $N peers through a shard of black crystal.
+mpcast 42 99
+break
+endif
+if isevil($n)
+mpechoat $n As you peer through the shard of black crystal, gold creeps into your vision.
+mpechoaround $n $N peers through a shard of black crystal.
+mpcast 43 99
+break
+endif
+if rand(50)
+mpechoat $n As you peer through the shard of black crystal, gold creeps into your vision.
+mpechoaround $n $N peers through a shard of black crystal.
+mpcast 43 99
+else
+mpechoat $n As you peer through the shard of black crystal, red creeps into your vision.
+mpechoaround $n $N peers through a shard of black crystal.
+mpcast 42 99
+endif
+else
+mpinterpret $n $x
+endif
+~
+|
+V12
+5477
+shirt chainmail enchanted~
+an enchanted chainmail shirt~
+A pile of chainmail lies here.~
+~
+steel~
+armor AI 0 AD
+12 12 10 10 0
+53 80 43500 2 P
+9
+A
+19 3
+A
+12 20
+A
+13 15
+V12
+5478
+leggings blue dragonscale~
+a pair of blue dragonscale leggings~
+A heavy pair of blue dragonscale leggings lie here.~
+~
+dragonscale~
+armor SY 0 AF
+10 10 10 5 0
+42 90 13700 2 P
+40
+A
+2 1
+A
+18 3
+A
+1 1
+A
+19 2
+V12
+5479
+cape blue silvery~
+a silvery blue cape~
+A dark blue cape shimmers silver against the ground.~
+~
+velvet~
+armor 0 0 AK
+10 10 10 10 0
+50 50 69250 2 P
+20
+A
+13 35
+A
+12 15
+A
+19 2
+V12
+5480
+boots soft black leather~
+a pair of soft leather boots~
+A pair of soft black boots lie here.~
+~
+leather~
+armor 0 0 AG
+8 9 8 3 0
+45 40 9750 2 P
+30
+A
+12 20
+A
+14 30
+A
+18 2
+A
+19 1
+V12
+5481
+gauntlets blue dragonscale~
+a pair of blue dragonscale gauntlets~
+A supple pair of dragonscale gauntlets lie here.~
+~
+dragonscale~
+armor 0 0 AH
+10 10 10 5 0
+42 50 10750 1 P
+40
+A
+1 1
+A
+2 1
+A
+18 2
+A
+19 2
+V12
+5482
+sword notched crescent moon crescent-moon~
+a notched crescent-moon sword~
+A sword with a notched crescent-moon blade rests here.~
+~
+iron~
+weapon 0 0 AN
+sword 8 3 3 0
+slash~
+30 120 5184 2 P
+0
+A
+18 1
+A
+19 2
+V12
+5483
+sword bastard chaja notched~
+a notched chaja bastard sword~
+A bastard sword, nicked and notched, lies here.~
+~
+iron~
+weapon S 0 AN
+sword 3 14 3 F
+slash~
+45 210 31439 3 P
+0
+A
+19 1
+A
+1 1
+V12
+5484
+spear chaja shaft blackened black~
+a blackened chaja spear~
+A spear with a black shaft lies here.~
+~
+wood~
+weapon S 0 AN
+spear 3 14 2 F
+pierce~
+45 90 7450 3 P
+0
+A
+19 1
+A
+2 1
+V12
+5485
+battleaxe axe massive chaja~
+a massive chaja battleaxe~
+A massive chaja battleaxe lies here.~
+~
+iron~
+weapon S 0 AN
+axe 2 22 3 F
+chop~
+45 300 6030 3 P
+10
+A
+19 3
+A
+18 -1
+A
+54 -1
+E
+battleaxe axe massive chaja~
+This large chaja battle-axe is over six feet long.  A haft of bone and
+wood is bound with iron bands.  A trapezoidal head, a crude wedge of iron,
+tips the weapon.  Two rusty spikes protrude from the blunt back end of the
+axehead.  
+~
+V12
+5486
+steel dagger sharp razor-sharp~
+a razor-sharp steel dagger~
+A razor-sharp steel dagger is here.~
+~
+steel~
+weapon Y 0 AN
+dagger 8 4 2 D
+stab~
+35 5 8000 2 P
+120
+A
+18 2
+A
+19 1
+V12
+5487
+slug dried cave~
+some slug meat~
+Some slug meat lies here.~
+~
+flesh~
+food Q 0 A
+35 50 0 0 0
+15 40 0 1 P
+0
+V12
+5488
+pale pulpy fruit~
+a pale, pulpy fruit~
+A pale, pulpy fruit lies here.~
+~
+plant~
+food S 0 AO
+40 50 0 0 0
+0 5 0 0 P
+0
+E
+pulpy~
+This fruit is a pale, translucent white.  Soft to the touch, its insides
+are pulpy and similarly colorless.  It tastes very sour.  
+~
+E
+pale~
+This fruit is a pale, translucent white.  Soft to the touch, its insides
+are pulpy and similarly colorless.  It tastes very sour.  
+~
+E
+fruit~
+This fruit is a pale, translucent white.  Soft to the touch, its insides
+are pulpy and similarly colorless.  It tastes very sour.  
+~
+V12
+5489
+shallow pool fetid water~
+a shallow pool of fetid water~
+A shallow pool of fetid water sits within a gouge in the floor.~
+~
+stone~
+fountain Oae 0 P
+-1 -1 'water' 0 0
+0 0 0 5 P
+0
+V12
+5490
+black steel rapier sword~
+a black steel rapier~
+A black steel rapier is here.~
+~
+steel~
+weapon E 0 AN
+sword 6 7 2 0
+pierce~
+52 60 94316 2 P
+30
+A
+18 3
+A
+19 1
+V12
+5491
+series chains chain pulley pulleys~
+a series of chains, fed through pulleys~
+A series of hooked chains fed through pulleys hang from the ceiling.~
+~
+unknown~
+trash a 0 0
+0 0 0 0 0
+52 0 0 0 P
+0
+E
+series chains chain pulley pulleys~
+A series of hooked chains fed through pulleys hang from the ceiling. 
+Strung on runner-style bearings, the pulleys slide along their bracket from
+north to south wall.  The chains themselves are strung with a series of
+wide, sharp meat-hooks on either end.  
+~
+V12
+5492
+no ne~
+none~
+None~
+~
+glass~
+potion A 0 A
+45 'regeneration' 'cure critical' '' ''
+45 5 13000 1 P
+8
+V12
+5493
+iron key basic chain~
+a basic iron key~
+A basic iron key with four wards hangs on a chain.~
+~
+iron~
+key 0 0 A
+0 0 0 0 0
+51 2 400 2 P
+0
+V12
+5494
+thing~
+thing~
+Thing~
+~
+parchment~
+trash 0 0 AC
+0 0 0 0 0
+40 340 0 2 P
+0
+A
+32 100
+V12
+5495
+staff black steel-capped steel capped~
+a steel-capped black staff~
+A black staff capped with steel lies here.~
+~
+wood~
+weapon 0 0 AN
+staff 3 17 1 F
+pound~
+51 60 496067 2 P
+4
+A
+47 5
+A
+20 -3
+A
+13 15
+A
+12 15
+V12
+5496
+cool fob coolfob~
+coolfob~
+Coolfob prevents armor abuse.~
+~
+unknown~
+trash PXd 0 A
+0 0 0 0 0
+52 0 0 0 P
+0
+V12
+5497
+none~
+none~
+None~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+V12
+5498
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V12
+5499
+pegasus sigil soaring~
+the Sigil of the Soaring Pegasus~
+..~
+~
+flesh~
+armor HIMZ 0 R
+10 10 10 10 0
+52 1 49117 0 P
+0
+A
+13 30
+A
+20 -5
+#0
+
+
+
+#ROOMS
+#5458
+A Vivisection Room~
+Several corpses--human, ch\@taren, pegasi, sprite, and ki-rin--lay
+stretched out on tables, in various stages of vivisection.  Blood is
+liberally splattered on the walls of the former spirit-templar training
+room, and is soaked deep into the matted flooring.  An open doorway looms to
+the north, battered off its hinges.  The room has a charnal, rotting smell,
+and flies and roaches skitter and buzz about.  
+~
+~
+0
+0 9 0
+D0
+~
+~
+0 0 5461
+S
+#5459
+A Former Training Room~
+This large room is very dark and a musty reek fills the air.  Once a
+training room for young spirit mages to train and test themselves, it now
+serves as a makeshift fungus cave.  The windows have been thoroughly sealed
+and numerous varieties of pale fungus cover the floor and walls, growing on
+the carrion remains of former denziens of the spirit palace.  Cave slugs,
+imported from Yithoul, slither about the grim carnage, feeding on the
+fallen.  A shallow pool of fetid water sits in the center of the room, the
+fungus growing about it.  A single door leads north, back to the main part
+of the palace.  
+~
+~
+0
+0 9 0
+D0
+~
+~
+3 0 5460
+S
+#5460
+A Dark Hallway~
+The hallway turns here, leading north and west, the corridors dark.  A
+charnal, rotting smell comes from the south, the door furred with molds and
+sickly moss.  A severed ethron hand has been stapled to the wall with crude
+bits of twisted, charred metal scraps.  The once-rich red carpet is torn and
+ripped away.  A dense, spicy smoke lingers about the floor, drifting in from
+the west in slow eddies.  
+~
+~
+0
+0 9 0
+D0
+~
+~
+0 0 5469
+D2
+~
+~
+3 0 5459
+D3
+~
+~
+0 0 5461
+S
+#5461
+A Destroyed Hallway~
+This hallway runs to the east and west, the walls and floor marred by
+countless, deliberate, crude axe-strokes.  The once-glowing walls are
+completely darkened with soot and grime, the carpet peeled away in ragged
+tatters.  A wrought-iron censer smoulders away, nailed to the ceiling, a
+dense, lingering smoke trickling from its pores.  The smoke is heavily
+spiced, assailing the nostrils with dark, funereal scents.  A doorway opens
+to the south, the door battered from its hinges.  
+~
+~
+0
+0 9 0
+D1
+~
+~
+0 0 5460
+D2
+~
+~
+0 0 5458
+D3
+~
+~
+0 0 5462
+S
+#5462
+A Soot-Stained Hallway~
+The hallway runs east and west of here, the dirty corridors dank and
+foul-smelling, the walls stained black with soot.  A soft red carpet,
+covered in tiny little designs, is torn, burned, and stained with darker
+hues of crimson.  Lighter rectangular areas along the wall show where
+tapestries stood during the shuddeni assault on the Palace.  North lie the
+old classrooms.  
+~
+~
+0
+0 9 0
+D0
+~
+~
+0 0 5467
+D1
+~
+~
+0 0 5461
+D2
+~
+~
+0 0 5492
+D3
+~
+~
+0 0 5463
+S
+#5463
+A Darkened Hallway~
+This hallway runs to the east and west, the once-bright walls dark and
+sullied.  A soft, dark-red carpet is stiff with liberally bespattered gore
+and blood, and obscene designs have been slashed on the ceiling and walls in
+the same material.  The shredded remains of a large portrait hang on the
+northern wall, the frame broken and rent.  The heavy stench of blood is on
+the air, and an odd, heavy smoke lingers about the floor in a dense haze.  
+~
+~
+0
+0 9 0
+D1
+~
+~
+0 0 5462
+D2
+~
+~
+103 0 5491
+D3
+~
+~
+0 0 5464
+S
+#5464
+A Charred Hallway~
+This hallway, once bright and glowing, has been consumed by a terrible
+fire.  The walls, floor, and ceiling are all charred and burnt, any
+furnishing or decorations utterly consumed.  A crumpled corpse, burnt until
+it is little more than a humanoid shape of ash, huddles against the wall.  A
+blackened door opens in the southern wall, and the hallway bends to the
+north and east.  A dense, aromatic smoke lingers about the floor in a
+slow-moving haze.  
+~
+~
+0
+0 9 0
+D0
+~
+~
+0 0 5465
+D1
+~
+~
+0 0 5463
+S
+#5465
+A Dark Hallway~
+The hallway continues here, the tattered red carpet leading north to the
+west tower, and south to the main part of the castle.  The walls of the
+corridor are covered with detailed murals which have been defaced.  Showing
+the entrance of spirit magic into the world of Avendar, the murals have been
+splattered with blood, and crude pictures of demons and shuddeni have been
+drawn in charcoal upon them.  
+~
+~
+0
+0 9 0
+D0
+~
+~
+0 0 5474
+D2
+~
+~
+0 0 5464
+S
+#5466
+A Defaced Classroom~
+A few tables and chairs are set here, arranged to face the center of the
+room, where a large desk sits.  Black sigils have been carved into the rock
+of the room, and the curved ceiling seems to amplify the voice of the person
+standing in the center.  Diagrams litter the tables and desk, depicting
+black rituals and lessons in the dark arts.  East lies the way back to the
+hall, and to the rest of the palace.  
+~
+~
+0
+0 9 0
+D1
+~
+~
+0 0 5467
+S
+#5467
+The Entrance to the Converted Classrooms~
+A small bookcase is set against the wall, filled with ruined books that
+once served as reference for the students of the spirit palace.  West and
+east lie the remains of the small classrooms, now converted to serve the
+dark designs of the shuddeni Scourge.  
+~
+~
+0
+0 9 0
+D1
+~
+~
+0 0 5468
+D2
+~
+~
+0 0 5462
+D3
+~
+~
+0 0 5466
+S
+#5468
+A Defaced Classroom~
+A few tables and chairs are set here, arranged to face the center of the
+room, where a large desk sits.  Black sigils have been carved into the rock
+of the room, and the curved ceiling seems to amplify the voice of the person
+standing in the center.  Diagrams litter the tables and desk, depicting
+black rituals and lessons in the dark arts.  West lies the way back to the
+hall, and to the rest of the palace.  
+~
+~
+0
+0 9 0
+D3
+~
+~
+0 0 5467
+S
+#5469
+A Dark Hallway~
+The hallway is gloomy and full of unpleasant scents.  The dark red
+carpet, stained and burned, muffles sounds and adds to the smell.  A thick
+layer of ash nearly hides the carpet in some spots, and the walls are
+scorched black.  
+~
+~
+0
+0 9 0
+D0
+~
+~
+0 0 5470
+D2
+~
+~
+0 0 5460
+S
+#5470
+The Entrance to the Old Library~
+The tall pillars mark the entrance to what once housed the library of
+the Spirit Palace.  There is a thick sense of foreboding lingering over the
+area and the smells of blood and sweat hang heavy in the air.  Barracks for
+the forces of the shuddeni Scourge fill this area and spread out to fill the
+rest of the library\@s remains to the north and east.  South, a hall leads to
+darkness.  
+~
+~
+0
+0 9 0
+D0
+~
+~
+0 0 5471
+D1
+~
+~
+0 0 5473
+D2
+~
+~
+0 0 5469
+S
+#5471
+Converted Library Barracks~
+The heavy bookcases have been cleared out from this part of the library,
+having been replaced with rows and rows of crude cots and bedrolls for the
+shuddeni forces.  The smells of blood and sweat hang oppressively in the
+air, and no light penetrates the sealed windows.  More barracks stretch east
+and south.  
+~
+~
+0
+0 9 0
+D1
+~
+~
+0 0 5472
+D2
+~
+~
+0 0 5470
+S
+#5472
+Converted Library Barracks~
+The heavy bookcases have been cleared out from this part of the library,
+having been replaced with rows and rows of crude cots and bedrolls for the
+shuddeni forces.  The smells of blood and sweat hang oppressively in the
+air, and no light penetrates the sealed windows.  More barracks stretch west
+and south.  
+~
+~
+0
+0 9 0
+D2
+~
+~
+0 0 5473
+D3
+~
+~
+0 0 5471
+S
+#5473
+Converted Library Barracks~
+The heavy bookcases have been cleared out from this part of the library,
+having been replaced with rows and rows of crude cots and bedrolls for the
+shuddeni forces.  The smells of blood and sweat hang oppressively in the
+air, and no light penetrates the sealed windows.  Cooking fires have been
+set up here, smoke wafting up the stairs into the second level of the
+library.  More barracks stretch west and north.  
+~
+~
+0
+0 9 0
+D0
+~
+~
+0 0 5472
+D3
+~
+~
+0 0 5470
+D4
+~
+~
+0 0 5483
+S
+#5474
+A Bend in the Hallway~
+The hall is dark, the odors of smoke and blood heavy in the air.  Deep
+blue carpet, heavily stained and tattered leads west down the hallway, and
+north to the plain doorway of one of former bedrooms.  South, red carpet
+trails away, heading towards the main part of the palace.
+~
+~
+0
+0 9 0
+D0
+~
+~
+3 0 5475
+D2
+~
+~
+0 0 5465
+D3
+~
+~
+0 0 5477
+S
+#5475
+The Remains of Master Nayshan\@s Room~
+This room was once plain and peaceful, but now its bed is filthy and
+caked with the grime and sweat of the chaja and shuddeni who have taken it. 
+An empty picture frame hangs crookedly on the wall with tatters of canvas
+spilling from it.  The carvings on the bed post and desk, some of which seem
+so detailed they must have taken decades to complete, have been
+thoughtlessly scrached and ruined.  A window looks north over the world of
+Avendar, and a small door leads south to the rest of the palace.  
+~
+~
+0
+0 9 0
+D2
+~
+~
+3 0 5474
+S
+#5477
+The Bottom of the West Tower~
+The hall is dark, the odors of smoke and blood heavy in the air.  Deep
+blue carpet, heavily stained and tattered, leads east down the hallway.  A
+spiral staircase leads upwards to the west tower of the palace.  
+~
+~
+0
+0 9 0
+D1
+~
+~
+0 0 5474
+D4
+~
+~
+0 0 5478
+S
+#5478
+A Small Hallway~
+A blood-washed set of stairs spirals down through the tower here, the
+carpeting stained a brownish-red.  The walls are darkened and dead, windows
+blackened opaque with soot or more blood.  A small door to the north has
+been crudely boarded over, and the hallway stretches into darkness to the
+east.  
+~
+~
+0
+0 9 0
+D1
+~
+~
+0 0 5481
+D5
+~
+~
+0 0 5477
+S
+#5480
+A Convereted Demon Summoning Room~
+This room once belonged to the librarian\@s assistant, but no longer. 
+All the furniture and personal items are gone.  Melted down or destroyed to
+feed the shuddeni war engine, the only thing taking up the floor is a large
+summoning pentagram.  The symbol is gouged into the floor, its grooves
+filled with dried blood and reagents.  A small gore-flecked table in the
+corner holds parts not in use and a heavy black curtain blocks the window. 
+A cursed and suffocating heaviness hangs in the air.  
+~
+~
+0
+0 9 0
+D2
+~
+~
+1 0 5481
+S
+#5481
+A Small, Darkened Hallway~
+A curved staircase leads up to the top level of the west tower, once the
+bedroom of the archmage but now the command center of the Scourge.  Soot
+darkens the walls, whatever magical glow they held long quelled, and a slab
+of black stone fills the southern window completely.  A small door leads
+north to the remains of the libraian assistant\@s room.  
+~
+~
+0
+0 9 0
+D0
+~
+~
+1 0 5480
+D1
+~
+~
+0 0 5488
+D3
+~
+~
+0 0 5478
+D4
+~
+~
+3 0 5482
+S
+#5482
+The Arch-Magi\@s Room~
+Thin beams of light stream through the shutters of the windows looking
+out towards each of the four compass points.  The crude shutters do not
+completely block the view however and to the north you can see the vast
+realm of Avendar spread out like a beautiful carpet, from the green forests
+of Nendor to the distant blue sparkle of the Uthlin Ocean.  West the shimmer
+of a bridge of mist catches your eye, and east lies a view of the opposite
+tower, glowing in the sunlight.  The shuddeni can overlook the cloudy
+expanse to the south for signs of invaders.  The surface of the large desk
+in the room is completely covered with battle plans and supply orders from
+the front.  The furnishings of this room are imported from the undercities
+of the Shuddeni, both plush and extravagant to serve the war-leaders of the
+Scourge.  A twisting staircase leads back into the palace.  
+~
+~
+0
+0 8 0
+D1
+~
+~
+65607 5493 5494
+D3
+~
+~
+65543 5493 5493
+D5
+~
+~
+3 0 5481
+S
+#5483
+The Second Level of the Ransacked Library~
+Heavy bookcases that once held the library of the spirit palace stand in
+sad, empty rows.  The books have been removed and many of the bookshelves
+are in the process of being dismantled to fuel the war engines of the
+Scourge.  A foul smell permeates the smokey air here, seeming to waft up
+from the staircase.  The stairs lead down into what used to be the main part
+of the library, while the ruins of the rest of the second floor spread to
+the north and west.  
+~
+~
+0
+0 9 0
+D0
+~
+~
+0 0 5484
+D3
+~
+~
+0 0 5486
+D5
+~
+~
+0 0 5473
+S
+#5484
+An Improvised Sleeping Area in the Library~
+Most of the desks that filled this section of the library have been
+moved to make room for rows of sleeping pads.  The bedrolls reek of the
+blood and sweat of the shuddeni and chaja soldiers who make use of them. 
+The chamber pots in the corners of the room only add to the unpleasant
+smells in the air.  The remains of the library spread to the west and south.
+~
+~
+0
+0 9 0
+D2
+~
+~
+0 0 5483
+D3
+~
+~
+0 0 5485
+S
+#5485
+An Armory Within the Remains of the Library~
+Weapon racks have replaced bookcases within this corner of the library,
+and a forge now stands where stands held open the large tomes of the spirit
+palace.  Weapons in various states of completion litter the racks and floor
+as the shuddeni war engine forges its tools of destruction.  The ruins of
+the library continue to the east and south.  A window has been hacked or
+blasted in the side of the tower wall, the large rent looking out into
+smoke-stained clouds.  
+~
+~
+0
+0 9 0
+D1
+~
+~
+0 0 5484
+D2
+~
+~
+0 0 5486
+S
+#5486
+The Second Level of the Ransacked Library~
+Heavy bookcases that once held the library of the spirit palace stand in
+eastern part of the room.  Now the shelves hold only the black volumes and
+the foul instruments of shuddeni worship.  A guardpost is set up to the west
+by the entrance to a long, darkened hallway.  A narrow staircase leads up to
+the top level of the tower where once most rare and powerful books of magic
+are kept.  The remains of the library continue to the east and north, now
+serving the forces of the Scourge.  A window has been hacked or blasted in
+the side of the tower wall, the large rent looking out into smoke-stained
+clouds.  
+~
+~
+0
+0 9 0
+D0
+~
+~
+0 0 5485
+D1
+~
+~
+0 0 5483
+D3
+~
+~
+0 0 5489
+D4
+~
+~
+0 0 5487
+S
+#5487
+A Dark Shrine at the Top of the Library~
+The bookstands that once filled this room are now gone to feed the
+shuddeni war engine, the books that filled them burned to fuel the fires of
+conquest.  What stands now in this room is a black altar to the unholy gods
+of the shuddeni.  Heavy black curtains bearing depictions of Arkhural, Ashur
+and Bayyal block any sunlight from entering through windows.  An obsidan
+dragon idol stands behind the bloodstained altar, its jaws yawning wide as
+if to consume the world.  
+~
+~
+0
+0 9 0
+D5
+~
+~
+0 0 5486
+S
+#5488
+A Small, Darkened Hallway~
+The hallway is dank and filled with the scents of smoke and blood. 
+Broken furnishings litter the floor, and blackened, half-burned pages are
+strewn about.  The only things of quality are two thick, expensive banners
+hung upon the walls.  One is pale orange, and shows a silver barbed whip
+coiled in a circle.  The other is black, and shows crossed staves, one
+topped with a skull, one wreathed in flame.  
+~
+~
+0
+0 9 0
+D1
+~
+~
+0 0 5489
+D3
+~
+~
+0 0 5481
+S
+#5489
+A Small, Darkened Hallway~
+This hallway is dank and filled with the scents of smoke and blood. 
+Broken furnishings litter the floor, and blackened, half-burned pages are
+strewn about.  The only things of quality are two thick, expensive banners
+hung upon the walls.  One depicts a reverse pentagram on yellow, the other
+an \@X\@ of thirteen small skulls on a background wash of crimson.  
+~
+~
+0
+0 9 0
+D1
+~
+~
+0 0 5486
+D3
+~
+~
+0 0 5488
+S
+#5490
+A Slave Pen~
+This large room, formly a training room for spirit templars, is now used
+as a slave pen by the shuddeni scourge.  The walls raise up, made up of
+white marble and splattered in filth.  A few piles of smelly rags serve as
+bedding for the slaves, and iron chains and manacles are set in the walls,
+floors, and dangle from the ceilings.  The room reeks of unwashed bodies,
+excrement, and death.  A gaping hole has been smashed into the wall to the
+east.  A doorway to the north has been sealed up via earth magic with a
+single slab of dark granite.  
+~
+~
+0
+0 9 0
+D1
+~
+~
+0 0 5491
+S
+#5491
+A Slave Pen~
+This large room, formly a training room for spirit templars, is now used
+as a slave pen by the shuddeni scourge.  The walls raise up, made up of
+white marble and splattered in filth.  A few piles of smelly rags serve as
+bedding for the slaves, and iron chains and manacles are set in the walls,
+floors, and dangle from the ceiling.  The room reeks of unwashed bodies,
+excrement, and death.  A single door leads north, back to the main part of
+the palace, and a gaping hole has been smashed into the wall to the west.  
+~
+~
+0
+0 9 0
+D0
+~
+~
+103 0 5463
+D3
+~
+~
+0 0 5490
+S
+#5492
+A Battle-Scarred Entryway~
+The once-smooth walls, ceiling and floor are filthy, stained with an
+accumulation of blood, dust, and gore.  A few tattered and torn tapestries
+line the walls, their beautiful scenes of elegant magical creatures and
+white clad mages now defaced.  The hallway continues to the north, into the
+shuddeni-occupied Palace of the Spirit, and south, a large open doorway
+leads into the daylight outside.  
+~
+~
+0
+0 13 0
+D0
+~
+~
+0 0 5462
+D2
+~
+~
+0 0 2024
+S
+#5493
+A Tiny Alcove~
+This tiny alcove is little more than a closet.  Hidden behind what appear
+to be bookcases, the walls have been painted with tar and spiked with crude
+florin nails.  The back of a bookcase blocks exit to the east.
+~
+~
+0
+0 532538 0
+D1
+~
+~
+65543 5493 5482
+S
+#5494
+A Dark Alcove Behind the Bookcase~
+This tiny alcove is little more than a closet.  Hidden behind what appear
+to be bookcases, the walls have been painted with tar and spiked with crude
+florin nails.  The back of a bookcase blocks exit to the west.
+~
+~
+0
+0 8251 0
+D3
+~
+~
+65607 5493 5482
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 5459 0 3
+D 0 5460 2 3
+D 0 5463 2 103
+D 0 5474 0 3
+D 0 5475 2 3
+D 0 5480 2 1
+D 0 5481 0 1
+D 0 5481 4 3
+D 0 5482 1 65607
+D 0 5482 3 65543
+D 0 5482 5 3
+D 0 5491 0 103
+D 0 5493 1 65543
+D 0 5494 3 65607
+M 0 5460 1 5458 1
+O 0 5489 0 5459
+M 0 5478 3 5459 3
+G 0 5487 0
+M 0 5478 3 5459 3
+G 0 5487 0
+M 0 5478 3 5459 3
+G 0 5487 0
+M 0 5484 3 5461 1
+E 0 5495 0 16
+M 0 5485 3 5461 1
+E 0 5495 0 16
+M 0 5492 5 5462 3
+E 0 5483 0 16
+M 0 5492 5 5462 3
+E 0 5483 0 16
+M 0 5492 5 5462 3
+E 0 5483 0 16
+M 0 5491 1 5462 1
+M 0 5491 1 5462 1
+M 0 5461 1 5462 1
+M 0 5488 12 5462 2
+E 0 5475 0 16
+M 0 5486 3 5462 1
+E 0 5495 0 16
+M 0 5486 3 5463 1
+E 0 5495 0 16
+M 0 5487 3 5463 1
+E 0 5495 0 16
+M 0 5499 2 5465 2
+M 0 5470 3 5465 1
+M 0 5499 2 5469 2
+M 0 5474 1 5470 1
+M 0 5476 40 5470 8
+M 0 5476 40 5470 8
+M 0 5476 40 5470 8
+M 0 5476 40 5470 8
+M 0 5476 40 5470 8
+M 0 5476 40 5470 8
+M 0 5476 40 5470 8
+M 0 5476 40 5470 8
+M 0 5470 3 5470 1
+M 0 5476 40 5471 8
+M 0 5476 40 5471 8
+M 0 5476 40 5471 8
+M 0 5476 40 5471 8
+M 0 5476 40 5471 8
+M 0 5476 40 5471 8
+M 0 5476 40 5471 8
+M 0 5476 40 5471 8
+M 0 5476 40 5472 8
+M 0 5476 40 5472 8
+M 0 5476 40 5472 8
+M 0 5476 40 5472 8
+M 0 5476 40 5472 8
+M 0 5476 40 5472 8
+M 0 5476 40 5472 8
+M 0 5476 40 5472 8
+M 0 5476 40 5473 8
+M 0 5476 40 5473 8
+M 0 5476 40 5473 8
+M 0 5476 40 5473 8
+M 0 5476 40 5473 8
+M 0 5476 40 5473 8
+M 0 5476 40 5473 8
+M 0 5476 40 5473 8
+M 0 5470 3 5473 1
+O 0 5461 0 5475
+O 0 5462 0 5475
+M 0 5477 1 5477 1
+E 0 5486 0 16
+M 0 5490 5 5478 1
+E 0 5484 0 16
+M 0 5497 1 5481 1
+M 0 5488 3 5481 2
+E 0 5475 0 16
+M 0 5488 3 5481 2
+E 0 5475 0 16
+M 0 5489 3 5481 2
+E 0 5490 0 16
+M 0 5489 3 5481 2
+E 0 5490 0 16
+M 0 5491 6 5481 2
+E 0 5485 0 16
+M 0 5491 6 5481 2
+E 0 5485 0 16
+M 0 5492 5 5481 2
+E 0 5483 0 16
+M 0 5492 5 5481 2
+E 0 5483 0 16
+M 0 5493 1 5482 1
+M 0 5494 1 5482 1
+M 0 5484 3 5482 1
+E 0 5495 0 16
+M 0 5485 3 5482 1
+E 0 5495 0 16
+M 0 5487 3 5482 1
+E 0 5495 0 16
+M 0 5488 3 5482 1
+E 0 5475 0 16
+M 0 5489 3 5482 1
+E 0 5490 0 16
+M 0 5490 5 5483 1
+E 0 5484 0 16
+M 0 5476 40 5484 8
+M 0 5476 40 5484 8
+M 0 5476 40 5484 8
+M 0 5476 40 5484 8
+M 0 5476 40 5484 8
+M 0 5476 40 5484 8
+M 0 5476 40 5484 8
+M 0 5476 40 5484 8
+M 0 5498 1 5486 1
+M 0 5496 1 5487 1
+E 0 5476 0 18
+M 0 5495 1 5487 1
+M 0 5484 3 5487 1
+E 0 5495 0 16
+M 0 5485 3 5487 1
+E 0 5495 0 16
+M 0 5486 3 5487 1
+E 0 5495 0 16
+M 0 5487 3 5487 1
+E 0 5495 0 16
+M 0 5468 2 5490 1
+M 0 5473 2 5490 2
+M 0 5468 2 5491 1
+M 0 5473 2 5491 2
+M 0 5467 4 5491 4
+M 0 5467 4 5491 4
+M 0 5467 4 5491 4
+M 0 5467 4 5491 4
+M 0 5465 2 5491 2
+M 0 5465 2 5491 2
+M 0 5490 5 5492 3
+E 0 5484 0 16
+M 0 5490 5 5492 3
+E 0 5484 0 16
+M 0 5490 5 5492 3
+E 0 5484 0 16
+S
+
+
+
+#GUILD
+#5462
+'rune of spirit'
+'mass peace'
+#0
+
+#5463
+'create focus'
+#0
+
+#5464
+'avatar'
+'avenging seraph'
+'astral projection'
+'mass peace'
+#0
+
+#5493
+'rite of Kaagn'
+'suppress'
+'deathwalk'
+'possession'
+'nexus'
+'greater demon summon'
+#0
+
+#5494
+'rite of Kaagn'
+'suppress'
+'deathwalk'
+'possession'
+'nexus'
+'greater demon summon'
+#0
+
+#5495
+'rite of Kaagn'
+'suppress'
+'deathwalk'
+'possession'
+'nexus'
+'greater demon summon'
+#0
+
+#5496
+'rite of Kaagn'
+'suppress'
+'deathwalk'
+'possession'
+'nexus'
+'greater demon summon'
+#0
+
+S
+
+
+#SHOPS
+0
+
+
+
+#$

@@ -1,0 +1,2928 @@
+#AREADATA
+Name The Tower of Shendaer~
+Builders Marlax Iacobos Tzajai~
+VNUMs 10100 10199
+Credits [35 51] Marlax    The Tower of Shendaer~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 3 0 -1
+Shades 5 5
+Stone 83
+End
+
+
+
+#MOBILES
+V4 10100
+statue wood Falah~
+a wood statue~
+A wooden statue is here, positioned as if carving a stout branch.
+~
+A perfect likeness of a man. It seems, when he was carved, he was working
+with a large piece of stout oak... it is attached to his right hand. In his
+left is a wooden knife, for shaping wood. The model was tall, with a tough-
+looking body, as if he gathered his own working materials by cutting down
+the trees himself.
+~
+doll~
+water scholar~
+ABDXY 0 JZb N 0
+60 15 10d10+14950 1d1+0 10d20+20 bash~
+crush~
+-27 -27 -27 -9
+CEKO AILMNPQR
+26 0 0 0 33 33 0 0 -33 -33 0 -33 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+ACEHJMVc ABCDEFGHIJK A medium wood
+>rand_prog 5~
+mpecho The statue seems to shift slightly.
+~
+|
+V4 10101
+statue wood apprentice~
+a wooden statue of an apprentice~
+A statue depicting a young apprentice has been carved from wood and placed here.
+~
+A very alive-looking apprentice stands, caught deep in thought and depicted in
+wood. His hands are grained, showing old callouses upon new callouses from
+working with the material he is now represented in. He wears a robe, belted
+tight around his waist, which seems to flow even though it cannot. The 
+statue\@s eyes, however, seem oddly alert.
+~
+doll~
+water scholar~
+ABDFXY 0 JZb N 0
+45 12 1d10+5305 1d1+0 10d7+4 bash~
+pound~
+-18 -18 -18 -4
+CEKO AILMNPQR
+26 0 0 0 33 33 0 0 -33 -33 0 -33 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+ACEHJMVc ABCDEFGHIJK A medium wood
+>rand_prog 5~
+mpecho The statue seems to shift slightly.
+~
+|
+V4 10102
+statue scholar~
+a statue of a scholar~
+A scholar unmovingingly holds a catalog of the pieces within the storeroom.
+~
+A short, pudgy statue surveys the tables here, caught in the act of checking
+off an item on a list. He looks like a soft person, not used to physical
+labor: perhaps an old apprentice who never grasped a talent. His arms are
+scrawny, and his robes hang off of them.
+~
+doll~
+water scholar~
+ABDX 0 Z N 0
+40 10 11d10+9132 10d10+350 10d8+3 bash~
+pound~
+-15 -15 -15 -2
+CFKO AILMNPQR
+26 0 0 0 33 33 0 0 -33 -33 0 -33 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACEHJMVc ABCDEFGHIJK A medium wood
+>death_prog 75~
+mpecho A piece of paper cracks, and disintegrates into dust.
+remove paper
+mpjunk paper
+~
+>rand_prog 5~
+mpecho The statue seems to shift slightly.
+~
+|
+V4 10103
+statue bronze Falten~
+a bronze statue~
+A bronze statue is poised over the anvil.
+~
+A man catches your eye, his unmoving body bent over an anvil. He is brawny and
+tall from many years spent at the forge and hammer, hours of pumping bellows
+and shaping tools. His face looks as if it would be hard even in the flesh. A
+jagged scar adorns his muscular forearm, each wrinkle plainly visible. This
+statue is a true master metalwork.
+~
+doll~
+water scholar~
+ABDXY 0 JZ N 0
+60 15 10d10+17950 1d1+0 10d20+20 slash~
+slash~
+-27 -27 -27 -9
+CEKO AILMNPQR
+26 0 0 0 33 33 0 0 -33 -33 0 -33 0 0 0 -33 0 0 -33 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AEHJMVc ABCDEFGHIJK A medium bronze
+>rand_prog 5~
+mpecho The statue seems to shift slightly.
+~
+|
+V4 10104
+statue guard doorguard~
+a statue of a guard~
+An unmoving guard stands before the ebony door.
+~
+A strong-looking guard stands in front of the door.  He has no weapons,
+but doesn\@t look like he needs them: his sheer size and build make him seem
+all but crammed into the corridor.  He looks strong, and ready to guard this
+door until he is pounded into rubble.  
+~
+doll~
+water scholar~
+ABDTXY 0 Z N 0
+60 13 10d100+15000 1d1+99 10d20+30 bash~
+crush~
+-21 -21 -21 -5
+CEKO ABILMNPQR
+26 0 0 0 33 33 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 -33 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AEHJMVc ABCDEFGHIJK A large stone
+>verb_prog p open~
+if compstr(2) == s
+or compstr(2) == so
+or compstr(2) == sou
+or compstr(2) == sout
+or compstr(2) == south
+  if isghost($n)
+    mpechoat $n Your hand, then your entire body, passes through the door.
+    mptransfer $n 10146
+    mpat $n mpforce $n look
+    mpverbstop
+  else
+    mpechoat $n A statue of a guard is standing too close to the door.
+    mpverbstop
+  endif
+else
+  mpnextinterp
+endif
+~
+>rand_prog 5~
+mpecho The statue seems to shift slightly.
+~
+|
+V4 10105
+statue iron apprentice~
+an iron statue of an apprentice~
+A statue of an apprentice guards the hallway silently.
+~
+Deep in thought, the apprentice eyes a mote on the wall.  He is
+tough-looking but not well-built: he hasn\@t gained the true blacksmith\@s
+strength and hardiness from working with metals.  
+~
+doll~
+water scholar~
+ABDFXY 0 0 N 0
+48 12 5d50+7710 1d1+0 10d10+15 slash~
+slash~
+-20 -20 -20 -5
+CEKO AILMNPQR
+26 0 0 0 33 0 0 0 -33 -33 0 -33 0 0 0 -33 0 0 -33 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AEHJMVc ABCDEFGHIJK A medium iron
+>rand_prog 5~
+mpecho The statue seems to shift slightly.
+~
+|
+V4 10106
+statue stone Fentar stonemason~
+a granite statue of a stonemason~
+A stonemason prepares to carve a block.
+~
+This man looks thoughtful as he stares at a block of stone. His frame is a mix
+of strength and agility, the sinewy muscles carved as if real, and his serious
+face with a determined set to it. He looks truly ready to wear away stone bit by
+bit, and would have the patience, or eagerness of creation, to not become bored
+in the task. His stern countenance brooks no misbehaving in his classroom: you
+will learn the craft or be set out.
+~
+doll~
+water scholar~
+ABDXY 0 JZ N 0
+60 15 10d50+16000 1d1+0 10d20+20 bash~
+crush~
+-27 -27 -27 -5
+CEKO AILMNPQR
+26 0 0 0 33 33 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 -33 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AEHJMVc ABCDEFGHIJK A medium unknown
+>rand_prog 5~
+mpecho A statue seems to shift slightly.
+~
+|
+V4 10107
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+AX 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 10108
+statue lady regal robed human female~
+a statue of a regal lady~
+A robed human female stands in the middle of the room.
+~
+This statue is carved from white- and grey-speckled granite in the
+likeness of a robed human female.  Her face is finely lined and weathered, a
+map of worry.  Though she is slight of build, her presence dominates the
+room.  
+~
+doll~
+water scholar~
+ABDPX 0 0 N 0
+60 15 2d500+19500 1d1+9999 10d10+15 bash~
+crush~
+-30 -30 -30 -10
+K ABILMNPQR
+26 0 0 50 75 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 -33 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AEHJMVc ABCDEFGHIJK A medium granite
+>greet_prog 100~
+if remembers($n)
+    if isfighting($i)
+    else
+        cast \@flesh to stone\@ $n
+        mpvalueset 9 1
+    endif
+endif
+~
+>trigger_prog 100~
+if isimmort($n)
+else
+    if remembers($n)
+    else
+        mpremember $n
+    endif
+    if snaffected($n) == 53
+    else
+        if isflying($n)
+        else
+            mpfocus $n
+        endif
+    endif
+endif
+~
+>fight_prog 100~
+if value(9) > 0
+    mpvaluedown 9
+    break
+endif
+if rand(75)
+    mpvaluerand 0 1 8
+    if value(0) == 1
+        cast stonefist
+        mpvalueset 9 1
+        break
+    endif
+    if value(0) == 2
+        if snaffected($n) == 387
+            cast stonefist
+            mpvalueset 9 1
+            break
+        else
+            cast brittleform
+            mpvalueset 9 1
+            break
+        endif
+    endif
+    if value(0) == 3
+        if snaffected($n) == 380
+            cast stonefist
+            mpvalueset 9 1
+            break
+        else
+            cast density
+            mpvalueset 9 1
+            break
+        endif
+    endif
+    if value(0) == 4
+        cast sandspray
+    endif
+    if value(0) > 4
+        mpunfocus
+        mproomcmd mptrigger all
+        if isfocused()
+            cast earthbind $f
+            break
+        else
+            cast earthquake
+            break
+        endif
+    endif
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+    mpvaluedown 9
+    break
+endif
+~
+>load_prog 100~
+//stonefist
+mpaddskill self 133 100
+//brittleform
+mpaddskill self 387 100
+//density
+mpaddskill self 380 100
+//flesh to stone
+mpaddskill self 370 100
+//earthquake
+mpaddskill self 54 100
+//earthbind
+mpaddskill self 53 100
+//sandspray
+mpaddskill self 120 100
+~
+|
+V4 10112
+helmet spikes helmetmob~
+a helmet adorned with spikes~
+A helmet adorned with spikes
+~
+A wicked helmet adorned with spikes pierces your head.
+~
+doll~
+water scholar~
+ABDUY 0 DFV N 0
+51 50 1d1000+1 1d1+0 1d1+49 pierce~
+pierce~
+-30 -30 -30 -30
+H ILMNPQR
+26 0 0 0 0 33 0 -33 -33 0 -33 -33 0 0 0 -33 0 0 0 33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+EHJMVc ABCDEFGHIJK A medium iron
+>rand_prog 5~
+mpecho The statue seems to shift slightly.
+~
+|
+V4 10199
+thisbot bot this~
+a thisbot~
+A thisbot is here, thissing.
+~
+~
+human~
+water scholar~
+AL 0 L N 0
+52 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMVd ABCDEFGHIJK A medium flesh
+#0
+
+
+
+#OBJECTS
+V13
+10100
+pumice breastplate~
+a pumice breastplate~
+A breastplate made of a thin, highly porous rock lies on the ground.~
+~
+stone~
+armor Ya 0 0 AD
+0 0 0 0 0
+52 25 187500 2 P
+1
+>remove_prog 100~
+mpechoat $n The breastplate separates from your skin, and your skin softens.
+mpechoaround $n The breastplate separates from $N\@s skin, and $l skin softens.
+mpremaffect 132
+~
+>wear_prog 100~
+if snaffected($n) == 132
+ // They already have stoneskin.
+ mpremaffect 132
+ mpechoat $n You feel your skin harden further as the breastplate melds with your skin.
+ mpechoaround $n $N\@s skin hardens further as the breastplate melds with $l skin. 
+ mpaddaffect 132 60 -1 17 -40 0
+ mpaddaffect 132 60 -1 32 20 0
+else
+ // They don\@t have stoneskin.
+ mpechoat $n The breastplate melds with your skin, turning it to stone.
+ mpechoaround $n The breastplate melds with $N\@s skin, turning it to stone.
+ mpaddaffect 132 60 -1 17 -40 0
+ mpaddaffect 132 60 -1 32 20 0
+endif
+~
+|
+V13
+10101
+wooden cudgel~
+a wooden cudgel~
+A perfectly balanced wooden cudgel has been discarded here.~
+~
+wood~
+weapon S 0 F AN
+mace 6 6 1 0
+crush~
+51 160 9750 2 P
+0
+E
+cudgel~
+A perfectly balanced, straight, and smooth piece of stout oak, carved by the
+master craftsman Falah, of Shendaer, before his death. There is a small chip
+near the handle.
+~
+E
+wooden~
+A perfectly balanced, straight, and smooth piece of stout oak, carved by the
+master craftsman Falah, of Shendaer, before his death. There is a small chip
+near the handle.
+~
+V13
+10102
+list paper~
+a piece of paper~
+A piece of paper with writing on it is here.~
+~
+parchment~
+trash S 0 F AH
+0 0 0 0 0
+1 0 0 2 P
+0
+E
+paper~
+INVENTORY OF STOREROOM
+----------------------
+ 
+four carved picture frames
+five barrels
+a carved wooden sphere
+two bead necklaces
+a ring of oak
+~
+V13
+10103
+carved wooden sphere~
+a carved wooden sphere~
+A wooden sphere, with slits cut in the sides, contains a number of smaller spheres within it.~
+~
+wood~
+light AGS 0 F AO
+0 0 999 0 0
+40 3 63000 1 P
+10
+A
+13 25
+A
+12 25
+A
+3 2
+A
+2 2
+>remove_prog 100~
+opechoat $o The making of the sphere leaves you.
+~
+>wear_prog 100~
+opechoat $o You feel the making of the sphere fill your mind and body.
+~
+|
+V13
+10104
+bed~
+a bed~
+A wooden-framed bed is here.~
+~
+wood~
+furniture GS 0 0 P
+2 1000 HK 200 200
+5 200 0 4 P
+0
+E
+bed~
+The bed looks very comfortable, the posts plain but highly polished. The
+sheets are clean, and unwrinkled.
+~
+V13
+10105
+forge massive~
+the massive forge~
+A massive forge sits here, dominating the room.~
+~
+stone~
+container Y 0 0 P
+500 0 0 2 0
+0 1000 0 4 P
+0
+V13
+10106
+anvil~
+an anvil~
+An anvil rests on a wooden base before the forge.~
+~
+iron~
+furniture Y 0 0 P
+0 500 N 0 0
+0 1000 0 4 P
+0
+V13
+10107
+pile coal~
+a pile of coal~
+Some coal lies in a nearly neat pile on the ground.~
+~
+dirt~
+trash S 0 F A
+0 0 0 0 0
+0 10 0 2 P
+0
+V13
+10108
+iron bar bars~
+some iron bars~
+A pile of iron bars is here.~
+~
+iron~
+trash Y 0 F A
+0 0 0 0 0
+0 10 0 2 P
+0
+V13
+10109
+barrel water~
+a barrel of water~
+A barrel of water rests near the anvil.~
+~
+unknown~
+container S 0 0 P
+100 0 0 2 0
+0 100 0 4 P
+0
+V13
+10110
+water puddle~
+some water~
+Some water is here in a puddle.~
+~
+water~
+trash S 0 0 P
+0 0 0 0 0
+0 20 0 2 P
+0
+V13
+10111
+bed steel~
+a steel-framed bed~
+A steel-framed bed looks comfortable.~
+~
+steel~
+furniture G 0 0 P
+2 1000 EHK 200 200
+0 150 0 4 P
+0
+V13
+10112
+helmet spikes~
+a helmet adorned with spikes~
+A wickedly-spiked helmet awaits a battle.~
+~
+iron~
+armor MZ 0 0 AE
+-15 -15 -15 -12 0
+51 150 0 2 P
+1
+A
+19 4
+A
+3 -3
+A
+4 -3
+>wear_prog 100~
+if isimmort($n)
+or isghost($n)
+else
+  opechoat $n The interior spikes of the helmet settle into your skull.
+  opechoaround $n $N grimaces in intense pain as $e dons $s helmet.
+  opdamage $n 1 1 50
+endif
+~
+|
+V13
+10113
+ring oak~
+a ring of oak~
+A ring of oak, covered with a complex weave pattern, is on the ground.~
+~
+oak~
+armor GS 0 F AB
+5 5 5 5 0
+51 10 8004 0 P
+20
+A
+1 2
+A
+19 2
+A
+18 2
+V13
+10114
+stone bed~
+a stone-framed bed~
+A stone-framed bed looks, oddly enough, comfortable.~
+~
+stone~
+furniture 0 0 0 P
+2 1000 EHK 135 135
+0 200 0 4 P
+0
+V13
+10115
+stone block~
+a block of stone~
+A block of stone awaits crafting here.~
+~
+stone~
+trash 0 0 F A
+0 0 0 0 0
+1 10 0 2 P
+0
+V13
+10116
+chisel diamond~
+a diamond chisel~
+A diamond glints on the ground.~
+~
+diamond~
+weapon GM 0 0 AN
+dagger 9 5 2 0
+pierce~
+60 5 900000 1 P
+1
+>fight_prog 10~
+if isworn($o)
+ opechoat $n A ray of light is focused through the chisel, and strikes you in the eyes!
+ opechoaround $n A ray of light is focused through the chisel, and strikes $N in the eyes!
+ opcast 8 51
+endif
+~
+|
+V13
+10117
+grinding stone wheel~
+a grinding stone~
+(no description)~
+~
+stone~
+container ABY 0 0 P
+0 0 0 0 0
+60 1000 0 4 P
+0
+V13
+10118
+bed elegant simple stone~
+an elegantly-designed bed~
+An elegantly-designed bed is in a corner.~
+~
+stone~
+furniture S 0 0 P
+1 500 EHK 100 100
+0 1000 0 4 P
+0
+V13
+10119
+stone key simple~
+a simple key~
+A simple key, made of stone, is on the ground.~
+~
+stone~
+key PQS 0 0 A
+0 0 0 0 0
+50 1 0 0 P
+0
+V13
+10120
+wooden box~
+a wooden box~
+An elegantly carved wooden box is on the floor.~
+~
+stone~
+container B 0 0 P
+100 ABCD 10119 5 1
+5 200 0 4 P
+0
+>verb_prog p unlock~
+if compx(2) == box
+or compx(2) == wooden
+  if isunderlimit(10121)
+    mpoload 10121 in self
+mpforce $n s3tblu3scrolltim3r
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+10121
+scroll blue runes weapon enhancement~
+a scroll penned in blue-glowing runes~
+A scroll penned in blue-glowing runes.~
+~
+parchment~
+scroll AS 0 0 A
+60 'enchant weapon' '' '' ''
+45 1 250000 1 P
+1
+E
+scroll blue runes weapon enhancement~
+This scroll\@s thin parchment crackles at your touch.  Blue runes are
+scribed across its surface, glowing with ancient power.  A fine dust drifts
+down from its edges.  
+~
+>verb_prog s3tblu3scrolltim3r~
+mpset obj self timer 24
+~
+|
+V13
+10122
+wand grey~
+a grey wand~
+A slender grey wand pulses with power.~
+~
+lead~
+wand BMT 0 F AO
+55 5 5 'dispel magic' 0
+51 5 0 1 P
+5
+V13
+10123
+plain granite workbench~
+a granite workbench~
+A plain granite workbench sits heavily near the bed.~
+~
+unknown~
+container T 0 0 0
+100 ACD 10124 100 0
+0 0 0 0 P
+0
+E
+plain granite workbench~
+This heavy workbench has been hewn from solid granite and fitted with a
+small oaken drawer.  While it might once have been a beautiful piece, the
+desk surface has since been pitted and chipped with countless years of
+stonemasonry.  
+~
+V13
+10124
+thin crumbling parchment~
+a crumbling parchment~
+A thin and crumbling parchment is rolled up here.~
+~
+parchment~
+trash TUX 0 0 AO
+0 0 0 0 0
+35 1 0 0 P
+1
+E
+thin crumbling parchment~
+This parchment is dry and crumbling, as though very old.  There are no
+recognizable words of any modern language on it; instead, there is simply a
+drawing of a rune: 
+
+   *****************
+ *********************
+***                 ***
+***      /   \\  /   ***
+***   /\\/   \\ \\/ /  ***
+***  /       \\/\\/   ***
+***                 ***
+ *********************
+   *****************
+
+Perhaps with further {Wstudy{x of the rune one might learn more.
+~
+>verb_prog p study~
+if isghost($n)
+or isnpc($n)
+  mpnextinterp
+  break
+endif
+if isowner($n)
+else
+  mpnextinterp
+  break
+endif
+if compx() == thin
+or compx() == crumbling
+or compx() == parchment
+or compx() == runes
+or compx() == rune
+  mpechoaround $n $N stares intently at $I for a long moment.
+  // Check for stonecraft
+  if skill1152($n) <= 0
+    mpechoat $n You study the ancient rune for a long moment, but it is meaningless to you.
+  else
+    // Check for stoneshaper
+    if skill1157($n) <= 0
+      mpechoat $n You recognize the pattern as an ancient rune of earth, but grow swiftly weary of trying to understand it; the rune is too complex for your skills.
+    else
+      // Check for already learned Fossil
+      if isbitset($n) == 289
+        mpechoat $n You study the rune of Fossil, but learn nothing new.
+      else
+        mpechoat $n You study the ancient rune for a long moment, and slowly a new understanding of runic magic fills you.
+        mpechoat $n You have learned the rune of Fossil!
+        mpbitset $n 289 1
+      endif
+    endif
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+10143
+journal leather bound leather-bound~
+a leather-bound journal~
+A dusty, leather-bound journal is on the ground.~
+~
+parchment~
+trash S 0 F A
+0 0 0 0 0
+1 10 0 2 P
+0
+E
+journal~
+This journal is made of yellowed pages of parchment bound with tan
+leather strips, numbered one through twelve.  
+~
+E
+leather~
+This journal is made of yellowed pages of parchment bound with tan
+leather strips, numbered one through twelve. 
+~
+E
+bound~
+This journal is made of yellowed pages of parchment bound with tan
+leather strips, numbered one through twelve. 
+~
+E
+leather-bound~
+This journal is made of yellowed pages of parchment bound with tan
+leather strips, numbered one through twelve. 
+~
+E
+one~
+Endenday, 10th day of Valectis
+I have arrived in a grand city, deep in the Brintors.  The city is
+located in a valley of trees, and is surrounded by a thick stone wall almost
+three men high.  The gate I entered is in the southern wall, and it appears
+to be the only one.  Stone and wood buildings line the streets, some houses,
+some shops.  The largest building of them all is a tower that seems to rises
+high above the city and surrounding trees.  Its surface looks to be some
+smooth rock, but I could not determine the type.  The human inhabitants are
+amiable enough that I have secured room and board for the night, and at a
+minimum of cost.  Tomorrow, we shall see what the rest of the city holds. 
+~
+E
+two~
+Nimansday, 11th day of Valectis
+After visiting the marketplace, it would seem that there are three main
+trades here: wood, metal, and stoneworking.  From what I see, their work is
+of exceptional quality and is quite appealing to the eye...  I was shown
+several pieces that rival many I\@ve seen in nobles\@ homes, even those of
+Ilodaiya itself.  Oddly, or perhaps not so oddly, enough, I have seen no
+armor or weaponry.  Another interesting point is that all that they sell
+would bring several times their cost in profit, were I to sell them in Var
+Bandor or Earendam.  Hmmm.  Perhaps it is time to set up a shop... 
+
+Nah.
+
+Off to bed, now.
+~
+E
+three~
+Thethelsday, 12th day of Valectis
+They do make weapons here after all.  Near the west side of the city,
+there is a woodsmans\@ guild, where perhaps twenty or thirty men visit before
+their excursions into the surrounding forests and mountains.  Their axes are
+of the same quality as the rest of the city\@s products.  Around mid-morning,
+they left in a group for the forest. 
+
+As I continued to explore the city, I found a miners\@ guild as well. 
+Noone was in at the time, but the few pieces of mining equipment that were
+left behind were, again, of the same quality as the rest of the items I\@d
+seen.  I left, to avoid being marked suspicious, and wandered until a group
+of townsfolk recognized me and invited me to share a cup of ale.  I shall
+try this, and write again tomorrow.
+~
+E
+four~
+Evenday, 13th day of Valectis
+Unfortunately, the citizens of Shendaer have as bland a palate in ales as
+I had seen in the food.  It\@s tolerable, but nothing remarkable.  I find
+this odd, considering the originality and aesthetic appeal of everything
+else they make.  Or perhaps they throw themselves into their other work, and
+pay no attention to more than base sustenance.
+
+Their conversation is just as dull...  Talk of mining, woodcutting, and
+crafting for the entire night.  They were certainly absorbed, but I was less
+so.  Perhaps I shall move on sooner than I thought.
+
+I did hear one interesting tidbit, though..  Apparently, the woodsmen
+feel the forest is growing faster.  Such drivel, however, is to be expected
+from those of their trade.  Perhaps tomorrow I can learn something
+interesting about their tower.
+~
+E
+five~
+Lyrenday, 14th day of Valectis
+Today, I spent my time asking about the tower, as I felt comfortable
+enough with a few of the inhabitants to hold a discussion.  The tower is
+their center of learning and training.  I have seen a few people go into the
+tower clutching papers.  These are students that have been invited for
+instruction by the masters within.
+
+The townspeople do occasionally interact with the tower.  Apparently, the
+best products of each month are brought to the tower, and the choicest of
+these are taken within.  There, noone knows what actually goes on, but
+sometimes the objects are returned from the tower with strange powers and
+properties.  Perhaps the students, or the masters themselves, in the tower
+enchant the items.  These items, when sold, are still within the budget of
+the meanest Aelin family, although significantly more expensive than the
+rest.  Perhaps, someday, I shall see this tower for myself.
+~
+E
+six~
+Iolenday, 15th day of Valectis
+Drat and damnation!  Never in my life have I been so insolently treated! 
+I will never return to this city again, for certain.  I will write more
+later, as my guards are returning.
+
+(later)
+
+As I was resourceful enough to keep my journal and quill, I shall write
+of my recent mishap.  I was in the marketplace, and working my way through
+the crowd, when I saw a man come from the south.  He purchased several
+items, and headed back to the south, toward the gates.  As I had my
+belongings, I decided it was time to leave, and rushed ahead of him to lay
+in wait near the road.  He was quicker than I thought, and when I attempted
+to hit the back of his head, he turned and I caught his cheek instead.  He
+started yelling and screaming, and before I could slit his throat, or even
+run, I was surrounded by glowering woodcutters with their axes drawn.  They
+took me into the city, and led me to the tower doors.  I was forced inside
+by several of them, who immediately shut the door behind me.  Of course, it
+was locked when I turned around.
+
+(continued)
+~
+E
+seven~
+Iolenday, 15th day of Valectis/(continued)
+Shortly afterwards, a couple of young humans dressed in robes came down a
+staircase, and arranged themselves in a semicircle in front of me.  At the
+end of their procession was an elegantly dressed woman with a stern
+countenance, who entered the circle as the others moved aside.  She accused
+me of attempting to ambush a merchant near the city walls.  I was forced to
+admit to the crime, much to my dismay, due to the number of witnesses. 
+Also, I hoped my sentence would be lightened.  I\@ve been in jails before,
+and had no interest in exploring the ones here.  She gestured to two of the
+young ones, who took me by my arms and led me to the spiral staircase at the
+end of the hall.  One opened a trapdoor in the floor while the other led me
+to it, and shoved me down!  Preposterous!  My pack was taken from me, as
+well as the one dagger I carry visibly.  After landing rather hard at the
+bottom of the ladder, I heard the grating of the trapdoor being resealed.  I
+struck a light from some flint I had concealed in a pocket, and found myself
+in a small cellar with a ladder on the north wall.  There was nothing but a
+few wooden chests which, on closer inspection, bore the seals of several
+powerful houses, including that of the Casidian family itself.  I will
+examine these further at a later time..  As I am sure I will has plenty of
+opportunities.  For now, I will rest.
+~
+E
+eight~
+Endenday, Valectis
+I have been listening to the guards above me through the trapdoor.  Most
+of their talk was of an item that had been given to their care, a small
+sphere carved from wood.  Apparently they were enchanting it to enhance the
+wearer\@s health and mental energies.  The talk was mostly gibberish to me,
+but I was able to catch a few phrases here and there.
+
+I have been breaking the chests, save for that of the Casidian family,
+and kindled the wood into small fires.  The wood is dry, and fortunately
+little enough smoke is emitted.  The room heats quickly, as it is small, and
+I have had just enough time to write this entry.  It would seem I don\@t
+warrant food or water...  I must escape soon before my strength flags
+overmuch.
+~
+E
+nine~
+??
+The guards\@ talk has changed.  Now, they speak of horrors outside the
+tower, of the forest \#reaching out and taking hold of the walls, and ripping
+them from the ground.\#  Rubbish, I\@m sure, to demoralize me.  At least their
+talk has changed.  They speak of the mass slaughter of the woodsmen that
+captured me...  Good riddance to them.
+
+I have only a few chests left to burn.  At least there is some sort of
+opening in this hole, though I cannot find it, as the air stays fresh, if
+slightly smoky.  I must escape soon, or the gnawing in my belly will consume
+me. 
+~
+E
+ten~
+??
+All is quiet above.  I have not heard a sound for several hours, other
+than the rumbling in my belly.  I have to chance it, have to try to get out,
+or I will die in here.  I\@m on my last few splinters of wood other than the
+Casidian chest, which I will be taking if I can get away with it.  If it is
+as I suspect up there, in the tower, I will find no opposition should I
+decide to take other things as well. 
+
+Perhaps I can also find a larder.  If not, I may not be able to get the
+chest out anyways.  My strength has ebbed considerably.
+
+(later)
+
+What did these people eat?  I can\@t find a larder, or kitchen, or even a
+fountain.  I am glad I am writing this and not speaking it...  My mouth is
+too dry.  I have visited every level of this tower and there is nothing, not
+on the ground floor, or any of the four above it.  I have seen nothing of my
+captors...  Rather, I\@ve seen nothing living or dead of my captors.
+
+(continued)
+~
+E
+eleven~
+??/(continued)
+I have seen their forms, but they are now statues of wood, metal, or
+stone, depending on which floor of the tower they were on.  The second floor
+contains wooden statues, including those of my captors.  I would have paid
+my respects to them, but I could not work up the spit in my mouth.  I also
+found the wooden sphere they were talking of, but I could not loosen it from
+the hand of the statue that carried it.  The third floor contained
+metalworking equipment and materials, and the statues inhabiting it were of
+metal themselves.  The fourth floor contained stone statues.  One of them
+held a chisel of diamond, and try as I might, I could not get that free
+either.  If I had more time, I would definitely gain that, as it must be
+worth a king\@s ransom.  The top floor houses only two statues, the woman who
+originally had me detained, and another outside her door, whom I had to kill
+to get in the lady\@s room.  She had nothing of value that I could see in her
+chambers, although I did see the faint outline of a trapdoor in her ceiling.
+I would have explored that, but the hunger pains gripped my stomach quite
+harshly, and I went back down the stairs emptyhanded but for a few bars of
+gold, and a few beaded necklaces, which must have some special properties,
+as they are in the tower.  I will rest here as well as I can, and leave when
+I wake.
+~
+E
+twelve~
+??
+Disaster...  Utter disaster.  I opened the doors, and beheld a sight most
+frightening.  All of the town is destroyed, save the tower.  The walls
+surrounding the town have crumbled to near dust, and the buildings mostly
+flattened.  Several men and women were outside hurling stones and fists at
+each other.  Two of the men rushed me, and I ran back into the tower and
+slammed the doors.  There is no chance of leaving with the chest, so I have
+placed it back in the cellar where I was held.  The key is nearby. I will 
+place this journal in the chest in hopes that someone will read it and hear
+of my plight, and this account of what has happened here.  Hopefully, it 
+won\@t come to that, if I can keep my wits about me and my feet under me as
+I make another foray into the ruins. I have to eat, and it must be soon.  I
+will rest a bit, and try again shortly.  Perhaps I will make it out, and 
+lead a patrol of Aelin in to gather the remaining things here I must now 
+leave behind.
+
+May Hope stay in sight.
+
+Dizranth Ak\@Ayanir, Noble of Ilodaiya
+~
+V13
+10146
+key steel~
+a steel key~
+A steel key is on the ground.~
+~
+steel~
+key b 0 0 A
+0 0 0 0 0
+60 1 0 0 P
+0
+V13
+10147
+jigglet~
+(no short description)~
+(no description)~
+~
+unknown~
+armor HMZd 0 0 AR
+0 0 0 0 0
+70 0 0 0 P
+1
+>verb_prog p dis~
+if ispc($n)
+  if isowner($n)
+    if name($n) == Arkhural
+      mpset skill $f disintegration 100
+      opfocus $y2
+      loop 1 to 50
+        if isfocused()
+          if ishere($f)
+            opforce $f cast disint $f
+            opremaffect $f 6
+          else
+            opunfocus 0
+            break
+          endif
+        else
+          break
+        endif
+      endloop
+    else
+      mpnextinterp
+    endif
+  else
+    mpnextinterp
+  endif
+endif
+~
+>verb_prog p vital~
+if ispc($n)
+  mpnextinterp
+  if isowner($n)
+  else
+    if compstr(2) == Arkhural
+    or tanking($o)
+      mpremaffect $o 492
+    endif
+  endif
+endif
+~
+>verb_prog p stomp~
+if ispc($n)
+  if isowner($n)
+    mpnextinterp
+  else
+    if compstr(2) == Arkhural
+      opechoaround $n $N raises $s boot above $O\@s head, preparing to stomp.
+      opechoat $n You raise your boot high above $O\@s head.
+      opechoaround $n With a casual motion of his hand, $O fwaps the living hell out of $N.  $N dies.
+      opechoat $n Arkhural suddenly grabs you, fwaps you left! fwaps you right! Ow!
+      opechoat $n Arkhural grabs you, fwaps you left! fwaps you right! Ow!
+      opechoat $n Arkhural throws you down, and fwaps you all around! You cry out for mercy!
+      opechoat $n You try to flee, and Arkhural fwaps you onto your ass!
+      opechoat $n FWAP! FWAP! FWAP! FWAP! FWAP! FWAP! FWAP! FWAP! FWAP!
+      opechoat $n It hurts too much, and you die from the intense fwapping!
+      opslay $n
+    else
+      mpnextinterp
+    endif
+  endif
+endif
+~
+>verb_prog p strans~
+if isowner($n)
+  opfocus $y2
+  optrans $f $y3
+endif
+~
+>verb_prog p sgoto~
+if isowner($n)
+  if compstr(2) == 
+  else
+    optrans $n $y2
+  endif
+else
+  opinterpret $n $x
+endif
+~
+>verb_prog p sload~
+if isowner($n)
+  opoload $y2 on $n
+else
+  opinterpret $n $x
+endif
+~
+>verb_prog p sforce~
+if isowner($n)
+  opfocus $y2
+  opforce $f $y3 $y4 $y5 $y6 $y7 $y8 $y9 $y10 $y11 $y12 $y13 $y14 $y15
+else
+  mpnextinterp
+endif
+~
+>verb_prog p sdo~
+if isowner($n)
+  $X
+else
+  mpnextinterp
+endif
+~
+>verb_prog p secho~
+if isowner($n)
+  opecho $X
+else
+  mpnextinterp
+endif
+~
+>verb_prog p produce switchblade~
+if isowner($n)
+  opechoat $n You stealthily slide a switchblade out from under your sleeve.
+  if rand(5)
+    opechoaround $n You notice $N stealthily sliding a switchblade out from under $s sleeve.
+  endif
+  opoload 12150 on $n 16
+else
+  opinterpret $n $x
+endif
+~
+>verb_prog p sheath switchblade~
+if isowner($n)
+  opechoat $n With a flick of the wrist, you covertly slide a switchblade back into your sleeve.
+  opechoaround $n With a flick of the wrist, $N slides a switchblade back into $s sleeve.
+  opslotpurge $n 16
+else
+  mpnextinterp
+endif
+~
+>verb_prog p sslay~
+if isowner($n)
+  mpfocus $y2
+  if ishere($f)
+    mpforce $o pmote extends an open hand towards $F, palm facing skyward.
+  else
+    mpforce $o pmote extends an open hand, palm facing the heavens.
+    mpat $f mpecho A hooded apparition materializes before you, its hand held open before it.
+  endif
+  mpat $f mpmload 17000
+  mpforce arkh mpseewizi
+  mpforce arkh mpfocus $f
+  opvalueset 3 6
+else
+  mpnextinterp
+endif
+~
+>verb_prog p freeze~
+if ispc($n)
+  if isowner($n)
+    mpnextinterp
+  else
+    if compstr(2) == Arkhural
+      opechoat $o $N just tried to freeze you.
+      mpcast 370 60 $n
+    else
+      mpnextinterp
+    endif
+  endif
+endif
+~
+>verb_prog p shoot~
+if ispc($n)
+  if isowner($n)
+    mpnextinterp
+  else
+    if compstr(2) == Arkhural
+      opechoaround $n $N\@s bullet is reflected off of $O\@s body, sending it straight back at $N!
+      opechoat $n Your bullet is reflected off of $O\@s body, sending it straight back at you!
+      opslay $n
+    else
+      opinterpret $n $x
+    endif
+  endif
+endif
+~
+>verb_prog p fire uzi~
+if isowner($n)
+  mpnextinterp
+else
+  opechoaround $n The spray of bullets bends around $O\@s body, redirecting themselves towards $N!
+  opechoat $n The spray of bullets bends around $O\@s body, redirecting themselves towards you!
+  opslay $n
+endif
+~
+>verb_prog p chain~
+if ispc($n)
+  if isowner($n)
+    if name($n) == Arkhural
+      opfocus $y2
+      if isfocused()
+        if ispc($f)
+          opechoat $f $N swings a side-mounted titanium gatling gun towards you.
+          opechoaround $f $N swings a side-mounted titanium gatling gun towards $F.
+          opecho The barrels of $N\@s gatling gun whir into action, spitting out a stream of bullets!
+          opechoat $f A rapid stream of bullets rips through your body! BLAM! BLAM! BLAM!
+          opechoaround $f A rapid stream of bullets rips through $F\@s body!
+          optrans $f $n
+          loop 1 to $y3
+            opslay $f
+            optrans $f $n
+          endloop
+          opecho $N\@s side-mounted titanium gatling gun slowly grinds to a halt.
+        else
+          opechoat $n Just slay it.
+        endif
+      else
+        opechoat $n It\@s not here.
+      endif
+    else
+      opinterpret $n $x
+    endif
+  else
+    opinterpret $n $x
+  endif
+endif
+~
+>verb_prog p lop~
+if ispc($n)
+  if isowner($n)
+    if iscarrying($n) == 12150
+      mpnextinterp
+    else
+      if name($n) == Arkhural
+        opfocus $y2
+        opechoat $n A magical switchblade suddenly appears in your hand!
+        opechoaround $n A magical switchblade suddenly appears in $N\@s hand!
+        opechoat $n You fly at $F with open switchblade, lopping off its head!
+        opechoaround $n $N flies at $F and lops off its head!
+        optrans $f $n
+        opslay $f
+      else
+        opechoat $n Get your own damn sigil.
+        opfocus $n
+        opechoat $n A magical switchblade suddenly appears in your hand!
+        opechoaround $n A magical switchblade suddenly appears in $N\@s hand!
+        opechoat $n A mysterious force compels you to swing the switchblade at your own throat, lopping off your own head!
+        opechoaround $f $F swings the switchblade at $s own throat, lopping off $s own head!
+        opslay $f      
+      endif
+    endif
+  else
+    opinterpret $n $x
+  endif
+endif
+~
+>verb_prog p fwap~
+if ispc($n)
+  if isowner($n)
+    if name($n) == Arkhural
+      opfocus $y2
+      opechoaround $n $N says \@Fwap!\@
+      opechoaround $f $N fwaps the living hell out of $F. $F dies.
+      opechoat $f You have angered Arkhural. Now you must face the wrath of Arkhural.
+      opechoat $f Arkhural grabs you, fwaps you left! fwaps you right! Ow!
+      opechoat $f Arkhural throws you down, and fwaps you all around! You cry out for mercy!
+      opechoat $f You try to flee, and Arkhural fwaps you onto your ass!
+      opechoat $f FWAP! FWAP! FWAP! FWAP! FWAP! FWAP! FWAP! FWAP! FWAP!
+      opechoat $f It hurts too much, and you die from the intense fwapping!
+      opslay $f
+    else
+      opechoat $n Get your own damn sigil.
+      opfocus $n
+      opechoat $f You have angered Arkhural. Now you must face the wrath of Arkhural.
+      opechoat $f Your own hand suddenly grabs you, fwaps you left! fwaps you right! Ow!
+      opechoat $f You throw yourself down, your hands fwapping you all around! You cry out for mercy!
+      opechoat $f You try to flee, and you fwap yourself onto your ass!
+      opechoat $f FWAP! FWAP! FWAP! FWAP! FWAP! FWAP! FWAP! FWAP! FWAP!
+      opechoat $f It hurts too much, and you die from the intense fwapping!
+      opechoaround $f Arkhural forces $F to fwap the living hell out of $sself.  $F dies.
+      opslay $f
+    endif
+  else
+    opinterpret $n $x
+  endif
+endif
+~
+>verb_prog p toss grenade~
+if ispc($n)
+  if isowner($n)
+    if name($n) == Arkhural
+      opmload 17000
+      opforce arkh mpvalueset 0 1
+      opechoat $n You pull the pin out of a grenade and toss it into the middle of the room.
+      opechoaround $n $N pulls the pin from a grenade and tosses it into the middle of the room.
+      opecho {rWith a deafening roar, the grenade bursts into a thousand pieces of jagged shrapnel!{x
+      opforce arkh mproomcmd mptrigger all
+      opforce arkh mppurge self
+    else
+      mpnextinterp
+    endif
+  else
+    mpnextinterp
+  endif
+endif
+~
+>verb_prog p protect~
+if ispc($n)
+  if isowner($n)
+    if name($n) == Arkhural
+      opfocus $y2
+      opbitset $f 12150 1
+      opechoat $n You protect $F from the shrapnel blast.
+      opechoat $f A force shield slowly materializes about you.
+    else
+      mpnextinterp
+    endif
+  else
+    mpnextinterp
+  endif
+endif
+~
+>verb_prog p force~
+if ispc($n)
+  if isowner($n)
+    mpnextinterp
+  else
+    if compstr(2) == Arkhural
+      opechoat $n Ok.
+      opechoat $o $N just tried to force you to do something.
+      opvalueup 2
+    else
+      if compstr(3) == mpforce
+      or compstr(3) == mplag
+        if compstr(4) == Arkhural
+          opechoat $n Ok.
+          opechoat $o $N just tried to mpforce/mplag you.
+          opvalueup 2
+        else
+          mpnextinterp
+        endif
+      else
+        mpnextinterp
+      endif
+    endif
+  endif
+endif
+~
+>verb_prog p slay~
+if ispc($n)
+  if isowner($n)
+    mpnextinterp
+  else
+    if compstr(2) == Arkhural
+      opechoat $o $N just tried to slay you.
+      opvalueup 1
+      opvalueup 2
+      if objvalue(1) > 3
+        opechoat $n Stop.
+        oplag $n 4
+      else
+        opechoat $n No.
+      endif
+    else
+      mpnextinterp
+    endif
+  endif
+endif
+~
+>verb_prog p rename~
+if ispc($n)
+  if isowner($n)
+    if compstr(2) == Arkhural
+    or compstr(2) == self
+      if compstr(3) == yes
+        mpinterpret $n $y1 $y2
+      else
+        mpechoat $n That\@s not the proper syntax.
+      endif
+    else
+      mpnextinterp
+    endif
+  else
+    if compstr(2) == Arkhural
+      opforce $n rename self IAmDumb
+      opechoat $o $N just tried to rename you.
+      opvalueup 2
+    else
+      mpnextinterp
+    endif
+  endif
+endif
+~
+>verb_prog p unbrand~
+if ispc($n)
+  if isowner($n)
+    if name($n) == Arkhural
+      if compstr(2) == Arkhural
+      or compstr(2) == self
+        if compstr(3) == yes
+          mpnextinterp
+        else
+          mpechoat $n That\@s not the proper syntax.
+        endif
+      else
+        mpnextinterp
+      endif
+    else
+      if compstr(2) == Arkhural
+        opechoat $o $N just tried to unbrand you.
+        opvalueup 1
+        opvalueup 2
+        if objvalue(1) > 2
+          opforce $n brand self 12149
+        endif
+      else
+        mpnextinterp
+      endif
+    endif
+  else
+    if compstr(2) == Arkhural
+      opechoat $o $N just tried to unbrand you.
+      opvalueup 1
+      opvalueup 2
+      if objvalue(1) > 2
+        opforce $n brand self 12149
+      endif
+    else
+      mpnextinterp
+    endif
+  endif
+endif
+~
+>verb_prog p opstat~
+if ispc($n)
+  if compstr(2) == jigglet
+  or compstr(2) == arkhsigil
+    if name($n) == Arkhural
+      mpnextinterp
+    else
+      if compstr(3) == arkhural
+        mpnextinterp
+      else
+        mpechoat $n That Object has no Programs set.
+      endif
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>rand_prog 100~
+if name($o) == Arkhural
+  if isoverlimit(10147)
+    mpechoat $o {rWARNING: Sigil Overlimit.{x
+  endif
+else
+  oppurge self
+endif
+if snaffected($o) == 716
+else
+  opaddaffect 716 57 -1 0 27 0
+  opechoat $o You feel the spirit of freedom settle within you.
+endif
+if objvalue(0) == 0
+  opstring obj jigglet name arkhsigil
+  opstring obj arkhsigil short <------>
+  opvalueset 0 1
+endif
+if objvalue(1) > 0
+  if rand(1)
+    opvaluedown 1
+  endif
+endif
+if objvalue(3) == 1
+  mpfocus arkh
+  if ishere($f)
+  else
+    mpat arkh mpecho The hooded apparition shimmers, then dissipates into a thick crimson mist.
+  endif
+    mpforce arkh mpfocus none
+    mpforce arkh mpgoto 3160
+endif
+if objvalue(3) == 2
+  if ishere($f)
+    mpecho With swift finality, the Lord of the Twilight clenches his hands into a white-knuckled fist.
+  else
+    mpat $f mpecho With swift finality, the apparition clenches its hands into a white-knuckled fist.
+  endif
+  mpat $f mpecho {rStreams of blood begin to seep from the clenched fist, dripping down the side of the upheld arm.{x
+  mpechoat $f {rAs you fall to the ground, your vision explodes into a crimson haze, as you feel your heart burst within your chest.{x
+  mpechoaround $f $F goes limp, falling lifelessly to the ground.
+  mpat $f mpslay $f
+endif
+if objvalue(3) == 4
+  if ishere($f)
+    mpecho A hint of a smile appears on Arkhural\@s face, as he slowly closes his bony fingers around an unseen object.
+  else
+    mpat $f mpecho A hint of a smile appears on the apparition\@s face, as it slowly closes its bony fingers around an unseen object.
+  endif
+  mpat $f mpecho {cAn icy blue light begins to glow dimly from within the pale, spindly fingers.{x
+  if ismale($f)
+    mpechoaround $f $F staggers, then drops to his knees, his hand clutching feverishly at his heart.
+  else
+    mpechoaround $f $F staggers, then drops to her knees, her hand clutching feverishly at her heart.
+  endif
+  mpechoat $f You feel your insides grow cold, as an icy sensation grips you by the heart.
+endif
+if objvalue(3) > 0
+  opvaluedown 3
+endif
+~
+|
+V13
+10148
+chest Casidian iron bound iron-bound crest~
+an iron-bound chest bearing the Casidian crest~
+An iron-bound chest bearing the Casidian crest is in the corner.~
+~
+wood~
+container 0 0 0 P
+2000 ABCD 10146 2000 100
+0 100 0 4 P
+0
+V13
+10149
+necklace wooden beads~
+a necklace of wooden beads~
+A necklace of wooden beads lies here.~
+~
+wood~
+armor GSY 0 0 AC
+10 10 10 20 0
+60 20 9225 1 P
+1
+#0
+
+
+
+#ROOMS
+#10100
+A secret room within the tower~
+Four blank, solid walls compose this room. It is empty, and full of dust.
+~
+~
+1
+0 33292 0
+W 5 0 0
+Z 5 5
+S
+#10101
+The Tower Entrance~
+This grand hallway looks as if it was carved from a solid piece of stone.
+The white cobblestones on the floor are intricately shaped, to fit with
+hardly a seam.  The ceiling is unadorned, but completely seamless, as if it
+were a single stone.  The walls to the east and west compose a mural, which
+seems to depict the construction of the tower itself.  On the western wall,
+workers dig a large pit deep into the ground, exposing the bedrock below. 
+On the eastern side, a large, finely worked door is being raised into
+place...  The door at the southern end of this hall.  The hallway continues
+to the north.  
+~
+~
+2
+0 8 0
+D0
+To the north, the hallway continues.
+~
+~
+0 0 10102
+D2
+The tower doors are to the south.
+~
+doors~
+7 701 746
+W 5 0 0
+Z 5 5
+S
+#10102
+A Hallway~
+The hallway continues, the perfect stones unmarred by the many countless
+footsteps that must have crossed over them.  The mural continues, as well,
+the western wall depicting the first stones of the walls you currently see. 
+The eastern wall shows a nearly completed tower, the roof incomplete but the
+walls erect.  The hallway continues to the north and south.  An odd
+impression in the floor catches your eye.  
+~
+~
+2
+0 8 0
+E
+impression~
+In one of the stones, some writing is engraved. It reads:
+ 
+\#Confal, Master Stonemason, carved these stones and laid them.\#
+~
+D0
+To the north, the hallway continues.
+~
+~
+0 0 10103
+D2
+To the south, the hallway comes to a stop.
+~
+~
+0 0 10101
+W 5 0 0
+Z 5 5
+S
+#10103
+A Hallway~
+The nearly solid stone of the hallway continues, stretching from the
+entrance to the staircase.  The impressions in the stone are as sharp as the
+day they were made, smooth as polished ivory.  Here, the mural on the
+western wall shows large walls, about man-high, growing as the stonemasons
+build upon it.  The eastern wall shows a scaffold-embraced tower, about half
+complete.  A spiral staircase is to the north, and to the south is the
+hallway.  
+~
+~
+2
+0 8 0
+D0
+The staircase is to the north.
+~
+~
+0 0 10104
+D2
+To the south, the hallway continues.
+~
+~
+0 0 10102
+W 5 0 0
+Z 5 5
+S
+#10104
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, at the bottom
+of the staircase.  Each rests upon the one below, slightly angled to make
+room for many feet.  Each slab is exactly the same size, shape, and texture,
+and all are tilted to the same degree.  A thin, but sturdy, metal bar rests
+on posts which extend up from the outside edge of the stairway, providing a
+smooth handrail.  The marble behind the staircase is cut with several lines.
+~
+~
+2
+0 8 0
+D2
+The hallway leading to the tower entrance extends to the south.
+~
+~
+0 0 10103
+D4
+The spiral staircase leads up.
+~
+~
+0 0 10105
+D5
+You see the faint outline of a trapdoor in the marble floor.
+~
+trapdoor~
+3 0 10148
+W 5 0 0
+Z 5 5
+S
+#10105
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D1
+The stairway continues to the east.
+~
+~
+0 0 10106
+D5
+The bottom of the stairway is below you.
+~
+~
+0 0 10104
+W 5 0 0
+Z 5 5
+S
+#10106
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D2
+The stairway continues to the south.
+~
+~
+0 0 10107
+D3
+The stairway continues to the west.
+~
+~
+0 0 10105
+W 5 0 0
+Z 5 5
+S
+#10107
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D0
+The stairway continues to the north.
+~
+~
+0 0 10106
+D4
+The stairway becomes a landing above you.
+~
+~
+0 0 10108
+W 5 0 0
+Z 5 5
+S
+#10108
+A Landing on the Spiral Stairway~
+The stairway seems to pause a moment, at a large slab of marble which
+extends from wall to wall, with stairway-holes.  The handrail, though made
+of metal, seems to blend seamlessly into the slab, and continues, rising
+from the slab, with the stairs.  To the south, the slab extends into a
+hallway of bright white marble, with doors on the western side.  
+~
+~
+2
+0 8 0
+D2
+A hallway leads to the south.
+~
+~
+0 0 10127
+D3
+The stairway continues to the west.
+~
+~
+0 0 10109
+D5
+The stairway continues below you.
+~
+~
+0 0 10107
+W 5 0 0
+Z 5 5
+S
+#10109
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D0
+The stairway continues to the north.
+~
+~
+0 0 10110
+D1
+The stairway becomes a landing to the east.
+~
+~
+0 0 10108
+W 5 0 0
+Z 5 5
+S
+#10110
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D2
+The stairway continues to the south.
+~
+~
+0 0 10109
+D4
+The stairway continues above you.
+~
+~
+0 0 10111
+W 5 0 0
+Z 5 5
+S
+#10111
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D1
+The stairway continues to the east.
+~
+~
+0 0 10112
+D5
+The stairway continues below you.
+~
+~
+0 0 10110
+W 5 0 0
+Z 5 5
+S
+#10112
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D2
+The stairway continues to the south.
+~
+~
+0 0 10113
+D3
+The stairway continues to the west.
+~
+~
+0 0 10111
+W 5 0 0
+Z 5 5
+S
+#10113
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D0
+The stairway continues to the north.
+~
+~
+0 0 10112
+D4
+The stairway becomes a landing above you.
+~
+~
+0 0 10114
+W 5 0 0
+Z 5 5
+S
+#10114
+A Landing on the Spiral Stairway~
+The stairway seems to pause a moment, at a large slab of marble which
+extends from wall to wall, with stairway-holes.  The handrail, though made
+of metal, seems to blend seamlessly into the slab, and continues, rising
+from the slab, with the stairs.  To the south, the slab extends into a
+hallway of bright white marble, with doors on the western side.  
+~
+~
+2
+0 8 0
+D2
+A hallway leads to the south.
+~
+~
+0 0 10133
+D3
+The stairway continues to the west.
+~
+~
+0 0 10115
+D5
+The stairway continues below you.
+~
+~
+0 0 10113
+W 5 0 0
+Z 5 5
+S
+#10115
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D0
+The stairway continues to the north.
+~
+~
+0 0 10116
+D1
+The stairway becomes a landing to the east.
+~
+~
+0 0 10114
+W 5 0 0
+Z 5 5
+S
+#10116
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D2
+The stairway continues to the south.
+~
+~
+0 0 10115
+D4
+The stairway continues above you.
+~
+~
+0 0 10117
+W 5 0 0
+Z 5 5
+S
+#10117
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D1
+The stairway continues to the east.
+~
+~
+0 0 10118
+D5
+The stairway continues below you.
+~
+~
+0 0 10116
+W 5 0 0
+Z 5 5
+S
+#10118
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D2
+The stairway continues to the south.
+~
+~
+0 0 10119
+D3
+The stairway continues to the west.
+~
+~
+0 0 10117
+W 5 0 0
+Z 5 5
+S
+#10119
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D0
+The stairway continues to the north.
+~
+~
+0 0 10118
+D4
+The stairway becomes a landing above you.
+~
+~
+0 0 10120
+W 5 0 0
+Z 5 5
+S
+#10120
+A Landing on the Spiral Stairway~
+The stairway seems to pause a moment, at a large slab of marble which
+extends from wall to wall, with stairway-holes.  The handrail, though made
+of metal, seems to blend seamlessly into the slab, and continues, rising
+from the slab, with the stairs.  To the south, the slab extends into a
+hallway of bright white marble, with doors on the western side.  
+~
+~
+2
+0 8 0
+D2
+A hallway leads to the south.
+~
+~
+0 0 10139
+D3
+The stairway continues to the west.
+~
+~
+0 0 10121
+D5
+The stairway continues below you.
+~
+~
+0 0 10119
+W 5 0 0
+Z 5 5
+S
+#10121
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D0
+The stairway continues to the north.
+~
+~
+0 0 10122
+D1
+The stairway becomes a landing to the east.
+~
+~
+0 0 10120
+W 5 0 0
+Z 5 5
+S
+#10122
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D2
+The stairway continues to the south.
+~
+~
+0 0 10121
+D4
+The stairway continues above you.
+~
+~
+0 0 10123
+W 5 0 0
+Z 5 5
+S
+#10123
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D1
+The stairway continues to the east.
+~
+~
+0 0 10124
+D5
+The stairway continues below you.
+~
+~
+0 0 10122
+W 5 0 0
+Z 5 5
+S
+#10124
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D2
+The stairway continues to the south.
+~
+~
+0 0 10125
+D3
+The stairway continues to the west.
+~
+~
+0 0 10123
+W 5 0 0
+Z 5 5
+S
+#10125
+The Spiral Stairway~
+Thick stone slabs rise from the floor in a spiral pattern, from the
+bottom of the staircase.  Each rests upon the one below, slightly angled to
+make room for many feet.  Each slab is exactly the same size, shape, and
+texture, and all are tilted to the same degree.  A thin, but sturdy, metal
+bar rests on posts which extend up from the outside edge of the stairway,
+providing a smooth handrail.  
+~
+~
+2
+0 8 0
+D0
+The stairway continues to the north.
+~
+~
+0 0 10124
+D4
+The stairway\@s peak is above you.
+~
+~
+0 0 10126
+W 5 0 0
+Z 5 5
+S
+#10126
+The Top of the Spiral Stairway~
+The stairway ends even with the slab that is the floor, and exits into a
+wide hallway made of the purest white marble.  Gold has been etched into the
+rock, a thin pinstripe parallelling the floor a few feet from the ceiling,
+on each wall.  
+~
+~
+2
+0 8 0
+D2
+A hallway extends to the south.
+~
+~
+0 0 10145
+D5
+The stairway is below you.
+~
+~
+0 0 10125
+W 5 0 0
+Z 5 5
+S
+#10127
+A Hallway~
+This corridor stretches to the north and south, the western wall lined
+with doors.  The white marble spans from floor to ceiling on the eastern
+wall, with a smooth stripe of grey in the middle, running the corridor\@s
+length.  
+~
+~
+2
+0 8 0
+D0
+The stairway is to the north.
+~
+~
+0 0 10108
+D2
+The hallway continues to the south.
+~
+~
+0 0 10128
+D3
+A door leads into a workroom to the west.
+~
+mahogany~
+3 0 10132
+W 5 0 0
+Z 5 5
+S
+#10128
+A Hallway~
+This corridor stretches to the north and south, the western wall lined
+with doors.  The white marble spans from floor to ceiling on the eastern
+wall, with a smooth stripe of grey in the middle, running the corridor\@s
+length.  
+~
+~
+2
+0 8 0
+D0
+The hallway continues to the north.
+~
+~
+0 0 10127
+D2
+The hallway continues to the south.
+~
+~
+0 0 10129
+D3
+A door leads into a storeroom to the west.
+~
+oaken~
+3 0 10131
+W 5 0 0
+Z 5 5
+S
+#10129
+A Hallway~
+The corridor leads to the north, and the western wall is lined with
+doors.  The white marble spans from floor to ceiling on the eastern wall,
+with a smooth stripe of grey in the middle, running the corridor\@s length.  
+~
+~
+2
+0 8 0
+D0
+The hallway continues to the north.
+~
+~
+0 0 10128
+D3
+A door leads into some sleeping quarters to the west.
+~
+pine~
+3 0 10130
+W 5 0 0
+Z 5 5
+S
+#10130
+Living Quarters~
+This bedroom is immaculate.  A bed is in one corner, perfectly made, the
+wooden frame shining with polish.  A table in the corner holds numerous
+papers, which, at a glance, appear to be about woodworking.  
+~
+~
+2
+0 8 0
+E
+papers~
+The top sheet is a diagram of a crane, with a cradle hanging from the highest
+point.
+~
+D1
+The hallway is to the east.
+~
+pine~
+3 0 10129
+W 5 0 0
+Z 5 5
+S
+#10131
+A Storeroom~
+A few tables adorn this otherwise uninteresting room.  The ceiling and
+floor are much the same as any other in this tower, white marble.  The
+tables bear a number of wooden trinkets that would fetch a high price in a
+market, but otherwise useless.  Some of the objects are very complex, cut
+spheres with spheres within, cut from a single piece of wood, intricate
+picture frames, and other such frivolities.  
+~
+~
+3
+0 8 0
+D1
+The hallway is to the east.
+~
+oaken~
+3 0 10128
+W 5 0 0
+Z 5 5
+S
+#10132
+A Workroom~
+Metal carving implements scatter the floor and tables in this room.  The
+floor is covered with wood shavings, from the many adze strokes that must
+have been made, as well as slices from carving knives and other wood-shaping
+tools.  Unformed chunks of wood rest, unmoved, in a neat pile in one corner.
+Small stools surround a long table in the middle of the room, with one chair
+at one end.  A cooper\@s knife rests on the floor near a barrel full of wood
+chips and shavings, with an occasional larger piece thrown in as well.  
+~
+~
+3
+0 8 0
+D1
+The hallway is to the east.
+~
+mahogany~
+3 0 10127
+W 5 0 0
+Z 5 5
+S
+#10133
+A Hallway~
+This corridor stretches to the north and south, the western wall lined
+with doors.  The white marble spans from floor to ceiling on the eastern
+wall, with a smooth stripe of grey in the middle, running the corridor\@s
+length.  
+~
+~
+2
+0 8 0
+D0
+~
+~
+0 0 10114
+D2
+~
+~
+0 0 10134
+D3
+A door leads into a workroom to the west.
+~
+steel~
+3 0 10138
+W 5 0 0
+Z 5 5
+S
+#10134
+A Hallway~
+This corridor stretches to the north and south, the western wall lined
+with doors.  The white marble spans from floor to ceiling on the eastern
+wall, with a smooth stripe of grey in the middle, running the corridor\@s
+length.  
+~
+~
+2
+0 8 0
+D0
+~
+~
+0 0 10133
+D2
+~
+~
+0 0 10135
+D3
+A door leads into a storeroom to the west.
+~
+titanium~
+3 0 10137
+W 5 0 0
+Z 5 5
+S
+#10135
+A Hallway~
+The corridor leads to the north, and the western wall is lined with
+doors.  The white marble spans from floor to ceiling on the eastern wall,
+with a smooth stripe of grey in the middle, running the corridor\@s length.  
+~
+~
+2
+0 8 0
+D0
+~
+~
+0 0 10134
+D3
+A door leads into some sleeping quarters to the west.
+~
+iron~
+3 0 10136
+W 5 0 0
+Z 5 5
+S
+#10136
+Living Quarters~
+The bedroom of the master metalsmith is dusty, and looks very unused. 
+Sketches of various tools lie on a desk, half-finished: it seems the smith\@s
+master work was drawn on the walls.  Charcoal sketches cover the once-clean
+white walls, but you can\@t make out what they describe.  
+~
+~
+2
+0 8 0
+D1
+The hallway is to the east.
+~
+iron~
+3 0 10135
+W 5 0 0
+Z 5 5
+S
+#10137
+A Storeroom~
+This storage room is filled with coal, iron, tin, and other metals used
+in metalsmithing.  Heavy gold, silver, and copper bricks are neatly piled in
+one section.  Barrels of water for quenching hot metal are stacked near the
+coal.  The room is nearly packed full...  You can hardly move around.  
+~
+~
+2
+0 8 0
+D1
+The hallway is to the east.
+~
+titanium~
+3 0 10134
+W 5 0 0
+Z 5 5
+S
+#10138
+A Workroom~
+A massive forge is in the center of one wall in this workroom, with a
+number of anvils in a crescent around it.  One large, heavily scarred anvil
+rests in the center, in front of the forge.  Some common implements of
+metalwork are neatly hung on the walls, and a barrel of water rests just in
+front of the large anvil.  
+~
+~
+3
+0 8 0
+D1
+The hallway is to the east.
+~
+steel~
+3 0 10133
+W 5 0 0
+Z 5 5
+S
+#10139
+A Hallway~
+This corridor stretches to the north and south, the western wall lined
+with doors.  The white marble spans from floor to ceiling on the eastern
+wall, with a smooth stripe of grey in the middle, running the corridor\@s
+length.  
+~
+~
+2
+0 8 0
+D0
+The stairway is to the north.
+~
+~
+0 0 10120
+D2
+The hallway continues to the south.
+~
+~
+0 0 10140
+D3
+A door leads to a workroom to the west.
+~
+ivory~
+3 0 10144
+W 5 0 0
+Z 5 5
+S
+#10140
+A Hallway~
+This corridor stretches to the north and south, the western wall lined
+with doors.  The white marble spans from floor to ceiling on the eastern
+wall, with a smooth stripe of grey in the middle, running the corridor\@s
+length.  
+~
+~
+2
+0 8 0
+D0
+~
+~
+0 0 10139
+D2
+~
+~
+0 0 10141
+D3
+A door leads to a storeroom to the west.
+~
+granite~
+3 0 10143
+W 5 0 0
+Z 5 5
+S
+#10141
+A Hallway~
+The corridor leads to the north, and the western wall is lined with
+doors.  The white marble spans from floor to ceiling on the eastern wall,
+with a smooth stripe of grey in the middle, running the corridor\@s length.  
+~
+~
+2
+0 8 0
+D0
+~
+~
+0 0 10140
+D3
+A door leads to some sleeping quarters to the west.
+~
+obsidian~
+3 0 10142
+W 5 0 0
+Z 5 5
+S
+#10142
+Living Quarters~
+A sparse bed room, with only the basic necessities.  A desk to work at,
+paper and charcoal to draw with.  A bed is made, in the corner, but doesn\@t
+look as if it has been often used.  The latest work of the stonemason is on
+his desk, awaiting his crafting touch again.  
+~
+~
+3
+0 8 0
+D1
+The hallway is to the east.
+~
+obsidian~
+3 0 10141
+W 5 0 0
+Z 5 5
+S
+#10143
+A Storeroom~
+Chunks of marble and onyx litter the floor, some large, some small pieces
+of old carvings.  Some of the larger blocks are marked with charcoal or
+chalk, for future carving: one large piece of onyx is marked for a
+representation of a man\@s head.  A few chisels and hammers are hung on the
+walls.  
+~
+~
+2
+0 8 0
+D1
+The hallway is to the east.
+~
+granite~
+3 0 10140
+W 5 0 0
+Z 5 5
+S
+#10144
+A Workroom~
+This room is neat, for the most part.  The floor is clean, and the
+hammers and chisels hanging on the walls are rust-free, the chisels sharp. 
+A bin holds a selection of unpolished jade rocks awaiting the craftsman\@s
+hand.  A large table contains a number of small vises with hand-cranks to
+hold pieces while they are shaped.  A grinding wheel is set to the side, the
+foot-pedal depressed to the ground.  Oddly, the stone shows no signs of
+wear...  It must have been recently replaced.  
+~
+~
+2
+0 8 0
+D1
+The hallway is to the east.
+~
+ivory~
+3 0 10139
+W 5 0 0
+Z 5 5
+S
+#10145
+A Hall at the Top of the Tower~
+One continuous string of etched and polished gold adorns the white marble
+walls of this hallway.  The curved and pointed leaves seem to waver as the
+light flashes around them, as if a steady breeze wafted through the
+corridor.  The line of pure yellow narrows, and travels straight as the
+marble stretches east.  An ebony door, highly polished, glints gently, with
+no other feature than it\@s smooth surface.  
+~
+~
+3
+0 8 0
+D0
+The stairway begins to the north.
+~
+~
+0 0 10126
+D2
+A room is to the south.
+~
+ebony~
+65603 0 10146
+W 5 0 0
+Z 5 5
+S
+#10146
+A Bedroom~
+A large bedchamber opens up before you, almost the width of the whole of
+the Tower.  A desk sits against one wall, with charcoal pencils and stacks
+of blank paper nearby.  Shelves of neatly-arranged books line the walls: a
+quick glance shows them to be books about enchantment and transfer of
+magical power.  A simple but elegantly designed bed sits in one corner, made
+for the day.  
+~
+~
+4
+0 8250 0
+D0
+The hallway is to the north.
+~
+ebony~
+65603 0 10145
+D4
+You see the outline of a trapdoor in the ceiling.
+~
+trapdoor~
+103 10119 10147
+W 5 0 0
+Z 5 5
+S
+#10147
+The Loft~
+This simple, undecorated room contains nothing but a wooden box,
+intricately carved.  You hear a slight resonance, a slight vibration through
+the floor...  originating from the box.  
+~
+~
+3
+0 8250 0
+D5
+A trapdoor leads into the bedroom below.
+~
+trapdoor~
+103 10119 10146
+W 5 0 0
+Z 5 5
+S
+#10148
+A Storage Cellar~
+This room is filled with a stale, smoky smell that is a fixture of the
+rock walls.  The space itself is simply a square room.  The floor is
+littered with wood debris, which have been preserved by the dry, unmoving
+air.  A ladder in the south wall leads up to a trapdoor in the ceiling.  
+~
+~
+2
+0 9 12
+D4
+A ladder leads up through a trapdoor in the ceiling.
+~
+trapdoor~
+3 0 10104
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 10101 2 7
+D 0 10104 5 3
+D 0 10127 3 3
+D 0 10128 3 3
+D 0 10129 3 3
+D 0 10130 1 3
+D 0 10131 1 3
+D 0 10132 1 3
+D 0 10133 3 3
+D 0 10134 3 3
+D 0 10135 3 3
+D 0 10136 1 3
+D 0 10137 1 3
+D 0 10138 1 3
+D 0 10139 3 3
+D 0 10140 3 3
+D 0 10141 3 3
+D 0 10142 1 3
+D 0 10143 1 3
+D 0 10144 1 3
+D 0 10145 2 65603
+D 0 10146 0 65603
+D 0 10146 4 103
+D 0 10147 5 103
+D 0 10148 4 3
+M 0 10101 2 10108 1
+M 0 10101 2 10128 1
+O 0 10104 0 10130
+M 0 10102 1 10131 1
+E 0 10102 0 9
+O 0 10103 0 10131
+O 0 10113 0 10131
+M 0 10100 1 10132 1
+E 0 10101 0 16
+M 0 10101 1 10132 1
+M 0 10105 1 10134 1
+M 0 10105 1 10135 1
+O 0 10111 0 10136
+O 0 10107 0 10137
+O 0 10108 0 10137
+O 0 10105 0 10138
+O 0 10106 0 10138
+O 0 10109 0 10138
+P 0 10110 1 10109 1
+M 0 10103 1 10138 1
+E 0 10112 0 6
+O 0 10114 0 10142
+O 0 10115 0 10142
+M 0 10106 1 10142 1
+E 0 10116 0 16
+O 0 10123 0 10142
+P 0 10124 1 10123 1
+M 0 10104 1 10145 1
+E 0 10100 0 5
+O 0 10118 0 10146
+M 0 10108 1 10146 1
+G 0 10119 0
+O 0 10120 0 10147
+P 0 10122 1 10120 1
+O 0 10146 0 10148
+O 0 10148 0 10148
+P 0 10143 -1 10148 1
+P 0 10149 1 10148 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

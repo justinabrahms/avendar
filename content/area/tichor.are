@@ -1,0 +1,1440 @@
+#AREADATA
+Name Tichor~
+Builders Yzeek~
+VNUMs 18700 18729
+Credits [?????] Yzeek     Tichor?~
+Danger 0
+Security 1
+Areainfo 59
+Herbs 0
+Weather 0 0 0 0 0
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 18700
+Rejyisho kankoran healer tall~
+Rejyisho~
+A tall kankoran clothed in the robes of a healer is here.
+~
+~
+kankoran~
+water scholar~
+Aa 0 DHJZc N 0
+35 18 35d60+1041 35d10+100 5d7+18 slash~
+claw~
+-12 -12 -12 -1
+V 0
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGIJKUV AD medium flesh
+>greet_prog 100~
+if israce($n) == kankoran
+  speak kankoran
+  tell $n Good travels to you.  Simply ask if you wish me to {Wheal{g any of your ailments.{x
+  nod $n
+else
+  speak common
+  tell $n Good travels to you.  Simply ask if you wish me to {Wheal{g any of your ailments.{x
+endif
+mpfocus $n
+~
+>load_prog 100~
+mpaddskill $i 77 100
+mpaddskill $i 119 100
+mpaddskill $i 116 100
+mpaddskill $i 898 100
+mpaddskill $i 338 100
+mpaddskill $i 206 100
+~
+|
+V4 18701
+tattered mass furs Jhloa Red mob_18701 hunter kankoran ranger~
+Jhloa the Red~
+A tattered mass of furs, Jhloa the Red is here. 
+~
+Jhloa the Red.  A huge kankoran with long, pitch black fur wears a
+stitched mass of pelts that covers his entire body.  A fox\@s face drapes
+down over Jhloa\@s eyes bathing his own face in shadow, and a broad pelt of
+brilliant red fur stretches back over his shoulders.  
+~
+kankoran~
+ranger~
+ACT GLN Z N 0
+40 20 28d70+1116 40d10+100 5d8+20 slash~
+claw~
+-15 -15 -15 -3
+EFHKRV 0
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGIJKUV 0 medium flesh
+>verb_prog getready~
+if isnpc($n)
+or isimmort($n)
+  if isfighting($i)
+  else
+    if snaffected($i) == 451
+    else
+      scouting
+    endif
+    wear jhloabow
+    mpoload 103
+    nock barbed
+    yell $F attacked me and now I\@m nocked up!
+    ready $F
+  endif
+endif
+~
+>greet_prog 100~
+if name($n) == $f
+  if iswielding($i) == 18700
+    remove jhloabow
+    wear jhloaaxe
+    wear jhloaknife
+  endif
+  ambush $f
+endif
+~
+>fight_prog 100~
+mpfocus $n
+if iscarrying($i) == 127
+  wear net
+  entangle $f
+  wear jhloaknife
+endif
+if hitprcnt($i) <= 45
+  flee
+  flee
+  flee
+  flee
+  flee
+  camo
+  getready
+endif
+if hitprcnt($i) <= 80
+and hitprcnt($i) > 45
+  mpvaluerand 1 1 4
+  if mobvalue(1) == 1
+      predatoryattack $f
+  endif
+  if mobvalue(1) == 2
+      pounce $f
+  endif
+  if mobvalue(1) == 3
+    if snaffected($i) == 935
+    else
+      maul
+    endif
+  endif
+  if mobvalue(1) == 4
+    lunge
+  endif
+endif
+if hitprcnt($i) > 80
+  flee
+  camo
+endif
+~
+>load_prog 100~
+mpaddskill $i 244 100 (camo)
+mpaddskill $i 886 100 (pred. att.)
+mpaddskill $i 521 100 (wild. mov.)
+mpaddskill $i 173 100 (enh. dam.)
+mpaddskill $i 885 100 (pounce)
+mpaddskill $i 888 100 (ready)
+mpaddskill $i 524 100 (terr. lore)
+mpaddskill $i 439 100 (entangle)
+mpaddskill $i 526 100 (wildcraft)
+mpaddskill $i 520 100 (archery)
+mpaddskill $i 265 100 (poultice)
+mpaddskill $i 608 100 (precision)
+mpaddskill $i 247 100 (ambush)
+mpaddskill $i 267 100 (tan)
+mpaddskill $i 884 100 (fletch)
+mpaddskill $i 883 100 (app. pois.)
+mpaddskill $i 882 100 (app. barbs)
+mpaddskill $i 889 100 (trueshot)
+mpaddskill $i 451 100 (scouting)
+mpaddskill $i 175 100 (Hand to Hand)
+mpaddskill $i 935 100 (maul)
+mpaddskill $i 157 100 (dual wield)
+~
+>rand_prog 5~
+if hitprcnt($i) < 50
+  if snaffected($i) == 265
+  else
+    poultice
+  endif
+endif
+mpvaluerand 0 1 100
+if mobvalue(0) > 88
+  if iscarrying($i) == 127
+  else
+    mpoload 127
+  endif
+endif
+~
+>rand_prog 30~
+if snaffected($i) == 521
+else
+  wildmove
+endif
+if snaffected($i) == 244
+else
+  camo
+endif
+if snaffected($i) == 451
+else
+  scouting
+endif
+~
+|
+V4 18728
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 18729
+Eh\@deirat courier warder mob_18729~
+Eh\@deirat~
+A courier is here dressed in the garb of the Jh\@ten Warders.
+~
+~
+ch\@taren~
+water scholar~
+ALT 0 DNU G 0
+60 30 38d138+1080 60d10+100 7d9+30 bash~
+punch~
+-27 -27 -27 -9
+FHK 0
+26 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 0 10 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHKMV ABCDEFGIJK AEK medium flesh
+>verb_prog lockandload~
+mpaddskill $i 156 100
+mpaddskill $i 165 100
+mpaddskill $i 163 100
+mpaddskill $i 166 100
+mpaddskill $i 200 100
+mpaddskill $i 202 100
+mpaddskill $i 175 100
+mpaddskill $i 176 100
+mpaddskill $i 173 100
+mpaddskill $i 157 100
+mpaddskill $i 177 100
+mpaddskill $i 190 100
+mpaddskill $i 187 100
+mpaddskill $i 194 100
+mpaddskill $i 172 100
+mpaddskill $i 178 100
+mpaddskill $i 186 100
+mpaddskill $i 188 100
+mpaddskill $i 696 100
+mpaddskill $i 690 100
+mpaddskill $i 277 100
+mpaddskill $i 3 100
+mpaddskill $i 901 100
+mpaddskill $i 45 100
+mpaddskill $i 27 100
+mpaddskill $i 7 100
+mpaddskill $i 87 100
+mpaddskill $i 419 100
+mpaddskill $i 125 100
+mpaddskill $i 700 100
+mpaddskill $i 902 100
+mpaddskill $i 686 100
+mpaddskill $i 904 100
+mpaddskill $i 416 100
+mpaddskill $i 83 100
+mpaddskill $i 424 100
+mpaddskill $i 692 100
+mpaddskill $i 687 100
+mpaddskill $i 689 100
+mpaddskill $i 695 100
+mpaddskill $i 688 100
+mpaddskill $i 903 100
+mpaddskill $i 697 100
+mpaddskill $i 698 100
+mpaddskill $i 694 100
+mpaddskill $i 693 100
+mpaddskill $i 701 100
+mpaddskill $i 413 100
+mpaddskill $i 711 100
+mpaddskill $i 905 100
+mpaddskill $i 702 100
+mpaddskill $i 417 100
+mpaddskill $i 88 100
+mpoload 18729 on self 5
+mpoload 18728 on self 6
+mpoload 18727 on self 14
+mpoload 18727 on self 15
+mpoload 18726 on self 9
+mpoload 18725
+wear ev\@hac
+mpoload 18724
+wear dagger
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+18700
+fur-banded fur banded longbow bow bands Jhloabow obj_18700~
+a fur-banded longbow~
+A longbow wrapped with bands of fur is here.~
+~
+wood~
+bow S 0 F AO
+0 AC ABC 0 0
+40 50 0 2 P
+5
+A
+20 -2
+A
+18 3
+A
+19 3
+E
+fur-banded fur banded longbow bow bands jhloabow obj_18700~
+This longbow appears to have been crafted by hand from sturdy hardwood. 
+A variety of furs denoting different game animals are wrapped around the
+upper and lower limbs of the bow.  A scaly, reptillian skin covers the grip
+and has been smoothed to a glass-like finish over the arrow rest.  
+~
+V13
+18701
+hatchet fur banded fur_banded axe jhloaaxe obj_18701~
+a hatchet with a fur-banded handle~
+A hatchet is here with its handle decorated with strips of fur.~
+~
+metal~
+weapon 0 0 F AN
+axe 4 9 3 0
+hack~
+40 70 0 1 P
+5
+A
+19 2
+E
+hatchet fur banded fur_banded axe jhloaaxe obj_18701~
+The blade of this handaxe has a long bit with a narrow cheek giving it a
+dramatic hook-like shape.  Though obviously cared for, the wear and patina
+of the metal shows much use and exposure.  The haft is decorated with a
+variety of bands of furs denoting different game animals and the grip is
+wrapped with a scaly reptillian skin.  
+~
+V13
+18702
+hunter\@s knife hook gut gutting wide wide-bladed jhloaknife obj_18702~
+a wide-bladed gut hook~
+A hunter\@s gutting knife is here.~
+~
+metal~
+weapon 0 0 F AN
+dagger 11 3 2 0
+gash~
+40 20 0 0 P
+5
+A
+18 -2
+A
+19 4
+E
+hunter~
+There is one obvious purpose to this blade; to slice open flesh.  The
+blade of this gut hook is shaped similar to a wide arrowhead with its
+trailing corners each finely sharpened along their inner edges.  A thin
+shaft connects the blade to a small handle designed to fit in the palm of
+one\@s hand with the shaft protruding between the middle two fingers.  
+~
+>hit_prog 12~
+mpaddaffect $n 529 40 6 0 0 65536 O
+mpechoat $n You feel a wide-bladed gut hook tear open your flesh!
+mpechoaround $n $N\@s flesh is ripped open by a wide-bladed gut hook. 
+~
+|
+V13
+18724
+ivory dagger gleaming inlaid inlays gold obj_18724~
+an ivory dagger inlaid with gold~
+An ivory dagger is here gleaming with gold inlays.~
+~
+ivory~
+weapon GIK 0 0 AN
+dagger 4 10 2 0
+stab~
+60 40 85650 0 P
+1
+A
+19 3
+A
+18 3
+A
+20 -2
+A
+12 35
+E
+ivory dagger gleaming inlaid inlays gold obj_18724~
+This slender dagger is expertly crafted from ivory and delicately inlaid
+with gold.  The edges of the knife are slightly curved in a wave-like
+pattern to give it more surface area.  The exquisite metalwork decorates the
+blade with swirls and starbursts of gleaming gold.  
+~
+V13
+18725
+Ev\@hac sword longsword ivory gleaming gold obj_18725~
+an ivory longsword with a gold hilt~
+An ivory longsword with a gleaming gold hilt rests here.~
+This mighty weapon was forged with divine purpose and authority by the
+capable hands of Ch\@hiern, the legendary artisan of the Warders.  Though he
+was most known for his armorments and skills at defense, Ch\@hiern also knew
+that the best way to defend yourself was to either turn your enemies away or
+defeat them rapidly.  \#Justice\#, or \#Ev\@hac\#, was a commanding force on any
+battlefield striking fear into its enemies and fervor into its allies.  
+
+It came into being when Ch\@hiern had a vision of a great battle in a dream
+that felt too real to ignore.  The opposition was fierce, vile and terrible
+with hope being worn thin before them.  He woke with a clear thought of the
+tool necessary to repel the hoards of evil and began forging it immediately.
+Known to imbue his creations with powerful magic, Ch\@hiern began to pray to
+Rystaia for divine powers to be molded into the weapon.  
+
+Almost immediately, a visitor came upon his forge, she said that her name
+was Calaera and that she had been directed here by a divine presence to
+obtain a weapon that would alter the fate of the world.  The two then prayed
+over the sword for hours, each channelling their energies into it until it
+began to exude an audible vibration.  It was then declared that this weapon
+would bring justice upon the dark forces that had laid Ad\@masteisa to waste.
+~
+ivory~
+weapon BGIK 0 0 AN
+sword 4 15 10 0
+divine wrath~
+60 120 2707423 2 P
+1
+A
+19 4
+A
+18 4
+A
+12 80
+A
+20 -5
+E
+ev\@hac sword longsword ivory gleaming gold obj_18725~
+This splendid longsword is crafted from a single piece of ivory.  The
+surface is smoothed and cleansed of all blemishes with a narrow channel
+running along the center of the blade.  Glowing runes of spirit are
+emblazoned upon the face of the blade and hum with divine power.  The
+gleaming hilt is a single wound strand of gold with details of swirls and
+starbursts reaching onto the blade.  
+~
+>hit_prog 2~
+mpechoat $n {WA vivid crackling of power surges forth from $O striking you in your very soul.{x
+mpechoaround $n {WA vivid crackling of power surges forth from $O and is channelled down an ivory longsword with a gold hilt.{x
+mpcast 131 51 $n
+~
+|
+V13
+18726
+Arur articulated ivory gauntlets inlaid glimmering gold obj_18726~
+a pair of articulated ivory gauntlets inlaid with gold~
+An ivory pair of gauntlets rest here glimmering with gold accents.~
+One of the accoutrements crafted by Ch\@hiern, the legendary artisan of
+the Warders.  He was a craftsman known for creating advancements in items
+that would otherwise be mundane transforming them into the exceptional.  A
+warrior must learn to maintain precision and control over his every action
+even while overcome with great fervor.  He, therefore, created \#Arur\# or
+\#The Grasp\# to solidify the warrior\@s confidence and ardor.  
+~
+ivory~
+armor GIK 0 0 AH
+15 15 15 15 0
+60 20 127050 0 P
+1
+A
+17 -12
+A
+20 -3
+A
+13 20
+A
+18 4
+A
+19 3
+E
+arur articulated ivory gauntlets inlaid glimmering gold obj_18726~
+These ivory gauntlets are expertly crafted with highly articulated
+fingers.  The cuffs are lined with a soft velvet to reduce chafing, a luxury
+rarely seen.  Exquisite gold inlays adorn the backings and cuffs in swirls
+and starbursts.  
+~
+>remove_prog 100~
+mpremaffect $n 416
+mpechoat $n You feel less zealous.
+~
+>wear_prog 100~
+mpaddaffect $n 416 51 -1 0 0 0
+mpechoat $n You grow angry and feel a zealous strength fill you.
+~
+|
+V13
+18727
+bracer smooth ivory inlaid gold obj_18727~
+an ivory bracer inlaid with gold~
+A bracer of smooth ivory rests here decorated with gold accents.~
+~
+ivory~
+armor GIK 0 0 AM
+15 15 15 15 0
+60 30 41038 0 P
+2
+A
+17 -10
+A
+20 -2
+A
+13 15
+A
+18 2
+A
+19 2
+E
+bracer smooth ivory inlaid gold obj_18727~
+This smooth ivory bracer is lined with a soft velvet material along the
+edges to reduce chafing, a luxury rarely seen.  The swirling gold inlays are
+expertly crafted and shine with a polished gleam.  
+~
+V13
+18728
+Shieve gleaming ivory great helm inlaid glimmering gold obj_18728~
+an ivory great helm inlaid with gold~
+A gleaming ivory helm rests here glimmering with gold accents.~
+One of the accoutrements crafted by Ch\@hiern, the legendary artisan of
+the Warders.  Though he prided himself on works that would grant the highest
+protection, he firmly believed that the best defense was a sharp mind.  He
+created \#Shieve\#, or \#The Cranium\#, to help warriors enhance their mental
+prowess, for strength will lose to wit more oft than not.  
+~
+ivory~
+armor GIK 0 0 AE
+15 15 15 15 0
+60 40 73213 1 P
+1
+A
+17 -10
+A
+20 -3
+A
+13 25
+A
+18 2
+A
+19 2
+E
+shieve gleaming ivory great helm inlaid glimmering gold obj_18728~
+This glistening ivory full helm was crafted with expert hands.  The inner
+head rest is lined with a soft velvet material to reduce chafing, a luxury
+rarely encountered.  The eye slits are trimmed with fine gold polished to a
+high sheen which then trails off into elegant swirls and starbursts
+decorating the faceplate and brow.  The bascinet skirting is articulated
+making it easy to bend and turn one\@s neck, and is longer than normal to
+grant extra protection to the nape.  
+~
+>remove_prog 100~
+mpremaffect $n 428
+mpechoat $n Your mind loses its intense focus.
+~
+>wear_prog 100~
+mpaddaffect $n 428 51 -1 0 0 0
+mpechoat $n You feel able to focus your thoughts sharply.
+~
+|
+V13
+18729
+Nyiami molded ivory large breatplate plate torso inlaid gold~
+a molded ivory breastplate inlaid with gold~
+A large piece of ivory formed in the shape of a torso rests here.~
+\#Nyiami\#, or \#The Guard\# in ch\@taren, was crafted by Ch\@hiern of the
+first generation of Warders.  Known for his superb works of artisanship he
+incorporated many works of magic into his craft to benefit the House\@s
+cause.  Though the primary goal of his creations was for protection he
+wanted the bearer to \@feel\@ safe in his armorments as well.  
+~
+ivory~
+armor GIK 0 0 AD
+15 15 15 15 0
+60 210 1222458 2 P
+1
+A
+17 -15
+A
+20 -5
+A
+13 60
+A
+18 3
+A
+19 3
+E
+nyiami molded ivory large breatplate plate torso inlaid gold~
+This smooth, glistening ivory has been molded into the likeness of a male
+torso.  The musculature of the chest and abdomen is exagerated to the
+epitome of a warrior\@s physique.  Thin, elegant gold detail has been added
+in swirling decorations about the chest and sides with exceptional skill.  
+~
+>remove_prog 100~
+mpremaffect $n 415
+mpechoat $n Your spirit shield fades away.
+~
+>wear_prog 100~
+mpaddaffect $n 415 51 -1 0 0 0
+mpechoat $n A warm glow surrounds you.
+mpechoaround $n A wave of warm energy eminates from $N.
+~
+|
+#0
+
+
+
+#ROOMS
+#18700
+The Entrance to Tichor Village~
+The usually dense grasses of the plain have been worn thin due to
+frequent foot traffic here.  A trodden path leads to a small village to the
+east with several structures built along the scenic ocean cliff.  The view
+to the north looks out across the grey Uthlin Ocean.  Powerful waves from
+opposing currents collide off the northeastern coast, and a white mist rises
+from the froth.  The air is heavy with moisture and the scent of the sea
+rides on the breeze.  
+~
+~
+0
+0 0 2
+D1
+~
+~
+0 0 18701
+W 5 0 0
+Z 5 5
+S
+#18701
+A Trodden Dirt Path~
+A trodden dirt path runs through the small village of Tichor which is
+built along the edge of the high cliff.  The low, stone buildings seem
+identically crafted with narrow spaces in between which allow for a glimpse
+of the sea.  The air is dense with mist and the briny scent of the Uthlin. 
+Sea birds circle about in the sky above and occasionally come to rest atop
+the rooftops which are stained from their presence.  Tall patches of
+tenacious grass cling to life at the edges of the buildings and shallow
+pools which dot the muddy path.  The trodden path leads east and south
+towards more structures and westward lies the great plain.  
+~
+~
+0
+0 0 2
+D1
+~
+~
+0 0 18702
+D2
+~
+~
+0 0 18713
+D3
+~
+~
+0 0 18700
+W 5 0 0
+Z 5 5
+S
+#18702
+A Trodden Dirt Path~
+A trodden dirt path runs through the small village of Tichor which is
+built along the edge of the high cliff.  The low, stone buildings seem
+identically crafted with narrow spaces in between which allow for a glimpse
+of the sea.  The air is dense with mist and the briny scent of the Uthlin. 
+Sea birds circle about in the sky above and occasionally come to rest atop
+the rooftops which are stained from their presence.  Tall patches of
+tenacious grass cling to life at the edges of the buildings and shallow
+pools which dot the muddy path.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 18714
+D1
+~
+~
+0 0 18703
+D3
+~
+~
+0 0 18701
+W 5 0 0
+Z 5 5
+S
+#18703
+A Trodden Dirt Path~
+A trodden dirt path runs through the small village of Tichor which is
+built along the edge of the high cliff.  The low, stone buildings seem
+identically crafted with narrow spaces in between which allow for a glimpse
+of the sea.  The air is dense with mist and the briny scent of the Uthlin. 
+Sea birds circle about in the sky above and occasionally come to rest atop
+the rooftops which are stained from their presence.  Tall patches of
+tenacious grass cling to life at the edges of the buildings and shallow
+pools which dot the muddy path.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 18715
+D1
+~
+~
+0 0 18704
+D3
+~
+~
+0 0 18702
+W 5 0 0
+Z 5 5
+S
+#18704
+A Trodden Dirt Path~
+A trodden dirt path runs through the small village of Tichor which is
+built along the edge of the high cliff.  The low, stone buildings seem
+identically crafted with narrow spaces in between which allow for a glimpse
+of the sea.  The air is dense with mist and the briny scent of the Uthlin. 
+Sea birds circle about in the sky above and occasionally come to rest atop
+the rooftops which are stained from their presence.  Tall patches of
+tenacious grass cling to life at the edges of the buildings and shallow
+pools which dot the muddy path.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 18716
+D1
+~
+~
+0 0 18717
+D2
+~
+~
+0 0 18705
+D3
+~
+~
+0 0 18703
+W 5 0 0
+Z 5 5
+S
+#18705
+A Trodden Dirt Path~
+A trodden dirt path runs through the small village of Tichor which is
+built along the edge of the high cliff.  The low, stone buildings seem
+identically crafted with narrow spaces in between which allow for a glimpse
+of the sea.  The air is dense with mist and the briny scent of the Uthlin. 
+Sea birds circle about in the sky above and occasionally come to rest atop
+the rooftops which are stained from their presence.  Tall patches of
+tenacious grass cling to life at the edges of the buildings and shallow
+pools which dot the muddy path.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 18704
+D1
+~
+~
+0 0 18718
+D2
+~
+~
+0 0 18706
+W 5 0 0
+Z 5 5
+S
+#18706
+A Trodden Dirt Path~
+A trodden dirt path runs through the small village of Tichor which is
+built along the edge of the high cliff.  The low, stone buildings seem
+identically crafted with narrow spaces in between which allow for a glimpse
+of the sea.  The air is dense with mist and the briny scent of the Uthlin. 
+Sea birds circle about in the sky above and occasionally come to rest atop
+the rooftops which are stained from their presence.  Tall patches of
+tenacious grass cling to life at the edges of the buildings and shallow
+pools which dot the muddy path.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 18705
+D1
+~
+~
+0 0 18719
+D2
+~
+~
+0 0 18707
+W 5 0 0
+Z 5 5
+S
+#18707
+A Trodden Dirt Path~
+A trodden dirt path runs through the small village of Tichor which is
+built along the edge of the high cliff.  The low, stone buildings seem
+identically crafted with narrow spaces in between which allow for a glimpse
+of the sea.  The air is dense with mist and the briny scent of the Uthlin. 
+Sea birds circle about in the sky above and occasionally come to rest atop
+the rooftops which are stained from their presence.  Tall patches of
+tenacious grass cling to life at the edges of the buildings and shallow
+pools which dot the muddy path.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 18706
+D1
+~
+~
+0 0 18720
+D2
+~
+~
+0 0 18721
+D3
+~
+~
+0 0 18708
+W 5 0 0
+Z 5 5
+S
+#18708
+A Trodden Dirt Path~
+A trodden dirt path runs through the small village of Tichor which is
+built along the edge of the high cliff.  The low, stone buildings seem
+identically crafted with the exception of one which stands at the center of
+the village.  A large doorway to the north, lined with exquisite curtains of
+blue and alabaster, allows entrance to the structure through an elaborate
+archway which is embossed with the sigil of a tempest.  A gentle current of
+salty sea air flows from the opening, and the distant tumbling waves echo
+softly among the rocks.  
+~
+~
+0
+0 0 2
+D0
+Curtains of a fine, flowing material wreathe the archway to the north. 
+The pattern of alabaster swirls seems to sparkle as they wave in the wind,
+and the velvety-soft blue pattern appears to roll, rise, and fall as the
+light shifts across its surface.  The tasseled edge sweeps its curled
+fingers against the ground in a beckoning motion with a soft russle.  
+~
+~
+0 0 18726
+D1
+~
+~
+0 0 18707
+D2
+~
+~
+0 0 18722
+D3
+~
+~
+0 0 18709
+W 5 0 0
+Z 5 5
+S
+#18709
+A Trodden Dirt Path~
+A trodden dirt path runs through the small village of Tichor which is
+built along the edge of the high cliff.  The low, stone buildings seem
+identically crafted with narrow spaces in between which allow for a glimpse
+of the sea.  The air is dense with mist and the briny scent of the Uthlin. 
+Sea birds circle about in the sky above and occasionally come to rest atop
+the rooftops which are stained from their presence.  Tall patches of
+tenacious grass cling to life at the edges of the buildings and shallow
+pools which dot the muddy path.  
+~
+~
+0
+0 0 2
+D1
+~
+~
+0 0 18708
+D2
+~
+~
+0 0 18723
+D3
+~
+~
+0 0 18710
+W 5 0 0
+Z 5 5
+S
+#18710
+A Trodden Dirt Path~
+A trodden dirt path runs through the small village of Tichor which is
+built along the edge of the high cliff.  The low, stone buildings seem
+identically crafted with narrow spaces in between which allow for a glimpse
+of the sea.  The air is dense with mist and the briny scent of the Uthlin. 
+Sea birds circle about in the sky above and occasionally come to rest atop
+the rooftops which are stained from their presence.  Tall patches of
+tenacious grass cling to life at the edges of the buildings and shallow
+pools which dot the muddy path.  The trodden path leads east and north
+towards more structures and westward lies the great plain.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 18712
+D1
+~
+~
+0 0 18709
+D3
+~
+~
+0 0 18711
+W 5 0 0
+Z 5 5
+S
+#18711
+The Entrance to Tichor Village~
+The usually dense grasses of the plain have been worn thin due to
+frequent foot traffic here.  A trodden path leads to a small village to the
+east with several structures built along the scenic ocean cliff.  Powerful
+waves from opposing currents collide off the northeastern coast, and a white
+mist rises from the froth.  The air is heavy with moisture and the scent of
+the sea rides on the breeze.  
+~
+~
+0
+0 0 2
+D1
+~
+~
+0 0 18710
+W 5 0 0
+Z 5 5
+S
+#18712
+A Trodden Dirt Path~
+A trodden dirt path runs through the small village of Tichor which is
+built along the edge of the high cliff.  The air is dense with mist and the
+briny scent of the Uthlin.  Sea birds circle about in the sky above and
+occasionally come to rest atop the rooftops which are stained from their
+presence.  Tall patches of tenacious grass cling to life at the edges of the
+buildings and shallow pools which dot the muddy path.  The building to the
+west has a large fur pelt hanging in the doorway, and several skins posted
+to the wall to dry.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 18713
+D2
+~
+~
+0 0 18710
+D3
+~
+~
+0 0 18724
+W 5 0 0
+Z 5 5
+S
+#18713
+A Trodden Dirt Path~
+A trodden dirt path runs through the small village of Tichor which is
+built along the edge of the high cliff.  The air is dense with mist and the
+briny scent of the Uthlin.  Sea birds circle about in the sky above and
+occasionally come to rest atop the rooftops which are stained from their
+presence.  Tall patches of tenacious grass cling to life at the edges of the
+buildings and shallow pools which dot the muddy path.  The building to the
+west is marked with a symbol of healing above the door.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 18701
+D2
+~
+~
+0 0 18712
+D3
+~
+~
+0 0 18725
+W 5 0 0
+Z 5 5
+S
+#18714
+A Stone Building on the Northern Cliff~
+This low, stone building is evidently well lived-in.  There is a large
+bed of furs, sizeable enough to accommodate an entire family, in the rear
+corner of the home.  A wide wicker cabinet stands from floor to ceiling
+adjacent to the bedding with its door slightly ajar.  Small windows offer a
+view of the cape to the north and the Great Plain to the west.  
+~
+~
+0
+0 0 0
+E
+north cape view~
+The Cape\@s most notable feature is the large island of jutting rock just
+off the northeast coastline.  The roiling surf crashes through a field of
+twisted and jagged rocks between the cliff and the island.  Fractured
+remnants of unlucky vessels among the frothy turmoil are evidence of its
+peril.  
+~
+E
+view great plain west~
+The Great Plain stretches westward until it blends with the sky far in
+the distance.  The pale grass is broken by the prevalent jutting rock
+formations which speckle the landscape giving it the appearance of clouds.  
+~
+D2
+~
+~
+0 0 18702
+W 5 0 0
+Z 5 5
+S
+#18715
+A Stone Building on the Northern Cliff~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 18703
+W 5 0 0
+Z 5 5
+S
+#18716
+A Stone Building on the Northern Cliff~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 18704
+W 5 0 0
+Z 5 5
+S
+#18717
+A Stone Building on the Eastern Cliff~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 18704
+W 5 0 0
+Z 5 5
+S
+#18718
+A Stone Building on the Eastern Cliff~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 18705
+W 5 0 0
+Z 5 5
+S
+#18719
+An Open-Faced Stone Building~
+This low, stone building shares a half-wall with the building to the
+south.  The eastern wall of both structures have been removed leaving only a
+single row of stones along the edge of the cliff.  An endless view stretches
+eastward over the vast Uthlin Ocean.  It\@s grey waters act as a canvas for
+the streaks of vibrant colors in the sky.  A collection of frames and easels
+clutter the northern wall resting below a couple of shelves stocked with
+paints and dyes.  A tall stool and an empty easel sit precariously close to
+the edge of the cliff, and several fabrics have been left in dying pots
+along the short wall.  
+~
+~
+0
+0 0 1
+D2
+~
+~
+0 0 18720
+D3
+~
+~
+0 0 18706
+W 5 0 0
+Z 5 5
+S
+#18720
+An Open-Faced Stone Building~
+This low, stone building shares a half-wall with the building to the
+north.  The eastern wall of both structures have been removed leaving only a
+single row of stones along the edge of the cliff.  An endless view stretches
+eastward over the vast Uthlin Ocean.  It\@s grey waters act as a canvas for
+the streaks of vibrant colors in the sky.  The earthen floor is covered with
+a large fur carpet that is staked down at the edges, and the walls are
+decorated with tapestries of various quality.  One corner is overfilled with
+piles of textiles and sundries which surround a bench and spindle.  
+~
+~
+0
+0 0 1
+D0
+~
+~
+0 0 18719
+D3
+~
+~
+0 0 18707
+W 5 0 0
+Z 5 5
+S
+#18721
+A Stone Building on the Southern Cliff~
+This low, stone building rests on the southeastern edge of the cliff.  A
+long, narrow slit in the eastern wall allows for a special view of the
+Uthlin Ocean as well as a strong current of air.  The room is nearly empty
+with only a small wooden stool turned on its side in the center of the
+earthen floor, and an altar of stones in the corner with an idol of a grey
+wolf upon it.  
+~
+~
+0
+0 0 0
+E
+altar stones idol grey wolf~
+This small altar consists of an odd variety of stones.  The colors and
+patterns of each are indigenous to far away lands and represent a
+culmination of travels and experiences.  A miniature statue of a grey wolf
+stands atop the carefully placed rocks with a few dried flower petals held
+beneath it.  
+~
+D0
+~
+~
+0 0 18707
+W 5 0 0
+Z 5 5
+S
+#18722
+A Stone Building on the Southern Cliff~
+This low, stone building appears to be a modest home.  A simple wooden
+table and two chairs are tucked into the southwest corner next to a tall set
+of shelves holding basic pottery and utensils.  A low bed of furs sits
+against the western wall with some belongings piled at its base.  A food
+storage locker is surrounded by small rocks in a dug out pit at the base of
+the eastern wall.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18708
+W 5 0 0
+Z 5 5
+S
+#18723
+A Stone Building on the Southern Cliff~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18709
+W 5 0 0
+Z 5 5
+S
+#18724
+Jhloa\@s Shelter~
+This low, stone shelter is decorated primarily with rustic pelts and furs
+which hang dramatically from the walls and ceiling.  A multitude of traps,
+hooks, nets, and cages of various sizes have a greater presence than any
+formal furniture.  A fur-lined bench along the western wall appears to be a
+makeshift bed covered with thick pelts, and a small basin rests on a
+pedestal near the doorway.  A long table stands against the northern wall
+with a series of specialized blades hanging on pegs just above it.  A
+doorway to the east leads out to a trodden path.  
+~
+~
+0
+0 0 3
+E
+series specialized blades knives pegs skinning hunting wall~
+Several varieties of hunting knives adorn the wall here, all of which
+have carved bone handles that have had their share of wear.  A collection of
+skinning knives ranging in both size and curve are hung in a crescent shape
+from smallest to largest.  Hanging just below these are some gut hooks,
+their edges gleaming with a prepared sharpness.  
+~
+E
+long table~
+This long table has obviously been used for butchery of game animals. 
+The smooth workspace is slightly angled so that the runnings all flow
+towards a channel at the base of the wall.  A ringer is attached at the far
+end where a variety of stretching and scraping tools are easily at hand.  
+~
+E
+small basin pedestal~
+A small ceramic basin rests here about half-filled with clear water.  It
+appears to be well-used as the bottom and edges are all heavily worn, and a
+thick cloth covered in various stains hangs on a hook next to it.  The
+waist-high pedestal is simply a hewn tree which is still firmly rooted in
+the ground.  There are notches and carvings adorning its surface, but none
+seem to have any real use.  
+~
+D1
+~
+~
+0 0 18712
+W 5 0 0
+Z 5 5
+S
+#18725
+Rejyisho\@s Shelter~
+This low, stone shelter is decorated with numerous symbols of healing and
+engraved basins which depict the Sapphire Spear.  A large, finely
+upholstered bed takes up the center of the room and several other
+comfortable chairs are placed around the perimeter.  A series of specialized
+salves and ointments are carefully arranged upon a long set of shelves that
+line the northern wall.  A doorway to the east leads out to a trodden path. 
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 18713
+W 5 0 0
+Z 5 5
+S
+#18726
+A Hazy Atrium~
+This atrium is lined with pale, stone pillars which support large,
+arching sculptures that cross and intertwine above you.  The air feels light
+and fresh, but a thick mist lingers and leaves a damp coating of moisture on
+every surface.  The stone walls are decorated with delicate, flowing
+curtains of blue and alabaster whose patterns express the chaos of the winds
+and the serenity of the sea.  Smooth, polished stones painted with an
+elaborate mural of flowing water are crafted into a walkway through the
+atrium.  The tiled path forms a circle in the center of the room around an
+alabaster collection pool which gleams with a pale blue light.  
+~
+~
+0
+0 0 2
+E
+smooth polished stones elaborate mural flowing water walkway path~
+Smooth, arching tiles are painted with expert precision in the fashion of
+flowing water.  The water appears to flow gently over a rocky streambed with
+vast attention paid to the detail of the stones.  The flow and direction of
+the current is portrayed by minute contours sculpted into the tiles with
+great care.  
+~
+E
+arching sculptures wave up pillar pillars large~
+The stones above appear almost liquid in their perfection and flawless in
+their craft.  A wave crashes from one pillar top to the next as if hopping
+in jubilation.  It lands with such force that it leaves behind a nimbus of
+dense mist.  The power of the wave is directed by swirling winds which lift
+and churn the water into an elegant, streamlined form.  
+~
+E
+wall walls curtains delicate flowing blue alabaster~
+Curtains of a fine, flowing material are hung decoratively upon the
+walls.  The pattern of alabaster swirls seems to sparkle as they wave in the
+wind, and the velvety-soft blue pattern appears to roll, rise, and fall as
+the light shifts across its surface.  
+~
+D0
+~
+~
+0 0 18727
+D2
+~
+~
+0 0 18708
+D3
+~
+~
+0 0 18729
+W 5 0 0
+Z 5 5
+S
+#18727
+A Grated Pathway~
+A raised, grated path meanders around this room in a swirling design. 
+The floor is a shallow, tiled pond of slowly flowing water which gently
+trickles in from the south through a slot under the path.  A depiction of an
+underwater scene has been expertly painted on the tiles lining the floor
+with a variety of spectacular colors.  The walls are paneled with
+white-washed wood and the corners each have a suspended wicker basket
+overflowing with ferns.  A light mist hangs in the air with the salty scent
+of the sea.  
+~
+~
+0
+0 0 0
+E
+depiction scene underwater painting tiles floor~
+A pristine floor of alabaster tiles holds a hand\@s depth of clear water,
+and displays subtle variations in color to form the illusion of current. 
+The painted seascape depicts a scene of an island coastline with diverse
+species of sea creatures and marine flora.  
+~
+E
+raised grated path design~
+This serpentine path is crafted from twisted saplings and vines and held
+aloft on sturdy tree trunks.  The smooth, grey bark has been treated with a
+clear substance to protect it from wear and add traction.  The design of the
+path resembles a churning wind, or a soothing breeze dependant on the
+observer.  
+~
+D2
+~
+~
+0 0 18726
+D3
+~
+~
+0 0 18728
+W 5 0 0
+Z 5 5
+S
+#18728
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 18727
+D2
+~
+~
+0 0 18729
+W 5 0 0
+Z 5 5
+S
+#18729
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 18728
+D1
+~
+~
+0 0 18726
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+M 0 18701 1 18724 1
+E 0 18701 0 16
+E 0 18702 0 19
+G 0 18700 0
+M 0 18700 1 18725 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

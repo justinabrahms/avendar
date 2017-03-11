@@ -1,0 +1,3461 @@
+#AREADATA
+Name Northern Earendam Grasslands~
+Builders Iandir Iacobos~
+VNUMs 5700 5799
+Credits [ ALL ] Iandir    N. Earendam Grasslnd~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 16384
+Weather 2 2 2 3 0
+Weave 5 0 0
+Shades 5 5
+Stone 85
+End
+
+
+
+#MOBILES
+V4 5701
+mouse field~
+the field mouse~
+A field mouse runs through the grass.
+~
+A small brown mouse darts quickly through the grass.
+~
+cat~
+water scholar~
+ADGN 0 Z N 0
+1 0 1d10+5 0d0+0 1d2+1 pierce~
+bite~
+0 0 0 0
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGV ACDEFHJKQUV A medium unknown
+V4 5702
+hare plains~
+a plains hare~
+A brown plains hare watches you alertly.
+~
+A long-eared plains hare watches you alertly, ready to dash off into the grass.
+~
+cat~
+water scholar~
+ADGN 0 Z N 0
+4 0 1d16+30 0d0+0 1d4+1 pierce~
+scratch~
+0 0 0 0
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AGV ACDEFHJKQUV A medium unknown
+V4 5703
+chadrassa caladaran wanderer~
+Chadrassa~
+Chadrassa, the caladaran wanderer, crouches at the campfire.
+~
+A tall caladaran wearing plain grey robes, Chadrassa crouches by the edge
+of the campfire, tending to its coals.  
+~
+caladaran~
+water scholar~
+ADGKL 0 DFHZ N 0
+54 48 3500d1+1 0d0+0 5d5+10 energy~
+magic~
+-22 -22 -22 -9
+FK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 1 -1
+AHMW ABCDEFGIJKP AIK medium unknown
+>load_prog 100~
+speak arcane
+~
+>speech_prog text~
+esay \@shrugs\@ Yes, I know which texts you mean.
+esay \@adds\@ No, I don\@t know where to find them.
+~
+>give_prog terse letter introduction~
+speak arcane
+if isfocused($i)
+  say I\@m busy at the moment.
+  give terse $n
+else
+  esay \@arches a brow, asking\@ What\@s this, then?
+  mpjunk letter
+  mpfocus $n 0
+  mpvalueset 2 0
+  mpsetdata letter_deny
+  if ispc($n)
+    if isimmort($n)
+    else
+      if isghost($n)
+      else
+        if level($n) > 29
+          if majorsphere($n) == water
+            if minorsphere($n) == water
+              if chosenpath($n) == none    
+                mpsetdata letter_accept
+                break
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>data_prog letter_accept~
+emote scans the letter, his eyes flicking back and forth.
+esay \@lets out an amused snort, commenting\@ I see Lydara is exactly as polite as always.
+pmote peers thoughtfully at $F, steepling his fingers.
+esay \@muses\@ Well, then. So you want to learn what it means to be of Wintertide, do you? So be it.
+esay \@states ominously\@ I shall show you.
+emote begins a low chant, little more than a rumble in his throat.
+mpecho As Chadrassa\@s chant grows louder, the air seems to grow frosty and chill!
+mpechoat $f You feel the heat beginning to leech from your bones as the mage stares at you, ever chanting.
+mpvalueset 2 1
+mpechoat $f Icy fingers of cold seem to curl about your heart, slowly tightening!
+mpechoat $f At last, when you don\@t think you can take it anymore, Chadrassa stops his chant and eyes you thoughtfully.
+mpechoat $f Slowly, life begins to creep back into your frozen body.
+esay \@comments quietly\@ Now you begin to understand. 
+esay \@murmurs\@ Of all the paths, only we of Wintertide truly know that water, although life-affirming, has another side. A destructive side.
+esay \@adds, eyes hard\@ See that you don\@t abuse it.
+mpecho After a moment, a smile breaks out on Chadrassa\@s face.
+esay \@greets as if for the first time\@ Welcome to our Path, $F. Should ever you need instruction, seek me out.
+mpvalueset 2 3
+~
+>data_prog letter_deny~
+emote reads the letter quickly, then guffaws.
+esay \@snorts\@ This is clearly not applicable to you. Stop wasting my time.
+emote pointedly tears up the letter.
+mpunfocus 0
+~
+>rand_prog 100~
+if isfighting($i)
+else
+  if isfocused($i)
+    if ishere($f)
+      $d
+      mpnextdata
+      if value(2) == 1
+        mpechoat $f The bitter cold seizes you painfully! Still he chants, even as frost forms over your skin!
+        mpdamfrom $f 100 \@chill\@ The freezing cold
+        mpaddaffect $f 1076 51 17 0 0 0
+        mpvalueset 2 2
+      endif
+      if value(2) == 3
+        mpechoat $f It slowly dawns on you that you have somehow gained a new awareness, a sharper sense of the nature of water!
+        mpset char $f chosenpath wintertide
+        mpstring char $f title default
+        mpset skill $f \@greater water wintertide\@ 1
+        mpechoat $f {RYou have chosen the Path of Wintertide.{x
+        mpunfocus 0
+      endif
+    else
+      emote shrugs lightly to himself.
+      mpunfocus 0
+    endif
+  else
+    if inroom($i) > 5795
+    or inroom($i) < 5701
+      mpecho Chadrassa ambles off into the distance.
+      mpgoto 5753
+      mpecho Chadrassa enters the room, moving at an easy walk.
+    endif
+    mpvaluerand 1 1 500
+    if mobvalue(1) < 3
+      mpvaluerand 0 1 4
+      stand
+      mpecho Chadrassa pours a small amount of water on the coals of the fire.
+      mpecho The fire hisses briefly, then dies.
+      mpecho Chadrassa covers the ashes with soil, leaving no trace of his presence.
+      mppurge fire
+      if mobvalue(0) == 1
+        north
+      endif
+      if mobvalue(0) == 2
+        south
+      endif
+      if mobvalue(0) == 3
+        east
+      endif
+      if mobvalue(0) == 4
+        west
+      endif
+      mpecho Chadrassa wanders in and begins setting up camp.
+      mpecho Gathering twigs and branches, Chadrassa builds a small campfire.
+      mpoload 5701
+      rest fire
+    endif
+  endif
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+5701
+fire campfire camp~
+the campfire~
+A small campfire crackles merrily.~
+~
+fire~
+light A 0 A 0
+0 0 999 0 0
+0 0 0 1 P
+0
+>rand_prog 2~
+opecho The campfire snaps loudly as sap in a twig begins to boil.
+~
+|
+V13
+5703
+knife glowing wooden handle~
+a glowing knife with a wooden handle~
+A glowing knife with a smooth wooden handle rests here.~
+~
+steel~
+weapon AG 0 F AN
+dagger 3 15 2 0
+pierce~
+51 50 101695 1 P
+45
+A
+13 15
+A
+12 15
+V13
+5704
+cloak silky woven plant fibers~
+a cloak woven from soft plant fibers~
+A silky cloak woven from soft, natural plant fibers is here.~
+~
+plant~
+armor S 0 F AK
+5 3 8 5 0
+51 80 57113 2 P
+40
+A
+13 35
+A
+12 25
+V13
+5705
+boots pair soft plant fibers woven~
+a pair of boots woven from soft plant fibers~
+A pair of boots woven from soft plant fibers rests here.~
+~
+plant~
+armor S 0 F AG
+5 2 6 3 0
+51 50 14309 2 P
+50
+A
+13 20
+A
+14 40
+A
+17 -5
+V13
+5706
+weathered limestone memorial obj_5706~
+a weathered limestone memorial~
+A weathered limestone memorial stands here, nearly overgrown with grass.~
+~
+stone~
+trash Ya 0 0 P
+0 0 0 0 0
+52 0 0 0 P
+0
+E
+inscription~
+An inscription is carved deeply into the white stone:
+  
+                            {y\${n
+                  {yIN GRATEFUL MEMORY{n
+                            {y\${n
+  
+           To the countless thousands who died at 
+          the Trap of Valandas, we of the Republic
+             give our thanks.  On these grounds
+           hallowed by your blood may ceaseless 
+           remembrance watch.  Let the craven and
+            selfish betrayal of Kaagn never again 
+           occur for as long as blessed Earendam 
+                             stands.
+  
+                      In Iandir\@s Name.
+~
+E
+weathered limestone memorial obj_5706~
+This headstone-like memorial is somewhat over four feet tall, made from a
+foot-thick slab of chalky limestone from the downlands of Nendor.  Chunky
+and imposing, the corners are angled off and bevelled down.  An inscription
+is carved deeply into the face, nearly obscured by the thick, tall grass
+which grows thickly about.  
+~
+V13
+5707
+tarnished brass sphere ctf_flag obj_5707~
+a tarnished brass sphere~
+A tarnished brass sphere reflects the light dully.~
+~
+metal~
+treasure GX 0 0 AO
+0 0 0 0 0
+50 50 0 0 P
+1
+>rand_prog 100~
+if inroom($o) < 8800
+or inroom($o) > 8899
+  mpmload 8838
+  mpforce mob_8838 mpat 8860 mpoload 5707 in room
+  mpforce mob_8838 mpat 8860 mpecho A tarnished brass sphere drops to the ground.
+  mpforce mob_8838 mpat 8860 mpzecho {mScourge flag taken out of bounds; returns to capture point.{n
+  mppurge mob_8838
+  mpechoat $o $I disappears.
+  mppurge self
+endif
+~
+>take_prog tarnished brass sphere ctf_flag obj_5707~
+if isbitset($n) != 8860
+  mpechoat $n You can\@t move that unless you\@re an Alliance team member.
+  opzap $n
+  mpecho $I falls to the ground.
+else
+  mpzecho {mAlliance team now has the Scourge flag!{n
+endif
+~
+>greet_prog 100~
+if inroom($n) != 8860
+  if isbitset($n) == 8860
+    mpzecho {mScourge flag returned to capture point by $N.{n
+    mpmload 8838
+    mpforce mob_8838 mpat 8860 mpoload 5707 in room
+    mpforce mob_8838 mpat 8860 mpecho A tarnished brass sphere drops to the ground.
+    mppurge mob_8838
+    mpecho $I disappears.
+    mppurge self
+  endif
+endif
+~
+>death_prog 100~
+opzap $n
+mpecho $I falls to the ground.
+~
+>verb_prog p purge_the_spheres_now~
+if iswizi($n)
+  if mobhere(5606)
+    mpecho {y$I flares dully and vanishes!{n
+    mpforce ctf mpat mob_5605 mpoload 5707 in room
+    mpforce ctf mpat mob_5605 mpecho A polished silver sphere drops to the ground.
+    mppurge self
+  endif
+endif
+~
+|
+V13
+5708
+sphere silver polished ctf_flag obj_5708~
+a polished silver sphere~
+A polished silver sphere gleams here.~
+~
+metal~
+treasure GXd 0 0 AO
+0 0 0 0 0
+50 50 0 0 P
+1
+>rand_prog 100~
+if inroom($o) < 8800
+or inroom($o) > 8899
+  mpmload 8838
+  mpforce mob_8838 mpat 8832 mpoload 5708 in room
+  mpforce mob_8838 mpat 8832 mpecho A polished silver sphere drops to the ground.
+  mpforce mob_8838 mpat 8832 mpzecho {mAlliance flag taken out of bounds; returns to capture point.{n
+  mppurge mob_8838
+  mpechoat $o $I disappears.
+  mppurge self
+endif
+~
+>take_prog sphere silver polished ctf_flag obj_5708~
+if isbitset($n) != 8832
+  mpechoat $n You can\@t move that unless you\@re an Scourge team member.
+  opzap $n
+  mpecho $I falls to the ground.
+else
+  mpzecho {mScourge now has the Alliance flag!{n
+endif
+~
+>take_prog sphere silver polished ctf_flag obj_5708~
+if isbitset($n) != 8860
+  mpechoat $n You can\@t move that unless you\@re an Scourge team member.
+  opzap $n
+  mpecho $I falls to the ground.
+endif
+~
+>greet_prog 100~
+if inroom($n) != 8832
+  if isbitset($n) == 8832
+    mpzecho {mAlliance flag returned to capture point by $N.{n
+    mpmload 8838
+    mpforce mob_8838 mpat 8832 mpoload 5708 in room
+    mpforce mob_8838 mpat 8832 mpecho A polished silver sphere drops to the ground.
+    mppurge mob_8838
+    mpecho $I disappears.
+    mppurge self
+  endif
+endif
+~
+>death_prog 100~
+opzap $n
+mpecho $I falls to the ground.
+~
+>verb_prog p purge_the_spheres_now~
+if iswizi($n)
+  if mobhere(5605)
+    mpecho {W$I flares brightly and vanishes!{n
+    mpforce ctf mpat mob_5606 mpoload 5708 in room
+    mpforce ctf mpat mob_5606 mpecho A tarnished brass sphere drops to the ground.
+    mppurge self
+  endif
+endif
+~
+|
+V13
+5709
+gloves grass pair blades~
+a pair of green woven-grass gloves~
+A pair of green gloves woven from plains grass are here.~
+~
+plant~
+armor GS 0 F AH
+1 1 1 5 0
+50 20 850 1 P
+5
+A
+13 10
+A
+12 12
+A
+20 -1
+V13
+5710
+faded hood green wool weatherstained~
+a faded green hood~
+A faded hood of weatherstained green wool lies here limply.~
+~
+cloth~
+armor 0 0 0 AE
+4 2 3 3 0
+48 7 3651 0 P
+2
+A
+20 -1
+A
+12 20
+E
+faded hood green wool weatherstained~
+This simple hood of green wool has seen quite a lot of exposure to the
+elements.  Faded to a greenish-grey, it is quite warm, and the close-knitted
+wool seems to repel water well.  Common symbols of focus and protection are
+knotted into the cotton lining.  
+~
+V13
+5711
+cravat blue grey gray blue-grey~
+a blue-grey silk cravat~
+A cravat of blue-grey silk lies in a pile.~
+~
+silk~
+armor P 0 0 AC
+3 4 4 5 0
+5 5 0 1 P
+0
+V13
+5712
+long coat fine felt felted black wool~
+a long, finely-cut black coat~
+A long coat of fine felted black wool is here.~
+~
+cloth~
+armor P 0 0 AK
+6 7 7 10 0
+47 60 0 2 P
+0
+V13
+5713
+pair fine grey breeches~
+a pair of fine grey breeches~
+A pair of fine grey breeches lie crumpled.~
+~
+cloth~
+armor PS 0 0 AF
+1 3 1 0 0
+11 80 0 1 P
+0
+V13
+5714
+pair black leather shoes shiny~
+a pair of shiny black shoes~
+A pair of black leather shoes have been polished to a gleam.~
+~
+leather~
+armor PS 0 0 AG
+2 2 2 2 0
+25 30 0 2 P
+0
+V13
+5715
+shirt silk silken dove grey gray dove-grey soft~
+a dove grey silken shirt~
+A soft silk shirt of dove-grey lies crumpled here.~
+~
+silk~
+armor P 0 0 AD
+4 5 5 7 0
+47 10 0 2 P
+0
+#0
+
+
+
+#ROOMS
+#5701
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5715
+D1
+~
+~
+0 0 5702
+D2
+~
+~
+0 0 5801
+D3
+~
+~
+0 0 5703
+W 5 0 0
+Z 5 5
+S
+#5702
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5716
+D1
+~
+~
+0 0 5703
+D2
+~
+~
+0 0 5802
+D3
+~
+~
+0 0 5701
+W 5 0 0
+Z 5 5
+S
+#5703
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5717
+D1
+~
+~
+0 0 5704
+D2
+~
+~
+0 0 5803
+D3
+~
+~
+0 0 5702
+W 5 0 0
+Z 5 5
+S
+#5704
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5718
+D1
+~
+~
+0 0 5705
+D2
+~
+~
+0 0 5804
+D3
+~
+~
+0 0 5703
+W 5 0 0
+Z 5 5
+S
+#5705
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5719
+D1
+~
+~
+0 0 5706
+D2
+~
+~
+0 0 5805
+D3
+~
+~
+0 0 5704
+W 5 0 0
+Z 5 5
+S
+#5706
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5720
+D1
+~
+~
+0 0 5707
+D2
+~
+~
+0 0 5806
+D3
+~
+~
+0 0 5705
+W 5 0 0
+Z 5 5
+S
+#5707
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5721
+D1
+~
+~
+0 0 5708
+D2
+~
+~
+0 0 5807
+D3
+~
+~
+0 0 5706
+W 5 0 0
+Z 5 5
+S
+#5708
+The Earendam Road~
+The Earendam Road is a narrow strip of stones, many broken or missing
+from the passage of time.  The road was once heavily travelled by caravans
+and merchants trading with the mountain outposts to the north, but in recent
+years the road has fallen into disuse, and is no longer actively maintained.
+The Earendam Road leads north and south through the grasslands.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5722
+D1
+~
+~
+0 0 5709
+D2
+~
+~
+0 0 5808
+D3
+~
+~
+0 0 5707
+W 5 0 0
+Z 5 5
+S
+#5709
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5723
+D1
+~
+~
+0 0 5710
+D2
+~
+~
+0 0 5809
+D3
+~
+~
+0 0 5708
+W 5 0 0
+Z 5 5
+S
+#5710
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5724
+D1
+~
+~
+0 0 5711
+D2
+~
+~
+0 0 5810
+D3
+~
+~
+0 0 5709
+W 5 0 0
+Z 5 5
+S
+#5711
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5725
+D1
+~
+~
+0 0 5712
+D2
+~
+~
+0 0 5811
+D3
+~
+~
+0 0 5710
+W 5 0 0
+Z 5 5
+S
+#5712
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5726
+D1
+~
+~
+0 0 5713
+D2
+~
+~
+0 0 5812
+D3
+~
+~
+0 0 5711
+W 5 0 0
+Z 5 5
+S
+#5713
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5727
+D1
+~
+~
+0 0 5714
+D2
+~
+~
+0 0 5813
+D3
+~
+~
+0 0 5712
+W 5 0 0
+Z 5 5
+S
+#5714
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5728
+D1
+~
+~
+0 0 5712
+D2
+~
+~
+0 0 5814
+D3
+~
+~
+0 0 5713
+W 5 0 0
+Z 5 5
+S
+#5715
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5729
+D1
+~
+~
+0 0 5716
+D2
+~
+~
+0 0 5701
+D3
+~
+~
+0 0 5717
+W 5 0 0
+Z 5 5
+S
+#5716
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5730
+D1
+~
+~
+0 0 5717
+D2
+~
+~
+0 0 5702
+D3
+~
+~
+0 0 5715
+W 5 0 0
+Z 5 5
+S
+#5717
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5731
+D1
+~
+~
+0 0 5718
+D2
+~
+~
+0 0 5703
+D3
+~
+~
+0 0 5716
+W 5 0 0
+Z 5 5
+S
+#5718
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5732
+D1
+~
+~
+0 0 5719
+D2
+~
+~
+0 0 5704
+D3
+~
+~
+0 0 5717
+W 5 0 0
+Z 5 5
+S
+#5719
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5733
+D1
+~
+~
+0 0 5720
+D2
+~
+~
+0 0 5705
+D3
+~
+~
+0 0 5718
+W 5 0 0
+Z 5 5
+S
+#5720
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5734
+D1
+~
+~
+0 0 5721
+D2
+~
+~
+0 0 5706
+D3
+~
+~
+0 0 5719
+W 5 0 0
+Z 5 5
+S
+#5721
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5735
+D1
+~
+~
+0 0 5722
+D2
+~
+~
+0 0 5707
+D3
+~
+~
+0 0 5720
+W 5 0 0
+Z 5 5
+S
+#5722
+The Earendam Road~
+The Earendam Road is a narrow strip of stones, many broken or missing
+from the passage of time.  The road was once heavily travelled by caravans
+and merchants trading with the mountain outposts to the north, but in recent
+years the road has fallen into disuse, and is no longer actively maintained.
+The Earendam Road leads north and south through the grasslands.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5736
+D1
+~
+~
+0 0 5723
+D2
+~
+~
+0 0 5708
+D3
+~
+~
+0 0 5721
+W 5 0 0
+Z 5 5
+S
+#5723
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5737
+D1
+~
+~
+0 0 5724
+D2
+~
+~
+0 0 5709
+D3
+~
+~
+0 0 5722
+W 5 0 0
+Z 5 5
+S
+#5724
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5738
+D1
+~
+~
+0 0 5725
+D2
+~
+~
+0 0 5710
+D3
+~
+~
+0 0 5723
+W 5 0 0
+Z 5 5
+S
+#5725
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5739
+D1
+~
+~
+0 0 5726
+D2
+~
+~
+0 0 5711
+D3
+~
+~
+0 0 5724
+W 5 0 0
+Z 5 5
+S
+#5726
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5740
+D1
+~
+~
+0 0 5727
+D2
+~
+~
+0 0 5712
+D3
+~
+~
+0 0 5725
+W 5 0 0
+Z 5 5
+S
+#5727
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5741
+D1
+~
+~
+0 0 5728
+D2
+~
+~
+0 0 5713
+D3
+~
+~
+0 0 5726
+W 5 0 0
+Z 5 5
+S
+#5728
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5742
+D1
+~
+~
+0 0 5726
+D2
+~
+~
+0 0 5714
+D3
+~
+~
+0 0 5727
+W 5 0 0
+Z 5 5
+S
+#5729
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5743
+D1
+~
+~
+0 0 5730
+D2
+~
+~
+0 0 5715
+D3
+~
+~
+0 0 5731
+W 5 0 0
+Z 5 5
+S
+#5730
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5744
+D1
+~
+~
+0 0 5731
+D2
+~
+~
+0 0 5716
+D3
+~
+~
+0 0 5729
+W 5 0 0
+Z 5 5
+S
+#5731
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5745
+D1
+~
+~
+0 0 5732
+D2
+~
+~
+0 0 5717
+D3
+~
+~
+0 0 5730
+W 5 0 0
+Z 5 5
+S
+#5732
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5746
+D1
+~
+~
+0 0 5733
+D2
+~
+~
+0 0 5718
+D3
+~
+~
+0 0 5731
+W 5 0 0
+Z 5 5
+S
+#5733
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5747
+D1
+~
+~
+0 0 5734
+D2
+~
+~
+0 0 5719
+D3
+~
+~
+0 0 5732
+W 5 0 0
+Z 5 5
+S
+#5734
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5748
+D1
+~
+~
+0 0 5735
+D2
+~
+~
+0 0 5720
+D3
+~
+~
+0 0 5733
+W 5 0 0
+Z 5 5
+S
+#5735
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5749
+D1
+~
+~
+0 0 5736
+D2
+~
+~
+0 0 5721
+D3
+~
+~
+0 0 5734
+W 5 0 0
+Z 5 5
+S
+#5736
+The Earendam Road~
+The Earendam Road is a narrow strip of stones, many broken or missing
+from the passage of time.  The road was once heavily travelled by caravans
+and merchants trading with the mountain outposts to the north, but in recent
+years the road has fallen into disuse, and is no longer actively maintained.
+The Earendam Road leads north and south through the grasslands.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5750
+D1
+~
+~
+0 0 5737
+D2
+~
+~
+0 0 5722
+D3
+~
+~
+0 0 5735
+W 5 0 0
+Z 5 5
+S
+#5737
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5751
+D1
+~
+~
+0 0 5738
+D2
+~
+~
+0 0 5723
+D3
+~
+~
+0 0 5736
+W 5 0 0
+Z 5 5
+S
+#5738
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5752
+D1
+~
+~
+0 0 5739
+D2
+~
+~
+0 0 5724
+D3
+~
+~
+0 0 5737
+W 5 0 0
+Z 5 5
+S
+#5739
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5753
+D1
+~
+~
+0 0 5740
+D2
+~
+~
+0 0 5725
+D3
+~
+~
+0 0 5738
+W 5 0 0
+Z 5 5
+S
+#5740
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5754
+D1
+~
+~
+0 0 5741
+D2
+~
+~
+0 0 5726
+D3
+~
+~
+0 0 5739
+W 5 0 0
+Z 5 5
+S
+#5741
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5755
+D1
+~
+~
+0 0 5742
+D2
+~
+~
+0 0 5727
+D3
+~
+~
+0 0 5740
+W 5 0 0
+Z 5 5
+S
+#5742
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5756
+D1
+~
+~
+0 0 5740
+D2
+~
+~
+0 0 5728
+D3
+~
+~
+0 0 5741
+W 5 0 0
+Z 5 5
+S
+#5743
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5758
+D1
+~
+~
+0 0 5744
+D2
+~
+~
+0 0 5729
+D3
+~
+~
+0 0 5745
+W 5 0 0
+Z 5 5
+S
+#5744
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5759
+D1
+~
+~
+0 0 5745
+D2
+~
+~
+0 0 5730
+D3
+~
+~
+0 0 5743
+W 5 0 0
+Z 5 5
+S
+#5745
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5760
+D1
+~
+~
+0 0 5746
+D2
+~
+~
+0 0 5731
+D3
+~
+~
+0 0 5744
+W 5 0 0
+Z 5 5
+S
+#5746
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5761
+D1
+~
+~
+0 0 5747
+D2
+~
+~
+0 0 5732
+D3
+~
+~
+0 0 5745
+W 5 0 0
+Z 5 5
+S
+#5747
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5762
+D1
+~
+~
+0 0 5748
+D2
+~
+~
+0 0 5733
+D3
+~
+~
+0 0 5746
+W 5 0 0
+Z 5 5
+S
+#5748
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5763
+D1
+~
+~
+0 0 5749
+D2
+~
+~
+0 0 5734
+D3
+~
+~
+0 0 5747
+W 5 0 0
+Z 5 5
+S
+#5749
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5764
+D1
+~
+~
+0 0 5750
+D2
+~
+~
+0 0 5735
+D3
+~
+~
+0 0 5748
+W 5 0 0
+Z 5 5
+S
+#5750
+The Earendam Road~
+The Earendam Road is a narrow strip of stones, many broken or missing
+from the passage of time.  The road was once heavily travelled by caravans
+and merchants trading with the mountain outposts to the north, but in recent
+years the road has fallen into disuse, and is no longer actively maintained.
+The Earendam Road leads north and south through the grasslands.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5765
+D1
+~
+~
+0 0 5751
+D2
+~
+~
+0 0 5736
+D3
+~
+~
+0 0 5749
+W 5 0 0
+Z 5 5
+S
+#5751
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5766
+D1
+~
+~
+0 0 5752
+D2
+~
+~
+0 0 5737
+D3
+~
+~
+0 0 5750
+W 5 0 0
+Z 5 5
+S
+#5752
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5767
+D1
+~
+~
+0 0 5753
+D2
+~
+~
+0 0 5738
+D3
+~
+~
+0 0 5751
+W 5 0 0
+Z 5 5
+S
+#5753
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5768
+D1
+~
+~
+0 0 5754
+D2
+~
+~
+0 0 5739
+D3
+~
+~
+0 0 5752
+W 5 0 0
+Z 5 5
+S
+#5754
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5769
+D1
+~
+~
+0 0 5755
+D2
+~
+~
+0 0 5740
+D3
+~
+~
+0 0 5753
+W 5 0 0
+Z 5 5
+S
+#5755
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5770
+D1
+~
+~
+0 0 5756
+D2
+~
+~
+0 0 5741
+D3
+~
+~
+0 0 5754
+W 5 0 0
+Z 5 5
+S
+#5756
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5771
+D1
+~
+~
+0 0 5757
+D2
+~
+~
+0 0 5742
+D3
+~
+~
+0 0 5755
+W 5 0 0
+Z 5 5
+S
+#5757
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5772
+D1
+~
+~
+0 0 5755
+D2
+~
+~
+0 0 5742
+D3
+~
+~
+0 0 5756
+W 5 0 0
+Z 5 5
+S
+#5758
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5773
+D1
+~
+~
+0 0 5759
+D2
+~
+~
+0 0 5743
+D3
+~
+~
+0 0 5760
+W 5 0 0
+Z 5 5
+S
+#5759
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5774
+D1
+~
+~
+0 0 5760
+D2
+~
+~
+0 0 5744
+D3
+~
+~
+0 0 5758
+W 5 0 0
+Z 5 5
+S
+#5760
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5775
+D1
+~
+~
+0 0 5761
+D2
+~
+~
+0 0 5745
+D3
+~
+~
+0 0 5759
+W 5 0 0
+Z 5 5
+S
+#5761
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5776
+D1
+~
+~
+0 0 5762
+D2
+~
+~
+0 0 5746
+D3
+~
+~
+0 0 5760
+W 5 0 0
+Z 5 5
+S
+#5762
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5777
+D1
+~
+~
+0 0 5763
+D2
+~
+~
+0 0 5747
+D3
+~
+~
+0 0 5761
+W 5 0 0
+Z 5 5
+S
+#5763
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5778
+D1
+~
+~
+0 0 5764
+D2
+~
+~
+0 0 5748
+D3
+~
+~
+0 0 5762
+W 5 0 0
+Z 5 5
+S
+#5764
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5779
+D1
+~
+~
+0 0 5765
+D2
+~
+~
+0 0 5749
+D3
+~
+~
+0 0 5763
+W 5 0 0
+Z 5 5
+S
+#5765
+The Earendam Road~
+The Earendam Road is a narrow strip of stones, many broken or missing
+from the passage of time.  The road was once heavily travelled by caravans
+and merchants trading with the mountain outposts to the north, but in recent
+years the road has fallen into disuse, and is no longer actively maintained.
+The Earendam Road leads east and south through the grasslands.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5780
+D1
+~
+~
+0 0 5766
+D2
+~
+~
+0 0 5750
+D3
+~
+~
+0 0 5764
+W 5 0 0
+Z 5 5
+S
+#5766
+The Earendam Road~
+The Earendam Road is a narrow strip of stones, many broken or missing
+from the passage of time.  The road was once heavily travelled by caravans
+and merchants trading with the mountain outposts to the north, but in recent
+years the road has fallen into disuse, and is no longer actively maintained.
+The Earendam Road leads east and west through the grasslands.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5781
+D1
+~
+~
+0 0 5767
+D2
+~
+~
+0 0 5751
+D3
+~
+~
+0 0 5765
+W 5 0 0
+Z 5 5
+S
+#5767
+The Earendam Road~
+The Earendam Road is a narrow strip of stones, many broken or missing
+from the passage of time.  The road was once heavily travelled by caravans
+and merchants trading with the mountain outposts to the north, but in recent
+years the road has fallen into disuse, and is no longer actively maintained.
+The Earendam Road leads north and west through the grasslands.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5782
+D1
+~
+~
+0 0 5768
+D2
+~
+~
+0 0 5752
+D3
+~
+~
+0 0 5766
+W 5 0 0
+Z 5 5
+S
+#5768
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5783
+D1
+~
+~
+0 0 5769
+D2
+~
+~
+0 0 5753
+D3
+~
+~
+0 0 5767
+W 5 0 0
+Z 5 5
+S
+#5769
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5784
+D1
+~
+~
+0 0 5770
+D2
+~
+~
+0 0 5754
+D3
+~
+~
+0 0 5768
+W 5 0 0
+Z 5 5
+S
+#5770
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5785
+D1
+~
+~
+0 0 5771
+D2
+~
+~
+0 0 5755
+D3
+~
+~
+0 0 5769
+W 5 0 0
+Z 5 5
+S
+#5771
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5786
+D1
+~
+~
+0 0 5772
+D2
+~
+~
+0 0 5756
+D3
+~
+~
+0 0 5770
+W 5 0 0
+Z 5 5
+S
+#5772
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5786
+D1
+~
+~
+0 0 5770
+D2
+~
+~
+0 0 5757
+D3
+~
+~
+0 0 5771
+W 5 0 0
+Z 5 5
+S
+#5773
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5787
+D1
+~
+~
+0 0 5774
+D2
+~
+~
+0 0 5758
+D3
+~
+~
+0 0 5775
+W 5 0 0
+Z 5 5
+S
+#5774
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5759
+D1
+~
+~
+0 0 5775
+D2
+~
+~
+0 0 5759
+D3
+~
+~
+0 0 5773
+W 5 0 0
+Z 5 5
+S
+#5775
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5745
+D1
+~
+~
+0 0 5776
+D2
+~
+~
+0 0 5760
+D3
+~
+~
+0 0 5774
+W 5 0 0
+Z 5 5
+S
+#5776
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5788
+D1
+~
+~
+0 0 5777
+D2
+~
+~
+0 0 5761
+D3
+~
+~
+0 0 5775
+W 5 0 0
+Z 5 5
+S
+#5777
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5789
+D1
+~
+~
+0 0 5778
+D2
+~
+~
+0 0 5762
+D3
+~
+~
+0 0 5776
+W 5 0 0
+Z 5 5
+S
+#5778
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5763
+D1
+~
+~
+0 0 5779
+D2
+~
+~
+0 0 5763
+D3
+~
+~
+0 0 5777
+W 5 0 0
+Z 5 5
+S
+#5779
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5764
+D1
+~
+~
+0 0 5780
+D2
+~
+~
+0 0 5764
+D3
+~
+~
+0 0 5778
+W 5 0 0
+Z 5 5
+S
+#5780
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5764
+D1
+~
+~
+0 0 5781
+D2
+~
+~
+0 0 5765
+D3
+~
+~
+0 0 5779
+W 5 0 0
+Z 5 5
+S
+#5781
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5790
+D1
+~
+~
+0 0 5782
+D2
+~
+~
+0 0 5766
+D3
+~
+~
+0 0 5780
+W 5 0 0
+Z 5 5
+S
+#5782
+The Earendam Road~
+The Earendam Road is a narrow strip of stones, many broken or missing
+from the passage of time.  The road was once heavily travelled by caravans
+and merchants trading with the mountain outposts to the north, but in recent
+years the road has fallen into disuse, and is no longer actively maintained.
+The Earendam Road leads north and south through the grasslands.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5791
+D1
+~
+~
+0 0 5783
+D2
+~
+~
+0 0 5767
+D3
+~
+~
+0 0 5781
+W 5 0 0
+Z 5 5
+S
+#5783
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5768
+D1
+~
+~
+0 0 5784
+D2
+~
+~
+0 0 5768
+D3
+~
+~
+0 0 5782
+W 5 0 0
+Z 5 5
+S
+#5784
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5754
+D1
+~
+~
+0 0 5785
+D2
+~
+~
+0 0 5769
+D3
+~
+~
+0 0 5783
+W 5 0 0
+Z 5 5
+S
+#5785
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5755
+D1
+~
+~
+0 0 5786
+D2
+~
+~
+0 0 5770
+D3
+~
+~
+0 0 5784
+W 5 0 0
+Z 5 5
+S
+#5786
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5756
+D1
+~
+~
+0 0 5785
+D2
+~
+~
+0 0 5771
+D3
+~
+~
+0 0 5785
+W 5 0 0
+Z 5 5
+S
+#5787
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5758
+D1
+~
+~
+0 0 5774
+D2
+~
+~
+0 0 5773
+D3
+~
+~
+0 0 5774
+W 5 0 0
+Z 5 5
+S
+#5788
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5792
+D1
+~
+~
+0 0 5789
+D2
+~
+~
+0 0 5776
+D3
+~
+~
+0 0 5760
+W 5 0 0
+Z 5 5
+S
+#5789
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5793
+D1
+~
+~
+0 0 5778
+D2
+~
+~
+0 0 5777
+D3
+~
+~
+0 0 5788
+W 5 0 0
+Z 5 5
+S
+#5790
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5794
+D1
+~
+~
+0 0 5791
+D2
+~
+~
+0 0 5781
+D3
+~
+~
+0 0 5781
+W 5 0 0
+Z 5 5
+S
+#5791
+The Earendam Road~
+The Earendam Road is a narrow strip of stones, many broken or missing
+from the passage of time.  The road was once heavily travelled by caravans
+and merchants trading with the mountain outposts to the north, but in recent
+years the road has fallen into disuse, and is no longer actively maintained.
+The Earendam Road leads north and south through the grasslands.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5795
+D1
+~
+~
+0 0 5783
+D2
+~
+~
+0 0 5782
+D3
+~
+~
+0 0 5790
+W 5 0 0
+Z 5 5
+S
+#5792
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5776
+D1
+~
+~
+0 0 5793
+D2
+~
+~
+0 0 5788
+D3
+~
+~
+0 0 5775
+W 5 0 0
+Z 5 5
+S
+#5793
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5762
+D1
+~
+~
+0 0 5778
+D2
+~
+~
+0 0 5789
+D3
+~
+~
+0 0 5792
+W 5 0 0
+Z 5 5
+S
+#5794
+The Earendam Grasslands~
+The lush green grasses of the Earendam Grasslands spread before you in
+all directions.  The shoulder-high grass sways and whispers in the wind, its
+motion giving the grasslands the appearance of a green ocean.  Now and then
+the spoor of a plains deer is visible underfoot, but there are no game
+trails or other landmarks.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 5790
+D1
+~
+~
+0 0 5795
+D2
+~
+~
+0 0 5790
+D3
+~
+~
+0 0 5790
+W 5 0 0
+Z 5 5
+S
+#5795
+The Earendam Road~
+The Earendam Road is a narrow strip of stones, many broken or missing
+from the passage of time.  The road was once heavily travelled by caravans
+and merchants trading with the mountain outposts to the north, but in recent
+years the road has fallen into disuse, and is no longer actively maintained.
+The Earendam Road leads north and south through the grasslands.
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 4747
+D1
+~
+~
+0 0 5783
+D2
+~
+~
+0 0 5791
+D3
+~
+~
+0 0 5794
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 5703 spec_cast_water
+S
+
+
+
+#RESETS
+M 0 5702 15 5706 1
+M 0 5702 15 5708 1
+M 0 5702 15 5711 1
+M 0 5702 15 5712 1
+M 0 5701 15 5715 1
+M 0 5701 15 5717 1
+M 0 5702 15 5726 1
+M 0 5701 15 5727 1
+M 0 5702 15 5727 1
+M 0 5701 15 5738 1
+M 0 5701 15 5739 1
+M 0 5701 15 5742 1
+M 0 5703 1 5744 1
+E 0 5703 0 16
+E 0 5704 0 12
+E 0 5705 0 8
+E 0 5710 0 6
+E 0 5709 0 9
+O 0 5701 0 5744
+M 0 5701 15 5745 1
+M 0 5701 15 5754 1
+O 0 5706 0 5754
+M 0 5702 15 5755 1
+M 0 5701 15 5761 1
+M 0 5701 15 5762 1
+M 0 5702 15 5765 1
+M 0 5702 15 5769 1
+M 0 5701 15 5770 1
+M 0 5701 15 5779 1
+M 0 5701 15 5781 1
+M 0 5702 15 5781 1
+M 0 5701 15 5782 1
+M 0 5702 15 5783 1
+M 0 5702 15 5784 1
+M 0 5701 15 5789 1
+M 0 5702 15 5790 1
+M 0 5702 15 5791 1
+M 0 5702 15 5795 1
+S
+
+
+
+#GUILD
+#5703
+"encase"
+"scry"
+"ice storm"
+"thermal mastery"
+"boil seas"
+"steam"
+"rimeshard"
+"wintertide"
+"arctic chill"
+"grip of elanthemir"
+"encase"
+"glacier's edge"
+"ice storm"
+"winter's stronghold"
+"ward of frost"
+#0
+
+S
+
+
+#SHOPS
+0
+
+
+
+#$

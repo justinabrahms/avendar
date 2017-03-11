@@ -1,0 +1,2117 @@
+#AREADATA
+Name The Temple of the Pegasus~
+Builders Rystaia~
+VNUMs 4000 4010
+Credits [ ALL ] Rys/ninja Temple of the Pegasus~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 1 -1 2
+Shades 5 5
+Stone 83
+End
+
+
+
+#MOBILES
+V4 4000
+guardian pegasus rystaiasguardian~
+the statue of the pegasus~
+The temple guardian.
+~
+Yo.
+~
+human~
+water scholar~
+ABDL 0 DFLNT G 0
+60 30 22d240+1300 60d10+100 5d12+40 energy~
+magic~
+-27 -27 -27 -9
+FHIK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog west~
+~
+>verb_prog west~
+if adrenaline($n) > 0
+tell $n You should calm down before entering this place of worship.
+else
+  if iscarrying($n) == 1247
+  tell $n Welcome to the temple of Rystaia, $N.
+  mptransfer $n 4001
+  mpat 4001 mpforce $n look
+  tell rystaia $n enters the temple.
+  else
+    if iscarrying($n) == 1248
+    tell $n Welcome to the temple of Rystaia, $N.
+    mptransfer $n 4001
+    mpat 4001 mpforce $n look
+    tell rystaia $n enters the temple.
+    else
+      if iscarrying($n) == 1249
+      tell $n Welcome to the temple of Rystaia, $N. 
+      mptransfer $n 4001
+      mpat 4001 mpforce $n look
+      tell rystaia $n enters the temple.
+      else
+        mpechoat $n The marble pegasus blocks your way.
+        mpechoaround $n The marble pegasus bars $N\@s way.
+        tell $n Only those with the mark of the Pegasus are allowed entrance here.  If you wish to speak with Lady Rystaia, pray to her.
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 4001
+Calanae Van\@Kela emissary ch\@taren water scholar healer~
+Calanae~
+Calanae Van\@Kela, Emissary of Light, stands before the altar.
+~
+Calanae Van\@Kela is a stocky ch\@taren woman with smooth features and a
+shock of white hair.  She has chestnut-brown eyes and a button nose, her
+face alight with pleasant happiness.  The tops of her hands are marked with
+ancient crests of Aramril, both in silver.  A Champion during the fall of
+the Republic, she is said to have used her formidable healing skill to
+assist in the defense of the city of Earendam.  However, with the ascent of
+the Patrician, she found little comfort within its walls, and traveled to
+the Ryarl as one of the first Rystaian emissaries to the kankoran.  She now
+serves all who bear the mark of the Pegasus, forever empowered by her
+Goddess.  
+~
+ch\@taren~
+water scholar~
+ABXa Q DHNU G 0
+60 30 1d100+6000 1d100+6000 5d12+40 holy~
+divine power~
+-27 -27 -27 -9
+HKQ ABLQU
+26 0 0 50 50 0 0 0 0 0 0 0 0 -20 0 0 10 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 75
+AHKMV ABCDEFGIJK AEK medium flesh
+>verb_prog checkcharvalidity~
+if isfighting($f1)
+        mpechoat $f1 You can\@t do that while fighting.
+        mpunfocus 1
+        break
+endif
+if isfighting($i)
+        mpechoat $f1 $I looks too busy fighting to do that.
+        mpunfocus 1
+        break
+endif
+if iscarrying($f1) == 1247
+or iscarrying($f1) == 1248
+or iscarrying($f1) == 1249
+or isimmort($f1)
+        mpechoat $f1 You can\@t do that here.
+        mpunfocus 1
+endif
+~
+>verb_prog p sell~
+mpfocus $n 1
+checkcharvalidity
+if ishere($f1)
+        mpnextinterp
+        mpunfocus 1
+endif
+~
+>verb_prog p buy~
+mpfocus $n 1
+checkcharvalidity
+if ishere($f1)
+        mpnextinterp
+        mpunfocus 1
+endif
+~
+>verb_prog p list~
+mpfocus $n 1
+checkcharvalidity
+if ishere($f1)
+        mpnextinterp
+        mpunfocus 1
+endif
+~
+>verb_prog p heal~
+mpfocus $n 1
+checkcharvalidity
+if ishere($f1)
+        mpnextinterp
+        mpunfocus 1
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if snaffected($i) != 119
+        cast \@sanctuary\@
+        break
+endif
+if snaffected($i) != 416
+        cast \@zeal\@
+        break
+endif
+if snaffected($i) != 7
+        cast \@bless\@
+        break
+endif
+if snaffected($i) != 984
+        cast \@aegis of grace\@
+        break
+endif
+if snaffected($i) != 716
+        invoke sigil
+        break
+endif
+if snaffected($i) == 400
+or snaffected($i) == 523
+or snaffected($i) == 406
+or snaffected($i) == 668
+        cast \@douse\@
+        break
+endif
+if snaffected($i) == 8
+or snaffected($i) == 143
+or snaffected($i) == 58
+or snaffected($i) == 105
+or snaffected($i) == 107
+or snaffected($i) == 104
+or snaffected($i) == 39
+        cast \@purify\@
+        break
+endif
+if rand(50)
+        if hitprcnt($i) < 60
+                cast \@heal\@
+                break
+        endif
+        if hitprcnt($i) < 100
+                cast \@cure critical\@
+                break
+        endif
+endif
+~
+>load_prog 100~
+mpaddaffect $i 753 60 -1 0 50 0
+mpaddskill $i 187 100
+mpaddskill $i 328 100
+mpaddskill $i 330 100
+mpaddskill $i 77 100
+mpaddskill $i 34 100
+mpaddskill $i 341 100
+mpaddskill $i 333 100
+mpaddskill $i 81 100
+mpaddskill $i 898 100
+mpaddskill $i 111 100
+mpaddskill $i 31 100
+mpaddskill $i 416 100
+mpaddskill $i 7 100
+mpaddskill $i 415 100
+mpaddskill $i 1036 100
+mpaddskill $i 1051 100
+mpaddskill $i 1054 100
+mpaddskill $i 1064 100
+speak common
+mpoload 1248 on $i 20
+~
+>greet_prog 100~
+if iscarrying($n) == 1247
+or iscarrying($n) == 1248
+or iscarrying($n) == 1249
+or isimmort($n)
+else
+        cast \@frostblast\@ $n
+endif
+~
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if snaffected($i) == 8
+or snaffected($i) == 143
+or snaffected($i) == 58
+or snaffected($i) == 105
+or snaffected($i) == 107
+or snaffected($i) == 104
+or snaffected($i) == 39
+        cast \@purify\@
+        break
+endif
+if rand(95)
+        mpvaluerand 8 1 3
+        if value(8) == 1
+                cast \@frostblast\@
+        endif
+        if value(8) == 2
+                cast \@searing light\@
+        endif
+        if value(8) == 3
+                if hitprcnt($i) < 60
+                        cast \@heal\@
+                        break
+                endif
+                if hitprcnt($i) < 100
+                        cast \@cure critical\@
+                        break
+                endif
+        endif
+endif
+~
+|
+V4 4002
+Alhaia Ki\@Lymir alhaiamob ch\@taren spirit templar~
+Alhaia~
+Alhaia Ki\@Lymir, Twin-Daughter, dwells within the Hall of Joy.
+~
+An athletic, girlish ch\@taren, Alhaia Ki\@Lymir stands as if she were a
+dozen feet tall.  With narrow shoulders and a small frame, her actual size
+is anything but intimidating.  The grip of time, it seems, holds no sway
+over the Twin-Daughter, giving her the lively look and manner of perpetual
+youth.  
+
+Long, sterling curls cascade across her narrow shoulders, nine white roses
+woven into their fall.  Her eyes are a vivid plum, made all the more
+striking by her shimmering, timeless face.  A braided silver chain rests at
+he base of her slender neck, while a pair of amethyst earrings dangle from
+one of her ears.  Along her right arm, a series of small, glittering dots
+twist up from the elbow, surrounding a tear-shaped mark.  Below her left
+shoulder, a shining Pegasus brand emits its own divine light.  
+
+During the Eyeblight War, she acted as a lieutenant of the Surface Alliance
+and leader of the liberators of the Spirit Palace.  Having garnered the
+favor of Rystaia, she was branded as a Chosen at the age of fourteen.  She
+would later be accepted by the Vaialan Zseania Saxeitu, and ultimately
+anointed as a Knight of Aramril.  Known as the Champion of Light, she held
+the ranks of both Paladin and Lady General during her tenure.  She now
+dwells within the Shrine of Rystaia, basking in the joy of the Lady in whose
+name she lived.  
+~
+ch\@taren~
+spirit templar~
+ABX Q DNUZ G 0
+60 60 1d100+6000 1d100+6000 7d9+60 holy~
+holy fist~
+-27 -27 -27 -9
+FKQ ABU
+26 0 0 33 53 0 0 0 0 0 0 0 0 -20 0 0 10 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 75
+AHKMV ABCDEFGHIJK AEK medium flesh
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if snaffected($i) != 984
+        cast \@ward of grace\@
+        break
+endif
+if snaffected($i) != 692
+        cast \@truesight\@
+        break
+endif
+if snaffected($i) != 416
+        cast \@zeal\@
+        break
+endif
+if snaffected($i) != 7
+        cast \@bless\@
+        break
+endif
+if snaffected($i) != 902
+        cast \@seraphic wings\@
+        break
+endif
+if snaffected($i) != 697
+        cast \@radiance\@
+        break
+endif
+if snaffected($i) != 689
+        cast \@astral form\@
+        break
+endif
+if snaffected($i) != 716
+        invoke sigil
+        break
+endif
+if snaffected($i) == 680
+or snaffected($i) == 39
+or snaffected($i) == 678
+or snaffected($i) == 99
+        cast \@remove hex\@
+        break
+endif
+if iswielding($i) == 94
+else
+        if iscarrying($i) == 94
+                wear blade
+        else
+                if snaffected($i) == 700
+                else
+                        cast \@blade of light\@
+                        break
+                endif
+        endif
+endif
+if hitprcnt($i) < 66
+        if snaffected($i) == 694
+        else
+                cast \@positive channel\@ open
+                break
+        endif
+endif
+if hitprcnt($i) >= 95
+        if isoaffected($i) == 2097152
+                cast \@positive channel\@ close
+        endif
+endif
+if isworn($i) == 8848
+        pmote tugs on her chestplate.
+endif
+~
+>greet_prog 100~
+if iscarrying($n) == 1247
+or iscarrying($n) == 1248
+or iscarrying($n) == 1249
+or isimmort($n)
+else
+        pmote leaps forward, white light gathering around her.
+        murder $n
+endif
+~
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(90)
+        mpvaluerand 0 1 5
+        if value(0) == 1
+                cast \@ray of light\@
+        endif
+        if value(0) == 2
+                if snaffected($n) == 698
+                        cast \@ray of light\@
+                else
+                        cast \@wrath of kyana\@
+                endif
+        endif
+        if value(0) == 3
+                if cansee($n) == $i
+                        if snaffected($n) == 688
+                                cast \@ray of light\@
+                        else
+                                cast \@soul flare\@
+                                mpvalueset 9 1
+                        endif
+                else
+                        cast \@ray of light\@
+                endif
+        endif
+        if value(0) == 4
+                if snaffected($i) == 696
+                        cast \@ray of light\@
+                else
+                        sortie
+                        mpvalueset 9 1
+                endif
+        endif
+        if value(0) == 5
+                if isflying($n)
+                        cast \@ray of light\@
+                else
+                        trip
+                endif
+        endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 157 100
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 1050 100
+mpaddskill $i 692 100
+mpaddskill $i 416 100
+mpaddskill $i 7 100
+mpaddskill $i 687 100
+mpaddskill $i 902 100
+mpaddskill $i 698 100
+mpaddskill $i 688 100
+mpaddskill $i 696 100
+mpaddskill $i 697 100
+mpaddskill $i 689 100
+mpaddskill $i 904 100
+mpaddskill $i 694 100
+mpaddskill $i 700 100
+mpaddskill $i 173 100
+speak common
+battlecry Don\@t hold back!
+mpoload 1249 on $i 20
+if isunderlimit(8848)
+        mpoload 8848 on $i 5
+endif
+~
+|
+V4 4003
+woman lady passion ethron~
+the lady of Passion~
+An ethron woman with gleaming dark hair stands here, vibrant and intent.
+~
+The woman is aglow with an inner energy, her green eyes burning with the
+flame of passion.  Her skin is a smooth, pale green, setting off her dark
+hair.  Vibrant and alive, she moves quickly, turning to each task with
+enthusiasm.  
+~
+aelin~
+water scholar~
+ABDGL 0 DEHNZe G 0
+61 30 22d240+1300 60d10+100 5d12+40 bash~
+punch~
+-27 -27 -27 -10
+FIKQ AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHKMVW ABCDEFGIJKP AJ medium unknown
+V4 4004
+Shalaesi Aialo song ch\@taren bard~
+Shalaesi~
+Shalaesi Aialo, Song of Rystaia, enjoys the Hall of Freedom.
+~
+Shalaesi Aialo is a ravishing ch\@taren woman, with bright green eyes and
+a wash of golden hair.  She is generously proportioned and exceptionally
+attractive, and stands at a surprising height of nearly six feet.  A silver
+star mark is just beneath the corner of her left eye, and a mischievious
+smile plays upon her supple lips.  A minor heroine of the ch\@taren during
+the War of Night, she traveled alongside Saint Chalane Tyra during his
+military campaign.  After the War\@s end, she became a sensation in the
+Republic for her alien beauty and her unmatched, exotic music.  Marked with
+the blessing of Rystaia, she lives on within the Shrine of the Pegasus for
+eternity.  
+~
+ch\@taren~
+bard~
+ABX Q FNUZ G 0
+60 30 1d100+6000 1d1+6000 5d12+40 slash~
+claw~
+-27 -27 -27 -9
+FKQ ABU
+26 0 0 33 33 0 0 0 0 0 0 0 0 -20 0 0 10 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 75
+AHKMV ABCDEFGIJK AE medium flesh
+>greet_prog 100~
+if iscarrying($n) == 1247
+or iscarrying($n) == 1248
+or iscarrying($n) == 1249
+or isimmort($n)
+else
+        pmote turns toward $N, and attacks!
+        murder $n
+endif
+~
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if isplaying($i) == 736
+else
+        play \@the day of two dawns\@
+        break
+endif
+if isharmonizing($i) == 750
+else
+        harmonize \@the stuttering sage\@
+        break
+endif
+if rand(95)
+        mpvaluerand 8 1 3
+        if value(8) == 1
+                if cansee($n) == $i
+                        dirt
+                        mpvalueset 9 1
+                else
+                        kick
+                endif
+        endif
+        if value(8) == 2
+                if isflying($n)
+                        kick
+                else
+                        trip
+                endif
+        endif
+        if value(8) == 3
+                mpoload 4001 on $i
+                throw lightdagger $n
+                if iscarrying($i) == 4001
+                else
+                        if iscarrying($n) == 4001
+                                 mploot $n lightdagger
+                        endif
+                endif
+                mppurge lightdagger
+                mpvalueset 9 1
+        endif
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if snaffected($i) != 716
+        invoke sigil
+        break
+endif
+if hitprcnt($i) < 95
+        if isplaying($i) == 737
+        else
+                play none
+                play \@touch of the seas\@
+                break
+        endif
+        if isharmonizing($i) == 735
+        else
+                harmonize \@the veils of tyril\@
+                break
+        endif
+else
+        play none
+endif
+~
+>load_prog 100~
+/the veils of tyril
+mpaddskill $i 735 100
+//the day of two dawns
+mpaddskill $i 736 100
+//touch of the seas
+mpaddskill $i 737 100
+//the lay of lilisa
+mpaddskill $i 744 100
+//the hakuran balm
+mpaddskill $i 747 100
+//the stuttering sage
+mpaddskill $i 750 100
+//harmony
+mpaddskill $i 781 100
+//other skills
+mpaddskill $i 170 100
+mpaddskill $i 173 100
+mpaddskill $i 176 100
+mpaddskill $i 182 100
+mpaddskill $i 183 100
+mpaddskill $i 186 100
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 751 100
+speak common
+mpoload 1248 on $i 20
+~
+|
+V4 4005
+Ashelan Limara ch\@taren seer spirit scholar~
+Ashelan~
+Ashelan Limara, Seer of the Pegasus, hovers within the Hall of Spirits.
+~
+Ashelan Limara is a slender ch\@taren man, with short, silvery hair and
+wide, ice-blue eyes.  His skin has a rich, golden shine, and unnatural light
+glows from inside his translucent chest.  His manner is pleasant but
+subdued, his small smile infrequent but warm.  The first ch\@taren born upon
+the Prime Material, he saw the fall of Ad\@masteisa, the ch\@taren Haven of
+Wind.  He traveled far throughout the Republic, teaching the creed of the
+Twins and growing more powerful in the arts of Spirit.  His devotion
+garnered the favor of Rystaia, and his zeal only increased.  With his
+passing, his soul has taken its place within the Shrine of the Pegasus.  
+~
+ch\@taren~
+water scholar~
+ABX Q DNUZ G 0
+60 60 1d100+6000 1d100+6000 5d12+40 light~
+searing touch~
+-27 -27 -27 -9
+HKQ ABU
+26 0 0 66 66 0 0 0 0 0 0 0 0 -20 0 0 10 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 75
+AHKMV ABCDEFGIJK AEK medium flesh
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if snaffected($i) != 7
+        cast \@bless\@
+        break
+endif
+if snaffected($i) != 416
+        cast \@zeal\@
+        break
+endif
+if snaffected($i) != 984
+        cast \@aegis of grace\@
+        break
+endif
+if snaffected($i) != 412
+        cast \@avenging seraph\@
+        break
+endif
+if snaffected($i) != 989
+        cast \@phaseshift\@
+        break
+endif
+if snaffected($i) != 716
+       invoke sigil
+       break
+endif
+if snaffected($i) == 39
+       cast \@rite of ablution\@
+endif
+~
+>greet_prog 100~
+if iscarrying($n) == 1247
+or iscarrying($n) == 1248
+or iscarrying($n) == 1249
+or isimmort($n)
+else
+      pmote holds out his hands, white light gathering around them.
+      murder $n
+endif
+~
+>load_prog 100~
+mpaddaffect $i 753 60 -1 0 50 0
+mpaddskill $i 187 100
+mpaddskill $i 7 100
+mpaddskill $i 416 100
+mpaddskill $i 415 100
+mpaddskill $i 412 100
+mpaddskill $i 904 100
+mpaddskill $i 141 100
+mpaddskill $i 425 100
+mpaddskill $i 93 100
+mpaddskill $i 131 100
+mpaddskill $i 421 100
+mpaddskill $i 985 100
+mpaddskill $i 980 100
+mpaddskill $i 989 100
+speak common
+mpoload 1248 on $i 20
+~
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(95)
+        mpvaluerand 8 1 4
+        if value(8) == 1
+                if auragrade($n) > 1
+                        cast \@spiritwrack\@
+                else
+                        cast \@life bolt\@
+                endif
+        endif
+        if value(8) == 2
+                if snaffected($n) == 141
+                        if auragrade($n) > 1
+                                cast \@spiritwrack\@
+                        else
+                                cast \@life bolt\@
+                        endif
+                else
+                        cast \@visions\@
+                endif
+        endif
+        if value(8) == 3
+                if snaffected($n) == 425
+                        if auragrade($n) > 1
+                                cast \@spiritwrack\@
+                        else
+                                cast \@life bolt\@
+                        endif
+                else
+                        cast \@spirit block\@
+                        mpvalueset 9 1
+                endif
+        endif
+        if value(8) == 4
+                if snaffected($n) == 93
+                        if auragrade($n) > 1
+                                cast \@spiritwrack\@
+                        else
+                                cast \@life bolt\@
+                        endif
+                else
+                        cast \@manabarbs\@
+                endif
+        endif
+endif
+~
+|
+V4 4006
+Zelenaes Vel\@taar zelenaesmob voice ch\@taren spirit templar~
+Zelenaes~
+Zelenaes Vel\@taar, Voice of Rystaia, lounges about the Hall of Passion.
+~
+A shimmering, golden ch\@taren, Zelenaes Vel\@taar reclines casually in the
+Hall of Passion.  Tall and of average build, his obvious confidence gives
+him an air of invincibility.  His features seem expertly molded, and
+although mature, do not know the wither of old age.  Deep brown eyes suggest
+an almost playful innocence, his thin eyebrows almost unnoticable above
+them.  He has a long mane of dark yellow hair, drawn back into a ponytail at
+the neck, which ends just beneath the base of his shoulders.  Strands of
+hair float freely about his face, caught on some unfelt wind.  
+
+Renowned as the Champion of the Pegasus, his reputation for battle prowess
+and personal amusement were immense.  He served under the Lord General
+Iyalisn, and found favor with Rystaia during his many campaigns.  With the
+close of his mortal life, he has found a place within the Shrine of Rystaia,
+embodying the passion for which he was so well-known.  
+~
+ch\@taren~
+spirit templar~
+ABX Q DNUZ G 0
+60 60 1d100+6000 1d100+6000 7d9+60 bash~
+punch~
+-27 -27 -27 -9
+FKQ ABU
+26 0 0 33 53 0 0 0 0 0 0 0 0 -20 0 0 10 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 75
+AHKMV ABCDEFGIJK AEK medium flesh
+>greet_prog 100~
+if iscarrying($n) == 1247
+or iscarrying($n) == 1248
+or iscarrying($n) == 1249
+or isimmort($n)
+else
+        pmote glides casually toward $N and strikes!
+        murder $n
+endif
+~
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(90)
+        mpvaluerand 8 1 5
+        if value(8) == 1
+                cast \@ray of light\@
+        endif
+        if value(8) == 2
+                if snaffected($n) == 698
+                        cast \@ray of light\@
+                else
+                        cast \@wrath of kyana\@
+                endif
+        endif
+        if value(8) == 3
+                if cansee($n) == $i
+                        if snaffected($n) == 688
+                                cast \@ray of light\@
+                        else
+                                cast \@soul flare\@
+                                mpvalueset 9 1
+                        endif
+                else
+                        cast \@ray of light\@
+                endif
+        endif
+        if value(8) == 4
+                if snaffected($i) == 696
+                        cast \@ray of light\@
+                else
+                        sortie
+                        mpvalueset 9 1
+                endif
+        endif
+        if value(8) == 5
+                if isflying($n)
+                        cast \@ray of light\@
+                else
+                        trip
+                endif
+        endif
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if snaffected($i) != 984
+        cast \@ward of grace\@
+        break
+endif
+if snaffected($i) != 692
+        cast \@truesight\@
+        break
+endif
+if snaffected($i) != 416
+        cast \@zeal\@
+        break
+endif
+if snaffected($i) != 7
+        cast \@bless\@
+        break
+endif
+if snaffected($i) != 902
+        cast \@seraphic wings\@
+        break
+endif
+if snaffected($i) != 697
+        cast \@radiance\@
+        break
+endif
+if snaffected($i) != 689
+        cast \@astral form\@
+        break
+endif
+if snaffected($i) != 716
+        invoke sigil
+        break
+endif
+if snaffected($i) == 680
+or snaffected($i) == 39
+or snaffected($i) == 678
+or snaffected($i) == 99
+        cast \@remove hex\@
+        break
+endif
+if iswielding($i) == 94
+else
+        if iscarrying($i) == 94
+                wear blade
+        else
+                if snaffected($i) == 700
+                else
+                        cast \@blade of light\@
+                        break
+                endif
+        endif
+endif
+if hitprcnt($i) < 66
+        if snaffected($i) == 694
+        else
+                cast \@positive channel\@ open
+                break
+        endif
+endif
+if hitprcnt($i) >= 95
+        if isoaffected($i) == 2097152
+                cast \@positive channel\@ close
+        endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 157 100
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 1050 100
+mpaddskill $i 692 100
+mpaddskill $i 416 100
+mpaddskill $i 7 100
+mpaddskill $i 687 100
+mpaddskill $i 902 100
+mpaddskill $i 698 100
+mpaddskill $i 688 100
+mpaddskill $i 696 100
+mpaddskill $i 697 100
+mpaddskill $i 689 100
+mpaddskill $i 904 100
+mpaddskill $i 694 100
+mpaddskill $i 700 100
+mpaddskill $i 173 100
+speak common
+battlecry May the passion of the light sing true!
+mpoload 1249 on $i 20
+~
+|
+V4 4007
+supersanctify bot~
+the supersanctify bot~
+The supersanctify bot sanctifies the shrine interior.
+~
+It\@s a generic bot.  
+~
+human~
+water scholar~
+AB 0 DFJLZe N 0
+0 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>load_prog 100~
+mpat 4001 mproomaffect 691 55 -1 0 0 0
+mpat 4002 mproomaffect 691 55 -1 0 0 0
+mpat 4003 mproomaffect 691 55 -1 0 0 0
+mpat 4004 mproomaffect 691 55 -1 0 0 0
+mpat 4005 mproomaffect 691 55 -1 0 0 0
+mpat 4006 mproomaffect 691 55 -1 0 0 0
+mproomaffect 691 55 -1 0 0 0
+~
+|
+V4 4008
+calanae van\@kela ch\@taren woman elderly~
+Calanae~
+An elderly ch\@taren woman with long white hair stands here.
+~
+Calanae Van\@Kela is a stocky ch\@taren woman with smooth features and a
+shock of white hair.  She has chestnut-brown eyes and a button nose, her
+face alight with pleasant happiness.  The tops of her hands are marked with
+ancient crests of Aramril, both in silver.  A Champion during the fall of
+the Republic, she is said to have used her formidable healing skill to
+assist in the defense of the city of Earendam.  However, with the ascent of
+the Patrician, she found little comfort within its walls, and traveled to
+the Ryarl as one of the first Rystaian emissaries to the kankoran.  She now
+serves all who bear the mark of the Pegasus, forever empowered by her
+Goddess.  
+~
+ch\@taren~
+water scholar~
+ABX Q DNU G 0
+60 30 1d100+6000 1d100+6000 5d12+40 holy~
+divine power~
+-27 -27 -27 -9
+HK ABLQU
+26 0 0 50 50 0 0 0 0 0 0 0 0 -20 0 0 10 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 75
+AHKMV ABCDEFGIJK AEK medium flesh
+#0
+
+
+
+#OBJECTS
+V13
+4000
+fountain marble white~
+a white marble fountain~
+A white marble fountain sparkles with an endless stream of water.~
+~
+marble~
+fountain I 0 0 0
+0 0 'water' 0 0
+60 2000 0 5 P
+0
+>verb_prog p drink~
+if compstr(2) == fountain
+or compstr(2) == white
+or compstr(2) == marble
+or compstr(2) == 
+        if iscarrying($n) == 1247
+        or iscarrying($n) == 1248
+        or iscarrying($n) == 1249
+                if snaffected($n) == 7
+                else
+                        mpechoat $n As you drink from the fountain, you feel clean in body and soul.
+                        mpaddaffect $n 7 60 66 18 10 0
+                        mpaddaffect $n 7 60 66 24 -10 0
+                endif
+                mpinterpret $n $x
+                break
+        else
+                mpechoat $n A magical barrier prevents you from drinking from the fountain.
+                break
+        endif
+else
+        mpnextinterp
+endif
+~
+|
+V13
+4001
+lightdagger star pure light~
+a star of pure light~
+A star of pure light is here.~
+~
+energy~
+weapon GIT 0 0 AN
+dagger 5 5 15 0
+searing light~
+50 0 0 1 P
+0
+>rand_prog 100~
+if inroom($o) != 4006
+    mpechoat $n As you leave the Hall of Spirit, the concerns of the world intrude on your thoughts once more.
+    mpremaffect $o 428
+    mppurge self
+endif
+~
+|
+V13
+4002
+portal blue~
+the blue portal~
+A blue portal beckons.~
+~
+energy~
+portal 0 0 0 0
+0 0 0 22213 0
+60 1 0 4 P
+0
+V13
+4003
+portal green~
+the green portal~
+A green portal beckons.~
+~
+energy~
+portal 0 0 0 0
+0 0 0 8320 0
+60 1 0 4 P
+0
+V13
+4004
+flute pan gold ornate ancient~
+an ornate gold pan flute~
+Beautifully crafted, an ancient gold pan flute lies here gleaming softly.~
+~
+gold~
+instrument AIKLa 0 0 AO
+C 0 0 0 0
+51 40 429000 2 P
+1
+A
+12 65
+A
+13 30
+>rand_prog 1~
+if isworn($n)
+  opvaluerand 0 1 5
+  if objvalue(0) == 1
+    opechoat $n The ornate gold pan flute shines softly.
+    opechoaround $n $N\@s pan flute shines softly for a moment.
+    opgrant $n 75 0 1 0
+  endif
+  if objvalue(0) == 2
+    opechoat $n The ornate gold pan flute warms in your hands for a moment.
+    opgrant $n 50 1 0 0
+  endif
+  if objvalue(0) == 3
+    opechoat $n The ornate gold pan flute flashes briefly.
+    opechoaround $n $N\@s pan flute flashes briefly.
+    opgrant $n 50 0 0 1
+  endif
+endif
+~
+|
+V13
+4005
+cloak white soft velvet golden sunstone pendant~
+a soft, white cloak clasped with a sunstone pendant~
+A beautiful white cloak with a sunstone pendant is here.~
+This cloak was made for Zelenaes Vel\@taar, a dedicated follower of
+Rystaia.  It is said that she gifted him with the sunstone for his heroic
+deeds, and from that day forward, no foe could harm him in battle.  
+~
+velvet~
+armor AIKLa 0 0 AK
+13 12 12 13 0
+51 60 242449 2 P
+1
+A
+41 5
+A
+20 -5
+A
+13 40
+A
+19 3
+E
+cloak white soft velvet golden sunstone pendant~
+A beautiful white cloak lies here, the velvet woven with fine golden
+threads.  A sparkling sunstone set in gold holds the soft fabric together at
+the collar.  
+~
+V13
+4006
+orb shining white pale silvery~
+a shining orb~
+A pale silvery white orb floats in the air.~
+~
+crystal~
+treasure AGIKL 0 0 AQ
+0 0 0 0 0
+51 40 25712 0 P
+1
+A
+13 10
+A
+12 25
+A
+17 -10
+A
+20 -5
+V13
+4007
+whip kas-yrah energy~
+the shimmering whip, \@Kas-yrah\@~
+A whip formed from shimmering energy lies here.~
+~
+energy~
+weapon AIKLa 0 0 AN
+whip 4 12 11 0
+chaotic energy~
+51 50 250000 2 P
+1
+A
+38 10
+A
+2 2
+A
+19 3
+A
+18 3
+V13
+4008
+flask water pegasus silver gleaming~
+a silver water flask etched with a pegasus~
+A gleaming silver water flask has been set on the ground.~
+This flask is of fine craftsmanship, obviously formed through skilled
+labour and magic.  It is clear whomwever made this flask has a devotion to
+the Goddess Rystaia.  Not only is the pegasus Lady Rystaia\@s holy symbol,
+but a great deal of care would be needed to form something this beautiful
+for a task as simple as carrying water.  
+~
+silver~
+drink AGIN 0 F A
+300 300 'water' 0 0
+1 30 25 1 P
+0
+E
+silver~
+The flask is formed of pure silver, polished to a gleaming shine.  A
+small black leather stopper, topped with a silver cap, fits into the flask,
+preventing the liquid inside from spilling.  On the front of the flask is a
+pegasus etched in to the metal with fine detail, each line so carefully
+drawn it must have been done by magic.  
+~
+E
+flask~
+The flask is formed of pure silver, polished to a gleaming shine.  A
+small black leather stopper, topped with a silver cap, fits into the flask,
+preventing the liquid inside from spilling.  On the front of the flask is a
+pegasus etched in to the metal with fine detail, each line so carefully
+drawn it must have been done by magic.  
+~
+E
+stopper~
+The stopper is of black leather, treated so as not to the liquid inside
+the flask spill out.  
+~
+E
+cap~
+Looking closely, you see the faint lines of a sun, the rays stretching
+out to the edge of the silver cap.  As you peer intently at it, the lines
+seem to emit a bright pulse of light for the faintest of moments, which
+quickly fades into the soft glow enchanting the flask.  
+~
+E
+pegasus~
+The pegasus is etched into the front of the flask, the lines so faint
+that they cannot be felt.  The pegasus seems to be diving downwards in this
+particular image, it\@s wings spread behind it and each feather has been
+recorded in marvelous detail.  
+~
+E
+sun~
+The sun gleams faintly fron the fines lines etched into the cap of the
+flask.  
+~
+V13
+4009
+pastry light spicy vegetables spice vegetable raerapha~
+a light pastry filled with spicy vegetables~
+A pastry sits on the ground, the steam wafting from it carring the faint smell of spice.~
+This meal is quite popular among the ch\@taren folk.  It\@s known as a
+\@Raerapha\@, essentially a portable yet delicious treat.  To prepare it, the
+vegetables are coated with a sauce that is made of honey and spiced herbs. 
+They are then folded into the fresh dough that has been liberally seasoned
+with qorith leaves and rosemary.  It is baked for a short while, allowing
+the bread to rise and get flaky, but not long enough for it to harden too
+much.  Upon removal from the oven, it is lightly sprinkled with pepper, and
+is then ready to eat.  
+~
+food~
+food N 0 F A
+100 50 0 0 0
+1 10 12 1 P
+0
+E
+pastry~
+The pastry is light and fluffy, smelling heavily of spice.  
+~
+E
+light~
+The pastry is light and fluffy, smelling heavily of spice.  
+~
+E
+spicy~
+The pastry is light and fluffy, smelling heavily of spice.  
+~
+E
+vegetables~
+Cutting a small slit into the pastry, you see a mixture of vegetables,
+such as green peppers, carrots, and many more.  
+~
+E
+vegetable~
+Cutting a small slit into the pastry, you see a mixture of vegetables,
+such as green peppers, carrots, and many more.  
+~
+E
+spice~
+The pastry is light and fluffy, smelling heavily of spice.  
+~
+E
+raerapha~
+The pastry is light and fluffy, smelling heavily of spice.  
+~
+V13
+4010
+petal gold golden flower~
+a golden flower petal~
+A petal seems to shimmer in the light, a soft pearlescent shine.~
+This petal seems to come from a larger flower, probably one with four to
+six leaves.  There is a faint residue on it, probably pollen, but the exact
+origin of the flower is unclear.  
+~
+plant~
+pill GINU 0 F A
+40 'fly' '' '' ''
+1 1 145 0 P
+0
+#0
+
+
+
+#ROOMS
+#4000
+Quicksand~
+Slow sinking feeling kills the mood you\@re conveying
+And it pulls me far down below 
+It might be best if you go
+Can it not wait and hope for the best
+Will it not stop a while to rest
+I need to get up never mind cause I\@ve done enough
+
+Ihe world waits around but I keep slipping and losing ground
+Do I not try so hard so good
+I can\@t keep changing just because you think I should
+
+Said all I need to and you don\@t understand still
+Wish you saw picture my mind\@s eyes are deep and they\@re cynical
+One taken four more kills the pain healing that sore
+I\@ve taken what\@s left I took it all
+And now you won\@t let me forget
+
+The world waits around but I keep slipping and losing ground
+Do I not try so hard so good
+I can\@t keep changing just because you think I should
+
+Stop your talking down
+I lack the strength to sit or stand
+I lost my self confidence in the quicksand
+
+Not now or ever
+Sink slowly my treasure
+~
+~
+1
+0 4489270 0
+W 5 0 0
+Z 5 5
+S
+#4001
+The Temple of the Pegasus~
+The transparent floor grows more substantial at the foot of the temple,
+taking on a translucent, silvery cast.  Great pillars of the same material
+stand at the four corners of the entryway, the shimmering mist clearing
+completely within the temple interior.  A delicate, domed ceiling rises from
+the standing pillars, growing more transparent as its height increases.  The
+burble of water, as well as its scent, lingers in the air, mingling with the
+soft, clear ring of music.  Two halls extend to the north and south, while
+westward, the rest of the temple awaits.  To the east, the cloudy sky near
+Mount Enrien stretches endlessly.  
+~
+~
+1
+0 4456498 0
+E
+dim images flicker~
+Within the smooth confines of the pillars, a myriad of fleeting images
+fade in and out.  Some of them are of Avendar, with flashes of light and the
+vague, misty expanse of the world during the War of Night.  Others are more
+alien and unable to be properly captured by mortal eyes, pulses of light and
+ch\@taren faces barely discernable amidst them.  
+~
+E
+pillar pillars~
+The pillars are made of the same translucent, silvery material as the
+rest of the temple, not altogether unlike ch\@lonin, yet slightly off in both
+color and composition.  The pillars\@ surfaces are entirely smooth, although
+dim images flicker and shift within them.  
+~
+D0
+A hall lined with statues and a wide, hanging tapestry lies to the north.
+~
+~
+0 0 4003
+D1
+The misty entrance to the temple lies eastward.
+~
+~
+0 0 2016
+D2
+An large, pillarless hall opens up to the south.
+~
+~
+0 0 4004
+D3
+A great, open chamber waits to the west, light music drifting from it.
+~
+~
+0 0 4002
+A 8192
+M 150 H 150 V 100
+W 5 0 0
+Z 5 5
+S
+#4002
+The Altar to Rystaia~
+This great, expansive chamber opens up even further than the temple
+entryway.  It lined with towering, near-opaque pillars of glittering,
+flawless white marble.  With no walls or ceiling, the endless expanse of
+crystal sky extends unmarred in all directions.  The silvery floor takes on
+a glassier texture than elsewhere, its finish acting as a vast mirror for
+the bowl of the sky, giving the disorienting impression of weightlessness. 
+Music fills the still, sweet-smelling air, its subtle, sourceless harmonies
+echoing off of every surface.  In the center of the room, an ornate altar
+grows out of the mirrored floor, crafted from what is undoubtedly ch\@lonin. 
+The mirroring fades out into silvery translucence the further it gets from
+the altar, leading to more of the temple in each of the cardinal directions.
+~
+none~
+1
+0 4194354 0
+D0
+A hexagonal chamber with two standing pegasi opens northward.
+~
+~
+0 0 4005
+D1
+The temple entryway is to the east, accompanied by the sounds of gurgling water.
+~
+~
+0 0 4001
+D2
+White light winds through the chamber to the south.  
+~
+~
+0 0 4006
+D3
+A small, multifaceted chamber lies to the west.
+~
+~
+0 0 4007
+A 8192
+M 180 H 180 V 100
+W 0 -1 2
+Z 5 5
+P
+>verb_prog p look~
+if compstr(2) == view
+or compstr(2) == expanse
+or compstr(2) == endless
+or compstr(2) == sky
+or compstr(2) == crystal
+        if islight()
+                mpforce $n look dayskyview
+        else
+                mpforce $n look nightskyview
+        endif
+else
+        mpnextinterp
+endif
+~
+|
+S
+#4003
+The Hall of Joy~
+The silvery, glass-like floor of the temple opens into a circular
+chamber, similarly composed pillars placed at regular intervals along its
+difficult-to-discern edge.  Unlike the smooth southern pillars, these are
+sculpted with a variety of shapes and styles, many of them mimicking
+ch\@taren, animal, or plant forms.  The floor itself is set with a
+translucent, golden design at its center, while an insubstantial tapestry
+hangs between the two northmost columns.  A dome rests atop the circle of
+pillars, growing steadily glassier and clearer as it rises.  Here, the sound
+of music and water is muted, and the scents of wild flowers fills the air. 
+To the south is the entryway to the temple.  
+~
+~
+1
+0 4456498 0
+E
+bird bird-like markings eagle~
+Across from the flowering vine, a majestic eagle is caught within the
+sculpting of the silvery surface of the pillar.  Unlike many of the other
+figures, the bird itself is contorted in an unusually stylized pose, its
+flared wings and outstretched talons not extending far past the surface. 
+Within its crystal eyes burns an almost-life, as if snatched from a hunting
+bird at the instant of its killing strike.  
+~
+E
+plant vine rising~
+On a pillar in a southwestern part of the circle, a large, lifelike vine
+plant grows out of the surface and winds around it in a tight embrace. 
+Thick, wide leaves protrude here and there, their silvery surface textured
+much like that of an actual, living vine.  Flowers, also blossom from amidst
+the leaves, but unlike them, each is tinged with an array of bold color. 
+Frozen at the height of their beauty, the flowers also give off the scents
+of a wild garden.  
+~
+E
+female~
+This female ch\@taren figure is half within and half without the great
+pillar in which she stands.  Her face is both delicate and unsettlingly
+beautiful, her expression frozen in timeless rejoice.  The sculture itself
+radiates a peaceful, almost motherly, energy that her male companion does
+not.  Her pose is contrasted by his figure on the other side of the room,
+her arms curled about her chest, while his are raised in victory.  
+~
+E
+male~
+This male ch\@taren figure is half within and half without the great
+pillar in which he stands.  The look on his face is one that captures the
+essence of rapture, radiating a victorious energy.  His torso is unclad,
+shaped expertly of the silvery substance that composes both the temple and
+the pillar itself.  His pose is contrasted by the female figure across the
+room from him, the two separated in style mainly by the artistic differences
+between man and woman.  
+~
+E
+pillar pillars sculpture shapes forms~
+Some of the pillars within the hall are sculpted in varying forms,
+representing different aesthetic ideals.  Two of the pillars are mirror
+images of one another, one a male ch\@taren, the other a female.  Another
+pillar mimics the form of a great rising vine, while another has the
+bird-like markings of an eagle.  
+~
+E
+insubstantial tapestry~
+Although nominally composed of a silken material, the substance is more
+akin to a wind shroud than traditional weaving or threading.  There is no
+definite image upon the tapestry, merely a wispy stretch of gold throughout.
+Much like the pillars, however, within the slender depths, shapes ebb and
+flow from one to another without pattern.  Each beautiful image ensnares
+some part of joy in its purest form.  
+~
+E
+design golden floor~
+Set into the floor is a large symbol, its center aligned with the center
+of the circle.  Although long fallen into disuse, it is the concept of Joy
+symbolized in a single figure of ancient ch\@taren script.  Subtle golden
+light shines from the symbol, which filters through the room.  
+~
+D2
+The temple entryway is to the south, accompanied by the sounds of gurgling water.
+~
+~
+0 0 4001
+A 8192
+M 140 H 140 V 100
+W 5 0 0
+Z 5 5
+P
+>data_prog flower_type~
+roses
+lavender
+lilacs
+heliotrope
+petunias
+alyssum
+violets
+daffodils
+lilies
+iris
+azaeleas
+gardenias
+jasmine
+orchids
+amaryllis
+~
+>rand_prog 1~
+if rand(50)
+        mpvaluerand 9 0 14
+        mpsetdata flower_type
+        mpnextdata $9
+        mpecho The scent of $d drifts by on the breeze.
+endif
+~
+|
+S
+#4004
+The Hall of Passion~
+The marble of the temple opens up into a wide, silvery platform, which
+has a notable lack of the pillars present to the north.  Here, the floor and
+air of the temple radiates a low thrum of excitement, sharpening the senses
+to the caress of the wind and the warm, muted scent of closeness.  The mist
+surrounding the temple is conspicuously clear, giving a spectacular and
+unhindered view of the world below and the sky around.  Despite the open,
+airy feel, protective power surrounds the platform in its comforting
+embrace.  Set into the platform is a dim, pink image that glows faintly of
+its own accord.  The entryway of the temple and its rising, misty pillars
+await to the north.  
+~
+~
+1
+0 4456498 0
+E
+summerworld~
+The world of Avendar spreads out beneath you, the view vast and
+unhindered despite the weather.  The grasses of the savannah are heavy and
+thick, the ruddy browns of the wastes as lively as they get.  Nendor\@s leafy
+trees are in full spread, coating much of the area directly beneath the
+temple in a sea of rustling greens.  Along the northern side of the forest,
+the stone walls of Var Bandor rise, the tiny dots of bustling people little
+more than gnats.  
+~
+E
+autumnworld~
+The world of Avendar spreads out beneath you, the view vast and
+unhindered despite the weather.  The savannah\@s thick grasses are waning and
+golden, waving in the wind, while the wastes that border them cracking and
+withering as the temperature cools.  Nendor\@s great trees are a myriad of
+colors, ranging from red to orange to brown, with many bare branches
+sticking out amongst the vivid array.  The faint rise of smoke lingers above
+the walls of Var Bandor to the north.  
+~
+E
+winterworld~
+The world of Avendar spreads out beneath you, the view vast and
+unhindered despite the weather.  Much of the savannah\@s grasses a dull wheat
+and spotted with brown, the wasteland along its southern edge rapidly
+growing into a vast, inhospitable plain.  The great branches of Nendor lay
+bare, the thick mesh of brown shrouding the forest floor.  To the north, Var
+Bandor is covered by a thin blanket of obvious smoke, its cold walls capped
+with ice.  
+~
+E
+springworld~
+The world of Avendar spreads out beneath you, the view vast and
+unhindered despite the weather.  The lush grasses of the savannah and the
+arid, muddy swath of the wastes are easily visible, while the trees of
+Nendor are budding in the anticipation of warmer days.  Var Bandor bustles
+on its outer edge, the faint rise of smoke lingering just above the city\@s
+squat walls.  
+~
+E
+image pink floor~
+Inset into the silver floor is a large symbol, roughly central to the
+platform.  Although long fallen into disuse, it is the concept of Passion
+symbolized in a single figure of ancient ch\@taren script.  The image itself
+glows gently, tinting the area with a mild pink hue.  
+~
+D0
+The temple entryway is to the north, accompanied by the sounds of
+gurgling water.  
+~
+~
+0 0 4001
+A 8192
+M 140 H 140 V 100
+W 5 0 0
+Z 5 5
+P
+>verb_prog p look~
+if compstr(2) == view
+or compstr(2) == world
+or compstr(2) == below
+or compstr(2) == sky
+        if isseason() == spring
+                mpforce $n look springworld
+        endif
+        if isseason() == summer
+                mpforce $n look summerworld
+        endif
+        if isseason() == autumn
+                mpforce $n look autumnworld
+        endif
+        if isseason() == winter
+                mpforce $n look winterworld
+        endif
+else
+        mpnextinterp
+endif
+~
+|
+S
+#4005
+The Hall of Freedom~
+This open-aired chamber is roughly hexagonal, the translucent, silver
+floor vanishing at its misty edges.  Two large, lifelike pegasi, each one
+shaped from pure white marble, stand silently at the eastern and western
+side of the platform.  The wind here moves without hindrance, its force and
+sound following little more than its ineffable whim.  The chamber is without
+walls or ceiling, but unlike elsewhere in the temple, the elements have at
+least some say, be it rain, lightning, ice, or gale.  A vast, stylized sign
+is set into the floor, its extending arcs a pale, icy blue.  To the south,
+the silvery material of the temple turns glassy, opening into a great open
+space.  
+~
+~
+1
+0 4456498 0
+E
+rightpegasusattack~
+The rightmost pegasus statue is reared on its hind legs, its forelegs
+raised in the pose of attack.  Its nostrils are flared and mouth open,
+pitch-black eyes exuding a zealous energy.  Its body is sleek, but despite
+its white marble construction, the howl of the wind through the chamber
+causes the great mane of the pegasus to shift along with its direction.  
+~
+E
+rightpegasusjump~
+The only thing anchoring the rightmost pegasus statue to the ground is a
+single, silver-gleaming rear hoof, the rest of its body already leaping
+high.  Its wings are spread wide, ready to lift its whole body aloft.  Its
+long, rippling mane streams back joyously in the wind that rushes through
+the chamber, tail flapping proudly like a flag.  Its shining black eyes are
+wide, focused on a point in front of itself.  
+~
+E
+rightpegasusrun~
+The rightmost pegasus statue is caught mid-stride, whole body given over
+to its joyful run.  Its mane and tail both flow backwards, shifting in the
+howling wind of the room, upward-curved wings shielding them slightly.  The
+play of muscles has been expertly carved into the sleek body of the pegasus,
+expertly capturing the movement.  Its coal black eyes have a bright gleam to
+them, head canted slightly, as if looking for its racing partner.  
+~
+E
+rightpegasusfrolic~
+The rightmost pegasus statue is frozen mid-jaunt, as if frolicking amidst
+the grasses of Mount Enrien.  Its wings are flared outward, muzzle lowered
+and docile.  Coal black eyes dot its flawless head, radiating peaceful
+energy.  Muscular and expertly crafted from marble, its mane moves when wind
+whips through the chamber as if it were real.  
+~
+E
+leftpegasusattack~
+The leftmost pegasus statue is reared on its hind legs, its forelegs
+raised in the pose of attack.  Its nostrils are flared and mouth open,
+pitch-black eyes exuding a zealous energy.  Its body is sleek, but despite
+its white marble construction, the howl of the wind through the chamber
+causes the great mane of the pegasus to shift along with its direction.  
+~
+E
+leftpegasusjump~
+The only thing anchoring the leftmost pegasus statue to the ground is a
+single, silver-gleaming rear hoof, the rest of its body already leaping
+high.  Its wings are spread wide, ready to lift its whole body aloft.  Its
+long, rippling mane streams back joyously in the wind that rushes through
+the chamber, tail flapping proudly like a flag.  Its shining black eyes are
+wide, focused on a point in front of itself.  
+~
+E
+leftpegasusrun~
+The leftmost pegasus statue is caught mid-stride, whole body given over
+to its joyful run.  Its mane and tail both flow backwards, shifting in the
+howling wind of the room, upward-curved wings shielding them slightly.  The
+play of muscles has been expertly carved into the sleek body of the pegasus,
+expertly capturing the movement.  Its coal black eyes have a bright gleam to
+them, head canted slightly, as if looking for its racing partner.  
+~
+E
+leftpegasusfrolic~
+The leftmost pegasus statue is frozen mid-jaunt, as if frolicking amidst
+the grasses of Mount Enrien.  Its wings are flared outward, muzzle lowered
+and docile.  Coal black eyes dot its flawless head, radiating peaceful
+energy.  Muscular and expertly crafted from marble, its mane moves when wind
+whips through the chamber as if it were real.  
+~
+E
+pegasus pegasi white marble~
+Two lifelike statues are present upon the hexagon, one to the left, and
+one to the right.  
+~
+E
+vast stylized sign pale icy blue~
+Inscribed upon the silver floor is a large symbol, off-center on the
+hexagonal surface.  Although long fallen into disuse, it is the concept of
+Freedom symbolized in a single figure of ancient ch\@taren script.  The sign
+is a ice-blue shade, pale light of that color suffusing its surroundings.  
+~
+D2
+A great, open chamber waits to the south, light music drifting from it.  
+~
+~
+0 0 4002
+A 8192
+M 140 H 140 V 100
+W 5 0 0
+Z 5 5
+P
+>data_prog pegasus_position~
+frolic
+run
+jump
+attack
+~
+>rand_prog 1~
+if rand(25)
+        mpecho The two marble pegasi suddenly leap, wings outstretched, and exchange places on the hexagon!
+endif
+~
+>verb_prog p look~
+if compstr(2) == statue
+        mpechoat $n Which statue would you like to look at, the left or the right?
+else
+        if compstr(2) == left
+                mpvalueset side left
+        else
+                if compstr(2) == right
+                        mpvalueset side right
+                else
+                        mpnextinterp
+                        break
+                endif
+        endif
+        mpvaluerand 9 0 3
+        mpsetdata pegasus_position
+        mpnextdata $9
+        mpvalueset pos $d
+        mpconcat outstr side \#pegasus\# pos
+        mpforce $n look %outstr
+endif
+~
+|
+S
+#4006
+The Hall of Spirits~
+The floor of the temple grows insubstantial here, its edges concealed
+entirely by the area\@s mist shroud.  Although absent pillars seen elsewhere
+in the temple, there are instead great columns of white light.  The
+near-transparent material underfoot glows as well, the white light
+refracting into a rainbow array within.  Light streams and flows through the
+hall of its own accord, forming a sinuous, ever-shifting pattern in the air.
+The thrum of magic here is intense, dimming all other sound but
+simultaneously granting profound clarity of thought.  To the north, a vast,
+open chamber is visible outside the free-flowing energy.  
+~
+~
+1
+0 4456498 0
+E
+sinuous pattern streams~
+Sinuous patterns of light wind and flow through the air in steady
+streams, beginning and ending at the shining columns of light that hover
+above the barely-visible floor.  Although long fallen into disuse, the
+shifting weave of light is the ancient ch\@taren representation of the Spirit
+in its simplest form.  Its unending, but continually unique appearance is
+distinct even among timeless ch\@taren vestiges, extant here for eternity.  
+~
+E
+columns white light~
+Five columns of white light are present in this chamber, although they
+pass through the floor rather than are rooted within it.  Arcs of light flow
+outward from each of the columns, composing a living, fluid pattern that
+bends and shifts throughout the room.  When looked upon directly, the
+columns\@ light is never blinding, but rather more a indistinct, semi-solid
+mass of glowing material.  
+~
+D0
+A great, open chamber waits to the north, light music drifting from it.
+~
+~
+0 0 4002
+A 8192
+M 200 H 140 V 100
+W 5 0 0
+Z 5 5
+S
+#4007
+The Portal Chamber~
+A small, angular annex onto the temple proper, the portal chamber is much
+like the faceted surface of a cut jewel from the inside.  The floor cuts
+downward, then upward again, while the walls of this place shift unevenly
+and at abrupt edges.  Much like the rest of the temple, the chamber seems to
+be constructed from increasingly more transparent marble.  The enshrouding
+mist of the temple is visible through the gemstone barriers, each a slightly
+different shade in color.  Three of the larger facets are particularly
+colorful and luminous, images flickering within them of different places. 
+To the east, the silvery floor leads back into the temple.  
+~
+~
+1
+0 4456498 0
+E
+third green~
+The third facet is a beautiful, lush forest green.  Inside the facet,
+various images flow steadily throughout its interior, depicting the the rise
+of great trees, the patch of a cultivated garden, tended grasses, and
+flowering plants.  The image is so remarkably vivid at times that it looks
+as though someone could step right into it.  
+~
+E
+second blue~
+The second facet is a deep, encompassing sea-blue.  Inside the facet,
+various images drift and skitter through its depths, depicting beaches, the
+roll of the tides, the rise of rock and the ocean\@s open water.  The image
+is so remarkably vivid at times that it looks as though someone could step
+right into it.  
+~
+E
+first yellow~
+The first facet is a shimmering, sunny yellow.  Inside the facet, various
+images fade in and out of being, depicting armored soldiers, rising walls,
+the bustle of foot traffic, and the occasional burst of bright, white light.
+The image is so remarkably vivid at times that it looks as though someone
+could step right into it.  
+~
+E
+three facets luminous~
+Three of the facets that comprise the gemstone chamber are particularly
+vivid and bright.  The first, second, and third can be examined more
+closely.  
+~
+E
+tablet~
+The golden portal will send you to the heart of a city.
+ 
+The blue portal will send you to a place of water and sea breezes.
+ 
+The green portal will send you to a lush forest.
+~
+D1
+A great, open chamber waits to the east, light music drifting from it.  
+~
+~
+0 0 4002
+A 8192
+M 140 H 140 V 100
+W 5 0 0
+Z 5 5
+P
+>verb_prog p enter~
+mpvalueset 2 0
+mpvaluerand 9 1 3
+if compstr(2) == first
+or compstr(2) == yellow
+        mpvalueset color yellow
+        if value(9) == 1
+                mpvalueset 2 8884
+        endif
+        if value(9) == 2
+                mpvalueset 2 17072
+        endif
+        if value(9) == 3
+                mpvalueset 2 1655
+        endif
+endif
+if compstr(2) == second
+or compstr(2) == blue
+        mpvalueset color blue
+        if value(9) == 1
+                mpvalueset 2 25420
+        endif
+        if value(9) == 2
+                mpvalueset 2 19074
+        endif
+        if value(9) == 3
+                mpvalueset 2 4652
+        endif
+endif
+if compstr(2) == third
+or compstr(2) == green
+        mpvalueset color green
+        if value(9) == 1
+                mpvalueset 2 4028
+        endif
+        if value(9) == 2
+                mpvalueset 2 1412
+        endif
+        if value(9) == 3
+                mpvalueset 2 10338
+        endif
+endif
+if value(2) > 0
+        mpechoaround $n $N steps into the %color facet and vanishes.
+        mpechoat $n You step through the %color facet, emerging on the other side.
+        mptransfer $n $2
+        mpforce $n look
+        mpechoaround $n $N appears in a flash of light.
+        mplag $n 1
+else
+        mpechoat $n Which facet would you like to enter, the yellow, the blue, or the green?
+endif
+~
+|
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+O 0 4000 0 4001
+M 0 4001 1 4002 1
+G 0 4010 0
+G 0 4009 0
+G 0 4008 0
+M 0 4002 1 4003 1
+M 0 4006 1 4004 1
+E 0 4005 0 12
+M 0 4004 1 4005 1
+E 0 4007 0 16
+E 0 4004 0 17
+M 0 4005 1 4006 1
+E 0 4006 0 18
+M 0 4007 1 4007 1
+S
+
+
+
+#GUILD
+#4005
+"locate object"
+"fast healing"
+"trance"
+"second attack"
+"haggle"
+"parry"
+"meditation"
+"wands"
+"staves"
+"scrolls"
+"whip"
+"dagger"
+"meditation"
+"enhanced damage"
+"third attack"
+"dual wield"
+"second attack"
+"fast healing"
+"unseen servant"
+"resonance"
+"spirit sanctuary"
+"vengeance"
+"blade of light"
+"wrath of Kyana"
+"lucid dreaming"
+"radiance"
+"sortie"
+"rite of Nathli"
+"positive channel"
+"exorcism"
+"truesight"
+"sanctify"
+"soul flare"
+"astral form"
+"ray of light"
+"consecrate weapon"
+"rune of spirit"
+"unshackle"
+"thanatopsis"
+"shield"
+"spirit shield"
+"awaken"
+"remove curse"
+"calm"
+"aura"
+"zeal"
+"dreamspeak"
+"invisibility"
+"detect invis"
+"invisibility"
+"know alignment"
+"bless"
+"armor"
+"soulburn"
+"trance"
+"third attack"
+"dodge"
+"dual wield"
+"trip"
+"fast healing"
+"meditation"
+"rescue"
+"kick"
+"enhanced damage"
+"second attack"
+"parry"
+"polearm"
+"spear"
+"scrolls"
+"wands"
+"whip"
+"dagger"
+"sword"
+"create focus"
+"astral projection"
+"mass peace"
+"avatar"
+"avenging seraph"
+"know alignment"
+"rune of spirit"
+"pass door"
+"manabarbs"
+"visions"
+"spiritwrack"
+"subdue"
+"affinity"
+"unshackle"
+"spirit bond"
+"spirit block"
+"spirit stone"
+"life bolt"
+"improved detect evil"
+"speak with the dead"
+"continual light"
+"teleport"
+"mana conduit"
+"remove curse"
+"invisibility"
+"calm"
+"awaken"
+"soulburn"
+"bless"
+"focus mind"
+"aura"
+"clarity"
+"dreamspeak"
+"zeal"
+"spirit shield"
+"thanatopsis"
+#0
+
+S
+
+
+#SHOPS
+4001 0 0 0 0 0 100 100 0 23 0
+0
+
+
+
+#$

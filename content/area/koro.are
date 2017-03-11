@@ -1,0 +1,583 @@
+#AREADATA
+Name Korodrath\@s Cigar Emporium~
+Builders Iacobos Tzajai~
+VNUMs 26200 26299
+Credits [FOOLS] Korodrath Cigar Emporium       ~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 0 0 0 0 0
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 26201
+wine whiny winey taste taster bot tasterbot taster-bot whiney~
+a winey tasterbot~
+A winey taster-bot looks on smugly.
+~
+~
+human~
+water scholar~
+A 0 BDFLe N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>data_prog Just_A_Taste_Port~
+mpecho A sparkling decanter winks into existence, suspended in midair.
+mpecho The bottle of port floats up from the rack.
+mpecho A pair of red-hot port tongs and a damp rag appear, and the phantasmal servant\@s invisible hands use them to delicately snap the neck off at the cork.
+mpecho Testing break...
+break
+mpoload 26210 on $n // replace vnum with cheese_obj vnum
+mpechoat $n A small wedge of blue cheese floats down into your palm.
+mpechoaround $n A small wedge of blue cheese floats down into $N\@s palm.
+mpechoat $n A phantasmal hand offers you the decanter, and you take a sip after savoring the spicy aroma of the port.
+mpechoaround $n A phantasmal hand offers $N the decanter, and $e takes a sip.
+mpechoat $n The sweet flavor of the port is delicious!
+mpforget $n
+mpvalueset 0 0
+~
+>trigger_prog 100~
+loop 1 to 15
+  mpnextdata
+  $d
+endloop
+~
+>speech_prog red white port~
+if compx() == white
+  if compx() == red
+  or compx() == port
+    mpsetdata Polite_Reminder
+    $d
+  else
+    mpsetdata Just_A_Taste_White
+    mptrigger $n
+  endif
+else
+if compx() == red 
+  if compx() == white
+  or compx() == port
+    mpsetdata Polite_Reminder
+    $d
+  else
+    mpsetdata Just_A_Taste_Red
+    mptrigger $n
+  endif
+else
+if compx() == port
+  if compx() == white
+  or compx() == red
+    mpsetdata Polite_Reminder
+    $d
+  else
+    mpsetdata Just_A_Taste_Port
+    mptrigger $n
+  endif
+endif
+endif
+endif
+~
+>data_prog Polite_Reminder~
+esay \@frowns, saying\@ It would be polite to only try one type of wine at a time.  You may try the white, the red, or the port.
+~
+|
+V4 26202
+shaman srryn aging~
+the srryn shaman~
+An aging srryn, dressed in the garb of a shaman, is here, preparing poultices.
+~
+A squat looking srryn, covered in the tattered remains of a once
+fine-looking cloak, squats upon the earthen floor.  A multititude of
+necklaces dangle from around his neck, some imbued with shamanistic
+symbolism, some with little more than bright colors.  A pair of livid scars,
+apparently self-inflicted, form a cross, centered upon the milky center of
+his right eye.  Paid in advance by the Raider House, he stands ready to bind
+the wounds of any Raider in need.  
+~
+srryn~
+water scholar~
+ABXa B DFJZ E 0
+57 26 20d220+1100 0d0+0 5d10+30 slash~
+claw~
+-25 -25 -25 -7
+FIJMV AB
+26 0 0 0 0 0 0 0 33 -33 0 0 33 0 0 0 0 33 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 70 -1
+AHMVX ABCDEFGHIJKLQUVX ACK medium unknown
+>verb_prog p list~
+if compstr(1) == l
+or compstr(1) == li
+  mpnextinterp
+else
+  if isinhouse($n)
+    mpnextinterp
+  else
+    mpechoat $n The srryn shaman studiously ignores you.
+  endif
+endif
+~
+>verb_prog p buy~
+if isinhouse($n)
+  mpnextinterp
+else
+  mpechoat $n The srryn shaman studiously ignores you.
+endif
+~
+|
+V4 26205
+koro\@s loader bot loaderbot~
+koro\@s loaderbot~
+Koro\@s loaderbot is here.
+~
+~
+human~
+water scholar~
+ABLUX 0 e N 0
+70 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog loaditem~
+mpvalueset 1 $y2
+mpvalueset 2 $y3
+if value(1) > 0
+  if value(2) > 0
+    loop 1 to $2
+      mpoload $1 on $n
+    endloop
+  else
+    mpoload $1 on $n
+  endif
+else
+  mpechoat $n Loaderbot: syntax is: loaditem <vnum> [num_instances]
+endif
+mpvalueset 1 0
+mpvalueset 2 0
+~
+>verb_prog loadmob~
+mpvalueset 1 $y2
+mpvalueset 2 $y3
+if value(1) > 0
+  if value(2) > 0
+    loop 1 to $2
+      mpmload $1
+    endloop
+  else
+    mpmload $1
+  endif
+else
+  mpechoat $n Loaderbot: syntax is: loadmob <vnum> [num_instances]
+endif
+mpvalueset 1 0
+mpvalueset 2 0
+~
+|
+V4 26206
+thiefguildbot eguildbot~
+the thiefguildbot~
+The thiefguildbot is here, waiting to rob your ass.
+~
+~
+human~
+water scholar~
+ADL 0 DFL N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog east~
+if mobhere(7054)
+  if class($n) == 12
+    if adrenaline($n) > 0 
+      mpforce eguildguard say I can\@t have you bleeding on the floors, now can I? Wait here a bit first.
+    else
+      if isfight($n)
+        mpechoat $n No way! You\@re too busy fighting!
+      else
+        mpat 7142 mpecho $N has arrived.
+        mptransfer $n 7142
+        mpat 7142 mpforce $n look 
+        mpecho $N leaves east.
+      endif
+    endif
+  else
+    mpforce eguildguard say Only those who have business with the Casidian family may enter.
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+26201
+cigar fat cuban exploding~
+a fat Cuban cigar~
+A fat Cuban cigar lies here, calling your name.~
+~
+tobacco~
+light DEGSf 0 0 A
+0 0 999 0 0
+0 0 0 0 P
+0
+>wear_prog 100~
+if value(0) == 1
+  break
+else
+  mpechoat $n As you light the cigar, it begins sparking furiously!
+  mpechoaround $n As $N lights $B cigar, it begins sparking furiously!
+  mpvalueset 1 3
+endif
+mpvalueset 0 1
+~
+>rand_prog 100~
+if value(0) == 1
+  if value(1) > 0
+    mpecho Sparks continue to fly from the cigar as it burns down rapidly!
+    mpvaluedown 1
+  else
+    mpcast 410 60
+    mplag $o 2
+    mpvalueset 0 0
+    mppurge self
+    mpverbstop
+  endif
+endif
+~
+>remove_prog 100~
+if value(0) == 1
+  mpechoat $n You desperately try to extinguish the cigar, but it keeps sparking!
+  mpechoaround $n $N desperately tries to extinguish $B cigar, but it keeps sparking!
+endif
+~
+|
+V13
+26202
+tlkhanasty sword nasty~
+the Tlkhanasty~
+The Tlkhanasty lies here, looking wicked sharp~
+~
+bloodstone~
+weapon f 0 0 AN
+sword 10 500 11 D
+itchy caress~
+56 100 0 3 P
+0
+A
+20 -25
+A
+18 600
+V13
+26203
+cigarette holder fancy fabulous~
+a fancy cigarette holder~
+A fancy cigarette holder is here, waiting to make you look fabulous.~
+~
+unknown~
+trash ADEJMZ 0 0 AO
+0 0 0 0 0
+60 0 0 0 P
+0
+A
+20 -500
+>verb_prog p cast maze~
+if name($n) == korodrath
+  mpnextinterp
+else
+  mpechoat $n {WKorodrath yells{x {c\@Help!  $N is attacking me!\@{x
+  mpechoaround $n {WKorodrath yells{x {c\@Help!  $N is attacking me!\@{x
+  mpechoat $n A portal suddenly appears and engulfs Korodrath before he can escape!
+  mpechoaround $n A portal suddenly appears and engulfs Korodrath before he can escape!
+endif
+~
+>verb_prog p cast \@earth maw\@~
+if name($n) == korodrath
+  mpnextinterp
+else
+  mpechoat $n {WKorodrath yells{x {c\@Help!  $N is attacking me!\@{x
+  mpechoaround $n {WKorodrath yells{x {c\@Help!  $N is attacking me!\@{x
+  mpechoat $n A gaping maw opens up beneath Korodrath, and he falls within!
+  mpechoaround $n A gaping maw opens up beneath Korodrath, and he falls within!
+endif
+~
+>verb_prog p cast \@flesh to stone\@~
+if name($n) == korodrath
+  mpnextinterp
+else
+  mpechoat $n {WKorodrath yells{x {c\@Help!  $N is attacking me!\@{x
+  mpechoaround $n {WKorodrath yells{x {c\@Help!  $N is attacking me!\@{x
+  mpechoat $n Korodrath struggles as stone encases his body!
+  mpechoaround $n Korodrath struggles as stone encases his body!
+endif
+~
+>verb_prog Putmedown~
+opzap $o
+~
+>all_death_prog 100~
+if name($n) == korodrath
+  mpat korodrath mpoload 26203 on korodrath 17
+  opverbstop
+  oppurge self
+endif
+~
+|
+V13
+26204
+plaguemites plague kohli virulent box sealed~
+a box of virulent kohli plaguemites~
+A sealed box of kohli plaguemites is here, looking virulent.~
+~
+unknown~
+trash 0 0 0 A
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+26205
+shimmering quicksilver vest symbiontvest~
+a shimmering quicksilver vest~
+A shimmering quicksilver vest swirls and eddies of its own accord, remaining strangely cohesive.~
+~
+mercury~
+armor BDGTYa 0 0 ADP
+15 15 15 35 0
+60 60 0 1 P
+0
+>verb_prog p test_mask~
+if isowner($n)
+if isworn($o)
+  mpechoat $n The quicksilver on your chest suddenly sends thin tendrils up your neck!
+  mpechoat $n Your face burns as the tendrils burrow into your flesh, forming a shimmering mask of quicksilver!
+  mpechoaround $n $N gasps as quicksilver tendrils flow up his neck and onto his face, forming a shimmering mask of quicksilver!
+  opslotpurge $n 6
+  mpoload 26206 on $n 6
+endif
+endif
+~
+>take_prog shimmering quicksilver vest symbiontvest~
+mpechoat $n As your fingers contact the quicksilver, it sticks fast to your hand and begins flowing up your arm!
+mpechoat $n A warm sensation runs up your arm and onto your torso as the quicksilver forms into a shimmering vest.
+mpechoaround $n As $N reaches out to touch the quicksilver vest, it sticks to $B fingers and flows up $B arm onto $B torso!
+opforce $n wear symbiontvest
+~
+|
+V13
+26206
+shimmering quicksilver mask symbiontmask~
+a shimmering quicksilver mask~
+The shimmering quicksilver mask clutches your face in its cold tendrils.~
+~
+unknown~
+armor BDGHMPTYZa 0 0 AE
+15 15 15 30 0
+0 30 0 0 P
+0
+>trigger_prog 100~
+mpfocus $o
+mpvalueset 0 1
+mpechoat $n You feel your perception grow sharper as the alien mask settles onto your face.
+mpaddaffect $n 824 51 -1 27 0 0
+~
+>rand_prog 35~
+if isheld($o)
+if isworn($o)
+  if value(0) != 1
+    mptrigger $o
+  endif
+endif
+endif
+~
+|
+V13
+26210
+small wedge blue cheese cheese_obj~
+a small wedge of blue cheese~
+A small wedge of blue cheese lies discarded here.~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+26211
+progging test item~
+progging test item~
+Progging test item~
+~
+unknown~
+trash 0 0 0 AO
+0 0 0 0 0
+0 0 0 0 P
+0
+>verb_prog test_vars~
+mpecho var b is $b
+mpecho var B is $B
+mpecho var e is $e
+//mpecho var E is $E
+//mpecho var f is $f
+//mpecho var F is $F
+//mpecho var i is $i
+//mpecho var I is $I
+mpecho var j is $j
+mpecho var J is $J
+mpecho var k is $k
+mpecho var K is $K
+mpecho var l is $l
+mpecho var L is $L
+mpecho var m is $m
+//mpecho var M is $M
+mpecho var n is $n
+mpecho var N is $N
+mpecho var o is $o
+mpecho var O is $O
+mpecho var r is $r
+mpecho var R is $R
+mpecho var s is $s
+//mpecho var S is $S
+//mpecho var t is $t
+//mpecho var T is $T
+//mpecho var v is $v
+//mpecho var x is $x
+//mpecho var X is $X
+//mpecho var y is $y
+//mpecho var Y is $Y
+//mpecho var z is $z
+~
+|
+V13
+26212
+constant damage dagger~
+constant damage dagger~
+Constant damage dagger~
+~
+unknown~
+weapon 0 0 0 AN
+dagger 25 1 2 0
+~
+0 0 0 0 P
+0
+V13
+26213
+sable pendant~
+a sable pendant~
+A sable gem lies here on a pile of gold chain.~
+~
+shadow~
+jewelry CEFGJYa 0 0 AC
+0 0 0 0 0
+60 0 15000 0 P
+1
+A
+5 -3
+A
+41 -10
+A
+47 10
+E
+sable~
+A sable gem hangs from the end of a thin gold chain.  Light seems to bend
+around its completely lusterless surface.  
+~
+V13
+26214
+potion greater hand warp~
+a potion of greater hand warp~
+A potion of greater hand warp lies here.~
+~
+unknown~
+potion 0 0 0 0
+51 'greater hand warp' '' '' ''
+0 0 0 0 P
+0
+V13
+26215
+alzheimer alzheimer\@s pill~
+an alzheimer\@s pill~
+(no description)~
+~
+unknown~
+pill 0 0 0 0
+40 'frenzy' 'confusion' '' ''
+0 0 0 0 P
+0
+V13
+26216
+hershey succubus kiss~
+a Hershey\@s Kiss~
+A yummy Hershey\@s Kiss lies here, all wrapped up in foil.~
+~
+unknown~
+pill 0 0 0 0
+51 '' '' '' ''
+0 0 0 0 P
+0
+>eat_prog 100~
+mpget char korodrath id 3
+mpaddaffect $n 761 56 48 27 $3 0
+~
+|
+#0
+
+
+
+#ROOMS
+#26200
+Inside the Emporium~
+Rows of perfectly-aligned wooden shelves span the length of the store.  A
+fuzzy security monitor overhead displays your every move as recorded from
+some hidden camera in the ceiling.  
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

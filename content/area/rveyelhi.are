@@ -1,0 +1,726 @@
+#AREADATA
+Name Shrine of Rveyelhi~
+Builders Ramc Iacobos Landeyda~
+VNUMs 30131 30160
+Credits [ ALL ] Ramc      Shrine of Rveyelhi~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 0 8
+Weave 5 2 -1
+Shades 5 5
+Stone 83
+End
+
+
+
+#MOBILES
+V4 30131
+Nistaru~
+Nistaru~
+Nistaru, the Chosen of Rveyelhi, stands before the Shrine.
+~
+A tall nefortu stands before you, his brown leathery wings arcing upwards
+toward the heavens.  His stance seems relaxed but prepared, ready to leap
+into movement at any time.  His eyes, a ghoulish ebony color, blink rarely,
+analyzing every movement that comes to pass before them.  His face exudes a
+feeling of calmness, coupled harmoniously with a pair of eyes that bear the
+sharp glint of stoic dedication.  Branded on his arm is the sigil of the
+Black Staff, which pulses with pure darkness periodically.  
+~
+nefortu~
+water scholar~
+ABGPTX 0 DEFHJNOTVZc N 0
+63 170 22000d1+1 1d1+9999 10d6+60 cold~
+chill~
+-50 -50 -50 -50
+AFHK ABILMQb
+26 0 0 33 33 0 0 0 95 0 50 0 0 0 50 0 50 0 0 0 -20 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 400 -1
+AHMW ABCDEFGIJKP AHK small unknown
+>hitprcnt_prog 20~
+glare $n
+mpvalueset 3 65
+mpvalueset 4 50
+mpvalueset 5 70
+~
+>hitprcnt_prog 30~
+mpvalueset 3 45
+mpvalueset 4 50
+mpvalueset 5 60
+mpcast 34 99
+mpcast 34 99
+mpcast 34 99
+~
+>hitprcnt_prog 70~
+mpvalueset 3 15
+mpvalueset 4 10
+mpvalueset 5 30
+~
+>death_prog 100~
+mpflag exit north - fake
+note to Rveyelhi
+note + $N is a punkass, and managed to kill Nistaru.
+note subject DEATH!!
+note post
+emote grimaces thinly, eyes clouding over.
+~
+>load_prog 100~
+speak common
+mpoload 24256 on $i 20
+mpflag exit north + fake
+mpaddskill $i 333 100
+mpaddskill $i 337 100
+mpaddskill $i 107 100
+mpaddskill $i 39 100
+mpaddskill $i 52 100
+mpaddskill $i 8 100
+mpvalueset 3 5
+mpvalueset 4 8
+mpvalueset 5 12
+~
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+or iswizi($n)
+  break
+else
+  if ischaotic($n)
+    emote smirks disdainfully.
+    mpvaluerand 5 1 3
+    if value(5) == 1
+      esay \@gives a disgusted roll of his eyes, exclaiming\@ Will the impudence of these dogs never cease? Begone!
+    endif
+    if value(5) == 2
+      mpechoaround $n {Y$I sneers at $N, saying \@Leave this place, cur, lest I sully the hallowed stones with your corpse!\@{n
+      mpechoat $n {Y$I sneers at you, saying \@Leave this place, cur, lest I sully the hallowed stones with your corpse!\@{n
+    endif
+    if value(5) == 3
+      esay \@narrows his eyes\@ Crawl back to the mudpits from whence you came, beast of chaos.
+    endif
+  else
+    if iswielding($n) == 1270
+    or iswielding($n) == 12031
+    or iswielding($n) == 24256
+      pmote nods slightly at $N.
+    else
+      esay smirks Only those of the Master may enter.  Begone.
+  endif
+endif
+endif
+~
+>verb_prog p north~
+if isimmort($n)
+or isghost($n)
+  mptrans $n 30132
+  mpforce $n look
+  break
+else
+  if position($n) > 0
+    if position($n) < 4
+      mpechoat $n You\@re hurt too badly to do that.
+      break
+    endif
+    if position($n) == 4
+      mpechoat $n In your dreams, or what?
+      break
+    endif
+    if position($n) > 4
+      if position($n) < 7
+        mpechoat $n Better stand up first.
+        break
+      endif
+    endif
+    if position($n) == 7
+      mpechoat $n No way!  You\@re still fighting!
+      break
+    endif
+    if position($n) == 8
+      if iswielding($n) == 1270
+      or iswielding($n) == 12031
+      or iswielding($n) == 24256
+        if adrenaline($n) > 0
+          pmote surveys $N impassively.
+          esay \@pronounces uncaringly\@ You\@re far too ..excited to come in, $N.
+        else
+          if iswielding($n) == 24256
+            pmote nods respectfully to $N as $e passes north.
+          else
+            pmote nods blandly to $N as $e passes north.
+          endif
+          mptrans $n 30132
+          mpforce $n look
+        endif
+      else
+        if ischaotic($n)
+          pmote regards $N haughtily, a flicker of disgust crossing his blank face.
+          esay \@gestures dismissively\@ Depart from me, you chaotic dog.
+        else
+          pmote regards $N balefully with an impassive stare, imperceptibly shaking his head.
+          esay \@says disdainfully\@ You are not of the Master.
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>hitprcnt_prog 50~
+mpvalueset 3 25
+mpvalueset 4 30
+mpvalueset 5 50
+mpcast 34 99
+mpcast 34 99
+mpcast 34 99
+mpcast 34 99
+mpcast 34 99
+~
+>fight_prog 100~
+mpcast 34 99
+if rand($3)
+  emote extends both his hands!
+  mpcast 81 99
+  mpcast 81 99
+  break
+endif
+if rand($3)
+  mpecho The icy tendrils surrounding Nistaru writhe outwards.
+  mpcast 8 60
+  mpcast 57 60
+  mpcast 57 60
+  mpcast 57 60
+  break
+endif
+if rand($4)
+  emote closes his eyes, murmuring to himself as he extends his hands.
+  mpcast 673 60
+  mpcast 39 60
+  break
+endif
+if rand($5)
+  mpcast 107 60
+  mpcast 77 60
+  mpcast 77 60
+  break
+endif
+~
+|
+V4 30132
+golem void vgol~
+the void golem~
+A metallic golem stands within the hall, blackness seeping from the joints.
+~
+This large golem towers twelve feet into the air forming an imposing
+humanoid figure.  It is constructed of gleaming steel, with thick plates
+covering most of its body.  A chill black mist seeps from the joints where
+the plates are not, settling in low, dark fog about the construct\@s feet.  A
+mechanical clicking and whirring can be heard from within the golem and
+grows louder when it moves.  The face of the golem is a featureless steel
+mask save for a pair of dark pits where the eyes would be, sockets
+reflecting nothing but absolute darkness.  
+~
+demon~
+water scholar~
+ADLTX 0 JVZce N 0
+60 150 1d1+14999 0d0+0 6d10+60 bash~
+smash~
+-40 -40 -40 -40
+ACFHK ABILMPQb
+26 0 0 60 60 33 0 0 0 0 0 0 0 0 -10 0 0 0 0 -10 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACHMV ABCDEFGHIJKP 0 large iron
+>trigger_prog 100~
+if isghost($n)
+or isimmort($n)
+or iswielding($n) == 12031
+or iswielding($n) == 24256
+or iswielding($n) == 1270
+else
+  mpaddaffect $n 306 60 2 0 0 16777216 O
+  mpechoat $n The noise suddenly stops, a ringing silence lingering in its wake.
+endif
+~
+>death_prog 100~
+emote clatters jerkily, the screeching noise of gears grinding in a deafening crescendo!
+emote jerks, starts, and crumples in on itself with a tremendous noise!
+mproomcmd mptrigger all
+mpecho The golem dissolves in a shamble of ruined scraps of metal, a dusty black smoke slowly dissipating.
+mpgoto 6100
+~
+>greet_prog 100~
+if iswielding($n) == 1270
+or iswielding($n) == 12031
+or iswielding($n) == 24256
+or isimmort($n)
+or isghost($n)
+or isnpc($n)
+else
+  emote thunders forward with a roar of metal, black mist swirling behind!
+  mpasound A sudden, grating roar of metal sounds from nearby.
+  bash $n
+  mpcast 20 60
+endif
+~
+>hit_prog 100~
+mpcast 50 60
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+30131
+font obelisk plain stone dark water~
+a dark stone font~
+A dark obelisk rises from a font in the center of the yard.~
+~
+stone~
+fountain 0 0 0 0
+0 0 'water' 0 0
+52 0 0 3 P
+0
+E
+font obelisk plain stone dark water~
+This plain stone obelisk is made in the Classical style, blank and
+unadorned.  Four-sided, the obelisk tapers slightly as it ascends, curving
+into a pyramidical point at the top.  The base is surrounded by a small
+basin of the same polished stone, filled with cool, still water.  
+~
+>verb_prog p drink~
+if compstr(2) == font
+or compstr(2) == obelisk
+or compstr(2) == plain
+or compstr(2) == stone
+or compstr(2) == dark
+or compstr(2) == water
+or compstr(2) == 
+  if iswielding($n) == 1270
+  or iswielding($n) == 12031
+  or iswielding($n) == 24256
+    mpnextinterp
+    if snaffected($n) == 132
+    else
+      mpechoat $n As you drink from the font, the water leaves a metallic tang in your mouth. 
+      mpechoat $n Your skin turns to stone.
+      mpaddaffect $n 132 20 6 0 0 0
+    endif
+  else
+    mpechoat $n A sense of intense unwelcome settles around you.
+    mpechoat $n The water seems to turn to ash in your mouth, and you feel thirstier than before.
+    mpset $n thirst -20
+    if ischaotic($n)
+    or iscriminal($n)
+      mpechoat $n A terrible pain courses throughout your body!
+      mpechoaround $n $N suddenly convulses in a fit of agonizing pain!
+      mpaddaffect $n 306 30 5 0 0 0
+    endif
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+30132
+vial glittering dust glass~
+a vial of glittering dust~
+A glass vial filled with glittering dust lies here.~
+~
+glass~
+potion G 0 0 A
+50 'faerie fog' '' '' ''
+50 0 10000 0 P
+0
+E
+dust~
+This glass vial is filled with glittering orange dust.
+~
+E
+glittering~
+This glass vial is filled with glittering orange dust.
+~
+E
+vial~
+This glass vial is filled with glittering orange dust.
+~
+E
+glass~
+This glass vial is filled with glittering orange dust.
+~
+V13
+30133
+altar pure onyx block~
+an altar of pure onyx~
+An imposing altar of pure onyx stands on a raised dais.~
+~
+stone~
+furniture Ya 0 0 P
+0 0 N 0 0
+55 0 0 2 P
+0
+E
+altar pure onyx block~
+This imposing block of onyx has been polished to a silken finish, coated
+with some substance which seems to absorb light actively through some dark
+virtue of its own.  Plain and unadorned but for a simple depression in the
+top of the stone, apparently carved to hold a horizontal staff, the altar
+dominates the empty room, drawing all attention inwards.  
+~
+V13
+30134
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+#0
+
+
+
+#ROOMS
+#30131
+The Entrance to the Shrine of Rveyelhi~
+The entrance to the monolithic Shrine of Rveyelhi lies through an arch of
+basalt stone to the north.  Breaking an otherwise blank outer curtain wall,
+the arch allows access to a small courtyard.  Twin sculptures of a robed,
+severe shuddeni, the god\@s avatar of choice, flank the smooth, undecorated
+arch.  To the north, a black basalt stair climbs out of a tiny, open yard to
+a forbidding edifice crafted from the same dark stone.  Imposing and
+monolithic, the square building tapers slightly at the top, but is otherwise
+unadorned.  To the south, a spur of Glallia Street wends its way back into
+the city.
+~
+~
+1
+0 8 0
+E
+north~
+Beyond the arch, basalt stairs lead upward.
+~
+E
+arch archway~
+This unprepossessing arch opens in an otherwise blank wall.  Allowing
+access into a tiny courtyard, the arch has a faint etching inscribed across
+the top.  
+~
+E
+faint etching~
+This small phrase is etched faintly into the smooth, polished stone. 
+Some form of writing, the characters or language are unfamiliar.  
+~
+E
+twin sculpture sculptures robed severe shuddeni statue statues~
+These statues are carved from polished black marble, crafted with a
+masterful hand.  Mostly unremarkable, each depiction of the ascetic shuddeni
+holds a ceremonial staff in its left hand, the right clenched in a fist at
+its side.  One feature is particularly salient on the statues, however: a
+sardonic, bemused smirk, cruel in its very amusement, twists the thin stone
+lips of the figures.
+~
+D0
+The arch opens into a small courtyard, from which a set of black steps
+climb into the Shrine.  
+~
+~
+0 0 30132
+D2
+A spur of Glallia Street wends its way south.
+~
+~
+0 0 6934
+W 5 0 0
+Z 5 5
+S
+#30132
+Before the Black Stairs~
+You are in a tiny, stone-paved courtyard, surrounded on three sides by a
+tall curtain wall of unpolished basalt.  On the fourth side, the monolithic
+Shrine of Rveyelhi rises to the north.  An arch in the southern wall allows
+access back to the city to the south.  A black basalt stair climbs out of
+the small, open yard to the forbidding edifice which crouches above you. 
+The square building tapers slightly at the top, but is otherwise unadorned. 
+A small font of water surrounds the base of the plain stone obelisk which
+stands in the center of the courtyard.  
+~
+~
+2
+0 2 0
+D2
+The archway leads out to the space before the Shrine.
+~
+~
+0 0 30131
+D4
+The black stairs ascend into the Shrine.
+~
+~
+0 0 30137
+W 5 0 0
+Z 5 5
+S
+#30133
+The Hall of the Black Staff~
+This open, square hall in the Shrine to Rveyelhi is easily fifteen feet
+in height, made from smoothly-polished basalt.  Walls, floor, and ceiling
+are all crafted from the same, seamlessly reflective stone, the overall
+effect somewhat disorienting though pure and unbroken by anything which
+might distract the gaze.  This intersection of halls is lined with
+supporting columns, the ceiling ascending in an angular, stepped curve to a
+central point high above the floor.  To the east and west the hall narrows
+into smaller side rooms, and a hall leads south to the entrance. 
+Northwards, a large chamber opens up to house the altar of Rveyelhi.  The
+air is very chilly, laden with a thin, alchemical smell.  A definite tension
+lingers in the air, a preternatural stillness more reminiscent of stone or
+metal than of atmosphere.  
+~
+~
+0
+0 2 0
+D0
+~
+~
+0 0 30134
+D1
+~
+~
+0 0 30135
+D2
+~
+~
+0 0 30137
+D3
+~
+~
+0 0 30136
+W 5 0 0
+Z 5 5
+S
+#30134
+The Altar of the Eternal Guardian~
+This tall, square room in the Shrine to Rveyelhi stretches high
+overhead, eventually meeting a plain ceiling far above.  Made from
+smoothly-polished basalt, the walls, floor, and ceiling are all the same,
+seamlessly reflective stone pure and unbroken by anything which might
+distract the gaze.  This is the chamber of the altar to the Eternal
+Guardian, an imposing block of pure black onyx dominating the room.  A large
+door leads south to a junction of halls.  The air is quite chill, laden with
+a sterile, alchemical smell.  A palpable tension permeates the air of the
+chamber, the preternatural stillness more reminiscent of stone or metal than
+of atmosphere.  
+~
+~
+0
+0 2 0
+D2
+~
+~
+0 0 30133
+W 5 0 0
+Z 5 5
+S
+#30135
+A Side Room in the Temple~
+This side room in the Shrine to Rveyelhi is easily twelve feet in
+height, made from smoothly-polished basalt.  Walls, floor, and ceiling are
+all crafted from the same, seamlessly reflective stone, the overall effect
+somewhat disorienting though pure and unbroken by anything which might
+distract the gaze.  Several small plaques line the walls between the floor
+and ceiling, enamelled black steel contributing to the sterile perfection of
+the room.  To the west the hall widens into a central forum at which other
+halls intersect.  The air is very chilly, laden with a thin, alchemical
+smell.  A vague tension lingers in the air, a preternatural stillness more
+reminiscent of stone or metal than of atmosphere.
+~
+~
+0
+0 2 0
+E
+plaque plaques~
+Three black steel enamelled plaques are set onto the walls here, one on
+each face.  You may look at the eastern, northern, or southern.  
+~
+E
+northern~
+The masses are ignorant, their understanding of the creed limited by
+their own misconceptions.  When given the choice between doling out death or
+suffering the continued existence of those who do not Know, it almost
+certainly better to strike down the unenlightened.  The essence of death is
+the Void, and only from the purity of the flawless Void can structure be
+wrought.  
+~
+E
+southern~
+Some will deny the creed altogether, their insolence a blatant defiance
+of His truth.  These creatures lack the capacity for ordered thought.  The
+Chosen should not seek to understand such fools, for to do so leads to
+madness and unbeing.  Only miminal consideration should be given to such
+wretches, and -only- that which is required to completely and utterly
+destroy their spirit in the most efficient way possible.  
+~
+E
+eastern~
+To tolerate is to condone.
+To condone is to accept.
+To accept the blasphemies of the errant is antithesis.
+~
+D3
+~
+~
+0 0 30133
+W 5 0 0
+Z 5 5
+S
+#30136
+A Side Room in the Temple~
+This side room in the Shrine to Rveyelhi is easily twelve feet in
+height, made from smoothly-polished basalt.  Walls, floor, and ceiling are
+all crafted from the same, seamlessly reflective stone, the overall effect
+somewhat disorienting though pure and unbroken by anything which might
+distract the gaze.  Several small plaques line the walls between the floor
+and ceiling, enamelled black steel contributing to the sterile perfection of
+the room.  To the east the hall widens into a central forum at which other
+halls intersect.  The air is very chilly, laden with a thin, alchemical
+smell.  A vague tension lingers in the air, a preternatural stillness more
+reminiscent of stone or metal than of atmosphere.  
+~
+~
+0
+0 2 0
+E
+plaque plaques~
+Three black steel enamelled plaques are set onto the walls here, one on
+each face.  You may look at the western, northern, or southern.
+~
+E
+western~
+The way of the Black Staff is utterly without deviance.  To allow the
+flaws of entropic mistakes is to eventually crumble to the level of the
+chaotic dogs which threaten all worth preserving.  Any error must be wholly
+purged, utterly flagellated, and the vessel forged anew to prevent
+recurrence.  
+~
+E
+northern~
+If a man confides his disbelief in His will to you privately, note him in
+your mind for the day of the great purge.  If he disagrees publicly, cut
+out his tongue and nail it to the wall of a local tavern.  If he raises a
+family by his ideals, then burn down his home and see that no mercy is
+offered to his children.  Do this openly so that all may know His will and
+the consequences of blasphemous defiance.
+~
+E
+southern~
+A time will come when His creed is the prevalent idea throughout the world; 
+a day when the knowing stand proud and the ignorant are Broken.  On this great 
+day, the Chosen will make His creed final.  The ignorant will either submit to 
+His will or be scourged from existence.  Cities will rise out of wildernesses,
+the wastes will receive Order, and steel and stone will hold sway over the world.
+
+This is the Doom proclaimed by Rveyelhi.
+~
+D1
+~
+~
+0 0 30133
+W 5 0 0
+Z 5 5
+S
+#30137
+The Hall of the Black Staff~
+This is the beginning of the Shrine to Rveyelhi.  A large hall, easily
+fifteen feet in height, is made from smoothly-polished basalt.  Walls,
+floor, and ceiling are all crafted from the same, seamlessly reflective
+stone, the overall effect somewhat disorienting.  To the south, the hall
+leads out onto a wide ledge in front of the temple, from which a black
+basalt stair descends.  The hall stretches to the north, several small
+plaques lining the walls.  The air is quite chilly and thin, laden with a
+sharp, alchemical smell.  A vague tension lingers in the air, a
+preternatural stillness more reminiscent of stone or metal than of
+atmosphere.  
+~
+~
+2
+0 2 0
+E
+plaque plaques~
+Four plaques, made from enamelled black steel, hang on the walls.  You
+may look at the first, second, third, or fourth.  
+~
+E
+first~
+Order.
+
+Law.
+
+Blood.
+
+This the creed of Rveyelhi, the Eternal Guardian.
+~
+E
+second~
+{WOrder{n is the platform upon which all society must stand; without it,
+all will crumble into the earth from which it rose.  It is His will that the
+Chosen spread the creed the land over, and ruthlessly put down the rabid
+dogs that attempt to deny it.  
+~
+E
+third~
+{WLaw{n, or, more specifically, the Law of the Lord Iandir, is the
+epitome of order.  Through it, structure is wrought where none was.  In
+life, our Lord revered Iandir and his creed.  He guarded it and the order
+that it represented.  So too shall the Chosen guard, eternally.  
+~
+E
+fourth~
+{WBlood{n tells no lies.  The truth of Eternal Guardian is writ in the
+sanguine fluid of the defiant.  So shall the Chosen endeavor to bring the
+truth of their Lord into the world, not with the weak pen of peace and soft
+diplomacy, but with the striking fist of war.  
+~
+D0
+~
+~
+0 0 30133
+D5
+~
+~
+0 0 30132
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+M 0 30131 1 30131 1
+O 0 30131 0 30132
+M 0 30132 1 30133 1
+O 0 30133 0 30134
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

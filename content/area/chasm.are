@@ -1,0 +1,2030 @@
+#AREADATA
+Name The Dark Chasm~
+Builders Dovolente~
+VNUMs 2158 2199
+Credits [15 35] Dovolente The Dark Chasm~
+Danger 0
+Security 1
+Areainfo 59
+Herbs 0
+Weather 0 3 3 0 4
+Weave 5 0 0
+Shades 5 5
+Stone -1
+End
+
+
+
+#MOBILES
+V4 2158
+bot web cutter cut~
+a web cutter bot~
+A web cutter bot sits here, cutting webs.
+~
+Modeled on dagger trap in newbie school.
+But much, much cooler.
+~
+human~
+water scholar~
+AL 0 DFJLPZe N 0
+52 26 35d107+1167 52d10+100 6d9+26 none~
+hit~
+-22 -22 -22 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p chop webs~
+mpforce $n choppa_da_web
+~
+>verb_prog p chop web~
+mpforce $n choppa_da_web
+~
+>verb_prog p cut webs~
+mpforce $n choppa_da_web
+~
+>verb_prog p cut web~
+mpforce $n choppa_da_web
+~
+>verb_prog p slice webs~
+mpforce $n choppa_da_web
+~
+>verb_prog p slice web~
+mpforce $n choppa_da_web
+~
+>verb_prog choppa_da_web~
+mplag $n 1
+if value(0) == 0
+  mpechoat $n You cut a path through the thick web.
+  mpechoaround $n $N cuts a path through the thick web.
+  mpat 2177 mppurge webtrap
+  mpvalueset 0 50
+else
+  mpechoat $n Someone already did that.
+endif
+~
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0 1
+  if value(0) ==  1
+    mpecho The path through the web has closed.
+    if inroom($i) == 2175
+      mpvalueset homeroom 2175
+    else
+      mpvalueset homeroom 2179
+    endif
+    mpgoto 2177
+    if mobhere(2160)
+    else
+      mpmload 2160
+    endif
+    mpgoto %homeroom
+  endif
+endif
+~
+>verb_prog p look~
+if inroom($i) == 2175
+  if compstr(2) == d
+  or compstr(2) == do
+  or compstr(2) == dow
+  or compstr(2) == down
+    if value(0) == 0
+      mpechoat $n A thick tangle of web stretches across the chasm below.
+    else
+      mpechoat $n The chasm continues.
+    endif
+  else
+    mpnextinterp
+  endif
+else
+  if compstr(2) == u
+  or compstr(2) == up
+    if value(0) == 0
+      mpechoat $n A thick tangle of web stretches across the chasm above.
+    else
+      mpechoat $n The chasm continues.
+    endif
+  else
+    mpnextinterp
+  endif
+endif
+~
+|
+V4 2159
+spider waiet large~
+a large waiet spider~
+A large waiet spider clings to a strand of web in the chasm.
+~
+A hairy spider the size of a pony, the waiet spider is known for its
+aggressive behavior.  This particular creature is a stone-grey color, with
+darker bands around its legs and body that make it blend into the
+background.  
+~
+generic~
+water scholar~
+ADFL 0 PQ N 0
+25 13 19d35+818 25d10+100 4d6+13 pierce~
+bite~
+-6 -6 -6 1
+FH AL
+26 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABOP CDEFK 0 medium flesh
+>rand_prog 10~
+mpecho $I scuttles away, crawling up the chasm wall.
+mppurge self
+~
+|
+V4 2160
+bot web trap webtrap~
+a web trap bot~
+A web trap bot dances. Oppa Shelob Style.
+~
+Modeled on dagger trap in newbie school.
+But much, much cooler.
+~
+human~
+water scholar~
+AL 0 DFJLPZe N 0
+52 26 35d107+1167 52d10+100 6d9+26 none~
+hit~
+-22 -22 -22 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>greet_prog 100~
+if isghost($n)
+or isastral($n)
+//or isimmort($n)
+  mpechoat $n You pass unimpeded through the thick tangle of web.
+else
+  mpechoat $n As you fly through this part of the chasm, you become tangled in a thick web!
+  mpechoaround As $N flies through this part of the chasm, $e becomes tangled in a thick web!
+  mplag $n 4
+  if mobhere(2159)
+  else
+    mpecho A large gray spider, drawn by the motion, arrives and attacks!
+    mpmload 2159
+    mpforce waiet mpkill $n
+  endif
+endif
+~
+|
+V4 2161
+bot pagebot page libram~
+the Libram page bot~
+The Libram page bot is here, twisting innocent souls.
+~
+This fellow stains people\@s karma if they look at the surviving page of
+the Black Libram of Souls and then hang around.  
+
+See the Black Libram / Converu info on the staff wiki for backstory.  The
+idea here is that a page survived (was stolen!)  And ended up here, to
+provide a setup for possible quest / character hooks in the future.  
+~
+human~
+water scholar~
+AL 0 DFJLPZe N 0
+52 26 35d107+1167 52d10+100 6d9+26 none~
+hit~
+-22 -22 -22 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+if isfocused($i)
+  if ishere($f)
+    if value(0) > 0
+      mpvalueup 0 
+      if value(0) == 10
+        mpechoat $F You feel an unholy touch, as if unseen and demonic fingers have brushed across your skin.
+        mpbitset $n 2158 1
+        //THIS MPGET KARMA IS THE PART THAT DOESN\@T WORK// mpget char $f karma 1
+        // mpmath 1 $1 + 5
+        // mpset char $f karma $1
+        if remembers($f)
+        else
+          mpremember $f
+          tell dovolente $F is hanging around the Black Libram of Souls\@ surviving page in the Dark Chasm.
+        endif
+        mpunfocus
+        mpvalueset 0 0
+      endif
+   endif
+  else
+    mpunfocus
+    mpvalueset 0 0
+  endif
+else
+  mpvalueset 0 0
+endif
+~
+>verb_prog look~
+mpinterpret $n $x
+if compstr(2) == torn
+or compstr(2) == curled
+or compstr(2) == page
+or compstr(2) == piece
+or compstr(2) == parchment
+or compstr(2) == silhouette
+  mpvalueset 0 1
+  mpfocus $n
+endif
+~
+|
+V4 2162
+bat grey large~
+a giant grey bat~
+A large grey bat clings to the chasm\@s steep wall.
+~
+The giant grey bat has large, leathery wings, sharp claws and teeth, and
+wide glaring eyes.  It crawls along the abyss wall, turning its head
+nervously to test the sounds around it.  The color of its dark, near-black
+skin provides perfect camouflage against the dark stone.  
+~
+bat~
+water scholar~
+AFGN 0 QTZ N 0
+10 5 8d11+212 10d10+100 2d5+5 pierce~
+bite~
+3 3 3 6
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 -33 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 0 -1
+AGV ACDEFHJKP A small flesh
+V4 2163
+slime verdah~
+some verdah slime~
+Some verdah slime drips along the chasm wall.
+~
+This green slime oozes along the chasm wall.  It seems to hold no
+structure, and forms odd shapes as it creeps over cracks or rough places.  
+~
+generic~
+water scholar~
+ABD 0 DFJZd N 0
+18 7 7d30+250 0d0+0 3d5+10 acid~
+digestion~
+0 0 0 5
+0 ABKQ
+26 0 0 -33 33 0 33 33 -33 -33 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AEHMV 0 A medium unknown
+V4 2164
+bot chasm trash litterer littererer~
+the chasm trash bot~
+The chasm trash bot is a litterer.
+~
+He throws around the chasm trash.
+For use with the nefortu scavenger.
+(Biqimin)
+~
+human~
+water scholar~
+AL 0 DFJLPZe N 0
+52 26 35d107+1167 52d10+100 6d9+26 none~
+hit~
+-22 -22 -22 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 1~
+if rand(66)
+  if rand(50)
+    mpvalueset droploc 2173
+  else
+    mpvalueset droploc 2174
+  endif
+else
+  if rand(66)
+    if rand(50)
+      mpvalueset droploc 2180
+    else
+      mpvalueset droploc 2179
+    endif
+  else
+    if rand(50)
+      mpvalueset droploc 2198
+    else
+      mpvalueset droploc 2199
+    endif
+  endif
+endif
+get 1.
+mpat %droploc stash 1.
+~
+>load_prog 100~
+mpaddskill $i 248 100
+mpoload 2168 in room
+mpoload 2165 in room
+mpoload 2166 in room
+mpoload 2167 in room
+mpoload 2169 in room
+mpoload 2170 in room
+mpoload 2171 in room
+mpoload 2172 in room
+mpoload 2173 in room
+mpoload 2174 in room
+mpoload 2175 in room
+mpoload 2176 in room
+mpoload 2177 in room
+mpoload 2178 in room
+mpoload 2179 in room
+mpoload 2180 in room
+mpoload 2181 in room
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+2158
+corpse dessicated adventurer adventurer\@s~
+the dessicated adventurer\@s corpse~
+A dessicated adventurer\@s corpse hangs from tangled webbing.~
+~
+carrion~
+container S 0 0 P
+0 0 0 100 130
+10 1500 0 3 P
+0
+V13
+2159
+bracer leather plain~
+a plain leather bracer~
+A plain leather bracer is here.~
+~
+leather~
+armor S 0 F AM
+3 3 3 0 0
+10 10 1518 1 P
+0
+A
+19 1
+A
+18 1
+A
+13 5
+V13
+2160
+cuirass leather boiled~
+a boiled leather cuirass~
+A boiled leather cuirass, scratched and worn, sits here.~
+~
+leather~
+armor S 0 F AD
+3 3 5 1 0
+10 50 1155 2 P
+0
+A
+18 2
+A
+5 1
+V13
+2161
+pauldrons bronze tarnished pair~
+tarnished bronze pauldrons~
+A pair of bronze pauldrons, light green with tarnish, is here.~
+~
+bronze~
+armor 0 0 F AI
+4 4 4 0 0
+10 30 1502 1 P
+0
+A
+18 1
+A
+19 1
+A
+1 1
+V13
+2162
+band ring silver elegantly elegant woven~
+an elegantly-woven silver band~
+A ring of elegantly-woven silver sits here.~
+~
+silver~
+jewelry 0 0 F AB
+0 0 0 0 0
+10 5 1716 0 P
+0
+A
+4 1
+A
+20 -1
+A
+13 5
+V13
+2163
+hose green patched pair~
+a pair of patched green hose~
+A pair of patched green hose lies here.~
+~
+cloth~
+armor S 0 0 AF
+4 4 4 0 0
+10 20 1430 2 P
+0
+A
+14 25
+A
+2 1
+A
+18 1
+V13
+2164
+coinpurse coin purse small~
+a small coinpurse~
+A small coinpurse lies half-hidden in the rocks.~
+~
+gold~
+money Yc 0 0 AO
+2 1 0 0 0
+1 2 200 0 P
+0
+V13
+2165
+bone yellowed kohli leg solid light~
+a kohli leg bone~
+A yellowed bone, light but solid, sits here.~
+~
+bone~
+weapon S 0 0 AN
+mace 7 3 1 0
+pound~
+15 40 120 2 W
+0
+A
+18 -1
+V13
+2166
+parchment ancient faded scrap~
+a scrap of ancient parchment~
+A scrap of faded parchment lies here.~
+~
+parchment~
+scroll S 0 0 AO
+20 'giant strength' '' '' ''
+20 60 420 1 P
+0
+V13
+2167
+disc brass small~
+a small disc of brass~
+A small brass disc sits here.~
+~
+brass~
+treasure G 0 0 AO
+0 0 0 0 0
+1 10 230 0 P
+0
+A
+12 15
+V13
+2168
+pebble dung petrified dragon dark flecked silver~
+a pebble of petrified dragon dung~
+A dark pebble flecked with silver lies here.~
+~
+stone~
+trash S 0 0 A
+0 0 0 0 0
+1 0 210 0 P
+0
+V13
+2169
+scale cracked granite drake piece~
+a cracked granite drake scale~
+A scale-shaped piece of granite, cracked down the middle, is here.~
+~
+granite~
+trash S 0 0 A
+0 0 0 0 0
+1 40 14 1 P
+0
+V13
+2170
+webbing web length strands strand dark silk spider waiet~
+a length of waiet spider webbing~
+Several strands of dark silk cling to all they touch.~
+~
+silk~
+armor MS 0 0 AL
+2 5 5 1 0
+15 20 148 2 P
+0
+A
+18 -2
+A
+19 2
+V13
+2171
+skull kohli cracked runes~
+a cracked kohli skull~
+A cracked kohli skull has been painted with faded runes.~
+~
+bone~
+trash S 0 0 AO
+0 0 0 0 0
+15 30 234 2 P
+0
+A
+12 10
+A
+1 -1
+A
+4 2
+A
+5 -1
+V13
+2172
+vial copper tiny verdigris green~
+a verdigris copper vial~
+A tiny copper vial, green with verdigris, sits here.~
+~
+copper~
+potion 0 0 0 A
+0 'refresh' 'cure light' '' ''
+15 10 250 0 P
+0
+V13
+2173
+spear-head spearhead head spear knapped agate sharp stone~
+a knapped agate spear-head~
+A sharp stone spear-head lies here.~
+~
+stone~
+weapon S 0 0 AN
+dagger 4 6 2 0
+stab~
+15 40 190 1 P
+0
+A
+4 -1
+A
+18 -1
+A
+19 2
+V13
+2174
+vertebra kohli small~
+a kohli vertebra~
+A small kohli vertebra rests here.~
+~
+bone~
+armor S 0 0 AB
+1 2 5 1 0
+15 3 520 0 P
+0
+A
+12 10
+A
+18 1
+V13
+2175
+vellum fragment~
+a cracked fragment of vellum~
+A cracked fragment of vellum lies here.~
+~
+parchment~
+trash S 0 0 A
+0 0 0 0 0
+15 1 1 0 P
+0
+E
+fragment vellum~
+The vellum is brittle with age, but some of the very faint ink markings
+upon it are still visible: 
+
+purch-----------st half a dozen def----ve amule--
+from----------of the Manor, but his ---ermediary-
+a st----d------e name of Razpuldanix--absconded
+befo----he-----ndrel could be appreh--ded. In
+addit--n to t----forementioned amule-s, the
+following items---re also purchased at top price-
+from the marke----- Var Narinoth:             ---
+-             ---      -                  -------
+---ne green p--dant o- a silver chain     -------
+----- pantalo-ns of --ider silk, finest wea------
+--six pairs of gree--woolen hose, finest weav----
+- two pairs of red ---len hose, standard weave---
+* twelve bushels o--peaches                   ---
+* six small barrel---f salted almonds          --
+~
+V13
+2176
+chain copper links small green~
+a small chain of green copper links~
+A small green chain lies here.~
+~
+copper~
+weapon 0 0 0 AN
+whip 3 10 3 0
+lash~
+15 80 365 2 P
+0
+A
+2 -1
+A
+19 1
+A
+18 1
+V13
+2177
+tooth tiny bat~
+a tiny bat tooth~
+A tiny little tooth lies here.~
+~
+bone~
+trash S 0 0 A
+0 0 0 0 0
+1 1 1 0 P
+0
+V13
+2178
+shortsword sword short iron rusted length dull~
+a dull and rusted iron shortsword~
+A small length of rusted iron lies here.~
+~
+iron~
+weapon 0 0 0 AN
+sword 1 1 1 0
+pound~
+1 100 1 0 P
+0
+A
+19 -5
+A
+18 -5
+V13
+2179
+carnelian orange polished~
+a polished orange carnelian~
+A polished orange carnelian lies here.~
+~
+gem~
+treasure S 0 0 A
+0 0 0 0 0
+15 1 400 0 P
+0
+V13
+2180
+pickaxe rusted miner\@s axe pick~
+a rusted pickaxe~
+A miner\@s pickaxe, covered in a layer of rust, lies here.~
+~
+iron~
+weapon 0 0 0 AN
+axe 7 3 2 0
+pierce~
+15 180 88 2 P
+0
+A
+19 -1
+V13
+2181
+bottle ink glass empty black stained~
+an empty glass ink bottle~
+An empty glass bottle, stained black, sits here.~
+~
+glass~
+trash S 0 0 A
+0 0 0 0 0
+1 3 2 0 P
+0
+V13
+2182
+obj test dov\@s dov~
+dov\@s test obj~
+Dov\@s test obj sits here, waiting to crash your world.~
+~
+silver~
+trash MX 0 0 AO
+0 0 0 0 0
+51 5 0 0 P
+0
+>verb_prog fuddle~
+if material() == silver
+  mpecho Yeah, $o $O I\@m silver.
+endif
+~
+>rand_prog 100~
+if material() == gold
+  mpecho All that glitters is $o ($O?) and me, cause I\@m gold.
+endif
+~
+>tick_prog 100~
+if value(0) == 0
+  mpechoat $o *** TICK ***
+  if value(1) == 0
+    mpforce $o gr
+mpset char $o curmana 0
+mpset char $o curhp 0
+mpset char $o curmove 0
+  endif
+endif
+~
+>verb_prog autoregen~
+if value(1) == 0
+  mpvalueset 1 1
+  mpechoat $o Autoregen info is off.
+else
+  mpvalueset 1 0
+  mpechoat $o Autoregen info is on.
+endif
+~
+>verb_prog autotick~
+if value(0) == 0
+  mpvalueset 0 1
+  mpechoat $o You turn the ticker off.
+else
+  mpvalueset 0 0
+  mpechoat $o You turn the ticker on.
+endif
+~
+|
+V13
+2183
+gem ruby guarding floating cracked dull red~
+a cracked gem of guarding~
+A dull red ruby cracked nearly in half floats here.~
+~
+ruby~
+armor G 0 F AQ
+0 0 0 0 0
+1 10 140 0 P
+0
+A
+17 -3
+A
+12 2
+A
+13 3
+E
+gem ruby guarding floating cracked dull red~
+Carved in the face of this dull ruby is a script \#G\#, marking it as gem
+enchanted with various benedictions associated with guarding the wearer. 
+However, the ruby has been been scraped with teeth or pincer-marks, causing
+a crack which cuts across the \#G\# and nearly divides the gem in two.  
+~
+>fight_prog 1~
+/if rand(25)
+  mpechoaround $n $I is hit by $N, and it explodes in a flash of heat and light!
+  mpechoat $N You hit $I, and it explodes in a flash of heat and light!
+  mpcast 129 20
+  mppurge self
+/endif
+~
+|
+#0
+
+
+
+#ROOMS
+#2158
+The Chasm Control Room~
+But oh! that deep romantic chasm which slanted
+Down the green hill athwart a cedarn cover!
+A savage place! as holy and enchanted
+As e\@er beneath a waning moon was haunted
+By woman wailing for her demon-lover!
+
+{y2158{x - Has been \@touched\@ by the Libram.
+~
+~
+0
+0 4751364 0
+W 5 0 0
+Z 5 5
+S
+#2159
+In the Chasm~
+Flying through the dark chasm, little is visible to you save for the
+nearest stone walls.  The great, near-vertical faces of rock are not
+perfectly smooth, but the rough outcroppings and craggy projections are not
+close enough or regular enough to allow climbing.  Distant, decaying echoes
+reach you, but it is impossible to determine where they originate from.  
+~
+~
+1
+0 5 9
+D0
+The darkness of the chasm continues.
+~
+~
+0 0 2160
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2997
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2161
+W 5 0 0
+Z 5 5
+S
+#2160
+In the Chasm~
+A mighty vertical rent through the dark stone of the deep under-earth,
+this chasm stretches away into the darkness far above and below you.  Any
+light source you may have quickly fades into the vast darkness of the deeps,
+leaving the far distances obscured in shadow.  You are close enough to the
+northern edge of the chasm to make out the rough and irregular projections,
+shelves, and niches of the grey-brown stone of the chasm\@s sheer walls.  
+~
+~
+1
+0 5 9
+D2
+The darkness of the chasm continues.
+~
+~
+0 0 2159
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2998
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2162
+W 5 0 0
+Z 5 5
+S
+#2161
+In the Chasm~
+The darkness of the chasm is almost palpable.  In the distance, the rock
+face curves like a twisting snake, changing the shape of the vast shaft as
+it descends and ascends in the stillness of the deep underground.  
+~
+~
+1
+0 1 9
+D0
+The darkness of the chasm continues.
+~
+~
+0 0 2162
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2159
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2163
+W 5 0 0
+Z 5 5
+S
+#2162
+In the Chasm~
+The vast grey and brown stone walls around you curve slightly, subtly
+changing the slope and direction of the shaft leading deep into the roots of
+the mountain.  The darkness is unbroken save for whatever light you may
+bring, and the stillness of the air is almost absolute.  
+~
+~
+1
+0 1 9
+D2
+The darkness of the chasm continues.
+~
+~
+0 0 2161
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2160
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2164
+W 5 0 0
+Z 5 5
+S
+#2163
+In the Chasm~
+The vast grey and brown stone walls around you curve slightly, subtly
+changing the slope and direction of the shaft leading deep into the roots of
+the mountain.  The darkness is unbroken save for whatever light you may
+bring, and the stillness of the air is almost absolute.  
+~
+~
+1
+0 1 9
+D0
+The darkness of the chasm continues.
+~
+~
+0 0 2164
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2161
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2165
+W 5 0 0
+Z 5 5
+S
+#2164
+In the Chasm~
+The darkness of the chasm is almost palpable.  In the distance, the rock
+face curves like a twisting snake, changing the shape of the vast shaft as
+it descends and ascends in the stillness of the deep underground.  
+~
+~
+1
+0 1 9
+D2
+The darkness of the chasm continues.
+~
+~
+0 0 2163
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2162
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2166
+W 5 0 0
+Z 5 5
+S
+#2165
+In the Chasm~
+The darkness of the chasm is almost palpable.  In the distance, the rock
+face curves like a twisting snake, changing the shape of the vast shaft as
+it descends and ascends in the stillness of the deep underground.  
+~
+~
+1
+0 1 9
+D1
+The darkness of the chasm continues.
+~
+~
+0 0 2166
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2163
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2167
+W 5 0 0
+Z 5 5
+S
+#2166
+In the Chasm~
+The vast grey and brown stone walls around you curve slightly, subtly
+changing the slope and direction of the shaft leading deep into the roots of
+the mountain.  The darkness is unbroken save for whatever light you may
+bring, and the stillness of the air is almost absolute.  
+~
+~
+1
+0 1 9
+D3
+The darkness of the chasm continues.
+~
+~
+0 0 2165
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2164
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2168
+W 5 0 0
+Z 5 5
+S
+#2167
+In the Chasm~
+The vast grey and brown stone walls around you curve slightly, subtly
+changing the slope and direction of the shaft leading deep into the roots of
+the mountain.  The darkness is unbroken save for whatever light you may
+bring, and the stillness of the air is almost absolute.  
+~
+~
+1
+0 1 9
+D1
+The darkness of the chasm continues.
+~
+~
+0 0 2168
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2165
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2169
+W 5 0 0
+Z 5 5
+S
+#2168
+In the Chasm~
+The darkness of the chasm is almost palpable.  In the distance, the rock
+face curves like a twisting snake, changing the shape of the vast shaft as
+it descends and ascends in the stillness of the deep underground.  
+~
+~
+1
+0 1 9
+D3
+The darkness of the chasm continues.
+~
+~
+0 0 2167
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2166
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2170
+W 5 0 0
+Z 5 5
+S
+#2169
+In the Chasm~
+Flying along the western side of the dark abyss, little is visible to
+you save for the stone walls nearby.  The great, near-vertical faces of rock
+are not perfectly smooth, but the rough outcroppings and craggy projections
+are not close enough or regular enough to allow climbing.  Distant, decaying
+echoes reach you, but it is impossible to determine from whence they
+originated.  
+~
+~
+1
+0 1 9
+D1
+The darkness of the chasm continues.
+~
+~
+0 0 2170
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2167
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2171
+W 5 0 0
+Z 5 5
+S
+#2170
+In the Chasm~
+A mighty vertical rent through the dark stone of the deep under-earth,
+this chasm stretches away into the darkness far above and below you.  Any
+light source you may have quickly fades into the vast darkness of the deeps,
+leaving the far distances obscured in shadow.  You are close enough to the
+eastern edge of the chasm to make out the rough and irregular projections,
+shelves, and niches of the grey-brown stone of the chasm\@s sheer walls.  
+~
+~
+1
+0 1 9
+D3
+The darkness of the chasm continues.
+~
+~
+0 0 2169
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2168
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2172
+W 5 0 0
+Z 5 5
+S
+#2171
+In the Chasm~
+The deep chasm\@s rough, grey-brown stone walls are nearer to the west,
+but eastward the chasm opens further into the darkness.  Above, nothing is
+visible in the emptiness.  However, it appears that far below you, further
+descent is impeded by a massive block of stone.  
+~
+~
+1
+0 1 9
+D1
+The darkness of the chasm continues.
+~
+~
+0 0 2172
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2169
+D5
+The chasm appears to come to an end, below you.
+~
+~
+0 0 2173
+W 5 0 0
+Z 5 5
+S
+#2172
+In the Chasm~
+The deep chasm\@s rough, grey-brown stone walls are nearer to the east. 
+Westward and directly above, however, the walls are not visible, and the
+chasm extends into the darkness.  Down below, a vast stone bridge cuts
+across the main shaft of the chasm, at least partially blocking it.  
+~
+~
+1
+0 1 9
+D3
+The darkness of the chasm continues.
+~
+~
+0 0 2171
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2170
+D5
+The chasm appears to come to an end, below you.
+~
+~
+0 0 2174
+W 5 0 0
+Z 5 5
+S
+#2173
+A Split in the Chasm~
+A giant piece of stone has crumbled away from one side of the dark chasm,
+and here it stretches across to the other, nearly blocking passage
+completely.  However, along the eastern and western edges of the chasm wall,
+there appears to be enough space remaining to bypass the blockage.  
+~
+~
+1
+0 1 12
+D1
+The massive stone blocking the chasm extends eastward.
+~
+~
+0 0 2174
+D3
+A small bypass around the stone blockage is visible to the west.
+~
+~
+0 0 2175
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2171
+W 5 0 0
+Z 5 5
+S
+#2174
+A Split in the Chasm~
+A giant piece of stone has crumbled away from one side of the dark chasm,
+and it now stretches across to the other, nearly blocking passage
+completely.  However, along the eastern and western edges of the chasm wall,
+there appears to be enough space remaining to bypass the blockage.  
+~
+~
+1
+0 1 12
+D1
+A narrow crevice passes around the chasm blockage.
+~
+~
+0 0 2176
+D3
+The massive stone blocking the chasm extends further westward.
+~
+~
+0 0 2173
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2172
+W 5 0 0
+Z 5 5
+S
+#2175
+A Split in the Chasm~
+The wide ledge of stone that stretches the breadth of the cavern ends
+here, giving way to a crevice which descends down past the ledge and further
+into the chasm.  A few strands of thick silk-like web cling to the walls,
+growing thicker as the crevice descends downward.  
+~
+~
+1
+0 1 9
+D1
+Eastward, one may pass over top the mass of stone which blocks the chasm
+proper.  
+~
+~
+0 0 2173
+D5
+The chasm continues.
+~
+~
+0 0 2177
+W 5 0 0
+Z 5 5
+S
+#2176
+A Split in the Chasm~
+The wide ledge of stone that stretches the breadth of the cavern ends
+here, giving way to a crevice which descends down past the ledge and further
+into the chasm.  The very faint impress of a small skeletal form is embedded
+in the gray-brown stone in the eastern rock wall.  
+~
+~
+1
+0 1 9
+E
+impress small skeletal form east rock wall~
+The impress of the skeletal remains of a small four-limbed creature is
+clearly visible in the stone of the chasm wall.  The bones appear to have
+been strangely and unnaturally warped, as if the creature had been subject
+to some potent, life-altering magical power in a long-ago age.  
+~
+D3
+The top of the stone blockage lies to the west.
+~
+~
+0 0 2174
+D5
+A very narrow bypass around the mass of stone which blocks the chasm
+extends downward.  
+~
+~
+0 0 2178
+W 5 0 0
+Z 5 5
+S
+#2177
+A Split in the Chasm~
+This crevice passes down through sheer rock walls.  The walls are nearly
+completely covered in thick webbing, strands that cling to the rock surface
+and have small knots or tangles in which bits of bone or dried skin of
+unidentifiable creatures hang suspended.  
+~
+~
+1
+0 1 9
+E
+web webs webbing knot knots tangle tangles bone skin~
+The web appears to be quite sticky, and the remains hanging within the
+thick strands devoid of any usefulness, save perhaps as an object lesson for
+adventurers.  
+~
+D4
+The bypass around the mass of stone blocking the chasm continues above.  
+~
+~
+0 0 2175
+D5
+The bypass around the mass of stone blocking the chasm continues below.
+~
+~
+0 0 2179
+W 5 0 0
+Z 5 5
+S
+#2178
+A Split in the Chasm~
+This narrow crevice passes down through sheer rock walls.  Though most of
+the stone wall surface appears to be unaltered by sentient hand, at one
+point there appear to be a few marks where rock has been crudely chipped
+away to widen the passage.  
+~
+~
+1
+0 1 9
+D4
+The bypass around the stone blockage continues above.
+~
+~
+0 0 2176
+D5
+The bypass around the stone blockage continues below.
+~
+~
+0 0 2180
+W 5 0 0
+Z 5 5
+S
+#2179
+A Split in the Chasm~
+This small crevice passes around a large stone blockage in the chasm,
+sloping eastward and then down, though a small v-shaped niche to the west is
+also large enough to enter.  Overhead and through the darkness, the very
+faint gleam of web-strands is visible, strands which form a messy tangle
+that stretches across the crevice.  
+~
+~
+1
+0 1 12
+D1
+The darkness of the chasm continues.
+~
+~
+0 0 2181
+D3
+You see that the niche to the west is large enough to enter.
+~
+~
+8 0 2197
+D4
+The chasm continues.
+~
+~
+0 0 2177
+W 5 0 0
+Z 5 5
+S
+#2180
+A Split in the Chasm~
+This crevice bypasses a large stone blockage in the chasm, sloping
+westward and then down around it.  The crevice is narrow, barely sufficient
+to allow passage around the pillar-like stone that nearly seals off the
+abyss.  Save for a few splashes of long-dried guano, there is little other
+sign of life here.  
+~
+~
+1
+0 1 12
+D3
+The darkness of the chasm continues.
+~
+~
+0 0 2182
+D4
+~
+~
+0 0 2178
+W 5 0 0
+Z 5 5
+S
+#2181
+Under a Split in the Chasm~
+The vast abyss under Enrien is, directly above, blocked by a massive,
+jagged bridge of stone which has broken partially away from the chasm wall
+to reach across and lean against the far wall.  To the east and downward,
+the abyss still yawns, unimpeded.  To the west, a small crevice rises,
+allowing passage around the blockage.  
+~
+~
+1
+0 5 9
+D1
+The darkness of the chasm continues.
+~
+~
+0 0 2182
+D3
+A bypass around the mass of stone blocking the chasm is just to the west.  
+~
+~
+0 0 2179
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2183
+W 5 0 0
+Z 5 5
+S
+#2182
+Under a Split in the Chasm~
+The vast abyss under Enrien is, directly above, blocked by a massive,
+jagged bridge of stone which has broken partially away from the chasm wall
+to reach across and lean against the far wall.  To the west and downward,
+the abyss still yawns, unimpeded.  To the east, a small crevice rises,
+allowing passage around the blockage.  
+~
+~
+1
+0 5 9
+D1
+A bypass around the mass of stone blocking the chasm lies just eastward.
+~
+~
+0 0 2180
+D3
+The darkness of the chasm continues.
+~
+~
+0 0 2181
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2184
+W 5 0 0
+Z 5 5
+S
+#2183
+In the Chasm~
+You are surrounded on all sides by near-vertical and unscalable stone
+walls, save for where the dark fissure stretches out to the east.  Directly
+above and below you, the darkness continues.  Occasional fluttering or
+dripping sounds echo very faintly, but the air is still, humid, and musty.  
+~
+~
+1
+0 1 9
+D1
+The darkness of the chasm continues.
+~
+~
+0 0 2184
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2181
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2185
+W 5 0 0
+Z 5 5
+S
+#2184
+In the Chasm~
+Darkness extends far above, below, and to the west, stretching away into
+unseen distances of the chasm.  Faint, decayed echoes occasionally reach
+you, though it is unclear from which direction they originate.  The air here
+is warm, stale, and almost absolutely still.  
+~
+~
+1
+0 1 9
+D3
+The darkness of the chasm continues.
+~
+~
+0 0 2183
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2182
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2186
+W 5 0 0
+Z 5 5
+S
+#2185
+In the Chasm~
+The chasm descends deep into the roots of the mountain.  Vertical stone
+walls loom in the distance, but directly above and below, the emptiness
+stretches into the darkness.  The air is oppressively still, as if the
+darkness were a blanket dampening any motion or sound.  The only contrast to
+the dark stillness of this place is a small, faintly reflective and polished
+surface jutting slightly from the chasm face to the west.  
+~
+~
+1
+0 1 9
+E
+west face surface reflective polished~
+Upon closer inspection, the smooth surface embedded in the stone of the
+chasm wall appears to be a giant chunk of nearly-translucent material, like
+a great shard of grey crystal.  Within the material, only with great
+difficulty can you make out the silhouette of a small, thin shape which
+appears to be a torn, slightly curled piece of parchment.  
+~
+E
+torn curled page piece parchment silhouette nyakigah sha yith black libram souls~
+You are unable to make out anything further.  But as you continue to
+examine the small dark shape within the crystal, you get the distinct
+impression that you are somehow being examined in turn.  
+~
+D1
+The darkness of the chasm continues.
+~
+~
+0 0 2186
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2183
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2187
+T 77
+W 5 0 0
+Z 5 5
+S
+#2186
+In the Chasm~
+Flying through the darkness of the chasm, you can make out the grey stone
+of the chasm walls around you, save for westward, where the darkness
+stretches into the distance and little can be seen.  Decaying echoes, sounds
+that reach you as the faintest clicking or tapping, come from an unknown
+direction.  
+~
+~
+1
+0 1 9
+D3
+The darkness of the chasm continues.
+~
+~
+0 0 2185
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2184
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2188
+W 5 0 0
+Z 5 5
+S
+#2187
+In the Chasm~
+Flying along the western side of the dark abyss, little is visible to you
+save for the stone walls nearby.  The great, near-vertical faces of rock are
+not perfectly smooth, but the rough outcroppings and craggy projections are
+not close enough or regular enough to allow climbing.  Distant, decaying
+echoes reach you, but it is impossible to determine from whence they
+originated.  
+~
+~
+1
+0 1 9
+D1
+The darkness of the chasm continues.
+~
+~
+0 0 2188
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2185
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2189
+W 5 0 0
+Z 5 5
+S
+#2188
+In the Chasm~
+A mighty vertical rent through the dark stone of the deep under-earth,
+this chasm stretches away into the darkness far above and below you.  Any
+light source you may have quickly fades into the vast darkness of the deeps,
+leaving the far distances obscured in shadow.  You are close enough to the
+eastern edge of the chasm to make out the rough and irregular projections,
+shelves, and niches of the grey-brown stone of the chasm\@s sheer walls.  
+~
+~
+1
+0 1 9
+D3
+The darkness of the chasm continues.
+~
+~
+0 0 2187
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2186
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2190
+W 5 0 0
+Z 5 5
+S
+#2189
+In the Chasm~
+You are surrounded on all sides by near-vertical and unscalable stone
+walls, save for where the dark fissure stretches out to the east.  Directly
+above and below you, the darkness continues.  Occasional fluttering or
+dripping sounds echo very faintly, but the air is still, humid, and musty.  
+~
+~
+1
+0 1 9
+D1
+The darkness of the chasm continues.
+~
+~
+0 0 2190
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2187
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2191
+W 5 0 0
+Z 5 5
+S
+#2190
+In the Chasm~
+Darkness extends far above, below, and to the west, stretching away into
+unseen distances of the chasm.  Faint, decayed echoes occasionally reach
+you, though it is unclear from which direction they originate.  The air here
+is warm, stale, and almost absolutely still.  
+~
+~
+1
+0 1 9
+D3
+The darkness of the chasm continues.
+~
+~
+0 0 2189
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2188
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2192
+W 5 0 0
+Z 5 5
+S
+#2191
+In the Chasm~
+In an almost palpable darkness, the great fissure at the roots of Mount
+Enrien stretches downward into the depths of the underearth.  Sheer stone
+walls with occasional striations and misshapen rock formations jut out, some
+almost reaching completely from the northern side of the fissure to the
+south, but these are infrequent enough that flight is required to ascend or
+descend the abyss.  
+~
+~
+1
+0 1 9
+D1
+The darkness of the chasm continues.
+~
+~
+0 0 2192
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2189
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2193
+W 5 0 0
+Z 5 5
+S
+#2192
+In the Chasm~
+Flying through the darkness of the chasm, you can make out the grey stone
+of the chasm walls around you, save for westward, where the darkness
+stretches into the distance and little can be seen.  Decaying echoes, sounds
+that reach you as the faintest clicking or tapping, come from an unknown
+direction.  
+~
+~
+1
+0 1 9
+D3
+The darkness of the chasm continues.
+~
+~
+0 0 2191
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2190
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2194
+W 5 0 0
+Z 5 5
+S
+#2193
+In the Chasm~
+Flying along the western side of the dark abyss, little is visible to you
+save for the stone walls nearby.  The great, near-vertical faces of rock are
+not perfectly smooth, but the rough outcroppings and craggy projections are
+not close enough or regular enough to allow climbing.  Distant, decaying
+echoes reach you, but it is impossible to determine from whence they
+originated.  
+~
+~
+1
+0 1 9
+D1
+The darkness of the chasm continues.
+~
+~
+0 0 2194
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2191
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2195
+W 5 0 0
+Z 5 5
+S
+#2194
+In the Chasm~
+A mighty vertical rent through the dark stone of the deep under-earth,
+this chasm stretches away into the darkness far above and below you.  Any
+light source you may have quickly fades into the vast darkness of the deeps,
+leaving the far distances obscured in shadow.  You are close enough to the
+eastern edge of the chasm to make out the rough and irregular projections,
+shelves, and niches of the grey-brown stone of the chasm\@s sheer walls.  
+~
+~
+1
+0 1 9
+D3
+The darkness of the chasm continues.
+~
+~
+0 0 2193
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2192
+D5
+The darkness of the chasm continues.
+~
+~
+0 0 2196
+W 5 0 0
+Z 5 5
+S
+#2195
+In the Chasm~
+In an almost palpable darkness, the great fissure at the roots of Mount
+Enrien stretches downward into the depths of the underearth.  Sheer stone
+walls with occasional striations and misshapen rock formations jut out, some
+almost reaching completely from the northern side of the fissure to the
+south, but these are infrequent enough that flight is required to ascend or
+descend the abyss.  
+~
+~
+1
+0 1 9
+D1
+The darkness of the chasm continues.
+~
+~
+0 0 2196
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2193
+D5
+You can barely make out the bottom of the chasm, not far below.  
+~
+~
+0 0 2198
+W 5 0 0
+Z 5 5
+S
+#2196
+In the Chasm~
+Darkness extends far above, below, and to the west, stretching away into
+unseen distances of the chasm.  Faint, decayed echoes occasionally reach
+you, though it is unclear from which direction they originate.  The air here
+is warm, stale, and almost absolutely still.  
+~
+~
+1
+0 1 9
+D3
+The darkness of the chasm continues.
+~
+~
+0 0 2195
+D4
+The darkness of the chasm continues.
+~
+~
+0 0 2194
+D5
+You can barely make out the bottom of the chasm, not far below.  
+~
+~
+0 0 2199
+W 5 0 0
+Z 5 5
+S
+#2197
+A Small Niche in the Chasm~
+This cramped niche in the abyss wall is formed by a large boulder which
+has fallen and come to rest on a v-shaped stone protrusion.  Several
+brittle, aged bones and newer yellowed bones are partially strung up and
+tangled in thick strands of sticky webbing.  
+~
+~
+2
+0 1 12
+D1
+The niche leads out into a narrow crevice which bypasses the mass of
+stone blocking the chasm.  
+~
+~
+8 0 2179
+W 5 0 0
+Z 5 5
+S
+#2198
+The Bottom of the Chasm~
+At the bottom of the mighty chasm in the roots of Mount Enrien, the
+darkness is near absolute, aside from whatever light you may have brought
+with you.  Drawing nearer and nearer together, the vast grey incline of the
+stone walls comes to an end, save for a small crevice along the western rock
+face.  The air is cooler and more humid than elsewhere throughout the chasm,
+and the stone walls trail beads of moisture.  The rough stone of the chasm
+floor slopes upward slightly as it continues on to the east.  
+~
+~
+1
+0 1 12
+E
+crevice~
+Peering down through the crevice, you can see that there is just enough
+space to slip through it to the ice-encrusted pool below.  
+~
+D1
+The floor of the chasm extends eastward.
+~
+~
+0 0 2199
+D4
+The Dark Chasm yawns above you.
+~
+~
+0 0 2195
+D5
+The small crevice is just wide enough to enter, allowing further passage
+downward into the bowels of the earth.  
+~
+~
+8 0 8601
+T 86
+W 5 0 0
+Z 5 5
+S
+#2199
+The Bottom of the Chasm~
+The chasm floor is more of a blocked off, filled-in crevice than a stable
+stone floor.  It consists of an uneven maze of rough stone projections,
+fallen boulders and chipped rock, with most blanketed in brown guano.  The
+north and west walls of the chasm draw close enough together that an
+alatharya might extend two arms and touch both at once, while the eastern
+side of the chasm is sealed off completely.  But to the west, the chasm
+floor stretches outward into darkness.  A very faint dripping sound comes
+from that direction.  
+~
+~
+1
+0 1 12
+D3
+The chasm floor extends westward.
+~
+~
+0 0 2198
+D4
+The Dark Chasm yawns above you.
+~
+~
+0 0 2196
+T 86
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 2159 spec_poison
+S
+
+
+
+#RESETS
+D 0 2179 3 8
+D 0 2197 1 8
+D 0 2198 5 8
+M 0 2164 1 2158 1
+M 0 2163 2 2171 1
+M 0 2158 2 2175 1
+M 0 2160 1 2177 1
+M 0 2158 2 2179 1
+M 0 2161 1 2185 1
+M 0 2162 2 2186 1
+M 0 2162 2 2190 1
+M 0 2163 1 2196 2
+O 0 2158 0 2197
+P 0 2159 1 2158 1
+P 0 2160 1 2158 1
+P 0 2161 1 2158 1
+P 0 2162 1 2158 1
+P 0 2183 1 2158 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

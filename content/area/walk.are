@@ -1,0 +1,2697 @@
+#AREADATA
+Name The Yaoye~
+Builders Dovolente~
+VNUMs 26140 26199
+Credits [49 51] Dovolente The Yaoye~
+Danger 3
+Security 1
+Areainfo 59
+Herbs 8253440
+Weather 2 2 2 4 8
+Weave 0 -2 0
+Shades 4 0
+End
+
+
+
+#MOBILES
+V4 26140
+Bob builder builderbot bot~
+Bob the Builderbot~
+Bob the Builderbot is here, claymationing in slow motion.
+~
+Makes the Yahoye Walk
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>data_prog warpedstairway~
+A series of stone platforms and stairways is cobbled together from slick,
+black rock.  The angles of the walls and the stairs all seem slightly off
+from true, though when focused upon and examined closely they appear to be
+straight.  Noises--thumps, rustling and scratching as of claws on stone, and
+agonized cries of pain--can be heard, some sounds seeming more distant that
+others.  
+~
+>data_prog chainstairway~
+A tangle of titanic polished iron chains twists around you, each link
+large as a house.  The chains are moving, but they move very, very slowly
+and in alternating directions.  It is somewhat dark--the only light source
+is found in dull red light reflected and re-reflected from the polished
+metal around you.  The air is sharp with the tang of iron and a faint scent
+of smoke.  Among the link-gaps there is ample space for movement, allowing
+you where the links permit to ascend, descend and move about the mass of
+metal.  
+~
+>verb_prog maze~
+\\* Set values for horizontal or vertical
+loop 2 to 10
+  mpvalueset 5 $v1
+  mpmath 3 $5 + 1
+  mpmath 4 $5 - 1
+  if value(0) < 26151
+  or value(0) > 26175
+    tell Dovolente I\@m screwed! Out of bounds in $0, fixit loop $6, maze loop $v1
+    break
+  endif
+  if value(1) == 1
+    \\* ODD ROWS - EAST/WEST EXITS
+    if value(5) == 2
+    or value(5) == 4
+    or value(5) == 6
+    or value(5) == 8
+    or value(5) == 10
+      mpgoto $0
+      if compstr($3) == -
+        mpflag exit east - fake
+        mpflag exit east - secret
+      endif
+      if compstr($4) == -
+        mpflag exit west - fake
+        mpflag exit west - secret
+      endif
+      mpvalueup 0 1
+    endif
+  else
+    \\* EVEN ROWS - NORTH/SOUTH and UP/DOWN EXITS
+    if value(5) == 2
+    or value(5) == 4
+    or value(5) == 6
+    or value(5) == 8
+    or value(5) == 10
+      mpgoto $0
+      if compstr($5) == |
+        if value(2) == 1
+          mpflag exit south - fake
+          mpflag exit south - secret
+        else
+          mpflag exit down - fake
+          mpflag exit down - secret
+        endif
+      endif
+      mpmath 0 $0 + 5
+      mpgoto $0
+      if compstr($5) == |
+        if value(2) == 1
+          mpflag exit north - fake
+          mpflag exit north - secret
+        else
+          mpflag exit up - fake
+          mpflag exit up - secret
+        endif
+      endif
+      mpmath 0 $0 - 4
+    endif
+  endif
+endloop
+~
+>verb_prog fixit~
+if isanypcarea()
+  \\* Doesn\@t change the walk if a pc is here
+  break
+else
+  if rand(75)
+    mpvalueset themeType horizontal
+    mpvalueset 2 1
+    mpvaluerand themeNum 1 16
+  else
+    mpvalueset themeType vertical
+    mpvalueset 2 2
+    mpvaluerand themeNum 1 6    
+  endif
+  \\* SET THEME
+  mpsetdata %themeType
+  loop 1 to %themeNum
+    mpvalueset themeNam $d
+    mpnextdata
+    mpvalueset sector $d
+    mpnextdata
+    mpvalueset roomflag1 $d
+    mpnextdata
+    mpvalueset roomflag2 $d
+    mpnextdata
+    mpvalueset trash1 $d
+    mpnextdata
+    mpvalueset trash2 $d
+    mpnextdata
+    mpvalueset pill1 $d
+    mpnextdata
+    mpvalueset pill2 $d
+    mpnextdata
+    mpvalueset mob1 $d
+    mpnextdata
+    mpvalueset mob2 $d
+    mpnextdata
+    mpvalueset armordesc $d
+    mpnextdata
+    mpvalueset armortype $d
+    mpnextdata
+    mpvalueset weapondesc $d
+    mpnextdata
+    mpvalueset weapontype $d
+    mpnextdata
+    mpvalueset mob3 $d
+    mpnextdata 
+    mpvalueset portaldesc $d
+    mpnextdata
+    mpnextdata
+  endloop
+  \\* SET ROOMFLAGS
+  mpvalueset 7 8240
+  if value(roomflag1) == dark
+  or value(roomflag2) == dark
+    mpmath 7 $7 + 1
+  endif
+  if value(roomflag1) == indoors
+  or value(roomflag2) == indoors
+    mpmath 7 $7 + 8
+  endif
+  \\* CLEANUP
+  loop 26151 to 26175
+    mpgoto $v1
+    mppurge
+    \\* SET FLAGS & SECTOR, RESET EXITS 
+    mpset room $v1 flags $7
+    mpset room $v1 sector %sector
+    mpdesc $v1 %themeNam
+    mpflag exit north + fake
+    mpflag exit north + secret
+    mpflag exit east + fake
+    mpflag exit east + secret
+    mpflag exit west + fake
+    mpflag exit west + secret
+    mpflag exit south + fake
+    mpflag exit south + secret
+    mpflag exit up + fake
+    mpflag exit up + secret
+    mpflag exit down + fake
+    mpflag exit down + secret
+  endloop
+  \\* LOAD 5-10 TRASH OR WAND OBJECTS
+  mpvaluerand 7 5 10
+  loop 1 to $7
+    mpvaluerand 0 26151 26175
+    mpgoto $0
+    \\* TRASH (95%) OR WAND (5%)
+    if rand(95)
+      mpoload 26140
+    else
+      mpoload 26141
+      mpvaluerand 8 1 3
+      if value(8) == 1
+        mpvalueset wandspell 18
+      endif
+      if value(8) == 2
+        mpvalueset wandspell 24
+      endif
+      if value(8) == 3
+        mpvalueset wandspell 41
+      endif
+      mpset obj walktrash value3 %wandspell
+    endif
+    if rand(50)
+      mpstring obj walktrash short a %trash1
+      mpstring obj walktrash long A %trash1 sits here.
+      mpstring obj walktrash name %trash1
+    else
+      mpstring obj walktrash short a %trash2
+      mpstring obj walktrash long A %trash2 sits here.
+      mpstring obj walktrash name %trash2 
+    endif
+    drop 1.
+  endloop
+  \\* LOAD 1-3 PILLS
+  loop 1 to 3
+    mpvaluerand 0 26151 26175
+    mpgoto $0
+    mpoload 26142
+    mpsetdata pillaffs
+    mpvaluerand 8 1 10
+    loop 1 to $8
+      mpset obj walkpill value1 $d
+      mpnextdata
+    endloop
+    mpvaluerand 8 11 20
+    mpsetdata pillaffs
+    loop 1 to $8
+      mpset obj walkpill value2 $d
+      mpnextdata
+    endloop
+    if rand(50)  
+      mpstring obj walkpill short a %pill1
+      mpstring obj walkpill long A %pill1 is here.
+      mpstring obj walkpill name %pill1
+    else
+      mpstring obj walkpill short a %pill2
+      mpstring obj walkpill long A %pill2 is here.
+      mpstring obj walkpill name %pill2
+    endif 
+    drop 1.
+  endloop
+  \\* LOAD WANDERING MOBS AND MOB2 EQ
+  mpgoto 26140
+  loop 1 to 15
+    mpmload 26141
+    mpstring mob yahoyetracker long A %mob1 is here.
+    mpstring mob yahoyetracker short a %mob1
+    mpstring mob yahoyetracker name %mob1 yaoye_mob
+    mpvaluerand 0 26151 26175
+    mpforce yaoye_mob mpgoto $0
+  endloop
+  loop 1 to 5
+    mpmload 26142
+    mpoload 26144
+    mpset obj genericarmor wear %armortype
+    mpstring obj genericarmor short a %armordesc
+    mpstring obj genericarmor long A %armordesc lies here.
+    mpstring obj genericarmor name %armordesc
+    give 1. yahoyethumper
+    mpoload 26145
+     \\* Make staff and polearms two-handed
+    if value(weapontype) == 8
+    or value(weapontype) == 9 
+      mpset obj genericweapon value4 32
+    endif
+    mpset obj genericweapon value0 %weapontype
+    mpstring obj genericweapon short a %weapondesc
+    mpstring obj genericweapon long A %weapondesc lies here.
+    mpstring obj genericweapon name %weapondesc
+    give 1. yahoyethumper
+    mpforce yahoyethumper wear all
+    mpstring mob yahoyethumper short a %mob2
+    mpstring mob yahoyethumper long A %mob2 is here.
+    mpstring mob yahoyethumper name %mob2 yaoye_mob
+    mpvaluerand 0 26151 26175
+    mpforce yaoye_mob mpgoto $0
+  endloop
+  \\* LOAD STARTPOINT, ENDPOINT
+  mpvaluerand 7 1 4
+  if value(7) == 1
+    mpvalueset entrypoint 26151
+    mpvalueset exitpoint 26175
+  endif
+  if value(7) == 2
+    mpvalueset entrypoint 26155
+    mpvalueset exitpoint 26171
+  endif
+  if value(7) == 3
+    mpvalueset entrypoint 26171
+    mpvalueset exitpoint 26155
+  endif
+  if value(7) == 4
+    mpvalueset entrypoint 26175
+    mpvalueset exitpoint 26151
+  endif
+  mpat 17236 mpforce yaoye_entrybot mpvalueset 0 %entrypoint
+  mpgoto %exitpoint
+  mpoload 26143
+  mpstring obj walkportal long A %portaldesc is here.
+  mpstring obj walkportal short a %portaldesc
+  mpstring obj walkportal name %portaldesc
+  \\* LOAD ENDPOINT NASTY MOB
+  mpmload 26143
+  mpstring mob endmob long A %mob3 guards a %portaldesc.
+  mpstring mob endmob short a %mob3
+  mpstring mob endmob name %mob3 yaoye_mob
+  \\* SET UP NEW EXITS
+  mpvalueset 0 26151
+  mpvaluerand mazeNum 1 30
+  mpsetdata %mazeNum
+  \\*** Determine even or odd row. Eeven requires e/w exits, odd requires n/s or u/d exits
+  loop 1 to 9
+    mpvalueset 6 $v1
+    if value(6) == 1
+    or value(6) == 3
+    or value(6) == 5
+    or value(6) == 7
+    or value(6) == 9
+      mpvalueset 1 1
+    else
+      mpmath 0 $0 - 5
+      mpvalueset 1 2
+    endif
+    \\*** Apply the line of data, which starts with \#maze\#, activating the maze verb_prog for the row
+    $d
+    mpnextdata
+  endloop
+  \\* STRING ARTIFACT
+  mpgoto 17236
+  mpdesc yahoyecrystal %themeNam image
+  mpdesc yahoyecrystal %themeNam images
+  mpdesc yahoyecrystal %themeNam facet
+  mpecho The image in the carved crystal flickers and changes.
+  mpgoto 26140
+  \\* tell Dovolente Entry: %entrypoint   Maze: %mazeNum   Theme: %themeNam   Layout: %themeType
+endif
+~
+>rand_prog 100~
+if value(0) == 0
+  fixit
+else
+  if rand(1)
+    fixit
+  endif
+endif
+~
+>data_prog mountainside~
+A perilous trail winds its way along a mountainside, rough stones
+protruding through the thin, crumbly dirt.  The air is cold and damp,
+tendrils of dense fog wisping past you and obscuring your vision over the
+precipitous edge.  Whiplike, narrow branches of some pervasive shrub grow in
+tough, thorny profusion, forcing you to remain on the path.  Gnarled,
+tortured trees, larger versions of the bushes, grow and twist overhead,
+leaning over the mountain\@s edge.  
+~
+>data_prog dune~
+Endless dunes stretch away around you, the pale yellow sand somehow thin
+and insubstantial.  A shimmering heat haze surrounds you, enveloping you in
+a solid barrier of oppressive, stifling warmth.  The sky is a wan grey,
+almost transparent, and seems more an afterthought than anything.  
+~
+>data_prog canyon~
+Crimson red sandstone surrounds you on two sides, the soft rock sculpted
+and shaped by wind, water, and time.  The walls are narrow and close, carved
+with an almost surreal touch in flowing, curving lines, unpredictably
+bending in to chest-scraping tightness and then soaring apart to a cavernous
+scale.  Odd protrusions, arches, and other geological phenomena are common,
+the occasional yellow or dun band of stone marking the otherwise blood-red
+surface.  A low, constant wind blows through the canyon, howling in a dull,
+hopeless undertone.  
+~
+>data_prog vertical~
+mountainside
+5
+none
+none
+leafy stick
+broken arrow
+black lichen
+spotted blue mushroom
+tawny cougar
+grey-clad alatharya ranger
+grey ranger cloak
+1025
+grey-hafted hunting spear
+3
+massive stone giant
+broad yurt
+---
+dune
+10
+none
+none
+dull lizard talon
+cactus spine
+burning sands dryroot
+dessicated scarab beetle
+dust drake
+sand elemental
+sand shield
+513
+serrated sandclaw
+0
+violet amethyst dragon
+half-buried stone stairwell
+---
+canyon
+5
+none
+none
+mouse skull
+bumpy brown pebble
+silver warlberry
+gold-speckled toadstool
+red-robed alatharya monk
+green-robed alatharya monk
+polished beech ring
+3
+polished beech staff
+9
+white-robed alatharya monk
+rope bridge
+---
+ironwoodforest
+3
+none
+none
+dry ironwood leaf
+gnawed bone
+blackarth berry
+spotted red crysalis
+fanged colugo guard
+bear of Goran
+bear helm
+9
+set of iron claw extensions
+0
+bear lord
+bower of woven vines
+---
+warpedstairway
+0
+dark
+none
+cracked femur
+broken khil\@ayum spike
+darken reach nettlespore
+piece of dessicated flesh
+spiked wyrm
+khil\@ayum
+yellow bone wristguard
+4097
+chain tipped with a spiked iron skull
+6
+siyyad khil\@ayum
+glowing silver portal
+---
+chainstairway
+0
+dark
+rough
+cracked wand
+discarded rune stick
+multicolored pastille
+cluster of rust-colored nits
+servant of shias
+shias guard
+ring of dark aegis
+3
+shias boning knife
+2
+shias reaver
+shadowy niche
+~
+>data_prog stonecave~
+A simple cave hewn of dark basalt passes deep underground.  The air is
+dank and still.  The passage of other travelers through the cave has worn
+slight ruts through the center of the uneven cavern floor.  Echoes, clicking
+of stone on stone, faint drips, and other unidentifiable sounds carry
+through the cavern.  
+~
+>data_prog bonecave~
+You stand in a cavern rough-hewn from stone.  The marks of chisel and
+pick are evident in the crudely tunneled rock, but lengths of yellowing
+humanoid bone protrude from the rock, somehow completely embedded within the
+minerals of the cavern wall.  A few skulls and other recognizable bones
+protrude from the floor, some seeming recently scraped and broken by travel
+through the cavern.  
+~
+>data_prog crystalcave~
+You pass through a cavern formed entirely of pale blue crystal.  The
+walls are angular but smooth, and the light illuminating the cavern comes
+entirely from deep within the crystal itself.  At times, your reflections in
+the crystal seem to shift and turn, as if taking on their own lives, until
+you look directly at them and they become your own once more.  
+~
+>data_prog marblehall~
+This pale marble hallway is so broad it seems made for Titans.  The walls
+are perfectly polished, the marble a cloudy rose and white illuminated by
+overhead candelabras.  The floor is covered in a wealth of intricately-dyed
+carpets, and an occasional tapestry gives a splash of color to the otherwise
+bare stone of the walls.  The tapestries show alatharya warriors crossing
+hostile landscapes, using magic and might to battle demons, seraphs, and
+other unknown beings of yore.  
+~
+>data_prog woodhall~
+You are in a long and winding wood-paneled hallway.  The dark tiles of
+the floor glimmer with the light of lanterns set at each corner of the
+twisting passage.  A few portraits adorn the walls, showing long-departed
+Titans at battle, alatharya mages performing arcane feats of unknown
+significance, and other beings and forms completely unknown.  
+~
+>data_prog plains~
+A rolling plain stretches around you.  Pale yellow dry grass is
+interrupted by darker green bushes and rare clumps of tall trees.  The low
+hills seem bare of any life, save for the sparse foliage.  A few small
+streams, lined with tall reeds, wind their way around the hills.  
+~
+>data_prog savannah~
+Thick savannah grass and a few solitary trees stretch off to the far
+horizon, and to the east is a low blue haze of distant peaks.  A few streams
+meander through the grass, and an occasional swelling hill makes it
+difficult to estimate distances.  Carrion birds wheel and circle from high
+above, their shapes barely visible in the distance.  
+~
+>data_prog desert~
+Dunes of course white sand stretch around you, forming rippled ridges and
+mounding peaks.  Dry heat parches the terrain, bleaching anything exposed-a
+few outcroppings of rock, an occasional bone.  Heat seems to almost radiate
+up from the ground, and the air blurs with heat shimmers.  The sky above
+also seems washed of color, empty and lifeless as the barren stretches
+around you.  
+~
+>data_prog badlands~
+The sky is overcast, and the little light illuminates the jagged terrain
+of the badlands.  In this shallow ravine, odd formations of dark brown and
+maroon lava rock form a twisted maze.  Wind whistles over the stone, and
+fine particles of dark dust sting any exposed skin.  
+~
+>data_prog swamp~
+The few rises where ground is above the waterline in this swamp are
+crowded with thin and gnarled trees, twisted forms with limbs adorned in
+pale moss.  Clumps of vegetation float through slow-moving currents, and a
+reek of stagnation and decay fills the air.  
+~
+>data_prog underwater~
+The waters around you are murky, with little light filtering down to
+these depths.  The sea floor is a dark brown spotted by jagged rocky ridges
+and reefs.  Thick clumps of seaweed sway in the gentle current, and distant
+shapes turn and glide through the deeps.  
+~
+>data_prog air~
+You are in midair, with only a faint dull gleam of the sun through the
+clouds to indicate which direction is upwards.  No land is visible below,
+and visibility is questionable at best due to billowing clouds and ethereal
+wreathes of mist and fog that sluggishly flow in one direction, then
+another.  A haze of magical glimmer delineates impassible boundaries, making
+a twisted maze of the seemingly wide-open landscape.  
+~
+>data_prog hardwoodforest~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+>data_prog tropicalforest~
+Dense green foliage surrounds you in this tropical forest.  Impassible
+stands of spiny bushes and other vegetation, along with slow-moving murky
+streams, make a maze of the forest.  The air is wet, and a slight mist
+stands over the leaf-covered earth.  The air is alive with sounds--the
+buzzing and humming insects, calls of birds, and the growls and howling of
+larger beasts.  
+~
+>data_prog lavabridges~
+You stand in the ruddy glow of deep lava pits, upon a sturdy stone
+bridge.  The slender bridge is but one in an interconnected pathway of
+bridges.  Darkness surrounds you, save for angry glow of the lava below and
+its dull illumination of the stone bridgeway.  Fumes and heat surround you
+oppressively, and the stifling air has an odd light-distorting effect that
+makes distances impossible to judge.  
+~
+>data_prog pillaffs~
+71
+95
+119
+333
+346
+357
+383
+431
+568
+665
+6
+8
+18
+40
+53
+58
+350
+370
+533
+673
+--------------
+POSITIVE
+71 frenzy
+95 ehiqegieegh
+119 sanctuary
+333 revitalize
+346 greater invis
+357 mirror image
+383 meld with stone
+431 astral projection
+568 icy prison
+665 consuming rage
+NEGATIVE
+6 disintegration
+8 blind
+18 change sex
+40 dalliance
+53 earthbind
+58 enfeeblement
+350 delusions
+370 flesh to stone
+533 insect swarm
+673 pestilence
+~
+>data_prog horizontal~
+stonecave
+12
+dark
+indoors
+grey chipped rock
+dull white agate
+crusty black lichen
+damp brown fungus
+stone serpent
+glittering stone elemental
+glittering stone breastplate
+9
+glittering stone club
+4
+four-armed platinum elemental
+shadowy niche
+---
+bonecave
+12
+dark
+indoors
+cracked vertebra
+long bone shard
+hardened marrow chip
+small grey hair
+skeletal wolf
+skeletal alatharya
+bone shield
+513
+tooth-edged sword
+1
+two-headed skeletal dragon
+bone-lined pit
+---
+crystalcave
+12
+dark
+indoors
+small clear crystal
+cracked green crystal
+dead crystalline beetle
+dead crystalline beetle
+spiked crysmal
+small diamond golem
+diamond helm
+17
+diamond halberd
+8
+two-headed diamond golem
+jagged crack
+---
+marblehall
+0
+indoors
+none
+white candle stub
+thin bronze urn
+dead roach
+dead roach
+white-armored foot soldier
+white-robed mage
+pleated white robe
+1025
+white cypress staff
+9
+steel-clad champion
+silver doorway
+---
+woodhall
+0
+indoors
+none
+red candle stub
+dead mouse
+withered apple core
+dried bread crumb
+thin rogue
+tall leather-clad rogue
+finely braided leather belt
+2049
+long black kris
+2
+huge masked rogue
+dark doorway
+---
+plains
+2
+none
+none
+striated pebble
+chert spearhead
+solinay berry
+dried seed pod
+dire wolf
+skins-clad alatharya shaman
+clawed dire wolf pelt
+1025
+chert hunting spear
+3
+silver dire wolf
+crystal-clear spring
+---
+savannah
+2
+none
+none
+scratched yellow bone
+small chert pestle
+solidified sap tear
+dried fewmet
+rabid hyena
+muscled alatharya hunter
+fanged lion pelt
+17
+chert hunting axe
+5
+massive silver-maned lion
+tall brush clump
+---
+desert
+10
+none
+none
+cactus spine
+molted snake skin
+dead scarab beetle
+withered cactus blossom petal
+giant asp
+slender alatharya nomad
+white nomad\@s turban
+17
+damascene scimitar
+1
+two-tailed demon scorpion
+shimmering white mist
+---
+badlands
+4
+rough
+none
+worn boot sole
+broken knife hilt
+blood moth egg
+blood moth egg
+blood moth larva
+slovenly alatharya bandit
+fingerless studded glove
+129
+three-spike flail
+6
+tattooed cyclops
+small dark crevice
+---
+swamp
+14
+rough
+haswater
+mossy twig
+black dragon scale
+hard black berry
+speckled red egg
+black alligator
+moss golem
+spiny neckplate
+5
+noxious vine
+7
+bog nightmare
+quicksand patch
+---
+underwater
+11
+haswater
+none
+spiral shell
+seaweed strand
+tiny white clam
+green coral chunk
+daggertooth eel
+merthar warrior
+merthar warrior\@s bracer
+257
+merthar warrior\@s trident
+3
+merthar champion
+turbid current
+---
+air
+9
+none
+none
+billowing feather
+billowing feather
+small violet butterfly
+tiny white butterfly
+zephyrian scout
+zephyrian legionnaire
+pair of mist boots
+65
+mist lash
+7
+zephyrian captain
+sparkling red mist
+---
+hardwoodforest
+3
+none
+none
+cracked antler
+pine cone
+speckled blue mushroom
+yellow lichen flake
+razortusk boar
+wizened alatharya shaman
+serpent ring
+3
+serpent staff
+9
+greater wildwood spirit
+thick oak stand
+---
+tropicalforest
+3
+rough
+none
+tiny snake skeleton
+bright yellow feather
+speckled grey mushroom
+spiderweb-wrapped fly
+jaguar
+silverback guard
+silverback hide
+1025
+thick bone club
+4
+elder emerald green dragon
+clumpy fern
+---
+darkness
+1
+dark
+none
+half-gnawed bone
+pair of chain links
+bloody gibbet
+dull alatharya tooth
+nether pit slave
+nether pit dweller
+nether pit gauntlet
+129
+nether pit flail
+7
+khil\@ayum slavemaster
+shimmering halo
+---
+lavabridges
+13
+none
+none
+pitted jaw bone
+cracked rib bone
+blackened flesh scrap
+dark mineral deposit
+steamwisp
+bridge troll
+bridge troll\@s rusty pendant
+5
+bridge troll\@s lochabar axe
+8
+bridge troll captain
+strong updraft
+---
+~
+>speech_prog cleanup~
+loop 26151 to 26175
+mpgoto $v1
+mppurge
+endloop
+~
+>data_prog ironwoodforest~
+A patchwork maze formed of the branches of ancient ironwood trees
+stretches all around you.  Visibility is low due to everpresent, spiky
+leaves of the trees, but each massive branch is wide as a road--and serves
+just as well as one, leading in some places upwards, others downwards, and
+yet others out towards the bole of another mighty tree.  The bark along the
+center of the limb-roads is scored with deep scratches and claw-marks.  The
+air is warm and humid, permeated with the musty smells of the old growth
+forest.  
+~
+>data_prog 30~
+maze 0 - 0 - 0 - 0 - 0
+maze . . | . | . | . |
+maze 0 . 0 - 0 - 0 . 0
+maze | . . . | . . . |
+maze 0 - 0 - 0 - 0 . 0
+maze | . | . | . | . .
+maze 0 . 0 - 0 - 0 - 0
+maze | . | . | . | . |
+maze 0 - 0 - 0 - 0 . 0
+~
+>data_prog 29~
+maze 0 - 0 - 0 - 0 - 0
+maze . . . . . . | . |
+maze 0 - 0 - 0 - 0 . 0
+maze | . . . . . | . |
+maze 0 . 0 . 0 . 0 . 0
+maze | . | . | . . . |
+maze 0 - 0 . 0 - 0 - 0
+maze | . | . | . . . .
+maze 0 . 0 . 0 - 0 - 0
+~
+>data_prog 28~
+maze 0 - 0 - 0 . 0 - 0
+maze . . . . | . | . |
+maze 0 - 0 - 0 . 0 . 0
+maze | . . . . . | . |
+maze 0 - 0 - 0 . 0 - 0
+maze . . . . | . | . |
+maze 0 - 0 - 0 . 0 . 0
+maze | . . . . . | . |
+maze 0 - 0 - 0 - 0 . 0
+~
+>data_prog 27~
+maze 0 - 0 . 0 - 0 . 0
+maze . . | . | . | . |
+maze 0 . 0 - 0 . 0 - 0
+maze | . . . . . . . |
+maze 0 - 0 - 0 - 0 - 0
+maze | . . . . . . . .
+maze 0 . 0 - 0 . 0 - 0
+maze | . | . | . | . |
+maze 0 - 0 . 0 - 0 . 0
+~
+>data_prog 26~
+maze 0 - 0 - 0 - 0 - 0
+maze . . | . . . | . .
+maze 0 - 0 . 0 . 0 - 0
+maze | . . . | . . . |
+maze 0 - 0 - 0 - 0 - 0
+maze . . . . | . . . .
+maze 0 - 0 - 0 - 0 - 0
+maze | . . . . . . . .
+maze 0 - 0 - 0 - 0 - 0
+~
+>data_prog 25~
+maze 0 - 0 - 0 - 0 . 0
+maze . . | . . . | . |
+maze 0 - 0 - 0 . 0 - 0
+maze | . . . | . . . |
+maze 0 . 0 . 0 - 0 . 0
+maze | . | . | . . . |
+maze 0 . 0 . 0 . 0 - 0
+maze | . | . | . | . .
+maze 0 . 0 - 0 . 0 - 0
+~
+>data_prog 24~
+maze 0 - 0 - 0 - 0 . 0
+maze . . | . | . | . |
+maze 0 - 0 . 0 . 0 - 0
+maze | . . . | . . . .
+maze 0 . 0 - 0 - 0 - 0
+maze . . | . | . . . .
+maze 0 - 0 . 0 . 0 - 0
+maze | . . . | . | . |
+maze 0 - 0 . 0 - 0 . 0
+~
+>data_prog 23~
+maze 0 - 0 - 0 - 0 - 0
+maze . . . . | . . . .
+maze 0 - 0 - 0 - 0 - 0
+maze | . . . . . . . |
+maze 0 - 0 - 0 - 0 - 0
+maze . . | . . . | . .
+maze 0 - 0 . 0 . 0 - 0
+maze | . . . | . . . |
+maze 0 - 0 - 0 - 0 . 0
+~
+>data_prog 22~
+maze 0 - 0 - 0 - 0 - 0
+maze . . . . | . . . |
+maze 0 - 0 - 0 . 0 - 0
+maze | . . . . . | . .
+maze 0 . 0 - 0 - 0 - 0
+maze . . | . . . . . .
+maze 0 - 0 - 0 . 0 - 0
+maze | . . . . . | . |
+maze 0 - 0 - 0 - 0 . 0
+~
+>data_prog 21~
+maze 0 - 0 - 0 - 0 - 0
+maze . . . . . . . . |
+maze 0 - 0 - 0 - 0 - 0
+maze | . . . . . . . .
+maze 0 - 0 - 0 - 0 - 0
+maze . . . . . . . . |
+maze 0 - 0 - 0 - 0 - 0
+maze | . . . . . . . .
+maze 0 - 0 - 0 - 0 - 0
+~
+>data_prog 20~
+maze 0 . 0 - 0 . 0 - 0
+maze | . . . | . | . |
+maze 0 . 0 - 0 - 0 . 0
+maze | . . . . . | . |
+maze 0 - 0 - 0 - 0 . 0
+maze . . . . . . | . .
+maze 0 . 0 - 0 - 0 . 0
+maze | . | . | . . . |
+maze 0 - 0 . 0 - 0 - 0
+~
+>data_prog 19~
+maze 0 . 0 - 0 - 0 . 0
+maze | . . . | . . . |
+maze 0 - 0 - 0 - 0 - 0
+maze . . . . | . | . .
+maze 0 . 0 - 0 . 0 - 0
+maze | . | . . . . . .
+maze 0 - 0 . 0 . 0 - 0
+maze | . | . | . | . |
+maze 0 . 0 - 0 - 0 . 0
+~
+>data_prog 18~
+maze 0 . 0 - 0 - 0 - 0
+maze | . | . | . . . |
+maze 0 - 0 - 0 . 0 . 0
+maze | . . . | . | . .
+maze 0 . 0 . 0 . 0 - 0
+maze | . | . . . | . .
+maze 0 - 0 . 0 - 0 - 0
+maze | . | . | . | . .
+maze 0 . 0 - 0 . 0 - 0
+~
+>data_prog 17~
+maze 0 . 0 - 0 . 0 - 0
+maze | . | . . . . . |
+maze 0 . 0 - 0 . 0 . 0
+maze | . | . . . | . |
+maze 0 - 0 - 0 . 0 - 0
+maze | . . . | . | . |
+maze 0 . 0 . 0 - 0 . 0
+maze | . | . | . | . |
+maze 0 - 0 . 0 - 0 . 0
+~
+>data_prog 16~
+maze 0 . 0 - 0 - 0 . 0
+maze | . . . | . | . |
+maze 0 - 0 . 0 . 0 - 0
+maze | . | . | . . . |
+maze 0 - 0 - 0 . 0 - 0
+maze . . | . | . | . .
+maze 0 . 0 - 0 . 0 - 0
+maze | . . . | . | . |
+maze 0 - 0 - 0 . 0 - 0
+~
+>data_prog 15~
+maze 0 . 0 - 0 . 0 - 0
+maze | . | . | . | . |
+maze 0 - 0 . 0 - 0 . 0
+maze . . . . . . . . |
+maze 0 - 0 - 0 - 0 - 0
+maze | . . . . . . . .
+maze 0 . 0 - 0 . 0 - 0
+maze | . | . | . | . |
+maze 0 - 0 . 0 - 0 . 0
+~
+>data_prog 14~
+maze 0 . 0 - 0 . 0 - 0
+maze | . | . | . | . |
+maze 0 . 0 . 0 . 0 . 0
+maze | . | . | . | . |
+maze 0 - 0 . 0 - 0 . 0
+maze | . | . | . | . |
+maze 0 . 0 . 0 . 0 . 0
+maze | . | . | . | . |
+maze 0 . 0 - 0 . 0 - 0
+~
+>data_prog 13~
+maze 0 . 0 - 0 - 0 - 0
+maze | . . . . . | . |
+maze 0 - 0 . 0 - 0 . 0
+maze . . | . | . . . |
+maze 0 - 0 . 0 - 0 . 0
+maze | . . . . . | . |
+maze 0 . 0 - 0 . 0 . 0
+maze | . | . | . | . |
+maze 0 - 0 . 0 - 0 . 0
+~
+>data_prog 12~
+maze 0 . 0 - 0 - 0 . 0
+maze | . . . | . | . |
+maze 0 - 0 . 0 . 0 - 0
+maze | . . . | . | . .
+maze 0 . 0 - 0 . 0 - 0
+maze | . . . | . . . |
+maze 0 - 0 - 0 - 0 . 0
+maze . . | . . . | . |
+maze 0 - 0 . 0 - 0 . 0
+~
+>data_prog 11~
+maze 0 . 0 - 0 . 0 - 0
+maze | . | . | . | . |
+maze 0 . 0 . 0 . 0 . 0
+maze | . | . | . | . |
+maze 0 . 0 . 0 . 0 . 0
+maze | . | . | . | . |
+maze 0 . 0 . 0 . 0 . 0
+maze | . | . | . | . |
+maze 0 - 0 . 0 - 0 . 0
+~
+>data_prog 10~
+maze 0 - 0 - 0 - 0 . 0
+maze | . | . | . | . |
+maze 0 - 0 - 0 . 0 - 0
+maze | . | . | . | . |
+maze 0 - 0 - 0 - 0 . 0
+maze | . . . | . | . |
+maze 0 - 0 - 0 - 0 . 0
+maze . . | . . . . . |
+maze 0 - 0 - 0 - 0 - 0
+~
+>data_prog 9~
+maze 0 - 0 . 0 - 0 - 0
+maze | . | . . . | . |
+maze 0 - 0 - 0 . 0 - 0
+maze . . | . | . . . |
+maze 0 . 0 - 0 - 0 . 0
+maze | . . . | . | . |
+maze 0 - 0 . 0 - 0 - 0
+maze | . | . . . | . |
+maze 0 - 0 - 0 - 0 - 0
+~
+>data_prog 8~
+maze 0 - 0 - 0 - 0 - 0
+maze | . | . . . | . .
+maze 0 - 0 . 0 - 0 - 0
+maze | . . . . . . . |
+maze 0 . 0 . 0 - 0 - 0
+maze | . | . | . | . .
+maze 0 - 0 . 0 - 0 - 0
+maze | . | . | . | . |
+maze 0 . 0 - 0 . 0 - 0
+~
+>data_prog 7~
+maze 0 - 0 . 0 - 0 - 0
+maze | . | . | . . . |
+maze 0 - 0 - 0 . 0 - 0
+maze . . | . . . | . .
+maze 0 - 0 . 0 - 0 . 0
+maze | . . . | . | . |
+maze 0 . 0 - 0 - 0 - 0
+maze | . | . . . | . |
+maze 0 - 0 . 0 - 0 - 0
+~
+>data_prog 6~
+maze 0 - 0 . 0 . 0 - 0
+maze | . | . | . | . |
+maze 0 - 0 - 0 - 0 - 0
+maze . . | . . . | . .
+maze 0 - 0 - 0 - 0 - 0
+maze . . | . . . | . .
+maze 0 - 0 - 0 - 0 - 0
+maze | . | . | . | . |
+maze 0 - 0 . 0 . 0 - 0
+~
+>data_prog 5~
+maze O - 0 - 0 - 0 - 0
+maze | . | . . . . . |
+maze 0 - 0 - 0 - 0 . 0
+maze | . | . . . | . . 
+maze 0 . 0 . 0 - 0 - 0
+maze | . | . | . | . |   
+maze 0 . 0 - 0 - 0 . 0
+maze | . . . | . . . |
+maze 0 - 0 . 0 - 0 - 0
+~
+>data_prog 4~
+maze 0 - 0 - 0 - 0 - 0
+maze | . | . | . . . |
+maze 0 - 0 . 0 - 0 . 0
+maze | . . . | . | . |
+maze 0 - 0 - 0 . 0 - 0
+maze | . | . . . | . .
+maze 0 . 0 - 0 - 0 - 0
+maze | . . . | . | . |
+maze 0 - 0 - 0 . 0 - 0
+~
+>data_prog 3~
+maze 0 - 0 - 0 - 0 - 0
+maze | . . . . . . . |
+maze 0 . 0 - 0 - 0 - 0
+maze | . | . | . . . .
+maze 0 . 0 - 0 - 0 - 0
+maze | . | . | . | . |
+maze 0 . 0 . 0 - 0 - 0
+maze | . | . | . | . |
+maze 0 - 0 . 0 - 0 - 0
+~
+>data_prog 2~
+maze 0 - 0 - 0 - 0 - 0
+maze | . . . | . . . |
+maze 0 . 0 - 0 - 0 . 0
+maze | . | . | . | . |
+maze 0 - 0 - 0 - 0 - 0
+maze | . | . | . | . |
+maze 0 . 0 - 0 - 0 . 0
+maze | . . . | . . . |
+maze 0 - 0 - 0 - 0 - 0
+~
+>data_prog 1~
+maze 0 - 0 - 0 - 0 - 0
+maze | . | . | . | . |
+maze 0 - 0 - 0 - 0 - 0
+maze | . | . | . | . |
+maze 0 - 0 - 0 - 0 - 0
+maze | . | . | . | . |
+maze 0 - 0 - 0 - 0 - 0
+maze | . | . | . | . |
+maze 0 - 0 - 0 - 0 - 0
+~
+|
+V4 26141
+yahoye small mob yahoyetracker~
+a small Yahoye mob~
+A small Yahoye mob is waiting for a restring.
+~
+A smaller denizen of the dream realm has taken upon itself a form to
+match the current environs of the Yaoye Walk.  It moves about tentatively,
+almost reluctantly, as if it would prefer to be elsewhere in the dream
+realm.  
+~
+generic~
+water scholar~
+AF L 0 N 0
+55 28 36d118+1147 55d10+100 7d8+28 none~
+attack~
+-24 -24 -24 -7
+FG AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 -20 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+CH 0 0 medium flesh
+>verb_prog run_mob_mazeposition~
+mpvaluerand 0 26151 26175
+mpgoto $0
+mpat 26140 mpnextinterp
+~
+>fight_prog 10~
+mpecho There is a ripple in the fabric of reality as $I disappears.
+mpgrant $i 500 0 0
+mpecho $I suddenly reappears!
+~
+|
+V4 26142
+large yahoye mob yahoyethumper~
+a large Yahoye mob~
+A large Yahoye mob is waiting for a restring.
+~
+A tall humanoid creature from the dream realm stands here, its form
+altered to match the current environment of the Yaoye walk.  It snarls as it
+performs its ancient duty.  
+~
+generic~
+water scholar~
+AF K 0 N 0
+57 29 37d126+1125 57d10+100 7d8+29 none~
+attack~
+-25 -25 -25 -8
+FHKN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 -20 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+CH 0 0 medium flesh
+>verb_prog run_mob_mazeposition~
+mpvaluerand 0 26151 26175
+mpgoto $0
+mpat 26140 mpnextinterp
+~
+>fight_prog 10~
+mpecho There is a ripple in the fabric of the dream as $I disappears.
+mpgrant $i 500 0 0
+mpecho $I suddenly reappears!
+~
+|
+V4 26143
+yahoye endmob yaoye~
+the yaoye endmob~
+A Yaoye endmob is waiting for a restring.
+~
+A massive creature of the dream realm has drawn upon itself a fearsome
+form to match the current surroundings in the Yaoye Walk.  Its eyes burn
+with a great and terrible energy, and it moves with relentless purpose.  
+~
+generic~
+water scholar~
+ABFPTX 0 0 N 0
+63 32 39d151+1019 63d10+100 7d9+32 none~
+attack~
+-28 -28 -28 -9
+AEFK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 -20 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+CH 0 0 medium flesh
+>verb_prog p enter~
+mpechoat $n $I blocks your way.
+mpechoaround $n $I prevents $N from moving forward.
+mplag $n 1
+~
+>fight_prog 10~
+mpecho There is a ripple in the fabric of reality as $I disappears.
+mpgrant $i 500 0 0
+mpecho $I suddenly reappears!
+~
+|
+V4 26144
+bot bobscousinroger yahoye~
+a generic bot~
+The Walk entry point bot, Bobscousinroger, thinks all workstudy students should be whipped.
+~
+Not much to look at.
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 26150
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+#0
+
+
+
+#OBJECTS
+V13
+26140
+walktrash~
+walktrash garbage~
+In corpse~
+This is a small fragment of the energies of the dream realm, focused into
+this shape by an ancient artifact.  This fragment seems a by-product, having
+little or no use.  
+~
+energy~
+trash GP 0 0 AO
+0 0 0 0 0
+55 10 0 0 P
+0
+>rand_prog 1~
+if inroom($o) < 26151
+or inroom($o) > 26175
+  if isheld($o)
+    mpvalueset explosionChance 50
+    if class($o) < 6
+    or class($o) == 27
+      \\* Is a scholar or alchemist
+      mpmath explosionChance %explosionChance - 25
+    endif
+    if rand(%explosionChance)
+      mpecho The magical energies which form $I unravel and dissipate.
+      mppurge self
+      break
+    else
+      mpecho The magical energies which form $I explode!
+      mpvaluerand spellLevel 45 55
+      mpcast 17 %spellLevel $o
+      mppurge self
+      break
+    endif
+  endif
+  else
+    mpecho The magic energies which form $I unravel and dissipate.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V13
+26141
+walktrash~
+walktrash wand~
+Walktrash~
+This is a fragment of magical energy originating in the dream realm.  It
+has been focused into this shape through an ancient artifact, but is
+somewhat fragile and can easily be damaged.  
+~
+energy~
+wand GP 0 0 AO
+55 3 3 'ghost' 0
+55 10 0 0 P
+0
+>rand_prog 1~
+if inroom($o) < 26151
+or inroom($o) > 26175
+  if isheld($o)
+    mpvalueset explosionChance 50
+    if class($o) < 6
+    or class($o) == 27
+      \\* Is a scholar or alchemist
+      mpmath explosionChance %explosionChance - 25
+    endif
+    if rand(%explosionChance)
+      mpecho The magical energies which form $I unravel and dissipate.
+      mppurge self
+      break
+    else
+      mpecho The magical energies which form $I explode!
+      mpvaluerand spellLevel 45 55
+      mpcast 17 %spellLevel $o
+      mppurge self
+      break
+    endif
+  endif
+  else
+    mpecho The magic energies which form $I unravel and dissipate.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V13
+26142
+walkpill~
+walkpill~
+Pill 1~
+This is a fragment of magical energy originating in the dream realm.  It
+has been focused into this shape through an ancient artifact, but is
+somewhat fragile and can easily be damaged.  
+~
+energy~
+pill GP 0 0 AO
+55 'icy prison' '' '' ''
+55 1 0 0 P
+0
+>rand_prog 1~
+if inroom($o) < 26151
+or inroom($o) > 26175
+  if isheld($o)
+    mpvalueset explosionChance 50
+    if class($o) < 6
+    or class($o) == 27
+      \\* Is a scholar or alchemist
+      mpmath explosionChance %explosionChance - 25
+    endif
+    if rand(%explosionChance)
+      mpecho The magical energies which form $I unravel and dissipate.
+      mppurge self
+      break
+    else
+      mpecho The magical energies which form $I explode!
+      mpvaluerand spellLevel 45 55
+      mpcast 17 %spellLevel $o
+      mppurge self
+      break
+    endif
+  endif
+  else
+    mpecho The magic energies which form $I unravel and dissipate.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V13
+26143
+walkportal~
+the walkportal~
+Walkportal~
+~
+unknown~
+portal GYa 0 0 P
+0 0 0 17236 0
+55 1 100 0 P
+0
+V13
+26144
+genericarmor generic armor~
+generic armor~
+Generic armor~
+This is a fragment of magical energy originating in the dream realm.  It
+has been focused into this shape through an ancient artifact, but is
+somewhat fragile and can easily be damaged.  
+~
+energy~
+armor GPU 0 0 AK
+-2 -2 -2 -10 0
+55 10 0 1 P
+0
+A
+20 3
+A
+18 3
+A
+19 3
+A
+49 -10
+>rand_prog 1~
+if inroom($o) < 26151
+or inroom($o) > 26175
+  if isheld($o)
+    mpvalueset explosionChance 50
+    if class($o) < 6
+    or class($o) == 27
+      \\* Is a scholar or alchemist
+      mpmath explosionChance %explosionChance - 25
+    endif
+    if rand(%explosionChance)
+      mpecho The magical energies which form $I unravel and dissipate.
+      mppurge self
+      break
+    else
+      mpecho The magical energies which form $I explode!
+      mpvaluerand spellLevel 45 55
+      mpcast 17 %spellLevel $o
+      mppurge self
+      break
+    endif
+  endif
+  else
+    mpecho The magic energies which form $I unravel and dissipate.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V13
+26145
+genericweapon generic weapon~
+generic weapon~
+Generic weapon~
+This is a fragment of magical energy originating in the dream realm.  It
+has been focused into this shape through an ancient artifact, but is
+somewhat fragile and can easily be damaged.  
+~
+energy~
+weapon GPU 0 0 AN
+exotic 10 4 0 0
+attack~
+55 50 0 1 P
+0
+A
+20 3
+A
+18 3
+A
+19 3
+A
+49 -10
+>rand_prog 1~
+if inroom($o) < 26151
+or inroom($o) > 26175
+  if isheld($o)
+    mpvalueset explosionChance 50
+    if class($o) < 6
+    or class($o) == 27
+      \\* Is a scholar or alchemist
+      mpmath explosionChance %explosionChance - 25
+    endif
+    if rand(%explosionChance)
+      mpecho The magical energies which form $I unravel and dissipate.
+      mppurge self
+      break
+    else
+      mpecho The magical energies which form $I explode!
+      mpvaluerand spellLevel 45 55
+      mpcast 17 %spellLevel $o
+      mppurge self
+      break
+    endif
+  endif
+  else
+    mpecho The magic energies which form $I unravel and dissipate.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V13
+26146
+testsword~
+a testsword~
+A testsword.~
+~
+steel~
+weapon 0 0 0 AN
+sword 30 1 3 0
+slash~
+55 60 780000 0 P
+0
+#0
+
+
+
+#ROOMS
+#26140
+Yaoye Walk Bits~
+This area is small piece of the Dream Realm, converted into a training
+battleground by an ancient alatharya magical artifact.  Read tablet 
+obj 225 for more info.
+
+For entry into the area, say \#yaoye\# in 17236
+~
+~
+0
+0 4202548 0
+W 5 0 0
+Z 5 5
+S
+#26150
+The Walk~
+~
+~
+0
+0 4202548 0
+W 5 0 0
+Z 5 5
+S
+#26151
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D1
+~
+~
+1048576 0 26152
+D2
+~
+~
+1048576 0 26156
+D5
+~
+~
+1048576 0 26156
+W 5 0 0
+Z 5 5
+P
+>verb_prog testecho~
+mpvalueset test testing
+loop 1 to 2
+mpecho %test$v1
+mpecho $v1%test
+endloop
+~
+|
+S
+#26152
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D1
+~
+~
+1048576 0 26153
+D2
+~
+~
+1048576 0 26157
+D3
+~
+~
+1048576 0 26151
+D5
+~
+~
+1048576 0 26157
+W 5 0 0
+Z 5 5
+S
+#26153
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D1
+~
+~
+1048576 0 26154
+D2
+~
+~
+1048576 0 26158
+D3
+~
+~
+1048576 0 26152
+D5
+~
+~
+1048576 0 26158
+W 5 0 0
+Z 5 5
+S
+#26154
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D1
+~
+~
+1048576 0 26155
+D2
+~
+~
+1048576 0 26159
+D3
+~
+~
+1048576 0 26153
+D5
+~
+~
+1048576 0 26159
+W 5 0 0
+Z 5 5
+S
+#26155
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D2
+~
+~
+1048576 0 26160
+D3
+~
+~
+1048576 0 26154
+D5
+~
+~
+1048576 0 26160
+W 5 0 0
+Z 5 5
+S
+#26156
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26151
+D1
+~
+~
+1048576 0 26157
+D2
+~
+~
+1048576 0 26161
+D4
+~
+~
+1048576 0 26151
+D5
+~
+~
+1048576 0 26161
+W 5 0 0
+Z 5 5
+S
+#26157
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26152
+D1
+~
+~
+1048576 0 26158
+D2
+~
+~
+1048576 0 26162
+D3
+~
+~
+1048576 0 26156
+D4
+~
+~
+1048576 0 26152
+D5
+~
+~
+1048576 0 26162
+W 5 0 0
+Z 5 5
+S
+#26158
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26153
+D1
+~
+~
+1048576 0 26159
+D2
+~
+~
+1048576 0 26163
+D3
+~
+~
+1048576 0 26157
+D4
+~
+~
+1048576 0 26153
+D5
+~
+~
+1048576 0 26163
+W 5 0 0
+Z 5 5
+S
+#26159
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26154
+D1
+~
+~
+1048576 0 26160
+D2
+~
+~
+1048576 0 26164
+D3
+~
+~
+1048576 0 26158
+D4
+~
+~
+1048576 0 26154
+D5
+~
+~
+1048576 0 26164
+W 5 0 0
+Z 5 5
+S
+#26160
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26155
+D2
+~
+~
+1048576 0 26165
+D3
+~
+~
+1048576 0 26159
+D4
+~
+~
+1048576 0 26155
+D5
+~
+~
+1048576 0 26165
+W 5 0 0
+Z 5 5
+S
+#26161
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26156
+D1
+~
+~
+1048576 0 26162
+D2
+~
+~
+1048576 0 26166
+D4
+~
+~
+1048576 0 26156
+D5
+~
+~
+1048576 0 26166
+W 5 0 0
+Z 5 5
+S
+#26162
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26157
+D1
+~
+~
+1048576 0 26163
+D2
+~
+~
+1048576 0 26167
+D3
+~
+~
+1048576 0 26161
+D4
+~
+~
+1048576 0 26157
+D5
+~
+~
+1048576 0 26167
+W 5 0 0
+Z 5 5
+S
+#26163
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26158
+D1
+~
+~
+1048576 0 26164
+D2
+~
+~
+1048576 0 26168
+D3
+~
+~
+1048576 0 26162
+D4
+~
+~
+1048576 0 26158
+D5
+~
+~
+1048576 0 26168
+W 5 0 0
+Z 5 5
+S
+#26164
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26159
+D1
+~
+~
+1048576 0 26165
+D2
+~
+~
+1048576 0 26169
+D3
+~
+~
+1048576 0 26163
+D4
+~
+~
+1048576 0 26159
+D5
+~
+~
+1048576 0 26169
+W 5 0 0
+Z 5 5
+S
+#26165
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26160
+D2
+~
+~
+1048576 0 26170
+D3
+~
+~
+1048576 0 26164
+D4
+~
+~
+1048576 0 26160
+D5
+~
+~
+1048576 0 26170
+W 5 0 0
+Z 5 5
+S
+#26166
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26161
+D1
+~
+~
+1048576 0 26167
+D2
+~
+~
+1048576 0 26171
+D4
+~
+~
+1048576 0 26161
+D5
+~
+~
+1048576 0 26171
+W 5 0 0
+Z 5 5
+S
+#26167
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26162
+D1
+~
+~
+1048576 0 26168
+D2
+~
+~
+1048576 0 26172
+D3
+~
+~
+1048576 0 26166
+D4
+~
+~
+1048576 0 26162
+D5
+~
+~
+1048576 0 26172
+W 5 0 0
+Z 5 5
+S
+#26168
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26163
+D1
+~
+~
+1048576 0 26169
+D2
+~
+~
+1048576 0 26173
+D3
+~
+~
+1048576 0 26167
+D4
+~
+~
+1048576 0 26163
+D5
+~
+~
+1048576 0 26173
+W 5 0 0
+Z 5 5
+S
+#26169
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26164
+D1
+~
+~
+1048576 0 26170
+D2
+~
+~
+1048576 0 26174
+D3
+~
+~
+1048576 0 26168
+D4
+~
+~
+1048576 0 26164
+D5
+~
+~
+1048576 0 26174
+W 5 0 0
+Z 5 5
+S
+#26170
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26165
+D2
+~
+~
+1048576 0 26175
+D3
+~
+~
+1048576 0 26169
+D4
+~
+~
+1048576 0 26165
+D5
+~
+~
+1048576 0 26175
+W 5 0 0
+Z 5 5
+S
+#26171
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26166
+D1
+~
+~
+1048576 0 26172
+D4
+~
+~
+1048576 0 26166
+W 5 0 0
+Z 5 5
+S
+#26172
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26167
+D1
+~
+~
+1048576 0 26173
+D3
+~
+~
+1048576 0 26171
+D4
+~
+~
+1048576 0 26167
+W 5 0 0
+Z 5 5
+S
+#26173
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26168
+D1
+~
+~
+1048576 0 26174
+D3
+~
+~
+1048576 0 26172
+D4
+~
+~
+1048576 0 26168
+W 5 0 0
+Z 5 5
+S
+#26174
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26169
+D1
+~
+~
+1048576 0 26175
+D3
+~
+~
+1048576 0 26173
+D4
+~
+~
+1048576 0 26169
+W 5 0 0
+Z 5 5
+S
+#26175
+The Walk~
+An old growth forest of massive hardwoods rises up around you.  The
+thickness of the leafy canopy overhead permits little light to filter down
+below, and all is cast into shadow.  Oak and maple, beech and ash, the dark
+shapes of these giants vie for whatever they can claim of the light above. 
+Thick, gnarled roots and fallen trunks and branches limit movement in some
+directions.  
+~
+~
+0
+0 8240 3
+D0
+~
+~
+1048576 0 26170
+D3
+~
+~
+1048576 0 26174
+D4
+~
+~
+1048576 0 26170
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 26151 1 1048576
+D 0 26151 2 1048576
+D 0 26151 5 1048576
+D 0 26152 1 1048576
+D 0 26152 2 1048576
+D 0 26152 3 1048576
+D 0 26152 5 1048576
+D 0 26153 1 1048576
+D 0 26153 2 1048576
+D 0 26153 3 1048576
+D 0 26153 5 1048576
+D 0 26154 1 1048576
+D 0 26154 2 1048576
+D 0 26154 3 1048576
+D 0 26154 5 1048576
+D 0 26155 2 1048576
+D 0 26155 3 1048576
+D 0 26155 5 1048576
+D 0 26156 0 1048576
+D 0 26156 1 1048576
+D 0 26156 2 1048576
+D 0 26156 4 1048576
+D 0 26156 5 1048576
+D 0 26157 0 1048576
+D 0 26157 1 1048576
+D 0 26157 2 1048576
+D 0 26157 3 1048576
+D 0 26157 4 1048576
+D 0 26157 5 1048576
+D 0 26158 0 1048576
+D 0 26158 1 1048576
+D 0 26158 2 1048576
+D 0 26158 3 1048576
+D 0 26158 4 1048576
+D 0 26158 5 1048576
+D 0 26159 0 1048576
+D 0 26159 1 1048576
+D 0 26159 2 1048576
+D 0 26159 3 1048576
+D 0 26159 4 1048576
+D 0 26159 5 1048576
+D 0 26160 0 1048576
+D 0 26160 2 1048576
+D 0 26160 3 1048576
+D 0 26160 4 1048576
+D 0 26160 5 1048576
+D 0 26161 0 1048576
+D 0 26161 1 1048576
+D 0 26161 2 1048576
+D 0 26161 4 1048576
+D 0 26161 5 1048576
+D 0 26162 0 1048576
+D 0 26162 1 1048576
+D 0 26162 2 1048576
+D 0 26162 3 1048576
+D 0 26162 4 1048576
+D 0 26162 5 1048576
+D 0 26163 0 1048576
+D 0 26163 1 1048576
+D 0 26163 2 1048576
+D 0 26163 3 1048576
+D 0 26163 4 1048576
+D 0 26163 5 1048576
+D 0 26164 0 1048576
+D 0 26164 1 1048576
+D 0 26164 2 1048576
+D 0 26164 3 1048576
+D 0 26164 4 1048576
+D 0 26164 5 1048576
+D 0 26165 0 1048576
+D 0 26165 2 1048576
+D 0 26165 3 1048576
+D 0 26165 4 1048576
+D 0 26165 5 1048576
+D 0 26166 0 1048576
+D 0 26166 1 1048576
+D 0 26166 2 1048576
+D 0 26166 4 1048576
+D 0 26166 5 1048576
+D 0 26167 0 1048576
+D 0 26167 1 1048576
+D 0 26167 2 1048576
+D 0 26167 3 1048576
+D 0 26167 4 1048576
+D 0 26167 5 1048576
+D 0 26168 0 1048576
+D 0 26168 1 1048576
+D 0 26168 2 1048576
+D 0 26168 3 1048576
+D 0 26168 4 1048576
+D 0 26168 5 1048576
+D 0 26169 0 1048576
+D 0 26169 1 1048576
+D 0 26169 2 1048576
+D 0 26169 3 1048576
+D 0 26169 4 1048576
+D 0 26169 5 1048576
+D 0 26170 0 1048576
+D 0 26170 2 1048576
+D 0 26170 3 1048576
+D 0 26170 4 1048576
+D 0 26170 5 1048576
+D 0 26171 0 1048576
+D 0 26171 1 1048576
+D 0 26171 4 1048576
+D 0 26172 0 1048576
+D 0 26172 1 1048576
+D 0 26172 3 1048576
+D 0 26172 4 1048576
+D 0 26173 0 1048576
+D 0 26173 1 1048576
+D 0 26173 3 1048576
+D 0 26173 4 1048576
+D 0 26174 0 1048576
+D 0 26174 1 1048576
+D 0 26174 3 1048576
+D 0 26174 4 1048576
+D 0 26175 0 1048576
+D 0 26175 3 1048576
+D 0 26175 4 1048576
+M 0 26140 1 26140 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

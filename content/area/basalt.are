@@ -1,0 +1,4902 @@
+#AREADATA
+Name The Basalt Catacombs~
+Builders Iacobos~
+VNUMs 5200 5399
+Credits [45 51] Iandir    The Basalt Catacombs~
+Danger 2
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 5 0 0
+Shades 5 5
+Stone 54
+End
+
+
+
+#MOBILES
+V4 5201
+lava guy~
+the lava guy~
+The lava guy is here, a postmodern reaction against bots.
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+55 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>trigger_prog 100~
+mpseewizi
+if isflying($n)
+else
+  if luck($n) == lucky
+    mpechoat $n You slip on the smooth stone, but luckily regain your footing!
+    mpechoaround $n $N slips on the smooth stone, but miraculously regains $s footing!
+  else
+    mpechoat $n You slip on the smooth stone, and tumble into the crevice!
+    mpechoaround $n $N slips on the smooth stone, and tumbles into the crevice!
+    mptransfer $n 5269
+    mpat 5269 mpforce $n look
+    mpat 5269 mpforce molten mptrigger $n
+  endif
+endif
+~
+>rand_prog 100~
+mproomcmd mptrigger all
+~
+>greet_prog 100~
+mptrigger $n
+~
+|
+V4 5202
+lava molten~
+the molten lava~
+The molten lava burbles and sizzles! Muahhahahahah! DIE DIE DIE DIE!
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+50 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog up~
+if isflying($n)
+mptransfer $n 5213
+mpecho $N leaves up.
+mpat 5213 mpforce $n look
+mpat 5213 mpechoaround $n $N has arrived.
+else
+mpechoat $n You aren\@t flying!
+endif
+~
+>greet_prog 100~
+mproomcmd mptrigger $n
+~
+>trigger_prog 100~
+if isghost($n)
+or isbitset($n) == 7092
+else
+mpechoat $n The heat of the molten lava {rSCORCHES{x you!
+mpechoaround $n The heat of the molten lava {rSCORCHES{x $N!!
+mpdamtype $n 1 150 300 4
+endif
+~
+>rand_prog 100~
+mproomcmd mptrigger all
+~
+|
+V4 5203
+gas vent~
+the gas vent~
+The gas vent provides 100% gassy pleasure. Mmmmmm, gas.
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+51 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>trigger_prog 100~
+if isghost($n)
+else
+mpechoat $n A blast of hot gas {rSCORCHES{X you!
+mpechoaround $n A blast of hot gas {rSCORCHES{X $N!
+mpdamage $n 1 100 200 4
+endif
+~
+>rand_prog 100~
+mproomcmd mptrigger all
+~
+>greet_prog 100~
+mptrigger $n
+~
+|
+V4 5204
+smoke~
+smoke~
+Smoke!
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+60 0 5d5+10 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 b
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+mproomaffect 129 60 -1 0 0
+~
+|
+V4 5205
+dragon flame massive orange boris~
+the flame dragon~
+A massive dragon, its scales the bright orange of pure flame, snarls viciously.
+~
+A gargantuan reptile with scales of bright, fiery orange, the flame
+dragon exudes heat in a massive, blistering wave.  The smell of brimstone
+and sulfur is thick around the beast, and sheets of flame rise from its back
+like mighty wings of pure fire.  Its claws are like scythes, and its maw
+glows with the heat of an inferno.  
+~
+dragon~
+water scholar~
+AFLX 0 DFJTV E 0
+60 60 10000d1+1 0d0+0 15d11+60 fire~
+flaming bite~
+-50 -50 -50 -50
+AFH ABH
+26 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 500 -1
+AHMVZ ABCDEFGHIJKPQUVX A medium unknown
+>load_prog 100~
+mpseewizi
+mpat 5291 mpforce entrance mpvalueset 0 0
+mpunseewizi
+~
+>rand_prog 100~
+if mobvalue(9) != 0
+mpat 5299 mpforce islandbot mpvalueset 2 0
+mpvalueset 9 0
+endif
+~
+>fight_prog 100~
+mpseewizi
+mpforce islandbot mpvalueset 2 5
+mpunseewizi
+mpvalueset 9 1
+~
+>death_prog 100~
+mpseewizi
+mpat 5291 mpforce entrance mpvalueset 0 88
+mpat 5299 mppurge islandbot
+~
+|
+V4 5206
+elemental being fire pure blaze~
+the fire elemental~
+A being of pure fire pulses and blazes here.
+~
+A vaguely humanoid form, apparently made of pure fire, pulses with an
+angry red light as it blazes about the area.  The heat it gives off is
+immense, and it seems bent on the destruction of any who come near it.  
+~
+elemental~
+water scholar~
+AFX 0 DFTZ E 0
+60 35 20d230+1500 0d0+0 5d10+25 fire~
+flame~
+-30 -30 -30 -30
+FH ABHb
+26 0 0 0 33 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 370 0 0 0 0
+stand stand none 0 -1
+ADHLMV ABCDEFGHIJK K medium unknown
+>rand_prog 2~
+mpwander
+~
+|
+V4 5207
+pincer pincers~
+the pincer thing~
+Big pincered arm things. Mmmmmm, pincers.
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+0 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>trigger_prog 100~
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+mpechoat $n A long, pincered arm seizes you and quickly drags you into a side tunnel!
+mpechoaround $n A long, pincered arm seizes $N and quickly drags $m into a side tunnel!
+mpechoat 5216 A long, pincered arm darts out and drags $N into the room!
+mptransfer $n 5216
+mpat 5216 mpforce $n look
+endif
+~
+>rand_prog 100~
+mproomcmd mptrigger all
+~
+>greet_prog 100~
+mptrigger $n
+~
+|
+V4 5208
+beetle scythe massive~
+the scythe beetle~
+A massive beetle with deadly scythe-like pincers crouches in the slime.
+~
+A massive beetle with long, extending arms and scything pincers rests its
+bulk in the midst of its adhesive excretions.  Its grotesque body is also
+coated with the viscous slime, and small pieces of bone and flesh have stuck
+to its chitin.  
+~
+centipede~
+water scholar~
+ABFTX 0 DFJZ N 0
+60 50 10000d1+1 0d0+0 5d10+40 slash~
+slice~
+-30 -30 -30 -30
+AHK AB
+26 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMOV ABCDEFGHIJK A medium unknown
+>death_prog 100~
+mpseewizi
+mpat 5257 mppurge pincer
+mpvaluerand 0 1 24
+if mobvalue(0) < 4
+mpecho The scythe beetle\@s gut is split open, and its contents spill forth!
+mpoload 5202 in room
+if mobvalue(0) == 1
+mpoload 5203 in room
+endif
+if mobvalue(0) == 2
+mpoload 5204 in room
+endif
+if mobvalue(0) == 3
+if isoverlimit(5205)
+else
+mpoload 5205 in room
+endif
+endif
+endif
+~
+|
+V4 5209
+sticky~
+sticky~
+Sticky.
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+0 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>trigger_prog 100~
+if isghost($n)
+else
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+mpechoat $n You are stuck in the adhesive slime lining the walls of the burrow!
+mplag $n 2
+endif
+endif
+~
+>rand_prog 100~
+mproomcmd mptrigger all
+~
+|
+V4 5210
+secret~
+secret~
+The secret.
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+60 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 30~
+mpvaluerand 0 21 30
+if wisdom($n) > $0
+mpechoat $n You notice something odd about the north wall.
+endif
+~
+|
+V4 5211
+lake lava~
+the lake lava~
+The lake lava burbles and scorches.
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+60 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>trigger_prog 100~
+if isghost($n)
+or isbitset($n) == 7092
+else
+if isflying($n)
+mpechoat $n The heat rising from the molten lava {rSEARS{x you!
+mpechoaround $n The heat rising from the molten lava {rSEARS{x $N!
+mpdamtype $n 1 75 90 4
+else
+mpechoat $n The heat of the molten lava {rSCORCHES{x you!
+mpechoaround $n The heat of the molten lava {rSCORCHES{x $N!
+mpdamtype $n 1 150 300 4
+endif
+endif
+~
+>greet_prog 100~
+mptrigger $n
+~
+>rand_prog 100~
+mproomcmd mptrigger all
+~
+|
+V4 5212
+walkway~
+the walkway~
+The walkway is dangerous. Wooooo, scary!
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+60 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>trigger_prog 100~
+if ispc($n)
+if isghost($n)
+else
+mpvalueset 0 0
+if isflying($n)
+else
+mpvaluerand 5 1 4
+mpvalueup 0 $5
+mpvaluerand 5 1 4
+mpvalueup 0 $5
+mpvaluerand 5 1 4
+mpvalueup 0 $5
+mpvaluerand 5 1 4
+mpvalueup 0 $5
+mpvaluerand 5 1 4
+mpvalueup 0 $5
+mpvalueup 0 2
+if dexterity($n) < $0
+mpechoat $n You slip from the narrow walkway and fall into the lava!
+mpechoaround $n $N slips from the narrow walkway and falls into the lava!
+mpvaluerand 1 1 2
+if mobvalue(1) == 1
+mpforce $n north
+endif
+if mobvalue(1) == 2
+mpforce $n south
+endif
+else
+mpechoat $n The heat rising from the molten lava {rburns{x you.
+mpechoaround $n The heat rising from the molten lava {rburns{x $N.
+mpdamtype $n 1 40 10 4
+endif
+endif
+endif
+else
+endif
+~
+>greet_prog 100~
+mptrigger $n
+~
+>rand_prog 100~
+mproomcmd mptrigger all
+~
+|
+V4 5213
+cave entrance bot~
+the cave entrance~
+The cave entrance looms ahead.
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+60 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 1~
+mpseewizi
+mpat 5299 mpforce islandbot mpvalueset 0 0
+~
+>greet_prog 100~
+mpsee wizi
+mpat 5299 mpforce islandbot mpvalueset 0 15
+~
+>verb_prog north~
+if mobvalue(0) == 88
+mpechoaround $n $N leaves north.
+mptransfer $n 5271
+mpat 5271 mpforce $n look
+endif
+if mobvalue(0) == 0
+if mobhere(5205)
+mpechoat $n The flame dragon blocks the way!
+else
+mpechoat $n With a deafening roar of fire, the flame dragon arrives, and blocks the cave entrance!
+mpat boris mpecho With a deafening roar of fire, the flame dragon vaults through the air toward its lair!
+mptransfer boris
+endif
+endif
+ 
+~
+|
+V4 5214
+islandbot~
+islandbot~
+No man is an islandbot.
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+60 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if mobvalue(1) > 0
+mpvaluedown 1
+endif
+if mobvalue(1) == 1
+mpecho With a deafening roar of fire, the flame dragon descends from above!
+mpat boris mpecho With a deafening roar of fire, the flame dragon vaults into the air!
+mptransfer boris
+endif
+~
+>greet_prog 100~
+if mobvalue(0) == 0
+if mobvalue(2) == 0
+if mobvalue(1) == 0
+mpvalueset 1 3
+mpvalueset 0 5
+endif
+endif
+endif
+~
+|
+V4 5215
+srryn pale twisted troglodytic~
+a troglodytic srryn~
+A pale, twisted srryn with blank eyes hunches on the cave floor.
+~
+A hulking srryn with twisted limbs and pale, scaly skin, the troglodyte
+hunches low to the cave floor.  Its claws are longer and sharper than those
+of the surface-dwelling srryn, and it seems more muscular, but its frame is
+somehow distorted, as if generations of primitive cave life have altered its
+physical makeup.  
+~
+srryn~
+water scholar~
+AFG 0 F E 0
+47 26 14d190+886 0d0+0 4d11+40 pierce~
+bite~
+-18 -18 -18 -4
+MV A
+26 0 0 0 0 0 0 0 33 -33 0 0 33 0 0 0 0 33 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 2 -1
+AHMX ABCDEFGIJKLQUVX C medium unknown
+V4 5216
+srryn twisted thick pale large troglodyte~
+a large srryn troglodyte~
+A twisted srryn with thick limbs and pale skin crouches in the darkness.
+~
+A hulking srryn with twisted limbs and pale, scaly skin, the troglodyte
+hunches low to the cave floor.  Its claws are longer and sharper than those
+of the surface-dwelling srryn, and it seems more muscular, but its frame is
+somehow distorted, as if generations of primitive cave life have altered its
+physical makeup. 
+~
+srryn~
+water scholar~
+AFG 0 F E 0
+55 30 18d220+1000 0d0+0 4d11+50 pierce~
+bite~
+-25 -25 -25 -8
+MV A
+26 0 0 0 0 0 0 0 33 -33 0 0 33 0 0 0 0 33 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 4 -1
+AHMX ABCDEFGIJKLQUVX C medium unknown
+V4 5217
+fish pale large~
+a large, pale fish~
+A large, pale fish swims about in the cave pool.
+~
+A large, pale, eyeless fish swims about in the cave pool.
+~
+lizard~
+water scholar~
+ABD 0 0 N 0
+1 0 5d5+5 0d0+0 1d1+1 pierce~
+bite~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMVXc ABCDEFGHIJKQV A medium unknown
+V4 5218
+frog white eyeless~
+a white, eyeless frog~
+A large eyeless frog swims sluggishly through the water of the pool.
+~
+A large white frog with flaps of white skin grown over its eye sockets
+swims sluggishly through the cave water.  
+~
+lizard~
+water scholar~
+ABD 0 0 N 0
+2 0 5d5+10 0d0+0 1d2+1 pierce~
+bite~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMVXc ABCDEFGHIJKQV A medium unknown
+V4 5219
+srryn twisted pale troglodytic fisherman fisher~
+the troglodytic srryn fisherman~
+A twisted and pale srryn crouches by the edge of the cave pool.
+~
+A twisted and pale troglodytic srryn crouches at the edge of the cave
+pool, peering into the murky waters.  He holds a crude spear, evidently used
+to spear fish.  
+~
+srryn~
+water scholar~
+ABF 0 0 E 0
+52 25 18d200+920 0d0+0 4d11+50 pierce~
+jab~
+-22 -20 -20 -5
+MV A
+26 0 0 0 0 0 0 0 33 -33 0 0 33 0 0 0 0 33 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 3 -1
+AHMVX ABCDEFGHIJKLQUVX C medium unknown
+V4 5220
+ssthk srryn pallid massive~
+Ssthk~
+A massive srryn with pallid, whitish scales and bulging muscles stands here.
+~
+A massive specimen of the troglodytic variety of srryn, Ssthk\@s pallid
+frame towers above the other twisted creatures of his kind.  His heavily
+muscled limbs appear awkward in their unnatural development, but he moves
+with a fluid surety.  His rotting, uneven teeth are brown and decaying, but
+appear quite sharp nonetheless.  
+~
+srryn~
+water scholar~
+ABFPTX 0 0 E 0
+60 40 16000d1+1 0d0+0 5d8+101 pierce~
+bite~
+-40 -40 -40 -40
+CEFHKMNV AB
+26 0 0 0 0 0 0 0 33 -33 0 0 33 0 0 0 0 33 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 20 -1
+AHMX ABCDEFGIJKLQUVX C medium unknown
+>fight_prog 5~
+mpechoat $n Sskth roars in fury and lashes out with his tail!
+mpechoat $n Sskth\@s tail lash sends you sprawling!
+mpechoat $n Sskth\@s tail lash {rMANGLES{x you!
+mpdamtype $n 95 1 1 3
+mpechoaround $n Sskth roars in fury and lashes out with his tail!
+mpechoaround $n Sskth\@s tail lash sends $N sprawling!
+mpechoaround $n Sskth\@s tail lash {rMANGLES{x $N!
+mplag $n 3
+~
+|
+V4 5221
+mageloader~
+mageloader~
+The mageloader loads mages.. if you\@re lucky.
+~
+~
+human~
+water scholar~
+A 0 LP N 0
+60 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 40~
+mpmload 5223
+~
+|
+V4 5222
+Jeshuliru shuddeni tall~
+Jeshuliru~
+A tall shuddeni in robes of midnight blue pads softly down the corridor.
+~
+A tall, arrogant shuddeni, Jeshuliru has the look of a powerful wizard --
+he is adorned with arcane trappings, and wears a glowing ring on each hand. 
+Although thin as a stick, the shuddeni mage radiates sheer force.  
+~
+shuddeni~
+water scholar~
+AG 0 AJ E 0
+58 0 50d50+50 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 150 -1
+AHMW ABCDEFGIJ G medium unknown
+>hitprcnt_prog 15~
+emote utters the words, \@zauexart\@.
+emote shifts his essence into the plane of the void, and disappears from sight.
+mppurge self
+ 
+~
+|
+V4 5223
+wandering guy~
+the wandering guy~
+Wandering guy wanders.
+~
+~
+human~
+water scholar~
+A 0 DLP N 0
+60 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 35 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 35~
+if ispc($n)
+mpecho Jeshuliru shifts his essence back into the material world.
+mpmload 5222
+if isoverlimit(5230)
+else
+mpforce jeshuliru mpoload 5230 on jeshuliru 4
+endif
+if isoverlimit(5231)
+else
+mpforce jeshuliru mpoload 5231 on jeshuliru 1
+endif
+mpforce jeshuliru mpcast 52 55 $n
+mppurge self
+endif
+~
+|
+V4 5224
+fish small vicious~
+a small, vicious fish~
+A small, vicious fish with needle-sharp teeth darts through the water.
+~
+A small fish, no larger than a human\@s hand, darts through the water. 
+The only thing unusual about the small fish is its many needle-sharp teeth. 
+~
+lizard~
+water scholar~
+ABDFX 0 DF N 0
+40 500 11d40+344 0d0+0 5d5+50 pierce~
+bite~
+0 0 0 0
+A AB
+26 0 0 0 0 0 0 0 0 0 50 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMVXc ABCDEFGHIJKQV A medium unknown
+>rand_prog 100~
+mproomcmd mptrigger all
+~
+>trigger_prog 100~
+if isfight($i)
+else
+if number($n) == 5224
+else
+mpkill $n
+endif
+endif
+~
+>greet_prog 100~
+mptrigger $n
+~
+|
+V4 5225
+cavein cave in~
+cavein~
+Cavein.
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+60 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if mobvalue(0) > 0
+mpvaluedown 0
+endif
+~
+>greet_prog 100~
+if isghost($n)
+else
+if ispc($n)
+if mobvalue(0) == 0
+mpdamtype $n 2 100 50 1
+mpechoat $n With a loud rumbling, the ceiling collapses, {rCRUSHING{x you!
+mpechoaround $n With a loud rumbling, the ceiling collapses, {rCRUSHING{x $N!
+mpvalueset 0 100
+endif
+endif
+endif
+~
+|
+V4 5226
+get preventer get-preventer~
+get-preventer~
+Get-preventer.
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+60 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog get~
+if mobhere(5224)
+  if isghost($n)
+  or isimmort($n)
+    mpnextinterp
+  else
+    mpechoat $n You can\@t get anything while the fish are here.
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+|
+V4 5227
+slug giant cave white massive~
+the giant cave slug~
+A massive white cave slug crawls along the basalt passage.
+~
+A massive version of the more common cave slug, this white behemoth
+possesses a long tongue bristling with razor-sharp teeth, skin thick and
+tough enough to repel the most powerful blows, and deadly digestive acid. 
+Its eyestalks scan hungrily for its prey as it makes its way down the
+corridor.  
+~
+generic~
+water scholar~
+ABFPTX 0 DF N 0
+60 60 14000d1+1 0d0+0 5d20+30 acid~
+acidic bite~
+0 0 0 0
+H AB
+26 0 0 65 85 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if mobvalue(0) == 0
+mpvalue 0 6
+endif
+if mobvalue(0) == 1
+if istrack($i)
+mptrack
+else
+mpwander
+endif
+endif
+mpvaluedown 0
+~
+|
+V4 5228
+miilahk nefortu lanky~
+Miilahk~
+A lanky nefortu wrapped in scorched red robes walks along the catacombs.
+~
+A lanky nefortu wrapped in red robes that show signs of scorching,
+Miilahk walks along the basalt catacombs muttering and cackling to himself. 
+He constantly strokes a sigil that has been branded on his arm...  The sigil
+of Crimson Flames.  
+~
+nefortu~
+water scholar~
+AGX 0 ETZ E 0
+60 40 11000d1+1 500d10+1 10d26+30 fire~
+flame~
+-20 -20 -20 -20
+FHK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 120 -1
+AHMW ABCDEFGIJKP 0 medium unknown
+>rand_prog 100~
+if mobvalue(0) > 0
+mpvaluedown 0
+endif
+if mobvalue(0) == 9
+tell cramyr HE has chosen you. You will free HIM at last.
+endif
+if mobvalue(0) == 8
+tell cramyr You must become a greater presence in the land.
+endif
+if mobvalue(0) == 7
+tell cramyr You must become a master of your guild.
+endif
+if mobvalue(0) == 6
+tell cramyr You must teach the world what true Hatred is.
+endif
+if mobvalue(0) == 5
+tell cramyr You must bring true Destruction to the world.
+endif
+if mobvalue(0) == 4
+tell cramyr Go, and finish your rise to power.
+mpoload 5238
+mpat cramyr give basalt cramyr
+endif
+if mobvalue(0) == 3
+emote bursts into flames and disappears.
+mpgoto 1266
+note to Iandir
+note subj Well
+note + I talked to Cramyr.
+note post
+endif
+~
+>give_prog scroll blackened~
+if name($n) == Cramyr
+emote looks at the scroll carefully.
+nod
+mpvalueset 0 10
+endif
+~
+>greet_prog 100~
+if name($n) == Cramyr
+mpechoat cramyr Miilahk nods at you, as if in recognition.
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+5200
+bone broken gnawed thighbone~
+a broken thighbone~
+A broken and gnawed bone lies on the floor.~
+~
+bone~
+trash C 0 F AO
+0 0 0 0 0
+1 20 0 2 P
+0
+V13
+5201
+post blackened iron~
+the blackened iron post~
+A black iron post fixed with manacles is in the middle of the island.~
+~
+unknown~
+trash O 0 0 0
+0 0 0 0 0
+60 0 0 2 P
+0
+E
+manacles~
+A blackened iron post affixed with two manacles on chains stands in the
+middle of the stone island.  It is scored with long scratches, and appears
+to have been oft exposed to fire.  
+~
+E
+black~
+A blackened iron post affixed with two manacles on chains stands in the
+middle of the stone island.  It is scored with long scratches, and appears
+to have been oft exposed to fire.  
+~
+E
+iron~
+A blackened iron post affixed with two manacles on chains stands in the
+middle of the stone island.  It is scored with long scratches, and appears
+to have been oft exposed to fire.  
+~
+E
+post~
+A blackened iron post affixed with two manacles on chains stands in the
+middle of the stone island.  It is scored with long scratches, and appears
+to have been oft exposed to fire.  
+~
+V13
+5202
+coins pile slime covered~
+a slime-covered pile of coins~
+A pile of coins is here, covered with digestive fluids.~
+~
+gold~
+money 0 0 0 A
+2100 3 0 0 0
+60 200 0 0 P
+0
+V13
+5203
+guards leg silver pair~
+a pair of silver leg guards~
+A pair of silver leg guards, corroded with age, rests here.~
+~
+silver~
+armor AG 0 0 AF
+8 8 8 5 0
+51 110 11606 2 P
+28
+A
+13 10
+A
+18 3
+A
+19 2
+V13
+5204
+guards arm silver pair~
+a pair of silver arm guards~
+A pair of silver arm guards rests here.~
+~
+silver~
+armor AG 0 0 AI
+9 9 9 6 0
+51 90 12038 2 P
+28
+A
+13 5
+A
+18 3
+A
+19 2
+V13
+5205
+dagger black gold trimmed~
+a black and gold dagger~
+A black dagger, trimmed with gold, rests here.~
+~
+gold~
+weapon B 0 0 AN
+dagger 4 12 2 0
+stab~
+51 60 325000 1 P
+20
+O stab~
+V13
+5206
+corpse shuddeni digested partially~
+a partially digested shuddeni~
+The partially digested corpse of a shuddeni is here.~
+~
+carrion~
+container S 0 F A
+0 0 0 0 0
+30 400 0 2 P
+0
+V13
+5207
+broach brooch ruby large~
+a ruby brooch~
+A fine brooch with a large ruby is here.~
+~
+ruby~
+armor 0 0 F AC
+3 1 3 1 0
+51 5 41770 1 P
+50
+A
+12 20
+A
+13 25
+A
+19 1
+A
+18 2
+V13
+5208
+buckle platinum belt~
+a platinum belt buckle~
+A platinum belt buckle shines with unnatural light.~
+~
+platinum~
+armor A 0 F AL
+3 2 3 0 0
+51 20 31520 2 P
+11
+A
+17 -10
+A
+19 3
+V13
+5209
+pendant black stone rough chain~
+a black stone pendant~
+A rough black stone is set with a thick chain.~
+~
+stone~
+treasure G 0 0 AC
+0 0 0 0 0
+51 20 220000 1 P
+1
+A
+36 3
+>fight_prog 3~
+if isworn($o)
+opechoat $o The black stone flares a brilliant red, and shoots a gout of flame!
+opechoaround $o $O\@s black stone flares a brilliant red, and shoots a gout of flame!
+opcast 205 55
+endif
+~
+>fight_prog 1~
+if isworn($o)
+opvaluerand 4 1 20
+if objvalue(4) == 5
+opechoat $o The black stone flares a brilliant red, and shoots a gout of flame!
+opechoaround $o $O\@s black stone flares a brilliant red, and shoots a gout of flame!
+opcast 410 51
+endif
+if objvalue(4) == 6
+opechoat $o The black stone flares a brilliant red, and shoots a gout of flame!
+opechoaround $o $O\@s black stone flares a brilliant red, and shoots a gout of flame!
+opcast 410 51
+opcast 410 51
+endif
+endif
+~
+>fight_prog 1~
+if isworn($o)
+opechoat $o The black stone flares a brilliant red, and shoots a gout of flame!
+opechoaround $o $O\@s black stone flares a brilliant red, and shoots a gout of flame!
+opcast 63 50
+endif
+~
+|
+V13
+5210
+dragonhelm helm great skull dragon flames~
+a flaming dragonhelm~
+A great helm made from the skull of a dragon dances with bright flames.~
+~
+bone~
+armor GQS 0 0 AE
+12 12 12 6 0
+51 130 75460 2 P
+1
+A
+36 5
+A
+19 4
+V13
+5211
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+V13
+5212
+gold pile massive coins~
+the gold coins~
+A massive pile of gold coins is heaped on the floor of the cave.~
+~
+gold~
+money 0 0 F A
+220 2 0 0 0
+51 180 0 0 P
+0
+V13
+5213
+chest large blackened metal bones~
+the scorched chest~
+A large chest of blackened metal and inlaid bones is set against the wall.~
+~
+metal~
+container 0 0 F A
+500 AC 0 500 20
+51 5000 0 2 P
+0
+V13
+5214
+pair claws enormous red~
+a pair of enormous red claws~
+A pair of enormous red claws rests here.~
+~
+bone~
+armor GQS 0 0 AH
+9 9 9 3 0
+51 90 53601 1 P
+1
+A
+36 2
+A
+19 4
+V13
+5215
+breastplate breast plate bright orange scales~
+a breastplate of bright orange scales~
+A breastplate of bright orange scales rests here.~
+~
+bone~
+armor GQS 0 0 AD
+15 15 15 7 0
+51 160 61290 2 P
+1
+A
+36 6
+A
+19 3
+V13
+5216
+skeleton human splintered scorched~
+a splintered and scorched skeleton~
+A human skeleton, the bones splintered and scorched, rests here.~
+~
+bone~
+trash PS 0 F A
+0 0 0 0 0
+10 80 0 2 P
+0
+V13
+5217
+spear crude stone-tipped stone tipped~
+a crude, stone-tipped spear~
+A crude spear with a sharpened stone tip rests here.~
+~
+wood~
+weapon S 0 F AN
+spear 2 22 2 F
+jab~
+45 120 10000 3 P
+0
+O jab~
+V13
+5218
+net crude woven fibers fibrous roots~
+a crude net woven from fibers~
+A crude net woven from fibrous roots is here.~
+~
+plant~
+net S 0 F AO
+0 0 0 0 0
+45 80 3476 3 P
+0
+A
+18 3
+V13
+5219
+knife crude stone basalt~
+a crude stone knife~
+A crude knife carved from basalt is here.~
+~
+stone~
+weapon S 0 F AN
+dagger 4 11 2 0
+pierce~
+45 80 10000 1 P
+20
+O pierce~
+V13
+5220
+belt roots woven primitive~
+a primitive belt woven from roots~
+A primitive belt woven from roots is here.~
+~
+plant~
+armor S 0 F AL
+4 4 5 2 0
+45 60 8436 2 P
+30
+A
+19 2
+A
+1 3
+V13
+5221
+crude club carved stone~
+a crude club carved from stone~
+A crude club carved from stone lies here.~
+~
+stone~
+weapon S 0 F AN
+mace 2 22 1 0
+smash~
+45 180 61449 2 P
+50
+O smash~
+V13
+5222
+belt crude bone fragments~
+a crude belt decorated with bone fragments~
+A crude belt decorated with bone fragments is here.~
+~
+leather~
+armor S 0 F AL
+3 3 3 1 0
+40 50 5973 2 P
+0
+A
+18 1
+A
+19 2
+V13
+5223
+axe crude stone head chipped~
+a crude axe with a stone head~
+A crudely fashioned axe with a chipped stone head is here.~
+~
+wood~
+weapon S 0 F AN
+axe 2 22 3 0
+hack~
+40 160 10000 2 P
+50
+O hack~
+V13
+5224
+axe stone huge head~
+a huge axe with a stone head~
+A huge axe with a crudely fashioned stone head is here.~
+~
+wood~
+weapon S 0 F AN
+axe 7 7 3 0
+cleave~
+51 180 520000 2 P
+10
+O cleave~
+V13
+5225
+necklace leather bone shards~
+a necklace of bone shards~
+A leather necklace with shards of bone woven into it lays here.~
+~
+leather~
+armor S 0 F AC
+3 3 3 0 0
+51 5 31025 1 P
+16
+A
+18 2
+A
+19 3
+V13
+5226
+belt leather shards bone woven~
+a belt woven with bone shards~
+A belt of leather with shards of bone woven throughout rests here.~
+~
+leather~
+armor S 0 F AL
+2 2 2 0 0
+51 10 27545 2 P
+16
+A
+19 3
+V13
+5227
+corpse mutilated gnawed shuddeni~
+the gnawed corpse of a shuddeni~
+The mutilated and gnawed corpse of a shuddeni is here.~
+~
+unknown~
+container 0 0 0 0
+0 0 0 0 0
+50 0 0 4 P
+0
+V13
+5228
+dagger thin jewelled~
+a thin dagger with a jewelled hilt~
+A thin dagger with a jewelled hilt is here.~
+~
+metal~
+weapon CE 0 F AN
+dagger 6 7 2 0
+stab~
+51 40 92172 1 P
+18
+O stab~
+V13
+5229
+leg half-eaten eaten half shuddeni~
+the half-eaten leg of a shuddeni~
+The half-eaten leg of a shuddeni lays here.~
+~
+carrion~
+food S 0 F AO
+20 50 0 A 0
+45 50 0 1 P
+0
+V13
+5230
+cape flowing midnight blue pile~
+a flowing midnight blue cape~
+A flowing midnight blue cape lies in a pile.~
+~
+silk~
+armor EGS 0 0 AC
+2 2 2 0 0
+51 50 4687 1 P
+17
+A
+31 3
+A
+17 -10
+V13
+5231
+ring luxurious opal dark blue~
+a dark blue opal ring~
+A luxurious ring set with a dark blue opal rests here.~
+~
+opal~
+armor EG 0 0 AB
+1 1 1 0 0
+51 10 4422 0 P
+17
+A
+31 3
+A
+17 -8
+V13
+5232
+whip black sharp razor razor-sharp tip~
+a razor-tipped black whip~
+A black whip with a razor-sharp tip rests here.~
+~
+flesh~
+weapon GS 0 0 AN
+whip 2 22 3 0
+lash~
+51 80 61448 2 P
+0
+O lash~
+V13
+5233
+skeleton white~
+a white skeleton~
+A white skeleton, picked utterly clean of flesh, is on the pool floor.~
+~
+unknown~
+container 0 0 0 0
+0 0 0 0 0
+50 0 0 4 P
+0
+V13
+5234
+belt buckle golden shining~
+a golden belt buckle~
+A shining golden belt buckle is here.~
+~
+gold~
+armor ABG 0 F AL
+11 11 11 5 0
+51 40 10438 2 P
+26
+A
+1 2
+A
+2 2
+A
+19 2
+V13
+5235
+bracelet marble carved~
+a bracelet of carved marble~
+A bracelet of carved marble rests here.~
+~
+marble~
+armor AGS 0 F AM
+3 3 3 0 0
+51 30 23805 1 P
+11
+A
+19 2
+A
+18 6
+V13
+5236
+pouch leather blackened~
+a blackened leather pouch~
+A blackened leather pouch is here.~
+~
+flesh~
+container EGH 0 0 AL
+10 0 0 5 0
+52 1 0 2 P
+0
+>rand_prog 100~
+if name($o) == Cramyr
+opvalueset 0 1
+opechoat cramyr You notice a blackened leather pouch hanging at your side.
+opechoat cramyr Suddenly, the pouch bursts into flames, revealing a scorched scroll!
+opoload 5237 on cramyr
+oppurge self
+endif
+
+~
+|
+V13
+5237
+scroll blackened~
+a blackened scroll~
+A blackened and burned scroll is here.~
+~
+flesh~
+trash CE 0 0 AO
+0 0 0 0 0
+52 1 0 2 P
+0
+E
+scroll~
+The scroll reads:
+By the lakes of fire,
+Near the tunnels of smoke,
+Present this scroll to
+The one called Miilahk.
+
+Your lord awaits you.
+~
+E
+blackened~
+The scroll reads:
+By the lakes of fire,
+Near the tunnels of smoke,
+Present this scroll to
+The one called Miilahk.
+Your lord awaits you.
+~
+V13
+5238
+basalt piece black sigil flame~
+a piece of basalt carved into a sigil of flame~
+A piece of black basalt is here, carved into a sigil of flame.~
+~
+stone~
+treasure EH 0 0 AO
+0 0 0 0 0
+52 0 0 2 P
+0
+V13
+5239
+cleft ~
+a cleft~
+A cleft in the wall lies here.~
+~
+unknown~
+container e 0 0 0
+100 0 0 100 100
+52 0 0 4 P
+0
+E
+cleft~
+The cleft is about as wide as a human\@s hand.  Beyond it lies an
+unnatural red light, which is burningly hot.  
+~
+V13
+5240
+chalice god seas sapphire Jolinn~
+the Chalice of Jolinn~
+The Chalice of Jolinn lies here, token of the Lord of the Sapphire Spear.~
+~
+sapphire~
+drink a 0 0 AO
+100 100 'water' 0 0
+52 10 774508 1 P
+1
+A
+4 5
+A
+12 50
+A
+13 50
+E
+cup~
+The Chalice of Jolinn is a magnificent cup, carved from some immense
+sapphire.  Almost paper thin in places, the sapphire of the chalice is
+flawless in every way, and faceted so that the deep blues of the cup are
+highlighted.  Runes float around the sides of the cup, marking sigils of
+purity, unity, and protection.  
+~
+E
+sapphire~
+The Chalice of Jolinn is a magnificent cup, carved from some immense
+sapphire.  Almost paper thin in places, the sapphire of the chalice is
+flawless in every way, and faceted so that the deep blues of the cup are
+highlighted.  Runes float around the sides of the cup, marking sigils of
+purity, unity, and protection.  
+~
+E
+seas~
+The Chalice of Jolinn is a magnificent cup, carved from some immense
+sapphire.  Almost paper thin in places, the sapphire of the chalice is
+flawless in every way, and faceted so that the deep blues of the cup are
+highlighted.  Runes float around the sides of the cup, marking sigils of
+purity, unity, and protection.  
+~
+E
+god~
+The Chalice of Jolinn is a magnificent cup, carved from some immense
+sapphire.  Almost paper thin in places, the sapphire of the chalice is
+flawless in every way, and faceted so that the deep blues of the cup are
+highlighted.  Runes float around the sides of the cup, marking sigils of
+purity, unity, and protection.  
+~
+E
+chalice~
+The Chalice of Jolinn is a magnificent cup, carved from some immense
+sapphire.  Almost paper thin in places, the sapphire of the chalice is
+flawless in every way, and faceted so that the deep blues of the cup are
+highlighted.  Runes float around the sides of the cup, marking sigils of
+purity, unity, and protection.  
+~
+>take_prog chalice god seas sapphire Jolinn~
+if mobhere(12069)
+opechoat $n The chalice {rBURNS{x hot to the touch, and you drop it as quickly as you pick it up.
+opechoaround $n $N is burned by the chalice, and drops it!
+opdamtype $n 1 10 10 4
+opforce $n drop chalice
+endif
+~
+|
+V13
+5241
+vial water-filled glass runed stopper basaltvial~
+a water-filled glass vial with a runed stopper~
+A water-filled glass vial with a runed stopper lies here.~
+~
+glass~
+treasure GS 0 0 AO
+0 0 0 0 0
+40 2 0 0 P
+0
+E
+vial~
+This sturdy glass vial is filled with a cloudy liquid.  A blue-runed
+stopper keeps it from spilling.  The vial is cold to the touch.  
+~
+E
+glass~
+This sturdy glass vial is filled with a cloudy liquid.  A blue-runed
+stopper keeps it from spilling.  The vial is cold to the touch.  
+~
+E
+water-filled~
+This sturdy glass vial is filled with a cloudy liquid.  A blue-runed
+stopper keeps it from spilling.  The vial is cold to the touch.  
+~
+E
+runed~
+This sturdy glass vial is filled with a cloudy liquid.  A blue-runed
+stopper keeps it from spilling.  The vial is cold to the touch.  
+~
+E
+stopper~
+This sturdy glass vial is filled with a cloudy liquid.  A blue-runed
+stopper keeps it from spilling.  The vial is cold to the touch.  
+~
+V13
+5242
+pale fungus mushroom Uzith-Hazhi Uzith Hazhi~
+a pale Uzith-Hazhi mushroom~
+A pale mushroom grows here.~
+~
+plant~
+pill 0 0 F AO
+51 'sleep' 'delusions' 'confusion' 'vertigo'
+51 10 0 0 P
+300
+E
+uzith-hazhi~
+The pale Uzith-Hazhi mushroom is a pale, toad-stool like fungus.  Its cap
+is dry and crumbling, and seems brittle enough that you might be able to
+grind it into a powdered form.  
+~
+E
+fungus~
+The pale Uzith-Hazhi mushroom is a pale, toad-stool like fungus.  Its cap
+is dry and crumbling, and seems brittle enough that you might be able to
+grind it into a powdered form.  
+~
+E
+pale~
+The pale Uzith-Hazhi mushroom is a pale, toad-stool like fungus.  Its cap
+is dry and crumbling, and seems brittle enough that you might be able to
+grind it into a powdered form.  
+~
+E
+mushroom~
+The pale Uzith-Hazhi mushroom is a pale, toad-stool like fungus.  Its cap
+is dry and crumbling, and seems brittle enough that you might be able to
+grind it into a powdered form.  
+~
+E
+uzith~
+The pale Uzith-Hazhi mushroom is a pale, toad-stool like fungus.  Its cap
+is dry and crumbling, and seems brittle enough that you might be able to
+grind it into a powdered form.  
+~
+E
+hazhi~
+The pale Uzith-Hazhi mushroom is a pale, toad-stool like fungus.  Its cap
+is dry and crumbling, and seems brittle enough that you might be able to
+grind it into a powdered form.  
+~
+>verb_prog p grind~
+if isowner($n)
+if compstr(2) == pale
+or compstr(2) == fungus
+or compstr(2) == Uzith-Hazhi
+or compstr(2) == Uzith
+or compstr(2) == Hazhi
+or compstr(2) == mushroom
+mpechoat $n You grind the mushroom up into a pale powder.
+mpoload 237 on $n
+oppurge self
+opverbstop
+else
+mpnextinterp
+endif
+else
+mpnextinterp
+endif
+~
+|
+V13
+5243
+ruby brilliant round-cut orange-red~
+a brilliant round-cut ruby~
+A ruby with a brilliant orange-red hue is here.~
+~
+ruby~
+gem DGXY 0 0 A
+0 0 0 0 0
+51 2 50200 0 P
+1
+E
+ruby brilliant round-cut orange-red~
+This ruby is a massive, perfectly cut gemstone.  Each facet is cut and
+polished to highest precision, reflecting a brilliant orange-red hue which s
+far more vivid than common ruby.  The ruby\@s sparkling inner reflections
+seem inviting--there is an almost hypnotic draw to {Wstare{x into the
+{Wruby{x\@s depths, as if some secret hidden deep within its heart is there
+to see if one were only to focus long enough upon it.  
+~
+>verb_prog stare~
+if objtargetcarry()
+  if compstr(2) / ruby
+  or compstr(2) / brilliant
+  or compstr(2) / round
+  or compstr(2) / cut
+  or compstr(2) / orange
+  or compstr(2) / red
+    mpechoat $n You stare for a time into the ruby.
+    mpechoaround $n $N stares at a brilliant round-cut ruby.
+    // Bit Setting for Blood Pyre
+    if chosenpath($n) == golden flame
+      if isbitset($n) == 263
+      else
+        mpbitset $n 263 1
+        mpechoat $n {yYou gain new insight into the application of the Blood Pyre.{x
+        mpaddaffect $n 400 60 24 0 0 0 O
+      endif
+    endif
+  else
+    mpechoat $n {WStare{x at {Wwhat{x?
+  endif
+  opverbstop
+else
+  mpechoat $n Huh?
+endif
+~
+|
+V13
+5244
+pile skeleton skeletons~
+a pile of skeletons~
+A pile of skeletons litters the floor near the southern passage.~
+~
+unknown~
+container Ta 0 0 P
+0 0 0 0 0
+0 0 0 0 P
+0
+E
+pile skeleton skeletons~
+Several skeletons -- some ancient, some newer with bits of sinew and
+gristle still evident on them -- litter the floor near the southern passage.
+The features are predominantly chaja, with some evidence of shuddeni and
+srryn among them.  
+~
+>verb_prog p south~
+if isghost($n)
+or iswizi($n)
+  mpnextinterp
+  break
+endif
+// They walked through, so hit them for a ton of other damage
+mpechoat $n As you pass through the passage to the south, there is a loud SNAP!
+mpechoaround $n As $N passes through the passage to the south, there is a loud SNAP!
+mpecho The line of runes glows brightly, and suddenly a wave of force is unleashed!
+mpdealdamage $n \@The wave of force\@ \@blast\@ other 5000
+mpnextinterp
+~
+|
+V13
+5245
+copper coins~
+a few copper coins~
+A few copper coins are scattered amongst the bones.~
+~
+copper~
+money 0 0 0 AO
+3 3 0 0 0
+0 0 0 0 P
+0
+V13
+5246
+ancient pedestal~
+an ancient pedestal~
+A pedestal rises in the center of the room, untouched by time.~
+~
+marble~
+trash TYa 0 0 P
+0 0 0 0 0
+20 0 0 0 P
+0
+E
+ancient pedestal~
+This pedestal, which has been carved from marble rather than the
+omnipresent basalt of the chamber, rises higher than would be a comfortable
+display level for most humans.  Long, thin grooves have been carved
+vertically around its circular perimeter, which fills out into a squared
+top.  Resting on the pedestal is a simple tablet of granite, etched with a
+series of runes: 
+
+   **********************************
+ **************************************
+***                                  ***
+***    /\\/\\                /\\    /\\  ***
+***   /\\/     \\  /\\  /    /\\   \\/    ***
+***  /         \\/  \\/    .           ***
+***                                  ***
+ **************************************
+   **********************************
+
+Perhaps if you were to {Wstudy{x the runes, you would learn more.
+~
+>verb_prog p study~
+if isghost($n)
+or isnpc($n)
+  mpnextinterp
+  break
+endif
+if compx() == runes
+or compx() == rune
+  mpechoaround $n $N stares intently at $I for a long moment.
+  // Check for stonecraft
+  if skill1152($n) <= 0
+    mpechoat $n You study the ancient rune for a long moment, but it is meaningless to you.
+  else
+    // Check for stoneshaper
+    if skill1157($n) <= 0
+      mpechoat $n You recognize the pattern as an ancient rune of earth, but grow swiftly weary of trying to understand it; the rune is too complex for your skills.
+    else
+      // Check for already learned the rune
+      if isbitset($n) == 296
+        mpechoat $n You study the rune of Empowerment, but learn nothing new.
+      else
+        mpechoat $n You study the ancient rune for a long moment, and slowly a new understanding of runic magic fills you.
+        mpechoat $n You have learned the rune of Empowerment!
+        mpbitset $n 296 1
+      endif
+    endif
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+5247
+large mural~
+a large mural~
+A large mural has been cut into the western wall.~
+~
+unknown~
+trash Ta 0 0 P
+0 0 0 0 0
+0 0 0 0 P
+0
+E
+large mural~
+Much of the western wall is occupied by a massive mural, which has been
+etched directly into the rock.  A massive sloping tower is depicted there,
+rising above the very clouds.  Cut into the pyramidal tower is a series of
+steps, upon which are positioned various figures.  The lowest tiers seems to
+contain various beasts from around the lands: bears, wolves, deer, and other
+such fauna.  Intermingled with them and apparently given no special accord
+are what appear to be srryn and humans.  Upon are the middle tiers are
+perched various aelin figures, accompanied by drakes.  There are also one or
+two lanky silhouettes interspersed among them which might be caladaran, but
+it is difficult to tell.  
+
+Striding upon the upper tiers are a few dragons, as well as what appear to
+be representations of the gods themselves.  Scattered through them are
+various alatharyan figures, depicted here with exaggerated homeliness and in
+tattered rags, as if to indicate a lower caste.  On the highest tier of all,
+above the clouds, gods, dragons, and lesser alatharya, are more alatharyan
+figures.  These have been carved beauteously, with far greater splendor than
+the race -- at least as known in modern times -- generally merits.  
+
+Of interest, the base of the tower is presented as being firmly rooted in
+the earth, with significant detail being given to the portion which extends
+underground.  Several small runes of inscrutable significance have been cut
+around the base.  
+~
+V13
+5248
+broken wand~
+a broken wand~
+A broken wand lies here uselessly.~
+~
+granite~
+trash Y 0 0 AO
+0 0 0 0 0
+3 8 0 1 P
+0
+E
+broken wand~
+While perhaps once a powerful implement of magic, this stone wand has
+since been broken, emptied of any power.  It lies now in useless pieces of
+granite, etched with faded and chipped runes.  
+~
+#0
+
+
+
+#ROOMS
+#5200
+An Ancient Basalt Antechamber~
+Though the air in this small chamber is no less sulfurous than the main
+hallway to the north, it feels nonetheless different, as though charged with
+an ancient, deep power.  The walls of this place are formed of basalt and
+polished smooth, interrupted only by a line of tiny runes near the floor
+which grow larger and more insistent as they converge to the south.  There,
+a faint shimmering is evident in the space between the walls, accompanied by
+an intensification of that sense of power and foreboding.  
+~
+~
+2
+0 25 12
+D0
+The chamber leads out into a larger hallway.
+~
+~
+0 0 5248
+D2
+The space between the walls shimmers with power as the runes near it hum
+faintly.  
+~
+~
+0 0 5310
+W 5 0 0
+Z 5 5
+S
+#5201
+A Hallway Carved from Basalt~
+A narrow hallway, carved out of a natural basalt cave, leads to the south
+from here.  The black walls have been highly polished, and reflect any light
+present.  The air in the hallway is several degrees warmer than that of the
+Temple above, and the smell of sulfur drifts through the dark passage.  A
+narrow stairway leads upwards.  
+~
+~
+1
+0 29 12
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5202
+D4
+The basalt tunnels continue.
+~
+~
+0 0 7782
+W 5 0 0
+Z 5 5
+S
+#5202
+A Hallway Carved from Basalt~
+A narrow hallway, carved out of a natural basalt cave, leads to the north
+and east from here.  The black walls have been highly polished, and reflect
+any light present.  The air in the hallway is several degrees warmer than
+that of the Temple above, and the smell of sulfur drifts through the dark
+passage.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5201
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5203
+W 5 0 0
+Z 5 5
+S
+#5203
+A Hallway Carved from Basalt~
+A narrow hallway, carved out of a natural basalt cave, leads to the east
+and west from here.  The black walls have been highly polished, and reflect
+any light present.  The air in the hallway is several degrees warmer than
+that of the Temple above, and the smell of sulfur drifts through the dark
+passage.  
+~
+~
+1
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5204
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5202
+W 5 0 0
+Z 5 5
+S
+#5204
+A Stairway Carved from Basalt~
+The narrow hallway of basalt widens here, leading to a black stairway
+carved into the floor of the passage.  The narrow hall leads to the east,
+and the stairs descend into the darkness below.  The air in this area is
+warm, and the smell of sulfur wafts through the passage.  
+~
+~
+1
+0 25 12
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5203
+D5
+The basalt tunnels continue.
+~
+~
+0 0 5205
+W 5 0 0
+Z 5 5
+S
+#5205
+The Beginning of the Basalt Catacombs~
+A stairway of black stone leads down into a narrow hallway hewn from the
+basalt.  The stone of the floor and walls is smooth and dark, and warm to
+the touch.  The air in the corridor smells of sulfur, and seems to blow back
+and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5206
+D4
+The basalt tunnels continue.
+~
+~
+0 0 5204
+W 5 0 0
+Z 5 5
+S
+#5206
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  The hallway
+leads north and south, and branches to the east.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5205
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5207
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5235
+W 5 0 0
+Z 5 5
+S
+#5207
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5208
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5206
+W 5 0 0
+Z 5 5
+S
+#5208
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5209
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5207
+W 5 0 0
+Z 5 5
+S
+#5209
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  The hallway
+branches to the north, and continues east and west.  
+~
+~
+1
+0 25 12
+D0
+~
+~
+0 0 5208
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5210
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5237
+W 5 0 0
+Z 5 5
+S
+#5210
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5211
+D2
+~
+~
+0 0 5242
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5209
+W 5 0 0
+Z 5 5
+S
+#5211
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5212
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5210
+W 5 0 0
+Z 5 5
+S
+#5212
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+quite warm to the touch.  The intense odor of sulfur dominates the hot air,
+the heat and smell seeming to grow stronger to the east.  
+~
+~
+1
+0 29 12
+D1
+The hallway slopes steeply downward to the east, descending into a
+flaming crevice.  
+~
+~
+0 0 5213
+D2
+~
+~
+0 0 5211
+W 5 0 0
+Z 5 5
+S
+#5213
+A Steep Slope, Leading Into a Crevice~
+The smooth hallway suddenly slopes steeply downward, spilling into a
+black crevice that has opened in the basalt of the floor.  Occasional
+tongues of flame leap from the crevice, and the air in this portion of the
+hallway is intensely hot, saturated with the odor of sulfur.  The stone
+underfoot has been polished to a bright shine, and is quite slippery,
+apparently designed the send the unwary tumbling into the flames below.  
+~
+~
+1
+0 25 12
+D1
+~
+~
+0 0 5214
+D3
+~
+~
+0 0 5212
+D5
+A crevice filled with searing lava burbles and hisses.
+~
+~
+0 0 5269
+W 5 0 0
+Z 5 5
+S
+#5214
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+quite warm to the touch.  The intense odor of sulfur dominates the hot air,
+the heat and smell seeming to grow stronger to the west.  The hallway
+continues to the east, and a jagged crack in the north wall leads into
+darkness.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5222
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5215
+D3
+The hallway slopes steeply downward into a flaming crevice.  
+~
+~
+0 0 5213
+W 5 0 0
+Z 5 5
+S
+#5215
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5256
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5214
+W 5 0 0
+Z 5 5
+S
+#5216
+A Large Burrow~
+This large, rounded burrow has been carved into the black stone of the
+basalt hallway.  Seemingly tunneled into the rock by some large creature,
+the walls of the burrow are covered with a layer of adhesive slime.  A thick
+stench fills the burrow.  
+~
+~
+1
+0 25 12
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5257
+W 5 0 0
+Z 5 5
+S
+#5217
+A Rough Tunnel Through the Basalt~
+A rough, rounded tunnel seems to have been carved into the basalt by some
+large creature.  The tunnel twists and turns through the volcanic rock, and
+the walls and floor are quite uneven.  The tunnel turns to the east, and
+leads back into a smooth corridor to the south.  
+~
+~
+1
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5218
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5258
+W 5 0 0
+Z 5 5
+S
+#5218
+A Rough Tunnel Through the Basalt~
+A rough, rounded tunnel seems to have been carved into the basalt by some
+large creature.  The tunnel twists and turns through the volcanic rock, and
+the walls and floor are quite uneven.  The tunnel turns to the west and
+south here.  
+~
+~
+1
+0 25 12
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5259
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5217
+W 5 0 0
+Z 5 5
+S
+#5219
+A Basalt Cavern~
+This natural basalt cavern stretches forth to the south, the rough black
+stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Swirling smoke
+drifts into the from the south, and the north wall has a rough tunnel
+burrowed into it.  
+~
+~
+1
+0 25 12
+D2
+The smoke-filled passage continues.
+~
+~
+0 0 5220
+D4
+The passage leads out of the smoke-filled area.
+~
+~
+0 0 5259
+W 5 0 0
+Z 5 5
+S
+#5220
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 29 12
+D0
+The smoke-filled passage continues.
+~
+~
+0 0 5219
+D1
+The smoke-filled passage continues.
+~
+~
+0 0 5221
+W 5 0 0
+Z 5 5
+S
+#5221
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 25 12
+D1
+The smoke-filled passage continues.
+~
+~
+0 0 5260
+D3
+The smoke-filled passage continues.
+~
+~
+0 0 5220
+W 5 0 0
+Z 5 5
+S
+#5222
+A Basalt Cavern~
+This natural basalt cavern stretches forth, running north and south, the
+rough black stone walls curving more or less randomly.  The air in the
+cavern is less stifling than that of the catacombs, and the smell of sulfur
+seems more subdued.  A jagged crack in the southern wall of the cave leads
+to a smooth hallway.  
+~
+~
+1
+0 29 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5223
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5214
+W 5 0 0
+Z 5 5
+S
+#5223
+A Basalt Cavern~
+The natural basalt cavern stretches through the darkness, curving to the
+east and south.  The rough black stone walls curve more or less randomly as
+the cave continues through the volcanic stone.  The air in the cavern is
+less stifling than elsewhere in the catacombs, and the smell of sulfur is
+more subdued.  
+~
+~
+1
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5224
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5222
+W 5 0 0
+Z 5 5
+S
+#5224
+A Basalt Cavern~
+The natural basalt cavern stretches through the darkness, curving to the
+east and west.  The rough black stone walls curve more or less randomly as
+the cave continues through the volcanic stone.  The air in the cavern is
+less stifling than elsewhere in the catacombs, and the smell of sulfur is
+more subdued.  
+~
+~
+1
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5225
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5223
+W 5 0 0
+Z 5 5
+S
+#5225
+A Basalt Cavern~
+The natural basalt cavern stretches through the darkness, curving to the
+north and south, and continuing to the west.  The rough black stone walls
+curve more or less randomly as the cave continues through the volcanic
+stone.  The air in the cavern is less stifling than elsewhere in the
+catacombs, and the smell of sulfur is more subdued.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5227
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5226
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5224
+W 5 0 0
+Z 5 5
+S
+#5226
+A Basalt Cavern~
+The natural basalt cavern stretches through the darkness, coming to an
+end here.  The rough black stone walls curve more or less randomly as the
+cave continues through the volcanic stone.  The air in the cavern is less
+stifling than elsewhere in the catacombs, and the smell of sulfur is more
+subdued.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5225
+W 5 0 0
+Z 5 5
+S
+#5227
+A Basalt Cavern~
+The natural basalt cavern stretches through the darkness, curving to the
+north and south.  The rough black stone walls curve more or less randomly as
+the cave continues through the volcanic stone.  The air in the cavern is
+less stifling than elsewhere in the catacombs, and the smell of sulfur is
+more subdued.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5228
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5225
+W 5 0 0
+Z 5 5
+S
+#5228
+A Basalt Cavern~
+The natural basalt cavern stretches through the darkness, curving to the
+north and south, and branching to the west.  The rough black stone walls
+curve more or less randomly as the cave continues through the volcanic
+stone.  The air in the cavern is less stifling than elsewhere in the
+catacombs, and the smell of sulfur is more subdued.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5229
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5227
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5231
+W 5 0 0
+Z 5 5
+S
+#5229
+A Basalt Cavern~
+The natural basalt cavern stretches through the darkness, curving to the
+east and south, and branching to the west.  The rough black stone walls
+curve more or less randomly as the cave continues through the volcanic
+stone.  The air in the cavern is less stifling than elsewhere in the
+catacombs, and the smell of sulfur is more subdued.  
+~
+~
+1
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5230
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5228
+W 5 0 0
+Z 5 5
+S
+#5230
+A Basalt Cavern~
+The natural basalt cavern stretches through the darkness, coming to an
+end here.  The rough black stone walls curve more or less randomly as the
+cave continues through the volcanic stone.  The air in the cavern is less
+stifling than elsewhere in the catacombs, and the smell of sulfur is more
+subdued.  
+~
+~
+1
+0 25 12
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5229
+W 5 0 0
+Z 5 5
+S
+#5231
+A Basalt Cavern~
+The natural basalt cavern stretches through the darkness, curving to the
+east and west, and branching to the west.  The rough black stone walls curve
+more or less randomly as the cave continues through the volcanic stone.  The
+air in the cavern is less stifling than elsewhere in the catacombs, and the
+smell of sulfur is more subdued.  
+~
+~
+1
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5228
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5232
+W 5 0 0
+Z 5 5
+S
+#5232
+A Basalt Cavern~
+The natural basalt cavern stretches through the darkness, curving to the
+east and south, and branching to the west.  The rough black stone walls
+curve more or less randomly as the cave continues through the volcanic
+stone.  The air in the cavern is less stifling than elsewhere in the
+catacombs, and the smell of sulfur is more subdued.  
+~
+~
+1
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5231
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5233
+W 5 0 0
+Z 5 5
+S
+#5233
+A Basalt Cavern~
+The natural basalt cavern stretches through the darkness, coming to an
+end here.  The rough black stone walls curve more or less randomly as the
+cave continues through the volcanic stone.  The air in the cavern is less
+stifling than elsewhere in the catacombs, and the smell of sulfur is more
+subdued.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5232
+W 5 0 0
+Z 5 5
+S
+#5234
+A Stone Shelf~
+A broad shelf of stone extends from the east wall of the great cavern,
+jutting forth over the lake of molten lava.  Immense heat rushes upwards
+from the magma, washing over the stone shelf in hellish waves.  The black
+basalt of the cave wall is glassy and smooth, as if it has been repeatedly
+blasted with unspeakable heat.  A massive tunnel has been dug into the
+cavern wall to the east.
+~
+~
+1
+0 28 12
+D1
+~
+~
+0 0 5291
+D3
+~
+~
+0 0 5306
+W 5 0 0
+Z 5 5
+S
+#5235
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D0
+~
+~
+0 0 5206
+D2
+~
+~
+0 0 5236
+W 5 0 0
+Z 5 5
+S
+#5236
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  The hallway
+branches east, and continues north and south.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5235
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5237
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5238
+W 5 0 0
+Z 5 5
+S
+#5237
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5239
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5236
+W 5 0 0
+Z 5 5
+S
+#5238
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5236
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5243
+W 5 0 0
+Z 5 5
+S
+#5239
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch deep throughout the earth. 
+The stone of the floor and walls is smooth and dark, and warm to the touch. 
+The air in the corridor smells of sulfur, and seems to blow back and forth,
+as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5237
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5240
+W 5 0 0
+Z 5 5
+S
+#5240
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch deep throughout the earth. 
+The stone of the floor and walls is smooth and dark, and warm to the touch. 
+The finely planed floor of the corridor is littered with small shards of
+basalt, and a deep scrape marks the otherwise featureless wall.  The
+corridor continues east and west.  
+~
+~
+1
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5241
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5239
+W 5 0 0
+Z 5 5
+S
+#5241
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5242
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5247
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5240
+W 5 0 0
+Z 5 5
+S
+#5242
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5210
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5241
+W 5 0 0
+Z 5 5
+S
+#5243
+The Basalt Catacombs~
+The narrow basalt hallway continues to wind deep through the earth.  The
+smooth black walls of the corridor are somewhat rough at this point, as if
+the work of constructing the hallway had been left uncompleted.  Rough
+shards of stone lay on the floor.  The passage continues to the north, and
+begins to slope downward to the south.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5238
+D5
+The basalt tunnels continue.
+~
+~
+0 0 5245
+W 5 0 0
+Z 5 5
+S
+#5244
+The Basalt Catacombs~
+The basalt passage grows ever more narrow, and eventually the black walls
+converge into a dead end at this point.  The stone of the walls and floor is
+warm to the touch, and the smell of sulfur is heavy in the air.  The passage
+rises to the east.  
+~
+~
+1
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5245
+W 5 0 0
+Z 5 5
+S
+#5245
+The Basalt Catacombs~
+The hallway carved from the black stone of the catacombs becomes narrow
+at this point, the formerly smooth walls now rough and unfinished.  The
+floor is littered with small shards of basalt, and slopes slightly downward
+to the west.  A steep incline leads upward to the north.  
+~
+~
+1
+0 25 12
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5244
+D4
+The basalt tunnels continue.
+~
+~
+0 0 5243
+W 5 0 0
+Z 5 5
+S
+#5246
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5247
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5266
+W 5 0 0
+Z 5 5
+S
+#5247
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5241
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5248
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5246
+W 5 0 0
+Z 5 5
+S
+#5248
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  The main
+hallway runs west to east here, while a smaller passage branches off to the
+south.  
+~
+~
+1
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5249
+D2
+~
+~
+0 0 5200
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5247
+W 5 0 0
+Z 5 5
+S
+#5249
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5250
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5248
+W 5 0 0
+Z 5 5
+S
+#5250
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in this section of the corridor smells intensely
+of sulfur, and seems to be quite a bit hotter than the rest of the
+catacombs.  
+~
+~
+1
+0 28 12
+D1
+A large crevice in the floor to the west spews superheated gas.
+~
+~
+0 0 5251
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5249
+W 5 0 0
+Z 5 5
+S
+#5251
+Above a Gas Vent~
+The black hallway carved from the basalt continues to the east and west
+here.  The floor is interrupted by a narrow, jagged crack, which emits
+blasts of superheated air from time to time.  The air in this area smells
+intensely of sulfur, and great waves of heat sweep upward from the crack in
+the floor.  
+~
+~
+1
+0 25 12
+D1
+~
+~
+0 0 5252
+D3
+~
+~
+0 0 5250
+W 5 0 0
+Z 5 5
+S
+#5252
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in this section of the corridor smells intensely
+of sulfur, and seems to be quite a bit hotter than the rest of the
+catacombs.  
+~
+~
+1
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5253
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5265
+D3
+A large crevice in the floor to the west spews superheated gas.  
+~
+~
+0 0 5251
+W 5 0 0
+Z 5 5
+S
+#5253
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5254
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5252
+W 5 0 0
+Z 5 5
+S
+#5254
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5255
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5253
+W 5 0 0
+Z 5 5
+S
+#5255
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D1
+To the east, the tunnel is marked by an odd sticky substance with
+horizontal marks in it.  
+~
+~
+0 0 5257
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5254
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5256
+W 5 0 0
+Z 5 5
+S
+#5256
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5215
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5255
+W 5 0 0
+Z 5 5
+S
+#5257
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch deep through the earth. 
+The black stone of the floor and walls is smooth and dark, and quite warm to
+the touch.  A gritty black gravel litters the floor in this area, and the
+wall to the north seems to have been burrowed into by some creature.  The
+hall continues to the east, and there is an intersection to the west.  
+~
+~
+1
+0 25 12
+D0
+To the north, a side tunnel is filled with sticky substance.
+~
+~
+0 0 5216
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5258
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5255
+W 5 0 0
+Z 5 5
+S
+#5258
+The Basalt Catacombs~
+The smooth basalt hallway comes to an end here, a solid, blank wall
+blocking the way to the east.  The north wall of the corridor seems to have
+been burrowed through by some creature, and a rough tunnel leads north into
+the darkness.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5217
+D3
+To the east, the tunnel is marked by an odd sticky substance with
+horizontal marks in it.  
+~
+~
+0 0 5257
+W 5 0 0
+Z 5 5
+S
+#5259
+A Rough Tunnel Through the Basalt~
+A rough, rounded tunnel seems to have been carved into the basalt by some
+large creature.  The tunnel twists and turns through the volcanic rock, and
+the walls and floor are quite uneven.  The tunnel suddenly descends steeply
+to the south, from whence comes an intense odor of sulfur.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5218
+D5
+The tunnel descends into a smoke-filled passage.
+~
+~
+0 0 5219
+W 5 0 0
+Z 5 5
+S
+#5260
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 24 12
+D1
+The smoke-filled passage continues.
+~
+~
+0 0 5261
+D2
+The smoke-filled passage continues.
+~
+~
+0 0 5264
+D3
+The smoke-filled passage continues.
+~
+~
+0 0 5221
+W 1 -1 0
+Z 5 5
+S
+#5261
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 24 12
+D0
+The smoke-filled passage continues.
+~
+~
+0 0 5286
+D1
+The smoke-filled passage continues.
+~
+~
+0 0 5262
+D3
+The smoke-filled passage continues.
+~
+~
+0 0 5260
+W 5 0 0
+Z 5 5
+S
+#5262
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 24 12
+D1
+The smoke-filled passage continues.
+~
+~
+0 0 5263
+D2
+The smoke-filled passage continues.
+~
+~
+0 0 5280
+D3
+The smoke-filled passage continues.
+~
+~
+0 0 5261
+W 5 0 0
+Z 5 5
+S
+#5263
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 24 12
+D3
+The smoke-filled passage continues.
+~
+~
+0 0 5262
+W 5 0 0
+Z 5 5
+S
+#5264
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 24 12
+D0
+The smoke-filled passage continues.
+~
+~
+0 0 5260
+D1
+The smoke-filled passage continues.
+~
+~
+0 0 5279
+D2
+The smoke-filled passage continues.
+~
+~
+0 0 5282
+W 5 0 0
+Z 5 5
+S
+#5265
+The Basalt Catacombs~
+The narrow basalt hallway continues to branch through the earth below the
+Yithoul temple.  The stone of the floor and walls is smooth and dark, and
+warm to the touch.  The air in the corridor smells of sulfur, and seems to
+blow back and forth, as if being drawn by enormous bellows.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5252
+D2
+The ceiling to the south looks ready to collapse.
+~
+~
+0 0 5267
+W 5 0 0
+Z 5 5
+S
+#5266
+The Basalt Catacombs~
+The narrow basalt hallway ends abruptly at this point in an apparent
+cave-in.  The smooth walls have been scored by falling rock, and broken
+black stone is piled on the floor.  A gaping hole in the ceiling is
+accessible by climbing the pile of rubble.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5246
+D4
+The smooth hallway has been broken by a cave in, and an opening leads
+upwards.  
+~
+~
+0 0 5268
+W 5 0 0
+Z 5 5
+S
+#5267
+The Basalt Catacombs~
+The narrow basalt hallway comes to an abrupt end, blocked by an apparent
+cave-in.  Jagged and broken blocks of basalt have fallen from the cracked
+ceiling of the corridor, and smaller stones and shards are scattered
+everywhere.  Black dust swirls throughout the sulfurous air, dancing at the
+slightest movements.  
+~
+~
+1
+0 25 12
+D0
+~
+~
+0 0 5265
+W 5 0 0
+Z 5 5
+S
+#5268
+An Inhabited Cave~
+This rough cavern, worn into the basalt by the passing of long-ago
+subterranean water, is littered with scraps of cloth, gnawed shuddeni bones,
+and fish heads.  The smell of large animals pervades the area, and the faint
+burbling of water can be heard nearby.  A jagged opening is visible where
+the floor of the cave has collapsed.  
+~
+~
+1
+0 25 12
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5270
+D5
+The basalt tunnels continue.
+~
+~
+0 0 5266
+T 56
+W 5 0 0
+Z 5 5
+S
+#5269
+Inside a Flaming Crevice~
+The steep black walls of the crevice lead straight downward from the
+hallway above, ending in a pool of molten lava.  The heat is tremendous at
+the bottom of the crevice, and massive gouts of flame burst forth from the
+burbling pool of liquid stone.  The lava gives off a hellish red glare which
+fills the area, and the air seems composed of noxious gasses.  
+~
+~
+1
+0 25 12
+D4
+~
+~
+131072 0 5213
+W 5 0 0
+Z 5 5
+S
+#5270
+An Inhabited Cave~
+This rough cavern, worn into the basalt by the passing of long-ago
+subterranean water, is littered with scraps of cloth, gnawed shuddeni bones,
+and fish heads.  The smell of large animals pervades the area, and the faint
+burbling of water can be heard nearby.  
+~
+~
+1
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5272
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5268
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5275
+T 56
+W 5 0 0
+Z 5 5
+S
+#5271
+The Flame Dragon\@s Lair~
+The massive cavernous lair of the flame dragon stretches into the
+darkness, the black cavern walls interspersed with gouts of flame or cracks
+through which rivulets of magma ooze.  The floor of the cavern is formed
+from a long-dried river of lava, with an enormous depression hollowed by
+centuries of the dragon\@s occupancy.  The ceiling of the lair extends
+upwards into the darkness, and a large opening in the south wall leads
+outward to a stone shelf.  
+~
+~
+1
+0 25 12
+D2
+~
+~
+0 0 5291
+W 5 0 0
+Z 5 5
+S
+#5272
+An Inhabited Cave~
+This rough cavern, worn into the basalt by the passing of long-ago
+subterranean water, is littered with scraps of cloth, gnawed shuddeni bones,
+and fish heads.  The smell of large animals pervades the area, and the faint
+burbling of water can be heard from the west.  
+~
+~
+0
+0 25 12
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5270
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5273
+T 56
+W 5 0 0
+Z 5 5
+S
+#5273
+An Inhabited Cave~
+This rough cavern, worn into the basalt by the passing of long-ago
+subterranean water, is littered with scraps of cloth, gnawed shuddeni bones,
+and fish heads.  The smell of large animals pervades the area, and the faint
+burbling of water can be heard from the west.  
+~
+~
+0
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5272
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5274
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5307
+T 56
+W 5 0 0
+Z 5 5
+S
+#5274
+An Inhabited Cave~
+This rough cave, carved into the basalt by the movement of long-ago
+water, has been outfitted as a crude lair.  The floor is lined with soft,
+fibrous roots, forming a primitive bedding, and the litter of bones and fish
+heads has been mostly confined to one corner.  The air in the lair is heavy,
+smelling strongly of dead fish and large animals.  
+~
+~
+0
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5273
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5276
+W 5 0 0
+Z 5 5
+S
+#5275
+An Inhabited Cave~
+This rough cave, carved into the basalt by the movement of long-ago
+water, has been outfitted as a crude lair.  The floor is lined with soft,
+fibrous roots, forming a primitive bedding, and the litter of bones and fish
+heads has been mostly confined to one corner.  The air in the lair is heavy,
+smelling strongly of dead fish and large animals.  
+~
+~
+0
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5270
+D3
+The basalt tunnels continue.
+~
+~
+0 0 5276
+T 56
+W 5 0 0
+Z 5 5
+S
+#5276
+An Inhabited Cave~
+This rough cavern, worn into the basalt by the passing of long-ago
+subterranean water, is littered with scraps of cloth, gnawed shuddeni bones,
+and fish heads.  The smell of large animals pervades the area, and the faint
+burbling of water can be heard from the north.  A crevice in the west cave
+wall leads into the darkness.  
+~
+~
+0
+0 25 12
+D0
+~
+~
+0 0 5274
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5275
+D3
+A crevice leads into a small tunnel.
+~
+~
+0 0 5277
+T 56
+W 5 0 0
+Z 5 5
+S
+#5277
+A Crevice~
+A wide crevice in the cave wall leads into the main cave area to the
+east, and narrows slightly to the south, leading into a side cavern.  The
+floor is lined with traces of dried mud, with the prints of twisted saurian
+feet leading both east and south.  
+~
+~
+0
+0 25 12
+D1
+The basalt tunnels continue.
+~
+~
+0 0 5276
+D2
+The basalt tunnels continue.
+~
+~
+0 0 5278
+T 56
+W 5 0 0
+Z 5 5
+S
+#5278
+A Large Side Cavern~
+A narrowing crevice in the basalt opens into a side cavern, a rounded
+natural chamber that appears to have once been part of a more extensive lava
+tube.  The smooth, glassy floor of the cave is tracked with dried mud, and
+small strips of cloth and filth-encrusted baubles decorate the southern
+wall.  The smells of sulfur and excrement are thick in the air, and a pile
+of cracked and gnawed bones indicates that this cave is used as the lair of
+some large beast.  
+~
+~
+0
+0 25 12
+D0
+The basalt tunnels continue.
+~
+~
+0 0 5277
+T 56
+W 5 0 0
+Z 5 5
+S
+#5279
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 24 12
+D1
+The smoke-filled passage continues.
+~
+~
+0 0 5280
+D3
+The smoke-filled passage continues.
+~
+~
+0 0 5264
+W 5 0 0
+Z 5 5
+S
+#5280
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 24 12
+D0
+The smoke-filled passage continues.
+~
+~
+0 0 5262
+D2
+The smoke-filled passage continues.
+~
+~
+0 0 5284
+D3
+The smoke-filled passage continues.
+~
+~
+0 0 5279
+W 5 0 0
+Z 5 5
+S
+#5281
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 24 12
+D1
+The smoke-filled passage continues.
+~
+~
+0 0 5282
+D3
+The smoke-filled passage continues.
+~
+~
+0 0 5290
+T 64
+W 5 0 0
+Z 5 5
+S
+#5282
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 24 12
+D0
+The smoke-filled passage continues.
+~
+~
+0 0 5264
+D1
+The smoke-filled passage continues.
+~
+~
+0 0 5283
+D2
+The smoke-filled passage continues.
+~
+~
+0 0 5285
+D3
+The smoke-filled passage continues.
+~
+~
+0 0 5281
+T 64
+W 5 0 0
+Z 5 5
+S
+#5283
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 24 12
+D1
+The smoke-filled passage continues.
+~
+~
+0 0 5284
+D2
+The smoke-filled passage continues.
+~
+~
+0 0 5287
+D3
+The smoke-filled passage continues.
+~
+~
+0 0 5282
+T 64
+W 5 0 0
+Z 5 5
+S
+#5284
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 24 12
+D0
+The smoke-filled passage continues.
+~
+~
+0 0 5280
+D2
+The smoke-filled passage continues.
+~
+~
+0 0 5286
+D3
+The smoke-filled passage continues.
+~
+~
+0 0 5283
+T 64
+W 5 0 0
+Z 5 5
+S
+#5285
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 24 12
+D0
+The smoke-filled passage continues.
+~
+~
+0 0 5282
+D2
+The smoke-filled passage continues.
+~
+~
+0 0 5289
+W 5 0 0
+Z 5 5
+S
+#5286
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 24 12
+D0
+The smoke-filled passage continues.
+~
+~
+0 0 5284
+D2
+The smoke-filled passage continues.
+~
+~
+0 0 5261
+W 5 0 0
+Z 5 5
+S
+#5287
+A Tunnel Through the Basalt~
+A wide fissure rent in the volcanic stone of the cavern wall leads
+directly downward.  The heat in the fissure is immense, seeming to stream
+upward from below.  The smoke is thick, and prevents any view of the way
+ahead.  
+~
+~
+1
+0 25 12
+D0
+The smoke-filled passage continues.
+~
+~
+0 0 5283
+D5
+The tunnel leads steeply downwards.
+~
+~
+0 0 5292
+W 5 0 0
+Z 5 5
+S
+#5288
+A Tunnel Through the Basalt~
+~
+~
+1
+0 32797 12
+W 5 0 0
+Z 5 5
+S
+#5289
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 24 12
+D0
+The smoke-filled passage continues.
+~
+~
+0 0 5285
+D1
+The smoke-filled passage continues.
+~
+~
+0 0 5290
+W 5 0 0
+Z 5 5
+S
+#5290
+A Smoke-filled Basalt Cavern~
+This natural basalt cavern winds its way through the earth, the rough
+black stone walls curving more or less randomly.  The air in the cavern is
+intensely hot, and filled with the thick odor of sulfur.  Billowing smoke
+swirls about the cave, blocking all vision.  
+~
+~
+1
+0 24 12
+D1
+The smoke-filled passage continues.
+~
+~
+0 0 5281
+D3
+The smoke-filled passage continues.
+~
+~
+0 0 5289
+W 5 0 0
+Z 5 5
+S
+#5291
+The Entrance to the Flame Dragon\@s Lair~
+A massive tunnel has been dug into the wall of the cavern, apparently
+excavated by the use of massive heat.  The walls are glassy and smooth, and
+rivulets of molten stone run across the floor.  The heat in the tunnel is
+immense, compounded by gouts of flame and small streams of lava leaking from
+cracks in the cavern walls.  The enormous tunnel turns to the north and
+enters a large cave, and exits to a stone shelf to the west.  
+~
+~
+1
+0 25 12
+D0
+~
+~
+131072 0 5271
+D3
+~
+~
+0 0 5234
+W 5 0 0
+Z 5 5
+S
+#5292
+At the Edge of a Lake of Molten Lava~
+A wide fissure in the ceiling opens to a broad stone ledge at the edge of
+a great cavern, spreading to the east.  The ledge you stand on looks over an
+incredible lake of molten lava which fills the vast cave.  The heat pouring
+from the lake is enormous, sweeping over the ledge in blistering waves. 
+Blasts of fire regularly explode forth from the lake\@s surface.  A narrow,
+crumbling stone walkway has been erected, leading from the ledge into the
+center of the flames.  
+~
+~
+1
+0 29 12
+D1
+A vast lake of molten lava is to the west.  A very narrow crumbling
+walkway leads to the center of the lake.  
+~
+~
+0 0 5297
+D4
+The passage upwards is filled with smoke, and the flickering of flames.  
+~
+~
+0 0 5287
+W 5 0 0
+Z 5 5
+S
+#5293
+A Lake of Molten Lava~
+An incredible heat streams upward from the molten lava in great waves,
+accompanied by the occasional burst of flames.  The lake of molten lava
+burbles and spits forth large globules of magma, making the area quite
+dangerous even to those airborne.  A narrow stone walkway rises above the
+magma to the south.  
+~
+~
+1
+0 24 12
+D1
+~
+~
+0 0 5294
+D2
+~
+~
+0 0 5297
+W 5 0 0
+Z 5 5
+S
+#5294
+A Lake of Molten Lava~
+An incredible heat streams upward from the molten lava in great waves,
+accompanied by the occasional burst of flames.  The lake of molten lava
+burbles and spits forth large globules of magma, making the area quite
+dangerous even to those airborne.  A narrow stone walkway rises above the
+magma to the south.  
+~
+~
+1
+0 24 12
+D1
+~
+~
+0 0 5295
+D2
+~
+~
+0 0 5298
+D3
+~
+~
+0 0 5293
+W 5 0 0
+Z 5 5
+S
+#5295
+A Lake of Molten Lava~
+An incredible heat streams upward from the molten lava in great waves,
+accompanied by the occasional burst of flames.  The lake of molten lava
+burbles and spits forth large globules of magma, making the area quite
+dangerous even to those airborne.  A large stone island rises above the
+magma to the south.  
+~
+~
+1
+0 24 12
+D1
+~
+~
+0 0 5296
+D2
+~
+~
+0 0 5299
+D3
+~
+~
+0 0 5294
+W 5 0 0
+Z 5 5
+S
+#5296
+A Lake of Molten Lava~
+An incredible heat streams upward from the molten lava in great waves,
+accompanied by the occasional burst of flames.  The lake of molten lava
+burbles and spits forth large globules of magma, making the area quite
+dangerous even to those airborne.  
+~
+~
+1
+0 24 12
+D2
+~
+~
+0 0 5300
+D3
+~
+~
+0 0 5295
+W 5 0 0
+Z 5 5
+S
+#5297
+A Stone Walkway Through a Lake of Molten Lava~
+A narrow stone walkway leads through the lake of molten lava.  Waves of
+blistering heat rise from the magma all around, and bursts of fire flare up
+near the crumbling black stones of the walkway.  To the east, the walkway
+leads to a large stone island jutting from the lava.  To the west is a ledge
+of stone.  
+~
+~
+1
+0 24 12
+D0
+~
+~
+0 0 5293
+D1
+~
+~
+0 0 5298
+D2
+~
+~
+0 0 5302
+D3
+~
+~
+0 0 5292
+W 5 0 0
+Z 5 5
+S
+#5298
+A Stone Walkway Through a Lake of Molten Lava~
+A narrow stone walkway leads through the lake of molten lava.  Waves of
+blistering heat rise from the magma all around, and bursts of fire flare up
+near the crumbling black stones of the walkway.  To the east, the walkway
+leads to a large stone island jutting from the lava.  To the west is a ledge
+of stone.  
+~
+~
+1
+0 24 12
+D0
+~
+~
+0 0 5294
+D1
+~
+~
+0 0 5299
+D2
+~
+~
+0 0 5303
+D3
+~
+~
+0 0 5297
+W 5 0 0
+Z 5 5
+S
+#5299
+A Stone Island Amid a Lake of Molten Lava~
+A large island of black stone rises forth from the lake of molten lava. 
+Intense waves of heat sweep over the island, and blasts of fire from the
+lava burst forth regularly.  The stone of the island is smooth, but
+occasionally marred by lumps of dried lava that have burst forth from the
+lake.  A narrow stone walkway leads to the west, and the magma surrounds all
+other sides of the island.  In the distance, a stone ledge is visible on the
+east wall of the cavern.  
+~
+~
+1
+0 24 12
+D0
+~
+~
+0 0 5295
+D1
+~
+~
+0 0 5300
+D2
+~
+~
+0 0 5304
+D3
+~
+~
+0 0 5298
+W 5 0 0
+Z 5 5
+S
+#5300
+A Lake of Molten Lava~
+An incredible heat streams upward from the molten lava in great waves,
+accompanied by the occasional burst of flames.  The lake of molten lava
+burbles and spits forth large globules of magma, making the area quite
+dangerous even to those airborne.  A large stone island rises out of the
+magma to the west, and a basalt shelf juts forth from the cavern wall in the
+distance to the southeast.  
+~
+~
+1
+0 24 12
+D0
+~
+~
+0 0 5296
+D1
+~
+~
+0 0 5301
+D2
+~
+~
+0 0 5305
+D3
+~
+~
+0 0 5299
+W 5 0 0
+Z 5 5
+S
+#5301
+A Lake of Molten Lava~
+An incredible heat streams upward from the molten lava in great waves,
+accompanied by the occasional burst of flames.  The lake of molten lava
+burbles and spits forth large globules of magma, making the area quite
+dangerous even to those airborne.  A large stone shelf juts from the cavern
+wall to the southeast.  
+~
+~
+1
+0 24 12
+D2
+~
+~
+0 0 5306
+D3
+~
+~
+0 0 5300
+W 5 0 0
+Z 5 5
+S
+#5302
+A Lake of Molten Lava~
+An incredible heat streams upward from the molten lava in great waves,
+accompanied by the occasional burst of flames.  The lake of molten lava
+burbles and spits forth large globules of magma, making the area quite
+dangerous even to those airborne.  A narrow stone walkway rises above the
+magma to the north.  
+~
+~
+1
+0 24 12
+D0
+~
+~
+0 0 5297
+D1
+~
+~
+0 0 5303
+W 5 0 0
+Z 5 5
+S
+#5303
+A Lake of Molten Lava~
+An incredible heat streams upward from the molten lava in great waves,
+accompanied by the occasional burst of flames.  The lake of molten lava
+burbles and spits forth large globules of magma, making the area quite
+dangerous even to those airborne.  A narrow stone walkway rises above the
+magma to the north.  
+~
+~
+1
+0 24 12
+D0
+~
+~
+0 0 5298
+D1
+~
+~
+0 0 5304
+D3
+~
+~
+0 0 5302
+W 5 0 0
+Z 5 5
+S
+#5304
+A Lake of Molten Lava~
+An incredible heat streams upward from the molten lava in great waves,
+accompanied by the occasional burst of flames.  The lake of molten lava
+burbles and spits forth large globules of magma, making the area quite
+dangerous even to those airborne.  A narrow stone walkway rises above the
+magma to the north.  
+~
+~
+1
+0 24 12
+D0
+~
+~
+0 0 5299
+D1
+~
+~
+0 0 5305
+D3
+~
+~
+0 0 5303
+W 5 0 0
+Z 5 5
+S
+#5305
+A Lake of Molten Lava~
+An incredible heat streams upward from the molten lava in great waves,
+accompanied by the occasional burst of flames.  The lake of molten lava
+burbles and spits forth large globules of magma, making the area quite
+dangerous even to those airborne.  A large stone shelf juts from the cavern
+wall in the distance to the east.  
+~
+~
+1
+0 24 12
+D0
+~
+~
+0 0 5300
+D1
+~
+~
+0 0 5306
+D3
+~
+~
+0 0 5304
+W 5 0 0
+Z 5 5
+S
+#5306
+A Lake of Molten Lava~
+An incredible heat streams upward from the molten lava in great waves,
+accompanied by the occasional burst of flames.  The lake of molten lava
+burbles and spits forth large globules of magma, making the area quite
+dangerous even to those airborne.  A large stone shelf juts from the cavern
+wall to the east.
+~
+~
+1
+0 24 12
+D0
+~
+~
+0 0 5301
+D1
+~
+~
+0 0 5234
+D3
+~
+~
+0 0 5305
+W 5 0 0
+Z 5 5
+S
+#5307
+A Subterranean Pool~
+The rough cave of basalt opens into a large chamber filled with murky
+water.  A gurgling spring gushes from a crack in the west side of the cave
+wall, feeding the small subterranean pool.  The water is dim and black,
+impenetrable in the darkness of the cave.  Piles of scales and fish bones
+are scattered along the edge of the pool.  
+~
+~
+0
+0 24 6
+D1
+~
+~
+0 0 5273
+D5
+The water roils with the motion of many fish.
+~
+~
+0 0 5308
+T 56
+W 5 0 0
+Z 5 5
+S
+#5308
+The Bottom of a Subterranean Pool~
+The waters of this subterranean pool are warm and sulferous, and slightly
+irritating to the skin.  The darkness of the cavern is intensified
+underwater, and the high mineral content of the pool makes the water even
+murkier.  Barely visible in the obscure depths is an opening in the basalt
+to the east.  
+~
+~
+0
+0 28 11
+D1
+~
+~
+0 0 5309
+D4
+~
+~
+0 0 5307
+W 5 0 0
+Z 5 5
+S
+#5309
+A Subaquatic Grotto~
+A deep opening in the wall of the cave pool leads into a subaquatic
+grotto about twenty feet in diameter.  The murky water of the cave pool
+obscures the outlines of the walls, and the sulfurous water is slightly
+irritating to the skin.  The floor of the underwater grotto is coated with a
+soft brownish mud that was not present in the main pool.  
+~
+~
+0
+0 28 11
+D3
+~
+~
+0 0 5308
+W 5 0 0
+Z 5 5
+S
+#5310
+An Ancient Basalt Chamber~
+This large chamber might once have been used as an exhibition or display
+room, lined as it is with shelves and cases hewn from basalt.  The
+proportions are substantial, as though the entire place were designed for
+something notably larger than human.  Etchings decorate the walls in
+carefully-positioned rectangular blocks, as though to label or mark specific
+pieces of interest.  Most of whatever was once shown here, however, has long
+since rotted or crumbled away, leaving behind only scattered remnants of
+stone, bone, and other such durables.  
+~
+~
+3
+0 7 12
+D0
+The doorway opens into a smaller antechamber.
+~
+~
+0 0 5200
+W 5 1 0
+Z 5 5
+S
+#5393
+A Chamber Hewn from Volcanic Glass~
+This smoky chamber is carved out of black, almost polished volcanic
+glass.  Narrow, jagged stalagmites burst from the floor, as dark as the
+walls of the chamber, and sharp enough to impale a man.  Eerie, unnatural
+flames situated in the corners of the room cast crimson shadows across the
+floor.  In the eastern wall, a cleft shatters the smooth lines of the glass.
+Sinister, flickering red light emanates from the cleft, filling the cavern
+with its illumination.  
+~
+~
+1
+0 8254 12
+E
+cleft~
+The cleft is about as wide as a human\@s hand. Beyond it lies an unnatural red
+light, which is burningly hot. 
+~
+W 5 0 0
+Z 5 5
+S
+#5394
+~
+~
+~
+1
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#5395
+~
+~
+~
+1
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#5396
+~
+~
+~
+1
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#5397
+~
+~
+~
+1
+0 32780 12
+W 5 0 0
+Z 5 5
+S
+#5398
+~
+~
+~
+1
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#5399
+~
+~
+~
+1
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 5205 spec_breath_fire
+M 5222 spec_cast_void
+M 5228 spec_cast_fire
+S
+
+
+
+#RESETS
+D 0 5269 4 131072
+D 0 5291 0 131072
+O 0 5244 0 5200
+P 0 5245 1 5244 1
+P 0 5248 1 5244 1
+M 0 5227 1 5210 1
+M 0 5201 1 5213 1
+M 0 5208 1 5216 1
+G 0 5206 0
+P 0 5208 500 5206 1
+P 0 5207 550 5206 1
+M 0 5209 1 5216 1
+M 0 5204 30 5221 1
+M 0 5206 15 5221 1
+M 0 5221 1 5228 1
+O 0 5200 0 5240
+M 0 5203 1 5251 1
+M 0 5207 1 5257 1
+M 0 5204 40 5260 1
+M 0 5206 15 5260 1
+M 0 5204 40 5261 1
+M 0 5206 15 5261 1
+M 0 5204 40 5262 1
+M 0 5204 40 5263 1
+M 0 5206 15 5263 1
+M 0 5204 40 5264 1
+M 0 5206 15 5264 1
+M 0 5225 1 5267 1
+M 0 5202 1 5269 1
+M 0 5216 4 5270 1
+E 0 5220 0 13
+E 0 5221 0 16
+M 0 5205 1 5271 1
+E 0 5214 0 9
+E 0 5215 0 5
+E 0 5210 0 6
+O 0 5212 0 5271
+O 0 5213 0 5271
+P 0 5243 1 5213 1
+P 0 5209 9999 5213 1
+O 0 5216 0 5271
+M 0 5216 4 5273 1
+E 0 5219 0 16
+E 0 5220 0 13
+M 0 5215 8 5274 1
+E 0 5222 0 13
+E 0 5223 0 16
+M 0 5215 4 5275 1
+E 0 5222 0 13
+E 0 5223 0 16
+M 0 5220 1 5278 1
+E 0 5226 0 13
+E 0 5224 0 16
+E 0 5229 0 17
+E 0 5225 0 3
+G 0 5227 0
+P 0 5228 9999 5227 1
+M 0 5215 3 5278 1
+O 0 5242 0 5278
+M 0 5204 40 5279 1
+M 0 5206 15 5279 1
+M 0 5204 40 5280 1
+M 0 5206 15 5280 1
+M 0 5204 40 5281 1
+M 0 5206 15 5281 3
+M 0 5206 15 5281 3
+M 0 5206 15 5281 3
+M 0 5204 40 5282 1
+M 0 5206 15 5282 1
+M 0 5204 40 5283 1
+M 0 5206 15 5283 1
+M 0 5204 40 5284 1
+M 0 5206 15 5284 1
+M 0 5204 40 5285 1
+M 0 5206 15 5285 1
+M 0 5204 40 5286 1
+M 0 5206 15 5286 1
+M 0 5204 40 5289 1
+M 0 5204 40 5290 1
+M 0 5213 1 5291 1
+M 0 5211 15 5293 1
+M 0 5211 15 5294 1
+M 0 5211 15 5295 1
+M 0 5211 15 5296 1
+M 0 5212 2 5297 1
+M 0 5212 2 5298 1
+O 0 5201 0 5299
+M 0 5214 1 5299 1
+M 0 5211 15 5300 1
+M 0 5211 15 5301 1
+M 0 5211 15 5302 1
+M 0 5211 15 5303 1
+M 0 5211 15 5304 1
+M 0 5211 15 5305 1
+M 0 5211 15 5306 1
+M 0 5217 2 5307 2
+M 0 5217 2 5307 2
+M 0 5218 1 5307 1
+M 0 5219 1 5307 1
+E 0 5217 0 16
+E 0 5218 0 17
+M 0 5224 20 5308 10
+M 0 5224 20 5308 10
+M 0 5224 20 5308 10
+M 0 5224 20 5308 10
+M 0 5224 20 5308 10
+M 0 5224 20 5308 10
+M 0 5224 20 5308 10
+M 0 5224 20 5308 10
+M 0 5224 20 5308 10
+M 0 5224 20 5308 10
+M 0 5226 1 5309 1
+M 0 5224 20 5309 10
+M 0 5224 20 5309 10
+M 0 5224 20 5309 10
+M 0 5224 20 5309 10
+M 0 5224 20 5309 10
+M 0 5224 20 5309 10
+M 0 5224 20 5309 10
+M 0 5224 20 5309 10
+M 0 5224 20 5309 10
+M 0 5224 20 5309 10
+O 0 5233 0 5309
+P 0 5234 9999 5233 1
+P 0 5235 9999 5233 1
+O 0 5246 0 5310
+O 0 5247 0 5310
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

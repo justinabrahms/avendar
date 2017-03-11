@@ -1,0 +1,4317 @@
+#AREADATA
+Name The Glacial Prison~
+Builders Yzeek~
+VNUMs 8600 8649
+Credits [45 51] Yzeek     The Glacial Prison~
+Danger 2
+Security 1
+Areainfo 59
+Herbs 0
+Weather 0 4 3 0 4
+Weave 5 1 0
+Shades 5 5
+Stone 82
+End
+
+
+
+#MOBILES
+V4 8600
+symbolbot symbolbot10 mob_8600 bot~
+symbolbot10~
+A symbolbot is here, fux0ring you out of two pracs.
+~
+~
+human~
+water scholar~
+ADL 0 DL N 0
+0 0 23d23+1212 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p study~
+if mobhere(8649)
+  mpechoat $n You can\@t study anything with Kzroth here!
+  break
+endif
+if compstr(2) == symbol
+or compstr(2) == mark
+or compstr(2) == damned
+or compstr(2) == star
+or compstr(2) == eight-sided
+  if skill1250($n) > 0
+    if hassymbol($n) == 10
+      mpechoat $n That symbol is one with which you are already familiar.
+    else
+      mpforce $n look symbolvision
+      mpaddsymbol $n 10
+      mplag $n 4
+      break
+    endif
+  else
+    mpechoat $n You lack the knowledge to fully comprehend this symbol.
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+|
+V4 8601
+test testbot bot mob_8601~
+the Testbot~
+The Underbot
+~
+~
+human~
+water scholar~
+AL 0 DFLZe N 0
+0 0 1d10+100 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium unknown
+>take_prog mushroom red~
+if luck($n) == lucky
+  mpechoat $n You feel something brush past your hand as you reach into the hole.
+else
+  if luck($n) == unlucky
+    mpechoat $n As your hand enters the hole, something moves inside the tree!
+    mpechoat $n You scream in AGONY as your hand is pierced! The pain shoots through your body!
+    mpechoaround $n $N screams in agony!
+    mpget char $n level 1
+    mpmath 1 $1 * 4
+    mpdealdamage $n \@a red viper\@ strike pierce $1
+    mpaddaffect $n 105 60 40 1 -10 4096
+  else
+    if rand(30)
+      mpechoat $n As your hand enters the hole, something moves inside the tree!
+      mpechoat $n You scream in AGONY as your hand is pierced! The pain shoots through your body!
+      mpechoaround $n $N screams in agony!
+      mpget char $n level 1
+      mpmath 1 $1 * 4
+      mpdealdamage $n \@a red viper\@ strike pierce $1
+      mpaddaffect $n 105 60 40 1 -10 4096
+    endif
+  endif
+endif
+mpvaluedown 0
+~
+|
+V4 8602
+Iceguard bot mob_8602~
+a Kaceajka artifact~
+An Iceguard is here, preventing any heated discussions.
+~
+~
+human~
+water scholar~
+AL 0 DFLZe N 0
+0 0 1d10+100 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium unknown
+>rand_prog 100~
+if inroom($i) == 8636
+  if mobhere(8649)
+  break
+  else
+    if mobvalue(0) == 1
+    else
+    mpat 8635 mpsetexit east 8636
+    mpsetexit west 8635
+    mpat 8635 mpstring obj obj_8605 long A strange, cubic artifact is imbedded in the cave floor.
+    mpat 8635 mpecho With a sudden *click*, the artifact begins to wind down with an audible whine.
+    mpat 8635 mpecho The wall of ice to the east rapidly melts away.
+    mpecho A wall of ice to the west rapidly melts away.
+    mpvalueset 0 1
+    endif
+  endif
+else
+  if inroom($i) == 8638
+    if mobhere(8649)
+    break
+    else
+      if mobvalue(0) == 1
+      else
+      mpat 8639 mpsetexit west 8638
+      mpsetexit east 8639
+      mpat 8639 mpstring obj obj_8605 long A strange, cubic artifact is imbedded in the cave floor.
+      mpat 8639 mpecho With a sudden *click*, the artifact begins to wind down with an audible whine.
+      mpat 8639 mpecho The wall of ice to the west rapidly melts away.
+      mpecho A wall of ice to the east rapidly melts away.
+      mpvalueset 0 1
+      endif
+    endif
+  else
+    if inroom($i) == 8641
+      if mobhere(8649)
+      break
+      else
+        if mobvalue(0) == 1
+        else
+        mpat 8645 mpsetexit north 8641
+        mpsetexit south 8645
+        mpat 8645 mpstring obj obj_8605 long A strange, cubic artifact is imbedded in the cave floor.
+        mpat 8645 mpecho With a sudden *click*, the artifact begins to wind down with an audible whine.
+        mpat 8645 mpecho The wall of ice to the north rapidly melts away.
+        mpecho A wall of ice to the south rapidly melts away.
+        mpvalueset 0 1
+        endif
+      endif
+    else
+      if inroom($i) == 8633
+        if mobhere(8649)
+        break
+        else
+          if mobvalue(0) == 1
+          else
+          mpat 8629 mpsetexit south 8633
+          mpsetexit north 8629
+          mpat 8629 mpstring obj obj_8605 long A strange, cubic artifact is imbedded in the cave floor.
+          mpat 8629 mpecho With a sudden *click*, the artifact begins to wind down with an audible whine.
+          mpat 8629 mpecho The wall of ice to the south rapidly melts away.
+          mpecho A wall of ice to the north rapidly melts away.
+          mpvalueset 0 1
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 8603
+great blue worm lightning electric mob_8603 Zappy~
+a great blue worm~
+A great blue worm writhes amidst a crackling field of bubbles.
+~
+Long and flat, this massive blue worm writhes its bulk into countless
+twists, knots, and angles.  Electric energy thrums all around it creating a
+field of super-heated bubbles.  Pale, blue skin seems stretched between its
+two lateral lines which are covered in feather-like hairs.  Its large,
+oblong head is wider than its body and is mostly mouth.  The disc-shaped maw
+contains hundreds of needle-like teeth attached to the edges of fleshy
+ridges which are arranged in concentric circles.  A retractable hook-like
+beak designed for puncturing and tearing flesh extends from its center.  
+~
+snake~
+water scholar~
+ADFLPTX 0 DJZb N 0
+57 55 10000d1+0 55d10+100 6d10+50 pierce~
+bite~
+-24 -24 -24 -7
+AFHM BJRb
+26 0 0 33 33 33 0 0 -33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGXYc ADEFKLQVX A large flesh
+>fight_prog 40~
+if hitprcnt($i) > 75
+  mpcast 17 57 $r
+  [chain lightning]
+  break
+else
+  if hitprcnt($i) > 40
+    mpvaluerand 0 1 3
+    if mobvalue(0) == 1
+      mpcast 603 57 $n
+      [ball lightning]
+      break
+    else
+      if mobvalue(0) == 2
+        mpvaluerand 1 8603 8626
+        if mobvalue(1) == 8619
+          mpcast 89 57 $r
+          [lightning bolt]
+          break
+        else
+          mpecho $I suddenly pulls itself tightly into a ball.
+          mpecho With a deafening SNAP and a small shockwave, the worm vanishes!
+          mpgoto $1
+          mpecho With a deafening SNAP and a small shockwave, $I suddenly fills the room!
+        endif
+      else
+        if mobvalue(0) == 3
+          mpechoat $n $I strikes at you trying to latch on with its flat, toothy mouth!
+          mpechoaround $n $I strikes out at $N trying to latch on!
+          if snaffected($n) == 375
+          or snaffected($n) == 592
+          or snaffected($n) == 354
+            mpechoat $n ...But the beast fails to take hold due to your magical protection.
+            mpechoaround $n ...But the beast fails to take hold!
+          else
+            mpechoat $n $I bites down hard, one thousand teeth piercing into your body!
+            mpechoaround $n $I bites into $N, the edges of its maw clamping down hard!
+            if rand(50)
+              mpechoat $n Using its hook-like beak, $I punctures your flesh and begins devouring your insides!
+              mpechoaround $n Using its hook-like beak, $I punctures $N\@s flesh and begins tearing out chunks!
+              mpget char $n curhp 4
+              mpdamtype $n 12 17 50 2
+              mpget char $n curhp 3
+              mpmath 2 $4 - $3
+              mpdammess $n $2 \@ripping pierce\@
+            else
+              mpechoat $n Twisting itself violently, $I uses its rows of teeth to grind your flesh!
+              mpechoaround $n Twisting itself violently, $I uses its rows of teeth to grind $N\@s flesh!
+              mpgrant $i 600 0 0 0
+              mpget char $n curhp 4
+              mpdamtype $n 15 10 30 3
+              mpget char $n curhp 3
+              mpmath 2 $4 - $3
+              mpdammess $n $2 \@grinding twist\@
+            endif
+            mplag $n 2
+          endif
+        endif
+      endif
+    endif
+    break
+  else
+    if hitprcnt($i) < 40
+      mpvaluerand 0 1 4
+      if mobvalue(0) == 1
+        mpechoat $n Focussing energy into a singularity, $I creates a cacophonous blast that slams into you with deafening force!
+        mpechoaround $n Focussing energy into a singularity, $I creates a cacophonous blast that slams into $N with tremendous force!
+        mpcast 356 57 $n
+        [thunderclap]
+      else
+        if mobvalue(0) == 2
+          mpcast 17 57 $n
+          [chain lightning]
+        else
+          if mobvalue(0) == 3
+            mpcast 603 57 $n
+            [ball lightning]
+          else
+            if mobvalue(0) == 4
+              mpvaluerand 1 8603 8626
+              if mobvalue(1) == 8619
+                mpcast 89 57 $r
+                [lightning bolt]
+                break
+              else
+                mpecho $I suddenly pulls itself tightly into a ball.
+                mpecho With a deafening SNAP and a small shockwave, the worm vanishes!
+                mpgoto $1
+                mpecho With a deafening SNAP and a small shockwave, $I suddenly fills the room!
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 8604
+shatterbot bot mob_8604~
+the shatterbot~
+The shatterbot is here.
+~
+~
+human~
+water scholar~
+AL 0 DFLZ N 0
+0 0 1d10+100 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium unknown
+>greet_prog 33~
+if isnpc($n)
+or isghost($n)
+or isimmort($n)
+else
+  mpechoat $n As you move through the leaning structures, some rocks begin to loosen and fall all around you!
+  mpechoaround $n As $N moves through the leaning structures some rocks break loose and fall all around $m!
+  if snaffected($n) == 576
+  or skill266($n) == 100
+  or luck($n) == lucky
+    mpechoat $n You deftly maneuver around the razor-sharp edges of ice.
+    mpechoaround $n $N deftly maneuvers around the razor-sharp rocks.
+  else
+    mpvaluerand 0 1 1000
+    if luck($n) == unlucky
+      mpvalueset 0 1
+    endif
+    if value(0) > 750
+      mpechoat $n You skillfully maneuver around the razor-sharp edges of ice.
+      mpechoaround $n $N skillfully maneuvers around the razor-sharp rocks.
+    else
+      if value(0) > 333
+        mpechoat $n You are hit by the jagged rocks and are briefly pinned!
+        mpechoaround $n $N is hit by some jagged rocks and is momentarily pinned!
+        mpdamtype $n 10 8 30 1
+        mplag $n 2
+      else
+        if value(0) < 334
+          mpvaluerand 1 1 2
+          if value(1) == 1
+            mpechoat $n You are hit by the jagged rocks and are briefly pinned!
+            mpechoaround $n $N is hit by some jagged rocks and is momentarily pinned!
+            mpechoat $n Your arm is badly crushed by the blow!
+            mpechoaround $n $N\@s arm is badly crushed by the blow!
+            mpaddaffect $n 456 60 12 2 -5 256 N
+          endif
+          if value(1) == 2
+            mpechoat $n You are hit by the jagged rocks and are briefly pinned!
+            mpechoaround $n $N is hit by some jagged rocks and is momentarily pinned!
+            mpechoat $n Your leg is badly crushed by the blow!
+            mpechoaround $n $N\@s leg is badly crushed by the blow!
+            mpaddaffect $n 456 60 12 2 -5 512 N
+          endif
+          mpdamtype $n 10 8 30 1
+          mplag $n 2
+        endif
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 8605
+ice-slicer bot mob_8605~
+the ice-slicer~
+The Ice-Slicer bot is here, slicing and dicing.
+~
+~
+human~
+water scholar~
+AL 0 DFLZ N 0
+0 0 1d10+100 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium unknown
+>greet_prog 33~
+if isnpc($n)
+or isghost($n)
+or is immort($n)
+else
+  if snaffected($n) == 576
+  or skill266($n) == 100
+  or luck($n) == lucky
+    mpechoat $n You deftly maneuver around the razor-sharp edges of ice.
+    mpechoaround $n $N deftly maneuvers around the razor-sharp rocks.
+  else
+    mpvaluerand 0 1 1000
+    if luck($n) == unlucky
+      mpvalueset 0 1
+    endif
+    if value(0) > 750
+      mpechoat $n You skillfully maneuver around the razor-sharp edges of ice.
+      mpechoaround $n $N skillfully maneuvers around the razor-sharp rocks.
+      break
+    else
+      if value(0) > 333
+        mpechoat $n You catch your arm on a jagged edge of rock as you make your way past.
+        mpechoaround $n $N catches $s arm on a jagged rock as $e moves past.
+        mpdamtype $n 10 8 30 3
+      else
+        if value(0) < 334
+          mpvaluerand 1 1 4
+          if value(1) == 1
+            mpechoat $n You catch your arm on a jagged edge of rock as you make your way past.
+            mpechoat $n Your forearm is badly wounded from the blow and begins bleeding profusely!
+            mpechoaround $n $N catches $s arm on a jagged rock as $e moves past.
+            mpechoaround $n $N\@s forearm is badly sliced and begins to bleed profusely!
+          endif
+          if value(1) == 2
+            mpechoat $n You catch your leg on a jagged edge of rock as you make your way past.
+            mpechoat $n Your calf is badly wounded from the blow and begins bleeding profusely!
+            mpechoaround $n $N catches $s leg on a jagged rock as $e moves past.
+            mpechoaround $n $N\@s calf is badly sliced and begins to bleed profusely!
+          endif
+          if value(1) == 3
+            mpechoat $n You catch your leg on a jagged edge of rock as you make your way past.
+            mpechoat $n Your thigh is badly wounded from the blow and begins bleeding profusely!
+            mpechoaround $n $N catches $s leg on a jagged rock as $e moves past.
+            mpechoaround $n $N\@s thigh is badly sliced and begins to bleed profusely!
+          endif
+          if value(1) == 4
+            mpechoat $n You catch your back on a jagged edge of rock as you make your way past.
+            mpechoat $n Your back is badly wounded from the blow and begins bleeding profusely!
+            mpechoaround $n $N catches $s back on a jagged rock as $e moves past.
+            mpechoaround $n $N\@s back is badly sliced and begins to bleed profusely!
+          endif
+          mpdamtype $n 15 12 60 3
+          mpaddaffect $n 474 60 12 2 -5 65536 O
+        endif
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 8606
+Kaceajka Rhamki iceguard kankoran black black-furred mob_8606~
+Kaceajka Rhamki~
+An old, black-furred kankoran, Rhamki the Iceguard, wanders the cave.
+~
+This kankoran is exceptionally tall with thick, black fur.  About his
+snout and ears the fur has grown gray with pale spots of flesh showing
+through the thin areas.  Although he is aging he holds fast to his duty and
+stands unwavering in stiff posture.  Small bits of frost cling to his back
+and shoulders like a shawl of ice that seems to bring him no discomfort at
+all.  
+~
+kankoran~
+water scholar~
+ADGT 0 DHZ N 0
+58 29 37d130+1112 58d10+100 9d8+35 slash~
+claw~
+-25 -25 -25 -8
+FKV AB
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 170 -1
+AHMV ABCDEFGIJKUV ADK medium flesh
+>load_prog 100~
+mpaddskill self 1062 100 [malefic insight]
+mpaddskill self 1063 100 [boon of the leech]
+mpaddskill self 1053 100 [frostkin]
+mpaddskill self 1051 100 [detoxify]
+mpaddskill self 1054 100 [treat infection]
+~
+>give_prog silver plaque etched obj_8626~
+mpsetdata plaque
+~
+>data_prog plaque~
+emote holds the plaque up closely to his eyes and inspects it thoroughly.
+esay \@mumbles slowly\@ Mmm...Yes, this is some kind of...fabricated trophy.
+esay continues It was given to me by...hm...Lord..Mornath, yes, I believe that is right.
+emote furrows his bushy eyebrows and nods gently to himself.
+esay \@shrugs and shakes his head\@ I don\@t quite understand why it was given...It makes no suitable trophy for our deeds that day.
+esay \@points out\@ Though...I find many things odd...about these southern cultures.
+esay \@says with a stain of distaste\@ Trophies only hold meaning to the hunter who...earns them.
+esay \@scoffs\@ I know not why they would bestow such a meaningless trinket upon me...Like I can\@t muster my own keepsake.  Hmph.
+drop plaque
+~
+>data_prog kaceajka_nature~
+esay \@begins\@ Natural order...Life and death...dictates the fates of all.
+emote slowly rotates his claw forming a translucent sphere of sparkling water.
+esay \@gently caresses the sphere saying\@ Many have come...to idolize those capable...of genesis.
+emote pierces the sphere with his claws and a dark miasma swirls throughout it.
+esay \@watches as the sphere dissipates in a sickly mist\@...And of ruin.
+emote waves his claw through the mist dispersing it.
+\@We...The Kaceajka...have become versed in both.
+esay \@moves his claw back and forth\@ The ebb and flow of nature...can be controlled, but...never ceased.
+emote closes his eyes and softly chants for a moment in a low tone.
+\@Our brethren believe the use of such...unnatural powers...is disruptive, and so they have...renounced us.
+esay \@splays his claws apart\@ But we do not tolerate...any imbalance to nature.
+esay \@looks towards the Glacial Prison and says\@ We use our abilities to...preserve, encourage, and...eradicate that which threatens to discompose the balance.
+~
+>data_prog kaceajka_home~
+emote places a trembling claw over his heart.
+esay \@takes a sorrowful breath\@ The northern wastes...as they are known to outsiders...are home to my people.
+\@The icy ocean...swells, and the wind chills to the bone.
+esay \@says with a hardened pride\@ We...The Kaceajka...have grown to endure...much hardship.
+emote shifts his position and points precisely northward.
+esay \@growls softly through his words\@ Our brethren in the Ryarl...they were...vexed at our methods.
+esay explains We are inherently...different in our opinions...of nature.
+emote twirls a finger through the air and a wisp of shadow forms in its wake.
+esay \@slices the trail with his claw\@ So we segregated ourselves...long ago...my ancestors traversed the peaks...
+\@...of the Korkjva...The mountains where names are lost...and so we became...new.
+shake mace
+~
+>data_prog kaceajka_artifact~
+emote peers out from beneath bushy, silver-tipped eyebrows.
+\@The tides...of the great seas...
+emote slowly wafts a claw in a wave-like motion.
+esay \@aims his palm towards the heavens\@...can only be influenced...by celestial entities.
+esay \@holds up four crooked fingers\@ Four sides...like the seasons...
+emote cups his claws together and slowly rotates them before his face.
+\@...eight runes...like the silver phases.
+emote makes a circle with one claw and slowly constricts it into a fist.
+esay \@looks through the opening with one eye\@ Five beams of light...like the \#red eye\@s\# gaze.
+emote closes his eyes and sighs.
+~
+>fight_prog 35~
+mpvaluerand 0 1 6
+if value(0) == 1
+  mpecho $I utters the words \@Ludar\@.
+  mpcast 1068 58 $n
+  [frostblast]
+endif
+if value(0) == 2
+  mpecho $I utters the words \@Jar\@.
+  mpcast 77 58
+  [heal]
+  mpecho $I looks better.
+endif
+if value(0) == 3
+  if snaffected($n) == 8
+  or israce($n) == SHUDDENI
+    mpecho $I utters the words \@Negaalbamagir ha\@.
+    mpcast 1085 58
+    [darkchill burst]
+  else
+    mpecho $I utters the words \@Roav\@.
+    mpcast 8 58 $n
+    [blindness]
+  endif
+endif
+if value(0) == 4
+  if snaffected($n) == 39
+    mpecho $I utters the words \@Madrguan\@.
+    mpcast 331 58 $n
+    [currents]
+  else
+    mpecho $I utters the words \@Rrrir\@.
+    mpcast 39 58 $n
+    [curse]
+  endif
+endif
+if value(0) == 5
+  mpecho $I utters the words \@Tirokairrilak ad\@.
+  mpcast 20 58 $n
+  [enervating ray]
+endif
+if mobvalue(0) == 6
+  if snaffected($n) == 104
+    if sector($n) == swim
+    or sector($n) == underwater
+      mpecho $I utters the words \@Lehuarkar\@
+      mpcast 332 58 $n
+      [whirlpool]
+    endif
+  else
+    mpecho $I utters the words \@Rirv\@.
+    mpcast 104 58 $n
+    [plague]
+  endif
+endif
+~
+>rand_prog 100~
+if isfighting($i)
+else
+  if snaffected($i) == 754
+  else
+    mpecho $I utters the words \@ Ninayhki gu\@.
+    mpcast 754 58
+    [abominable rune]
+    break
+  endif
+  if snaffected($i) == 104
+  or snaffected($i) == 107
+  or snaffected($i) == 105
+  or snaffected($i) == 8
+    mpecho $I utters the words \@Raloon\@.
+    mpcast 111 58 $i
+    [purify]
+    break
+  endif
+  if snaffected($i) == 400
+    mpecho $I utters the words \@Ker\@.
+    mpcast 898 58 $i
+    [douse]
+    break
+  endif
+  if snaffected($i) == 456
+  or snaffected($i) == 236
+  or snaffected($i) == 227
+  or snaffected($i) == 492
+    mpecho $I utters the words \@Kaj jyr\@.
+    mpcast 326 58
+    [mend wounds]
+    break
+  endif
+  if hitprcnt($i) < 90
+    if value(2) > 0
+      mpvaluedown 2
+    else
+      mpecho $I utters the words \@Ar Jatioldamac\@.
+      mpcast 34 58 $i
+      [cure critical]
+      mpvalueset 2 2
+      break
+    endif
+  endif
+  if snaffected($i) == 87
+  else
+    cast invis
+  endif
+  $d
+  mpnextdata
+endif
+~
+|
+V4 8607
+sharp ice jagged edges mob_8607~
+the sharp ice~
+The jagged tunnel edges are here.
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+60 10000 1d1+110 0d0+0 1d1+99 slash~
+gash~
+0 0 0 0
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>greet_prog 33~
+if isnpc($n)
+or isghost($n)
+or isimmort($n)
+else
+  if snaffected($n) == 576
+  or skill266($n) == 100
+  mpechoat $n You deftly maneuver around the jagged edges of the tunnel.
+  mpechoaround $n $N deftly maneuvers around the jagged edges of ice.
+  else
+  mpechoat $n You get snagged on a jagged piece of ice as you try to swim past.
+  mpechoaround $n $N gets snagged on a jagged piece of ice as $e swims past.
+  mpechoat $n The sharp ice {r==GASHES=={x you!
+  mpechoaround $n $N is {r==GASHED=={x by the sharp ice!
+  mpdamtype $n 0 0 100 3
+  endif
+endif
+~
+|
+V4 8608
+bot mob_8608~
+the Kaceajka artifact~
+The bot that controls the door is here.
+~
+~
+human~
+water scholar~
+ABX 0 L N 0
+52 26 35d107+1167 52d10+100 6d9+26 none~
+~
+-22 -22 -22 -6
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog look~
+if compstr(2) == rune
+or compstr(2) == runes
+or compstr(2) == gate
+  if value(0) > 0
+    mpmath 5 150 - $0
+    mpechoat $n There are $5 of 150 glowing blue runes extinguished.
+  else
+    mpechoat $n The perimeter of the portcullis gate is surrounded with dozens of magical runes imbedded in the ice.
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog close~
+if isnpc($n)
+or isimmort($n)
+mpnextinterp
+else
+  if compstr(2) == south
+  or compstr(2) == s
+  mpechoat $n You can\@t seem to move the portcullis.
+  else
+  mpnextinterp
+  endif
+endif
+~
+>rand_prog 100~
+$d
+mpnextdata
+mpvaluedown 0
+if value(0) == 120
+mpecho The glowing runes around the archway begin to slowly extinguish their light.
+mpat 8646 mpecho The glowing runes around the archway begin to slowly extinguish their light.
+else
+  if value(0) == 90
+  mpecho The glowing runes around the archway continue to extinguish one by one.
+  mpat 8646 mpecho The glowing runes around the archway continue to extinguish one by one.
+  else
+    if value(0) == 60
+    mpecho More than half of the glowing runes around the archway have extinguished.
+    mpat 8646 mpecho More than half of the glowing runes around the archway have extinguished.
+    else
+      if value(0) == 30
+      mpecho Only a few glowing runes remain lit around the archway.
+      mpat 8646 mpecho Only a few glowing runes remain lit around the archway.
+      else
+        if value(0) == 0
+        mpecho As the last rune extinguishes its light the portcullis begins to slowly slide back down.
+        mpat 8646 mpecho As the last rune extinguishes its light the portcullis begins to slowly slide back down.
+        mpsetdata gateclose
+        endif
+      endif
+    endif
+  endif
+endif
+mpvaluerand 7 1 1000
+if value(7) > 998
+mpvaluerand 8 8627 8641
+mpat $8 mpecho A faint twinkle gleams off in the darkness.
+endif
+
+~
+>verb_prog p openit~
+if isnpc($n)
+or isimmort($n)
+unlock south
+open south
+mpecho As the door rises, the runes around the archway begin to glow brightly.
+mpat 8646 As the door rises, the runes around the archway begin to glow brightly.
+endif
+~
+>verb_prog p closeit~
+if isnpc($n)
+or isimmort($n)
+close south
+lock south
+endif
+~
+>data_prog gateclose~
+mpecho The icy gate suddenly slips down a few feet before being caught by the frame and continues to drop slowly. 
+mpat 8646 mpecho The icy gate suddenly slips down a few feet before being caught by the frame and continues to drop slowly.
+mpecho The runes around the portcullis begin to light up as the gate reaches half way, the magic seeming to control the speed of descent.
+mpat 8646 mpecho The runes around the portcullis begin to light up as the gate reaches half way, the magic seeming to control the speed of descent.
+mpecho With a final noise of ice being crushed together the gate stands firmly in the archway, and the runes fade.
+mpat 8646 mpecho With a final noise of ice being crushed together the gate stands firmly in the archway, and the runes fade.
+closeit
+~
+>data_prog gateopen~
+mpecho The massive portcullis begins to slowly rise accompanied by the sound of cracking ice.
+mpat 8646 mpecho The massive portcullis begins to slowly rise accompanied by the sound of cracking ice.
+openit
+mpecho As the gate reaches its apex, heaves of frost and ice shake free from the runed stones.
+mpat 8646 mpecho As the gate reaches its apex, heaves of frost and ice shake free from the runed stones.
+mpvalueset 0 150
+~
+|
+V4 8609
+sea spider white mob_8609~
+a white sea spider~
+A sea spider clings to the wall as it scours the ice with its proboscis.
+~
+This sea spider has a tiny head with two long, anterior-pointing stalks
+without eyes.  Its segmented trunk is oval-shaped with the first three
+segments adorned with a large, bell-shaped cowl topped by conical tubercles.
+A long abdomen is distinctly segmented at the base where it connects to the
+trunk and is carried ventrally at an oblique angle.  A pair of slender legs
+grow from each segment which are about three times as long as the main body
+and tipped with minute, but apparently functional, fingers.  The entire
+exoskeleton is covered in feather-like setae, giving it a hairy appearance. 
+~
+centipede~
+water scholar~
+ACDG 0 DJZ N 0
+50 25 34d100+1173 50d10+100 9d8+40 pierce~
+pierce~
+-21 -21 -21 -6
+FHKU RUb
+26 0 0 0 0 0 0 0 -33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMOPQV ABCDEFGHIJK 0 small flesh
+>rand_prog 100~
+if objhere(11)
+  if value(0) == 1
+    if rand(20)
+      if isfighting($i)
+      else
+        emote plunges its proboscis into the carcass and feeds contentedly on the fluids.
+        mpgrant $i 250 0 0
+        mpget obj pccorpse timer 9
+        mpmath 8 $9 - 3
+        if value(8) <= 1
+          mpecho Letting nothing go to waste, $I gathers every last edible scrap from the corpse.
+          mppurge +or pccorpse
+          mpecho The remains of the corpse crumble to the ground.
+        endif
+        mpset obj pccorpse timer $8
+        if value(8) <= 28
+          if value(8) > 22
+            mpecho $I uses its fingered limbs to tear apart small pieces of flesh from the corpse.
+          else
+            if value(8) > 16
+              mpecho $I rips open the soft tissue of the corpse with its hook-like fingers.
+            else
+              if value(8) > 8
+                mpecho $I pulls a chunk of flesh free from the corpse exposing some of the bone.
+              else
+                if value(8) > 1
+                  mpecho Selecting only the most favorable pieces of sinew and flesh, $I picks clean the bones of the corpse.
+                endif
+              endif
+            endif
+          endif
+        endif
+      endif
+    else
+      if rand(3)
+        mpvaluerand 3 1 6
+        emote grabs the corpse with its middle pairs of legs and attempts to drag it away.
+        mpverbstop
+        if value(3) == 1
+          if inroom($i) == 8606
+          else
+            drag corpse north
+          endif
+        endif
+        if value(3) == 2
+          drag corpse south
+        endif
+        if value(3) == 3
+          drag corpse east
+        endif
+        if value(3) == 4
+          drag corpse west
+        endif
+        if value(3) == 5
+          drag corpse down
+        endif
+        if value(3) == 6
+          if inroom($i) == 8619
+          else
+            drag corpse up
+          endif
+        endif
+      endif
+    endif
+  else
+    if value(1) > 0
+      mpvaluedown 1
+      if value(1) == 19
+        mpstring char self long A white sea spider warily keeps its distance from the corpse.
+      endif
+      if value(1) == 12
+        emote begins to circle the corpse hungrily.
+        mpstring char self long A white sea spider slowly circles the corpse in hopes of a meal.
+      endif
+      if value(1) == 6
+        mpecho Feeling more brave, $I approaches the corpse waving its setae-covered stalks excitedly.
+        mpstring char self long A white sea spider slowly approaches the corpse twitching its setae-covered stalks.
+      endif
+    else
+      mpvalueset 0 1
+      mpecho $I quickly skitters along the ice towards the corpse and greedily begins devouring its prize.
+      mpstring char self long A white sea spider greedily clings to the corpse as it feasts upon the decaying flesh.
+    endif
+  endif
+else
+  mpstring char self long A white sea spider clings to the wall as it scours the ice with its proboscis.
+  mpvalueset 0 0
+  mpvalueset 1 0
+  mpvaluerand 3 1 100
+  if value(3) > 97
+    mpecho $I slowly waves its setae-covered stalks in the current.
+  else
+    if value(3) > 94
+      mpecho $I swims clumsily from one wall to another.
+    else
+      if value(3) < 3
+        mpecho Making a rythmic clacking, $I taps loudly on the icy rocks with its forelegs.
+      else
+        if value(3) < 6
+          mpecho Releasing small bubbles from its shell, $I assumes a defensive stance.
+        else
+          if value(3) < 9
+            emote blindly swings its graspers through the slushy water.
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>fight_prog 20~
+mpvaluerand 5 1 2
+if value(5) == 1
+  if objhere(11)
+    mpvaluerand 3 1 6
+    mpgoto self
+    emote grabs the corpse with its middle pairs of legs and attempts to drag it away.
+    mpverbstop
+    if value(3) == 1
+      if inroom($i) == 8606
+      else
+        drag corpse north
+      endif
+    endif
+    if value(3) == 2
+      drag corpse south
+    endif
+    if value(3) == 3
+      drag corpse east
+    endif
+    if value(3) == 4
+      drag corpse west
+    endif
+    if value(3) == 5
+      drag corpse down
+    endif
+    if value(3) == 6
+      if inroom($i) == 8619
+      else
+        drag corpse up
+      endif
+    endif
+  else
+mpechoat $n $I produces a long, black stinger from its abdomen and thrusts towards you!
+mpechoaround $n $I produces a long, black stinger from its abdomen and thrusts towards $N!
+mpechoat $n With lightning speed the stinger slides deeply into your gut three times.
+    mpechoat $n Each thrust leaves a cold toxin flowing within you.
+mpechoaround $n With lightning speed the stinger slides deeply into $N\@s gut three times.
+    mpget char $n curhp 6
+    mpdamtype $n 3 12 36 2
+    mpget char $n curhp 5
+    mpmath 4 $6 - $5
+    mpdammess $n $4 \@triple sting\@
+    mpcast 105 50 $n
+    if snaffected($n) == 644
+      mpremaffect $n 644
+      mpaddaffect $n 644 50 10 0 0 0
+    else
+      if saves8($n) == 50
+        mpechoat $n You feel dizzy for a moment, but it passes.
+      else
+        mpechoat $n You feel dizzy as vertigo overtakes you.
+        mpechoaround $n $N braces $mself as dizziness overtakes $m.
+        mpaddaffect $n 644 50 10 0 0 0
+      endif
+    endif
+    if snaffected($n) == 637
+      mpremaffect $n 637
+      mpaddaffect $n 637 50 10 0 0 0
+    else
+      if saves8($n) == 50
+        mpechoat $n You are momentarily confused, but it passes.
+      else
+        mpechoat $n You feel very confused.
+        mpechoaround $n $N looks very confused.
+        mpaddaffect $n 637 50 10 0 0 0
+      endif
+    endif
+  endif
+endif
+if value(5) == 2
+  if snaffected($n) == 236
+  or israce($n) == SHUDDENI
+    mpechoat $n $I pierces you with its proboscis and leeches fluids from your body.
+    mpechoaround $n $I pierces $N with its proboscis and leeches fluids from $s body.
+    mpdamtype $n 4 6 20 1
+    emote looks better.
+    mpgrant self 250 0 0
+  else
+    mpechoat $n $I thrusts its fingered limbs towards your face!
+    mpechoaround $n $I thrusts its fingered limbs towards $N\@s face!
+    gouge $n
+  endif
+endif
+~
+>verb_prog shoo~
+if compstr(2) == sea
+or compstr(2) == spider
+or compstr(2) == white
+  //PCCORPSE CHECK
+  if objhere(11)
+    if isghost($n)
+    or isfighting($i)
+      mpechoat $n $I pays you no mind.
+      mpechoaround $n $I pays no attention to $N\@s attempts to shoo it away.
+      mpverbstop
+    else
+      //WARNING TIMER CHECK
+      if value(1) > 0
+        mpechoat $n It is already wary of you.
+      else
+        mpechoat $n You try to shoo $I away from the corpse.
+        mpechoaround $n $N tries to shoo $I away from the corpse.
+        mpvaluerand 2 1 3
+        if value(2) == 1
+          if remembers($n)
+            mpecho Skittering towards $N, $I raises its forelegs to attack!
+            mpkill $n
+            mpverbstop
+          else
+            mpremember $n
+            mpechoat $n takes a defensive stance over its prize and raises its forelegs at you threateningly.
+            mpechoaround $n takes a defensive stance over its prize and raises its forelegs at $N threateningly.
+            mpverbstop
+          endif
+        else
+          if value(2) == 2
+            mpvaluerand 3 1 6
+            emote grabs the corpse with its middle pairs of legs and attempts to drag it away.
+            mpverbstop
+            if value(3) == 1
+              if inroom($i) == 8606
+              else
+                drag corpse north
+              endif
+            endif
+            if value(3) == 2
+              drag corpse south
+            endif
+            if value(3) == 3
+              drag corpse east
+            endif
+            if value(3) == 4
+              drag corpse west
+            endif
+            if value(3) == 5
+              drag corpse down
+            endif
+            if value(3) == 6
+              if inroom($i) == 8619
+              else
+                drag corpse up
+              endif
+            endif
+          else
+            if value(2) == 3
+              emote reluctantly backs away from the corpse while clacking its legs on the ice in protest.
+              mpvalueset 0 0
+              mpvalueset 1 20
+              mpverbstop
+            endif
+          endif
+        endif
+      endif
+    endif
+  else
+    mpechoat $n Shoo it away from what?
+    mpverbstop
+  endif
+else
+  mpnextinterp
+endif
+~
+>load_prog 100~
+mpaddskill self 511 100 (drag)
+mpaddskill self 236 100 (gouge)
+~
+|
+V4 8610
+Kaceajka iceguard kankoran white white-furred mob_8610~
+a Kaceajka Iceguard~
+An Iceguard of the Kaceajka clan wanders the cave.
+~
+This tall, white-furred kankoran has a slender frame that is ungracefully
+thin.  His ribs are visible through his thick fur, and his tendons stretch
+the skin along the back of his legs.  Piercing blue eyes gaze out from his
+gaunt face which is surrounded by a frosted, white mane.  Small decorations
+of feathers and tiny bones adorn his ears and nape in the fashion of the
+Kaceajka clan.  
+~
+kankoran~
+water templar~
+ADGT G DZ N 0
+54 27 36d114+1155 54d10+100 6d9+27 slash~
+claw~
+-23 -23 -23 -7
+FHKUV 0
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 8606 0 0 0 0
+stand stand male 170 -1
+AHMV ABCDEFGIJKUV ADK medium flesh
+>fight_prog 35~
+mpremember $n
+if hitprcnt($i) > 60
+  if snaffected($i) == 577
+  else
+    assume winter
+    break
+  endif
+else
+  if snaffected($i) == 573
+  else
+    assume living
+    break
+  endif
+endif
+mpvaluerand 0 1 6
+if value(0) == 1
+  mpecho $I utters the words \@Rjyadorloj\@.
+  mpcast 580 54 $n 
+  [icebolt]
+endif
+if value(0) == 2
+  mpecho $I utters the words \@Ar Jatioldamac\@.
+  mpcast 34 54 self
+  [cure critical]
+endif
+if value(0) == 3
+  mpecho $I utters the words \@Ran or hcga\@.
+  mpcast 569 54 $n
+  [cone of cold]
+endif
+if value(0) == 4
+  froststrike $n
+endif
+if value(0) == 5
+  shield $n
+endif
+if value(0) == 6
+  if snaffected($i) == 442
+  else
+    bandage
+  endif
+endif
+~
+>greet_prog 100~
+if remembers($n)
+  if snaffected($i) == 571
+  else
+    mpecho $I utters the words \@Rdla or cfkiad\@.
+    mpcast 571 54
+    mpkill $n
+    break
+  endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 575 100
+mpaddskill $i 900 100
+mpaddskill $i 162 100
+mpaddskill $i 442 100
+mpaddskill $i 572 100
+mpaddskill $i 573 100
+mpaddskill $i 577 100
+speak kankoran
+mpaddskill $i 325 100
+~
+>rand_prog 100~
+if isfighting($i)
+else
+  if value(1) < 1
+    remove kaceajka_sword
+    cast frostbrand kaceajka_sword
+    wear kaceajka_sword
+    mpvalueset 1 130
+    break
+  else
+    mpvaluedown 1
+  endif
+  if value(2) < 1
+    remove kaceajka_sword
+    cast \@rune of life\@ kaceajka_sword
+    wear kaceajka_sword
+    mpvalueset 2 420
+    break
+  else
+    mpvaluedown 2
+  endif
+  if snaffected($i) == 8
+  or snaffected($i) == 105
+    mpecho $I utters the words \@Raloon\@.
+    mpcast 111 54 self
+    [purify]
+    break
+  endif
+  if snaffected($i) == 400
+    mpecho $I utters the words \@Ker\@.
+    mpcast 898 54 $i
+    [douse]
+    break
+  endif
+  if hitprcnt($i) < 90
+    mpecho $I utters the words \@Ar Jatioldamac\@.
+    mpcast 34 54 $i
+    [cure critical]
+    break
+  endif
+  if snaffected($i) == 206
+  else
+    mpecho $I utters the words \@Cfkiad raankikjar\@.
+    mpcast 206 54 $i
+    [water breathing]
+    break
+  endif
+  if snaffected($i) == 576
+  else
+    mpecho $I utters the words \@Jodaanrou eroha\@.
+    mpcast 576 54 $i
+    [aquatic movement]
+    break
+  endif
+  if snaffected($i) == 39
+    mpecho $I utters the words \@Irar or kacdjgan\@.
+    mpcast 985 54 $i
+    [rite of ablution]
+    break
+  endif
+  if snaffected($i) == 119
+  else
+    mpecho $I utters the words \@Kjokojkana\@.
+    mpcast 119 54 $i
+    [sanctuary]
+    break
+  endif
+  if snaffected($i) == 567
+  else
+    mpecho $I utters the words \@Uc rasaafla\@.
+    mpcast 567 50
+    wear shield
+    drop shield
+    break
+  endif
+endif
+~
+|
+V4 8611
+Bilgewater Bart bot mob_8611~
+Bilgewater Bart~
+Bilgewater Bart is here.
+~
+~
+human~
+water scholar~
+AL 0 DFLPZ N 0
+0 0 1d10+100 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium unknown
+V4 8648
+demon fire thedemonguy mob_8648~
+a fiery demon~
+A demon of fire is here, called by its master.
+~
+The demon\@s black and smoking skin flickers with flame.  Just being near
+its large and twisted body brings pain, so intense is the heat that it
+exudes.  
+~
+demon~
+water scholar~
+AFT 0 DOTZ E 0
+45 22 10d148+835 45d10+100 5d9+23 fire~
+fiery rake~
+-18 -18 -18 -4
+FMU ABHR
+26 0 0 0 0 0 0 0 0 -33 0 0 0 0 -33 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 8649 0 0 0 0
+stand stand none 140 55
+ACHMV ABCDEFGHIJKP A large unknown
+>fight_prog 30~
+mpvaluerand 1 1 4
+if value(1) == 1
+  mpremaffect self 129
+  mpcast 129 45
+else
+  if value(1) == 2
+    mpcast 66 45 $n
+  else
+    if value(1) == 3
+      if snaffected($n) == 59
+      else
+        mpcast 59 45 $n
+      endif
+    else
+      if value(1) == 4
+        if snaffected($n) == 406
+        else
+          mpcast 406 45 $n
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>verb_prog p lockandload~
+if isimmort($n)
+or isnpc($n)
+  if value(0) == 1
+  else
+    mpvalueset 0 1
+    mpaddskill self 668 100
+    mpaddskill self 942 100
+    mpoload 8637 on self 16
+  endif
+endif
+~
+|
+V4 8649
+kzroth demon lord mob_8649~
+Kzroth, the demon lord~
+Kzroth, the demon lord is here, glaring at you with fury.
+~
+Kzroth glares at you with dark, red eyes seeming to glow in contrast to
+his scorched, charcoal black hide.  Ashen flakes fall from his thick skin as
+he moves, almost as if his skin is actually burning and chipping off.  He
+reeks of urine, death and sulphur, making the air hard to breathe.  In fact,
+each breath he expels seems to darken and contaminate the surrounding air. 
+Massive hands, tipped with long claws that match the color of scorched
+blood, swing at you in unthinking rage.  
+~
+demon~
+water scholar~
+ABFPX 0 DFGJOVZac E 0
+60 30 200d4+9000 55d10+100 15d11+50 slash~
+claw~
+-24 -24 -24 -10
+CHMO ABHQRa
+26 0 0 33 0 33 0 0 0 0 0 0 33 33 -33 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 380 55
+ACHMV ABCDEFGHIJKP ABGHK giant unknown
+>load_prog 100~
+mpaddskill self 942 100
+~
+>verb_prog p demonsummon~
+if isimmort($n)
+or isnpc($n)
+  mpecho Kzroth summons forth aid from his burning homeland!
+  mpmload 8648
+  lockandload
+endif
+~
+>fight_prog 60~
+mpvaluerand 0 1 9
+mpfocus $r
+if isghost($f)
+or isimmort($f)
+or isnpc($f)
+  break
+endif
+if mobvalue(0) == 1
+  demonsummon
+endif
+if mobvalue(0) == 2
+  mpechoat $f Kzroth grabs hold of you, his burning grip enveloping you in flame!
+  mpechoaround $f Kzroth grabs hold of $F, his burning grip enveloping $m in flame!
+  mpdice 5 19 11 70
+  mpdealdamage $f $i \@blistering\@ fire $5
+  mplag $f 2
+  if snaffected($f) == 58
+    mpremaffect $f 58
+    mpaddaffect $f 58 55 7 2 -2 0
+    mpaddaffect $f 58 55 7 18 -5 0
+  else
+    mpaddaffect $f 58 55 7 2 -2 0
+    mpaddaffect $f 58 55 7 18 -5 0
+  endif
+endif
+if mobvalue(0) == 3
+  mpechoat $f Kzroth = =STAGGERS= = you with a giant rake of his claws!
+  mpechoaround $f Kzroth rakes $F open!
+  mpdice 3 17 11 60
+  mpdealdamage $f $i \@rending\@ slash $3
+  mplag $f 3
+endif
+if mobvalue(0) == 4
+  mpcast 403 60 $f
+endif
+if mobvalue(0) == 5
+  mpechoat $f Kzroth lunges towards you with his jagged, flaming maw agape!
+  mpechoaround $f Kzroth lunges towards $F with his jagged, flaming maw agape!
+  mpechoat $f $I bites into your shoulder with crushing force!
+  mpechoaround $f $I bites down on $F\@s shoulder with crushing force!
+  mpdice 4 15 4 100
+  mpdealdamage $f $i \@crushing bite\@ bash $4
+  mpcast 105 60 $f
+endif
+if mobvalue(0) == 6
+  mpechoat $f $I calls upon the power of the inferno to incinerate you!
+  mpechoaround $f $I calls upon the power of the inferno to incinerate $F!
+  mpecho Thrusting his palms forward, $I produces a column of flame from each of his claws.
+  mpcast 205 60 $f
+  mpcast 205 60 $f
+endif
+if mobvalue(0) == 7
+  if snaffected($f) == 400
+    mpcast 63 60
+  else
+    mpcast 400 60 $f
+  endif
+endif
+if mobvalue(0) == 8
+  if snaffected($f) == 59
+    if snaffected($i) == 6
+      mpcast 65 60
+    else
+      mpcast 6 60 $f
+    endif
+  else
+    mpcast 59 60 $f
+  endif
+endif
+if mobvalue(0) == 9
+  mpgoto self
+  mpechoat $f $I turns towards you with focused fury!
+  mpechoaround $f $I turns towards $F with focused fury!
+  murder $f
+endif
+~
+>rand_prog 100~
+if rand(7)
+  if mobhere(8648)
+    emote grasps a fiery demon with his claw and sends it back to his home plane.
+    mppurge thedemonguy
+  endif
+endif
+if rand(5)
+  if objhere(11)
+    mpset obj pccorpse extra 0
+    mppurge pccorpse
+    mpecho {RKzroth savagely rips apart the body lying before him, his energy returning as he devours the corpse.{x
+    mpgrant $i 550 0 0 1
+  endif
+endif
+if rand(12)
+  if rand(50)
+    west
+  else
+    east
+  endif
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+8600
+fissure bubble bubbles bubbling hole gaping floor frozen Kzroth_Portal obj_8600~
+(no short description)~
+A gaping hole has been torn in the frozen, rock floor, and bubbles furiously roar towards the ceiling of the chamber.~
+~
+unknown~
+trash e 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+8601
+fissure hole ceiling surface water Kzroth_Portal obj_8601 ~
+(no short description)~
+A gaping hole has been torn in the scorched ceiling, and roars furiously as the watery surface above boils.~
+~
+unknown~
+trash e 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+8602
+rune ice blue glistening glow shimmer twinkle faint [Rune_of_the_Rirji_Kaceajka_(Ocean Wasteland)] obj_8602~
+a glistening blue rune~
+Offering the faintest blue glow, a magic rune appears imbedded in the ice.~
+The Kaceajka pack, or \#Wasteland pack\# to those with the tongue of the
+North, are from the edges of the northern coast where the heights of the
+Brintor Range meet the cold, battering ocean.  Their skill in the arts of
+water are renowned throughout the tribes for being both fearsome and
+cunning.  They have a supreme dislike for all things unnatural, and it is
+rumored they are the ones responsible for imprisoning the demon Kzroth in
+ice after his rampage through Kohlis City.  This appears to be a mystical
+Rune of the Rirji Kaceajka, or \#Ocean Wasteland\#.  Normally this type of
+rune is used to control the motion of ice flows in northern seas and
+waterways.  
+~
+unknown~
+trash Ge 0 0 Q
+0 0 0 0 0
+60 0 0 0 P
+0
+E
+glistening blue glow rune~
+This glistening blue rune has been imprinted on the ice along the wall of
+the tunnel and appears to be emanating a cold aura.  
+~
+>greet_prog 100~
+opechoat $n Shards of floating ice crystals bite at your exposed flesh as you move through the freezing water.
+oplag $n 1
+~
+>rand_prog 1~
+opvaluerand 0 1 3
+if value(0) == 1
+  opecho {bA faint shimmer of blue twinkles in the ice.{x
+endif
+if value(0) == 2
+  opecho Slowly spinning, a large clump of congealed ice floats lazily by.
+endif
+if value(0) == 3
+  opfocus $r
+  if isghost($f)
+  or isimmort($f)
+  or isnpc($f)
+    break
+  else
+    opechoat $f The needle-like edges of ice {B--SLICE--{x at your body!
+    opechoaround $f The needle-like edges of ice {B--SLICE--{x $F.
+    opdamtype $f 3 2 15 3
+    opdamtype $f 3 2 15 5
+  endif
+  opunfocus
+endif
+~
+|
+V13
+8603
+remains debris floor obj_8603~
+a mixture of random debris~
+The floor of the tunnel is a mixture of random debris that has made its way to these depths.~
+~
+unknown~
+container e 0 0 P
+99999 0 0 99999 7
+0 0 0 0 P
+0
+>hour_prog 3~
+mpvaluerand 0 1 6
+if value(0) == 1
+  if incontainer(8607)
+    mpecho Several bubbles escape from the debris on the floor and swirl their way to the surface.
+  else
+    if isunderlimit(8607)
+      mpoload 8607 in debris
+    else
+      mpecho Several bubbles escape from the debris on the floor and swirl their way to the surface.
+    endif
+  endif
+else  
+  if value(0) == 2
+    if incontainer(8621)
+      mpecho Several bubbles escape from the debris on the floor and swirl their way to the surface.
+    else
+      if isunderlimit(8621)
+        mpoload 8621 in debris
+      else
+        mpecho Several bubbles escape from the debris on the floor and swirl their way to the surface.
+      endif
+    endif
+  else
+    if value(0) == 3
+      if incontainer(8622)
+        mpecho Several bubbles escape from the debris on the floor and swirl their way to the surface.
+      else
+        if isunderlimit(8622)
+          mpoload 8622 in debris
+        else
+          mpecho Several bubbles escape from the debris on the floor and swirl their way to the surface.
+        endif
+      endif
+    else
+      if value(0) == 4
+        if incontainer(8623)
+          mpecho Several bubbles escape from the debris on the floor and swirl their way to the surface.
+        else
+          if isunderlimit(8623)
+            mpoload 8623 in debris
+          else
+            mpecho Several bubbles escape from the debris on the floor and swirl their way to the surface.
+          endif
+        endif
+      else
+        if value(0) == 5
+          if incontainer(8625)
+            mpecho Several bubbles escape from the debris on the floor and swirl their way to the surface.
+          else
+            if isunderlimit(8625)
+              mpoload 8625 in debris
+            else
+              mpecho Several bubbles escape from the debris on the floor and swirl their way to the surface.
+            endif
+          endif
+        else
+          if value(0) == 6
+            if incontainer(8626)
+              mpecho Several bubbles escape from the debris on the floor and swirl their way to the surface.
+            else
+              if isunderlimit(8626)
+                mpoload 8626 in debris
+              else
+                mpecho Several bubbles escape from the debris on the floor and swirl their way to the surface.
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+|
+V13
+8604
+Ice-encrusted rubble jagged icy crevice debris garden edges floor obj_8604~
+a jagged, icy crevice~
+Tiny spaces between sharp, ice-encrusted edges offer concealment to anything small enough to fit.~
+~
+ice~
+container e 0 0 P
+99999 0 0 99999 7
+0 0 0 0 P
+0
+V13
+8605
+strange cubic artifact Kaceajka obj_8605~
+a Kaceajka artifact~
+A strange, cubic artifact is imbedded in the cave floor.~
+~
+unknown~
+trash Ta 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+E
+strange cubic artifact frosted obj_8605~
+Protruding from a small dais on the ground is a contraption of magical
+design.  It stands about two feet tall with four sides and is capped with a
+pyramid-shaped crystal of bluish hue.  There are a variety of runes on every
+side of the artifact which emanate a cool aura.  Each section appears to be
+separate from the others as the top can be twisted around and the middle can
+be rotated and the whole thing can be raised from the dais.  
+~
+>verb_prog p lift~
+if compstr(2) == artifact
+or compstr(2) == kaceajka
+or compstr(2) == strange
+or compstr(2) == cubic
+  if isghost($n)
+    mpechoat $n Your ghostly hands pass through the artifact.
+    mpechoaround $n $N\@s ghostly hands pass through the artifact.
+  else
+    if value(4) == 1
+      mpechoat $n You can\@t seem to move the artifact.
+      break
+    else
+      mpvalueup 2
+      if value(2) > 5
+        mpechoat $n As you pull the artifact up there is an audible *CLICK* as the beam of light ceases. 
+        mpechoat $n The artifact slowly recedes back into the ground.
+        mpechoaround $n As $N pulls the artifact up there is an audible *CLICK* as the beam of light ceases.
+        mpechoaround $n The artifact slowly recedes back into the ground.
+        mpvalueset 2 0
+        break
+      else
+        if value(2) == 1
+          mpvalueset rhos tiny
+        else
+          if value(2) == 2
+            mpvalueset rhos small
+          else
+            if value(2) == 3
+              mpvalueset rhos medium
+            else
+              if value(2) == 4
+                mpvalueset rhos large
+              else
+                if value(2) == 5
+                  mpvalueset rhos huge
+                endif
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+    mpechoat $n As you raise the artifact it projects a %rhos beam of light onto the face of the portcullis.
+    mpechoaround $n As $N raises the artifact it projects a %rhos beam of light onto the face of the portcullis.
+    mplag $n 2
+    mpvalueset 9 50
+  endif
+else
+  mpechoat $n What would you like to lift?
+endif
+~
+>rand_prog 100~
+mpvaluedown 9
+if value(9) > 0
+  if isseason() == spring
+    mpvalueset 6 1
+  else
+    if isseason() == summer
+      mpvalueset 6 2
+    else
+      if isseason() == autumn
+        mpvalueset 6 3
+      else
+        if isseason() == winter
+          mpvalueset 6 4
+        endif
+      endif
+    endif
+  endif
+  mpmath 7 $1 - 1
+  mpmath 8 $2 - 1
+  if value(0) == $6
+    if isphase() == $7
+      if rhossize() == $8
+        if value(4) == 1
+        else
+          mpecho A loud, humming begins to emanate from the artifact.
+          mpforce mob_8608 mpsetdata gateopen
+          mpvalueset 4 1
+          mpvalueset 9 150
+          break
+        endif
+      endif
+    endif
+  endif
+else
+  if value(9) == 0
+    mpecho The artifact recedes into the ground and stops glowing.
+    mpvalueset 0 0
+    mpvalueset 1 0
+    mpvalueset 2 0
+    mpvalueset 4 0
+    mpvalueset 9 0
+  endif
+endif
+~
+>verb_prog p raise~
+if compstr(2) == artifact
+or compstr(2) == kaceajka
+or compstr(2) == strange
+or compstr(2) == cubic
+  if isghost($n)
+    mpechoat $n Your ghostly hands pass through the artifact.
+    mpechoaround $n $N\@s ghostly hands pass through the artifact.
+  else
+    if value(4) == 1
+      mpechoat $n You can\@t seem to move the artifact.
+      break
+    else
+      mpvalueup 2
+      if value(2) > 5
+        mpechoat $n As you pull the artifact up there is an audible *CLICK* as the beam of light ceases. 
+        mpechoat $n The artifact slowly recedes back into the ground.
+        mpechoaround $n As $N pulls the artifact up there is an audible *CLICK* as the beam of light ceases.
+        mpechoaround $n The artifact slowly recedes back into the ground.
+        mpvalueset 2 0
+        break
+      else
+        if value(2) == 1
+          mpvalueset rhos tiny
+        else
+          if value(2) == 2
+            mpvalueset rhos small
+          else
+            if value(2) == 3
+              mpvalueset rhos medium
+            else
+              if value(2) == 4
+                mpvalueset rhos large
+              else
+                if value(2) == 5
+                  mpvalueset rhos huge
+                endif
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+    mpechoat $n As you raise the artifact it projects a %rhos beam of light onto the face of the portcullis.
+    mpechoaround $n As $N raises the artifact it projects a %rhos beam of light onto the face of the portcullis.
+    mplag $n 2
+    mpvalueset 9 50
+  endif
+else
+  mpechoat $n What would you like to raise?
+endif
+~
+>verb_prog p pull~
+if compstr(2) == artifact
+or compstr(2) == kaceajka
+or compstr(2) == strange
+or compstr(2) == cubic
+  if isghost($n)
+    mpechoat $n Your ghostly hands pass through the artifact.
+    mpechoaround $n $N\@s ghostly hands pass through the artifact.
+  else
+    if value(4) == 1
+      mpechoat $n You can\@t seem to move the artifact.
+      break
+    else
+      mpvalueup 2
+      if value(2) > 5
+        mpechoat $n As you pull the artifact up there is an audible *CLICK* as the beam of light ceases. 
+        mpechoat $n The artifact slowly recedes back into the ground.
+        mpechoaround $n As $N pulls the artifact up there is an audible *CLICK* as the beam of light ceases.
+        mpechoaround $n The artifact slowly recedes back into the ground.
+        mpvalueset 2 0
+        break
+      else
+        if value(2) == 1
+          mpvalueset rhos tiny
+        else
+          if value(2) == 2
+            mpvalueset rhos small
+          else
+            if value(2) == 3
+              mpvalueset rhos medium
+            else
+              if value(2) == 4
+                mpvalueset rhos large
+              else
+                if value(2) == 5
+                  mpvalueset rhos huge
+                endif
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+    mpechoat $n As you raise the artifact it projects a %rhos beam of light onto the face of the portcullis.
+    mpechoaround $n As $N raises the artifact it projects a %rhos beam of light onto the face of the portcullis.
+    mplag $n 2
+    mpvalueset 9 50
+  endif
+else
+  mpechoat $n What would you like to pull?
+endif
+~
+>verb_prog p rotate~
+if compstr(2) == artifact
+or compstr(2) == kaceajka
+or compstr(2) == strange
+or compstr(2) == cubic
+or compstr(2) == middle
+  if isghost($n)
+    mpechoat $n Your ghostly hands pass through the artifact.
+    mpechoaround $n $N\@s ghostly hands pass through the artifact.
+  else
+    if value(4) == 1
+      mpechoat $n You can\@t seem to move the artifact.
+      break
+    else
+      mpvalueup 1
+      if value(1) > 8
+        mpechoat $n As you rotate the artifact the moon symbol vanishes leaving only plain runes.
+        mpechoaround $n As $N rotates the artifact the moon symbol vanishes leaving only plain runes.
+        mpvalueset 1 0
+        break
+      else
+        if value(1) == 1
+          mpvalueset phase waning gibbous
+        else
+          if value(1) == 2
+            mpvalueset phase last quarter
+          else
+            if value(1) == 3
+              mpvalueset phase waning crescent
+            else
+              if value(1) == 4
+                mpvalueset phase new
+              else
+                if value(1) == 5
+                  mpvalueset phase waxing crescent
+                else
+                  if value(1) == 6
+                    mpvalueset phase first quarter
+                  else
+                    if value(1) == 7
+                      mpvalueset phase waxing gibbous
+                    else
+                      if value(1) == 8
+                        mpvalueset phase full
+                      endif
+                    endif
+                  endif
+                endif
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+    mpechoat $n As you rotate the artifact the symbol of a %phase moon lights up on the dais.
+    mpechoaround $n As $N rotates the artifact the symbol of a %phase moon lights up on the dais.
+    mplag $n 2
+    mpvalueset 9 50
+  endif
+else
+  mpechoat $n What would you like to rotate?
+endif
+~
+>verb_prog p turn~
+if compstr(2) == artifact
+or compstr(2) == kaceajka
+or compstr(2) == strange
+or compstr(2) == cubic
+or compstr(2) == middle
+  if isghost($n)
+    mpechoat $n Your ghostly hands pass through the artifact.
+    mpechoaround $n $N\@s ghostly hands pass through the artifact.
+  else
+    if value(4) == 1
+      mpechoat $n You can\@t seem to move the artifact.
+      break
+    else
+      mpvalueup 1
+      if value(1) > 8
+        mpechoat $n As you rotate the artifact the moon symbol vanishes leaving only plain runes.
+        mpechoaround $n As $N rotates the artifact the moon symbol vanishes leaving only plain runes.
+        mpvalueset 1 0
+        break
+      else
+        if value(1) == 1
+          mpvalueset phase waning gibbous
+        else
+          if value(1) == 2
+            mpvalueset phase last quarter
+          else
+            if value(1) == 3
+              mpvalueset phase waning crescent
+            else
+              if value(1) == 4
+                mpvalueset phase new
+              else
+                if value(1) == 5
+                  mpvalueset phase waxing crescent
+                else
+                  if value(1) == 6
+                    mpvalueset phase first quarter
+                  else
+                    if value(1) == 7
+                      mpvalueset phase waxing gibbous
+                    else
+                      if value(1) == 8
+                        mpvalueset phase full
+                      endif
+                    endif
+                  endif
+                endif
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+    mpechoat $n As you rotate the artifact the symbol of a %phase moon lights up on the dais.
+    mpechoaround $n As $N rotates the artifact the symbol of a %phase moon lights up on the dais.
+    mplag $n 2
+    mpvalueset 9 50
+  endif
+else
+  mpechoat $n What would you like to turn?
+endif
+~
+>verb_prog p twist~
+if compstr(2) == artifact
+or compstr(2) == kaceajka
+or compstr(2) == strange
+or compstr(2) == cubic
+or compstr(2) == top
+  if isghost($n)
+    mpechoat $n Your ghostly hands pass through the artifact.
+    mpechoaround $n $N\@s ghostly hands pass through the artifact.
+  else
+    if value(4) == 1
+      mpechoat $n You can\@t seem to move the artifact.
+      break
+    else
+      mpvalueup 0
+      if value(0) > 4
+        mpechoat $n As you twist the top of the artifact the color vanishes leaving only plain runes.
+        mpechoaround $n As $N twists the top of the artifact the color vanishes leaving only plain runes.
+        mpvalueset 0 0
+        break
+      else
+        if value(0) == 1
+          opvalueset season Green
+        else
+          if value(0) == 2
+            mpvalueset season Yellow
+          else
+            if value(0) == 3
+              mpvalueset season Red
+            else
+              if value(0) == 4
+                mpvalueset season Blue
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+    mpechoat $n %season runes light up brightly as you twist the top of the artifact.
+    mpechoaround $n %season runes light up brightly as $N twists the top of the artifact.
+    mplag $n 2
+    mpvalueset 9 50
+  endif
+else
+  mpechoat $n What would you like to twist?
+endif
+~
+|
+V13
+8606
+key obj_8606~
+a key to the ice wall~
+The key to the ice wall is here.~
+~
+unknown~
+key d 0 0 A
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+8607
+noble golden coin two-headed obj_8607 shiny~
+a shiny golden coin~
+A golden coin embossed with the bust of an aelin noble is here.~
+~
+gold~
+treasure 0 0 0 AO
+0 0 0 0 0
+0 0 40000 0 P
+1
+E
+noble golden coin two-headed obj_8607 shiny~
+Both faces of this golden coin have embossed images of \#Usdil Enyi\#, as
+it is inscribed, an aelin noble.  The etching is slightly deeper on one
+side, but otherwise the precision of the artist is impeccable.  
+~
+>verb_prog p flip~
+if compstr(2) == double_headed
+or compstr(2) == coin
+or compstr(2) == golden
+or compstr(2) == shiny
+or compstr(2) == noble
+  if isowner($n)
+    mpechoat $n You flip the coin with a flick of your thumb, and it gives off a metallic ring as it spins.
+    mpechoaround $n $N flicks the golden coin with $s thumb and sends it ringing as it spins through the air.
+    mpvaluerand 0 1 100
+    if value(0) == 50
+      mpecho $I miraculously lands on its edge!
+    else
+      mpecho $I lands with the head\@s side facing up.
+    endif
+  endif
+  opverbstop
+else
+  mpnextinterp
+endif
+~
+|
+V13
+8608
+gloves pair pale pile~
+a pair of pale gloves~
+A pair of pale gloves lie in a neatly folded pile.~
+~
+cloth~
+armor 0 0 0 AH
+5 5 5 5 0
+40 15 5650 1 P
+25
+A
+20 -2
+A
+12 20
+V13
+8609
+glistening blue worm bony beak obj_8609~
+the beak of a great blue worm~
+The glistening, bony beak of a great blue worm is here.~
+~
+bone~
+weapon QS 0 0 AN
+exotic 12 3 5 0
+icy bite~
+57 70 0 0 P
+1
+O icy bite~
+>hit_prog 7~
+opcast 549 57 $n
+~
+|
+V13
+8610
+frosty blue hide frosty-blue great worm obj_8610~
+the hide of a great blue worm~
+A pile of frosty-blue hide rests here.~
+~
+hide~
+armor QS 0 0 AD
+12 12 12 10 0
+57 220 373632 2 P
+1
+A
+38 20
+A
+12 50
+A
+18 4
+A
+20 -4
+V13
+8611
+mouth maw great blue worm tissue obj_8611 oblong~
+the oblong maw of a great blue worm~
+The mouth and connecting tissue of a great blue worm lies here.~
+~
+flesh~
+armor QS 0 0 AE
+10 10 10 7 0
+57 120 130968 0 P
+1
+A
+38 10
+A
+12 20
+A
+19 3
+A
+20 -2
+E
+mouth maw great blue worm tissue oblong~
+This large, oblong jawbone has no hinge or joint, but is one continuous
+piece.  Folds of rubbery, blue flesh, each with dozens of small teeth
+protruding from its edge, are arranged in numerous concentric circles lining
+the interior of the maw.  A hole in the center of the flesh would have led
+to the beak and gullet of the great beast, but is now only an empty elastic
+ring about the size of your head.  
+~
+V13
+8612
+heart smoldering bloody kzroth demon lord~
+the smoldering heart of Kzroth the Demon Lord~
+The smoldering, bloody heart of Kzroth the Demon Lord sits here.~
+~
+flesh~
+food QSXY 0 0 A
+20 50 0 A 0
+60 30 43000 1 P
+1
+>verb_prog eat~
+if objtargetcarry()
+  mpinterpret $n $x
+  if isheld($n)
+  else
+    // Bit Setting for Blood Pyre
+    if chosenpath($n) == golden flame
+      if isbitset($n) == 251
+      else
+        mpbitset $n 251 1
+        mpechoat $n {yYou gain new insight into the application of the Blood Pyre.{x
+      endif
+    endif
+  endif
+  opverbstop
+else
+  mpnextinterp
+endif
+~
+|
+V13
+8613
+frosted shallow pool water obj_8613~
+a frosted pool~
+A frosted, shallow pool of water has formed from moisture on the cavern walls.~
+~
+unknown~
+fountain a 0 0 0
+0 0 'water' 0 0
+0 0 0 0 P
+0
+V13
+8614
+key blue ice mystic glacial obj_8614~
+the key to the Glacial Prison~
+A key made of blue ice hums with mystic energy.~
+~
+unknown~
+key BGHN 0 0 A
+0 0 0 0 0
+60 0 0 0 P
+0
+V13
+8615
+long long-handled bone mace obj_8615~
+a long-handled bone mace~
+A bone mace with a long handle lies here.~
+~
+bone~
+weapon GS 0 0 AN
+mace 5 8 1 0
+pound~
+58 90 142152 2 P
+5
+A
+18 3
+A
+19 5
+A
+54 3
+E
+long long-handled bone mace obj_8615~
+The handle of this mace has been wrapped tightly with sinew and is
+decorated with a variety of feathers, tails, and small bones strung
+together.  The head of the weapon is made from the femur of some large
+animal and is inscribed with traditional carvings and symbols.  The
+decorations are designed to rattle when the weapon is shaken, likely as a
+tactic of intimidation or ritual.  
+~
+O pound~
+>verb_prog shake~
+if objtargetwear()
+  mpechoat $n You raise the mace above your head and shake it.
+  mpechoat $n The tiny bones decorating the weapon rattle in a variety of tones.
+  mpechoaround $n Raising the mace above $s head and shaking it, $N rattles the decorations of tiny bones shamanistically.
+else
+  mpnextinterp
+endif
+~
+|
+V13
+8616
+sash shadow woven obj_8616~
+a sash of shadow~
+A sash woven from shadow rests here.~
+~
+shadow~
+armor CGS 0 0 AL
+14 14 14 8 0
+58 20 11473 1 P
+5
+A
+19 2
+A
+4 3
+A
+37 5
+V13
+8617
+feathered feathers rib ribs bones necklace obj_8617~
+a feathered necklace of rib bones~
+A necklace of rib bones decorated with feathers rests here.~
+~
+bone~
+jewelry GS 0 F AC
+0 0 0 0 0
+50 10 7436 1 P
+9
+A
+20 -4
+A
+54 2
+V13
+8618
+bones feathers headdress traditional kaceajka obj_8618~
+a Kaceajka headdress~
+A variety of bones and feathers make up a traditional headdress of the Kaceajka.~
+~
+feather~
+armor GS 0 0 AE
+14 14 14 8 0
+58 40 25178 2 P
+5
+A
+4 2
+A
+20 -3
+A
+12 40
+V13
+8619
+armguards decorative kaceajka pair bones feathers obj_8619~
+a pair of decorative Kaceajka armguards~
+A pair of armguards decorated with small bones and feathers lie here.~
+~
+cloth~
+armor 0 0 0 AI
+14 14 14 5 0
+58 40 69251 1 P
+5
+A
+20 -2
+A
+12 20
+A
+13 30
+V13
+8620
+decorative brass key obj_8620~
+a decorative brass key~
+A decorative brass key is lying here tarnished with age.~
+~
+brass~
+key 0 0 0 AO
+0 0 0 0 0
+40 0 0 0 P
+0
+E
+decorative brass key~
+This brass key has a cylindrical shaft with a single tooth at its end,
+and a decorative face of three conjoined loops.  
+~
+V13
+8621
+tiny doll kohlis guard obj_8621~
+a tiny doll of a Kohlis guard~
+A tiny doll of a Kholis guard is here.~
+~
+silk~
+trash S 0 0 AO
+0 0 0 0 0
+40 0 0 0 P
+0
+E
+tiny doll kohlis guard~
+This tiny doll is masterfully stitched into the shape of a Kohlis guard
+no bigger than an acorn with fine threads of vibrant color.  
+~
+V13
+8622
+dented can beans obj_8622~
+a dented can~
+A dented can is here.~
+~
+steel~
+trash 0 0 0 AO
+0 0 0 0 0
+0 0 0 0 P
+0
+E
+dented can beans~
+Worn paint around the outside of this dented can still bears the mark of
+merchants from Ashta Harrud.  Its contents have long been expelled through
+the burst open top which hangs loosely by a thread of metal.  One side is
+entirely crushed in a wedge shape causing the can to be hunched over onto
+itself.  
+~
+V13
+8623
+small brass birdcage cage drawer obj_8623~
+a small, brass birdcage~
+A small, brass birdcage rests here with a silver ring dangling from its drawer.~
+~
+brass~
+container 0 0 0 AO
+10 A 0 9999 0
+25 30 0 0 P
+0
+E
+small brass birdcage cage~
+This small, brass birdcage is elegantly designed and shows very little
+wear.  The base has a removable drawer with a silver ring as a handle, and
+the thin bars are bent into swirls shaped like leaves.  
+~
+>verb_prog p close~
+if objtargetcarry()
+  if value(0) == 0
+    mpnextinterp
+  else
+    mpecho The drawer slides smoothly into place, and the silver ring chimes against the brass.
+    mpnextinterp
+    mpvalueset 0 0
+  endif
+else
+  mpnextinterp
+endif
+~
+>verb_prog p open~
+if objtargetcarry()
+  if value(0) == 1
+    mpnextinterp
+  else
+    mpechoat $n As you pull on the silver ring, the drawer slides open smoothly.
+    mpechoaround $n As $N pulls on the silver ring, the drawer slides open smoothly.
+    mpnextinterp
+    mpvalueset 0 1
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+8624
+steel longsword sword blued bluish thin kaceajka_sword obj_8624~
+a thin longsword of blued steel~
+A steel longsword with a bluish hue rests here.~
+~
+steel~
+weapon GIa 0 F AN
+sword 7 6 3 0
+gash~
+50 150 70000 0 P
+9
+A
+18 2
+A
+12 25
+A
+19 1
+O gash~
+V13
+8625
+small glass bulb olive oil amber obj_8625~
+a glass bulb of amber oil~
+A small glass bulb filled with an amber olive oil is lying here.~
+~
+glass~
+oil 0 0 E AO
+25 'bless' '' '' ''
+1 0 0 0 P
+3
+V13
+8626
+silver plaque etched obj_8626~
+an etched silver plaque~
+A silver plaque with fine etching lies here mounted against a polished dark wood frame.~
+~
+silver~
+treasure 0 0 0 AO
+0 0 0 0 0
+0 30 10000 0 P
+1
+>data_prog plaque~
+| =|==@)=================(@=====)<(-K-)>(=====@)================(@==|= |
+||                                                                    ||
+||            This plaque is to commemorate the diligence,            ||
+||        craftsmanship and self sacrifice of Kaceajka Rhamki         ||
+||   and his team of iceguards in their creation and maintenance of   ||
+||                        The Glacial Prison.                         ||
+||                                                                    ||
+||      If not for their efforts in the capture and confinement       ||
+||                of the terrible demon lord, Kzroth,                 ||
+||       many lives would have been forfeit to his destruction.       ||
+||                                                                    ||
+||   On behalf of the people of Kohlis, with immeasurable gratitude,  ||
+||                             Thank You!                             ||
+||                                                                    ||
+| __@)===============<__@__>================<__@__>===============(@__ |
+~
+>verb_prog p look~
+if objtargetcarry()
+  mpsetdata plaque
+  loop 1 to 15
+    mpechoat $n $d
+    mpnextdata
+  endloop
+else
+  mpnextinterp
+endif
+~
+|
+V13
+8634
+rusty old key~
+a rusty key~
+An old rusty key lies here.~
+~
+iron~
+key 0 0 0 A
+0 0 0 0 0
+1 10 0 0 P
+0
+V13
+8635
+iron key~
+an iron key~
+An iron key lies here, hidden in shadow.~
+~
+iron~
+key 0 0 0 A
+0 0 0 0 0
+1 20 0 0 P
+0
+V13
+8637
+no name~
+a fire demon\@s claw~
+The fiery claw of a demon burns with unquenchable flames here.~
+~
+bone~
+weapon d 0 0 AN
+exotic 6 5 4 0
+fiery rake~
+0 0 0 0 P
+0
+O fiery rake~
+V13
+8638
+vest charcoal black obj_8638~
+a charcoal black vest~
+A charcoal black vest lies here, worn and peeling.~
+~
+flesh~
+armor EQY 0 0 AD
+11 11 9 9 0
+50 160 52250 2 P
+2
+A
+19 3
+A
+1 3
+A
+4 -1
+A
+13 25
+>rand_prog 100~
+if iswielding($o) == 8638
+  if iswielding($o) == 8640
+    if iswielding($o) == 8641
+      if iswielding($o) == 8642
+        if iswielding($o) == 8643
+          if value(0) == 1
+          else
+            if snaffected($o) == 963
+              mpremaffect $o 963
+              mpvalueset 0 1
+              mpaddaffect $o 963 55 24 0 0 0
+            else
+              mpvalueset 0 1
+              mpaddaffect $o 963 55 24 0 0 0
+            endif
+            mpechoat $o Your charcoal black armors crackle and seethe, and a force shield of darkly-burning fire forms about you, the flames oddly cool.
+            mpechoaround $o The charcoal black armor about $O crackles and seethes, and a force shield of darkly-burning fire forms about them, the flames oddly cool.
+          endif
+        else
+          if snaffected($o) == 963
+            mpremaffect $o 963
+            mpvalueset 0 0
+          endif
+        endif
+      else
+        if snaffected($o) == 963
+          mpremaffect $o 963
+          mpvalueset 0 0
+        endif
+      endif
+    else
+      if snaffected($o) == 963
+        mpremaffect $o 963
+        mpvalueset 0 0
+      endif
+    endif
+  else
+    if snaffected($o) == 963
+      mpremaffect $o 963
+      mpvalueset 0 0
+    endif
+  endif
+else
+  if snaffected($o) == 963
+    mpremaffect $o 963
+    mpvalueset 0 0
+  endif
+endif
+~
+|
+V13
+8639
+claw dark kzroth~
+the claw of Kzroth the demon lord~
+A dark claw lies on the ground, exuding an aura of heat.~
+~
+bone~
+weapon EJMQYa 0 0 AN
+exotic 5 9 3 0
+claw~
+50 80 240000 2 P
+1
+A
+18 -2
+A
+19 4
+O claw~
+>hit_prog 13~
+mpechoat $n The claw of Kzroth the demon lord leaves a painful, burning wound.
+mpaddaffect $n 668 60 8 0 0 0
+mpechoat $o The claw of Kzroth the demon lord leaves a painful, burning wound.
+~
+|
+V13
+8640
+leggings charcoal black~
+a pair of charcoal black leggings~
+A pair of dirty black leggings lie here.~
+~
+flesh~
+armor EQY 0 0 AF
+13 12 15 10 0
+50 100 15600 2 P
+2
+A
+36 5
+A
+17 -8
+A
+20 -3
+A
+19 2
+A
+13 15
+V13
+8641
+armguards black charcoal~
+a pair of charcoal black armguards~
+A black set of armguards lie here.~
+~
+flesh~
+armor EQY 0 0 AI
+15 15 12 10 0
+50 80 22750 2 P
+2
+A
+36 5
+A
+20 -2
+A
+19 2
+A
+13 20
+V13
+8642
+helm black charcoal~
+a charcoal black helm~
+A heavy black helm lies on its side.~
+~
+flesh~
+armor EQ 0 0 AE
+15 12 15 12 0
+50 60 35550 2 P
+2
+A
+36 3
+A
+54 -2
+A
+19 3
+A
+13 15
+V13
+8643
+boots black charcoal~
+a pair of charcoal black boots~
+Two boots made from some thick black material lay discarded.~
+~
+flesh~
+armor EQ 0 0 AG
+14 10 12 12 0
+50 80 13000 2 P
+2
+A
+36 3
+A
+13 15
+A
+19 2
+A
+14 -20
+V13
+8647
+staff shaft ice snowflake thin delicate obj_8647~
+the Staff of the Kaceajka~
+Artifact~
+~
+ice~
+weapon GNSYa 0 0 AN
+staff 6 7 1 F
+smash~
+60 80 1220053 2 P
+1
+A
+12 80
+A
+4 3
+A
+3 3
+A
+13 50
+E
+staff shaft ice snowflake kaceajka delicate thin~
+This thin shaft of ice is perfectly smooth and seems to reshape its neck
+to fit to your hands.  The exquisite head piece is a large multifaceted
+snowflake, its innumerable angles glinting with a soft blue glow.  Runes of
+the Kaceajka of the same hue barely show against the white ice as they trace
+their way in a swirl to the base of the staff.  
+~
+O smash~
+>hit_prog 100~
+mpecho $I sends forth a spray of ice shards at $N!
+mpcast 82 55 $n
+~
+|
+V13
+8648
+white iceplate ice breastplate plate obj_8648~
+a frosted iceplate~
+A piece of white ice forged into a breastplate is here.~
+~
+ice~
+armor DGSYa 0 0 AD
+15 5 15 12 0
+60 100 552997 2 P
+1
+A
+13 35
+A
+19 3
+A
+18 3
+A
+12 50
+A
+37 10
+E
+white iceplate ice breastplate plate~
+This breastplate is formed entirely out of ice, with every edge gleaming
+with a cold, keenness.  Mystic runes of the Kaceajka tribe adorn the surface
+of the ice on all sides, their pale blue energy pulsing between them.  A
+frosty mist surrounds the breastplate as it chills the very air around it.  
+~
+>fight_prog 2~
+if rand(35)
+  if snaffected($o) == 328
+  else
+    mpcast 328 55 $o
+  endif
+else
+  mpecho $I splits and bursts apart in a shower ice ice shards, and then quickly reforms!
+  mpcast 82 55 $n
+endif
+~
+>remove_prog 100~
+mpremaffect 206
+mpechoat $n As you remove the iceplate, you feel less able to move and breathe underwater.
+mpremaffect 576
+~
+>wear_prog 100~
+if snaffected($n) == 206
+  mpremaffect 206
+  mpaddaffect $n 206 55 -1 0 0 1 P
+  mpechoat $n You feel able to breathe underwater.
+else
+  mpaddaffect $n 206 55 -1 0 0 1 P
+  mpechoat $n You feel able to breathe underwater.
+endif
+if snaffected($n) == 576
+  mpremaffect 576
+  mpaddaffect $n 576 55 -1 0 0 0
+  mpechoat $n You feel able to move freely underwater.
+else
+  mpaddaffect $n 576 55 -1 0 0 0
+  mpechoat $n You feel able to move freely underwater.
+endif
+~
+>rand_prog 100~
+mpvalueup 0
+if value(0) == 80
+opecho $I dries up.
+oppurge self
+endif
+~
+>verb_prog p drink~
+if compstr(2) == pool
+or compstr(2) == blood
+or compstr(2) == crimson
+or compstr(2) == deep
+// Bit Setting for Blood Pyre
+  if chosenpath($n) == golden flame
+    if isbitset($n) == 266
+    mpnextinterp
+    else
+    mpnextinterp
+    mpbitset $n 266 1
+    mpechoat $n {yYou gain new insight into the application of the Blood Pyre.{x
+    endif
+  endif
+else
+mpnextinterp
+endif
+~
+|
+V13
+8649
+silver ruby ring slender astonishing clear obj_8649~
+a silver ruby ring~
+A slender, silvery ring delicately clasps an astonishingly clear ruby.~
+~
+ruby~
+gem DGI 0 0 AB
+0 0 0 0 0
+30 0 8190 0 P
+2
+A
+20 -1
+A
+12 25
+A
+37 2
+#0
+
+
+
+#ROOMS
+#8600
+Bitroom~
+8600 == bit set to learn from obj_399
+8601 == bit set to rearrange artifact (obj_399)
+8602 == bit set to rotate artifact (obj_399)
+8603 == bit set when rearranged enough times to learn rotate (obj_399)
+8604 == bit set to activate artifact (obj_399)
+8605 == bit set to gain insight into resonances (obj_399)
+8606 == bit set to recognize subtleties in resonances (obj_399)
+~
+~
+0
+0 557061 2
+W 5 0 0
+Z 4 5
+S
+#8601
+An Ice-Encrusted Pool~
+A still and silent pool of perfect reflection glistens with a cool
+shimmer.  The jagged and sloping edges of the chasm are coated with a thin
+layer of frost that forms feather-like projections from the sharp edges. 
+The air is dense, dark, and heavy.  The pointed angles of the stone walls
+are distorted by the frigid, crystal clear water that continues down into
+absolute darkness.
+~
+~
+0
+0 9 12
+D4
+You can just make out the edges of some loose rocks above you.
+~
+~
+8 0 2198
+D5
+A dark tunnel through the rock continues into frigid blackness.
+~
+~
+0 0 8602
+W 5 0 0
+Z 5 5
+S
+#8602
+A Frigid Underwater Tunnel~
+The water all around you feels extremely dense, like wading through
+crystal clear slush.  The rough, stone walls have each nook and crevice
+coated with knife-like ice.  The water barely swirls in response to your
+motions and seems to push back against every effort.  Dazzling arrays of
+color refracted from the faintest glimmer of light twinkle across the
+multitude of invisible, floating ice crystals.  
+
+The floor of the tunnel is littered with a mixture of random debris that has
+made its way to these depths.  Glints of shiny metal and golden appeal lay
+dormant among the remains of those unlucky enough to have fallen this far.  
+~
+~
+0
+0 13 11
+D2
+A fissure in the rock provides access to an open area.
+~
+~
+0 0 8606
+D4
+The tunnel broadens above you.
+~
+~
+0 0 8601
+W 5 0 0
+Z 5 5
+S
+#8603
+A Frigid Underwater Tunnel~
+Icy rocks weave tightly together here blocking any further travel.  A
+series of narrow openings between the rocks offers a descending passage
+towards the east.  The abrupt protrusions and razor-like edges are nearly
+impossible to avoid as you navigate this silent, freezing world.  The pressure
+of the water grows intense and makes each movement laborious through the
+thick slush.  
+~
+~
+1
+0 1 11
+D1
+Angled pillars of stone lean precariously across the tunnel.
+~
+~
+0 0 8604
+W 5 0 0
+Z 5 5
+S
+#8604
+A Frigid Underwater Tunnel~
+The passage offers limited courses of travel through narrow openings in
+between columns of rock which lay across this twisting tunnel.  Following a
+logical path southward leads to a large opening, and twisting through sharp
+rocks towards the west the tunnel ascends.  Every handhold is razor-sharp
+with ice crystals, and the density of the frigid water makes every motion a
+struggle.  Delicate crystalline formations float lazily through the slurry,
+some with craggy edges, getting hung up on the stone protrusions.  
+~
+~
+1
+0 1 11
+D2
+Angled pillars of stone lean precariously across the tunnel.
+~
+~
+0 0 8609
+D3
+Angled pillars of stone lean precariously across the tunnel.
+~
+~
+0 0 8603
+W 5 0 0
+Z 5 5
+S
+#8605
+A Frigid Underwater Tunnel~
+Twisting downward, this jagged tunnel cuts southward through
+ice-encrusted rocks and has jutting edges like razors.  Tiny, frozen
+crystals swirl in the wake of your motions through the dense slush.  The
+stone tunnel climbs a steep grade to the east where it begins to narrow.  
+~
+~
+0
+0 1 11
+D1
+The icy tunnel ascends to the east.
+~
+~
+0 0 8606
+D2
+The icy tunnel spirals downward through sharp, grey rocks.
+~
+~
+0 0 8610
+W 5 0 0
+Z 5 5
+S
+#8606
+A Frigid Underwater Tunnel~
+The tunnel splits in three directions here.  Sloping downward to the
+west, an ice-encrusted tunnel twists through the grey stone.  Climbing east
+at a slight incline is a broad tunnel.  A large fissure to the north leads
+through to a cylindrical chamber.  Chunks of ice drift along on a mild
+current through the frigid slush.  
+~
+~
+0
+0 1 11
+D0
+The bottom of a chasm sits filled with frigid water.
+~
+~
+0 0 8602
+D1
+The icy tunnel ascends to the east gradually.
+~
+~
+0 0 8607
+D3
+The icy tunnel spirals downward through sharp, grey rocks.  
+~
+~
+0 0 8605
+W 5 0 0
+Z 5 5
+S
+#8607
+A Frigid Underwater Tunnel~
+This ascending, icy passage comes nearly to an end as the angle of the
+floor comes up to meet the ceiling.  A narrow, horizontal space allows
+careful passage to a sudden drop-off.  The vertical walls appear sheer and
+stable, but descend into cold blackness below.  
+~
+~
+0
+0 1 11
+D3
+An ice-encrusted tunnel continues into the darkness.
+~
+~
+0 0 8606
+D5
+The shaft decends into darkness.
+~
+~
+0 0 8608
+W 5 0 0
+Z 5 5
+S
+#8608
+An Ice-Encrusted Shaft~
+The cold hardness of the rock wall offers no grip, especially with the
+thin layer of frost, but neither does it offer any appendage to snag upon. 
+The sheer edges of this vertical shaft appears to be gradually converging as
+it descends towards the south.  Dense, soupy water now surrounds you, large
+chunks of congealed ice float lethargically in the wake of your movements.  
+~
+~
+0
+0 1 11
+D2
+The shaft decends into darkness.
+~
+~
+0 0 8613
+D4
+The shaft ascends into darkness.
+~
+~
+0 0 8607
+W 5 0 0
+Z 5 5
+S
+#8609
+A Frigid Underwater Tunnel~
+The angles of the massive, ice-encrusted rocks form a sharp corner in the
+tunnel.  The passage appears to curve upward towards the north through a
+series of natural stone pillars that lean precariously across the tunnel.  A
+large, triangular space between the rocks leads to a small chamber to the
+east.  The density of the icy water weighs upon you, making every motion a
+struggle.  
+~
+~
+1
+0 1 11
+D0
+Angled pillars of stone lean precariously across the tunnel.
+~
+~
+0 0 8604
+D1
+A small, ice-encrusted chamber lies through a triangular space in the rocks.
+~
+~
+0 0 8610
+W 5 0 0
+Z 5 5
+S
+#8610
+An Ice-Encrusted Chamber~
+The tunnel widens into a small chamber whose floor slants drastically to
+the east.  The frozen, shale walls offer little for traction, and rows of
+ice-encrusted striations along the ceiling have formed natural blades.  A
+large space between the rocks leads around a sharp corner to the west.  The
+frigid, soupy water resists your every movement as clusters of congealed ice
+float by on the wake of your motions.  
+~
+~
+0
+0 1 11
+D0
+A spiraling tunnel ascends to the north.
+~
+~
+0 0 8605
+D1
+The tunnel descends into darkness.
+~
+~
+0 0 8611
+D3
+Angled pillars of stone lean precariously across the tunnel.
+~
+~
+0 0 8609
+W 5 0 0
+Z 5 5
+S
+#8611
+A Low, Sloping Ice Tunnel~
+The floor of this wide, slanted tunnel is smooth, but the low ceiling is
+covered with sharp, shearing ridges.  The dense slush has coated every edge
+of rock with layers of ice as the tunnel descends to the east.  A wide
+opening above you to the west leads into a broad chamber.  
+~
+~
+0
+0 1 11
+D1
+The tunnel descends into darkness.
+~
+~
+0 0 8612
+D3
+The opening leads to an ice-encrusted chamber.
+~
+~
+0 0 8610
+W 5 0 0
+Z 5 5
+S
+#8612
+A Curving Icy Passage~
+This ice-filled tunnel twists sharply as it descends through the grey
+stone to a wide, ragged opening in the southern wall.  Large striations
+lining the rocky walls and ceiling show the strains of the earth\@s past, now
+coated in thin layers of ice, they have become as lethal as blades. 
+Ascending westward the tunnel widens as the floor and ceiling come closer
+together.  
+~
+~
+0
+0 1 11
+D2
+The tunnel twists and opens into a junction chamber.
+~
+~
+0 0 8615
+D3
+This narrow space twists and ascends between smooth, ice-encrusted walls.  
+~
+~
+0 0 8611
+W 5 0 0
+Z 5 5
+S
+#8613
+An Ice-Encrusted Shaft~
+The cold hardness of the rock wall offers no grip, especially with the
+thin layer of frost, but neither does it offer any appendage to snag upon. 
+The sheer edges of this vertical shaft appears to be gradually converging as
+it descends towards the south.  Dense, soupy water now surrounds you as large
+chunks of congealed ice float lethargically in the wake of your movements.  
+~
+~
+0
+0 1 11
+D0
+The shaft ascends into darkness.
+~
+~
+0 0 8608
+D5
+The shaft decends into darkness.
+~
+~
+0 0 8614
+W 5 0 0
+Z 5 5
+S
+#8614
+An Ice-Encrusted Shaft~
+Not a single protrusion or ledge adorns the smooth, sheer faces of the
+rock walls.  This square shaft narrows as it descends at a southern angle
+into the earth, and the frigid water becomes more dense.  A rift in the
+western wall opens up to another passage.  The opening itself is diagonally
+oblong with ragged edges of icy stone lining its edges like teeth.  
+~
+~
+0
+0 1 11
+D2
+The shaft descends into darkness.
+~
+~
+0 0 8621
+D3
+A junction chamber lies through a mouth-like opening.
+~
+~
+0 0 8615
+D4
+The shaft ascends into darkness.
+~
+~
+0 0 8613
+W 5 0 0
+Z 5 5
+S
+#8615
+A Curving Icy Passage~
+The curving passage turns sharply downward through a section of rock
+whose edges have become like icy blades.  The eastern and northern walls
+have been ruptured by some geological force, leaving ragged-edged openings in
+the ice-encrusted rock.  There is a slight current in the dense slush as
+congealed masses of ice slowly drift through.  A broad tunnel leads down
+through the grey rock into a junction chamber below.  
+~
+~
+0
+0 1 11
+D0
+A narrow, twisting passage through ice-encrusted rock.
+~
+~
+0 0 8612
+D1
+A nearly vertical shaft lies through a mouth-like hole in the wall.
+~
+~
+0 0 8614
+D5
+The tunnel diverges into darkness.
+~
+~
+0 0 8616
+W 5 0 0
+Z 5 5
+S
+#8616
+A Divide in the Tunnel~
+This three-way junction in the tunnel is oddly formed, with unexpected
+juts of rock pushing their way towards the center of the chamber.  Every
+surface is encrusted with thick ice, making each jagged stone into a cutting
+edge.  Descending deeper into the cave, the main tunnel continues to the
+west while a broad alcove lies through an arched opening to the south.  
+~
+~
+0
+0 1 11
+D2
+A secluded alcove lies through an arched opening.
+~
+~
+0 0 8619
+D3
+A treacherous looking tunnel is lined with jagged ice.
+~
+~
+0 0 8617
+D4
+The tunnel opens into a junction chamber above you.
+~
+~
+0 0 8615
+W 5 0 0
+Z 5 5
+S
+#8617
+A Jagged, Icy Tunnel~
+Not a single smooth surface offers refuge from the jagged, icy walls in
+this narrow tunnel.  The crystalline structures sometimes connect at their
+tips, forming a thin column of ice across the tube.  The water here barely
+feels liquid at all, though there is a slight current pushing slowly to the
+south.  Up to the east the tunnel expands a little, allowing passage to a
+junction, whereas travel to the south leads through more razor-sharp
+projections and narrow crevices.  
+~
+~
+1
+0 1 11
+D1
+The tunnel divides to the east.
+~
+~
+0 0 8616
+D2
+A treacherous looking tunnel is lined with jagged ice.
+~
+~
+0 0 8618
+W 5 0 0
+Z 5 5
+S
+#8618
+A Jagged, Icy Tunnel~
+Not a single smooth surface offers refuge from the jagged, icy walls in
+this narrow tunnel.  The crystalline structures sometimes connect at their
+tips, forming a thin column of ice across the tube.  The water here barely
+feels liquid at all, though there is a slight current pushing slowly to the
+south.  The oppressive cold as well as the reflective surfaces of the rocks
+seem to make this tunnel stretch on and on endlessly.  
+~
+~
+1
+0 1 11
+D0
+A treacherous looking tunnel is lined with jagged ice.
+~
+~
+0 0 8617
+D2
+A treacherous looking tunnel is lined with jagged ice.
+~
+~
+0 0 8624
+W 5 0 0
+Z 5 5
+S
+#8619
+A Fissure in the Tunnel~
+A large hole in the ceiling of this ice-encrusted alcove reveals the
+surface of the frigid water.  The floor of this chamber is relatively flat
+while the walls and roof form a natural dome.  A diagonal rift in the
+eastern wall offers access to a jagged, twisting tunnel which descends into
+darkness.  The ever-present coldness seems a bit stronger here and
+penetrates deep into your bones.  
+~
+~
+3
+0 5 11
+D0
+A junction chamber splits into several directions.
+~
+~
+0 0 8616
+D1
+A tunnel curves downwards into the darkness.
+~
+~
+0 0 8620
+D4
+The passage opens up into a large cavern.
+~
+none~
+0 0 8630
+W 5 0 0
+Z 5 5
+S
+#8620
+A Jagged, Icy Tunnel~
+This sharply curving tunnel dives deeper into the treacherous,
+ice-encrusted caves to the south.  The walls are covered with pointed, icy
+protrusions and rocks with each edge waiting to test its keenness.  A
+narrow, diagonal crack in the western wall offers passage to another icy
+chamber, and a slight current encourages the slushy water through the
+opening.  
+~
+~
+1
+0 1 11
+D2
+The tunnel curves sharply as it descends into darkness.
+~
+~
+0 0 8622
+D3
+A small alcove lies through the narrow fissure.
+~
+~
+0 0 8619
+W 5 0 0
+Z 5 5
+S
+#8621
+The Bottom of an Ice-Encrusted Shaft~
+The shaft ends abruptly as the south and eastern walls pinch tightly
+together.  The expanse of the darkness above you is nearly hypnotizing save
+for the constant, painful reminder of the frigid slurry you are surrounded
+by.  Large, congealed masses of ice drift weightlessly through the slush. 
+They slowly collide and change their axis of rotation, unable to stabilize
+their buoyancy.  Ice-encrusted rubble and other debris form a garden of
+sharpened edges on the floor of the shaft.  
+~
+~
+0
+0 1 11
+D0
+The shaft ascends into darkness.
+
+~
+~
+0 0 8614
+W 5 0 0
+Z 5 5
+S
+#8622
+A Jagged, Icy Tunnel~
+Curving sharply upwards towards the north, this tunnel is lined with
+jagged, icy protrusions and rocks.  Places where the ice has cracked and
+reformed have evolved into bulky, ragged masses that partially obstruct
+travel.  Each crystallized edge is blade-like in keenness, and the thick,
+freezing water is slushy, but remains clear.  The tunnel widens towards the
+west into an ice-encrusted junction chamber.  
+~
+~
+1
+0 1 11
+D0
+The tunnel curves sharply as it ascends into darkness.
+~
+~
+0 0 8620
+D3
+The tunnel opens into a junction chamber.
+~
+~
+0 0 8623
+W 5 0 0
+Z 5 5
+S
+#8623
+A Three-Way Junction~
+This small, spherical chamber seems to be where two currents collide as
+congealed masses of ice flow in from the west as well as the east.  The
+southern wall is covered with ice flows, but small cracks allow the current
+to squeeze through to a blocked off chamber.  The walls here are smoother
+than other parts of the tunnel, the rough edges likely worn by the swirling
+debris and ice.  A treacherous tunnel offers passage west, while a broader,
+jagged tunnel allows a stronger current in from the east.  
+~
+~
+0
+0 1 11
+D1
+A narrow, ice-encrusted tunnel curves upwards.
+~
+~
+0 0 8622
+D2
+A narrow crevice lies through an ice-encrusted opening.
+~
+~
+0 0 8626
+D3
+A treacherous looking tunnel is lined with jagged ice.
+~
+~
+0 0 8624
+W 5 0 0
+Z 5 5
+S
+#8624
+A Jagged, Icy Tunnel~
+Every motion must be made cautiously through this curving, jagged tunnel.
+Each ice-encrusted edge of rock has the capability of rending flesh.  A
+current, mild though noticeable, moves floating bits of congealed ice
+through the passage to the east.  The tunnel ascends northward through
+projections of razor-sharp ice.  
+~
+~
+1
+0 1 11
+D0
+A treacherous looking tunnel is lined with jagged ice.
+~
+~
+0 0 8618
+D1
+A junction chamber opens to the east.
+~
+~
+0 0 8623
+W 5 0 0
+Z 5 5
+S
+#8625
+Near an Icy Blockage~
+A huge clump of ice brings this passage to a sudden end as it fills the
+entirety of the crevice.  The floor and ceiling are quite smooth and
+slightly angled, becoming farther apart towards the northern wall.  Clusters
+of ice fragments have congealed in the edges of the chamber, filling any
+cracks or gaps with their presence.  The passage continues east through the
+narrow crevice.  
+~
+~
+0
+0 1 11
+D1
+The icy tunnel continues into darkness.
+~
+~
+0 0 8626
+W 5 0 0
+Z 5 5
+S
+#8626
+A Narrow Crevice~
+This narrow crevice is a bit of a refuge from the slicing edges of jagged
+rock as the surfaces are all quite smooth.  The ceiling and floor are only
+about three feet apart at the north end of the chamber, and they angle
+together towards the southeast.  The crevice continues towards the west
+while a ragged opening leads north into a junction chamber.  
+~
+~
+0
+0 1 11
+D0
+A junction chamber lies through an ice-encrusted opening.
+~
+~
+0 0 8623
+D3
+The icy tunnel continues into darkness.
+~
+~
+0 0 8625
+W 5 0 0
+Z 5 5
+S
+#8627
+An Icy Underground Lake~
+Glittering stalactites hang from the high, arched ceiling of this cavern,
+their crystalline features mirrored perfectly in the still, icy lake.  The
+waist-deep water is perfectly clear and reveals the rocky, uneven details of
+the shallow basin.  The mineral deposits in the walls glisten and twinkle in
+the darkness like the innumerable stars of an alien sky.  
+~
+~
+0
+0 9 6
+D1
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.
+~
+~
+0 0 8628
+D2
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8630
+W 5 0 0
+Z 5 5
+S
+#8628
+An Icy Underground Lake~
+Several stone pillars have formed from the convergence of stalagmites and
+stalactites, creating great archways of glittering rock.  The many
+neighboring protrusions share ceiling space, melding together at their
+edges, but each is stretched to a thin point as they reach to touch their
+counterparts below.  The petrified spectacle resembles a layered waterfall
+pouring from an unknown source.  Mineral deposits in the walls glisten and
+twinkle in the darkness like the innumerable stars of the night sky.  
+~
+~
+0
+0 9 6
+D1
+A watery alcove is decorated with stunning crystal formations.  
+~
+~
+0 0 8629
+D2
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.
+~
+~
+0 0 8631
+D3
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.
+~
+~
+0 0 8627
+W 5 0 0
+Z 5 5
+S
+#8629
+A Crystalline Chamber~
+The frigid water is only several inches deep here, and the numerous
+cracks and crevices in the uneven floor are clearly visible.  Intricate,
+natural chandeliers of glittering rock and crystal hang delicately from the
+arched ceiling.  A mirrored reflection of astounding clarity on the surface
+of the frosty lagoon emphasizes the appearance of the crystalline
+structures.  
+~
+~
+0
+0 9 6
+E
+intricate chandelier chandeliers crystal ceiling glittering intricate~
+Each structure is unique in its shape and design, but all splay out into
+thousands of tiny, delicate crystals.  
+~
+D3
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8628
+T 19
+W 5 0 0
+Z 5 5
+S
+#8630
+An Icy Underground Lake~
+Glittering stalactites hang from the high, arched ceiling of this cavern,
+their crystalline features mirrored perfectly in the still, icy lake.  The
+mineral deposits in the rocks glisten and twinkle in the darkness like the
+innumerable stars of an alien sky.  An unnatural chill fills the air and a
+frost clings to every surface.  Each breath, made visible by the cold, is
+held in a brief stasis before slowly dissipating.  
+~
+~
+0
+0 9 6
+D0
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8627
+D1
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8631
+D2
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8634
+D5
+A fissure in the rock offers passage into an icy, underwater tunnel.  
+~
+thin layer of ice~
+0 0 8619
+W 5 0 0
+Z 5 5
+S
+#8631
+An Icy Underground Lake~
+Glittering stalactites hang from the high, arched ceiling of this cavern,
+their crystalline features mirrored perfectly in the still, icy lake.  The
+emptiness of this chamber is strangely oppressive, and only the occasional,
+faint twinkle of a mineral deposit in the darkness gives reference to its
+boundaries.  The uneven floor, scarred by cracks and crevices, is clearly
+apparent through the shallow, limpid water.  
+~
+~
+0
+0 9 6
+D0
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8628
+D2
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8635
+D3
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8630
+W 5 0 0
+Z 5 5
+S
+#8632
+A Cold Stone Cavern~
+Hundreds, if not thousands, of pointed rock formations fill this section
+of the cavern, both rising from the ground and hanging from the ceiling.  A
+narrow space over the field of stalagmites offers passage southward across
+their fragile tips and eastward towards an icy lake.  Tiny bits of rock
+resembling finger bones litter the floor in the gaps between the spines.  
+~
+~
+0
+0 9 12
+D1
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.
+~
+~
+0 0 8633
+D2
+A field of fragile stalagmites covers the cavern floor.
+~
+~
+0 0 8637
+W 5 0 0
+Z 5 5
+S
+#8633
+An Icy Underground Lake~
+Hourglass-shaped pillars of rough stone rise from the shallow, frigid
+water and form great archways.  The spaces between the formations are filled
+with jagged stalactites which dangle thin, fragile strands of minerals from
+their tips.  Thousands of slender, frail stalagmites have formed at the edge
+of the limpid lagoon to the west and south; the crumbled pieces filling the
+gaps across the uneven floor are reminiscent of finger bones.  
+~
+~
+0
+0 9 6
+D1
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8634
+D2
+A field of fragile stalagmites covers the cavern floor.
+~
+~
+0 0 8638
+D3
+A field of fragile stalagmites covers the cavern floor.
+~
+~
+0 0 8632
+W 5 0 0
+Z 5 5
+S
+#8634
+An Icy Underground Lake~
+Mirrored images on the surface of the clear water perfectly reflect the
+details of the cavern ceiling.  The glassy lake continues out into darkness
+in all directions and seems to stretch on endlessly.  Countless stalactites
+hang from above with long, thin strands of minerals dangling in clusters
+across the arched ceiling.  The overlapping formations look like crashing
+waves of stone frozen in timeless beauty.  
+~
+~
+0
+0 9 6
+D0
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8630
+D1
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8635
+D2
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8639
+D3
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8633
+W 5 0 0
+Z 5 5
+S
+#8635
+An Icy Underground Lake~
+Frigid, waist-deep water stretches out in all directions and mirrors the
+glittering stalactites that hang from the high, arched ceiling of this
+cavern.  An unnatural chill fills the air, and a frost clings to every
+surface.  The emptiness of this chamber is strangely oppressive, and only
+the occasional, faint twinkle of a mineral deposit in the darkness gives any
+reference to its boundaries.  
+~
+~
+0
+0 9 6
+E
+small archway glowing blue runes~
+The black stone archway is covered in mystical blue runes which emanate a
+cool aura.  They appear to match the runes that glow on the artifact set in
+the ground.  
+~
+D0
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8631
+D1
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.
+~
+~
+0 0 8636
+D2
+A large formation of dark rock rises up from the icy lake.  
+~
+~
+0 0 8640
+D3
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8634
+W 5 0 0
+Z 5 5
+S
+#8636
+An Icy Underground Lake~
+Shallow, icy water covers the uneven floor of this alcove.  The numerous
+stalactites and stalagmites form a jagged maze of pointed rocks and allow
+almost no passage between their spines.  The relatively smooth walls,
+speckled with glistening mineral deposits, seamlessly converge with the
+arching ceiling and sloping ground.  
+~
+~
+0
+0 9 6
+D3
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.
+~
+~
+0 0 8635
+W 5 0 0
+Z 5 5
+S
+#8637
+A Cold Stone Cavern~
+The stalactites and stalagmites grow closer together here, leaving very
+little space between them.  Some have even converged to form thin pillars of
+stone from floor to ceiling.  The glistening spires are full of mineral
+deposits that sparkle faintly in the darkness.  Tiny bits of rock resembling
+finger bones litter the floor in the gaps between the spines.  
+~
+~
+3
+0 9 12
+E
+pillars huge flame tornados~
+Broad columns of fire writhe across the ground and melt the very rocks in
+the ceiling as they pass over.  
+~
+D0
+A field of fragile stalagmites covers the cavern floor.  
+~
+~
+0 0 8632
+D1
+A field of stalagmites covers the cavern floor at the edge of an icy lake.  
+~
+~
+0 0 8638
+D2
+A dry, natural basin rests among the field of stalagmites.  
+~
+~
+0 0 8641
+W 5 0 0
+Z 5 5
+S
+#8638
+A Cold Stone Cavern~
+The seamless edge of a crystal-clear lake is met by thousands of
+stalagmites, all approximately waist-high.  The ceiling of the cavern is
+also covered with stalactites which dangle delicate threads of minerals
+across its entirety.  A landing of finely hewn stone rests at the bottom of
+a curving staircase which leads into a tunnel in the southern wall.  A
+broad, bottom step boasts a large inscribed rune which glows a dull blue in
+the darkness.  Towards the west there is only a narrow space between the
+tips of the jagged formations, and the icy lagoon stretches northeast.  
+~
+~
+0
+0 9 12
+E
+landing broad bottom step rune~
+The first step of the staircase is a broad crescent shape with defined
+edges.  A large, blue rune adorns its center which glows faintly as you
+approach.  
+~
+D0
+A field of stalagmites covers the cavern floor at the edge of an icy lake.  
+~
+~
+0 0 8633
+D1
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8639
+D2
+An intimidating stone staircase climbs into the cavern wall.  
+~
+~
+0 0 8642
+D3
+A field of fragile stalagmites covers the cavern floor.  
+~
+~
+0 0 8637
+W 5 0 0
+Z 5 5
+S
+#8639
+An Icy Underground Lake~
+The cavern walls climb steeply to the southeast, creating near-vertical
+rock faces.  The dark, sheer stone contrasts against the lighter, more
+natural ceiling, and the formations of mineral-speckled stalactites are
+mirrored in the icy water\@s surface.  Westward, the lake\@s edge offers
+passage among the stalagmites and northward the lake stretches off into the
+darkness.  
+~
+~
+0
+0 9 6
+E
+small archway glowing blue runes~
+The black stone archway is covered in mystical blue runes which emanate a
+cool aura.  They appear to match the runes that glow on the artifact set in
+the ground.  
+~
+D0
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.  
+~
+~
+0 0 8634
+D3
+A field of stalagmites covers the cavern floor at the edge of an icy lake.
+~
+~
+0 0 8638
+W 5 0 0
+Z 5 5
+S
+#8640
+The Base of a Precarious Slope~
+The edge of the limpid, icy lake is met by a jagged wall of dark stone
+that rises suddenly to the south.  The arching cavern ceiling gives way to a
+mountainous structure that reaches up into darkness, and a faint bluish
+light seems to emanate from its summit.  A treacherous, near-vertical climb
+over loose rocks coated with ice leads up through a narrow space between the
+cavern wall and the rock face.  
+~
+~
+0
+0 9 12
+D0
+A vast cavern of frosted rocks glisten in the darkness over an icy lake.
+~
+~
+0 0 8635
+D4
+A plateau of dark rock sits atop a subterranean mountain.  
+~
+~
+0 0 8644
+W 5 0 0
+Z 5 5
+S
+#8641
+A Dried Stone Basin~
+A large cluster of stalactites have melded together to form a natural
+chandelier in the center of the chamber.  The field of stalagmites is
+interrupted by a smooth stone basin below the formation, and though it once
+held a quiet pool, it is now dried and dusty.  Several hourglass-shaped
+columns of rock decorate the edges of the basin and glisten with mineral
+deposits.  
+~
+~
+0
+0 9 12
+E
+smooth stone basin dried pool~
+Layers of alternating color in the dried basin allude to various times in
+history when minerals were deposited.  The pool is nearly circular with
+smooth, step-like tiers surrounding its edges.  A small stalagmite has begun
+to develop in the center of the basin directly below the tip of the large
+formation above it.  
+~
+D0
+A field of fragile stalagmites covers the cavern floor.
+~
+~
+0 0 8637
+W 5 0 0
+Z 5 5
+S
+#8642
+An Ice-encrusted Tunnel~
+This curving staircase travels through a rough-hewn stone tunnel.  The
+narrow space is coated with a thin layer of ice, and the high, arching
+ceiling holds clusters of gleaming icicles.  The broad steps are fairly
+level and seem to be the result of fine workmanship.  At the top of the
+stairs are two stone columns forming a doorway that opens into a larger
+chamber.  The stairs descend through an opening in the rock to the north.  
+~
+~
+0
+0 9 12
+D0
+A field of stalagmites covers the cavern floor at the edge of an icy lake.  
+~
+~
+0 0 8638
+D1
+A lengthy corridor lined with columns and crystals leads eastward.  
+~
+~
+0 0 8643
+W 5 0 0
+Z 5 5
+S
+#8643
+The Path to the Glacial Prison~
+This long corridor is decorated with free-standing columns along both
+sides with glowing blue crystals resting at their tops.  The floor is tiled
+with large, smooth slabs of dark rock, each the size of a dinner table, and
+those that make up the center aisle are inscribed with large runes.  The
+high, vaulted ceiling almost disappears into the darkness above save for the
+gleam of icicles that adorn its surface.  A frosty mist hangs in the chilled
+air, and a faint humming can be heard all around.  
+~
+~
+0
+0 9 12
+E
+column cloumns glowing blue crystal crystals~
+These smooth, marbled pillars stand about fifteen feet high along the
+north and south edges of the corridor.  Atop each structure is a spherical
+crystal glowing with a faint blue light.  The patterns cast by the orbs
+against the dark stone walls are like light reflecting off water.  
+~
+E
+floor tiled tiles tile slab slabs center aisle runes rune~
+Each stone tile is about five feet square in size.  The grey stone
+differs from the limestone of the cavern and the dark granite all around. 
+The two center rows are inscribed with large runes which glow a faint blue
+as you walk over them.  
+~
+D1
+A natural stone bridge leads over a gap to a small plateau.  
+~
+~
+0 0 8644
+D3
+A narrow opening leads to a tunnel with a descending stone staircase.  
+~
+~
+0 0 8642
+W 5 0 0
+Z 5 5
+S
+#8644
+Before the Glacial Prison~
+A narrow bridge of solid, dark rock crosses a deep gap in the ground to
+lead from the western corridor to a small plateau.  The semi-circle platform
+overlooks an icy underground lake to the north at the base of a steep cliff.
+A massive gate of gleaming blue ice is set into the southern wall.  The
+arching frame is made of large blocks of ice, each with a glowing rune
+emblazoned on its surface.  The structure reaches over thirty feet to the
+ice-encrusted ceiling of the cavern.  
+~
+~
+0
+0 9 12
+D2
+An immense portcullis of ice is set into the southern wall.
+~
+glacial prison~
+65639 8614 8646
+D3
+A lengthy corridor lined with columns and crystals leads westward.  
+~
+~
+0 0 8643
+D5
+An icy lake extends out from the base of the treacherous slope.  
+~
+~
+0 0 8640
+W 5 0 0
+Z 5 5
+S
+#8645
+The Glacial Prison~
+You stand inside an icy cell of cyclopean proportions.  Blue walls formed
+of massive blocks of ice rise to nearly twenty feet, where they meet a
+ceiling crystallized with jagged icicles.  The floor is a single smooth
+surface covered by several inches of water that seem to draw the very heat
+from your bones.  
+~
+~
+1
+0 8251 12
+E
+small archway glowing blue runes~
+The black stone archway is covered in mystical blue runes which emanate a
+cool aura.  They appear to match the runes that glow on the artifact set in
+the ground.  
+~
+D1
+The oppressive Glacial Prison continues.
+~
+~
+0 0 8646
+W 5 0 0
+Z 5 5
+S
+#8646
+The Glacial Prison~
+You stand inside an icy cell of cyclopean proportions.  Blue walls of
+massive blocks of ice rise to nearly twenty feet where they meet a ceiling
+crystallized with jagged icicles.  The floor is a single smooth surface
+covered by several inches of water that seems to draw the very heat from
+your bones.  An immense portcullis adorned with glowing blue runes offers
+exit to the north.  
+
+An eight-sided star is carved in the center of the room, three jagged rents
+running through it.  
+~
+~
+1
+0 8251 12
+E
+symbolvision~
+You gaze at the Mark of the Damned, examining with care the fine lines
+and gouges making its form.  Even as you do so, you feel the world about you
+waver and fade..  
+
+You find yourself floating within the void, surrounded by nothingness. 
+Soon, the nothingness takes form, appearing as wraithlike figures with
+quicksilver eyes.  The lost spirits beckon, whispering promises of knowledge
+and power, carressing you with limbs of wispy cold.  You find yourself
+moving, if such can be discerned in an unchanging landscape, and after what
+seems like an eternity you arrive at a blackened gate hanging in the
+nothingness.  
+
+Here your chilling escort fades, but the whispers remain, as well as shining
+pinpoints of silver light.  They call for you to step through, to become one
+with the power of the void.  You hesistate, and begin to float through. 
+Whether this is by your will or that of some malevolent force is unclear. 
+You pass through, and all becomes light.  
+
+White fire rages about you, blinding you with its sheer intensity.  Tongues
+of flame envelop you and you can feel your flesh blacken and flake like
+burnt parchment.  You can not even scream in agony as the very air is burnt
+from your lungs, suffocating you even as you are consumed..  
+
+The light fades suddenly, and you find yourself again in Kzroth\@s chamber,
+the Mark of the Damned seared into your memory.
+~
+E
+star eight-sided mark damned symbol~
+This inscription is an eight-sided star, in the center of which are three
+parallel lines.  The lines are harshly drawn, and are of uneven length,
+similar to the markings of some great claw.  Unwholesome runes and glyphs
+dot the points of the star, carefully offset from the lines.  
+
+This mark pulses with a blasphemous power all its own.  Perhaps you could
+learn more were you to study it.  
+~
+D0
+An immense portcullis of ice is set into the northern wall.
+~
+~
+65639 8614 8644
+D1
+The oppressive Glacial Prison continues.
+~
+~
+0 0 8647
+D3
+The oppressive Glacial Prison continues.
+~
+~
+0 0 8645
+W 5 0 0
+Z 5 5
+S
+#8647
+The Glacial Prison~
+You stand inside an icy cell of cyclopean proportions.  Blue walls of
+massive blocks of ice rise to nearly twenty feet where they meet a ceiling
+crystallized with jagged icicles.  The floor is a single smooth surface
+covered by several inches of water that seem to draw the very heat from your
+bones.  
+~
+~
+1
+0 8251 12
+D3
+The oppressive Glacial Prison continues.
+~
+~
+0 0 8646
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 8601 4 8
+D 0 8644 2 65639
+D 0 8646 0 65639
+O 0 8603 0 8602
+P 0 8607 1 8603 1
+O 0 8602 0 8603
+M 0 8603 1 8603 1
+E 0 8609 0 16
+E 0 8610 0 5
+E 0 8611 0 6
+O 0 8602 0 8604
+M 0 8604 2 8604 1
+O 0 8602 0 8605
+O 0 8602 0 8606
+M 0 8609 8 8606 1
+O 0 8602 0 8607
+O 0 8602 0 8608
+M 0 8609 8 8608 1
+O 0 8602 0 8609
+M 0 8604 2 8609 1
+O 0 8602 0 8610
+M 0 8609 8 8610 1
+O 0 8602 0 8611
+O 0 8602 0 8612
+M 0 8609 8 8612 1
+O 0 8602 0 8613
+O 0 8602 0 8614
+O 0 8602 0 8615
+O 0 8602 0 8616
+M 0 8609 8 8616 1
+O 0 8602 0 8617
+M 0 8605 5 8617 1
+O 0 8602 0 8618
+M 0 8605 5 8618 1
+O 0 8602 0 8619
+O 0 8602 0 8620
+M 0 8605 5 8620 1
+M 0 8609 8 8620 1
+O 0 8604 0 8621
+P 0 8649 2 8604 1
+O 0 8602 0 8621
+M 0 8609 8 8621 1
+O 0 8602 0 8622
+M 0 8605 5 8622 1
+O 0 8602 0 8623
+O 0 8602 0 8624
+M 0 8605 5 8624 1
+O 0 8602 0 8625
+O 0 8602 0 8626
+M 0 8609 8 8626 1
+M 0 8610 3 8627 1
+E 0 8624 0 16
+E 0 8617 0 3
+M 0 8610 3 8632 1
+E 0 8624 0 16
+E 0 8617 0 3
+M 0 8606 1 8638 1
+E 0 8615 0 16
+E 0 8616 0 13
+E 0 8617 0 3
+E 0 8618 0 6
+E 0 8619 0 10
+M 0 8610 3 8640 1
+E 0 8624 0 16
+E 0 8617 0 3
+M 0 8608 1 8644 1
+O 0 8605 0 8644
+G 0 8614 0
+M 0 8649 1 8645 1
+E 0 8638 0 5
+E 0 8639 0 16
+E 0 8642 0 6
+E 0 8640 0 7
+E 0 8641 0 10
+E 0 8643 0 8
+G 0 8612 0
+M 0 8600 1 8646 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

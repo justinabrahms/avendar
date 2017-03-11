@@ -1,0 +1,2332 @@
+#BEGIN_AREADATA
+#NAME The Hidden Path
+#BUILDERS Serachel Iacobos Tzajai
+#VNUMS 26100 26139
+#CREDITS [ 1 51] Serachel  The Hidden Path
+#AREAINFO 59
+#WEATHER 0 4 0
+#END_AREADATA
+
+
+
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME manticore huge old
+#SHORT a huge, old manticore
+#LONG A huge, old manticore paces back and forth, weaving its scorpion tail.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE wyvern
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT -500 0
+#SPEED 30
+#RESIST physical # 100
+#RESIST poison # 100
+#ACT 265
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 8000 1 1
+#MANADICE 1000 1 1
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB claw
+#POSITION 8
+#WEALTH 0
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 26101
+#PROG_TYPE trigger_prog 100
+#PROG_BODY 
+if isfight($n)
+if rand(15)
+wake
+endif
+endif
+
+#END_PROG
+#PROG_TYPE rand_prog 100
+#PROG_BODY 
+if isanypchere($i)
+mproomcmd mptrigger all
+if mobvalue(0) == 1
+if rand(50)
+wake
+endif
+endif
+else
+mpvalueset 0 0
+if rand(3)
+sleep
+endif
+
+#END_PROG
+#PROG_TYPE fight_prog 35
+#PROG_BODY 
+mpunfocus
+mpfocus $r
+if ispc($f) 
+if isfight($f)
+mpechoat $f The manticore's scorpion tail darts at you with lightning speed!
+mpechoaround $f The manticore's scorpion tail darts at $F with lightning speed!
+if rand(50)
+mpechoat $f You dodge the manticore's scorpion tail.
+mpechoaround $f $F dodges the manticore's scorpion tail.
+else
+mpechoat $f The manticore's tail pierces your flesh, {r***DEVASTATING***{x you!
+if sex($f) == 2
+mpechoaround $f The manticore's tail pierces $F's flesh, {r***DEVASTATING***{x her!
+else
+mpechoaround $f The manticore's tail pierces $F's flesh, {r***DEVASTATING***{x him!
+endif
+mpdamtype $f 20 10 1 2
+mpcast 105 70 $f
+endif
+endif
+endif
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME no name
+#SHORT (no short description)
+#LONG (no long description)
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 0
+#ALIGNMENT 0 0
+#SPEED 0
+#ACT 0
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 0 0 0
+#MANADICE 0 0 0
+#DAMTYPE bashing
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB hit
+#POSITION 8
+#WEALTH 0
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 26102
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME alarm clock
+#SHORT an alarm clock
+#LONG An alarm clock ticks menacingly nearby.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 0
+#ALIGNMENT 0 0
+#SPEED 0
+#RESIST summon # 100
+#RESIST charm # 100
+#ACT 1092
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 10000 1 1
+#MANADICE 0 0 0
+#DAMTYPE bashing
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB hit
+#POSITION 8
+#WEALTH 0
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 26103
+#PROG_TYPE greet_prog 100
+#PROG_BODY 
+if snaffected($n) == 198
+else
+mpforce manticore mpvalueset 0 1
+endif
+
+#END_PROG
+#PROG_TYPE trigger_prog 100
+#PROG_BODY 
+if isfight($n)
+if rand(30)
+mpforce manticore wake
+endif
+endif
+
+#END_PROG
+#PROG_TYPE rand_prog 100
+#PROG_BODY 
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME fallbot
+#SHORT a fallbot
+#LONG A fallbot does its thing.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 0
+#ALIGNMENT 0 0
+#SPEED 0
+#RESIST summon # 100
+#RESIST charm # 100
+#RESIST magical # 100
+#RESIST physical # 100
+#ACT 1092
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 10000 1 1
+#MANADICE 10000 1 1
+#DAMTYPE bashing
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB hit
+#POSITION 8
+#WEALTH 0
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 26104
+#PROG_TYPE rand_prog 100
+#PROG_BODY 
+if isanypchere($i)
+mpfocus $r
+if isfocused($i)
+if ispc($f)
+if isfight($f)
+if dexterity($f) > 20
+if rand(95)
+mpvalueset 0 1
+endif
+else
+if rand(98)
+mpvalueset 0 1
+endif
+endif
+if mobvalue(0) == 1
+mpechoat $f In the heat of battle, you lose your footing and tumble down the rock face!
+if sex($f) == 2
+mpechoaround $f In the heat of battle, $F loses her footing and tumbles down the rock face! 
+else
+mpechoaround $f In the heat of battle, $F loses his footing and tumbles down the rock face! 
+endif
+if inroom($f) == 26123
+mpechoaround $f $F leaves down.
+mptransfer $f 26122
+mpforce $f look
+mpechoaround $f $F tumbles down from the cliff above!
+mpat $f mpdamtype $f 20 5 10 1
+if sex($f) == 2
+mpechoaround $f $F's fall {rMANGLES{x her!
+else
+mpechoaround $f $F's fall {rMANGLES{x him!
+endif
+mpechoat $f Your fall {rMANGLES{x you!
+endif
+if inroom($f) == 26124
+mpechoaround $f $F leaves down.
+mptransfer $f 26123
+mpforce $f look
+mpechoaround $f $F tumbles down from the cliff above!
+mpat $f mpdamtype $f 20 5 10 1
+if sex($f) == 2                           
+mpechoaround $f $F's fall {rMANGLES{x her!
+else
+mpechoaround $f $F's fall {rMANGLES{x him!
+endif
+mpechoat $f Your fall {rMANGLES{x you!
+mpechoaround $f $F leaves down.
+mptransfer $f 26122
+mpforce $f look
+mpechoaround $f $F tumbles down from the cliff above!
+mpat $f mpdamtype $f 20 5 10 1
+if sex($f) == 2                           
+mpechoaround $f $F's fall {rMANGLES{x her!
+else
+mpechoaround $f $F's fall {rMANGLES{x him!
+endif
+mpechoat $f Your fall {rMANGLES{x you!
+endif
+endif
+endif
+endif
+endif
+mpunfocus
+endif
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME goat mountain shaggy
+#SHORT a mountain goat
+#LONG A shaggy mountain goat picks its way along the stony ground.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+This shaggy goat picks its way forlornly along the steep paths of the
+hill country, stopping to nibble on any meagre plant which it finds growing.
+A large pair of curved horns lend it a measure protection when threatened.  
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE pig
+#GUILD water scholar
+#GENDER 0
+#ALIGNMENT 0 0
+#SPEED 8
+#ACT 16
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 8 30 261
+#MANADICE 15 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB charge
+#POSITION 8
+#WEALTH 0
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 26110
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME hawk large
+#SHORT a large hawk
+#LONG A large hawk circles in the cold winds above the hills.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A large brown hawk with white-tipped wings circles in the chill winds
+above the peaks.  
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE song bird
+#GUILD water scholar
+#GENDER 0
+#ALIGNMENT 0 0
+#SPEED 13
+#ACT 16
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 12 45 707
+#MANADICE 25 10 100
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB claw
+#POSITION 8
+#WEALTH 0
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 26111
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME stag red great
+#SHORT a great red stag
+#LONG A great red stag walks through the hills.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A great stag with a gleaming red coat walks through the rugged hill
+country of his home.  Now and then he tosses his head proudly, displaying
+his many-horned antlers.  
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE pig
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 0 0
+#SPEED 23
+#ACT 16
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 15 190 911
+#MANADICE 45 10 100
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB charge
+#POSITION 8
+#WEALTH 0
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 26112
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME tsullil dark skin skinned dark-skinned hunch back backed hunchback hunchbacked hunch-backed nefortu scholar fire mob_26113
+#SHORT Tsullil
+#LONG Tsullil, a dark-skinned, hunch-backed nefortu, flutters here.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+This dark-skinned nefortu is hunchbacked and bent, compact frame supported
+by a pair of membraneous, batlike wings which stretch from its arms to its
+body.  The nefortu's complexion is a dark sickly brown, dull and lustreless.
+A crafty face with a flat, upturned nose is strikingly ugly, two goggling black
+eyes peering out.  A series of snaggled, yellow teeth, many of them missing,
+protrudes past his wrinkled lips.
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE nefortu
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT -500 0
+#SPEED 27
+#RESIST summon # 100
+#RESIST charm # 100
+#RESIST magical # 5
+#RESIST physical # 5
+#RESIST heat # 10
+#RESIST drowning # 100
+#ACT 1092
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 20 220 2000
+#MANADICE 10 10 10
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB punch
+#POSITION 8
+#WEALTH 2
+#FACTION 0
+#LANGUAGE AHK
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 26113
+#PROG_TYPE verb_prog p garbme
+#PROG_BODY 
+mpoload 9786
+mpoload 6936
+mpoload 6938
+mpoload 11309
+mpoload 6951
+mpoload 1266 on $i 20
+wear all
+
+#END_PROG
+#PROG_TYPE rand_prog 5
+#PROG_BODY 
+if snaffected($i) == 71
+  if snaffected($i) == 393
+  else
+    mpcast 393 99
+  endif
+else
+  mpcast 71 99
+endif
+
+#END_PROG
+#PROG_TYPE fight_prog 15
+#PROG_BODY 
+if hitprcnt($i) < 15
+  mpcast 410 60
+else
+  mpvaluerand 0 0 5
+  if value(0) == 0
+    mpcast 129 60
+  endif
+  if value(0) == 1
+    mpcast 205 60
+  endif
+  if value(0) == 2
+    mpcast 400 60
+  endif
+  if value(0) == 3
+    mpcast 66 60
+  endif
+  if value(0) == 4
+    mpcast 205 50
+  endif
+endif
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME Zilba Gralci Air Scholar Extraordinaire
+#SHORT Zilba Gralci
+#LONG Zilba Gralci floats nonchalantly through the air.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Clad in Earandam's finest, Zilba Gralci appears to be a bit of a social
+gadfly.  Despite the frippery of his garments, Zilba's reputation as a
+scholar precedes his fooleries.  He floats about the room on wings of air,
+his magic an extension of his eclectic personality.  
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 1
+#ALIGNMENT 0 0
+#SPEED 28
+#RESIST summon # 100
+#RESIST charm # 100
+#RESIST magical # 5
+#RESIST physical # 20
+#RESIST electricity # 100
+#ACT 68
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 20 220 7000
+#MANADICE 0 0 0
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB stab
+#POSITION 8
+#WEALTH 100
+#FACTION 0
+#LANGUAGE A
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 26114
+#PROG_TYPE verb_prog p garbme
+#PROG_BODY 
+mpoload 157
+mpoload 158
+mpoload 159
+mpoload 7148
+mpoload 7443
+mpoload 18072 on $i 20
+wear all
+
+#END_PROG
+#PROG_TYPE fight_prog 20
+#PROG_BODY 
+mpecho A bored look crosses Zilba's face, and he snaps his fingers.
+mpcast 137 60
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME poster loader bot posterloader posterloaderbot mob_26115
+#SHORT poster loader
+#LONG The Kaelsten poster loader is here.  {Wpaper_up{n
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+It's a generic bot.  
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 0
+#ALIGNMENT 0 0
+#SPEED 1
+#ACT 64
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 1 1 0
+#MANADICE 1 1 1
+#DAMTYPE bashing
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB hit
+#POSITION 8
+#WEALTH 0
+#FACTION 0
+#LANGUAGE 0
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 26115
+#PROG_TYPE data_prog rooms
+#PROG_BODY 
+3530
+3520
+7116
+1533
+8845
+12110
+
+#END_PROG
+#PROG_TYPE verb_prog p paper_up
+#PROG_BODY 
+if isimmort($n)
+  mpechoat $n Loading posters.
+  mpsetdata rooms
+  loop 0 to 8
+    mpgoto $d
+    if objhere(26101)
+    else
+      mpoload 26101 in room
+      mpvalueup 1
+    endif
+    mpnextdata
+  endloop
+  mpgoto 1211
+  mpechoat $n $1 posters loaded.
+  mpvalueset 1 0
+endif
+
+#END_PROG
+#PROG_TYPE verb_prog paper_up
+#PROG_BODY 
+if isimmort($n)
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_MOBILE
+#BEGIN_CHAR
+#BEGIN_INTERACTABLE
+#NAME impslave
+#SHORT an impslave
+#LONG An impslave is smeared across the walls here.
+
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+
+#END_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#RACE human
+#GUILD water scholar
+#GENDER 0
+#ALIGNMENT 0 0
+#SPEED 0
+#RESIST summon # 100
+#RESIST charm # 100
+#RESIST magical # 100
+#RESIST physical # 100
+#ACT 1092
+#BEGIN_AFFECTABLE
+#END_AFFECTABLE
+#END_CHAR
+#HPDICE 10000 1 1
+#MANADICE 10000 1 1
+#DAMTYPE bashing
+#DAMTYPE bashing
+#DAMTYPE piercing
+#DAMTYPE slashing
+#DAMTYPE heat
+#DAMTYPE cold
+#DAMTYPE electricity
+#DAMTYPE acid
+#DAMTYPE poison
+#DAMTYPE unholy
+#DAMTYPE holy
+#DAMTYPE energy
+#DAMTYPE mental
+#DAMTYPE disease
+#DAMTYPE physical
+#DAMTYPE light
+#DAMTYPE other
+#DAMTYPE unholy
+#DAMTYPE other
+#DAMTYPE sound
+#DAMTYPE mental
+#DAMTYPE unholy
+#DAMTYPE bashing
+#DAMVERB hit
+#POSITION 8
+#WEALTH 0
+#FACTION 0
+#LANGUAGE 0
+#SIZE 2
+#BEGIN_PROGGABLE
+#VNUM 26120
+#PROG_TYPE greet_prog 100
+#PROG_BODY 
+mpbitset $n 26100 1
+mpbitset $n 26101 0
+
+#END_PROG
+#PROG_TYPE load_prog 100
+#PROG_BODY 
+mpseewizi
+
+#END_PROG
+#END_PROGGABLE
+#END_MOBILE
+#BEGIN_OBJECT
+#BEGIN_INTERACTABLE
+#NAME ragged grubby piece old vellum obj_26101
+#SHORT a ragged, grubby piece of old vellum
+#LONG A ragged, grubby piece of old vellum has been placed here.
+#BEGIN_DESCRIBABLE
+#ED_KEY ragged grubby piece old vellum obj_26101
+#BEGIN_ED_DESC
+T' th' Guardians...  
+
+Well, 'cause it seemin t' me like yer gunna hire anyone who breaks laws
+or kill anyone that yeh want, I's applyin' fer a position to the Guardians. 
+Seemin' t' me that it puts yeh on a pedastal that allows yeh to kill people
+in town.  Iffin yehs innerested, jes' send a note to the Raider camp, 'n
+I'll look at it.  Yer newest appycant.  
+  
+-Kaelsten 
+  
+(By th' way...  Stop hirin' murderers, crooks, 'n thieves.  They's supposed
+to be our appycants, not yers.  Moki's a bigger raider than anyone in this
+'ere realm.)
+#END_ED_DESC
+#END_DESCRIBABLE
+#END_INTERACTABLE
+#LORE  ##
+#MATERIAL paper
+#BEGIN_AFFECTABLE
+#FLAGS 134217728
+#END_AFFECTABLE
+#WEAR hand
+#BEGIN_TYPE trash ##
+#END_TYPE
+#LEVEL 10
+#WEIGHT 3
+#COST 0
+#SIZE 0
+#CONDITION 100
+#LIMIT 0
+#BEGIN_PROGGABLE
+#VNUM 26101
+#END_PROGGABLE
+#END_OBJECT
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A small path winds its way northward to the hill country, meandering
+through the dwindling trees and following the narrow valley between the two
+closest hills to the north.  To the south a small village huddles at the
+base of a broad valley, sending thin spires of chimney-smoke up from amongst
+the trees.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Path into the Hills
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26102
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 15031
+#BEGIN_PROGGABLE
+#VNUM 26101
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A small path rises steadily into the looming northern hill country,
+leaving behind the leafy trees of the broad valley to the south.  A small
+village can be seen amidst the trees of the valley, and thin spires of pale
+smoke climb upward from amongst the green and russet foliage.  No such
+homely signs are apparent in the northern country, whose rugged, barren
+peaks peer above the rounder hills into whose arms this path winds.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Path into the Hills
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26103
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26101
+#BEGIN_PROGGABLE
+#VNUM 26102
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+The stony floor of this narrow valley rises steadily into the waiting
+arms of two high, round hills to the north.  Brambles and thistles have
+replaced the forest trees of the south, and they sprawl amongst the toppled
+boulders and shattered granite of the hills' rocky peaks.  A broad forested
+valley opens at then end of this narrower cleft some way to the south.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Rising Valley
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26104
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26102
+#BEGIN_PROGGABLE
+#VNUM 26103
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A narrow valley, which winds southward between the out-flung arms of two
+hills, ends its northward climb at the face of an outcrop of sheer granite. 
+A narrow path, nothing more than a twisting line of whitish pebbles, winds
+upward to the west, criss-crossing its way toward the peak of that hill. 
+Far to the south a broad forested valley is visible, stretching away into
+greyness.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Rising Valley
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26103
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26105
+#BEGIN_PROGGABLE
+#VNUM 26104
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A thin path of fragments of white stone winds its way upward and westward
+around the side of a high, round hill, whose rocky peak looms just to the
+north.  The path drops away quickly to the east, into a narrow valley
+between the arms of the hills.  Far to the east, beyond the valley and
+beyond yet more hills, a wide, grey plain stretches away into the distance. 
+To the west the path winds deeper into the hill country, whose craggy peaks
+rise high above the southern forest.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE Near a Rocky Peak
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26106
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26104
+#BEGIN_PROGGABLE
+#VNUM 26105
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Upon the western slopes of this high round hill, the great extent of the
+hill country can be seen.  Rampart upon rampart rise into the distance, ever
+northward toward the dimly visible shadow of the Brintor Mountains.  Like
+rows of blackened teeth, the crests cut their way southward, ending suddenly
+as a great forest begins.  The narrow path here bends eastward, around the
+southern face of the hill.  To the north it winds toward an out-thrust
+ridge.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE Upon a Barren Hillside
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26107
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26105
+#BEGIN_PROGGABLE
+#VNUM 26106
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Upon the western slopes of this high round hill, the great extent of the
+hill country can be seen.  Rampart upon rampart rise into the distance, ever
+northward toward the dimly visible shadow of the Brintor Mountains.  Like
+rows of blackened teeth, the crests cut their way southward, ending suddenly
+as a great forest begins.  A narrow path of shattered white stone begins
+here and winds southward around the western face of the hill.  A pathless
+ridge stretches out from the hill to the northwest.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE Upon a Barren Hillside
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26110
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26106
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26108
+#BEGIN_PROGGABLE
+#VNUM 26107
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A shale-covered ridge stretches to the northwest from a
+high, round hill which rises in the southeast.  Facing the gradually
+descending march of the ridge, you can see its end some distance away, where
+it disappears into an unseen precipice.  In this direction the jagged
+granite spine of the ridge is to your right, while to the left a sudden
+brink overlooks a deep, narrow cleft between adjacent ridges.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Spiny Ridge
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26109
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26107
+#BEGIN_PROGGABLE
+#VNUM 26108
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A sudden break in the land cuts the ridge here, its northwest march
+continuing beyond a wide crevice.  The craggy line of the ridge merges with
+the stony folds and tooth-like spurs which march ever northward toward the
+dim shadow of the Brintor Mountains.  To the south the hill country soon
+ends, sending forth a few wayward arms to pierce the great forest which lies
+beyond its edge.  To the west the broken land continues into greyness.  The
+howling of the icy wind is constant upon the ridgetops, tearing at the peaks
+and whistling through haggard patches of weeping pine.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE An Overlook
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26108
+#BEGIN_PROGGABLE
+#VNUM 26109
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A shale-covered ridge stretches to the northwest from a high, round hill
+which rises in the southeast.  Facing the gradually descending march of the
+ridge, you can see its end some distance away, where it disappears into an
+unseen precipice.  In this direction the jagged granite spine of the ridge
+is to your left, while to the right a slope leads down into a
+northward-running valley.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Spiny Ridge
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26107
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26111
+#BEGIN_PROGGABLE
+#VNUM 26110
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A broad valley is embraced by lines of jagged hills the the east and
+west, and is cut off to the south by a diagonal ridge.  The shaley slopes of
+this ridge make an awkward but achievable climb.  To the north the valley
+opens, its wide, stony floor broken with drifts of earth, from which sprout
+thickets of glossy-leaved spruce.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE The Beginning of a Broad Valley
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26112
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26110
+#BEGIN_PROGGABLE
+#VNUM 26111
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Here a deep, rounded valley is embraced by hilltops to the east and west,
+climbing into a narrower valley to the south, and stretching away to the
+north.  The shaley slopes of the facing hills rise to craggy peaks topped
+with weather-torn growths of dark pine.  Here on the stony floor drifts of
+earth sprout thickets of resinous spruce.  Cold wind from the higher reaches
+swirls down into the valley whistling in the evergreen leaves.  Like craggy
+waves, the hills march to either side, their sharp peaks and curving saddles
+too steep to climb.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Broad Valley
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26114
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26111
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26113
+#BEGIN_PROGGABLE
+#VNUM 26112
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Here a deep, rounded valley is embraced by hilltops to the east and west,
+climbing into a narrower valley to the southeast, and stretching away to the
+north.  The shaley slopes of the facing hills rise to craggy peaks topped
+with weather-torn growths of dark pine.  Here on the stony floor drifts of
+earth sprout thickets of resinous spruce.  Cold wind from the higher reaches
+swirls down into the valley whistling in the evergreen leaves.  Like craggy
+waves, the hills march to either side, their sharp peaks and curving saddles
+too steep to climb.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Broad Valley
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26115
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26112
+#BEGIN_PROGGABLE
+#VNUM 26113
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Here a deep, rounded valley is embraced by hilltops to the east and west,
+climbing into a narrower valley to the northwest, and stretching away to the
+south.  The shaley slopes of the facing hills rise to craggy peaks topped
+with weather-torn growths of dark pine.  Here on the stony floor drifts of
+earth sprout thickets of resinous spruce.  Cold wind from the higher reaches
+swirls down into the valley whistling in the evergreen leaves.  Like craggy
+waves, the hills march to either side, their sharp peaks and curving saddles
+too steep to climb.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Broad Valley
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26112
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26115
+#BEGIN_PROGGABLE
+#VNUM 26114
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Here a deep, rounded valley is embraced by hilltops to the east and west,
+climbing into a narrower valley to the north, and stretching away to the
+south. The shaley slopes of the facing hills rise to craggy peaks topped
+with weather-torn growths of dark pine.  Here on the stony floor drifts of
+earth sprout thickets of resinous spruce.  Cold wind from the higher reaches
+swirls down into the valley whistling in the evergreen leaves.  Like craggy
+waves, the hills march to either side, their sharp peaks and curving saddles
+too steep to climb.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Broad Valley
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26116
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26114
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26113
+#BEGIN_PROGGABLE
+#VNUM 26115
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A broad valley is embraced by lines of jagged hills the the east and
+west, and ends to the north where the arms of two hills are thrust together.
+A rising crevice is formed between these spurs, down which trickles a tiny
+stream of water.  To the south the broad valley opens up, its wide, stony
+floor broken with drifts of earth, from which sprout thickets of
+glossy-leaved spruce.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE The Beginning of a Broad Valley
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26115
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26117
+#BEGIN_PROGGABLE
+#VNUM 26116
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Formed by the out-thrust spurs of two southward hills, this jagged, rocky
+ridge extends northward, deep into the rugged hill country.  Interspersed
+with the knife-like granite outthrusts, thickets of dark-leaved fir bend in
+the bitter wind.  The weather-torn branches of these mishappen trees are
+clad in weeping veils of dark needles, and their shallow roots cling to the
+tenuous soil.  To the south the ridge ends, and a cleft between the hills
+drops away into a broad valley.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Spiny, Fir-Clad Ridge
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26118
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26116
+#BEGIN_PROGGABLE
+#VNUM 26117
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Formed by the out-thrust spurs of two distant southward hills, this
+jagged, rocky ridge extends to the northwest, deep into the rugged hill
+country. Interspersed with the knife-like granite outthrusts, thickets of
+dark-leaved fir bend in the bitter wind.  The weather-torn branches of these
+mishappen trees are clad in weeping veils of dark needles, and their shallow
+roots cling to the tenuous soil.  A kink in the northward march of the ridge
+sends it in a westward arc around the shore of a wide, still lake.  A cleft
+in the side of the ridge channels a trickle of water into lake, and provides
+a means of descent.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Spiny, Fir-Clad Ridge
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26117
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26119
+#BEGIN_PROGGABLE
+#VNUM 26118
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Cutting a straight passage down the side of a northwest-running ridge, a
+narrow cleft channels a trickling stream from the craggy, fir-clad heights
+into a wide, still lake to the north.  As the ground levels the cleft
+widens, only to meet the steep, shear walls of the cliffs bounding the lake.
+Here the tumbled rocks from the crags above choke the stream, and mosses and
+tiny ferns grow amongst the crevices.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Narrow Cleft
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26120
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26118
+#BEGIN_PROGGABLE
+#VNUM 26119
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A narrow shelf of pebbly ground forms the shore of a wide, still lake. 
+The lake stretches away to the northeast, surrounded in all directions by
+high, grey cliffs whose serrated peaks are reflected in the still waters
+against a dim sky.  In the very center of the lake is reflected the highest
+crag, a lofty bluff over the eastern shore whose spiney peak of jumbled
+black stone floats serenely in the lightless deep.  Here at the southwest
+corner of the lake a tiny stream trickles across the pebbly shore from a
+narrow cleft in the southern cliff.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE By the Shore of a Still Lake
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26129
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26121
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26119
+#BEGIN_PROGGABLE
+#VNUM 26120
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A narrow shelf of pebbly ground forms the shore of a wide, still lake. 
+The lake stretches away to the north, surrounded in all directions by high,
+grey cliffs whose serrated peaks are reflected in the still waters against a
+dim sky.  In the very center of the lake is reflected the highest crag, a
+lofty bluff over the eastern shore whose spiney peak of jumbled black stone
+floats serenely in the lightless deep.  The shelf continues along the
+southern shore beneath an eroding granite face.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE By the Shore of a Still Lake
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26122
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26120
+#BEGIN_PROGGABLE
+#VNUM 26121
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A narrow shelf of pebbly ground forms the shore of a wide, still lake. 
+The lake stretches away to the north, surrounded in all directions by high,
+grey cliffs whose serrated peaks are reflected in the still waters against a
+dim sky.  In the very center of the lake is reflected the highest crag, a
+lofty bluff over the eastern shore whose spiney peak of jumbled black stone
+floats serenely in the lightless deep.  The shelf continues along the
+southern shore to the west, but directly to the east the shore is blocked by
+great toppled splints of stone, which rise, step-like, to the cliffs above. 
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE By the Shore of a Still Lake
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26121
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26123
+#BEGIN_PROGGABLE
+#VNUM 26122
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A natural stair is formed here of great pillars of granite, eroded and
+toppled from the cliff face to the south.  The stair overlooks a wide, still
+lake, which stretches away to the north.  At the base of the stair a narrow
+shore stretches eastward around the lake, while upward the stair meets the
+craggy cliff-tops.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Stair of Toppled Granite
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26124
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26122
+#BEGIN_PROGGABLE
+#VNUM 26123
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+This craggy cliff-top forms a high stone girdle about a wide, still lake.
+Jutting upward from a narrow shore, the cliff's serrated peaks are framed
+against the sky above, and against the deeper blue of the reflective depths
+far below.  Just to the west the face of the cliff has fallen in a series of
+jumbled pillers, eroded by the harsh, cold wind of the heights.  Eastward
+the cliff continues about the southern edge of the lake.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE Overlooking a Still Lake
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26125
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26123
+#BEGIN_PROGGABLE
+#VNUM 26124
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+This craggy cliff-top forms a high stone girdle about a wide, still lake.
+Jutting upward from a narrow shore, the cliff's serrated peaks are framed
+against the sky above, and against the deeper blue of the reflective depths
+far below.  Here the brink curves northward, around the southeastern edge of
+the lake, and marches eastward, where the cliff-face is scored and broken
+with erosion.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE Overlooking a Still Lake
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26126
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26124
+#BEGIN_PROGGABLE
+#VNUM 26125
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+This craggy cliff-top forms a high stone girdle about a wide, still lake.
+Jutting upward from a narrow shore, the cliff's serrated peaks are framed
+against the sky above, and against the deeper blue of the reflective depths
+far below.  To the south the precipice bends around the southeastern edge of
+the lake, while to the north the ground rises.  At the peak of the rise,
+mounted upon the highest spire, a jumble of ruined black stone squats
+darkly.  Some ancient work of men, the remnants of its toppled towers thrust
+like crooked fingers against the sky.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE Overlooking a Still Lake
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26125
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26127
+#BEGIN_PROGGABLE
+#VNUM 26126
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+The jumbled ruin of an ancient fortress sits atop the high peak of this
+ridge.  Its once-lofty towers are now shattered and in ruins, with only
+hollow shards of wood and stone left to recall their splendour.  The wall of
+the fortress is broken in many places, and the collapsed arch of a gaping
+gateway lies directly to the north.  To the west a sudden brink overlooks a
+wide, still lake far below.  The reflective, blue waters stretch to the
+north and south, and above the looming cliffs of the western shore the
+rising ridges of the hill country can be seen marching, spine upon jagged
+spine, into the distance.  Just to the south the edge of the cliff drops
+steeply.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE Before the Ruined Gates
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26128
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26126
+#BEGIN_PROGGABLE
+#VNUM 26127
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Wracked by some great violence of fire and force, the wide courtyard of
+this fortress lies in blackened desolation.  Scorched flagstones have been
+heaved from their places, and lie strewn amongst the scattered fragments of
+the broken walls.  A few small buildings line the courtyard - a smithy, a
+stable, a servant's quarters - all now roofless and tumbled.  To the north
+lies the main keep of the fortress, its towers and high halls cast into
+ruin.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Blackened Courtyard
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 4
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26130
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26127
+#BEGIN_PROGGABLE
+#VNUM 26128
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A narrow shelf of pebbly ground forms the shore of a wide, still lake. 
+The lake stretches away to the northeast, surrounded in all directions by
+high, grey cliffs whose serrated peaks are reflected in the still waters
+against a dim sky.  In the very center of the lake is reflected the highest
+crag, a lofty bluff over the eastern shore whose spiney peak of jumbled
+black stone floats serenely in the lightless deep.  To the south the shore
+begins to curve eastward, while to the north the waters have encroached upon
+the shore.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE By the Shore of a Still Lake
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26120
+#BEGIN_PROGGABLE
+#VNUM 26129
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+The broken walls of an ancient hall of men surround a fire-blasted and
+desolate space, now open to the bleak sky above.  Charred beams of wood and
+fragments of the stone walls still pierce the sky with harsh angles, and in
+the center of the room a once-great spiral staircase lies crumbled.  Its
+blackened marble steps rise several feet above the ground still, before
+dropping into a jumbled mass of broken stone and shattered wood.  The steps
+do, however, continue downward, through the floor of the hall and into a
+gaping hole whose bottom is beyond the blackness of its depth.  To the south
+an archway, still intact, leads to a courtyard.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE A Ruined Hall
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR hill
+#ALTITUDE 250
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26128
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26131
+#BEGIN_PROGGABLE
+#VNUM 26130
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Carved into the very rock of the hills, a great circular shaft drops away
+into black depths far below.  A narrow staircase of pale marble winds about
+the grey stone walls of the shaft, spiralling downward as far as the eye can
+see, and reaching the surface just above, where it climbs a little way into
+the air before falling in ruin.  The bleak sky can be seen through the
+shaft's circular opening.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE An Abyssal Shaft
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR underground
+#ALTITUDE -500
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26130
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26132
+#BEGIN_PROGGABLE
+#VNUM 26131
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Carved into the very rock of the hills, a great circular shaft drops away
+into black depths far below.  A narrow staircase of pale marble winds about
+the grey stone walls of the shaft, spiralling downward as far as the eye can
+see, and upward until it reaches the shaft's opening and its ruined upper
+span is sillouetted against the bleak sky.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE An Abyssal Shaft
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR underground
+#ALTITUDE -500
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26131
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26133
+#BEGIN_PROGGABLE
+#VNUM 26132
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+Carved into the very rock of the hills, a great circular shaft drops away
+into black depths far below.  A narrow staircase of pale marble winds about
+the grey stone walls of the shaft.  Its downward spiral ends abruptly.  A
+gaping fissure in the shaft wall has sent a section of the staircase into
+the unseen depths.  Upward the staircase spirals about the shaft until it
+reaches the faint circle of sky high above.  In the rock wall next the the
+fissure a platform has been hewn leading into the fissure itself, where a
+dimly lit tunnel can be seen extending eastward.  
+
+#END_DESC
+#END_DESCRIBABLE
+#TITLE An Abyssal Shaft
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR underground
+#ALTITUDE -500
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26134
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26132
+#BEGIN_PROGGABLE
+#VNUM 26133
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A dark stairway of smooth, granite steps winds downward, bending to the
+north, and framed by shadowy bluestone walls.  Here pillars of the grey,
+quartz-streaked granite are set into the walls and hold aloft an arched
+ceiling, rimmed with ancient architraves.  Each pillar bears an iron sconce,
+in which torches burn with fitful red flames.  To the west the northern wall
+gives way, and a great abyss gapes before your feet.  
+
+#END_DESC
+#ED_KEY pillars
+#BEGIN_ED_DESC
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#END_ED_DESC
+#ED_KEY pillar
+#BEGIN_ED_DESC
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#END_ED_DESC
+#END_DESCRIBABLE
+#TITLE A Dark Stairway
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR underground
+#ALTITUDE -500
+#ED_KEY pillars
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#ED_KEY pillar
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#DOOR 0
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26135
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26133
+#BEGIN_PROGGABLE
+#VNUM 26134
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A stairwell of smooth, granite steps winds downward, bending to the west
+as it does.  To the south the stair continues its spiralling rise.  Pillars
+of the grey, quartz-streaked granite are set into the walls and hold aloft
+an arched ceiling, rimmed with ancient architraves.  Each pillar bears an
+iron sconce, in which torches burn with fitful red flames.  
+
+#END_DESC
+#ED_KEY pillar
+#BEGIN_ED_DESC
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#END_ED_DESC
+#ED_KEY pillars
+#BEGIN_ED_DESC
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#END_ED_DESC
+#END_DESCRIBABLE
+#TITLE A Dark Stairway
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR underground
+#ALTITUDE -500
+#ED_KEY pillar
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#ED_KEY pillars
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#DOOR 2
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26134
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26136
+#BEGIN_PROGGABLE
+#VNUM 26135
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A stairwell of smooth, granite steps winds downward to the west and to
+the east rises, curving south.  Shadowy bluestone walls frame the passageway
+and pillars of the grey, quartz-streaked granite set into the walls hold
+aloft an arched ceiling.  Each pillar bears an iron sconce, in which torches
+burn with fitful red flames.  
+
+#END_DESC
+#ED_KEY pillars
+#BEGIN_ED_DESC
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#END_ED_DESC
+#ED_KEY pillar
+#BEGIN_ED_DESC
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#END_ED_DESC
+#END_DESCRIBABLE
+#TITLE A Dark Stairway
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR underground
+#ALTITUDE -500
+#ED_KEY pillars
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#ED_KEY pillar
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#DOOR 3
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26137
+#DOOR 4
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26135
+#BEGIN_PROGGABLE
+#VNUM 26136
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_ROOM
+#BEGIN_DESCRIBABLE
+#BEGIN_DESC
+A stairwell of smooth, granite steps descends to the west, bound by
+shadowy bluestone walls.  Pillars of the grey, quartz-streaked granite are
+set into the walls and hold aloft an arched ceiling, rimmed with ancient
+architraves.  Each pillar bears an iron sconce, in which torches burn with
+fitful red flames.  
+
+#END_DESC
+#ED_KEY pillar
+#BEGIN_ED_DESC
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#END_ED_DESC
+#ED_KEY pillars
+#BEGIN_ED_DESC
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#END_ED_DESC
+#END_DESCRIBABLE
+#TITLE A Dark Stairway
+#DANGER 0
+#BEGIN_AFFECTABLE
+#FLAGS 0
+#END_AFFECTABLE
+#SECTOR underground
+#ALTITUDE -500
+#ED_KEY pillar
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#ED_KEY pillars
+#ED_DES Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+
+#DOOR 1
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 26136
+#DOOR 5
+#DOOR_KEY 
+#DOOR_DES 
+#DOOR_INFO 0 0 12213
+#HOUSE SHUNNED
+#BEGIN_PROGGABLE
+#VNUM 26137
+#END_PROGGABLE
+#END_ROOM
+#BEGIN_SPECIALS
+#SPEC 26114 spec_cast_air
+#END_SPECIALS
+
+
+
+#BEGIN_RESETS
+M 0 26110 4 26105 1
+M 0 26111 2 26109 1
+M 0 26110 4 26110 2
+M 0 26110 4 26110 2
+M 0 26112 2 26112 1
+M 0 26112 2 26115 1
+M 0 26111 2 26118 1
+M 0 26104 2 26123 1
+M 0 26104 2 26124 1
+M 0 26120 1 26137 1
+#END_RESETS
+
+
+
+#BEGIN_GUILDS
+#BEGIN_GUILD
+#VNUM 26114
+#SKILL greater invis
+#SKILL alter self
+#SKILL phantasmal creation
+#SKILL delusions
+#SKILL lightning storm
+#SKILL windbind
+#SKILL dancing sword
+#END_GUILD
+
+#END_GUILDS
+
+
+#BEGIN_SHOPS
+#END_SHOPS
+
+
+

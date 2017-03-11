@@ -1,0 +1,4444 @@
+#AREADATA
+Name Dream Lands~
+Builders Synrael~
+VNUMs 15900 15999
+Credits [  51 ] Syn/Joln  The Dream Realms~
+Danger 2
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 0 -2 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 15901
+westbot~
+a westbot~
+A westbot watches and waits.
+~
+~
+human~
+water scholar~
+AB 0 DFJLP N 0
+1 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if rand(15)
+if mobhere(15914)
+else
+mpmload 15914
+mpecho A dream ghost has arrived.
+endif
+endif
+~
+>verb_prog drop~
+mptransfer $n 15900
+mpat $n mpinterpret $n $x
+mptransfer $n
+~
+>verb_prog west~
+if rand(5)
+mpechoaround $n $N leaves west.
+mptransfer $n 15907
+mpechoaround $n $N has arrived.
+mpat $n mpforce $n look
+else
+mpinterpret $n $x
+endif
+~
+|
+V4 15902
+sinkbot~
+a sinkbot~
+A sinkbot bobs about malevolently.
+~
+~
+human~
+water scholar~
+ADLX 0 DFJLPZ N 0
+60 0 10000d1+1 10000d1+1 0d0+0 none~
+hit~
+0 0 0 0
+0 ABCDb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+mpseewizi
+~
+>time_prog 0~
+if mobvalue(1) > 0
+if mobvalue(3) == 3
+if mobhere(15911)
+mpecho The hydra\@s head thrashes momentarily, and disappears beneath the churning lake.
+mppurge hydrahead
+endif
+mpvalueset 3 0
+mpvalueset 2 0
+mpvalueset 1 0
+else
+mpvalueup 3
+endif
+endif
+~
+>time_prog 0~
+~
+>verb_prog p south~
+if ispc($n)
+if isimmort($n)
+mpinterpret $n $x
+else
+mplag $n 1
+if rand(30) 
+if mobvalue(1) > 6
+else
+if mobhere(15911)
+else
+mpvalueup 1
+mpat 15915 mpforce 2.sinkbot mpvalueup 1
+mpat 15916 mpforce 2.sinkbot mpvalueup 1
+mpat 15917 mpforce 2.sinkbot mpvalueup 1
+mpat 15918 mpforce 2.sinkbot mpvalueup 1
+mpat 15919 mpforce 2.sinkbot mpvalueup 1
+mpat 15920 mpforce 2.sinkbot mpvalueup 1
+mpat 15921 mpforce 2.sinkbot mpvalueup 1
+mpat 15988 mpforce 2.sinkbot mpvalueup 1
+mpat 15983 mpforce 2.sinkbot mpvalueup 1
+mpat 15947 mpforce 2.sinkbot mpvalueup 1
+mpat 15991 mpforce 2.sinkbot mpvalueup 1
+mpat 15987 mpforce 2.sinkbot mpvalueup 1
+mpat 15901 mpforce 2.sinkbot mpvalueup 1
+mpat 15998 mpforce 2.sinkbot mpvalueup 1
+mpat 15992 mpforce 2.sinkbot mpvalueup 1
+mpat 15989 mpforce 2.sinkbot mpvalueup 1
+mpat 15994 mpforce 2.sinkbot mpvalueup 1
+mpat 15995 mpforce 2.sinkbot mpvalueup 1
+mpat 15996 mpforce 2.sinkbot mpvalueup 1
+mpat 15948 mpforce 2.sinkbot mpvalueup 1
+mpat 15946 mpforce 2.sinkbot mpvalueup 1
+mpat 15990 mpforce 2.sinkbot mpvalueup 1
+mpat 15993 mpforce 2.sinkbot mpvalueup 1
+mpat 15944 mpforce 2.sinkbot mpvalueup 1
+mpat 15945 mpforce 2.sinkbot mpvalueup 1
+mpechoat $n As you move, the crimson waters churn, and a great serpent erupts from the swell!
+mpechoaround $n The crimson waters churn, and a great serpent erupts from the swell!
+mpmload 15911
+mpforce hydrahead mpkill $n
+endif
+endif
+endif
+mpinterpret $n $x
+endif
+else
+mpinterpret $n $x
+endif
+~
+>verb_prog p west~
+if ispc($n)
+if isimmort($n)
+mpinterpret $n $x
+else
+mplag $n 1
+if rand(30) 
+if mobvalue(1) > 6
+else
+if mobhere(15911)
+else
+mpvalueup 1
+mpat 15915 mpforce 2.sinkbot mpvalueup 1
+mpat 15916 mpforce 2.sinkbot mpvalueup 1
+mpat 15917 mpforce 2.sinkbot mpvalueup 1
+mpat 15918 mpforce 2.sinkbot mpvalueup 1
+mpat 15919 mpforce 2.sinkbot mpvalueup 1
+mpat 15920 mpforce 2.sinkbot mpvalueup 1
+mpat 15921 mpforce 2.sinkbot mpvalueup 1
+mpat 15988 mpforce 2.sinkbot mpvalueup 1
+mpat 15983 mpforce 2.sinkbot mpvalueup 1
+mpat 15947 mpforce 2.sinkbot mpvalueup 1
+mpat 15991 mpforce 2.sinkbot mpvalueup 1
+mpat 15987 mpforce 2.sinkbot mpvalueup 1
+mpat 15901 mpforce 2.sinkbot mpvalueup 1
+mpat 15998 mpforce 2.sinkbot mpvalueup 1
+mpat 15992 mpforce 2.sinkbot mpvalueup 1
+mpat 15989 mpforce 2.sinkbot mpvalueup 1
+mpat 15994 mpforce 2.sinkbot mpvalueup 1
+mpat 15995 mpforce 2.sinkbot mpvalueup 1
+mpat 15996 mpforce 2.sinkbot mpvalueup 1
+mpat 15948 mpforce 2.sinkbot mpvalueup 1
+mpat 15946 mpforce 2.sinkbot mpvalueup 1
+mpat 15990 mpforce 2.sinkbot mpvalueup 1
+mpat 15993 mpforce 2.sinkbot mpvalueup 1
+mpat 15944 mpforce 2.sinkbot mpvalueup 1
+mpat 15945 mpforce 2.sinkbot mpvalueup 1
+mpechoat $n As you move, the crimson waters churn, and a great serpent erupts from the swell!
+mpechoaround $n The crimson waters churn, and a great serpent erupts from the swell!
+mpmload 15911
+mpforce hydrahead mpkill $n
+endif
+endif
+endif
+mpinterpret $n $x
+endif
+else
+mpinterpret $n $x
+endif
+~
+>verb_prog p east~
+if ispc($n)
+if isimmort($n)
+mpinterpret $n $x
+else
+mplag $n 1
+if rand(30) 
+if mobvalue(1) > 6
+else
+if mobhere(15911)
+else
+mpvalueup 1
+mpat 15915 mpforce 2.sinkbot mpvalueup 1
+mpat 15916 mpforce 2.sinkbot mpvalueup 1
+mpat 15917 mpforce 2.sinkbot mpvalueup 1
+mpat 15918 mpforce 2.sinkbot mpvalueup 1
+mpat 15919 mpforce 2.sinkbot mpvalueup 1
+mpat 15920 mpforce 2.sinkbot mpvalueup 1
+mpat 15921 mpforce 2.sinkbot mpvalueup 1
+mpat 15988 mpforce 2.sinkbot mpvalueup 1
+mpat 15983 mpforce 2.sinkbot mpvalueup 1
+mpat 15947 mpforce 2.sinkbot mpvalueup 1
+mpat 15991 mpforce 2.sinkbot mpvalueup 1
+mpat 15987 mpforce 2.sinkbot mpvalueup 1
+mpat 15901 mpforce 2.sinkbot mpvalueup 1
+mpat 15998 mpforce 2.sinkbot mpvalueup 1
+mpat 15992 mpforce 2.sinkbot mpvalueup 1
+mpat 15989 mpforce 2.sinkbot mpvalueup 1
+mpat 15994 mpforce 2.sinkbot mpvalueup 1
+mpat 15995 mpforce 2.sinkbot mpvalueup 1
+mpat 15996 mpforce 2.sinkbot mpvalueup 1
+mpat 15948 mpforce 2.sinkbot mpvalueup 1
+mpat 15946 mpforce 2.sinkbot mpvalueup 1
+mpat 15990 mpforce 2.sinkbot mpvalueup 1
+mpat 15993 mpforce 2.sinkbot mpvalueup 1
+mpat 15944 mpforce 2.sinkbot mpvalueup 1
+mpat 15945 mpforce 2.sinkbot mpvalueup 1
+mpechoat $n As you move, the crimson waters churn, and a great serpent erupts from the swell!
+mpechoaround $n The crimson waters churn, and a great serpent erupts from the swell!
+mpmload 15911
+mpforce hydrahead mpkill $n
+endif
+endif
+endif
+mpinterpret $n $x
+endif
+else
+mpinterpret $n $x
+endif
+~
+>verb_prog p north~
+if ispc($n)
+if isimmort($n)
+mpinterpret $n $x
+else
+mplag $n 1
+if rand(30) 
+if mobvalue(1) > 6
+else
+if mobhere(15911)
+else
+mpvalueup 1
+mpat 15915 mpforce 2.sinkbot mpvalueup 1
+mpat 15916 mpforce 2.sinkbot mpvalueup 1
+mpat 15917 mpforce 2.sinkbot mpvalueup 1
+mpat 15918 mpforce 2.sinkbot mpvalueup 1
+mpat 15919 mpforce 2.sinkbot mpvalueup 1
+mpat 15920 mpforce 2.sinkbot mpvalueup 1
+mpat 15921 mpforce 2.sinkbot mpvalueup 1
+mpat 15988 mpforce 2.sinkbot mpvalueup 1
+mpat 15983 mpforce 2.sinkbot mpvalueup 1
+mpat 15947 mpforce 2.sinkbot mpvalueup 1
+mpat 15991 mpforce 2.sinkbot mpvalueup 1
+mpat 15987 mpforce 2.sinkbot mpvalueup 1
+mpat 15901 mpforce 2.sinkbot mpvalueup 1
+mpat 15998 mpforce 2.sinkbot mpvalueup 1
+mpat 15992 mpforce 2.sinkbot mpvalueup 1
+mpat 15989 mpforce 2.sinkbot mpvalueup 1
+mpat 15994 mpforce 2.sinkbot mpvalueup 1
+mpat 15995 mpforce 2.sinkbot mpvalueup 1
+mpat 15996 mpforce 2.sinkbot mpvalueup 1
+mpat 15948 mpforce 2.sinkbot mpvalueup 1
+mpat 15946 mpforce 2.sinkbot mpvalueup 1
+mpat 15990 mpforce 2.sinkbot mpvalueup 1
+mpat 15993 mpforce 2.sinkbot mpvalueup 1
+mpat 15944 mpforce 2.sinkbot mpvalueup 1
+mpat 15945 mpforce 2.sinkbot mpvalueup 1
+mpechoat $n As you move, the crimson waters churn, and a great serpent erupts from the swell!
+mpechoaround $n The crimson waters churn, and a great serpent erupts from the swell!
+mpmload 15911
+mpforce hydrahead mpkill $n
+endif
+endif
+endif
+mpinterpret $n $x
+endif
+else
+mpinterpret $n $x
+endif
+~
+>rand_prog 100~
+if mobvalue(2) == 9
+mpecho The waters subside and the ichor sinks. The crimson lake is still.
+mpvalueset 5 1
+endif
+if mobvalue(2) == 8
+mpvalueup 2
+endif
+if mobvalue(2) == 7
+mpecho The waters churn and boil, and bubbles of black ichor cover the lake!
+mpvalueup 2
+endif
+if rand(10)
+if isanyobjhere($i)
+take all
+mpat 15999 drop all
+if isanyobjhere($i)
+else
+mpecho A tiny whirlpool forms briefly in the crimson water.
+endif
+endif
+endif
+if mobvalue(5) == 1
+mppurge self
+break
+endif
+~
+|
+V4 15903
+webbot~
+a webbot~
+A webbot lurks in the shadows.
+~
+~
+human~
+water scholar~
+ABX 0 DFJLPZ N 0
+1 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p west~
+if mobvalue(1) == 0
+if snaffected($n) == 103
+mpinterpret $n $x
+else
+mpechoat $n As you attempt to move westward you become stuck in the mass of webbing!
+mpechoaround $n $N becomes stuck in the mass of webbing!
+mplag $n 4
+endif
+if mobhere(15913)
+mpforce dreamspider mpkill $n
+endif
+else
+mpinterpret $n $x
+endif
+~
+>verb_prog p burn web~
+if mobhere(15913)
+mpechoat $n you try to burn the web, but the spider blocks you and attacks!
+mpforce dreamspider mpkill $n
+else
+if mobvalue(1) == 0
+mpechoat $n You set fire to the web and it goes up in flame!
+mpechoaround $n $N sets fire to the web and it goes up in flame!
+mppurge spiderweb
+mpvalueset 1 1
+mpat 15933 mppurge spiderweb
+mpat 15933 mpecho The spider web suddenly goes up in flames!
+mpseewizi
+mpat 15933 mppurge webbot2
+mpunseewizi
+if isoverlimit(15922)
+else
+mpecho Something falls out of the burning web onto the ground.
+mpoload 15922 in room
+endif
+else
+mpechoat $n The web has already been burned.
+endif
+endif
+~
+|
+V4 15904
+exitbot forestexitbot~
+an exitbot~
+An exitbot will let you out if you\@re good.
+~
+~
+human~
+water scholar~
+ABX 0 DFJLPZ N 0
+1 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 b
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if mobvalue(0) > 60
+mpvalueset 0 0
+mpvalueset 1 0
+else
+if mobvalue(1) == 1
+mpvalueup 0
+endif
+endif
+~
+>verb_prog p west~
+mpinterpret $n $x
+if mobvalue(1) == 1
+if ishere($n)
+else
+mpat $n mptransfer $n 15949
+endif
+else
+if rand(1)
+if ishere($n)
+else
+mpat $n mptransfer $n 15949
+endif
+endif
+endif
+~
+>verb_prog p east~
+mpinterpret $n $x
+if mobvalue(1) == 1
+if ishere($n)
+else
+mpat $n mptransfer $n 15949
+endif
+else
+if rand(1)
+if ishere($n)
+else
+mpat $n mptransfer $n 15949
+endif
+endif
+endif
+~
+>verb_prog p north~
+mpinterpret $n $x
+if mobvalue(1) == 1
+if ishere($n)
+else
+mpat $n mptransfer $n 15949
+endif
+else
+if rand(1)
+if ishere($n)
+else
+mpat $n mptransfer $n 15949
+endif
+endif
+endif
+~
+>verb_prog p south~
+mpinterpret $n $x
+if mobvalue(1) == 1
+if ishere($n)
+else
+mpat $n mptransfer $n 15949
+endif
+else
+if rand(1)
+if ishere($n)
+else
+mpat $n mptransfer $n 15949
+endif
+endif
+endif
+~
+|
+V4 15905
+stonebot~
+a stonebot~
+A stonebot waits for you to say Deoraidh.
+~
+~
+human~
+water scholar~
+ABX 0 DFJLP N 0
+1 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+mpoload 15951 in room
+~
+>rand_prog 100~
+if mobvalue(2) == 5
+mpforce dryad say You know my name, but only I know the way to the path!
+mpvalueset 2 6
+endif
+if mobvalue(2) == 4
+mpforce dryad emote smiles evilly.
+mpforce dryad say Now you may never leave my forest, dreamers, till it devours you!
+mpvalueset 2 5
+endif
+if mobvalue(2) == 3
+mpecho The pallid, green-tinged creature pulls herself from the tree and seats herself on the standing stone.
+mpmload 15922
+mpvalueset 2 4
+endif
+if mobvalue(2) == 2
+mpecho A gaunt, female face suddenly protrudes from the very wood of a nearby tree.
+mpvalueset 2 3
+endif
+if mobvalue(2) == 1
+mpvalueset 2 2
+endif
+~
+>speech_prog Deoraidh~
+if mobvalue(2) == 0
+mpvalueset 2 1
+endif
+~
+|
+V4 15906
+webbot2~
+webbot2~
+Webbot2 just thwarts you.
+~
+~
+human~
+water scholar~
+ABX 0 LP N 0
+1 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 b
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p hack web~
+if mobvalue(1) == 0
+mpechoat $n You hack through the web, pushing eastward..
+mpechoaround $n $N hacks through the web, pushing eastward..
+mpvalueset 1 1
+mpforce $n east
+mpvalueset 1 0
+if inroom($n) == 15927
+if snaffected($n) == 103
+else
+mpat $n mpechoat $n As you hack your way through the webbing, you find yourself stuck!
+mpat $n mpechoaround $n $N tries to hack $s way from the west, but gets stuck in the web!
+mpat $n mpforce dreamspider mpkill $n
+mpat $n mplag $n 5
+endif
+endif
+endif
+~
+>verb_prog p burn webbing~
+mpechoat $n The web seems too dry to burn.
+~
+>verb_prog p burn web~
+mpechoat $n The web seems too dry to burn.
+~
+>verb_prog p east~
+if mobvalue(1) == 0
+if snaffected($n) == 103
+mpinterpret $n $x
+else
+mpechoat $n You attempt to move eastward but the mass of webbing stops you.
+mpechoaround $n $N attempts to move eastward but the mass of webbing stops $m.
+endif
+else
+mpinterpret $n $x
+endif
+~
+|
+V4 15910
+giant gurdelbaast~
+the giant~
+A giant towers above you, his flaming red beard bristling.
+~
+A great giant guards the gates to the city.  He stands nearly to the
+height of the wall itself, some 40 feet above.  The giants bright red beard
+spills out across his vast chest, and blue eyes look down at you over an
+arched nose.  
+~
+giant~
+water scholar~
+ABX 0 DFJ N 0
+60 60 20000d1+1 60d10+100 6d10+100 bash~
+punch~
+-30 -30 -30 -25
+ACIKO ABb
+26 0 0 0 33 0 0 0 33 33 -33 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A giant flesh
+V4 15911
+hydra serpent great head hydrahead~
+the hydra\@s head~
+A great serpent, many spans in girth, rises from the churning lake.
+~
+This serpent rises over forty feet above the churning waters of the
+crimson lake.  Its snake-like head weaves about, darting down to the surface
+with terrifying speed to attack.  Where the long neck enters the water its
+girth is a dozen feet in diameter, and it moves as though it were connected
+to some great body beneath the water.  The scales of the beast shimmer
+palely, and appear a sickly pink beneath a film of the crimson water.  
+~
+dragon~
+water scholar~
+ABFPTX 0 DFJTbc N 0
+60 100 23d250+5000 60d10+100 6d10+50 pierce~
+bite~
+-27 -27 -27 -9
+CFHO ABb
+26 0 33 0 0 33 -33 0 33 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMVZ ACDEFGHIJKPQUVX A huge flesh
+>death_prog 100~
+mpseewizi
+mpat 15915 mpforce sinkbot mpvalueup 2
+mpat 15916 mpforce sinkbot mpvalueup 2
+mpat 15917 mpforce sinkbot mpvalueup 2
+mpat 15918 mpforce sinkbot mpvalueup 2
+mpat 15919 mpforce sinkbot mpvalueup 2
+mpat 15920 mpforce sinkbot mpvalueup 2
+mpat 15921 mpforce sinkbot mpvalueup 2
+mpat 15988 mpforce sinkbot mpvalueup 2
+mpat 15983 mpforce sinkbot mpvalueup 2
+mpat 15947 mpforce sinkbot mpvalueup 2
+mpat 15991 mpforce sinkbot mpvalueup 2
+mpat 15987 mpforce sinkbot mpvalueup 2
+mpat 15901 mpforce sinkbot mpvalueup 2
+mpat 15998 mpforce sinkbot mpvalueup 2
+mpat 15992 mpforce sinkbot mpvalueup 2
+mpat 15989 mpforce sinkbot mpvalueup 2
+mpat 15994 mpforce sinkbot mpvalueup 2
+mpat 15995 mpforce sinkbot mpvalueup 2
+mpat 15996 mpforce sinkbot mpvalueup 2
+mpat 15948 mpforce sinkbot mpvalueup 2
+mpat 15946 mpforce sinkbot mpvalueup 2
+mpat 15990 mpforce sinkbot mpvalueup 2
+mpat 15993 mpforce sinkbot mpvalueup 2
+mpat 15944 mpforce sinkbot mpvalueup 2
+mpat 15945 mpforce sinkbot mpvalueup 2
+mpoload 15912 in room
+mpecho The hydra screams, and dissolves into a black ichor.
+mpgoto 15900
+~
+|
+V4 15913
+spider enormous pale dreamspider~
+an enormous pale spider~
+An enormous pale spider clings to its web.
+~
+A pale spider clings its bulbous body to a thick web between the trees. 
+Its vast abdomen is slightly tranluscent, revealing the dark churning of its
+monsterous innards.  Its black head supports clusters of eyes, which reflect
+your image as they gaze hungrily.  
+~
+generic~
+water scholar~
+ADLPTX 0 DFJMTZc E 0
+60 150 9000d1+1 60d10+100 6d10+50 pierce~
+bite~
+-30 -40 -40 -40
+FHO ABLb
+26 0 0 0 0 33 -33 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ACDEFHK A huge flesh
+>load_prog 100~
+mppurge webbing
+mpoload 15913 in room
+mpat 15933 mppurge spiderweb
+mpat 15933 mpoload 15917 in room
+mpseewizi
+if mobhere(15903)
+mpforce webbot mpvalueset 1 0
+else
+mpmload 15903
+endif
+mpat 15933 mppurge webbot2
+mpat 15933 mpmload 15906
+mpuseewizi
+~
+|
+V4 15914
+ghost dream~
+a dream ghost~
+A dream ghost drifts across the plains, its bizarre form shifting and changing.
+~
+This transluscent floating obscenity wafts about the Evermore Plains in
+search of things to feed upon.  Its form changes as it moves, growing wings
+and arms and tentacles, which twist and grope and grasp.  Eyes and mouths
+open about its body, and its innards pulsate hungrily.  
+~
+generic~
+water scholar~
+AF 0 DFJ N 0
+58 30 23d250+1300 60d10+100 6d10+50 bash~
+blast~
+-27 -27 -27 -9
+EFHKN AB
+26 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJKNPQUVX A medium flesh
+>rand_prog 100~
+if isanypchere()
+else
+mpvalueup 1
+endif
+if mobvalue(1) > 3
+if isanypchere()
+else
+mppurge self
+endif
+endif
+~
+|
+V4 15915
+man tiny filthy~
+a tiny man~
+A tiny man, his head sprouting a mass of filthy hair, sits in the cave.
+~
+This little man is no taller than two feet.  He sits in the back of the
+cave knawing on a bone.  His black hair is long and matted, and his beard
+comes down to his belly.  
+~
+human~
+water scholar~
+ABX 0 0 E 0
+50 60 18d200+920 50d10+100 5d10+25 slash~
+claw~
+-21 -21 -21 -5
+FHJN AB
+26 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 100 -1
+AHMV ABCDEFGHIJK A small flesh
+>rand_prog 100~
+if rand(20)
+mpat 15900 take all
+endif
+~
+|
+V4 15916
+abomination grey chittering simian pale~
+a chittering grey abomination~
+A pale grey simian creature darts through the foliage.
+~
+Pale grey skin hangs loosely on the vaguely simian frame of this forest
+creature.  As nimble as it is lithe, it clutches the branches of this
+nightmare forest with razor sharp claws.  Abominable chittering echoes from
+the thing\@s face, which is a jumbled mass of blood-red suckers and sunken
+eyes.  
+~
+demon~
+water scholar~
+AF 0 DFJPQZ E 0
+57 25 20d220+1100 0d0+0 5d13+27 slash~
+claw~
+-22 -22 -22 -9
+FHK ABL
+26 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABCHMV ABCDEFGHIJKP A medium unknown
+>rand_prog 10~
+if rand(30)
+mpecho A chittering grey abomination scuttles up a tree, and is gone.
+mppurge self
+endif
+~
+|
+V4 15917
+chitter bot loader chitterbot~
+the chitterer loader~
+The chitterbot is here, waiting to be loaded on your ass.
+~
+~
+human~
+water scholar~
+AD 0 LP N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if rand(45)
+if mobhere(15916)
+else
+mpvaluerand 0 1 5
+if mobvalue(0) == 1
+mpecho An unwholesome chittering echoes from the foliage above you.
+else
+if mobvalue(0) == 2
+mpecho A quick grey shape darts through the trees above.
+else
+if mobvalue(0) == 3
+mpecho A pale grey simian creature darts out from the trees above!
+mpmload 15916 
+endif
+endif
+endif
+endif
+if rand(5)
+if rand(9)
+mpgoto 15922
+else
+if rand(10)
+mpgoto 15923
+else
+if rand(11)
+mpgoto 15924
+else
+if rand(12)
+mpgoto 15925
+else
+if rand(14)
+mpgoto 15926
+else
+if rand(16)
+mpgoto 15928
+else
+if rand(20)
+mpgoto 15929
+else
+if rand(25)
+mpgoto 15930
+else
+if rand(33)
+mpgoto 15931
+else
+if rand(50)
+mpgoto 15940
+else
+mpgoto 15943
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+if inroom($i) == 15922
+west
+endif
+if inroom($i) == 15933
+north
+endif
+if rand(20)
+mpwander
+endif
+~
+|
+V4 15918
+Lilisa lilisa2 lilisavamp spectral maiden~
+the spectral Lilisa~
+The spectral figure of a maiden stands here, pale and beautiful.
+~
+The apparition of a beautiful woman stands silently, her transparent skin
+showing through the filthy rags she wears.  All colour seems bleached from
+her skin and clothing, although a faint tinge of red is apparent in her
+long, curly hair.  No expression shows on her oval face, which stares
+passively into the distance.  
+~
+spirit~
+water scholar~
+ABPTX 0 DFJTUZ E 0
+60 200 8000d1+1 60d10+100 6d10+50 negative~
+life drain~
+-40 -40 -40 -30
+EFH ABCDKLQRb
+26 0 0 0 33 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+ADHLMV ABCDEFGHIJK K medium flesh
+>death_prog 100~
+mpecho With a tortured scream, the apparition fades away.
+mpgoto 15999
+mpseewizi
+mpat 15950 mpforce exitbot mpvalueset 1 1
+mpat 15951 mpforce exitbot mpvalueset 1 1
+mpat 15952 mpforce exitbot mpvalueset 1 1
+mpat 15953 mpforce exitbot mpvalueset 1 1
+mpat 15954 mpforce exitbot mpvalueset 1 1
+mpat 15955 mpforce exitbot mpvalueset 1 1
+mpat 15956 mpforce exitbot mpvalueset 1 1
+mpat 15957 mpforce exitbot mpvalueset 1 1
+mpat 15958 mpforce exitbot mpvalueset 1 1
+mpat 15959 mpforce exitbot mpvalueset 1 1
+mpat 15960 mpforce exitbot mpvalueset 1 1
+mpat 15961 mpforce exitbot mpvalueset 1 1
+mpat 15962 mpforce exitbot mpvalueset 1 1
+mpat 15963 mpforce exitbot mpvalueset 1 1
+mpat 15964 mpforce exitbot mpvalueset 1 1
+mpat 15965 mpforce exitbot mpvalueset 1 1
+mpat 15966 mpforce exitbot mpvalueset 1 1
+mpat 15967 mpforce exitbot mpvalueset 1 1
+mpat 15968 mpforce exitbot mpvalueset 1 1
+mpat 15969 mpforce exitbot mpvalueset 1 1
+mpat 15970 mpforce exitbot mpvalueset 1 1
+mpat 15971 mpforce exitbot mpvalueset 1 1
+mpat 15972 mpforce exitbot mpvalueset 1 1
+mpat 15973 mpforce exitbot mpvalueset 1 1
+mpat 15974 mpforce exitbot mpvalueset 1 1
+~
+|
+V4 15919
+orb break bot~
+the orb break bot~
+The orb bot is here, waiting to break your ass.
+~
+~
+human~
+water scholar~
+ADL 0 L N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p break orb~
+if iscarrying($n) == 15914
+if inroom($n) == 7646
+mpechoat $n You hold the orb of dreams high above your head, and smash it to the ground!
+mpechoaround $n $N holds the Orb of Dreams high above their head, and smashes it to the ground!
+mpzecho The caverns begins to shake violently!
+mpecho A swirl of color spews out from the shattered sphere, in a multi-hued cloud.
+mpecho The cloud glimmers, and solidifies into a portal!
+mpoload 15915
+mploot $n orb
+endif
+endif
+~
+|
+V4 15920
+lilisa girl~
+Lilisa~
+A young girl stands fearfully in the Nightmare Forest.
+~
+A young girl stands fearfully here.  Her eyes are tear stained and red,
+and her long, curly red hair is matted and dirty.  
+~
+human~
+water scholar~
+ADLX 0 0 G 0
+30 15 13d80+923 30d10+100 2d6+1 bash~
+punch~
+-9 -9 -9 0
+0 ABb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 15921
+Tzet-Sebanthe void dragon falsedragon~
+Tzet-Sebanthe the Void Dragon~
+A mighty dragon, with scales of shadow, rears his night-clad form above you.
+~
+Tzet-Sebanthe, dragon of the void, rears his sable-vested, serpentine
+form above you.  Great wings, like the coming night, stretch from his mighty
+back and seem to embrace the sky in their umbra.  His huge eyes reveal only
+a deep, deep nothingness, and his chill breath is like the cold between the
+stars.
+~
+dragon~
+water scholar~
+ADLPTX 0 DFJTZb G 0
+63 120 15000d1+0 0d0+0 10d20+30 slash~
+claw~
+-40 -40 -40 -40
+CFHI ABb
+26 0 33 0 0 33 -33 0 33 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHZ ACDEFGHIJKPQUVX A huge unknown
+V4 15922
+dryad gaunt sickly creature Deoraidh~
+a gaunt, sickly dryad~
+A gaunt, sickly creature sits upon the standing stone.
+~
+A pallid, sickly creature, her small, elfin face gaunt and malicious,
+sits upon the standing stone.  The creature seems human in form, though her
+pale skin is tinged with green, as is her matted hair which falls thickly to
+her waist, partially covering her nakedness.  
+~
+human~
+water scholar~
+ABPX 0 DFJXZc E 0
+60 0 6000d1+0 0d0+0 5d9+0 none~
+hit~
+-70 -70 -70 -70
+EF ABDLQXb
+26 0 0 50 0 0 0 -20 -20 0 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+ABHMV ABCDEFGHIJK A medium unknown
+>death_prog 100~
+mpecho With the dryad\@s tortured death-scream, the entire forest shudders.
+mpseewizi
+mpat 15950 mpforce exitbot mpvalueset 1 1
+mpat 15951 mpforce exitbot mpvalueset 1 1
+mpat 15952 mpforce exitbot mpvalueset 1 1
+mpat 15953 mpforce exitbot mpvalueset 1 1
+mpat 15954 mpforce exitbot mpvalueset 1 1
+mpat 15955 mpforce exitbot mpvalueset 1 1
+mpat 15956 mpforce exitbot mpvalueset 1 1
+mpat 15957 mpforce exitbot mpvalueset 1 1
+mpat 15958 mpforce exitbot mpvalueset 1 1
+mpat 15959 mpforce exitbot mpvalueset 1 1
+mpat 15960 mpforce exitbot mpvalueset 1 1
+mpat 15961 mpforce exitbot mpvalueset 1 1
+mpat 15962 mpforce exitbot mpvalueset 1 1
+mpat 15963 mpforce exitbot mpvalueset 1 1
+mpat 15964 mpforce exitbot mpvalueset 1 1
+mpat 15965 mpforce exitbot mpvalueset 1 1
+mpat 15966 mpforce exitbot mpvalueset 1 1
+mpat 15967 mpforce exitbot mpvalueset 1 1
+mpat 15968 mpforce exitbot mpvalueset 1 1
+mpat 15969 mpforce exitbot mpvalueset 1 1
+mpat 15970 mpforce exitbot mpvalueset 1 1
+mpat 15971 mpforce exitbot mpvalueset 1 1
+mpat 15972 mpforce exitbot mpvalueset 1 1
+mpat 15973 mpforce exitbot mpvalueset 1 1
+mpat 15974 mpforce exitbot mpvalueset 1 1
+mppurge stonebot
+mppurge roots desc_object
+~
+>fight_prog 100~
+if rand(20)
+if mobvalue(2) == 0
+mpecho A gaunt, sickly dryad lets out a feral shriek!
+mpmload 15923
+mpecho Suddenly, the surrounding forest comes to life, whipping and flailing!
+mpseewizi
+mpforce forestmob mpkill $n
+mpunseewizi
+mpvalueset 2 1
+endif
+endif
+~
+|
+V4 15923
+forest forestmob~
+the raging forest~
+The forest is here, wide awake and angry.
+~
+~
+human~
+water scholar~
+ABTX 0 DFJLVZ E 0
+60 300 10000d1+1 0d0+0 5d40+0 pierce~
+pierce~
+0 0 0 0
+AEHN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A huge unknown
+>trigger_prog 100~
+if name($n)/dryad
+else
+if rand(30)
+mpsetskilled
+trip $n
+mpsetunskilled
+endif
+mpkill $n
+endif
+~
+>fight_prog 100~
+if mobhere(15922)
+else
+mpecho The surrounding trees slowly become still.
+mpecho The forest returns to its brooding sleep.
+mppurge self
+endif
+~
+>rand_prog 100~
+if mobhere(15922)
+mproomcmd mptrigger all
+else
+mpecho The surrounding trees slowly become still.
+mpecho The forest returns to its brooding sleep.
+mppurge self
+endif
+~
+|
+V4 15924
+wolf rangermob~
+a wolf~
+A wolf prowls though here.
+~
+~
+wolf~
+water scholar~
+ADLN 0 Z N 0
+50 0 1000d1+0 0d0+0 10d10+10 pierce~
+bite~
+0 0 0 0
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGV ACDEFJKQV A medium unknown
+>speech_prog p Wolf, begin hunting~
+if ismaster($n)
+if name($n) == $y4
+mpechoat $n $I whines, and looks up at you in confusion.
+mpechoaround $n $I whines, and looks up at $N in confusion.
+mpvalueset 0 3
+endif
+if isfight($i)
+emote growls angrily, and keeps fighting.
+mpvalueset 0 3
+endif
+if sector($i) == inside
+mpechoat $n $I cannot pick up scents in this environment.
+mpvalueset 0 3
+endif
+if sector($i) == city
+mpechoat $n $I cannot pick up scents in this environment.
+mpvalueset 0 3
+endif
+if sector($i) == water_swim
+mpechoat $n $I cannot pick up scents in this environment.
+mpvalueset 0 3
+endif
+if sector($i) == water_noswim
+mpechoat $n $I cannot pick up scents in this environment.
+mpvalueset 0 3
+endif
+if sector($i) == unused
+mpechoat $n $I cannot pick up scents in this environment.
+mpvalueset 0 3
+endif
+if sector($i) == air
+mpechoat $n $I cannot pick up scents in this environment.
+mpvalueset 0 3
+endif
+if sector($i) == underwater
+mpechoat $n $I cannot pick up scents in this environment.
+mpvalueset 0 3
+endif
+if sector($i) == max
+mpechoat $n $I cannot pick up scents in this environment.
+mpvalueset 0 3
+endif
+if mobvalue(0) == 3
+mpunfocus
+mpvalueset 0 0
+mpvalueset 1 0
+mpvalueset 2 0
+else
+mpfocus $y4
+if isfocused()
+if isrange($n) == $f
+mpvalueset 0 1
+mpvalueset 1 1
+else
+emote twitches $l ears, but doesn\@t move.
+mpunfocus
+mpvalueset 0 0
+mpvalueset 1 0
+mpvalueset 2 0
+endif
+else
+emote twitches $l ears, but doesn\@t move.
+mpunfocus
+mpvalueset 0 0
+mpvalueset 1 0
+mpvalueset 2 0
+endif
+endif
+endif
+~
+>speech_prog p Wolf, heel!~
+if ismaster($n)
+mpechoat $n $I obediently falls into step beside you.
+mpechoaround $n $I obediently falls into step beside $N.
+mpunfocus
+mpvalueset 0 0
+mpvalueset 1 0
+mpvalueset 2 0
+if isfighting($i)
+emote growls angrily, and keeps fighting.
+mpvalueset 0 3
+endif
+endif
+~
+|
+V4 15925
+wolf rangermob~
+a bot~
+A bot is here.
+~
+~
+wolf~
+water scholar~
+ADLN 0 Z N 0
+50 0 1000d1+1 0d0+0 0d0+0 pierce~
+bite~
+0 0 0 0
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGV ACDEFJKQV A medium unknown
+V4 15926
+rauku~
+the rauku~
+The rauku sits upon its seat of stone, a bright glint in its sleepy eyes.
+~
+The rauku sits upon its seat of stone, in the middle of its cold, stone
+cave.  It is old, even for its kind, and its rough, mossy hide hangs loosely
+from its huge frame.  Though its back be crooked and its mouth all but
+toothless, the old beast has a glint of cunning, or perhaps amusement, in
+its sleepy eyes.  
+~
+generic~
+water scholar~
+ABPTX B DFJZc N 0
+60 50 1d1+16000 60d10+100 6d10+50 pierce~
+bite~
+-27 -27 -27 -9
+AEFHJMV ABR
+26 0 0 75 50 0 0 0 0 0 0 -30 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJKLUVW 0 medium flesh
+V4 15927
+Merrojin nefortu~
+Merrojin~
+A black-skinned nefortu stands here, quill in hand.
+~
+~
+nefortu~
+water scholar~
+ABX 0 DEFJTZ E 0
+50 15 5000d1+1 2000d1+1 6d5+20 slash~
+claw~
+-20 -20 -20 -20
+EFHK ABb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGHIJKP H medium unknown
+V4 15928
+merrojinbot~
+a merrojinbot~
+A merrojinbot ushers him to sleep.
+~
+~
+human~
+water scholar~
+ADLX 0 DFJLPZ N 0
+60 0 10000d1+1 10000d1+1 0d0+0 none~
+hit~
+0 0 0 0
+0 ABCDb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+#0
+
+
+
+#OBJECTS
+V13
+15910
+mace iron huge spiked~
+a huge iron mace~
+A huge spiked iron mace, some seven feet long, rests here.~
+~
+iron~
+weapon Ya 0 0 ANP
+mace 6 9 1 F
+smash~
+60 350 780000 2 P
+3
+V13
+15911
+key silver enormous~
+an enormous silver key~
+An enormous silver key rests here, its shaft as long at your arm.~
+~
+silver~
+key a 0 0 AOP
+0 0 0 0 0
+0 100 0 0 P
+0
+V13
+15912
+skull hydra~
+the skull of a hydra~
+The skull of a hydra lies here.~
+~
+bone~
+armor S 0 0 AE
+14 13 15 13 0
+60 100 65197 2 P
+7
+A
+5 2
+A
+19 4
+V13
+15913
+web webbing giant spider spiders spiderweb~
+a giant spider\@s web~
+A giant spider\@s web blocks the westward path in a dense, sticky network.~
+~
+unknown~
+trash Sa 0 0 P
+0 0 0 0 0
+55 0 0 2 P
+0
+E
+web~
+This thick, sticky mass of web covers the westward path completely.  It
+looks quite flammable, you could probably burn it.  
+~
+V13
+15914
+orb dreams~
+the Orb of Dreams~
+A flawless crystalline orb lies on the ground.~
+~
+crystal~
+treasure 0 0 0 A
+0 0 0 0 0
+52 30 0 0 P
+1
+E
+dreams~
+The Orb of Dreams is a crystalline sphere, filled with a shimmering cloud
+of colors, flickering in strange and hypnotic patterns.  Staring at the Orb
+long enough, you can almost discern dim shapes flickering within....  
+~
+E
+orb~
+The Orb of Dreams is a crystalline sphere, filled with a shimmering cloud
+of colors, flickering in strange and hypnotic patterns.  Staring at the Orb
+long enough, you can almost discern dim shapes flickering within....  
+~
+V13
+15915
+portal swirling colors dreams~
+a portal of swirling colors~
+A cloud of swirling colors marks a portal to the Realm of Dreams.~
+~
+energy~
+portal 0 0 0 0
+0 0 0 15901 0
+52 0 0 4 P
+0
+E
+colors~
+Flickering colors dance along the edge of this portal, and a dim
+landscape is visible beyond it.  
+~
+E
+portal~
+Flickering colors dance along the edge of this portal, and a dim
+landscape is visible beyond it.  
+~
+V13
+15916
+stone standing old~
+a standing stone~
+An old stone rises from the ground, tangled in branches and roots.~
+~
+stone~
+trash a 0 0 P
+0 0 0 0 0
+0 0 0 2 P
+0
+V13
+15917
+web webbing spiderweb~
+a network of dry spider\@s web~
+A dense network of dry spider\@s web blocks the eastward path.~
+~
+unknown~
+trash Ya 0 0 P
+0 0 0 0 0
+55 0 0 2 P
+0
+E
+web~
+A thick dry mass of web covers the eastward path completely.  Perhaps by
+hacking the web you could push your way through.  
+~
+V13
+15922
+crimson eye silver brooch~
+a brooch set with a crimson eye~
+A crimson eye made from some strange stone is set in a silver brooch.~
+~
+stone~
+jewelry AGYa 0 0 ACP
+0 0 0 0 0
+55 10 343200 1 P
+0
+A
+37 25
+E
+eye~
+The eye seems to be formed naturally from some slightly transluscent
+stone. The blood-red iris glares from the paler stone about.  Upon the back
+of the broach are scratched the words, \@Ketzulkat dur Abir\@.  
+~
+E
+brooch~
+The eye seems to be formed naturally from some slightly transluscent
+stone. The blood-red iris glares from the paler stone about.  Upon the back
+of the broach are scratched the words, \@Ketzulkat dur Abir\@.  
+~
+>remove_prog 100~
+if snaffected($n) == 398
+opechoat $n You fiery aura fades, and the burning inside you is quelled.
+opechoaround $n $N\@s fiery aura fades away.
+opremaffect 398
+endif
+~
+>time_prog 0~
+if objvalue(1) > 0
+mpvalueup 1
+if objvalue(1) == 3
+opvalueset 1 0
+endif
+endif
+~
+>speech_prog p Ketzulkat dur Abir~
+if isworn($o)
+if objvalue(1) == 0
+opechoat $n The crimson eye flares, and you feel fire rage through your body!
+opechoaround $n $N\@s crimson eye broach flares, and $N is surrounded by flame!
+opcast 398 50
+opvalueset 1 1
+else
+opechoat $n The crimson eye glows, then fades again.
+opechoaround $n $N\@s crimson eye broach glows, then fades again.
+endif
+endif
+~
+|
+V13
+15923
+dagger diamond~
+a dagger inset with a single diamond~
+A beautiful dagger lies here, the diamond in its hilt glittering brightly.~
+~
+steel~
+weapon AG 0 0 AN
+dagger 5 9 6 0
+shocking bite~
+52 40 248207 1 P
+1
+A
+19 3
+A
+20 -4
+A
+12 40
+V13
+15926
+seat stone~
+a seat of stone~
+A seat of stone.~
+~
+unknown~
+furniture OYae 0 0 P
+0 0 EH 0 0
+55 0 0 4 P
+0
+E
+stone~
+The stub of a stalagmite forms a broad seat of stone.
+~
+E
+seat~
+The stub of a stalagmite forms a broad seat of stone.
+~
+V13
+15951
+roots desc_object~
+the butressed roots~
+The buttressed roots overlap beneath your feet.~
+~
+unknown~
+trash Yae 0 0 P
+0 0 0 0 0
+0 0 0 2 P
+0
+E
+circle~
+With some imagination, you can make out the word \#Deoraidh\#.
+~
+E
+letters~
+With some imagination, you can make out the word \#Deoraidh\#.
+~
+E
+pattern~
+The gnarled, winding roots seem almost to form a series of letters in a
+circle about the ancient stone.  
+~
+E
+roots~
+The overlapping, twisting roots weave a complex pattern about the old
+standing stone.
+~
+#0
+
+
+
+#ROOMS
+#15900
+~
+To do:
+Merrojin quests.
+Randomise the path through the nightmare forest.
+Set up the magical appearance of the inn on the northwest cliffs
+Finalize the inn-portals in Eventide
+Test the dream ghosts once more
+~
+~
+1
+0 40982 0
+W 5 0 0
+Z 5 5
+S
+#15901
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance to the north, east and west.
+To the south an old forest hangs its dark boughs over the lake shore, its
+thick growth impossible to penetrate.  The great expanse of crimson seems to
+reflect into the dull sky above, so that the clouds take on the hue of
+watered blood.  Now and then, the currents beneath you quicken, as though
+something huge moves in the winey depths.  
+~
+~
+1
+0 8242 6
+D0
+~
+~
+0 0 15998
+D1
+~
+~
+0 0 15987
+D3
+~
+~
+0 0 15945
+W 5 0 0
+Z 5 5
+S
+#15902
+none~
+~
+~
+1
+0 8246 2
+D2
+~
+~
+0 0 15922
+W 5 0 0
+Z 5 5
+S
+#15903
+none~
+~
+~
+1
+0 8246 2
+W 5 0 0
+Z 5 5
+S
+#15904
+none~
+~
+~
+1
+0 8246 2
+W 5 0 0
+Z 5 5
+S
+#15905
+none~
+~
+~
+1
+0 8246 2
+W 5 0 0
+Z 5 5
+S
+#15906
+none~
+~
+~
+1
+0 8246 2
+W 5 0 0
+Z 5 5
+S
+#15907
+A Cold Stone Tunnel~
+A tunnel of cold stone winds its way through the earth.  Its round sides
+appear to have been carved away by some great beast long ago.  Now the walls
+are smooth and slick, worn away by endless trickles of water.  The tunnel
+winds away to the north, and to the south it opens into a cave bathed in red
+light.  
+~
+~
+1
+0 8242 4
+D0
+~
+~
+0 0 15908
+D2
+~
+~
+0 0 15997
+W 5 0 0
+Z 5 5
+S
+#15908
+A Cold Stone Tunnel~
+A tunnel of cold stone winds its way through the earth.  Its round sides
+appear to have been carved away by some great beast long ago.  Now the walls
+are smooth and slick, worn away by endless trickles of water.  The tunnel
+winds away southward in one direction and curves suddenly downward in the
+other.  
+~
+~
+1
+0 8242 4
+D2
+~
+~
+0 0 15907
+D5
+~
+~
+0 0 15909
+W 5 0 0
+Z 5 5
+S
+#15909
+A Cold Stone Tunnel~
+A tunnel of cold stone winds its way through the earth.  Its round sides
+appear to have been carved away by some great beast long ago.  Now the walls
+are smooth and slick, worn away by endless trickles of water.  The tunnel
+curves upward in one direction, while to the east it opens into a large
+cavern.  
+~
+~
+1
+0 8242 5
+D1
+~
+~
+0 0 15910
+D4
+~
+~
+0 0 15908
+W 5 0 0
+Z 5 5
+S
+#15910
+A Cold Stone Cave~
+A large cave, dark and cold, opens out before you.  The bluish-grey walls
+are slick with seeping water, and occasional drips from old stalactites echo
+through the chamber.  In the center of the cavern a large stalacmite has
+been cut in two, the remaining half forming a broad stone seat.  Only one
+exit seems to leave this place, to the west.  
+~
+~
+1
+0 8242 12
+D3
+~
+~
+0 0 15909
+W 5 0 0
+Z 5 5
+S
+#15911
+A Mountain Pass~
+A wide saddle has been formed between two great mountain peaks to the
+north and south.  Snow covers the ground here, and in many places waist-deep
+drifts lie.  Sheer faces rise to the north and south, and a chill wind howls
+across the high pass.  To the east the path winds down the mountain between
+two great spurs.  Vast plains stretch from the base of the mountains into
+the distance.  
+~
+~
+1
+0 8246 5
+W 5 0 0
+Z 5 5
+S
+#15912
+A Mountain Pass~
+A wide saddle has been formed between two great mountain peaks to the
+north and south.  Snow covers the ground here, and in many places waist-deep
+drifts lie.  Sheer faces rise to the north and south, and a chill wind howls
+across the high pass.  To the west, a silver wall blocks the pass, its
+towers built into the very sides of the mountains.  
+~
+~
+1
+0 8246 5
+W 5 0 0
+Z 5 5
+S
+#15913
+Before the Gates of a Silver City~
+A wide saddle has been formed between two great mountain peaks to the
+north and south.  Snow covers the ground here, and in many places waist-deep
+drifts lie.  Sheer faces rise to the north and south, and a chill wind howls
+across the high pass.  Above you a huge silver battlement looms.  Great
+shining towers defend the gate in front of you, and more towers are built
+into the sides of the mountains themselves, preventing all passage across
+the pass.  Behind the walls rise many silver spires, but the view of the
+city is blocked by ornate gates of silvery wood.  
+~
+~
+1
+0 8242 5
+D3
+~
+gate~
+103 15911 15914
+W 5 0 0
+Z 5 5
+S
+#15914
+The Shore of a Crimson Lake~
+To the west stretches a lake of startling crimson.  Its tranluscent red
+waves lap upon the shore, and out on the lake strange currents swirl.  To
+the east rises a wall of dense trees, their close-set silvery trunks and
+thick, shining foliage blocking passage.  
+~
+~
+1
+0 8242 3
+D0
+~
+~
+0 0 15981
+D2
+~
+~
+0 0 15985
+D3
+~
+~
+0 0 15915
+W 5 0 0
+Z 5 5
+S
+#15915
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance to the north, south and
+west.  To the east a forested shore makes its tinted reflection in the lake.
+The great expanse of crimson seems to reflect into the dull sky above, so
+that the clouds take on the hue of watered blood.  Now and then, the
+currents beneath you quicken, as though something huge moves in the winey
+depths.  
+~
+~
+1
+0 8242 6
+D0
+~
+~
+0 0 15988
+D1
+~
+~
+0 0 15914
+D2
+~
+~
+0 0 15991
+D3
+~
+~
+0 0 15916
+W 5 0 0
+Z 5 5
+S
+#15916
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance in all directions.  Far to
+the east, a forested shore can be seen.  The great expanse of crimson seems
+to reflect into the dull sky above, so that the clouds take on the hue of
+watered blood.  Now and then, the currents beneath you quicken, as though
+something huge moves in the winey depths.  
+~
+~
+1
+0 8242 6
+D0
+~
+~
+0 0 15988
+D1
+~
+~
+0 0 15915
+D2
+~
+~
+0 0 15991
+D3
+~
+~
+0 0 15917
+W 5 0 0
+Z 5 5
+S
+#15917
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance in all directions.  The
+great expanse of crimson seems to reflect into the dull sky above, so that
+the clouds take on the hue of watered blood.  Now and then, the currents
+beneath you quicken, as though something huge moves in the winey depths.  
+~
+~
+1
+0 8242 6
+D0
+~
+~
+0 0 15989
+D1
+~
+~
+0 0 15916
+D2
+~
+~
+0 0 15992
+D3
+~
+~
+0 0 15918
+W 5 0 0
+Z 5 5
+S
+#15918
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance in all directions.  The
+great expanse of crimson seems to reflect into the dull sky above, so that
+the clouds take on the hue of watered blood.  Now and then, the currents
+beneath you quicken, as though something huge moves in the winey depths.  
+~
+~
+1
+0 8242 6
+D0
+~
+~
+0 0 15989
+D1
+~
+~
+0 0 15917
+D2
+~
+~
+0 0 15992
+D3
+~
+~
+0 0 15919
+W 5 0 0
+Z 5 5
+S
+#15919
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance in all directions.  The
+great expanse of crimson seems to reflect into the dull sky above, so that
+the clouds take on the hue of watered blood.  Now and then, the currents
+beneath you quicken, as though something huge moves in the winey depths.  
+~
+~
+1
+0 8242 6
+D0
+~
+~
+0 0 15989
+D1
+~
+~
+0 0 15918
+D2
+~
+~
+0 0 15992
+D3
+~
+~
+0 0 15920
+W 5 0 0
+Z 5 5
+S
+#15920
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance in all directions.  Far to
+the west, a forested shore can be seen.  The great expanse of crimson seems
+to reflect into the dull sky above, so that the clouds take on the hue of
+watered blood.  Now and then, the currents beneath you quicken, as though
+something huge moves in the winey depths.  
+~
+~
+1
+0 8242 6
+D0
+~
+~
+0 0 15990
+D1
+~
+~
+0 0 15919
+D2
+~
+~
+0 0 15993
+D3
+~
+~
+0 0 15921
+W 5 0 0
+Z 5 5
+S
+#15921
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance to the north, south and
+east.  To the west a forested shore makes its tinted reflection in the lake.
+The great expanse of crimson seems to reflect into the dull sky above, so
+that the clouds take on the hue of watered blood.  Now and then, the
+currents beneath you quicken, as though something huge moves in the winey
+depths.  
+~
+~
+1
+0 8242 6
+D0
+~
+~
+0 0 15990
+D1
+~
+~
+0 0 15920
+D2
+~
+~
+0 0 15993
+D3
+~
+~
+0 0 15922
+W 5 0 0
+Z 5 5
+S
+#15922
+The Shore of a Crimson Lake~
+To the east stretches a lake of startling crimson.  Its tranluscent red
+waves lap upon the shore, and out on the lake strange currents swirl.  To
+the west rises a dark forest of stunted trees, and a narrow path seems to
+make its way between their crowded boles.  
+~
+~
+1
+0 8242 3
+D0
+~
+~
+0 0 15902
+D1
+~
+~
+0 0 15921
+D3
+~
+~
+0 0 15923
+W 5 0 0
+Z 5 5
+S
+#15923
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns, and
+the knots and wrinkles twist with vaguely fetal obscenity.  A meagre path
+winds westward amongst the roots, and the forest ends to the east by the
+shore of a crimson lake.  A small sign is embedded deeply in the bole of a
+tree here.  
+~
+~
+1
+0 8242 3
+E
+sign~
+A voice, its silken tone a-whispers,
+Whither come ye? \@Afore or past?
+Whence-ever go thee, remember only:
+Keep thy feet upon the path!
+~
+D0
+~
+~
+0 0 15955
+D1
+~
+~
+0 0 15922
+D2
+~
+~
+0 0 15965
+D3
+~
+~
+0 0 15924
+W 5 0 0
+Z 5 5
+S
+#15924
+A Nightmare Forest ~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns, and
+the knots and wrinkles twist with vaguely fetal obscenity.  A meagre path
+winds to the east and west amongst the roots.  A small sign is embedded
+deeply in the bole of a tree here.  
+~
+~
+1
+0 8242 3
+E
+sign~
+Her shattered dolmen stands athwart,
+The sleeping host, the savage weald,
+Twisting paths must bring thee thither,
+And here the dryad\@s name to yield
+~
+D0
+~
+~
+0 0 15951
+D1
+~
+~
+0 0 15923
+D2
+~
+~
+0 0 15962
+D3
+~
+~
+0 0 15925
+W 5 0 0
+Z 5 5
+S
+#15925
+A Nightmare Forest ~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns, and
+the knots and wrinkles twist with vaguely fetal obscenity.  A meagre path
+winds to the east and south amongst the roots.  A small sign is embedded
+deeply in the bole of a tree.  
+~
+~
+1
+0 8242 3
+E
+sign~
+Though thou dost wake the curs-ed brake,
+And find death \@midst madness once and ever,
+Lest the root-scrawled name be spake,
+Thou shalt wander lost forever
+~
+D0
+~
+~
+0 0 15957
+D1
+~
+~
+0 0 15924
+D2
+~
+~
+0 0 15926
+D3
+~
+~
+0 0 15954
+W 5 0 0
+Z 5 5
+S
+#15926
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  A meagre
+path winds to the north and east amongst the roots. 
+~
+~
+1
+0 8242 3
+D0
+~
+~
+0 0 15925
+D1
+~
+~
+0 0 15928
+D2
+~
+~
+0 0 15953
+D3
+~
+~
+0 0 15973
+W 5 0 0
+Z 5 5
+S
+#15927
+Before a Giant Spider Web~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  A meagre
+path winds to the east and west amongst the roots. 
+~
+~
+1
+0 8242 3
+D0
+~
+~
+0 0 15966
+D1
+~
+~
+0 0 15943
+D2
+~
+~
+0 0 15970
+D3
+~
+~
+0 0 15933
+W 5 0 0
+Z 5 5
+S
+#15928
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  A meagre
+path winds to the south and west amongst the roots. 
+~
+~
+1
+0 8242 3
+D0
+~
+~
+0 0 15956
+D1
+~
+~
+0 0 15968
+D2
+~
+~
+0 0 15929
+D3
+~
+~
+0 0 15926
+W 5 0 0
+Z 5 5
+S
+#15929
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  A meagre
+path winds to the north and west amongst the roots. 
+~
+~
+1
+0 8242 3
+D0
+~
+~
+0 0 15928
+D1
+~
+~
+0 0 15951
+D2
+~
+~
+0 0 15972
+D3
+~
+~
+0 0 15930
+W 5 0 0
+Z 5 5
+S
+#15930
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  A meagre
+path winds to the east and west amongst the roots. 
+~
+~
+1
+0 8242 3
+D0
+~
+~
+0 0 15962
+D1
+~
+~
+0 0 15929
+D2
+~
+~
+0 0 15954
+D3
+~
+~
+0 0 15931
+W 5 0 0
+Z 5 5
+S
+#15931
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  A meagre
+path winds to the east and north amongst the roots. 
+~
+~
+1
+0 8242 3
+D0
+~
+~
+0 0 15940
+D1
+~
+~
+0 0 15930
+D2
+~
+~
+0 0 15955
+D3
+~
+~
+0 0 15964
+W 5 0 0
+Z 5 5
+S
+#15932
+A Glade in a Nightmare Forest~
+A small glade opens beneath the murky foliage of the forest here.  The
+grim trees surrounding the glade form a wall of tangled limb and bole, while
+their contorted roots reach out into the clearing in twisting network.  The
+roots seem form a circular pattern on the ground near the center of the
+glade.  A narrow path leaves the glade to the east and west.  
+~
+~
+1
+0 8242 3
+E
+gash~
+The gash which has been cleft in the root pattern almost certainly
+destroys any power the circle might once have had.  
+~
+E
+runes~
+Although the root-formed runes are hard to make out, some look distinctly
+similar to the more simple runes of warding.  
+~
+E
+roots~
+The twisting roots of the surrounding trees form a circle near the center
+of the glade, which seems to be filled with vaguely rune-like shapes, where
+small shoots from the main roots twist and weave at odd angles.  A large
+gash has been made in the pattern, scoring it from near the center to the
+outer rim.  
+~
+E
+pattern~
+The circle, formed from the twisting roots of the surrounding trees,
+seems to be filled with vaguely rune-like shapes, where small shoots from
+the main roots twist and weave at odd angles.  A large gash has been made in
+the pattern, scoring it from near the center to the outer rim.  
+~
+E
+circle~
+The circle, formed from the twisting roots of the surrounding trees,
+seems to be filled with vaguely rune-like shapes, where small shoots from
+the main roots twist and weave at odd angles.  A large gash has been made in
+the pattern, scoring it from near the center to the outer rim.  
+~
+E
+network~
+The twisting roots of the surrounding trees form a circle near the center
+of the glade, which seems to be filled with vaguely rune-like shapes, where
+small shoots from the main roots twist and weave at odd angles.  A large
+gash has been made in the pattern, scoring it from near the center to the
+outer rim.
+~
+D0
+~
+~
+0 0 15959
+D1
+~
+~
+0 0 15940
+D2
+~
+~
+0 0 15973
+D3
+~
+~
+0 0 15941
+W 5 0 0
+Z 5 5
+S
+#15933
+A Path through a Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  A meagre
+path winds to the east and west among the roots. Before long to the west, 
+the trees begin to thin.
+~
+~
+1
+0 8242 3
+D0
+~
+~
+0 0 15963
+D1
+~
+~
+0 0 15927
+D2
+~
+~
+0 0 15972
+D3
+~
+~
+0 0 15975
+W 5 0 0
+Z 5 5
+S
+#15934
+A Dark, Putrid Cave~
+The cave stretches back only a short way into the cliff face, and its
+ceiling is barely four feet above the floor.  The ground is covered in rags,
+skins and bones, and the heavy, putrid reek of rotting meat fills the air.  
+~
+~
+1
+0 8244 12
+W 5 0 0
+Z 5 5
+S
+#15935
+A Cliff Overlooking the Sea~
+A high platform of rock overlooks a vast, stormy ocean which stretches
+away to the dark western horizon.  Many meters below, waves pound upon a
+bleak sandy beach.  To the east a forest rises.  A narrow path winds away
+from the cliff top through the eaves and into the blackness beneath the
+forest\@s close-set, stunted trees.  
+~
+~
+1
+0 8208 4
+D1
+~
+~
+0 0 15976
+D5
+~
+~
+0 0 15936
+W 5 0 0
+Z 5 5
+S
+#15936
+A Windy Ocean Beach~
+A grey and windy ocean beach stretches as far as the eye can see to the
+north and south.  Eroding sandstone cliffs rise to the east, darkly framing
+a stormy sky with weather-torn trees.  The wind howls across the western
+ocean, and in the sky, and in the cliffs behind, and the salty smell of the
+ocean rides the chill wind, hinting of teeming life beneath these cold,
+sombre waves.  A thin path has been carved into the eastern cliff face here,
+allowing the high bluff to be reached.  
+~
+~
+1
+0 8242 2
+D0
+~
+~
+0 0 15937
+D2
+~
+~
+0 0 15939
+D4
+~
+~
+0 0 15935
+W 5 0 0
+Z 5 5
+S
+#15937
+A Windy Ocean Beach~
+A grey and windy ocean beach stretches as far as the eye can see to the
+north and south.  Eroding sandstone cliffs rise to the east, darkly framing
+a stormy sky with weather-torn trees.  The wind howls across the western
+ocean, and in the sky, and in the cliffs behind, and the salty smell of the
+ocean rides the chill wind, hinting of teeming life beneath these cold,
+sombre waves.  And below the wild moaning of the sky and the distant
+screeching of gulls, echoes the everlasting sonorous roar of a tumultuous
+sea.
+~
+~
+1
+0 8208 2
+D0
+~
+~
+0 0 15938
+D2
+~
+~
+0 0 15936
+W 5 0 0
+Z 5 5
+S
+#15938
+A Windy Ocean Beach~
+A grey and windy ocean beach stretches as far as the eye can see to the
+north and south.  Eroding sandstone cliffs rise to the east, darkly framing
+a stormy sky with weather-torn trees.  The wind howls across the western
+ocean, and in the sky, and in the cliffs behind, and the salty smell of the
+ocean rides the chill wind, hinting of teeming life beneath these cold,
+sombre waves.  And below the wild moaning of the sky and the distant
+screeching of gulls, echoes the everlasting sonorous roar of a tumultuous
+sea.
+~
+~
+1
+0 8216 2
+D0
+~
+~
+0 0 15938
+D2
+~
+~
+0 0 15937
+W 5 0 0
+Z 5 5
+S
+#15939
+A Windy Ocean Beach~
+A grey and windy ocean beach stretches as far as the eye can see to the
+north and south.  Eroding sandstone cliffs rise to the east, darkly framing
+a stormy sky with weather-torn trees.  The wind howls across the western
+ocean, and in the sky, and in the cliffs behind, and the salty smell of the
+ocean rides the chill wind, hinting of teeming life beneath these cold,
+sombre waves.  And below the wild moaning of the sky and the distant
+screeching of gulls, echoes the everlasting sonorous roar of a tumultuous
+sea.
+~
+~
+1
+0 8242 2
+D0
+~
+~
+0 0 15936
+D2
+~
+~
+0 0 15939
+W 5 0 0
+Z 5 5
+S
+#15940
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  A meagre
+path winds to the south and west amongst the roots. 
+~
+~
+1
+0 40976 3
+D0
+~
+~
+0 0 15954
+D1
+~
+~
+0 0 15967
+D2
+~
+~
+0 0 15931
+D3
+~
+~
+0 0 15932
+W 5 0 0
+Z 5 5
+S
+#15941
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  A meagre
+path winds to the south and east amongst the roots. 
+~
+~
+1
+0 32784 3
+D0
+~
+~
+0 0 15958
+D1
+~
+~
+0 0 15932
+D2
+~
+~
+0 0 15942
+D3
+~
+~
+0 0 15955
+W 5 0 0
+Z 5 5
+S
+#15942
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  A meagre
+path winds to the north and west amongst the roots. 
+~
+~
+1
+0 40976 3
+D0
+~
+~
+0 0 15941
+D1
+~
+~
+0 0 15970
+D2
+~
+~
+0 0 15968
+D3
+~
+~
+0 0 15943
+W 5 0 0
+Z 5 5
+S
+#15943
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  A meagre
+path winds to the east and west amongst the roots. 
+~
+~
+1
+0 8242 0
+D0
+~
+~
+0 0 15960
+D1
+~
+~
+0 0 15942
+D2
+~
+~
+0 0 15966
+D3
+~
+~
+0 0 15927
+W 5 0 0
+Z 5 5
+S
+#15944
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance in all directions.  Far to
+the west, a forested shore can be seen.  The great expanse of crimson seems
+to reflect into the dull sky above, so that the clouds take on the hue of
+watered blood.  Now and then, the currents beneath you quicken, as though
+something huge moves in the winey depths.  
+~
+~
+0
+0 8242 6
+D0
+~
+~
+0 0 15920
+D1
+~
+~
+0 0 15998
+D2
+~
+~
+0 0 15945
+D3
+~
+~
+0 0 15993
+W 5 0 0
+Z 5 5
+S
+#15945
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance to the north, east and west.
+To the south an old forest hangs its dark boughs over the lake shore, its
+thick growth impossible to penetrate.  The great expanse of crimson seems to
+reflect into the dull sky above, so that the clouds take on the hue of
+watered blood.  Now and then, the currents beneath you quicken, as though
+something huge moves in the winey depths.  
+~
+~
+0
+0 8242 6
+D0
+~
+~
+0 0 15944
+D1
+~
+~
+0 0 15901
+D3
+~
+~
+0 0 15944
+W 5 0 0
+Z 5 5
+S
+#15946
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance in all directions.  Far to
+the west, a forested shore can be seen.  The great expanse of crimson seems
+to reflect into the dull sky above, so that the clouds take on the hue of
+watered blood.  Now and then, the currents beneath you quicken, as though
+something huge moves in the winey depths.  
+~
+~
+0
+0 8242 6
+D0
+~
+~
+0 0 15948
+D1
+~
+~
+0 0 15994
+D2
+~
+~
+0 0 15920
+D3
+~
+~
+0 0 15990
+W 5 0 0
+Z 5 5
+S
+#15947
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance to the south and west.  To
+the north and east, an old forest hangs its dark boughs over the lake shore,
+its thick growth impossible to penetrate.  The great expanse of crimson
+seems to reflect into the dull sky above, so that the clouds take on the hue
+of watered blood.  Now and then, the currents beneath you quicken, as though
+something huge moves in the winey depths.  
+~
+~
+0
+0 8242 6
+D2
+~
+~
+0 0 15983
+D3
+~
+~
+0 0 15995
+W 5 0 0
+Z 5 5
+S
+#15948
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance to the south, east and west.
+To the north an old forest hangs its dark boughs over the lake shore, its
+thick growth impossible to penetrate.  The great expanse of crimson seems to
+reflect into the dull sky above, so that the clouds take on the hue of
+watered blood.  Now and then, the currents beneath you quicken, as though
+something huge moves in the winey depths.  
+~
+~
+0
+0 8242 6
+D1
+~
+~
+0 0 15995
+D2
+~
+~
+0 0 15946
+D3
+~
+~
+0 0 15946
+W 5 0 0
+Z 5 5
+S
+#15949
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns, 
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 41010 3
+D0
+~
+~
+0 0 15930
+D1
+~
+~
+0 0 15923
+D2
+~
+~
+0 0 15929
+D3
+~
+~
+0 0 15932
+W 5 0 0
+Z 5 5
+S
+#15950
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15951
+D1
+~
+~
+0 0 15960
+D2
+~
+~
+0 0 15974
+D3
+~
+~
+0 0 15969
+W 5 0 0
+Z 5 5
+S
+#15951
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15952
+D1
+~
+~
+0 0 15961
+D2
+~
+~
+0 0 15950
+D3
+~
+~
+0 0 15965
+W 5 0 0
+Z 5 5
+S
+#15952
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15953
+D1
+~
+~
+0 0 15962
+D2
+~
+~
+0 0 15951
+D3
+~
+~
+0 0 15966
+W 5 0 0
+Z 5 5
+S
+#15953
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15954
+D1
+~
+~
+0 0 15963
+D2
+~
+~
+0 0 15952
+D3
+~
+~
+0 0 15967
+W 5 0 0
+Z 5 5
+S
+#15954
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15955
+D1
+~
+~
+0 0 15964
+D2
+~
+~
+0 0 15953
+D3
+~
+~
+0 0 15968
+W 5 0 0
+Z 5 5
+S
+#15955
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15956
+D1
+~
+~
+0 0 15965
+D2
+~
+~
+0 0 15954
+D3
+~
+~
+0 0 15974
+W 5 0 0
+Z 5 5
+S
+#15956
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15957
+D1
+~
+~
+0 0 15966
+D2
+~
+~
+0 0 15955
+D3
+~
+~
+0 0 15970
+W 5 0 0
+Z 5 5
+S
+#15957
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15958
+D1
+~
+~
+0 0 15967
+D2
+~
+~
+0 0 15956
+D3
+~
+~
+0 0 15971
+W 5 0 0
+Z 5 5
+S
+#15958
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15959
+D1
+~
+~
+0 0 15968
+D2
+~
+~
+0 0 15957
+D3
+~
+~
+0 0 15972
+W 5 0 0
+Z 5 5
+S
+#15959
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15960
+D1
+~
+~
+0 0 15969
+D2
+~
+~
+0 0 15958
+D3
+~
+~
+0 0 15973
+W 5 0 0
+Z 5 5
+S
+#15960
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15961
+D1
+~
+~
+0 0 15970
+D2
+~
+~
+0 0 15959
+D3
+~
+~
+0 0 15950
+W 5 0 0
+Z 5 5
+S
+#15961
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15962
+D1
+~
+~
+0 0 15971
+D2
+~
+~
+0 0 15960
+D3
+~
+~
+0 0 15951
+W 5 0 0
+Z 5 5
+S
+#15962
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15963
+D1
+~
+~
+0 0 15972
+D2
+~
+~
+0 0 15961
+D3
+~
+~
+0 0 15952
+W 5 0 0
+Z 5 5
+S
+#15963
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15964
+D1
+~
+~
+0 0 15973
+D2
+~
+~
+0 0 15962
+D3
+~
+~
+0 0 15953
+W 5 0 0
+Z 5 5
+S
+#15964
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15965
+D1
+~
+~
+0 0 15974
+D2
+~
+~
+0 0 15963
+D3
+~
+~
+0 0 15954
+W 5 0 0
+Z 5 5
+S
+#15965
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15966
+D1
+~
+~
+0 0 15951
+D2
+~
+~
+0 0 15964
+D3
+~
+~
+0 0 15955
+W 5 0 0
+Z 5 5
+S
+#15966
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15967
+D1
+~
+~
+0 0 15952
+D2
+~
+~
+0 0 15965
+D3
+~
+~
+0 0 15956
+W 5 0 0
+Z 5 5
+S
+#15967
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15968
+D1
+~
+~
+0 0 15953
+D2
+~
+~
+0 0 15966
+D3
+~
+~
+0 0 15957
+W 5 0 0
+Z 5 5
+S
+#15968
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+E
+roots~
+The overlapping, twisting roots seem to weave randomly about the old 
+standing stone.
+~
+D0
+~
+~
+0 0 15969
+D1
+~
+~
+0 0 15954
+D2
+~
+~
+0 0 15967
+D3
+~
+~
+0 0 15958
+W 5 0 0
+Z 5 5
+S
+#15969
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15970
+D1
+~
+~
+0 0 15950
+D2
+~
+~
+0 0 15968
+D3
+~
+~
+0 0 15959
+W 5 0 0
+Z 5 5
+S
+#15970
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15971
+D1
+~
+~
+0 0 15956
+D2
+~
+~
+0 0 15969
+D3
+~
+~
+0 0 15960
+W 5 0 0
+Z 5 5
+S
+#15971
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15972
+D1
+~
+~
+0 0 15957
+D2
+~
+~
+0 0 15970
+D3
+~
+~
+0 0 15961
+W 5 0 0
+Z 5 5
+S
+#15972
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15973
+D1
+~
+~
+0 0 15958
+D2
+~
+~
+0 0 15971
+D3
+~
+~
+0 0 15962
+W 5 0 0
+Z 5 5
+S
+#15973
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 40976 0
+D0
+~
+~
+0 0 15974
+D1
+~
+~
+0 0 15959
+D2
+~
+~
+0 0 15972
+D3
+~
+~
+0 0 15963
+W 5 0 0
+Z 5 5
+S
+#15974
+A Nightmare Forest~
+The haunted trees of this nightmare forest seem to wrestle each other for
+space, with their twisted boughs intertwined and their buttressed roots
+overlapping beneath your feet.  The foliage above is thick, blocking out all
+sight of the sky.  The leaves are black and glossy, and pile in mouldering
+drifts all about.  The trees themselves are stunted, and covered with sickly
+growths of lichen and moss.  The bark folds in strange carnal patterns,
+and the knots and wrinkles twist with vaguely fetal obscenity.  
+~
+~
+1
+0 41010 0
+D0
+~
+~
+0 0 15950
+D1
+~
+~
+0 0 15955
+D2
+~
+~
+0 0 15973
+D3
+~
+~
+0 0 15964
+W 5 0 0
+Z 5 5
+S
+#15975
+A Path Through a Nightmare Forest~
+A forest of stunted trees rises to the east, where a faint path winds
+into darkness amongst the twisted roots which crowd the forest floor.  The
+trees here are more sparse, their unseemly boles forming an ugly pillared
+hallway beneath a canopy of glossy black leaves.  To the west, the forest
+thins further, and the sound and smell of the ocean freshens the mouldering
+staleness of the surrounding forest.  
+~
+~
+0
+0 8242 0
+D0
+~
+~
+0 0 15953
+D1
+~
+~
+0 0 15933
+D2
+~
+~
+0 0 15962
+D3
+~
+~
+0 0 15976
+W 5 0 0
+Z 5 5
+S
+#15976
+A Weather-Torn Forest ~
+A forest of weather-torn trees lines the cliff tops to the west.  Stunted
+trunks lean eastward, away from the scouring sea-born wind.  To the east the
+forest rises, and the trees close in upon each other in a dark, pillared
+hallway.  A narrow path winds amongst them, and toward an overhanging
+cliff-top to the west.  A tiny path also meanders northward.  
+~
+~
+0
+0 8242 0
+D0
+~
+~
+0 0 15977
+D1
+~
+~
+0 0 15975
+D2
+~
+~
+0 0 15952
+D3
+~
+~
+0 0 15935
+W 5 0 0
+Z 5 5
+S
+#15977
+A Weather-Torn Forest ~
+A forest of weather-torn trees lines the western cliff-tops.  Stunted
+trunks lean eastward, away from the scouring sea-born wind.  A little way to
+the west the edge of the cliff can be seen, overlooking a stormy ocean.  The
+constant roar of the waves against the cliff-bottom far below echoes amongst
+the trees.  The forest rises to the east, where the trees quickly close in
+upon each other.  To the north and south a tiny path meanders.  
+~
+~
+0
+0 50 0
+D0
+~
+~
+0 0 15978
+D1
+~
+~
+0 0 15953
+D2
+~
+~
+0 0 15976
+W 5 0 0
+Z 5 5
+S
+#15978
+A Weather-Torn Forest~
+A forest of weather-torn trees lines the western cliff-tops.  Stunted
+trunks lean eastward, away from the scouring sea-born wind.  A little way to
+the west the edge of the cliff can be seen, overlooking a stormy ocean.  The
+constant roar of the waves against the cliff-bottom far below echoes amongst
+the trees.  The forest rises to the east, where the trees quickly close in
+upon each other.  To the south and west a tiny path meanders.  
+~
+~
+0
+0 8242 0
+D0
+~
+~
+0 0 15974
+D1
+~
+~
+0 0 15954
+D2
+~
+~
+0 0 15977
+D3
+~
+~
+0 0 15979
+W 5 0 0
+Z 5 5
+S
+#15979
+A Path Along a Cliff Face~
+A tenuous path winds atop a high cliff face, over and around the slabs of
+rock which jut outward over the pounding ocean below.  Piled boulders crowd
+the cliff-bottom, where the eroding cliffs deposited them long ago. 
+Weather-torn trees grasp at what soil they can find in the rocky ground, and
+bend eastward against the salt-laden winds of the western ocean.  The path
+bends eastward into a rising, dark forest, and continues northward along the
+cliff to where a small building stands perched upon the bluff.  
+~
+~
+0
+0 8242 0
+D0
+~
+~
+0 0 15980
+D1
+~
+~
+0 0 15978
+W 5 0 0
+Z 5 5
+S
+#15980
+By the Door of an Old Inn~
+A tenuous path winds atop a high cliff face, over and around the slabs of
+rock which jut outward over the pounding ocean below.  Piled boulders crowd
+the cliff-bottom, where the eroding cliffs deposited them long ago. 
+Weather-torn trees grasp at what soil they can find in the rocky ground, and
+bend eastward against the salt-laden winds of the western ocean.  The path
+heads southward, but ends to the north at the door of an old inn, which
+stands perched atop an overhanging platform of stone.  
+~
+~
+0
+0 8246 0
+E
+inn~
+Perched atop a great outjutting platform of rock is an old inn, its
+weather-beaten three stories seemingly stacked precariously one upon the
+other.  Cheerfully lit windows peer out from all levels, overlooking path
+and forest and ocean, and light spills out from the cracks around the inn\@s
+door, just to your north.  A sign swings rustily in the cold ocean wind,
+creating a dancing shadow on the doorstep from the light of the bright
+lantern which hangs above it.  
+~
+E
+sign~
+A faded sign swings back and forth in the salty ocean gust, creaking on
+its rusty chains.  Upon the sign is painted a picture of the very inn you
+see before you, but in the picture it stands on a crossroads rather than
+upon a cliff-top.  Beneath the picture the words \#The Eventide Inn\# are
+painted boldly in archaic black letters.  
+~
+D0
+~
+~
+3 0 26081
+D2
+~
+~
+0 0 15979
+W 5 0 0
+Z 5 5
+S
+#15981
+~
+~
+~
+0
+0 8242 0
+D0
+~
+~
+0 0 15982
+D2
+~
+~
+0 0 15914
+D3
+~
+~
+0 0 15988
+W 5 0 0
+Z 5 5
+S
+#15982
+~
+~
+~
+0
+0 8242 0
+D2
+~
+~
+0 0 15981
+W 5 0 0
+Z 5 5
+S
+#15983
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance in all directions.  Far to
+the east, a forested shore can be seen.  The great expanse of crimson seems
+to reflect into the dull sky above, so that the clouds take on the hue of
+watered blood.  Now and then, the currents beneath you quicken, as though
+something huge moves in the winey depths.  
+~
+~
+0
+0 8242 6
+D0
+~
+~
+0 0 15947
+D1
+~
+~
+0 0 15988
+D2
+~
+~
+0 0 15916
+D3
+~
+~
+0 0 15994
+W 5 0 0
+Z 5 5
+S
+#15985
+~
+~
+~
+0
+0 8242 0
+D0
+~
+~
+0 0 15914
+D2
+~
+~
+0 0 15986
+D3
+~
+~
+0 0 15991
+W 5 0 0
+Z 5 5
+S
+#15986
+~
+~
+~
+0
+0 8242 0
+D0
+~
+~
+0 0 15985
+W 5 0 0
+Z 5 5
+S
+#15987
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance in all directions.  Far to
+the east, a forested shore can be seen.  The great expanse of crimson seems
+to reflect into the dull sky above, so that the clouds take on the hue of
+watered blood.  Now and then, the currents beneath you quicken, as though
+something huge moves in the winey depths.  
+~
+~
+0
+0 8242 6
+D0
+~
+~
+0 0 15916
+D1
+~
+~
+0 0 15991
+D2
+~
+~
+0 0 15901
+D3
+~
+~
+0 0 15901
+W 5 0 0
+Z 5 5
+S
+#15988
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance to the north, south and
+west. To the east a forested shore makes its tinted reflection in the lake.
+The great expanse of crimson seems to reflect into the dull sky above, so
+that the clouds take on the hue of watered blood.  Now and then, the
+currents beneath you quicken, as though something huge moves in the winey
+depths.
+~
+~
+0
+0 8242 6
+D0
+~
+~
+0 0 15983
+D1
+~
+~
+0 0 15981
+D2
+~
+~
+0 0 15915
+D3
+~
+~
+0 0 15916
+W 5 0 0
+Z 5 5
+S
+#15989
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance in all directions.  The
+great expanse of crimson seems to reflect into the dull sky above, so that
+the clouds take on the hue of watered blood.  Now and then, the currents
+beneath you quicken, as though something huge moves in the winey depths.  
+~
+~
+0
+0 8242 6
+D0
+~
+~
+0 0 15994
+D1
+~
+~
+0 0 15917
+D2
+~
+~
+0 0 15918
+D3
+~
+~
+0 0 15919
+W 5 0 0
+Z 5 5
+S
+#15990
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance to the north, south and
+east. To the west a forested shore makes its tinted reflection in the lake.
+The great expanse of crimson seems to reflect into the dull sky above, so
+that the clouds take on the hue of watered blood.  Now and then, the
+currents beneath you quicken, as though something huge moves in the winey
+depths.
+~
+~
+0
+0 8242 6
+D0
+~
+~
+0 0 15946
+D1
+~
+~
+0 0 15920
+D2
+~
+~
+0 0 15921
+W 5 0 0
+Z 5 5
+S
+#15991
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance to the north, south and
+west. To the east a forested shore makes its tinted reflection in the lake.
+The great expanse of crimson seems to reflect into the dull sky above, so
+that the clouds take on the hue of watered blood.  Now and then, the
+currents beneath you quicken, as though something huge moves in the winey
+depths.
+~
+~
+0
+0 8242 6
+D0
+~
+~
+0 0 15915
+D1
+~
+~
+0 0 15985
+D2
+~
+~
+0 0 15987
+D3
+~
+~
+0 0 15916
+W 5 0 0
+Z 5 5
+S
+#15992
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance in all directions.  Far to
+the east, a forested shore can be seen.  The great expanse of crimson seems
+to reflect into the dull sky above, so that the clouds take on the hue of
+watered blood.  Now and then, the currents beneath you quicken, as though
+something huge moves in the winey depths.  
+~
+~
+0
+0 8242 6
+D0
+~
+~
+0 0 15918
+D1
+~
+~
+0 0 15917
+D2
+~
+~
+0 0 15998
+D3
+~
+~
+0 0 15919
+W 5 0 0
+Z 5 5
+S
+#15993
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance to the north, south and
+east. To the west a forested shore makes its tinted reflection in the lake.
+The great expanse of crimson seems to reflect into the dull sky above, so
+that the clouds take on the hue of watered blood.  Now and then, the
+currents beneath you quicken, as though something huge moves in the winey
+depths.
+~
+~
+0
+0 8242 6
+D0
+~
+~
+0 0 15921
+D1
+~
+~
+0 0 15920
+D2
+~
+~
+0 0 15944
+W 5 0 0
+Z 5 5
+S
+#15994
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance in all directions.  The
+great expanse of crimson seems to reflect into the dull sky above, so that
+the clouds take on the hue of watered blood.  Now and then, the currents
+beneath you quicken, as though something huge moves in the winey depths.  
+~
+~
+0
+0 8242 6
+D0
+~
+~
+0 0 15995
+D1
+~
+~
+0 0 15983
+D2
+~
+~
+0 0 15989
+D3
+~
+~
+0 0 15946
+W 5 0 0
+Z 5 5
+S
+#15995
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance in all directions.  The
+great expanse of crimson seems to reflect into the dull sky above, so that
+the clouds take on the hue of watered blood.  Now and then, the currents
+beneath you quicken, as though something huge moves in the winey depths.  
+~
+~
+0
+0 8242 6
+D0
+~
+~
+0 0 15996
+D1
+~
+~
+0 0 15947
+D2
+~
+~
+0 0 15994
+D3
+~
+~
+0 0 15948
+W 5 0 0
+Z 5 5
+S
+#15996
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance to the south, east and west.
+To the north a high, rocky bank forms the shore of the lake, upon which
+gnarled old trees grow thickly, handing their drooping boughs over the
+waters. In the bank itself a dark cave opens, making its narrow way through
+the rock.  
+~
+~
+0
+0 8242 6
+D0
+~
+~
+0 0 15997
+D1
+~
+~
+0 0 15947
+D2
+~
+~
+0 0 15995
+D3
+~
+~
+0 0 15948
+W 5 0 0
+Z 5 5
+S
+#15997
+A Cave by the Shore of the Crimson Lake~
+A shallow cave of stone opens in the shore of the crimson lake here.  Its
+grey stone walls are bathed pink in the light from the lake, and recede into
+shadow to the north, where a tunnel begins its winding way through the
+earth.  Red waters lap at the lip of the cave to the south, occasionally
+sloshing over the low floor and filling florid puddles.  
+~
+~
+0
+0 32768 0
+D0
+~
+~
+0 0 15907
+D2
+~
+~
+0 0 15996
+W 5 0 0
+Z 5 5
+S
+#15998
+Upon a Crimson Lake~
+The turbid fluid beneath you swirls in crimson currents, with red waves
+lapping upon the surface, and into the distance in all directions.  Far to
+the east, a forested shore can be seen.  The great expanse of crimson seems
+to reflect into the dull sky above, so that the clouds take on the hue of
+watered blood.  Now and then, the currents beneath you quicken, as though
+something huge moves in the winey depths.  
+~
+~
+0
+0 8242 6
+D0
+~
+~
+0 0 15992
+D1
+~
+~
+0 0 15987
+D2
+~
+~
+0 0 15901
+D3
+~
+~
+0 0 15944
+W 5 0 0
+Z 5 5
+S
+#15999
+The Bottom of the Lake~
+~
+~
+1
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 15913 spec_poison
+S
+
+
+
+#RESETS
+D 0 15913 3 103
+D 0 15980 0 3
+M 0 15902 25 15901 1
+O 0 15926 0 15910
+M 0 15902 25 15915 1
+M 0 15902 25 15916 1
+M 0 15902 25 15917 1
+M 0 15902 25 15918 1
+M 0 15902 25 15919 1
+M 0 15902 25 15920 1
+M 0 15902 25 15921 1
+M 0 15903 1 15927 1
+M 0 15913 1 15927 1
+M 0 15917 8 15930 8
+M 0 15917 8 15930 8
+M 0 15917 8 15930 8
+M 0 15917 8 15930 8
+M 0 15917 8 15930 8
+M 0 15917 8 15930 8
+M 0 15917 8 15930 8
+M 0 15917 8 15930 8
+M 0 15915 1 15934 1
+M 0 15902 25 15944 1
+M 0 15902 25 15945 1
+M 0 15902 25 15946 1
+M 0 15902 25 15947 1
+M 0 15902 25 15948 1
+M 0 15904 25 15950 1
+M 0 15904 25 15951 1
+M 0 15904 25 15952 1
+M 0 15904 25 15953 1
+M 0 15904 25 15954 1
+M 0 15904 25 15955 1
+M 0 15904 25 15956 1
+M 0 15904 25 15957 1
+M 0 15904 25 15958 1
+M 0 15904 25 15959 1
+M 0 15904 25 15960 1
+M 0 15904 25 15961 1
+M 0 15904 25 15962 1
+M 0 15904 25 15963 1
+M 0 15904 25 15964 1
+M 0 15904 25 15965 1
+M 0 15904 25 15966 1
+M 0 15904 25 15967 1
+O 0 15916 0 15968
+M 0 15904 25 15968 1
+M 0 15905 1 15968 1
+M 0 15904 25 15969 1
+M 0 15904 25 15970 1
+M 0 15904 25 15971 1
+M 0 15904 25 15972 1
+M 0 15904 25 15973 1
+M 0 15904 25 15974 1
+M 0 15902 25 15983 1
+M 0 15902 25 15987 1
+M 0 15902 25 15988 1
+M 0 15902 25 15989 1
+M 0 15902 25 15990 1
+M 0 15902 25 15991 1
+M 0 15902 25 15992 1
+M 0 15902 25 15993 1
+M 0 15902 25 15994 1
+M 0 15902 25 15995 1
+M 0 15902 25 15996 1
+M 0 15902 25 15998 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

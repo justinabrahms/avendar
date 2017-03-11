@@ -1,0 +1,1297 @@
+#AREADATA
+Name Tempestuous Temple~
+Builders Yendri Girikha~
+VNUMs 4011 4020
+Credits [ ALL ] Girikha   Tempestuous Temple~
+Danger 2
+Security 1
+Areainfo 59
+Herbs 69631
+Weather 2 3 0 0 4
+Weave 5 -2 0
+Shades 5 5
+Stone 82
+End
+
+
+
+#MOBILES
+V4 4011
+bot tempest tempestbot~
+tempestbot~
+Tempestbot is here, peering up your meshed steel skirt.
+~
+Whee!
+~
+human~
+water scholar~
+AL 0 DFJLZ N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>trigger_prog 100~
+if isghost($n)
+or isimmort($n)
+else
+mpdamtype $n 5 7 50 5
+endif
+~
+>rand_prog 25~
+if isghost($r)
+or isimmort($r)
+else
+  mpvaluerand 0 1 4
+  if mobvalue(0) == 4
+    mpecho A strong gust of wind blows hail at you, pelting your armour with large pieces of ice!
+    mproomcmd mptrigger all 5 7 50 5
+  endif
+  if mobvalue(0) == 3
+    mpecho A sheet of rain slams into you, covering you with water!
+    mproomcmd mptrigger all 5 7 50 5
+  endif
+  if mobvalue(0) == 2
+    mpecho Sleet pours down on you, stinging your face!
+    mproomcmd mptrigger all 5 7 50 5
+  endif
+  if mobvalue(0) == 1
+    if isanypchere()
+      mpfocus $r
+      if isfocused($i)
+        if iswielding($f) == 21967
+        or iswielding($f) == 21967
+        or iswielding($f) == 21967
+          mpecho A strong gust of wind blows at $F, but $S stands firm.
+        else
+          mpechoat $f A strong gust of wind blows you straight off the cliff face!
+          mpechoat $f You tumble crazily in the air, then land in the forest with a sickening thud!
+          mpechoaround $f $F loses $S balance with a strong gust of wind, and goes flying from the mountain, disappearing from sight!
+          mpdamtype $f 5 10 50 1
+          mptrans $f 10345
+          mpunfocus
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if iswielding($n) == 21967
+mpechoat $n {WYour sigil glows brightly and you remain unaffected by the storm.{x
+mpechoaround $n {W$N\@s sigil glows brightly, causing them to remain unaffected by the storm.{x
+break
+endif
+if iswielding($n) == 21968
+mpechoat $n {yYour sigil pricks sharply, and the storm parts before you.{x
+mpechoaround $n {y$N\@s sigiled arm twitches, causing the storm to part.{x
+break
+endif
+if iswielding($n) == 21969
+mpechoat $n {wYour sigil flashes, causing the storm around you to calm.{x
+mpechoaround $n {w$N\@s sigil flashes, calming the storm momentarily.{x
+break
+endif
+if islawful($n)
+if isflying($n)
+if rand(20)
+mpechoat $N The winds of the tempest hammer violently at you, sending you flying!
+mpechoat $n You land with a sickening {rTHUD{x in the forest below the mountain.
+mpechoaround $n A strong wind catches $N and sends them flying away from the mountain!
+mpdamage $n 10 5 50
+mptrans $n 10344
+mpforce $n look
+else
+mpechoat $n Fierce winds assail you from every direction, causing ice to clog your eyes!
+mpechoaround $n Fierce winds hammer $N, covering $s eyes with frost!
+mpdamage $n 5 5 20
+mpaddaffect $n 8 55 8 0 0 1
+endif
+else
+if rand(20)
+mpechoat $N The winds of the tempest hammer violently at you, sending you flying!
+mpechoat $n You land with a sickening {rTHUD{x in the forest below the mountain.
+mpechoaround $n A strong wind catches $N and sends them flying away from the mountain!
+mpdamage $n 10 5 50
+mptrans $n 10344
+mpforce $n look
+else
+mpechoat $n Fierce winds assail you from every direction, causing ice to clog your eyes!
+mpechoaround $n Fierce winds hammer $N, covering $s eyes with frost!
+mpdamage $n 5 5 50
+mpaddaffect $n 8 55 8 0 0 1
+endif
+endif
+else
+if rand(35)
+mpechoat $N The winds of the tempest hammer violently at you, sending you flying!
+mpechoat $n You land with a sickening {rTHUD{x in the forest below the mountain.
+mpechoaround $n A strong wind catches $N and sends them flying away from the mountain!
+mpdamage $n 10 5 50
+mptrans $n 10344
+mpforce $n look
+else
+mpechoat $n Fierce winds assail you from every direction, tearing at your skin!
+mpechoat $n The cold winds steal the warmth from your flesh, stinging harshly.
+mpechoaround $n Cold winds tear at $N!
+mpdamtype $n 5 6 40 5
+endif
+endif
+endif
+~
+|
+V4 4012
+thanys grey-furred grey furred kankoran gazing~
+Thanys~
+A grey-furred kankoran stands at the overlook, gazing out over the land.
+~
+A grey furred kankoran is here.  Every aspect of his face is fearsome,
+from exposed menacing teeth, to his depthless midnight eyes.  He is not so
+tall, as kankoran go, but his thickness is remarkable.  His sleek fur seems
+to be the only thing he\@s kept in order.  On his left arm, a glowing symbol
+can be made out.  
+~
+kankoran~
+water scholar~
+ABDGLPTX 0 CGVZe N 0
+65 100 20000d1+1 65d10+65 15d20+70 slash~
+slash~
+-80 -80 -80 -80
+ACFHKV ABLQRSab
+26 0 0 33 33 0 0 0 -20 50 5 0 0 0 0 0 0 0 0 0 0 0 10 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+ACHMV ABCDEFGIJKUV ADK medium flesh
+>rand_prog 35~
+if mobvalue(0) == 1
+or mobvalue(0) == 2
+if ishere($f)
+if rand(50)
+mpvalueup 1
+endif
+endif
+if mobvalue(1) == 3
+esay \@snarls, repeating\@ Get out now, before I decide to change my mind about letting you here.
+endif
+if mobvalue(1) == 5
+esay \@bares his fangs, saying\@ Leave! Now!
+endif
+if mobvalue(1) == 7
+esay snarls Curse you! Listen to me when I tell you to leave!
+mpkill $f
+mptellimm girikha $F attacks the glade!
+mpvalueset 0 0
+mpvalueset 1 0
+mpunfocus
+endif
+else
+mpvalueset 0 0
+mpvalueset 1 0
+mupunfocus
+endif
+endif
+~
+>rand_prog 55~
+if mobvalue(0) == 2
+ if ishere($f)
+ mpvalueup 2
+ endif
+if mobvalue(2) == 2
+ esay \@growls\@ Out of here, $F! I\@m barely controlling myself as it is!
+ emo flexes his claws, snarling darkly.
+endif
+if mobvalue(2) == 4
+ esay \@hisses through clenched teeth\@ I am not where I am now because I went -easy- on law-men, $F.
+ glare $f
+endif
+if mobvalue(2) == 6
+ esay howls That\@s it! I can\@t take this!
+ mpkill $f
+ mpunfocus
+endif
+endif
+~
+>greet_prog 100~
+if isimmort($n)
+or isghost($n)
+break
+else
+if iswielding($n) == 21967
+pmo nods at $N, beckoning into the glade.
+break
+endif
+if iswielding($n) == 21968
+pmo briefly flashes a smile at $N.
+break
+endif
+if iswielding($n) == 21969
+pmo shares a knowing nod to $N.
+break
+endif
+if islawful($n)
+pmo snarls at $N, baring his claws!
+esay howls Out now, or I\@ll kill you!
+mpvalueset 0 2
+mpfocus $n
+else
+emo snorts quietly.
+esay \@narrows his eyes, saying\@ Only the blessed of the windwolf may enter here. Get out now, while you still can.
+mpvalueset 0 1
+mpfocus $n
+endif
+endif
+~
+>death_prog 100~
+mpflag exit north - fake
+mpforce lahcik note to Girikha
+mpforce lahcik note subject $n killed your Thanys! Bite \@em good!
+mpforce lahcik note post
+~
+>verb_prog p north~
+if isimmort($n)
+or isghost($n)
+mptrans $n 4014
+mpforce $n look
+break
+else
+if iswielding($n) == 21967
+if adrenaline($n) > 0
+pmote arches a furry eyebrow at you, then shakes his head.
+esay tsks Hold on a moment, $N. Calm down before you enter the glade.
+else
+pmo flashes a toothy grin at $N as $e enters the glade.
+mptrans $n 4014
+mpforce $n look
+break
+  endif
+endif
+if iswielding($n) == 21968
+if adrenaline($n) > 0
+pmote arches a furry eyebrow at you, then shakes his head.
+esay tsks Hold on a moment, $N. Calm down before you enter the glade.
+else
+pmo briefly nods at $N as $e leaves north.
+mptrans $n 4014
+mpforce $n look
+break
+  endif
+endif
+if iswielding($n) == 21969
+if adrenaline($n) > 0
+pmote arches a furry eyebrow at you, then shakes his head.
+esay tsks Hold on a moment, $N. Calm down before you enter the glade.
+else
+pmo shares a knowing nod with $N as $e leaves north, entering the glade.
+mptrans $n 4014
+mpforce $n look
+break
+  endif
+endif
+if islawful($n)
+emo snarls at $N, attacking more furiously!
+bash $n
+else
+emo shakes his head at $N.
+esay states You cannot enter the glade unless you bear the mark of the Windwolf.
+endif
+endif
+endif
+~
+>fight_prog 25~
+if rand(35)
+ mpvaluerand 3 1 5
+ if mobvalue(3) == 1
+  if snaffected($n) == 356
+  break
+  else
+   pmo snarls darkly, motioning toward the tempest below.
+   mpechoaround $n {WA flash of lightning courses up from the tempest, which strikes $N!{x
+   mpechoat $n {WA flash of lightning courses up from the tempest, which strikes you square in the head!{x
+   mpechoat $N The energy of the storm courses through your ears, deafening you!
+   mpaddaffect $n 356 55 10 0 0 0
+  endif
+ endif
+ if mobvalue(3) == 2
+  if snaffected($n) == 236
+  break
+  else
+   pmo takes a swipe at $N\@s eyes with his claws!
+   mpaddaffect $n 236 55 10 0 0 0
+  endif
+ endif
+ if mobvalue(3) == 3
+  pmo delivers a fierce series of punches and slashes to $N\@s stomach!
+  mplag $n 3
+  mpdamtype $n 6 7 50 3
+ endif
+ if mobvalue(3) == 4
+  pmo grabs $N and tosses $N to the ground!
+  pmo delivers a stunning kick to $N\@s face!
+  mplag $n 4
+  mpdamtype $n 7 7 50 1
+ endif
+endif
+~
+>load_prog 100~
+speak common
+mpoload 21969 on $i 20
+mpflag exit north + fake
+mpaddskill $i 440 100
+~
+|
+V4 4013
+kieraka kankoran white-furred white furred~
+Kieraka~
+A white-furred kankoran woman stands here, puttering amongst the herbs.
+~
+Kieraka is a kankoran woman who stands approximately six feet tall.  Her
+fur is a bright white around her muzzle and head, but is caked with a rich
+brownish-black dirt around her paws and feet.  Her eyes are a very light
+blue tone, and she wears a simple robe as she putters around her herb
+garden.  
+~
+kankoran~
+water scholar~
+AGLX 0 Z N 0
+60 50 38d138+1080 60d10+100 8d9+33 slash~
+claw~
+-27 -27 -27 -9
+FHIJKNV ABa
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGIJKUV ADK medium flesh
+>verb_prog p list~
+if compstr(1) == l
+ mpnextinterpret $n $x
+ mpforce $n look
+else
+ if iswielding($n) == 21967
+ or iswielding($n) == 21968
+ or iswielding($n) == 21969
+  esay \@smiles at $N, saying\@ I can dig up a tuber of recall, find a vision-leaf, a flower petal that imbues you with flight, or a slice of bark that will heal some wounds.
+ else
+  esay \@snarls at $N, bearing her fangs. She demands\@ No! These are only for the followers of the Windwolf! Get out of here!
+  mpkill $n
+ endif
+endif
+~
+>fight_prog 20~
+mpvaluerand 4 1 4
+if mobvalue(4) == 1
+ if snaffected($n) == 538
+  mpechoat $n The herbal vines tighten their grasp about your arm, causing you to lose feeling in your hand and forcing you to drop your weapon!
+  mpechoaround $n The herbs wind around $N, tightening their grasp. The pressure causes $N to drop $s weapon!
+  mpslotremove $n 16
+ else
+  esay \@reaches to the ceiling, pleading\@ My vines! To this cur!
+  mpechoat $n The herbal vines around you spring to life and begin to entwine themselves about your arms!
+  mpechoaround $n The herbal vines around you spring to life and begin to wrap themselves around $N\@s arms!
+  mpaddaffect $n 538 50 5 2 -4 0
+ endif
+endif
+if mobvalue(4) == 2
+ esay \@snarls\@ Branches of the Rsksakk, lend me your thorns!
+ mpechoat $n A thick-stemmed plant springs into action, sending a spray of thorns directly toward you!
+ mpechoaround $n A thick-stemmed plant comes to life and sends a spray of thorns toward $N!
+ mpcast 543 50 $n
+endif
+if mobvalue(4) == 3
+ if snaffected($n) == 533
+ else
+  mpecho You hear a great buzzing coming from the tempest below.
+  mpechoat $n Kieraka reaches both hands above her, then howls at you.
+  mpechoaround $n Kieraka reaches both hands above her, howling at $N.
+  mpechoat $n A thick black cloud of insects bursts forth from the tempest below and engulfs you!
+  mpechoaround $n A great cloud of insects flies tup through the tempest, engulfing $N!
+  mpcast 533 50 $n
+ endif
+endif
+~
+>speech_prog p petal~
+if iswielding($n) == 21967
+or iswielding($n) == 21968
+or iswielding($n) == 21969
+ if mobvalue(2) < 4
+  emo turns to a purple flower, plucking one petal delicately from it.
+  esay \@says, her voice soft and reverent\@ Enjoy.
+  mpoload 4014 on $i
+  give petal $n
+  smile $n
+  mpvalueup 2
+ else
+  esay tsks They\@ve all been stripped for the time. Come back in a few days.
+ endif
+else
+ esay \@scowls at $N, saying simply\@ No.
+endif
+~
+>speech_prog p flight~
+if iswielding($n) == 21967
+or iswielding($n) == 21968
+or iswielding($n) == 21969
+ if mobvalue(2) < 4
+  emo turns to a purple flower, plucking one petal delicately from it.
+  esay \@says, her voice soft and reverent\@ Enjoy.
+  mpoload 4014 on $i
+  give petal $n
+  smile $n
+  mpvalueup 2
+ else
+  esay tsks They\@ve all been stripped for the time. Come back in a few days.
+ endif
+else
+ esay \@scowls at $N, saying simply\@ No.
+endif
+~
+>speech_prog p flower~
+if iswielding($n) == 21967
+or iswielding($n) == 21968
+or iswielding($n) == 21969
+ if mobvalue(2) < 4
+  emo turns to a purple flower, plucking one petal delicately from it.
+  esay \@says, her voice soft and reverent\@ Enjoy.
+  mpoload 4014 on $i
+  give petal $n
+  smile $n
+  mpvalueup 2
+ else
+  esay tsks They\@ve all been stripped for the time. Come back in a few days.
+ endif
+else
+ esay \@scowls at $N, saying simply\@ No.
+endif
+~
+>speech_prog p Rskaksha~
+if iswielding($n) == 21967
+or iswielding($n) == 21968
+or iswielding($n) == 21969
+ if mobvalue(1) < 4
+  emo feels across a number of leaves, then pauses on a particularly waxy-looking one.
+  esay grins Ah, yes. A Rskaksha leaf.
+  mpoload 4013 on $i
+  give leaf $n
+  smile $n
+  mpvalueup 1
+ else
+  esay \@glances at a waxy-leaved plant, then frowns. She states\@ I do not believe that any more are yet ready to harvest, $N. Come back in a few days, and more should be ready.
+ endif
+else
+esay \@snarls at $N, saying simply\@ No.
+endif
+~
+>speech_prog p vision~
+if iswielding($n) == 21967
+or iswielding($n) == 21968
+or iswielding($n) == 21969
+ if mobvalue(1) < 4
+  emo feels across a number of leaves, then pauses on a particularly waxy-looking one.
+  esay grins Ah, yes. A Rskaksha leaf.
+  mpoload 4013 on $i
+  give leaf $n
+  smile $n
+  mpvalueup 1
+ else
+  esay \@glances at a waxy-leaved plant, then frowns. She states\@ I do not believe that any more are yet ready to harvest, $N. Come back in a few days, and more should be ready.
+ endif
+else
+esay \@snarls at $N, saying simply\@ No.
+endif
+~
+>speech_prog p leaf~
+if iswielding($n) == 21967
+or iswielding($n) == 21968
+or iswielding($n) == 21969
+ if mobvalue(1) < 4
+  emo feels across a number of leaves, then pauses on a particularly waxy-looking one.
+  esay grins Ah, yes. A Rskaksha leaf.
+  mpoload 4013 on $i
+  give leaf $n
+  smile $n
+  mpvalueup 1
+ else
+  esay \@glances at a waxy-leaved plant, then frowns. She states\@ I do not believe that any more are yet ready to harvest, $N. Come back in a few days, and more should be ready.
+ endif
+else
+esay \@snarls at $N, saying simply\@ No.
+endif
+~
+>speech_prog p tuber~
+if iswielding($n) == 21967
+or iswielding($n) == 21968
+or iswielding($n) == 21969
+ if mobvalue(0) < 4
+  emo digs in the dirt with her muddy paws, pulling up a large brown tuber.
+  esay exclaims Ah! Here we are! Now do be careful, for these are fairly rare.
+  mpoload 4012 on $i
+  give tuber $n
+  smile $n
+  mpvalueup 0
+ else
+  esay \@glances around on the ground, then frowns. She states\@ I do not believe that any more are mature, $N. Come back in a few days, and more should be ready.
+ endif
+else
+esay \@scowls at $N, saying simply\@ No.
+endif
+~
+>speech_prog p recall~
+if iswielding($n) == 21967
+or iswielding($n) == 21968
+or iswielding($n) == 21969
+ if mobvalue(0) < 4
+  emo digs in the dirt with her muddy paws, pulling up a large brown tuber.
+  esay exclaims Ah! Here we are! Now do be careful, for these are fairly rare.
+  mpoload 4012 on $i
+  give tuber $n
+  smile $n
+  mpvalueup 0
+ else
+  esay \@glances around on the ground, then frowns. She states\@ I do not believe that any more are mature, $N. Come back in a few days, and more should be ready.
+ endif
+else
+esay \@scowls at $N, saying simply\@ No.
+endif
+~
+>speech_prog p slice~
+if iswielding($n) == 21967
+or iswielding($n) == 21968
+or iswielding($n) == 21969
+ if mobvalue(3) < 4
+  emo finds a woody branch, then withdraws a knife and cuts a bit of bark from it.
+  esay \@says sagely\@ This should help a bit.
+  mpoload 4015 on $i
+  give bark $n
+  smile $n
+  mpvalueup 3
+ else
+  esay \@sighs\@ Sadly, the branches will die if I take any more of their bark. Do wait a few days.
+ endif
+else
+ esay \@scowls at $N, saying simply\@ No.
+endif
+~
+>speech_prog p bark~
+if iswielding($n) == 21967
+or iswielding($n) == 21968
+or iswielding($n) == 21969
+ if mobvalue(3) < 4
+  emo finds a woody branch, then withdraws a knife and cuts a bit of bark from it.
+  esay \@says sagely\@ This should help a bit.
+  mpoload 4015 on $i
+  give bark $n
+  smile $n
+  mpvalueup 3
+ else
+  esay \@sighs\@ Sadly, the branches will die if I take any more of their bark. Do wait a few days.
+ endif
+else
+ esay \@scowls at $N, saying simply\@ No.
+endif
+~
+>speech_prog p healing~
+if iswielding($n) == 21967
+or iswielding($n) == 21968
+or iswielding($n) == 21969
+ if mobvalue(3) < 4
+  emo finds a woody branch, then withdraws a knife and cuts a bit of bark from it.
+  esay \@says sagely\@ This should help a bit.
+  mpoload 4015 on $i
+  give bark $n
+  smile $n
+  mpvalueup 3
+ else
+  esay \@sighs\@ Sadly, the branches will die if I take any more of their bark. Do wait a few days.
+ endif
+else
+ esay \@scowls at $N, saying simply\@ No.
+endif
+~
+>time_prog 12~
+if mobvalue(0) > 0
+ mpvaluedown 0
+endif
+if mobvalue(1) > 0
+ mpvaluedown 1
+endif
+if mobvalue(2) > 0
+ mpvaluedown 2
+endif
+if mobvalue(3) > 0
+ mpvaluedown 3
+endif
+~
+>load_prog 100~
+speak common
+mpoload 21969 on $i 20
+~
+|
+V4 4014
+locen nefortu stands shaman nefortean~
+Locen~
+A nefortu dressed in shaman\@s garb looks out over the tempest.
+~
+The first thing you notice when you set your gaze on this nefortu is his
+tiny size.  Standing he is only three feet but seems much smaller as he
+makes his way around the world crawling on his hands and feet.  With his
+impish head and snout, he looks far more bat-like then most nefortu\@s.  His
+eyes are wide and ever attentive staring at the world above him.  His sharp
+face is covered with black symbols of words in kankoran tattooed into the
+skin.  Above his head rest his large alert ears, ever moving and twitching
+to hear the sounds in the glade around him.  He keeps his tiny wings tucked
+behind him so they don\@t drag on the ground, spreading them to their full
+length when he takes to the winds.  
+~
+nefortu~
+water scholar~
+AGLXa 0 ETZ N 0
+60 30 38d138+1080 60d10+100 7d9+30 bash~
+punch~
+-27 -27 -27 -9
+CEFHIJKN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMW ABCDEFGIJKP AD medium flesh
+>fight_prog 10~
+mpvaluerand 0 1 5
+if mobvalue(0) == 1
+ pmote dives toward $N, delivering a precise strike.
+ vital
+endif
+if mobvalue(0) == 1
+ pmote slips around an attack, grasping at $N!
+ nerve
+endif
+~
+>load_prog 100~
+speak common
+mpoload 21969 on $i 20
+mpaddskill $i 490 100
+mpaddskill $i 486 100
+mpaddskill $i 492 100
+mpaddskill $i 264 100
+mpaddskill $i 255 100
+~
+>greet_prog 100~
+if isghost($n)
+or isimmort($n)
+ break
+else
+ if remembers($n)
+  nod $n
+ else
+  if iswielding($n) == 21967
+  or iswielding($n) == 21968
+  or iswielding($n) == 21969
+   esay \@nods once at $N, saying\@ Hello. If you require healing services, simply speak with me. Otherwise, enjoy the view.
+   emo waves his hand out over the plains.
+   mpremember $n
+  else
+   snarl $n
+  endif
+ endif
+endif
+~
+|
+V4 4015
+kelkarak human~
+Kelkarak~
+Kelkarak the human is here.
+~
+~
+human~
+water scholar~
+ABX 0 e N 0
+51 26 34d103+1170 51d10+100 6d8+26 slash~
+slash~
+-21 -21 -21 -6
+0 A
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK ADK medium flesh
+V4 4016
+floraysis~
+Floraysis~
+Floraysis the human sits here, looking out over the tempest.
+~
+Your eyes fall upon the form of an old woman.  Whitened hair falls to the
+small of her back, a few light blonde streaks the only thing left that hint
+at its old color.  The long hair is held away from her face in a ponytail. 
+Her skin is leathery and dark, the apparent effects of long years of
+exposure to the sun.  The skin on her face is also greatly wrinkled,
+probably brought on by a mixture of simple aging and, again, exposure to the
+elements.  Light-green eyes outlined by long lashes may be the only feature
+in her face that could be called beautiful.  Her thin lips are cracked and
+brittle.  A long neck leads down to the rest of her slender body four long
+limbs spreading out from her medium-sized torso.  Despite her aged
+appearance, she holds herself upright.  Her posture seems near-immaculate. 
+Finally, you notice branded upon her arm the glowing form of a running,
+full-grown wolf.  
+~
+human~
+water scholar~
+ABXa 0 e N 0
+51 26 34d103+1170 51d10+100 6d8+26 bash~
+smash~
+-21 -21 -21 -6
+FHIKN A
+26 0 0 0 0 0 0 0 10 10 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK ADK medium flesh
+>fight_prog 15~
+if snaffected($n) == 533
+break
+else
+cast \@insect swarm\@
+endif
+~
+>fight_prog 10~
+if islight()
+ cast sunray
+else
+ cast moonray
+done
+~
+>load_prog 100~
+speak common
+mpoload 21969 on $i 20
+mpaddskill $i 279 100
+mpaddskill $i 278 100
+mpaddskill $i 275 100
+mpaddskill $i 285 100
+mpaddskill $i 533 100
+~
+>greet_prog 100~
+if isghost($n)
+or isimmort($n)
+break
+else
+if remembers($n)
+nod $n
+else
+if iswielding($n) == 21967
+or iswielding($n) == 21968
+or iswielding($n) == 21969
+esay \@smiles at $N, saying\@ Hello there, $N. If you require healing services, do speak with me.
+esay \@indicates the lookout over the tempest, saying\@ Otherwise, there\@s usually something interesting to see around here.
+mpremember $n
+else
+scowl $n
+esay frowns Who let you in? Where\@s Thanys? What\@s going on here? Get out!
+mpkill $n
+endif
+endif
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+4011
+burbling spring happily fountain~
+a burbling spring~
+A happily burbling spring bubbles out of a rock.~
+~
+water~
+fountain OYa 0 0 0
+100 100 'water' 0 0
+60 0 0 3 P
+1
+V13
+4012
+large brown tuber~
+a large brown tuber~
+A large brown tuber lies here, caked with dirt.~
+~
+plant~
+pill 0 0 0 A
+20 'word of recall' '' '' ''
+20 5 0 0 P
+0
+V13
+4013
+dollop globule liquid rskaksha essence leaf~
+a dollop of Rskaksha essence~
+A globule of faintly-glowing liquid lies cupped in a curl of green leaf.~
+~
+plant~
+potion AS 0 0 A
+20 'cure blindness' '' '' ''
+20 2 0 0 P
+0
+E
+dollop globule liquid rskaksha essence leaf~
+This waxy, thick green leaf seems to curl naturally into a tight cone. 
+Thick, reddish veins run through the fleshy leaf, which seems so fresh as to
+be newly-picked.  Cupped within the tight, conical leaf is a faintly-glowing
+globule of sunshine-yellow essence, smelling sweetly.
+~
+V13
+4014
+purple flower petal~
+a purple petal~
+A purple flower petal lies on the ground.~
+~
+plant~
+pill 0 0 0 A
+20 'fly' '' '' ''
+20 1 0 0 P
+0
+V13
+4015
+slice brown bark~
+a slice of brown bark~
+A slice of brownish bark lies here.~
+~
+plant~
+pill 0 0 0 A
+20 'cure serious' '' '' ''
+20 3 0 0 P
+0
+V13
+4016
+large fallen tree moss covered moss-covered~
+a fallen, moss-covered tree~
+A large fallen tree lies here, covered in moss.~
+~
+wood~
+furniture 0 0 0 0
+10 2000 EHK 150 150
+55 10000 0 4 P
+0
+V13
+4017
+portal ringed furs eastern pack~
+portal of the Pack~
+A portal ringed with furs is set in the eastern edge of the mountain.~
+~
+energy~
+portal Aae 0 0 0
+0 0 0 10310 0
+60 0 0 0 P
+0
+V13
+4018
+portal ringed leaves vines nature western~
+portal of Nature~
+A portal ringed with leaves and vines is set in the western edge of the mountain.~
+~
+energy~
+portal Aae 0 0 0
+0 0 0 19555 0
+60 0 0 0 P
+0
+V13
+4019
+stone shelf bench~
+a stone shelf~
+A stone shelf juts out from the wall, offering a comfortable place to sit.~
+~
+stone~
+furniture ae 0 0 0
+2 1000 EH 110 100
+50 0 0 3 P
+0
+#0
+
+
+
+#ROOMS
+#4011
+A Steeply Sloping Mountainside~
+The jagged stone of the mountain slopes dramatically upward here, the
+rockface showing evidence of relentless pelting by rain, sleet, and strong
+winds.  Directly upward along the steep path, the way is blocked by a
+twisting, turning tempest.  The winds seem to take a form of their own,
+twirling in a constant yet chaotic pattern about the mountain\@s face.  The
+path becomes entirely lost within the wall of clouds, yet occaisional
+glimpses of a continuing trail can be seen within.  A large stone sits
+prominently at the side of the path, its writing eclipsed at times by the
+angrily-swirling clouds.
+~
+~
+0
+0 2 5
+E
+stone~
+The writing upon the stone appears to glow with a magical light.  It reads:
+
+{WOnly those who follow the Goddess of the Pure Wilds may enter this place. 
+All ye who are lawful of heart, turn back now lest ye be sent with the winds
+to parts beyond.  {x 
+~
+E
+words~
+The writing upon the stone appears to glow with a magical light.  It reads:
+{WOnly those who follow the Goddess of the Pure Wilds may enter this place. 
+All ye who are lawful of heart, turn back now lest ye be sent with the winds
+to parts beyond.  {x 
+~
+E
+inscription~
+The writing upon the stone appears to glow with a magical light.  It reads:
+{WOnly those who follow the Goddess of the Pure Wilds may enter this place. 
+All ye who are lawful of heart, turn back now lest ye be sent with the winds
+to parts beyond.  {x 
+~
+E
+writing~
+The writing upon the stone appears to glow with a magical light.  It reads:
+{WOnly those who follow the Goddess of the Pure Wilds may enter this place. 
+All ye who are lawful of heart, turn back now lest ye be sent with the winds
+to parts beyond.  {x 
+~
+E
+large~
+The writing upon the stone appears to glow with a magical light.  It reads:
+{WOnly those who follow the Goddess of the Pure Wilds may enter this place. 
+All ye who are lawful of heart, turn back now lest ye be sent with the winds
+to parts beyond.  {x 
+~
+E
+runes~
+The writing upon the stone appears to glow with a magical light.  It reads:
+{WOnly those who follow the Goddess of the Pure Wilds may enter this place. 
+All ye who are lawful of heart, turn back now lest ye be sent with the winds
+to parts beyond.  {x 
+~
+E
+warning~
+The writing upon the stone appears to glow with a magical light.  It reads:
+{WOnly those who follow the Goddess of the Pure Wilds may enter this place. 
+All ye who are lawful of heart, turn back now lest ye be sent with the winds
+to parts beyond.  {x 
+~
+D4
+The swirling, angry tempest makes detecting anything of note here nigh-on impossible.
+~
+~
+0 0 4012
+D5
+~
+~
+0 0 10360
+W 5 0 0
+Z 5 5
+S
+#4012
+Within a Swirling Tempest~
+Deep grey clouds spin around you, assailing you with wind, rain, sleet,
+and hail.  A narrow path is carved in the rockface, its surface covered with
+a sheen of wet ice from the surrounding storm.  The slippery ground,
+combined with the gale-force winds, make holding one\@s footing rather
+difficult.  The violent precipitation and thick clouds make seeing anything
+past the tip of one\@s nose nearly impossible, yet glimpses of a calm meadow
+above here can be occasionally glimpsed through the weather.  
+~
+~
+4
+0 50 5
+D4
+Through the swirling storm, you can barely catch a glimpse of a calmer area here.
+~
+~
+0 0 4013
+D5
+Occaisional glimpses through the thick clouds offer you a view of a steep mountainside.
+~
+~
+0 0 4011
+W 5 0 0
+Z 5 5
+S
+#4013
+A Mountain Overlook~
+Two towering walls of mountain-stone rise to the east and west here,
+providing a bit of protection for this mountain overlook.  To the south, a
+magestic view of a swirling tempest and the world beyond.  The immediate
+area consists of mostly a flat rockface, into which a jutting stone provides
+a resting and viewing spot.  Northward, a mountain glade filled with
+coniferous trees blooms verdantly.  The tempest blocks visibility into the
+path that leads down the mountainside from here.  
+~
+~
+0
+0 50 5
+D0
+~
+~
+131072 0 4014
+D5
+An angrily-swirling storm envelops the path down the mountain.
+~
+~
+0 0 4012
+W 5 0 0
+Z 5 5
+S
+#4014
+A Mountain Glade~
+Coniferous trees fill this mountain glade, their roots set in a layer of
+rich soil.  Said soil is covered in a spotty layer of grass, weeds, and
+other flowers that have grown untouched by man\@s hand.  Northward, the
+mountain grows into the sky, its steep walls not scalable at this location. 
+To the south, the soil ends abruptly and gives way to a pristine mountain
+overlook where a huge swirling tempest can be seen in the immediate
+vicinity.  This glade continues to the west, and a small spring provides
+fresh water to the east.  
+~
+~
+0
+0 262194 3
+D1
+A small spring burbles down the mountainside here.
+~
+~
+0 0 4015
+D2
+~
+~
+0 0 4013
+D3
+~
+~
+0 0 4019
+W 5 0 0
+Z 5 5
+S
+#4015
+At a Burbling Spring~
+A few trees stand here, most of which are at least a few feet away from a
+small, burbling spring.  The spring comes from a small rock that juts
+through the thick layer of soil upon the ground.  Its water flows every
+which-way, supplying hydration to the plants around it.  A tall wall of
+jagged mountain stone rises to the east and south, blocking passage. 
+Through it, a swirling tempest can be seen below this location, wrapping
+itself around the mountain sinuously.  The trees become thicker to the west
+as the glade continues, and a well-watered patch of wild herbs grows to the
+north.  
+~
+~
+0
+0 262194 3
+D0
+An herbal garden flourishes here.
+~
+~
+0 0 4016
+D3
+A glade reaches around the side of the mountain.
+~
+~
+0 0 4014
+W 5 0 0
+Z 5 5
+S
+#4016
+An Herb Garden~
+The ground here is absolutely covered with herbs of all different sorts. 
+Some are small, some are flowered, some are gnarled, and others are very
+large.  The soil itself seems nearly saturated with water from the spring
+near its southern edge, and fades to a nearly sandy quality near the north,
+providing ample ground for all types of plants to grow.  A curved wall of
+mountainous stone supports the glade to the north and east.  Past it, a
+swirling mass of clouds blows chaotically.  Westward, the ledge narrows and
+becomes naturally rocky along the northern face of the mountain.  
+~
+~
+0
+0 262194 3
+D2
+A spring burbles down the side of the mountain.
+~
+~
+0 0 4015
+D3
+A ledge narrows along the side of the mountain.
+~
+~
+0 0 4017
+W 5 0 0
+Z 5 5
+S
+#4017
+A Narrow Ledge~
+The sides of the mountain slope steeply upwards here, offering little
+room for footholds.  A depression has been made by what appears to have been
+natural erosive forces along the face of the stone, creating a v-shape
+indentation.  Along the eastern edge of the V, a portal rimmed with furs
+shines brightly.  Through it, you can see the motions of the pack of
+kankoran on the Ryarl plains.  The western edge sports a portal whose edge
+is covered in thick leaves, vines, and branches.  Through it, you can see
+the wilderness of Nendor forest.  Directly east of here, the ledge widens
+into a wild herb garden, and westward the narrow ledge sticks out into the
+air just above the raging tempest.  
+~
+~
+0
+0 262194 3
+D1
+An herb garden flourishes here.
+~
+~
+0 0 4016
+D3
+A small crag upon which a nefortu shaman sits is here.
+~
+~
+0 0 4018
+W 5 0 0
+Z 5 5
+S
+#4018
+A Rocky Jut~
+The concealing walls of the mountain fall away to the south and east
+here, allowing for a rocky jut to extend into the air just above the
+swirling tempest.  The arrow-shaped rock sticks out many feet from the side
+of the mountain, its tip occasionally disappearing beneath the upper
+regions of the angry winds below.  Beyond the storm, the northern Jyarks and
+plains of Ryarl are visible, the contrast of flat and mountainous working in
+harmony with one another.  A treed glade rises to the south, and the ledge
+narrows along the north face of the mountain to the east.  
+~
+~
+0
+0 262194 3
+D1
+The jut continues, narrowing.
+~
+~
+0 0 4017
+D2
+~
+~
+0 0 4019
+T 28
+W 5 0 0
+Z 5 5
+S
+#4019
+A Mountain Glade~
+This mountain glade is a tree-filled place, filled with pines much like
+those of the Karacha woods below.  The ground itself is soft and spottily
+covered with grass, weeds, and other plants that have been let to grow
+freely.  The mountain itself supports the glade to the west and south with a
+curved, jagged rockface.  Beyond some of the lower points of the retaining
+wall, glimpses of a twirling tempest can be seen.  The mountain towers
+overhead, yet a staircase that appears to have been naturally formed leads
+up here toward its apex.  The glade continues to the east, and a hunter\@s
+outpost has been built into and around the stone to the north.  
+~
+~
+0
+0 262194 3
+D0
+~
+~
+0 0 4018
+D1
+~
+~
+0 0 4014
+D4
+A set of stairs created by natural formations of stone leads up to the peak of the mountain.
+~
+~
+0 0 4020
+W 5 0 0
+Z 5 5
+S
+#4020
+A Mountain Peak~
+This mountain peak appears to be the top of the world.  The world
+stretches out beyond in every direction.  To the north and east, the Jyark
+mountains continue.  A peek of the magestic titan palace can be seen to the
+north-northeast.  Westward, the plains of Ryarl sprawl into the distance. 
+Far beyond, on the horizon, the walls of Krilin fortress are barely visible.
+To the south, the mountains die off into Shendaer.  Its walls appear to be
+subsumed by the north forest, making the cursed city appear nearly
+inconsequential.  
+
+At the very peak of the mountain, a statue of a howling wolf has been
+formed, appearing to have been made out of the very stone of the mountain
+itself.  Its muzzle is tipped into a howl, calling triumphantly to the
+skies.  An inscription has been made in the rock around the foot of the
+statue in both kankoran and common, which reads \#For the freedom of all, and
+the purity of the land.\#  
+~
+~
+0
+0 262194 5
+D5
+A naturally-made stairway of stone leads down into a verdant mountain glade.
+~
+~
+0 0 4019
+W 0 -2 0
+Z 5 5
+P
+>rand_prog 1~
+mpvaluerand 0 1 4
+if roomvalue(0) == 1
+ mpecho {WA bright flash of lightning courses through the skies.{x
+endif
+if roomvalue(0) == 2
+ mpecho {wA blustery gale wind blows across the mountaintop, creating an odd howling sound.{x
+ mpvalueset 1 1
+endif
+if roomvalue(0) == 3
+ if roomvalue(1) == 1
+  mpecho The winds suddenly die down, leaving the air around the mountainpeak entirely silent.
+  mpvalueset 1 0
+ else
+  mpecho {wA gust of wind blows up along the side of the mountain, tossing a cloud of soft, white snow into the air.{x
+ endif
+endif
+if roomvalue(0) == 4
+ mpecho A chilling downdraft blows by.
+endif
+~
+|
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 4013 0 131072
+M 0 4011 1 4012 1
+M 0 4012 1 4013 1
+O 0 4019 0 4013
+O 0 4011 0 4015
+M 0 4013 1 4016 1
+O 0 4017 0 4017
+O 0 4018 0 4017
+M 0 4016 1 4018 1
+O 0 4016 0 4019
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

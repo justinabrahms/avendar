@@ -1,0 +1,2399 @@
+#AREADATA
+Name The Merchant Headquarters~
+Builders Iacobos~
+VNUMs 22250 22299
+Credits [ 5 30] Joln/Iand Merchant Headquarters~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 0 2 0 0 0
+Weave 5 0 0
+Shades 5 5
+Stone 83
+End
+
+
+
+#MOBILES
+V4 22250
+receptionist man~
+the receptionist~
+A man dressed in conservative robes stands behind the desk.
+~
+A man with a sharply pointed face and a sour expression stands behind the
+desk, waiting to receive visitors.  
+~
+human~
+water scholar~
+AB 0 0 N 0
+15 8 8d30+261 0d0+0 3d5+8 bash~
+punch~
+0 0 0 5
+K 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 3
+AHMV ABCDEFGHIJK A medium unknown
+V4 22251
+boy errand~
+an errand boy~
+An errand boy stands waiting for an assignment.
+~
+A small, thin boy employed by the merchants to run messages through the
+city, this errand boy prepares himself for his next assignment.  
+~
+human~
+water scholar~
+AL 0 0 N 0
+7 4 3d18+76 0d0+0 2d4+5 none~
+hit~
+6 6 6 7
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 10 3
+AHMV ABCDEFGHIJK A medium unknown
+V4 22252
+messenger~
+a messenger~
+A messenger for the Merchant Council strides along to a delivery.
+~
+A tall man with a worn look, this messenger has been employed by the
+Merchant Council to deliver messages throughout the city of Var Bandor.  
+~
+human~
+water scholar~
+A 0 0 N 0
+12 6 6d25+203 0d0+0 2d5+7 none~
+hit~
+2 2 2 4
+K 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 40 3
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 10~
+mpecho The messenger strides off to deliver his message.
+mppurge self
+~
+>rand_prog 25~
+mpwander
+~
+|
+V4 22253
+secretary tall man bald~
+the secretary~
+A tall, bald man in a plain robe hands out assignments to the errand boys.
+~
+A tall, thin man with a bald head carries various scrolls under his arms,
+handing assignments to errand boys and messengers.  
+~
+human~
+water scholar~
+AB 0 0 N 0
+12 6 6d25+203 0d0+0 2d5+7 none~
+hit~
+2 2 2 4
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 3
+AHMV ABCDEFGHIJK A medium unknown
+V4 22254
+scrivener~
+the scrivener~
+A scrivener bends over the desk, writing laboriously on a paper.
+~
+A small man with a permanently bent back, the scrivener hunches over his
+work.  His fingers are stained with ink, and his eyes squint in the dim
+light.  
+~
+human~
+water scholar~
+AG 0 0 N 0
+12 6 6d25+203 0d0+0 2d5+7 none~
+hit~
+2 2 2 4
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 80 3
+AHMV ABCDEFGHIJK A medium unknown
+V4 22255
+messengerbot~
+the messenger~
+Messengerbot.
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+60 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 20 3
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 8~
+if inroom($i) == 22257
+open e
+mpecho A messenger strides in from the street, carrying a message for the Merchant Council.
+mpmload 22252
+close e
+else
+mpecho A messenger arrives, bearing a message for the Merchant Council.
+mpmload 22252
+endif
+
+~
+|
+V4 22256
+archivist~
+the archivist~
+An archivist leafs through the papers, sorting and filing them.
+~
+A pale man with ink-stained fingers, the archivist leafs through the
+stacks of papers, shuffling and sorting them. 
+~
+human~
+water scholar~
+A 0 0 N 0
+10 5 5d22+167 0d0+0 2d5+5 bash~
+punch~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 105 3
+AHMV ABCDEFGHIJK A medium unknown
+V4 22257
+recordkeeper assistant keeper~
+the assistant recordkeeper~
+An assistant recordkeeper pokes through the papers and ledgers.
+~
+A pale, thin man dressed in plain robes, the assistant recordkeeper
+pushes through the papers and ledgers, seeking a particular piece of
+information.  
+~
+human~
+water scholar~
+AL 0 0 N 0
+13 7 8d22+183 0d0+0 3d4+8 none~
+hit~
+4 4 4 4
+K 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 3
+AHMV ABCDEFGHIJK A medium unknown
+V4 22258
+recordkeeper master keeper~
+the master recordkeeper~
+The master recordkeeper directs his assistants in their work.
+~
+A tall, balding man wearing a plain brown robe, the master recordkeeper
+watches over his assistants and directs them in the work of maintaining the
+records of the Var Bandor merchants.  
+~
+human~
+water scholar~
+AL 0 0 N 0
+17 9 11d35+284 0d0+0 4d5+8 bash~
+punch~
+0 0 0 0
+K 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 105 3
+AHMV ABCDEFGHIJK A medium unknown
+V4 22259
+Jurmmal merchant shipping~
+Jurmmal~
+Jurmmal sits behind his desk, pondering a shipping report.
+~
+Jurmmal is dressed in fine robes, which he wears a bit haphazardly.  One
+of the leading merchants involved in Var Bandor\@s river and seagoing trade,
+his grizzled features speak to the truth of rumors that he worked his way
+into his riches from humble beginnings as a dockhand.  
+~
+human~
+water scholar~
+ADL 0 JZ N 0
+30 25 13d80+923 0d0+0 5d6+15 pierce~
+stab~
+-9 -9 -9 0
+FHK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 130 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 22260
+guard armed~
+an armed guard~
+An armed guard stands watch over passersby.
+~
+An armed and armored guard, hired by the merchants to keep the peace in
+the Merchant Headquarters, watches each passerby with a trained eye.  
+~
+human~
+water scholar~
+AL 0 0 N 0
+25 13 12d45+707 0d0+0 5d5+11 bash~
+punch~
+0 0 0 0
+FKW 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 70 3
+AHMV ABCDEFGHIJK A medium unknown
+V4 22261
+Thuson~
+Thuson~
+Thuson works diligently at his desk.
+~
+Thuson is a stout, portly man, with a jovial red face.  Despite his
+relatively simple robes, he is one of the leading importers of food into Var
+Bandor.  Known as a simple man, his plodding methods have lead to holdings
+in farms all along the Dantaron River valley.  
+~
+human~
+water scholar~
+ADL Q JZ G 0
+30 25 13d80+923 0d0+0 5d6+15 bash~
+pound~
+-9 -9 -9 0
+FHK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 130 3
+AHMV ABCDEFGHIJK A medium unknown
+V4 22262
+Janthon~
+Janthon~
+Janthon relaxes behind his desk.
+~
+A leading importer of luxury goods and coinage metals into Var Bandor,
+Janthon dresses every bit the part of a wealthy merchant.  Lavish silks
+festoon his body, and he cultivates a delicate, refined look.  
+~
+human~
+water scholar~
+ADL 0 JZ E 0
+30 25 13d80+923 0d0+0 5d6+15 slash~
+slice~
+-9 -9 -9 0
+FHK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 130 3
+AHMV ABCDEFGHIJK A medium unknown
+>data_prog DataTemplate~
+0
+esay \@looks down his nose a little as he addresses $N\@ Business has been good lately, in some small part thanks to you.
+say \@If you require some small {Waid{Y to continue your efforts, I could be persuaded.{n
+FILLER
+mpset mob self gold 5
+give 5 gold $n
+remove encrusted
+give encrusted $n
+esay \@states in a tone of dismissal,\@ Do recall my generosity when we are in need again.
+mpxp $n 300
+FILLER
+~
+>speech_prog aid~
+if isfriend($n)
+  mpget mob self level 2
+  mpget char $n level 3
+  mpmath 1 $3 - $2
+  mpsetdata DataTemplate
+  if value(1) > $d
+    if snaffected($n) == 302
+      break
+    else
+      loop 1 to 3
+        mpnextdata
+      endloop
+      loop 1 to 8
+        $d
+        mpnextdata
+      endloop
+      mpaddaffect $n 302 51 10 0 0 0
+    endif
+  else
+  endif
+endif
+~
+>greet_prog 100~
+if ispc($n)
+  if remembers($n)
+    break
+  else
+    if isfriend($n)
+      mpget mob self level 2
+      mpget char $n level 3
+      mpmath 1 $3 - $2
+      mpsetdata DataTemplate
+      if value(1) > $d
+        loop 1 to 2
+          mpnextdata
+          $d
+        endloop
+        mpremember $n
+      else
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 22263
+Damial merchant~
+Damial~
+Damial sits behind his desk, working on paperwork.
+~
+Damial is known for his extensive ownership of textile concerns in Var
+Bandor.  His finely cut robes are an example of his wares, and he keeps
+himself immaculately groomed to fit the part of one of the city\@s leading
+merchants.  
+~
+human~
+water scholar~
+ADL 0 JZ N 0
+30 25 13d80+923 0d0+0 5d6+15 bash~
+pound~
+-9 -9 -9 0
+FHK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 130 3
+AHMV ABCDEFGHIJK A medium unknown
+V4 22264
+armed guard~
+an armed guard~
+An armed guard stands watch over the stairway.
+~
+An armed and armored guard, hired by the merchants to keep the peace on
+the Merchant Headquarters, watches each passerby with a trained eye.  
+~
+human~
+water scholar~
+AL 0 D N 0
+25 13 12d45+707 0d0+0 5d5+11 bash~
+punch~
+0 0 0 0
+FKW B
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 35 3
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog up~
+if isghost($n)
+or isimmort($n)
+or cansee($n) != $i
+  mpnextinterp
+else
+  if iscarrying($n) == 22259
+    nod $n
+    mpinterpret $n $x
+  else
+    say Sorry, no one is allowed upstairs without authorization.
+  endif
+endif
+~
+|
+V4 22265
+Ason~
+Ason~
+Ason sits behind his desk, mapping out trade routes.
+~
+Ason is an importer and exporter of exotic goods from all over Avendar. 
+Beginning his fortune with a lucrative trade in spices from Ashta Harrud, he
+has since expanded to other rare and unique items.  Rumored to have
+contracted with air scholars for fast transport of his goods, he is in a
+state of quasi-disrepute in the merchant council.  
+~
+human~
+water scholar~
+ADL Q JZ N 0
+30 25 13d80+923 0d0+0 5d6+15 slash~
+slash~
+-9 -9 -9 0
+FHK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 130 3
+AHMV ABCDEFGHIJK A medium unknown
+V4 22266
+Hamukul~
+Hamukul~
+Hamukul sits behind his desk, engrossed in work.
+~
+Hamukul is the head of the Merchant\@s Council of Var Bandor, and seems
+every bit the part of a leader.  Under his leadership, several new trade
+contracts have been signed, including one to reduce the tariffs imposed on
+Var Bandorian ships passing through Earendam.  Now middle-aged, he presides
+over the Council with his iron will.  
+~
+human~
+water scholar~
+ADLT Q JZ N 0
+35 30 12d110+738 0d0+0 6d7+18 pierce~
+stab~
+-12 -12 -12 -1
+FHK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 135 3
+AHMV ABCDEFGHIJK A medium unknown
+V4 22267
+merchant finely dressed~
+a finely dressed merchant~
+A finely dressed merchant goes about his business.
+~
+A wealthy merchant dressed in fine clothes goes about his business.  
+~
+human~
+water scholar~
+AG 0 0 G 0
+17 9 11d35+254 0d0+0 4d5+8 bash~
+punch~
+0 0 0 0
+K 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 110 3
+AHMV ABCDEFGHIJK A medium unknown
+V4 22268
+merchant aelin~
+an aelin merchant~
+An aelin merchant is here, representing his people in the council.
+~
+A thin aelin merchant dressed in fine robes stands at the council table,
+ready to represent his people.  
+~
+aelin~
+water scholar~
+A 0 ET N 0
+20 10 12d40+333 0d0+0 4d5+10 none~
+hit~
+0 0 0 0
+FK 0
+26 0 0 0 0 -20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 110 3
+AHMW ABCDEFGIJKP F medium unknown
+V4 22269
+merchant var bandor~
+a Var Bandor merchant~
+A merchant of Var Bandor attends the council meeting.
+~
+A merchant of Var Bandor, dressed in typical finery, attends the meeting
+of the council.  
+~
+human~
+water scholar~
+A 0 0 E 0
+25 13 12d45+707 0d0+0 5d5+12 bash~
+punch~
+0 0 0 0
+FK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 105 3
+AHMV ABCDEFGHIJK A medium unknown
+V4 22270
+merchant var bandor~
+a Var Bandor merchant~
+A merchant of Var Bandor attends the council meeting.
+~
+A merchant of Var Bandor, dressed in typical finery, attends the meeting
+of the council.  
+~
+human~
+water scholar~
+A 0 0 G 0
+25 13 12d45+707 0d0+0 5d5+12 bash~
+punch~
+0 0 0 0
+FK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 110 3
+AHMV ABCDEFGHIJK A medium unknown
+V4 22271
+Chussai Cheshki nefortu merchant~
+Chussai Cheshki~
+Chussai Cheshki, a nefortu merchant, heads the council meeting.
+~
+Chussai Cheski, trusted right-hand man of Hamukul, oversees the weekly
+meeting of the Var Bandor Merchant Council.  A crafty nefortu, Chussai is
+known for trapping people in their words, and for his manipulative
+negotiating tactics.  
+~
+nefortu~
+water scholar~
+A BQ ETZ E 0
+30 0 13d80+923 0d0+0 5d6+15 slash~
+claw~
+0 0 0 0
+FHK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 130 3
+AHMW ABCDEFGIJKP AH medium unknown
+V4 22272
+guard alatharya towering~
+the alatharya guard~
+A towering alatharya guards the hidden chamber.
+~
+A towering alatharya guard stands in the hidden chamber, ready to
+confront any intruders.  
+~
+alatharya~
+water scholar~
+ABFTX 0 DFZ N 0
+35 20 12d110+738 0d0+0 5d7+18 bash~
+crush~
+0 0 0 0
+CEFHK A
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 40 3
+AHMV ABCDEFGHIJK A medium unknown
+#0
+
+
+
+#OBJECTS
+V13
+22250
+couch red velvet~
+a red couch~
+A couch lined in red velvet is here.~
+~
+unknown~
+furniture 0 0 0 0
+2 800 E 105 105
+0 0 0 4 P
+0
+V13
+22251
+desk receptionist\@s long~
+a long desk~
+A long desk covered with papers is here.~
+~
+unknown~
+furniture 0 0 0 0
+0 0 N 0 0
+0 0 0 4 P
+0
+V13
+22252
+ledger book black thick~
+a ledger~
+A thick black book filled with numbers and figures is here.~
+~
+parchment~
+treasure 0 0 F A
+0 0 0 0 0
+1 50 0 0 P
+0
+E
+book~
+The thick ledger is filled with rows and columns of numbers, written in
+nearly illegible ink.  
+~
+E
+thick~
+The thick ledger is filled with rows and columns of numbers, written in
+nearly illegible ink. 
+~
+E
+black~
+The thick ledger is filled with rows and columns of numbers, written in
+nearly illegible ink. 
+~
+E
+ledger~
+The thick ledger is filled with rows and columns of numbers, written in
+nearly illegible ink. 
+~
+V13
+22253
+shelf tall~
+a tall shelf~
+A tall shelf is filled with scrolls and ledgers.~
+~
+unknown~
+container 0 0 0 0
+10 0 0 4 0
+1 0 0 4 P
+0
+V13
+22254
+scroll thick~
+a thick scroll~
+A thick scroll is bundled here.~
+~
+parchment~
+treasure 0 0 F A
+0 0 0 0 0
+0 30 0 0 P
+0
+E
+scroll~
+The thick scroll contains details about shipping routes and trade goods.
+~
+E
+thick~
+The thick scroll contains details about shipping routes and trade goods.
+~
+V13
+22255
+pen quill large~
+a quill pen~
+A large quill pen is here.~
+~
+feather~
+treasure 0 0 F AO
+0 0 0 0 0
+5 1 20 2 P
+0
+V13
+22256
+axe gray~
+a gray axe~
+A gray axe is here.~
+~
+iron~
+weapon 0 0 F AN
+axe 4 6 3 0
+chop~
+25 130 187 2 P
+0
+>take_prog axe gray~
+opvalueset 0 2
+~
+>rand_prog 100~
+if isheld($o)
+else
+if objvalue(0) == 0
+opvalueset 0 1
+opvalueset 1 800
+endif
+endif
+if objvalue(0) == 1
+opvaluedown 1
+endif
+if objvalue(1) == 1
+A servant gathers $i and bears it away.
+oppurge self
+endif
+~
+|
+V13
+22257
+mace gray~
+a gray mace~
+A gray mace is here.~
+~
+iron~
+weapon 0 0 F AN
+mace 4 6 1 0
+smash~
+25 110 187 2 P
+0
+>take_prog mace gray~
+opvalueset 0 2
+~
+>rand_prog 100~
+if isheld($o)
+else
+if objvalue(0) == 0
+opvalueset 0 1
+opvalueset 1 800
+endif
+endif
+if objvalue(0) == 1
+opvaluedown 1
+endif
+if objvalue(1) == 1
+A servant gathers $i and bears it away.
+oppurge self
+endif
+~
+|
+V13
+22258
+breastplate breast plate gray iron~
+a gray breastplate~
+A gray iron breastplate is here.~
+~
+iron~
+armor 0 0 F AD
+7 7 7 0 0
+25 120 1168 2 P
+0
+A
+18 2
+>take_prog breastplate breast plate gray iron~
+opvalueset 0 2
+~
+>rand_prog 100~
+if isheld($o)
+else
+if objvalue(0) == 0
+opvalueset 0 1
+opvalueset 1 800
+endif
+endif
+if objvalue(0) == 1
+opvaluedown 1
+endif
+if objvalue(1) == 1
+A servant gathers $i and bears it away.
+oppurge self
+endif
+~
+|
+V13
+22259
+medallion merchant sigil bronze~
+a medallion bearing the Merchant sigil~
+A bronze medallion bearing the Var Bandor Merchant sigil is here.~
+~
+bronze~
+armor 0 0 F AC
+0 0 0 0 0
+15 1 10 1 P
+0
+V13
+22260
+sash light green~
+a light green sash~
+A light green sash lies here.~
+~
+cloth~
+armor 0 0 F AK
+3 3 3 0 0
+25 30 1338 2 P
+0
+A
+2 1
+A
+18 2
+A
+13 2
+E
+sash~
+This light green sash is designed to be worn around the body.  The color
+and designed are favored by sailors who ply the river Dantaron.  
+~
+E
+light~
+This light green sash is designed to be worn around the body.  The color
+and designed are favored by sailors who ply the river Dantaron.  
+~
+E
+green~
+This light green sash is designed to be worn around the body.  The color
+and designed are favored by sailors who ply the river Dantaron.  
+~
+V13
+22261
+dagger short curved~
+a short curved dagger~
+A short curved dagger lies here.~
+~
+steel~
+weapon 0 0 F AN
+dagger 8 3 3 0
+slash~
+25 50 837 1 P
+0
+A
+2 1
+A
+18 1
+E
+short~
+This short dagger is steeply curved, and is reminiscent of the blades
+carried by sailors.  
+~
+E
+dagger~
+This short dagger is steeply curved, and is reminiscent of the blades
+carried by sailors.  
+~
+E
+curved~
+This short dagger is steeply curved, and is reminiscent of the blades
+carried by sailors.  
+~
+V13
+22262
+dagger short bronze~
+a short bronze dagger~
+A short bronze dagger is here.~
+~
+bronze~
+weapon 0 0 F AN
+dagger 3 7 2 0
+stab~
+20 50 91 1 P
+0
+V13
+22263
+symbol simple wooden holy Jolinn~
+a wooden holy symbol of Jolinn~
+A wooden holy symbol lies here.~
+~
+wood~
+treasure K 0 F AC
+0 0 0 0 0
+25 20 3494 1 P
+50
+A
+4 2
+A
+12 3
+A
+41 1
+E
+symbol~
+A wooden shield dangles from this iron chain, marking it as one of the
+simple holy symbols of Jolinn often worn by farmers.  
+~
+E
+simple~
+A wooden shield dangles from this iron chain, marking it as one of the
+simple holy symbols of Jolinn often worn by farmers.  
+~
+E
+wooden~
+A wooden shield dangles from this iron chain, marking it as one of the
+simple holy symbols of Jolinn often worn by farmers.  
+~
+E
+holy~
+A wooden shield dangles from this iron chain, marking it as one of the
+simple holy symbols of Jolinn often worn by farmers.  
+~
+E
+jolinn~
+A wooden shield dangles from this iron chain, marking it as one of the
+simple holy symbols of Jolinn often worn by farmers.  
+~
+V13
+22264
+cape silk black~
+a black silk cape~
+A luxurious black cape of finest silk rests here.~
+~
+silk~
+armor 0 0 F AC
+2 2 8 2 0
+30 20 505 1 P
+0
+A
+2 1
+V13
+22265
+brown leather boots~
+a pair of brown leather boots~
+A pair of brown leather boots lies here.~
+~
+leather~
+armor 0 0 F AG
+3 3 3 0 0
+25 40 567 2 P
+0
+A
+13 3
+A
+14 10
+V13
+22266
+ring stone green large gold~
+a ring set with a green stone~
+A gold ring set with a large green stone is here.~
+~
+gem~
+armor 0 0 F AB
+1 1 1 0 0
+30 15 1271 0 P
+0
+A
+18 2
+A
+17 -5
+V13
+22267
+ring encrusted ruby emerald rubies emeralds~
+a ring encrusted with rubies and emeralds~
+A ruby and emerald ring lies here.~
+~
+gem~
+treasure A 0 F AB
+0 0 0 0 0
+30 10 2702 0 P
+0
+A
+18 2
+A
+19 1
+E
+ring~
+Rubies and emeralds encrust this gold ring.
+~
+E
+encrusted~
+Rubies and emeralds encrust this gold ring.
+~
+E
+ruby~
+Rubies and emeralds encrust this gold ring.
+~
+E
+emerald~
+Rubies and emeralds encrust this gold ring.
+~
+E
+rubies~
+Rubies and emeralds encrust this gold ring.
+~
+E
+emeralds~
+Rubies and emeralds encrust this gold ring.
+~
+V13
+22268
+belt glittering silver~
+a glittering silver belt~
+A glittering silver belt lies here.~
+~
+silver~
+treasure 0 0 F AL
+0 0 0 0 0
+30 40 4847 2 P
+0
+A
+5 1
+A
+19 1
+E
+belt~
+Made from pure silver, this belt glitters in the light.
+~
+E
+glittering~
+Made from pure silver, this belt glitters in the light.
+~
+E
+silver~
+Made from pure silver, this belt glitters in the light.
+~
+V13
+22269
+coat blue silk gold thread woven~
+a coat of blue silk, woven with gold thread~
+A coat of blue silk lies here.~
+~
+silk~
+treasure 0 0 F AD
+0 0 0 0 0
+25 30 2504 2 P
+0
+A
+19 1
+A
+5 1
+A
+13 3
+E
+coat~
+This fine coat is made from blue silver, interspersed with threads of
+woven gold.  
+~
+E
+blue~
+This fine coat is made from blue silver, interspersed with threads of woven gold.
+~
+E
+silk~
+This fine coat is made from blue silver, interspersed with threads of woven gold.
+~
+E
+gold~
+This fine coat is made from blue silver, interspersed with threads of woven gold.
+~
+E
+thread~
+This fine coat is made from blue silver, interspersed with threads of woven gold.
+~
+E
+woven~
+This fine coat is made from blue silver, interspersed with threads of woven gold.
+~
+V13
+22270
+breeches blue silk gold woven~
+some blue silk breeches, woven with threads of gold~
+A pair of blue silk breeches lies here.~
+~
+silk~
+treasure 0 0 F AF
+0 0 0 0 0
+30 40 3410 2 P
+0
+A
+17 -5
+A
+2 1
+A
+18 2
+E
+breeches~
+These breeches are made from blue silk, woven with gold thread.
+~
+E
+blue~
+These breeches are made from blue silk, woven with gold thread.
+~
+E
+silk~
+These breeches are made from blue silk, woven with gold thread.
+~
+E
+woven~
+These breeches are made from blue silk, woven with gold thread.
+~
+V13
+22271
+safe iron large~
+a large iron safe~
+A large iron safe is here.~
+~
+iron~
+container 0 0 F AP
+100 ACD 22273 18 0
+30 4000 0 2 P
+0
+V13
+22272
+spiked Kran\@lsa~
+a spiked Kran\@lsa~
+A spiked kran\@lsa lies here.~
+~
+steel~
+weapon 0 0 F AN
+exotic 3 12 2 0
+stab~
+30 100 3079 2 P
+0
+A
+1 1
+A
+18 1
+E
+spiked~
+Favored by the gladiators of Ashta Harrud, the Kran\@alsa is a sharp,
+steel spike, with several diagonal barbs jutting off from along its edge.  
+~
+E
+kran\@lsa~
+Favored by the gladiators of Ashta Harrud, the Kran\@alsa is a sharp,
+steel spike, with several diagonal barbs jutting off from along its edge.  
+~
+V13
+22273
+key rusty iron~
+a rusty iron key~
+A rusty iron key is here.~
+~
+iron~
+key P 0 F A
+0 0 0 0 0
+30 8 0 0 P
+0
+V13
+22274
+vial clear fluid~
+a vial of clear fluid~
+A vial of clear fluid lies here.~
+~
+glass~
+potion 0 0 F AO
+30 'teleport' '' '' ''
+30 20 0 1 P
+0
+V13
+22275
+ring crested gold~
+a gold ring, crested with the sigil of the Merchant\@s Council~
+A crested gold ring lies here.~
+~
+gold~
+treasure 0 0 0 AB
+0 0 0 0 0
+40 30 24999 0 P
+1
+A
+13 10
+A
+12 10
+A
+19 2
+A
+18 1
+E
+ring~
+This gold ring bears the crest of a sun rising over Var Bandor,
+the traditional symbol of the Merchant Council.
+~
+E
+crested~
+This gold ring bears the crest of a sun rising over Var Bandor, the
+traditional symbol of the Merchant Council.  
+~
+E
+gold~
+This gold ring bears the crest of a sun rising over Var Bandor, the
+traditional symbol of the Merchant Council.  
+~
+V13
+22276
+saber ceremonial ornate~
+an ornate ceremonial saber~
+An ornate saber lies here.~
+~
+silver~
+weapon 0 0 F AN
+sword 7 4 3 0
+slash~
+30 140 1322 2 P
+0
+A
+5 1
+A
+13 3
+E
+ornate~
+More ornate than functional, this saber is trimmed with silver.
+~
+E
+ceremonial~
+More ornate than functional, this saber is trimmed with silver.
+~
+E
+saber~
+More ornate than functional, this saber is trimmed with silver.
+~
+V13
+22277
+battleaxe battle axe huge two-handed~
+a huge two-handed battleaxe~
+A huge two-handed battleaxe is resting here.~
+~
+iron~
+weapon 0 0 F AN
+axe 3 12 3 F
+cleave~
+35 190 6812 2 P
+0
+A
+18 -2
+A
+19 2
+V13
+22278
+thong leather teeth~
+a leather thong strung with teeth~
+A leather thong strung with human teeth is here.~
+~
+leather~
+armor 0 0 F AC
+2 2 2 0 0
+35 10 6415 1 P
+30
+A
+18 2
+A
+19 2
+V13
+22279
+gold coins pile~
+a pile of gold coins~
+A pile of gold coins is here.~
+~
+gold~
+money 0 0 F A
+20 1 0 0 0
+51 350 0 0 P
+0
+V13
+22280
+statuette jewelled~
+a jewelled statuette~
+A gold statuette adorned with jewels is here.~
+~
+gold~
+treasure 0 0 F AO
+0 0 0 0 0
+35 30 1372 2 P
+0
+A
+12 5
+A
+13 5
+E
+statuette~
+Exquisitely shaped, this golden statuette is of a beautiful human woman. 
+She has sapphires for eyes, and a ruby in her bodice.  
+~
+E
+jewelled~
+Exquisitely shaped, this golden statuette is of a beautiful human woman. 
+She has sapphires for eyes, and a ruby in her bodice.  
+~
+E
+gold~
+Exquisitely shaped, this golden statuette is of a beautiful human woman. 
+She has sapphires for eyes, and a ruby in her bodice.  
+~
+V13
+22281
+aquamarine pendant silver~
+a silver pendant, inset with an aquamarine~
+An aquamarine pendant lies here.~
+~
+aquamarine~
+treasure 0 0 0 AC
+0 0 0 0 0
+40 20 80 1 P
+3
+E
+pendant~
+About an inch in diameter, this enormous aquamarine is inset in a round
+silver base.  The gem tingles to the touch, sending the feel of a touch of
+magic up your arm as you rub it.  
+~
+E
+aquamarine~
+About an inch in diameter, this enormous aquamarine is inset in a round
+silver base.  The gem tingles to the touch, sending the feel of a touch of
+magic up your arm as you rub it.  
+~
+E
+silver~
+About an inch in diameter, this enormous aquamarine is inset in a round
+silver base.  The gem tingles to the touch, sending the feel of a touch of
+magic up your arm as you rub it.  
+~
+>verb_prog p rub pendant~
+if isworn($o)
+if isowner($n)
+if objvalue(0) > 0 
+opechoat $o A warm glow spreads up your arms and into your body, invigorating you!
+opechoaround $n $N rubs $s pendant.
+opgrant $n 0 0 25 
+opvaluedown 0 1
+else
+opechoat $o You rub the pendant, but nothing happens.
+endif
+else
+opinterpret $n $x
+endif
+else
+opinterpret $n $x
+endif
+~
+>rand_prog 100~
+if objvalue(1) == 0
+opvalueset 0 10
+opvalueset 1 1
+endif
+~
+|
+V13
+22282
+key polished iron~
+a polished iron key~
+A polished iron key is here.~
+~
+iron~
+key 0 0 F A
+0 0 0 0 0
+2 3 0 0 P
+0
+#0
+
+
+
+#ROOMS
+#22250
+The Reception Room~
+This spacious room has been decorated with moderately expensive furniture
+and appointments.  The smooth wooden walls have been painted a deep
+burgundy, and the floor is covered in a slightly frayed but tasteful carpet.
+Brass lanterns hang on the wall, providing a warm light.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 22251
+W 5 0 0
+Z 5 5
+S
+#22251
+The Reception Room~
+This spacious room has been decorated with moderately expensive furniture
+and appointments.  The smooth wooden walls have been painted a deep
+burgundy, and the floor is covered in a slightly frayed but tasteful carpet.
+Brass lanterns hang on the wall, providing a warm light.  
+~
+~
+0
+0 0 0
+D2
+~
+~
+3 0 22254
+D3
+~
+~
+0 0 22250
+W 5 0 0
+Z 5 5
+S
+#22252
+The Master Recordkeeper\@s Office~
+The master recordkeeper\@s office is a long room lined with wooden
+shelves.  The shelves are packed with row after row of thick black ledgers,
+upon which have been stacked various scrolls and papers.  A long desk is set
+against the wall, upon which are piled even more papers.  The walls are
+bare, but the floor is covered with a moderately expensive carpet, and a
+plush chair is pushed against the desk. 
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 22253
+W 5 0 0
+Z 5 5
+S
+#22253
+The Master Recordkeeper\@s Office~
+The master recordkeeper\@s office is a long room lined with wooden
+shelves.  The shelves are packed with row after row of thick black ledgers,
+upon which have been stacked various scrolls and papers.  A long desk is set
+against the wall, upon which are piled even more papers.  The walls are
+bare, but the floor is covered with a moderately expensive carpet, and a
+plush chair is pushed against the desk.  
+~
+~
+0
+0 0 0
+D2
+~
+~
+3 0 22256
+D3
+~
+~
+0 0 22252
+W 5 0 0
+Z 5 5
+S
+#22254
+A Sparse Hallway~
+You stand in a sparse hallway with polished wooden floors and plainly
+decorated walls.  Inexpensive lamps give off a smoky, flickering light,
+which only partially illuminates the passage.  The floor is covered with a
+plain, frayed carpet.  An elegantly laquered wooden stairwell leads upwards,
+and the hallway continues to the south.  A door leads to the reception room
+to the north.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+3 0 22251
+D2
+~
+~
+0 0 22257
+D4
+~
+~
+0 0 22271
+W 5 0 0
+Z 5 5
+S
+#22255
+A Sparse Hallway~
+You stand in a sparse hallway with polished wooden floors and plainly
+decorated walls.  Inexpensive lamps give off a smoky, flickering light,
+which only partially illuminates the passage.  The floor is covered with a
+plain, frayed carpet.  A door to the south leads to the archives.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 22256
+D2
+~
+~
+3 0 22258
+W 5 0 0
+Z 5 5
+S
+#22256
+A Sparse Hallway~
+You stand in a sparse hallway with polished wooden floors and plainly
+decorated walls.  Inexpensive lamps give off a smoky, flickering light,
+which only partially illuminates the passage.  The floor is covered with a
+plain, frayed carpet.  To the north, a door leads to the master
+recordkeeper\@s office.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+3 0 22253
+D1
+~
+~
+0 0 22257
+D3
+~
+~
+0 0 22255
+W 5 0 0
+Z 5 5
+S
+#22257
+A Sparse Hallway~
+You stand in a sparse hallway with polished wooden floors and plainly
+decorated walls.  Inexpensive lamps give off a smoky, flickering light,
+which only partially illuminates the passage.  The floor is covered with a
+plain, frayed carpet.  The hallway runs north and south, and branches to the
+west.  A large door set in the east wall leads back onto the street.  
+~
+~
+0
+0 4 0
+D0
+~
+~
+0 0 22254
+D1
+~
+~
+3 0 3554
+D2
+~
+~
+0 0 22259
+D3
+~
+~
+0 0 22256
+W 5 0 0
+Z 5 5
+S
+#22258
+The Archives~
+This dimly lit room is packed from wall to wall with shelves.  Piled
+high on the shelves are scroll upon scroll, side by side with stacks of
+ledgers and piles of paper.  Each shelf is marked with numbers and letters,
+apparently a sort of filing system.  Small stacks of papers and scrolls
+waiting to be filed sit at the foot of the shelves.  A door to the north
+leads back into the hallway.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+3 0 22255
+D2
+~
+~
+0 0 22260
+W 5 0 0
+Z 5 5
+S
+#22259
+A Sparse Hallway~
+You stand in a sparse hallway with polished wooden floors and plainly
+decorated walls.  Inexpensive lamps give off a smoky, flickering light,
+which only partially illuminates the passage.  The floor is covered with a
+plain, frayed carpet.  A door the west leads to the scriveners\@ area, and a
+door to the south leads to the waiting room.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 22257
+D2
+~
+~
+3 0 22261
+D3
+~
+~
+3 0 22263
+W 5 0 0
+Z 5 5
+S
+#22260
+The Archives~
+This dimly lit room is packed from wall to wall with shelves.  Piled high
+on the shelves are scroll upon scroll, side by side with stacks of ledgers
+and piles of paper.  Each shelf is marked with numbers and letters,
+apparently a sort of filing system.  Small stacks of papers and scrolls
+waiting to be filed sit at the foot of the shelves.  A thin carpet covering
+the floor seems slightly out of place.  
+~
+~
+0
+0 0 0
+E
+carpet~
+The thin carpet seems slightly out of place, and a small line is visible
+underneath.  
+~
+E
+line~
+The thin line in the floor likes like it may be a hidden opening.
+~
+D0
+~
+~
+0 0 22258
+D5
+~
+~
+263 22282 22284
+W 5 0 0
+Z 5 5
+S
+#22261
+The Waiting Room~
+This cramped, dimly lit room is bare of decorations, with only the most
+spartan furnishings.  A low wooden bench runs along the south and east
+walls, and a flimsy wooden podium stands against the west wall.  The plain
+floor is scuffed and dirty, worn from the passage of many feet.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+3 0 22259
+W 5 0 0
+Z 5 5
+S
+#22262
+The Scriveners\@ Room~
+This spacious room is filled with the sounds of quills scratching on
+papers. Several dim lamps hung on the walls provide a meager, flickering
+light. Rows of long desks are spread through the room, at which are seated
+rows of scriveners.  The walls and floor of the room are completely bare,
+and the plain wooden floor is old and worn.
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 22263
+D2
+~
+~
+0 0 22264
+W 5 0 0
+Z 5 5
+S
+#22263
+The Scriveners\@ Room~
+This spacious room is filled with the sounds of quills scratching on
+papers.  Several dim lamps hung on the walls provide a meager, flickering
+light.  Rows of long desks are spread through the room, at which are seated
+rows of scriveners.  The walls and floor of the room are completely bare,
+and the plain wooden floor is old and worn.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+3 0 22259
+D2
+~
+~
+0 0 22265
+D3
+~
+~
+0 0 22262
+W 5 0 0
+Z 5 5
+S
+#22264
+The Scriveners\@ Room~
+This spacious room is filled with the sounds of quills scratching on
+papers. Several dim lamps hung on the walls provide a meager, flickering
+light. Rows of long desks are spread through the room, at which are seated
+rows of scriveners.  The walls and floor of the room are completely bare,
+and the plain wooden floor is old and worn.
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 22262
+D1
+~
+~
+0 0 22265
+W 5 0 0
+Z 5 5
+S
+#22265
+The Scriveners\@ Room~
+This spacious room is filled with the sounds of quills scratching on
+papers. Several dim lamps hung on the walls provide a meager, flickering
+light. Rows of long desks are spread through the room, at which are seated
+rows of scriveners.  The walls and floor of the room are completely bare,
+and the plain wooden floor is old and worn.
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 22263
+D3
+~
+~
+0 0 22264
+W 5 0 0
+Z 5 5
+S
+#22266
+Thuson\@s Office~
+Thuson\@s office is rather sparsely furnished, with only a few wooden
+chairs for guests, and his own desk.  The walls are made of oak, and their
+only ornament is a parchment map, which hangs to the east.  Small pine
+shutters cover a northern window, which looks out onto the rest of the city.
+To the south, a door provides an exit from the office.  
+~
+~
+0
+0 0 0
+E
+map~
+The map is of West Lithling Valley, and several prominent farming estates are marked in red.
+~
+D2
+An elegant hallway lies to the south.
+~
+~
+3 0 22269
+W 5 0 0
+Z 5 5
+S
+#22267
+Damial\@s Office~
+The walls of Damial\@s office are covered with lavish tapestries, woven
+from silk and silver thread.  The floor is covered with a fine wool rug, and
+embroidered curtains cover a window on the north wall.  Damial\@s desk is in
+the south part of the room, with its back to the window.  The only exit from
+the room is through a pine door to the south.  
+~
+~
+0
+0 0 0
+D2
+An elegant hallway lies to the south.
+~
+~
+3 0 22270
+W 5 0 0
+Z 5 5
+S
+#22268
+Jurmmal\@s Office~
+Jurmmal\@s office is cluttered with a variety of nautical items, ranging
+from an old ship\@s wheel hung on the wall to an anchor propped up in the
+corner.  A painting of a river boat hangs on the north wall, and a cluttered
+beech desk takes up most of the western part of the room.  Behind the desk,
+in the west wall, is a window, which overlooks the Dantaron River and the
+edge of the city.  To the east, a pine door provides egress from the room.  
+~
+~
+0
+0 0 0
+D1
+An elegant hallway lies to the east.
+~
+~
+3 0 22269
+W 5 0 0
+Z 5 5
+S
+#22269
+End of an Elegant Hallway~
+This elegant hallway comes to an end here, terminating in doorways to the
+west, south, and north.  Varnished oak planks are polished smooth underfoot,
+glimmering softly in the light of brass lanterns affixed on all three walls.
+The hallway continues to the east.  
+~
+~
+0
+0 0 0
+D0
+Thuson\@s office lies to the north.
+~
+~
+3 0 22266
+D1
+An elegant hallway continues to the east.
+~
+~
+0 0 22270
+D2
+Janthon\@s office lies to the south.
+~
+~
+3 0 22272
+D3
+Jurmmal\@s office lies to the west.
+~
+~
+3 0 22268
+W 5 0 0
+Z 5 5
+S
+#22270
+An Elegant Hallway~
+This elegant hallway runs east and west through the top floor of the
+Merchant\@s Council.  A varnished oak floor lies underfoot, glimmering in the
+light of a small brass candelabra which hangs high above.  Pine doors lead
+to the north and south, and the corridor continues to the west.  To the
+east, the corridor turns, and sits atop a stairwell.  
+~
+~
+0
+0 0 0
+D0
+Damial\@s office lies to the north.
+~
+~
+3 0 22267
+D1
+The corridor turns to the east.
+~
+~
+0 0 22271
+D2
+Ason\@s Office lies to the south.
+~
+~
+3 0 22273
+D3
+The hallway comes to an end to the west.
+~
+~
+0 0 22269
+W 5 0 0
+Z 5 5
+S
+#22271
+Corner of an Elegant Hallway~
+Sitting atop a laquered wooden stairwell, this elegant hallway runs
+through the top floor of the Merchant\@s Council.  Various oil paintings hang
+on the wall, each with their own gilded brass frame.  The floor is made from
+oak boards, each varnished to a smooth finish.  The corridor is square with
+the north and east walls, with two lanterns hanging on either side of the
+corner to provide light.  To the west are the offices of ranking merchants,
+and to the south it heads past the Council\@s meeting chamber and on to the
+offices of the head merchant.  
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 22275
+D3
+~
+~
+0 0 22270
+D5
+~
+~
+0 0 22254
+W 5 0 0
+Z 5 5
+S
+#22272
+Janthon\@s Office~
+Janthon\@s office is richly furnished, with piles of silk pillows for
+guests, and several lavish gold engravings on the east and west walls. 
+Janthon\@s desk is made from a rich oak, and its back faces the west wall. 
+To the south, a large mirror reflects the rest of the room.  Northward, a
+door provides an exit from the office.  
+~
+~
+0
+0 0 0
+E
+engravings~
+The engravings are mde from gold plate, and depict various tranquil natural scenes.
+~
+D0
+An elegant hallway lies to the north.
+~
+~
+3 0 22269
+W 5 0 0
+Z 5 5
+S
+#22273
+Ason\@s Office~
+Ason\@s office is filled with exotica from all over Avendar.  A carved
+ironwood relief hangs on the west wall, and a tapestry from Krilin on the
+east.  The rug underfoot is made from the hide of some larged scaled beast,
+and light in the room comes from a glowing ball kept in a lantern.  A spicy,
+aromatic smell pervades the air.  Ason\@s desk sits with its back facing the
+south wall, and is covered with various curios.  The only exit lies through
+a wooden door to the north.  
+~
+~
+0
+0 0 0
+D0
+An elegant hallway lies to the north.
+~
+~
+3 0 22270
+W 5 0 0
+Z 5 5
+S
+#22274
+The Merchant\@s Lounge~
+Large, comfortable chairs fill most of the lounge.  Interspersed among
+them are round oak tables, some furnished with the occasional inkwell.  The
+room is panelled in a rich oak, and underfoot the floor is tiled with
+polished Brintorean marble.  Silver lanterns hang on the wall, framing a set
+of lavish oil paintings.  The lounge extends to the south, toward a bar, and
+to the east is a carved pine door.  
+~
+~
+0
+0 0 0
+D1
+An elegant hallway lies to the east.
+~
+~
+3 0 22275
+D2
+The lounge approaches a bar to the south.
+~
+~
+0 0 22276
+W 5 0 0
+Z 5 5
+S
+#22275
+An Elegant Hallway~
+This elegant hallway runs north and south through the top floor of the
+Merchant\@s Council.  A varnished oak floor lies underfoot, covered by a
+finely woven rug.  Set in the west wall is a carved pine door, and to the
+east a silver lantern provides light for the hallway.  The hallway turns to
+the north, and continues to the south.  
+~
+~
+0
+0 0 0
+D0
+The hallway turns to the north.
+~
+~
+0 0 22271
+D2
+The hallway continues to the south.
+~
+~
+0 0 22280
+D3
+A lounge for merchants lies beyond the door.
+~
+~
+3 0 22274
+W 5 0 0
+Z 5 5
+S
+#22276
+A Bar in the Merchant\@s Lounge~
+A large oak bar runs across the southern wall of the room.  Polished a
+deep brown, the bar is long enough to hold ten people sitting at on the
+stools that run along its length.  Behind the bar are several casks of ale,
+a rack for wine, and several bottles of more exotic liquors.  The lounge
+continues to the north, toward an area of tables and chairs.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 22274
+W 5 0 0
+Z 5 5
+S
+#22278
+The Council Chamber~
+The council chamber is a large room, used by the merchants of Var Bandor
+for meetings.  The chamber is round, shaped to fit the massive oak table
+that fills the southeast part of the room.  Individualized chairs circle the
+table, which continues to the east and south.  
+~
+~
+0
+0 0 0
+D1
+The council chamber continues to the east.
+~
+~
+0 0 22279
+D2
+The council chamber continues to the south.
+~
+~
+0 0 22281
+W 5 0 0
+Z 5 5
+S
+#22279
+The Council Chamber~
+The council chamber is a large room, used by the merchants of Var Bandor
+for meetings.  The chamber is round, shaped to fit the massive oak table
+that fills the southwest part of the room.  Individualized chairs circle the
+table, which continues to the west and south.  In the east wall, a set of
+double doors provides another exit.  
+~
+~
+0
+0 0 0
+D1
+An elegant hallway lies to the east.
+~
+~
+3 0 22280
+D2
+The council chamber continues to the south.
+~
+~
+0 0 22282
+D3
+The council chamber continues to the west.
+~
+~
+0 0 22278
+W 5 0 0
+Z 5 5
+S
+#22280
+End of an Elegant Hallway~
+This elegant hallway comes to an end here, terminating in a solid door of
+carved ironwood, inset in the south wall.  Varnished oak planks are polished
+smooth underfoot, glimmering softly in the light of a lantern on the east
+wall.  Double oak doors lead to the west, and the hallway continues to the
+north.  
+~
+~
+0
+0 0 0
+D0
+The hallway continues to the south.
+~
+~
+0 0 22275
+D2
+The offices of Hamukul lie to the south.
+~
+~
+3 0 22283
+D3
+The council chamber lies to the west.
+~
+~
+3 0 22279
+W 5 0 0
+Z 5 5
+S
+#22281
+The Council Chamber~
+The council chamber is a large room, used by the merchants of Var Bandor
+for meetings.  The chamber is round, shaped to fit the massive oak table
+that fills the northeast part of the room.  Individualized chairs circle the
+table, which continues to the east and north.  
+~
+~
+0
+0 0 0
+D0
+The council chamber continues to the north.
+~
+~
+0 0 22278
+D1
+The council chamber continues to the east.
+~
+~
+0 0 22282
+W 5 0 0
+Z 5 5
+S
+#22282
+The Council Chamber~
+The council chamber is a large room, used by the merchants of Var Bandor
+for meetings.  The chamber is round, shaped to fit the massive oak table
+that fills the northwest part of the room.  Individualized chairs circle the
+table, which continues to the west and north.  
+~
+~
+0
+0 0 0
+D0
+The council chamber continues to the north.
+~
+~
+0 0 22279
+D3
+The council chamber continues to the west.
+~
+~
+0 0 22281
+W 5 0 0
+Z 5 5
+S
+#22283
+Hamukul\@s Office~
+These are the offices of Hamukul, head of Var Bandor\@s Merchant Council. 
+Opulently furnished, the offices are lit by a gold candelabra which hangs
+from the ceiling.  An exquisite silk rug covers the varnished oak floor,
+which glimmers in the light of the candleabra.  A glass window overlooks
+commerce street to the south, and a striking oil painting hangs on the east
+wall.  Hamukul\@s desk is made from ironwood, the same as the carved door
+which leaves the office to the north.  
+~
+~
+0
+0 0 0
+E
+painting~
+The painting is a majestic view of Var Bandor, from the point of view of
+a group of riders approaching it along the Arien Plains.  The crisp realism
+and breathtaking imagery are complemented by the colors of the painting,
+which are unusually vivid.  
+
+The painting is signed \#Frinia\#.
+~
+E
+oil~
+The painting is a majestic view of Var Bandor, from the point of view of
+a group of riders approaching it along the Arien Plains.  The crisp realism
+and breathtaking imagery are complemented by the colors of the painting,
+which are unusually vivid.  
+
+The painting is signed \#Frinia\#.
+~
+E
+striking~
+The painting is a majestic view of Var Bandor, from the point of view of
+a group of riders approaching it along the Arien Plains.  The crisp realism
+and breathtaking imagery are complemented by the colors of the painting,
+which are unusually vivid.  
+
+The painting is signed \#Frinia\#.
+~
+E
+window~
+Busy commerce street is visible below.
+~
+D0
+An elegant hallway heads north.
+~
+~
+3 0 22280
+W 5 0 0
+Z 5 5
+S
+#22284
+A Hidden Chamber~
+A short ladder descends from the archives above, down into this dank
+stone chamber.  The floor is plain dirt, and the walls trickle with
+moisture.  The ceiling is quite low here, and there appears to be nothing of
+note in the room except for the ladder leading upwards.  The room continues
+to the south in darkness.  
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 22285
+D4
+~
+~
+263 22282 22260
+W 5 0 0
+Z 5 5
+S
+#22285
+A Hidden Chamber~
+The ceiling of the dark stone chamber rises here, as the walls broaden
+into a somewhat larger area.  The stone walls drip with moisture, and the
+floor is composed of damp soil.  The chill air smells of must and mold.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 22284
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 22251 2 3
+D 0 22253 2 3
+D 0 22254 0 3
+D 0 22255 2 3
+D 0 22256 0 3
+D 0 22257 1 3
+D 0 22258 0 3
+D 0 22259 2 3
+D 0 22259 3 3
+D 0 22260 5 263
+D 0 22261 0 3
+D 0 22263 1 3
+D 0 22266 2 3
+D 0 22267 2 3
+D 0 22268 1 3
+D 0 22269 0 3
+D 0 22269 2 3
+D 0 22269 3 3
+D 0 22270 0 3
+D 0 22270 2 3
+D 0 22272 0 3
+D 0 22273 0 3
+D 0 22274 1 3
+D 0 22275 3 3
+D 0 22279 1 3
+D 0 22280 2 3
+D 0 22280 3 3
+D 0 22283 0 3
+D 0 22284 4 263
+O 0 22250 0 22250
+O 0 22251 0 22251
+M 0 22250 1 22251 1
+M 0 22267 3 22251 1
+E 0 22259 0 3
+M 0 22257 3 22252 2
+M 0 22257 3 22252 2
+M 0 22257 3 22253 1
+M 0 22258 1 22253 1
+E 0 22259 0 3
+M 0 22260 15 22254 2
+E 0 22256 0 16
+E 0 22258 0 5
+M 0 22264 1 22254 1
+E 0 22256 0 16
+E 0 22258 0 5
+M 0 22255 3 22255 1
+M 0 22260 15 22255 2
+E 0 22256 0 16
+E 0 22258 0 5
+M 0 22267 3 22256 1
+E 0 22259 0 3
+M 0 22255 3 22257 1
+M 0 22260 15 22257 2
+E 0 22256 0 16
+E 0 22258 0 5
+M 0 22260 15 22257 2
+E 0 22257 0 16
+E 0 22258 0 5
+M 0 22256 3 22258 2
+M 0 22256 3 22258 2
+O 0 22253 0 22258
+P 0 22252 5 22253 9999
+P 0 22252 5 22253 9999
+P 0 22252 5 22253 9999
+P 0 22254 3 22253 9999
+P 0 22254 3 22253 9999
+P 0 22254 3 22253 9999
+M 0 22255 3 22259 1
+M 0 22260 15 22259 1
+E 0 22257 0 16
+E 0 22258 0 5
+M 0 22267 3 22259 1
+E 0 22259 0 3
+M 0 22256 3 22260 1
+O 0 22253 0 22260
+P 0 22252 5 22253 9999
+P 0 22252 5 22253 9999
+P 0 22252 5 22253 9999
+P 0 22254 2 22253 9999
+P 0 22254 2 22253 9999
+M 0 22251 3 22261 3
+M 0 22251 3 22261 3
+M 0 22251 3 22261 3
+M 0 22252 6 22261 1
+M 0 22253 1 22261 1
+O 0 22251 0 22262
+M 0 22254 8 22262 2
+E 0 22255 0 17
+G 0 22252 0
+M 0 22254 8 22262 2
+G 0 22252 0
+E 0 22255 0 17
+O 0 22251 0 22263
+M 0 22254 8 22263 2
+E 0 22255 0 17
+M 0 22254 8 22263 2
+E 0 22252 0 17
+O 0 22251 0 22264
+M 0 22254 8 22264 2
+E 0 22255 0 17
+G 0 22252 0
+M 0 22254 8 22264 2
+E 0 22255 0 17
+G 0 22252 0
+O 0 22251 0 22265
+M 0 22254 8 22265 2
+E 0 22255 0 17
+G 0 22252 0
+M 0 22254 8 22265 2
+E 0 22254 0 17
+M 0 22261 1 22266 1
+E 0 22259 0 3
+E 0 22263 0 3
+E 0 22265 0 8
+M 0 22263 1 22267 1
+E 0 22259 0 3
+E 0 22269 0 5
+E 0 22270 0 7
+M 0 22259 1 22268 1
+E 0 22259 0 3
+E 0 22260 0 12
+E 0 22261 0 16
+M 0 22260 15 22269 2
+E 0 22256 0 16
+E 0 22258 0 5
+M 0 22260 15 22269 2
+E 0 22257 0 16
+E 0 22258 0 5
+M 0 22260 15 22271 2
+E 0 22256 0 16
+E 0 22258 0 5
+M 0 22260 15 22271 2
+E 0 22257 0 16
+E 0 22258 0 5
+M 0 22262 1 22272 1
+E 0 22259 0 3
+E 0 22267 0 1
+E 0 22268 0 13
+M 0 22265 1 22273 1
+E 0 22259 0 3
+E 0 22272 0 16
+G 0 22274 0
+M 0 22269 3 22278 1
+M 0 22270 3 22278 1
+M 0 22268 2 22279 1
+E 0 22262 0 16
+M 0 22269 3 22279 1
+M 0 22271 1 22279 1
+E 0 22264 0 3
+E 0 22266 0 2
+M 0 22260 15 22280 2
+E 0 22256 0 16
+E 0 22258 0 5
+M 0 22260 15 22280 2
+E 0 22257 0 16
+E 0 22258 0 5
+M 0 22268 2 22281 1
+E 0 22262 0 16
+M 0 22269 3 22281 1
+M 0 22270 3 22282 2
+M 0 22270 3 22282 2
+M 0 22266 1 22283 1
+E 0 22259 0 3
+E 0 22275 0 1
+E 0 22276 0 16
+G 0 22282 0
+O 0 22271 0 22285
+M 0 22272 1 22285 1
+E 0 22277 0 16
+E 0 22278 0 3
+G 0 22273 0
+P 0 22279 1 22271 1
+P 0 22280 9999 22271 1
+P 0 22281 1 22271 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

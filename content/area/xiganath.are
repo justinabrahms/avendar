@@ -1,0 +1,8135 @@
+#AREADATA
+Name The Shrine of Xiganath~
+Builders Iandir Iacobos Tzajai~
+VNUMs 3200 3399
+Credits [  51 ] Iandir    Shrine of Xiganath~
+Danger 5
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 1 0 -2
+Shades 5 5
+Stone 82
+End
+
+
+
+#MOBILES
+V4 3201
+demon spine spined cthagraa~
+the cthaghraa demon~
+A spine-covered cthagraa demon blocks the passage.
+~
+A towering humanoid with glowing red eyes, the cthagraa demon\@s body is
+lined with long, sharp spikes.  Its face is bestial, with a fanged muzzle
+jutting forward, and its massive body hunches in the dark tunnel.  
+~
+demon~
+water scholar~
+AFX 0 DFPZ E 0
+60 35 15d220+1100 0d0+0 5d12+30 slash~
+claw~
+-25 -25 -25 -9
+CEFHK AB
+26 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+ACHMV ABCDEFGHIJKP A medium unknown
+>rand_prog 6~
+mpvaluerand 0 3201 3237
+mpecho The cthugha demon leaves.
+mpgoto $0
+mpecho The cthugha demon has arrived.
+~
+>load_prog 100~
+mpseewizi
+~
+>death_prog 100~
+mpvaluerand 0 1 50
+if mobvalue(0) == 1
+mpecho A sheaf of the cthugha demon\@s spined skin is rent intact from its body!
+mpoload 3201
+endif
+mpat 3306 mpmload 3201
+~
+|
+V4 3202
+m\@elsoth melsoth elsoth demonic demon~
+the m\@elsoth~
+A demonic m\@elsoth hides in the shadows, fangs dripping.
+~
+The m\@elsoth is a slender figure, with long, thin arms and a willowy
+torso.  Its skin is black as the darkness surrounding it, and it fades into
+near-complete invisibility.  Its black fangs, barely visible in the shadows,
+drip with ichor.  
+~
+demon~
+water scholar~
+AX 0 DFQZ E 0
+60 35 20d220+1000 0d0+0 5d10+20 pierce~
+bite~
+-30 -30 -30 -15
+EFHK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+ACHMV ABCDEFGHIJKP A medium unknown
+>load_prog 100~
+mpseewizi
+~
+>rand_prog 30~
+if isfocused($i)
+mpgoto $f
+if inroom($i) > 3239
+mppurge $i
+else
+if inroom($i) < 3201
+mppurge $i
+else
+mpechoat $f The m\@elsoth resolves out of the darkness and leaps at you!
+mpechoaround $f The m\@elsoth resolves out of the darkness and leaps at $F!
+mpkill $f
+endif
+endif
+endif
+~
+>greet_prog 100~
+if isfocused($i)
+else
+if ispc($n)
+mpfocus $n
+mpechoat $n A shadowy figure resolves from the darkness and leaps upon you!
+mpechoaround $n A shadowy figure resolves from the darkness and leaps on $N!
+mpkill $n
+mpechoat $n You scream in agony as plague sores form on your skin!
+mpechoaround $n $N screams in agony as plague sores form on $s skin!
+mpaddaff $n 104 60 5 0 0 8388608
+endif
+endif
+ 
+~
+|
+V4 3203
+loader salamander~
+the salamander loader~
+The salamander loader waits to load salamanders.
+~
+~
+human~
+water scholar~
+AB 0 LP N 0
+60 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 20~
+\\\\ re-enable spawning on the greet_prog
+if rand(50)
+  mpvalueset 0 0
+endif
+\\\\ spawn salamander if platinum or 5+ gold is here
+if objhere(5)
+  get coins 
+  mpget mob self platinum 5
+  mpget mob self gold 6
+  mpget mob self silver 7
+  mpget mob self copper 8
+  if value(5) > 0
+  or value(6) > 5
+    mpecho An enormous flaming shape lunges onto the path and onto the coins. It then hurls toward you!
+    mpmload 3204
+    mpvalueset 0 1
+    mpvalueset 5 0
+    mpvalueset 6 0
+    mpset mob self platinum 0
+    mpset mob self gold 0
+  endif
+  if value(7) > 0
+    drop $7 silver
+    mpvalueset 7 0
+  endif
+  if value(8) > 0
+    drop $8 copper
+    mpvalueset 8 0
+  endif
+endif
+~
+>all_death_prog 100~
+if name($t) / flaming
+  if chosenpath($n) == golden flame
+    if rand(33)
+      mpvalueset loadruby yes
+    endif
+  else
+    if rand(10)
+      mpvalueset loadruby yes
+    endif
+  endif
+  if value(loadruby) == yes
+    mpecho As the salamander dies, a flame-red ruby falls to the ground.
+    mpoload 3235 in room
+  endif
+endif
+~
+>rand_prog 10~
+mpvalueset 0 0
+~
+>greet_prog 30~
+if ispc($n)
+if mobvalue(0) == 0
+mpecho With a blood-curdling shriek, an enormous flaming shape hurls toward you!
+mpmload 3204
+mpvalueset 0 1
+endif
+endif
+~
+|
+V4 3204
+salamander ancient enormous flaming reptile~
+the ancient salamander~
+An enormous flaming reptile revels in the flames.
+~
+An enormous reptile with deep red scales, the ancient salamander measures
+at least 20\@ from head to tail.  Gouts of flame shoot from its body as it
+revels in the hellish inferno.  
+~
+lizard~
+water scholar~
+AFX 0 DJZ E 0
+65 40 4000d1+1 0d0+0 8d8+25 fire~
+flaming bite~
+-20 -20 -20 -9
+AH ABH
+26 0 0 0 33 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMVXc ABCDEFGHIJKQV A medium unknown
+>fight_prog 12~
+mpcast 65 60
+~
+>fight_prog 9~
+mpcast 129 60
+~
+|
+V4 3205
+attackerbot bot~
+the attackerbot~
+The attackerbot waits for attackees.
+~
+~
+human~
+water scholar~
+A 0 DFJLPZ N 0
+0 0 5d5+50 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+mpseewizi
+~
+|
+V4 3206
+moverbot bot~
+the moverbot~
+The moverbot waits for movees.
+~
+~
+human~
+water scholar~
+A 0 DFJLPZ N 0
+0 0 5d5+5 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+mpseewizi
+~
+>greet_prog 100~
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+if ispc($n)
+mpvaluerand 1 3251 3266
+mptransfer $n $1
+endif
+endif
+ 
+~
+|
+V4 3207
+unfollowbot bot~
+the unfollowbot~
+The 4-way unfollowbot waits for unfollowees.
+~
+~
+human~
+water scholar~
+A 0 DFJLPZ N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+mpseewizi
+~
+>greet_prog 100~
+if ispc($n)
+mpvaluerand 0 1 15
+if mobvalue(0) == 1
+mpforce $n north
+endif
+if mobvalue(0) == 2
+mpforce $n south
+endif
+if mobvalue(0) == 3
+mpforce $n east
+endif
+if mobvalue(0) == 4
+mpforce $n west
+endif
+endif
+~
+|
+V4 3208
+daemon demon khuzadaemon figure smoke~
+the khuzadaemon~
+A smoke-shrouded figure with red, glowing eyes stands in the hall.
+~
+A humanoid figure shrouded in roiling smoke sweeps terribly down the
+corridor, its glowing red eyes scanning for its prey.  
+~
+human~
+water scholar~
+AX 0 DFUZ E 0
+60 -9999 10000d1+1 0d0+0 0d0+0 bash~
+suction~
+0 0 0 0
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+mpkill $f
+mplag $n 1
+mpechoat $n You freeze in place, terrified by the visage of the khuzadaemon!
+mpechoaround $n $F freezes in place, terrified by the visage of the khuzadaemon!
+~
+>fight_prog 100~
+mpechoat $n The khuzadaemon\@s {W]]] TITANIC [[[{x suction {rsunders{x you!
+mpechoaround $n The khuzadaemon\@s {W]]] TITANIC [[[{x suction {rsunders{x $N!
+mpdamage $n 1 20 150
+~
+|
+V4 3209
+mouth mouthbot bot~
+a magic mouth~
+A magic mouth throws back its head and cackles with insane glee.
+~
+~
+human~
+water scholar~
+AB 0 DFLPZ N 0
+0 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>speech_prog p Zha arussiy sryma y\@gollon~
+mpechoat $n You feel a slight tingling.
+mpechoaround $n The air shimmers slightly, and $N fades slowly from view.
+mptransfer $n 3311
+mpat 3311 mpechoaround $n The air shimmers slightly, and $N fades slowly into view.
+ 
+mpat 3311 mpforce $n look
+~
+>rand_prog 1~
+mpvaluerand 0 1 4
+if mobvalue(0) == 1
+mppurge joop
+mpgoto 3303
+mpoload 3202
+endif
+if mobvalue(0) == 2
+mppurge joop
+mpgoto 3299
+mpoload 3202
+endif
+if mobvalue(0) == 3
+mppurge joop
+mpgoto 3281
+mpoload 3202
+endif
+if mobvalue(0) == 4
+mppurge joop
+mpgoto 3298
+mpoload 3202
+endif
+~
+|
+V4 3210
+confusebot bot~
+the confusebot~
+The confusebot echoes confusing messages.
+~
+~
+human~
+water scholar~
+A 0 DFLPZ N 0
+0 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 10~
+mpvalueset 0 0
+~
+>greet_prog 100~
+if mobvalue(0) > 0
+else
+mpecho The stone floor seems to shift slightly under your feet.
+mpecho You feel disoriented!
+endif
+mpvalueup 0
+~
+|
+V4 3211
+demonic transferbot~
+the demonic transferbot~
+The demonic transferbot wiggles its bottom toward you.
+~
+~
+human~
+water scholar~
+AB 0 DJLZ N 0
+0 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>speech_prog p Il ahkol mne mirugar dahg.~
+mpechoat $n You feel a slight tingling.
+mpechoaround $n The air shimmers slightly, and $N fades slowly from view.
+mptransfer $n 3261
+mpat 3261 mpforce $n look
+mpat 3261 mpechoaround $n The air shimmers slightly, and $N fades slowly into view.
+ 
+~
+>speech_prog p Il ahkol mne mirugar dahg~
+mpechoat $n You feel a slight tingling.
+mpechoaround $n The air shimmers slightly, and $N fades slowly from view.
+mptransfer $n 3261
+mpat 3261 mpforce $n look
+mpat 3261 mpechoaround $n The air shimmers slightly, and $N fades slowly into view.
+ 
+~
+|
+V4 3212
+devilish transferbot~
+the devilish transferbot~
+The devilish transferbot smirks at its own \@wisdom\@.
+~
+~
+human~
+water scholar~
+AB 0 DJLZ N 0
+0 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>speech_prog p Esharik bhel mrarja zhajil ci\@a~
+mpechoat $n You feel a slight tingling.
+mpechoaround $n The air shimmers slightly, and $N fades slowly from view.
+mptransfer $n 3268
+mpat 3268 mpforce $n look
+mpat 3268 mpechoaround $n The air shimmers slightly, and $N fades slowly into view.
+ 
+~
+|
+V4 3213
+blasphemous transferbot~
+the blasphemous transferbot~
+The blasphemous transferbot oggs your head with photon torpedos!  You are reeling.
+~
+~
+human~
+water scholar~
+AB 0 DJLZ N 0
+0 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>speech_prog p Eyilukk cyaki nophnach xeh shiryas.~
+mpechoat $n You feel a slight tingling.
+mpechoaround $n The air shimmers slightly, and $N fades slowly from view.
+mpat 3294 mpmload 3208
+mptransfer $n 3294
+mpat 3294 mpforce $n look
+mpat 3294 mpechoaround $n The air shimmers slightly, and $N fades slowly into vie
+w
+mpat 3294 mplag $n 2
+mpat 3294 mpechoat $n You freeze in place, terrified by the visage of the khuzada
+emon!
+mpat 3294 mechoaround $n $n freezes in place, terrified by the visage of the khuz
+adaemon!
+mpat 3294 mpforce demon mpfocus $n
+mpat 3294 mpforce demon mpkill $n
+~
+>speech_prog p Eyilukk cyaki nophnach xeh shiryas~
+mpechoat $n You feel a slight tingling.
+mpechoaround $n The air shimmers slightly, and $N fades slowly from view.
+mpat 3294 mpmload 3208
+mptransfer $n 3294
+mpat 3294 mpforce $n look
+mpat 3294 mpechoaround $n The air shimmers slightly, and $N fades slowly into vie
+w
+mpat 3294 mplag $n 2
+mpat 3294 mpechoat $n You freeze in place, terrified by the visage of the khuzada
+emon!
+mpat 3294 mechoaround $n $n freezes in place, terrified by the visage of the khuz
+adaemon!
+mpat 3294 mpforce demon mpfocus $n
+mpat 3294 mpforce demon mpkill $n
+~
+|
+V4 3214
+salamander ancient~
+the ancient salamander~
+An enormous reptile revels in the flames.
+~
+~
+lizard~
+water scholar~
+ABFX 0 DFJZ E 0
+65 60 20000d1+1 0d0+0 8d20+30 fire~
+flaming bite~
+-50 -50 -50 -50
+0 H
+26 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMVXc ABCDEFGHIJKQV A medium unknown
+>death_prog 100~
+mpmload 3214
+~
+|
+V4 3215
+transferbot flaming~
+the flaming transferbot~
+The flaming transferbot pretends to be a camel.
+~
+~
+human~
+water scholar~
+A 0 DFJLZ N 0
+0 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+mptransfer $n 3399
+~
+|
+V4 3216
+summoner mad~
+the mad summoner~
+The mad summoner chortles mischievously.
+~
+~
+human~
+water scholar~
+AB 0 DFJLZ N 0
+0 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+mpseewizi
+~
+>rand_prog 100~
+if mobvalue(0) > 0
+mpvaluedown 0
+endif
+~
+>greet_prog 100~
+if ispc($n)
+if mobvalue(0) < 1
+mpechoat $n Nyogthua has summoned you!
+mpat 3324 mpecho Nyogthua utters the words, \@gjwwai\@.
+mpat 3324 mpecho $N arrives suddenly.
+mptransfer $n 3324
+mpecho $N disappears suddenly.
+mpat 3324 mpforce $n look
+mpat 3324 mpforce nyogthua mpfocus $n
+mpvalueset 0 8
+mpat 3324 mpforce nyogthua mpvalueset 0 1
+mpat 3324 mpforce nyogthua mpvalueset 1 8
+mpat 3324 mpecho Nyogthua utters the words, \@grzzs\@.
+mpat 3324 mpcast 127 95 $n
+endif
+endif
+~
+|
+V4 3217
+nyogthua pale gaunt demonic figure demon~
+Nyogthua~
+A gaunt, pale demonic figure clad in black robes grins hungrily.
+~
+The greater demon Nyogthua is a tall, freakishly gaunt humanoid figure
+with a hairless, deathly pale body, delicate fingers, and short fangs
+protruding from its sneering mouth.  A black robe with violet lining is
+draped upon the demon\@s thin body.  
+~
+demon~
+water scholar~
+ABPX 0 DFJTZ E 0
+65 30 11000d1+1 0d0+0 5d5+5 cold~
+chill~
+-30 -30 -30 -10
+AFKN B
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 140 55
+ACHMV ABCDEFGHIJKP A medium unknown
+>fight_prog 100~
+mpfocus $r
+if ispc($f)
+mpvaluerand 4 1 4
+if mobvalue(4) == 1
+mpvaluerand 4 1 6
+if mobvalue(4) == 1
+mpcast 52 65 $f
+endif
+if mobvalue(4) == 2
+mpcast 306 65 $f
+endif
+if mobvalue(4) == 3
+mpcast 20 65 $f
+endif
+if mobvalue(4) == 4
+mpcast 75 65 $f
+endif
+if mobvalue(4) == 5
+mpcast 52 80 $f
+endif
+endif
+else
+mpcast 52 80
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+>death_prog 100~
+mpseewizi
+mpat 3323 mppurge summoner
+ 
+~
+>rand_prog 100~
+prog add rand_prog 100
+if mobvalue(1) == 7
+emote utters the words, \@noselacri\@.
+mpechoat $f You yell \@{cHelp! I\@m being attacked!{x\@
+mpat 3323 mpecho $F yells \@{cHelp! I\@m being attacked!{x\@
+mpat 3322 mpecho $F yells \@{cHelp! I\@m being attacked!{x\@
+mpcast 8 65 $f
+endif
+if mobvalue(1) == 6
+emote utters the words, \@judifgz\@.
+mpechoat $f You yell \@{cHelp! I\@m being attacked!{x\@
+mpat 3323 mpecho $F yells \@{cHelp! I\@m being attacked!{x\@
+mpat 3322 mpecho $F yells \@{cHelp! I\@m being attacked!{x\@
+mpcast 39 65 $f
+endif
+if mobvalue(1) == 5
+emote utters the words, \@unsoyzzbrzwunsoh\@.
+mpechoat $f You yell \@{cHelp! I\@m being attacked!{x\@
+mpat 3323 mpecho $F yells \@{cHelp! I\@m being attacked!{x\@
+mpat 3322 mpecho $F yells \@{cHelp! I\@m being attacked!{x\@
+mpcast 58 65 $f
+endif
+if mobvalue(1) == 4
+emote utters the words, \@sraojz\@.
+mpechoat $f You yell \@{cHelp! I\@m being attacked!{x\@
+mpat 3323 mpecho $F yells \@{cHelp! I\@m being attacked!{x\@
+mpat 3322 mpecho $F yells \@{cHelp! I\@m being attacked!{x\@
+mpcast 104 65 $f
+endif
+if mobvalue(1) == 3
+emote utters the words, \@sausabru\@.
+mpechoat $f You yell \@{cHelp! I\@m being attacked!{x\@
+mpat 3323 mpecho $F yells \@{cHelp! I\@m being attacked!{x\@
+mpat 3322 mpecho $F yells \@{cHelp! I\@m being attacked!{x\@
+mpcast 105 65 $f
+endif
+if mobvalue(1) == 1
+mpechoat $f You yell \@{cHelp! I\@m being attacked!{x\@
+mpat 3323 mpecho $F yells \@{cHelp! I\@m being attacked!{x\@
+mpat 3322 mpecho $F yells \@{cHelp! I\@m being attacked!{x\@
+mpkill $f
+mpunfocus
+endif
+if mobvalue(1) > 0
+mpvaluedown 1
+endif
+~
+|
+V4 3218
+atthagth demonic demon scorpion black gigantic~
+Atthagth~
+A giant demonic scorpion with a deadly black stinger clamors about.
+~
+A gigantic scorpion-like monstrosity, the greater demon Atthagth exhibits
+enormous sharp claws and a deadly black stinger.  Moving with unnatural
+quickness, the demon scuttles about the cave area. 
+~
+demon~
+water scholar~
+AFPTX 0 DFJZ E 0
+70 300 15000d1+1 0d0+0 12d12+20 pierce~
+sting~
+-35 -35 -35 -35
+FHK AB
+26 0 0 33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+ACHMV ABCDEFGHIJKP A medium unknown
+>load_prog 100~
+mpseewizi
+~
+>death_prog 100~
+mpecho Atthagth gives forth a keening wail, and collapses to the ground!
+if isoverlimit(3204)
+else
+mpecho The sting of Atthagth is hewn from its body!
+mpoload 3204 in room
+endif
+~
+>fight_prog 15~
+mpecho Atthagth gives forth a high-pitched chittering!
+mpecho The offspring of Atthagth has arrived.
+mpmload 3219
+ 
+~
+>fight_prog 20~
+mpfocus $r
+if ispc($f)
+mpechoat $f Atthagth lowers its deadly black stinger and strikes you!
+mpechoaround $f Atthagth lowers its deadly black stinger and strikes $F!
+mpcast 105 70 $f
+mpcast 143 45 $f
+endif
+~
+|
+V4 3219
+scorpion offspring black man-sized~
+the offspring of Atthagth~
+A man-sized demonic scorpion waves its black claws about furiously.
+~
+A man-sized, black demonic scorpion waves it claws about in the air, and
+chitters madly as it rushes about.  
+~
+demon~
+water scholar~
+AFX 0 0 E 0
+52 25 18d200+920 0d0+0 5d12+2 pierce~
+sting~
+-20 -20 -20 -6
+F B
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACHMV ABCDEFGHIJKP A medium unknown
+>fight_prog 21~
+mpfocus $r
+if ispc($f)
+mpechoat $f The offspring of Atthagth stings you!
+mpechoaround $f The offspring of Atthagth stings $F!
+mpcast 105 50 $f
+endif
+~
+|
+V4 3220
+junkbot~
+the junkbot~
+The junkbot says \#There\@s something alive in here!\#
+~
+~
+human~
+water scholar~
+AB 0 LP N 0
+0 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if mobvalue(0) == 0
+mpvalueset 0 7
+endif
+if mobvalue(0) > 0
+mpvaluedown 0
+endif
+if mobvalue(0) == 1
+get all
+mpjunk all
+endif
+~
+|
+V4 3221
+gorgon~
+the gorgon~
+A demonic stone statue beats you up!
+~
+~
+human~
+water scholar~
+AB 0 DFJLZ N 0
+0 0 25000d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 L
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+mpseewizi
+~
+>greet_prog 100~
+mpechoat $n The statue\@s head turns to face you.
+mpechoaround $n The statue\@s head turns to face $N.
+mpcast 151 35
+~
+|
+V4 3222
+loader mistloader~
+the mistloader~
+The mistloader nudges itself to stay awake.
+~
+~
+human~
+water scholar~
+AB 0 DFJLPZ N 0
+0 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 35~
+mpfocus misty
+if position($f) == 7
+else
+mppurge misty
+mppurge misty
+mppurge misty
+endif
+~
+|
+V4 3223
+igray\@iitu igray iitu slimy being glistening gargantuan~
+Igray\@iitu~
+A hulking being with glistening, slimy skin leers malevolently about.
+~
+Igray\@iitu is a hulking being standing nearly 15\@ tall.  With glistening,
+slimy skin and a face resembling a cross between a frog and a fish,
+Igray\@iitu\@s visage inspires terror in all who behold it.  
+~
+demon~
+water scholar~
+AFPTX 0 DFJVZc E 0
+90 1000 32000d1+1 0d0+0 80d3+10 bash~
+crush~
+-300 -300 -300 -300
+AFHK ABIJR
+26 0 0 33 33 33 33 33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 100 -1
+ACHMV ABCDEFGHIJKP A huge unknown
+>load_prog 100~
+mpseewizi
+~
+|
+V4 3224
+demon statue large~
+the statue~
+A large statue of a demon with both palms extended stands on the dais.
+~
+The statue is carved to resemble a demonic humanoid with scaled skin,
+bulging muscles, clawed hands, and wicket horns protruding from its
+forehead.  The statue stands with both palms extended.  A curious notch is
+visible in each palm; one carved perfectly round, as if to receive some sort
+of disc, the other much larger and indistinct, as if to receive an object
+larger than the palm itself.  
+~
+human~
+water scholar~
+ABDX 0 0 E 0
+90 500 20000d1+1 0d0+0 5d1+1 pierce~
+scratch~
+0 0 0 0
+0 ABCD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p put sting in hand~
+if iscarrying($n) == 3204
+if iswielding($n) == 3204
+mpechoat $n Not while you\@re wielding it.
+else
+mpforce $n give stinger statue
+endif
+endif
+~
+>verb_prog p put sting hand~
+if iscarrying($n) == 3204
+if iswielding($n) == 3204
+mpechoat $n Not while you\@re wielding it.
+else
+mpforce $n give stinger statue
+endif
+endif
+~
+>verb_prog p put sting palm~
+if iscarrying($n) == 3204
+if iswielding($n) == 3204
+mpechoat $n Not while you\@re wielding it.
+else
+mpforce $n give stinger statue
+endif
+endif
+~
+>verb_prog p put sting in palm~
+if iscarrying($n) == 3204
+if iswielding($n) == 3204
+mpechoat $n Not while you\@re wielding it.
+else
+mpforce $n give stinger statue
+endif
+endif
+~
+>verb_prog p put stinger hand~
+if iscarrying($n) == 3204
+if iswielding($n) == 3204
+mpechoat $n Not while you\@re wielding it.
+else
+mpforce $n give stinger statue
+endif
+endif
+~
+>verb_prog p put stinger in hand~
+if iscarrying($n) == 3204
+if iswielding($n) == 3204
+mpechoat $n Not while you\@re wielding it.
+else
+mpforce $n give stinger statue
+endif
+endif
+~
+>verb_prog p put stinger palm~
+if iscarrying($n) == 3204
+if iswielding($n) == 3204
+mpechoat $n Not while you\@re wielding it.
+else
+mpforce $n give stinger statue
+endif
+endif
+~
+>verb_prog p put stinger in palm~
+if iscarrying($n) == 3204
+if iswielding($n) == 3204
+mpechoat $n Not while you\@re wielding it.
+else
+mpforce $n give stinger statue
+endif
+endif
+~
+>verb_prog p put amulet hand~
+if iscarrying($n) == 3203
+if iswielding($n) == 3203
+mpechoat $n Not while you\@re wearing it.
+else
+mpforce $n give amulet statue
+endif
+endif
+~
+>verb_prog p put amulet in hand~
+if iscarrying($n) == 3203
+if iswielding($n) == 3203
+mpechoat $n Not while you\@re wearing it.
+else
+mpforce $n give amulet statue
+endif
+endif
+~
+>verb_prog p put amulet palm~
+if iscarrying($n) == 3203
+if iswielding($n) == 3203
+mpechoat $n Not while you\@re wearing it.
+else
+mpforce $n give amulet statue
+endif
+endif
+~
+>verb_prog p put amulet in palm~
+if iscarrying($n) == 3203
+if iswielding($n) == 3203
+mpechoat $n Not while you\@re wearing it.
+else
+mpforce $n give amulet statue
+endif
+endif
+~
+>give_prog amulet metal red runed~
+mpecho With a low grinding sound the statue\@s hand closes over the runed amulet.
+mpmload 3225
+mppurge self
+~
+>give_prog sting stinger atthagth black enormous~
+mpecho With a low grinding sound the statue\@s hand closes over the stinger of Atthagth.
+mpmload 3225
+mppurge self
+~
+|
+V4 3225
+demon statue large~
+the statue~
+A large statue of a demon with one palm extended stands on the dais.
+~
+The statue is carved to resemble a demonic humanoid with scaled skin,
+bulging muscles, clawed hands, and wicked horns protruding from its
+forehead.  The statue stands with one palm extended, and one hand clenched
+into a fist.  
+~
+human~
+water scholar~
+ABDX 0 0 E 0
+90 500 20000d1+1 0d0+0 85d1+1 pierce~
+scratch~
+0 0 0 0
+0 ABCD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>give_prog sting stinger atthagth black enormous~
+mpecho With a low grinding sound the statue\@s hand closes over the stinger of Atthagth.
+mpmload 3226
+mpoload 3213
+mpecho A portal of purest darkness opens before you!
+mppurge self
+~
+>give_prog amulet metal red runed~
+mpecho With a low grinding sound the statue\@s hand closes over the runed amulet.
+mpmload 3226
+mpoload 3213
+mpecho A portal of purest darkness opens before you!
+mppurge self
+~
+|
+V4 3226
+demon statue large~
+the statue~
+A large statue of a demon with two extended, clenched fists stands on the dais.
+~
+The statue is carved to resemble a demonic humanoid with scaled skin,
+bulging muscles, clawed hands, and wicked horns protruding from its
+forehead.  The statue stands with two clenched fists extended.  
+~
+human~
+water scholar~
+ABDX 0 0 E 0
+90 500 20000d1+1 0d0+0 85d1+1 pierce~
+scratch~
+0 0 0 0
+0 ABCD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if mobvalue(0) < 1
+mpvalueset 0 250
+endif
+mpvaluedown 0
+if mobvalue(0) == 1
+mpecho The statue\@s clenched fists slowly release.
+mpmload 3224
+mppurge self
+endif
+~
+|
+V4 3227
+sentinel ancient~
+the sentinel of the Ancient Ones~
+The sentinel of the Ancient Ones guards the hallway.
+~
+A massive being with a 60\@ long body surges powerfully about the vast
+chamber.  Its bizarre alien form has no discernable head, but rather a ring
+of antennae about the front quarter of its vaguely serpentine length.  The
+servant of the Ancient Ones has two longer limbs that end in slashing tips,
+which it wields with deadly efficiency.  
+~
+human~
+water scholar~
+ABFPTX 0 DJZ N 0
+70 500 28000d1+100 0d0+0 12d15+50 slash~
+slash~
+-60 -60 -60 -60
+AEK ABJS
+26 0 0 0 0 0 33 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 3228
+booger wallbot bot~
+the stonewallechobot~
+The stone wall echo bot has no clever long desc. Sorry.
+~
+~
+human~
+water scholar~
+A 0 DJLZ N 0
+0 0 5d5+5 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>exit_prog 100~
+mpechoat $n A stone panel slides shut behind you, sealing off the small corridor.
+~
+|
+V4 3229
+booger expressbot bot~
+the booger expressbot~
+A gigantic statue made of boogers stands here.
+~
+~
+human~
+water scholar~
+AB 0 DJLZ N 0
+0 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>speech_prog p kallshic nashmelideq hrikkar zha.~
+if isghost($n)
+mpechoat $n Your ghostly form cannot enter.
+else
+mpechoat $n You feel a slight tingling.
+mpechoaround $n The air shimmers slightly, and $N fades slowly from view.
+mptransfer $n 3201
+mpat 3201 mpforce $n look
+mpat 3201 mpechoaround $n The air shimmers slightly, and $N fades slowly into view
+endif
+~
+>speech_prog p kallshic nashmelideq hrikkar zha~
+if isghost($n)
+mpechoat $n Your ghostly form cannot enter.
+else
+mpechoat $n You feel a slight tingling.
+mpechoaround $n The air shimmers slightly, and $N fades slowly from view.
+mptransfer $n 3201
+mpat 3201 mpforce $n look
+mpat 3201 mpechoaround $n The air shimmers slightly, and $N fades slowly into view
+endif
+~
+|
+V4 3230
+treasureloader~
+a treasureloader~
+Treasureloader.
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+52 26 35d107+1167 52d10+100 6d9+26 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>load_prog 100~
+mpoload 3234 in chest
+mpoload 3232 in room
+~
+|
+V4 3300
+avatar demon demonic black hulking~
+the demonic avatar~
+A hulking black demon flexes clawed talons and glares about angrily.
+~
+A hulking, 9\@ demon with skin of pure black flexes its gigantic bat-like
+wings, and slashes its clawed talons through the air in rage.  It glares
+about itself, searching for its victim.  
+~
+demon~
+water scholar~
+APTX 0 DFJOTZ E 0
+65 60 6000d1+1 0d0+0 5d10+25 defilement~
+defilement~
+-30 -30 -30 -10
+CEFHKN BK
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+ACHMV ABCDEFGHIJKP A medium unknown
+>fight_prog 100~
+get totem
+get totem corpse
+mpvaluerand 2 1 18
+if mobvalue(2) == 1
+mpvaluerand 2 20 25
+if mobvalue(2) == 20
+yell The vengeance of Xiganath is upon you, $f!
+endif
+if mobvalue(2) == 21
+yell You will pay for desecrating our unholy shrine!
+endif
+if mobvalue(2) == 22
+yell Feel the wrath of Xiganath!
+endif
+if mobvalue(2) == 23
+yell I will rend your worthless mortal flesh, defiler!
+endif
+if mobvalue(2) == 24
+yell Return the Totem, or pay with your very soul!
+endif
+if mobvalue(2) == 25
+yell Now you will suffer for your blasphemy!
+endif
+endif
+if mobvalue(2) == 2
+mpcast 2 51 $f
+endif
+if mobvalue(2) == 3
+mpcast 8 60 $f
+endif
+~
+>all_death_prog 100~
+get totem corpse
+get totem
+if valname($t) == $f
+nightlaugh
+tell $f You should not have tampered with the Lord of Demons.
+mpecho A portal of darkness opens in midair, and the demonic avatar steps through.
+mppurge self
+endif
+~
+>rand_prog 100~
+get totem
+get totem corpse
+if isfocused($i)
+else
+mppurge self
+endif
+if mobvalue(3) == 1
+mpgoto $f
+mpecho A dark portal forms in midair, and a terrible demon steps forth!
+mpvalueset 3 2
+mpvaluerand 0 1 5
+if mobvalue(0) == 1
+say $F, you will pay for violating the shrine of the demon lord Xiganath!
+endif
+if mobvalue(0) == 2
+say I have come to reclaim the Totem of Xiganath! You will suffer for your theft!
+endif
+if mobvalue(0) == 3
+say Your fate is sealed, $F! Your life is forfeit for stealing the Totem!
+endif
+if mobvalue(0) == 4
+say Return the Totem, or suffer at the hands of Lord Xiganath!
+endif
+if mobvalue(0) == 5
+say You have desecrated the shrine of Xiganath, you must pay with your life!
+endif
+mpkill $f
+mpechoat $f The demonic avatar sends you sprawling with a powerful bash!
+mpechoaround $f The demonic avatar sends $F sprawling with a powerful bash!
+mplag $f 2
+endif
+if mobvalue(3) == 2
+if iscarrying($i) == 3221
+nightlaugh
+mpecho A dark portal opens in midair, and the demonic avatar steps through.
+mppurge self
+endif
+if mobvalue(1) == 0
+mpvalueset 1 4
+endif
+if mobvalue(1) > 1
+mpvaluedown 1
+endif
+if mobvalue(1) == 1
+mpvaluedown 1
+mpecho A dark portal opens in midair, and the demonic avatar steps through.
+mpgoto $f
+mpecho A dark portal forms in midair, and the demonic avatar steps through!
+mpkill $f
+mpechoat $f The demonic avatar sends you sprawling with a powerful bash!
+mpechoaround $f The demonic avatar sends $F sprawling with a powerful bash!
+mplag $f 2
+get totem
+get totem corpse
+endif
+endif
+~
+|
+V4 3301
+writer~
+The Demonic Avatar of Xiganath~
+The demon writer writes demonic notes.
+~
+~
+demon~
+water scholar~
+AB 0 DFJLZ N 0
+60 0 5d5+5 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 B
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACHMV ABCDEFGHIJKP A medium unknown
+>rand_prog 100~
+if isfocused($i)
+else
+mppurge self
+endif
+if mobvalue(3) == 1
+mpvaluerand 0 1 16
+if mobvalue(0) == 1
+note to $F
+note subj Your blasphemy
+note + The demon lord Xiganath looks upon your possession of his Totem
+note + as an unspeakably vile theft. You will pay with your life if you
+note + do not return that which you have stolen.
+note post
+endif
+if mobvalue(0) == 2
+note to $F
+note subj Foolish mortal!
+note + You have not been found worthy to bear the Totem of Xiganath. Your
+note + life will be forfeit if you do not return the unholy sigil at once.
+note post
+endif
+if mobvalue(0) == 3
+note to $F
+note subj You tamper with that which you do not understand
+note + Pathetic mortal!
+note + Did you think that the Dark Lord Xiganath would forgive such 
+note + blasphemy? The Totem must be returned at once, or your very soul
+note + will be the price.
+note post
+endif
+if mobvalue(0) == 4
+note to $F
+note subj The hunt begins
+note + The hounds of Xiganath are unleashed. Unless the Totem is returned
+note + swiftly, your blood will nourish the soil of Avendar.
+endif
+if mobvalue(0) == 5
+note to $F
+note subj You have incurred the wrath of a God
+note + The anger of Xiganath is aroused, and you, pathetic mortal, are its
+note + focus. You are commanded to return the Totem of Xiganath at once.
+note post
+endif
+if mobvalue(0) == 6
+note to $F
+note subj Your soul is forfeit
+note + The demons of Xiganath prepare even now to reclaim their lord\@s
+note + Totem. Your weak mortal flesh will be sundered in ways you cannot
+note + imagine if the symbol is not returned swiftly.
+note post
+endif
+if mobvalue(0) == 7
+note to $F
+note subj You will pay with your very soul
+note + The penalty for defiling the Shrine of Xiganath is agonizing death.
+note + Your suffering will know no bounds. Your torture will be eternal.
+note + So long as you hold the Totem of Xiganath, you will be hunted to
+note + the limits of your mortal sphere.
+note post
+endif
+if mobvalue(0) == 8
+note to $F
+note subj Your screams will echo throughout the netherhells
+note +  A pit of acid has been reserved for your soul\@s eternal torment.
+note + Your suffering will be limitless unless the Totem of Xiganath is
+note + returned immediately.
+note post
+endif
+if mobvalue(0) == 9
+note to $F
+note subj Wretched mortal, contemplate your doom
+note + You have violated the unholy sanctum of Xiganath. Fear for your life,
+note + for the inhabitants of this pale globe offer you no salvation. Turn over
+note + that which your filthy mortal hands have taken, and perhaps your miserable
+note + life will be spared.
+note post
+endif
+if mobvalue(0) == 10
+note to $F
+note subj You shall pay for your impudence
+note + You have transgressed against the Dark Father, and will be made to pay
+note + for these crimes. A thousand times your wildest imaginings are the 
+note + legions of Xiganath, but there shall be but one tomb for your putrid
+note + mortal flesh unless you return the Totem which is His.
+note post
+endif
+if mobvalue(0) == 11
+note to $F
+note subj Your fate is sealed
+note + We know the depths of your soul. We know the darkness of your mind.
+note + We know the spark that drives your heart. And now, We come for you.
+note + Return the Totem which is ours by right, or watch as your wretched life
+note + is snuffed out.
+note post
+endif
+if mobvalue(0) == 12
+note to $F
+note subj We watch you, even now
+note + Dismemberment is never a pleasant form of death. Return the Totem of 
+note + Xiganath, or perish in the death of a thousand screams.
+note post
+endif
+if mobvalue(0) == 13
+note to $F
+note subj The Eye of Xiganath watches you
+note + Do you smell the stench of death? Do you hearken to the cries of your
+note + own fear? Do your trembling hands betray the weak mind that guides your 
+note + worthless limbs? Give over the Totem which you have taken, or be destroyed!
+note post
+endif
+if mobvalue(0) == 14
+note to $F
+note subj Your death is nigh
+note + Perhaps in your folly you believed the Eyes and Hands of Xiganath
+note + to be vanished from Avendar. Perhaps you thought yourself safe in taking
+note + what is His, in attempting to use His name and His power for your own.
+note + The path of your thought is the path of a fool. Give us the Totem which
+note + you have in your hubris stolen, and perhaps your inevitable death will
+note + be averted.
+note post
+endif
+if mobvalue(0) == 15
+note to $F
+note subj Darkness will take your soul!
+note + Do you know what it is to live in eternal night? Never to know the
+note + warmth of life, the light of truth, or even the sound of your own 
+note + breath? If you do not, be at ease. Father Xiganath brings all these
+note + things to those who take that which is his. Be at ease - We are coming.
+note post
+endif
+if mobvalue(0) == 16
+note to $F
+note subj Fear and tremble, wretched one!
+note + The time of reckoning is drawn nigh. Word of your theft has reached
+note + the Demon Lord Xiganath. Now, in the cold of night, we come for you,
+note + who have dared to take that which is the property of the Dark Father.
+note + Return the Totem while you still draw breath, or perish the final death!
+note post
+endif
+endif
+mppurge self
+~
+|
+V4 3302
+runebot~
+the arcane runes~
+The runebot.
+~
+~
+human~
+water scholar~
+ADLX 0 DFJLPZ N 0
+60 0 10000d1+1 10000d1+1 0d0+0 none~
+hit~
+0 0 0 0
+0 ABCDb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p read runes~
+mpforce $n look runes
+~
+>verb_prog p look at runes~
+mpforce $n look runes
+~
+>verb_prog p examine runes~
+mpforce $n look runes
+~
+>trigger_prog 100~
+if mobvalue(1) == 709
+ if skill709($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 678
+ if skill678($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 682
+ if skill682($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 703
+ if skill703($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 707
+ if skill707($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 681
+ if skill681($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 710
+ if skill710($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 680
+ if skill680($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 706
+ if skill706($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 673
+ if skill673($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 679
+ if skill679($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) ==   8
+ if skill8($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 677
+ if skill677($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 674
+ if skill674($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 397
+ if skill397($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 396
+ if skill396($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 395
+ if skill395($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 394
+ if skill394($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 670
+ if skill670($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 666
+ if skill666($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 657
+ if skill657($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 660
+ if skill660($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 400
+ if skill400($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 662
+ if skill662($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) ==  98
+ if skill98($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 304
+ if skill304($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 303
+ if skill303($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 313
+ if skill313($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 310
+ if skill310($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) ==  75
+ if skill75($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) ==  52
+ if skill52($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 139
+ if skill139($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 308
+ if skill308($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) ==  72
+ if skill72($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 314
+ if skill314($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 312
+ if skill312($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 135
+ if skill135($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) ==   6
+ if skill6($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 404
+ if skill404($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 410
+ if skill410($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 401
+ if skill401($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 205
+ if skill205($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 408
+ if skill408($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 402
+ if skill402($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 397
+ if skill397($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 565
+ if skill565($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 400
+ if skill400($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+if mobvalue(1) == 395
+ if skill395($n) < 95
+  mpvalueset 3 1
+  break
+ endif
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+>data_prog vnums4~
+11
+6
+404
+410
+401
+205
+408
+402
+397
+565
+400
+395
+~
+>data_prog spells4~
+11
+disintegration
+blazing inferno
+implosion
+rain of fire
+beam of fire
+delayed blast fireball
+incineration
+dispersion
+ethereal blaze
+consume
+wall of fire
+~
+>data_prog vnums3~
+13
+98
+304
+303
+313
+310
+75
+52
+139
+308
+72
+314
+312
+135
+~
+>data_prog spells3~
+13
+nexus
+possession
+voidwalk
+greater demon summon
+suppress
+harm
+drain
+power word fear
+cloak of the void
+gate
+banish
+lesser demon summon
+summon
+~
+>data_prog vnums2~
+10
+397
+396
+395
+394
+670
+666
+657
+660
+400
+662
+~
+>data_prog spells2~
+10
+dispersion
+baptism of fire
+wall of fire
+rune of fire
+blaze
+nova
+firebolt
+ward of fire
+consume
+fury of the inferno
+~
+>data_prog vnums1~
+14
+709
+678
+682
+703
+707
+681
+710
+680
+706
+673
+679
+8
+677
+674
+~
+>data_prog spells1~
+14
+hunger of grmlarloth
+blight of adduthala
+demonic possession
+jaws of idcizon
+caress of pricina
+globe of darkness
+defilement of logor
+embrace of isetaton
+blade of vershak
+pestilence
+demonic howl
+blindness
+siphon mana
+phase door
+~
+>verb_prog p look runes~
+if compstr(2) == runes
+ mpvalueset 0 0
+ mpvalueset 1 0
+ mpvalueset 2 0
+ mpvalueset 3 0
+ mpvalueset 4 0
+ if snaffected($n) == 644
+  mpechoat $n You reel as your vertigo overwhelms you.
+  break
+ endif
+ if isbitset($n) == 3302
+ or isbitset($n) == 3305
+  mpechoat $n The bizarre runes seem to crowd each other for attention, twisting and writhing in your mind. It is all you can do to pull your gaze away, lest insanity overtake you.
+  mpechoaround $n $N gazes dumbly at the mystic runes, $s body shaking slightly, before tearing $s gaze away.
+  mpaddaffect $n 644 90 2 27 0 0
+  break
+ endif
+ if inhouse($n) == SHUNNED
+  if skill596($n) > 0
+   if skill596($n) < 95
+    mpset skill $n \@mantle of fear\@ 100
+    mpechoat $n You stare at the mystic runes, and feel a deep understanding of the spell \@mantle of fear\@ seep into your consciousness.
+    mpechoat $n The runes soon become confused and invasive, and you quickly avert your eyes.
+    mpechoaround $n $N gazes at the mystic runes, a gleam of understanding lighting $s eyes, before quickly averting $s gaze.
+    mpbitset $n 3302
+    mpaddaffect $n 479 60 3000 27 3302 0
+    break
+   endif
+  else
+   if skill598($n) < 95
+    mpset skill $n \@shroud of Nyogthua\@ 100
+    mpechoat $n You stare at the mystic runes, and feel a deep understanding of the spell \@shroud of Nyogthua\@ seep into your consciousness.
+    mpechoat $n The runes soon become confused and invasive, and you quickly avert your eyes.
+    mpechoaround $n $N gazes at the mystic runes, a gleam of understanding lighting $s eyes, before quickly averting $s gaze.
+    mpbitset $n 3302
+    mpaddaffect $n 479 60 3000 27 3302 0
+    break
+   endif
+  endif
+ endif
+ mpvalueset 0 0
+ if class($n) == 8
+  mpvalueset 0 1
+ endif
+ if class($n) == 11
+  mpvalueset 0 2
+ endif
+ if class($n) == 2
+  mpvalueset 0 3
+ endif
+ if class($n) == 5
+  mpvalueset 0 4
+ endif
+ if mobvalue(0) > 0
+  mpsetdata vnums$0
+  mpvalueset 1 $d
+  mpvaluerand 2 1 $1
+  loop 1 to $2
+   mpnextdata
+  endloop
+  mpvalueset 1 $d
+  mpvalueset 3 0
+  mptrigger $n
+  mpsetdata spells$0
+  loop 1 to $2
+   mpnextdata
+  endloop
+  if mobvalue(3) == 1    
+   mpset skill $n \@$d\@ 100
+   mpechoat $n You stare at the mystic runes, and feel a deep understanding of the spell \@$d\@ seep into your consciousness.
+   mpechoaround $n $N gazes at the mystic runes, a gleam of understanding lighting $s eyes, before quickly averting $s gaze.
+   mpbitset $n 3302 1
+   mpaddaffect $n 479 60 3000 27 3302 0
+   if intelligence($n) < 19
+    mpvalueset 5 81
+    mpvalueset 6 41
+    mpvalueset 7 16
+   else
+    if intelligence($n) < 21
+     mpvalueset 5 51
+     mpvalueset 6 21
+     mpvalueset 7 6
+    else
+     mpvalueset 5 36
+     mpvalueset 6 11
+     mpvalueset 7 4
+    endif
+   endif
+   mpvaluerand 8 1 100
+   if isbitset($n) == 3303
+    if isbitset($n) == 3304
+     mpbitset $n 3305 1
+     if mobvalue(8) < $5
+      mpechoat $n The runes suddenly become confused and invasive, and you feel your sanity begin to crumble before you can avert your eyes!
+      mpget char $n wis 4
+      mpvaluedown 4 1
+      mpset char $n wis $4
+      mpaddaffect $n 644 90 10 27 0 0
+      break
+     endif
+    else
+     mpbitset $n 3304 1
+     if mobvalue(8) < $6
+      mpechoat $n The runes suddenly become confused and invasive, and you feel your sanity begin to crumble before you can avert your eyes!
+      mpget char $n wis 4
+      mpvaluedown 4 1
+      mpset char $n wis $4
+      mpaddaffect $n 644 90 10 27 0 0
+      break
+     endif
+    endif
+   else
+    mpbitset $n 3303 1
+    if mobvalue(8) < $7
+     mpechoat $n The runes suddenly become confused and invasive, and you feel your sanity begin to crumble before you can avert your eyes!
+     mpget char $n wis 4
+     mpvaluedown 4 1
+     mpset char $n wis $4
+     mpaddaffect $n 644 90 10 27 0 0
+     break
+    endif
+   endif
+   mpechoat $n The runes soon become confused and invasive, and you quickly avert your eyes.
+  else
+   mpechoat $n You glance over some of the runes, which detail the spell \@$d\@, however you have little to learn on that subject.
+  endif
+  break
+ endif
+ if rand(2)
+  mpechoat $n The bizarre runes seem to crowd each other for attention, twisting and writhing in your mind. You find your sanity crumbling as you wrench your gaze away!
+  mpechoaround $n $N gazes dumbly at the mystic runes, $s body shaking slightly, before tearing $s gaze away.
+  mpget char $n wis 4
+  mpvaluedown 4 1
+  mpset char $n wis $4
+  mpaddaffect $n 644 90 10 27 0 0
+ else
+  mpechoat $n The bizarre runes seem to crowd each other for attention, twisting and writhing in your mind. It is all you can do to pull your gaze away, lest insanity overtake you.
+  mpechoaround $n $N gazes dumbly at the mystic runes, $s body shaking slightly, before tearing $s gaze away.
+  mpaddaffect $n 644 90 2 27 0 0
+ endif
+else
+ mpinterpret $n $x
+endif
+~
+|
+V4 3303
+symbolbot symbolbot03 symbolbot3~
+the symbolbot3~
+The symbolbot3 is here, handing out a-mazin\@ mazes.
+~
+~
+human~
+water scholar~
+ADL 0 DFJLZ N 0
+52 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p study~
+endif
+if compstr(2) == maze
+or compstr(2) == isetaton
+or compstr(2) == symbol
+or compstr(2) == Kyalee
+or compstr(2) == mystical
+or compstr(2) == burned
+  if skill1250($n) > 0
+    if hassymbol($n) == 3
+      mpechoat $n That symbol is one with which you are already familiar.
+    else
+      mpforce $n look symbolvision
+      mpaddsymbol $n 3
+      mplag $n 4
+      break
+    endif
+  else
+    mpechoat $n You lack the knowledge to fully comprehend this symbol.
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+|
+V4 3322
+form misty~
+a misty form~
+A misty form screams malevolently and swirls about the mists.
+~
+A misty form, vaguely humanoid in the upper portions but fading into
+nothingness where the legs should be, swirls malevolently through the mists,
+screeching its fury.  
+~
+human~
+water scholar~
+AFPX 0 DFJUZ E 0
+53 70 20d220+1100 0d0+0 5d13+27 slash~
+claw~
+-30 -30 -30 -30
+0 ABF
+26 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 3323
+symbolbot symbolbot4~
+Symbolbot4~
+A symbolbot prepares to blow your freeekeeeng mind, y0.
+~
+~
+human~
+water scholar~
+ADL 0 DL N 0
+0 0 23d23+23 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>load_prog 100~
+mpseewizi
+~
+>verb_prog p study~
+if mobhere(3217)
+  mpechoat $n You can\@t study anything with Nyogthua here!
+  break
+endif
+if compstr(2) == symbol
+or compstr(2) == sigil
+or compstr(2) == nyogthua
+or compstr(2) == blasphemous
+  if skill1250($n) > 0
+    if hassymbol($n) == 4
+      mpechoat $n That symbol is one with which you are already familiar.
+    else
+      mpforce $n look symbolvision
+      mpaddsymbol $n 4
+      mplag $n 4
+      break
+    endif
+  else
+    mpechoat $n You lack the knowledge to fully comprehend this symbol.
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+|
+V4 3324
+sapper~
+sapper~
+A sapper is here, sap sap sap sap.
+~
+~
+human~
+water scholar~
+AB 0 DFLe N 0
+60 0 100d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if rand(15)
+ mproomcmd mptrigger all
+endif
+~
+>trigger_prog 100~
+if isimmort($n)
+or isghost($n)
+else
+  if ispc($n)
+    if level($n) > 10
+      mpget char $n level 3
+      if rand(5)
+        if israce($n) == SHUDDENI
+        else
+          mpechoat $n A chill sweeps over you.
+          if rand(50)
+          or snaffected($n) == 8
+            mpgrant $n 0 -25 -5
+          else
+            mpcast 8 $3 $n
+          endif
+        endif
+      endif
+      mpget char $n hp 1
+      mpget char $n curhp 2
+      mpmath 4 $3 \\ 2
+      mpdamtype $n 4 3 12 9
+      mpget char $n curhp 6
+      mpmath 5 $2 - $6
+      mpdamfrom $n $5 \@sapping emptiness\@ The darkness
+    endif
+  endif
+endif
+~
+|
+V4 3325
+sapper saploader~
+saploader~
+Salopoder.
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+55 0 100d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+loop 3350 to 3368
+mpgoto $v1
+if mobhere(3324)
+else
+mpmload 3324
+endif
+endloop
+~
+|
+V4 3326
+exxxp exp bot xig~
+the xig exp bot~
+Xig exp bot: eXXXtreme eXXXp action.
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+60 0 100d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+if ispc($n)
+  if isbitset($n) == 3337
+  else
+    mpbitset $n 3337 1
+    if level($n) < 51
+      mpechoat $n {gMaster Yerey tells you \@Excellently done! Your guildmaster will hear of this!\@{X
+      mpechoat $n {WYou are awarded 28,000 experience for reaching the Altar of Xiganath!{X
+      mpxp $n 28000
+    endif
+  endif
+endif
+~
+|
+V4 3327
+nightfall bot mob_3327~
+the nightfall bot~
+The nightfall bot shows the way to aspiring void scholars.
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+52 26 35d107+1167 52d10+100 6d9+26 none~
+~
+-22 -22 -22 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>sub_prog check_can_choose_path~
+mpvalueset 9 0
+if isnpc($n)
+or level($n) < 30
+or not majorsphere($n) == void
+or not minorsphere($n) == void
+or not chosenpath($n) == none
+or not isevil($n)
+  break
+endif
+mpvalueset 9 1
+~
+>verb_prog p south~
+mpcallsub check_can_choose_path $n
+if value(9) != 1
+  mpnextinterp
+  break
+endif
+mpfocus $n
+mpechoat $n You twist yourself through the Veil.
+mpechoaround $n $N seems to shift and warp, then somehow disappears from sight.
+mptransfer $n 3371
+mpat $n mpforce $n look
+~
+>greet_prog 100~
+mpcallsub check_can_choose_path $n
+if value(9) == 1
+  mpechoat $n A ripple shudders through the Veil to the south.
+endif
+~
+|
+V4 3328
+figure blind hermit~
+the blind hermit~
+A figure wrapped in black cloth crouches by the candle.
+~
+Wrapped in an ancient robe, the face of this figure is so withered by age
+that its race and sex are impossible to determine.  If there were eyes, they
+have long since rotted away.  The wrinkles of its leathery skin may well
+have been scales, long ago.  It remains here, alone, until its watch is
+ended.  
+~
+generic~
+water scholar~
+AB 0 0 N 0
+51 26 1d1+4700 51d10+100 6d8+26 negative~
+black magic~
+-21 -21 -21 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHM ABCDEFGHIJK K medium flesh
+>data_prog shpiel~
+mpecho {YThe figure rasps, \@Once, before the Titans, before the Bears, the great Powers were worshipped here, where the veil is thin.\@{x
+mpecho {YThe figure rasps, \@I keep the altar.\@{x
+mpecho {YThe figure rasps, \@Someday, so shall you.\@{x
+mpecho The figure turns back to regard the candle.
+~
+>speech_prog p ~
+if ispc($n)
+  if value(1) == 0
+    mpvalueset 1 1
+    mpsetdata shpiel
+  endif
+endif
+~
+>rand_prog 100~
+if isfighting($i)
+else
+  $d
+  mpnextdata
+endif
+~
+|
+V4 3329
+Celebrant imp ancient~
+the Celebrant of the First Altar~
+An ancient imp attends the altar, bedecked all in silver and onyx.
+~
+The Celebrant wears a set of ornate vestments, wrapped in layers of
+brocade and silver strewn about with onyx, all arranged precisely according
+to some evil rite.  In its left hand it holds a thin black knife.  
+~
+demon~
+water scholar~
+AB 0 0 E 0
+51 26 34d103+1170 51d10+100 6d8+26 negative~
+stab~
+-21 -21 -21 -6
+0 B
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACH ABCDEFGHIJKP K medium flesh
+>greet_prog 100~
+speak arcane
+tell $n Remove your clothes and rest upon the altar. 
+tell $n Speak you then the three names, the names of the lords of darkness.
+tell $n It is these who will claim your soul.
+mpvalueset 0 0
+mpstring char self s0 none
+mpstring char self s1 none
+~
+>sub_prog on_name_spoken~
+if not position($n) == 5
+  tell $n You must rest upon the altar first, Seeker.
+  break
+endif
+// Check whether this skill has already been chosen
+mploadstring char self 9 newSkillName
+loop 0 to 1
+  mploadstring char self $v1 skillName
+  if value(skillName) == %newSkillName
+    tell $n This name is already graven upon your heart. Speak another.
+    break
+  endif
+endloop
+// Handle according to which skill number this is
+if value(0) == 0
+  mpstring char self s0 %newSkillName
+  mpcallsub do_etch_heart $n
+  break
+endif
+if value(0) == 1
+  mpstring char self s1 %newSkillName
+  mpcallsub do_etch_heart $n
+  break
+endif
+// Last skill; add them all
+mpcallsub do_etch_heart $n
+mpset skill $n \@%newSkillName\@ 1
+loop 0 to 1
+  mploadstring char self $v1 skillName
+  mpset skill $n \@%skillName\@ 1
+endloop
+// Perform completion
+mpechoat $n Agony overcomes you, and darkness consumes your vision.
+mpechoat $n When you come to, you find yourself back by the magical inscription.
+mpechoat $n {WYou have chosen the Path of Nightfall.{x
+mpset skill $n \@greater void nightfall\@ 1
+mpset char $n chosenpath nightfall
+mptransfer $n 3368
+mpat $n mpforce $n look
+mpcallsub do_reset
+~
+>sub_prog do_etch_heart~
+mpechoat $n Wordlessly, the Celebrant carves at your heart, etching the name upon it.
+mpechoaround $n Wordlessly, the Celebrant carves at $N\@s heart, etching the name upon it.
+mpdamage $n 1 1 12
+mpvalueup 0
+~
+>verb_prog p ~
+if position($n) == 5
+  if compx() == wake
+  or compx() == stand
+  or compx() == sit
+  or compx() == fly
+  or compx() == sleep
+    mpechoat $n You cannot stir from the altar.
+  else
+    mpnextinterp
+  endif
+else
+  mpnextinterp
+endif
+~
+>speech_prog Xthjich~
+mpstring char self s9 shadowfiend
+mpcallsub on_name_spoken $n
+~
+>speech_prog Agduk~
+mpstring char self s9 nightstalk
+mpcallsub on_name_spoken $n
+~
+>speech_prog Pricina~
+mpstring char self s9 kiss of the blackened tears
+mpcallsub on_name_spoken $n
+~
+>speech_prog Tzakmeqiel~
+mpstring char self s9 touch of the desecrator
+mpcallsub on_name_spoken $n
+~
+>speech_prog Igray\@iitu~
+mpstring char self s9 web of oame
+mpcallsub on_name_spoken $n
+~
+>speech_prog Khamurn~
+mpstring char self s9 gavel of logor
+mpcallsub on_name_spoken $n
+~
+>speech_prog Barkja~
+mpstring char self s9 fetid divination
+mpcallsub on_name_spoken $n
+~
+>speech_prog Bahhaoth~
+mpstring char self s9 grimseep
+mpcallsub on_name_spoken $n
+~
+>speech_prog Vaeshir~
+mpstring char self s9 blood of the vizier
+mpcallsub on_name_spoken $n
+~
+>speech_prog Isetaton~
+mpstring char self s9 seed of madness
+mpcallsub on_name_spoken $n
+~
+>speech_prog Nyogthua~
+mpstring char self s9 cowl of night
+mpcallsub on_name_spoken $n
+~
+>speech_prog An\@akarta~
+mpstring char self s9 hatefire
+mpcallsub on_name_spoken $n
+~
+>speech_prog Ashur~
+mpstring char self s9 bier of unmaking
+mpcallsub on_name_spoken $n
+~
+>sub_prog do_reset~
+mpvalueset 0 0
+mpat 3371 mpforce figure mpvalueset 1 0
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+3201
+belt skin spined cthagraa~
+a spined belt from the skin of a cthagraa~
+A belt formed from the spined skin of a cthagraa rests here.~
+~
+flesh~
+armor CEPSa 0 0 AL
+3 3 3 3 0
+52 50 27590 2 P
+0
+A
+19 3
+V13
+3202
+stone black large joop~
+the stone~
+A large black stone marked with glowing runes is here.~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+E
+runes~
+The glowing runes read:
+Durriru himnen mne hlishal hich\@u
+~
+E
+stone~
+The glowing runes read:
+Durriru himnen mne hlishal hich\@u
+~
+V13
+3203
+amulet metal red runed~
+a runed amulet wrought from red metal~
+A runed amulet wrought from a bizarre red metal is here.~
+~
+metal~
+key BCEGa 0 0 AC
+0 0 0 0 0
+65 20 3575748 0 P
+1
+A
+13 80
+A
+17 -45
+V13
+3204
+sting stinger atthagth black enormous~
+the sting of Atthagth~
+An enormous black stinger twitches and writhes about.~
+~
+carrion~
+weapon CDEPS 0 0 AN
+exotic 10 6 2 FH
+sting~
+70 200 1430000 2 P
+1
+O sting~
+V13
+3205
+statue demonic gorgon stone~
+the statue~
+A demonic stone statue stands at the center of the intersection.~
+~
+unknown~
+treasure FO 0 0 0
+0 0 0 0 0
+70 0 0 0 P
+0
+V13
+3206
+portal darkened darkness pure purest~
+the darkened portal~
+A portal of purest darkness stands before you.~
+~
+unknown~
+portal O 0 0 0
+0 0 0 3326 0
+0 0 0 4 P
+0
+E
+portal~
+Gazing upon the portal, you see...
+An Endless, Swirling Mist
+An entirely insubstantial world spreads before you, seeming to consist
+entirely of foggy mist.  The billowing vapor swirls furiously all around,
+and nothing is visible beyond arm\@s length.  Bone-chilling screeches pierce
+the mist every so often. 
+~
+V13
+3207
+portal darkened darkness pure purest~
+the darkened portal~
+A portal of purest darkness stands before you.~
+~
+unknown~
+portal O 0 0 0
+0 0 0 3328 0
+0 0 0 4 P
+0
+V13
+3208
+portal darkened darkness pure purest~
+the darkened portal~
+A portal of purest darkness stands before you.~
+~
+unknown~
+portal O 0 0 0
+0 0 0 3327 0
+0 0 0 4 P
+0
+E
+portal~
+Within a Vast Corridor
+You stand in a vast corridor of stone, measuring no less than thirty feet
+from side to side.  The floor of the hallway is inclined, sloping upwards to
+the north.  Set into the walls of the corridor on either side are colossal
+round windows, each the height of an ordinary room.  The windows are glazed,
+and latticed with stout-looking bars, but beyond are visible the waving tops
+of bizarre fern-like growths.
+~
+V13
+3209
+portal darkened darkness pure purest~
+the darkened portal~
+A portal of purest darkness stands before you.~
+~
+unknown~
+portal O 0 0 0
+0 0 0 3329 0
+0 0 0 4 P
+0
+V13
+3210
+portal darkened darkness portal~
+the darkened portal~
+A portal of purest darkness stands before you.~
+~
+unknown~
+portal O 0 0 0
+0 0 0 3334 0
+0 0 0 4 P
+0
+E
+portal~
+A Fetid Wasteland
+You stand in the center of a vast, fetid wasteland, with nothing visible
+in the distance but slightly curved hills of muck.  The ground is marshy,
+wet with an unusual slime that seems to ooze from the spongy earth itself. 
+The air is filled with an unbearable stench, smelling of rotting flesh,
+fish, and other unnamable things.  The sky overhead is dark and gloomy,
+dominated by lead-gray clouds that seem to take unnatural shapes.
+ 
+A hulking being with glistening, slimy skin leers about malevolently.
+~
+V13
+3211
+mass moss piled fetid weeds slime~
+a mass of fetid moss~
+A piled mass of fetid moss-like weeds rests in slime.~
+~
+plant~
+armor Sa 0 0 AK
+30 30 30 10 0
+65 150 164290 2 P
+0
+A
+2 3
+A
+1 -2
+A
+19 5
+A
+24 -8
+V13
+3212
+portal darkened darkness pure purest~
+the darkened portal~
+A portal of purest darkness stands before you.~
+~
+unknown~
+portal O 0 0 0
+0 0 0 7766 0
+0 0 0 4 P
+0
+E
+portal~
+Gazing upon the portal, you see...
+The Void
+An eternity of blackness surrounds you.  Even the sense of hunger which
+drew you here is gone.  Floating in inky darkness, there is only nothing.
+~
+V13
+3213
+portal darkened darkness~
+the darkened portal~
+A portal of purest darkness stands before you.~
+~
+unknown~
+portal O 0 0 0
+0 0 0 3336 0
+0 0 0 4 P
+0
+E
+portal~
+The portal\@s destination is lost in the darkness.
+~
+>rand_prog 100~
+if objvalue(0) < 1
+opvalueset 0 400
+endif
+if objvalue(0) > 0
+opvaluedown 0
+endif
+if objvalue(0) == 1
+opecho The portal shimmers, then closes.
+oppurge self
+endif
+if objvalue(0) == 20
+opecho The portal shimmers slightly.
+endif
+~
+>give_prog sting stinger atthagth black enormous~
+opecho With a low grinding sound, one of the statue\@s stone hands closes over the stinger.
+~
+|
+V13
+3214
+statue palm large demon~
+the extended palm of the statue~
+A large statue of a demon with both palms extended stands on the dais.~
+~
+unknown~
+container 0 0 0 0
+5000 0 0 5000 5000
+0 0 0 4 P
+0
+V13
+3215
+chest gigantic drawers~
+the gigantic chest~
+A gigantic chest with a round depression on the front is by the wall.~
+~
+unknown~
+container O 0 0 0
+5000 ABCD 3216 5000 5000
+60 0 0 4 P
+0
+V13
+3216
+band stone carved gargantuan key~
+a gargantuan band of stone carved with strange symbols~
+A gargantuan stone band is carved all about with stone symbols.~
+~
+stone~
+armor MPSZa 0 0 AL
+20 20 20 20 0
+60 800 1382150 2 P
+0
+A
+13 80
+A
+19 6
+V13
+3217
+band stone carved symbols gargantuan~
+a gargantuan band of stone carved with strange symbols~
+A gargantuan stone band is carved all about with stone symbols.~
+~
+stone~
+armor S 0 0 AL
+20 20 20 12 0
+60 250 407273 2 P
+1
+A
+1 5
+A
+13 50
+A
+19 4
+V13
+3218
+rod massive stone~
+a massive stone rod~
+A massive stone rod, half the length of a man\@s body, rests here.~
+~
+stone~
+staff AS 0 0 AO
+51 6 6 'diamond skin' 0
+51 200 110000 3 P
+1
+V13
+3219
+altar xiganath~
+the altar of Xiganath~
+(Black Aura) A low obsidian altar, carved with hideous figures, is here.~
+~
+unknown~
+container O 0 0 0
+500 AC 0 500 20
+0 0 0 4 P
+0
+E
+characters~
+The characters inscribed upon the altar read: Xiganath xadis kril-valsu
+~
+V13
+3220
+wand stone long~
+a long stone wand~
+A long stone wand rests here.~
+~
+stone~
+wand AS 0 0 AO
+60 2 2 'flesh to stone' 0
+51 120 12000 1 P
+1
+V13
+3221
+totem xiganath medallion symbol~
+the Totem of Xiganath~
+A stylized medallion shaped into a horrific symbol is here.~
+~
+obsidian~
+armor CEGa 0 0 ACP
+0 0 0 0 0
+70 30 0 1 P
+1
+>fight_prog 100~
+if ispc($n)
+if objvalue(0) == 53
+if isworn($o)
+if isghost($n)
+else
+opechoat $n The Totem of Xiganath seems to reach for you with dark tendrils, and your soul is rent from your body!
+opechoaround $n Tendrils of darkness reach from the Totem of Xiganath, and lightly caress $N.
+opslay $n
+opstatdown con 1 $o
+opechoat $o You feel your stamina drained by the Totem of Xiganath!
+opvaluerand 0 1 2
+if objvalue(0) == 1
+opstatdown str 1 $o
+opechoat $o You feel your strength drained by the Totem of Xiganath!
+endif
+endif
+opvalueset 0 0
+endif
+endif
+endif
+~
+>speech_prog p Xiganath xadis kril-valsu~
+if isfight($o)
+if ispc($n)
+opvalueset 0 53
+endif
+endif
+~
+>rand_prog 100~
+if isheld($o)
+opvaluerand 3 1 5000 
+if objvalue(3) == 4500
+opvaluerand 2 1 2
+if objvalue(2) == 1
+opat 3200 opmload 3300
+opat 3200 opforce avatar mpfocus $o
+opat 3200 opforce avatar mpvalueset 3 1
+endif
+if objvalue(2) == 2
+opat 3200 opmload 3301
+opat 3200 opforce writer mpfocus $o
+opat 3200 opforce writer mpvalueset 3 1
+endif
+endif
+endif
+~
+|
+V13
+3222
+skeleton ulyon~
+the skeleton of Ulyon~
+A skeleton clad in silver plate is impaled upon a pole fixed to the floor.~
+~
+bone~
+container S 0 0 0
+500 0 0 500 100
+60 0 0 4 P
+0
+E
+skeleton~
+An ancient skeleton clad in rich silver platemail is affixed to a thick
+pole that has been erected in the alcove.  The skeleton\@s attachment is
+achieved by several cruel iron spikes driven through the armor, where once a
+body hung.  The spikes, plate armor, and floor about the pole are all
+spattered liberally with dried blood.  A series of small characters has been
+etched into the pole above the skeleton\@s head.  
+~
+E
+pole~
+An ancient skeleton clad in rich silver platemail is affixed to a thick
+pole that has been erected in the alcove.  The skeleton\@s attachment is
+achieved by several cruel iron spikes driven through the armor, where once a
+body hung.  The spikes, plate armor, and floor about the pole are all
+spattered liberally with dried blood.  A series of small characters has been
+etched into the pole above the skeleton\@s head.  
+~
+E
+characters~
+A series of small characters etched into the pole reads:
+Here hang the remains of Ulyon, who foolishly thought to defy the might of
+Xiganath, Black Lord of the Depths. 
+~
+V13
+3223
+shield silver ulyon~
+the blessed silver shield of Ulyon~
+A bright silver shield embossed with the symbol of Ulyon is here.~
+~
+silver~
+armor AGIKLa 0 0 AJ
+12 12 12 8 0
+55 100 500000 2 P
+1
+A
+19 3
+A
+13 40
+>rand_prog 100~
+if isworn($o)
+if objvalue(0) > 0
+opvaluedown 0
+endif
+endif
+if isworn($o)
+if objvalue(0) == 1
+opechoat $o {cThe silver shield of Ulyon glimmers softly.{x
+endif
+endif
+~
+>speech_prog p Transport!~
+if isworn($o)
+if objvalue(0) == 0
+opecho The silver shield of Ulyon hums softly.
+opechoaround $o $O fades from existance!
+opechoat $o The world blurs around you!
+optransfer $o 3499
+opforce $o look
+opvalueset 0 400
+endif
+endif
+~
+>speech_prog p Protection!~
+if isworn($o)
+if objvalue(0) == 0
+opecho The silver shield of Ulyon hums softly.
+opcast 119 60
+opvalueset 0 400
+endif
+endif
+~
+>speech_prog p Life!~
+if isworn($o)
+if objvalue(0) == 0
+opecho The silver shield of Ulyon hums softly.
+opcast 77 60
+opcast 77 60
+opvalueset 0 400
+endif
+endif
+~
+|
+V13
+3224
+stand crystal glowing~
+the glowing crystal stand~
+A small stand fashioned of crystal dominates the alcove.~
+~
+crystal~
+container AOS 0 0 0
+500 0 0 500 0
+55 0 0 4 P
+0
+E
+stand~
+A small stand has been fashioned of glowing crystal, its radiance pulsing
+evenly in the dim light of the shrine.  A small series of characters has
+been etched near the top of the stand.  
+~
+E
+characters~
+Here rests the Staff of Memang, whose soul was devoured by our Demon Lord.  
+~
+V13
+3225
+staff wooden memang~
+the Staff of Memang~
+A wooden staff adorned with thick gold bands at one end rests here.~
+~
+wood~
+treasure GSa 0 0 AO
+0 0 0 0 0
+55 80 1000000 2 P
+1
+A
+12 50
+>fight_prog 100~
+opfocus $n
+~
+>speech_prog Aminai~
+if isworn($o)
+if isfight($o)
+opechoaround $n The Staff of Memang emits a blue ray of light!
+opechoat $n The Staff of Memang emits a blue ray of light, striking $F!
+opcast 57 60
+oplag $o 2
+endif
+endif
+~
+>speech_prog Urulu~
+if isworn($o)
+opecho The Staff of Memang flares brightly!
+opcast 13 51
+oplag $o 2
+endif
+~
+>speech_prog Irullanuz~
+if isworn($o)
+if isfight($o)
+opechoaround $o The Staff of Memang emits a yellow ray of light!
+opechoat $o The Staff of Memang emits a yellow ray of light, striking $F!
+opcast 50 60
+oplag $o 2
+endif
+endif
+~
+>remove_prog 100~
+opremaffect 46
+~
+>wear_prog 100~
+opaddaffect 46 51 -1 0 0 0
+opechoat $n Your eyes tingle.
+~
+|
+V13
+3226
+pedestal carved~
+an obsidian pedestal~
+An intricately carved obsidian pedestal stands here.~
+~
+obsidian~
+container OS 0 0 0
+500 0 0 500 0
+55 0 0 4 P
+0
+E
+pedestal~
+A pedestal carved from midnight-black obsidian is carved with intricate
+patterns, and etched with a small line of characters.  
+~
+E
+characters~
+A small line of characters etched into the pedestal reads:
+Here rests the Blade of Tsyaegen, wielded by the commander of the Demon
+God\@s unholy armies.
+~
+V13
+3227
+blade sword black tsyaegn~
+the Black Blade of Tsyaegn~
+A long-bladed sword forged of pure black iron pulses with dark power.~
+~
+iron~
+weapon CEGJLaf 0 0 AN
+sword 8 7 21 0
+defilement~
+55 150 1040000 2 P
+1
+O defilement~
+>fight_prog 1~
+mpecho The Black Blade of Tsyaegn throbs with power.
+mpcast 39 51
+~
+|
+V13
+3228
+portal darkened~
+the darkened portal~
+A portal of purest darkness stands before you.~
+~
+unknown~
+portal 0 0 0 0
+0 0 0 3354 0
+51 0 0 4 P
+0
+V13
+3229
+bowl ebony wide~
+an ebony bowl~
+A wide bowl carved of ebony and painted with hideous symbols rests here.~
+~
+wood~
+container E 0 0 A
+20 0 0 5 0
+60 200 11000 2 P
+1
+>rand_prog 100~
+if objvalue(0) > 0
+opvalueup 0
+endif
+if objvalue(0) == 20
+opecho The ebony bowl crumbles into dust.
+oppurge self
+endif
+ 
+~
+>take_prog bowl ebony wide~
+opvalueset 0 10
+~
+|
+V13
+3230
+flesh piece small withered~
+a small piece of withered flesh~
+A small, withered piece of ancient flesh sits here.~
+~
+carrion~
+pill E 0 0 A
+55 'voidwalk' 'poison' '' ''
+52 10 28000 0 P
+0
+V13
+3231
+flesh piece small withered~
+a small piece of withered flesh~
+A small, withered piece of ancient flesh is here.~
+~
+carrion~
+pill E 0 0 A
+52 'suppress' 'weaken' 'curse' ''
+55 10 28000 0 P
+0
+V13
+3232
+coins pile gold~
+a pile of gold~
+A large pile of gold coins is here.~
+~
+gold~
+money A 0 0 A
+100 1 0 0 0
+52 0 0 0 P
+0
+V13
+3233
+chest iron black~
+a black iron chest~
+A black iron chest is here.~
+~
+unknown~
+container E 0 0 0
+100 AC 0 100 100
+50 0 0 0 P
+0
+V13
+3234
+spiral gold~
+a gold spiral~
+A gold spiral studded with rubies draws your gaze eerily.~
+~
+gold~
+treasure CE 0 0 AO
+0 0 0 0 0
+52 5 100000 0 P
+0
+V13
+3235
+fiery red ruby gemstone~
+a fiery ruby~
+A fiery red gemstone is here.~
+~
+ruby~
+gem 0 0 0 A
+0 0 0 0 0
+52 1 50000 0 P
+0
+>sac_prog 100~
+if chosenpath($n) == golden flame
+  if isbitset($n) == 256
+  else
+    mpbitset $n 256 1
+    mpechoat $n The fragments of the ruby flare with inner fire for a moment as you complete the sacrifice.
+    mpechoaround $n The fragments of the ruby flare with inner fire for a moment as $N completes the sacrifice.
+    mpechoat $n {yYou gain new insight into the application of the Blood Pyre.{x
+  endif
+endif
+~
+|
+V13
+3236
+altar first~
+the First Altar~
+(no description)~
+~
+unknown~
+furniture Yae 0 0 0
+1 400 H 0 0
+51 9999 0 4 P
+0
+E
+altar idols~
+Idols are positioned in a circle around the altar, upon which stands
+another.  The idols depict Xthjich, Agduk, Pricina, Tzakmeqiel, Igray\@iitu,
+Khamurn, Barkja, Bahhaoth, Vaeshir, Isetaton, Nyogthua, and An\@akarta, and
+an empty space completes the circle.  
+~
+>verb_prog p rest~
+mpnextinterp
+mpechoat $n {rThe Celebrant plunges the knife into your flesh, and its bite is agonizing as he opens your breast to the cold.{x
+mpdamage $n 1 1 12
+~
+|
+V13
+3237
+wizlight~
+a wizlight~
+A wizlight is here, illuminating the darkness.~
+~
+unknown~
+light Ad 0 0 0
+0 0 999 0 0
+52 0 0 0 P
+0
+O ~
+V13
+3311
+portal darkened darkness pure purest~
+the darkened portal~
+A portal of purest darkness stands before you.~
+~
+unknown~
+portal O 0 0 0
+0 0 0 3332 0
+0 0 0 4 P
+0
+V13
+3399
+gradunza moss-covered three-handled family~
+a moss-covered, three-handled family gradunza~
+A moss-covered, three-handled family gradunza is here.~
+~
+plant~
+treasure G 0 0 A
+0 0 0 0 0
+60 0 0 0 P
+0
+#0
+
+
+
+#ROOMS
+#3200
+The Demon-viewing Area~
+~
+~
+1
+0 557062 0
+W 5 0 0
+Z 5 5
+S
+#3201
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3202
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3204
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3202
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3202
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3203
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3201
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3203
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.
+~
+~
+1
+0 532539 0
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3205
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3202
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3204
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.
+~
+~
+1
+0 532539 0
+D0
+The black-stoned passage continues.
+~
+~
+0 0 3201
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3207
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3205
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.
+~
+~
+1
+0 532539 0
+D0
+The black-stoned passage continues.
+~
+~
+0 0 3203
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3206
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3206
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.
+~
+~
+1
+0 532539 0
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3209
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3205
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3207
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.
+~
+~
+1
+0 532539 0
+D0
+The black-stoned passage continues.
+~
+~
+0 0 3204
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3208
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3208
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.
+~
+~
+1
+0 532539 0
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3211
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3207
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3209
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D0
+The black-stoned passage continues.
+~
+~
+0 0 3206
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3214
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3210
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3211
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3212
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3211
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D0
+The black-stoned passage continues.
+~
+~
+0 0 3208
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3210
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3212
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D0
+The black-stoned passage continues.
+~
+~
+0 0 3210
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3213
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3213
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3214
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3212
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3214
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3233
+D0
+The black-stoned passage continues.
+~
+~
+0 0 3215
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3227
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3221
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3215
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3216
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3215
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3216
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3219
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3215
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3217
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3218
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3220
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3218
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3201
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3217
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3219
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.
+~
+~
+1
+0 532539 0
+D0
+The black-stoned passage continues.
+~
+~
+0 0 3216
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3220
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3220
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D0
+The black-stoned passage continues.
+~
+~
+0 0 3217
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3219
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3221
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3222
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3221
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3222
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3225
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3221
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3223
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3224
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3226
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3224
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3201
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3223
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3225
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D0
+The black-stoned passage continues.
+~
+~
+0 0 3222
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3226
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3226
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.
+~
+~
+1
+0 532539 0
+D0
+The black-stoned passage continues.
+~
+~
+0 0 3223
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3225
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3227
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3228
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3227
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3228
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.
+~
+~
+1
+0 532539 0
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3231
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3227
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3229
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3230
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3232
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3230
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3201
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3229
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3231
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.
+~
+~
+1
+0 532539 0
+D0
+The black-stoned passage continues.
+~
+~
+0 0 3228
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3232
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3232
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D0
+The black-stoned passage continues.
+~
+~
+0 0 3229
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3231
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3233
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3234
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3233
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3234
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3238
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3233
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3235
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3236
+D2
+The black-stoned passage continues.
+~
+~
+0 0 3239
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3236
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3237
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3235
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3237
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like material.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The tunnel dead-ends to
+the east, an abrupt wall blocking further progress.  Shining forth from the
+wall are lines of eerie characters, which fill the tunnel ending with their
+eldritch light.  
+~
+~
+1
+0 532539 0
+E
+characters~
+The characters read:
+Znayesh charu\@zira vradhmu ishighal
+~
+E
+runes~
+The characters read:
+Znayesh charu\@zira vradhmu ishighal
+~
+E
+lines~
+The characters read:
+Znayesh charu\@zira vradhmu ishighal
+~
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3236
+M 20 H 20 V 100
+T 55
+W 5 0 0
+Z 5 5
+S
+#3238
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D0
+The black-stoned passage continues.
+~
+~
+0 0 3234
+D1
+The black-stoned passage continues.
+~
+~
+0 0 3239
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3239
+A Black-Stoned Passage~
+You stand in a low tunnel walled with rough, black stones.  The ceiling
+and floor seem to be made of the same hard coal-like mineral.  The air in
+the passage is dead and stale, as if it has been sealed in for centuries. 
+No breeze stirs, and sounds seem to be absorbed by the walls almost
+immediately, creating an eerie silence all about.  The passage continues
+through the darkness, broken once in a while by a branch laying at right
+angles with the rest of the passage.  
+~
+~
+1
+0 532539 0
+D0
+The black-stoned passage continues.
+~
+~
+0 0 3235
+D3
+The black-stoned passage continues.
+~
+~
+0 0 3238
+M 20 H 20 V 100
+W 5 0 0
+Z 5 5
+S
+#3240
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D2
+~
+~
+0 0 3241
+D3
+~
+~
+0 0 3264
+W 5 0 0
+Z 5 5
+S
+#3241
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3240
+D2
+~
+~
+0 0 3247
+W 5 0 0
+Z 5 5
+S
+#3242
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D2
+~
+~
+0 0 3249
+W 5 0 0
+Z 5 5
+S
+#3243
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D1
+~
+~
+0 0 3244
+D2
+~
+~
+0 0 3250
+W 5 0 0
+Z 5 5
+S
+#3244
+By a Magical Inscription~
+You stand in near-perfect darkness, with absolutely nothing visible of
+the floor, walls, or ceiling around you.  All that disturbs the purity of
+the blackness is a line of glowing characters floating in the air before
+you.  
+~
+~
+1
+0 532606 0
+E
+line~
+The characters read:
+Rirunas hlishal n\@lenkuna ulharja
+~
+E
+characters~
+The characters read:
+Rirunas hlishal n\@lenkuna ulharja
+~
+D3
+~
+~
+0 0 3243
+T 55
+W 5 0 0
+Z 5 5
+S
+#3245
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3265
+D1
+~
+~
+0 0 3246
+W 5 0 0
+Z 5 5
+S
+#3246
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D1
+~
+~
+0 0 3247
+D3
+~
+~
+0 0 3245
+W 5 0 0
+Z 5 5
+S
+#3247
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3241
+D1
+~
+~
+0 0 3248
+D2
+~
+~
+0 0 3251
+D3
+~
+~
+0 0 3246
+M 10 H 10 V 100
+W 5 0 0
+Z 5 5
+S
+#3248
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D1
+~
+~
+0 0 3249
+D3
+~
+~
+0 0 3247
+W 5 0 0
+Z 5 5
+S
+#3249
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3242
+D1
+~
+~
+0 0 3250
+D2
+~
+~
+0 0 3252
+D3
+~
+~
+0 0 3248
+W 5 0 0
+Z 5 5
+S
+#3250
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3243
+D2
+~
+~
+0 0 3253
+D3
+~
+~
+0 0 3249
+W 5 0 0
+Z 5 5
+S
+#3251
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3247
+D2
+~
+~
+0 0 3254
+W 5 0 0
+Z 5 5
+S
+#3252
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3249
+D1
+~
+~
+0 0 3253
+D2
+~
+~
+0 0 3256
+W 5 0 0
+Z 5 5
+S
+#3253
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3250
+D3
+~
+~
+0 0 3252
+W 5 0 0
+Z 5 5
+S
+#3254
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3251
+D1
+~
+~
+0 0 3255
+W 5 0 0
+Z 5 5
+S
+#3255
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D1
+~
+~
+0 0 3256
+D3
+~
+~
+0 0 3254
+W 5 0 0
+Z 5 5
+S
+#3256
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3252
+D2
+~
+~
+0 0 3258
+D3
+~
+~
+0 0 3255
+W 5 0 0
+Z 5 5
+S
+#3257
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3242
+D2
+~
+~
+0 0 3261
+W 5 0 0
+Z 5 5
+S
+#3258
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3256
+D2
+~
+~
+0 0 3263
+W 5 0 0
+Z 5 5
+S
+#3259
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D1
+~
+~
+0 0 3260
+D2
+~
+~
+0 0 3265
+W 5 0 0
+Z 5 5
+S
+#3260
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D1
+~
+~
+0 0 3261
+D3
+~
+~
+0 0 3259
+W 5 0 0
+Z 5 5
+S
+#3261
+The Maze of Demons~
+~
+~
+1
+0 8921214 0
+D0
+~
+~
+0 0 3257
+D1
+~
+~
+0 0 3262
+D2
+~
+~
+0 0 3266
+D3
+~
+~
+0 0 3260
+W 5 0 0
+Z 5 5
+S
+#3262
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D1
+~
+~
+0 0 3263
+D2
+~
+~
+3 0 3370
+D3
+~
+~
+0 0 3261
+W 5 0 0
+Z 5 5
+S
+#3263
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3258
+D1
+~
+~
+0 0 3264
+D3
+~
+~
+0 0 3262
+W 5 0 0
+Z 5 5
+S
+#3264
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D1
+~
+~
+0 0 3240
+D3
+~
+~
+0 0 3263
+W 5 0 0
+Z 5 5
+S
+#3265
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3259
+D2
+~
+~
+0 0 3245
+W 5 0 0
+Z 5 5
+S
+#3266
+The Maze of Demons~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3261
+D2
+~
+~
+0 0 3256
+W 5 0 0
+Z 5 5
+S
+#3267
+The Path of Fire~
+You stand in a fiery pit, circled about by solid walls of white-hot
+flames.  The small circle of blackened stone floor is hot to the touch, and
+waves of heat from the all-consuming inferno close in, making the area
+nearly unbearable.  
+~
+~
+1
+0 8254 0
+W 5 0 0
+Z 5 5
+S
+#3268
+The Path of Fire~
+You stand in the midst of a blazing inferno; all about, white-hot fires
+dance and crackle.  There seem to be no ceiling, walls, or floor to this
+area, only a thin path of blackened stone, which gives off enormous heat. 
+The black stone path twists crazily through the fire, its true direction
+seeming to shift at random.  
+~
+~
+1
+0 532602 0
+D1
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D5
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D4
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D3
+The path through the flames continues.
+~
+~
+0 0 3269
+D2
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D0
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+T 64
+W 5 0 0
+Z 5 5
+S
+#3269
+The Path of Fire~
+You stand in the midst of a blazing inferno; all about, white-hot fires
+dance and crackle.  There seem to be no ceiling, walls, or floor to this
+area, only a thin path of blackened stone, which gives off enormous heat. 
+The black stone path twists crazily through the fire, its true direction
+seeming to shift at random.  
+~
+~
+1
+0 532602 0
+D4
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D5
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D1
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D3
+The path through the flames continues.
+~
+~
+0 0 3270
+D2
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D0
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+T 64
+W 5 0 0
+Z 5 5
+S
+#3270
+The Path of Fire~
+You stand in the midst of a blazing inferno; all about, white-hot fires
+dance and crackle.  There seem to be no ceiling, walls, or floor to this
+area, only a thin path of blackened stone, which gives off enormous heat. 
+The black stone path twists crazily through the fire, its true direction
+seeming to shift at random.  
+~
+~
+1
+0 532602 0
+D5
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D4
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D2
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D0
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D3
+The path through the flames continues.
+~
+~
+0 0 3271
+D1
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+T 64
+W 5 0 0
+Z 5 5
+S
+#3271
+The Path of Fire~
+You stand in the midst of a blazing inferno; all about, white-hot fires
+dance and crackle.  There seem to be no ceiling, walls, or floor to this
+area, only a thin path of blackened stone, which gives off enormous heat. 
+The black stone path twists crazily through the fire, its true direction
+seeming to shift at random.  
+~
+~
+1
+0 532602 0
+D4
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D0
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D1
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D3
+The path through the flames continues.
+~
+~
+0 0 3272
+D5
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D2
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+T 64
+W 5 0 0
+Z 5 5
+S
+#3272
+The Path of Fire~
+You stand in the midst of a blazing inferno; all about, white-hot fires
+dance and crackle.  There seem to be no ceiling, walls, or floor to this
+area, only a thin path of blackened stone, which gives off enormous heat. 
+The black stone path twists crazily through the fire, its true direction
+seeming to shift at random.  
+~
+~
+1
+0 532602 0
+D4
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D1
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D0
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D3
+The path through the flames continues.
+~
+~
+0 0 3273
+D2
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D5
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+T 64
+W 5 0 0
+Z 5 5
+S
+#3273
+The Path of Fire~
+You stand in the midst of a blazing inferno; all about, white-hot fires
+dance and crackle.  There seem to be no ceiling, walls, or floor to this
+area, only a thin path of blackened stone, which gives off enormous heat. 
+The black stone path twists crazily through the fire, its true direction
+seeming to shift at random.  
+~
+~
+1
+0 532602 0
+D2
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D5
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D0
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D1
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D3
+The path through the flames continues.
+~
+~
+0 0 3274
+D4
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+T 64
+W 5 0 0
+Z 5 5
+S
+#3274
+The Path of Fire~
+You stand in the midst of a blazing inferno; all about, white-hot fires
+dance and crackle.  There seem to be no ceiling, walls, or floor to this
+area, only a thin path of blackened stone, which gives off enormous heat. 
+The black stone path twists crazily through the fire, its true direction
+seeming to shift at random.  
+~
+~
+1
+0 532602 0
+D4
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D5
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D3
+The path through the flames continues.
+~
+~
+0 0 3275
+D0
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D1
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D2
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+T 64
+W 5 0 0
+Z 5 5
+S
+#3275
+The Path of Fire~
+You stand in the midst of a blazing inferno; all about, white-hot fires
+dance and crackle.  There seem to be no ceiling, walls, or floor to this
+area, only a thin path of blackened stone, which gives off enormous heat. 
+The black stone path twists crazily through the fire, its true direction
+seeming to shift at random.  
+~
+~
+1
+0 532602 0
+D5
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D0
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D4
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D1
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D2
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D3
+The path through the flames continues.
+~
+~
+0 0 3276
+T 64
+W 5 0 0
+Z 5 5
+S
+#3276
+The Path of Fire~
+You stand in the midst of a blazing inferno; all about, white-hot fires
+dance and crackle.  There seem to be no ceiling, walls, or floor to this
+area, only a thin path of blackened stone, which gives off enormous heat. 
+The black stone path twists crazily through the fire, its true direction
+seeming to shift at random.  
+~
+~
+1
+0 532602 0
+D0
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D3
+The path through the flames continues.
+~
+~
+0 0 3277
+D5
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D2
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D1
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D4
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+T 64
+W 5 0 0
+Z 5 5
+S
+#3277
+The Path of Fire~
+You stand in the midst of a blazing inferno; all about, white-hot fires
+dance and crackle.  There seem to be no ceiling, walls, or floor to this
+area, only a thin path of blackened stone, which gives off enormous heat. 
+The black stone path twists crazily through the fire, its true direction
+seeming to shift at random.  
+~
+~
+1
+0 532602 0
+D2
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D4
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D1
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D5
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D0
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D3
+The path through the flames continues.
+~
+~
+0 0 3278
+T 64
+W 5 0 0
+Z 5 5
+S
+#3278
+The Path of Fire~
+You stand in the midst of a blazing inferno; all about, white-hot fires
+dance and crackle.  There seem to be no ceiling, walls, or floor to this
+area, only a thin path of blackened stone, which gives off enormous heat. 
+The black stone path twists crazily through the fire, its true direction
+seeming to shift at random.  
+~
+~
+1
+0 532602 0
+D5
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D3
+The path through the flames continues.
+~
+~
+0 0 3279
+D1
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D0
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D4
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D2
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+T 64
+W 5 0 0
+Z 5 5
+S
+#3279
+The Path of Fire~
+You stand in the midst of a blazing inferno; all about, white-hot fires
+dance and crackle.  There seem to be no ceiling, walls, or floor to this
+area, only a thin path of blackened stone, which gives off enormous heat. 
+The black stone path twists crazily through the fire, its true direction
+seeming to shift at random.  
+~
+~
+1
+0 532602 0
+D2
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D4
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D0
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D1
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D5
+The wall of flames burns furiously, waiting to consume you.
+~
+~
+0 0 3267
+D3
+The path through the flames continues.
+~
+~
+0 0 3280
+T 64
+W 5 0 0
+Z 5 5
+S
+#3280
+A Blackened Stone Platform~
+A wide platform of blackened stone stands suspended among the flames, the
+hellish heat of the surrounding inferno pressing in at you.  The stone
+itself absorbs a great deal of the heat, making it uncomfortable to stand
+on.  Great blazing shapes pass by, veiled in the crackling flames.  On the
+floor of the platform, a series of odd runes have been carved.  
+~
+~
+1
+0 8194 0
+E
+runes~
+The runes read:
+Nu\@u jyahc uithsi nig-aris bal
+~
+E
+odd~
+The runes read:
+Nu\@u jyahc uithsi nig-aris bal
+~
+E
+series~
+The runes read:
+Nu\@u jyahc uithsi nig-aris bal
+~
+D1
+~
+~
+0 0 3279
+W 5 0 0
+Z 5 5
+S
+#3281
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  The hallway comes to an abrupt end at this point.  Feeble,
+somewhat-recent etchings sprawl across the stone at the end of the corridor
+here.  
+~
+~
+1
+0 532539 0
+E
+etching etchings~
+Da      Gomm  not  mutch   tyme  left
+  
+   No watur   no more    Gomm get   thurstee
+  
+   
+Da   gods no   heer     gods no   like Gomm
+  
+  
+Gomm      die   heer?     Dun  no      Gomm want live
+  
+ Gomm Pray
+
+  
+   
+   Gom pray    much    mebe    gods no     heer   Gom not 
+loud   nuff     Da    Gomm   pray    morr
+  
+Ded  soon    Gomm no Hope   No gods   no water  
+  
+ Gomm die    Gomm know it     Gomm no   care   Gomm no frends gods
+   
+gods   no like  Gomm  
+  
+   
+  
+Gomm draw predy  pickchurs      stuff        beez      flowrs
+   
+  
+ Stuff     more     Gomm      drink      need   watur     
+  
+   
+Why Gomm haff  die?        Gomm   not no      Gomm    want frends
+   
+  
+ Stooped  weel      stooped          stooped           Gomm dum
+~
+D2
+The dark corridor continues.
+~
+~
+0 0 3282
+T 9
+W 5 0 0
+Z 5 5
+S
+#3282
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.
+~
+~
+1
+0 532539 0
+D0
+The dark corridor continues.
+~
+~
+0 0 3281
+D1
+The dark corridor continues.
+~
+~
+0 0 3283
+T 9
+W 5 0 0
+Z 5 5
+S
+#3283
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.
+~
+~
+1
+0 532539 0
+D2
+The dark corridor continues.
+~
+~
+0 0 3284
+D3
+The dark corridor continues.
+~
+~
+0 0 3282
+T 9
+W 5 0 0
+Z 5 5
+S
+#3284
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  
+~
+~
+1
+0 532539 0
+D0
+The dark corridor continues.
+~
+~
+0 0 3283
+D2
+The dark corridor continues.
+~
+~
+0 0 3289
+T 9
+W 5 0 0
+Z 5 5
+S
+#3285
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.
+~
+~
+1
+0 532539 0
+D1
+The dark corridor continues.
+~
+~
+0 0 3286
+D2
+The dark corridor continues.
+~
+~
+0 0 3292
+W 5 0 0
+Z 5 5
+S
+#3286
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.
+~
+~
+1
+0 532539 0
+D1
+The dark corridor continues.
+~
+~
+0 0 3287
+D3
+The dark corridor continues.
+~
+~
+0 0 3285
+W 5 0 0
+Z 5 5
+S
+#3287
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.
+~
+~
+1
+0 532539 0
+D2
+The dark corridor continues.
+~
+~
+0 0 3293
+D3
+The dark corridor continues.
+~
+~
+0 0 3286
+W 5 0 0
+Z 5 5
+S
+#3288
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  
+~
+~
+1
+0 532539 0
+D1
+The dark corridor continues.
+~
+~
+0 0 3289
+D2
+The dark corridor continues.
+~
+~
+0 0 3294
+W 5 0 0
+Z 5 5
+S
+#3289
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  
+~
+~
+1
+0 532539 0
+D0
+The dark corridor continues.
+~
+~
+0 0 3284
+D3
+The dark corridor continues.
+~
+~
+0 0 3288
+W 5 0 0
+Z 5 5
+S
+#3290
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  
+~
+~
+1
+0 532539 0
+D1
+The dark corridor continues.
+~
+~
+0 0 3291
+D2
+The dark corridor continues.
+~
+~
+0 0 3296
+W 5 0 0
+Z 5 5
+S
+#3291
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.
+~
+~
+1
+0 532539 0
+D2
+The dark corridor continues.
+~
+~
+0 0 3297
+D3
+The dark corridor continues.
+~
+~
+0 0 3290
+W 5 0 0
+Z 5 5
+S
+#3292
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  
+~
+~
+1
+0 532539 0
+D0
+The dark corridor continues.
+~
+~
+0 0 3285
+D2
+The dark corridor continues.
+~
+~
+0 0 3299
+W 5 0 0
+Z 5 5
+S
+#3293
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.
+~
+~
+1
+0 532539 0
+D0
+The dark corridor continues.
+~
+~
+0 0 3287
+D1
+The dark corridor continues.
+~
+~
+0 0 3294
+W 5 0 0
+Z 5 5
+S
+#3294
+A Dark Corridor~
+You stand in the center of a wide intersection, with stone hallways
+leading in all directions.  The air is dry and filled with a disturbingly
+alien odor.  Faint whisperings echo throughout the darkened corridors,
+accompanied by an occasional rushing noise, sounding as if a burst of wind
+had been unleashed in a small room.  The stone walls themselves are oddly
+constructed, the angles seeming somehow wrong.  
+~
+~
+1
+0 532539 0
+D0
+The dark corridor continues.
+~
+~
+0 0 3288
+D1
+The dark corridor continues.
+~
+~
+0 0 3295
+D2
+The dark corridor continues.
+~
+~
+0 0 3300
+D3
+The dark corridor continues.
+~
+~
+0 0 3293
+W 5 0 0
+Z 5 5
+S
+#3295
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  
+~
+~
+1
+0 532539 0
+D1
+The dark corridor continues.
+~
+~
+0 0 3296
+D3
+The dark corridor continues.
+~
+~
+0 0 3294
+W 5 0 0
+Z 5 5
+S
+#3296
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  
+~
+~
+1
+0 532539 0
+D0
+The dark corridor continues.
+~
+~
+0 0 3290
+D3
+The dark corridor continues.
+~
+~
+0 0 3295
+W 5 0 0
+Z 5 5
+S
+#3297
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.
+~
+~
+1
+0 532539 0
+D0
+The dark corridor continues.
+~
+~
+0 0 3291
+D1
+The dark corridor continues.
+~
+~
+0 0 3298
+W 5 0 0
+Z 5 5
+S
+#3298
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  The hallway comes to an abrupt end at this point.  
+~
+~
+1
+0 532539 0
+D3
+The dark corridor continues.
+~
+~
+0 0 3297
+W 5 0 0
+Z 5 5
+S
+#3299
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  The hallway comes to an abrupt end at this point.  
+~
+~
+1
+0 532539 0
+D0
+The dark corridor continues.
+~
+~
+0 0 3292
+W 5 0 0
+Z 5 5
+S
+#3300
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  
+~
+~
+1
+0 532539 0
+D0
+The dark corridor continues.
+~
+~
+0 0 3294
+D2
+The dark corridor continues.
+~
+~
+0 0 3301
+W 5 0 0
+Z 5 5
+S
+#3301
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  
+~
+~
+1
+0 532539 0
+D0
+The dark corridor continues.
+~
+~
+0 0 3300
+D1
+The dark corridor continues.
+~
+~
+0 0 3302
+T 77
+W 5 0 0
+Z 5 5
+S
+#3302
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  
+~
+~
+1
+0 532539 0
+D2
+The dark corridor continues.
+~
+~
+0 0 3305
+D3
+The dark corridor continues.
+~
+~
+0 0 3301
+T 77
+W 5 0 0
+Z 5 5
+S
+#3303
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  The hallway comes to an abrupt end at this point.  
+~
+~
+1
+0 532539 0
+D1
+The dark corridor continues.
+~
+~
+0 0 3304
+T 77
+W 5 0 0
+Z 5 5
+S
+#3304
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  
+~
+~
+1
+0 532539 0
+D1
+The dark corridor continues.
+~
+~
+0 0 3305
+D3
+The dark corridor continues.
+~
+~
+0 0 3303
+T 77
+W 5 0 0
+Z 5 5
+S
+#3305
+A Dark Corridor~
+You stand in the center of a wide hallway with walls of stone.  The air
+is dry and filled with a disturbingly alien odor.  Faint whisperings echo
+throughout the darkened corridors, accompanied by an occasional rushing
+noise, sounding as if a burst of wind had been unleashed in a small room. 
+The stone walls themselves are oddly constructed, the angles seeming somehow
+wrong.  
+~
+~
+1
+0 532539 0
+D0
+The dark corridor continues.
+~
+~
+0 0 3302
+D3
+The dark corridor continues.
+~
+~
+0 0 3304
+T 77
+W 5 0 0
+Z 5 5
+S
+#3306
+The Cthugha Room~
+Lots of cthugha demons are here and stuff.
+~
+~
+1
+0 557110 0
+W 5 0 0
+Z 5 5
+S
+#3307
+The Lair of Atthagth~
+The roughly-hewn tunnel leads into a natural-seeming cave area, the rough
+walls of alien stone shedding the bizarre purple light.  The floor of the
+cave is coated in a strange sticky fluid, mingled with odd sheaves of
+material that resemble dried skin.  An intense acidic odor fills the area.  
+~
+~
+1
+0 8250 0
+D1
+~
+~
+0 0 3308
+W 5 0 0
+Z 5 5
+S
+#3308
+The Lair of Atthagth~
+You stand within a natural-seeming cave area, the rough walls of alien
+stone shedding the bizarre purple light.  The floor of the cave is coated in
+a strange sticky fluid, mingled with odd sheaves of material that resemble
+dried skin.  An intense acidic odor fills the area.  
+~
+~
+1
+0 8250 0
+D1
+~
+~
+0 0 3309
+D3
+~
+~
+0 0 3307
+W 5 0 0
+Z 5 5
+S
+#3309
+The Lair of Atthagth~
+The roughly-hewn tunnel leads into a natural-seeming cave area, the rough
+walls of alien stone shedding the bizarre purple light.  The floor of the
+cave is coated in a strange sticky fluid, mingled with odd sheaves of
+material that resemble dried skin.  An intense acidic odor fills the area.  
+~
+~
+1
+0 8250 0
+D0
+~
+~
+0 0 3310
+D3
+~
+~
+0 0 3308
+W 5 0 0
+Z 5 5
+S
+#3310
+The Lair of Atthagth~
+You stand within a natural-seeming cave area, the rough walls of alien
+stone shedding the bizarre purple light.  The floor of the cave is coated in
+a strange sticky fluid, mingled with odd sheaves of material that resemble
+dried skin.  An intense acidic odor fills the area.  
+~
+~
+1
+0 8250 0
+D1
+~
+~
+103 3204 3338
+D2
+~
+~
+0 0 3309
+W 5 0 0
+Z 5 5
+S
+#3311
+A Darkened Alcove~
+You stand in a small, darkened alcove opening to the east.  Through this
+arched entrance, an eerie purplish light streams.  A series of blasphemous
+runes carved into the stone wall of the alcove are barely visible in the
+darkness.  The air seems stifled and lifeless, and a deadly silence reigns. 
+~
+~
+1
+0 8254 0
+D1
+~
+~
+0 0 3312
+T 6
+W 5 0 0
+Z 5 5
+S
+#3312
+The Shrine of Xiganath~
+You stand in a hallway constructed of an alien purplish stone.  The
+unknown material is rippled with glowing streaks which give off an eerie
+violet light, flooding the hallway with dizzying incandescence.  The hallway
+continues to the east, and leads to a darkened alcove to the west.  
+~
+~
+1
+0 8250 0
+D1
+The walls to the east are pitted and scored, as if an acidic substance
+had been splashed upon them. 
+~
+~
+0 0 3313
+D3
+~
+~
+0 0 3311
+T 6
+W 5 0 0
+Z 5 5
+S
+#3313
+The Shrine of Xiganath~
+You stand in a hallway constructed of an alien purplish stone.  The
+unknown material is rippled with glowing streaks which give off an eerie
+violet light, flooding the hallway with dizzying incandescence.  The hallway
+intersects with a rough-hewn passage to the north, and leads into a
+rune-carved hall to the south.  
+~
+~
+1
+0 8250 0
+D0
+~
+~
+0 0 3315
+D1
+~
+~
+0 0 3314
+D2
+~
+~
+0 0 3321
+D3
+~
+~
+0 0 3312
+T 6
+W 0 0 -2
+Z 5 5
+S
+#3314
+The Shrine of Xiganath~
+You stand in a hallway constructed of an alien purplish stone.  The
+unknown material is rippled with glowing streaks which give off an eerie
+violet light, flooding the hallway with dizzying incandescence.  The hallway
+continues to the west, and leads into a larger chamber to the east.  
+~
+~
+1
+0 8250 0
+D1
+~
+~
+0 0 3330
+D3
+~
+~
+0 0 3313
+W 5 0 0
+Z 5 5
+S
+#3315
+A Rough-hewn Passage~
+A roughly-hewn, vaguely rounded passage has been carved out of the alien
+purple stone.  The unnatural, dizzying violet light floods into the passage
+from incandescent streaks embedded in the stone.  The passage itself appears
+to have been carved by some sort of inexact mining technique, leaving
+irregular gashes in the walls.  
+~
+~
+1
+0 8250 0
+D0
+~
+~
+0 0 3317
+D2
+~
+~
+0 0 3313
+W 5 0 0
+Z 5 5
+S
+#3316
+A Rough-hewn Passage~
+A roughly-hewn, vaguely rounded passage has been carved out of alien
+purple stone.  The unnatural, dizzying violet light floods into the passage
+from incandescent streaks embedded in the stone.  The passage itself appears
+to have been carved by some sort of inexact mining technique, leaving
+irregular gashes in the walls.  
+~
+~
+1
+0 8250 0
+D0
+~
+~
+0 0 3319
+D1
+~
+~
+0 0 3317
+W 5 0 0
+Z 5 5
+S
+#3317
+A Rough-hewn Passage~
+A roughly-hewn, vaguely rounded passage has been carved out of alien
+purple stone.  The unnatural, dizzying violet light floods into the passage
+from incandescent streaks embedded in the stone.  The passage itself appears
+to have been carved by some sort of inexact mining technique, leaving
+irregular gashes in the walls.  
+~
+~
+1
+0 8250 0
+D1
+~
+~
+0 0 3318
+D2
+~
+~
+0 0 3315
+D3
+~
+~
+0 0 3316
+W 5 0 0
+Z 5 5
+S
+#3318
+A Rough-hewn Passage~
+A roughly-hewn, vaguely rounded passage has been carved out of alien
+purple stone.  The unnatural, dizzying violet light floods into the passage
+from incandescent streaks embedded in the stone.  The passage itself appears
+to have been carved by some sort of inexact mining technique, leaving
+irregular gashes in the walls.
+~
+~
+1
+0 8250 0
+D0
+~
+~
+0 0 3320
+D3
+~
+~
+0 0 3317
+W 5 0 0
+Z 5 5
+S
+#3319
+A Rough-hewn Passage~
+A roughly-hewn, vaguely rounded passage has been carved out of alien
+purple stone.  The unnatural, dizzying violet light floods into the passage
+from incandescent streaks embedded in the stone.  The passage itself appears
+to have been carved by some sort of inexact mining technique, leaving
+irregular gashes in the walls.  The passage enters a dark cavern to the
+east.  
+~
+~
+1
+0 8250 0
+D1
+The passage to the east is engulfed in an abnormal darkness.
+~
+~
+0 0 3307
+D2
+~
+~
+0 0 3316
+W 5 0 0
+Z 5 5
+S
+#3320
+A Rough-hewn Passage~
+A roughly-hewn, vaguely rounded passage has been carved out of alien
+purple stone.  The unnatural, dizzying violet light floods into the passage
+from incandescent streaks embedded in the stone.  The passage itself appears
+to have been carved by some sort of inexact mining technique, leaving
+irregular gashes in the walls.  The passage leads into a dark cavern to the
+west.  
+~
+~
+1
+0 8250 0
+D2
+~
+~
+0 0 3318
+D3
+The passage to the west is engulfed in an abnormal darkness.
+~
+~
+0 0 3309
+W 5 0 0
+Z 5 5
+S
+#3321
+A Rune-enscribed Hallway~
+This hallway is slightly smaller than the other halls within the Shrine,
+but carved from the same luminescent purple stone.  Scribed into the stone
+surface of the walls are seemingly endless lines of bizarre runes.  The
+runes seem to shift slightly before your eyes, subtly changing
+configuration.  The hallway continues to the south, and intersects with
+another hall to the north.  
+~
+~
+1
+0 8250 0
+E
+runes~
+Chu\@unerukekanulanechorleshgyenhmunedrakurudobuhorkireqorgamashrlesharodas
+unequrudlamulhsrigagahrukichihegarghlanetesma\@aavarsmirunumursrukeksarkhmi
+ruvineqoreqormiruktecholakahrunqurujugasenmikuziruqurutikangglanegusiyalda
+sazirunadrikoruziruhlelsunalarrukebecrapmirudijalllanednakam\@unedaselmunqu
+rukasubalka\@rukechoruchdobudlanichihelkoipureshqdobuzirumsiyeshgayusemruke
+reshamr\@uneziruselnekkquruhnan\@leshpavanmiruhrandhichimetlfresichidrakoich
+elmirukurugelrukehoreketshtenleshksayusslanequrudinatlavanalleyilmrleshtod
+ayumeqorhilucholengdobushashilisichiqonnrayumanyelmrukearer\@unedhiyanessar
+rukevereshsrukepurutleshqurudridobubussarrukegruleshnu\@atlakellaneznaktare
+qorqonlaneasholeichivimirundobutsemelmirutsenelqurunriyelazirunumch\@unlesh
+kashilleshmiketrukehaim\@unechmirusiy\@unezirusunayadlamirudekkarukeeyimliuk
+rikkainkmeriyashhamuleksuntsemelznatlasunchumashgyesahlrensaymrakmehlaarra
+dimeksanenmneshailenjangaqchrashkilenferetennelharuktesunhosurukdurrikktol
+eyashyelgirkureshyjaludleksaarshqumirikegirsetlsaynritamrneqdlakumalenrenn
+eirelmulusayhridashnaktenjallasaymetlhlunyelhkitsasundinudlelengirharthayu
+shmirurunlendhilrenkumejjnkmemundeshnelsunsayaltoshri\@iskmesunbalinkamoned
+ranlenasnelkanelgirjayantitonechegamasunkerqurrennrich\@ugirdashussgirgirku
+mibejjnastluthajugaihumonekunesunrdakmejirideqneltsemelmri\@yelonechutdalig
+kmechikunullanonerenkmedlanekssaynringirkaliggasaytlakeruselnelkoimejjeksh
+anu\@lennyelsayfreshmungaqchesaykurdanugiruskmesaygyelfashqalneldilingkgirs
+unajirkharnengaylentlamtltikelnrihorussitlishkainehehdriyelmuyenalchleketm
+~
+D0
+~
+~
+0 0 3313
+D2
+~
+~
+0 0 3322
+W 5 0 0
+Z 5 5
+S
+#3322
+A Rune-enscribed Hallway~
+This hallway is slightly smaller than the other halls within the Shrine,
+but carved from the same luminescent purple stone.  Scribed into the stone
+surface of the walls are seemingly endless lines of bizarre runes.  The
+runes seem to shift slightly before your eyes, subtly changing
+configuration.  The hallway curves to the north, and enters a small alcove
+to the east.  
+~
+~
+1
+0 8250 0
+E
+runes~
+Juganisma\@chensma\@semeashmurkaneverqurutlmiriggakanevramirusaakmesma\@dlesm 
+elnduruemnelgushshtnggamorhlarkhaarshpavansma\@dladimamnelch\@uheshshasryma
+eksaridnggamnemelnemulisangirarghorrakaveruekanechameshkuminduktanngirmelk
+fretlkomnelznathunmelnkanechutejugagasssanashrakadashanimirumamirayaltolan
+hosubakjugenekriharrakamoresamikanmirutlkumiunasma\@vranthkasaieksantonkaim
+kunamelnnunurmelnsringirteshkurqiyanemnelsunkangtraesaknalku\@ubesharsmneld
+dikerakadukaikokanevinggachorinnggamelnllumirikanechirutlrakakanthu\@unakan
+niktashmnelashasma\@nrasrinucheshtunggahekubusemeskashussrutlmorzartseakurs
+mornallakaineshumortesheremnelkurrakachunanggarikkunnggagirunehagadlama\@ir
+akaunemnelemriketlkanelekkutkanevrasaneengiraringanggaa\@mnelpavansmashraku
+hrinumrinanachehelumeteneltsolyalmetsundaelgatsapaznaleyigathaitlamrakurtg
+arirunpavimchichehdriyelmuyenalchleketmissazarrushdikalelgasrymamirukelnan
+umakashshkuraibelangahosunakketlgasrymashgazirunanunashuznakanu\@ugaitamuda
+lumetdurundlamiruaktaranvimuyelaigaqiyasunnajallasubaknaireshiyashun\@lesel
+lakamtlalgabejjekkvarmetodaajjnmenulelinalhesmarteksaznatonthehpavarrnagaj
+jayukengmeselelgaheshanikonelgashetlangakumiraitsemeshhoraisunesunalngamad
+arthejjalhnadimhelkhu\@janu\@unnashquralkuteshelvridarrjainuesemelmegardayar
+hu\@armishmridobaimnevarmedashelmekshikkapadaitangzrnengargadaigamirunakame 
+~
+D0
+~
+~
+0 0 3321
+D1
+The floor to the east is adorned with a large pentagram.  The air above
+the pentagram appears to crackle with arcane energy.  
+~
+~
+0 0 3323
+W 5 0 0
+Z 5 5
+S
+#3323
+A Summoning Circle~
+The rune-enscribed hallway leads into this small alcove, built into the
+purple stone walls and bathed in the eerie luminescence of the material\@s
+glow.  The alcove consists of a small rounded area, dominated by a large
+glowing circle on the floor, made up of shining gold symbols.  
+~
+~
+1
+0 8250 0
+D3
+~
+~
+0 0 3322
+W 5 0 0
+Z 5 5
+S
+#3324
+The Arcanum~
+You stand in a small square room hewn from the alien purple stone.  The
+walls are crowded with line upon line of mystic runes, and the center of the
+floor is dominated by a large circle of symbols which glow a bright violet. 
+The ceiling is covered with a bizarre pattern of tiles, indeterminate yet
+simultanously disquieting.  
+
+On the western wall, an unsettling symbol extricates itself from the crowded
+runes, beckoning your gaze.  
+~
+~
+1
+0 8251 0
+E
+symbolvision~
+As you study the symbol the runes surrounding it seem to try to crowd it
+away, squirming for your attention.  As you make a consious effort to focus,
+your awareness of the world about you fades and you find yourself
+elsewhere..  
+
+You find yourself in a dark vaulted chamber, barely lit in a sinister red
+glow from an unseen source.  Dozens of dark, robed forms surround you, and a
+dark, unintelligable murmur echoes throughout the room.  Standing in the
+center of the circle they form, you feel their gazes studying you.  Weighing
+you.  
+
+One of them steps forward, a flicker of dim red illumination highlighting a
+mockery of a human face.  Tight, discolored skin, flashing inhuman eyes and
+feral pointed teeth make the visage of the approaching figure.  The murmurs
+fall silent with a hiss as the robed thing raises its arm toward you, black
+cloth falling away to reveal a slender, clawed hand.  The demonic creature
+before you taps a finger to your forehead, and you feel yourself surge with
+power.  
+
+You scream in exhultation as you feel the pure power of the void run through
+you, more than you thought you could ever channel.  A thousand times more. 
+You can feel the arcane powers of death and the daemonic at your beck and
+call, flowing through you with viceral coldness.  You pitch back your head,
+mad triumphant laughter echoing forth.  Suddenly your head jerks forward as
+you feel the power swell still, the infinite nothingness of the void
+hollowing your very being with its power.  
+
+With the chilling horror of dawning comprehension you feel your very mind
+and soul begin to be sucked into the cold nothingness.  You can only mannage
+a pitiful sputter before crumpling to the unyielding stone..  
+
+You suddenly are back in the chamber, the Blasphemous Sigil of Nyogthua
+seared into your consiousness.  
+~
+E
+nyogthua~
+This sigil is actually composed of several lesser runes of the Void. 
+Each of these smaller runes is connected by a stem-like structure, which
+bisects the runes collected on either side.  At the base of the mystic sigil
+is the Rune of the Arcanum, whose lines serve as the root of the
+inscription\@s symbol.  
+
+Dark energies flicker along the lines of the design.  Perhaps with study,
+you would learn more.  
+~
+E
+blasphemous~
+This sigil is actually composed of several lesser runes of the Void. 
+Each of these smaller runes is connected by a stem-like structure, which
+bisects the runes collected on either side.  At the base of the mystic sigil
+is the Rune of the Arcanum, whose lines serve as the root of the
+inscription\@s symbol.  
+
+Dark energies flicker along the lines of the design.  Perhaps with study,
+you would learn more.  
+~
+E
+symbol~
+This sigil is actually composed of several lesser runes of the Void. 
+Each of these smaller runes is connected by a stem-like structure, which
+bisects the runes collected on either side.  At the base of the mystic sigil
+is the Rune of the Arcanum, whose lines serve as the root of the
+inscription\@s symbol. 
+
+Dark energies flicker along the lines of the design.  Perhaps with study,
+you would learn more.  
+~
+E
+sigil~
+This sigil is actually composed of several lesser runes of the Void. 
+Each of these smaller runes is connected by a stem-like structure, which
+bisects the runes collected on either side.  At the base of the mystic sigil
+is the Rune of the Arcanum, whose lines serve as the root of the
+inscription\@s symbol.  
+
+Dark energies flicker along the lines of the design.  Perhaps with study,
+you would learn more.  
+~
+D1
+~
+~
+103 3203 3325
+W 5 0 0
+Z 5 5
+S
+#3325
+Outside the Arcanium~
+The doorway leads into a hallway constructed of the same purplish stone. 
+The unknown material is rippled with glowing streaks which give off an eerie
+violet light, flooding the hallway with dizzying incandescence.  To the west
+is the Arcanium, and the hallway leads to the east.  
+~
+~
+1
+0 8250 0
+D1
+~
+~
+0 0 3311
+D3
+~
+~
+103 0 3324
+W 5 0 0
+Z 5 5
+S
+#3326
+An Endless, Swirling Mist~
+An entirely insubstantial world spreads before you, seeming to consist
+entirely of foggy mist.  The billowing vapor swirls furiously all around,
+and nothing is visible beyond arm\@s length.  Bone-chilling screeches pierce
+the mist every so often.  
+~
+~
+1
+0 532858 0
+D0
+~
+~
+0 0 3340
+D3
+~
+~
+0 0 3340
+D1
+~
+~
+0 0 3339
+D2
+~
+~
+0 0 3341
+D4
+~
+~
+0 0 3341
+D5
+~
+~
+0 0 3339
+W 5 0 0
+Z 5 5
+S
+#3327
+Within a Vast Corridor~
+You stand in a vast corridor of stone, measuring no less than thirty feet
+from side to side.  The floor of the hallway is inclined, sloping upwards to
+the north.  Set into the walls of the corridor on either side are colossal
+round windows, each the height of an ordinary room.  The windows are glazed,
+and latticed with stout-looking bars, but beyond are visible the waving tops
+of bizarre fern-like growths.  
+~
+~
+1
+0 532858 0
+D0
+~
+~
+0 0 3342
+W 5 0 0
+Z 5 5
+S
+#3328
+Before a Darkened Portal~
+The dark antechamber continues, the curious seamless walls curving around
+the corner of the room.  Set in the wall before you is a portal of jet
+blackness, a square of darkness bordered by a line of symbols carved into
+the wall.  The antechamber continues to the east and south, the rest of the
+room lost in the inky dark.  
+~
+~
+1
+0 8250 0
+D1
+~
+~
+0 0 3329
+D2
+~
+~
+0 0 3330
+W 5 0 0
+Z 5 5
+S
+#3329
+Before a Darkened Portal~
+The dark antechamber continues, the curious seamless walls curving around
+the corner of the room.  Set in the wall before you is a portal of jet
+blackness, a square of darkness bordered by a line of symbols carved into
+the wall.  The antechamber continues to the west and south, the rest of the
+room lost in the inky dark.
+~
+~
+1
+0 8250 0
+D2
+~
+~
+0 0 3331
+D3
+~
+~
+0 0 3328
+W 5 0 0
+Z 5 5
+S
+#3330
+The Darkened Antechamber~
+The alien purplish stone of the hallway deepens and fades into blackness
+as the hallway opens into this large antechamber.  The walls of now-black
+material are formed seamlessly, flowing smoothly from floor into ceiling and
+around the room.  The room seems to absorb light, creating a smoky darkness
+all around.  The large chamber seems to be free of decorations, with the
+exception of a large statue to the east.  North and south are dark portals
+set against the walls.  
+~
+~
+1
+0 8250 0
+D0
+~
+~
+0 0 3328
+D1
+~
+~
+0 0 3331
+D2
+~
+~
+0 0 3332
+D3
+~
+~
+0 0 3314
+W 5 0 0
+Z 5 5
+S
+#3331
+The Darkened Antechamber~
+The dark antechamber continues, the curious seamless walls curving around
+to the east end of the room.  This end of the room is dominated by a raised
+dais set against the wall.  Carved into the wall behind the dais are a
+multitude of twisted figures, pictured dancing and cavorting obscenely.  The
+antechamber continues to the north, south, and west, lost in the smoky
+darkness.  
+~
+~
+1
+0 8250 0
+D0
+~
+~
+0 0 3329
+D2
+~
+~
+0 0 3333
+D3
+~
+~
+0 0 3330
+W 5 0 0
+Z 5 5
+S
+#3332
+Before a Darkened Portal~
+The dark antechamber continues, the curious seamless walls curving around
+the corner of the room.  Set in the wall before you is a portal of jet
+blackness, a square of darkness bordered by a line of symbols carved into
+the wall.  The antechamber continues to the east and north, the rest of the
+room lost in the inky dark.  
+~
+~
+1
+0 8250 0
+D0
+~
+~
+0 0 3330
+D1
+~
+~
+0 0 3333
+W 5 0 0
+Z 5 5
+S
+#3333
+Before a Darkened Portal~
+The dark antechamber continues, the curious seamless walls curving around
+the corner of the room.  Set in the wall before you is a portal of jet
+blackness, a square of darkness bordered by a line of symbols carved into
+the wall.  The antechamber continues to the west and north, the rest of the
+room lost in the inky dark.  
+~
+~
+1
+0 8250 0
+D0
+~
+~
+0 0 3331
+D3
+~
+~
+0 0 3332
+W 5 0 0
+Z 5 5
+S
+#3334
+A Fetid Wasteland~
+You stand in the center of a vast, fetid wasteland, with nothing visible
+in the distance but slightly curved hills of muck.  The ground is marshy,
+wet with an unusual slime that seems to ooze from the spongy earth itself. 
+The air is filled with an unbearable stench, smelling of rotting flesh,
+fish, and other unnamable things.  The sky overhead is dark and gloomy,
+dominated by lead-gray clouds that seem to take unnatural shapes.  
+~
+~
+1
+0 532862 0
+D0
+~
+~
+0 0 3334
+D1
+~
+~
+0 0 3334
+D2
+~
+~
+0 0 3334
+D3
+~
+~
+0 0 3334
+W 5 0 0
+Z 5 5
+S
+#3335
+~
+~
+~
+1
+0 565630 0
+W 5 0 0
+Z 5 5
+S
+#3336
+Before the Altar of Xiganath~
+You stand in a broad corridor bathed in a low purple glow; the walls of
+the corridor are evenly laid black stone marbled with luminescent purple
+strands, which give off the eerie light filling the hall.  The corridor
+walls are slanted overhead, and come together directly above to form a
+triangular passage.  A small set of black stone steps leads upwards to the
+east.  
+~
+~
+1
+0 8250 0
+D1
+The small steps carved from hideous black rock lead upwards into a large
+chamber.  The stone of the top step is worn into a smooth strip, as if
+something has slid over it repeatedly.  
+~
+~
+0 0 3337
+W 5 0 0
+Z 5 5
+S
+#3337
+At the Altar of Xiganath~
+You stand in a broad chamber bathed in an eerie purple glow.  The four
+walls of the chamber curve together overhead, forming a low dome-shaped
+ceiling.  The stones of the chamber walls are evenly laid black blocks
+marbled with luminescent purple, which gives off the unsettling light
+filling the room.  Carved into the walls of the chamber are shadowy, twisted
+faces, leering in hatred, and the north wall is decorated by a disturbing
+tableau of images.  A small set of black steps descends into darkness.  
+~
+~
+1
+0 8254 0
+E
+indentation~
+The indentation in the surface of the altar is a shallow oval
+approximately the size of a human fist, obviously intended to hold some
+object.  
+~
+E
+altar~
+The Altar of Xiganath is a low block of obsidian, carved into a black
+square.  Near the top of the altar, the four edges are truncated, slanting
+in to form a smaller square surface.  All about the edges, the altar is
+carved with hideous figures, and the stone of the altar seems to radiate an
+aura of blackness.  The surface of the altar is smooth, with a small
+indentation designed to hold some object.  
+~
+E
+figures~
+The altar is circled about by carvings of hideous figures, shown engaged in all
+manner of unspeakable acts. 
+~
+E
+carving~
+The altar is circled about by carvings of hideous figures, shown engaged in all
+manner of unspeakable acts.  
+~
+E
+faces~
+A series of demonic faces have been carved into the walls of the altar
+room.  The carvings depict visages more horrible than any fashioned by
+mortal man.  
+~
+E
+characters~
+The characters inscribed upon the altar read: Xiganath xadis kril-valsu
+~
+E
+altar~
+The altar is circled about by carvings of hideous figures, shown engaged
+in all manner of unspeakable acts.  A line of characters has been carved
+into the upper rim of the altar.  
+~
+E
+tableau~
+The north wall of the shrine is painted with a tableau of images
+depicting the terror inflicted upon the world by the demonic servants of the
+now-forgotten Xiganath.  It shows the many-horned Demon God rising to power
+in the abyssian depths of the void, and the temples of suffering that were
+erected during Xiganath\@s long-past reign.  
+~
+D5
+~
+~
+0 0 3346
+W 5 0 0
+Z 5 5
+S
+#3338
+Outside the Lair of Attagth~
+The doorway leads into a hallway constructed of the same purplish stone. 
+The unknown material is rippled with glowing streaks which give off an eerie
+violet light, flooding the hallway with dizzying incandescence.  To the west
+is the dark cave of Atthagth, and the hallway leads to the east.  
+~
+~
+1
+0 8250 0
+D1
+~
+~
+0 0 3311
+D3
+~
+~
+103 0 3310
+W 5 0 0
+Z 5 5
+S
+#3339
+An Endless, Swirling Mist~
+An entirely insubstantial world spreads before you, seeming to consist
+entirely of foggy mist.  The billowing vapor swirls furiously all around,
+and nothing is visible beyond arm\@s length.  Bone-chilling screeches pierce
+the mist every so often.  
+~
+~
+1
+0 532858 0
+D5
+~
+~
+0 0 3340
+D4
+~
+~
+0 0 3326
+D2
+~
+~
+0 0 3339
+D0
+~
+~
+0 0 3339
+D3
+~
+~
+0 0 3326
+D1
+~
+~
+0 0 3341
+W 5 0 0
+Z 5 5
+S
+#3340
+An Endless, Swirling Mist~
+An entirely insubstantial world spreads before you, seeming to consist
+entirely of foggy mist.  The billowing vapor swirls furiously all around,
+and nothing is visible beyond arm\@s length.  Bone-chilling screeches pierce
+the mist every so often.  
+~
+~
+1
+0 532858 0
+D2
+~
+~
+0 0 3326
+D0
+~
+~
+0 0 3341
+D4
+~
+~
+0 0 3339
+D3
+~
+~
+0 0 3341
+D1
+~
+~
+0 0 3326
+D5
+~
+~
+0 0 3340
+W 5 0 0
+Z 5 5
+S
+#3341
+An Endless, Swirling Mist~
+An entirely insubstantial world spreads before you, seeming to consist
+entirely of foggy mist.  The billowing vapor swirls furiously all around,
+and nothing is visible beyond arm\@s length.  Bone-chilling screeches pierce
+the mist every so often.  
+~
+~
+1
+0 532858 0
+D4
+~
+~
+0 0 3326
+D2
+~
+~
+0 0 3340
+D0
+~
+~
+0 0 3326
+D3
+~
+~
+0 0 3339
+D5
+~
+~
+0 0 3326
+D1
+~
+~
+0 0 3340
+W 5 0 0
+Z 5 5
+S
+#3342
+Within a Vast Corridor~
+You stand in a vast corridor of stone, measuring no less than thirty feet
+from side to side.  The floor of the hallway is inclined, sloping upwards to
+the north.  Set into the north, east, and west walls are enormous arched
+doors of brown stone, each appearing to be twice the height of an ordinary
+room.  The door to the east is slightly ajar; the north and west doors
+appear completely immovable.  
+~
+~
+1
+0 532858 0
+D0
+~
+~
+103 0 3344
+D1
+~
+~
+0 0 3345
+D2
+~
+~
+0 0 3327
+D3
+~
+~
+103 0 3343
+W 5 0 0
+Z 5 5
+S
+#3343
+~
+~
+~
+1
+0 40960 0
+D1
+~
+~
+103 0 3342
+W 5 0 0
+Z 5 5
+S
+#3344
+~
+~
+~
+1
+0 32768 0
+D2
+~
+~
+103 0 3342
+W 5 0 0
+Z 5 5
+S
+#3345
+Within a Vast Chamber~
+You stand in an enormous vaulted chamber whose ceiling is lost in the
+shadows overhead.  Vast shelves of dark wood line the stone walls, holding
+what seem to be volumes of immense size with strange hieroglyphs on their
+backs.  There are no chairs, but rather vast pedastals littered with books,
+papers, and what seem to be writing materials.  The brown stone walls of the
+chamber are lined with curving mathematical designs, and there are chiselled
+inscriptions in the same characters the books bear.  A huge vaulted door
+leading to the west stands slightly ajar.  
+~
+~
+1
+0 532858 0
+D3
+~
+~
+0 0 3342
+W 5 0 0
+Z 5 5
+S
+#3346
+Beneath the Shrine of Xiganath~
+The black stone stairs lead down into a small chamber beneath the shrine
+itself.  The walls here are built of entirely black stone, and although a
+small portion of the eerie purple light trickles in, for the most part
+darkness reigns.  Three small alcoves are built into the north, east, and
+south walls of the chamber.  
+~
+~
+1
+0 8250 0
+D0
+~
+~
+0 0 3347
+D1
+~
+~
+0 0 3349
+D2
+~
+~
+0 0 3348
+D4
+~
+~
+0 0 3337
+W 5 0 0
+Z 5 5
+S
+#3347
+A Dark Alcove Beneath the Shrine~
+You stand in a dark alcove built of black stone.  The walls are free of
+decorations, presenting only a smooth wall of pitch blackness.  The air in
+the recessed space seems to be slightly colder than that of the chamber to
+the south, and a bitter, acrid smell is present.  
+~
+~
+1
+0 8250 0
+D2
+~
+~
+0 0 3346
+W 5 0 0
+Z 5 5
+S
+#3348
+A Dark Alcove Beneath the Shrine~
+You stand in a dark alcove built of black stone.  The walls are free of
+decorations, presenting only a smooth wall of pitch blackness.  The air in
+the small recessed area seems to be slightly colder than that of the chamber
+to the north; a low pulse of barely-audible sound echoes through the alcove.
+~
+~
+1
+0 8250 0
+D0
+~
+~
+0 0 3346
+W 5 0 0
+Z 5 5
+S
+#3349
+A Dark Alcove Beneath the Shrine~
+You stand in a dark alcove built of black stone.  The walls are free of
+decorations, presenting only a smooth wall of pitch blackness.  The small
+recessed space seems to crackle with unseen energy, and a low hum is barely
+audible.  Every so often, a slight flickering of pale light occurs.  
+~
+~
+1
+0 8250 0
+D3
+~
+~
+0 0 3346
+W 5 0 0
+Z 5 5
+S
+#3350
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D2
+~
+~
+0 0 3355
+D3
+~
+~
+0 0 3368
+M -60 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3351
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D1
+~
+~
+0 0 3352
+M 100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3352
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D1
+~
+~
+0 0 3353
+D2
+~
+~
+0 0 3356
+D3
+~
+~
+0 0 3351
+D4
+~
+~
+0 0 4869
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3353
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D2
+~
+~
+0 0 3357
+D3
+~
+~
+0 0 3352
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3354
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D1
+~
+~
+0 0 3355
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3355
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3350
+D2
+~
+~
+0 0 3358
+D3
+~
+~
+0 0 3354
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3356
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3352
+D2
+~
+~
+0 0 3360
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3357
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3353
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3358
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3355
+D1
+~
+~
+0 0 3359
+D2
+~
+~
+0 0 3364
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3359
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D1
+~
+~
+0 0 3360
+D3
+~
+~
+0 0 3358
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3360
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3356
+D1
+~
+~
+0 0 3361
+D2
+~
+~
+0 0 3366
+D3
+~
+~
+0 0 3359
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3361
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D1
+~
+~
+0 0 3362
+D3
+~
+~
+0 0 3360
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3362
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3363
+D3
+~
+~
+0 0 3361
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3363
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D2
+~
+~
+0 0 3362
+D5
+~
+~
+0 0 3369
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3364
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3358
+D2
+~
+~
+0 0 3367
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3365
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D1
+~
+~
+0 0 3366
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3366
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3360
+D3
+~
+~
+0 0 3365
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3367
+A Blackened Tunnel~
+~
+~
+1
+0 8921210 0
+D0
+~
+~
+0 0 3364
+M -100 H -20 V 100
+W 5 0 0
+Z 5 5
+S
+#3368
+By a Magical Inscription~
+You stand in near-perfect darkness, with absolutely nothing visible of
+the floor, walls, or ceiling around you.  All that disturbs the purity of
+the blackness is a line of glowing characters floating in the air before
+you.  
+~
+~
+1
+0 532603 0
+E
+characters~
+M\@yeg ilolug horunarja ma\@a cehtla
+~
+E
+line~
+M\@yeg ilolug horunarja ma\@a cehtla
+~
+D1
+~
+~
+0 0 3350
+M -100 H -20 V 100
+T 55
+W 5 0 0
+Z 5 5
+S
+#3369
+The Chamber of the Maze~
+This chamber would be pitch black, but is illuminated by a pale, wan
+glow, emanating from a tortured and convoluted mystical symbol burned into
+the floor.  The walls, floor, and ceiling of the chamber are chiseled from a
+black stone, whose uniform shade makes distinguish anything other than the
+symbol difficult.  A stone stairwell leads upwards from the chamber, leaving
+through a jagged hole above into darkness.  
+~
+~
+0
+0 8250 12
+E
+symbolvision~
+The Maze is a convoluted arrangement of angular strokes, with an overall
+structure which is reminiscent of a complex labyrinth.  At the nexuses of
+the lines of the maze, dark runes are scattered.  To even the most casual
+inspection, the runes sit like traps, snaring those attempting to trace the
+paths of the maze.  
+
+Against your will, you begin attempting a path through the maze.  You stare
+at it blankly, lost in its depths....  
+
+Pulpy, dark tissue surrounds you in the shape of a corridor.  Heedless of
+reason, you flee, moving with a speed born of stark terror.  
+
+Tentacles ooze from the walls of the place, grabbing at you, slowing your
+flight.  Bulbous eyes and maws form as well, jeering and ogling your
+progress.  A slithering echo follows your steps, and your irrational terror
+takes tangible form.  
+
+Time seems to stand still, as you cannot find your way out of the fleshy
+maze.  The horrors multiply, until the walls open in a vast chamber...  A
+vast CATHEDRAL of flesh.  
+
+The chamber drips with viscous fluids, and the place is alive with whipping
+and twisting appendages.  Pools of acid burble and hiss, and a dark stair
+rises to the center of the chamber.  
+
+And there, in the middle of this place, is the tentacled, writhing body of
+Isetaton, Demon Sultan.  Even the barest brush of its awareness sends you
+screaming to your knees, groveling before its dark power.  Daring another
+glimpse of It, you realize that Isetaton is a part of the organic horror
+that is the maze.  
+
+Flee him, Seek him, both are one, for your mind is trapped in Isetaton\@s.  
+
+
+
+Your vision clears, and you are left with the conviction that the Maze of
+Isetaton is a part of you.  
+~
+E
+symbol~
+The symbol is actually a maze of some kind.  Pale, sickly light traces
+out lines and runes of its passing.  
+
+You sense that more could be learned if the symbol were studied in detail.  
+~
+E
+maze~
+The symbol is actually a maze of some kind.  Pale, sickly light traces
+out lines and runes of its passing.  
+
+You sense that more could be learned if the symbol were studied in detail.  
+~
+E
+mystical~
+The symbol is actually a maze of some kind.  Pale, sickly light traces
+out lines and runes of its passing.  
+
+You sense that more could be learned if the symbol were studied in detail.  
+~
+D4
+The stairs lead upwards into unending darkness.  
+~
+~
+0 0 3363
+M 0 H 0 V 20
+W 5 0 0
+Z 5 5
+S
+#3370
+A Treasure Trove~
+You stand in near-perfect darkness, with absolutely nothing visible of
+the floor, walls or ceiling around you.  All that disturbs the purity of the
+blackness are a few items laying scattered on the floor.  
+~
+~
+0
+0 532602 0
+D0
+~
+~
+3 0 3262
+W 5 0 0
+Z 5 5
+S
+#3371
+A Dark Vestibule~
+The chamber is thick with darkness, full of weirdly fluid shadows
+constantly shifting so that its size is impossible to gauge: now
+oppressively small, now vast and unfathomable.  Two things only are
+constant: a heavy black shroud over the far wall, and the pale, flickering
+taper beside it.  
+~
+~
+0
+0 1581179 1
+E
+taper candle~
+The candle is a thin, fragile thing of light-colored wax.  At its top the
+flame glitters and dances feebly-- a prisoner, not a herald.  
+~
+E
+shroud curtain~
+A huge curtain of thick black cloth hangs with the motionlessness of a
+tremendous weight.  
+~
+D3
+~
+~
+0 0 3372
+M 0 H 0 V 0
+W 5 0 0
+Z 5 5
+P
+>verb_prog p west~
+mpechoat $n The curtain is heavy, like lead plates encased in velvet. You push it aside.
+mpnextinterp
+~
+|
+S
+#3372
+The First Altar~
+Here there is no uncertainty.  You are within an unspeakably vast abyss,
+and the void bears down on you with all the crushing infinitude of its cold
+emptiness.  Somewhere nearby, there stands a great altar, surrounded by a
+circle of obsidian idols.  
+~
+~
+0
+0 1581695 1
+E
+xthjich~
+Xthjich, the Eternal Demon, stands tall upon the black altar, darkly
+resplendent in his spiked armor.  Long and terrible are his claws and fangs,
+dreadful his power in the dark.  
+~
+E
+agduk~
+Agduk, the Scion of Xthjich, crouches by the altar, a great bow slung
+across his scarred back, and at his waist a horn bound with hoops of iron. 
+A cunning stalker of the shadows, and a hunter bringing fear by night.  
+~
+E
+pricina~
+Pricina, Queen of the Succubi, stands by the altar, arms outstretched in
+wanton yearning.  Achingly desirable is her silk-shrouded form, freezing and
+poisonous her touch.  
+~
+E
+tzakmeqiel~
+Tzakmeqiel, the Desecratrix, lies prostrate before the altar, surrounded
+by a fine webwork of moldering cracks.  Plague, decay, and miasma are the
+keepsakes of her passage.  
+~
+E
+igray\@iitu~
+Igray\@iitu, Lord of Oame, sits before the altar, grinning a slimy
+toad-grin over his distended belly.  Fecund and pestilential, a prince of
+creeping things, his hunger is insatiable.  
+~
+E
+khamurn~
+Khamurn, Magistrate of the Void, stands proud before the altar, draped in
+thick brocade heavy with gold and jewels.  His jet eyes gleam with avarice,
+and the law succours not his victims.  
+~
+E
+barkja~
+Barkja, the Infernal Stage, stands in humble robes before the altar,
+chained to a ponderous tome.  Fathomless is his knowledge, inscrutable his
+aims, inexhaustible his patience.  
+~
+E
+bahhaoth~
+Bahhaoth, Queen of the Dead Seas, reposes upon a small plinth by the
+altar.  Lurid and horrible is her gleam.  Penetrating and irresistable is
+her gaze.  Violent and complete is her wrath.  
+~
+E
+isetaton~
+Isetaton, the Demon Sultan, watches by the altar, tentacles gathered
+beneath his finery like the roots of an evil tree.  Hot and twisted are the
+paths of the Maze of Flesh.  Flee, flee the Maze of Flesh!  
+~
+E
+nyogthua~
+Nyogthua, the Wizard of the Arcanum, broods before the altar, obsidian
+face hidden beneath a cowl of weird runes.  As deep and dark as the Void is
+his wisdom, and his vengeance endures forever.  
+~
+E
+an\@akarta~
+An\@Akarta, the Flame of Logor, stands at attention before the altar,
+blazing with unfettered rage.  Like hellfire burns his anger, and never can
+it be appeased until not even the ashes of its object remain.  
+~
+E
+ashur empty~
+The last place around the altar is empty, save for the awful name of
+{bASHUR{x.  
+~
+E
+vaeshir~
+The ebony skull of Vaeshir, Grand Vizier of Logor, regards the altar. 
+Iron is the Black City, and iron the will of its ruler.  In his plots and
+schemes mortals are crushed as by the gears of a vast machine.  
+~
+M 0 H 0 V 0
+W 5 0 0
+Z 5 5
+S
+#3399
+A Fiery Pit~
+You stand in a fiery pit, circled about by solid walls of white-hot
+flames.  The small circle of blackened stone floor is hot to the touch, and
+waves of heat from the all-consuming inferno close in, making the area
+nearly unbearable.  
+~
+~
+1
+0 8246 0
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 3262 2 3
+D 0 3310 1 103
+D 0 3324 1 103
+D 0 3325 3 103
+D 0 3338 3 103
+D 0 3342 0 103
+D 0 3342 3 103
+D 0 3343 1 103
+D 0 3344 2 103
+D 0 3370 0 3
+M 0 3220 37 3201 1
+M 0 3202 5 3202 1
+M 0 3220 37 3202 1
+M 0 3220 37 3203 1
+M 0 3220 37 3204 1
+M 0 3202 5 3205 1
+M 0 3220 37 3205 1
+M 0 3220 37 3206 1
+M 0 3220 37 3207 1
+M 0 3202 5 3208 1
+M 0 3220 37 3208 1
+M 0 3220 37 3209 1
+M 0 3220 37 3210 1
+M 0 3220 37 3211 1
+M 0 3202 5 3212 1
+M 0 3220 37 3212 1
+M 0 3220 37 3213 1
+R 0 3214 4
+M 0 3202 5 3214 1
+M 0 3220 37 3214 1
+M 0 3220 37 3215 1
+M 0 3220 37 3216 1
+M 0 3220 37 3217 1
+M 0 3220 37 3218 1
+M 0 3220 37 3219 1
+M 0 3220 37 3220 1
+M 0 3220 37 3221 1
+M 0 3220 37 3222 1
+M 0 3220 37 3223 1
+M 0 3220 37 3224 1
+M 0 3220 37 3225 1
+M 0 3220 37 3226 1
+M 0 3220 37 3227 1
+M 0 3220 37 3228 1
+M 0 3220 37 3229 1
+M 0 3220 37 3230 1
+M 0 3220 37 3231 1
+M 0 3220 37 3232 1
+M 0 3220 37 3233 1
+M 0 3220 37 3234 1
+M 0 3220 37 3235 1
+M 0 3220 37 3236 1
+M 0 3211 1 3237 1
+M 0 3220 37 3238 1
+M 0 3220 37 3239 1
+M 0 3212 1 3244 1
+M 0 3207 4 3247 1
+M 0 3207 4 3249 1
+M 0 3210 5 3249 1
+M 0 3206 3 3251 1
+M 0 3210 5 3251 1
+M 0 3205 3 3253 1
+M 0 3206 3 3255 1
+M 0 3210 5 3259 1
+M 0 3205 3 3261 1
+M 0 3205 3 3263 1
+M 0 3210 5 3264 1
+M 0 3206 3 3265 1
+M 0 3215 1 3267 1
+M 0 3203 11 3268 1
+R 0 3268 6
+M 0 3203 11 3269 1
+R 0 3269 6
+M 0 3203 11 3270 1
+R 0 3270 6
+M 0 3203 11 3271 1
+R 0 3271 6
+M 0 3203 11 3272 1
+R 0 3272 6
+M 0 3203 11 3273 1
+R 0 3273 6
+M 0 3203 11 3274 1
+R 0 3274 6
+M 0 3203 11 3275 1
+R 0 3275 6
+M 0 3203 11 3276 1
+R 0 3276 6
+M 0 3203 11 3277 1
+R 0 3277 6
+M 0 3203 11 3278 1
+R 0 3278 6
+M 0 3203 11 3279 1
+R 0 3279 6
+M 0 3213 1 3280 1
+M 0 3209 1 3303 1
+M 0 3201 10 3306 10
+M 0 3201 10 3306 10
+M 0 3201 10 3306 10
+M 0 3201 10 3306 10
+M 0 3201 10 3306 10
+M 0 3201 10 3306 10
+M 0 3201 10 3306 10
+M 0 3201 10 3306 10
+M 0 3201 10 3306 10
+M 0 3201 10 3306 10
+M 0 3218 1 3308 1
+M 0 3221 1 3313 1
+O 0 3205 0 3313
+M 0 3216 1 3323 1
+M 0 3323 1 3324 1
+M 0 3217 1 3324 1
+E 0 3203 0 3
+M 0 3302 1 3324 1
+O 0 3207 0 3326
+R 0 3326 6
+M 0 3322 12 3326 3
+M 0 3322 12 3326 3
+M 0 3322 12 3326 3
+O 0 3209 0 3327
+O 0 3206 0 3328
+O 0 3208 0 3329
+M 0 3224 1 3331 1
+O 0 3210 0 3332
+O 0 3212 0 3333
+O 0 3311 0 3334
+M 0 3223 1 3334 1
+E 0 3211 0 12
+M 0 3228 1 3336 1
+O 0 3219 0 3337
+P 0 3221 1 3219 1
+P 0 3229 1 3219 1
+P 0 3230 1 3229 1
+P 0 3231 1 3229 1
+M 0 3326 1 3337 1
+R 0 3339 6
+M 0 3322 12 3339 3
+M 0 3322 12 3339 3
+M 0 3322 12 3339 3
+R 0 3340 6
+M 0 3322 12 3340 3
+M 0 3322 12 3340 3
+M 0 3322 12 3340 3
+R 0 3341 6
+M 0 3322 12 3341 3
+M 0 3322 12 3341 3
+M 0 3322 12 3341 3
+M 0 3227 1 3342 1
+E 0 3216 0 13
+O 0 3215 0 3345
+P 0 3217 1 3215 1
+P 0 3218 1 3215 1
+P 0 3220 1 3215 1
+O 0 3228 0 3346
+O 0 3222 0 3347
+P 0 3223 1 3222 1
+O 0 3226 0 3348
+P 0 3227 1 3226 1
+O 0 3224 0 3349
+P 0 3225 1 3224 1
+M 0 3229 1 3368 1
+M 0 3325 1 3368 1
+M 0 3327 1 3368 1
+M 0 3303 1 3369 1
+O 0 3233 0 3370
+M 0 3230 1 3370 1
+M 0 3328 1 3371 1
+O 0 3237 0 3371
+O 0 3236 0 3372
+O 0 3237 0 3372
+M 0 3329 1 3372 1
+M 0 3214 6 3399 6
+M 0 3214 6 3399 6
+M 0 3214 6 3399 6
+M 0 3214 6 3399 6
+M 0 3214 6 3399 6
+M 0 3214 6 3399 6
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

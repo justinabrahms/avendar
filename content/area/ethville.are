@@ -1,0 +1,6238 @@
+#AREADATA
+Name Eril Village~
+Builders Rystaia~
+VNUMs 4025 4099
+Credits [ 1 15] Rystaia   Eril Village~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 5 0 0
+Shades 5 5
+Stone 84
+End
+
+
+
+#MOBILES
+V4 4025
+Qaranstan ethron leader~
+Qaranstan~
+Qaranstan, the leader of Eril, sits here, going over some papers.
+~
+The leader of Eril is an elderly ethron, his pale green skin wrinkled and
+grayish in his age.  But though his body is giving up to the ravages of
+time, his gaze remains clear and focused, and sparkling with intelligence.  
+~
+ethron~
+water scholar~
+AGL 0 0 G 0
+20 10 12d30+287 20d10+100 5d4+10 bash~
+punch~
+-2 -2 -2 3
+EJK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit stand male 10 43
+AHMW ABCDEFGIJKP AJ medium flesh
+>greet_prog 100~
+if isenemy($n) == 43
+     yell $N is in my house!
+     mpkill $n
+     break
+endif
+~
+>rand_prog 25~
+if mobvalue(0) == 1
+     mpvaluedown 0
+endif
+~
+>fight_prog 100~
+mpfocus $n
+if mobvalue(0) == 0
+     mpmload 4077
+     mpseewizi
+     mpgoto 4098
+     if mobhere(4076)
+          mpgoto erilanchor
+          mpunseewizi
+          mpkill $f
+          mpvalueset 0 1
+          yell Guards!  Guards!
+          mpseewizi
+          mpat 4098 mptransfer ethronerilguard erilanchor
+          mpat 4098 mptransfer ethronerilguard erilanchor
+          mppurge erilanchor
+          mpunseewizi
+          mpecho Hearing the commotion, two of Eril\@s guards burst into the room!
+          mpforce erg mpkill $n
+          mpforce 2.erg mpkill $n
+     else
+          mpgoto erilanchor
+          mpunseewizi
+          mpkill $f
+          mpvalueset 0 1
+          mppurge erilanchor
+          yell Help!  Anyone!
+     endif
+endif
+~
+>rand_prog 1~
+emote flips through a pile of papers, selects one, and resumes reading.
+~
+|
+V4 4026
+trapper~
+the trapper~
+A human trapper walks through the village.
+~
+The trapper is rugged and sure of himself, pale eyes regarding the world
+around him from under his messy hair.  He rests a hand on his change purse,
+calculating what he can make with this days sales.  
+~
+human~
+water scholar~
+AG 0 0 G 0
+15 7 8d30+261 15d10+100 3d5+8 bash~
+punch~
+0 0 0 5
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 43
+AHMV ABCDEFGHIJK AJ medium flesh
+V4 4027
+trapper~
+the trapper~
+A trapper walks past in good humour.
+~
+The trapper seems to be in a good mood, smiling and nodding to all he
+passes.  
+~
+human~
+water scholar~
+AG 0 0 G 0
+15 7 8d30+261 15d10+100 3d5+8 bash~
+punch~
+0 0 0 5
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 43
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 1~
+emote nods pleasantly to a passing citizen.
+~
+|
+V4 4028
+trapper~
+a trapper~
+A human trapper haggles over the worth of his furs.
+~
+The trapper is flushed in his face, arguing heatedly and making grand
+gestures with his arms.  
+~
+human~
+water scholar~
+AGL 0 0 G 0
+15 7 8d30+261 15d10+100 3d5+8 bash~
+punch~
+0 0 0 5
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 43
+AHMV ABCDEFGHIJK A medium flesh
+V4 4029
+trapper~
+a trapper~
+An ethron trapper looks content after a prosperous day.
+~
+The ethron man walks with a bounce in his step, heading towards the
+Belliful Tavern to celebrate his apparent good fortunes today.  
+~
+ethron~
+water scholar~
+AG 0 0 G 0
+15 7 8d30+261 15d10+100 3d5+8 bash~
+punch~
+0 0 0 5
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 43
+AHMVW ABCDEFGHIJK AJ medium flesh
+>rand_prog 2~
+emote starts to whistle a merry tune.
+~
+|
+V4 4030
+trapper human~
+a trapper~
+A fierce looking human trapper rests for a moment.
+~
+The woman is scarred and battleworn, and appears to be enjoying a break,
+something that is not common.  
+~
+human~
+water scholar~
+AGL 0 0 G 0
+15 7 8d30+261 15d10+100 3d5+8 bash~
+punch~
+0 0 0 5
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 43
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 1~
+emote sighs in contentment.
+~
+|
+V4 4031
+Lerin trim ethron man erilshop~
+Lerin~
+A trim ethron man works in his shop.
+~
+Lerin is an ethron merchant of some repute, and the current owner of the
+Eril clothing shop.  Originally born in Lithling Valley, he has traveled
+extensively throughout Avendar.  He is trim and handsome, with a pleasant
+face and deep, brown eyes.  His natural charisma gave him an advantage in
+breaking into the clothing trade, and his sensibilities appealed to the
+near-untapped ethron market.  This success allowed him to negotiate with the
+Var Bandor\@s Merchant Council, and secure the materials and patterns his
+clients wanted.  He set up shop in Eril to indulge his passion for clothing
+and also be among his people.  
+~
+ethron~
+water scholar~
+ABX 0 0 G 0
+58 29 37d130+1112 30d10+100 7d8+29 bash~
+punch~
+-25 -25 -25 -25
+FIJK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 210 43
+AHMVW ABCDEFGHIJK AJ medium flesh
+>rand_prog 1~
+if mobvalue(0) == 1
+     mpvaluedown 0
+endif
+~
+>greet_prog 100~
+if isenemy($n) == 43
+     yell $N is in my shop!
+     mpkill $n
+     break
+endif
+if mobvalue(0) == 1
+     break
+endif
+if mobvalue(2) == 1
+     tell $n We\@re closed, my friend.  Please come back between 6:00am and 10:00pm.
+     break
+endif
+if ispc($n)
+     if remembers($n) 
+          mpmemvup $n
+          mpechoat $n Lerin looks up from folding clothes.
+          if mobvcheck($n) > 0
+               if mobvcheck($n) < 4
+                    tell $n Ah, $N.  Do you have something you\@re interested in?
+               endif  
+               if mobvcheck($n) > 3
+                    if mobvcheck($n) < 7
+                         tell $n $N, I\@m sure I could fit you for a new shirt in no time.
+                    endif 
+               endif
+               if mobvcheck($n) > 6
+                    tell $n $N, my fashion advice isn\@t free.
+                    chortle $n
+               endif
+          endif
+     else
+          mpremember $n
+          mpmemvset 0 $n
+          tell $n Greetings, my friend!  Feel free to look around.
+     endif
+endif
+~
+>fight_prog 100~
+mpvalueset 0 1
+~
+>load_prog 100~
+speak common
+~
+>time_prog 22~
+emote draws the curtains, and prepares to clean the shop overnight.
+mpstring mob self long A trim ethron man cleans up his shop overnight.
+drinks.
+mpvalueset 2 1
+~
+>time_prog 6~
+emote folds some clothes and straightens up his shop\@s inventory for opening.
+mpstring mob self long A trim ethron man folds clothes as he watches the counter.
+mpvalueset 2 0
+~
+|
+V4 4032
+Alajasi Chadirsa caladaran man artisan erilshop~
+Alajasi Chadirsa~
+A caladaran artisan with large hands tends his shop.
+~
+The caladaran artisan Alajasi Chadirsa is well-known throughout Avendar
+for his ceramics.  Originally born in Jandiska, he traveled abroad to study
+with Chassalrin, the famed sculptor of Gaald.  He is tall and thin, with
+almost comically oversized hands and feet for his frame.  His somewhat odd
+appearance has worked in his favor, allowing him an unusually impressive
+command of sculpting.  His work is most well known for the geometric forms
+with which he decorates his pieces.  He was able to procure this location at
+low cost from its previous owner, and now uses it to expand both his art and
+coin-purse.  
+~
+caladaran~
+water scholar~
+ABX 0 D G 0
+58 29 37d130+1112 58d10+100 7d8+29 bash~
+smack~
+-25 -25 -25 -25
+FIK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 250 43
+AHMVW ABCDEFGHIJK AIJK medium flesh
+>rand_prog 1~
+if mobvalue(0) == 1
+     mpvaluedown 0
+endif
+~
+>fight_prog 100~
+mpvalueset 0 1
+~
+>load_prog 100~
+speak common
+~
+>greet_prog 100~
+if isenemy($n) == 43
+     yell $N has come!
+     mpkill $n
+     break
+endif
+if mobvalue(0) == 1
+     break
+endif
+if mobvalue(2) == 1
+     tell $n I apologize, but the shop is closed.  Please come back between 5:00am and 9:00pm.
+     break
+endif
+if ispc($n)
+     if remembers($n) 
+          mpmemvup $n
+          mpechoat $n Alajasi looks up from his work, nodding.
+          if mobvcheck($n) > 0
+               if mobvcheck($n) < 4
+                    tell $n Welcome back, $N.  Let me know if you see something you like.
+               endif  
+               if mobvcheck($n) > 3
+                    if mobvcheck($n) < 7
+                         tell $n You have returned, $N.  Is there something on your mind?
+                    endif 
+               endif
+               if mobvcheck($n) > 6
+                    tell $n It is quite peaceful here, is it not, $N?
+               endif
+          endif
+     else
+          mpremember $n
+          mpmemvset 0 $n
+          tell $n Greetings, and welcome to my shop.  Please look around.
+     endif
+endif
+~
+>time_prog 21~
+emote closes the shop for the evening, putting away the sample jewelry and wiping off the counters.
+mpstring mob self long A caladaran artisan cleans his shop overnight.
+mpvalueset 2 1
+~
+>time_prog 5~
+emote sets out his sample jewelry on the counters, and then sits behind one of them.
+mpstring mob self long A caladaran artisan tends the counter of his shop.
+mpvalueset 2 0
+~
+|
+V4 4033
+Emmin barkeep plump ethron woman erilshop~
+Emmin the barkeep~
+A plump ethron woman tends the bar and chats with customers.
+~
+A plump ethron woman, Emmin is the face of Eril\@s hospitality.  She is a
+dark, moss green with short, straight hair.  She took over the village bar
+when she was a young woman, taking over for her aging father.  Her voice is
+melodious and friendly, and she is well-known for greeting regulars and
+newcomers alike with a smile.  She enjoys cooking a variety of things and
+takes particular care in making the village\@s famous sugar cake.  She spends
+her days polishing glasses, cooking, and tending the bar, and wears an
+attractive blue apron.  
+~
+ethron~
+water scholar~
+AB 0 0 G 0
+30 15 13d61+548 30d10+100 5d6+15 bash~
+punch~
+-9 -9 -9 0
+FN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 250 43
+AHMVW ABCDEFGHIJKP AIJ medium flesh
+>greet_prog 100~
+if isenemy($n) == 43
+     yell $N is here!  $N is here!
+     mpkill $n
+     break
+endif
+if mobvalue(0) == 1
+     break
+endif
+if mobvalue(2) == 1
+     tell $n I\@m sorry, but the bar\@s closed.  Please come back between 10:00am and 2:00am.
+     break
+endif
+if ispc($n)
+     if remembers($n) 
+          mpmemvup $n
+          mpechoat $n Emmin smiles at you cheerily.
+          if mobvcheck($n) > 0
+               if mobvcheck($n) < 4
+                    tell $n Good to see you, $N.  Would a little of Eril\@s finest hit the spot?
+               endif  
+               if mobvcheck($n) > 3
+                    if mobvcheck($n) < 7
+                         tell $n $N, $N!  I\@ve got some fresh sugar cake, would you like some?
+                    endif 
+               endif
+               if mobvcheck($n) > 6
+                    tell $n You\@re getting to be a regular, $N.  Don\@t be shy.
+               endif
+          endif
+     else
+          mpremember $n
+          mpmemvset 0 $n
+          tell $n Welcome to the Belliful Tavern!  I\@m Emmin, what\@re you drinking?
+     endif
+endif
+~
+>fight_prog 100~
+mpfocus $n
+if mobvalue(0) == 0
+     mpmload 4077
+     mpseewizi
+     mpgoto 4098
+     if mobhere(4076)
+          mpgoto erilanchor
+          mpunseewizi
+          mpkill $f
+          mpvalueset 0 1
+          yell Help!  Guards!
+          mpseewizi
+          mpat 4098 mptransfer ethronerilguard erilanchor
+          mpat 4098 mptransfer ethronerilguard erilanchor
+          mppurge erilanchor
+          mpecho Hearing the commotion, two of Eril\@s guards burst into the room!
+          mpforce erg mpkill $n
+          mpforce 2.erg mpkill $n
+mpunseewizi
+     else
+          mpgoto erilanchor
+          mpunseewizi
+          mpkill $f
+          mpvalueset 0 1
+mppurge erilanchor
+          yell Help!  Anyone!
+     endif
+endif
+~
+>rand_prog 25~
+if mobvalue(0) == 1
+     mpvaluedown 0
+endif
+~
+>time_prog 2~
+emote hands out the final drinks of the night, before getting ready to clean the bar.
+mpstring mob self long A plump ethron woman cleans up the bar in her off hours.
+mpvalueset 2 1
+~
+>time_prog 1~
+esay \@calls out\@ Last call!
+~
+>time_prog 10~
+emote places clean mugs onto the bar, lays out menus, and gets ready to serve her customers.
+mpstring mob self long A plump ethron woman works behind the bar, preparing food and drinks.
+mpvalueset 2 0
+~
+>load_prog 100~
+speak common
+~
+|
+V4 4034
+man caladaran~
+the caladaran man~
+A caladaran man sits here, quietly studying a scroll.
+~
+The caladaran man sits in deep contemplation as he reads over a long
+scroll.  His tall body is easily held by the large chair he sits in, and the
+chair and all other furniture look specially sized for the man.  
+~
+caladaran~
+water scholar~
+AGL 0 0 G 0
+13 6 6d26+213 13d10+100 2d5+8 bash~
+punch~
+2 2 2 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 43
+AHMVW ABCDEFGHIJKP AHIJ medium flesh
+>rand_prog 1~
+emote frowns pensively, and looks closer at the scroll he holds.
+~
+|
+V4 4035
+man caladaran~
+the caladaran man~
+A caladaran man meanders through the village.
+~
+The caladaran man strolls throughout the village, occasionally nodding
+his head in greeting to friends.  
+~
+caladaran~
+water scholar~
+AG 0 0 G 0
+13 6 6d26+213 13d10+100 2d5+8 bash~
+punch~
+2 2 2 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 125 43
+AHMVW ABCDEFGHIJKP AIJ medium flesh
+V4 4036
+woman caladaran~
+the caladaran woman~
+A caladaran woman walks through the village.
+~
+The woman walks through the village without any apparent intent or
+purpose.  She nods in greeting to those she knows, but generally keeps to
+herself.  
+~
+caladaran~
+water scholar~
+AG 0 0 G 0
+13 6 6d26+213 13d10+100 2d5+8 bash~
+punch~
+2 2 2 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 43
+AHMVW ABCDEFGHIJKP AI medium flesh
+V4 4037
+man~
+the man~
+A heavyset man sits by the fountain.
+~
+The man sits, resting for a moment, and enjoying the cool refreshing air
+by the fountain.  His round face is quite flushed, and he wears a fine fur
+cloak, most likely purchased from one of the trappers.  
+~
+human~
+water scholar~
+AGL 0 0 G 0
+13 6 6d26+213 13d10+100 2d5+8 bash~
+punch~
+2 2 2 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 20 43
+AHMV ABCDEFGHIJK AJ medium flesh
+>rand_prog 1~
+emote splashes some water on his face, and takes a long drink.
+~
+|
+V4 4038
+woman housewife wife~
+a housewife~
+A housewife sits here, finishing some sewing.
+~
+The human woman is pleasant faced and peaceful as she sits, working
+intently on her embroidery.  Her hair is slightly grey, and small lines
+crease the corners of her eyes and mouth, but the tune she hums under her
+breath is lively and merry.  
+~
+human~
+water scholar~
+AGL 0 0 G 0
+10 5 5d22+167 10d10+100 2d5+5 bash~
+punch~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 43
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 1~
+emote holds her embroidery away from her for a moment, examining her work intently.
+~
+|
+V4 4039
+man human citizen~
+the man~
+One of Eril\@s human citizens passes through.
+~
+The man is fit and healthy, and definitely in his prime.  He walks
+purposefully towards his destination as he fixes the dark green cape he
+wears.  
+~
+human~
+water scholar~
+AG 0 0 G 0
+10 5 5d22+167 10d10+100 2d5+5 bash~
+punch~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 30 43
+AHMV ABCDEFGHIJK AJ medium flesh
+V4 4040
+guard gate ethron~
+the ethron gate guard~
+A gate guard stands at attention, watching the surrounding forests intently.
+~
+The ethron gate guard is attentive and aware, scanning the surrounding
+forests and the path to the village intently.  
+~
+ethron~
+water scholar~
+AGL 0 0 G 0
+20 10 12d30+287 20d10+100 5d4+10 bash~
+punch~
+-2 -2 -2 3
+EFJKQU 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 10 43
+AHMVW ABCDEFGHIJKP AJ medium flesh
+>greet_prog 100~
+if isenemy($n) == 43
+     yell $N is an enemy of Eril Village!
+     mpkill $n
+     break
+endif
+if isfriend($n) == 43
+     salute $n
+     break
+endif
+if rand(10)
+     mpechoat $n The gate guard stands at attention, and nods to you as you pass.
+endif
+~
+|
+V4 4041
+guard ethron~
+the ethron guard~
+An ethron guard is here, nodding at the passersby.
+~
+The ethron woman nods pleasantly to the passing citizens of Eril, seeming
+relazed and at ease.  She idly scans the crowd for any disturbances, but
+doesn\@t tend to be called to duty very often.  
+~
+ethron~
+water scholar~
+AGL 0 0 G 0
+20 10 12d30+287 20d10+100 5d4+10 bash~
+punch~
+-2 -2 -2 3
+EJKQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 10 43
+AHMVW ABCDEFGHIJKP AJ medium flesh
+>greet_prog 100~
+if isenemy($n) == 43
+     yell Watch out!  $N is an enemy of Eril Village!
+     mpkill $n
+     break
+endif
+~
+|
+V4 4042
+guard~
+the human guard~
+A guard leans against a tree, watching the city and the surrounding forest.
+~
+The human guard stands casually and seemingly unconcerned, resting
+against the tree as he watches the area.  
+~
+human~
+water scholar~
+AGL 0 0 G 0
+20 10 12d30+287 20d10+100 5d4+10 bash~
+punch~
+-2 -2 -2 3
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 10 43
+AHMVW ABCDEFGHIJKP AJ medium flesh
+>greet_prog 100~
+if isenemy($n) == 43
+     yell Watch out!  $N is an enemy of Eril Village!
+     mpkill $n
+     break
+endif
+~
+|
+V4 4043
+woman kankoran~
+a kankoran woman~
+A kankoran woman strolls through Eril.
+~
+The kankoran woman is covered in soft grey fur, and seems to be a city
+dweller, less wild than her ancestors.  
+~
+kankoran~
+water scholar~
+AG 0 Z G 0
+13 6 6d26+213 13d10+100 2d5+8 bash~
+punch~
+2 2 2 6
+V 0
+26 0 0 0 0 0 0 0 -33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 20 43
+AHMV ABCDEFGHIJKUV AD medium flesh
+V4 4044
+man kankoran~
+a kankoran man~
+A kankoran man walks through here, stopping to get some supplies.
+~
+The kankoran looks rugged and wild, almost as much as his wolf brethren
+in the forests.  He has stopped by Eril in order to gather some supplies.  
+~
+kankoran~
+water scholar~
+AG 0 Z G 0
+15 7 8d30+261 15d10+100 3d5+8 bash~
+punch~
+0 0 0 5
+FIV 0
+26 0 0 0 0 0 0 0 -33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 43
+AHMV ABCDEFGHIJKUV DJ medium flesh
+V4 4045
+man aelin~
+an aelin man~
+An aelin man flies past.
+~
+The aelin man flies slowly through the village, taking in all that
+happens around him with great intrest.  
+~
+aelin~
+water scholar~
+AG 0 ET G 0
+13 6 6d26+213 13d10+100 2d5+8 bash~
+punch~
+2 2 2 6
+0 0
+26 0 0 0 0 -33 0 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 140 43
+AHMVW ABCDEFGHIJKP AF medium flesh
+V4 4046
+boy~
+the boy~
+A young human boy plays here quietly.
+~
+The boy is young and innocent looking, his messy blond hair falling into
+his eyes as he plays.  
+~
+human~
+water scholar~
+AG 0 0 G 0
+5 1 1d17+42 5d10+100 2d3+6 bash~
+punch~
+7 7 7 8
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 43
+AHMV ABCDEFGHIJK AJ medium flesh
+V4 4047
+trapper ethron~
+a trapper~
+An ethron trapper strolls through the market.
+~
+The ethron seems competant and hardened, running a practiced eye over the
+furs sold, and watching the gold exchange hands.  
+~
+ethron~
+water scholar~
+AG 0 0 G 0
+15 3 8d30+261 15d10+100 3d5+8 bash~
+punch~
+0 0 0 5
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 43
+AHMVW ABCDEFGHIJKP AJ medium flesh
+V4 4048
+boy ethron~
+the ethron boy~
+An ethron boy laughs happily as he plays.
+~
+The boy hasn\@t got a care in the world as he runs along, laughing so hard
+he has to stop for breath.  
+~
+ethron~
+water scholar~
+AG 0 0 G 0
+5 1 1d17+42 5d10+100 2d3+6 bash~
+punch~
+7 7 7 8
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 5 43
+AHMVW ABCDEFGHIJKP J medium flesh
+>rand_prog 1~
+esay \@laughs\@ Can\@t catch me!
+~
+|
+V4 4049
+girl ethron~
+an ethron girl~
+An ethron girl walks through Eril, her eyes wide.
+~
+The girl walks through Eril towards a friends house, but as she passes by
+the tall and strange visitors to her village her eyes widen as if to better
+absorb all that she sees, 
+~
+ethron~
+water scholar~
+AG 0 0 G 0
+5 3 4d5+89 5d10+100 2d2+3 bash~
+punch~
+6 6 6 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 10 43
+AHMVW ABCDEFGHIJKP AJ medium flesh
+V4 4050
+woman ethron~
+the ethron woman~
+An ethron woman straightens and tidies her house.
+~
+The woman straightens and cleans her house, her face set as she scrubs
+the wooden table.  
+~
+ethron~
+water scholar~
+AGL 0 0 G 0
+10 5 5d22+167 10d10+100 2d5+5 bash~
+punch~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 20 43
+AHMVW ABCDEFGHIJKP J medium flesh
+>rand_prog 1~
+emote dips a rag into the bucket at her feet, and continues to scrub at a stain on the wooden table.
+~
+|
+V4 4051
+woman ethron~
+the ethron woman~
+An ethron woman walks past, some packages in her arms.
+~
+The woman walks past, toting a bunch of packages and a new pair of gloves
+she purchased from the merchants.  
+~
+ethron~
+water scholar~
+AG 0 0 G 0
+8 4 3d20+132 8d10+100 2d4+4 bash~
+punch~
+5 5 5 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 20 43
+AHMVW ABCDEFGHIJK AJ medium flesh
+>rand_prog 1~
+emote admires her fine new gloves.
+~
+|
+V4 4052
+woman ethron~
+an ethron woman~
+An ethron woman walks through the marketplace.
+~
+The woman\@s skin shines softly, a flushed green from the warmth of the
+marketplace.  She walks around, browsing and greeting those she knows.  
+~
+ethron~
+water scholar~
+AGL 0 0 G 0
+8 4 3d20+132 8d10+100 2d4+4 bash~
+punch~
+5 5 5 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 110 43
+AHMVW ABCDEFGHIJKP J medium flesh
+V4 4053
+man~
+the ethron man~
+An ethron man sits here, taking a rest.
+~
+The man sits in his chair, looking content as he looks about his home.  
+~
+ethron~
+water scholar~
+AGL 0 0 G 0
+10 5 5d22+167 10d10+100 2d5+5 bash~
+punch~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 43
+AHMVW ABCDEFGHIJK J medium flesh
+V4 4054
+man~
+the man~
+A man talks animatedly with his friends.
+~
+The ethron man seems in good humour as he strolls along, gesturing and
+talking.  
+~
+ethron~
+water scholar~
+AG 0 0 G 0
+8 4 3d20+132 8d10+100 2d4+4 bash~
+punch~
+5 5 5 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 110 43
+AHMVW ABCDEFGHIJKP AJ medium flesh
+>rand_prog 1~
+emote gestures wildly, nearly hitting his friend with his arm.
+~
+>rand_prog 1~
+say You should have seen his face!
+chuckle
+~
+|
+V4 4055
+man ethron~
+the ethron man~
+An ethron man is here.
+~
+The ethron man walks through the village, heading towards some
+destination.  
+~
+ethron~
+water scholar~
+AG 0 0 G 0
+5 5 1d17+42 5d10+100 2d3+6 bash~
+punch~
+7 7 7 8
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 90 43
+AHMVW ABCDEFGHIJK J medium flesh
+V4 4056
+cat~
+the cat~
+A small cat lies curled up on the floor.
+~
+The cat has silky black fur, and purrs softly to itself as it sleeps.
+~
+cat~
+water scholar~
+AGLN 0 Z G 0
+3 2 1d6+24 3d10+100 1d3+2 slash~
+claw~
+8 8 8 8
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sleep stand none 0 43
+AGHV ABCDEFGHIJKQUV 0 medium flesh
+>rand_prog 1~
+echo The cat shifts position slightly, and purrs.
+~
+|
+V4 4057
+dog~
+a dog~
+A dog trots past.
+~
+The dog is shaggy but relatively clean, his eyes brown and warm.  He
+issues a few quick barks at the people around him, and wags his tail as he
+pants.  
+~
+dog~
+water scholar~
+AN 0 0 G 0
+3 2 1d6+24 3d10+100 1d3+2 pierce~
+bite~
+8 8 8 8
+H 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 43
+AGHV ABCDEFGHIJKQUV 0 medium flesh
+>rand_prog 1~
+emote barks happily.
+~
+|
+V4 4058
+cat~
+the cat~
+A cat hides in the shadow of the homes.
+~
+The tabby sits in the shadow cast by nearby homes, quietly examining its
+surroundings.  
+~
+cat~
+water scholar~
+AGN 0 Z G 0
+3 2 1d6+24 3d10+100 1d3+2 slash~
+claw~
+8 8 8 8
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 43
+AGHV ABCDEFGHIJKQUV 0 medium flesh
+>rand_prog 1~
+emote meows softly.
+~
+|
+V4 4059
+ethron man patron~
+the ethron patron~
+An ethron man sits here, enjoying a good meal and conversation.
+~
+The ethron man gestures animatedly with a fork as he enjoys a meal at one of
+the Belliful Tavern\@s tables.  
+~
+ethron~
+water scholar~
+AB 0 0 G 0
+10 5 5d22+167 10d10+100 2d5+5 bash~
+punch~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 43
+AHMVW ABCDEFGHIJK J medium flesh
+>rand_prog 3~
+mpvaluerand 0 1 8
+if value(0) == 1
+        emote takes a bite of his food, savoring the taste.
+        mpstring mob self long An ethron man enjoys a pleasant meal in the tavern.
+        break
+endif
+if value(0) == 2
+        emote has a drink of his ale, before letting out a contented sigh.
+        mpstring mob self long An ethron man sighs contentedly.
+        break
+endif
+if value(0) == 3
+        emote leans forward, elbows on the table.
+        mpstring mob self long An ethron man leans forward at a table, elbows resting on it.
+        break
+endif
+if value(0) == 4
+        esay \@asks\@ Have you tried the ale?  It\@s superb.
+        mpstring mob self long An ethron man comments on the flavor of Eril\@s finest.
+        break
+endif
+if value(0) == 5
+        emote drops part of his meal onto the table, and hastily cleans it up.
+        mpstring mob self long An ethron man hastily cleans up a spill at his table.
+        break
+endif
+if value(0) == 6
+        esay \@comments\@ Emmin\@s cooking is the best!
+        mpstring mob self long An ethron man lauds the quality of the Belliful Tavern\@s cooking.
+        break
+endif
+if value(0) == 7
+        emote wipes his mouth with a napkin.
+        mpstring mob self long An ethron man wipes his mouth with a napkin.
+        break
+endif
+if value(0) == 8
+        emote chuckles quietly to another diner.
+        mpstring mob self long An ethron man chuckles quietly to another diner.
+        break
+endif
+~
+|
+V4 4060
+woman ethron~
+the ethron woman~
+An ethron woman enjoys a pleasant dinner at the tavern.
+~
+The ethron woman sits at a table in the Belliful Tavern, enjoying some of
+Emmin\@s cooking and hospitality.  
+~
+ethron~
+water scholar~
+AB 0 0 G 0
+8 4 3d20+132 8d10+100 2d4+4 bash~
+punch~
+5 5 5 7
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 43
+AHMVW ABCDEFGHIJK J medium flesh
+>rand_prog 3~
+mpvaluerand 0 1 8
+if value(0) == 1
+        emote takes a bite of her food, and smiles at the taste.
+        mpstring mob self long An ethron woman smiles at the taste of her food.
+        break
+endif
+if value(0) == 2
+        emote drinks from a cup of lemonade, before placing it back on the table.
+        mpstring mob self long An ethron woman drinks from a cup of local lemonade.
+        break
+endif
+if value(0) == 3
+        emote laughs quietly at a friend\@s remark.
+        mpstring mob self long An ethron woman laughs with amusement at her conversation.
+        break
+endif
+if value(0) == 4
+        esay \@asks\@ Aren\@t you amazed we have such a famous craftsman in town now?
+        mpstring mob self long An ethron woman reflects on the presence of a famous artisan in Eril.
+        break
+endif
+if value(0) == 5
+        emote giggles when she sees another patron hastily clean up a mess.
+        mpstring mob self long An ethron woman giggles to herself as another patron cleans up a mess.
+        break
+endif
+if value(0) == 6
+        esay \@laughs\@ There\@s nowhere else in Avendar like the Belliful Tavern!
+        mpstring mob self long An ethron woman delights in the atmosphere of the tavern.
+        break
+endif
+if value(0) == 7
+        emote looks at her reflection in her glass.
+        mpstring mob self long An ethron woman looks at her reflection in her glass.
+        break
+endif
+if value(0) == 8
+        emote goes to the bar, and returns to her seat with another drink.
+        mpstring mob self long An ethron woman returns to her seat with another drink.
+        break
+endif
+~
+|
+V4 4061
+man~
+the man~
+A man aims carefully at the dartboard.
+~
+The man squints in concentration as he draws back and lets a dart fly.  
+~
+human~
+water scholar~
+ABGL 0 0 G 0
+8 4 3d20+132 8d10+100 2d4+4 bash~
+punch~
+5 5 5 7
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 40 43
+AHMVW ABCDEFGHIJKP AJ medium flesh
+>rand_prog 1~
+emote aims carefully at the dartboard, and lets fly a dart.
+~
+|
+V4 4062
+woman~
+the woman~
+A woman sits on the balcony, relaxing.
+~
+The woman leans back in her chair and contentedly nibbles on her food as
+she looks out over Eril.  
+~
+human~
+water scholar~
+AGL 0 Z G 0
+10 5 5d22+167 10d10+100 2d5+5 bash~
+punch~
+4 4 4 7
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 43
+AGHMV ABCDEFGHIJKQUV AJ medium flesh
+>rand_prog 1~
+emote sighs contentedly.
+~
+|
+V4 4063
+merchant~
+the merchant~
+A merchant scans the marketplace.
+~
+The merchant scans the marketplace, looking for those trappers he is
+familar with, and noting who has the best selection of furs this day.  
+~
+human~
+water scholar~
+AGL 0 0 G 0
+13 6 6d26+213 13d10+100 2d5+8 bash~
+punch~
+2 2 2 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 140 43
+AHMV ABCDEFGHIJK AFJ medium flesh
+V4 4064
+merchant~
+the merchant~
+A merchant haggles furiously.
+~
+The merchant\@s face is flushed as she argues down the price of the furs. 
+She seems to be doing quite well, though, and is close to closing the deal. 
+~
+human~
+water scholar~
+AGL 0 0 G 0
+13 6 6d26+213 13d10+100 2d5+8 bash~
+punch~
+2 2 2 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 150 43
+AHMV ABCDEFGHIJK AJ medium flesh
+>rand_prog 1~
+say I have my wives and children to feed!  You try to rob me blind.
+mpforce trapper emote looks unimpressed.
+mpforce trapper say I have myself to feed.
+~
+|
+V4 4065
+merchant~
+the merchant~
+A merchant passes through, looking for a trapper.
+~
+The merchant has come all the way from Earendam, and will not leave until
+he has gotten the very best of the best in furs.  
+~
+human~
+water scholar~
+AG 0 0 G 0
+13 6 6d26+213 13d10+100 2d5+8 bash~
+punch~
+2 2 2 6
+FJ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 160 43
+AHMV ABCDEFGHIJK AJ medium flesh
+V4 4066
+girl~
+the girl~
+A young girl talks animatedly.
+~
+The girl seems to be holding a discussion with no one, giggling and
+talking.  From the way she pauses for answers, it appears she may be
+conversing with her imaginary friend.  
+~
+human~
+water scholar~
+AG 0 0 G 0
+5 1 1d17+42 5d10+100 2d3+6 bash~
+punch~
+7 7 7 8
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 30 43
+AHMV ABCDEFGHIJK AJ medium flesh
+>rand_prog 1~
+emote giggles happily.
+nod
+~
+|
+V4 4067
+baby~
+the baby~
+A small baby coos from his cradle.
+~
+The baby is quite cute, his pale green skin glowing and healthy.  Soft
+pale hair covers his head, but from his size, he appears to be less than a
+month old.  
+~
+ethron~
+water scholar~
+ABDGL 0 0 N 0
+1 1 1d2+1 1d10+100 1d1+0 bash~
+punch~
+14 14 14 14
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 43
+AHMVW ABCDEFGHIJK J medium unknown
+>death_prog 100~
+mpforce mother say You cold-hearted monster!  You killed my baby!
+mpforce mother mpkill $n
+~
+>rand_prog 1~
+emote giggles happily, and stretches a tiny hand out to his mother.
+~
+|
+V4 4068
+mother~
+the mother~
+A mother watches over her young baby.
+~
+The woman is pretty, and still glows with the joy of motherhood.  She
+watches anxiously over her small child, tending to its every need.  
+~
+ethron~
+water scholar~
+AL 0 Z G 0
+10 5 5d22+167 10d10+100 2d5+5 bash~
+punch~
+4 4 4 7
+FI 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 43
+AHMVW ABCDEFGHIJK AJ medium flesh
+V4 4069
+girl ethron flower iliyas~
+Iliyas~
+A pretty ethron girl walks through Eril, selling a variety of beautiful flowers.
+~
+Long dark brown hair curls down Iliyas\@ back, and her wide almond eyes
+seem perpetually warm and happy.  She looks to be about 16 years of age, and
+quite pretty, her skin a smooth pale green, and her mouth wide and full.  
+~
+human~
+water scholar~
+ADG 0 0 G 0
+10 5 5d22+167 10d10+100 2d5+5 bash~
+punch~
+4 4 4 7
+H 0
+26 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 200 43
+AHMV ABCDEFGHIJK AJ medium flesh
+V4 4070
+man ethron short~
+an ethron man~
+A short ethron man sits under a nearby tree, playing music and singing.
+~
+The man is short, even for an ethron, and his build is more fragile than
+those of his race tend to be.  As he sings and plays music for those who
+pass by, though, he seems to gain in stature, flushed with the pleasure of
+his songs.  
+~
+ethron~
+water scholar~
+AGL 0 Z N 0
+10 5 5d22+167 10d10+100 2d5+5 bash~
+punch~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 40 43
+AHMW ABCDEFGIJK J medium flesh
+V4 4071
+man ethron brewer~
+the brewer~
+An ethron man stands over the copper kettles, occaisionally stirring the dark mixture.
+~
+The brewer sweats as he moves from kettle to kettle, opening the tops and
+stirring in small amounts of liquid from a large jug he carries.  He has
+longish dark green hair which repeatedly falls into his eyes as he stirs,
+and he has a smear of the dark liquid which he works over on his forehead.  
+~
+ethron~
+water scholar~
+ABG 0 Z G 0
+15 8 8d30+261 15d10+100 3d5+8 bash~
+punch~
+0 0 0 1
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 10 43
+AHMW ABCDEFGIJK J medium flesh
+V4 4072
+farmer~
+the farmer~
+A farmer walks through the field, watering and gathering crops.
+~
+The farmer is stout and solid looking, and he moves at a slow deliberate
+pace.  Clad in dusty overalls, he seems the picture of the typical farmer,
+though he works with barley and hops instead of livestock or wheat fields. 
+Occaisionally humming or whistling to himself, he efficently gathers ripened
+crops, to be taken nextdoor.  
+~
+ethron~
+water scholar~
+ABG 0 Z N 0
+10 5 5d22+167 10d10+100 2d5+5 bash~
+punch~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 70 43
+AHMW ABCDEFGIJK J medium flesh
+V4 4073
+Pfin ethron man older merchant erilshop~
+Pfin~
+An older ethron man is here, working on a piece of furniture.
+~
+Pfin looks to be getting on in years, his dark hair streaked with white
+and grey.  His face is lined and wrinkled, and his stature short and wide. 
+He set up shop in Eril many years ago, constructing furniture for the town\@s
+many homes.  After a brief bout with selling to adventurers, he has returned
+to selling primarily to the local residents.  His pleasant disposition is
+known throughout Eril, and he has been known to visit Emmin for a bit of
+Eril\@s finest while he works.  
+~
+ethron~
+water scholar~
+ABDGL 0 0 G 0
+30 15 22d45+941 30d10+100 4d8+15 bash~
+punch~
+-9 -9 -9 0
+F AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 200 43
+AHMW ABCDEFGIJK AJ medium flesh
+>greet_prog 100~
+if isenemy($n) == 43
+     yell $N is over here!
+     mpkill $n
+     break
+endif
+~
+>rand_prog 25~
+if mobvalue(0) == 1
+     mpvaluedown 0
+endif
+~
+>fight_prog 100~
+mpfocus $n
+if mobvalue(0) == 0
+     mpmload 4077
+     mpseewizi
+     mpgoto 4098
+     if mobhere(4076)
+          mpgoto erilanchor
+          mpunseewizi
+          mpkill $f
+          mpvalueset 0 1
+          yell Help!  Guards!  Help!
+          mpseewizi
+          mpat 4098 mptransfer ethronerilguard erilanchor
+          mpat 4098 mptransfer ethronerilguard erilanchor
+          mppurge erilanchor
+          mpecho Hearing the commotion, two of Eril\@s guards burst into the room!
+          mpforce erg mpkill $n
+          mpforce 2.erg mpkill $n
+mpunseewizi
+     else
+          mpgoto erilanchor
+          mpunseewizi
+          mpkill $f
+          mpvalueset 0 1
+          mppurge erilanchor
+          yell Help!  Anyone!
+     endif
+endif
+~
+>load_prog 100~
+speak common
+~
+|
+V4 4074
+Yilmiras ethron woman jam maker jam-maker~
+Yilmiras~
+A cherub-cheeked ethron woman busies herself behind the counter.
+~
+The jam-maker, Yilmiras, has her hair pulled back in thick, grey braids. 
+Her face is wrinkled with laugh lines around her mouth and eyes, but the
+years seem to have treated her well.  She seems a bit chubby, and her
+fingers are stained various shades of red and purple from the berries she
+works with day to day, but a perpetual smile keeps her from seeming worn.  
+~
+ethron~
+water scholar~
+ADL 0 0 G 0
+30 15 22d45+941 30d10+100 4d8+15 bash~
+punch~
+-9 -9 -9 0
+0 B
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 400 43
+AHMW ABCDEFGIJK AJ medium flesh
+>rand_prog 25~
+if mobvalue(0) == 1
+     mpvaluedown 0
+endif
+~
+>greet_prog 100~
+if isenemy($n) == 43
+     yell No!  It\@s $N!
+     mpkill $n
+     break
+endif
+~
+>fight_prog 100~
+mpfocus $n
+if mobvalue(0) == 0
+     mpmload 4077
+     mpseewizi
+     mpgoto 4098
+     if mobhere(4076)
+          mpgoto erilanchor
+          mpunseewizi
+          mpkill $f
+          mpvalueset 0 1
+          yell Help!  Please help me!
+          mpseewizi
+          mpat 4098 mptransfer ethronerilguard erilanchor
+          mpat 4098 mptransfer ethronerilguard erilanchor
+          mppurge erilanchor
+          mpecho Hearing the commotion, two of Eril\@s guards burst into the room!
+          mpforce erg mpkill $n
+          mpforce 2.erg mpkill $n
+mpunseewizi
+     else
+          mpgoto erilanchor
+          mpunseewizi
+          mpkill $f
+          mpvalueset 0 1
+          mppurge erilanchor
+          yell Help!  Anyone!
+     endif
+endif
+~
+>load_prog 100~
+speak common
+~
+>verb_prog asjienayjamy~
+if value(0) == 211
+    mpecho $I lays the purple asjiena fruit on a cutting board and cuts it into thick slices and removes the pit.
+  endif
+  if value(0) == 213
+    mpecho $I drops the asjiena fruit slices into a pot of boiling water.
+  endif
+  if value(0) == 214
+    mpecho $I slowly stirs the pot, letting the water evaporate some.
+  endif
+  if value(0) == 215
+    mpecho $I takes a large cup of sugar and slowly pours it into the pot, stirring all the while.
+  endif
+  if value(0) == 217
+    mpecho After peering into the pot, $I continues to slowly stir the mixture.
+  endif
+  if value(0) == 219
+    mpecho $I takes another look in the pot, and nods her head with satisfaction.
+  endif
+  if value(0) == 220
+    mpecho $I reaches into a small red bowl on the counter and scoops out some raisins, which she sprinkles into the pot.
+  endif
+  if value(0) == 221
+    say Almost ready!
+    mpecho $I gets an empty jar out from under the counter.
+  endif
+  if value(0) == 222
+    mpecho Carefully, $I picks up the pot and pours the contents into the jar.
+  endif
+  if value(0) == 223
+    mpecho $I turns and retrieves a ladle of wax from a simmering pot behind her, and proceeds to pour a small amount in the top of the jar.
+  endif
+  if value(0) == 224
+    mpecho $I picks up a round metal brand and lightly presses it into the wax as it solidifies.
+  endif
+  if value(0) == 225
+    mpoload 4097
+    if ishere($f)
+      say There you go, asjiena fruit preserves, fit for a king!
+      give jam $f
+    else
+      say Hmm, guess they left...
+      shrug
+    endif
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+~
+>verb_prog blackyjamy~
+if value(0) == 196
+    mpecho $I drops the blackberries into a large bowl, and carefully crushes them with a solid wood pestle.
+  endif
+  if value(0) == 197
+    mpecho $I scrapes the blackberries into a pot of boiling water behind the counter.
+  endif
+  if value(0) == 198
+    mpecho $I slowly stirs the pot, letting the water evaporate some.
+  endif
+  if value(0) == 200
+    mpecho $I takes a large cup of sugar and slowly pours it into the pot, stirring all the while.
+  endif
+  if value(0) == 202
+    mpecho After peering into the pot, $I continues to slowly stir the mixture in a lazy \#8\# motion.
+  endif
+  if value(0) == 204
+    mpecho $I takes another look in the pot, and nods her head with satisfaction.
+  endif
+  if value(0) == 205
+    say Almost ready!
+    mpecho $I gets an empty jar out from under the counter.
+  endif
+  if value(0) == 206
+    mpecho Carefully, $I picks up the pot and pours the contents into the jar.
+  endif
+  if value(0) == 207
+    mpecho $I turns and retrieves a ladle of wax from a simmering pot behind her, and proceeds to pour a small amount in the top of the jar.
+  endif
+  if value(0) == 208
+    mpecho $I picks up a round metal brand and lightly presses it into the wax as it solidifies.
+  endif
+  if value(0) == 209
+    mpoload 4096
+    if ishere($f)
+      say Thank you so much for waiting, I\@m sure it will be worth the wait!
+      grin
+      give jam $f
+    else
+      say Huh, guess they left...
+      shrug
+    endif
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+~
+>verb_prog cloudyjamy~
+if value(0) == 181
+    mpecho $I drops the amber cloudberries into a large bowl, and carefully crushes them with a solid wood pestle.
+  endif
+  if value(0) == 182
+    mpecho $I scrapes the cloudberries into a pot of boiling water behind the counter.
+  endif
+  if value(0) == 183
+    mpecho $I slowly stirs the pot, letting the water evaporate some.
+  endif
+  if value(0) == 185
+    mpecho $I takes a large cup of sugar and slowly pours it into the pot, stirring all the while.
+  endif
+  if value(0) == 187
+    mpecho After peering into the pot, $I continues to slowly stir the mixture in a lazy \#8\# motion.
+  endif
+  if value(0) == 189
+    mpecho $I takes another look in the pot, and nods her head with satisfaction.
+  endif
+  if value(0) == 190
+    say Almost ready!
+    mpecho $I gets an empty jar out from under the counter.
+  endif
+  if value(0) == 191
+    mpecho Carefully, $I picks up the pot and pours the contents into the jar.
+  endif
+  if value(0) == 192
+    mpecho $I turns and retrieves a ladle of wax from a simmering pot behind her, and proceeds to pour a small amount in the top of the jar.
+  endif
+  if value(0) == 193
+    mpecho $I picks up a round metal brand and lightly presses it into the wax as it solidifies.
+  endif
+  if value(0) == 194
+    mpoload 4095
+    if ishere($f)
+      say This should be a treat for you, fresh cloudberry jam!  Please come by again.
+      give jam $f
+    else
+      say Huh, guess they left...
+      shrug
+    endif
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+~
+>verb_prog elderyjamy~
+if value(0) == 166
+    mpecho $I drops the black elderberries into a large bowl, and carefully crushes them with a solid wood pestle.
+  endif
+  if value(0) == 167
+    mpecho $I scrapes the elderberries into a pot of boiling water behind the counter.
+  endif
+  if value(0) == 168
+    mpecho $I slowly stirs the pot, letting the water evaporate some.
+  endif
+  if value(0) == 170
+    mpecho $I takes a large cup of sugar and slowly pours it into the pot, stirring all the while.
+  endif
+  if value(0) == 172
+    mpecho After peering into the pot, $I continues to slowly stir the mixture in a lazy \#8\# motion.
+  endif
+  if value(0) == 174
+    mpecho $I takes another look in the pot, and nods her head with satisfaction.
+  endif
+  if value(0) == 175
+    say Almost ready!
+    mpecho $I gets an empty jar out from under the counter.
+  endif
+  if value(0) == 176
+    mpecho Carefully, $I picks up the pot and pours the contents into the jar.
+  endif
+  if value(0) == 177
+    mpecho $I turns and retrieves a ladle of wax from a simmering pot behind her, and proceeds to pour a small amount in the top of the jar.
+  endif
+  if value(0) == 178
+    mpecho $I picks up a round metal brand and lightly presses it into the wax as it solidifies.
+  endif
+  if value(0) == 179
+    mpoload 4094
+    if ishere($f)
+      say Elderberry is one of the more tangy jams, I hope you like it dear! 
+      give jam $f
+    else
+      say Huh, guess they left...
+      shrug
+    endif
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+~
+>verb_prog salalyjamy~
+if value(0) == 151
+    mpecho $I drops the purple salal berries into a large bowl, and carefully crushes them with a solid wood pestle.
+  endif
+  if value(0) == 152
+    mpecho $I scrapes the salal berries into a pot of boiling water behind the counter.
+  endif
+  if value(0) == 153
+    mpecho $I slowly stirs the pot, letting the water evaporate some.
+  endif
+  if value(0) == 155
+    mpecho $I takes a large cup of sugar and slowly pours it into the pot, stirring all the while.
+  endif
+  if value(0) == 157
+    mpecho After peering into the pot, $I continues to slowly stir the mixture in a lazy \#8\# motion.
+  endif
+  if value(0) == 159
+    mpecho $I takes another look in the pot, and nods her head with satisfaction.
+  endif
+  if value(0) == 160
+    say Almost ready!
+    mpecho $I gets an empty jar out from under the counter.
+  endif
+  if value(0) == 161
+    mpecho Carefully, $I picks up the pot and pours the contents into the jar.
+  endif
+  if value(0) == 162
+    mpecho $I turns and retrieves a ladle of wax from a simmering pot behind her, and proceeds to pour a small amount in the top of the jar.
+  endif
+  if value(0) == 163
+    mpecho $I picks up a round metal brand and lightly presses it into the wax as it solidifies.
+  endif
+  if value(0) == 164
+    mpoload 4093
+    if ishere($f)
+      say I just love the colour of those salal berries.  But be careful, eat too much and they\@ll stain your mouth purple!
+      emote laughs lightly.
+      give jam $f
+    else
+      say Huh, guess they left...
+      shrug
+    endif
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+~
+>verb_prog thimbleyjamy~
+if value(0) == 136
+    mpecho $I drops the thimble berries into a large bowl, and carefully crushes them with a solid wood pestle.
+  endif
+  if value(0) == 137
+    mpecho $I scrapes the thimble berries into a pot of boiling water behind the counter.
+  endif
+  if value(0) == 138
+    mpecho $I slowly stirs the pot, letting the water evaporate some.
+  endif
+  if value(0) == 140
+    mpecho $I takes a large cup of sugar and slowly pours it into the pot, stirring all the while.
+  endif
+  if value(0) == 142
+    mpecho After peering into the pot, $I continues to slowly stir the mixture in a lazy \#8\# motion.
+  endif
+  if value(0) == 144
+    mpecho $I takes another look in the pot, and nods her head with satisfaction.
+  endif
+  if value(0) == 145
+    say Almost ready!
+    mpecho $I gets an empty jar out from under the counter.
+  endif
+  if value(0) == 146
+    mpecho Carefully, $I picks up the pot and pours the contents into the jar.
+  endif
+  if value(0) == 147
+    mpecho $I turns and retrieves a ladle of wax from a simmering pot behind her, and proceeds to pour a small amount in the top of the jar.
+  endif
+  if value(0) == 148
+    mpecho $I picks up a round metal brand and lightly presses it into the wax as it solidifies.
+  endif
+  if value(0) == 149
+    mpoload 4092
+    if ishere($f)
+      say Some sweet thimble berry jam, well done if I do say so myself!  Thank you!
+      smile $I
+      give jam $f
+    else
+      say Huh, guess they left...
+      shrug
+    endif
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+~
+>verb_prog blueyjamy~
+if value(0) == 121
+    mpecho $I drops the fresh blueberries into a large bowl, and carefully crushes them with a solid wood pestle.
+  endif
+  if value(0) == 122
+    mpecho $I scrapes the blueberries into a pot of boiling water behind the counter.
+  endif
+  if value(0) == 123
+    mpecho $I slowly stirs the pot, letting the water evaporate some.
+  endif
+  if value(0) == 125
+    mpecho $I takes a large cup of sugar and slowly pours it into the pot, stirring all the while.
+  endif
+  if value(0) == 127
+    mpecho After peering into the pot, $I continues to slowly stir the mixture in a lazy \#8\# motion.
+  endif
+  if value(0) == 129
+    mpecho $I takes another look in the pot, and nods her head with satisfaction.
+  endif
+  if value(0) == 130
+    say Almost ready!
+    mpecho $I gets an empty jar out from under the counter.
+  endif
+  if value(0) == 131
+    mpecho Carefully, $I picks up the pot and pours the contents into the jar.
+  endif
+  if value(0) == 132
+    mpecho $I turns and retrieves a ladle of wax from a simmering pot behind her, and proceeds to pour a small amount in the top of the jar.
+  endif
+  if value(0) == 133
+    mpecho $I picks up a round metal brand and lightly presses it into the wax as it solidifies.
+  endif
+  if value(0) == 134
+    mpoload 4091
+    if ishere($f)
+      say There we go, some sweet blueberry jam.  Have it with my compliments.
+      give jam $f
+    else
+      say Huh, guess they left...
+      shrug
+    endif
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+~
+>verb_prog raspyjamy~
+if value(0) == 106
+    mpecho $I drops the raspberries into a large bowl, and carefully crushes them with a solid wood pestle.
+  endif
+  if value(0) == 107
+    mpecho $I scrapes the raspberries into a pot of boiling water behind the counter.
+  endif
+  if value(0) == 108
+    mpecho $I slowly stirs the pot, letting the water evaporate some.
+  endif
+  if value(0) == 110
+    mpecho $I takes a large cup of sugar and slowly pours it into the pot, stirring all the while.
+  endif
+  if value(0) == 112
+    mpecho After peering into the pot, $I continues to slowly stir the mixture in a lazy \#8\# motion.
+  endif
+  if value(0) == 114
+    mpecho $I takes another look in the pot, and nods her head with satisfaction.
+  endif
+  if value(0) == 115
+    say Almost ready!
+    mpecho $I gets an empty jar out from under the counter.
+  endif
+  if value(0) == 116
+    mpecho Carefully, $I picks up the pot and pours the contents into the jar.
+  endif
+  if value(0) == 117
+    mpecho $I turns and retrieves a ladle of wax from a simmering pot behind her, and proceeds to pour a small amount in the top of the jar.
+  endif
+  if value(0) == 118
+    mpecho $I picks up a round metal brand and lightly presses it into the wax as it solidifies.
+  endif
+  if value(0) == 119
+    mpoload 4090
+    if ishere($f)
+      say Delicious!  Here you go.  Enjoy, love!
+      smile $I
+      give jam $f
+    else
+      say Huh, guess they left...
+      shrug
+    endif
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+~
+>verb_prog strawyjamy~
+if value(0) == 91
+    mpecho $I drops the wild strawberries into a large bowl, and carefully crushes them with a solid wood pestle.
+  endif
+  if value(0) == 92
+    mpecho $I scrapes the strawberries into a pot of boiling water behind the counter.
+  endif
+  if value(0) == 93
+    mpecho $I slowly stirs the pot, letting the water evaporate some.
+  endif
+  if value(0) == 95
+    mpecho $I takes a large cup of sugar and slowly pours it into the pot, stirring all the while.
+  endif
+  if value(0) == 97
+    mpecho After peering into the pot, $I continues to slowly stir the mixture in a lazy \#8\# motion.
+  endif
+  if value(0) == 99
+    mpecho $I takes another look in the pot, and nods her head with satisfaction.
+  endif
+  if value(0) == 100
+    say Almost ready!
+    mpecho $I gets an empty jar out from under the counter.
+  endif
+  if value(0) == 101
+    mpecho Carefully, $I picks up the pot and pours the contents into the jar.
+  endif
+  if value(0) == 102
+    mpecho $I turns and retrieves a ladle of wax from a simmering pot behind her, and proceeds to pour a small amount in the top of the jar.
+  endif
+  if value(0) == 103
+    mpecho $I picks up a round metal brand and lightly presses it into the wax as it solidifies.
+  endif
+  if value(0) == 104
+    mpoload 4089
+    if ishere($f)
+      say Finished!  And just as sweet as my mother made it when I was a lass.
+      give jam $f
+    else
+      say Huh, guess they left...
+      shrug
+    endif
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+~
+>verb_prog grapeyjamy~
+if value(0) == 76
+    mpecho $I quickly peels the skin off the grapes with a small knife.
+  endif
+  if value(0) == 77
+    mpecho $I drops the grapes into a large bowl, and carefully crushes them with a solid wood pestle.
+  endif
+  if value(0) == 78
+    mpecho $I scrapes the grapes into a pot of boiling water behind the counter.
+  endif
+  if value(0) == 79
+    mpecho $I slowly stirs the pot, letting the water evaporate some.
+  endif
+  if value(0) == 81
+    mpecho $I takes a large cup of sugar and slowly pours it into the pot, stirring all the while.
+  endif
+  if value(0) == 83
+    mpecho After peering into the pot, $I continues to slowly stir the mixture in a lazy \#8\# motion.
+  endif
+  if value(0) == 85
+    mpecho $I takes another look in the pot, and nods her head with satisfaction.
+  endif
+  if value(0) == 86
+    say Almost ready!
+    mpecho $I gets an empty jar out from under the counter.
+  endif
+  if value(0) == 87
+    mpecho Carefully, $I picks up the pot and pours the contents into the jar.
+  endif
+  if value(0) == 88
+    mpecho $I turns and retrieves a ladle of wax from a simmering pot behind her, and proceeds to pour a small amount in the top of the jar.
+  endif
+  if value(0) == 89
+    mpecho $I picks up a round metal brand and lightly presses it into the wax as it solidifies.
+  endif
+  if value(0) == 90
+    mpoload 4088
+    if ishere($f)
+      say Made especially for you, some grape jelly!  Please visit again soon.
+      smile $I
+      give jam $f
+    else
+      say Huh, guess they left...
+      shrug
+    endif
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+~
+>verb_prog polanayjamy~
+if value(0) == 61
+    mpecho $I skins the orange pol\@ana fruit with a short knife, then cuts it in half and scoops out the few seeds inside.
+  endif
+  if value(0) == 62
+    mpecho $I quickly cuts the two halves of the pol\@ana fruit into fine slices.
+  endif
+  if value(0) == 63
+    mpecho $I drops the pol\@ana fruit slices into a pot of boiling water.
+  endif
+  if value(0) == 64
+    mpecho $I slowly stirs the pot, letting the water evaporate some.
+  endif
+  if value(0) == 65
+    mpecho $I takes a large cup of sugar and slowly pours it into the pot, stirring all the while.
+  endif
+  if value(0) == 67
+    mpecho After peering into the pot, $I continues to slowly stir the mixture in a lazy \#8\# motion.
+  endif
+  if value(0) == 69
+    mpecho $I takes another look in the pot, and nods her head with satisfaction.
+  endif
+  if value(0) == 71
+    say Almost ready!
+    mpecho $I gets an empty jar out from under the counter.
+  endif
+  if value(0) == 72
+    mpecho Carefully, $I picks up the pot and pours the contents into the jar.
+  endif
+  if value(0) == 73
+    mpecho $I turns and retrieves a ladle of wax from a simmering pot behind her, and proceeds to pour a small amount in the top of the jar.
+  endif
+  if value(0) == 74
+    mpecho $I picks up a round metal brand and lightly presses it into the wax as it solidifies.
+  endif
+  if value(0) == 75
+    mpoload 4087
+    if ishere($f)
+      say Some orange pol\@ana marmalade, a better sort you\@re unlikely to find!
+      give jam $f
+    else
+      say Hmm, guess they left...
+      shrug
+    endif
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+~
+>verb_prog orangeyjamy~
+if value(0) == 46
+    mpecho $I skins the orange with a short knife, then cuts it in half and scoops out the seeds.
+  endif
+  if value(0) == 47
+    mpecho $I quickly cuts the two halves of the orange into fine slices.
+  endif
+  if value(0) == 48
+    mpecho $I drops the orange slices into a pot of boiling water.
+  endif
+  if value(0) == 49
+    mpecho $I slowly stirs the pot, letting the water evaporate some.
+  endif
+  if value(0) == 51
+    mpecho $I takes a large cup of sugar and slowly pours it into the pot, stirring all the while.
+  endif
+  if value(0) == 52
+    mpecho After peering into the pot, $I continues to slowly stir the mixture in a lazy \#8\# motion.
+  endif
+  if value(0) == 54
+    mpecho $I takes another look in the pot, and nods her head with satisfaction.
+  endif
+  if value(0) == 55
+    mpecho $I reaches a spoon into nearby jar and scoops out a bit of sliced lemon, which she adds to the pot.
+  endif
+  if value(0) == 56
+    say Almost ready!
+    mpecho $I gets an empty jar out from under the counter.
+  endif
+  if value(0) == 57
+    mpecho Carefully, $I picks up the pot and pours the contents into the jar.
+  endif
+  if value(0) == 58
+    mpecho $I turns and retrieves a ladle of wax from a simmering pot behind her, and proceeds to pour a small amount in the top of the jar.
+  endif
+  if value(0) == 59
+    mpecho $I picks up a round metal brand and lightly presses it into the wax as it solidifies.
+  endif
+  if value(0) == 60
+    mpoload 4086
+    if ishere($f)
+      say There you are, some orange marmalade!  Thanks, and please come back again!
+      give jam $f
+    else
+      say Hmm, guess they left...
+      shrug
+    endif
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+~
+>verb_prog peachyjamy~
+if value(0) == 31
+    mpecho $I skins the peach with a short knife, then cuts it in half and removes the pit.
+  endif
+  if value(0) == 32
+    mpecho $I quickly cuts the two halves of the peach into fine slices.
+  endif
+  if value(0) == 33
+    mpecho $I drops the peach slices into a pot of boiling water.
+  endif
+  if value(0) == 34
+    mpecho $I slowly stirs the pot, letting the water evaporate some.
+  endif
+  if value(0) == 35
+    mpecho $I takes a large cup of sugar and slowly pours it into the pot, stirring all the while.
+  endif
+  if value(0) == 37
+    mpecho After peering into the pot, $I continues to slowly stir the mixture in a lazy \#8\# motion.
+  endif
+  if value(0) == 39
+    mpecho $I takes another look in the pot, and nods her head with satisfaction.
+  endif
+  if value(0) == 40
+    mpecho $I picks up a small vial and sprinkles some brown powder into the pot.
+  endif
+  if value(0) == 41
+    say Almost ready!
+    mpecho $I gets an empty jar out from under the counter.
+  endif
+  if value(0) == 42
+    mpecho Carefully, $I picks up the pot and pours the contents into the jar.
+  endif
+  if value(0) == 43
+    mpecho $I turns and retrieves a ladle of wax from a simmering pot behind her, and proceeds to pour a small amount in the top of the jar.
+  endif
+  if value(0) == 44
+    mpecho $I picks up a round metal brand and lightly presses it into the wax as it solidifies.
+  endif
+  if value(0) == 45
+    mpoload 4085
+    if ishere($f)
+      say My special peach preserves!  It\@s all my secret ingrediant.
+      emote winks.
+      give jam $f
+    else
+      say Hmm, guess they left...
+      shrug
+    endif
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+~
+>verb_prog pearyjamy~
+if value(0) == 16
+    mpecho $I lays the pear on a cutting board and quickly peels it and cuts it into thick slices.
+  endif
+  if value(0) == 18
+    mpecho $I drops the pear slices into a pot of boiling water.
+  endif
+  if value(0) == 19
+    mpecho $I slowly stirs the pot, letting the water evaporate some.
+  endif
+  if value(0) == 20
+    mpecho $I takes a large cup of sugar and slowly pours it into the pot, stirring all the while.
+  endif
+  if value(0) == 22
+    mpecho After peering into the pot, $I continues to slowly stir the mixture.
+  endif
+  if value(0) == 24
+    mpecho $I takes another look in the pot, and nods her head with satisfaction.
+  endif
+  if value(0) == 25
+    mpecho $I reaches into a small blue bowl on the counter and scoops out some sliced almonds, which she sprinkles into the pot.
+  endif
+  if value(0) == 26
+    say Almost ready!
+    mpecho $I gets an empty jar out from under the counter.
+  endif
+  if value(0) == 27
+    mpecho Carefully, $I picks up the pot and pours the contents into the jar.
+  endif
+  if value(0) == 28
+    mpecho $I turns and retrieves a ladle of wax from a simmering pot behind her, and proceeds to pour a small amount in the top of the jar.
+  endif
+  if value(0) == 29
+    mpecho $I picks up a round metal brand and lightly presses it into the wax as it solidifies.
+  endif
+  if value(0) == 30
+    mpoload 4084
+    if ishere($f)
+      say All done, sweetie!  Some pear preserves, they should last a while with that wax on top.  Enjoy!
+      give jam $f
+    else
+      say Hmm, guess they left...
+      shrug
+    endif
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+~
+>verb_prog appleyjamy~
+if value(0) == 1
+    mpecho $I lays the apple on a cutting board and quickly peels it and cuts it into thick slices.
+  endif
+  if value(0) == 3
+    mpecho $I drops the apple slices into a pot of boiling water.
+  endif
+  if value(0) == 4
+    mpecho $I slowly stirs the pot, letting the water evaporate some.
+  endif
+  if value(0) == 5
+    mpecho $I takes a large cup of sugar and slowly pours it into the pot, stirring all the while.
+  endif
+  if value(0) == 7
+    mpecho After peering into the pot, $I continues to slowly stir the mixture.
+  endif
+  if value(0) == 9
+    mpecho $I takes another look in the pot, and nods her head with satisfaction.
+  endif
+  if value(0) == 10
+    mpecho $I reaches into a small red bowl on the counter and scoops out some raisins, which she sprinkles into the pot.
+  endif
+  if value(0) == 11
+    say Almost ready!
+    mpecho $I gets an empty jar out from under the counter.
+  endif
+  if value(0) == 12
+    mpecho Carefully, $I picks up the pot and pours the contents into the jar.
+  endif
+  if value(0) == 13
+    mpecho $I turns and retrieves a ladle of wax from a simmering pot behind her, and proceeds to pour a small amount in the top of the jar.
+  endif
+  if value(0) == 14
+    mpecho $I picks up a round metal brand and lightly presses it into the wax as it solidifies.
+  endif
+  if value(0) == 15
+    mpoload 4083
+    if ishere($f)
+      say There you go, some delicious apple preserves, as promised.
+      give jam $f
+    else
+      say Hmm, guess they left...
+      shrug
+    endif
+    mpvalueset 0 0
+    break
+  endif
+  mpvalueup 0
+~
+>give_prog all~
+if value(0) == 0
+  if number() == 11396
+  or number() == 15026
+  or number() == 17058
+  or number() == 22458
+    mpat 2 drop 1.
+    mpat 2 mppurge
+    if isbitset($n) == 4083
+      say Thank you!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 1
+      mpset char $n silver $1
+      mpoload 4083
+    else
+      say My thanks!  I do love apples.  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 2
+      mpset char $n silver $1
+      say If you stick around, I\@ll make some delicious apple preserves for you!
+      mpbitset $n 4083 1
+      mpfocus $n
+      mpvalueset 0 1
+    endif
+    break
+  endif
+  if number() == 24218
+    mpat 2 drop 1.
+    mpat 2 mppurge
+    if isbitset($n) == 4084
+      say Thank you!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 1
+      mpset char $n silver $1
+      mpoload 4084
+    else
+      say Thank you!  These purple pears can be hard to find... and somewhat painful to pick!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 6
+      mpset char $n silver $1
+      say If you want to wait a bit, I\@ll make some pear preserves for you!
+      mpbitset $n 4084 1
+      mpfocus $n
+      mpvalueset 0 16
+    endif
+    break
+  endif
+  if number() == 17102
+    mpat 2 drop 1.
+    mpat 2 mppurge
+    if isbitset($n) == 4085
+      say Thank you!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 2
+      mpset char $n silver $1
+      mpoload 4085
+    else
+      say What a lovely peach!  Perfect!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 5
+      mpset char $n silver $1
+      say If you want to wait a bit, I\@ll make some excellent peach marmalade for you!  It\@s one of my specialties.
+      mpbitset $n 4085 1
+      mpfocus $n
+      mpvalueset 0 31
+    endif
+    break
+  endif
+  if number() == 11395
+  or number() == 16018
+  or number() == 17059
+    mpat 2 drop 1.
+    mpat 2 mppurge
+    if isbitset($n) == 4086
+      say Thank you!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 1
+      mpset char $n silver $1
+      mpoload 4086
+    else
+      say Thank you so much!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 2
+      mpset char $n silver $1
+      say If you stick around a bit, I\@ll whip up some tangy orange marmalade for you!
+      mpbitset $n 4086 1
+      mpfocus $n
+      mpvalueset 0 46
+    endif
+    break
+  endif
+  if number() == 22457
+    mpat 2 drop 1.
+    mpat 2 mppurge
+    if isbitset($n) == 4087
+      say Thank you!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 3
+      mpset char $n silver $1
+      mpoload 4087
+    else
+      emote accepts the pol\@ana fruit with wide eyes.
+      say I don\@t see these very often... here is your payment!
+      mpget char $n silver 1
+      mpvalueup 1 10
+      mpset char $n silver $1
+      say If you wait a bit, I\@ll make you some pol\@ana marmalade.  With fruit this exquisite, it\@s sure to be quite excellent!
+      mpbitset $n 4087 1
+      mpfocus $n
+      mpvalueset 0 61
+    endif
+    break
+  endif
+  if number() == 67
+  or number() == 12234
+  or number() == 25263
+    mpat 2 drop 1.
+    mpat 2 mppurge
+    if isbitset($n) == 4088
+      say Thank you!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 1
+      mpset char $n silver $1
+      mpoload 4088
+    else
+      say Thank you so much!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 2
+      mpset char $n silver $1
+      say If you stick around a bit, I\@ll whip up some grape jelly for you!
+      mpbitset $n 4088 1
+      mpfocus $n
+      mpvalueset 0 76
+    endif
+    break
+  endif
+  if number() == 19606
+    mpat 2 drop 1.
+    mpat 2 mppurge
+    if isbitset($n) == 4089
+      say Thank you!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 1
+      mpset char $n silver $1
+      mpoload 4089
+    else
+      say Thank you, these strawberries look delicious!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 3
+      mpset char $n silver $1
+      say If you stick around a bit, I\@ll whip up some delicious strawberry jam for you!  Just like mom used to make it.
+      emote winks.
+      mpbitset $n 4089 1
+      mpfocus $n
+      mpvalueset 0 91
+    endif
+    break
+  endif
+  if number() == 524
+    mpat 2 drop 1.
+    mpat 2 mppurge
+    if isbitset($n) == 4090
+      say Thank you!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 1
+      mpset char $n silver $1
+      mpoload 4090
+    else 
+      say Mmm, raspberries are my favourites.  Thank you, here is your payment!
+      mpget char $n silver 1
+      mpvalueup 1 3
+      mpset char $n silver $1
+      say If you wait a bit, I\@ll make some raspberry jam up for you.
+      mpbitset $n 4090 1
+      mpfocus $n
+      mpvalueset 0 106
+    endif
+    break
+  endif
+  if number() == 2922
+    mpat 2 drop 1.
+    mpat 2 mppurge
+    if isbitset($n) == 4091
+      say Thank you!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 1
+      mpset char $n silver $1
+      mpoload 4091
+    else 
+      say Fresh blueberries, perfect!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 2
+      mpset char $n silver $1
+      say I make an excellent blueberry jam, if you wait a bit I\@ll make you a jar!
+      mpbitset $n 4091 1
+      mpfocus $n
+      mpvalueset 0 121
+    endif
+    break
+  endif
+  if number() == 19187
+    mpat 2 drop 1.
+    mpat 2 mppurge
+    if isbitset($n) == 4092
+      say Thank you!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 2
+      mpset char $n silver $1
+      mpoload 4092
+    else 
+      say Thimble berries!  Lovely, these are hard to find.
+      mpget char $n silver 1
+      mpvalueup 1 5
+      mpset char $n silver $1
+      say Thimble berries make an especially sweet jam.  Stick around and I\@ll make you a batch!
+      mpbitset $n 4092 1
+      mpfocus $n
+      mpvalueset 0 136
+    endif
+    break
+  endif
+  if number() == 1335
+    mpat 2 drop 1.
+    mpat 2 mppurge
+    if isbitset($n) == 4093
+      say Thank you!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 1
+      mpset char $n silver $1
+      mpoload 4093
+    else 
+      say Ah, salal berries.  My thanks!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 2
+      mpset char $n silver $1
+      say If you wait a moment, I will make you some delicious salal berry jam.
+      mpbitset $n 4093 1
+      mpfocus $n
+      mpvalueset 0 151
+    endif
+    break
+  endif
+  if number() == 21995
+    mpat 2 drop 1.
+    mpat 2 mppurge
+    if isbitset($n) == 4094
+      say Thank you!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 1
+      mpset char $n silver $1
+      mpoload 4094
+    else 
+      say Thank you!  Elderberries make a wonderful jam.  Here is your payment!
+      mpget char $n silver 1
+      mpvalueup 1 3
+      mpset char $n silver $1
+      say If you stick around, I\@ll make you some refreshing elderberry jam.
+      mpbitset $n 4094 1
+      mpfocus $n
+      mpvalueset 0 166
+    endif
+    break
+  endif
+  if number() == 10383
+    mpat 2 drop 1.
+    mpat 2 mppurge
+    if isbitset($n) == 4095
+      say Thank you!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 2
+      mpset char $n silver $1
+      mpoload 4095
+    else 
+      say Cloudberries!  Don\@t see those very often this far south.  Here is your payment!
+      mpget char $n silver 1
+      mpvalueup 1 6
+      mpset char $n silver $1
+      say Wait a bit, and I\@ll make you some cloudberry jam, love.
+      smile $n
+      mpbitset $n 4095 1
+      mpfocus $n
+      mpvalueset 0 181
+    endif
+    break
+  endif
+  if number() == 5918
+    mpat 2 drop 1.
+    mpat 2 mppurge
+    if isbitset($n) == 4096
+      say Thank you!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 2
+      mpset char $n silver $1
+      mpoload 4096
+    else 
+      say Thank you!  I can always use blackberries.  Here is your payment!
+      mpget char $n silver 1
+      mpvalueup 1 4
+      mpset char $n silver $1
+      say Wait a bit dearie, and I\@ll make you some blackberry jam.
+      mpbitset $n 4096 1
+      mpfocus $n
+      mpvalueset 0 196
+    endif
+    break
+  endif
+  if number() == 11394
+    mpat 2 drop 1.
+    mpat 2 mppurge
+    if isbitset($n) == 4097
+      say Thank you!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 1
+      mpset char $n silver $1
+      mpoload 4097
+    else 
+      say Mmm, asjiena fruit!  An excellent fruit for so many things!  Here is your payment.
+      mpget char $n silver 1
+      mpvalueup 1 3
+      mpset char $n silver $1
+      say If you wait a moment, I\@ll make you some asjiena preserves.  Sweets for the sweet!
+      mpbitset $n 4097 1
+      mpfocus $n
+      mpvalueset 0 211
+    endif
+    break
+  endif
+  say I\@m sorry, this isn\@t what I\@m looking for.
+  give 1. $n
+else
+  say Sorry, I\@m busy right now!  Come back later!
+  give 1. $n
+endif
+~
+>rand_prog 100~
+if value(0) > 0
+  if value(0) < 16
+    appleyjamy
+    break
+  endif
+  if value(0) < 31
+    pearyjamy
+    break
+  endif
+  if value(0) < 46
+    peachyjamy
+    break
+  endif  
+  if value(0) < 61
+    orangeyjamy
+    break
+  endif
+  if value(0) < 76
+    polanayjamy
+    break
+  endif
+  if value(0) < 91
+    grapeyjamy
+    break
+  endif
+  if value(0) < 106
+    strawyjamy
+    break
+  endif
+  if value(0) < 121
+    raspyjamy
+    break
+  endif
+  if value(0) < 136
+    blueyjamy
+    break
+  endif
+  if value(0) < 151
+    thimbleyjamy
+    break
+  endif
+  if value(0) < 166
+    salalyjamy
+    break
+  endif
+  if value(0) < 181
+    elderyjamy
+    break
+  endif
+  if value(0) < 196
+    cloudyjamy
+    break
+  endif
+  if value(0) < 211
+    blackyjamy
+    break
+  endif
+  if value(0) < 226
+    asjienayjamy
+    break
+  endif
+endif
+~
+>greet_prog 100~
+if isbitset($n) == 4074
+  break
+else
+  tell $n Hello there!  I\@m looking for fruits to make jams with, so if you come across any, please bring them here!  If I can do anything with them, I\@ll pay you for your efforts.
+  mpbitset $n 4074 1
+endif
+~
+|
+V4 4075
+elderly aelin woman Raemis~
+an elderly aelin woman~
+An elderly aelin woman putters about her home.
+~
+This elderly aelin woman putters about her home.  A descendant of the
+heroes who once lived here, the cottage has passed down through the family
+for generations.  She hums to herself cheerfully as she goes about her day. 
+~
+aelin~
+water scholar~
+AL 0 DEJTZ G 0
+15 8 12d18+371 15d10+100 3d5+8 bash~
+hit~
+0 0 0 4
+K 0
+26 0 0 0 0 -30 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 50 -1
+AHMW ABCDEFGIJKP AFK medium flesh
+V4 4076
+ethron guard erg ethronerilguard~
+the ethron guard~
+An ethron guard is here, ready to defend Eril village.
+~
+The ethron guard is anxious-looking and prepared to defend Eril\@s
+citizens from those who would do them harm.  
+~
+ethron~
+water scholar~
+AGL 0 0 G 0
+20 10 12d30+287 0d0+0 5d4+10 bash~
+punch~
+-2 -2 -2 3
+EFJK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 10 43
+AHMVW ABCDEFGIJK AJ medium flesh
+>rand_prog 10~
+mpecho No longer needed, the ethron guard returns to his duties.
+mpgoto 4098
+~
+|
+V4 4077
+erilanchor~
+the erilanchor~
+The Eril anchor is here, directing guards.
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+0 0 15d15+1000 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium flesh
+#0
+
+
+
+#OBJECTS
+V13
+4025
+painted ceramic bracelet thick~
+a painted ceramic bracelet~
+A thick ceramic bracelet painted with geometric forms is here.~
+The style of this bracelet\@s shape and paint are typical of the caladaran
+artistic aesthetic, which prizes simplistic shapes and abstract forms.  It
+was shaped by hand rather than by magic, its subtle imperfections giving it
+a genuineness that magically-shaped jewelry can never fully possess.  Many
+caladaran appreciate such style, as the creator can find peace in its
+creation as well as enjoy the product of their labor.  
+~
+earth~
+armor G 0 F AM
+3 3 3 3 0
+49 20 24900 1 P
+400
+A
+17 -3
+A
+20 -3
+A
+12 10
+A
+13 10
+E
+painted ceramic bracelet thick~
+This ceramic bracelet is thick but otherwise simple in form.  It circles
+the wrist and further up the forearm, with a raised lip at the top and
+bottom edges.  The base ceramic is an off-white, and is painted with a
+variety of earth tones.  The painting is less a picture and more an abstract
+representation of interlocking geometric forms.  
+~
+V13
+4026
+band ceramic silver inlay inlaid~
+a ceramic band inlaid with silver~
+A polished band of black ceramic with a thin silver inlay down the centre has been left here.~
+~
+earth~
+armor 0 0 F AB
+3 3 3 3 0
+47 2 24300 0 P
+400
+A
+13 12
+A
+12 15
+A
+20 -2
+E
+band ceramic silver inlay inlaid~
+This band is made of a brilliantly polished black ceramic, cool to the
+touch as any metal.  Set precisely down its centre is an inlay of gleaming
+silver, intricately carved with abstract figures.  
+~
+V13
+4027
+chatelaine white painted ceramic bronze hooks~
+a painted white chatelaine~
+A chatelaine made of white ceramic with bronze hooks rests here.~
+~
+earth~
+container 0 0 F AL
+500 0 0 10 75
+40 10 17500 2 P
+400
+A
+13 12
+A
+17 -5
+E
+chatelaine white painted ceramic bronze hooks~
+This simple chatelaine has been painted with long, lazy curls and then
+glazed to set the colour.  Thin bronze chains hold the various parts
+together, and from it hangs numerous hooks the wearer can use to hang small
+objects from.  
+~
+V13
+4028
+ring band silver ivory small~
+a silver and ivory ring~
+A small band of silver and ivory is almost invisible against the ground.~
+~
+ivory~
+armor 0 0 F AB
+3 3 3 0 0
+7 8 650 0 P
+0
+A
+3 1
+A
+12 5
+V13
+4029
+ring gold jade green~
+a jade ring~
+A gold ring inset with a deep green stone shines softly.~
+~
+gold~
+armor 0 0 F AB
+4 4 4 0 0
+14 10 1000 0 P
+0
+A
+18 1
+A
+3 1
+A
+13 3
+V13
+4030
+cape green~
+a dark green cape~
+A cape the colour of pine needles lies here.~
+~
+cloth~
+armor 0 0 F AK
+4 4 5 1 0
+8 40 455 2 P
+0
+A
+4 1
+V13
+4031
+bracelet silver fine thin~
+a fine silver bracelet~
+A thin silver bracelet sparkles up from the ground.~
+~
+silver~
+armor G 0 F AM
+4 4 4 2 0
+9 10 365 1 P
+0
+A
+2 1
+V13
+4032
+bracer leather hard~
+a hard leather bracer~
+A stiff leather bracer lies on the ground.~
+~
+leather~
+armor 0 0 F AM
+5 4 4 0 0
+11 20 770 1 P
+0
+A
+19 1
+V13
+4033
+cap blue small~
+a blue cap~
+A small blue cap lies discarded.~
+~
+cloth~
+armor 0 0 F AE
+4 4 4 0 0
+6 20 350 2 P
+0
+A
+5 1
+V13
+4034
+jerkin leather~
+a leather jerkin~
+A leather jerkin lies here.~
+~
+leather~
+armor 0 0 F AD
+7 6 7 0 0
+10 60 1150 2 P
+0
+A
+1 1
+A
+13 5
+V13
+4035
+headband beaded tiny leather~
+a beaded headband~
+A leather headband sewn with a multitude of tiny beads sits here.~
+~
+leather~
+armor 0 0 F AE
+3 3 3 3 0
+47 2 17425 0 P
+400
+A
+13 20
+A
+12 10
+A
+18 2
+E
+headband beaded tiny leather~
+This thin leather headband is beaded entirely over with a pattern of tiny
+seed beads.  The colours seem selected to form an almost mosaic-like pattern
+of glyphs and sigils known to promote concentration and clarity of thought. 
+~
+V13
+4036
+necklace bead porcelain short~
+a porcelain bead necklace~
+A short necklace of painted porcelain beads sits here.~
+~
+earth~
+armor 0 0 F AC
+3 4 4 5 0
+47 5 21700 1 P
+400
+A
+13 10
+A
+12 20
+A
+20 -2
+A
+17 -5
+A
+19 1
+E
+necklace bead porcelain short~
+This long string of porcelain beads has been painted a variety of blues,
+greens, and purples, in a soothing pattern.  The beads have been moulded so
+that patterns lightly shape their surfaces, giving a varied look.  
+~
+V13
+4037
+gloves grey thin pair~
+a pair of thin grey gloves~
+A pair of thin grey gloves lie here.~
+~
+cloth~
+armor 0 0 F AH
+4 4 4 0 0
+7 20 740 1 P
+0
+A
+12 10
+V13
+4038
+sleeves leather~
+a pair of leather sleeves~
+Two leather sleeves lie here.~
+~
+leather~
+armor 0 0 0 AI
+4 4 4 0 0
+10 50 795 2 P
+0
+A
+19 1
+V13
+4039
+pendant sapphire rock blue chain~
+an uncut sapphire pendant~
+A dull blue rock lies here, attached to a thin chain.~
+~
+sapphire~
+armor 0 0 F AC
+4 4 4 1 0
+6 15 360 1 P
+0
+A
+5 1
+V13
+4040
+cloak fur~
+a fur cloak~
+A warm fur cloak sits in a bundle on the ground.~
+~
+fur~
+armor 0 0 F AC
+6 6 5 2 0
+14 50 2300 1 P
+0
+A
+13 8
+A
+23 -2
+V13
+4041
+bangle ceramic bracelet glazed green~
+a glazed ceramic bangle~
+A simple bangle bracelet made from green-glazed porcelain sits here.~
+~
+earth~
+armor 0 0 F AM
+4 3 4 5 0
+47 5 17700 0 P
+400
+A
+12 10
+A
+20 -1
+A
+19 2
+E
+bangle ceramic bracelet glazed green~
+A simple bracelet of unadorned porcelain, it has been glazed a vibrant
+green shade, making it shiny and strong.  The bracelet is unadorned
+otherwise, a simple, smooth bangle.  
+~
+V13
+4042
+earrings dangling ceramic leaf leaf-shaped pair~
+a pair of dangling ceramic earrings~
+A pair of leaf-shaped ceramic earrings sit here.~
+~
+earth~
+armor 0 0 F AE
+3 4 4 3 0
+47 7 20300 0 P
+400
+A
+20 -2
+A
+12 20
+E
+earrings dangling ceramic leaf leaf-shaped pair~
+These earrings hang from thin chains, holding green-painted ceramic
+leaves, curving lightly and showing faint veiny lines.  The backs are
+lighter than the front, painted almost silvery.  
+~
+V13
+4043
+sword thin light shortsword steel~
+a light shortsword~
+A thin sword of steel lies in the dirt.~
+~
+steel~
+weapon 0 0 F AN
+sword 3 7 3 0
+slash~
+10 90 2050 2 P
+0
+A
+13 5
+A
+19 1
+A
+18 2
+V13
+4044
+shield wood wooden~
+a wooden shield~
+A round wooden shield is set against the wall.~
+~
+wood~
+armor 0 0 F AJ
+4 4 4 0 0
+10 50 950 2 P
+0
+A
+19 1
+A
+18 1
+V13
+4045
+fountain~
+the fountain~
+A grey stone fountain brims over with clean water.~
+~
+stone~
+fountain 0 0 0 0
+0 0 'water' 0 0
+1 9000 0 5 P
+0
+V13
+4046
+potion milky pale liquid~
+a milky potion~
+A potion of pale liquid bubbles softly.~
+~
+glass~
+potion 0 0 F A
+20 'cure light' '' '' ''
+15 20 60 1 P
+0
+V13
+4047
+chest wooden wood~
+a small wooden chest~
+A small wooden chest sticks out from under the bed.~
+~
+wood~
+container 0 0 0 0
+20 AC 0 90 0
+1 1 0 4 P
+0
+V13
+4048
+necklace woven living sprouts seed~
+a necklace of living sprouts~
+A necklace of woven sprouts growing from a prominent seed is here.~
+This necklace serves as an example of some of the oldest religious
+adornment of the followers of Elar.  According to legend, a seed of Firiel
+can live even without sustenance; with a bit of careful winding, it can grow
+back onto itself, creating a living circle.  Such adornment is common only
+to the ethron, the careful weaving taking significant time and care to
+perform properly.  
+~
+plant~
+armor 0 0 F AC
+3 4 4 5 0
+47 1 20410 1 P
+400
+A
+13 10
+A
+12 20
+A
+20 -2
+A
+17 -5
+A
+19 1
+E
+necklace woven living sprouts seed~
+This necklace is made from two slender green sprouts, which have been
+woven around one another.  They come together at what looks to be a small
+seed, forming a living loop.  The smooth, supple sprouts seem to be
+nourished by the magic of the seed that binds them.  
+~
+V13
+4049
+anklet living sprouts woven green~
+an anklet of living sprouts~
+A slender anklet of woven sprouts flourishes a healthy green.~
+This anklet serves as an example of some of the oldest religious
+adornment of the followers of Elar.  According to legend, a seed of Firiel
+can live even without sustenance; with a bit of careful winding, it can grow
+back onto itself, creating a living circle.  Such adornment is common only
+to the ethron, the careful weaving taking significant time and care to
+perform properly.  
+~
+plant~
+armor G 0 F AG
+10 10 10 12 0
+47 1 22100 2 P
+200
+A
+20 -2
+A
+13 15
+A
+12 15
+A
+14 50
+E
+anklet living sprouts woven green~
+This anklet is made from two slender green sprouts, which have been woven
+around one another.  They come together at what looks to be a small seed,
+forming a living loop.  The smooth, supple sprouts seem to be nourished by
+the magic of the seed that binds them.  
+~
+V13
+4050
+bracelet woven living sprouts~
+a bracelet of living sprouts~
+A bracelet made from carefully woven sprouts is here.~
+This bracelet serves as an example of some of the oldest religious
+adornment of the followers of Elar.  According to legend, a seed of Firiel
+can live even without sustenance; with a bit of careful winding, it can grow
+back onto itself, creating a living circle.  Such adornment is common only
+to the ethron, the careful weaving taking significant time and care to
+perform properly.  
+~
+plant~
+armor 0 0 F AM
+3 5 4 7 0
+47 1 23105 0 P
+400
+A
+13 15
+A
+12 17
+A
+20 -1
+E
+bracelet woven living sprouts~
+This bracelet is made from two slender green sprouts, which have been
+woven around one another.  They come together at what looks to be a small
+seed, forming a living loop.  The smooth, supple sprouts seem to be
+nourished by the magic of the seed that binds them.  
+~
+V13
+4051
+copper coins pile stacked~
+a neatly stacked pile of copper coins~
+A neatly stacked pile of copper coins.~
+~
+gold~
+money 0 0 F A
+295 3 0 0 0
+1 10 0 0 P
+0
+V13
+4052
+juicy venison roast apple scented apple-scented~
+an apple-scented venison roast~
+A juicy venison roast is here, hot and smelling of apples.~
+~
+food~
+food 0 0 F A
+100 50 0 0 0
+1 30 14 1 P
+0
+>eat_prog 100~
+mpechoat $n The venison is tender and moist, any gaminess removed by apple, onion, and garlic flavors.
+~
+|
+V13
+4053
+mushroom mushrooms fried side plate garlic~
+a side of garlic-fried mushrooms~
+A small plate of dark-fried mushrooms has been left here.~
+~
+food~
+food 0 0 F A
+35 50 0 0 0
+1 7 10 1 P
+0
+E
+mushroom mushrooms fried side plate garlic~
+This plate is piled high with thin-sliced mushrooms, fried dark brown and
+a little crispy on the edges.  The rich, earthy aroma is punctuated with the
+spicy smell of garlic.  
+~
+>eat_prog 100~
+mpechoat $n The mushrooms have a rich, earthy taste, practically melting in your mouth, leaving a hint of garlic behind.
+~
+|
+V13
+4054
+cake slice plate sugar~
+a slice of sugar cake~
+A slice of moist sugar cake is here.~
+~
+food~
+food 0 0 F A
+10 50 0 0 0
+1 10 9 1 P
+0
+>eat_prog 100~
+mpechoat $n Every bite of the sugar cake is light, sweet, and delicious.
+~
+|
+V13
+4055
+tall cup lemonade~
+a cup of lemonade~
+A tall cup of lemonade is here, cool to the touch.~
+~
+glass~
+drink 0 0 F A
+20 20 'lemonade' 0 1
+1 5 2 1 P
+0
+>drink_prog 100~
+mpechoat $n The lemonade is cold and sour, muted with a pinch of sugar and some ice.
+~
+|
+V13
+4056
+heavy glass mug dark ale Eril\@s finest~
+a mug of Eril\@s finest~
+A heavy glass mug of dark ale is here.~
+~
+glass~
+drink 0 0 F A
+30 30 'dark ale' 0 1
+1 20 4 1 P
+0
+>drink_prog 100~
+mpechoat $n The ale has a bitter initial taste, which becomes far more refreshing afterward.
+~
+|
+V13
+4057
+heavy glass jar moonshine Eril\@s~
+a jar of moonshine~
+A heavy glass jar of Eril\@s famous moonshine is here.~
+~
+glass~
+drink 0 0 F A
+2 2 'local specialty' 0 1
+1 5 4 1 P
+0
+>drink_prog 100~
+mpechoat $n The moonshine burns all the way down, and both smells and tastes like turpentine.
+~
+|
+V13
+4058
+scroll old~
+an old scroll~
+A scroll sits here, neatly rolled up.~
+~
+parchment~
+scroll 0 0 F A
+15 'create food' 'create spring' 'refresh' ''
+15 5 725 1 P
+0
+V13
+4059
+mace steel light~
+a light mace~
+A light, steel mace lies here.~
+~
+steel~
+weapon 0 0 F AN
+mace 5 4 1 0
+pound~
+15 60 90 2 P
+0
+V13
+4060
+belt living woven sprouts~
+a belt of living sprouts~
+A belt made from living, woven sprouts is here.~
+This belt serves as an example of some of the oldest religious adornment
+of the followers of Elar.  According to legend, a seed of Firiel can live
+even without sustenance; with a bit of careful winding, it can grow back
+onto itself, creating a living circle.  Such adornment is common only to the
+ethron, the careful weaving taking significant time and care to perform
+properly.  
+~
+plant~
+armor 0 0 F AL
+4 4 4 4 0
+48 10 21040 2 P
+400
+A
+36 1
+A
+13 10
+A
+19 2
+A
+18 2
+E
+belt living woven sprouts~
+This belt is made from two slender green sprouts, which have been woven
+around one another.  They come together at what looks to be a small seed,
+forming a living loop.  The smooth, supple sprouts seem to be nourished by
+the magic of the seed that binds them.  
+~
+V13
+4061
+staff ivory white~
+an ivory staff~
+A staff of pure white ivory rests here.~
+~
+ivory~
+weapon AG 0 F AN
+staff 4 6 1 F
+pound~
+20 90 5250 3 P
+0
+A
+18 2
+A
+19 2
+V13
+4062
+chessboard wood board wooden~
+a wooden chessboard~
+A wooden chessboard sits on a nearby table.~
+~
+wood~
+special 0 0 0 P
+1 0 0 0 0
+1 0 0 1 P
+0
+E
+chessboard~
+Carved entirely of wood, the chessboard fits in perfectly with its
+surroundings.  For the white squares a pale birch has been used, and for the
+dark squares a rich, warm chestnut.  The pieces are of the same wood, carved
+by a skilled craftsmen to look like little ethron figures.  
+~
+E
+board~
+Carved entirely of wood, the chessboard fits in perfectly with its
+surroundings.  For the white squares a pale birch has been used, and for the
+dark squares a rich, warm chestnut.  The pieces are of the same wood, carved
+by a skilled craftsmen to look like little ethron figures.  
+~
+V13
+4063
+lily white flower~
+a white lily~
+A lily with snow white petals lies on the ground.~
+~
+plant~
+trash S 0 F A
+0 0 0 0 0
+1 1 7 2 P
+0
+E
+lily~
+The lily is a beautiful white colour on the very tips of its petals,
+fading down to a slight purplish colour in the center.  The very heart of
+the lily is a dark purple, with yellow pollen covering the stamen and
+faintly dusting the inside of the flower.  
+~
+E
+white~
+The lily is a beautiful white colour on the very tips of its petals,
+fading down to a slight purplish colour in the center.  The very heart of
+the lily is a dark purple, with yellow pollen covering the stamen and
+faintly dusting the inside of the flower.  
+~
+V13
+4064
+daffodil yellow flower~
+a yellow daffodil~
+A bright spot on the ground, a sunny yellow daffodil has been left here.~
+~
+plant~
+trash S 0 F A
+0 0 0 0 0
+1 1 5 2 P
+0
+E
+daffodil~
+Six identically shaped yellow petals encircle the stem, radiating
+outwards.  In the center of the daffodil, the main part of the flower
+extrudes in a lacy bowl shape, a stronger, slightly orange yellow than the
+surrounding petals.  
+~
+E
+yellow~
+Six identically shaped yellow petals encircle the stem, radiating
+outwards.  In the center of the daffodil, the main part of the flower
+extrudes in a lacy bowl shape, a stronger, slightly orange yellow than the
+surrounding petals.  
+~
+V13
+4065
+slipper flower lady\@s lady pink white flowers~
+some pink and white lady\@s slipper~
+Some pretty pink and white flowers lie discarded on the ground.~
+~
+plant~
+trash S 0 F A
+0 0 0 0 0
+1 1 5 2 P
+0
+E
+lady\@s~
+Three snowy white petals grow from the stem of the flower, encircling a
+soft pink pouch that grows from the center.  Faintly you can see, with close
+examination, a delicate stamen growing into the pouch, and it is lightly
+touched with yellow.  
+~
+E
+slipper~
+Three snowy white petals grow from the stem of the flower, encircling a
+soft pink pouch that grows from the center.  Faintly you can see, with close
+examination, a delicate stamen growing into the pouch, and it is lightly
+touched with yellow.  
+~
+E
+white~
+Three snowy white petals grow from the stem of the flower, encircling a
+soft pink pouch that grows from the center.  Faintly you can see, with close
+examination, a delicate stamen growing into the pouch, and it is lightly
+touched with yellow.  
+~
+E
+pink~
+Three snowy white petals grow from the stem of the flower, encircling a
+soft pink pouch that grows from the center.  Faintly you can see, with close
+examination, a delicate stamen growing into the pouch, and it is lightly
+touched with yellow.  
+~
+V13
+4066
+faurrilin reddish orange flower~
+a faurrilin~
+A reddish orange faurrilin flower has been left here.~
+~
+plant~
+trash S 0 F A
+0 0 0 0 0
+1 1 7 2 P
+0
+E
+faurrilin~
+Long, spiky orange petals grow out from the stem, turning to a scarlet
+colour at the very tips.  The heart of the flower contains a few bulblike
+stamen, covered with yellow pollen.  The yellow heart fading into the dark
+red of the tips has earned this flower the nickname \#sunset daisy\#.  
+~
+E
+flower~
+Long, spiky orange petals grow out from the stem, turning to a scarlet
+colour at the very tips.  The heart of the flower contains a few bulblike
+stamen, covered with yellow pollen.  The yellow heart fading into the dark
+red of the tips has earned this flower the nickname \#sunset daisy\#. 
+~
+V13
+4067
+bouquet~
+a bouquet~
+A small, nicely arranged bouquet lies forgotton on the ground.~
+~
+plant~
+trash S 0 F AO
+0 0 0 0 0
+1 1 20 2 P
+0
+E
+bouquet~
+The bouquet is pretty and warm hued, with the orange and red colours of
+the faurrilins and the golden coloured daffodils, to the pure white of the
+small lilies.  
+~
+V13
+4068
+drum small tanned skins~
+a small tanned drum~
+A small drum made of tanned skins lies here.~
+~
+leather~
+instrument 0 0 F AO
+A 0 0 0 0
+10 40 780 2 P
+0
+A
+13 5
+V13
+4069
+dresser small sturdy~
+a small dresser~
+A small, but sturdy dresser sits in the corner of the room.~
+~
+wood~
+container 0 0 0 0
+40 AC 0 60 100
+1 1 0 4 P
+0
+V13
+4070
+bed large comfortable~
+a large, comfortable bed~
+A large and comfortable looking bed is set against the wall.~
+~
+wood~
+furniture 0 0 0 0
+3 600 EHKN 125 120
+1 1 0 4 P
+0
+V13
+4071
+boots laced high sturdy leather~
+a pair of high-laced leather boots~
+A sturdy pair of leather boots, laced up to the top, sits here.~
+~
+leather~
+armor 0 0 F AG
+8 9 9 10 0
+47 40 19000 2 P
+200
+A
+12 10
+A
+20 -2
+A
+19 2
+A
+13 10
+E
+boots laced high sturdy leather~
+This pair of sturdy leather boots is well-suited to protect the wearer
+from thorns and other, similar natural hazards.  The sole is flat, without
+significant heel, and the boots come up to just below the knee, laced all
+the way up.  
+~
+V13
+4072
+jerkin leather tight brown~
+a tight leather jerkin~
+A tight jerkin made of brown leather sits here.~
+~
+leather~
+armor 0 0 F AD
+4 5 5 7 0
+47 10 18375 2 P
+300
+A
+17 -3
+A
+12 10
+A
+19 2
+A
+13 12
+E
+jerkin leather tight brown~
+This jerkin is made of brown leather, and made to fit very tightly
+against the body.  With laces on the sides, it seems designed to fit almost
+corset-like, though without the stays used in that more civilized garment.  
+~
+V13
+4073
+shirt linen airy loose~
+an airy linen shirt~
+A loose shirt made of airy linen has been set here.~
+~
+cloth~
+armor 0 0 F AD
+4 5 5 7 0
+47 10 20900 2 P
+300
+A
+13 20
+A
+12 20
+A
+20 -2
+A
+17 -6
+E
+shirt linen airy loose~
+This plain, cream-coloured shirt is made from finely-woven linen, and
+loosely laced at the neck.  The yoke has been embroidered with a twisting,
+leafy pattern in a few different shades of green.  
+~
+V13
+4074
+trousers leather tight lacing laced~
+a tight pair of leather trousers~
+A pair of leather trousers with lacing up the sides has been left here.~
+~
+leather~
+armor 0 0 F AF
+4 5 5 9 0
+47 7 23300 2 P
+400
+A
+20 -3
+A
+12 5
+A
+13 20
+A
+19 1
+E
+trousers leather tight lacing laced~
+This pair of leather trousers is sturdy enough to protect against most
+natural hazards of ranging through the forest.  They fit closely to the
+body, and are laced up the sides for a tighter fit.  
+~
+V13
+4075
+sarong linen loose long~
+a loose linen sarong~
+A long sarong of creamy linen has been left here.~
+~
+cloth~
+armor 0 0 F AF
+6 7 7 9 0
+47 20 22400 1 P
+300
+A
+19 2
+A
+18 3
+A
+13 15
+A
+17 -6
+E
+sarong linen loose long~
+This long sarong is made from a finely-woven cream-coloured linen, and
+lightly embroidered all over with leafy patterns with silky green thread.  
+~
+V13
+4076
+bed silk-canopied~
+a silk-canopied bed~
+A bed stands in the southeast corner, canopied in fine silks.~
+~
+wood~
+furniture Se 0 0 P
+2 1000 BEHK 140 140
+40 500 0 3 P
+0
+E
+bed~
+This stout wooden bed bears canvas sheets and soft feather pillows. 
+Wooden stands carved with vines and roses hold up a canopy of beautiful blue
+silk.  The oaken headboard lies agaist the southern wall, decorated with
+similar carvings.  
+~
+E
+silk-canopied~
+This stout wooden bed bears canvas sheets and soft feather pillows. 
+Wooden stands carved with vines and roses hold up a canopy of beautiful blue
+silk.  The oaken headboard lies agaist the southern wall, decorated with
+similar carvings.  
+~
+V13
+4077
+table wooden~
+a wooden table~
+A wooden table.~
+~
+wood~
+container Se 0 0 P
+400 0 0 20 100
+30 500 0 3 P
+0
+E
+table~
+This wooden table, standing in the center of the house, is carved from
+sturdy oak.  Around it sit four relatively simple ladder-back chairs, each
+made of the same material.  
+~
+E
+wooden~
+This wooden table, standing in the center of the house, is carved from
+sturdy oak.  Around it sit four relatively simple ladder-back chairs, each
+made of the same material.  
+~
+V13
+4078
+chair ladder-back~
+a ladder-back chair~
+A simple ladder-back chair.~
+~
+wood~
+furniture Se 0 0 P
+4 3000 BEHK 100 100
+20 10 0 2 P
+0
+V13
+4079
+couch comfortable red~
+a comfortable red couch~
+A comfortable red couch faces the fireplace.~
+~
+wood~
+furniture Se 0 0 P
+3 2000 BEHK 120 120
+30 800 35000 3 P
+0
+E
+couch~
+This fair-sized couch is made from dark, polished oak.  It\@s cushions are
+fashioned from a red velvet fabric and look rather comfortable.  
+~
+E
+red~
+This fair-sized couch is made from dark, polished oak.  It\@s cushions are
+fashioned from a red velvet fabric and look rather comfortable.
+~
+E
+comfortable~
+This fair-sized couch is made from dark, polished oak.  It\@s cushions are
+fashioned from a red velvet fabric and look rather comfortable.
+~
+V13
+4080
+gloves laced tight leather~
+a tight pair of leather gloves~
+A pair of leather gloves, laced on the back of the hands, have been left here.~
+~
+leather~
+armor 0 0 F AH
+5 5 5 5 0
+50 10 23500 1 P
+400
+A
+13 10
+A
+19 2
+A
+20 -2
+E
+gloves laced tight leather~
+This pair of gloves is sturdy enough to serve as adequate protection for
+the hands under most circumstances, and fit closely enough to allow for no
+real loss of tactile sensation.  They lace up the back to secure the fit,
+and to ensure they fit as closely as possible.  
+~
+V13
+4081
+dresser maple dark~
+a dark maple dresser~
+A fine dresser, carved out of dark maple, stands in the corner.~
+~
+wood~
+furniture 0 0 0 AP
+0 1000 OP 0 0
+1 800 4000 3 P
+0
+V13
+4082
+table wood polished wooden~
+a polished wooden table~
+A well-polished and beautifully carved table sits here.~
+~
+wood~
+furniture 0 0 0 AP
+0 700 N 0 0
+1 750 6000 3 P
+0
+V13
+4083
+jar jam apple preserves~
+a jar of apple preserves~
+A jar of apple preserves has been left here.~
+The mark on the wax of these apple preserves clearly identifies it as
+made by Yilmiras, an excellent jam-maker who lives and works in the small
+town of Eril.  
+~
+glass~
+food 0 0 0 A
+25 50 0 0 0
+1 7 40 1 P
+0
+E
+jar jam apple preserves~
+The jar is of clear glass, allowing a clear look at the apple preserves
+inside.  Stoppering the top is a thin layer of wax which is marked with a
+stylized \#Y\#.  
+~
+V13
+4084
+jar jam pear preserves purple~
+a jar of purple pear preserves~
+A jar of purple pear preserves has been left here.~
+The mark on the wax of these pear preserves clearly identifies it as made
+by Yilmiras, an excellent jam-maker who lives and works in the small town of
+Eril.  The preserves seem to be made of a purple pear, which is generally
+only found in desert type regions.  
+~
+glass~
+food 0 0 0 A
+30 50 0 0 0
+1 7 60 1 P
+0
+E
+jar jam pear preserves purple~
+The jar is of clear glass, allowing a clear look at the purple pear
+preserves inside.  Stoppering the top is a thin layer of wax which is marked
+with a stylized \#Y\#.  
+~
+V13
+4085
+jam jar marmalade peach~
+a jar of peach marmalade~
+A jar of peach marmalade has been left here.~
+The mark on the wax of the peach marmalade clearly identifies it as made
+by Yilmiras, an excellent jam-maker who lives and works in the small town of
+Eril.  
+~
+glass~
+food 0 0 0 A
+25 50 0 0 0
+1 7 53 1 P
+0
+E
+jam jar marmalade peach~
+The jar is of clear glass, allowing a clear look at the peach marmalade
+inside.  Stoppering the top is a thin layer of wax which is marked with a
+stylized \#Y\#.  
+~
+V13
+4086
+jar jam marmalade orange~
+a jar of orange marmalade~
+A jar of orange marmalade has been left here.~
+The mark on the wax of the orange marmalade clearly identifies it as made
+by Yilmiras, an excellent jam-maker who lives and works in the small town of
+Eril.  
+~
+glass~
+food 0 0 0 A
+25 50 0 0 0
+1 7 36 1 P
+0
+E
+jar jam marmalade orange~
+The jar is of clear glass, allowing a clear look at the orange marmalade
+inside, which is flecked with small bits of lemon.  Stoppering the top is a
+thin layer of wax which is marked with a stylized \#Y\#.  
+~
+V13
+4087
+jar jam marmalade orange pol\@ana polana~
+a jar of orange pol\@ana marmalade~
+A jar of orange pol\@ana marmalade has been left here.~
+The mark on the wax of the orange pol\@ana marmalade clearly identifies it
+as made by Yilmiras, an excellent jam-maker who lives and works in the small
+town of Eril.  The pol\@ana fruit is only found in the gardens of the Lord
+Aeolis, and no where else in Avendar.  It is rumoured to have aphrodisiac
+properties, though it is unclear if that is fact or fiction.  
+~
+glass~
+food 0 0 0 A
+30 50 0 0 0
+1 7 120 1 P
+0
+E
+jar jam marmalade orange pol~
+The jar is of clear glass, allowing a clear look at the deep orange
+pol\@ana fruit marmalade inside.  Stoppering the top is a thin layer of wax
+which is marked with a stylized \#Y\#.  
+~
+V13
+4088
+jar jam jelly grape~
+a jar of grape jelly~
+A jar of grape jelly has been left here.~
+The mark on the wax of the grape jelly clearly identifies it as made by
+Yilmiras, an excellent jam-maker who lives and works in the small town of
+Eril.  
+~
+glass~
+food 0 0 0 A
+25 50 0 0 0
+1 7 40 1 P
+0
+E
+jar jam grape jelly~
+The jar is of clear glass, allowing a clear look at the grape jelly
+inside.  Stoppering the top is a thin layer of wax which is marked with a
+stylized \#Y\#.  
+~
+V13
+4089
+jar jam strawberry wild~
+a jar of wild strawberry jam~
+A jar of strawberry jam has been left here.~
+The mark on the wax of the strawberry jam clearly identifies it as made
+by Yilmiras, an excellent jam-maker who lives and works in the small town of
+Eril.  The deep red luster of the jam indicates it\@s likely made of
+Nendorian strawberries.  
+~
+glass~
+food 0 0 0 A
+25 50 0 0 0
+1 7 45 1 P
+0
+E
+jar jam strawberry wild~
+The jar is of clear glass, allowing a clear look at the rich red
+strawberry jam inside.  Stoppering the top is a thin layer of wax which is
+marked with a stylized \#Y\#.  
+~
+V13
+4090
+jar jam raspberry~
+a jar of raspberry jam~
+A jar of raspberry jam has been left here.~
+The mark on the wax of the raspberry jam clearly identifies it as made by
+Yilmiras, an excellent jam-maker who lives and works in the small town of
+Eril.  
+~
+glass~
+food 0 0 0 A
+25 50 0 0 0
+1 7 48 1 P
+0
+E
+jar jam raspberry~
+The jar is of clear glass, allowing a clear look at the raspberry jam
+inside.  Stoppering the top is a thin layer of wax which is marked with a
+stylized \#Y\#.  
+~
+V13
+4091
+jam jar blueberry~
+a jar of blueberry jam~
+A jar of blueberry jam has been left here.~
+The mark on the wax of the blueberry jam clearly identifies it as made by
+Yilmiras, an excellent jam-maker who lives and works in the small town of
+Eril.  
+~
+glass~
+food 0 0 0 A
+20 50 0 0 0
+1 7 36 1 P
+0
+E
+jar jam blueberry~
+The jar is of clear glass, allowing a clear look at the blueberry jam
+inside.  Stoppering the top is a thin layer of wax which is marked with a
+stylized \#Y\#.  
+~
+V13
+4092
+jam jar thimble berry thimbleberry~
+a jar of thimble berry jam~
+A jar of thimble berry jam has been left here.~
+The mark on the wax of the thimble berry jam clearly identifies it as
+made by Yilmiras, an excellent jam-maker who lives and works in the small
+town of Eril.  Thimble berries are fairly rare, as they grow only in
+certain, rather wet, regions, so its jam is popular among the upper class.  
+~
+glass~
+food 0 0 0 A
+30 50 0 0 0
+1 7 60 1 P
+0
+E
+jam jar thimble berry thimbleberry~
+The jar is of clear glass, allowing a clear look at the red thimble berry
+jam inside.  Stoppering the top is a thin layer of wax which is marked with
+a stylized \#Y\#.  
+~
+V13
+4093
+jar jam salal berry salalberry~
+a jar of salal berry jam~
+A jar of salal berry jam has been left here.~
+The mark on the wax of the salal berry jam clearly identifies it as made
+by Yilmiras, an excellent jam-maker who lives and works in the small town of
+Eril.  While a delicious and sweet jam, overindulging can lead to the
+staining of ones lips and tongue a dark purplish black.  
+~
+glass~
+food 0 0 0 A
+25 50 0 0 0
+1 7 38 1 P
+0
+E
+jar jam salal berry salalberry~
+The jar is of clear glass, allowing a clear look at the purple salal
+berry jam inside.  Stoppering the top is a thin layer of wax which is marked
+with a stylized \#Y\#.  
+~
+V13
+4094
+jar jam elderberry elder berry~
+a jar of elderberry jam~
+A jar of elderberry jam has been left here.~
+The mark on the wax of the elderberry jam clearly identifies it as made
+by Yilmiras, an excellent jam-maker who lives and works in the small town of
+Eril.  
+~
+glass~
+food 0 0 0 A
+25 50 0 0 0
+1 7 52 1 P
+0
+E
+jar jam elderberry elder berry~
+The jar is of clear glass, allowing a clear look at the black elderberry
+jam inside.  Stoppering the top is a thin layer of wax which is marked with
+a stylized \#Y\#.  
+~
+V13
+4095
+jar jam cloud berry cloudberry~
+a jar of cloudberry jam~
+A jar of cloudberry jam has been left here.~
+The mark on the wax of the cloudberry jam clearly identifies it as made
+by Yilmiras, an excellent jam-maker who lives and works in the small town of
+Eril.  
+~
+glass~
+food 0 0 0 A
+30 50 0 0 0
+1 7 70 1 P
+0
+E
+jar jam cloud berry cloudberry~
+The jar is of clear glass, allowing a clear look at the amber cloudberry
+jam inside.  Stoppering the top is a thin layer of wax which is marked with
+a stylized \#Y\#.  
+~
+V13
+4096
+jam jar black berry blackberry~
+a jar of blackberry jam~
+A jar of blackberry jam has been left here.~
+The mark on the wax of the blackberry jam clearly identifies it as made
+by Yilmiras, an excellent jam-maker who lives and works in the small town of
+Eril.  
+~
+glass~
+food 0 0 0 A
+25 50 0 0 0
+1 7 40 1 P
+0
+E
+jam jar black berry blackberry~
+The jar is of clear glass, allowing a clear look at the blackberry jam
+inside.  Stoppering the top is a thin layer of wax which is marked with a
+stylized \#Y\#.  
+~
+V13
+4097
+jar jam asjiena purple fruit preserves~
+a jar of asjiena fruit preserves~
+A jar of purple asjiena fruit preserves has been left here.~
+The mark on the wax of these asjiena fruit preserves clearly identifies
+it as made by Yilmiras, an excellent jam-maker who lives and works in the
+small town of Eril.  
+~
+glass~
+food 0 0 0 A
+25 50 0 0 0
+1 7 45 1 P
+0
+E
+jar jam asjiena purple fruit preserves~
+The jar is of clear glass, allowing a clear look at the purple asjiena
+fruit preserves inside.  Stoppering the top is a thin layer of wax which is
+marked with a stylized \#Y\#.  
+~
+V13
+4098
+pendant ceramic floral painted intricate~
+a floral ceramic pendant~
+A circular pendant, painted with an intricate floral pattern sits here.~
+~
+earth~
+armor 0 0 F AC
+3 4 4 5 0
+47 5 16200 1 P
+400
+A
+13 10
+A
+12 30
+A
+20 -2
+A
+17 -6
+E
+pendant ceramic floral painted intricate~
+This pendant is a circle of ceramic, painted with an intriciate,
+repeating floral pattern, and glazed to a bright polish.  A thin leather
+thong threads through a hole at the top, to hang the pendant about one\@s
+neck.  
+~
+#0
+
+
+
+#ROOMS
+#4098
+Eril\@s Guard Shack~
+This is where the guards go.  They go here!  
+~
+~
+0
+0 565566 0
+W 5 0 0
+Z 5 5
+S
+#4099
+eril shoppie planning room~
+4081
+4082
+4099
+~
+~
+1
+0 819510 0
+W 5 0 0
+Z 5 5
+S
+#4025
+A Light Path~
+The oaks and beech trees that line the path look older as the path heads
+west, and in that direction you can hear the faint noise of activity.  The
+path is well-used, and seems oft-traveled, cutting a thick and definite line
+through the surrounding forest.  
+~
+~
+1
+0 0 3
+D2
+The path continues.
+~
+~
+0 0 19611
+D3
+The path continues, curving north.
+~
+~
+0 0 4026
+W 5 0 0
+Z 5 5
+S
+#4026
+A Light Path~
+The trees that line the path are old and healthy looking, a mix of oak
+and beech.  As the path winds north, more evergreen trees mix in the forest,
+all lush and full of life.  The path is well-used, and seems oft-traveled,
+cutting a thick and definite line through the surrounding greenery.  
+~
+~
+1
+0 0 3
+D0
+The path continues.
+~
+~
+0 0 4027
+D1
+The path continues.
+~
+~
+0 0 4025
+W 5 0 0
+Z 5 5
+S
+#4027
+A Light Path~
+The trees that line the path are old and healthy looking, a mix of oak,
+beech, and evergreen.  To the north you hear the sounds of activity, and the
+distinctive noises only a village can make.  South the path continues,
+winding its way into the main part of the woods of Nendor.  
+~
+~
+1
+0 0 3
+D0
+You see the entrance to Eril Village.
+~
+~
+0 0 4028
+D2
+The path continues.
+~
+~
+0 0 4026
+W 5 0 0
+Z 5 5
+S
+#4028
+An Entrance to Eril Village~
+Two tall, majestic trees are on either side of the pathway leading north
+into the village.  The oaks look ancient and strong, their wide trunks many
+paces across.  A small rope ladder leads up into the network of thick
+branches, where guards are sometimes stationed on lookout.  The path winds
+back south, into the heart of the Nendor woods.  
+~
+~
+1
+0 262144 1
+D0
+You see the main road in Eril Village.
+~
+~
+0 0 4029
+D2
+The path leads south away from Eril Village.
+~
+~
+0 0 4027
+D4
+You see a platform nearly hidden in the trees.
+~
+~
+0 0 4080
+W 5 0 0
+Z 5 5
+S
+#4029
+A Thin Road~
+Surrounding you are homes of various types and sizes, from sturdy looking
+houses of wood, to homes built into the roots and trunks of the forest\@s
+ancient trees.  Eril itself bustles with the energy of the ethron and human
+inhabitants, most of the activity to the north-west in the marketplace.  A
+well-packed dirt road leads east to a small cluster of houses, and west to
+the main part of the village.  South lie the gates to the town, and a trail
+leading away into the woods of Nendor.  
+~
+~
+1
+0 262144 1
+D1
+The road continues.
+~
+~
+0 0 4030
+D2
+You see the gates to Eril.
+~
+~
+0 0 4028
+D3
+The road continues.
+~
+~
+0 0 4042
+W 5 0 0
+Z 5 5
+S
+#4030
+A Thin Road~
+Surrounding you are homes of various types and sizes, from sturdy looking
+houses of wood, to homes built into the roots and trunks of the forest\@s
+ancient trees.  Eril itself bustles with the energy of the ethron and human
+inhabitants, most of the activity to the north-west in the marketplace.  A
+well-packed dirt road leads east to a small cluster of houses, and west to
+the main part of the village.  South lies a thin path, leading to a few
+secluded homes, and north is a small house.  
+~
+~
+1
+0 262144 1
+D0
+~
+~
+3 0 4031
+D1
+The road continues.
+~
+~
+0 0 4032
+D2
+You see a small pathway.
+~
+~
+0 0 4036
+D3
+The road continues.
+~
+~
+0 0 4029
+W 5 0 0
+Z 5 5
+S
+#4031
+A Small Home~
+The small home is clean and well-furnished, with sturdy wooden furniture
+and a few odds and ends.  A thick rug covers the floor, and the only
+illumination seems to come from the window out to the street.  There is a
+pleasant smell in the air, a combination of berries and pine.  A door leads
+south back to the road.  
+~
+~
+1
+0 262152 0
+D2
+~
+~
+3 0 4030
+W 5 0 0
+Z 5 5
+S
+#4032
+A Thin Road~
+Surrounding you are homes of various types and sizes, from sturdy
+looking houses of wood, to homes built into the roots and trunk of the
+forest\@s ancient trees.  Eril itself bustles with the energy of the ethron
+and human inhabitants, most of the activity to the north-west in the
+marketplace.  A well-packed dirt road leads west to the main part of the
+village, and small doors lead to homes to the north, south and east.  
+~
+~
+1
+0 262144 1
+D0
+You see the doorway to a home.
+~
+~
+3 0 4033
+D1
+You see the doorway to a home.
+~
+~
+3 0 4034
+D2
+You see the doorway to a home.
+~
+~
+3 0 4035
+D3
+The road continues.
+~
+~
+0 0 4030
+W 5 0 0
+Z 5 5
+S
+#4033
+A Home~
+The home is worked into the trunk of a massive tree, seeming to grow with
+it rather than killing it.  Various pieces of solid wood furniture are set
+throughout the room, everything arranged to give the house a comfortable and
+relaxed feel.  A small door leads south to the road.  
+~
+~
+1
+0 262152 0
+D2
+You see the doorway back to the main road of Eril Village.
+~
+~
+3 0 4032
+W 5 0 0
+Z 5 5
+S
+#4034
+A Small Home~
+The small home is clean and well-furnished, with sturdy wooden furniture
+and a few odds and ends.  A thick rug covers the floor, and the only
+illumination seems to come from the window out to the street.  There is a
+pleasant smell in the air, a combination of berries and pine.  A door leads
+west back to the road.  
+~
+~
+1
+0 262152 0
+D3
+You see the doorway back to the main road of Eril Village.
+~
+~
+3 0 4032
+W 5 0 0
+Z 5 5
+S
+#4035
+A Small Home~
+The small home is clean and well-furnished, with sturdy wooden furniture
+and a few odds and ends.  A thick rug covers the floor, and the only
+illumination seems to come from the window out to the street.  There is a
+pleasant smell in the air, a combination of berries and pine.  A door leads
+north back to the road.  
+~
+~
+1
+0 262152 0
+D0
+You see the doorway back to the main road of Eril Village.
+~
+~
+3 0 4032
+W 5 0 0
+Z 5 5
+S
+#4036
+A Path~
+The path breaks from the main road, seeming seldom used, and is barely
+visible as it cuts through the trees.  It seems calmer here, the bustling of
+the village left behind.  The road lies to the north leading back to the
+heart of Eril Village, and south the path continues on.  
+~
+~
+1
+0 262144 1
+D0
+You see the main road of Eril Village.
+~
+~
+0 0 4030
+D2
+The trail leads towards a few remote homes.
+~
+~
+0 0 4037
+W 5 0 0
+Z 5 5
+S
+#4037
+A Path~
+The path breaks from the main road, seeming seldom used, and is barely
+visible as it cuts through the trees.  It seems calmer here, the bustling of
+the village left behind.  The path leads north back to the main road, and
+east to a few homes.  
+~
+~
+1
+0 262144 1
+D0
+The trail continues, leading back into Eril Village.
+~
+~
+0 0 4036
+D1
+The trail leads towards a few remote homes.
+~
+~
+0 0 4038
+W 5 0 0
+Z 5 5
+S
+#4038
+A Path~
+The path breaks from the main road, seeming seldom used, and is barely
+visible as it cuts through the trees.  It seems calmer here, the bustling of
+the village left behind.  The path leads west back to the main road, and
+east to a few homes.  
+~
+~
+1
+0 262144 1
+D1
+The trail ends, blocked by the trees of the forest.
+~
+~
+0 0 4039
+D3
+The trail continues, leading back into Eril Village.
+~
+~
+0 0 4037
+W 5 0 0
+Z 5 5
+S
+#4039
+A Path~
+The path breaks from the main road, seeming seldom used, and is barely
+visible as it cuts through the trees.  It seems calmer here, the bustling of
+the village left behind.  The path leads west back to the main road, and to
+the north and south lie the doorways to some homes.  
+~
+~
+1
+0 262144 1
+D0
+You see the doorway to a home.
+~
+~
+3 0 4040
+D2
+You see the doorway to a home.
+~
+~
+3 0 4041
+D3
+The trail continues, leading back into Eril Village.
+~
+~
+0 0 4038
+W 5 0 0
+Z 5 5
+S
+#4040
+A Small Home~
+You are in a small, sturdy home made of logs, the dark interior lit by a
+few candles scattered around the room.  Well-built furniture, large and
+comfortable looking, has been set around the room, and a few books lie on
+the sole chair.  A shaggy old carpet covers the floor and muffles any sound
+of footsteps that would break the sense of peace.  The doorway leading to
+the trail back to Eril is to the south, the only apparent exit from this
+room.  
+~
+~
+1
+0 262152 0
+D2
+You see the doorway to the trail to Eril Village.
+~
+~
+3 0 4039
+W 5 0 0
+Z 5 5
+S
+#4041
+A Small Home~
+You are in a small, sturdy home made of logs, the interior lit somewhat
+by a large window looking south into the woods.  All around the room are
+piles of books, in book cases and set on almost every available surface. 
+The doorway to the trail leading back to Eril lies to the north, the only
+apparent exit from this room.  
+~
+~
+1
+0 262152 0
+D0
+You see the doorway to the trail to Eril Village.
+~
+~
+3 0 4039
+W 5 0 0
+Z 5 5
+S
+#4042
+An Intersection~
+Surrounding you are homes of various types and sizes, from sturdy looking
+houses of wood, to homes built into the roots and trunks of the forest\@s
+ancient trees.  Eril itself bustles with the energy of the ethron and human
+inhabitants, most of the activity to the north in the marketplace.  A
+well-packed dirt road leads east and west to more houses.  
+~
+~
+1
+0 262144 1
+D0
+You see a small path leading to the marketplace.
+~
+~
+0 0 4065
+D1
+The road continues.
+~
+~
+0 0 4029
+D3
+The road continues.
+~
+~
+0 0 4043
+W 5 0 0
+Z 5 5
+S
+#4043
+A Thin Road~
+Surrounding you are homes of various types and sizes, from sturdy looking
+houses of wood, to homes built into the roots and trunks of the forest\@s
+ancient trees.  Eril itself bustles with the energy of the ethron and human
+inhabitants, most of the activity to the north-east in the marketplace.  A
+well-packed dirt road leads and west to more houses, and to the north and
+south are heavy wooden doors.  
+~
+~
+1
+0 262144 1
+D0
+You see the doorway to a home.
+~
+~
+3 0 4045
+D1
+The road continues.
+~
+~
+0 0 4042
+D2
+You see the doorway to a home.
+~
+~
+3 0 4044
+D3
+The road continues.
+~
+~
+0 0 4046
+W 5 0 0
+Z 5 5
+S
+#4044
+A Home~
+The home is worked into the trunk of a massive tree, seeming to grow with
+it rather than killing it.  Various pieces of solid wood furniture are set
+throughout the room, everything arranged to give the house a comfortable and
+relaxed feel.  A small door leads north to the road.  
+~
+~
+1
+0 262152 0
+D0
+You see the doorway back to the main road of Eril Village.
+~
+~
+3 0 4043
+W 5 0 0
+Z 5 5
+S
+#4045
+A Small Home~
+The home is worked into the trunk of a massive tree, seeming to grow with
+it rather than killing it.  Various pieces of solid wood furniture are set
+throughout the room, everything arranged to give the house a comfortable and
+relaxed feel.  A small door leads south to the road.  
+~
+~
+1
+0 262152 0
+D2
+You see the doorway back to the main road of Eril Village.
+~
+~
+3 0 4043
+W 5 0 0
+Z 5 5
+S
+#4046
+A Thin Road~
+Surrounding you are homes of various types and sizes, from sturdy looking
+houses of wood, to homes built into the roots and trunks of the forest\@s
+ancient trees.  Eril itself bustles with the energy of the ethron and human
+inhabitants, most of the activity to the north-east in the marketplace.  A
+well-packed dirt road leads and west to more houses, and south lies a heavy
+wooden door.  
+~
+~
+1
+0 262144 1
+D1
+The road continues.
+~
+~
+0 0 4043
+D2
+You see the doorway to a home.
+~
+~
+3 0 4047
+D3
+The road continues.
+~
+~
+0 0 4048
+W 5 0 0
+Z 5 5
+S
+#4047
+A Small Home~
+The small home is clean and well-furnished, with sturdy wooden furniture
+and a few odds and ends.  A thick rug covers the floor, and the only
+illumination seems to come from the window out to the street.  There is a
+pleasant smell in the air, a combination of berries and pine.  A door leads
+north back to the road.  
+~
+~
+1
+0 262152 0
+D0
+You see the doorway back to the main road of Eril Village.
+~
+~
+3 0 4046
+W 5 0 0
+Z 5 5
+S
+#4048
+A Bend in the Road~
+Surrounding you are homes of various types and sizes, from sturdy looking
+houses of wood, to homes built into the roots and trunks of the forest\@s
+ancient trees.  Eril itself bustles with the energy of the ethron and human
+inhabitants, most of the activity to the north-east in the marketplace.  A
+well-packed dirt road leads north and east to more homes, and west lies the
+entrance to the Belliful Tavern.  
+~
+~
+1
+0 262144 1
+D0
+The road continues.
+~
+~
+0 0 4051
+D1
+The road continues.
+~
+~
+0 0 4046
+D2
+~
+~
+1 0 4091
+D3
+You see the entrance to the Belliful Tavern.
+~
+~
+1 0 4049
+W 5 0 0
+Z 5 5
+S
+#4049
+The Belliful Tavern~
+The Belliful Tavern is a busy place, set inside a beautiful old oak tree.
+The tavern looks as if it has grown with the tree, rather than killing it,
+and the polished bar along the north wall seems a natural extension of the
+tree itself.  Many of the people of Eril come here to socialize and drink,
+and the room echoes with voices and laughter.  A door to the west leads to a
+small hallway, and the bar continues up a wide staircase, and to the south. 
+~
+~
+1
+0 262152 0
+D1
+You see the doorway back to the main road of Eril Village.
+~
+~
+1 0 4048
+D2
+The tavern continues.
+~
+~
+0 0 4050
+D3
+You see the door to one of the two rooms in the tavern.
+~
+~
+3 0 4084
+D4
+The tavern continues.
+~
+~
+0 0 4083
+M 100 H 120 V 100
+W 5 0 0
+Z 5 5
+S
+#4050
+The Belliful Tavern~
+The part of the tavern has a few tables, but the prime attraction seems
+to be a few painted wood dart boards set against the south wall.  A woven
+mat has been set behind the boards, so that those not skilled at the game
+would not stab the tree though houses the tavern.  The comfortable, homey
+feeling of the inn still prevades this part of the room, and the atmosphere
+is light and easy-going.  The main entrance to the tavern lies to the north,
+past the bustling tables.  
+~
+~
+1
+0 262152 0
+D0
+The tavern continues.
+~
+~
+0 0 4049
+W 5 0 0
+Z 5 5
+S
+#4051
+A Road~
+Surrounding you are homes of various types and sizes, from sturdy looking
+houses of wood, to homes built into the roots and trunks of the forest\@s
+ancient trees.  Eril itself bustles with the energy of the ethron and human
+inhabitants, most of the activity to the east in the marketplace.  A
+well-packed dirt road leads north and south to more homes, and a heavy
+wooden door lies to the east.  
+~
+~
+1
+0 262144 1
+D0
+The road continues.
+~
+~
+0 0 4053
+D1
+You see the doorway to a home.
+~
+~
+3 0 4052
+D2
+The road continues.
+~
+~
+0 0 4048
+W 5 0 0
+Z 5 5
+S
+#4052
+A Home~
+The home is worked into the trunk of a massive tree, seeming to grow with
+it rather than killing it.  Various pieces of solid wood furniture are set
+throughout the room, everything arranged to give the house a comfortable and
+relaxed feel.  A small door leads west to the road.  
+~
+~
+1
+0 262152 0
+D3
+You see the doorway back to the main road of Eril Village.
+~
+~
+3 0 4051
+W 5 0 0
+Z 5 5
+S
+#4053
+A Road~
+Surrounding you are homes of various types and sizes, from sturdy looking
+houses of wood, to homes built into the roots and trunks of the forest\@s
+ancient trees.  Eril itself bustles with the energy of the ethron and human
+inhabitants, most of the activity to the east in the marketplace.  A
+well-packed dirt road leads north and south to more homes, and a heavy
+wooden door lies to the west.  
+~
+~
+1
+0 262144 1
+D0
+The road continues.
+~
+~
+0 0 4055
+D2
+The road continues.
+~
+~
+0 0 4051
+D3
+You see the doorway to a home.
+~
+~
+3 0 4054
+W 5 0 0
+Z 5 5
+S
+#4054
+A Home~
+The home is worked into the trunk of a massive tree, seeming to grow with
+it rather than killing it.  Various pieces of solid wood furniture are set
+throughout the room, everything arranged to give the house a comfortable and
+relaxed feel.  A small door leads east to the road.  
+~
+~
+1
+0 262152 0
+D1
+You see the doorway back to the main road of Eril Village.
+~
+~
+3 0 4053
+W 5 0 0
+Z 5 5
+S
+#4055
+A Bend in the Road~
+Surrounding you are homes of various types and sizes, from sturdy looking
+houses of wood, to homes built into the roots and trunks\# of the forest\@s
+ancient trees.  Eril itself bustles with the energy of the ethron and human
+inhabitants, most of the activity to the south-east in the marketplace.  A
+well-packed dirt road leads south and east to more homes, and the door to
+the leader\@s home lies to the north.  
+~
+~
+1
+0 262144 1
+D0
+You see the door to the home of the leader of Eril.
+~
+~
+3 0 4056
+D1
+The road continues.
+~
+~
+0 0 4057
+D2
+The road continues.
+~
+~
+0 0 4053
+W 5 0 0
+Z 5 5
+S
+#4056
+The Ethron Leader\@s Home~
+This home is quite well furnished, with heavy oak chairs, and a beautiful
+oak table in the middle of the room.  A few delicately done paintings line
+the wall, showing various scenes of Eril, one for each season.  A small
+staircase leads upwards to the bedroom, and a door to the south leads back
+to the street.  
+~
+~
+1
+0 262152 0
+D2
+You see the doorway back to the main road of Eril Village.
+~
+~
+3 0 4055
+D4
+You see a stairway leading to the bedroom.
+~
+~
+0 0 4078
+W 5 0 0
+Z 5 5
+S
+#4057
+A Road~
+Surrounding you are homes of various types and sizes, from sturdy looking
+houses of wood, to homes built into the roots and trunks of the forest\@s
+ancient trees.  Eril itself bustles with the energy of the ethron and human
+inhabitants, most of the activity to the south-east in the marketplace.  A
+well-packed dirt road leads west and east to more homes, and heavy wooden
+doors lie to the north and south.  
+~
+~
+1
+0 262144 1
+D0
+You see the doorway to the Town Hall.
+~
+~
+3 0 4059
+D1
+You see the beginning of the marketplace.
+~
+~
+0 0 4060
+D2
+~
+~
+3 0 4058
+D3
+The road continues.
+~
+~
+0 0 4055
+W 5 0 0
+Z 5 5
+S
+#4058
+A Small Home~
+The small home is clean and well-furnished, with sturdy wooden furniture
+and a few odds and ends.  A thick rug covers the floor, and the only
+illumination seems to come from the window out to the street.  There is a
+pleasant smell in the air, a combination of berries and pine.  A door leads
+north back to the road.  
+~
+~
+1
+0 262152 0
+D0
+You see the doorway back to the main road of Eril Village.
+~
+~
+3 0 4057
+W 5 0 0
+Z 5 5
+S
+#4059
+The Town Hall~
+The town hall is quiet, well insulated so as to stop the noise from
+outside.  Many chairs have been left in rows, all facing north towards a
+small raised platform.  The town hall is seldom used as not many troubles
+plague the village, and the chairs seem to be growing a bit dusty.  A set of
+double doors leads south to the road.  
+~
+~
+1
+0 262152 0
+D2
+You see the doorway back to the main road of Eril Village.
+~
+~
+3 0 4057
+W 5 0 0
+Z 5 5
+S
+#4060
+The Market~
+You stand by the edge of the market, a bustling part of Eril Village
+where the merchants and traders show their wares.  The ground is packed
+dirt, bits of grass poking up here and there, but for the most part it is
+bare from the travel of so many feet.  The market continues to the east,
+north and south, and the main road leads into a cluster of homes to the
+west.  
+~
+~
+1
+0 262144 1
+D0
+The marketplace continues.
+~
+~
+0 0 4062
+D1
+The marketplace continues.
+~
+~
+0 0 4063
+D2
+The marketplace continues.
+~
+~
+0 0 4061
+D3
+You see the road.
+~
+~
+0 0 4057
+W 5 0 0
+Z 5 5
+S
+#4061
+The Market~
+The market bustles with energy, being a combination of a trading place
+for the merchants and trappers, and a park for people to rest in, and relax.
+Patches of soft grass invite those wearied to rest, and enjoy the spectacle
+of the rest of the people buying and trading.  The market continues on to
+the north and east, each way leading to the road.  
+~
+~
+1
+0 262144 1
+D0
+The marketplace continues.
+~
+~
+0 0 4060
+D1
+The marketplace continues.
+~
+~
+0 0 4064
+W 5 0 0
+Z 5 5
+S
+#4062
+The Market~
+The market is calm here, with very little activity disturbing the quiet. 
+The ground is soft with grass, and this appears to be a nice spot to rest
+while looking around.  Thick trees block the way the north, and add their
+cool shade to the area.  The market continues to the south and east.  
+~
+~
+1
+0 262144 1
+D1
+The marketplace continues.
+~
+~
+0 0 4066
+D2
+The marketplace continues.
+~
+~
+0 0 4060
+W 5 0 0
+Z 5 5
+S
+#4063
+The Center of the Market~
+The market is at the busiest here, in the center.  People move to and fro
+among the merchants, admiring the fine skins brought by the trappers, and
+the new items from the city that the merchants carry.  A soft breeze and the
+cooling splash of the water from the fountain help keep down dust, and the
+patches of soft grass offer a place to rest a moment before continuing on.  
+~
+~
+1
+0 262144 1
+D0
+The marketplace continues.
+~
+~
+0 0 4066
+D1
+The marketplace continues.
+~
+~
+0 0 4067
+D2
+The marketplace continues.
+~
+~
+0 0 4064
+D3
+The marketplace continues.
+~
+~
+0 0 4060
+W 5 0 0
+Z 5 5
+S
+#4064
+The Market~
+The market bustles with its crowd of trappers, merchants, and the people
+of Eril.  The ground is packed down, bits of grass clinging to life along
+the less traveled routes to the different parts of the market.  The road
+lies to the south, and further south you can see the ancient old tree that
+marks the entrance to the village.  To the north, west and east the market
+continues.  
+~
+~
+1
+0 262144 1
+D0
+The marketplace continues.
+~
+~
+0 0 4063
+D1
+The marketplace continues.
+~
+~
+0 0 4069
+D2
+You see a small trail.
+~
+~
+0 0 4065
+D3
+The marketplace continues.
+~
+~
+0 0 4061
+W 5 0 0
+Z 5 5
+S
+#4065
+The Path to the Market~
+Surrounding you are homes of various types and sizes, from sturdy looking
+houses of wood, to homes built into the roots and trunks of the forest\@s
+ancient trees.  Eril itself bustles with the energy of the ethron and human
+inhabitants, most of the activity to the north in the marketplace.  South
+lies the main road of the village, lined with houses.  
+~
+~
+1
+0 262144 1
+D0
+You see the beginning of the market.
+~
+~
+0 0 4064
+D2
+You see the road.
+~
+~
+0 0 4042
+W 5 0 0
+Z 5 5
+S
+#4066
+The Market~
+The market continues, traders amd merchants comparing skins and wares. 
+The ground is worn by the passage of many people, and the breeze that
+trickles through keeps the market nice and cool.  Ancient trees block
+passage to the north, but the market continues to the west, east and south. 
+~
+~
+1
+0 262144 1
+D0
+~
+~
+1 0 4093
+D1
+The marketplace continues.
+~
+~
+0 0 4068
+D2
+The marketplace continues.
+~
+~
+0 0 4063
+D3
+The marketplace continues.
+~
+~
+0 0 4062
+W 5 0 0
+Z 5 5
+S
+#4067
+The Market~
+The market has more the feel of a park, the green grass worn through in
+places by the passage of many feet.  Those who walk through the area seem to
+know one another, calling greetings out, and hailing those trappers that
+often frequent the village.  A road leads east to a small cluster of homes,
+and in all other directions the market continues.  
+~
+~
+1
+0 262144 1
+D0
+The marketplace continues.
+~
+~
+0 0 4068
+D1
+You see the road.
+~
+~
+0 0 4072
+D2
+The marketplace continues.
+~
+~
+0 0 4069
+D3
+The marketplace continues.
+~
+~
+0 0 4063
+W 5 0 0
+Z 5 5
+S
+#4068
+The Market~
+The ground rises a bit, creating a small grassy hill for people to sit on
+and look over the rest of the market.  The traders who stop at the village
+are greeted warmly, some even keeping a home within Eril\@s small borders,
+and the merchants who visit greet them warmly as well, hoping to get the
+pick of the furs before they reach Var Bandor.  The market continues to the
+south and west.  
+~
+~
+1
+0 262144 1
+D2
+The marketplace continues.
+~
+~
+0 0 4067
+D3
+The marketplace continues.
+~
+~
+0 0 4066
+W 5 0 0
+Z 5 5
+S
+#4069
+The Market~
+The grass is lush and full here, paths worn in to the doors of the shops
+to the south and east.  The faint sound of a fountain can be heard to the
+north-west, offering a cool refreshing drink.  
+~
+~
+1
+0 262144 1
+D0
+The marketplace continues.
+~
+~
+0 0 4067
+D1
+A ceramics shop lies to the east.
+~
+~
+1 0 4071
+D2
+You see the doorway to the clothing shop.
+~
+~
+1 0 4070
+D3
+The marketplace continues.
+~
+~
+0 0 4064
+W 5 0 0
+Z 5 5
+S
+#4070
+Lerin\@s Forest Fashions~
+A small but attractive store, Lerin\@s clothing shop has a prominent place
+in Eril\@s marketplace.  Various articles of clothing are displayed
+throughout, showing off a variety of fabrics and styles.  These are not the
+common items of the average citizen, though; instead they are expensive
+works of art from one of the few masters of the ethron race.  A small wooden
+counter sits at the back of the store, with much of the shop\@s interior left
+in the well-worn, homey style of the village.  The shop is cool through much
+of the year, even during the summer, and the room is well ventilated to
+prevent stuffiness.  To the north is the rest of Eril\@s market.  
+~
+~
+1
+0 262156 0
+D0
+You see the doorway to the marketplace.
+~
+~
+1 0 4069
+W 5 0 0
+Z 5 5
+S
+#4071
+The Jandiskan Kiln~
+This store has store has been refitted to support a large kiln and other
+pottery-related periphernalia.  It has been expanded, upward as well as
+outward, and painted in a rich, earthy orange-brown.  The west wall supports
+two respectable windows which flank its familiar doorway, giving the shop
+interior a healthy amount of natural light.  The scent of the kiln and its
+heat fill the room, giving it a heavier feel during the summer months and a
+thick warmth during the winter.  A series of small counters provide places
+for transactions to take place, as well as examples of the wares for sale. 
+Outside to the west is Eril\@s marketplace.  
+~
+~
+1
+0 262156 0
+D3
+You see the doorway to the marketplace.
+~
+~
+1 0 4069
+W 5 0 0
+Z 5 5
+S
+#4072
+A Road~
+Surrounding you are homes of various types and sizes, from sturdy looking
+houses of wood, to homes built into the roots and trunks of the forest\@s
+ancient trees.  Eril itself bustles with the energy of the ethron and human
+inhabitants, most of the activity to the west in the marketplace.  A
+well-packed dirt road leads east to more homes, and a heavy wooden door lies
+to the north.  
+~
+~
+1
+0 262144 1
+D0
+You see the doorway to a home.
+~
+~
+3 0 4073
+D1
+The road continues.
+~
+~
+0 0 4074
+D2
+A stone cottage lies to the south.
+~
+~
+3 0 4092
+D3
+You see the beginning of the marketplace.
+~
+~
+0 0 4067
+W 5 0 0
+Z 5 5
+S
+#4073
+A Home~
+The home is worked into the trunk of a massive tree, seeming to grow with
+it rather than killing it.  Various pieces of solid wood furniture are set
+throughout the room, everything arranged to give the house a comfortable and
+relaxed feel.  A small door leads south to the road.  
+~
+~
+1
+0 262152 0
+D2
+You see the doorway back to the main road of Eril Village.
+~
+~
+3 0 4072
+W 5 0 0
+Z 5 5
+S
+#4074
+A Road~
+Surrounding you are homes of various types and sizes, from sturdy looking
+houses of wood, to homes built into the roots and trunks of the forest\@s
+ancient trees.  Eril itself bustles with the energy of the ethron and human
+inhabitants, most of the activity to the south-west in the marketplace.  A
+well-packed dirt road leads west to the main part of the village, and small
+doors lead to homes to the north, south and east.  
+~
+~
+1
+0 262144 1
+D0
+~
+~
+0 0 4076
+D1
+You see the doorway to a home.
+~
+~
+3 0 4077
+D2
+You see the doorway to a home.
+~
+~
+3 0 4075
+D3
+The road continues.
+~
+~
+0 0 4072
+W 5 0 0
+Z 5 5
+S
+#4075
+A Home~
+The home is worked into the trunk of a massive tree, seeming to grow with
+it rather than killing it.  Various pieces of solid wood furniture are set
+throughout the room, everything arranged to give the house a comfortable and
+relaxed feel.  A small door leads north to the road.  
+~
+~
+1
+0 262152 0
+D0
+You see the doorway back to the main road of Eril Village.
+~
+~
+3 0 4074
+W 5 0 0
+Z 5 5
+S
+#4076
+A Road Between Houses~
+Surrounding you are homes of various types and sizes, from sturdy looking
+houses of wood, to homes built into the roots and trunks of the forest\@s
+ancient trees.  Eril itself bustles with the energy of the ethron and human
+inhabitants, most of the activity to the south-west in the marketplace.  A
+well-packed dirt road leads south toward the main part of the village, as
+well as north toward one of the town\@s exits.  
+~
+~
+1
+0 262144 1
+D0
+~
+~
+0 0 4095
+D2
+~
+~
+0 0 4074
+W 5 0 0
+Z 5 5
+S
+#4077
+A Home~
+The home is worked into the trunk of a massive tree, seeming to grow with
+it rather than killing it.  Various pieces of solid wood furniture are set
+throughout the room, everything arranged to give the house a comfortable and
+relaxed feel.  A small door leads west to the road, and a staircase leads
+upwards to a large bedroom.  
+~
+~
+1
+0 262152 0
+D3
+You see the doorway back to the main road of Eril Village.
+~
+~
+3 0 4074
+D4
+You see a set of stairs leading up to the bedroom.
+~
+~
+0 0 4079
+W 5 0 0
+Z 5 5
+S
+#4078
+The Ethron Leader\@s Home~
+The room is much less richly furnished than downstairs, most of the room
+taken up by a comfortable looking bed.  A small window to the south
+overlooks the street and the busy people below.  Aside from a dresser, the
+only other thing of note is the stairs leading back down.  
+~
+~
+1
+0 262152 0
+D5
+You see a stairway leading to the main part of the house.
+~
+~
+0 0 4056
+W 5 0 0
+Z 5 5
+S
+#4079
+A Home~
+The room is dark, with one small window looking south over the road.  A
+heavy oak bed is set in the corner, covered in an old quilt, and a small
+dresser occupies the opposite corner.  A staircase leads downwards to the
+main part of the house, the only apparent exit from this room.  
+~
+~
+1
+0 262152 0
+D5
+You see a set of stairs leading down to the main part of the house.
+~
+~
+0 0 4077
+W 5 0 0
+Z 5 5
+S
+#4080
+The Outlook~
+A small platform has been built up in the oak tree, so well formed and
+like the surrounding branches that it is all but invisible from below. 
+Through the leaves surrounding this spot, you have a beautiful view to the
+southeast of the woods of Nendor, and further east you see the faint signs
+of what may be Var Bandor.  North the small village bustles with activity,
+but it is mostly screened from view by the other trees.  
+~
+~
+1
+0 786432 1
+D5
+You see the gates of Eril Village.
+~
+~
+0 0 4028
+W 5 0 0
+Z 5 5
+S
+#4081
+The Upper Level of the Tavern~
+The upper level of the tavern is dedicated to those who want to just sit
+and talk, a few hardwood tables scattered around the room.  The smooth dark
+wood of the surrounding tree and the soft murmers of conversation give the
+room a relaxed feel.  North the restaurent part of the tavern continues, and
+to the east lies a wide balcony.  
+~
+~
+1
+0 262152 0
+D0
+The tavern continues.
+~
+~
+0 0 4083
+D1
+You see the balcony.
+~
+~
+0 0 4082
+W 5 0 0
+Z 5 5
+S
+#4082
+The Balcony of the Tavern~
+The balcony is built on a platform on the branches of the tree, and has
+no walls save for that of the surrounding leaves.  You can see most of Eril
+Village spawl out to the east, a small bustling community within the trees. 
+A few benches and chairs are set around the balcony for people to sit and
+enjoy the view, and the rest of the tavern is back to the west.  
+~
+~
+1
+0 262144 1
+D3
+The tavern continues.
+~
+~
+0 0 4081
+W 5 0 0
+Z 5 5
+S
+#4083
+The Upper Level of the Tavern~
+The upper level of the tavern is dedicated to those who want to just sit
+and talk, a few hardwood tables scattered around the room.  The smooth dark
+wood of the surrounding tree and the soft murmers of conversation give the
+room a relaxed feel.  South the restaurent part of the tavern continues, and
+down a small set of stairs lies the bar.  
+~
+~
+1
+0 262152 0
+D2
+The tavern continues.
+~
+~
+0 0 4081
+D5
+The tavern continues.
+~
+~
+0 0 4049
+W 5 0 0
+Z 5 5
+S
+#4084
+A Small Hallway~
+The hallway is clean, but small, closed in on either side by the soft,
+flowing wood of the tree the Belliful Tavern is built into.  Every ten
+handspans or so, a torch is set low into the wall.  The result is a slightly
+smokey but warm hall, leading westward to an outside exit.  To the east a
+large carved oak door opens into the rest of the tavern, and south another
+door guards the entrance to one of the rooms.  
+~
+~
+1
+0 8 0
+D1
+You see the door to the tavern.
+~
+~
+3 0 4049
+D2
+You see the door to one of the rooms in the Belliful Tavern.
+~
+~
+3 0 4085
+D3
+The hallway continues.
+~
+~
+0 0 4086
+W 5 0 0
+Z 5 5
+S
+#4085
+A Room in the Belliful Tavern~
+The room is quite small and rather cozy, built as an extension as more
+merchants stopped in Eril to buy from the many traders here.  The walls are
+made of thick, solid wood, and parts of the room seem grown into the tree
+that the tavern was built in.  The floor is covered in a thick, shaggy rug,
+which serves to muffle the footsteps within the room.  To the north, the
+carved oaken door opens back into the hallway of the Belliful Tavern.  
+~
+~
+1
+0 8 0
+D0
+You see the doorway leading into a hall.  
+~
+~
+3 0 4084
+W 5 0 0
+Z 5 5
+S
+#4086
+A Small Hallway~
+The hallway is clean, but small, closed in on either side by the soft,
+flowing wood of the tree the Belliful Tavern is built into.  Every ten
+handspans or so, a torch is set low into the wall.  The result is a slightly
+smokey but warm hall, leading eastward to the main body of the tavern.  To
+the west a large carved oak door opens to the outside, and south another
+door guards the entrance to one of the rooms.  
+~
+~
+0
+0 8 0
+D1
+The hallway continues.
+~
+~
+0 0 4084
+D2
+You see the door to one of the rooms in the Belliful Tavern.  
+~
+~
+3 0 4087
+D3
+You see a doorway leading to the outside.
+~
+~
+3 0 4088
+W 5 0 0
+Z 5 5
+S
+#4087
+A Room in the Belliful Tavern~
+The room is quite small and rather cozy, built as an extension as more
+merchants stopped in Eril to buy from the many traders here.  The walls are
+made of thick, solid wood, and parts of the room seem grown into the tree
+that the tavern was built in.  The floor is covered in a thick, shaggy rug,
+which serves to muffle the footsteps within the room.  To the north, the
+carved oaken door opens back into the hallway of the Belliful Tavern.  
+~
+~
+0
+0 8 0
+D0
+You see the doorway leading into a hall.  
+~
+~
+3 0 4086
+W 5 0 0
+Z 5 5
+S
+#4088
+The Brewery~
+Large wooden kegs lie stacked up against a makeshift wall blocking the
+western tree trunks from view.  Several large copper kettles are set over
+low-burning fires, filling the area with the scents of ale and woodsmoke. 
+Barrels are lined up by the northern wall, the tops lie askew to reveal the
+contents as yeast, barley, and hops.  A rickety staircase leads downward
+into some sort of cellar, and to the south lies the field.  
+~
+~
+0
+0 0 2
+D1
+You see the doorway leading into the Belliful Tavern.
+~
+~
+3 0 4086
+D2
+You see a large field.
+~
+~
+0 0 4089
+D5
+You see a rickety staircase leading into a cellar.
+~
+~
+0 0 4090
+W 5 0 0
+Z 5 5
+S
+#4089
+A Small Field~
+The field is encircled on three sides by the forest, making the area
+quiet and peaceful.  The fields are neatly kept in even rows, and the plants
+seem to be doing well.  The crop seems evenly divided between barley and
+hops, the barley growing in the more shady sections of the field.  To the
+north lies the brewery for which these crops are intended, but no other
+exits are visible.  
+~
+~
+0
+0 0 2
+D0
+You see the brewery.
+~
+~
+0 0 4088
+W 5 0 0
+Z 5 5
+S
+#4090
+The Cellar~
+Dark and rather damp, the cellar seems to have been roughly dug out of
+the dirt, leaving the walls a hard-packed mixture which doesn\@t seem too
+stable.  The room is rather bare, with only a single torch by the staircase
+to give any light.  On the far side of the room is a line of large barrels,
+filled about half-way full with a translucent milky liquid.  A yellowish
+foam coats the liquid, clinging wetly to the sides of the barrels.  Aside
+from the staircase leading upwards to the brewery, there are no other exits
+from the cellar.  
+~
+~
+0
+0 8 0
+D4
+You see a set of rickety stairs leading up to the brewery.
+~
+~
+0 0 4088
+W 5 0 0
+Z 5 5
+S
+#4091
+Pfin\@s Fine Furniture~
+The walls of the store are covered in large dark red woven tapestries
+that bring out the warm grain in the furniture scattered about.  The floor
+is well-polished, and small rugs are set around the room for the chairs and
+tables to be displayed upon.  A small enchanted stone glimmers from its
+place in the center of the ceiling, providing soft light throughout the cozy
+shop.  Dominating the northern wall is a large, heavy oak door.  
+~
+~
+0
+0 8 0
+D0
+~
+~
+1 0 4048
+W 5 0 0
+Z 5 5
+S
+#4092
+A Comfortable Cottage~
+The floor of this fairly spacious stone cottage is made from sturdy,
+polished wood.  Occupying the center of the large room is a stout wooden
+table surrounded by four chairs.  A bed stands in the southeast corner,
+canopied in fine silks and opposite it, by the door, lies a copper washbasin
+on a simple stand.  A cozy fireplace is set into the western wall, a
+comfortable couch in front of it.  
+~
+~
+0
+0 262152 1
+E
+fireplace~
+This cozy granite fireplace is nestled into the western wall of the
+cottage.  A small iron bar runs over it for hanging cookpots.  
+~
+E
+washbasin~
+An unremarkable copper washbasin sits on a simple wooden stand.  
+~
+D0
+A road runs through Eril to the north.
+~
+~
+3 0 4072
+W 5 0 0
+Z 5 5
+S
+#4093
+Yilmiras\@ Jam Shop~
+The shop is built within an old, hollowed out tree, which grows still
+around the tiny establishment.  Small racks are set up around the room,
+lined with jars of jam, each stoppered with white wax that is stamped with
+the jam-makers seal.  A large counter dominates the rear of the room, and on
+it are a few coloured bowls and glass vials used in the jam making process. 
+Various pots are at a low boil in the area behind the counter, most with
+water, but a couple seem to be brewing something else.  A small red rug
+muffles the steps of patrons in the store, and a few live plants adorn the
+room.  A door opens up to the south, leading to Eril\@s marketplace, and a
+small ladder leads upstairs.  
+~
+~
+0
+0 262156 0
+D2
+~
+~
+1 0 4066
+D4
+~
+~
+0 0 4094
+W 5 0 0
+Z 5 5
+S
+#4094
+A Small Room~
+This room is tiny, but well-built, allowing space for a dresser and a
+large bed nestled against the eastern wall.  The walls are decorated with
+prints of colourful flowers, and the whole room has a very cozy feel.  From
+here, it is easy to glance down into the main area of the shop, while in any
+part of the room.  
+~
+~
+0
+0 262152 0
+D5
+~
+~
+0 0 4093
+W 5 0 0
+Z 5 5
+S
+#4095
+An Entrance to Eril Village~
+Two tall, majestic trees are on either side of the pathway leading south
+into the village.  The oaks look ancient and strong, their wide trunks many
+paces across.  The ground is packed hard from the passage of visitors in and
+out, edged by scrubby grass.  The path winds north into the trees, and south
+into the village itself.  
+~
+~
+0
+0 262144 1
+D2
+~
+~
+0 0 4076
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 4030 0 3
+D 0 4031 2 3
+D 0 4032 0 3
+D 0 4032 1 3
+D 0 4032 2 3
+D 0 4033 2 3
+D 0 4034 3 3
+D 0 4035 0 3
+D 0 4039 0 3
+D 0 4039 2 3
+D 0 4040 2 3
+D 0 4041 0 3
+D 0 4043 0 3
+D 0 4043 2 3
+D 0 4044 0 3
+D 0 4045 2 3
+D 0 4046 2 3
+D 0 4047 0 3
+D 0 4048 2 1
+D 0 4048 3 1
+D 0 4049 1 1
+D 0 4049 3 3
+D 0 4051 1 3
+D 0 4052 3 3
+D 0 4053 3 3
+D 0 4054 1 3
+D 0 4055 0 3
+D 0 4056 2 3
+D 0 4057 0 3
+D 0 4057 2 3
+D 0 4058 0 3
+D 0 4059 2 3
+D 0 4066 0 1
+D 0 4069 1 1
+D 0 4069 2 1
+D 0 4070 0 1
+D 0 4071 3 1
+D 0 4072 0 3
+D 0 4072 2 3
+D 0 4073 2 3
+D 0 4074 1 3
+D 0 4074 2 3
+D 0 4075 0 3
+D 0 4077 3 3
+D 0 4084 1 3
+D 0 4084 2 3
+D 0 4085 0 3
+D 0 4086 2 3
+D 0 4086 3 3
+D 0 4087 0 3
+D 0 4088 1 3
+D 0 4091 0 1
+D 0 4092 0 3
+D 0 4093 2 1
+M 0 4076 7 4098 7
+M 0 4076 7 4098 7
+M 0 4076 7 4098 7
+M 0 4076 7 4098 7
+M 0 4076 7 4098 7
+M 0 4076 7 4098 7
+M 0 4076 7 4098 7
+M 0 4040 2 4028 2
+E 0 4044 0 17
+E 0 4043 0 16
+M 0 4040 2 4028 2
+E 0 4044 0 17
+E 0 4043 0 16
+M 0 4048 3 4029 1
+M 0 4049 2 4032 1
+M 0 4055 1 4032 1
+M 0 4038 3 4033 1
+M 0 4056 3 4034 1
+M 0 4066 2 4034 1
+M 0 4048 3 4037 1
+M 0 4055 1 4038 1
+M 0 4057 2 4038 1
+M 0 4034 1 4040 1
+G 0 4058 0
+M 0 4026 1 4042 1
+M 0 4036 2 4043 1
+M 0 4029 2 4043 1
+M 0 4051 2 4043 1
+E 0 4037 0 9
+M 0 4056 3 4044 1
+M 0 4050 3 4044 1
+E 0 4031 0 14
+M 0 4038 3 4047 1
+M 0 4041 2 4048 1
+E 0 4059 0 16
+M 0 4033 1 4049 1
+G 0 4054 0
+G 0 4053 0
+G 0 4052 0
+G 0 4055 0
+G 0 4057 0
+G 0 4056 0
+M 0 4060 2 4049 1
+M 0 4059 2 4049 1
+M 0 4061 1 4050 1
+M 0 4048 3 4051 1
+E 0 4033 0 6
+M 0 4046 2 4052 1
+M 0 4050 3 4054 1
+M 0 4041 2 4055 1
+E 0 4059 0 16
+M 0 4043 1 4055 1
+E 0 4029 0 1
+M 0 4054 2 4055 1
+M 0 4025 1 4056 1
+E 0 4061 0 16
+M 0 4036 2 4057 1
+M 0 4029 2 4057 1
+M 0 4039 2 4057 1
+E 0 4030 0 12
+M 0 4051 2 4057 1
+M 0 4058 2 4057 1
+M 0 4056 3 4058 1
+M 0 4038 3 4058 1
+M 0 4053 2 4058 1
+M 0 4065 2 4060 1
+M 0 4063 2 4061 1
+M 0 4030 1 4062 1
+M 0 4046 2 4062 1
+M 0 4070 1 4062 1
+E 0 4068 0 17
+O 0 4045 0 4063
+M 0 4037 1 4063 1
+E 0 4040 0 3
+M 0 4052 1 4063 1
+M 0 4064 2 4064 1
+M 0 4047 1 4064 1
+M 0 4057 2 4065 1
+M 0 4064 2 4066 1
+M 0 4028 2 4066 1
+M 0 4065 2 4067 1
+M 0 4044 1 4067 1
+M 0 4027 2 4068 1
+M 0 4042 2 4068 1
+E 0 4043 0 16
+E 0 4044 0 17
+M 0 4063 2 4069 1
+M 0 4028 2 4069 1
+M 0 4069 1 4069 1
+G 0 4067 0
+G 0 4064 0
+G 0 4065 0
+G 0 4066 0
+G 0 4063 0
+M 0 4031 1 4070 1
+G 0 4075 0
+G 0 4049 0
+G 0 4071 0
+G 0 4050 0
+G 0 4072 0
+G 0 4048 0
+G 0 4080 0
+G 0 4073 0
+G 0 4060 0
+G 0 4074 0
+M 0 4035 1 4070 1
+M 0 4032 1 4071 1
+G 0 4098 0
+G 0 4025 0
+G 0 4026 0
+G 0 4027 0
+G 0 4035 0
+G 0 4036 0
+G 0 4041 0
+G 0 4042 0
+M 0 4045 1 4072 1
+M 0 4049 2 4072 1
+M 0 4067 1 4073 1
+M 0 4068 1 4073 1
+M 0 4039 2 4074 1
+E 0 4034 0 5
+M 0 4058 2 4074 1
+M 0 4066 2 4076 1
+E 0 4028 0 1
+M 0 4050 3 4077 1
+M 0 4053 2 4077 1
+O 0 4047 0 4078
+P 0 4046 9999 4047 1
+P 0 4051 9999 4047 1
+P 0 4039 9999 4047 1
+M 0 4042 2 4080 1
+E 0 4032 0 14
+E 0 4043 0 16
+E 0 4044 0 17
+M 0 4059 2 4081 1
+M 0 4060 2 4081 1
+M 0 4062 1 4082 1
+O 0 4062 0 4083
+O 0 4069 0 4085
+O 0 4070 0 4085
+O 0 4069 0 4087
+O 0 4070 0 4087
+M 0 4071 1 4088 1
+M 0 4072 1 4089 1
+M 0 4073 1 4091 1
+M 0 4075 1 4092 1
+O 0 4079 0 4092
+O 0 4078 0 4092
+O 0 4077 0 4092
+O 0 4076 0 4092
+M 0 4074 1 4093 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+4031 0 0 0 0 0 100 100 6 22 0
+4032 0 0 0 0 0 100 100 5 21 0
+4033 0 0 0 0 0 100 100 10 2 0
+4069 0 0 0 0 0 100 0 6 21 1
+4073 12 0 0 0 0 100 50 7 22 10000
+4074 19 0 0 0 0 100 0 5 23 0
+0
+
+
+
+#$

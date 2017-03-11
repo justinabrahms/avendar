@@ -1,0 +1,10 @@
+#!/usr/bin/perl -w
+
+@players = @ARGV;
+
+map ($_ .= "@", @players);
+
+$string = join "\\|", @players;
+
+print `grep '$string' *`;
+

@@ -1,0 +1,3999 @@
+#AREADATA
+Name The Village of Lendoth~
+Builders Neongrey~
+VNUMs 4374 4399
+VNUMs 8026 8099
+Credits [ ALL ] neongrey  Lendoth Village~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 16384
+Weather 2 2 2 3 8
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 8026
+cow dairy spotted white black~
+a dairy cow~
+A spotted cow placidly chews her cud.
+~
+This large white cow is covered all over with irregular black spots.  Her
+head is mostly black, including her long ears, with a band of white down the
+middle of her face.  Her udders hang low, and her tail swings about idly,
+swatting at flies.  She reacts little to most activity nearby, occasionally
+flicking a liquid brown eye at passers by.  A ring pieces her right ear, a
+waxed parchment tag hanging from it.  
+~
+generic~
+water scholar~
+ADGLN 0 Z N 0
+30 15 22d45+941 30d10+100 4d8+15 bash~
+charge~
+-9 -9 -9 0
+CF 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AGVd ACDEFGHIJKQ A medium unknown
+>verb_prog p IAmTheAppleFarm\@sCow~
+if valname($n) == $i
+        mpvaluerand 0 1 10
+        if inroom($i) == 8086
+                if value(0) == 1
+                        pmote makes a lazy moo at $R.
+                endif
+                if value(0) == 2
+                        if islight()
+                                pmote wanders out into the orchard.
+                                mpstring mob self long A spotted cow ambles about the orchard.
+                                north
+                        else
+                                pmote flicks her tail at a fly.
+                                mpstring mob self long A spotted cow swats flies with her tail.
+                        endif
+                endif
+                if value(0) == 3
+                        if islight()
+                                pmote wanders out into the orchard.
+                                mpstring mob self long A spotted cow ambles about the orchard.
+                                north
+                        else
+                                pmote reaches out with her long, pink tongue to lick her nose.
+                                mpstring mob self long A spotted cow cleans her nose with her tongue.
+                        endif
+                endif
+                if value(0) == 4
+                        if islight()
+                                pmote wanders out into the orchard.
+                                mpstring mob self long A spotted cow ambles about the orchard.
+                                north
+                        else    
+                                pmote lowers her head to the feedbox, snuffling around in it.
+                                mpstring mob self long A spotted cow snuffles around in her feedbox.
+                        endif
+                endif
+                if value(0) == 5
+                        pmote stretches her tongue out slowly.
+                        mpstring mob self long A spotted cow reaches out, stretching her long pink tongue.
+                endif
+                if value(0) == 6
+                        pmote noses at the latch of her stall, attempting to open it.
+                        mpstring mob self long A spotted cow works nose and tongue against the latch of her stall.
+                endif
+                if value(0) == 7
+                        mpfocus $r
+                        pmote glances lazily at $F.
+                        mpstring mob self long A spotted cow looks about the barn boredly.
+                        mpunfocus
+                endif
+                if value(0) == 8
+                        pmote sways her head from side to side lazily.
+                        mpstring mob self long A spotted cow sways her head from side to side lazily.
+                endif
+                if value(0) == 9
+                        pmote chews on her cud disinterestedly.
+                        mpstring mob self long A spotted cow idly chews her cud.
+                endif
+                if value(0) == 0
+                        pmote pulls an apple out of the feedbox with her teeth and starts chewing on it.
+                        mpstring mob self long A spotted cow chews on an apple.
+                endif
+        endif
+        if inroom($i) == 8087
+                if value(0) == 1
+                        if islight()
+                                pmote makes a lazy moo at $R.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 2
+                        if islight()
+                                pmote flicks her tail at a fly.
+                                mpstring mob self long A spotted cow swats flies with her tail.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 3
+                        if islight()
+                                pmote reaches out with her long, pink tongue to lick her nose.
+                                mpstring mob self long A spotted cow cleans her nose with her tongue.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 4
+                        if islight()
+                                pmote lowers her head to the grass around one of the trees, grazing boredly.
+                                mpstring mob self long A spoted cow grazes boredly.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 5
+                        if islight()
+                                pmote stretches her tongue out slowly.
+                                mpstring mob self long A spotted cow reaches out, stretching her long pink tongue.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 6
+                        if islight()
+                                pmote wanders over to the edge of the property and laps water up from the stream.
+                                mpstring mob self long A spotted cow lingers by the fence, drinking water from the stream.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 7
+                        if islight()
+                                mpfocus $r
+                                pmote glances lazily at $F.
+                                mpstring mob self long A spotted cow looks about the orchard boredly.
+                                mpunfocus
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 8
+                        if islight()
+                                pmote sways her head from side to side lazily.
+                                mpstring mob self long A spotted cow sways her head from side to side lazily.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 9
+                        if islight()
+                                pmote chews on her cud disinterestedly.
+                                mpstring mob self long A spotted cow idly chews her cud.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 10
+                        if islight()
+                                pmote pulls an apple down from one of the trees and starts chewing it.
+                                mpstring mob self long A spotted cow chews on an apple, leaves sticking out of her mouth.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+        endif
+else
+        mpnextinterp
+endif
+~
+>verb_prog p IAmTheCornFarm\@sCow~
+if valname($n) == $i
+        mpvaluerand 0 1 9
+        if inroom($i) == 8039
+                if value(0) == 1
+                        pmote makes a lazy moo at $R.
+                endif
+                if value(0) == 2
+                        if islight()
+                                pmote wanders out into the pasture.
+                                mpstring mob self long A spotted cow ambles about the pasture.
+                                north
+                        else
+                                pmote flicks her tail at a fly.
+                                mpstring mob self long A spotted cow swats flies with her tail.
+                        endif
+                endif
+                if value(0) == 3
+                        if islight()
+                                pmote wanders out into the pasture.
+                                mpstring mob self long A spotted cow ambles about the pasture.
+                                north
+                        else
+                                pmote reaches out with her long, pink tongue to lick her nose.
+                                mpstring mob self long A spotted cow cleans her nose with her tongue.
+                        endif
+                endif
+                if value(0) == 4
+                        if islight()
+                                pmote wanders out into the pasture.
+                                mpstring mob self long A spotted cow ambles about the pasture.
+                                north
+                        else    
+                                pmote lowers her head to the feedbox, snuffling around in it.
+                                mpstring mob self long A spotted cow snuffles around in her feedbox.
+                        endif
+                endif
+                if value(0) == 5
+                        pmote stretches her tongue out slowly.
+                        mpstring mob self long A spotted cow reaches out, stretching her long pink tongue.
+                endif
+                if value(0) == 6
+                        pmote noses at the latch of her stall, attempting to open it.
+                        mpstring mob self long A spotted cow works nose and tongue against the latch of her stall.
+                endif
+                if value(0) == 7
+                        mpfocus $r
+                        pmote glances lazily at $F.
+                        mpstring mob self long A spotted cow looks about the barn boredly.
+                        mpunfocus
+                endif
+                if value(0) == 8
+                        pmote sways her head from side to side lazily.
+                        mpstring mob self long A spotted cow sways her head from side to side lazily.
+                endif
+                if value(0) == 9
+                        pmote chews on her cud disinterestedly.
+                        mpstring mob self long A spotted cow idly chews her cud.
+                endif
+        endif
+        if inroom($i) == 4382
+                if value(0) == 1
+                        if islight()
+                                pmote makes a lazy moo at $R.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 2
+                        if islight()
+                                pmote flicks her tail at a fly.
+                                mpstring mob self long A spotted cow swats flies with her tail.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 3
+                        if islight()
+                                pmote reaches out with her long, pink tongue to lick her nose.
+                                mpstring mob self long A spotted cow cleans her nose with her tongue.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 4
+                        if islight()
+                                pmote lowers her head to the grass, grazing boredly.
+                                mpstring mob self long A spoted cow grazes boredly.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 5
+                        if islight()
+                                pmote stretches her tongue out slowly.
+                                mpstring mob self long A spotted cow reaches out, stretching her long pink tongue.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 6
+                        if islight()
+                                pmote licks the fence at the edge of the pasture.
+                                mpstring mob self long A spotted cow inspects the fence at the edge of the property.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 7
+                        if islight()
+                                mpfocus $r
+                                pmote glances lazily at $F.
+                                mpstring mob self long A spotted cow looks about the paddock boredly.
+                                mpunfocus
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 8
+                        if islight()
+                                pmote sways her head from side to side lazily.
+                                mpstring mob self long A spotted cow sways her head from side to side lazily.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+                if value(0) == 9
+                        if islight()
+                                pmote chews on her cud disinterestedly.
+                                mpstring mob self long A spotted cow idly chews her cud.
+                        else
+                                pmote wanders back into the barn.
+                                mpstring mob self long A spotted cow wanders into her stall.
+                                south
+                        endif
+                endif
+        endif
+else
+        mpnextinterp
+endif
+~
+>rand_prog 3~
+if value(1) == 0
+        $d
+endif
+~
+>speech_prog p Whose cow are you?~
+if isimmort($n)
+        say $d
+else
+        pmote moos quizzically.
+endif
+~
+>data_prog WhatCowIsThis?~
+IAmTheCornFarm\@sCow
+IAmTheAppleFarm\@sCow
+~
+>verb_prog milkingdone~
+if isnpc($n)
+        mpvalueset 1 0
+else
+        mpnextinterp
+endif
+~
+>verb_prog timeformilking~
+ifsnpc($n)
+        mpvalueset 1 1
+else
+        mpnextinterp
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+if inroom($i) == 8039
+        mpsetdata WhatCowIsThis?
+endif
+if inroom($i) == 8086
+        mpsetdata WhatCowIsThis?
+        mpnextdata
+endif
+~
+|
+V4 8027
+sheep wool wooly curly black white~
+a wooly sheep~
+A black-faced sheep with curly white wool mills about.
+~
+A compact but fully grown sheep mills about here, chewing at whatever
+happens to take its interest at any given moment.  Its face and legs are
+black, and it has long ears that extend out to the side before flopping
+forward a little.  Its wool is thick and curly, overall white though darker
+in front from dirt.  It bleats and baas with relative frequency, at things
+it notices, at other sheep, and sometimes apparently just because.  
+~
+generic~
+water scholar~
+ABG 0 Z N 0
+25 13 19d35+818 25d10+100 4d6+13 pierce~
+charge~
+-6 -6 -6 1
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 0 -1
+AGHMV ABCDEFGHIJKQ A medium unknown
+>rand_prog 3~
+if inroom($i) == 4382
+        mpvaluerand 0 1 5
+        if value(0) == 1
+                pmote lowers its head, grazing on the grass.
+                mpstring mob self long A black-faced sheep grazes idly.
+                break
+        endif
+        if value(0) == 2
+                pmote slowly wanders around the pasture, nibbling at bits of grass every now and again.
+                mpstring mob self long A black-faced sheep ambles about the paddock.
+                break
+        endif
+        if value(0) == 3
+                pmote runs across the field from one end to the other as if chasing something.
+                mpstring mob self long A black-faced sheep runs around the paddock.
+                break
+        endif
+        if value(0) == 4
+                pmote licks its nose with a startlingly pink tongue.
+                mpstring mob self long A black-faced sheep licks its nose with a pink tongue.
+                break
+        endif
+        if value(0) == 5
+                pmote nibbles at some clover.
+                mpstring mob self long A black-faced sheep chews at some clover on the ground.
+                break
+        endif
+endif
+if inroom($i) == 8039
+        mpvaluerand 0 1 5
+        if value(0) == 1
+                pmote wanders over to a feedbox, helping itself to some grain.
+                mpstring mob self long A black-faced sheep eats at a feedbox.
+                break
+        endif
+        if value(0) == 2
+                pmote settles itself down in a pile of bedding.
+                mpstring mob self long A black-faced sheep lounges in a pile of soft bedding.
+                break
+        endif
+        if value(0) == 3
+                pmote moves over to the ladder to the hayloft, chewing at it.
+                mpstring mob self long A black-faced sheep chews at the ladder to the hayloft.
+                break
+        endif
+        if value(0) == 4
+                pmote moves to graze at a pile of golden hay.
+                mpstring mob self long A black-faced sheep munches at a pile of hay.
+                break
+        endif
+        if value(0) == 5
+                pmote settles down to lick at its hooves.
+                mpsring mob self long A black-faced sheep grooms itself with its tongue.
+                break
+        endif
+endif
+~
+>fight_prog 100~
+if value(9) > 0
+  mpvaluedown 9
+  break
+endif
+if rand(15)
+  bash
+  mpvalueset 9 2
+  break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 168 100
+~
+>verb_prog abort~
+mpvalueset 8 0
+~
+>rand_prog 100~
+if haspath($i)
+        if value(8) == 1
+                say Proceeding to Centre Square.
+                mppathstep gurdloader
+                break
+        endif
+        if value(8) == 2
+                say Proceeding to the Nymph\@s Tears.
+                mppathstep bardbot
+                break
+        endif
+        if value(8) == 3
+                say Proceeding to the B&B
+                mppathstep brute
+                break
+        endif
+else
+        if value(8) != 0
+                say Path lost!
+                mpvalueset 8 0
+        endif
+//        if inroom($i) != 3513
+//        or inroom($i) != 3541
+//        or inroom($i) != 3526
+//                position_fail
+//        endif
+endif
+~
+>verb_prog findapath~
+mpvaluerand 8 1 3
+if value(8) == 1
+        say path locked for centre square
+        mpfindpath gurdloader 7
+        break
+endif
+if value(8) == 2 
+        say path locked for the nymph\@s tears
+        mpfindpath vbbardbot 11
+        break
+endif
+if value(8) == 3
+        say path locked for the beast and bandit
+        mpfindpath official 13
+        break
+endif
+~
+|
+V4 8028
+cow large idle white black~
+a large cow~
+A large cow stands around idly.
+~
+This large cow is white, covered over with large, black spots.  It has a
+mostly black face and long, floppy ears.  It seems to pay little mind to
+activity around it, mostly standing around with its tail flicking at flies. 
+A waxed parchment tag hangs from a ring piercing its left ear.  
+~
+generic~
+water scholar~
+ABDGN 0 Z N 0
+30 15 22d45+941 30d10+100 4d8+15 bash~
+charge~
+-9 -9 -9 0
+CF 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 0 -1
+AGVd ACDEFGHIJKQ A medium unknown
+>data_prog cow~
+This cow is compact and slender, as far as cows go.  She is white,
+covered over with large black blotches.  Her face is mostly black, though
+she has a long white stripe down the centre.  One of her ears is all black,
+and the other is spoted black and white.  She seems highly disinterested in
+activity around her, at most glancing around boredly at noises.  Her tail
+flicks around after flies from time to time.  A waxed paper tag hangs from a
+ring punched through her left ear.  
+~
+>data_prog bull~
+This large bull is white, covered over with large, black spots.  A pair
+of large horns curl upward from the top of his head.  His face is black all
+over, white horns standing out, and his ears are a dirty white.  He seems to
+have little interest in goings-on around him, glancing around boredly at
+noises.  His tail flicks around after flies.  A waxed paper tag hangs from a
+ring punched through his left ear.  
+~
+>data_prog steer~
+This large steer is white, covered over with large, black spots.  A pair
+of large horns curl upward from the top of his head.  His face is a dirty
+white to match his horns, and his ears are blotched black.  He seems to have
+little interest in goings-on around him, glancing around boredly at noises. 
+His tail flicks around after flies.  A waxed paper tag hangs from a ring
+punched through his left ear.  
+~
+>verb_prog iamagirlcow~
+if valname($n) == $i
+        mpdesc self cow
+        mpstring mob self short a blotchy cow
+        if inroom($i) == 8045
+                mpstring mob self long A black-spotted cow noses through a pile of hay.
+                mpstring mob self name cow black spotted blotchy
+        else
+                mpstring mob self long A black-spotted cow ambles through the grass.
+                mpstring mob self name cow black spotted blotchy ambling
+        endif
+else
+        mpnextinterp
+endif
+~
+>verb_prog iamaboycow~
+if valname($n) == $i
+        mpdesc self bull
+        mpstring mob self short a large bull
+        if inroom($i) == 8045
+                mpstring mob self long A large spotted bull stands in a stall.
+                mpstring mob self name bull large spotted
+        else
+                mpstring mob self long A large spotted bull stands neat the centre of the pasture.
+                mpstring mob self name bull large spotted centre
+        endif
+else
+        mpnextinterp
+endif
+~
+>verb_prog ihavenoballsandiamsad~
+if valname($n) == $i
+        mpdesc self steer
+        mpstring mob self short a large steer
+        if inroom($i) == 8045
+                mpstring mob self long A large steer stands boredly in a stall.
+                mpstring mob self name steer large bored stall
+        else
+                mpstring mob self long A large steer wanders about the pasture.
+                mpstring mob self name steer large wander wandering
+        endif
+else
+        mpnextinterp
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+if sex($i) == 0
+        ihavenoballsandiamsad
+        break
+endif
+if sex($i) == 1
+        iamaboycow
+        break
+endif
+if sex($i) == 2
+        iamagirlcow
+        break
+endif
+~
+|
+V4 8029
+taenosil furry little small cute awwwww~
+a furry taenosil~
+A furry little taenosil inspects the grass.
+~
+This furry animal is about the size of a rabbit or housecat, with long
+ears that flop in front of its face.  It has a more tapered face than a
+rabbit, however, with eyes that face forward rather than the sides.  Its
+legs are quite short and stubby with small, four-toed paws and no
+appreciable claws to be seen.  Its tail is a small, sleek triangle of fur
+that hangs downwards, not far enough to reach the ground.  This one is
+covered all over in bright orange fur, excepting its white belly.  
+~
+generic~
+water scholar~
+ABGHNW 0 0 N 0
+3 1 1d6+24 0d0+0 1d3+2 pierce~
+bite~
+8 8 8 9
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGV ACDEFHJKQ 0 tiny unknown
+>verb_prog everybodydance~
+if isimmort($n)
+        change_places
+        be_cute
+else
+        mpnextinterp
+endif
+~
+>verb_prog cute_silent~
+if valname($n) == $i
+        if inroom($i) == 8050
+                mpsetdata colours
+                loop 0 to $7
+                        mpnextdata
+                endloop
+                mpvalueset colour $d
+                mpvaluerand 0 0 6
+                mpsetdata longdesc_field
+                loop 0 to $0
+                        mpnextdata
+                endloop
+                mpstring mob self long $d
+        endif
+        if inroom($i) == 8051
+                mpsetdata colours
+                loop 0 to $7
+                        mpnextdata
+                endloop
+                mpvalueset colour $d
+                mpvaluerand 0 0 6
+                mpsetdata longdesc_hutch
+                loop 0 to $0
+                        mpnextdata
+                endloop
+                mpstring mob self long $d
+        endif
+else
+        mpnextinterp
+endif
+~
+>verb_prog dosomethingcute_field~
+if valname($n) == $i
+        mpsetdata colours
+        loop 0 to $7
+                mpnextdata
+        endloop
+        mpvalueset colour $d
+        mpvaluerand 0 0 6
+        mpsetdata longdesc_field
+        loop 0 to $0
+                mpnextdata
+        endloop
+        mpstring mob self long $d
+        mpsetdata emote_field
+        loop 0 to $0
+                mpnextdata
+        endloop
+        pmote $d
+else
+        mpnextinterp
+endif
+~
+>verb_prog dosomethingcute_hutches~
+if valname($n) == $i
+        mpsetdata colours
+        loop 0 to $7
+                mpnextdata
+        endloop
+        mpvalueset colour $d
+        mpvaluerand 0 0 6
+        mpsetdata longdesc_hutch
+        loop 0 to $0
+                mpnextdata
+        endloop
+        mpstring mob self long $d
+        mpsetdata emote_hutch
+        loop 0 to $0
+                mpnextdata
+        endloop
+        pmote $d
+else
+        mpnextinterp
+endif
+~
+>data_prog emote_field~
+IF YOU ARE SEEING THIS CONTACT AN IMMORTAL FOR A PRIZE
+heads into one of the wooden boxes, exploring around inside.
+circles around one of the boxes, chewing at the corner.
+wanders around some, nibbling at the grass.
+starts pushing one of the straw balls around with its nose.
+begins running in circles around the yard, with no apparent destination or intent.
+lifts its head as much as able, searching for the source of a noise.
+curls up a little to lick its fur into place.
+~
+>data_prog longdesc_field~
+IF YOU ARE SEEING THIS CONTACT AN IMMORTAL FOR A PRIZE
+A %colour taenosil busily explores a wooden box.
+A %colour taenosil nibbles at the corner of one of the wooden boxes.
+A furry, %colour little taenosil roams about the grasses, nibbling at clover.
+A small, %colour taenosil noses at a woven-straw ball.
+A %colour blur of a taenosil runs around the pasture speedily.
+A %colour taenosil looks about the yard curiously.
+A %colour taenosil grooms itself intently.
+~
+>data_prog emote_hutch~
+IF YOU ARE SEEING THIS CONTACT AN IMMORTAL FOR A PRIZE
+makes its way up the ramp to one of the hutches and curls up in a corner.
+runs under one of the hutches, startled by a noise.
+wanders around some, nibbling at the grass.
+starts nibbling at a chew-toy.
+moves over to a dish outside one of the hutches and eats some vegetables.
+lifts its head as much as able, searching for the source of a noise.
+curls up a little to lick its fur into place.
+~
+>data_prog longdesc_hutch~
+IF YOU ARE SEEING THIS CONTACT AN IMMORTAL FOR A PRIZE
+A %colour taenosil sits curled up in a hutch.
+A %colour taenosil huddles beneath one of the hutches.
+A furry, %colour little taenosil roams about the grasses, nibbling at clover.
+A small, %colour taenosil nibbles at a wooden chew-toy.
+Just outside one of the hutches, a %colour taenosil munches on some vegetables.
+A %colour taenosil looks about the yard curiously.
+A %colour taenosil grooms itself intently.
+~
+>data_prog fuzzy~
+Unlike most of its fellows, this round-bodied little taenosil\@s fur has a
+bit of a kink to it, giving its soft, black fur a velvet-like texture to it.
+Aside from the fuzz to its fur, it seems like any other taenosil, with long,
+floppy ears and stubby legs with tiny feet.  It munches on grasses that
+catch its attention, and sniffs at foreign or interesting smells.  From time
+to time it noses at nearby toys.  
+~
+>data_prog white-bellied~
+A round-bodied taenosil roams about here, ears flopping against its face
+as it wanders around the fields.  Its fur is a golden brown, darker at the
+roots than the tips, giving it a slightly wilder look, but its belly is a
+soft, creamy white.  Its eyes are dark, shining red when light hits them
+just so, which only adds to that wildness.  The look aside, however, it
+appears quite tame, placidly chewing at grass or toys that catch its fancy. 
+~
+>data_prog white-crested~
+A squat little taenosil is here, with short, stubby legs, a plump belly,
+and long, floppy ears.  Its fur is a soft, velvety black all over, with a
+white, roughly circular crest standing out on its forehead.  Below are its
+dark blue eyes, the colour standing out more due to that patch of white fur.
+It romps around the field, appearing totally carefree as it moves from toy
+to toy or nibbling at grasses.  
+~
+>data_prog spotted~
+This round, furry taenosil is about the size of a rabbit with short,
+stubby legs and small feet.  Its head is all black, to the tips of its long,
+floppy ears, but the rest of its body is white, covered over with little
+black spots.  It roams around, chewing at foliage that interests it, small
+tail twitching a little as it moves.  Noises seems to frighten it, causing
+it to run for perceived cover when it hears loud enough sounds.  
+~
+>data_prog gold-furred~
+Housecat-sized but shaped far more cylindrically, stubby legs aside, this
+particular taenosil covered in fur of a rich, amber-gold.  Its nose twitches
+as it sniffs at things near to it, inspecting them with big blue eyes.  It
+scuttles around more quickly than its round shape, short legs, and tiny feet
+would suggest, letting it run quickly from loud noises.  Its long, floppy
+ears brush near to the ground, twitching a little as it hears things.  
+~
+>data_prog black~
+About the size of a rabbit but with a round, cylindrical body, this
+taenosil is covered with a short, satiny black fur all over.  Its eyes
+match, dark and curious, allowing it to inspect most anything close to eye
+level.  Lacking any appreciable neck, it seems unable to look up very well. 
+Its ears are long and floppy, falling forward against its face to almost
+drag against the ground.  Occasionally it extends a pink tongue to lick at
+grass or toys.  
+~
+>data_prog tortoiseshell~
+A plump, rabbit-sized taenosil wanders about here, investigating scents
+or sights close enough to the ground for it to see.  Its particoloured fur
+is all orange, white, and black, even on its long, floppy ears.  Its short
+little legs and feet are all white, somewhat greyed from close contact with
+grass and dirt.  A short black tail twitches a little as it wanders around,
+and it chews at whatever attracts its interest.  The fur seems brushed
+regularly, which fuzzes the pattern of its coat a little.  
+~
+>data_prog long-haired~
+Supposedly, this is a taenosil, but it looks more like a rabbit-sized
+dustmop than an animal, except where it moves on its own.  Its black fur is
+luxuriantly long, puddling against the ground in waves.  By the sheen to the
+fur and its lack of matting or tangles, it must see extremely regular
+grooming.  The only thing that allows you to tell one end from the other is
+the long, floppy ears that grace its head, whose fur is much shorter, with a
+velvety shine.  
+~
+>data_prog dark-nosed~
+This housecat-sized taenosil is all-over with short, cream-coloured fur. 
+At its nose, ears, tail, and feet, the fur fades to a rich, chocolatey
+brown, and its eyes are a bright, light red.  It waddles around the yard,
+sniffing and everything that presents itself before its dark nose, and
+chewing at whatever passes its internal standard of tastiness.  Its tail
+seems a bit longer than most of its brethern, reaching nearly to the ground.
+Its legs are quite stubby but it moves with surprising speed when some noise
+or shadow startles it.  
+~
+>data_prog silver-grey~
+This squat little taenosil looks a bit larger than its fellows, but that
+largely seems to be on account of its medium-length, silvery grey fur which
+adds a fair bit of puff to its size and shape.  Its long ears flop forward
+against its face which flattens the fur enough to more easily see its
+inquisitive dark eyes.  The fur seems regularly groomed, free of mats and
+tangles, even on its belly which presses almost against the ground.  
+~
+>data_prog red-banded~
+About the size of a housecat or rabbit, this squat little taenosil roams
+relatively freely about the yard.  Its soft, smooth fur is red and white;
+its midsection and a stripe down the centre of its flat face are white,
+while its back half and either side of the face, including its luxuriantly
+floppy ears are an orangey red.  Its legs are stubby and low to the ground,
+and its tiny feet seem to have no appreciable claws.  While it has an
+inquisitive face, as such things go, it seems poorly-equipped to regard much
+above eye level.  
+~
+>rand_prog 3~
+be_cute
+~
+>time_prog 0~
+if isanypcarea()
+else
+change_places
+cute_silent
+endif
+~
+>verb_prog be_cute~
+if valname($n) == $i
+if inroom($i) == 8050
+dosomethingcute_field
+break
+endif
+if inroom($i) == 8051
+dosomethingcute_hutches
+break
+endif
+else
+mpnextinterp
+endif
+~
+>load_prog 100~
+change_places
+if isanypchere($i)
+cute_silent
+else
+be_cute
+endif
+~
+>verb_prog change_places~
+if valname($n) == $i
+        mpvaluerand 7 0 10
+        mpsetdata colours
+        loop 0 to $7
+                mpnextdata
+        endloop
+        mpdesc self $d
+        mpstring mob self name taenosil furry little small cute awwwww $d
+        mpstring mob self short a $d taenosil
+else
+        mpnextinterp
+endif
+~
+>data_prog colours~
+red-banded
+red-banded
+silver-grey
+dark-nosed
+long-haired
+tortoiseshell
+black
+gold-furred
+spotted
+white-crested
+white-bellied
+fuzzy
+~
+>data_prog values~
+0: random action selector
+7: Colour of the taenosil
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+8026
+chest wooden carved~
+a carved wooden chest~
+A carved wooden chest sits against the wall.~
+~
+wood~
+container e 0 0 0
+300 AC 0 400 100
+52 1000 0 0 P
+0
+E
+chest wooden carved~
+This chest is made from applewood and marked with abstract carvings on
+the outside.  Years of use have stained the wood, and caused several
+scratches and gouges in the finish.  The hinges and latch are made of brass,
+kept clean but having lost some shine from age.  
+~
+V13
+8027
+blanket wool knitted thick~
+a knitted wool blanket~
+A thick blanket of knitted wool has been left here.~
+~
+lace~
+furniture D 0 F A
+1 0 EHK 107 107
+20 35 530 0 P
+0
+E
+blanket wool knitted thick~
+This thick blanket has been knitted in a loose, lacy pattern out of a
+soft, warm wool.  While mostly a pale grey colour, a bright blue pattern has
+been knitted into the fabric, turning the blanket from something that would
+otherwise be drab into a cheery-looking object.  
+~
+V13
+8028
+stool bar~
+a stool at the bar~
+Several wooden stools sit in front of the bar.~
+~
+wood~
+furniture e 0 0 0
+5 0 EH 122 122
+52 0 0 0 P
+0
+E
+stool~
+Several plain wooden stools sit by the bar, cushioned on top.  Good brown
+leather makes up the upholstery, and the padding is soft.  
+~
+V13
+8029
+table tables~
+one of the tables~
+Several wooden tables are placed about the room.~
+~
+wood~
+furniture e 0 0 0
+15 0 DGJ 122 122
+52 0 0 0 P
+0
+E
+table tables~
+Several worn wooden tables have been placed around the room, scratches
+and gouges in the finish obvious from regular use.  They are kept free of
+splinters, however, and seem frequently polished to a bright gleam.  The
+chairs are polished wood, and have soft cushions tied to the seats.  
+~
+V13
+8030
+bed pillow feathers pillows~
+a comfortable bed~
+A large bed sits against one wall, comfortably appointed.~
+~
+wood~
+furniture e 0 0 0
+4 0 EHL 130 130
+52 0 0 0 P
+0
+E
+bed pillow feathers pillows~
+This bed is appointed with a thick featherbead and covered with warm
+blankets, patterned in dark colours.  The pillows are stuffed heavily with
+feathers and look regularly fluffed.  
+~
+V13
+8031
+stream thin shallow back~
+a thin stream~
+A thin, shallow stream runs along the western edge of the property here.~
+~
+water~
+fountain e 0 0 0
+40 40 'water' 0 0
+52 0 0 0 P
+0
+E
+stream thin shallow back~
+A thin stream meanders by the apple trees here, shallow enough that the
+fence at the edge of the property runs directly through it.  
+~
+>drink_prog 100~
+mpechoat $n The water is cold and crisp, with a sweet tang to it.
+~
+|
+V13
+8032
+stream thin shallow back~
+a thin stream~
+A thin, shallow stream runs along from the apple orchard to the east.~
+~
+water~
+fountain e 0 0 0
+40 40 'water' 0 0
+52 0 0 0 P
+0
+E
+stream thin shallow back~
+A thin stream meanders by from the apple orchard to the east, trickling
+lazily past.  
+~
+#0
+
+
+
+#ROOMS
+#4374
+The End of a Dirt Path~
+A dirt road meanders from east to a stop here, a paved city square
+visible back to the east of you.  Little houses have sprung up to the north
+and south of the road here, made of wood and brick.  A tree or two lines the
+road as well, offering a measure of shade for passers-by.  Little dust rises
+from the road here, leaving the air clean and crisp.  Past both the houses,
+the grasslands rise up again as far as the eye can see, and beyond where the
+road drifts to a halt in the west, the vague suggestion of another road can
+be seen.  
+~
+~
+0
+0 0 13
+D0
+~
+~
+0 0 4375
+D1
+~
+~
+0 0 8099
+D2
+~
+~
+0 0 4376
+W 5 0 0
+Z 5 5
+S
+#4375
+A Small Home~
+This small brick house is tidily kept and well-decorated.  Thick rugs
+cover the floor, faded from use but showing colourful patterns.  The windows
+are paned in bubbled but mostly clear glass, split into smaller sections by
+strips of lead.  A woodstove and fireplace serve to heat the home and
+provide a place to cook, where various oil lamps provide steady light after
+dark.  Shelves hold odds and ends, and little tables throughout hold flowers
+and other display pieces.  The front door of the house is to the south.  
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 4374
+W 5 0 0
+Z 5 5
+S
+#4376
+A Wooden House~
+A small wooden house, this place looks a bit lived-in, but otherwise in
+good shape.  Most of the floor is bare, polished wood, but old rugs cover
+some spots to protect the feet.  Bubbled glass windows offer an only
+somewhat distorted view of the dirt road to the north.  The home is brightly
+lit by small lamps with no evident source of fuel, and the stove by the
+fireplace seems to be of the same make.  An old wooden desk sits almost by
+itself in one room, piled high with sheets of parchment, a nearby cabinet
+holding more still.  The front door to the home is on the north side.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 4374
+W 5 0 0
+Z 5 5
+S
+#4377
+A Dirt Road~
+A dirt road branches off from a stone-cobbled square to the north,
+seeming well-traveled by the residents of this small village.  Buildings
+line the road, with flowerbeds in front of some of them.  A tree or two
+lines the road as well, offering a measure of shade for passers-by.  The
+road travels from the square southwards, several houses surrounding it
+there.  Little dust rises from the road here, leaving the air clean and
+crisp.  
+~
+~
+0
+0 0 13
+D0
+~
+~
+0 0 8077
+D2
+~
+~
+0 0 4378
+W 5 0 0
+Z 5 5
+S
+#4378
+A Dirt Road~
+A dirt road meanders from the north to the west here, a paved city square
+visible to the north.  Buildings line the road, with flowerbeds in front of
+some of them.  A tree or two lines the road as well, offering a measure of
+shade for passers-by.  Little dust rises from the road here, leaving the air
+clean and crisp.  A small house sits south of the road, a water pump by the
+door.  The road seems fairly well-traveled, dirt packed tightly and
+relatively smooth.  
+~
+~
+0
+0 0 13
+D0
+~
+~
+0 0 4377
+D2
+~
+~
+0 0 4379
+D3
+~
+~
+0 0 4380
+W 5 0 0
+Z 5 5
+S
+#4379
+A Small House~
+This small wooden house seems well-used and worn about the edges, but
+tended well all the same.  The floor is covered with thick Harrudim rugs,
+giving an exotic flair to the stylings of the room.  The windows are covered
+by clear magical fields, covered with airy curtains.  A woodstove and
+fireplace serve to warm the house, most of the light throughout provided by
+glowing stone spheres.  The other furnishings are plainer, made from local
+woods and fabrics, with little other sign of foreign influence.  The door of
+the house is to the north.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 4378
+W 5 0 0
+Z 5 5
+S
+#4380
+The End of a Dirt Road~
+A dirt road meanders from east to a stop here, a paved city square
+visible to the northeast.  Buildings line the road, with flowerbeds in front
+of some of them.  A tree or two lines the road as well, offering a measure
+of shade for passers-by.  Little dust rises from the road here, leaving the
+air clean and crisp.  A small house sits west of the road here, near to
+where it comes to a halt, grass beginning to rise up again.  Further south,
+the tall grasses of the Earendam grasslands spring up.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 4378
+D3
+~
+~
+0 0 4381
+W 5 0 0
+Z 5 5
+S
+#4381
+A Large Wooden House~
+A spacious wooden house with tasteful decorations, its floorplan sprawls
+out over two floors.  The walls are covered with subtly-patterned paper,
+constrasted with a dark, polished trim.  The windows are relatively high
+quality, clear glass, the size of each pane small, separated from the others
+by thin wooden strips.  The curtains are thin and light throughout, and the
+chairs upholstered with rich, padded leather.  A few houseplants sit
+well-tended in the common areas of the house, brightening the decor
+considerably.  A wooden fireplace sits against one wall, on both levels of
+the house.  The front door is to the east.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 4380
+W 5 0 0
+Z 5 5
+S
+#4382
+A Grassy Paddock~
+Framed by a painted wooden fence, this wide grassy paddock stretches out
+a good ways, allowing livestock to roam relatively freely.  A small,
+artificial creek runs up near to the other side of the fence to the east,
+and cornfields start further beyond that.  The scent of sheep dominates the
+air here, and the ground is dotted with hidden clumps of manure.  Southeast
+stands a large farmhouse, and to the south, the paddock opens onto a barn
+painted dark red.  
+~
+~
+0
+0 0 2
+D2
+~
+~
+0 0 8039
+W 5 0 0
+Z 5 5
+S
+#4383
+A Wide Cornfield~
+A wide cornfield stretches out around you, every way but to the west,
+where a dirt path takes up, some small buildings clustered around it.  The
+air is fresh and clear, with only the faint scent of animals reaching you
+here.  The corn is planted in neat rows, stalks coming up high enough to any
+view of whatever else lies beyond.  The dirt below is dark and and slightly
+moist, well-trodden between rows.  
+~
+~
+0
+0 0 2
+D3
+~
+~
+0 0 8034
+W 5 0 0
+Z 5 5
+S
+#4384
+A Small, Neat Bedroom~
+This room is not large, with only enough space to readily hold a
+relatively large bed, a polished wardrobe, and worn old rocking-chair.  A
+wicker basket sits next to the chair, holding several balls of yarn,
+knitting needles sticking out the top.  The wardrobe looks relatively new,
+and is intricately, if not expertly carved, and polished to a warm shine. 
+The bed is piled high with thick, knitted blankets, some of a greyish,
+undyed wool, and the topmost brightly-dyed in a variety of cheery colours. 
+A small, wooden door leads to the south.  
+~
+~
+0
+0 8 0
+E
+chair rocking rocking-chair basket wicker yarn needles~
+Unlike most of the furniture in this room, the rocking chair shows signs
+of both age and wear, the finish faded and its cushions shifted and lumpy. 
+The floor beneath shows the same telltale signs of wear, marked up where the
+chair has rocked countless times.  Beside it is a wicker basked filled with
+balls of yarn and a half-finished project, knitting needles at the ready to
+be taken up once more.  
+~
+E
+wardrobe polished~
+This large wardrobe is made of oak, which is not especially common in
+this region.  Likely imported, it is well-polished and cared for, filled
+almost to bursting with clothing suited both for working and more formal
+occasions.  
+~
+E
+bed large blanket blankets wool knitted cheery~
+This double-sized bed is covered over with this, woolen blankets, warm
+and soft.  The mattress itself is soft, and mostly if not completely free of
+lumps.  The bedspread is knitted in bright colours, in a cheery pattern of
+snowflakes that bears no resemblance to any seen in nature.  
+~
+D2
+~
+~
+0 0 8036
+W 5 0 0
+Z 5 5
+S
+#4385
+A Children\@s Bedroom~
+Two small beds sit on either side of this room, which has a ceiling that
+slopes downwards to its eastern wall, a window between them.  Stuffed
+animals are strewn about both beds, each done up in different colours.  A
+bright rug covers the floor, held in place by the beds and a large wooden
+toychest.  The walls have been freshly white-washed, but low to the ground
+against one wall are a few scuff and paint marks.  A painted wooden door
+opens up to the west into a living room.  
+~
+~
+0
+0 0 0
+E
+wood wooden toychest chest~
+This wooden chest is filled with children\@s toys, largely made of wood. 
+Wheeled pulltoys on strings and dolls with articulated joints are piled
+together with stacks of brightly-painted blocks in a disorganized heap.  
+~
+E
+bed beds animals stuffed~
+The beds on either side of the room look comfortable for their size,
+clearly meant for children.  Each are covered with knitted stuffed animals,
+bears and sheep and taenosil, all right bright button eyes, and in different
+colours to easily differentiate ownership.  
+~
+D3
+~
+~
+0 0 8036
+W 5 0 0
+Z 5 5
+S
+#4386
+A Private Living Space~
+Comfortably but inelegantly appointed, this small suite appears fit to
+accomodate a small family.  A small sitting area opens against the northen
+door to the main room of the house, and bedrooms around the edges of the
+room.  The furniture is applewood and relatively plain, polished and
+well-cared for.  Thick wool comprises the blankets on the beds and drapes
+over the backs of the couches.  A vase of fresh flowers sits on a table in
+the centre of the sitting room, adding a pleasant scent to the air.  
+~
+~
+0
+0 0 0
+E
+vase flower flowers fresh table~
+A vase of pale blue glass sits on a low table, filled with a spray of
+fresh flowers.  They give off a fresh scent and a bright spot of colour to
+the room.  
+~
+E
+wool blankets beds couches~
+Wooly blankets drape over the couches and on the beds, simply and thickly
+knitted.  On the whole they are undyed, fading from dark grey up to white.  
+~
+D0
+~
+~
+0 0 8046
+W 5 0 0
+Z 5 5
+S
+#4387
+A Communal Living Space~
+This large room appears to serve as mutual living quarters for a large
+number of farmhands, sectioned off partially to allow each some privacy, if
+little space.  A fireplace stands on the edge of the room to west, a small
+stove nearby, allowing farmhands to prepare simple meals for themselves. 
+There is little decoration to the room as a whole, though a few beds have
+some small keepsakes and personal effects by them.  A door leads to the
+north into a barn, and to the east is the main room of the house.  
+~
+~
+0
+0 8 0
+E
+keepsake keepsakes effects~
+Many of the beds have personal effects next to them; thin books, horn
+combs, personal eating utensils and the like.  Each bed has a small shelf
+and chest for the storage of such things.  
+~
+D0
+~
+~
+1048577 0 8045
+D1
+~
+~
+0 0 8046
+W 5 0 0
+Z 5 5
+S
+#4388
+A Small Vegetable Patch~
+A small vegetable patch has been laid out here, a number of different
+crops set out in neat rows.  While not enough to be producing vegetables for
+sale, this patch is too large for a single family to eat easily, even
+allowing for storage.  A number of hutches are visible a good ways to the
+north, making whatever animals that lie within a likely candidate for the
+excess.  A tall, brightly-painted house stands to the northeast, and a
+grey-cobbled patio close to the north.  
+~
+~
+0
+0 0 2
+E
+vegetable patch vegetables crop crops~
+A variety of vegetables are grown in this patch, each row showing a neat
+paper label.  At a glance you can see peppers, lettuce, tomatoes, cucumbers,
+a number of different herbs contained in pots, a strawberry patch, carrots,
+and likely others that are harder to make out.  
+~
+D0
+~
+~
+0 0 8052
+W 5 0 0
+Z 5 5
+S
+#4389
+The Upper Level of a Farmhouse~
+The upper storey of this house is divided into two levels, and each level
+divided into halves.  A thin ladder leads to the upper level, though it
+shows little signs of use.  Each little section encloses a small,
+well-appointed bedroom, each decorated in the varying tastes and styles of
+their occupants.  Small paintings hang on the dividing walls, inexpensively
+but tastefully framed.  Another ladder, similarly unused-looking, leads down
+to a lower level.  
+~
+~
+0
+0 0 0
+E
+painting paintings walls portrait portraits~
+Several pictures hang from the walls and are on display in the bedrooms. 
+Among them are vividly-painted cityscapes, some recognizably of Earendam,
+and others of a tall, many-towered city by a mountain, the sky bright and
+blue, on a vast disc without any ground in sight.  The portraits are done in
+modern illusory techniques rather than paint, showing pictures of
+well-dressed aelin in homey settings.  
+~
+E
+bedroom bedrooms section sections room rooms~
+This part of the house has been divided into four bedrooms on two levels,
+each having a large, soft bed.  The blankets are thickly quilted in a sleek
+fabric, in a variety of dark but tasteful colours.  One of the rooms is
+stocked with a variety of toys; a collection of spheres that spin and
+sparkle when touched, a porcelain doll with real hair and feathered wings
+and a variety of tiny clothes for it to wear, and a fanciful stuffed animal
+made from sleek grey silk with comically huge ears and a long nose stand out
+most amongst the collection.  Other rooms are more simply decorated, with
+well-stocked bookshelves and illusory portraits of well-dressed aelin.  
+~
+D5
+~
+~
+0 0 8053
+W 5 0 0
+Z 5 5
+S
+#4390
+A Painted Hallway~
+Several bedrooms comprise this section of the house, none large but all
+having enough space to be comfortable.  A central sitting room extends to
+the back of the house, a large window offering an unrelieved view of the
+grasslands, stretching out as far as the eye can see.  Dried flowers
+decorate the walls and add a faint scent to the hallway, adding faded colour
+to the painted walls.  The house continues to the north, expanding into a
+larger communal area.  
+~
+~
+0
+0 0 0
+E
+flower flowers walls painted faded~
+Dried flowers sit on the walls, standing out against the pale paint.  A
+bit of scent clings to them yet, giving the hallway a floral aroma.  
+~
+D0
+~
+~
+0 0 8059
+W 5 0 0
+Z 5 5
+S
+#4391
+An Airy Hallway~
+This section of the house is painted a cheery pale blue, with dark blue
+trim.  Several bedrooms branch off a central hallway, each spacious and
+airy, with large windows and lace curtains.  Fleecy quilts cover the beds,
+soft and fluffy, and the air is scented with fresh flowers.  A small basket
+sits near the end of the hall, a small bowl of water near to it.  The main
+room of the house is to the east of you, painted the same pale blue.  
+~
+~
+0
+0 8 0
+E
+basket bowl dish~
+A large, padded wicker basket sits at the end of the hallway, near to a
+water dish.  A few bits of fur cling to the basket, shed from whatever cat
+makes their home in it.  
+~
+E
+quilt quilts bed beds~
+Fluffy quilts cover the beds, and warm, woolen bedspreads lie overtop
+them.  The beds themselves are a bit lumpy, but on the whole comfortable.  
+~
+D1
+~
+~
+0 0 8067
+W 5 0 0
+Z 5 5
+S
+#4392
+A Spacious Kitchen~
+This room seems to serve as both kitchen and informal dining room.  A
+large stone fireplace and woodstove stand next to each other, near to a long
+marble counter.  A trapdoor in the corner leads to a root cellar, and
+several less-perishable items hang from the ceiling.  A large, round table
+provides a communal place to eat, with comfortably padded chairs posed
+around it.  The walls are painted a light blue, and oil lamps serve to light
+the room after dark.  A wide door leads south to a living room.  
+~
+~
+0
+0 8 0
+E
+table chairs padded padding~
+A large applewood table provides a good deal of space for meals, with a
+wheel in the centre to make it easier to pass items around.  The wooden
+chairs are wide and are padded with soft, woolen cushions.  
+~
+E
+door trapdoor cellar root~
+Numerous perishables sit in the root cellar, ranging from meats and
+vegetables to cold crocks of butter and milk, with several wheels of cheese.
+~
+D2
+~
+~
+0 0 8067
+W 5 0 0
+Z 5 5
+S
+#4393
+A Spacious Living Area~
+Several bedrooms are clustered around a central space, each fairly
+spacious and showing signs of use and care.  The furniture is carved and
+varnished applewood, of a very fine make.  Each of the bedrooms has a window
+paned in glass, though only in the largest is the glass of particular
+clarity; the others are bubbled and give a somewhat flawed view of the
+outside.  They serve well enough to provide reasonable views of the
+outdoors, though, giving glimpses of the orchard and yard outside.  The main
+rooms of the house are through a door to the west.  
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 8084
+W 5 0 0
+Z 5 5
+S
+#4394
+A Wooden Hut~
+This house is constructed entirely of wood except for the pale stone
+fireplace against one wall.  It is not very large, being only one room, and
+looks to accomodate a single person.  An unadorned bed sits in the corner,
+near to an uncommonly well-stocked bookshelf.  In one corner is a rack
+holding empty earthenware pots, lengths of candle wicking, a pile of wooden
+frames, and assorted other tools.  A metal vat with a crank sits near to it
+too, and a separate woodstove with a wax-stained metal pot.  Away from that
+part of the house, a thick blue carpet covers the floor, faded from use. 
+There are numerous windows, letting a great deal of light into the house. 
+The front door is to the east.  
+~
+~
+0
+0 0 0
+E
+rack racks pot pots candle wick wicks wicking frame frames tool tools~
+A wooden rack holds a decent collection of tools relating to beekeeping
+and waxworks.  Among them are earthenware pots with hinged lids, candlewicks
+and molds, empty frames for beehives, assorted serrated knives, metal
+smokers, a canvas hood, and other such items.  
+~
+E
+shelf bookshelf book books~
+The shelf is packed full with a large variety of books on a diverse array
+of topics, ranging from discussions of beekeeping to histories both foreign
+and local to assorted philosophical treatises.  Appearing well-thumbed and
+nearly hidden at the bottom of the shelf is a small collection of
+cheaply-printed adventure stories.  
+~
+E
+vat crank metal~
+A metal vat sits in a corner, stained with honey and wax on the inside. 
+It seems built to hold several frames of honeycomb, and some manner of
+mechanism causes it to spin quickly when the crank is turned.  
+~
+D1
+~
+~
+0 0 8090
+W 5 0 0
+Z 5 5
+S
+#8026
+The Happy Farms Taenosil Ranch Noticeboard~
+To-do:
+
+  * Set up basic scheduled pathing mobile by mobile
+  * When who is where at what time is established, begin inter-mobile interaction
+* Create sale items
+* Equip mobiles
+~
+~
+0
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#8027
+The Earendam Road~
+The Earendam Road widens here, with well-traveled dirt shoulders and a
+grassy ditch on either side.  Fencing can be seen to begin here, separating
+the wild grasslands from more cultivated fields.  The stone paving that
+makes up the main road seems well-maintained, compared to further south,
+with few stones missing and most worn smooth by use.  A few buildings can be
+seen spreading out to the north, and livestock milling through the fields.  
+~
+~
+0
+0 0 13
+D0
+~
+~
+0 0 8028
+D2
+~
+~
+0 0 5795
+W 5 0 0
+Z 5 5
+S
+#8028
+The Earendam Road~
+The Earendam Road sits widely here, with well-traveled and rutted
+shoulders, with ditches on either side.  Fences keep fields apart from the
+ditches, each gated and across from a small bridge that allow carts onto the
+road from the farms.  The air is thick with the scent of livestock, and the
+lowing of cows can be heard in the distance.  A dusty intersection stands to
+the north, running through a small village.  To the south, the road
+stretches off into the distance.  
+~
+~
+0
+0 0 13
+D0
+~
+~
+0 0 8029
+D2
+~
+~
+0 0 8027
+W 5 0 0
+Z 5 5
+S
+#8029
+The Earendam Road~
+The Earendam Road is crossed here by a wide dirt road, buildings
+clustered around it.  Traces of foot and animal traffic are obvious going up
+and down both roads, and smoke curls up from houses not far off.  A
+weather-worn signpost stands near the corner of the intersection, the wood
+greying but the lettering freshly painted.  The paved road stretches off
+into the distance, north and south both.  
+~
+~
+0
+0 0 13
+E
+sign signpost worn~
+^
+         /  Kor Thrandir
+        |
+        |
+You are now entering   
+      Lendoth  
+        |
+        | Earendam
+        v
+~
+D0
+~
+~
+0 0 8030
+D1
+~
+~
+0 0 8032
+D2
+~
+~
+0 0 8028
+D3
+~
+~
+0 0 8054
+W 5 0 0
+Z 5 5
+S
+#8030
+The Earendam Road~
+The Earendam Road sits widely here, with well-traveled and rutted
+shoulders, with ditches on either side.  Fences keep fields apart from the
+ditches, each gated and across from a small bridge that allow carts onto the
+road from the farms.  The air is thick with the scent of livestock, and the
+lowing of cows can be heard in the distance.  A dusty intersection stands to
+the south, running through a small village.  To the north, the road
+stretches off into the distance.  
+~
+~
+0
+0 0 13
+D0
+~
+~
+0 0 8031
+D2
+~
+~
+0 0 8029
+W 5 0 0
+Z 5 5
+S
+#8031
+The Earendam Road~
+The Earendam Road widens here, with well-traveled dirt shoulders and a
+grassy ditch on either side.  Fencing can be seen to begin here, separating
+the wild grasslands from more cultivated fields.  The stone paving that
+makes up the main road seems well-maintained, compared to further north,
+with few stones missing and most worn smooth by use.  A few buildings can be
+seen spreading out to the south, and livestock milling through the fields.  
+~
+~
+0
+0 0 13
+D0
+~
+~
+0 0 4747
+D2
+~
+~
+0 0 8030
+W 5 0 0
+Z 5 5
+S
+#8032
+A Dusty Road~
+The road here is of well-trodden and hard-packed dirt, ditches on either
+side with some standing water in the bottoms.  Fencing provides a border to
+fields on either side, but northwards is a gated gap, a solid wooden bridge
+over the ditch, a dirt track winding its way through it and onto the
+farmland.  Cattle can be seen milling about the pastures to the south, and
+cornfields stretch out a long ways to the northeast.  The road makes its
+flat way along to the east, and comes to an intersection to the west.  
+~
+~
+0
+0 0 13
+D0
+~
+~
+0 0 8033
+D1
+~
+~
+0 0 8040
+D3
+~
+~
+0 0 8029
+W 5 0 0
+Z 5 5
+S
+#8033
+A Dirt Track Through A Field~
+A dirt track winds its way north and south, here, a cornfield stretching
+out to the east.  A stretch of pasture stands to the west, fenced in from
+the track.  A large house stands off to the north, a barn nearby to it, too.
+The faint sounds of sheep can be heard from the pasture, and the smell of
+their leavings reaches your nostrils, far enough off and faint enough to not
+be an assault on the senses.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 8034
+D2
+~
+~
+0 0 8032
+W 5 0 0
+Z 5 5
+S
+#8034
+A Path Around a Farmhouse~
+A dirt path leads up to a large, two storied farmhouse here.  Most of its
+windows are covered over with oiled parchment, but one small one is covered
+by highly-polished glass, streak-free and without a speck of dust.  The path
+leads up to the house, and around it to a large barn to the west, painted a
+dull, weathered red.  To the east, the path meanders to a cornfield, and
+southward it divides the same field and a pasture, before coming to the
+road.  
+~
+~
+0
+0 4 2
+E
+glass window~
+The window is paned in high-quality plate glass and lovingly polished. 
+Not a streak mars its surface, offering a crystal clear view into the
+comfortably-furnished home on the other side.  
+~
+D0
+~
+~
+0 0 8035
+D1
+~
+~
+0 0 4383
+D2
+~
+~
+0 0 8033
+D3
+~
+~
+0 0 8039
+W 5 0 0
+Z 5 5
+S
+#8035
+A Large Farmhouse~
+A long dinner-table dominates the eastern side of the main room of this
+large farmhouse, at least a dozen chairs poised around it.  To the west is a
+bit more personal a sitting area, a pair of couches poised about a wide
+hearth.  Well-worn rugs cover the hardwood floors, and oil lamps hang from
+the walls about the room.  A small bookshelf sits on one wall, holding a few
+books and more tchotchkes.  Several curtained windows allow light through
+oiled-parchment panes, and a single pane of lovingly-polished glass sits in
+a small window that looks out on the cornfields.  A kitchen stands off to
+the east, and a thin staircase leads up to a second floor.  To the south,
+the front door leads out onto a dirt path.  
+~
+~
+0
+0 8 0
+E
+glass window~
+The single glass window in this room looks to be of high-quality plate
+glass, and lovingly polished, streak-free and clear.  It offers a very clear
+view of the grassy yard to the front of the house.  
+~
+E
+book bookshelf~
+Several plainly-bound books sit on the shelf.  On the whole they seem to
+be on subjects relevant to farming, almanacs for weather predictions, and
+journals detailing prior seasons of crop growth.  Small wooden boxes sit
+upon the shelf as well, as does a small, brightly-painted wheeled toy on a
+string.  A small wax sculpture sits atop the shelf.  
+~
+E
+table chairs dinner~
+The table and chairs are a little roughly-made but comfortable, with soft
+cushions on the chairs.  The tablecloth is white linen, bleached pale with
+few stains to be seen upon it.  
+~
+D1
+~
+~
+0 0 8037
+D2
+~
+~
+0 0 8034
+D4
+~
+~
+0 0 8036
+W 5 0 0
+Z 5 5
+S
+#8036
+A Well-Used Sitting Room~
+This room is simply but cozily decorated, thick carpets on the floors,
+and a pair of couches, draped over with heavy knitted blankets and with soft
+pillows tossed about them.  A few pieces of crudely-drawn artwork have been
+nailed up onto the walls between the windows, and a stone fireplace sits on
+the western wall, giving warmth and light to the room.  A carved wooden
+chest sits against one wall, stained and well-worn.  Doors stand to the
+north and east, and a thin staircase leads downstairs.  
+~
+~
+0
+0 8 0
+E
+picture~
+Several pictures drawn on parchment with coloured chalks, done in the
+crude lines of a child.  Cows and smiling suns are common subjects, as are
+striped cats and bulbous-looking sheep, some of which even have the correct
+number of legs.  
+~
+E
+artwork pictures crude crudely~
+Several pictures drawn on parchment with coloured chalks, done in the
+crude lines of a child.  Cows and smiling suns are common subjects, as are
+striped cats and bulbous-looking sheep, some of which even have the correct
+number of legs.  
+~
+D0
+~
+~
+0 0 4384
+D1
+~
+~
+0 0 4385
+D5
+~
+~
+0 0 8035
+W 5 0 0
+Z 5 5
+S
+#8037
+A Stone Kitchen~
+This kitchen is largely constructed from stone, and large enough to
+service meals for a small crowd.  Two large stone hearths stand against one
+wall, a brick oven beside them.  Counters provide plenty of room to prepare
+food, and knives and other kitchen tools stand on neat racks.  In a corner,
+several meats and vegatables hang from the ceiling.  A small figurine sits
+on the counter in that corner near to other perishables, a chill spreading
+out for several feet in each direction.  The living room is to the west, and
+northward appears to be quarters for farmhands.  
+~
+~
+0
+0 8 0
+E
+figurine chill corner~
+A small stone figurine of a woman sits on the counter in the corner of
+this room, her billowing skirts graven with runes of cold.  The air for
+several feet in all directions from it is quite chilly, and crocks of butter
+and bottles of milk have been left out near to it.  
+~
+D0
+~
+~
+0 0 8038
+D3
+~
+~
+0 0 8035
+W 5 0 0
+Z 5 5
+S
+#8038
+A Long Dormitory~
+This room is set out like a dormitory, rows of elevated beds lining
+opposite walls.  Movable wooden screens allow a bit of privacy between each
+section, and wooden dressers are placed beneath each bed.  A battered couch
+and some chairs sit in the middle of the room between the rows, a low table
+near to them.  Several windows allow generous amounts of light in during the
+day, and oil lamps sit on the walls for night.  A vaguely sweaty smell
+permeates the air, fading the closer one moves south to the kitchen.  
+~
+~
+0
+0 8 0
+E
+couch battered chairs table~
+A couch upholstered in faded cloth sits here, well-stuffed but with
+obvious tears that have been sewn up or patched.  Armchairs sit near to it,
+one leather, the others covered in sturdy cloth similar to the couch.  A low
+table sits around them, scratched and dented from many years of steady,
+rough use.  
+~
+D2
+~
+~
+0 0 8037
+W 5 0 0
+Z 5 5
+S
+#8039
+A Red-Painted Barn~
+This large barn seems more suited to store crops and supplies than house
+livestock, though a few stalls sit against one wall, sized to house a cow or
+two and some oxen.  A two-wheeled oxcart sits near to those stalls, and a
+pen large enough to house a small herd of sheep sits in the southeast
+corner.  A thin ladder leads up to a hayloft, piled with golden hay. 
+Several bins with heavy lids take up most of the space on the main level of
+the barn, long hemp ropes holding them shut.  The barn opens off onto a dirt
+path to the east, and a grassy paddock to the north.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 4382
+D1
+~
+~
+0 0 8034
+W 5 0 0
+Z 5 5
+S
+#8040
+A Dusty Road~
+The road here is of well-trodden and hard-packed dirt, ditches on either
+side with some standing water in the bottoms.  Fencing provides a border to
+fields on either side, but southwards is a gated gap, a solid wooden bridge
+over the ditch, a dirt track winding its way through it and onto the
+farmland.  A cornfield stands on the other side of the northern fencing, and
+cattle mill around the field to the southwest.  The road meanders flatly
+both east and west, dust in the air along it.  
+~
+~
+0
+0 0 13
+D1
+~
+~
+0 0 8047
+D2
+~
+~
+0 0 8041
+D3
+~
+~
+0 0 8032
+W 5 0 0
+Z 5 5
+S
+#8041
+A Dirt Trail By A Pasture~
+A dirt track winds its way north and south here, curving around a large,
+smooth boulder.  Grassy pastures fan out to the west, cordoned off by a
+white-painted fence.  Cows can be seen milling about the pasture and around
+a barn off to the distance in the southwest.  A farmhouse stands a long ways
+to the south, the rutted trail winding its way there and back north to the
+road.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 8040
+D2
+~
+~
+0 0 8044
+D3
+~
+~
+0 0 8042
+W 5 0 0
+Z 5 5
+S
+#8042
+A Well-Maintained Pasture~
+This large, grassy pasture is bordered on three sides by road, fencing
+higher to the north and west, deep ditches on the other side, preventing
+passage.  The grass seems well-tended, closely-cropped in spots where
+animals have been eating.  Manure lies concealed on the ground throughout
+the pasture, creating traps for the unwary who walk through the grass.  A
+large barn stands off past more pastureland to the south, and you can see a
+farmhouse to the southeast.  
+~
+~
+0
+0 0 2
+D1
+~
+~
+0 0 8041
+D2
+~
+~
+0 0 8043
+W 5 0 0
+Z 5 5
+S
+#8043
+A Well-Maintained Pasture~
+This large, grassy pasture is bordered to the east and west by road,
+fencing higher to the west with a deep ditch on the other side, preventing
+passage.  The grass seems well-tended, closely-cropped in spots where
+animals have been eating.  Manure lies concealed on the ground throughout
+the pasture, creating traps for the unwary who walk through the grass.  A
+large barn stands open just to the south of you, a rutted track leaning to
+it from the road to the east.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 8042
+D1
+~
+~
+0 0 8044
+D2
+~
+~
+0 0 8045
+W 5 0 0
+Z 5 5
+S
+#8044
+A Dirt Path Outside A Farmhouse~
+A rutted dirt track opens up into a fork here, continuing straight to the
+north and splitting to meander southwesterly to a barn, and straight south
+leading to a farmhouse.  Outside the house, someone has taken the time to
+pave the road over somewhat with smooth stones, but the project seems
+incomplete, and only goes on ten feet or so.  The house seems freshly
+painted, all on one floor and sprawling out, made with a mixture of clay
+bricks, stone, and wood, depending on the apparent age of each section.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 8041
+D2
+~
+~
+0 0 8046
+D3
+~
+~
+0 0 8043
+W 5 0 0
+Z 5 5
+S
+#8045
+A Large Barn~
+This large barn is primarily divided into rows of stalls suitable to
+accomodate and feed cows, though perhaps a third is more open, filled with
+loose hay and several larger stalls.  Large bins for feed sit against a
+wall, beneath a ladder up to a hayloft.  A two-wheeled cart sits by the
+large barn door to the north, wood stained and worn, but still solid.  A
+painted door leads to the south, runes on the frame shimmering slightly,
+warding the smell from traveling inside.  
+~
+~
+0
+0 8 0
+E
+runes door painted~
+Shimmering runes of air are scribed around the southern doorframe, subtly
+directing airflow so as to prevent the scent of the barn from moving
+indoors.  
+~
+D0
+~
+~
+0 0 8043
+D2
+~
+~
+1048577 0 4387
+W 5 0 0
+Z 5 5
+S
+#8046
+An Open Farmhouse~
+This large, open room serves as a common area for this farmhouse, a
+fireplace and woodstove off to the side, and a trapdoor leading to a small
+coldroom.  Tables and chairs are set about to allow people to eat, and other
+furniture provides places to relax.  Large windows ensure the room is
+generously lit during the day, and candles and lamps are set about, giving
+the room a warm, homey feel.  A door leads into the farmhands\@ quarters to
+the west, and southwards is a door to the family\@s personal living space.  
+~
+~
+0
+0 0 0
+E
+door trap door trapdoor coldroom~
+The coldroom is packed full of assorted vegetables, meats, with a small
+amount of prepared foods and breads stored there as well.  A small glowing
+stone orb provides light there.  
+~
+D0
+~
+~
+0 0 8044
+D2
+~
+~
+0 0 4386
+D3
+~
+~
+0 0 4387
+W 5 0 0
+Z 5 5
+S
+#8047
+A Curve in a Dusty Road~
+The road turns to a wooden bridge over an irrigation ditch for a small
+space here, then curves around a wide, smooth pond.  A cornfield lies
+further northwest, and pasture land southwest.  Southeast the land becomes
+more uncultivated, tall-grassed prairie beyond the road.  To the northeast,
+though, you can see a small farm in the distance, and the rutted, dusty road
+curves northward here towards it.  To the west, the road stretches out
+straight as far as the eye can see.  
+~
+~
+0
+0 0 13
+D0
+~
+~
+0 0 8048
+D3
+~
+~
+0 0 8040
+W 5 0 0
+Z 5 5
+S
+#8048
+A Dusty Road by a Pond~
+The road here is of well-trodden and hard-packed dirt, a ditch on the
+eastern side and an irrigation pond on the west.  A small wooden bridge
+crosses the ditch, allowing entrance to the farmland to the east.  The road
+too is slightly arched over a tunnel for water from the pond to flow
+through.  The air is a bit dusty from the road, but the closeness of the
+pond ensures only the stiffest breezes make it a problem.  The road is
+lightly rutted, but shows little signs of heavy wheeled traffic.  
+~
+~
+0
+0 0 13
+E
+irrigation pond~
+A pond sits to the west of the road.  Though the lay of the land makes
+the pond itself and thin stream that spiders off it to the north appear to
+be natural, the ditches that extend from it are clearly not.  Clusters of
+reeds near the edges of the pond provide places for wildlife to hide.  
+~
+D1
+~
+~
+0 0 8049
+D2
+~
+~
+0 0 8047
+W 5 0 0
+Z 5 5
+S
+#8049
+A Cobbled Path Near a Farmhouse~
+The grass here looks to be a mixture of clover and timothy, kept
+relatively close to the ground compared to the foliage on the other side of
+the ditch.  A wooden fence provides a border to the land to the south and
+west, gated in that direction.  A path paved over with smooth grey stones
+meanders east and west over the land here, turning to dirt past the gate.  A
+fence comes right to the ground to the north, but only about three feet
+tall.  A cheerily-painted farmhouse is off to the east, along with another
+small outbuilding.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 8050
+D1
+~
+~
+0 0 8052
+D3
+~
+~
+0 0 8048
+W 5 0 0
+Z 5 5
+S
+#8050
+A Pasture of Clover~
+This pasture is grassed primarily with timothy and clover, and appears to
+be regularly trimmed, further cropped close by animals.  The pasture is
+fenced in on all sides but to the east, the fence low to the ground, leaving
+no space beneath it.  Despite obviously being grazing land for animals,
+there is little evidence of stool on the ground.  There seem to be numerous
+wooden boxes strewn about the pasture as well, holes cut in them.  Several
+balls of woven straw roll lightly around the grass.  A cobbled path is past
+the fence to the south, and what looks like a number of hutches are off to
+the east.  
+~
+~
+0
+0 0 2
+E
+box boxes holes~
+Numerous boxes are strewn about the yard, wide and low though some appear
+to have several levels with ramps running back down into the grass.  They
+have holes cut into them, large enough for an animal about the size of a
+rabbit to fit into and hide inside.  They have been brightly painted, all
+different colours.  
+~
+D1
+~
+~
+0 0 8051
+D2
+~
+~
+0 0 8049
+W 5 0 0
+Z 5 5
+S
+#8051
+By a Collection of Hutches~
+A number of wooden hutches are set around a central yard here, with low
+ramps leading down onto the mixed timothy and clover grass.  A canvas awning
+protects the hutches from the elements above, with some long ties that can
+be used to take it down with ease.  A couple large sheds sit behind the
+hutches, and some bales of hay sit on some wooden racks above the ground,
+with a sack of some other sort of feed on top of one bale.  A pasture
+continues to the west, and a gate in the fence to the south allows passage
+to the path out to the front of a cheerily-painted house.  
+~
+~
+0
+0 0 2
+E
+hutch hutches~
+Several hutches with wire mesh fronts are set about this yard, each lined
+with soft hay and having bowls for both water and food inside.  The hutches
+are spacious, able to accomodate animals the size perhaps of a large cat or
+small dog in comfort.  Most of them have chewed wooden blocks inside, and
+small blocks of some sort of mineral as well.  
+~
+D2
+~
+~
+0 0 8052
+D3
+~
+~
+0 0 8050
+W 5 0 0
+Z 5 5
+S
+#8052
+Outside a Painted House~
+A path cobbled with smooth grey stones opens off into a patio of sorts
+here, out front of a tall, brightly-painted house.  Flowerbeds sit out
+front, and the wide bright windows are filled by barely-perceptible magical
+fields.  A polished wooden cart sits to the south of the patio, made of a
+silvery wood clearly not native to the region.  The house stands to the
+east, and the path to the west.  Northwards is a number of hutches, and to
+the south appears to be a small vegetable patch.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 8051
+D1
+~
+~
+0 0 8053
+D2
+~
+~
+0 0 4388
+D3
+~
+~
+0 0 8049
+W 5 0 0
+Z 5 5
+S
+#8053
+A Tall Farmhouse~
+This farmhouse is built tall and narrow, split into three visible levels.
+The main floor houses a dining area and large, well-appointed kitchen.  The
+windows are sealed to the outside by faint magical fields and the rooms are
+lit with bright orbs of light.  A sitting area is on a wide loft, reachable
+by a thin ladder.  Comfortable low-backed couches sit about a coffee table
+that holds a fragrant vase of flowers.  Another ladder leads up to a more
+proper second floor, and the front door to the house is on the western wall.
+~
+~
+0
+0 0 0
+E
+upper sitting couch couches flowers vase coffee table~
+The upper section of this floor is a wide loft that overlooks the dining
+area, with a polished wooden railing preventing any falls.  A thin ladder
+leads up to it but it seems to see little use.  The couches in the sitting
+area are butter-soft black leather with polished brass studs, overstuffed
+and soft.  The coffee table is a foreign, silvery-grey wood, much like other
+furniture in the house, and atop it is a sweepingly-moulded vase, filled
+with exotic flowers.  
+~
+E
+lower kitchen dining~
+The lowest part of this home seems devoted to dining and food
+preparation.  The table and chairs are made with a silvery-grey wood not
+native to the region, and magically shaped, rather than carved, into a
+fluid, swooping design.  The kitchen is well-stocked and cooler than the
+other half of the floor, small statuettes marked with runes of ice and
+water.  
+~
+D3
+~
+~
+0 0 8052
+D4
+~
+~
+0 0 4389
+W 5 0 0
+Z 5 5
+S
+#8054
+A Dusty Road~
+The road here is of well-trodden and hard-packed dirt, ditches on either
+side with some standing water in the bottoms.  Fencing provides a border to
+fields on either side, but southwards is a gated gap, a solid wooden bridge
+over the ditch.  A dirt track winds its way through it and onto the
+farmland.  Sheep can be seen milling about the pastures to the north, and
+the sound and scent of pigs wafts from the southwest.  The road makes its
+flat way along to the west, and comes to an intersection to the east.  
+~
+~
+0
+0 0 13
+D1
+~
+~
+0 0 8029
+D2
+~
+~
+0 0 8055
+D3
+~
+~
+0 0 8061
+W 5 0 0
+Z 5 5
+S
+#8055
+A Rutted Path~
+A heavily rutted path stretches to the north and south here, dirt tightly
+packed from steady usage.  The air is thick with the smell of pigs, but the
+breeze trends brisk enough to keep the scent moving.  A fence stands to the
+west, bordering off a grassy pigpen, and a larger fence separates the
+farmland from road to the north and east.  A farmhouse is off in the
+distance to the south, and a barn beside it.  The path itself leads there
+southwards, and back to the north where it meets the road.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 8054
+D2
+~
+~
+0 0 8058
+D3
+~
+~
+0 0 8056
+W 5 0 0
+Z 5 5
+S
+#8056
+A Partially Grassed Lot~
+Much of the grass in this field has been worn away, leaving patchy spots
+of brown in places.  The leavings of pigs are strewn throughout the lot,
+though the majority seems to be in the northwestern corner.  The odor here
+is almost oppressive, but regular maintenance and the breeze ensure it does
+not overwhelm.  The yard is fenced in on all sides but south, with roads
+past ditches to the north and west.  The lot continues to the south, coming
+under an overhang, and a rutted dirt path lies past the fence to the east.  
+~
+~
+0
+0 0 2
+D1
+~
+~
+0 0 8055
+D2
+~
+~
+0 0 8057
+W 5 0 0
+Z 5 5
+S
+#8057
+A Large Pigpen~
+There is little grass at all in this pigpen, most of it having been torn
+up from steady attentions by pigs.  A mud-filled wallow is enclosed by brick
+here, and a large wooden enclosure provides a relatively indoor location for
+pigs to congregate.  A wooden overhang extends from the edge of the
+enclosure, providing a measure of shade.  A tightly-secured shack sits off
+to the side.  A fence and a ditch block passage to the road to the west, but
+the fence to the east is low enough that one can easily cross to the rutted
+path that way.  The pen grows grassier to the north, and a gate in the fence
+to the south leads to a number of outbuildings.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 8056
+D1
+~
+~
+0 0 8058
+D2
+~
+~
+0 0 8060
+W 5 0 0
+Z 5 5
+S
+#8058
+In Front of a Brick Farmhouse~
+A heavily rutted path stretches northward from here, coming to an end out
+front of a large brick farmhouse.  The telltale scent of pigs is in the air,
+coming from the pigpen over to the west.  Runes have been etched around the
+doors and windows of the house, looking fresh and clearly marked.  Some
+grass lines the pathway on either side, but most of it has been worn away. 
+A few flowerbeds sit out front of the house, some looking better-kept than
+others.  The front door of the house is to the south.  
+~
+~
+0
+0 0 2
+E
+flower bed flowerbed flowers~
+An assortment of flowers have been planted in front of the house, looking
+well-tended for the most part.  However, some of the flowers on the most
+westerly end of the bed look distinctly chewed as if by pigs.  
+~
+E
+rune runes window windows door~
+Runes of air have been marked around the doors of windows, subtly
+redirecting ariflow so as to prevent the otherwise omnipresent smell of the
+farm from getting into the house.  
+~
+D0
+~
+~
+0 0 8055
+D2
+~
+~
+0 0 8059
+D3
+~
+~
+0 0 8057
+W 5 0 0
+Z 5 5
+S
+#8059
+A Brick Farmhouse~
+Though this house sprawls out a ways, with large rooms and a good-sized
+kitchen, it nonetheless has a cozy feel to it.  The walls are plastered-over
+brick, and painted warm, inviting colours.  Despite the hog farm outside,
+there is little evidence of their telltale aroma.  There is some evidence of
+prosperity in the decor; several windows have been paned with glass, and the
+kitchen and sitting areas are lit by spheres of light, rather than oil
+lamps.  The front door is to the north, and bedrooms to the south.  
+~
+~
+0
+0 0 0
+E
+window windows glass~
+The windows are relatively clear, with only some streaks in the glass
+itself, and well-polished.  They offer a relatively clear view of the yard
+out front.  At a steep enough angle, it is possible to see runes of air
+marked on the outside.  
+~
+D0
+~
+~
+0 0 8058
+D2
+~
+~
+0 0 4390
+W 5 0 0
+Z 5 5
+S
+#8060
+A Collection of Outbuildings~
+A number of small buildings are clustered here, each only of a size to
+provide living space for a single person each.  They all are painted a dull
+red, and roofed with clay tile and the windows are thick oiled parchment. 
+There is little decoration on the outside of the buildings, though a few
+have runes painted around the doorframes.  The wall of a house is to the
+east, and to the west is a fence blocking access to a road.  The air is
+thick with unpleasant odors, largely from the pigpen to the north, but an
+acrid tang to the air comes from the southwest.  
+~
+~
+0
+0 0 0
+E
+building buildings~
+These small buildings appear to serve as close accomodations for a single
+person each.  Each has a bed built into one wall, some shelves for personal
+effects, and a small woodstove sufficient to heat the building.  
+~
+E
+rune runes frame door doors doorframe doorframes~
+Several of the buildings are marked with runes of air by the doors,
+subtly redirecting airflows so as to direct the smells of the farm away from
+the interiors.  
+~
+D0
+~
+~
+0 0 8057
+W 5 0 0
+Z 5 5
+S
+#8061
+A Dusty Road~
+The road here is of well-trodden and hard-packed dirt, ditches on either
+side with some standing water in the bottoms.  Fencing provides a border to
+fields on either side, but to the north is a gated gap, a solid wooden
+bridge over the ditch.  A dirt track winds its way through it and onto a
+tract of farmland.  Sheep can be seen milling about the pastures in the
+distance to the northeast, and you can see, hear, and smell pigs to the
+south.  The road makes its flat way along to the west, and comes to an
+intersection to the east.  
+~
+~
+0
+0 0 13
+D0
+~
+~
+0 0 8062
+D1
+~
+~
+0 0 8054
+D3
+~
+~
+0 0 8068
+W 5 0 0
+Z 5 5
+S
+#8062
+A Grassy Path~
+A dirt path is here, grassed over on the edges.  Ruts are visible in the
+path, as well as tracks from numerous hoofed animals.  A distinct sheepy
+aroma fills the air here, and some tufts of wool are stuck here and there to
+the fence to the east.  Bleats and baas can be heard from the pasture on the
+other side.  Despite the fence, it seems little impedence to any save the
+livestock.  A dusty road is over a small bridge to the south, and the path
+continues to the north.  
+~
+~
+0
+0 0 13
+D0
+~
+~
+0 0 8065
+D1
+~
+~
+0 0 8063
+D2
+~
+~
+0 0 8061
+W 5 0 0
+Z 5 5
+S
+#8063
+A Grassy Pasture~
+This large, slightly hilly pasture is a mixture of vibrant grasses and
+herbs, rolling for quite a ways to the north.  As all the other land within
+sight is flat, the hills are certainly artificial.  The pasture is fenced in
+on three sides, road to the south and east, deep ditches serving as a border
+and for irrigation.  The fence to the west seems more passable, a grass and
+dirt track past it.  The pasture continues to the north, and you can see a
+farmhouse in the distance.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 8064
+D3
+~
+~
+0 0 8062
+W 5 0 0
+Z 5 5
+S
+#8064
+A Grassy Pasture~
+This large, slightly hilly pasture is a mixture of vibrant grasses and
+herbs, rolling for quite a ways to the south.  As all the other land within
+sight is flat, the hills are certainly artificial.  The pasture is fenced in
+to the east and west, with a road past the one to the east, deep ditches
+serving as a border and for irrigation.  The fence to the west seems more
+passable, a grass and dirt track past it.  The pasture continues to the
+south, and a whitewashed barn is to the north of you.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 8066
+D2
+~
+~
+0 0 8063
+D3
+~
+~
+0 0 8065
+W 5 0 0
+Z 5 5
+S
+#8065
+Before a White Farmhouse~
+A partially grassed-over trail comes to a top in front of a whitewashed
+farmhouse with blue trim here.  Two short, bushy trees have a line of cable
+strung between them, and a good-sized doghouse sits near to them.  The scent
+of sheep reaches your nose from the meadow to the east, a fence separating
+it from this area.  Some of the house\@s visible windows are paned in glass,
+through which lacy curtains can be seen.  The house can be entered through
+the door to the north, and the path leads to the south.  One can also move
+to the eastern pasture.  
+~
+~
+0
+0 0 2
+E
+doghouse~
+A wooden house suitable to house a large dog sits in the shade of one of
+the trees here.  Whoever built it seemed to take some fancy to it, as the
+house has tiny windows and a sturdy tile roof, giving it the look of a real
+house in miniature.  A large cushion sits inside, flattened through use.  
+~
+E
+cable clothesline trees~
+A sturdy clothesline, wooden pegs clinging to it, hangs between two trees
+near the house.  A wooden stool sits on the ground near to it, allowing the
+line to be strung high enough that heavy articles will not hang in the dirt.
+~
+D0
+~
+~
+0 0 8067
+D1
+~
+~
+0 0 8064
+D2
+~
+~
+0 0 8062
+W 5 0 0
+Z 5 5
+S
+#8066
+An Open Barn~
+This large, straw-filled barn has a great deal of open space, with
+numerous wide stalls suitable for sheep.  Sacks of feed are kept up in the
+hayloft, along with the obvious bales of hay and straw.  The air is filled
+with the particularly wooly scent of sheep and goats, and telltale bits of
+fleece and hair can be seen wedged into cracks in the fencing.  The building
+seems constructed to allow a great deal of circulation, and there seems much
+evidence of animal traffic moving freely in and out of the barn.  A slightly
+hilly pasture lies to the south.  
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 8064
+W 5 0 0
+Z 5 5
+S
+#8067
+An Airy Farmhouse~
+This home is brightly lit and airily decorated, painted in shades of pale
+blue.  The windows are curtained with frothy pale lace, some even paned with
+glass, situated for a picturesque view.  The furniture is of pale applewood,
+carved in neat patterns.  A stone fireplace keeps the room warm, a few clay
+figurines set on the mantlepiece.  A door leads northwards to a kitchen and
+dining area, and westwards are some bedrooms.  
+~
+~
+0
+0 8 0
+E
+window windows glass view~
+The glass windows overlook a green pasture with low hills.  Sheep wander
+in and out of view as they mill about the pasture.  
+~
+E
+clay figurine figurines~
+A number of clay figurines sit on the mantlepiece, carefully arranged
+about each other as if to evoke a scene.  They are carefully and
+distinctively painted, modeled after characters from a stock Earendamian
+play.  
+~
+D0
+~
+~
+0 0 4392
+D2
+~
+~
+0 0 8065
+D3
+~
+~
+0 0 4391
+W 5 0 0
+Z 5 5
+S
+#8068
+A Dusty Road~
+The road here is of well-trodden and hard-packed dirt, ditches on either
+side with some standing water in the bottoms.  Fencing wraps around farms to
+the north and southeast, a ditch curving around the farm to the south. 
+Sheep can be seen milling around the northern farm, and you can see pigs in
+the southern. The road branches to the south, a building in the distance that
+way, and continues towards a small village to the west.  
+~
+~
+0
+0 0 13
+D1
+~
+~
+0 0 8061
+D2
+~
+~
+0 0 8069
+D3
+~
+~
+0 0 8071
+W 5 0 0
+Z 5 5
+S
+#8069
+A Dusty Road~
+The road here is of well-trodden and hard-packed dirt, a ditch to the
+east preventing access to the fence around a hog farm.  Pigs can be both
+seen and heard milling around there, though their scent wars in your
+nostrils with the acrid scent of the tannery to the south.  The road both to
+and from it is heavily rutted, dirt and dust collecting around it.  A
+village begins over a large field to the west.  The road leads northwards to
+an intersection, fields beyond that.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 8068
+D2
+~
+~
+0 0 8070
+W 5 0 0
+Z 5 5
+S
+#8070
+A Small Tannery~
+A long trail through the grasslands leads from the north to this tannery,
+the reason for the distance from other obvious habitation made clear by the
+putrid aroma that carries down the road.  Much of the operation seems
+open-air to mitigate the smell, but a wide, low building is here as well. 
+Inside and out, there are vats of foul-smelling liquids and racks for
+stretching, drying and scraping hides.  A large rack sits elevated a foot or
+two off the ground near the entrance to the tannery, for holding fresh
+hides.  
+~
+~
+0
+0 0 0
+E
+vats liquids liquid~
+Whatever liquid fills the vats here, it has a horrendously acrid aroma
+that carries on for some distance.  
+~
+D0
+~
+~
+0 0 8069
+W 5 0 0
+Z 5 5
+S
+#8071
+A Dusty Road~
+The road here is of well-trodden and hard-packed dirt, lightly rutted
+from regular travel.  You can see farms in the distance to the west, houses
+standing brightly out from the flat prairie.  The houses of a small village
+start to crop up around this part of the road, and a main market square is
+to the west.  More easterly, this road comes to an intersection, branching
+to the south.  The air is fresh and clear here, far enough away from the
+farms to bring little trace of the scent of farms.  
+~
+~
+0
+0 0 13
+D1
+~
+~
+0 0 8068
+D3
+~
+~
+0 0 8072
+W 5 0 0
+Z 5 5
+S
+#8072
+A Cobbled Square~
+Unlike the dirt road to the east, this square is cobbled over with grey
+stones with few gaps between them.  A wide, expansive area, the square
+continues every way but back onto that dirt road.  Buildings surround the
+cobbled ground, made from inconsistent enough materials that it is quite
+obvious they were made at different times.  Aside from some dust from the
+road, the air is crisp and clear, and the square itself seems well-traveled.
+~
+~
+0
+0 0 1
+D0
+~
+~
+0 0 8074
+D1
+~
+~
+0 0 8071
+D2
+~
+~
+0 0 8073
+D3
+~
+~
+0 0 8076
+W 5 0 0
+Z 5 5
+S
+#8073
+A Cobbled Square~
+This square is cobbled over with grey stones with few gaps between them,
+though they do show many signs of travel.  A quite expansive area, it
+extends both to the north and west of you for some ways.  Buildings surround
+it, made from inconsistent enough materials that it is quite obvious they
+were made at different times.  Fresh flowers are planted out front of a low
+stone building to the south, and the smell of fresh baking wafts out the
+door.  A thick beeswax candle sits by the door, the pattern carved into it
+making it look purely decorative.  
+~
+~
+0
+0 0 1
+D0
+~
+~
+0 0 8072
+D2
+~
+~
+0 0 8092
+D3
+~
+~
+0 0 8077
+W 5 0 0
+Z 5 5
+S
+#8074
+A Cobbled Square~
+This square is cobbled over with grey stones with few gaps between them,
+though they do show many signs of travel.  A quite expansive area, it
+extends both to the south and west of you for some ways.  Buildings surround
+it, made from inconsistent enough materials that it is quite obvious they
+were made at different times.  A wooden sign hangs over the door of the
+building to the east, and a bushy doormat sits on the ground out front.  The
+structure is two stories tall, and roofed in dull red tiles.  
+~
+~
+0
+0 0 1
+D1
+~
+~
+0 0 8093
+D2
+~
+~
+0 0 8072
+D3
+~
+~
+0 0 8075
+W 5 0 0
+Z 5 5
+S
+#8075
+A Cobbled Square~
+Unlike the dirt road to the north, this square is cobbled over with grey
+stones with few gaps between them.  A wide, expansive area, the square
+continues every way but back onto that dirt road.  Buildings surround the
+cobbled ground, made from inconsistent enough materials that it is quite
+obvious they were made at different times.  Aside from some dust from the
+road, the air is crisp and clear, and the square itself seems well-traveled.
+~
+~
+0
+0 0 1
+D0
+~
+~
+0 0 8081
+D1
+~
+~
+0 0 8074
+D2
+~
+~
+0 0 8076
+D3
+~
+~
+0 0 8080
+W 5 0 0
+Z 5 5
+S
+#8076
+The Centre of A Cobbled Square~
+A cobbled square stretches around you in all directions, surrounded by
+buildings, with dirt roads branching off beyond.  The stones on the ground
+are smooth with wear, but otherwise well-maintained with few gaps between
+them.  An old stone well stands in the centre of the square, a wooden bucket
+hanging from a windlass above.  A much newer-looking metal pump sits beside
+the well.  A patch of grass surrounds the well, small flowerbeds on the
+green, but enough out of the way to not interfere with access.  Several
+stone benches sit around the well in this part of the square, allowing a
+comfortable place to sit.  
+~
+~
+0
+0 0 1
+D0
+~
+~
+0 0 8075
+D1
+~
+~
+0 0 8072
+D2
+~
+~
+0 0 8077
+D3
+~
+~
+0 0 8079
+W 5 0 0
+Z 5 5
+S
+#8077
+A Cobbled Square~
+Unlike the dirt road to the south, this square is cobbled over with grey
+stones with few gaps between them.  A wide, expansive area, the square
+continues every way but back onto that dirt road.  Buildings surround the
+cobbled ground, made from inconsistent enough materials that it is quite
+obvious they were made at different times.  Aside from some dust from the
+road, the air is crisp and clear, and the square itself seems well-traveled.
+~
+~
+0
+0 0 1
+D0
+~
+~
+0 0 8076
+D1
+~
+~
+0 0 8073
+D2
+~
+~
+0 0 4377
+D3
+~
+~
+0 0 8078
+W 5 0 0
+Z 5 5
+S
+#8078
+A Cobbled Square~
+This square is cobbled over with grey stones with few gaps between them,
+though they do show many signs of travel.  A quite expansive area, it
+extends both to the north and east of you for some ways.  Buildings surround
+it, made from inconsistent enough materials that it is quite obvious they
+were made at different times.  A building to the south of you looks to have
+a shopfront, as well as some sort of other business as well.  The sign out
+front has a tuft of white fleece fastened to it.  
+~
+~
+0
+0 0 1
+D0
+~
+~
+0 0 8079
+D1
+~
+~
+0 0 8077
+D2
+~
+~
+0 0 8098
+W 5 0 0
+Z 5 5
+S
+#8079
+A Cobbled Square~
+Unlike the dirt road to the west, this square is cobbled over with grey
+stones with few gaps between them.  A wide, expansive area, the square
+continues every way but back onto that dirt road.  Buildings surround the
+cobbled ground, made from inconsistent enough materials that it is quite
+obvious they were made at different times.  Aside from some dust from the
+road, the air is crisp and clear, and the square itself seems well-traveled.
+~
+~
+0
+0 0 1
+D0
+~
+~
+0 0 8080
+D1
+~
+~
+0 0 8076
+D2
+~
+~
+0 0 8078
+D3
+~
+~
+0 0 8099
+W 5 0 0
+Z 5 5
+S
+#8080
+A Cobbled Square~
+This square is cobbled over with grey stones with few gaps between them,
+though they do show many signs of travel.  A quite expansive area, it
+extends both to the south and east of you for some ways.  Buildings surround
+it, made from inconsistent enough materials that it is quite obvious they
+were made at different times.  Two shops appear to border the square here. 
+The shop to the west seems much larger than the one to the north, and
+appears to specialize in leather goods.  
+~
+~
+0
+0 0 1
+D0
+~
+~
+0 0 8097
+D1
+~
+~
+0 0 8075
+D2
+~
+~
+0 0 8079
+D3
+~
+~
+0 0 8096
+W 5 0 0
+Z 5 5
+S
+#8081
+A Dirt Road~
+A rutted dirt road extends northwards here, coming to a cobblestone
+square to the south.  Buildings line the road, growing fewer the further
+away from the village square they get.  Grass lines the road, patchily
+tended, but adding a bit of colour to the otherwise drab surroundings.  In
+the far distance to the north, you can see a stand of trees and some
+buildings.  The air is clear and crisp, with little sign of dust from the
+road.  
+~
+~
+0
+0 0 13
+D0
+~
+~
+0 0 8082
+D2
+~
+~
+0 0 8075
+W 5 0 0
+Z 5 5
+S
+#8082
+A Dirt Road~
+A rutted dirt road curves from the south to the west here, a thin, rutted
+path branching northwards onto some farmland.  A small village begins to the
+south, houses lining the road, and a market square can be seen in the
+distance.  Scattered trees dot the landscape, thickening to the north past a
+couple buildings.  The air is fresh and clear, the road not traveled enough
+for there to be much dust.  The grass by the road grows higher the further
+away from the buildings it gets.  
+~
+~
+0
+0 0 13
+D0
+~
+~
+0 0 8083
+D2
+~
+~
+0 0 8081
+D3
+~
+~
+0 0 8088
+W 5 0 0
+Z 5 5
+S
+#8083
+A Grassy Yard~
+This grassy yard is crisscrossed with the evidence of passage, dirt paths
+created by wear rather than design.  Clover is mixed in with the grass,
+causing little white flowers to dot the landscape.  One path meanders to the
+east, looking to lead to the barn that stands directly northeast of you. 
+The yard also continues northwards, a farmhouse in that direction,
+surrounded by several tall trees.  The land is fenced in at the borders, but
+it seems too low to restrict much in the way of livestock.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 8084
+D1
+~
+~
+0 0 8085
+D2
+~
+~
+0 0 8082
+W 5 0 0
+Z 5 5
+S
+#8084
+An Open Farmhouse~
+This house is built low to the ground, with a gently sloped ceiling and
+sturdy applewood rafters.  Even though the front door of the house is to the
+south, the main sitting room is against the back wall, where a large window,
+covered with a shimmering magical field, allows a pristine view of a large
+apple orchard.  The kitchen is spacious, with a root cellar below, apple
+preserves evident in both spaces in addition to more usual supplies.  The
+house continues to the east, a number of bedrooms in that direction.  
+~
+~
+0
+0 0 0
+E
+cellar root below~
+The root cellar is filled with the standard perishables, meats, dairy,
+and vegetables.  Additionally, there are many rows of glass and earthenware
+jars of preserved apples, in slices, sauces, or reduced to butters.  
+~
+E
+window north back~
+The northern picturen window offers an expansive view of a large apple
+orchard, spreading out as far as can be seen through it.  
+~
+D1
+~
+~
+0 0 4393
+D2
+~
+~
+0 0 8083
+W 5 0 0
+Z 5 5
+S
+#8085
+A Grassy Yard~
+Grass covers the ground here, somewhat haphazardly tended but trimmed
+relatively short.  Paths have been worn onto the ground from the path to the
+west and the barn to the north.  The grass is also worn down leading to a
+wooden cart and several bins.  A large wooden press for apples is out here,
+too, with a canvas tarp left next to it.  A large tree grows near the barn,
+tall and straight, with a wooden swing hanging from the branches.  The sweet
+smell of apples tinges the air.  
+~
+~
+0
+0 0 2
+E
+press tarp~
+A large press for juicing apples sits out in the yard, with a large
+canvas tarp near to it.  Hooks have been staked into the ground to tie the
+tarp to.  
+~
+E
+swing wooden tree~
+A white-painted wooden swing hangs from one of the branches, offering a
+pleasant place to while away time during milder weather.  Despite being
+exposed to the elements, it seems free of splinters and the paint looks
+fresh.  
+~
+D0
+~
+~
+0 0 8086
+D3
+~
+~
+0 0 8083
+W 5 0 0
+Z 5 5
+S
+#8086
+An Apple-Filled Barn~
+Open to both the north and south, this barn serves as much a cover to the
+dirt path that runs through it as anything else.  While there are stalls to
+accomodate a cow and perhaps a team of oxen, the bulk of this barn seems
+devoted to storing or processing apples.  A large press sits in one corner
+near to several barrels, and elsewhere are baskets and bins for storage and
+transport as well.  Another corner of the barn seems to have a small
+carpentry shop as well, with a variety of lumber stacked in that area.  
+~
+~
+0
+0 0 0
+E
+press large corner~
+A large press for juicing apples sits in the corner, a number of storage
+barrels set next to it at the ready.  
+~
+D0
+~
+~
+0 0 8087
+D2
+~
+~
+0 0 8085
+W 5 0 0
+Z 5 5
+S
+#8087
+An Apple Orchard~
+A large apple orchard sprawls out over the land here, trees growing
+straight and tall.  They are laid out in neat rows, with paths worn into the
+grass between.  A number of baskets have been left near to the barn door to
+the south, and a ladder leans against the wall.  A white fence borders the
+orchard, low to the ground.  At the far western side of the orchard, a
+little stream meanders over the land, only a few feet wide and not even that
+deep to look at it.  A worn path runs through the barn to the south.  
+~
+~
+0
+0 0 3
+E
+basket baskets~
+A small pile of baskets for the apple harvest have been left near the
+back of the barn at the ready.  
+~
+E
+orchard tree trees~
+Row after row of apple trees comprises this orchard, spreading out a ways
+in all directions.  Their leaves are a verdant green, and seem relatively
+free of worms and other parasites.  
+~
+D2
+~
+~
+0 0 8086
+W 5 0 0
+Z 5 5
+S
+#8088
+A Dirt Road~
+A dirt road meanders from east to west here, the few ruts that mark it
+fading as the road continues westward.  Far to the south, enough buildings
+to make for a small village can be seen.  Scattered trees dot the landscape,
+with a large cluster to the northeast.  The air is fresh and clear, the road
+not traveled enough for there to be much dust.  The grass by the road is a
+foot or two high, shortening as it nears the farm to the northeast.  A small
+building can be seen in the distance to the northwest.  
+~
+~
+0
+0 0 13
+D1
+~
+~
+0 0 8082
+D3
+~
+~
+0 0 8089
+W 5 0 0
+Z 5 5
+S
+#8089
+A Meandering Dirt Road~
+A dirt road slowly meanders through a long curve from the north to the
+east, showing little signs of regular travel.  Far to the south, enough
+buildings to make for a small village can be seen.  Scattered trees dot the
+landscape, with a large cluster to the northeast.  The air is fresh and
+clear, and low grass has started to overtake the edges of the road.  Past
+it, the grass is a foot or two high, shortening as it nears the farm to the
+northeast.  A small building can be seen in the distance to the north of
+you.  
+~
+~
+0
+0 0 13
+D0
+~
+~
+0 0 8090
+D1
+~
+~
+0 0 8088
+W 5 0 0
+Z 5 5
+S
+#8090
+Outside A Wooden Hut~
+A dirt road to the south fades to more of a grassy trail here, where it
+passes by a small wooden hut.  It seems well-built, made with wooden boards
+rather than split logs, and with no visible gaps in the structure.  The
+grass outside is kept relatively short, and dotted over with a multitude of
+coloured flowers.  The windows are oiled parchment, preventing a clear view
+of the inside, but seem positioned to catch as much light as possible.  A
+grassed-over path meanders northeast, in the general direction of the stand
+of trees visible in the distance.  
+~
+~
+0
+0 0 2
+D0
+~
+~
+0 0 8091
+D2
+~
+~
+0 0 8089
+D3
+~
+~
+0 0 4394
+W 5 0 0
+Z 5 5
+S
+#8091
+Near a Cluster of Beehives~
+A number of wooden beehives are set about here in the tall grass, paths
+worn down to each of them.  The edge of an apple orchard is a ways to the
+east of you, and a slow, shallow stream wanders from it past the hives here.
+The air has a sweet tang to its scent, and a breeze often stirs the grass
+into waving lightly.  There seems little sign of traffic here, though a path
+to a house in the south shows that there is at least some.  Despite the
+height of the grass and lack of fencing, this area does look well and
+regularly tended.  
+~
+~
+0
+0 0 2
+E
+orchard apple tree trees~
+Off to the distance in the east is a fenced-off apple orchard, trees laid
+out in neat rows.  The fence runs right through the stream that makes its
+way past this spot here.  
+~
+E
+hive hives wood wooden beehive beehives~
+A good-sized collection of wooden beehives are clustered in the grass
+here, painted white.  The bees seem well-inclined to dispel any stereotypes
+of angry bees stinging everything in sight madly, as they fly from flower to
+flower or cluster within the hive.  
+~
+D2
+~
+~
+0 0 8090
+W 5 0 0
+Z 5 5
+S
+#8092
+A Warm Bakery~
+A large stone building with a new-looking tile floor, the large ovens
+against the back wall mark this place as a bakery.  Tall racks near the
+ovens allow product to cool, and others more to the front serve for display.
+Sparklingly polished is a glass display case for more elaborate works. 
+Beside it stands a counter, a stool behind it.  Against one wall is a wicker
+basket, cushioned with brightly patterned fabric.  A set of shelves also
+display an assortment of wax works, candles and delicately carved figurines.
+The scent of fresh-baked bread fills the warm air, along with other rich,
+sweet aromas in undertone.  The front door to the shop is to the north, a
+tiny bell hanging above it.  
+~
+~
+0
+0 0 0
+E
+wax candles candle figurine figurines~
+An assortment of waxworks are on display in this shop in addition to
+baked goods.  A variety of candles, from thin tapers to wide pillars sits
+here, several large candles floating an inch or three above the shelf
+lightly tethered to it with ribbon.  A few figurines of people and animals
+carved from wax are also on display, between the candles.  
+~
+E
+wicker basket~
+A wicker basket is sit against one wall, cushioned with patterned fabric.
+A dusting of fur clings to the fabric like lint, and a small ball with a
+bell in it is wedged into a corner of the basket.  
+~
+E
+display case cases product~
+A variety of baked goods sits on display here, added to throughout the
+day as they get made.  
+~
+D0
+~
+~
+0 0 8073
+W 5 0 0
+Z 5 5
+S
+#8093
+An Inn\@s Common Room~
+Several tables fill the common room of this inn, providing space for a
+goodly number of patrons.  A large fireplace ensures the room is warm even
+during the coldest of winters, and behind the bar, shelves lined with
+bottles showcase an alternate means of warmth.  The walls have been neatly
+papered over, showing an unobtusive pattern.  A kitchen looks to be in the
+back, a swinging door offering some separation.  Lace wool curtains cover
+the windows, which are paned with faintly visible magical fields.  A narrow
+wooden staircase leads up to a mezzanine and some visible doors up there. 
+The front door to the inn is to the west.  
+~
+~
+0
+0 0 0
+E
+counter bar bottle shelves~
+The bar is long and simply carved of solid wood, and the shelves behind
+are well-stocked with a variety of liquors.  Most of them are relatively
+local, or from no further away than Lithling, but there is a small selection
+of more foreign, imported beverages.  
+~
+D3
+~
+~
+0 0 8074
+D4
+~
+~
+0 0 8094
+W 5 0 0
+Z 5 5
+S
+#8094
+A Narrow Mezzanine~
+This open mezzanine offers a clear view of the inn\@s common room below. 
+A carved wooden railing prevents anyone falling down to the lower level and
+space for a green vine to cling to, reaching down from a hanging pot.  The
+stairs and floor seem regularly swept and free of dust.  A door leads to a
+room to the north, the knob polished brass.  A small room also branches off
+the mezzanine, looking to be a combination of a bedroom and office, with a
+desk piled high with papers, and a narrow bed.  
+~
+~
+0
+0 0 0
+E
+office bedroom~
+One of the rooms branching off the mezzanine is clearly not to let; the
+desk is piled high with records of purchase and sale for this inn.  It seems
+sparsely decorated, filled with the clutter that comes from permanent
+residence in such a small space.  
+~
+E
+plant vine hanging pot~
+A hanging pot dangles from the ceiling above the railing, a green vine
+dangling down from it.  It has been wraped around the railing a few times,
+carefully positioned to leave space to put one\@s hand.  
+~
+D0
+~
+~
+3 0 8095
+D5
+~
+~
+0 0 8093
+W 5 0 0
+Z 5 5
+S
+#8095
+A Small Inn Room~
+Small but comfortably appointed, this room offers a view of both the town
+square to the west and farmland to the east.  The bed is of decent size and
+make, the pillows overstuffed with feathers.  A dresser and wardrobe sit
+against one wall, and a set of shelves against another.  A comfortable
+leather chair next to a table offers a place to sit, and a slightly bubbled
+mirror stands in one corner.  A painting of a landscape hangs upon the wall,
+and knitted lace curtains cover the windows.  The door to the room is to the
+south.  
+~
+~
+0
+0 0 0
+E
+chair leather armchair~
+A large, overstuffed leather armchair sits in a corner of the room, a
+small table next to it.  Well padded and well-situated, it offers a good
+view about both the windows of the room.  
+~
+E
+east eastern~
+The eastern window looks out onto a view of the edge of the town and the
+farmland beyond.  In the distance, you can see what looks like either sheep
+or goats milling about a hilly pasture.  
+~
+E
+painting landscape wall~
+A tasteful painting of a local landscape decorates the wall here, farm
+animals milling about a field with a small, cheerily-painted home set near
+to them.  
+~
+E
+shelf shelves~
+A number of polished wooden shelves offer a place for guests to store
+their property, sturdy and well-built.  
+~
+E
+window windows view~
+The windows offer views out both the western wall and the eastern.  
+~
+E
+west western~
+The western window looks out onto a cobbled square, surrounded by several
+shops and buildings.  An old well sits in the centre, surrounded by benches
+and flowers.  
+~
+E
+dresser wardrobe~
+A carved wooden dresser and wardrobe offer guests places to store their
+clothing during stays at the inn.  Both offer quite a bit of space,
+well-suited to extended stays.  
+~
+D2
+~
+~
+3 0 8094
+W 5 0 0
+Z 5 5
+S
+#8096
+A Dim Leatherworks~
+Belts, pouches, gloves and sacks all hang from the walls of this shop,
+giving it a cluttered feel despite the size of it.  A wooden counter, lined
+with marked leather padding, blocks access to the back room of the shop. 
+Pieces of leather clothing sit on display, hanging on racks and sitting on
+shelves for sale.  The rich smell of leather fills the air, which
+complements the overall dimness of the room.  What windows the room does
+have are covered by drawn curtains, preventing light from fading the dyed
+leathers.  The front door to the shop is to the east, a bell over the door. 
+~
+~
+0
+0 0 0
+E
+clothing display racks shelves~
+Various articles of clothing are on display at this shop, coats and
+jackets in primary, but also available to be seen are pants, gloves, vests,
+and other common items.  Done in a variety of sizes and colours, they look
+quite well-made.  
+~
+E
+counter padding padded~
+The shop\@s counter is padded and covered with stretched leather, marked
+out with yardages.  A sharp knife sits close at hand, to cut pieces of
+leather to size.  
+~
+D1
+~
+~
+0 0 8080
+W 5 0 0
+Z 5 5
+S
+#8097
+A Small Brick Shop~
+This small brick building smells strongly of soap and its components. 
+The back of the store is given over to woodstoves, vats, and shelves holding
+tools and additives.  Several barrels and buckets hold various fats and lye.
+Blocks of soap sit ready for cutting, and finished product is set out on
+shelves for sale.  A wooden table serves as a counter on which to tally up
+purchases and also seems to see some use for working on some of the soap
+carvings that sit on windowsills and shelves.  The front door of the shop is
+to the south.  
+~
+~
+0
+0 0 0
+E
+carving carvings~
+A number of smooth soap carvings in fanciful shapes have been set about
+the shop as decoration, and a few of the soaps on for sale have been carved
+into shapes as well.  
+~
+E
+barrels buckets barrel bucket~
+A number of barrels and buckets have sharp aromas to them, filled with
+lye and the various fats used in the processing and creation of soaps.  
+~
+D2
+~
+~
+0 0 8080
+W 5 0 0
+Z 5 5
+S
+#8098
+A Fibre Mill~
+A counter divides a small section of this building into a storefront,
+where shelves display yarns and finished articles of clothing.  Behind it
+can be seen spinning wheels, low vats, a number of chairs, and other
+instruments for the processing of fibre into usable goods.  The air has a
+somewhat unpleasant tang to it, from the dyes and raw fibres both, and the
+flowers that decorate the place are little use at masking it.  The door is
+kept propped open most of the time, allowing a breeze through the shop.  The
+village square can be seen through the door to the north.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 8078
+W 5 0 0
+Z 5 5
+S
+#8099
+A Dirt Road~
+A dirt road branches off from a stone-cobbled square to the east, seeming
+well-traveled by the residents of this small village.  Buildings line the
+road, with flowerbeds in front of some of them.  A tree or two lines the
+road as well, offering a measure of shade for passers-by.  The road travels
+from the square westwards, several houses surrounding it there.  Little dust
+rises from the road here, leaving the air clean and crisp.  
+~
+~
+0
+0 0 13
+D1
+~
+~
+0 0 8079
+D3
+~
+~
+0 0 4374
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 4387 0 1048577
+D 0 8045 2 1048577
+D 0 8094 0 3
+D 0 8095 2 3
+M 0 8027 6 4382 3
+M 0 8027 6 4382 3
+M 0 8027 6 4382 3
+O 0 8026 0 8036
+P 0 8027 1 8026 1
+M 0 8026 2 8039 1
+M 0 8027 6 8039 3
+M 0 8027 6 8039 3
+M 0 8027 6 8039 3
+M 0 8028 9 8042 3
+M 0 8028 9 8042 3
+M 0 8028 9 8042 3
+M 0 8028 9 8043 3
+M 0 8028 9 8043 3
+M 0 8028 9 8043 3
+M 0 8028 9 8045 3
+M 0 8028 9 8045 3
+M 0 8028 9 8045 3
+M 0 8029 6 8050 3
+M 0 8029 6 8050 3
+M 0 8029 6 8050 3
+M 0 8029 6 8051 3
+M 0 8029 6 8051 3
+M 0 8029 6 8051 3
+M 0 8026 2 8086 1
+O 0 8031 0 8087
+O 0 8032 0 8091
+O 0 8028 0 8093
+O 0 8029 0 8093
+O 0 8030 0 8095
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

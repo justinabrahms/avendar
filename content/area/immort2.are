@@ -1,0 +1,4077 @@
+#AREADATA
+Name The Demesnes of Gods~
+Builders None~
+VNUMs 1200 1299
+Credits { 1 60} Staff     Demesnes of the Gods~
+Danger 0
+Security 9
+Areainfo 63
+Herbs 0
+Weather 2 2 2 1 0
+End
+
+
+
+#MOBILES
+V3 1200
+Heimdall~
+Heimdall~
+Heimdall, guardian of Bifrost, stands guard over the Rainbow Bridge.
+~
+Standing over 7 feet tall and muscled as only a god can be, Heimdall keeps
+his unsleeping gaze over the Rainbow bridge.  His trusty Gjallor-horn never
+leaves his side, and shall remain unwinded until the dread ship Naglfar sails
+towards Valhalla on the dawn of Ragnarok.
+~
+human~
+water scholar~
+ABTV 0 CDFJZ G 0
+57 30 1d1+19999 1d1+499 5d4+40 bash~
+crush~
+-20 -20 -20 -10
+ACDEFHIKLNOT ABP
+26 0 0 33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0
+AHMV ABCDEFGHIJK A large unknown
+V3 1201
+npc generic genericnpc~
+a generic npc~
+Generic NPC:  do \#npc ?\#
+~
+~
+human~
+water scholar~
+A 0 DFJLZ N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0
+AHMV ABCDEFGHIJK ABCDEFGHIJK medium flesh
+>verb_prog p npc~
+if compstr(2)== 
+  say No compstr2
+else
+  say compstr2 is \#$y2\#
+endif
+~
+|
+V3 1211
+none~
+(none)~
+(none)
+~
+(none)
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog sendenaeraichat~
+if compstr(21) == 
+  mpstring mob $i short $X
+else
+  mpechoat $f Line too long.
+  mpstring mob $i short $y2 $y3 $y4 $y5 $y6 $y7 $y8 $y9 $y10 $y11 $y12 $y13 $y14 $y15 $y17 $y18 $y19 $y20...
+endif
+mpbittrigger 22051
+mppurge self
+~
+>trigger_prog 100~
+mpechoat $n {b[{WKnights{b]{x $F: $I
+~
+|
+V3 1212
+thieftrap~
+A hidden trap~
+Thief trap
+~
+~
+human~
+water scholar~
+AB 0 DFL N 0
+0 0 100d100+100 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 3~
+mpgoto 9589
+~
+>greet_prog 100~
+mptrap $n
+mpgoto 9589
+~
+|
+V3 1213
+enaerainotebot~
+the enaerainotebot~
+The notebot of the Knights of Enaerai is here, making everyday miracles.
+~
+His purpose: To obey the Knight sigils, when Knights write a note to
+\#knights\#, copying the names of the Knights into the \#to\# field, by taking
+those names from the knight stat tools in 1261.  
+~
+human~
+water scholar~
+AL 0 DFJLZ N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog addressthenote~
+mpstring mob $i short enaerai
+mpat 1261 get all
+mpat 1261 drop all
+mpforce $f note to $I
+mppurge self
+~
+>take_prog all~
+mpstring mob $i short $I $o
+~
+|
+V3 1214
+bot statbot knightdutystatbot~
+a knight statbot~
+A knight statbot is here.
+~
+It is the bot of the future.
+~
+human~
+water scholar~
+AL 0 DFJLZ N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p read~
+if compstr(2)==roster
+or compstr(2)==parchment
+or compstr(2)==sheet
+or compstr(2)==wall
+  mpseewizi
+  if isimmort($n)
+  else
+    mpechoaround $n $N looks at the roster.
+    mplag $n 2
+  endif
+  if isbitset($n)==24010
+  else
+    mpechoat $n A large triangled-eye sigil shimmers over the surface of the parchment.
+    mpechoat $n The letters beneath seem to wriggle and shift, and are quite illegible.
+    break
+  endif
+  mpfocus $n
+  mpechoat $n ---------------------------------------
+  mpechoat $n |        {CThe Knight Duty Roster{x       |
+  mpechoat $n ---------------------------------------
+  mpat 1261 get all
+  mpat 1261 drop all
+  mpechoat $n ---------------------------------------
+  mpunfocus
+  if isbitset($n)==24013
+  or isbitset($n)==24014
+     if isbitset($n)==24016
+     else
+       mpechoat $n {rOOC: As a Lord/Lady or Captain, you can:  {Wrosterdel (name){r  or  {Wrosteradd (name){X
+       mpechoat $n {rOOC: Only do so when Knights are officially join or are removed from the Order.{x
+       mpbitset $n 24016 1
+     endif
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog p look~
+if compstr(2)==roster
+or compstr(2)==scroll
+or compstr(2)==parchment
+or compstr(2)==sheet
+or compstr(2)==wall
+  mpseewizi
+  if isimmort($n)
+  else
+    mpechoaround $n $N looks at the roster.
+    mplag $n 2
+  endif
+  if isbitset($n)==24010
+  else
+    mpechoat $n A large triangled-eye sigil shimmers over the surface of the scroll.
+    mpechoat $n The letters beneath seem to wriggle and shift, and are quite illegible.
+    break
+  endif
+  mpfocus $n
+  mpechoat $n ---------------------------------------
+  mpechoat $n |        {CThe Knight Duty Roster{x       |
+  mpechoat $n ---------------------------------------
+  mpat 1261 get all
+  mpat 1261 drop all
+  mpechoat $n ---------------------------------------
+  mpunfocus
+  if isbitset($n)==24013
+  or isbitset($n)==24014
+     if isbitset($n)==24016
+     else
+       mpechoat $n {rOOC: As a Lord/Lady or Captain, you can:  {Wrosterdel (name){r  or  {Wrosteradd (name){X
+       mpechoat $n {rOOC: Only do so when Knights are officially join or are removed from the Order.{x
+       mpbitset $n 24016 1
+     endif
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>take_prog all~
+mpechoat $f $o, {W$O{x days of active service.
+~
+>time_prog 12~
+mpmload 1215
+mpforce statincrementbot mpbittrigger 24010
+mppurge statincrementbot
+~
+>verb_prog p rosterdel~
+if isbitset($n)==24013
+or isbitset($n)==24014
+  mpmload 1215
+  mpforce statincrementbot mpat 1261 get $y2
+  mppurge statincrementbot
+  mpechoat $n $y2 has been removed from the duty roster.
+else
+  mpechoat $n You aren\@t a Knight leader!
+  mplag $n 3
+endif
+~
+>verb_prog p rosteradd~
+if isbitset($n)==24013
+or isbitset($n)==24014
+  mpoload 1217
+  mpstring obj rostertool long The stat tool for $y2.
+  mpstring obj rostertool name $y2
+  mpat 1261 drop $y2
+  mpechoat $n $y2 is now listed on the duty roster.
+else
+  mpechoat $n You aren\@t a Knight leader!
+  mplag $n 3
+endif
+~
+|
+V3 1215
+statincrementbot bot~
+a statincrementbot~
+A statincrementbot is here.
+~
+It\@s the underling prog bot of the future.  
+~
+human~
+water scholar~
+AL 0 DFJLZ N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>take_prog all~
+mpvalueset 0 $O
+mpmath 0 $0 + 1
+if value(0) == 1
+  mpvalueset 1 1
+endif
+if value(0) == 10
+  mpvalueset 1 2
+endif
+if value(0) == 50
+  mpvalueset 1 3
+endif
+if value(0) == 100
+  mpvalueset 1 4
+endif
+if value(0) == 500
+  mpvalueset 1 5
+endif
+if value(0) == 600
+  mpvalueset 1 6
+endif
+if value(0) == 700
+  mpvalueset 1 7
+endif
+if value(0) == 800
+  mpvalueset 1 8
+endif
+mpstring obj $o short $0
+~
+>trigger_prog 100~
+mpat 1261 get $N
+if value(1) == 1
+  mpstring char $n extitle Knight Enlistee
+  mpechoat $n Word spreads of your enlisting in the Order of the Knights.
+endif
+if value(1) == 2
+  mpstring char $n extitle Knight Initiate
+  mpechoat $n After continued service, you become known as a Knight Initiate.
+endif
+if value(1) == 3
+  mpstring char $n extitle Knight Acolyte
+  mpechoat $n After continued service, you become known as a Knight Acolyte.
+endif
+if value(1) == 4
+  mpstring char $n extitle Knight of Enaerai
+  mpechoat $n You are well-known throughout the land as a Knight of Enaerai.
+  mpechoat $n {WYou feel Enaerai\@s blessings upon you.{x
+endif
+if value(1) == 5
+  mpstring char $n extitle Steadfast Knight
+  mpechoat $n Throughout the land you are recognized as a Steadfast Knight.
+endif
+if value(1) == 6
+  mpstring char $n extitle Seasoned Knight
+  mpechoat $n Throughout the land you are held as a Seasoned Knight.
+endif
+if value(1) == 7
+  mpstring char $n extitle Veteran Knight
+  mpechoat $n You are well-known throughout Avendar as a Veteran Knight.
+endif
+if value(1) == 8
+  mpstring char $n extitle True Knight
+  mpechoat $n {YA soft voice whispers, \@My True Knight.\@{x
+  mpechoat $n {WYou feel the consecrating touch of Enaerai upon you!{x
+  mpechoaround $n {W$N glows for a moment with a soft silver light.{x
+  note to Enaerai
+  note subject $N has been Consecrated a True Knight.
+  note + nt
+  note post
+endif
+mpat 1261 drop $N
+mpvalueset 1 0
+~
+>rand_prog 100~
+mppurge self
+~
+|
+V3 1218
+bot generic~
+a generic bot~
+Serving time in purgatory as a Dov testbot.
+~
+Its a generic bot.
+~
+human~
+water scholar~
+AL 0 DFJLZ N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0
+AHMV ABCDEFGHIJK 0 medium flesh
+V3 1219
+wolf rangercall~
+the wolf~
+A wolf pads silently along.
+~
+This sleek silver-backed wolf pads silently along.  Moving from place to
+place, the wolf sniffs the ground, searching for prey.
+~
+wolf~
+water scholar~
+AN 0 Z N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0
+AGV ACDEFJKQV A medium unknown
+>load_prog 100~
+mpseewizi
+~
+>greet_prog 100~
+if ispc($n)
+  if remembers($n)
+    break
+  else
+    mpremember $n
+    if isgood($n)
+      at enaeraiscalebot mpforce enaeraiscalebot mpvalueup 0 1
+    endif
+    if isevil($n)
+      at enaeraiscalebot mpforce enaeraiscalebot mpvalueup 1 1
+    endif
+    if islawful($n)
+      at enaeraiscalebot mpforce enaeraiscalebot mpvalueup 2 1
+    endif
+    if ischaotic($n)
+      at enaeraiscalebot mpforce enaeraiscalebot mpvalueup 3 1
+    endif
+    if israce($n)==shuddeni
+      at enaeraiscalebot mpforce enaeraiscalebot mpvalueup 4 1
+    endif
+    if israce($n)==ch\@taren
+      at enaeraiscalebot mpforce enaeraiscalebot mpvalueup 5 1
+    endif
+  endif
+endif
+~
+|
+V3 1223
+natureechobot natureecho bot nature echo~
+a generic bot~
+A natureechobot is here, echoing.. you know.. nature.
+~
+It probably looks like a hippy. Fucking hippies.
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 2~
+mpvaluerand 0 1 5
+if mobvalue(0) == 1
+mpecho A strong gust of wind blows past.
+endif
+if mobvalue(0) == 2
+mpecho A bolt of lightning flashes brightly, illuminating the chamber for a brief moment.
+endif
+if mobvalue(0) == 3
+mpecho A great rumble accompanies a small earthquake, causing the walls of the chamber to change slightly.
+mpecho The roots covering the walls shift slightly, adjusting to their new contours.
+endif
+if mobvalue(0) == 4
+mpecho A small fire breaks out at the center of the chamber.
+mpecho A small spray of rain comes from above, dousing the flames.
+endif
+if mobvalue(0) == 5
+mpecho The air around you becomes noticably warmer, then slowly begins to cool.
+endif
+~
+|
+V3 1230
+spirit blazing seething arkhspirit~
+a blazing spirit~
+A seething spirit, reeking of sulfur and brimstone, blazes before you.
+~
+A blazing mass stands before you, its flaming tendrils writhing about
+wildly.  The stench of sulfurous fumes permeates the air around it, giving
+the air a noxious quality.  Billowing clouds of smoke trail behind the
+being, filling the area like a dense fog.  In the heart of the inferno, you
+can see the vague outline of a seething shuddeni, snarling in rage.  
+~
+human~
+water scholar~
+ABX 0 DFJTVZ E 0
+55 100 600d1+0 0d0+0 1d35+76 fire~
+flame~
+-24 -24 -24 -7
+CFHK ABH
+26 0 0 0 0 0 0 0 0 -33 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0
+AHMV ABCDEFGHIJK A medium unknown
+>fight_prog 4~
+mpcast 205 55
+~
+>death_prog 100~
+mpecho The flames surrounding a blazing spirit suddenly die out, leaving nothing more than a charred husk.
+~
+>rand_prog 100~
+if mobvalue(3) == 0
+ mpaddaffect arkhspirit 393 60 -1 0 0 0
+ mpaddaffect arkhspirit 19 60 -1 0 0 262144
+ mpvalueset 3 1
+endif
+~
+|
+V3 1240
+black-scaled srryn shaman ancient~
+an ancient srryn~
+A black-scaled srryn stands silently by the edge of the pit.
+~
+In Progress
+~
+srryn~
+water scholar~
+ABDLT 0 DFJVZc E 0
+60 53 1d1+12999 0d0+0 10d9+80 none~
+hit~
+-80 -80 -80 -80
+CHMNV ABHb
+26 0 0 45 60 0 0 0 0 -20 0 0 20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0
+AHMX ABCDEFGIJKLQUVX C large flesh
+V3 1241
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0
+AHMV ABCDEFGHIJK A medium unknown
+V3 1245
+srryn black-scaled black-cowled black cowled scaled slave blacksrrynslave~
+a black-cowled srryn slave~
+A black-cowled srryn stands here, lurking amongst the shadows.
+~
+Encloaked in a dark robe, this srryn roams about the lands, doing the
+bidding of his master.  His black snout sticks outwards of his hood, and his
+teeth are easily visible as jagged spikes hanging outward of his lips.  His
+scales are a charcoal black, gleaming softly in what light is avaliable. 
+Around his neck, a thick band of rune-marked stone is worn, etched with
+carved markings seeming to symbolize his binding to those that summon him.  
+~
+srryn~
+water scholar~
+AI 0 D E 0
+51 20 1d1+1099 0d0+0 7d5+45 slash~
+claw~
+-20 -20 -20 -20
+CIMNV 0
+26 0 0 0 0 0 0 0 20 -20 0 0 20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0
+AHMX ABCDEFGIJKLQUVX C medium flesh
+V3 1255
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0
+AHMV ABCDEFGHIJK 0 medium flesh
+V3 1260
+none~
+none~
+None
+~
+~
+human~
+water scholar~
+AL 0 DFJLZ N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0
+AHMV ABCDEFGHIJK 0 medium flesh
+V3 1290
+security engineer~
+a security engineer~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 slash~
+grep~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0
+AHMV ABCDEFGHIJK 0 medium flesh
+V3 1299
+scrollbot~
+scrollbot~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 L N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0
+AHMV ABCDEFGHIJK A medium unknown
+>trigger_prog 100~
+bow $n
+~
+>speech_prog p Yallahna mlon uzix ys~
+mproomcmd mptrigger all
+~
+|
+#0
+
+
+
+#OBJECTS
+V12
+1209
+sigil harp golden~
+the Sigil of the Golden Harp~
+Almost ethereal, this sigil depicts a beautiful golden harp.~
+~
+energy~
+armor AGIM 0 AR
+0 0 0 0 0
+60 0 3906570 0 P
+0
+A
+18 15
+A
+19 15
+A
+13 100
+A
+17 -90
+E
+songs~
+\\\@The Battle of Sarn\@
+\@The Piper\@s Jig\@
+\@The Blade of Jahr\@
+\@The Dark Stairs of Nog\@
+\@The Feast of Sog\@
+~
+>rand_prog 1~
+opvaluerand 0 1 2
+if objvalue(0) == 1
+opechoat $o A warmth emanates from the golden harp, and suffuses your body.
+opcast 34 99
+opcast 33 99
+opcast 37 99
+opechoaround $o $O\@s sigil glows a soft blue.
+endif
+~
+>speech_prog p The feast of Sog~
+if isowner($n)
+if isfight($n)
+opechoat $o You can\@t call upon Sog\@s bounty in combat.
+else
+opvaluerand 0 1 5
+oplag $n 3
+if objvalue(0) == 1
+opechoat $o You miss a note, and the song is ruined.
+else
+opforce $o sing The feast went high, the feast went low
+opforce $o sing The song went up from the heavens above, and the hells down below
+opforce $o sing Many a mortal wondered what such tidings might bestow,
+opforce $o sing Until the earth trembled, and the clouds went a thundering
+opforce $o sing The old men cackled, the old men sang -
+opforce $o sing Feast days a come! Sog\@s a\@ eating!
+opecharound $o As $o completes the song, a feast appears!
+opechoat $o As you complete the song, you call upon a portion of Sog\@s bounty.
+opcast 29 99
+opcast 29 99
+opcast 29 99
+endif
+endif
+~
+>speech_prog p The blade of Jahr~
+if isowner($n)
+if isfight($n)
+oplag $n 3
+opvaluerand 0 1 7
+if objvalue(0) == 1
+opechoat $o You hesitate, ruining the rhythm of the song.
+else
+opforce $o sing Jhar\@s swift sword, war\@s quick fire
+opforce $o sing \@Gainst death and all-oblivious enmity
+opforce $o sing Swift obtains the funeral pyre
+opforce $o sing Cutting off wicked posterity
+if objvalue(0) == 2
+opcast 81 99
+endif
+if objvalue(0) == 3
+opcast 89 51
+endif
+if objvalue(0) == 4
+opcast 52 99
+endif
+if objvalue(0) == 5
+opcast 205 99
+endif
+if objvalue(0) == 6
+opcast 133 99
+endif
+if objvalue(0) == 7
+opcast 141 99
+endif
+endif
+else
+opechoat $o You can only use this song in combat.
+endif
+endif
+~
+>speech_prog p The Piper\@s Jig~
+if isowner($n)
+if isfight($n)
+oplag $n 2
+opvaluerand 0 1 5
+if objvalue(0) == 1
+opechoat $n You try to recall the words of the Piper\@s Jig, but a line eludes your memory.
+else
+opforce $o sing The piper danced, the piper jigged
+opforce $o sing The piper combed his hair with a twig
+opforce $o sing The piper\@s song, the piper\@s shout
+opforce $o sing  Made the piper\@s feet fly merrily \@bout
+opforce $o sing  The piper danced, the piper flew
+opforce $o sing  The piper steadily faded from view!
+opechoaround $o $O vanishes in a flash of light!
+if objvalue(0) == 2
+opvaluerand 1 801 1000
+optransfer $o $1
+endif
+if objvalue(0) == 3
+opvaluerand 1 3401 3683
+optransfer $o $1
+endif
+if objvalue(0) == 4
+opvaluerand 1 1501 1699
+optransfer $o $1
+endif
+if objvalue(0) == 5
+opvaluerand 1  17001 17210
+optransfer $o $1
+endif
+opforce $o look
+endif
+else
+opechoat $n You need to be fighting to use this song.
+endif
+endif
+~
+>speech_prog p The Dark Stairs of Nog~
+if isowner($n)
+if isfight($n)
+opechoat $o You can\@t sing the Dark Stairs of Nog during combat.
+else
+opvaluerand 0 1 5
+if objvalue(0) == 1
+opechoat $o You sing a note off-key, and the song is ruined.
+else
+opcast 94 99  
+opcast 96 99 
+opforce $o sing On eldritch wing doth elder thing
+opforce $o sing Up countless stairs do sing
+opforce $o sing Hoping perchance to find that for which they long - 
+opforce $o sing Faerie Dust, Angel Fire, Devil\@s Heart, Witch\@s Pire
+opforce $o sing Atop the Dark Stairs of Nog
+oplag $o 3
+endif
+endif
+endif
+~
+>fight_prog 2~
+opechoat $o A warmth emanates from the golden harp, and suffuses your body.
+opechoaround $o $O\@s sigil glows a soft blue.
+opcast 34 99
+~
+>speech_prog fux~
+opvaluerand 0 801 820
+optransfer $n $0
+~
+>speech_prog p The Battle of Sarn~
+if isowner($n)
+opforce $o sing At Sarn, that eve, the fields were gray
+opforce $o sing From many battles fought through day
+opforce $o sing The soldiers trod to their homeland
+opforce $o sing A ragged, tired, but triumphant band
+opforce $o sing Their armor and shields, sturdily made
+opforce $o sing Had saved them from the foeman\@s blade
+opechoat $o 
+opechoat $o You feel yourself protected by the magic of the song.
+opcast 3 51 
+opcast 125 51
+opcast 70 25
+endif
+~
+>speech_prog hoo~
+opecho HOOOOOO
+ 
+~
+|
+V12
+1210
+sigil wrath gods~
+the Sigil of the Wrath of the Gods~
+The Sigil of the Wrath of the Gods~
+~
+energy~
+armor M 0 AR
+0 0 0 0 0
+52 0 0 0 P
+0
+A
+12 -50
+A
+13 -50
+A
+18 -5
+A
+19 -5
+A
+42 -20
+>rand_prog 100~
+if objvalue(0) == 200
+opvaluerand 1 1 7
+if objvalue(1) == 1
+opechoat $o You gaze in horror upon your hands, as you are smitten with a plague!
+opechoaround $o Almost in an eyeblink, plague sores form on $O\@s body, spreading like wildfire over their body.
+opaddaffect 104 60 8 1 -5 8388608
+endif
+if objvalue(1) == 2
+opechoat $o A sickening emptiness sweeps over you, as you realize the gods have truly abandoned you.
+opechoaround $o $O\@s eyes dull for a moment, as they realize the gods have forsaken them.
+opaddaffect 39 60 34 7 1024
+opaddaffect 39 60 8 18 -7 1024
+endif
+if objvalue(1) == 3
+opechoat $o You double over in agony as the god\@s wrath sears your body! 
+opechoaround $o $O doubles over in agony.
+opaddaffect 306 60 8 1 -3 0
+endif
+if objvalue(1) == 4
+opechoat $o An eerie pink fire begins to lick at your body, bathing you in its alien light.
+opechoaround $o $O is bathed in an eerie pink light.
+opaddaffect 59 60 8 17 150 256
+endif
+if objvalue(1) == 5
+opechoat $o A sudden darkness envelops your sight as the gods strike you blind!
+opechoaround $o $O staggers, and begins to stumble blindly about the room.
+opaddaffect 8 60 5 18 -4 1
+endif
+if objvalue(1) == 6
+opechoat $o The piercing wail of a god\@s scream shatters your eardrums.
+opechoaround $o $O pauses, as if hearing something in the distance.
+opaddaffect 356 60 5 27 0 16777216 O
+endif
+if objvalue(1)==7
+opechoat $o The gods bathe you in the light of mad lunus, cursing you for your misdeeds.
+opechoaround $o $O gets a strange, almost alien look in their eyes as they are bathed in the light of the moon.
+opaddaffect 278 60 5 0 0 0
+endif
+opvalueset 0 0
+else
+opvalueup 0 
+endif
+~
+|
+V12
+1211
+eye triangle Enaerai sigil brand tattoo~
+the Sigil of the Eye of Enaerai~
+A sigil depicting the symbol of Enaerai, an eye within a tri-stone, shimmers with a silver-gray luster.~
+~
+flesh~
+armor MSZa 0 AR
+4 4 4 4 0
+52 0 54787 0 P
+0
+A
+18 2
+A
+19 2
+A
+41 5
+A
+42 5
+>speech_prog p geroffgeroff~
+if isworn($o)
+opzap
+opechoat $o The Eye falls from you.
+endif
+~
+|
+V12
+1212
+Sigil Sapphire Spear~
+the Sigil of the Sapphire Spear~
+The sigil of the sapphire spear.~
+~
+energy~
+armor AM 0 AR
+0 0 0 0 0
+52 0 0 0 P
+0
+>speech_prog p Jolinn\@s hand protect me from evil.~
+opcast 108 99
+~
+>speech_prog p Jolinn\@s hand protect me from evil~
+opcast 108 99
+~
+>fight_prog 2~
+opcast 81 99
+~
+>speech_prog p Jolinn\@s hand protect me from harm~
+opcast 108 99 $n
+~
+|
+V12
+1213
+sigil sapphire spear~
+the Sigil of the Sapphire Spear~
+A sigil of the sapphire spear is here.~
+~
+water~
+armor M 0 AR
+0 0 0 0 0
+60 0 32135850 0 P
+0
+A
+31 100
+A
+32 100
+A
+19 200
+A
+18 1000
+>fight_prog 5~
+opcast 114 51
+~
+|
+V12
+1214
+eye triangle Enaerai sigil brand tattoo~
+the Sigil of the Eye of Enaerai~
+A sigil depicting the symbol of Enaerai, an eye within a tri-stone, shimmers with a silver-gray luster.~
+~
+flesh~
+armor MSZad 0 AR
+3 3 3 3 0
+52 0 54787 0 P
+0
+A
+18 2
+A
+19 2
+A
+42 5
+A
+41 5
+>verb_prog p note to knights~
+if isbitset($n) == 22051
+  opmload 1213
+  opforce enaerainotebot mpfocus $n
+  opforce enaerainotebot addressthenote
+  opverbstop
+else
+  opinterpret $n $x
+  opverbstop
+endif
+~
+|
+V12
+1215
+.~
+.~
+.~
+~
+steel~
+special 0 0 A
+0 0 0 0 0
+61 1 0 0 P
+1
+V12
+1223
+sigil saurian tooth~
+the Sigil of the Saurian Tooth~
+You see the mark of a reptilian tooth.~
+~
+unknown~
+armor AMa 0 AR
+4 4 4 4 0
+52 0 5554 0 P
+0
+A
+19 2
+A
+24 -3
+A
+1 1
+>fight_prog 2~
+opecho $I changes to the color of a burning flame!
+opcast 405 99
+~
+>fight_prog 2~
+opecho $I bleeds to a shade of deep crimson!
+opcast 71 99
+~
+|
+V12
+1224
+sigil saurian claw~
+the Sigil of the Saurian Claw~
+You see the mark of a reptilian claw.~
+~
+unknown~
+armor AMa 0 AR
+8 8 8 8 0
+52 0 28586 0 P
+0
+A
+19 3
+A
+24 -4
+A
+1 1
+>fight_prog 2~
+opecho $I looks like it has come alive as it blurs violently!
+opcast 71 99
+~
+>speech_prog p Clothe me, Lord.~
+if isfight($o)
+  break
+else
+  if isworn($o)
+    opoload 1228
+    opecho A set of black robes fall in a heap at the feet of $O.
+    opforce $o get sept
+    opforce $o wear sept
+    oplag $o 1
+  endif
+endif
+~
+|
+V12
+1228
+robes saurian darklord sept~
+robes of a Saurian Darklord~
+You see a set of black robes with some glyphs inscribed upon them.~
+~
+cloth~
+armor CEGJLP 0 AK
+10 10 10 10 0
+51 50 10384 2 P
+0
+A
+19 2
+A
+18 2
+>fight_prog 3~
+opechoat $o $I tighten slightly about you, filling you with power.
+opechoaround $o $I seem to tighten around the frame of $O.
+opechoat $o You hiss menacingly at $N.
+opechoaround $o $O hisses menacingly at $N.
+opechoat $N $O hisses menacingly at you.
+opcast 38 99
+~
+>fight_prog 2~
+opecho Small wisps of smoke rise from $I, but nothing seems to happen.
+~
+>fight_prog 1~
+opecho $I burst into tremendous flames and incinerate into a pile of ash.
+opcastoff 205 99
+opoload 1227
+opecho A pile of ash falls to the ground near the feet of $O.
+oppurge self
+~
+>remove_prog 100~
+oppurge self
+~
+|
+V12
+1230
+sigil clawed fist~
+the Sigil of the Clawed Fist~
+The sigil of the clawed fist.~
+~
+energy~
+armor EMSa 0 AR
+0 0 0 0 0
+60 0 25000 0 P
+0
+A
+19 3
+>speech_prog p Kir ayum i\@jani!~
+opcast 139 60
+oplag $o 1
+~
+|
+V12
+1231
+sigil fist blackened~
+the Sigil of the Blackened Fist~
+The sigil of the blackened fist.~
+~
+energy~
+armor EMSa 0 AR
+0 0 0 0 0
+60 0 29238 0 P
+0
+A
+19 3
+A
+18 3
+>fight_prog 3~
+opcast 58 99
+~
+>speech_prog p Kir ayum i\@jani!~
+opcast 139 99
+oplag $o 1
+~
+|
+V12
+1232
+sigil blood-stained fist~
+the Sigil of the Blood-stained Fist~
+The sigil of the blood-stained fist.~
+~
+energy~
+armor EMSa 0 AR
+0 0 0 0 0
+60 0 36575 0 P
+0
+A
+19 3
+A
+18 3
+A
+13 15
+>fight_prog 3~
+opcast 58 99
+~
+>speech_prog p Kir ayum i\@jani!~
+opcast 139 99
+oplag $o 1
+~
+>speech_prog p Ia tresta kuttalik Arkhilhra!~
+opcast 398 99 $o
+~
+|
+V12
+1233
+sigil blood-stained fist~
+the Sigil of the Blood-stained Fist~
+The sigil of the blood-stained fist.~
+~
+energy~
+armor EMSa 0 AR
+0 0 0 0 0
+60 0 313500 0 P
+0
+A
+13 50
+A
+19 3
+>rand_prog 100~
+if objvalue(0) > 0
+ opvaluedown 0
+endif
+if objvalue(1) > 0
+ opvaluedown 1
+endif
+if mobhere(1230)
+ opvalueset 1 2
+endif
+~
+>speech_prog p Yagosh ikhrajji tresta Arkhilhra!~
+if objvalue(1) > 0
+ opechoat $o The Spirit of Arkhural is already with you.
+else
+ if objvalue(0) == 0
+  opmload 1230
+  opecho A blazing spirit erupts from the ground, sending a cloud of ash into the air! 
+  opforce arkhspirit mpaddaffect arkhspirit 393 60 -1 0 0 0 
+  opvalueset 0 84
+  if isfight($o)
+   opforce arkhspirit mpkill $t
+  endif
+ else
+  opechoat $o You don\@t feel ready to call upon the Spirit of Arkhural yet.
+ endif
+endif
+~
+>speech_prog p Kir ayum i\@jani!~
+opcast 139 99
+oplag $o 1
+~
+>fight_prog 3~
+opcast 58 99
+~
+|
+V12
+1234
+no name~
+the Sigil of the Clawed Fist~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+V12
+1245
+alabaster pegasus sigil joy~
+an alabaster pegasus~
+You see a pure white pegasus, gleaming against the darkness of your arm.~
+~
+flesh~
+armor MSYZa 0 AR
+6 7 7 9 0
+52 0 2847 0 P
+0
+A
+20 -2
+>speech_prog p May your thoughts be filled with joy!~
+if isfight($n)
+^M  opcastoff 101 50
+^Mendif
+^M~
+>speech_prog p Joy!~
+~
+|
+V12
+1247
+alabaster pegasus sigil freedom~
+the Sigil of an Alabaster Pegasus~
+You see a pure white pegasus, gleaming against the darkness of your arm.~
+~
+flesh~
+armor IMSYZa 0 AR
+6 7 7 9 0
+52 0 22347 0 P
+0
+A
+41 5
+A
+20 -2
+A
+13 5
+>speech_prog p Let my spirit be free~
+opecho {YThe Sigil of an Alabaster Pegasus glows softly.{x
+if israce($n) == ch\@taren
+  if class($n) == 9
+    opcast 414 99
+  else
+    opcast 689 99
+  endif
+else
+    opcast 103 99
+endif
+~
+>verb_prog p invoke sigil~
+if isowner($n)
+  if snaffected($n) == 716
+    opechoat $n {YYou are already filled with the spirit of freedom.{x
+  else
+     opechoat $n {YYou feel a warm sensation sweep over your body as you invoke your sigil.{x
+    opechoaround $n {YA glow emanates from $O\@s sigil, and quickly surrounds $s form before vanishing.{x
+    opaddaffect 716 57 24 0 25 0
+  endif
+  opverbstop
+else
+  opinterpret $n $x
+endif
+~
+>fight_prog 1~
+if snaffected($o) == 416
+else
+  opechoat $o {YYour Sigil of an Alabaster Pegasus flashes for a moment.{x
+  opechoaround $o {Y$O\@s Sigil of an Alabaster Pegasus flashes for a moment.{x
+  opaddaffect 416 51 12 18 8 0
+  opaddaffect 416 51 12 19 8 0
+  opaddaffect 416 51 12 17 30 0
+endif
+~
+>speech_prog p I am free!~
+if isowner($n)
+  if snaffected($n) == 716
+    opechoat $n {Y{YYou are already filled with the spirit of freedom.{x
+  else
+    opaddaffect 716 57 24 0 25 0
+    opechoat $n {YYou feel the spirit of freedom settle within you.{x
+  endif
+else
+  opinterpret $n $x
+endif
+~
+|
+V12
+1248
+sigil soaring pegasus~
+the Sigil of a Soaring Pegasus~
+The sigil of a soaring pegasus is imprinted on your arm.~
+~
+flesh~
+armor IMSYZa 0 AR
+8 8 8 10 0
+52 0 71206 0 P
+0
+A
+41 10
+A
+20 -3
+A
+13 10
+>speech_prog p Let my spirit be free~
+opecho {YThe Sigil of a Soaring Pegasus glows softly.{x
+if israce($n) == ch\@taren
+  if class($n) == 9
+    opcast 414 99
+  else
+    opcast 689 99
+  endif
+else
+    opcast 103 99
+endif
+~
+>verb_prog p invoke sigil~
+if isowner($n)
+  if snaffected($n) == 716
+    opechoat $n {YYou are already filled with the spirit of freedom.{x
+  else
+    opaddaffect 716 57 24 0 50 0
+    opechoat $n {YYou feel a warm sensation sweep over your body as you invoke your sigil.{x
+    opechoaround $n {YA glow emanates from $O\@s sigil, and quickly surrounds $s form before vanishing.{x
+  endif
+else
+  opinterpret $n $x
+endif
+~
+>fight_prog 2~
+if snaffected($o) == 416
+else
+  opechoat $o {YYour Sigil of a Soaring Pegasus  flashes for a moment.{x
+  opechoaround $o {Y$O\@s Sigil of a Soaring Pegasus flashes for a moment.{x
+  opaddaffect 416 51 12 18 10 0
+  opaddaffect 416 51 12 19 10 0
+  opaddaffect 416 51 12 17 35 0
+endif
+~
+>speech_prog p I am free!~
+if isowner($n)
+  if snaffected($n) == 716
+    opechoat $n {YYou are already filled with the spirit of freedom.{x
+  else
+    opaddaffect 716 57 24 0 50 0
+    opechoat $n {YYou feel the spirit of freedom settle within you.{x
+  endif
+else
+  opinterpret $n $x
+endif
+~
+>speech_prog p May Rystaia\@s light clear my mind~
+if isowner($n)
+  opechoat $o {YYour sigil tingles for a moment.{x
+  opcast 420 99
+else
+  opinterpret $n $x
+endif
+~
+|
+V12
+1249
+sigil pegasus wings flame~
+the Sigil of a Pegasus with Wings of Light~
+The pegasus with wings of light glows faintly.~
+~
+flesh~
+armor MSYZa 0 AR
+9 10 10 12 0
+52 0 162610 0 P
+0
+A
+41 15
+A
+20 -5
+A
+18 2
+A
+13 20
+>fight_prog 2~
+if sector($o) == inside
+or sector($o) == underground
+or sector($o) == underwater
+  mpechoat $o {YYour sigil glows dimly for a second, and then abruptly flares with light.{x
+  mpechoaround $o {Y$O\@s sigil flares with light.{x
+  mpcast 687 58
+else
+  if islight()
+    mpechoat $o {YYou feel a sudden heat emanate from your sigil, followed by a nearly blinding flash of light.{x
+    mpechoaround $o {Y$O\@s sigil flares with a brilliant light.{x
+    mpcast 285 58
+  else
+    mpechoat $o {YYour sigil glows dimly for a second, and then abruptly flares with light.{x
+    mpechoaround $o {Y$O\@s sigil flares with light.{x
+    mpcast 687 58
+  endif
+endif
+~
+>speech_prog p Let my spirit be free~
+opecho {YThe Sigil of a Pegasus with Wings of Flame glows softly.{x
+if israce($n) == ch\@taren
+  if class($n) == 9
+    opcast 414 99
+  else
+    opcast 689 99
+  endif
+else
+    opcast 103 99
+endif
+~
+>speech_prog p I am free!~
+if isowner($n)
+  if snaffected($n) == 716
+    opechoat $n {YYou are already filled with the spirit of freedom.{x
+  else
+    opaddaffect 716 57 24 0 75 0
+    opechoat $n {YYou feel the spirit of freedom settle within you.{x
+  endif
+else
+  opinterpret $n $x
+endif
+~
+>fight_prog 2~
+if snaffected($o) == 416
+else
+opechoat $o {YYour Sigil of a pegasus with wings of light flashes for a moment.{x
+opechoaround $o {Y$O\@s Sigil of a pegasus with wings of light flashes for a moment.{x
+opaddaffect 416 51 12 18 11 0
+opaddaffect 416 51 12 19 11 0
+opaddaffect 416 51 12 17 30 0
+endif
+~
+>verb_prog p invoke sigil~
+if isowner($n)
+  if snaffected($n) == 716
+    opechoat $n {YYou are already filled with the spirit of freedom.{x
+  else
+    opaddaffect 716 57 24 0 75 0
+    opechoat $n {YYou feel a warm sensation sweep over your body as you invoke your sigil.{x
+    opechoaround $n {YA glow emanates from $O\@s sigil, and quickly surrounds $s form before vanishing.{x
+  endif
+else
+  opinterpret $n $x
+endif
+~
+>speech_prog p May Rystaia\@s light clear my mind~
+if isowner($n)
+  opechoat $o {YYour sigil tingles for a moment.{x
+  opcast 420 55
+else
+  opinterpret $n $x
+endif
+~
+|
+V12
+1250
+mask shadow sigil magesigil~
+the Sigil of the Shadow Mask~
+The Sigil of the Shadow Mask.~
+~
+flesh~
+armor GMSYZad 0 AR
+10 10 10 10 0
+60 0 338575 0 P
+0
+A
+13 10
+A
+12 40
+A
+20 -5
+A
+30 10
+A
+49 10
+>hitprcnt_prog 20~
+if objvalue(1) == 0
+opvaluerand 0 80 160
+opgrant $o $0 $0 $0
+opechoat $o You feel someone pulling you back from the gates of death.
+opvalueset 1 1
+endif
+~
+>rand_prog 100~
+if objvalue(1) > 0
+opvalueset 1 0
+endif
+~
+|
+V12
+1251
+shadow mask sigil shadowmask sydsigil~
+the Sigil of the Shadow Mask~
+The Sigil of the Shadow Mask.~
+~
+flesh~
+armor GMSYZad 0 AR
+0 0 0 0 0
+0 0 57615 0 P
+0
+A
+19 3
+A
+18 3
+A
+13 10
+A
+20 -5
+>rand_prog 50~
+if position($o) == 4
+if objvalue(1) == 9
+opvalueset 1 0
+opechoat $o The girl smiles, and disappears into the shadows, as the creatures scream and leap at you!
+opforce $o stand
+endif
+if objvalue(1) == 8
+opvalueset 1 9
+opechoat $o Soon you notice that the forest around you is moving ... and from every shadow swarms a hoard of hideous, simian beasts!
+endif
+if objvalue(1) == 7
+opvalueset 1 8
+opechoat $o You stumble into a clearing, where an old standing stone protrudes from the earth. On the stone the girl sits watching you.
+endif
+if objvalue(1) == 6
+opvalueset 1 7
+opechoat $o Soon you are utterly lost, and wander randomly, with your only company the occasional chittering sound from the foliage above.
+endif
+if objvalue(1) == 5
+opvalueset 1 6
+opechoat $o You run into the darkness after her, and follow as she darts between the trees in the distance.
+endif
+if objvalue(1) == 4
+opvalueset 1 5
+opechoat $o The girl suddenly turns and disappears into the forest, fear contorting her face.
+endif
+if objvalue(1) == 3
+opvalueset 1 4
+opechoat $o A little way ahead on a small path, a girl with curly red hair stands watching you.
+endif
+if objvalue(1) == 2
+opvalueset 1 3
+opechoat $o You find yourself surrounded by the twisted boles of a dark forest.
+endif
+if rand(4)
+opvalueset 1 2
+endif
+else
+opvalueset 1 0
+endif
+
+~
+>rand_prog 2~
+if position($o) == 4
+opechoat $o An image of a frightened, sobbing form flicks through your mind,
+opechoat $o her matted red hair falls tangled over her huddled body.
+endif
+~
+>rand_prog 3~
+if position($o) == 4
+opechoat $o You hear a distant screaming echo though your mind.
+endif
+~
+>rand_prog 1~
+opechoat $o You hear a distant screaming echo though your mind.
+~
+>speech_prog serachel!~
+if isworn($n)
+opechoat $o You feel something seize your heart! The pain {r>>>ANNIHILATES<<<{x you!
+opechoaround $o $O opens his eyes in shock, and screams in agony!
+opdamage $o 85 3 1
+endif
+~
+>speech_prog serachel?~
+if isworn($n)
+opechoat $o You feel something seize your heart! The pain {r>>>ANNIHILATES<<<{x you!
+opechoaround $o $O opens his eyes in shock, and screams in agony!
+opdamage $o 85 3 1
+endif
+~
+>speech_prog serachel,~
+if isworn($n)
+opechoat $o You feel something seize your heart! The pain {r>>>ANNIHILATES<<<{x you!
+opechoaround $o $O opens his eyes in shock, and screams in agony!
+opdamage $o 85 3 1
+endif
+~
+>speech_prog serachel.~
+if isworn($n)
+opechoat $o You feel something seize your heart! The pain {r>>>ANNIHILATES<<<{x you!
+opechoaround $o $O opens his eyes in shock, and screams in agony!
+opdamage $o 85 3 1
+endif
+~
+>speech_prog serachel.~
+~
+>speech_prog serachel~
+if isworn($n)
+opechoat $o You feel something seize your heart! The pain {r>>>ANNIHILATES<<<{x you!
+opechoaround $o $O opens his eyes in shock, and screams in agony!
+opdamage $o 85 3 1
+endif
+~
+|
+V12
+1252
+sigil wrath gods mask shadow andrethsigil~
+the Sigil of the Wrath of the Gods~
+The Sigil of the Wrath of the Gods~
+~
+unknown~
+armor GMa 0 AR
+10 10 10 10 0
+55 0 338575 0 P
+0
+A
+49 10
+A
+30 10
+A
+20 -5
+A
+12 40
+A
+13 10
+>hitprcnt_prog 20~
+if objvalue(4) == 0
+opvaluerand 0 120 200
+opgrant $o $0 $0 $0
+opechoat $o You feel someone pulling you back from the gates of death.
+opvalueset 4 1
+endif
+~
+>verb_prog p mask of neutrality~
+if isowner($n)
+opset char $o align 0
+opechoat $o You sense a veil of greyness settle about you.
+else
+opinterpret $n $x
+endif
+~
+>verb_prog p dispel mask~
+if isowner($n)
+if objvalue(5) == 1
+if isgood($o)
+opechoat $o There is no mask to dispel.
+else
+opechoat $o You sense the masking veil lift away.
+opset char $o align 1000
+endif
+endif
+if objvalue(5) == 2
+if isneutral($o)
+opechoat $o There is no mask to dispel.
+else
+opechoat $o You sense the masking veil lift away.
+opset char $o align 0
+endif
+endif
+if objvalue(5) == 3
+if isevil($o)
+opechoat $o There is no mask to dispel.
+else
+opechoat $o You sense the masking veil lift away.
+opset char $o align -1000
+endif
+endif
+else
+opinterpret $n $x
+endif
+~
+>verb_prog p mask of darkness~
+if isowner($n)
+opset char $o align -1000
+opechoat $o You sense a veil of darkness settle about you.
+else
+opinterpret $n $x
+endif
+~
+>verb_prog p mask of light~
+if isowner($n)
+opset char $o align 1000
+opechoat $o You sense a veil of light settle about you.
+else
+opinterpret $n $x
+endif
+~
+>rand_prog 100~
+if objvalue(0) == 200
+opvaluerand 1 1 7
+if objvalue(1) == 2
+opechoat $o You feel the heaviness of the gods\@ curse lay upon you, but sense that at least one god has not forsaken you.
+opechoaround $o $O\@s eyes dull for a moment, as they realize the gods have forsaken them.
+endif
+if objvalue(1) == 3
+opechoat $o You double over in agony as the god\@s wrath sears your body! 
+opechoat $o The pain receeds quickly, as a familiar presence restores you.
+opechoaround $o $O doubles over in agony.
+endif
+if objvalue(1) == 4
+opechoat $o An eerie pink fire begins to lick at your body, bathing you in its alien light.
+opechoaround $o $O is bathed in an eerie pink light.
+opaddaffect 59 60 8 17 150 256
+endif
+if objvalue(1) == 5
+opechoat $o An illusory veil covers your eyes, giving the appearance of blindness.
+opechoaround $o $O staggers, and begins to stumble blindly about the room.
+endif
+if objvalue(1) == 6
+opechoat $o The piercing wail of a god\@s scream which threatens to deafen you, but a familiar presence shelters you from it.
+opechoaround $o $O pauses, as if hearing something in the distance.
+endif
+opvalueset 0 0
+else
+opvalueup 0 
+endif
+if objvalue(4) > 0
+opvalueset 4 0
+endif
+if objvalue(5) == 0
+if isgood($o)
+opvalueset 5 1
+endif
+if isevil($o)
+opvalueset 5 3
+endif
+if isneutral($o)
+opvalueset 5 2
+endif
+endif
+if rand(1)
+if rand(10)
+if objvalue(5) == 1
+opset char $o align 1000
+endif
+if objvalue(5) == 2
+opset char $o align 0
+endif
+if objvalue(5) == 3
+opset char $o align -1000
+endif
+endif
+endif
+~
+|
+V12
+1253
+sigil mask shadow vismask~
+the Sigil of the Shadow Mask~
+The Sigil of the Shadow Mask.~
+~
+unknown~
+armor GMYZad 0 AR
+15 15 15 15 0
+55 0 1857150 0 P
+0
+A
+13 10
+A
+20 -5
+A
+30 10
+A
+49 10
+A
+54 4
+A
+44 10
+A
+12 40
+>verb_prog p dreamsculpt~
+if isowner($n)
+ if objvalue(8) == 1
+  if compstr(2) == end
+   mpechoat $n You stop sculpting dreams.
+   opunfocus
+   opvalueset 8 0
+   mpverbstop
+   break
+  endif
+  if isfocused()
+   if position($f) == 4
+    mpechoat $f $X
+    mpechoat $n You sculpt $F\@s dreams.
+   else 
+    opunfocus
+    opvalueset 8 0
+    mpechoat $n You can\@t seem to find the dreams of your target.
+   endif
+  else
+   opvalueset 8 0
+   mpechoat $n You can\@t seem to find the dreams of your target.
+  endif
+ else
+  opunfocus
+  opfocus $y2
+  if isfocused()
+   if position($f) == 4
+    opvalueset 8 1
+    mpechoat $n You slip into $F\@s dreams, and begin to mold them.
+   else
+    mpechoat $n You can\@t seem to find the dreams of $F.
+   endif
+  else
+   mpechoat $n You can\@t seem to find the dreams of $Y2.
+  endif
+ endif
+ mpverbstop
+else
+ mpnextinterp
+endif
+~
+>time_prog 0~
+if snaffected($o) == 413
+else
+ mpaddaffect $o 413 60 -1 0 0 0
+endif
+~
+>verb_prog p dispel soul mask~
+if isowner($n)
+ if snaffected($n) == 566
+  mpremaffect $n 566
+  mpechoat $o You sense the masking veil lift away.
+ else
+  mpechoat $o There is no mask to dispel.
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>verb_prog p dispel mask~
+if isowner($n)
+ if snaffected($n) == 566
+  mpremaffect $n 566
+  mpechoat $o You sense the masking veil lift away.
+ else
+  mpechoat $o There is no mask to dispel.
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>verb_prog p cast mask of light~
+if isowner($n)
+ if objvalue(1) == 1
+  if snaffected($n) == 566
+   mpechoat $n You are already affected by a soul mask.
+  else
+   mpechoaround $n $N sweeps $s hand downward in front of $s body.
+   mpechoat $n You sweep your hand in front of your body, and sense a veil of light settle about you.
+   if isgood($n)
+    mpaddaffect $n 566 90 -1 0 1000 0
+    mpset char $n align 1000
+    break
+   endif
+   if isneutral($n)
+    mpaddaffect $n 566 90 -1 0 0 0
+    mpset char $n align 1000
+    break
+   endif
+   if isevil($n)
+    mpaddaffect $n 566 90 -1 0 -1000 0
+    mpset char $n align 1000
+    break
+   endif
+  endif
+ else
+  mpinterpret $n $x
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>verb_prog p cast mask of gray~
+if isowner($n)
+ if objvalue(2) == 1
+  if snaffected($n) == 566
+   mpechoat $n You are already affected by a soul mask.
+  else
+   mpechoaround $n $N sweeps $s hand downward in front of $s body.
+   mpechoat $n You sweep your hand in front of your body, and sense a veil of greyness settle about you.
+   if isgood($n)
+    mpaddaffect $n 566 90 -1 0 1000 0
+    mpset char $n align 0
+    break
+   endif
+   if isneutral($n)
+    mpaddaffect $n 566 90 -1 0 0 0
+    mpset char $n align 0
+    break
+   endif
+   if isevil($n)
+    mpaddaffect $n 566 90 -1 0 -1000 0
+    mpset char $n align 0
+    break
+   endif
+  endif
+ else
+  mpinterpret $n $x
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>verb_prog p cast mask of grey~
+if isowner($n)
+ if objvalue(2) == 1
+  if snaffected($n) == 566
+   mpechoat $n You are already affected by a soul mask.
+  else
+   mpechoaround $n $N sweeps $s hand downward in front of $s body.
+   mpechoat $n You sweep your hand in front of your body, and sense a veil of greyness settle about you.
+   if isgood($n)
+    mpaddaffect $n 566 90 -1 0 1000 0
+    mpset char $n align 0
+    break
+   endif
+   if isneutral($n)
+    mpaddaffect $n 566 90 -1 0 0 0
+    mpset char $n align 0
+    break
+   endif
+   if isevil($n)
+    mpaddaffect $n 566 90 -1 0 -1000 0
+    mpset char $n align 0
+    break
+   endif
+  endif
+ else
+  mpinterpret $n $x
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>verb_prog p cast mask of darkness~
+if isowner($n)
+ if objvalue(3) == 1
+  if snaffected($n) == 566
+   mpechoat $n You are already affected by a soul mask.
+  else
+   mpechoaround $n $N sweeps $s hand downward in front of $s body.
+   mpechoat $n You sweep your hand in front of your body, and sense a veil of darkness settle about you.
+   if isgood($n)
+    mpaddaffect $n 566 90 -1 0 1000 0
+    mpset char $n align -1000
+    break
+   endif
+   if isneutral($n)
+    mpaddaffect $n 566 90 -1 0 0 0
+    mpset char $n align -1000
+    break
+   endif
+   if isevil($n)
+    mpaddaffect $n 566 90 -1 0 -1000 0
+    mpset char $n align -1000
+    break
+   endif
+  endif
+ else
+  mpinterpret $n $x
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>verb_prog p switchmask~
+if isimmort($n)
+if compstr(3) == off
+if compstr(2) == light
+opvalueset 1 0
+endif
+if compstr(2) == neutrality
+opvalueset 2 0
+endif
+if compstr(2) == darkness
+opvalueset 3 0
+endif
+else
+if compstr(2) == light
+opvalueset 1 1
+endif
+if compstr(2) == neutrality
+opvalueset 2 1
+endif
+if compstr(2) == darkness
+opvalueset 3 1
+endif
+endif
+else
+opinterpret $n $x
+endif
+~
+>hitprcnt_prog 20~
+if objvalue(9) == 0
+opvaluerand 0 80 160
+opgrant $o $0 $0 $0
+opechoat $o You feel someone pulling you back from the jaws of death.
+opvalueset 9 1
+endif
+~
+>rand_prog 100~
+if isfight($o)
+else
+if objvalue(9) > 0
+opvalueset 9 0
+endif
+endif
+if objvalue(5) == 0
+if isgood($o)
+opvalueset 5 1
+endif
+if isevil($o)
+opvalueset 5 3
+endif
+if isneutral($o)
+opvalueset 5 2
+endif
+endif
+if objvalue(8) == 1
+ if isfocused()
+  if position($f) == 4
+  else
+   mpechoat $o $F wakes, casting you out of $S dreams.
+   opvalueset 8 0
+   opunfocus
+  endif
+ else
+  mpechoat $o You lose track of the dreams of your target.
+  opvalueset 8 0
+ endif
+endif
+~
+|
+V12
+1254
+mask shadow sigil shadowmask huntsigil~
+the Sigil of the Shadow Mask~
+The Sigil of the Shadow Mask.~
+~
+shadow~
+armor GMSYZad 0 AR
+15 15 15 15 0
+55 0 1755805 0 P
+0
+A
+20 -5
+A
+19 3
+A
+18 3
+A
+13 10
+A
+30 10
+A
+49 10
+A
+44 10
+A
+54 4
+>hitprcnt_prog 20~
+if objvalue(1) == 0
+opvaluerand 0 80 160
+opgrant $o $0 $0 $0
+opechoat $o You feel someone pulling you back from the gates of death.
+opvalueset 1 1
+endif
+~
+>verb_prog p pursue~
+if isowner($n)
+if compstr(2) == 
+opechoat $n Pursue who?
+else
+if compstr(2) == none
+if isfocused()
+opunfocus
+opechoat $n You relax your mind from your pursuit.
+else
+opechoat $n You aren\@t pursuing anyone.
+endif
+else
+opfocus $y2
+if isfocused()
+if ispc($f)
+opechoat $n You focus your mind on the pursuit of $F.
+else
+opechoat $n $F lacks the presence of soul to focus on.
+opfocus xxxxx
+endif
+else
+opechoat $n You cannot sense $y2 anywhere.
+endif
+endif
+endif
+else
+mpinterpret $n $x
+endif
+~
+>verb_prog p invoke~
+if isowner($n)
+if compstr(2) == blaze
+or compstr(2) == ethereal
+or compstr(3) == blaze
+or compstr(3) == ethereal
+opechoat $n You close your eyes, placing your hand upon your chest.
+opechoaround $n $N closes her eyes, placing her hand upon her chest.
+opcast 565 30
+else
+opinterpret $n $x
+endif
+else
+opinterpret $n $x
+endif
+~
+>rand_prog 100~
+if objvalue(1) > 0
+opvalueset 1 0
+endif
+if objvalue(9) == 4
+opvalueset 9 0
+endif
+if objvalue(9) == 0
+if isfocused()
+if ishere($f)
+opechoat $o You feel a wrenching in your stomach.
+opvalueset 9 1
+endif
+endif
+else
+opvalueup 9
+endif
+~
+|
+V12
+1255
+sigil mask shadow warriormask~
+the Sigil of the Shadow Mask~
+The Sigil of the Shadow Mask.~
+~
+unknown~
+armor d 0 AR
+15 15 15 15 0
+55 0 1122545 0 P
+0
+A
+49 10
+A
+30 10
+A
+44 10
+A
+20 -5
+A
+19 3
+A
+54 4
+>verb_prog p dispel soul mask~
+if isowner($n)
+ if snaffected($n) == 566
+  mpremaffect $n 566
+  mpechoat $o You sense the masking veil lift away.
+ else
+  mpechoat $o There is no mask to dispel.
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>verb_prog p dispel mask~
+if isowner($n)
+ if snaffected($n) == 566
+  mpremaffect $n 566
+  mpechoat $o You sense the masking veil lift away.
+ else
+  mpechoat $o There is no mask to dispel.
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>verb_prog p cast mask of darkness~
+if isowner($n)
+ if objvalue(3) == 1
+  if snaffected($n) == 566
+   mpechoat $n You are already affected by a soul mask.
+  else
+   mpechoaround $n $N sweeps $s hand downward in front of $s body.
+   mpechoat $n You sweep your hand in front of your body, and sense a veil of darkness settle about you.
+   if isgood($n)
+    mpaddaffect $n 566 90 -1 0 1000 0
+    mpset char $n align -1000
+    break
+   endif
+   if isneutral($n)
+    mpaddaffect $n 566 90 -1 0 0 0
+    mpset char $n align -1000
+    break
+   endif
+   if isevil($n)
+    mpaddaffect $n 566 90 -1 0 -1000 0
+    mpset char $n align -1000
+    break
+   endif
+  endif
+ else
+  mpinterpret $n $x
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>verb_prog p cast mask of gray~
+if isowner($n)
+ if objvalue(2) == 1
+  if snaffected($n) == 566
+   mpechoat $n You are already affected by a soul mask.
+  else
+   mpechoaround $n $N sweeps $s hand downward in front of $s body.
+   mpechoat $n You sweep your hand in front of your body, and sense a veil of greyness settle about you.
+   if isgood($n)
+    mpaddaffect $n 566 90 -1 0 1000 0
+    mpset char $n align 0
+    break
+   endif
+   if isneutral($n)
+    mpaddaffect $n 566 90 -1 0 0 0
+    mpset char $n align 0
+    break
+   endif
+   if isevil($n)
+    mpaddaffect $n 566 90 -1 0 -1000 0
+    mpset char $n align 0
+    break
+   endif
+  endif
+ else
+  mpinterpret $n $x
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>verb_prog p cast mask of grey~
+if isowner($n)
+ if objvalue(2) == 1
+  if snaffected($n) == 566
+   mpechoat $n You are already affected by a soul mask.
+  else
+   mpechoaround $n $N sweeps $s hand downward in front of $s body.
+   mpechoat $n You sweep your hand in front of your body, and sense a veil of greyness settle about you.
+   if isgood($n)
+    mpaddaffect $n 566 90 -1 0 1000 0
+    mpset char $n align 0
+    break
+   endif
+   if isneutral($n)
+    mpaddaffect $n 566 90 -1 0 0 0
+    mpset char $n align 0
+    break
+   endif
+   if isevil($n)
+    mpaddaffect $n 566 90 -1 0 -1000 0
+    mpset char $n align 0
+    break
+   endif
+  endif
+ else
+  mpinterpret $n $x
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>verb_prog p cast mask of light~
+if isowner($n)
+ if objvalue(1) == 1
+  if snaffected($n) == 566
+   mpechoat $n You are already affected by a soul mask.
+  else
+   mpechoaround $n $N sweeps $s hand downward in front of $s body.
+   mpechoat $n You sweep your hand in front of your body, and sense a veil of light settle about you.
+   if isgood($n)
+    mpaddaffect $n 566 90 -1 0 1000 0
+    mpset char $n align 1000
+    break
+   endif
+   if isneutral($n)
+    mpaddaffect $n 566 90 -1 0 0 0
+    mpset char $n align 1000
+    break
+   endif
+   if isevil($n)
+    mpaddaffect $n 566 90 -1 0 -1000 0
+    mpset char $n align 1000
+    break
+   endif
+  endif
+ else
+  mpinterpret $n $x
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>hitprcnt_prog 20~
+if objvalue(9) == 0
+opvaluerand 0 80 160
+opgrant $o $0 $0 $0
+opechoat $o You feel someone pulling you back from the jaws of death.
+opvalueset 9 1
+endif
+~
+>rand_prog 100~
+if isfight($o)
+else
+if objvalue(9) > 0
+opvalueset 9 0
+endif
+endif
+if objvalue(5) == 0
+if isgood($o)
+opvalueset 5 1
+endif
+if isevil($o)
+opvalueset 5 3
+endif
+if isneutral($o)
+opvalueset 5 2
+endif
+endif
+~
+>verb_prog p switchmask~
+if isimmort($n)
+if compstr(3) == off
+if compstr(2) == light
+opvalueset 1 0
+endif
+if compstr(2) == neutrality
+opvalueset 2 0
+endif
+if compstr(2) == darkness
+opvalueset 3 0
+endif
+else
+if compstr(2) == light
+opvalueset 1 1
+endif
+if compstr(2) == neutrality
+opvalueset 2 1
+endif
+if compstr(2) == darkness
+opvalueset 3 1
+endif
+endif
+else
+opinterpret $n $x
+endif
+~
+|
+V12
+1256
+sigil mask shadow succubusmask~
+the Sigil of the Shadow Mask~
+The Sigil of the Shadow Mask.~
+~
+unknown~
+armor d 0 AR
+12 12 12 12 0
+55 0 765675 0 P
+0
+A
+54 4
+A
+49 16
+A
+30 16
+A
+44 16
+A
+20 -7
+>verb_prog p coerce~
+if isowner($n)
+ if compstr(1) == c
+ or compstr(1) == co
+  mpnextinterp $n $x
+ else
+  if position($n) > 4
+   if objvalue(2) == 1
+    if objvalue(3) == 0
+     if compstr(2) == 
+     or compstr(3) == 
+      mpechoat $n Coerce whom to do what?
+     else
+      if isfocused()
+       if compstr(2) == $F
+        if ishere($f)
+         if compstr(3) == delete
+         or compstr(3) == suicide
+         or compstr(3) == ooc
+         or compstr(3) == oocoff
+         or compstr(3) == pray
+         or compstr(3) == note
+         or compstr(3) == alias
+         or compstr(3) == acctpwd
+         or compstr(3) == exdesc
+         or compstr(3) == desc
+         or compstr(3) == bg
+         or compstr(3) == rnote
+         or compstr(3) == desc
+         or compstr(3) == xxxxxx
+         or compstr(3) == xxxxxx
+         or compstr(3) == xxxxxx
+         or compstr(3) == xxxxxx
+         or compstr(3) == xxxxxx
+         or compstr(3) == xxxxxx
+         or compstr(3) == xxxxxx
+          mpechoat $n Um. You\@re trying to coerce $F to $Y3? That\@s Bad.
+          mpverbstop
+          break
+         endif
+         if snaffected($f) == 415
+         or snaffected($f) == 623
+          mpechoat $n Something seems to be shielding $F\@s mind.
+          mpvalueset 3 7
+         else
+          mpechoat $n You exert your will upon $F.
+          mpechoat $f $N meets your gaze and you feel your will crumble.
+          mpforce $f $Y3 $Y4 $Y5 $Y6 $Y7 $Y8 $Y9 $Y10 $Y11 $Y12 $Y13
+          mpvalueset 3 14
+         endif
+        else
+         mpechoat $n $F isn\@t even here!
+        endif
+       else
+        mpechoat $n You can\@t coerce $Y2.
+       endif
+      else
+       mpechoat $n You don\@t feel able to coerce anyone.
+      endif
+     endif
+    else
+     mpechoat $n You don\@t feel ready to coerce again yet.
+    endif
+   else
+    mpechoat $n You don\@t feel able to coerce anyone.
+   endif
+  else
+   mpechoat $n In your dreams, or what?
+  endif
+ endif
+ mpverbstop
+else
+ mpnextinterp $n $x
+endif
+~
+>verb_prog p dispel mask~
+if isowner($n)
+ if snaffected($n) == 566
+  mpremaffect $n 566
+  mpechoat $o You sense the masking veil lift away.
+ else
+  mpechoat $o There is no mask to dispel.
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1256
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>verb_prog p cast mask of light~
+if isowner($n)
+ if objvalue(1) == 1
+  if snaffected($n) == 566
+   mpechoat $n You are already affected by a soul mask.
+  else
+   mpechoaround $n $N sweeps $s hand downward in front of $s body.
+   mpechoat $n You sweep your hand in front of your body, and sense a veil of light settle about you.
+   if isgood($n)
+    mpaddaffect $n 566 90 -1 0 1000 0
+    mpset char $n align 1000
+    break
+   endif
+   if isneutral($n)
+    mpaddaffect $n 566 90 -1 0 0 0
+    mpset char $n align 1000
+    break
+   endif
+   if isevil($n)
+    mpaddaffect $n 566 90 -1 0 -1000 0
+    mpset char $n align 1000
+    break
+   endif
+  endif
+ else
+  mpinterpret $n $x
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>verb_prog p cast mask of twilight~
+if isowner($n)
+ if objvalue(2) == 1
+  if snaffected($n) == 566
+   mpechoat $n You are already affected by a soul mask.
+  else
+   mpechoaround $n $N sweeps $s hand downward in front of $s body.
+   mpechoat $n You sweep your hand in front of your body, and sense a veil of greyness settle about you.
+   if isgood($n)
+    mpaddaffect $n 566 90 -1 0 1000 0
+    mpset char $n align 0
+    break
+   endif
+   if isneutral($n)
+    mpaddaffect $n 566 90 -1 0 0 0
+    mpset char $n align 0
+    break
+   endif
+   if isevil($n)
+    mpaddaffect $n 566 90 -1 0 -1000 0
+    mpset char $n align 0
+    break
+   endif
+  endif
+ else
+  mpinterpret $n $x
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1256
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>verb_prog p cast mask of darkness~
+if isowner($n)
+ if objvalue(3) == 1
+  if snaffected($n) == 566
+   mpechoat $n You are already affected by a soul mask.
+  else
+   mpechoaround $n $N sweeps $s hand downward in front of $s body.
+   mpechoat $n You sweep your hand in front of your body, and sense a veil of darkness settle about you.
+   if isgood($n)
+    mpaddaffect $n 566 90 -1 0 1000 0
+    mpset char $n align -1000
+    break
+   endif
+   if isneutral($n)
+    mpaddaffect $n 566 90 -1 0 0 0
+    mpset char $n align -1000
+    break
+   endif
+   if isevil($n)
+    mpaddaffect $n 566 90 -1 0 -1000 0
+    mpset char $n align -1000
+    break
+   endif
+  endif
+ else
+  mpinterpret $n $x
+ endif
+else
+ if isworn($n) == 1253
+ or isworn($n) == 1255
+ or isworn($n) == 1252
+ or isworn($n) == 1256
+ or isworn($n) == 1253
+ or isworn($n) == 1253
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>hitprcnt_prog 20~
+if objvalue(5) == 0
+ opvaluerand 5 80 160
+ opgrant $o $5 $0 $0
+ opechoat $o You feel someone pulling you back from the jaws of death.
+endif
+~
+>verb_prog p s y n r a e l~
+mpecho $F
+~
+>rand_prog 100~
+if objvalue(5) > 0
+ opvalueset 5 0
+endif
+if objvalue(3) > 0
+ mpvaluedown 3
+endif
+if objvalue(0) > 0
+ mpvalueup 1
+ if objvalue(1) == 100
+  mpvalueset 0 0
+  mpvalueset 1 0
+ endif
+ if objvalue(2) == 0
+  if objvalue(1) < 4
+   if isfocused()
+    if ishere($f)
+     if position($f) == 5
+      if objvalue(1) == 1
+       if sex($o) == 0
+        mpechoat $f $O brings its lips to meet yours, pausing just before they touch.
+        mpechoaround $f $O brings its lips to meet $F\@s, pausing just before they touch.
+       endif
+       if sex($o) == 1
+        mpechoat $f $O brings his lips to meet yours, pausing just before they touch.
+        mpechoaround $f $O brings his lips to meet $F\@s, pausing just before they touch.
+       endif
+       if sex($o) == 2
+        mpechoat $f $O brings her lips to meet yours, pausing just before they touch.
+        mpechoaround $f $O brings her lips to meet $F\@s, pausing just before they touch.
+       endif
+      endif
+      if objvalue(1) == 2
+       if sex($o) == 0
+        mpechoat $f $O presses its lips against yours in a passionate kiss!
+        mpechoaround $f $O presses its lips against $F\@s in a passionate kiss!
+       endif
+       if sex($o) == 1
+        mpechoat $f $O presses his lips against yours in a passionate kiss!
+        mpechoaround $f $O presses his lips against $F\@s in a passionate kiss!
+       endif
+       if sex($o) == 2
+        mpechoat $f $O presses her lips against yours in a passionate kiss!
+        mpechoaround $f $O presses her lips against $F\@s in a passionate kiss!
+       endif
+       if objvalue(0) == 1
+        mpechoat $f Your senses reel, and the kiss begins to overwhelm your consciousness.
+        mpechoat $o You gently begin to insinuate your will into $F\@s mind.
+        mpechoaround $f $F staggers slightly.
+       endif
+      endif
+      if objvalue(1) == 3
+       if snaffected($f) == 415
+       or snaffected($f) == 623
+        mpvalueset 0 2
+       endif
+       if objvalue(0) == 1
+        mpvalueset 2 1
+        mpechoat $o With $F\@s mind under your control, you draw away.
+        if sex($o) == 0
+         mpechoat $f $O draws its lips away, leaving you slightly numb.
+         mpechoaround $f $O draws its lips away, leaving $F slightly dazed-looking.
+        endif
+        if sex($o) == 1
+         mpechoat $f $O draws his lips away, leaving you slightly numb.
+         mpechoaround $f $O draws his lips away, leaving $F slightly dazed-looking.
+        endif
+        if sex($o) == 2
+         mpechoat $f $O draws her lips away, leaving you slightly numb.
+         mpechoaround $f $O draws her lips away, leaving $F slightly dazed-looking.
+        endif
+       else
+        mpunfocus
+        mpvalueset 0 0
+        mpvalueset 1 0
+        mpvalueset 2 0
+        mpechoat $o You cannot seem to bring $F\@s mind under your control, so you draw away.
+        if sex($o) == 0
+         mpechoaround $o $O draws its lips away, a frown crossing its features.
+        endif
+        if sex($o) == 1
+         mpechoaround $o $O draws his lips away, a frown crossing his features.
+        endif
+        if sex($o) == 2
+         mpechoaround $o $O draws her lips away, a frown crossing her features.
+        endif
+       endif
+      endif
+     else
+      mpechoat $n You cannot continue the Kiss of the Succubus while $F isn\@t resting.
+      mpunfocus
+      mpvalueset 0 0
+      mpvalueset 1 0
+      mpvalueset 2 0
+     endif
+    else
+     mpunfocus
+     mpvalueset 0 0
+     mpvalueset 1 0
+     mpvalueset 2 0
+    endif
+   else
+    mpunfocus
+    mpvalueset 0 0
+    mpvalueset 1 0
+    mpvalueset 2 0
+   endif
+  endif
+ endif
+endif
+~
+>verb_prog p locate~
+if isowner($n)
+ if position($n) > 4
+  if isfighting($n)
+   mpechoat $n No way! You\@re too busy fighting!
+  else
+   if objvalue(2) == 1
+    if objvalue(3) == 0
+     if compstr(2) == 
+      mpechoat $n Locate whom?
+     else
+      if isfocused()
+       if compstr(2) == $f
+        if ishere($f)
+         mpechoat $n $F is right next to you.
+        else
+         mpechoat $n You send forth the tendrils of your perception, seeking $F.
+         mpmload 15137
+         mptransfer $n $f
+         if mobhere(15137)
+          mpechoat $n You can\@t find $F anywhere.
+          mpvalueset 3 14
+         else
+          if roomflag($f) == 15
+          or roomflag($f) == 16
+          or roomflag($f) == 21
+          or roomflag($f) == 21
+          or snaffected($f) == 415
+          or snaffected($f) == 623
+           mpechoat $n Something seems to be shielding $F\@s mind.
+           mpvalueset 3 14
+          else
+           mpechoat $n A vision forms within your mind...
+           mpforce $n look
+           mpvalueset 3 28
+          endif
+         endif
+         mptransfer $n drumbot
+         mpforce drumbot mppurge self
+        endif
+       else
+        mpechoat $n You can\@t locate $y2.
+       endif
+      else
+       mpechoat $n You don\@t feel able to locate anyone.
+      endif
+     endif
+    else
+     mpechoat $n You don\@t feel ready to locate again just yet.
+    endif
+   else
+    mpechoat $n You don\@t feel able to locate anyone.
+   endif
+  endif
+ else
+  mpechoat $n In your dreams, or what?
+ endif
+else
+ if iswielding($n) == 1256
+ or iswielding($n) == 1256
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+>verb_prog p skiss~
+if isowner($n)
+ if position($n) > 4
+  if isfighting($n)
+   mpechoat $n You can\@t concentrate enough!
+  else
+   if objvalue(0) == 0
+    if objvalue(2) == 1
+     if isfocused()
+      if compstr(2) == $f
+       if ishere($f)
+        if objvalue(3) == 0
+         if cansee($n) == $f
+          if snaffected($f) == 415
+           mpechoat $n As you attempt to draw $F\@s energy, you come upon an unassailable barrier, and your control suddenly dissolves.
+           mpechoaround $f $N kisses $F briefly, before drawing away frowning.
+           mpechoat $f $N pressed $s mouth against yours, but you feel nothing, and $s domination of you dissolves.
+           mpunfocus
+           mpvalueset 0 0
+           mpvalueset 1 0
+           mpvalueset 2 0
+           mpvalueset 3 1
+          else
+           if snaffected($f) == 623
+            mpechoaround $f $N kisses $F passionately.
+            mpechoat $f $N pressed $s mouth against yours, but you feel no passion in the kiss.
+            mpechoat $n Something seems to be shielding $F\@s mind.
+            mpvalueset 3 1
+           else
+            if isghost($f)
+             mpechoat $n You can\@t kiss a ghost.
+            else
+             mpechoaround $f $N kisses $F passionately.
+             mpechoat $f $N pressed $s mouth against yours, and you feel a surge of ecstasy course through you, leaving you weakened.
+             mpechoat $n You draw $F\@s life slowly away.
+             if hitprcnt($f) < 20
+              mpdamage $f 1 20 1
+              mpgrant $n 100 20 0
+             else
+              mpdamage $f 10 20 1
+              mpgrant $n 100 20 0
+             endif
+             mpvalueset 3 3
+            endif
+           endif
+          endif
+         else
+          mpechoat $n $F isn\@t even here!
+         endif
+        else
+         mpechoat $n You don\@t feel ready to perform the Kiss of the Succubus again just yet.
+        endif
+       else
+        mpechoat $n $F isn\@t even here!
+       endif
+       break
+      endif
+     endif
+    endif
+    mpunfocus
+    mpfocus $y2
+    mpvalueset 2 0
+    if isfocused()
+     if ishere($f)
+      if cansee($n) == $f
+       if ispc($f)
+        if isfighting($f)
+         mpechoat $n You can\@t get close enough to $F!
+        else
+         if position($f) == 5
+          mpechoat $f $N places $s hand behind your neck, drawing you closer.
+          mpvalueset 0 2
+          if sex($f) == 0
+           mpechoaround $f $N places $s hand behind $F\@s neck, drawing it closer.
+          endif
+          if sex($f) == 1
+           mpechoaround $f $N places $s hand behind $F\@s neck, drawing him closer.
+           if sex($n) == 2
+            mpvalueset 0 1
+           endif
+          endif
+          if sex($f) == 2
+           mpechoaround $f $N places $s hand behind $F\@s neck, drawing her closer.
+           if sex($n) == 1
+            mpvalueset 0 1
+           endif
+          endif
+         else
+          mpechoat $n They must be resting for the Kiss of the Succubus to work.
+         endif
+        endif
+       else
+        mpechoat $n They do not possess sufficient free will for you to master.
+       endif
+      else
+       mpechoat $n They aren\@t here.
+       mpunfocus
+      endif
+     else
+      mpechoat $n They aren\@t here.
+      mpunfocus
+     endif
+    else
+     mpechoat $n Who did you want to kiss?
+    endif
+   else
+    if objvalue(1) > 3
+     mpechoat $n You don\@t feel ready to perform the kiss of the succubus again just yet.
+    else
+     mpechoat $n One kiss at a time, please.
+    endif
+   endif
+  endif
+ else
+  mpechoat $n In your dreams, or what?
+ endif
+else
+ if iswielding($n) == 1256
+ or iswielding($n) == 1256
+ else
+  mpinterpret $n $x
+ endif
+endif
+~
+|
+V12
+1258
+logorsigil~
+the mark of Logor~
+The mark of Logor.~
+~
+unknown~
+trash d 0 AR
+0 0 0 0 0
+70 0 4282200 0 P
+0
+A
+54 -1
+A
+58 1
+A
+40 50
+A
+45 80
+A
+31 15
+A
+41 50
+>verb_prog p s y n~
+mpechoat $n $0 $1 $2 $3
+~
+>verb_prog p imbibe blood~
+if isowner($n)
+ mpget char $o thirst 2
+ mpforce $n drink blood
+ mpget char $o thirst 3
+ if objvalue(3) > $2
+  mpset char $o thirst 100
+  mpvalueset 1 0
+ endif
+endif
+~
+>verb_prog p devour heart~
+if isowner($n)
+ mpget char $o hunger 2
+ mpforce $n eat heart
+ mpget char $o hunger 3
+ if objvalue(3) > $2
+  mpset char $o hunger 100
+  mpvalueset 0 0
+ endif
+endif
+~
+>rand_prog 15~
+if objvalue(0) == 20
+or objvalue(1) == 7
+ if objvalue(0) == 14
+  mpget char $o hunger 2
+  if objvalue(2) > -13
+   mpset char $o hunger -13
+  endif
+ endif
+ if objvalue(1) == 7
+  mpget char $o thirst 2
+  if objvalue(2) > -13
+   mpset char $o thirst -13
+  endif
+ endif
+ mpremaffect $o 42
+ mpremaffect $o 43
+ mpremaffect $o 45
+ mpremaffect $o 46
+ break
+endif
+if objvalue(0) < 14
+ mpvalueup 0
+endif
+if objvalue(1) < 7
+ mpvalueup 1
+endif
+if snaffected($o) == 42
+else
+ mpaddaffect $o 42 60 -1 27 0 4
+endif
+if snaffected($o) == 43
+else
+ mpaddaffect $o 43 60 -1 27 0 24
+endif
+if snaffected($o) == 45
+else
+ mpaddaffect $o 45 60 -1 27 0 8
+endif
+if snaffected($o) == 46
+else
+ mpaddaffect $o 46 60 -1 27 0 0
+endif
+mpset char $o hunger 100
+mpset char $o thirst 100
+~
+|
+V12
+1266
+sigil flame crimson~
+the Sigil of the Crimson Flame~
+The Sigil of the Crimson Flame shifts and shimmers.~
+~
+smoke~
+armor M 0 AR
+0 0 0 0 0
+52 0 63580 0 P
+0
+A
+19 4
+A
+13 20
+V12
+1267
+sigil flame crimson~
+the Sigil of the Crimson Flame~
+The Sigil of the Crimson Flame.~
+~
+unknown~
+treasure 0 0 R
+0 0 0 0 0
+60 0 108406799 0 P
+0
+A
+19 500
+A
+18 1000
+A
+17 -1900
+V12
+1270
+sigil black staff~
+the Sigil of the Black Staff~
+The Sigil of the Black Staff shouldn\@t be lying on the ground. Report it.~
+~
+shadow~
+armor CGSYa 0 AR
+10 10 10 25 0
+60 0 67034 0 P
+0
+A
+38 5
+A
+36 5
+A
+42 5
+E
+staff~
+A line of pure negative value marks the Sigil of the Black Staff, its
+chill presence seeming to absorb the light.  
+~
+E
+black~
+A line of pure negative value marks the Sigil of the Black Staff, its
+chill presence seeming to absorb the light.  
+~
+E
+sigil~
+A line of pure negative value marks the Sigil of the Black Staff, its
+chill presence seeming to absorb the light.  
+~
+>time_prog 0~
+if objvalue(2) == 0
+else
+opvaluedown 2
+if objvalue(2) == 0
+mpechoat $n You feel prepared to call upon the sigils power once more.
+endif
+endif
+~
+>verb_prog p supercoolcrescentfresh~
+mpechoat $o The Sigil of the Black Staff pulses coldly.
+if isimmortal($n)
+opvalueset 3 1
+else
+mpcast $n 143 80 
+endif
+~
+>speech_prog p May my sight be unclouded.~
+if isworn($o)
+if objvalue(2) == 0
+mpvalueset 2 2
+if israce($n) == SHUDDENI
+if snaffected($n) == 692
+mpechoat $n Your sight is already clear.
+else
+mpecho The Sigil of the Black Staff darkens, if such a thing is possible.
+mpcast 692 99
+endif
+else
+if snaffected($n) == 646
+mpechoat $n You can already see without eyes.
+else
+mpecho The Sigil of the Black Staff darkens, if such a thing is possible.
+mpechoat $n You feel your senses sharpen.
+mpaddaffect $n 646 51 24 0 0 0
+endif
+endif
+else
+mpechoat $n You have too recently called upon the sigils power.
+endif
+endif
+~
+>fight_prog 100~
+if objvalue(3) == 1
+if rand(50)
+if snaffected($n) == 143
+else
+mpechoat $o The Sigil of the Black Staff pulses coldly.
+mpcast 143 99
+endif
+endif
+endif
+~
+|
+V12
+1271
+sigil crown iron~
+the Sigil of the Iron Crown~
+An iron crown gleams with the light of Justice.~
+~
+silver~
+armor Ma 0 AR
+0 0 0 0 0
+60 0 5480 0 P
+0
+>speech_prog p protection of law!~
+if snaffected ($o) == 769
+opechoat $o You already have the blessings of Iandir!
+else
+opechoaround $o $O\@s skin turns iron-gray for a moment.
+opechoat $o You feel your skin harden as the blessings of Iandir descend upon you.
+opcast 3 10
+mpaddaffect $o 769 55 24 32 5 0 A \@Blessing of Iandir\@
+mpaddaffect $o 769 55 24 13 15 0 A \@Blessing of Iandir\@
+mpaddaffect $o 769 55 24 19 1 0 A \@Blessing of Iandir\@
+endif
+~
+|
+V12
+1272
+sigil crown silver~
+the Sigil of the Silver Crown~
+A silver crown gleams with the light of Justice.~
+~
+gold~
+armor Ma 0 AR
+0 0 0 0 0
+60 0 43668 0 P
+0
+>speech_prog p Protection of law!~
+if snaffected ($o) == 769
+opechoat $o You already have the blessings of Iandir!
+else
+opechoaround $o $O\@s skin turns silver-gray for a moment.
+opechoat $o You feel your skin harden as the blessings of Iandir descend upon you.
+opcast 3 10
+mpaddaffect $o 769 55 24 32 5 0 A \@Blessing of Iandir\@
+mpaddaffect $o 769 55 24 13 30 0 A \@Blessing of Iandir\@
+mpaddaffect $o 769 55 24 19 2 0 A \@Blessing of Iandir\@
+endif
+~
+|
+V12
+1273
+sigil crown gold~
+the Sigil of the Gold Crown~
+A gold crown shines with the light of Justice.~
+~
+platinum~
+armor Ma 0 AR
+0 0 0 0 0
+60 0 159353 0 P
+0
+>speech_prog p protection of law!~
+if snaffected ($o) == 769
+opechoat $o You already have the blessings of Iandir!
+else
+opechoaround $o $O\@s skin turns golden-gray for a moment.
+opechoat $o You feel your skin harden as the blessings of Iandir descend upon you.
+opcast 3 10
+mpaddaffect $o 769 55 24 32 5 0 A \@Blessing of Iandir\@
+mpaddaffect $o 769 55 24 13 45 0 A \@Blessing of Iandir\@
+mpaddaffect $o 769 55 24 19 3 0 A \@Blessing of Iandir\@
+endif
+~
+|
+V12
+1275
+blade silver long order~
+a blade of order~
+A long silver blade hums with divine power.~
+~
+silver~
+weapon MP 0 AN
+sword 5 10 10 0
+wrath of order~
+60 110 0 2 P
+0
+A
+19 3
+A
+13 60
+V12
+1276
+bad sigil~
+.~
+Bad sigil~
+~
+unknown~
+armor d 0 AR
+0 0 0 0 0
+0 0 0 0 P
+0
+>wear_prog 100~
+mpaddaffect $o 236 90 -1 18 -4 1
+~
+>rand_prog 100~
+if snaffected($o) == 236
+else
+mpaddaffect $o 236 90 -1 18 -4 1
+endif
+~
+|
+V12
+1277
+blind sigil~
+blind sigil~
+Blind sigil~
+~
+unknown~
+armor 0 0 AR
+0 0 0 0 0
+52 0 0 0 P
+0
+>rand_prog 100~
+if snaffected($o) == 236
+else
+opechoat $o Your eyes shrivel painfully in their sockets, and disappear!
+mpaddaffect $o 236 90 -1 18 -4 1
+endif
+opset char $o hunger 100
+opset char $o thirst 100
+~
+|
+V12
+1289
+silver rose sigil~
+the silver rose~
+(no description)~
+~
+flesh~
+armor GHIMSU 0 AR
+0 0 0 0 0
+55 0 0 0 P
+0
+>verb_prog p touch~
+if isworn($n)
+  if compstr(2) == rose
+    mpechoat $n You touch the silver rose, and a sense of purity washes over you.
+    mpechoaround $n A brief, pure white luminescence surrounds $N as $e touches the silver rose.
+    mpcast 111 60 $n
+    mplag $n 1
+    break
+  endif
+endif
+mpnextinterp
+~
+|
+V12
+1290
+rose entwined rose-entwined silver sword sigil~
+a rose-entwined silver sword~
+A sigil lies on the ground.~
+~
+flesh~
+armor GHIMSU 0 AR
+5 9 14 15 0
+55 0 13195 0 P
+0
+A
+54 3
+A
+19 1
+A
+17 -10
+A
+20 -2
+>speech_prog p Lord Aeolis, keep me safe from harm.~
+if name($n) == Yesa
+or name($n) == Aeolis
+  if snaffected($n) == 753
+  else
+    mpechoat $n A sphere of light shimmers into existence around you, and quickly fades.
+    mpechoaround $n A sphere of light shimmers around $N, and quickly fades.
+    mpaddaffect $n 753 55 48 0 20 0
+  endif
+endif
+~
+>fight_prog 2~
+opcastoff 564 99
+~
+>verb_prog p inspire~
+if isowner($n)
+  opcast 563 99 $n
+else
+  opinterpret $n $x
+endif
+~
+>verb_prog p produce rose~
+if isowner($n)
+  opechoat $n You gesture quickly, and produce a beautiful red rose from nothingness.
+  opechoaround $n $N gestures quickly, and produces a beautiful red rose.
+  opoload 89 on $n
+else
+  opinterpret $n $x
+endif
+~
+|
+V12
+1291
+bow white enaerai~
+a white bow with a golden bowstring~
+The bow of Enaerai lies here!~
+~
+wood~
+bow GJKSYa 0 AO
+0 C CE 0 0
+55 50 1009755 2 P
+1
+A
+28 3
+A
+41 10
+A
+42 10
+A
+19 10
+A
+18 10
+V12
+1292
+helm golden enaerai horned~
+a golden helm with one white and one black horn~
+The horned helm of Enaerai lies here!~
+~
+unknown~
+armor GJKYa 0 AE
+30 30 30 30 0
+55 2 2643450 0 P
+0
+A
+41 30
+A
+42 30
+A
+18 20
+A
+19 20
+V12
+1293
+arrow black enaerai~
+a black arrow fletched with silver feathers~
+The black arrow of Enaerai lies here!~
+~
+wood~
+arrow GJKY 0 AO
+11 100 392 392 392
+wrath of Enaerai~
+60 5 3181574 0 P
+1
+A
+18 20
+A
+19 20
+V12
+1299
+bed roses~
+a bed of roses~
+A bed of fresh, dethorned roses is here, smelling sweetly.~
+~
+plant~
+furniture 0 0 0
+3 10000 EHK 100 100
+1 0 0 4 P
+0
+#0
+
+
+
+#ROOMS
+#1208
+The Holding Cell~
+You stand in a stone cell of cyclopean proportions.  Gray walls of
+gigantic stone blocks rise about you in all directions, ascending to the
+far-above ceiling.  The atmosphere of the cell seems somehow oppressive,
+stifling in spite of its immense size.  No entrances or exits are visible.  
+~
+~
+0
+0 4760886 0
+S
+#1209
+The Holding Cell~
+You stand in a stone cell of cyclopean proportions.  Gray walls of
+gigantic stone blocks rise about you in all directions, ascending to the
+far-above ceiling.  The atmosphere of the cell seems somehow oppressive,
+stifling in spite of its immense size.  No entrances or exits are visible.  
+~
+~
+1
+0 565374 0
+S
+#1210
+The Holding Cell~
+You stand in a stone cell of cyclopean proportions.  Gray walls of
+gigantic stone blocks rise about you in all directions, ascending to the
+far-above ceiling.  The atmosphere of the cell seems somehow oppressive,
+stifling in spite of its immense size.  No entrances or exits are visible.  
+~
+~
+1
+0 565374 0
+S
+#1212
+The Sapphire Throne~
+This long, arched chamber is dominated by a throne carved from sapphire,
+which is inset in the north wall.  Carved pillars line the room, supporting
+a massive arched ceiling, which towers almost out of sight above.  The
+entirety of the room is suffused with a soft blue glow, which emanates from
+crystalline windows which dot the east and west walls.  An intricate mosaic
+wraps around the throne on the north wall, depicting the signs of Jolinn -
+the Sapphire Spear and the Diamond Shield.  
+~
+~
+1
+0 14 3
+E
+pillar~
+The pillars are made of a soft bluish marble, and are faintly warm to the
+touch.  
+~
+E
+pillars~
+The pillars are made of a soft bluish marble, and are faintly warm to the
+touch.  
+~
+E
+throne~
+The throne is carved from an enormous single star sapphire.  Under the
+surface, a blue light seems to course like water through the crystal
+surface, giving the impression the sapphire is made of living water.  
+~
+E
+sapphire~
+The throne is carved from an enormous single star sapphire.  Under the
+surface, a blue light seems to course like water through the crystal
+surface, giving the impression the sapphire is made of living water.  
+~
+E
+mosaic~
+The mosaic depicts the two symbols of Jolinn - the sapphire spear,
+representing purity, and the diamond shield, representing protection.  
+~
+E
+spear~
+The mosaic depicts the two symbols of Jolinn - the sapphire spear,
+representing purity, and the diamond shield, representing protection.  
+~
+E
+diamond~
+The mosaic depicts the two symbols of Jolinn - the sapphire spear,
+representing purity, and the diamond shield, representing protection.  
+~
+E
+shield~
+The mosaic depicts the two symbols of Jolinn - the sapphire spear,
+representing purity, and the diamond shield, representing protection.  
+~
+E
+window~
+A soft blue light streams through these windows, suffusing the rooms with a celestial glow.
+~
+E
+windows~
+A soft blue light streams through these windows, suffusing the rooms with
+a celestial glow.  
+~
+E
+crystalline~
+A soft blue light streams through these windows, suffusing the rooms with
+a celestial glow.  
+~
+S
+#1215
+High Above the Planes of Paradise~
+This tall, desolate cliff is swept by a cold, icy wind.  Essentially a
+great promontory, it overlooks a verdant valley, far, far below this perch. 
+In the valley is a crystal clear sea, and on the shores of the sea is a
+city, with buildings carved from flawless sapphire.  The streets of the city
+are a shimmering diamond, and the entire city is illuminated by a soft blue
+glow.  Beings of light flit through the city, enraptured in the perfect
+beauty of their home.  
+
+At the top of the cliff is a marble slab, standing at a right angle to the
+surface of the ground.  Carved into the marble is the sign of the Great Seal
+of Jolinn, used to bind the god Bayyal.  
+~
+~
+0
+0 41014 0
+S
+#1216
+Ashur\@s Room~
+Place me among the rocks I love, 
+which sound to oceans wildest roar.
+I ask but this, again to roam, 
+through scenes my youth hath known before.
+ 
+ 
+~
+~
+1
+0 557070 0
+S
+#1218
+A Falcon\@s Nest~
+Assorted suits of armor are scattered about here, more than one with a
+skeleton inside it.  The fate of the dishonorable is obvious.  The path of
+honor can be difficult: the temptations of an easier path are many.  The
+price of failure is high, for the gain in honor and power is great.  The
+fallen shall be crushed.  
+~
+~
+1
+0 558148 0
+S
+#1221
+Library of the Ancients~
+You are standing in what you assume to be a massive library.  Two large
+shelves of books lie on either side of you, stretching as far into the
+distance as you can fathom.  Looking up, the books continue as high as you
+can see, disappearing into the heights.  The entire place is brightly lit,
+although you can pick out no discernable light sources.  This is the storage
+place for all things ever known.  All the lost secrets of the past, all
+knowledge currently known, and some of what still is to be discovered, can
+be found in the innumerable tomes in this place.  
+~
+~
+1
+0 557628 0
+M 200 H 150 V 100
+S
+#1222
+Herpetological Conservatory~
+You stand inside a huge, greenhouse-like building.  Displays, containing
+several different environs and the reptiles that live in those places, line
+the south wall.  In the center of the room, a medium-sized lake is present. 
+Several crocodiles fight each other off as all of them attempt to prey on a
+zebra.  One of the crocodiles grabs the zebra near its throat as it stumbles
+and begins to spin, in the process breaking the zebra\@s neck.  Several
+srryn, in white lab coats, walk around the building marking on clipboards
+which reptiles relish the act of killing for reasons other than being
+hungry.  A crocodile, which only seemed to be killing to feed, is noticed
+and immediately the srryn fall upon it and tear its body to shreds with
+their claws.  
+~
+~
+1
+0 557126 0
+S
+#1223
+The Heart of Nature~
+The air around you is positively alight with energy.  You are floating at
+the very epicentre of a yawning spherical chamber in which the walls are
+nearly a hundred feet away.  These curved surfaces are covered with an
+intricate network if interlacing roots, tubers, and vines that create a
+soothing complement to one another.  Directly below you, the curved ground
+of the chamber is covered with soil and speckled with stones and fallen
+leaves.  Directly above, a wide circular hole has been cut in the chamber,
+and a semicircular beam of sunlight shines brightly down into the chamber. 
+The other half of the semicircle is composed of the darkness of night.  The
+two halves of day turn slowly, offering the energy of the sun and the
+respite of the night.  
+~
+~
+5
+0 32886 3
+S
+#1230
+The Temple of the Darkheart~
+You stand in a dilapidated cathedral, its tall walls lined with smashed
+outlines of stained glass portraits.  Streams of red and white light trickle
+through, suffusing the room with a dim glow.  Crimson ivy slowly creeps upon
+the walls, eating away at the paint of once-beautiful murals.  In the front
+of the temple lies an altar of the blackest obsidian seems to rise from the
+ground, cracked sapphire remnants lying around it.  Before the altar is a
+large throne, carved of glittering onyx.  A thick mist seems to emanate from
+the base of the throne, obscuring the ground from sight.  
+~
+Arkhural~
+1
+0 40974 0
+P
+>verb_prog p rpstat~
+if name($n) == Arkhural
+  mpnextinterp
+else
+  mpechoat $n This room has no programs set.
+endif
+~
+>verb_prog p who~
+if ispc($n)
+  if name($n) == Arkhural
+    mpbrand $n 10147
+  endif
+endif
+mpnextinterp
+~
+|
+S
+#1240
+The Lair of the Saurian Elder~
+This gargantuan circular chamber is fashioned out of a rough, dark stone,
+with three seperate caves smashed into the surface of the north, east and
+west directions.  Thick growth clings to the heated stone walls, edging
+upwards into the blackness above.  The ground is murky and wet, with both
+organic and non-organic debris littering the surface of the chamber.  In the
+centre of the chamber is a massive pit, formed and molded by hundreds and
+thousands of thick, clawed hands.  A stream of flickering golden light flows
+from the open pit, suffusing the entirety of the chamber in a warm glow.  
+~
+~
+1
+0 565262 0
+E
+pillar~
+The pillars rise well into the air, supporting the massive ceiling above you.
+Cracked and covered with splotches of mud, they nevertheless seem steady
+for the time being.
+~
+E
+throne~
+A massive throne, carved of once-flawless marble, rests amid the mud and
+vines.  Set on both sides of the throne, torches blaze in place, casting a
+flickering light about themselves.  
+~
+S
+#1247
+A Chamber of Light~
+You stand in a chamber, only made so by the white marble pillars
+surrounding the room.  Besides those fluted columns, there are no walls, and
+the pillars support no other roof than the crystalline blue sky.  The floor
+seems to be made of glass, or a thin shield of some sort, transparent to
+allow you to see the world of Avendar sprawling out beneath you.  A gentle
+breeze stirs the air, the winds cool fingers lightly brush your skin,
+leaving behind a feeling of tingling refreshment.  The whole area is
+suffused with light, and the muted sound of falling water mingles with a
+faint far off music in a soothing harmony.  
+~
+~
+1
+0 5013620 9
+M 200 H 200 V 100
+S
+#1250
+A Windy Ocean Beach~
+A grey and windy ocean beach stretches as far as the eye can see to the
+north and south.  Eroding sandstone cliffs rise to the east, darkly framing
+a stormy sky with weather-torn trees.  The wind howls across the western
+ocean, and in the sky, and in the cliffs behind, and the salty smell of the
+ocean rides the chill wind, hinting of teeming life beneath these cold,
+sombre waves.  And below the wild moaning of the sky and the distant
+screeching of gulls, echoes the everlasting sonorous roar of a tumultuous
+sea.  
+~
+~
+0
+0 4759922 10
+D0
+~
+~
+131072 0 1250
+D2
+~
+~
+131072 0 1250
+D3
+~
+~
+0 0 1253
+M 0 H 100 V 0
+S
+#1251
+The Swamp~
+A broad expanse of swamp stretches into the mists in all directions. 
+Murky, pungent water seeps between your toes, and the warm, viscous air
+caresses your scales.  The sounds of life erupt from every stagnant pond,
+peaty mound and twisted tree, filling the air with a vibrant thrum.  
+~
+~
+0
+0 21528896 14
+D0
+~
+~
+0 0 1251
+D1
+~
+~
+0 0 1251
+D2
+~
+~
+0 0 1251
+D3
+~
+~
+0 0 1251
+S
+#1252
+A Ravaged Square, Amidst a Ruined City~
+The shattered cobble of this blasted square lies open, stark and naked,
+beneath the churning, malachite sky.  Clawing fingerbones of wood and stone
+gurdle the tortured cloudscape, upthrust from the firewracked corpse of this
+once-great city.  In the center of the square, a tumbled fountain squats in
+shadow, its trill burble a ghostly melody above the deeper silence.  Wide
+streets lead quickly into darkness and ruin in all directions.  
+~
+~
+0
+0 4751680 1
+D0
+~
+~
+0 0 1252
+D1
+~
+~
+0 0 1252
+D2
+~
+~
+0 0 1252
+D3
+~
+~
+0 0 1252
+S
+#1253
+A Stormy Ocean~
+Waves heave and crash about you on the surface of this vast and stormy
+ocean.  To the east a grey, cliff-bound beach can be seen, but to the west
+the ocean goes on forever.  Dark clouds churn above, occasionally lashing
+walls of rain across the sea.  The rumble of thunder joins with the howling
+wind and the roaring ocean, and the distant crying of gulls to create a
+wild, tempestuous chorus.  
+~
+~
+0
+0 557376 6
+D0
+~
+~
+0 0 1253
+D1
+~
+~
+0 0 1250
+D2
+~
+~
+0 0 1253
+D3
+~
+~
+0 0 1253
+S
+#1254
+Suspended in a Network of Fleshy Tendrils~
+You hang in writhing network of scabrous tendrils and filaments of sinew.
+Fleshy pseudopods play across your skin, squeezing and pinching and
+searching.  Whenever the rough, calloused end of a tendril finds and egress,
+a sharp, exquisite pain erupts within you as the member forces its entry. 
+Thus you are suspended, and have been for days now.  The constant erogenous
+stimulation has become a dull, throbbing warmth.  Both pleasure and pain
+suffuse your body and mind.  
+~
+~
+5
+0 565367 0
+M 25 H 115 V 25
+S
+#1260
+A White Plain~
+You find yourself on a high hillock in the middle of a broad, expansive
+plain.  Far in the distance on all sides, a bluish haze on the horizon
+indicates the presence of distant mountain ranges.  The plains are a
+cream-white color, from the dried long-stemmed grasses that cover the chalky
+soil.  Like a shimmering silver snake, a meandering river winds its way
+across the plain.  It runs around the base of the hill, and on into the
+distance.  Something about the entire landscape before you seems altered,
+unreal--and in a way, insubstantial.  You do sense that there one completely
+solid, concrete object near you, and it is a massive triangle of weathered
+stone which hovers just above the ground, a short distance away from you.  
+~
+~
+0
+0 4727926 4
+S
+#1261
+The Knight Hall~
+---------------------------------------
+|        The Knight Duty Roster       |
+---------------------------------------
+Tiris, 502 days of active service.
+Anaelis, 656 days of active service.
+Lyatzel, 156 days of active service.
+---------------------------------------
+June 6 2004
+~
+~
+0
+0 138453044 0
+S
+#1266
+A Black Ledge Overlooking a Lake of Fire~
+This rocky ledge of black stone reaches forth from the equally black wall
+of a cave.  Small rivulets of lava stream down the sides of the cave wall,
+and billowing smoke is all around.  The ledge itself overlooks a massive
+lake of pure fire, with long streams of flame shooting continually forth to
+scorch the blackened ceiling of the cave.  
+~
+~
+0
+0 565622 0
+S
+#1270
+A Black-Stone Throne Room~
+There are no obvious entrances or exits from this long room; the walls of
+the chamber are unbroken by any windows or doors.  A black carpet made of
+some fine cloth travels the length of the room, stopping at the foot of a
+dais made of the same black stone of the rest of the hall.  A brooding
+wrought-iron throne made of black, unreflective steel rests on the raised
+platform, looming over the hall.  
+~
+~
+0
+0 565630 0
+S
+#1271
+The Hall of the Crown~
+You stand in a large hall with walls of gray marble and lined with marble
+pillars.  Each pillar is marked with the symbol of the Golden Crown, the
+sign of Law and Justice.  At the front of the hall is a great throne
+fashioned from the same gray marble.  To either side of the throne stand
+towering statues of guards, shown fully armored and bearing a great sword. 
+A soft light seems to flood the Hall, although a source cannot be
+identified. 
+~
+~
+1
+0 565630 0
+S
+#1272
+Iandir\@s Pet Issues~
+* Even out the exp curve
+* Add more races
+Upgrade watchers
+Make it easier to hunt in a big wide open area
+Player-run politics
+* Weaken aelin stats
+* Weaken nefortu con
+Make it so you can scan in the dark: Our areas are deathtraps otherwise
+Altar looting by noobs is lame
+Make fewer instakill deathtraps in areas
+Armor class still doesn\@t mean much
+Object-oriented mob progs
+Mob-oriented object progs
+~
+~
+0
+0 565580 0
+S
+#1273
+A Small Room~
+~
+~
+0
+0 565630 0
+S
+#1290
+The Courtyard of the Gallant~
+~
+Jolinn~
+0
+0 5022014 0
+P
+>speech_prog p trigger~
+mpzecho test test
+~
+|
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 1250 0 131072
+D 0 1250 2 131072
+M 0 1223 1 1223 1
+O 0 1259 0 1252
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

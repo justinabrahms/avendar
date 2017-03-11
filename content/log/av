@@ -1,0 +1,17 @@
+#!/usr/bin/perl 
+
+my $name = shift;
+
+opendir(DIR, "/home/pantheon/avprod/accounts/") or die "$!";
+while(defined($file = readdir(DIR))) {
+	open (F, "/home/pantheon/avprod/accounts/$file") or die "$!";
+	@a = <F>;
+	if (@result = grep /$name/, @a) {
+		print "Found result in $file: ";
+		$r = join(@result);
+		$r =~ s/\r//g;
+		print "$r\n";
+		print "All chars: $a[2]\n";
+	}
+}
+

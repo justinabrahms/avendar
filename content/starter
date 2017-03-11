@@ -1,0 +1,105 @@
+#!/bin/sh
+
+devport=9889
+prodport=9999
+
+ulimit -Sc unlimited
+
+if [ "$1" = "auto" ] ; then
+  devup=`ps ax|grep avendar|grep $devport |grep -v grep|wc -l`
+  if [ $devup -gt 0 ] || [ -f /home/pantheon/avdev/DOWN ] ; then
+    devup=woo
+  else
+#  cd ~pantheon/avdev/area
+  cd /home/pantheon/avdev/area
+  lognum=1000
+  while [ 1 ] ; do
+	if [ $lognum -gt 5000 ] ; then
+		exit 0
+	fi
+	logfile=../log/$lognum\.log
+	if [ -f $logfile ] ; then
+		lognum=$[lognum+1]
+	else
+		../src/avendar $devport > $logfile 2>&1 &
+		break
+	fi
+  done
+  fi
+  devup=`ps ax|grep avendar|grep $prodport |grep -v grep|wc -l`
+  if [ $devup -gt 0 ] || [ -f /home/pantheon/avprod/DOWN ] ; then
+    exit 0
+  fi
+#  cd ~pantheon/avprod/area
+  cd /home/pantheon/avprod/area
+  lognum=1000
+  while [ 1 ] ; do
+	if [ $lognum -gt 5000 ] ; then
+		rm -f ../log/backup-old-logs.tar.gz
+		tar -cvf ../log/backup-old-logs.tar ../log/*.log
+		gzip ../log/*.tar
+		rm -f ../log/*.log
+		export MALLOC_TRACE="/home/pantheon/avprod/src/mtrace$(date +%Y%m%d-%H%M%S).txt"
+		../src/avendar $prodport > ../log/1000.log 2>&1 &
+#		perl /home/pantheon/notify
+		exit 0
+	fi
+	logfile=../log/$lognum\.log
+	if [ -f $logfile ] ; then
+		lognum=$[lognum+1]
+	else
+		export MALLOC_TRACE="/home/pantheon/avprod/src/mtrace$(date +%Y%m%d-%H%M%S).txt"
+		../src/avendar $prodport > $logfile 2>&1 &
+#		perl /home/pantheon/notify
+		exit 0
+	fi
+  done
+elif [ "$1" = "dev" ] ; then
+  devup=`ps ax|grep avendar|grep $devport |grep -v grep|wc -l`
+  if [ $devup -gt 0 ] ; then
+    echo Dev was already up or is marked DOWN
+    exit 0
+  fi
+  cd /home/pantheon/avdev/area
+  lognum=1000
+  while [ 1 ] ; do
+	if [ $lognum -gt 5000 ] ; then
+		exit 0
+	fi
+	logfile=../log/$lognum\.log
+	if [ -f $logfile ] ; then
+		lognum=$[lognum+1]
+	else
+		../src/avendar $devport > $logfile 2>&1 &
+		exit 0
+	fi
+  done
+elif [ "$1" = "prod" ] ; then
+  devup=`ps ax|grep avendar|grep $prodport |grep -v grep|wc -l`
+  if [ $devup -gt 0 ] ; then
+    echo Prod was already up or is marked DOWN
+    exit 0
+  fi
+  cd /home/pantheon/avprod/area
+  lognum=1000
+  while [ 1 ] ; do
+	if [ $lognum -gt 5000 ] ; then
+		exit 0
+	fi
+	logfile=../log/$lognum\.log
+	if [ -f $logfile ] ; then
+		lognum=$[lognum+1]
+	else
+		export MALLOC_TRACE="/home/pantheon/avprod/src/mtrace$(date +%Y%m%d-%H%M%S).txt"
+#		perl /home/pantheon/notify
+		../src/avendar $prodport > $logfile 2>&1 &
+		exit 0
+	fi
+  done
+else
+  echo Invalid option. Choices are:
+  echo "	auto: Check for dev and prod, start if down"
+  echo "	prod: Check for prod. Start if down."
+  echo "	 dev: Check for dev. Start if down."
+  exit 0
+fi

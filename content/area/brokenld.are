@@ -1,0 +1,5677 @@
+#AREADATA
+Name The Broken Lands~
+Builders Saedacal~
+VNUMs 8600 8799
+Credits [40 51] Saedacal  The Broken Lands~
+Danger 2
+Security 1
+Areainfo 59
+Herbs 290
+Weather 0 1 2 0 8
+End
+
+
+
+#MOBILES
+V4 8650
+Sigilbot Sigil Bot mob_8650~
+A sigilbot is here~
+A sigilbot is here
+~
+State the name of one of the following Deities to see a list of their specific sigil powers:
+
+Aeolis
+Alajial
+Alil
+Arkhural
+Bayyal
+Dolgrael
+Dorrod
+Elar
+Enirra
+Girikha
+Iandir
+Jolinn
+Rveyelhi
+Rystaia
+Serachel
+Sythrak
+Tzajai
+General
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>speech_prog p ~
+mpsetdata deities
+loop 1 to 20
+  if compstr(1) == $d
+    mpdesc 1202 $d
+    break
+  else
+    mpnextdata
+  endif
+endloop
+~
+>data_prog Tzajai~
+~
+>data_prog Serachel~
+~
+>data_prog Rveyelhi~
+~
+>data_prog Jolinn~
+~
+>data_prog Girikha~
+~
+>data_prog Enirra~
+~
+>data_prog Elar~
+~
+>data_prog Dorrod~
+~
+>data_prog Bayyal~
+~
+>data_prog Arkhural~
+~
+>data_prog Alajial~
+~
+>data_prog Alil~
+~
+>data_prog Aeolis~
+~
+>data_prog Iandir~
+~
+>data_prog Rystaia~
+{RRYSTAIA{n
+[{W1247{n]    the Sigil of an Alabaster Pegasus
+\\.        LEVEL: 1
+\\.        STATS: hp +5, saves -2, resistnegative +5
+\\.        PROGS: invoke sigil/\#I am free!\#, spirit of freedom
+\\.               fightprog 1, uberzeal
+[{W1248{n]    the Sigil of a Soaring Pegasus
+\\.        LEVEL: 2
+\\.        STATS: hp +10, saves -3, resistnegative +10
+\\.        PROGS: \#May Rystaia\@s light clear my mind\#, clarity.
+\\.               invoke sigil/\#I am free!\#, spirit of freedom
+\\.               fightprog 2, uberzeal
+[{W1249{n]    the Sigil of a Pegasus with Wings of Light
+\\.        LEVEL: 3
+\\.        STATS: hp +20, hr +2, saves -5, resistnegative +15
+\\.        PROGS: \#May Rystaia\@s light clear my mind\#, clarity.
+\\.               invoke sigil/\#I am free!\#, spirit of freedom
+\\.               fightprog 2, uberzeal
+\\.               fightprog 2, ray of light/sunray
+~
+>data_prog General~
+{RGENERAL{n
+[{W1210{n]    the Sigil of the Wrath of the Gods
+\\.        LEVEL: 1 (actual wrath)
+\\.        STATS: resholy -20, dr/hr -5, hp/mana -50
+\\.        PROGS: Wrathstuff (blind, curse, deafen, pox, eth flames)
+[{W1252{n]    the Sigil of the Wrath of the Gods
+\\.        LEVEL: 2 (fake wrath - player has a friendly immortal patron)
+\\.        STATS: resistcharm +5, resistillusion +5
+\\.        PROGS: Fake wrathstuff (only does eth flames, fakes everything else)
+~
+>data_prog Sythrak~
+{RSythrak{n
+[{W1222{n]    the Sigil of the Saurian Eye
+\\.        LEVEL: 3
+\\.        STATS: str +1, saves -5, dr +3.
+\\.        PROGS: speech prog to get robes.
+[{W1223{n]    the Sigil of the Saurian Tooth
+\\.        LEVEL: 2
+\\.        STATS: str +1, saves -3, dr +2, 
+\\.        PROGS: fight_prog 2 frenzy or fireblast
+[{W1224{n]    the Sigil of the Saurian Claw
+\\.        LEVEL: 1
+\\.        STATS: str +1, saves -4, dr +3.
+\\.        PROGS: Speech prog to get robes, fight_prog 2 frenzy
+[{W1240{n]    the Sigil of the Saurian Eye
+\\.        LEVEL: 3 ({rBADASS{n)
+\\.        STATS: mana +35, res_cold +15
+\\.        PROGS: Rand_prog 2 to heal 25-75hp, note-to-Sythrak deathprog, fight_prog 7 to either:
+\\.               cast beam of fire/cast heat metal/cast melt metal/heal 100 to 170hp/cast flame tongue on a sanc\@d foe else cast fire blast
+~
+>data_prog deities~
+Aeolis
+Alajial
+Alil
+Arkhural
+Bayyal
+Dolgrael
+Dorrod
+Elar
+Enirra
+Girikha
+Iandir
+Jolinn
+Rveyelhi
+Rystaia
+Serachel
+Sythrak
+Tzajai
+General
+~
+|
+V4 8700
+wolf rangercall dire mob_8700 testdire~
+a dire wolf~
+A dire wolf stalks quietly.
+~
+This large, black-furred dire wolf stalks quietly, looking to be almost
+five feet in length from head to rump.  A sleek body leads into heavy
+shoulders and a thick, long snout.  Inordinately large, pointed teeth line
+the wolf\@s maw which is ringed with a dark-grey shade of matted fur.  The
+legs of the dire wolf are shorter than a typical wolf and are not as adept
+at speed as they are strength.  
+~
+wolf~
+water scholar~
+AN F DJZ N 0
+51 26 1800d1+0 0d0+0 2d26+0 pierce~
+bite~
+-14 -14 -14 -14
+FH 0
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AGV ACDEFJKQV A medium unknown
+>rand_prog 100~
+// Cooldowns on variables 0 to 2
+// Passive non-combat skills
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    mpvalueset 0 12
+  endif
+endif
+if value(1) > 0
+  mpvaluedown 1
+  if value(1) == 0
+    mpechoaround $i Tired of the hunt, the dire wolf dashes away, it\@s powerful legs carrying it away.
+    mppurge self
+  endif
+endif
+if value(2) > 0
+  mpvaluedown 2
+endif
+// sharp vision skill
+if snaffected($i) == 245
+else
+  mpaddaffect $i 245 51 10 0 0 0 A
+endif
+// direhunt skill - chase if value(0) is between 1 and 9, reset value(0) to 12 at 0
+if value(0) > 0
+  if cansee($i) == $f0
+    mpkill $f0
+  endif
+// taking a break
+  if value(0) > 10
+    if rand(5)
+      mpechoaround $i The dire wolf pauses momentarily, sniffing at the air with its long tooth-lined snout.
+    endif
+  endif
+  if value(0) < 10
+// checks for a new path
+    if rand(10)
+      mpvaluerand 5 2 8
+      mpfindpath $f0 $5
+      if rand(10)
+        mpechoaround $i With a low, gutteral growl, the dire wolf takes up a new scent.
+      endif
+    endif
+// checks to goto target
+    if rand(1)
+      if inarea($f0)
+        if sector($i) == forest
+          if sector($f0) == forest
+            if cansee($i) == $f0
+              mpechoaround $i The dire wolf\@s sleek shape disappears into the twisting underbrush of the forest.
+              mpgoto $f0
+              mpechoaround $i The dire wolf bursts from the underbrush and immediately attacks $F0!
+              mpkill $f0
+            endif
+          endif
+        endif
+      endif
+    endif
+// tracking procedures
+    if haspath($i)
+      mppathstep
+    else
+      if rand(40)
+        mptrackstep
+      else
+        if rand(20)
+          mptrackstep
+          if ishere($f0)
+            mpechoaround $i With sleek efficiency the dire wolf lunges at $F0!
+            if cansee($i) == $f0
+              mpkill $f0
+            endif
+          endif
+        else
+          if rand(80)
+            mptrackstep
+            if ishere($f0)
+              if cansee($i) == $f0
+                mpechoaround $i With lightning speed the dire wolf leaps at $F0!
+                mpkill $f0
+              endif
+            else
+              mpechoaround $i You catch only a fleeting glimpse of a dire wolf as it passes your location.
+              mptrackstep
+            endif
+          else
+            mptrackstep
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>verb_prog direhunt~
+if ispc($n)
+  if ischarmed($i)
+    if ismaster($n)
+      mpunfocus 0
+      mpfocus $n 1
+      if isghost($f1)
+      else
+        if compstr(2) == 
+          mpechoat $f1 The dire wolf looks at your curiously.
+          o $f1 You must indicate a target.  Syntax: direhunt <target>
+        else
+          mpfocus $y2 0
+          if ispc($f0)
+            if snaffected($f0) == 303
+              o $f1 The dire wolf must be able to see your target to activate this ability.
+            else
+              mplag $n 2
+              mpvalueset 0 12
+              mpvalueset 1 72
+              pmote snarls and starts hunting $F0.
+              mptrack $f0
+              mpremaffect $i 19
+              follow self
+            endif
+          else
+            mpechoat $f1 The dire wolf looks at you curiously.
+            o $f1 Only PCs currently in the realm are valid targets.
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>fight_prog 100~
+// Turn off selected non-combat skills
+mpvalueset 6 0
+mpvalueset 7 0
+mpvalueset 8 0
+mpvalueset 9 0
+// Cooldowns on variables 0 to 2
+// Passive combat skills
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    mpvalueset 0 12
+  endif
+endif
+if value(1) > 0
+  mpvaluedown 1
+  if value(1) == 0
+    mpechoaround $i Tired of the hunt, the dire wolf dashes away, it\@s full strides carrying it away.
+    mppurge self
+  endif
+endif
+if value(2) > 0
+  mpvaluedown 2
+endif
+// Common passive skill
+// mptrigger figures out who the mob is fighting
+mproomcmd mptrigger all
+if rand(1)
+// check versus mob level
+  mpget mob $i level 5
+  mpmath dmgamount  / 2
+  mpmath 5 ( + 15) * 145 / 100
+  if rand()
+// check versus the target dex
+    mpvaluerand statcheck 20 30
+    if ispc($f0)
+      mpget char $f0 dex 5
+    else
+      mpget mob $f0 dex 5
+    endif
+    if value(5) < %statcheck
+      mpdammess $f0 %dmgamount peck
+      mpdamtype $f0 1 1 %dmgamount 2
+    endif
+  endif
+endif
+~
+>load_prog 100~
+// Static Skills for the beast here
+mpaddskill self 245 100
+~
+|
+V4 8701
+war warhawk hawk rangercall mob_8701~
+a golden hawk~
+An agile, golden hawk swoops through the air.
+~
+Large, golden-feathered wings propel the hawk through the air.  Its sharp
+black-yellow beak is curled downwards into a deadly hook and its strong
+claws are tucked in underneath its body.  The wingspan of the hawk spans
+over five feet, casting an ominous shadow beneath whatever it glides above. 
+~
+song bird~
+water scholar~
+AN F T N 0
+51 31 1600d1+0 0d0+0 2d26+0 slash~
+talons~
+0 0 0 0
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 33 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AGHMVW ACDEFHKP A medium unknown
+>verb_prog hawksentry~
+if ispc($n)
+  if ischarmed($i)
+    if ismaster($n)
+      mpunfocus 0
+      mpfocus $n 1
+      if isghost($f1)
+      else
+        if compstr(2) == 
+          if value(6) == 0
+            mpechoat $f1 The hawk looks at you curiously.
+            o $f1 You must indicate a target.  Syntax: hawksentry <target>
+          endif
+        else
+          mplag $n 2
+          mpvaluerand skillcheck 0 90
+// Do skill check for appropriate skill (call animal)
+          if skill272($f1) > %skillcheck
+            mpfocus $y2 0
+            if ispc($f0)
+              if isimmort($f0)
+              or isindoors($f1)
+                mpechoat $f1 The hawk looks at you curiously.
+                o $f1 The hawk must be outside and able to see your target to activate this ability.
+                break
+              endif
+              if cansee($i) == $f0
+              else
+                mpechoat $f1 The hawk looks at you curiously.
+                o $f1 The hawk must be outside and able to see your target to activate this ability.
+                break
+              endif
+              mpvalueset 6 1
+              mpvalueset 7 0
+              mpvalueset 8 0
+              mpvalueset 9 0
+              mpechoat $f1 The hawk ascends into the sky, disappearing from sight.
+              mpechoaround $f1 A hawk flies up into the sky and disappears from sight.
+              mpmload 8790
+              hawkmobsentry $f0 $f1
+              mpgoto 8600
+            else
+              mpechoat $f1 The hawk looks at you curiously.
+              o $f1 Only PCs currently in the realm are valid targets.
+            endif
+          else
+            mpechoat $f1 You fail to communicate properly with the hawk.
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>verb_prog hawkstrike~
+if ispc($n)
+  if ischarmed($i)
+    if ismaster($n)
+      mpunfocus 0
+      mpfocus $n 1
+      if isghost($f1)
+      else
+        if value(1) > 0
+          mplag $n 1
+          mpechoat $f1 The hawk ruffles its feathers and caws in defiance.
+          mpechoaround $f1 A hawk ruffles its feathers and caws.
+        else
+          mplag $n 2
+          mpvaluerand skillcheck 0 90
+// Do skill check for appropriate skill (call animal)
+          if skill272($f1) > %skillcheck
+// mptrigger figures out who the mob is fighting
+            mpfocus $i 1
+            mproomcmd mptrigger all
+// check versus mob level
+            mpget mob $f1 level 5
+            mpmath 5 ($5 + 15) * 145 / 100
+            if rand($5)
+// check versus the target dex
+              mpvaluerand statcheck 20 30
+              if ispc($f0)
+                mpget char $f0 dex 5
+              else
+                mpget mob $f0 dex 5
+              endif
+              if value(5) < %statcheck
+                mpvalueset 1 12
+                mpechoat $f0 The hawk flies at you, raking its claws across your face!
+                mpechoaround $f0 A hawk flies at $F0, raking its claws across $S0 face!
+                mpget mob $f1 level 5
+                mpmath dmgamount $5
+                mpdammess $f0 %dmgamount raking claws
+                mpdamtype $f0 1 1 %dmgamount 3
+                mpaddskill $f1 236 100
+                gouge
+                mpremoveskill $f1 236
+              else
+                mpechoat $f0 The hawk flies at you but you avoid its raking claws.
+                mpechoaround $f0 A hawk flies at $F0 but they avoid the raking claws.
+              endif
+            else
+              mpechoat $f0 The hawk flies at you but you avoid its raking claws.
+              mpechoaround $f0 A hawk flies at $F0 but they avoid the raking claws.
+            endif
+          else
+            mpechoat $f0 The hawk flies at you but you avoid its raking claws.
+            mpechoaround $f0 A hawk flies at $F0 but they avoid the raking claws.
+          endif
+      endif
+    endif
+  endif
+endif
+~
+>verb_prog helphawk~
+if isimmort($n)
+  mpechoat $n Golden Hawk
+  mpechoat $n -----------
+  mpechoat $n The hawk is native to the more mountainous terrain typical of the Brintor mountain ranges.
+  mpechoat $n While smaller than the typical beasts that the ranger would control, hawks are no less capable.
+  mpechoat $n Hawks have the following abilities:  HAWK TALONS, HAWKSTRIKE, HAWKSENTRY
+  mpechoat $n -----------
+  mpechoat $n Hawk Talons (passive combat)
+  mpechoat $n The hawk will occassionally make an extra attack on the victim
+  mpechoat $n -----------
+  mpechoat $n Hawkstrike (active combat)
+  mpechoat $n The hawk attacks your opponent and attempts to gouge
+  mpechoat $n -----------
+  mpechoat $n Hawksentry <target> (active non-combat)
+  mpechoat $n The hawk stays in the current location and watches out for the target - if it locates the target, the hawk returns.
+  mpechoat $n You can command the hawk back to you by walking past the point where you called the hawk or by typing Hawksentry  without an argument.
+endif
+~
+>verb_prog homehawk~
+mpfocus $y3 1
+if ismaster($f1)
+  if value(6) == 1
+    mpvalueset 6 0
+    if compstr(2) == yes
+      mpechoat $f1 The hawk returns to you, cawing to signal you that $F0 passed its location.
+      mpechoaround $f1 A hawk returns to travel with $F1.
+      mpgoto $f1
+    else
+      mpechoat $f1 The hawk returns to you, signalling that it has not spotted its target.
+      mpechoaround $f1 A hawk returns to travel with $F1.
+      mpgoto $f1
+    endif
+  endif
+endif
+~
+>rand_prog 100~
+// Cooldowns on variables 0 to 2
+// Passive non-combat skills
+if value(0) > 0
+  mpvaluedown 0
+endif
+if value(1) > 0
+  mpvaluedown 1
+endif
+if value(2) > 0
+  mpvaluedown 2
+endif
+// sharp vision skill
+if snaffected($i) == 245
+else
+  mpaddaffect $i 245 51 10 0 0 0 A
+endif
+~
+>fight_prog 100~
+// Turn off selected non-combat skills
+mpvalueset 6 0
+mpvalueset 7 0
+mpvalueset 8 0
+mpvalueset 9 0
+// Cooldowns on variables 0 to 2
+// Passive combat skills
+if value(0) > 0
+  mpvaluedown 0
+endif
+if value(1) > 0
+  mpvaluedown 1
+endif
+if value(2) > 0
+  mpvaluedown 2
+endif
+// Common passive skill
+// mptrigger figures out who the mob is fighting
+mproomcmd mptrigger all
+if rand(50)
+// check versus mob level
+  mpget mob $i level 5
+  mpmath dmgamount $5
+  mpmath 5 ($5 + 15) * 145 / 100
+  if rand($5)
+// check versus the target dex
+    mpvaluerand statcheck 20 30
+    if ispc($f0)
+      mpget char $f0 dex 5
+    else
+      mpget mob $f0 dex 5
+    endif
+    if value(5) < %statcheck
+      mpdammess $f0 %dmgamount talons
+      mpdamtype $f0 1 1 %dmgamount 3
+    endif
+  endif
+endif
+~
+>trigger_prog 100~
+// Not sure we need this, but it is available
+// Checks to see who the animal is fighting
+if isfighting($i) == $n
+  mpfocus $n 0
+endif
+~
+>load_prog 100~
+// Static Skills for the beast here
+mpaddskill self 245 100
+~
+|
+V4 8702
+bear grizzly rangercall mob_8702 testbear~
+the grizzly bear~
+A grizzly bear lumbers along here.
+~
+This grizzly bear is a towering mass of matted, coarse fur.  On all fours
+it dwarfs most humans and standing tall it matches a typical alatharya.  The
+grizzly\@s immense haunches and hunched back betray its overwhelming power. 
+The paws, mounted on tree trunk-size legs, are covered in muck and dirt, the
+razor-sharp claws extending from beneath them like cruel hooks.  The rounded
+head is almost indistinguishable from the shoulders, its thick barrel-neck
+covered in fat and muscle.  A coat of think brown fur covers the beast save
+for the blackened snout.  
+~
+bear~
+water scholar~
+AN F J N 0
+51 26 2000d1+0 0d0+0 0d0+0 slash~
+claw~
+-14 -14 -14 -14
+DEO 0
+26 0 0 0 0 20 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AGV ABCDEFHJKUV A medium unknown
+>verb_prog grizzlystrike~
+if ispc($n)
+  if ischarmed($i)
+    if ismaster($n)
+      mpunfocus 0
+      mpfocus $n 1
+      if isghost($f1)
+      else
+        if value(1) > 0
+          mplag $n 1
+          mpechoat $f1 The grizzly bear emits a low, gutteral roar.
+          mpechoaround $f1 A grizzly bear emits a low, gutteral roar.
+        else
+          mplag $n 2
+          mpvaluerand skillcheck 0 90
+// Do skill check for appropriate skill (call animal)
+          if skill272($f1) > %skillcheck
+// mptrigger figures out who the mob is fighting
+            mpfocus $i 1
+            mproomcmd mptrigger all
+// check versus mob level
+            mpget mob $f1 level 5
+            mpmath 5 ($5 + 15) * 145 / 100
+            if rand($5)
+// check versus the target str
+              mpvaluerand statcheck 15 30
+              if ispc($f0)
+                mpget char $f0 str 5
+              else
+                mpget mob $f0 str 5
+              endif
+              if value(5) < %statcheck
+                mpvalueset 1 12
+                mpvalueset 7 2
+                mpvalueset 6 0
+                mpvalueset 8 0
+                mpvalueset 9 0
+                mpechoat $f0 The grizzly bear lunges at you and strikes you heavily in the chest!
+                mpechoaround $f0 The grizzly bear lunges at $F0 and strikes $M0 heavily in the chest!
+                mpget mob $f1 level 5
+                mpmath dmgamount $5 * 2
+                mpdammess $f0 %dmgamount strike
+                if snaffected($f0) == 110
+                or snaffected($f0) == 393
+                or snaffected($f0) == 354
+                or snaffected($f0) == 219
+                or snaffected($f0) == 689
+                or snaffected($f0) == 551
+                or snaffected($f0) == 508
+                or snaffected($f0) == 275
+                or ifskill255($f0) > 70
+                or ifskill751($f0) > 70
+                  if rand(50)
+                    mpmath 7 $7 - 2
+                  else
+                    mpmath 7 $7 - 1
+                  endif
+                endif
+                if value(7) > 0
+                  mpechoat $f0 The strength of the blow knocks you over!
+                  mpechoaround $f0 The strength of the blow knocks $F0 over!
+                  mplag $f0 $7
+                else
+                  mpechoat $f0 The grizzly bear hits you squarely in the chest but fails to knock you over!
+                  mpechoaround $f0 The grizzly bear hits $F0 squarely in the chest but is not knocked over.
+                endif
+              else
+                mpechoat $f0 The grizzly bear lunges at you but you avoid its powerful strike.
+                mpechoaround $f0 The grizzly bear lunges at $F0 but they avoid the strike.
+              endif
+            else
+              mpechoat $f0 The grizzly bear lunges at you but you avoid its powerful strike.
+              mpechoaround $f0 The grizzly bear lunges at $F0 but they avoid the strike.
+            endif
+          else
+            mpechoat $f0 The grizzly bear lunges at you but you avoid its powerful strike.
+            mpechoaround $f0 The grizzly bear lunges at $F0 but they avoid the strike.
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>verb_prog grizzlycharge~
+if ispc($n)
+  if ischarmed($i)
+    if ismaster($n)
+      mpunfocus 0
+      mpfocus $n 1
+      if isghost($f1)
+      else
+        if compstr(2) == 
+          if value(6) == 0
+            mpechoat $f1 The grizzly bear growls defiantly.
+            o $f1 You must indicate a target.  Syntax: grizzlycharge <target>
+          else
+            mpechoat $f1 The grizzly calms down.
+            mpvalueset 6 0
+          endif
+        else
+          if value(0) > 0
+            mpechoat $f1 The grizzly bear snorts exhaustedly and refuses your command.
+            mpechoaround $f1 The grizzly bear snorts at $F1.
+          else
+            mplag $n 2
+            mpvaluerand skillcheck 0 90
+// Do skill check for appropriate skill (call animal)
+            if skill272($f1) > %skillcheck
+              mpfocus $y2 0
+              if ispc($f0)
+                if isimmort($f0)
+                  mpechoat $f1 The grizzly bear growls defiantly.
+                  o $f1 You must be able to see your target to activate this ability.
+                  break
+                endif
+                if cansee($i) == $f0
+                else
+                  mpechoat $f1 The grizzly bear growls defiantly.
+                  o $f1 You must be able to see your target to activate this ability.
+                  break
+                endif
+                if sector($f1) == forest
+                or sector($f1) == hills
+                or sector($f1) == mountain
+                  mpvalueset 0 16
+                  mpvalueset 6 1
+                  mpvalueset 7 0
+                  mpvalueset 8 0
+                  mpvalueset 9 0
+                  mpechoat $f1 The grizzly bear paws at the ground and snarls in rage!
+                  mpechoaround $f1 A grizzly bear paws at the ground and snarls in rage!
+                else
+                  mpechoat $f1 The grizzly bear growls defiantly.
+                  o $f1 You must be in the forest, hills, or mountains to activate this ability.
+                endif
+              else
+                mpechoat $f1 The grizzly bear growls defiantly.
+                o $f1 Only PCs currently in the realm are valid targets.
+              endif
+            else
+              mpechoat $f1 You fail to communicate properly with the grizzly bear.
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>rand_prog 100~
+// Cooldowns on variables 0 to 2
+// Passive non-combat skills
+if value(0) > 0
+  mpvaluedown 0
+endif
+if value(1) > 0
+  mpvaluedown 1
+endif
+if value(2) > 0
+  mpvaluedown 2
+endif
+// sharp vision skill
+if snaffected($i) == 245
+else
+  mpaddaffect $i 245 51 10 0 0 0 A
+endif
+// grizzlycharge skill
+if value(6) == 1
+  if sector($f1) == forest
+  or sector($f1) == hills
+  or sector($f1) == mountain
+    if ishere($f0)
+      if snaffected($f1) == 303
+      else
+        mpechoat $f0 The grizzly bear bellows at you and attacks!
+        mpechoaround $f0 The grizzly bear bellows at $F0\@s presence and charges $M0!
+        mpkill $f0
+        mpvalueset 6 0
+      endif
+    endif
+  else
+    mpechoat $f1 The grizzly bear cannot charge outside its element and it loses interest.
+    mpvalueset 6 0
+  endif
+endif
+~
+>verb_prog helpgrizzly~
+if isimmort($n)
+  mpechoat $n Grizzly Bear
+  mpechoat $n -----------
+  mpechoat $n Description.
+  mpechoat $n Grizzly Bears have the following abilities:  GRIZZLY RAGE, GRIZZLYSTRIKE, GRIZZLYCHARGE
+  mpechoat $n -----------
+  mpechoat $n Grizzly Rage (passive combat)
+  mpechoat $n The grizzly will become frenzied when it enters combat
+  mpechoat $n -----------
+  mpechoat $n Grizzlystrike (active combat)
+  mpechoat $n The grizzly attacks your opponent and attempts to lag them.  Works better on smaller opponents and worse on larger.
+  mpechoat $n -----------
+  mpechoat $n Grizzlycharge <target> (active non-combat)
+  mpechoat $n The grizzly watches out for the target and will attack them on sight.  Works only in the forest/hills/mountains. without an argument.
+endif
+~
+>load_prog 100~
+// Static Skills for the beast here
+mpaddskill self 245 100
+~
+>trigger_prog 100~
+// Checks to see who the animal is fighting
+if isfighting($i) == $n
+  mpfocus $n 0
+endif
+~
+>fight_prog 100~
+// Turn off selected non-combat skills
+mpvalueset 6 0
+mpvalueset 7 0
+mpvalueset 9 0
+// Cooldowns on variables 0 to 2
+// Passive combat skills
+if value(0) > 0
+  mpvaluedown 0
+endif
+if value(1) > 0
+  mpvaluedown 1
+endif
+if value(2) > 0
+  mpvaluedown 2
+endif
+// Common passive skill - Grizzlyrage
+if rand(50)
+// check versus mob level
+  mpget mob $i level 5
+  mpmath 5 ($5 + 15) * 145 / 100
+  if rand($5)
+// check for rage
+    if rand(5)
+      if value(2) == 0
+        if value(8) == 0
+          if snaffected($i) == 71
+          else
+            mpecho The grizzly bear wades into battle, striking with increased ferocity!
+            mpvalueset 2 40
+            mpvalueset 8 1
+            mpvalueset 6 0
+            mpvalueset 7 0
+            mpvalueset 9 0
+            mpaddaffect 71 60 2 19 10 0
+            mpaddaffect 71 60 2 18 10 0
+          endif
+        endif
+      endif
+    endif  
+  endif
+endif
+~
+>greet_prog 100~
+if rand(90)
+  if value(6) == 1
+    if name($n) == $f0
+      if snaffected($f1) == 303
+      else
+        mpechoat $f0 The grizzly bear bellows at your intrusion and attacks!
+        mpechoaround $f0 The grizzly bear bellows at $F0\@s arrival and charges $M0!
+        mpkill $f0
+        mpvalueset 6 0
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 8705
+Thenakr Kankoran Ranger mob_8705~
+Thenakr~
+A large, brown-furred kankoran ranger stands here.
+~
+NEEDS DESCRIPTION
+~
+kankoran~
+water scholar~
+ABTX 0 DFJZ N 0
+45 30 31d84+1161 45d10+100 6d7+23 pierce~
+stab~
+-18 -18 -18 -4
+CEFKV AB
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHMVW ABCDEFGIJKUV AD medium flesh
+>speech_prog karacha~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n A moment, friend, I\@m busy.
+    break
+  endif
+  mpsetdata karachadirections
+  mpvalueset 0 1
+endif
+~
+>give_prog poulticeherb1~
+// Karacha Herb - Vine Iceberries
+if ispc($n)
+  if isbitset($n) == YYYY
+  or mobvalue(1) > 0
+    say I appreciate the good will, my friend.
+    break
+  else
+    if isbitset($n) == AAAA
+      say I appreciate that, but I already have that herb.
+    else
+      esay \@takes the iceberries and rasps\@ Thank you.  This will go a long way in curing this disease.
+      mpbitset $n AAAA 1
+      if isbitset($n) == BBBB
+        if isbitset($n) == CCCC
+          mpbitset $n YYYY 1
+          mpsetdata poulticefound
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>data_prog karachadirections~
+say The Karacha woods are located in the Plains of Ryarl.
+say Northeast of Var Bandor is the Brintor Crossroads.
+say Cross the Dantaron River and follow the Arien Road eastward until you arrive there.
+say Head north from the Crossroads, through the Brintor forest and up the Brintor mountain range.
+say Beyond the peaks of the Brintorean range lie the Plains of Ryarl and the Karacha woods.
+say Be wary in those woods, they are the domain of Braka and the Pack.
+mpvalueset 0 0
+~
+>rand_prog 100~
+speak common
+$d
+mpnextdata
+if mobvalue(1) > 0
+  mpvaluedown 0
+else
+  if rand(1)
+    emote coughs roughly, causing spasms to rack his body.
+  endif
+endif
+mpjunk herb
+~
+>speech_prog protector~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n A moment, friend, I\@m busy.
+    break
+  endif
+  mpsetdata protectordirections
+  mpvalueset 0 1
+endif
+~
+>speech_prog yes yeah okay learn alright sure~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n A moment, friend, I\@m busy.
+    break
+  endif
+  if level($n) > 24
+    if class($n) == 23
+// Completed this quest already
+      if isbitset($n) == YYYY
+        say You\@ve already learned all I can teach you.
+        break
+      else
+// Already on the outcast ranger path
+        if isbitset($n) == ZZZZ
+          pmote looks at $N appraisingly, then squints his eyes accusingly.
+          say The taint of the ranger outcast pervades your spirit - you\@ll learn nothing from me.
+          break
+        else
+// Already told you about this quest already
+          if isbitset($n) == XXXX
+            say Alright, here\@s a reminder of what I need you to do:
+            mpvalueset 0 1
+            mpsetdata poulticefinding
+          else
+            say Alright, but first I need help making a poultice.  Here\@s how you can help:
+// Telling you about this now
+            mpbitset $n XXXX 1
+            mpvalueset 0 1
+            mpsetdata poulticefinding
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>speech_prog hunter~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n A moment, friend, I\@m busy.
+    break
+  endif
+  mpsetdata hunterdirections
+  mpvalueset 0 1
+endif
+~
+>speech_prog brintor~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n A moment, friend, I\@m busy.
+    break
+  endif
+  mpsetdata brintordirections
+  mpvalueset 0 1
+endif
+~
+>speech_prog eqiril~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n A moment, friend, I\@m busy.
+    break
+  endif
+  mpsetdata eqirildirections
+  mpvalueset 0 1
+endif
+~
+>speech_prog karachi~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n A moment, friend, I\@m busy.
+    break
+  endif
+  mpsetdata karachidirections
+  mpvalueset 0 1
+endif
+~
+>data_prog poulticefinding~
+say As you have undoubtedly learned in your travels, a poultice can be helpful in assuaging poisons and disease.
+emote coughs hoarsely, a trickle of blood coming from the edge of his lips.
+say But this disease seems especially resistant to any poultice that Nendor can offer.
+say This is where you come in, tracker.
+say I need you to gather herbs from the {WEqiril{Y, {WBrintor{Y, and {WKaracha Woods{Y.{n
+say While the herb itself will be hard for a commoner to see, your {Wsharp vision{Y should make finding it easy.{n
+emote coughs again and wipes his chin with the blood-stained sleeve of his tunic.
+say Please hurry - once I\@m back on my feet I should be able to give you some insight into called animals.
+mpvalueset 0 0
+~
+>greet_prog 100~
+if ispc($n)
+  if remembers($n)
+    break
+  else
+    if level($n) > 23
+      if class($n) == 23
+        if mobvalue(1) == 0
+          tell $n Greetings, tracker.  Interested in learning a bit more about calling animals?
+          mpremember $n
+          break
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>load_prog 100~
+speak common
+~
+>data_prog protectordirections~
+say A protector understands that the woods are precious.
+say The encroachment of stone and civilization into the wilds is undeniable, but this does not mean we cannot fight back
+say If this is the path you seek, speak to a druid named Ennuard(?).
+say You can find him here in these woods.
+mpvalueset 0 0
+~
+>data_prog hunterdirections~
+say A hunter is always aware of his surroundings and always has an eye on their prey.
+say If you think you have what it takes, talk to the hunter Evann.
+say You will find him in the Clanhouse of the Eqiril.
+say A small tip, before you go - never lie to a hunter, they can smell fear.
+mpvalueset 0 0
+~
+>data_prog eqirildirections~
+say The Eqiril forest is northwest of Var Bandor.
+say Cross the Dantaron River and follow the Arien Road westward until you come to a small road.
+say Follow the small road westward into the Eqiril forest.
+mpvalueset 0 0
+~
+>data_prog brintordirections~
+say The Brintor woods are located northeast of Var Bandor.
+say Northeast of Var Bandor is the Brintor Crossroads.
+say Cross the Dantaron River and follow the Arien Road eastward until you arrive there.
+say Head north from the Crossroads and you should arrive shortly in the Brintor forest.
+mpvalueset 0 0
+~
+>data_prog karachidirections~
+say The Karachi woods are located in the Plains of Ryarl.
+say Northeast of Var Bandor is the Brintor Crossroads.
+say Cross the Dantaron River and follow the Arien Road eastward until you arrive there.
+say Head north from the Crossroads, through the Brintor forest and up the Brintor mountain range.
+say Beyond the peaks of the Brintorean range lie the Plains of Ryarl and the Karachi woods.
+say Be wary in those woods, they are the domain of Braka and the Pack.
+mpvalueset 0 0
+~
+>data_prog poulticefound~
+say Excellent work, now let me see...
+emote coughs a bit as he prepares, reaching for a small mortar and pestle from inside his pack.
+emote crushes the spruce bark into the mortar, crushing it into smaller pieces.
+emote mixes the iceberry and oak moss into the bowl, resulting in a burgundy, paste-like goo.
+emote eagerly drinks from the bowl and swallows it reluctantly.
+emote coughs a bit and takes another drink from the bowl, swallowing it fully.
+mpvalueset 1 300
+say Yes... yes... that feels much better.  Perhaps it is only a slight reprieve, but it is definitely appreciated.
+say The kindness you have shown me is a testament to your empathy for others.
+say This empathy will help you to control a variety of beasts in these realms.
+esay \@asks\@ Do you endeavour to be a {Wprotector{n of these woods?  Or a {Whunter{n?
+mpvalueset 0 0
+~
+>give_prog poulticeherb3~
+// Eqiril Herb - Oak Moss
+if ispc($n)
+  if isbitset($n) == YYYY
+  or mobvalue(1) > 0
+    say I appreciate the good will, my friend.
+    break
+  else
+    if isbitset($n) == AAAA
+      say I appreciate that, but I already have that herb.
+    else
+      esay \@takes the oak moss and rasps\@ Thank you.  This will go a long way in curing this disease.
+      mpbitset $n CCCC 1
+      if isbitset($n) == AAAA
+        if isbitset($n) == BBBB
+          mpbitset $n YYYY 1
+          mpsetdata poulticefound
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>give_prog poulticeherb2~
+// Brintor Herb - Spruce Bark
+if ispc($n)
+  if isbitset($n) == YYYY
+  or mobvalue(1) > 0
+    say I appreciate the good will, my friend.
+    break
+  else
+    if isbitset($n) == BBBB
+      say I appreciate that, but I already have that herb.
+    else
+      esay \@takes the bark and rasps\@ Thank you.  This will go a long way in curing this disease.
+      mpbitset $n BBBB 1
+      if isbitset($n) == AAAA
+        if isbitset($n) == CCCC
+          mpbitset $n YYYY 1
+          mpsetdata poulticefound
+        endif
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 8706
+Bessen Srryn Ranger mob_8706~
+Bessen~
+A large, troglodytic srryn sits on his haunces here.
+~
+NEEDS DESCRIPTION
+~
+srryn~
+water scholar~
+ABTX 0 DFJZ N 0
+45 30 31d84+1161 45d10+100 6d7+23 pierce~
+stab~
+-18 -18 -18 -4
+CEFKMV AB
+26 0 0 0 0 0 0 0 20 -20 0 0 20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHMVWX ABCDEFGIJKLQUVX AC medium flesh
+>speech_prog outcast~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n Silence while I am speaking.
+    break
+  endif
+  mpsetdata outcastdirections
+  mpvalueset 0 1
+endif
+~
+>speech_prog wanderer~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n Silence while I am speaking.
+    break
+  endif
+  mpsetdata wandererdirections
+  mpvalueset 0 1
+endif
+~
+>data_prog outcastdirections~
+esay \@snorts and hisses\@ Interested in living outside of civilization?
+esay \@hisses\@ An outcast cares little of traditional ranger teachings, forging alliances with the unlikely.
+esay \@hisses\@ If this is the path you choose, speak to Allyns, beneath Earendam.
+esay \@hisses\@ Maybe Sarnaccha knows where she is.
+mpvalueset 0 0
+~
+>data_prog wandererdirections~
+esay \@nods once and adds\@ Like myself.
+esay \@hisses\@ A wanderer calls no place home, instead finding solace in discovery.
+esay \@hisses\@ If this seems like a life you seek, seek out the ranger Inushyk.
+esay \@hisses\@ He resides in the forest of Morn.
+mpvalueset 0 0
+~
+>data_prog diseasefinding~
+esay \@hisses\@ As you\@ve probably already found out, herbs can be helpful... or harmful.
+esay \@hisses\@ I\@m working on a particularly nasty concoction right now.
+emote hisses excitedly.
+esay \@hisses\@ But this one is going to need some exotic ingredients.
+esay \@hisses\@ This is where you come in.
+esay \@hisses\@ I need you to gather herbs from the forests of {WMorn{Y and {WNendor{Y, as well as the {WMleijian{Y Mountains.{n
+esay \@hisses\@ While these herbs may be difficult to detect with normal eyes, your {Wsharp vision{Y should make finding it easy.{n
+emote rubs his scaled hands together in anticipation, a noticeable heat emanating from his maw.
+mpvalueset 0 0
+~
+>rand_prog 100~
+speak common
+$d
+mpnextdata
+if mobvalue(1) > 0
+  mpvaluedown 0
+else
+  if rand(1)
+    emote claws at the mud-caked ground, drawing shapes and figures absent-mindedly.
+  endif
+endif
+mpjunk herb
+~
+>data_prog morndirections~
+esay \@hisses\@ The easiest way to Morn is via Var Bandor.
+esay \@hisses\@ Head out the northern gates and cross the Dantaron River.
+esay \@hisses\@ Follow the Arien Road north until a small road branches off to the west.  Follow that.
+esay \@hisses\@ Keep heading west along the small road until you reach the Eqiril Forest.
+esay \@spits and adds\@ You\@ll know you\@re there when you see those Ethron hunters.
+esay \@continues, hissing\@ Once you\@re in the forest, take the first northern pass that you notice.
+esay \@hisses\@ You should be on a forest path, then.  Follow this until it branches westward onto a faint trail.
+esay \@hisses\@ Follow that faint trail until you are in a rugged forest - the forest of Morn.
+mpvalueset 0 0
+~
+>speech_prog yes yeah okay learn alright sure~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n Silence while I am speaking.
+    break
+  endif
+  if level($n) > 24
+    if class($n) == 23
+// Completed this quest already
+      if isbitset($n) == ZZZZ
+        esay \@hisses\@ You\@ve already learned all I can teach you.
+        break
+      else
+// Already on the normal ranger path
+        if isbitset($n) == YYYY
+          pmote looks at $N and spits on the ground.
+          esay \@hisses and spits\@ On second thought, you aren\@t what I\@m looking for.
+          break
+        else
+// Already told you about this quest already
+          if isbitset($n) == WWWW
+            esay \@hisses\@ Again?  Fine, here\@s a reminder of what I want from you:
+            mpvalueset 0 1
+            mpsetdata diseasefinding
+          else
+            esay \@hisses\@ I need your help making a poultice for me.  Here\@s what I want from you:
+// Telling you about this now
+            mpbitset $n WWWW 1
+            mpvalueset 0 1
+            mpsetdata diseasefinding
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>load_prog 100~
+speak common
+~
+>greet_prog 100~
+if ispc($n)
+  if remembers($n)
+    break
+  else
+    if level($n) > 23
+      if class($n) == 23
+        tell $n Want to know more about calling animals?
+        mpremember $n
+        break
+      endif
+    endif
+  endif
+endif
+~
+>speech_prog mleijian~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n Silence while I am speaking.
+    break
+  endif
+  mpsetdata mleijiandirections
+  mpvalueset 0 1
+endif
+~
+>speech_prog nendor~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n Silence while I am speaking.
+    break
+  endif
+  mpsetdata nendordirections
+  mpvalueset 0 1
+endif
+~
+>speech_prog morn~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n Silence while I am speaking.
+    break
+  endif
+  mpsetdata morndirections
+  mpvalueset 0 1
+endif
+~
+>data_prog mleijiandirections~
+esay \@hisses\@ The Mleijian mountains are south of Var Bandor.
+esay \@hisses\@ The directions are a little more complicated, so listen closely so I don\@t have to say this again.
+esay \@hisses\@ Leave via the south gates and enter the Nendor forest.  Follow the forest path southwards.
+esay \@hisses\@ If it twists and turns, just follow the twists and continue south when you can.
+esay \@hisses\@ When you get to a sign that warns you about \#Death to the south\#, head east and follow the trail once more.
+esay \@hisses\@ That will take you to the savannah.  Follow the savannah road, past the outpost, and to the wastes.
+esay \@hisses\@ Now follow the rutted path southwards through the waste.
+esay \@hisses\@ When the trail of the rutted path turns east, head directly west instead, into the wastes.
+esay \@hisses\@ You will come to a stone-littered trail.  Follow that up into the Mleijian mountains.
+mpvalueset 0 0
+~
+>data_prog nendordirections~
+esay \@hisses\@ The easiest way to Nendor is straight out the southern gates of Var Bandor.
+esay \@hisses\@ Cross the outskirts of town and you\@ll be in Nendor proper right away.
+mpvalueset 0 0
+~
+>data_prog diseasefound~
+esay \@nods and hisses\@ Now that you\@ve brought me all three, it\@s time to get to work.
+emote eagerly retrieves a small mortar and pestle from his sack.
+emote puts the larkspur into the bowl and grinds it into a fine paste.
+emote adds the hyacinth to the mixture, combining it with the larkspur, creating a fine, orange powder.
+emote adds a small amount of water to the bowl and stirs the contents with a small twig.
+emote rubs the asproot between his fingers and drops the broken pieces into the concoction.
+mpvalueset 1 300
+esay \@hisses\@ This will work quite well, yes.
+esay \@hisses\@ Few understand that nature is a force to be reckoned with - as deadly as it is calm.
+esay \@hisses\@ This understanding will aid you in controlling those animals that others would deem \#uncontrollable\#.
+esay \@asks\@ Do you consider yourself to be a {Wwanderer{n or a true {Woutcast{n in these lands?
+mpvalueset 0 0
+mpforce Thenakr mpvalueset 1 0
+~
+>give_prog diseaseherb3~
+// Nendor Herb - Golden Hyacinth
+if ispc($n)
+  if isbitset($n) == ZZZZ
+  or mobvalue(1) > 0
+    esay \@looks at the herb appraisingly and says\@ I will definitely make use of this.
+    break
+  else
+    if isbitset($n) == DDDD
+      say You already gave me that one, another won\@t do me any good.
+    else
+      esay \@takes the Hyacinth and grins\@ Excellent work.  This is essential for my recipe.
+      mpbitset $n CCCC 1
+      if isbitset($n) == DDDD
+        if isbitset($n) == EEEE
+          mpbitset $n ZZZZ 1
+          mpsetdata diseasefound
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>give_prog diseaseherb2~
+// Mliejian Herb - Red Larkspur (Larkspur)
+if ispc($n)
+  if isbitset($n) == ZZZZ
+  or mobvalue(1) > 0
+    esay \@looks at the herb appraisingly and says\@ I will definitely make use of this.
+    break
+  else
+    if isbitset($n) == EEEE
+      say You already gave me that one, another won\@t do me any good.
+    else
+      esay \@takes the Larkspur and grins\@ Excellent work.  This is essential for my recipe.
+      mpbitset $n EEEE 1
+      if isbitset($n) == DDDD
+        if isbitset($n) == CCCC
+          mpbitset $n ZZZZ 1
+          mpsetdata diseasefound
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>give_prog diseaseherb1~
+// Morn Herb - Yellow Asproot (Snakeroot)
+if ispc($n)
+  if isbitset($n) == ZZZZ
+  or mobvalue(1) > 0
+    esay \@looks at the herb appraisingly and says\@ I will definitely make use of this.
+    break
+  else
+    if isbitset($n) == DDDD
+      say You already gave me that one, another won\@t do me any good.
+    else
+      esay \@takes the Asproot and grins\@ Excellent work.  This is essential for my recipe.
+      mpbitset $n DDDD 1
+      if isbitset($n) == EEEE
+        if isbitset($n) == FFFF
+          mpat 
+          mpbitset $n ZZZZ 1
+          mpsetdata diseasefound
+        endif
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 8707
+Ennuard Ethron Druid mob_8707~
+Ennuard~
+An aged, frail-looking ethron druid stands here.
+~
+NEEDS DESCRIPTION
+~
+ethron~
+water scholar~
+ABTX 0 DFJZ N 0
+45 30 31d84+1161 45d10+100 6d7+23 bash~
+smash~
+-18 -18 -18 -4
+CEFK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHMVW ABCDEFGIJKUV AJ medium flesh
+>speech_prog yes yeah okay learn alright sure~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n Hey, I\@m talk\@n right now.  Lis\@n up, maybe an ol\@ druid could teach ya somethin\@.
+    break
+  endif
+  if level($n) > 23
+    if class($n) == 23
+// Completed this quest already
+      if isbitset($n) == FFFF
+        say Sorry, I\@ve got no more learnin\@s for you.
+        break
+      else
+// Already on the outcast ranger path
+        if isbitset($n) == ZZZZ
+        or isbitset($n) == JJJJ
+          pmote chortles mischievously at $N, and starts mumbling.
+          say One too many moonrays for you.  Bes\@ for you find learnin\@s somewheres else.
+          break
+        else
+          if isbitset($n) == YYYY
+// Already told you about this quest already
+            if isbitset($n) == GGGG
+              esay \@sighs exaggeratedly\@ A\@right, here\@s where I need your \@elp:
+              mpvalueset 0 1
+              mpsetdata savingabear
+            else
+              say A\@right, but firs\@ I need help in t\@e forests.  \@ere\@s how you can help:
+// Telling you about this now
+              mpvalueset 0 1
+              mpsetdata savingabear
+              mpbitset $n GGGG 1
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>load_prog 100~
+speak common
+~
+>greet_prog 100~
+if ispc($n)
+  if remembers($n)
+    break
+  else
+    if level($n) > 23
+      if class($n) == 23
+        if mobvalue(1) == 0
+          if isbitset($n) == HHHH
+            mpvalueset 0 1
+            mpvalueset 1 300
+            mpsetdata bearsaved
+          else
+            if isbitset($n) == YYYY
+              tell $n Greet\@ns.  Thenakr says your look\@n to learn more \@bout an\@mals?  Whatcha say?
+              mpremember $n
+              break
+            else
+              tell $n Greet\@ns.  Looks like y\@could be of some use someday.  But firs\@ y\@need to see Thenakr, in Adwin\@s guild.
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>data_prog savingabear~
+say Before I can teach you anythin\@, y\@need to prove your worth to the rest of t\@e protectors.
+say Lucky t\@ing about bein\@ a Druid is that you can hear t\@e beasts callin\@ when t\@ey\@re hurt.
+say T\@eres a bear tha\@s hurt in Eqiril.  I need you t\@find him and \@elp \@em out.
+mpvalueset 0 0
+~
+>data_prog bearsaved~
+pmote looks up at $N, nodding enthusiastically.
+say You saved ol\@ Ard!
+esay \@stands up straight and clasps $N\@s shoulder\@ Great work out t\@ere.  I t\@ink you got what it takes.
+say Now that you proved you can \@elp out around \@ere, you\@ll notice t\@at bears may take a likin\@ t\@you.
+say Bears are solitary creatures, they don\@ like t\@e open areas.
+esay \@offers sternly\@ Don\@ bother tryin\@ to call \@em anywhere but t\@e fores\@s.
+say Oh, an\@ if t\@ey get hurt, t\@ey get angry.  Real angry.
+emote absentmindedly rubs a few nasty scars on his forearms.
+mpvalueset 0 0
+~
+>rand_prog 100~
+speak common
+$d
+mpnextdata
+if mobvalue(1) > 0
+  mpvaluedown 0
+else
+  if rand(1)
+    emote mumbles to himself, looking as if he\@s listening to something in the distance.
+    esay \@sighs and says\@ I told \@im not to use chameleon s\@much...
+  endif
+endif
+~
+|
+V4 8708
+Evann Human Ranger mob_8708~
+Evann~
+A solidly-built, brown-skinned ranger stands here.
+~
+NEEDS DESCRIPTION
+~
+human~
+water scholar~
+ABTX 0 DFJZ N 0
+45 30 31d84+1161 45d10+100 6d7+23 pierce~
+pierce~
+-18 -18 -18 -4
+CEFK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHMVW ABCDEFGHIJKUV A medium flesh
+>load_prog 100~
+speak common
+~
+>greet_prog 100~
+if ispc($n)
+  if remembers($n)
+    break
+  else
+    if level($n) > 23
+      if class($n) == 23
+        if mobvalue(1) == 0
+          if isbitset($n) == KKKK
+            mpvalueset 0 1
+            mpvalueset 1 300
+            mpsetdata huntdone
+          else
+            if isbitset($n) == YYYY
+              tell $n Thenakr tells me you have promise.  So you wish to become a hunter?
+              mpremember $n
+              break
+            else
+              tell $n You may become a hunter someday, but not this day.  Seek out Thenakr in Adwin\@s guild if you want to prove your worth.
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>speech_prog yes yeah okay learn alright sure~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n Use your ears for once and you may learn something.
+    break
+  endif
+  if level($n) > 23
+    if class($n) == 23
+// Completed this quest already
+      if isbitset($n) == IIII
+        say Sorry, but I cannot teach you anymore.  The hunt is all you need.
+        break
+      else
+// Already on the outcast ranger path
+        if isbitset($n) == ZZZZ
+        or isbitset($n) == GGGG
+          pmote peers at $N curiously.
+          say You don\@t have what it takes, unfortunately.
+          break
+        else
+          if isbitset($n) == YYYY
+// Already told you about this quest already
+          if isbitset($n) == JJJJ
+            esay \@looks sternly at $N and relents\@ Fine.  Listen closer this time:
+            mpvalueset 0 1
+            mpsetdata hunting
+          else
+            say \@looks $N up and down and offers\@ You look like you may be malleable enough.  But first, I need to ask something of you:
+// Telling you about this now
+            mpvalueset 0 1
+            mpsetdata hunting
+            mpbitset $n JJJJ 1
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>data_prog hunting~
+say You have much to learn about hunting.
+say The hunt is a tradition as old as the winds and as hallowed as the wolf-goddess.
+CONTINUE HUNTING MISSION STORY 
+mpvalueset 0 0
+~
+>data_prog huntdone~
+HUNTINGDONE STORY
+mpvalueset 0 0
+~
+>rand_prog 100~
+speak common
+$d
+mpnextdata
+if mobvalue(1) > 0
+  mpvaluedown 0
+else
+  if rand(1)
+    emote bends to the ground and digs up some earth into his hand.
+    esay \@examines the earth closely and says to himself\@ Interesting.
+  endif
+endif
+~
+|
+V4 8709
+Inushyk Srryn Ranger mob_8709~
+Inushyk~
+A emerald-skinned srryn ranger stands here.
+~
+NEEDS DESCRIPTION
+~
+srryn~
+water scholar~
+ABTX 0 DFJZ N 0
+45 30 31d84+1161 45d10+100 6d7+23 pierce~
+stab~
+-18 -18 -18 -4
+CEFKMV AB
+26 0 0 0 0 0 0 0 20 -20 0 0 20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHMVWX ABCDEFGIJKLQUVX AC medium flesh
+>speech_prog yes yeah okay learn alright sure~
+if ispc($n)
+  if mobvalue(0) == 1
+    tell $n If you run like you talk, you\@ll be no match for me.
+    break
+  endif
+  if level($n) > 23
+    if class($n) == 23
+// Completed this quest already
+      if isbitset($n) == LLLL
+        esay \@hisses in acknoledgement\@ YOu are already a wanderer in my eyes.
+        break
+      else
+// Already on the normal ranger path
+        if isbitset($n) == YYYY
+        or isbitset($n) == PPPP
+          esay \@stretches his legs and hisses\@ The wanderer\@s path isn\@t yours.
+          break
+        else
+          if isbitset($n) == ZZZZ
+// Already told you about this quest already
+            if isbitset($n) == MMMM
+              esay \@hisses\@ A second chance then.  Listen closely:
+              mpvalueset 0 1
+              mpsetdata startchase
+            else
+              esay \@hisses\@ Listen closely, then:
+// Telling you about this now
+              mpvalueset 0 1
+              mpsetdata startchase
+              mpbitset $n MMMM 1
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>load_prog 100~
+speak common
+~
+>greet_prog 100~
+if ispc($n)
+  if remembers($n)
+    break
+  else
+    if level($n) > 23
+      if class($n) == 23
+        if mobvalue(1) == 0
+          if isbitset($n) == NNNN
+            mpvalueset 0 1
+            mpvalueset 1 300
+            mpsetdata endchase
+          else
+            if isbitset($n) == ZZZZ
+              tell $n You\@ve proven your quality as a ranger.  Do you wish to pursue the wanderer path?
+              mpremember $n
+              break
+            else
+              tell $n You may prove useful someday, but first you\@ll need to speak to Bessen, in the swamps of Sythtys.
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>data_prog shendaerspot~
+emote NEEDS TO GO TO SWAMPSPOT
+mpvalueset 2 40
+mpvalueset 0 0
+~
+>data_prog ryarlspot~
+emote NEEDS TO GO TO SHENDAERSPOT
+mpvalueset 2 60
+mpvalueset 0 0
+~
+>data_prog brintorspot~
+emote NEEDS TO GO TO RYARLSPOT
+mpvalueset 2 80
+mpvalueset 0 0
+~
+>data_prog eqirilspot~
+emote NEEDS TO GO TO BRINTORSPOT
+mpvalueset 2 40
+mpvalueset 0 0
+~
+>data_prog startchase~
+esay \@looks you up and down briefly and hisses\@ There is more than just strength that defines a ranger.
+emote stands and stretches his long legs, his breath slow and shallow.
+esay \@hisses\@ Speed and endurance are key to your survival.
+esay \@hisses and adds\@ If you wish to learn more from me, let\@s see if you can keep up.
+esay \@snorts\@ Meet me in the Eqiril forest, if you\@re quick enough.
+emote stretches his legs and disappears into the thick brush.
+emote NEEDS TO GO TO EQIRILSPOT
+mpvalueset 2 40
+mpvalueset 0 0
+~
+>data_prog endchase~
+pmote breathes heavily as he flexes his legs.
+esay \@nods, hissing appreciatively\@ You kept up really well.
+pmote scrapes some of the dead skin from his forearms and brandishes a serrated knife.
+esay \@continues, hissing\@ Your knowledge of these realms is adequate, as is your endurance.
+esay \@hisses\@ Perhaps enough to handle one of the most dangerous beasts of these lands, the black alligator.
+esay \@hisses\@ This beast is one of the most difficult to control but will reward you with an aggression unlike other beasts.
+esay \@snorts and adds\@ Those suprised by the beast and caught within its jaws will find escape difficult.
+emote rubs his legs once more, looking fully rested.
+esay \@hisses\@ The lands call for me once more.
+emote NEEDS TO GO TO BEGINNING
+mpvalueset 0 0
+~
+>rand_prog 100~
+speak common
+$d
+mpnextdata
+if mobvalue(1) > 0
+  mpvaluedown 0
+else
+  if rand(1)
+    emote lowers himself to one knee, his eyes scanning the skies.
+    esay \@thinks aloud to himself, hissing\@ A good day for a run...
+  endif
+endif
+~
+|
+V4 8720
+sentry watchersentry mob_8720~
+a sentry~
+A keen-eyed sentry scans the area.
+~
+Dressed in the gray armor of the watchers, this sentry keenly scans his
+surroundings.  
+~
+human~
+water scholar~
+ADL 0 DF N 0
+28 0 3d22+96 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+FK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>data_prog sentrynotify~
+wh
+wh
+mptrigger
+camo
+hide
+mpvalueset 5 0
+~
+>trigger_prog 100~
+mpvalueset cond
+mpvalueset tire
+mpvalueset mark
+mpvalueset fly passed
+mpvalueset bleed
+if mobvalue(2) == 1
+  if value(6) < 15
+    mpvalueset cond $F1 is in awful condition
+  else
+    if value(6) < 30
+      mpvalueset cond $F1 is pretty hurt
+    else
+      if value(6) < 50
+        mpvalueset cond $F1 has big nasty wounds and scratches
+      else
+        if value(6) < 75
+          mpvalueset cond $F1 has small wounds and bruises
+        else
+          if value(6) < 100
+            mpvalueset cond $F1 has a few scratches
+          else
+            mpvalueset cond $F1 is not hurt
+          endif
+        endif
+      endif
+    endif
+  endif
+// vital, wasp strike, impale check 
+  if snaffected($f1) == 492
+  or snaffected($f1) == 466
+  or snaffected($f1) == 227
+    mpvalueset bleed , bleeding profusely
+  endif
+  if value(8) < 10
+    mpvalueset tire and looks quite exhausted.
+  else
+    if value(8) < 50
+      mpvalueset tire and looks exhausted.
+    else
+      if value(8) < 75
+        mpvalueset tire and looks slightly exhausted.
+      else
+        mpvalueset tire and does not look exhausted at all.
+      endif
+    endif
+  endif
+  if iscriminal($f1)
+    mpvalueset mark The outlaw
+  endif
+// fly, massfly, gaseous, wings of flame check
+  if snaffected($f1) == 67
+  or snaffected($f1) == 94
+  or snaffected($f1) == 362
+  or snaffected($f1) == 409
+    mpvalueset fly  flew by
+  endif
+endif
+tell $f0 %mark $F1 just %fly me%bleed.  %cond %tire
+~
+>rand_prog 100~
+if value(5) == 1
+  $d
+  mpnextdata
+endif
+if value(0) == 0
+  mpfocus Saedacal 0
+  mpset mob $i mana 100
+  mpset mob $i curmana 100
+  mpaddskill $i 244 100
+  mpaddskill $i 192 100
+  mpvalueset 0 1
+  mpvalueset 1 300
+  tell $f0 I\@ll keep watch here and remain concealed as best I can.
+  tell $f0 If you spare me two platinum I will also inform you of the condition of those that cross my path.
+  camo
+  hide
+endif
+if value(0) == 1
+  mpvaluedown 1
+  if value(1) == 0
+    mppurge self
+  endif
+endif
+~
+>greet_prog 100~
+if value(5) == 1
+else
+  mpfocus $n 1
+  if ispc($f1)
+// SNEAK CHECKS
+    if israce($f1) == ETHRON
+      if sector($f1) == inside
+      or sector($f1) == city
+      else
+        if rand(25)
+          break
+        endif
+      endif
+    else
+      if skill198($f1) > 90
+        if rand(25)
+          break
+        endif
+      endif
+    endif
+    mpecho starting to check
+    mpvalueset 5 1
+    mpget char $f1 curhp 6
+    mpget char $f1 hp 7
+    mpget char $f1 curmove 8
+    mpget char $f1 move 9
+    mpmath 6 $6 * 100 / $7
+    mpmath 8 $8 * 100 / $9
+    mpsetdata sentrynotify
+  endif
+endif
+~
+>bribe_prog 2000~
+mpvalueset 2 1
+pmote nods at $N and sinks back into the darkness.
+mpset mob self platinum 0
+mpset mob self gold 0
+mpset mob self silver 0
+mpset mob self copper 0
+camo
+hide
+~
+>fight_prog 75~
+mpvalueset 5 0
+tell $f0 $N is trying to kill me!  Help!
+flee
+camo
+hide
+~
+|
+V4 8721
+Earth Elemental Mud~
+the earth elemental~
+A mound of living earth lumbers here.
+~
+A mound of living earth forms itself into the roughly humanoid shape. 
+This great beast seems unconcerned with the particulars of its environs and
+more focused on moving where its master directs it.  
+~
+human~
+water scholar~
+ABX F DS N 0
+0 0 10d1+990 0d0+0 0d0+0 bash~
+pound~
+0 0 0 0
+0 AB
+26 0 0 0 0 -33 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+ACHJMV ABCDEFGHIJK A medium earth
+>rand_prog 100~
+if value(0) == 0
+  mpvalueset 0 1
+  mpvalueset 9 1
+  mpget mob self hp 5
+  mpget mob self level 4
+  mpvalueset state earth
+endif
+// SLOW AND MUDDY IF UNDERWATER
+if rand(1)
+  if sector($i) == underwater
+    if value(8) == 0
+      mpecho The surrounding water seeps into the earth elemental, transfiguring the stone and dirt into mud.
+      mpvalueset 9 2
+      mpvalueset 8 1
+      mpvalueset 3 1
+    endif
+  else
+    if value(8) == 1
+      mpecho Distanced from the water, the earth elemental regains its stone-like form.
+      mpvalueset 9 1
+      mpvalueset 8 0
+      mpvalueset 3 1
+    endif
+  endif
+// SIZE INCREASE IF UNDERGROUND
+  if sector($i) == underground
+    if value(6) > 20
+    else
+      mpecho The surrounding earth bonds with the earth elemental and it grows slightly larger. 
+      mpmath 6 $6 + 1
+      mpvalueset 3 1
+    endif
+  else
+// REDUCE SIZE FLYING
+    if rand(20)
+      if value(6) < -20
+      else
+        if sector($i) == air
+        or sector($i) == swim
+        or sector($i) == noswim
+          mpecho Chunks of rock fall from the earth elemental and it shrinks in size. 
+          mpmath 6 $6 - 1
+          mpvalueset 3 1
+        endif
+      endif
+    endif
+  endif
+endif
+// DESCRIPTION AND SIZE ADJUSTMENTS
+if value(3) == 1
+  if value(8) == 0
+    mpvalueset state earth
+    mpdesc self earthdesc
+  else
+    mpvalueset state mud
+    mpdesc self muddesc
+  endif
+  mpvalueset 3 0
+  mpremaffect 143
+  mpremaffect 71
+  mpmath 7 ($5 + ($5 * $6 / 80)) / $9
+  mpset mob self hp $7
+  if value(6) < -18
+    mpstring char self long A diminuitive mound of living %state lumbers here.
+    mpstring char self short a %state elemental
+    mpvalueset 1 0
+    mpaddaffect 143 60 -1 19 -5 0
+    mpaddaffect 143 60 -1 18 -5 0
+  else
+    if value(6) < -10
+      mpstring char self long A small mound of living %state lumbers here.
+      mpstring char self short a %state elemental
+      mpvalueset 1 1
+    else
+      if value(6) < 10
+        mpstring char self long A mound of living %state lumbers here.
+        mpstring char self short a %state elemental
+        mpvalueset 1 2
+      else
+        if value(6) < 18
+          mpstring char self long A tall mound of living %state lumbers here.
+          mpstring char self short a %state elemental
+          mpvalueset 1 3
+        else
+          mpstring char self long A massive mound of living %state lumbers here.
+          mpstring char self short a %state elemental
+          mpvalueset 1 4
+          mpaddaffect 71 60 -1 19 5 0
+          mpaddaffect 71 60 -1 18 5 0
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>data_prog earthdesc~
+A mound of living earth forms itself into the roughly humanoid shape.
+This great beast seems unconcerned with the particulars of its environs
+and more focused on moving where its master directs it.
+~
+>data_prog muddesc~
+A mound of living mud forms itself into the roughly humanoid shape.
+This great beast seems unconcerned with the particulars of its environs
+and more focused on moving where its master directs it.
+~
+>fight_prog 100~
+if rand(50)
+  if value(1) == 4
+    mpcast 392 $4
+  endif
+endif
+~
+|
+V4 8722
+Mercenary guy~
+a crazy mercenary~
+A crazy mercenary brandishes a chaja executioner\@s axe.
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+25 13 12d45+707 0d0+0 4d5+10 none~
+hit~
+0 0 0 0
+0 Q
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+V4 8723
+figure ghostly demonthrower~
+a ghostly figure~
+A ghostly figure hangs silently in the air.
+~
+~
+human~
+water scholar~
+AB 0 DFJLPZ N 0
+1 0 1d1+10000 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog procdemoneat~
+if value(2) > 1
+  mpvaluerand 0 1 50
+    if dexterity($f) > $0
+      pmote tries to grab $F with his massive hands but can\@t get a good enough grip.
+    else
+      pmote grabs $F with his massive hands.
+      mpmload 8724
+      proceat $f
+    endif
+    mpvalueset 2 -50
+  endif
+else
+  mpvalueup 2
+  if value(2) == 0
+    pmote breathes in, his frame growing in size as he draws forth demonic hunger.
+  else
+    if value(2) == 1
+      pmote bears down on $F!
+    endif
+  endif
+endif
+~
+>verb_prog procdemongrab~
+if value(2) > 1
+  if size($f) > medium
+  else
+    mpvaluerand 0 1 50
+    if strength($f) > $0
+    or snaffected($f) == 592
+      pmote tries to grab $F with his massive hands but can\@t get a good enough grip.
+    else
+      pmote grabs $F with his massive hands.
+      mpmload 8724
+      procthrow $f
+    endif
+    mpvalueset 2 -5
+  endif
+else
+  mpvalueup 2
+  if value(2) == 0
+    pmote breathes in, his frame growing in size as he draws forth demonic strength.
+  else
+    if value(2) == 1
+      pmote bears down on $F!
+    endif
+  endif
+endif
+~
+>verb_prog procwater~
+if value(2) > 1
+  mpvalueset 2 -2
+  if rand(33)
+    mpsetskilled
+    shieldbash
+    mpunsetskilled
+  else
+    if rand(50)
+      if snaffected($f) == 104
+        mpsetskilled
+        shieldbash
+        mpunsetskilled
+      else
+        esay \@utters the words\@ Yudkicj Khakuk!
+        mpcast 104 60
+      endif
+    else
+      if snaffected($f) == 8
+        mpsetskilled
+        shieldbash
+        mpunsetskilled
+      else
+        esay \@utters the words\@ Shilr Hnisn!
+        mpcast 8 60
+      endif
+    endif
+  endif
+else
+  mpvalueup 3
+  mpvalueup 2
+  if value(2) == 0
+    pmote breathes in, his frame growing in size as he draws forth demonic magic.
+  else
+    if value(2) > 0
+      if value(3) > 0
+        pmote steps back from battle briefly and calls down a sickening cloud of darkness over the room.
+        mpat $i mpcast 681 60
+        mpvalueset 3 -200
+      endif
+    endif
+  endif
+endif
+~
+>verb_prog procshud~
+if value(2) > 1
+  mpvalueset 2 -2
+  if rand(33)
+    mpsetskilled
+    shieldbash
+    mpunsetskilled
+  else
+    if rand(50)
+      if snaffected($f) == 104
+        mpsetskilled
+        flay
+        mpunsetskilled
+      else
+        esay \@utters the words\@ Yudkicj Khakuk!
+        mpcast 104 60
+      endif
+    else
+      if snaffected($f) == 680
+        mpsetskilled
+        flay
+        mpunsetskilled
+      else
+        esay \@utters the words\@ Chi Iruyhiru!
+        mpcast 680 60
+      endif
+    endif
+  endif
+else
+  mpvalueup 3
+  mpvalueup 2
+  if value(2) == 0
+    pmote breathes in, his frame growing in size as he draws forth demonic magic.
+  else
+    if value(2) > 0
+      if value(3) > 0
+        pmote chants a few words in an arcane tongue and hurls a dark curse from his fingertips!
+        mpat $i mpcast 39 60
+        mpvalueset 3 -30
+      endif
+    endif
+  endif
+endif
+~
+>verb_prog procrace~
+if value(2) > 1
+  mpvalueset 2 -2
+  if rand(33)
+    mpecho bored... what to do...
+  else
+    if rand(50)
+      mpecho bored... what to do...
+    else
+      mpecho bored... what to do...
+    endif
+  endif
+else
+  mpvalueup 8
+  mpvalueup 2
+  if value(2) == 0
+    pmote breathes in, his frame growing in size as he draws forth his demonic essence.
+  else
+    if value(2) > 0
+      if value(8) > 0
+        pmote chants a few words in an arcane tongue and then unleashes a black bolt from his fingertips!
+        mpcast 75 60
+        mpvalueset 8 -5
+      endif
+    endif
+  endif
+endif
+~
+>verb_prog procspirit~
+if value(2) > 1
+  mpvalueset 2 -2
+  if rand(33)
+    mpsetskilled
+    flay
+    mpunsetskilled
+  else
+    if rand(50)
+      esay \@utters the words\@ Itle Chirukh!
+      mpcast 678 60
+    else
+      esay \@utters the words\@ Shilr Ksaen!
+      mpcast 677 60
+    endif
+  endif
+else
+  mpvalueup 8
+  mpvalueup 2
+  if value(2) == 0
+    pmote breathes in, his frame growing in size as he draws forth his demonic spirit.
+  else
+    if value(2) > 0
+      if value(8) > 0
+        pmote chants a few words in an arcane tongue and then unleashes a black bolt from his fingertips!
+        mpcast 75 60
+        mpvalueset 8 -5
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 8724
+figure ghostly demonthrower~
+a ghostly figure~
+A ghostly figure hangs silently in the air.
+~
+~
+human~
+water scholar~
+AB 0 DFJLPZ N 0
+1 0 1d1+10000 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog procthrow~
+mpfocus $y2
+mpgetroomvnum startrm
+if size($f) > small
+  mpvaluerand distchk 1 2
+else
+  mpvaluerand distchk 2 4
+endif
+mpvaluerand dirchk 1 4
+loop 1 to %distchk
+  if value(dirchk) == 1
+    mpvalueset dir west
+    west
+  else
+    if value(dirchk) == 2
+      mpvalueset dir east
+      east
+    else
+      if value(dirchk) == 3
+        mpvalueset dir north
+        north
+      else
+        mpvalueset dir south
+        south
+      endif
+    endif
+  endif
+endloop
+mpgetroomvnum endrm
+if value(startrm) == %endrm
+  mpechoat $f Ingaraxxi throws you to the ground violently, leaving you stunned and hurt!
+  mpechoaround $f Ingaraxxi throws $F to the ground violently, leaving $M stunned and hurt!
+  mpmath 4 $5 * 3
+  mplag $f $4
+  mpdamage $f 100 2 0
+else
+  mpechoat $f Ingaraxxi tosses you %dir-ward, away from the battle!
+  mpechoaround $f Ingaraxxi picks $F up and tosses $M %dir-ward, away from the battle!
+  mptransfer $f
+  mpmath 4 $5 * 2
+  mplag $f $4
+  mpdamage $f 100 $5 0
+  mpforce $f look
+  mpechoat $f You land heavily on your back, wounded and stunned!
+  mpechoaround $f $F flies into the room and lands heavily on their back, leaving $M wounded and stunned!
+endif
+mppurge self
+~
+>verb_prog eateateat~
+mpfocus $y2
+mpforce $n pmote brings $F to his mouth and devours $F whole!
+mpgoto 4143
+mptransfer $f
+mpforce $f look
+mppurge self
+~
+|
+V4 8725
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+0 0 0 medium flesh
+>verb_prog proccharmie~
+if rand(15)
+  if ischarmed($f)
+    if iscarrying($i) == 8616
+      esay \@spits in disgust and states\@ You think this minion is a match for my power?
+      pmote wraps the lashes of his scourge around the neck of $F and the scourge tightens with a will of its own!
+      esay \@utters the words\@ Slaijj Shakakraah!
+      mpecho $F dematerializes and implodes!
+      mpslay $f
+    endif
+  endif
+endif
+~
+>verb_prog proceat~
+// NEED TO CREATE STOMACH AND IMPROVE EMOTES
+if value(2) > 1
+  mpvaluerand dexchk 1 50
+    if dexterity($f) > %dexchk
+    or size($f) > medium
+      pmote tries to bite $F with his massive jaw but he\@s too large.
+    else
+      pmote grabs $F with his massive hands and {r###BITES###{n fiercely!
+      mplag $f $4
+      mpdamage $f 100 4 0
+// REINSTATE IF YOU WANT TO REALLY EAT
+//      mpmload 8724
+//      eateateat $f
+    endif
+    mpvalueset 2 -10
+  endif
+else
+  mpvalueup 2
+  if value(2) == 0
+    pmote breathes in, his frame growing in size as he draws forth demonic hunger.
+  else
+    if value(2) == 1
+      pmote bears down on $F!
+    endif
+  endif
+endif
+~
+>verb_prog procgrab~
+// NEED TO IMPROVE EMOTES
+if value(2) > 1
+  if size($f) > medium
+    pmote tries to grab $F with his massive hands but he\@s too large to be thrown.
+  else
+    mpvaluerand strchk 15 45
+    if strength($f) > %strchk
+    or snaffected($f) == 592
+      pmote tries to grab $F with one of his massive hands but can\@t get a good enough grip.
+    else
+      pmote grabs $F with his massive hand!
+      mpmload 8724
+      procthrow $f
+    endif
+    mpvalueset 2 -5
+  endif
+else
+  mpvalueup 2
+  if value(2) == 0
+    pmote breathes in, his frame growing in size as he draws forth demonic strength.
+  else
+    if value(2) == 1
+      pmote bears down on $F!
+    endif
+  endif
+endif
+~
+>data_prog psion~
+shieldbash
+768
+shieldbash
+Shilr Ksaen
+mpcast 677 60
+768
+shieldbash
+Shilr Ksaen
+mpcast 677 60
+presence
+esay \@bellows loudly\@ Your mind falters in my presence!
+mpgrant $f 0 -200 0
+mpvalueset 3 -5
+~
+>fight_prog 100~
+mpseewizi
+if name($n) == $f
+else
+  mpvalueset 2 -1
+endif
+mpfocus $n
+mpvaluerand spkchk 1 4
+if ispc($f)
+  if value(7) == 0
+    mpsetdata pickclass
+    loop 1 to 27
+      if class($f) == 0
+        if rand(75)
+          procdemon water
+        endif
+        mpsetdata waterspeech
+        if rand(3)
+          loop 1 to %spkchk
+            mpnextdata
+          endloop
+          $d
+        endif
+        break
+      endif
+      if class($f) == $d
+        mpsetdata stratclass
+        loop 1 to $v1
+          mpnextdata
+        endloop
+        if rand(75)
+          $d
+        endif
+        mpsetdata speakclass
+        loop 1 to $v1
+          mpnextdata
+        endloop
+        mpsetdata $d
+        if rand(3)
+          loop 1 to %spkchk
+            mpnextdata
+          endloop
+          $d
+        endif
+      endif
+      mpnextdata
+    endloop
+  else
+    if value(7) == 1
+      mpsetdata pickrace
+      loop 1 to 14
+        if israce($f) == $d
+          mpsetdata stratrace
+          loop 1 to $v1
+            mpnextdata
+          endloop
+          if rand(75)
+            $d
+          endif
+          mpsetdata speakrace
+          loop 1 to $v1
+            mpnextdata
+          endloop
+          mpsetdata $d
+          if rand(3)
+            loop 1 to %spkchk
+              mpnextdata
+            endloop
+            $d
+          endif
+        endif
+        mpnextdata
+      endloop
+    else
+      if value(7) == 2
+        if snaffected($i) == 684
+        else
+          if iscarrying($i) == 8618
+          else
+            mpslotpurge self 16
+            mpoload 8618 on self 16
+            pmote transforms his whip into a massive black sword!
+          endif
+          assume asp
+        endif
+        if value(9) > 0
+          if sector($i) == air
+          else
+            pmote snarls angrily and brings his foot down hard on the ground, causing an immense shockwave!
+            mproomcmd mptrigger all
+            mpvalueset 9 -12
+          endif
+        endif
+      endif
+    endif
+  endif
+else
+  proccharmie
+endif
+mpunseewizi
+~
+>load_prog 100~
+mpaddskill self 672 100
+mpaddskill self 572 100
+mpaddskill self 684 100
+mpaddskill self 682 100
+mpaddskill self 104 100
+mpaddskill self 8 100
+mpaddskill self 681 100
+mpaddskill self 678 100
+mpaddskill self 677 100
+mpaddskill self 75 100
+mpaddskill self 680 100
+mpaddskill self 39 100
+~
+>verb_prog caltraps~
+if compstr(1) == c
+or compstr(1) == ca
+or compstr(1) == cal
+else
+  if compstr(2) ==  
+  else
+    if rand(5)
+      esay \@snarls\@ Get back here!
+      mpechoat $n As you attempt to escape, Ingaraxxi grabs you, throwing you bodily to the ground!
+      mpechoaround $n As $N attempts to escape, Ingaraxxi grabs $m, throwing $m bodily to the ground!
+      mplag $n 2
+      break
+    endif
+  endif
+endif
+mpinterpret $n $x
+~
+>verb_prog withdraw~
+if rand(5)
+  esay \@snarls\@  Where do you think you\@re going?
+  mpechoat $n As you attempt to withdraw, Ingaraxxi grabs you, throwing you bodily to the ground!
+  mpechoaround $n As $N attempts to withdraw, Ingaraxxi grabs $m, throwing $m bodily to the ground!
+  mplag $n 2
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog flee~
+if rand(5)
+  esay \@snarls\@  I\@m not done with you yet.
+  mpechoat $n As you attempt to flee, Ingaraxxi grabs you, throwing you bodily to the ground!
+  mpechoaround $n As $N attempts to flee, Ingaraxxi grabs $m, throwing $m bodily to the ground!
+  mplag $n 2
+else
+  mpinterpret $n $x
+endif
+~
+>data_prog speakclass~
+FILLER
+FILLER
+regspeech
+regspeech
+spiritspeech
+regspeech
+regspeech
+waterspeech
+regspeech
+regspeech
+spiritspeech
+regspeech
+regspeech
+regspeech
+regspeech
+regspeech
+regspeech
+regspeech
+regspeech
+regspeech
+regspeech 
+regspeech
+regspeech
+spiritspeech
+regspeech
+psionspeech
+regspeech
+~
+>data_prog stratclass~
+FILLER
+FILLER
+procgrab
+procgrab
+procdemon spirit
+procgrab
+procgrab
+procdemon water
+procgrab
+procgrab
+procdemon spirit
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procdemon spirit
+procgrab
+procdemon psion
+procgrab
+~
+>data_prog pickclass~
+FILLER
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+18
+19
+20
+21
+23
+24
+25
+27
+28
+29
+~
+>data_prog speakrace~
+FILLER
+FILLER
+racespeech
+racespeech
+racespeech
+chtarenspeech
+racespeech
+racespeech
+racespeech
+racespeech
+racespeech
+shuddspeech
+racespeech
+~
+>data_prog stratrace~
+FILLER
+FILLER
+procdemon race
+procdemon race
+procdemon race
+proceat
+procdemon race
+procdemon race
+procdemon race
+procdemon race
+procdemon race
+procdemon shudd
+procdemon race
+~
+>data_prog pickrace~
+FILLER
+Aelin
+Alatharya
+Caladaran
+Ch\@taren
+Chaja
+Ethron
+Human
+Kankoran
+Nefortu
+Shuddeni
+Srryn
+~
+>rand_prog 100~
+if position($i) < 7
+  stand
+endif
+if value(3) < 0
+  mpvalueup 3 4
+endif
+if value(9) < 1
+  mpvalueup 9 4
+endif
+if hitprcnt($i) > 60
+  mpvalueset 7 0
+else
+  if hitprcnt($i) > 25
+    mpvalueset 7 1
+    if snaffected($i) == 682
+    else
+      if rand(4)
+        mpcast 682 60
+      endif 
+    endif
+  else
+    mpvalueset 7 2
+  endif
+endif
+// EQUIPMENT PROG
+if value(7) < 2
+  mpvalueset 1 0
+  if value(1) == 0
+    if iscarrying($i) == 8616
+    else
+      mpslotpurge self 16
+      mpoload 8616 on self 16
+      assume none
+      pmote summons a massive whip seemingly out of darkness into his hand and snaps it viciously.
+    endif
+    if iscarrying($i) == 8617
+    else
+      mpslotpurge self 11
+      mpoload 8617 on self 11
+      pmote conjures a gigantic shield out of shadow and attaches it to his monstrous forearm.
+    endif
+    mpvalueset 1 1
+  endif
+endif
+if istrack($i)
+  if iscarrying($i) == 8618
+    if inarea($f)
+      if rand(2)
+        mpecho using his gigantic sword to tear a whole in space, Ingaraxxi creates a portal to the Void.
+        mpecho The portal closes behind him.
+        mpgoto $f
+        mpecho A single massive blade emerges from the air, slicing open a rent in space.
+        mpecho From the tattered archway, Ingaraxxi steps forth.
+        mpkill $f
+      endif
+    endif
+  endif
+endif
+~
+>data_prog psionspeech~
+emote grunts.
+esay \@says evenly\@ The mind is a dangerous thing...
+esay \@snorts and states\@ You wish to match wits with me, mortal?
+esay \@bellows\@ What use will your mind be after I dismember you?
+esay \@grunts and snorts\@ I am the scourge of minds, devourer of souls.
+~
+>data_prog chtarenspeech~
+emote grunts.
+esay \@licks his lips and says\@ Mmmm... Shimmerskins.  Tasty morsels.
+esay \@rubs his stomach and sneers\@ You will do nicely to appease my hunger.
+esay \@snorts\@ The Shimmerskins have kept me satiated since my creation, this time will be no different.
+esay \@drools and grunts\@ Slave or Dinner?  I prefer the latter.
+~
+>verb_prog procdemon~
+mpsetdata $y2
+if value(2) > 1
+  mpvalueset 2 -2
+  if rand(33)
+    $d
+  else
+    if rand(50)
+      mpnextdata
+      if snaffected($f) == $d
+        mpnextdata
+        $d
+      else
+        loop 1 to 2
+          mpnextdata
+        endloop
+        esay \@utters the words\@ $d!
+        mpnextdata
+        $d
+      endif
+    else
+      loop 1 to 5
+        mpnextdata
+      endloop
+      if snaffected($f) == $d
+        mpnextdata
+        $d
+      else
+        loop 1 to 2
+          mpnextdata
+        endloop
+        esay \@utters the words\@ $d!
+        mpnextdata
+        $d
+      endif
+    endif
+  endif
+else
+  loop 1 to 9
+    mpnextdata
+  endloop
+  mpvalueup 8
+  mpvalueup 3
+  mpvalueup 2
+  if value(2) == 0
+    pmote breathes in, his frame growing in size as he draws forth his demonic $d.
+  else
+    if value(2) > 0
+      if value(3) > 0
+        loop 1 to 3
+          mpnextdata
+          $d
+        endloop
+      endif
+    endif
+  endif
+endif
+~
+>trigger_prog 100~
+if isnpc($n)
+or isflying($n)
+or dexterity($n) > 20
+else
+  if strength($n) > 20
+  or snaffected($n) == 375
+    mpechoat $n The shockwave knocks you off-balance but you manage to brace yourself against the full force of the shockwave.
+    mpechoaround $n $N stumbles but braces themselves from the full force of the shockwave.
+    mplag $n 3
+  else
+    mpechoat $n The shockwave knocks you off-balance and you are thrown off your feet!
+    mpechoaround $n $N stumbles and falls, unable to keep his footing!
+    mplag $n 4
+  endif
+endif
+~
+>data_prog waterspeech~
+emote grunts.
+esay \@sneers\@ Your mastery of the sphere of water is amateur when compared to my dominance of the Void.
+esay \@snorts\@ A healer?  You have nothing that will protect you from me.
+esay \@grunts and laughs\@ I\@ve destroyed hundreds of your kind on the Eternal Battlefield.
+esay \@bellows\@ Prepare your last rites, healer, you will spend an eternity in the Void.
+~
+>data_prog regspeech~
+emote grunts.
+esay \@scoffs and says\@ You are no match for me.
+esay \@snorts\@ You are unimportant, a peon amongst masters.
+esay \@bellows indignantly\@ You have no place on the Eternal Battlefield, welp.
+esay \@laughs darkly and asks\@ Is that all?
+~
+>data_prog race~
+flay
+768
+flay
+Chi Enit
+mpcast 75 60
+768
+flay
+Itle Chirukh
+mpcast 678 60
+hatred
+esay \@spits through clenched teeth\@ Your protections are useless against the power of the Void!
+mpremaffect $f 119
+mpvalueset 3 -10
+~
+>data_prog racespeech~
+emote grunts.
+esay \@scoffs and says\@ Yours is a feeble race, why the Gods bothered creating you is beyond me.
+esay \@flicks his tongue and snorts\@ I don\@t remember your race achieving anything worth my attention.
+esay \@snorts\@ Declare me your master and I may let you keep your eyes and ears.
+esay \@sneers\@ After I return you to the soil I shall hunt your kind for all eternity.
+~
+>data_prog shuddspeech~
+emote grunts.
+esay \@spits in contempt\@ You lack wisdom if you tempt me, Shuddeni.
+esay \@sneers\@ You dare such blasphemy against your masters?
+esay \@bellows\@ I spare no one on the Battlefield, Shuddeni, not even you.
+esay \@cracks his whip\@ You would make a better thrall than a victim.
+~
+>data_prog spiritspeech~
+emote grunts.
+esay \@smirks and gloats\@ I can sense your Spirit weakening by the moment.
+esay \@grunts\@ What do you hope to do that thousands of other Spirit warriors could not?
+esay \@cracks his whip and gloats\@ If you\@re lucky I\@ll only devour your Spirit.
+esay \@
+~
+>data_prog spirit~
+flay
+768
+flay
+Itle Chirukh
+mpcast 678 60
+768
+flay
+Shilr Ksaen
+mpcast 677 60
+spirit
+pmote chants a few words in an arcane tongue and then unleashes a black bolt from his fingertips!
+mpcast 75 60
+mpvalueset 3 -10
+~
+>data_prog water~
+shieldbash
+104
+shieldbash
+Yudkicj Khakuk
+mpcast 104 60
+8
+shieldbash
+Shilr Hnisn
+mpcast 8 60
+magic
+pmote steps back from battle briefly and calls down a sickening cloud of darkness over the room.
+mpat $i mpcast 681 60
+mpvalueset 3 -200
+~
+>data_prog shudd~
+shieldbash
+104
+flay
+Yudkicj Khakuk
+mpcast 104 60
+680
+flay
+Chi Iruyhiru
+mpcast 680 60
+magic
+pmote chants a few words in an arcane tongue and hurls a dark curse from his fingertips!
+mpcast 39 60
+mpvalueset 3 -10
+~
+|
+V4 8730
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+0 0 0 medium flesh
+>load_prog 100~
+speak common
+~
+>greet_prog 100~
+if ispc($n)
+  if remembers($n)
+    mpforget $n
+    break
+  else
+    if mobvalue(0) == 0
+      mpremember $n
+      mpsetdata Quest $9
+      loop 1 to 7
+        mpnextdata
+      endloop
+      $d
+    endif
+  endif
+endif
+~
+>speech_prog specialprogreset~
+if isimmort($n)
+  if mobvalue(1) < $5
+    mpvalueset 1 0
+  else
+    mpvalueset 5 0
+  endif
+endif
+~
+>speech_prog yes yeah~
+if ispc($n)
+  if mobvalue(0) == 1
+    break
+  else
+    if mobvalue(4) == 0
+      mpvalueset 4 1
+      mpvalueset 1 180
+      mpvalueset 5 1000
+      mpsetdata Quest $9
+      loop 1 to 17
+        mpnextdata
+      endloop
+      mpmload 8731
+      rqmcommand $d
+      mpvalueset 6 $d
+      mpnextdata
+      mpstring obj obj_8730 long $d
+      mpnextdata
+      mpstring obj obj_8730 short $d
+      mpnextdata
+      mpstring obj obj_8730 name $d obj_8730
+//      mpat $6 rqmexdesc  $d
+    endif
+    mpvalueset 0 1
+    mpsetdata Quest $9
+    loop 1 to 22
+      mpnextdata
+    endloop
+  endif
+endif
+~
+>data_prog Desc10~
+The large human woman looks extremely busy, working intently over a hot
+stove.  Her hair is slightly grey, and small lines crease the corners
+of her eyes and mouth.  She hums a lively tune to herself as she throws
+ingredients into the pot.  
+~
+>data_prog Quest 10~
+=== LAYOUT ===
+emote rushes over to grab some spices from a cabinet and pour some into the stew.
+esay \@beams at $N as she takes the jar\@ This will do just fine!  Here is some gold to help you out!
+mpset mob self gold 10
+give 10 gold $n
+emote disappears into the kitchen amidst the sound of clanging pots and pans.
+esay \@sighs and hurries out the door\@ Maybe I\@ll have better luck at the market.
+esay \@stops preparing her stew briefly to address you\@ Want to make yourself useful?
+=== MOB DETAILS ===
+A rotund housewife hurries about preparing food.
+the rotund housewife
+Hyenna Millis rotund housewife
+Human
+Female
+Good
+4041
+=== OBJECT DETAILS ===
+11377
+A jar of sweet corn sits here.
+a jar of sweet corn
+Sweet Corn Jar
+=== QUEST DESCRIPTION ===
+say I need some ingredients for a stew I\@m preparing for Eril\@s monthly celebration.
+say I would be grateful if you could fetch me some sweet corn from the Palace kitchen in Earendam.
+say You\@ll find it in the Patrician\@s Palace - don\@t mind Raqenda, he won\@t mind you searching about.
+say You will have to {Wsearch{Y the cupboards a little, but that\@s all.
+say The Patrician\@s Palace is right in the middle of Earendam, you shouldn\@t have any trouble finding it!
+say Now be quick or I\@ll have to settle for the local corn at the market and that just won\@t do.
+mpvalueset 0 0
+~
+>data_prog Desc9~
+The large human woman looks extremely busy, working intently over a hot
+stove.  Her hair is slightly grey, and small lines crease the corners
+of her eyes and mouth.  She hums a lively tune to herself as she throws
+ingredients into the pot.  
+~
+>data_prog Quest 9~
+=== LAYOUT ===
+emote rushes over to grab some spices from a cabinet and pour some into the stew.
+esay \@beams at $N as she takes the tomato\@ This will do just fine!  Here is some gold to help you out!
+mpset mob self gold 8
+give 8 gold $n
+emote disappears into the kitchen amidst the sound of clanging pots and pans.
+esay \@sighs and hurries out the door\@ Maybe I\@ll have better luck at the market.
+esay \@stops preparing her stew briefly to address you\@ Want to make yourself useful?
+=== MOB DETAILS ===
+A rotund housewife hurries about preparing food.
+the rotund housewife
+Hyenna Millis rotund housewife
+Human
+Female
+Good
+4041
+=== OBJECT DETAILS ===
+24674
+A ripe tomato lies here.
+a ripe tomato
+Ripe Tomato
+=== QUEST DESCRIPTION ===
+say I need some ingredients for a stew I\@m preparing for Eril\@s monthly celebration.
+say I would be very grateful if you could go by the farmer\@s field in Jandiska and gather a ripe tomato.
+say You can just go ahead and dig it up, that old caladaran and I have a bit of a history!
+say You will have to {Wsearch{Y the rows for the biggest one, but you\@ll have no problems I\@m sure.
+say You can find the Jandiska village by heading south out of Nendor and then west from the Savannah desert.
+say Be quick or I\@ll have to settle for the local tomatoes here at the market.
+say Now shoo!  Stay outta my way, I\@ve got lots of work to do until the celebration.
+mpvalueset 0 0
+~
+>data_prog Desc8~
+The large human woman looks extremely busy, working intently over a hot
+stove.  Her hair is slightly grey, and small lines crease the corners
+of her eyes and mouth.  She hums a lively tune to herself as she throws
+ingredients into the pot.  
+~
+>data_prog Quest 8~
+=== LAYOUT ===
+emote rushes over to grab some spices from a cabinet and pour some into the stew.
+esay \@takes the capsicum pepper and grabs some coins from a drawer\@ This will do just fine!  Here is some gold to help you out!
+mpset mob self gold 5
+give 5 gold $n
+emote disappears into the kitchen amidst the sound of clanging pots and pans.
+esay \@sighs and hurries out the door\@ Maybe I\@ll have better luck at the market.
+esay \@stops briefly to address you\@ Well, don\@t just stand there!  Want to make yourself useful?
+=== MOB DETAILS ===
+A rotund housewife hurries about preparing food.
+the rotund housewife
+Hyenna Millis rotund housewife
+Human
+Female
+Good
+4041
+=== OBJECT DETAILS ===
+7119
+A capsicum pepper lies here.
+a capsicum pepper
+Capsicum Pepper
+=== QUEST DESCRIPTION ===
+say I need some ingredients for a stew I\@m preparing for Eril\@s monthly celebration.
+say I would be very grateful if you could go dig up a capsicum pepper in the Arien Way kitchens.
+say You can just borrow them, I know the cook there.
+say You will have to {Wsearch{Y in the cupboards, but you\@ll have no problems I\@m sure!
+say But if you don\@t mind, I\@ve lots of work to do here yet.  Hurry back or I\@ll have to settle for local spices.
+emote sighs and returns to her work.
+mpvalueset 0 0
+~
+>data_prog Desc7~
+An aelin stands here, garbed in a drab brown cloak.  Her wings extend out
+of her back through holes in her clothes, each painted with black dye to
+conceal them in the shadows.  Her dark eyes and high cheekbones make her
+look both regal and secretive.
+~
+>data_prog Quest 7~
+=== LAYOUT ===
+emote moves the hood of her cloak close to her face.
+esay \@accepts the document and tucks it into her cloak\@ Excellent work.
+mpxp $n 2200
+mpfaction $n 45 -250 1
+emote curtseys thankfully and disappears into a nearby alley.
+emote disappears into the alley behind a nearby building.
+esay \@whispers\@ Perhaps you could be of use, citizen?
+=== MOB DETAILS ===
+A cloaked figure stands here, keeping to the shadows.
+the cloaked figure
+Lysia Nadyr Cloaked Figure
+aelin
+Female
+Neutral
+3410
+=== OBJECT DETAILS ===
+17089
+A Kor Thrandian schedule of troop rotations lies here.
+a Kor Thrandian schedule of troop rotations
+Schedule Troop Rotations
+=== QUEST DESCRIPTION ===
+say I am looking for a particularly interesting piece.
+say In Kor Thrandir there is a diagram of troop rotations.
+say It is tucked away in the Guard\@s Barracks within the fortress.
+emote nods secretively.
+say You will have to {Wsearch{Y amongst the beds there to find it.{n
+esay \@states\@ You will have my gratitude if you can bring it to me.
+mpvalueset 0 0
+~
+>data_prog Desc6~
+An aelin stands here, garbed in a drab brown cloak.  Her wings extend out
+of her back through holes in her clothes, each painted with black dye to
+conceal them in the shadows.  Her dark eyes and high cheekbones make her
+look both regal and secretive.
+~
+>data_prog Desc4~
+A druid stands here, leaning on a long oaken staff.  His simple grey
+robes and bracelet bear the markings of the Nendorin order.  His hood is
+pulled back revealing a mat of long, grey hair that frames his rough features.
+His hands and arms are weakened by age and he learns heavily on his staff.
+~
+>data_prog Quest 4~
+=== LAYOUT ===
+emote leans heavily on his staff.
+esay \@accepts the yuspira weed\@ Amazing, you found it!  I am forever in your debt, friend.
+mpxp $n 1400
+mpfaction $n 44 +50 1
+emote nods and heads northward, disappearing into the woods.
+esay \@sighs and says\@ Maybe I\@ll find someone to help me some other time.
+say Hail, traveler!  Have you any spare time to find an ingredient for a poultice?
+=== MOB DETAILS ===
+Arren Synd, a Druid of Nendor, stands here leaning uneasily on his staff.
+Arren Synd
+Arren Synd Druid
+Human
+Male
+Good
+19609
+=== OBJECT DETAILS ===
+24698
+A piece of yuspira weed is here.
+a yuspira weed
+Yuspira Weed
+=== QUEST DESCRIPTION ===
+say I need a piece of rare yuspira weed for a poultice I\@m putting together.
+say However, it only grows in the Mleijian Mountains in a forest of hardy pine.
+say If I could find some of this rare weed it would go a long way in helping the Nendorian order. 
+say You might have to {Wsearch{Y carefully to find it, but I have no doubt you will have no trouble.{n
+say Be safe and hurry back, I must be back to the Circle soon!
+mpvalueset 0 0
+~
+>data_prog Quest 5~
+=== LAYOUT ===
+emote moves the hood of her cloak close to her face.
+esay \@accepts the parchment and tucks it into her cloak\@ This will go a long way.  You have my thanks.
+mpxp $n 2000
+mpfaction $n 46 -150 1
+emote curtseys thankfully and disappears into a nearby alley.
+emote disappears into the alley behind a nearby building.
+esay \@whispers\@ Perhaps you could aid me, citizen?
+=== MOB DETAILS ===
+A cloaked figure stands here, keeping to the shadows.
+the cloaked figure
+Lysia Nadyr Cloaked Figure
+aelin
+Female
+Neutral
+3575
+=== OBJECT DETAILS ===
+19072
+A piece of parchment adorned with the Gaald Duke\@s Seal lies here.
+a Gaald parchment
+Gaald Parchment Seal
+=== QUEST DESCRIPTION ===
+say I am collecting some pieces of interest from around the realms.
+say Unfortunately I am unable to gather some of them for...
+emote fiddles nervously with the folds of her grey cloak.
+esay \@finishes\@ personal reasons.
+say The piece I require is held in the Gaald library - A piece of parchment with the Gaald Duke\@s Seal.
+say You will have to {Wsearch{Y for it, but I am sure you will find it tucked in one of the bookshelves there.{n
+esay \@states evenly\@ You will have my gratitude if you can bring it to me.
+mpvalueset 0 0
+~
+>data_prog Quest 6~
+=== LAYOUT ===
+emote moves the hood of her cloak close to her face.
+esay \@accepts the signet ring and tucks it into her cloak\@ I am grateful.
+mpxp $n 2000
+mpfaction $n 24 -150 1
+emote curtseys thankfully and disappears into a nearby alley.
+emote disappears into the alley behind a nearby building.
+esay \@whispers\@ Have you time to aid a citizen in need?
+=== MOB DETAILS ===
+A cloaked figure stands here, keeping to the shadows.
+the cloaked figure
+Lysia Nadyr Cloaked Figure
+aelin
+Female
+Neutral
+3450
+=== OBJECT DETAILS ===
+1589
+A Krilin Signet ring lies here.
+a Krilin signet ring
+Krilin Signet Ring
+=== QUEST DESCRIPTION ===
+say I am collecting some pieces of interest from around the realms.
+say Unfortunately some of them are impossible for me to retrieve.
+emote tucks her hands into her cloak.
+say The piece I require is held in the Scholar\@s Hall in Krilin - a signet ring.
+say You will have to {Wsearch{Y amongst the scrolls there, but I am sure you will find it.{n
+esay \@states evenly\@ You will have my gratitude if you can bring it to me.
+mpvalueset 0 0
+~
+>data_prog Desc5~
+An aelin stands here, garbed in a drab brown cloak.  Her wings extend out
+of her back through holes in her clothes, each painted with black tar to
+conceal them in the shadows.  Her dark eyes and high cheekbones make her
+look both regal and secretive.
+~
+>data_prog Desc3~
+A druid stands here, leaning on a long oaken staff.  His simple grey
+robes and bracelet bear the markings of the Nendorin order.  His hood is
+pulled back revealing a mat of long, grey hair that frames his rough features.
+His hands and arms are weakened by age and he learns heavily on his staff.
+~
+>data_prog Quest 3~
+=== LAYOUT ===
+emote leans heavily on his staff.
+esay \@takes the moss and says\@ Thank you, friend.  This will be very helpful.
+mpxp $n 1200
+mpfaction $n 44 +50 1
+emote nods and heads northward, disappearing into the woods.
+esay \@sighs and says\@ Maybe I\@ll find someone to help me some other time.
+say Hail, traveler, can you help me find an ingredient for a poultice?
+=== MOB DETAILS ===
+Arren Synd, a Druid of Nendor, stands here leaning uneasily on his staff.
+Arren Synd
+Arren Synd Druid
+Human
+Male
+Good
+19609
+=== OBJECT DETAILS ===
+19555
+A piece of huchak moss is here.
+some huchak moss
+Huchak Moss Piece
+=== QUEST DESCRIPTION ===
+say I hope you can help, this one might be tough to gather.
+say Huchak moss grows east of here, along a path through the thick woods.
+say The properties of Huchak moss allow us to combine the simple elements that are common in druidic poultices. 
+say You might have to {Wsearch{Y carefully to find it and make sure to watch out for bandits.{n
+say Be safe and hurry back!
+mpvalueset 0 0
+~
+>data_prog Desc2~
+A druid stands here, leaning on a long oaken staff.  His simple grey
+robes and bracelet bear the markings of the Nendorin order.  His hood is
+pulled back revealing a mat of long, grey hair that frames his rough features.
+His hands and arms are weakened by age and he leans heavily on his staff.
+~
+>data_prog Quest 2~
+=== LAYOUT ===
+emote leans heavily on his staff.
+esay \@takes the lily in his hand and says\@ A fresh one, too.  My sincerest thanks.
+mpxp $n 1200
+mpfaction $n 44 +50 1
+emote nods and heads eastward, disappearing into the woods.
+esay \@sighs and says\@ Maybe I\@ll find someone to help me some other time.
+say Hail, traveler, are you willing to help me find an ingredient for a poultice?
+=== MOB DETAILS ===
+Arren Synd, a Druid of Nendor, stands here leaning uneasily on his staff.
+Arren Synd
+Arren Synd Druid
+Human
+Male
+Good
+19530
+=== OBJECT DETAILS ===
+15223
+An orange lily is here.
+an orange lily
+Orange Lily Flower
+=== QUEST DESCRIPTION ===
+say Ah, excellent.  The orange lily is difficult to find in these parts.
+say They serve as an excellent reagent for simple druidic poultices.
+say The only place I have found them in the narrowest part of a rocky valley in the northwestern part of Morn forest.
+say You might have to {Wsearch{Y carefully to find it, but you shouldn\@t have too much difficulty finding it.{n
+say Do hurry back, I\@m not sure how much time I have.
+mpvalueset 0 0
+~
+>data_prog Desc1~
+A druid stands here, leaning on a long oaken staff.  His simple grey
+robes and bracelet bear the markings of the Nendorin order.  His hood is
+pulled back revealing a mat of long, grey hair that frames his rough features.
+His hands and arms are weakened by age and he learns heavily on his staff.
+~
+>data_prog Quest 1~
+=== LAYOUT ===
+emote leans heavily on his staff.
+esay \@takes the flower in his hand and says\@ Yes... this will do perfectly!
+mpxp $n 1000
+mpfaction $n 44 +50 1
+emote nods and heads eastward, disappearing into the woods.
+esay \@sighs and says\@ Maybe I\@ll find someone to help me some other time.
+say Hail, traveler, would you be willing to help me find an ingredient for a poultice?
+=== MOB DETAILS ===
+Arren Synd, a Druid of Nendor, stands here leaning uneasily on his staff.
+Arren Synd
+Arren Synd Druid
+Human
+Male
+Good
+19605
+=== OBJECT DETAILS ===
+24002
+A senna flower is here.
+a senna flower
+Senna Flower
+=== QUEST DESCRIPTION ===
+say Ah, excellent.  The Senna flower is a rare flower that I use in creating some poultices.
+say They have been known to calm the mind with their subtle aroma.
+say Unfortunately, the last place I saw one was along the shore of a shallow stream in Nordath, a haunted fortress at the foot of the Brintors.
+say If I remember correctly the flower can be found in the ravine, underneath the shadow of some large evergreens.
+say You might have to {Wsearch{Y carefully to find it, but it should definitely be there.{n
+say Hurry back, I may need to leave at a moment\@s notice.
+mpvalueset 0 0
+~
+>give_prog all~
+if ispc($n)
+  if iscarrying($i) == 8730
+  or name($i) == obj_8730
+    mpjunk 1.
+    mpvalueset 0 0
+    mpsetdata Quest $9
+    loop 1 to 2
+      mpnextdata
+    endloop
+    $d
+    mpnextdata
+    $d
+    mpnextdata
+    $d
+    mpnextdata
+    $d
+    mpgoto 6100
+    mpvalueset 5 30
+    mpvalueset 4 0
+    mpforget $n
+  endif
+endif
+~
+>rand_prog 100~
+if mobvalue(0) == 1
+  $d
+  mpnextdata
+else
+  if rand(1)
+    mpsetdata Quest $9
+    mpnextdata
+    $d
+  endif
+endif
+if mobvalue(1) > 0
+  mpvaluedown 1
+endif
+if mobvalue(5) > 0
+  mpvaluedown 5
+endif
+if mobvalue(1) == 0
+  mpsetdata Quest $9
+  loop 1 to 6
+    mpnextdata
+  endloop
+  $d
+  mpgoto 6100
+  mpvalueset 0 0
+  mpvalueset 5 6
+  mpvalueset 1 1000
+  mpvalueset 4 0
+endif
+if mobvalue(5) == 0
+  mpvaluerand 9 1 10
+// CHANGE MPVALUERAND TO MATCH NUMBER OF QUESTS
+  mpsetdata Quest $9
+  loop 1 to 9
+    mpnextdata
+  endloop
+  mpstring mob self long $d
+  mpnextdata
+  mpstring mob self short $d
+  mpnextdata
+  mpstring mob self name $d mob_8730
+  mpdesc self Desc$9
+  mpnextdata
+  mpset mob self race $d
+  mpnextdata
+  mpset mob self sex $d
+  mpnextdata
+  mpset mob self align $d
+  mpnextdata
+  mpgoto $d
+  mpvalueset 1 500
+  mpvalueset 5 1000
+endif
+mpjunk 1.
+~
+>data_prog ObjDesc1~
+THIS IS A SPECIAL DESCRIPTION USING THE SAME $d AS PREVIOUS
+~
+|
+V4 8731
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+0 0 0 medium flesh
+>verb_prog rqmcommand~
+if isimmort($n)
+or isnpc($n)
+  mpgoto $y2
+  mpoload 4730 in room
+  rqmexdesc $y3
+  mppurge self
+else
+  mppurge self
+endif
+~
+|
+V4 8790
+Hawkmobby mobby~
+a hawkmobby~
+A hawkmobby is here.
+~
+~
+human~
+water scholar~
+AB 0 DFJLPZe N 0
+1 0 1d1+10000 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+if name($n) == $f0
+  if cansee($i) == $f0
+    mpvalueset 1 2
+    mpvalueset 2 0
+    mpvalueset 5 1
+  endif
+endif
+if name($n) == $f1
+  if value(1) == 0
+  else
+    mpvalueset 1 0
+    mpechoat $f1 Sensing your return, the golden hawk begins to descend from the sky.
+  endif
+endif
+~
+>verb_prog hawksentry~
+if name($n) == $f1
+  mpechoat $f1 Sensing your command, the golden hawk begins to descend from the sky.
+  mpvalueset 1 0
+endif
+~
+>verb_prog hawkmobsentry~
+if isnpc($n)
+  if value(7) == 0
+    mpvalueup 7
+    mpvalueset 1 80
+    mpvalueset 2 0
+    mpfocus $y2 0
+    mpfocus $y3 1
+  endif
+endif
+~
+>rand_prog 100~
+// Cooldowns on variables 1 to 2
+if rand(5)
+  if value(1) == 0
+  else
+    mpecho You notice the distinct silhouette of a hawk flying high in the sky.
+  endif
+endif
+if value(1) > 0
+  mpvaluedown 1
+endif
+if value(2) > 0
+  mpvaluedown 2
+endif
+if value(1) == 0
+  if value(2) > 0
+    if value(2) == 1
+      if isindoors($f1)
+        mpvalueset 1 8
+        mpvalueset 2 12
+        mpechoat $f1 You can hear the distant keening of the hawk in your mind as it searches for you.
+      else
+        if value(5) == 1
+          mpat 8600 homehawk yes $f1
+        else
+          mpat 8600 homehawk no $f1
+        endif
+        mppurge self
+      endif
+    endif
+  else
+    mpecho The shadow of a distant hawk glides over you and disappears.
+    if ishere($f1)
+      mpvalueset 2 2
+    else
+      if inarea($f1)
+        mpvalueset 2 6
+      else
+        mpvalueset 2 12
+      endif
+    endif
+  endif
+endif
+~
+>speech_prog report~
+if isimmort($n)
+  say F is $F
+  say F0 is $F0
+  say F1 is $F1
+  say N is $N
+endif
+~
+|
+V4 8799
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+0 0 0 medium flesh
+#0
+
+
+
+#OBJECTS
+V12
+8600
+fob ranger rangerfob~
+rangerfob~
+Rangerfob fobs the hell out of rangers.~
+~
+ch\@lonin~
+trash MYad 0 A
+0 0 0 0 0
+60 0 0 0 P
+0
+V12
+8601
+Silver Blade Asunder~
+the Silver Blade \#Asunder\#~
+Beak~
+~
+bone~
+weapon PU 0 AN
+sword 7 6 3 D
+power~
+60 350 10 5 P
+1
+>fight_prog 100~
+opecho The Silver Blade \#Asunder\# glows wickedly.
+opstring obj asunder long The Silver Blade \#Asunder\# is here, surrounded by a black flame.
+mpmath 1 $1 + 4
+mpmath 5 $5 + 4
+opset obj asunder v2 $5
+opset obj asunder v1 $1
+opdamage $n $1 $5 0
+~
+>rand_prog 100~
+if value(1) > 7
+  mpvaluedown 1 
+endif
+if value(5) > 6
+  mpvaluedown 5
+endif
+if value(5) == 0
+or value(1) == 0
+  mpvalueset 5 6
+  mpvalueset 1 7
+endif
+if position($o) == 7
+else
+  opstring obj asunder long The Silver Blade \#Asunder\# is here.
+  opset obj asunder v2 $5
+  opset obj asunder v1 $1
+endif
+~
+|
+V12
+8602
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+>trigger_prog 100~
+if value(1) == 0
+or value(6) == 1
+else
+  if value(4) == 1
+    if rand($9)
+      mpsetdata prismaticspells
+      mpvalueset 1 10
+    else
+      mpsetdata waterspells
+    endif
+  else
+    if value(4) == 2
+      if rand($9)
+        mpsetdata prismaticspells
+        mpvalueset 1 10
+      else
+        mpsetdata voidspells
+      endif
+    else
+     if value(4) == 3
+       if rand($9)
+         mpsetdata prismaticspells
+         mpvalueset 1 10
+       else
+         mpsetdata earthspells
+       endif
+     else
+       if value(4) == 4
+         if rand($9)
+           mpsetdata prismaticspells
+           mpvalueset 1 10
+         else
+           mpsetdata airspells
+         endif
+       else
+         if value (4) == 5
+           if rand($9)
+             mpsetdata prismaticspells
+             mpvalueset 1 10
+           else
+             mpsetdata spiritspells
+           endif
+         else
+           if value(4) == 6
+             if rand($9)
+               mpsetdata prismaticspells
+               mpvalueset 1 10
+             else
+               mpsetdata firespells
+             endif
+           else
+             if value(4) == 7
+               if rand($9)
+                 mpsetdata prismaticspells
+                 mpvalueset 1 10
+               else
+                 mpsetdata naturespells
+               endif
+             endif
+           endif
+         endif
+       endif
+     endif
+   endif
+  endif
+  mplag $o 1
+  mpvalueset 5 0
+  mpvalueset 6 1
+  mpvalueset 7 0
+  loop 0 to $1
+    $d
+    mpnextdata
+  endloop
+endif
+~
+>verb_prog think~
+mpinterpret $n $x
+if compstr(1) == t
+else
+  if compstr(2) == contain
+    if value(7) > 0
+    or value(3) > 0
+      mpecho The diamond flashes briefly, but nothing happens.
+      mplag $o 2
+      opverbstop
+      break
+    endif
+    if isworn($o)
+      mpfocus $o
+      mpget char $o level 8
+      mpsetdata none
+      mpvalueset 6 0
+      mpvalueset 1 0
+      if snaffected($o) == 119
+// Sanc check
+        mpvalueset 1 1
+        mpremaffect $o 119
+        if rand (5)
+          mpmath 9 $9 + 1
+        endif
+        mpvalueset 4 1
+        mpvalueset 7 1
+        mpecho {BThe diamond flashes wildly as it absorbs $F\@s Water enchantments!{n
+        if snaffected($o) == 3
+// Armor check
+          mpvalueset 1 2
+          mpremaffect $o 3
+          if rand (5)
+            mpmath 9 $9 + 1
+          endif
+          if snaffected($o) == 125
+// Shield check
+            mpvalueset 1 3
+            mpremaffect $o 125
+            if rand (5)
+              mpmath 9 $9 + 1
+            endif
+            if snaffected($o) == 206
+// Water Breathing check
+              mpvalueset 1 4
+              mpremaffect $o 206
+              if rand (5)
+                mpmath 9 $9 + 1
+               endif
+              if snaffected($o) == 7
+              or snaffected($o) == 26
+// Communion/Bless check
+                mpvalueset 1 5
+                mpremaffect $o 7
+                mpremaffect $o 26
+                if rand (5)
+                  mpmath 9 $9 + 1
+                endif
+                if snaffected($o) == 328
+// Protection from Fire
+                  mpvalueset 1 6
+                  mpremaffect $o 328
+                  if rand (5)
+                    mpmath 9 $9 + 1
+                  endif
+                  if snaffected($o) == 110
+// Protective Shield
+                    mpvalueset 1 7
+                    mpremaffect $o 110
+                    if rand (5)
+                      mpmath 9 $9 + 1
+                    endif
+                    if snaffected($o) == 330
+// Protection from Poison
+                      mpvalueset 1 8
+                      mpremaffect $o 7
+                      mpremaffect $o 330
+                      if rand (5)
+                        mpmath 9 $9 + 5
+                      endif
+                    endif
+                  endif
+                endif
+              endif
+            endif
+          endif
+        endif
+      else
+        if snaffected($o) == 308
+// Cloak of the Void check
+          mpvalueset 1 1
+          mpremaffect $o 308
+          if rand (5)
+            mpmath 9 $9 + 1
+          endif
+          mpvalueset 4 2
+          mpvalueset 7 1
+          mpecho {DThe diamond flashes wildly as it absorbs $F\@s Void enchantments!{n
+          if snaffected($o) == 3
+// Armor check
+            mpvalueset 1 2
+            mpremaffect $o 3
+            if rand (5)
+              mpmath 9 $9 + 1
+            endif
+            if snaffected($o) == 125
+// Shield check
+              mpvalueset 1 3
+              mpremaffect $o 125
+              if rand (5)
+                mpmath 9 $9 + 1
+              endif
+              if snaffected($o) == 103
+// Pass door check
+                mpvalueset 1 4
+                mpremaffect $o 103
+                if rand (5)
+                  mpmath 9 $9 + 1
+                endif
+                if snaffected($o) == 110
+/ Prot Shield check
+                  mpvalueset 1 5
+                  mpremaffect $o 110
+                  if rand (5)
+                    mpmath 9 $9 + 1
+                  endif
+                endif
+              endif
+            endif
+          endif
+        else
+          if snaffected($o) == 132
+// Stoneskin check
+            mpvalueset 1 1
+            mpremaffect $o 132
+            if rand (5)
+              mpmath 9 $9 + 1
+            endif
+            mpvalueset 4 3
+            mpvalueset 7 1
+            mpecho {yThe diamond flashes wildly as it absorbs $F\@s Earth enchantments!{n
+            if snaffected($o) == 3
+// Armor check
+              mpvalueset 1 2
+              mpremaffect $o 3
+              if rand (5)
+                mpmath 9 $9 + 1
+              endif
+              if snaffected($o) == 125
+// Shield check
+                mpvalueset 1 3
+                mpremaffect $o 125
+                if rand (5)
+                  mpmath 9 $9 + 1
+                endif
+                if snaffected($o) == 70
+// Fortify check
+                  mpvalueset 1 4
+                  mpremaffect $o 70
+                  if rand (5)
+                    mpmath 9 $9 + 1
+                  endif
+                  if snaffected($o) == 73
+// Giant Strength check
+                    mpvalueset 1 5
+                    mpremaffect $o 73
+                    if rand (5)
+                      mpmath 9 $9 + 1
+                    endif
+                    if snaffected($o) == 375
+/ Stabilize check
+                      mpvalueset 1 6
+                      mpremaffect $o 375
+                      if rand (5)
+                        mpmath 9 $9 + 1
+                      endif
+                      if snaffected($o) == 369
+// Stone Shell check
+                        mpvalueset 1 7
+                        mpremaffect $o 369
+                        if rand (5)
+                          mpmath 9 $9 + 1
+                        endif
+                      endif
+                    endif
+                  endif
+                endif
+              endif
+            endif
+          else
+            if snaffected($o) == 362
+// Gaseous Form check
+              mpvalueset 1 1
+              mpremaffect $o 362
+              if rand (5)
+                mpmath 9 $9 + 1
+              endif
+              mpvalueset 4 4
+              mpvalueset 7 1
+              mpecho {CThe diamond flashes wildly as it absorbs $F\@s Air enchantments!{n
+              if snaffected($o) == 3
+// Armor check
+                mpvalueset 1 2
+                mpremaffect $o 3
+                if rand (5)
+                  mpmath 9 $9 + 1
+                endif
+                if snaffected($o) == 125
+// Shield check
+                  mpvalueset 1 3
+                  mpremaffect $o 125
+                  if rand (5)
+                    mpmath 9 $9 + 1
+                  endif
+                  if snaffected($o) == 87
+                  or snaffected($o) == 96
+                  or snaffected($o) == 346
+/ Greater Invis check
+                    mpvalueset 1 4
+                    mpremaffect $o 87
+                    mpremaffect $o 96
+                    mpremaffect $o 346
+                    if rand (5)
+                      mpmath 9 $9 + 1
+                    endif
+                    if snaffected($o) == 354
+// Wind wall check
+                      mpvalueset 1 5
+                      mpremaffect $o 354
+                      if rand (5)
+                        mpmath 9 $9 + 1
+                      endif
+                    endif
+                  endif
+                endif
+              endif
+            else
+              if snaffected($o) == 415
+// Spirit Shield check
+                mpvalueset 1 1
+                mpremaffect $o 415
+                if rand (5)
+                  mpmath 9 $9 + 1
+                endif
+                mpvalueset 4 5
+                mpvalueset 7 1
+                mpecho {YThe diamond flashes wildly as it absorbs $F\@s Spirit enchantments!{n
+                if snaffected($o) == 3
+/ Armor check
+                  mpvalueset 1 2
+                  mpremaffect $o 3
+                  if rand (5)
+                    mpmath 9 $9 + 1
+                  endif
+                  if snaffected($o) == 125
+// Shield check
+                    mpvalueset 1 3
+                    mpremaffect $o 125
+                    if rand (5)
+                      mpmath 9 $9 + 1
+                    endif
+                    if snaffected($o) == 413
+// Thanatopsis check
+                      mpvalueset 1 4
+                      mpremaffect $o 413
+                      if rand (5)
+                        mpmath 9 $9 + 1
+                      endif
+                      if snaffected($o) == 428
+// Focus Mind check
+                        mpvalueset 1 5
+                        mpremaffect $o 428
+                        if rand (5)
+                          mpmath 9 $9 + 1
+                        endif
+                        if snaffected($o) == 7
+                        or snaffected($o) == 26
+// Communion/Bless check
+                          mpvalueset 1 6
+                          mpremaffect $o 7
+                          mpremaffect $o 26
+                          if rand (5)
+                            mpmath 9 $9 + 1
+                          endif
+                          if snaffected($o) == 416
+/ Zeal check
+                            mpvalueset 1 7
+                            mpremaffect $o 416
+                            if rand (5)
+                             mpmath 9 $9 + 1
+                            endif
+                            if snaffected($o) == 103
+// Pass door check
+                              mpvalueset 1 8
+                              mpremaffect $o 103
+                              if rand (5)
+                                mpmath 9 $9 + 1
+                              endif
+                            endif
+                          endif
+                        endif
+                      endif
+                    endif
+                  endif
+                endif
+              else
+                if snaffected($o) == 399
+// Flare check
+                  mpvalueset 1 1
+                  mpremaffect $o 399
+                  if rand (5)
+                    mpmath 9 $9 + 1
+                  endif
+                  mpvalueset 4 6
+                  mpvalueset 7 1
+                  mpecho {RThe diamond flashes wildly as it absorbs $F\@s Fire enchantments!{n
+                  if snaffected($o) == 3
+// Armor check
+                    mpvalueset 1 2
+                    mpremaffect $o 3
+                    if rand (5)
+                      mpmath 9 $9 + 1
+                    endif
+                    if snaffected($o) == 125
+/ Shield check
+                      mpvalueset 1 3
+                      mpremaffect $o 125
+                      if rand (5)
+                        mpmath 9 $9 + 1
+                      endif
+                      if snaffected($o) == 409
+// Wings of Flame check
+                        mpvalueset 1 4
+                        mpremaffect $o 409
+                        if rand (5)
+                          mpmath 9 $9 + 1
+                        endif
+                        if snaffected($o) == 84
+// Immolation check
+                          mpvalueset 1 5
+                          mpremaffect $o 84
+                          if rand (5)
+                            mpmath 9 $9 + 1
+                          endif
+                          if snaffected($o) == 71
+/ Frenzy check
+                            mpvalueset 1 6
+                            mpremaffect $o 71
+                            if rand (5)
+                              mpmath 9 $9 + 1
+                            endif
+                            if snaffected($o) == 393
+// Flame Shield check
+                              mpvalueset 1 7
+                              mpremaffect $o 393
+                              if rand (5)
+                                mpmath 9 $9 + 1
+                              endif
+                            endif
+                          endif
+                        endif
+                      endif
+                    endif
+                  endif
+                else
+                  if snaffected($o) == 551
+// Bark Skin check
+                    mpvalueset 1 1
+                    mpremaffect $o 551
+                    if rand (5)
+                      mpmath 9 $9 + 1
+                    endif
+                    mpvalueset 4 7
+                    mpvalueset 7 1
+                    mpecho {GThe diamond flashes wildly as it absorbs $F\@s Nature enchantments!{n
+                    if snaffected($o) == 541
+/ Forest walk check
+                      mpvalueset 1 2
+                      mpremaffect $o 541
+                      if rand (5)
+                        mpmath 9 $9 + 1
+                      endif
+                      if snaffected($o) == 552
+// Elemental Protection check
+                        mpvalueset 1 3
+                        mpremaffect $o 552
+                        if rand (5)
+                          mpmath 9 $9 + 1
+                        endif
+                        if snaffected($o) == 206
+// Water Breathing check
+                          mpvalueset 1 4
+                          mpremaffect $o 206
+                          if rand (5)
+                            mpmath 9 $9 + 1
+                          endif
+                          if snaffected($o) == 539
+// Giant Growth check
+                            mpvalueset 1 5
+                            mpremaffect $o 539
+                            if rand (5)
+                              mpmath 9 $9 + 1
+                            endif
+                            if snaffected($o) == 117
+/ Regeneration check
+                              mpvalueset 1 6
+                              mpremaffect $o 117
+                              if rand (5)
+                                mpmath 9 $9 + 1
+                              endif
+                            endif
+                          endif
+                        endif
+                      endif
+                    endif
+                  endif
+                endif
+              endif
+            endif
+          endif
+        endif
+      endif
+      mplag $o 10
+      mpvalueset 3 300
+    endif
+  else
+// Contingency states
+    if isworn($o)
+      if compstr(2) == fight
+        mpvalueset 5 1
+        mpechoat $o {WWhite steel glints briefly in the face of the diamond.{n
+      else
+        if compstr(2) == injury
+          mpvalueset 5 2
+          mpechoat $o {RThe face of the diamond flares blood-red.{n
+        else
+          if compstr(2) == incapacitated
+            mpvalueset 5 3
+            mpechoat $o {DA shadow passes over the surface of the diamond.{n
+          else
+            if compstr(2) == restore
+              mptrigger $o
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>wear_prog 100~
+mplag $o 1
+mpechoat $o {CAs you wear the diamond pendant a voice rings through your head...{n
+mpechoat $o To control my actions, {mThink{n these words of command
+mpechoat $o {MContain{n spells of one school of magic and {MRestore{n them later
+mpechoat $o Or make restoration contingent on when you {MFight{n, sustain {MInjury{n, or are {MIncapacitated{n
+~
+>wear_prog 100~
+mplag $o 1
+mpechoat $o {CAs you wear the diamond pendant a voice rings through your head...{n
+mpechoat $o To control my actions, {cThink{n these words of command
+mpechoat $o {cContain{n spells of one school of magic and {cRestore{n them later
+mpechoat $o Or make restoration contingent on when you {cFight{n, sustain {cInjury{n, or are {cIncapacitated{n
+~
+>wear_prog 100~
+mplag $o 1
+mpechoat $o {WAs you wear the diamond pendant a voice rings through your head...{n
+mpechoat $o To control my actions, {WThink{n these words of command
+mpechoat $o {WContain{n spells of one school of magic and {WRestore{n them later
+mpechoat $o Or make it contingent on when you {WFight{n, sustain {WInjury{n, or are {WIncapacitated{n
+~
+>wear_prog 100~
+mplag $o 1
+mpechoat $o {WAs you wear the diamond pendant a voice rings through your head...{n
+mpechoat $o To control my actions, {WThink{n these words of command
+mpechoat $o {WContain{n spells of one school of magic and {WRestore{n them later
+mpechoat $o Or make it contingent on when you {WFight{n, sustain {WInjury{n, or are {WIncapacitated{n
+~
+>data_prog prismaticspells~
+mpecho {WThe diamond falters then erupts, cracks in the gemstone causing wild magic to erupt!{n
+mpcast 833 $8 $o
+mpcast 833 $8 $o
+mpcast 833 $8 $o
+mpcast 833 $8 $o
+mpcast 833 $8 $o
+mpcast 833 $8 $o
+mpcast 833 $8 $o
+mpcast 833 $8 $o
+mpcast 833 $8 $o
+~
+>rand_prog 100~
+if value(7) == 0
+  if value(3) > 0
+    mpvaluedown 3
+  endif
+endif
+if isworn($o)
+  if value(5) == 2
+    if hitprcnt($o) < 95
+      mptrigger $o
+    endif
+  endif
+endif
+if isworn($o)
+  if value(5) == 3
+    if snaffected($o) == 127
+    or snaffected($o) == 203
+    or snaffected($o) == 652
+    or snaffected($o) == 253
+    or snaffected($o) == 252
+    or snaffected($o) == 260
+    or snaffected($o) == 506
+      if position($o) == 4
+        mptrigger $o
+      endif
+    endif
+  endif
+endif
+// Implement and try out
+//if rand(0)
+//  mpsetdata crackdesc
+//  if value(9) > 15
+//   loop 0 to 3
+//     mpnextdata
+//   endloop
+//  else
+//   if value(9) > 10
+//     loop 0 to 2
+//       mpnextdata
+//     endloop
+//   else
+//     if value(9) > 5
+//       loop 0 to 1
+//         mpnextdata
+//       endloop
+//     endif
+//   endif
+//  endif
+// $d
+//endif
+~
+>fight_prog 100~
+if isworn($o)
+  if value(5) == 1
+    mptrigger $o
+  endif
+endif
+~
+>data_prog naturespells~
+mpecho {GThe diamond shimmers and a burst of Nature magic erupts!{n
+mpcast 551 $8
+mpcast 541 $8
+mpcast 552 $8
+mpcast 206 $8
+mpcast 539 $8
+mpcast 117 $8
+~
+>data_prog firespells~
+mpecho {RThe diamond shimmers and a burst of Fire magic erupts!{n
+mpcast 399 $8
+mpcast 3 $8
+mpcast 125 $8
+mpcast 409 $8
+mpcast 84 $8
+mpcast 71 $8
+mpcast 393 $8
+~
+>data_prog spiritspells~
+mpecho {YThe diamond shimmers and a burst of Spirit magic erupts!{n
+mpcast 415 $8
+mpcast 3 $8
+mpcast 125 $8
+mpcast 413 $8
+mpcast 428 $8
+mpcast 7 $8
+mpcast 416 $8
+mpcast 103 $8
+~
+>data_prog airspells~
+mpecho {CThe diamond shimmers and a burst of Air magic erupts!{n
+mpcast 362 $8
+mpcast 3 $8
+mpcast 125 $8
+mpcast 346 $8
+mpcast 354 $8
+~
+>data_prog earthspells~
+mpecho {yThe diamond shimmers and a burst of Earth magic erupts!{n
+mpcast 132 $8
+mpcast 3 $8
+mpcast 125 $8
+mpcast 70 $8
+mpcast 73 $8
+mpcast 375 $8
+mpcast 369 $8
+~
+>data_prog voidspells~
+mpecho {DThe diamond shimmers and a burst of Void magic erupts!{n
+mpcast 308 $8
+mpcast 3 $8
+mpcast 125 $8
+mpcast 103 $8
+mpcast 110 $8
+~
+>data_prog waterspells~
+mpecho {BThe diamond shimmers and a burst of Water magic erupts!{n
+mpcast 119 $8
+mpcast 3 $8
+mpcast 125 $8
+mpcast 206 $8
+mpcast 26 $8
+mpcast 328 $8
+mpcast 110 $8
+mpcast 330 $8
+~
+|
+V12
+8603
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+>remove_prog 100~
+mpremaffect $o 438
+mpechoat $o You feel your demonic grip leave your hands.
+~
+>rand_prog 100~
+\\\\ AUTOWEAR
+if isheld($o)
+  if isworn($o)
+  else
+    mpechoaround $o The living demonflesh writhes in $O\@s hands, adhering itself to their hands!
+    mpechoat $o The living demonflesh writhes in your grasp, adhering to the skin of your hands.
+    if iswearslotfull($o) == 9
+      mpslotpurge $o 9
+      mpechoat $o The demonflesh encompasses your hands, disintegrating the armor!
+    endif
+    mpforce $o wear dfgloves
+  endif
+endif
+\\\\ CREEPING
+if value(1) == 0
+  if rand(1)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding up $O\@s arm and onto their wrists!
+      mpechoat $o The demonflesh writhes, sliding up your arm and onto your wrists!
+      if iswearslotfull($o) == 14
+        mpslotpurge $o 14
+        mpechoat $o The demonflesh encompasses your left wrist, disintegrating the armor!
+      endif
+      if iswearslotfull($o) == 15
+        mpslotpurge $o 15
+        mpechoat $o The demonflesh encompasses your right wrist, disintegrating the armor!
+      endif
+      mpoload 8604 on $o 14
+      mpoload 8605 on $o 15
+      mpvalueset 1 1
+      mplag $o 2
+    endif
+  endif
+endif
+\\\\ DAYLIGHT DAMAGE
+if islight()
+  if sector($o) == city
+  or sector($o) == field
+  or sector($o) == forest
+  or sector($o) == hills
+  or sector($o) == mountain
+  or sector($o) == swim
+  or sector($o) == air
+  or sector($o) == desert
+  or sector($o) == noswim
+  or sector($o) == road
+  or sector($o) == swamp
+    if rand(8)
+      mpechoaround $o The light of the sun singes $O\@s demonflesh!
+      mpechoat $o The light of the sun singes your demonflesh, {Rburning{n you!
+      if iswielding($o) == 8603
+        if iswielding($o) == 8604
+          if iswielding($o) == 8605
+            if iswielding($o) == 8606
+              if iswielding($o) == 8607
+                if iswielding($o) == 8608
+                  if iswielding($o) == 8609
+                    if iswielding($o) == 8610
+                      if iswielding($o) == 8611
+                        if iswielding($o) == 8612
+                          if iswielding($o) == 8613
+                            mpdamage $o 12 1 0
+                            mpgrant $o 0 -120 -96
+                          endif
+                          mpdamage $o 24 1 0
+                          mpgrant $o 0 -80 -48
+                          mpechoat $o The light of the sun distracts your thoughts.
+                        endif
+                        mpdamage $o 6 1 0
+                        mpgrant $o 0 0 -48
+                        mpechoat $o The heat of the sun drains your endurance.
+                      endif
+                      mpdamage $o 12 1 0
+                    endif
+                    mpdamage $o 12 1 0
+                  endif
+                  mpdamage $o 12 1 0
+                endif
+                mpdamage $o 12 1 0
+              endif
+              mpdamage $o 12 1 0
+            endif
+            mpdamage $o 12 1 0
+          endif
+          mpdamage $o 12 1 0
+        endif
+        mpdamage $o 12 1 0
+      endif
+    endif
+  endif
+endif
+\\\\ AUTOGRIP
+if snaffected($o) == 438
+else
+  mpaddaffect $o 438 50 -1 27 0 0
+  mpechoat $o You feel the strength of the demonflesh creep into your fingers, empowering your grip.
+endif
+~
+|
+V12
+8604
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+>rand_prog 100~
+\\\\ CREEPING
+if value(1) == 0
+  if rand(1)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding up $O\@s wrists and onto their arms!
+      mpechoat $o The demonflesh writhes, sliding up your wrists and onto your arms!
+      if iswearslotfull($o) == 10
+        mpslotpurge $o 10
+        mpechoat $o The demonflesh encompasses your arms, disintegrating the armor!
+      endif
+      mpoload 8606 on $o 10
+      mpvalueset 1 1
+      mplag $o 2
+    endif
+  endif
+endif
+~
+|
+V12
+8605
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V12
+8606
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+>rand_prog 100~
+\\\\ CREEPING
+if value(1) == 0
+  if rand(1)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding up $O\@s arms and onto their body!
+      mpechoat $o The demonflesh writhes, sliding up your arms and onto your body!
+      if iswearslotfull($o) == 12
+        mpslotpurge $o 12
+        mpechoat $o The demonflesh encompasses your body, disintegrating the armor!
+      endif
+      mpoload 8607 on $o 12
+      mpvalueset 1 1
+      mplag $o 2
+    endif
+  endif
+endif
+~
+|
+V12
+8607
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+>rand_prog 100~
+\\\\ CREEPING
+if value(1) == 0
+  if rand(1)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding down $O\@s body and onto their torso!
+      mpechoat $o The demonflesh writhes, sliding down your body and onto your torso!
+      if iswearslotfull($o) == 5
+        mpslotpurge $o 5
+        mpechoat $o The demonflesh encompasses your torso, disintegrating the armor!
+      endif
+      mpoload 8608 on $o 5
+      mpvalueset 1 1
+      mplag $o 2
+    endif
+  endif
+endif
+~
+|
+V12
+8608
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+>rand_prog 100~
+\\\\ CREEPING
+if value(1) == 0
+  if rand(1)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding up $O\@s body and onto their neck!
+      mpechoat $o The demonflesh writhes, sliding up your body and onto your neck!
+      if iswearslotfull($o) == 3
+        mpslotpurge $o 3
+        mpechoat $o The demonflesh encompasses your neck, disintegrating the armor!
+      endif
+      if iswearslotfull($o) == 4
+        mpslotpurge $o 4
+        mpechoat $o The demonflesh encompasses your neck, disintegrating the armor!
+      endif
+      mpoload 8609 on $o 3
+      mpoload 8610 on $o 4
+      mpvalueset 1 1
+      mplag $o 2
+    endif
+  endif
+endif
+\\\\ AUTOREGEN
+if rand(10)
+  if sector($o) == city
+  or sector($o) == field
+  or sector($o) == forest
+  or sector($o) == hills
+  or sector($o) == mountain
+  or sector($o) == swim
+  or sector($o) == air
+  or sector($o) == desert
+  or sector($o) == noswim
+  or sector($o) == road
+  or sector($o) == swamp
+    if islight()
+      if snaffected($o) == 117
+        mpremaffect $o 117
+        mpechoat $o The living demonflesh stops regenerating your wounds.
+      endif
+    else
+      if snaffected($o) == 117
+      else
+        mpaddaffect $o 117 50 -1 27 0 268435456
+        mpechoat $o The living demonflesh begins to spontaneously regenerate.
+      endif
+    endif
+  else
+    if snaffected($o) == 117
+    else
+      mpaddaffect $o 117 50 -1 27 0 268435456
+      mpechoat $o The living demonflesh begins to spontaneously regenerate.
+    endif
+  endif
+endif
+~
+>remove_prog 100~
+mpremaffect $o 117
+mpechoat $o The living demonflesh stops regenerating your wounds.
+~
+|
+V12
+8609
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+>rand_prog 100~
+\\\\ CREEPING
+if value(1) == 0
+  if rand(1)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding down $O\@s torso and onto their legs!
+      mpechoat $o The demonflesh writhes, sliding down your torso and onto your legs!
+      if iswearslotfull($o) == 7
+        mpslotpurge $o 7
+        mpechoat $o The demonflesh encompasses your legs, disintegrating the armor!
+      endif
+      mpoload 8611 on $o 7
+      mpvalueset 1 1
+      mplag $o 2
+    endif
+  endif
+endif
+~
+|
+V12
+8610
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V12
+8611
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+>rand_prog 100~
+\\\\ CREEPING
+if value(1) == 0
+  if rand(1)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding down $O\@s legs and onto their feet!
+      mpechoat $o The demonflesh writhes, sliding down your legs and onto your feet!
+      if iswearslotfull($o) == 8
+        mpslotpurge $o 8
+        mpechoat $o The demonflesh encompasses your feet, disintegrating the armor!
+      endif
+      mpoload 8612 on $o 8
+      mpvalueset 1 1
+      mplag $o 2
+    endif
+  endif
+endif
+~
+|
+V12
+8612
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+>remove_prog 100~
+mpremaffect $o 379
+mpechoat $o You feel the demonic endurance leave your feet.
+~
+>rand_prog 100~
+\\\\ CREEPING
+if value(1) == 0
+  if rand(1)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding up $O\@s neck and onto their face and head!
+      mpechoat $o The demonflesh writhes, sliding up your neck and onto your face and head!
+      if iswearslotfull($o) == 6
+        mpslotpurge $o 6
+        mpechoat $o The demonflesh encompasses your head, disintegrating the armor!
+      endif
+      mpoload 8613 on $o 6
+      mpvalueset 1 1
+    endif
+  endif
+endif
+\\\\ AUTOSMOOTH
+if snaffected($o) == 379
+else
+  mpaddaffect $o 379 50 -1 27 0 0
+  mpechoat $o As the demonflesh covers your feet you no longer feel the strain of movement.
+endif
+~
+|
+V12
+8613
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+>remove_prog 100~
+mpremaffect $o 86
+mpremaffect $o 428
+mpechoat $o You feel the demonic vision and focus leave your mind.
+~
+>remove_prog 100~
+mpremaffect $o 86
+mpremaffect $o 428
+mpechoat $o You feel the demonic vision and focus leave your mind.
+~
+>rand_prog 100~
+if rand(2)
+  if sector($o) == city
+  or sector($o) == field
+  or sector($o) == forest
+  or sector($o) == hills
+  or sector($o) == mountain
+  or sector($o) == swim
+  or sector($o) == air
+  or sector($o) == desert
+  or sector($o) == noswim
+  or sector($o) == road
+  or sector($o) == swamp
+    if islight()
+      if snaffected($o) == 8
+      else
+        mpaddaffect $o 8 50 10 18 -4 1
+        mpechoat $o The searing heat from the sun blinds you!
+      endif
+    endif
+  endif
+endif
+\\\\ AUTOINFRA
+if snaffected($o) == 86
+else
+  mpaddaffect $o 86 50 -1 27 0 0
+  mpechoat $o As the demonflesh covers your eyes, you feel your vision clear.
+endif
+\\\\ AUTOFOCUS
+if snaffected($o) == 428
+else
+  mpaddaffect $o 428 50 -1 27 0 0
+  mpechoat $o As the demonflesh covers your head, you feel your mind become uncluttered and focused.
+endif
+~
+|
+V12
+8615
+Sentry Tool~
+a sentry tool~
+A Saedacal Original Sentry Tool~
+~
+unknown~
+trash Sd 0 A
+0 0 0 0 0
+90 0 0 0 P
+0
+>trigger_prog 100~
+if name($n) == $o
+else
+  if ispc($n)
+    if isimmort($n)
+    else
+      if isfollow($n)
+        mpechoat $f1 {gA sentry tells you \@$N is following $O.\@{n
+      endif
+    endif
+  endif
+endif
+~
+>verb_prog SENTRYTOOL~
+mpfocus $y2 1
+mproomcmd mptrigger all
+mppurge self
+~
+>verb_prog TESTMEOUT~
+mpfocus $y2 1
+mproomcmd mptrigger all
+mppurge self
+~
+|
+V12
+8616
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V12
+8617
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V12
+8618
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V12
+8700
+bleeding festering wound fob~
+a bleeding festering wound~
+An Unofficial Ramc-Copied Brooksy item lies here~
+~
+unknown~
+trash Sd 0 A
+0 0 0 0 0
+90 0 0 0 P
+0
+>rand_prog 100~
+opvalueup 0
+if rand(16)
+  if objvalue(0) > 6
+    if objvalue(0) < 10
+      mpechoat $o Your wound begins to burn, causing mild discomfort.
+      mpdamtype $o 1 6 0 4
+    endif
+  endif
+  if objvalue(0) > 9
+    if objvalue(0) < 16
+      mpechoat $o You feel a slight chill as the wound begins to seep.
+      mpdamtype $o 3 6 10 5
+    endif
+  endif
+  if objvalue(0) > 15
+    if objvalue(0) < 25
+      if level($o) > 35
+        mpechoat $o The bleeding from your wound gets worse and the burning is almost unbearable. 
+        mpdamtype $o 6 6 20 4
+      else
+        mpechoat $o The burning of the festering wound seems to dissapate.
+        oppurge self
+      endif
+    endif
+  endif
+  if objvalue(0) > 24
+    if level($o) > 45
+      mpechoat $o The wound suddenly grows incredibly cold and you begin to break out in an uncomfortable sweat.
+      mpcast 104 45 $o
+      oppurge self
+    else
+      mpechoat $o The burning of the festering wound seems to dissapate.
+      oppurge self
+    endif
+  endif
+endif
+if snaffected($o) == 227
+else
+  mpechoat $o With the wound healed, the festering seems to dissapate as well.
+  oppurge self
+  break
+endif
+~
+|
+V12
+8701
+hawk harrassment~
+a hawk harrassment tool~
+An Unnoficial Ramc-Copied item lies here~
+~
+unknown~
+trash Sd 0 A
+0 0 0 0 0
+90 0 0 0 P
+0
+>rand_prog 100~
+opvalueup 0
+if rand(16)
+  if objvalue(0) > 1
+    if objvalue(0) < 11
+      if islight()
+        if rand(50)
+          mpechoat $o You notice the figure of a hawk, circling far above you.
+        else
+          mpechoat $o You hear the predatory caw of a hawk as it circles above you.
+        endif
+      else
+        if snaffected($o) == 86
+        or snaffected($o) == 238
+        or israce($o) == kankoran
+        or israce($o) == alatharya
+        or israce($o) == chaja
+        or israce($o) == shuddeni
+          if rand(50)
+            mpechoat $o You notice the figure of a hawk, circling far above you.
+          else
+            mpechoat $o You hear the predatory caw of a hawk as it circles above you.
+          endif
+        endif
+      endif
+    endif
+  endif
+  if objvalue(0) > 10
+    if objvalue(0) < 31
+      if skill520($o) > 80
+        
+        if rand(15)
+          mpecho MAKE SURE PLAYER HAS A BOW
+          mpechoat $o As a hawk descends you take aim with your bow and kill the hawk in one shot!
+          mpechoat $o The impaled bird falls clumsily to the earth in the distance.
+          mpechoaround $o $O takes aim with their bow and they claim a direct hit on a hawk, killing it instantly!
+          mpecho MAKE THE HAWK DIE AT 8601
+          oppurge self
+        endif
+      endif
+      mpvaluerand 1 13 49
+      if dexterity($o) < $1
+        mpechoat $o A circling hawk quickly descends and assails you with its talons!
+        mpechoaround $o A streaking hawk descends and assails $O, slicing them viciously with its talons!
+        mpvaluerand 1 32 62
+        mpdamtype $o 1 1 $1 2
+        mpechoat $o The hawk\@s {WPOTENT{  talon {rscratches{  you!
+        mpechoaround $o The hawk\@s {WPOTENT{  talon {rscratches{  $O!
+      else
+        mpechoat $o A hawk tries to dive at you, but misses!
+        mpecho A hawk tries to dive at $O, but misses!
+      endif
+    endif
+  endif
+// BREAK HERE WHEN CUT AND PASTING
+  if objvalue(0) > 30
+    if skill520($o) > 90
+      if rand(10)
+        mpecho MAKE SURE PLAYER HAS A BOW
+        mpechoat $o As a hawk descends you take aim with your bow and kill the hawk in one shot!
+        mpechoat $o The impaled bird falls clumsily to the earth in the distance.
+        mpechoaround $o $O takes aim with their bow and they claim a direct hit on a hawk, killing it instantly!
+        mpecho MAKE THE HAWK DIE AT 8601
+        oppurge self
+      endif
+    endif
+    if level($o) > 45
+      mpvaluerand 1 13 49
+      if dexterity($o) < $1
+        mpechoat $o From the skies, the hawk makes a final dive at $O!
+        mpvaluerand 1 42 142
+        mpdamtype $o 1 1 $1 2 A
+        mpechoat $o The hawk\@s {W** VICIOUS **{  dive {rscratches{  you!
+        mpechoaround $o The hawk\@s {W** VICIOUS **{  dive {rscratches{  $O!
+        mpvaluerand 1 13 39
+        if dexterity($o) < $1
+          mpaddaffect $o 236 60 4 0 0 1
+          mpechoat $o The hawk claws at your eyes!
+          mpechoaround $o The hawk claws at $O\@s eyes!
+        endif
+        mpecho After swooping by, the hawk takes to the skies and out of view.
+        mpecho HAWK NEEDS TO BE SENT FROM 8601 TO RANGER AT THIS POINT
+        oppurge self
+      else
+        mpechoat $o A hawk tries to make a final dive at you, but misses!
+        mpecho After swooping by $O, the hawk takes to the skies and out of view.
+        oppurge self
+      endif
+    else
+      mpechoat $o The hawk gives up its search and flies out of view.        
+    endif
+  endif
+endif
+if sector($o) == inside
+or sector($o) == city
+or sector($o) == underwater
+or sector($o) == underground
+or snaffected($o) == 192
+or snaffected($o) == 244
+or snaffected($o) == 346
+or snaffected($o) == 87
+or snaffected($o) == 96
+or isghost($o)
+  mpechoat $o The hawk gives up its search and flies out of view.
+  mpecho HAWK NEEDS TO BE SENT FROM 8601 TO RANGER AT THIS POINT
+  oppurge self
+endif
+~
+|
+V12
+8702
+hawk waiting~
+a hawk waiting tool~
+An Unnoficial Ramc-Copied item lies here~
+~
+unknown~
+trash Sd 0 A
+0 0 0 0 0
+90 0 0 0 P
+0
+>speech_prog report~
+mpecho n is $N
+mpecho F0 is $F0
+mpecho F1 is $F1
+mpecho F is $F
+mpecho O is $O
+~
+>verb_prog ambush~
+mpinterpret $n $x
+if compstr(1) == a
+else
+  mpfocus $y2
+  if isfight($o)
+    if ispc($o)
+      if isghost($o)
+      else
+        if isrange($o) == $f
+        or isnpc($f)
+          mpecho You hear a shrill caw and the shadowy figure of a hawk high in the air.
+          mpoload 8701 on $f
+          oppurge self
+        endif
+      endif
+    endif
+  endif
+endif
+~
+|
+V12
+8703
+hawk limbo~
+a hawk limbo tool~
+An Unnofficial Ramc-Copied item lies here~
+~
+unknown~
+trash Sd 0 A
+0 0 0 0 0
+90 0 0 0 P
+0
+>speech_prog report~
+mpecho n is $N
+mpecho F0 is $F0
+mpecho F1 is $F1
+mpecho F is $F
+mpecho O is $O
+~
+>rand_prog 100~
+opvalueup 0
+if objvalue(0) > 3
+  mpflag mob $o aff - charm
+  mpforce $o mpgoto 19569
+  mpecho Trying to send Hawk back...
+endif
+~
+|
+V12
+8730
+featureless quest object obj_8730~
+a featureless quest object~
+A featureless quest object lies here.~
+~
+unknown~
+treasure P 0 AO
+0 0 0 0 0
+10 5 0 1 P
+1
+>rand_prog 100~
+if value(1) == 0
+  mpset obj obj_8730 extra 268435456
+  mpvalueset 1 1
+  mpvalueset 0 180
+endif
+if value(0) > 0
+  mpvaluedown 0
+else
+  mppurge self
+endif
+~
+>data_prog ObjDesc1~
+~
+|
+V12
+8750
+thingy~
+a THINGY~
+A THINGY IS HERE~
+~
+unknown~
+trash 0 0 AO
+0 0 0 0 0
+0 0 0 0 P
+0
+>verb_prog next~
+mpforce Saedacal peace
+mpforce Saedacal restore
+mpforce Saedacal astrip self
+mpecho {yMoving on from $d{n
+mpnextdata
+mpecho {yNow testing $d{n
+~
+>data_prog spelllist~
+matrix
+division
+belt of looters
+bind
+escape
+bird of prey
+pillage
+rune of life
+mend wounds
+water elemental summon
+protection from fire
+cleanse food
+protection from poison
+currents
+whirlpool
+revitalize
+mass heal
+holy water
+scry
+resurrection
+water walk
+meld with water 
+heatsink
+frostbite
+ice storm
+cloudkill
+suction
+gust
+greater invis
+windwalk
+scatter
+alter self
+delusions
+greater ventriloquate
+spectral fist
+obfuscation
+wind wall
+air bubble
+thunderclap
+group teleport
+tempest
+windbind
+conjure air efreet air rune
+gaseous form
+dancing sword 
+protection from lightning
+illusionary object
+dive
+phantasmal creation 
+wall of stone
+stone shell
+flesh to stone
+diamond skin
+knock
+dispel illusion 
+earth elemental summon stabilize
+call upon earth
+stone to mud
+voice of the earth smooth terrain
+density
+gravity well
+metal to stone
+meld with stone 
+shape armor
+shape weapon
+strengthen
+brittleform
+meteor strike
+slip
+rune of earth
+crystalize magic
+shatter
+flame shield
+rune of fire
+wall of fire
+baptism of fire
+dispersion
+living flame
+flare
+consume
+rain of fire
+incineration
+flame tongue
+blazing inferno
+fire blast
+smolder
+phoenix fire
+delayed blast fireball
+wings of flame
+implosion
+speak with the dead 
+avenging seraph
+thanatopsis
+improved detect evil
+spirit shield 
+zeal
+rune of spirit
+unshackle
+dreamspeak
+clarity
+life bolt
+mana conduit
+spirit stone
+aura
+spirit block
+spirit bond
+avatar
+focus mind
+mass peace
+affinity
+astral projection 
+create foci
+batter
+cleave
+choke
+lash
+cross
+grip
+entangle
+corner
+strip
+bandage
+readiness
+drive
+guard
+cover
+phalanx
+rally
+counter
+forced march
+scouting
+thrust
+counterattack 
+Khazinhindul Larva
+roomdeathwalk 
+boneshatter
+fetish
+bloodlust
+warcry
+fury
+rage
+ram
+versatility
+form of the viper
+form of the wasp
+~
+>rand_prog 100~
+if value(0) == 0
+  mpecho {yTESTING $d{n
+  mpecho {BCasting $d on testmort{n
+  mpforce Saedacal cast \#$d\# testmort
+  mpecho {BCasting $d on self{n
+  mpforce Saedacal cast \#$d\# self
+  mpecho {BUsing $d skill on testmort{n
+  mpforce Saedacal $d testmort
+  mpecho {BUsing $d skill on self{n
+  mpforce Saedacal $d
+  mpecho {BAssuming $d form{n
+  mpforce Saedacal assume \#$d\#
+  mpecho {BFocusing $d on testmort{n
+  mpforce Saedacal focus \#$d\# testmort
+  mpecho {BFocusing $d on self{n
+  mpforce Saedacal focus \#$d\#
+  mpecho {yPAUSING{n
+  mpvalueset 0 1
+endif
+if value(1) == 0
+  mpsetdata spelllist
+  mpvalueset 1 1
+endif
+~
+>verb_prog p start~
+mpvalueset 0 0
+mpecho STARTING
+~
+>verb_prog pause~
+mpvalueset 0 1
+mpecho PAUSING
+~
+|
+V12
+8751
+Raventhingy thingy~
+a raventhingy~
+A raventhingy is here.~
+~
+unknown~
+trash d 0 AO
+0 0 0 0 0
+0 0 0 0 P
+0
+>rand_prog 100~
+if position($o) == 7
+else
+  mpechoat $o You regain your concentration.
+  mpechoaround $o $O no longer looks distracted.
+  mpremaffect $o 9
+  mppurge self
+endif
+~
+>fight_prog 100~
+if value(1) == 0
+  mpvalueset 1 1
+  mpvalueset 0 4
+  if snaffected($o) == 9
+    mppurge self
+  else
+    if mobhere(157)
+      mpaddaffect $o 9 25 1 27 0 0 A
+      mpechoat $o The assault of the raven distracts your thoughts!
+      mpechoaround $o $O looks distracted.
+    else
+      mpechoat $o You regain your concentration.
+      mpechoaround $o $O no longer looks distracted.
+      mppurge self
+    endif
+  endif
+endif
+if value(0) > 0
+  mpvaluedown 0
+else
+  mpremaffect $o 9
+  mpechoat $o You regain your concentration.
+  mpechoaround $o $O no longer looks distracted.
+  mppurge self
+endif
+~
+|
+V12
+8752
+bearthingy thingy~
+a bearthingy~
+A bearthingy is here.~
+~
+unknown~
+trash d 0 AO
+0 0 0 0 0
+0 0 0 0 P
+0
+>rand_prog 100~
+if position($o) != 7
+  mppurge self
+endif
+if value(1) == 0
+  mpvalueset 0 40
+  mpvalueset 1 1
+endif
+if value(0) > 0
+  mpvaluedown 0
+else
+  mppurge self
+endif
+~
+>verb_prog add_more_wounds~
+if name($n) / mob_157
+  if isfighting($n) == $o
+    mpmath 5 $5 + 1
+    if value(5) > 5
+      mpvalueset 5 5
+    endif
+  endif
+endif
+mpmath 6 $y2 / 2
+loop 1 to $5
+  mpdamfrom $o $6 \@maul\@ The black bear
+endloop
+~
+|
+V12
+8799
+BLANK~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+#0
+
+
+
+#ROOMS
+#8600
+Te Clamo Ex Profundis, Domine~
+{yBITS FOR RANGERS:{n
+{W8600 - 8625: ANIMALS{n
+8600 = Alligator
+8601 = Srorsian
+8602 = Gray Wolf
+8603 = Bjorcha
+8604 = Ram
+8605 = Rat
+8606 = Badger
+8607 = Brown Bear
+8608 = Panther
+8609 = Lion
+8610 = Magpie
+8611 = Hawk
+8612 = Asp
+8613 = Python
+8614 = Dire Wolf
+8615 = Grizzly
+8616 = Barracuda
+8617 = Shark
+~
+~
+0
+0 12 9
+S
+#8601
+Animals Menu - Color and Scheme~
+~
+~
+0
+0 4 9
+M 80 H 100 V 100
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+M 0 8725 1 8600 1
+M 0 8700 1 8600 1
+M 0 8701 1 8600 1
+M 0 8702 1 8600 1
+M 0 8702 1 8600 1
+M 0 8701 1 8600 1
+M 0 8700 1 8600 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

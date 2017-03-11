@@ -1,0 +1,1338 @@
+#AREADATA
+Name The Hidden Path~
+Builders Serachel Tzajai Iacobos~
+VNUMs 26100 26139
+Credits [ 1 51] Serachel  The Hidden Path~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 0 4 0 0 0
+Weave 5 0 0
+Shades 5 5
+Stone 84
+End
+
+
+
+#MOBILES
+V4 26100
+shade Chak Nil\@jak withered nefortu~
+the shade of Chak Nil\@jak~
+The shade of a withered nefortu hovers here.
+~
+This spirit looks somewhat like a nefortu.  Firstly noticed about him are
+his eyes, colorless and lifeless.  His charcoal black skin is faintly
+translucent.  An oddly shaped head is missing places of skin below and above
+his eyes, a few places on the back of his head, and also along the sides of
+his narrow cheeks.  Where the skin are missing, nothing can be seen except
+for the translucent bones which also seem to be black.  His arms and legs
+follow the pattern of missing skin, with very large gaps along his femur
+bone.  A ripped robe reveals his dark charcoal black torso, which is also
+missing several places of skin.  His bat-like wings are torn and have many
+holes in them.  In his right hand, each of his five fingers are pierced with
+holes.  
+~
+spirit~
+water scholar~
+AG BR DFTUZe E 0
+51 26 34d103+1170 51d10+100 6d8+26 energy~
+unearthly touch~
+-21 -21 -21 -6
+F DEFGKLQRb
+26 0 0 0 0 0 0 0 0 50 0 0 0 0 0 -50 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+DHLMV 0 AH medium shadow
+V4 26101
+manticore huge old~
+a huge, old manticore~
+A huge, old manticore paces back and forth, weaving its scorpion tail.
+~
+~
+wyvern~
+water scholar~
+ABFP 0 DFJTZ E 0
+58 30 8000d1+1 1000d1+1 5d20+30 slash~
+claw~
+-20 -20 -20 -20
+CFH DL
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+ABGHZ ACDEFHJKPQUVX A medium unknown
+>trigger_prog 100~
+if isfight($n)
+if rand(15)
+wake
+endif
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+if mobvalue(0) == 1
+if rand(50)
+wake
+endif
+endif
+else
+mpvalueset 0 0
+if rand(3)
+sleep
+endif
+~
+>fight_prog 35~
+mpunfocus
+mpfocus $r
+if ispc($f) 
+if isfight($f)
+mpechoat $f The manticore\@s scorpion tail darts at you with lightning speed!
+mpechoaround $f The manticore\@s scorpion tail darts at $F with lightning speed!
+if rand(50)
+mpechoat $f You dodge the manticore\@s scorpion tail.
+mpechoaround $f $F dodges the manticore\@s scorpion tail.
+else
+mpechoat $f The manticore\@s tail pierces your flesh, {r***DEVASTATING***{x you!
+if sex($f) == 2
+mpechoaround $f The manticore\@s tail pierces $F\@s flesh, {r***DEVASTATING***{x her!
+else
+mpechoaround $f The manticore\@s tail pierces $F\@s flesh, {r***DEVASTATING***{x him!
+endif
+mpdamtype $f 20 10 1 2
+mpcast 105 70 $f
+endif
+endif
+endif
+~
+|
+V4 26102
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 26103
+alarm clock~
+an alarm clock~
+An alarm clock ticks menacingly nearby.
+~
+~
+human~
+water scholar~
+ADLX 0 DFJLPZ N 0
+1 0 10000d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 ABb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+if snaffected($n) == 198
+else
+mpforce manticore mpvalueset 0 1
+endif
+~
+>trigger_prog 100~
+if isfight($n)
+if rand(30)
+mpforce manticore wake
+endif
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+~
+|
+V4 26104
+fallbot~
+a fallbot~
+A fallbot does its thing.
+~
+~
+human~
+water scholar~
+ADLX 0 DFJLPZ N 0
+1 0 10000d1+1 10000d1+1 0d0+0 none~
+hit~
+0 0 0 0
+0 ABCDb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if isanypchere($i)
+mpfocus $r
+if isfocused($i)
+if ispc($f)
+if isfight($f)
+if dexterity($f) > 20
+if rand(95)
+mpvalueset 0 1
+endif
+else
+if rand(98)
+mpvalueset 0 1
+endif
+endif
+if mobvalue(0) == 1
+mpechoat $f In the heat of battle, you lose your footing and tumble down the rock face!
+if sex($f) == 2
+mpechoaround $f In the heat of battle, $F loses her footing and tumbles down the rock face! 
+else
+mpechoaround $f In the heat of battle, $F loses his footing and tumbles down the rock face! 
+endif
+if inroom($f) == 26123
+mpechoaround $f $F leaves down.
+mptransfer $f 26122
+mpforce $f look
+mpechoaround $f $F tumbles down from the cliff above!
+mpat $f mpdamtype $f 20 5 10 1
+if sex($f) == 2
+mpechoaround $f $F\@s fall {rMANGLES{x her!
+else
+mpechoaround $f $F\@s fall {rMANGLES{x him!
+endif
+mpechoat $f Your fall {rMANGLES{x you!
+endif
+if inroom($f) == 26124
+mpechoaround $f $F leaves down.
+mptransfer $f 26123
+mpforce $f look
+mpechoaround $f $F tumbles down from the cliff above!
+mpat $f mpdamtype $f 20 5 10 1
+if sex($f) == 2                           
+mpechoaround $f $F\@s fall {rMANGLES{x her!
+else
+mpechoaround $f $F\@s fall {rMANGLES{x him!
+endif
+mpechoat $f Your fall {rMANGLES{x you!
+mpechoaround $f $F leaves down.
+mptransfer $f 26122
+mpforce $f look
+mpechoaround $f $F tumbles down from the cliff above!
+mpat $f mpdamtype $f 20 5 10 1
+if sex($f) == 2                           
+mpechoaround $f $F\@s fall {rMANGLES{x her!
+else
+mpechoaround $f $F\@s fall {rMANGLES{x him!
+endif
+mpechoat $f Your fall {rMANGLES{x you!
+endif
+endif
+endif
+endif
+endif
+mpunfocus
+endif
+~
+|
+V4 26110
+goat mountain shaggy~
+a mountain goat~
+A shaggy mountain goat picks its way along the stony ground.
+~
+This shaggy goat picks its way forlornly along the steep paths of the
+hill country, stopping to nibble on any meagre plant which it finds growing.
+A large pair of curved horns lend it a measure protection when threatened.  
+~
+pig~
+water scholar~
+AGHN 0 0 N 0
+15 8 8d30+261 15d10+100 3d5+8 bash~
+charge~
+0 0 0 5
+C 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMV ACDEFHJKW A medium flesh
+V4 26111
+hawk large~
+a large hawk~
+A large hawk circles in the cold winds above the hills.
+~
+A large brown hawk with white-tipped wings circles in the chill winds
+above the peaks.  
+~
+song bird~
+water scholar~
+AGN 0 T N 0
+25 13 12d45+707 25d10+100 5d5+13 slash~
+claw~
+-5 -5 -5 2
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMVW ACDEFHJKP A medium flesh
+V4 26112
+stag red great~
+a great red stag~
+A great red stag walks through the hills.
+~
+A great stag with a gleaming red coat walks through the rugged hill
+country of his home.  Now and then he tosses his head proudly, displaying
+his many-horned antlers.  
+~
+pig~
+water scholar~
+AGNW 0 0 N 0
+45 23 15d190+911 45d10+100 5d9+23 bash~
+charge~
+-18 -18 -18 -4
+CHI 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AGHMV ACDEFHJKW A medium flesh
+V4 26120
+impslave~
+an impslave~
+An impslave is smeared across the walls here.
+~
+~
+human~
+water scholar~
+ADLX 0 DFJLPZ N 0
+1 0 10000d1+1 10000d1+1 0d0+0 none~
+hit~
+0 0 0 0
+0 ABCDb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>greet_prog 100~
+mpbitset $n 26100 1
+mpbitset $n 26101 0
+~
+>load_prog 100~
+mpseewizi
+~
+|
+#0
+
+
+
+#OBJECTS
+#0
+
+
+
+#ROOMS
+#26101
+A Path into the Hills~
+A small path winds its way northward to the hill country, meandering
+through the dwindling trees and following the narrow valley between the two
+closest hills to the north.  To the south a small village huddles at the
+base of a broad valley, sending thin spires of chimney-smoke up from amongst
+the trees.  
+~
+~
+0
+0 0 4
+D0
+~
+~
+0 0 26102
+D2
+~
+~
+0 0 15031
+W 5 0 0
+Z 5 5
+S
+#26102
+A Path into the Hills~
+A small path rises steadily into the looming northern hill country,
+leaving behind the leafy trees of the broad valley to the south.  A small
+village can be seen amidst the trees of the valley, and thin spires of pale
+smoke climb upward from amongst the green and russet foliage.  No such
+homely signs are apparent in the northern country, whose rugged, barren
+peaks peer above the rounder hills into whose arms this path winds.  
+~
+~
+0
+0 0 4
+D0
+~
+~
+0 0 26103
+D2
+~
+~
+0 0 26101
+W 5 0 0
+Z 5 5
+S
+#26103
+A Rising Valley~
+The stony floor of this narrow valley rises steadily into the waiting
+arms of two high, round hills to the north.  Brambles and thistles have
+replaced the forest trees of the south, and they sprawl amongst the toppled
+boulders and shattered granite of the hills\@ rocky peaks.  A broad forested
+valley opens at then end of this narrower cleft some way to the south.  
+~
+~
+0
+0 0 4
+D0
+~
+~
+0 0 26104
+D2
+~
+~
+0 0 26102
+W 5 0 0
+Z 5 5
+S
+#26104
+A Rising Valley~
+A narrow valley, which winds southward between the out-flung arms of two
+hills, ends its northward climb at the face of an outcrop of sheer granite. 
+A narrow path, nothing more than a twisting line of whitish pebbles, winds
+upward to the west, criss-crossing its way toward the peak of that hill. 
+Far to the south a broad forested valley is visible, stretching away into
+greyness.  
+~
+~
+0
+0 0 4
+D2
+~
+~
+0 0 26103
+D4
+~
+~
+0 0 26105
+W 5 0 0
+Z 5 5
+S
+#26105
+Near a Rocky Peak~
+A thin path of fragments of white stone winds its way upward and westward
+around the side of a high, round hill, whose rocky peak looms just to the
+north.  The path drops away quickly to the east, into a narrow valley
+between the arms of the hills.  Far to the east, beyond the valley and
+beyond yet more hills, a wide, grey plain stretches away into the distance. 
+To the west the path winds deeper into the hill country, whose craggy peaks
+rise high above the southern forest.  
+~
+~
+0
+0 0 4
+D3
+~
+~
+0 0 26106
+D5
+~
+~
+0 0 26104
+W 5 0 0
+Z 5 5
+S
+#26106
+Upon a Barren Hillside~
+Upon the western slopes of this high round hill, the great extent of the
+hill country can be seen.  Rampart upon rampart rise into the distance, ever
+northward toward the dimly visible shadow of the Brintor Mountains.  Like
+rows of blackened teeth, the crests cut their way southward, ending suddenly
+as a great forest begins.  The narrow path here bends eastward, around the
+southern face of the hill.  To the north it winds toward an out-thrust
+ridge.  
+~
+~
+0
+0 0 4
+D0
+~
+~
+0 0 26107
+D1
+~
+~
+0 0 26105
+W 5 0 0
+Z 5 5
+S
+#26107
+Upon a Barren Hillside~
+Upon the western slopes of this high round hill, the great extent of the
+hill country can be seen.  Rampart upon rampart rise into the distance, ever
+northward toward the dimly visible shadow of the Brintor Mountains.  Like
+rows of blackened teeth, the crests cut their way southward, ending suddenly
+as a great forest begins.  A narrow path of shattered white stone begins
+here and winds southward around the western face of the hill.  A pathless
+ridge stretches out from the hill to the northwest.  
+~
+~
+0
+0 0 4
+D0
+~
+~
+0 0 26110
+D2
+~
+~
+0 0 26106
+D3
+~
+~
+0 0 26108
+W 5 0 0
+Z 5 5
+S
+#26108
+A Spiny Ridge~
+A shale-covered ridge stretches to the northwest from a
+high, round hill which rises in the southeast.  Facing the gradually
+descending march of the ridge, you can see its end some distance away, where
+it disappears into an unseen precipice.  In this direction the jagged
+granite spine of the ridge is to your right, while to the left a sudden
+brink overlooks a deep, narrow cleft between adjacent ridges.  
+~
+~
+0
+0 0 4
+D0
+~
+~
+0 0 26109
+D1
+~
+~
+0 0 26107
+W 5 0 0
+Z 5 5
+S
+#26109
+An Overlook~
+A sudden break in the land cuts the ridge here, its northwest march
+continuing beyond a wide crevice.  The craggy line of the ridge merges with
+the stony folds and tooth-like spurs that march ever northward toward the
+dim shadow of the Brintor Mountains.  To the south the hill country soon
+ends, sending forth a few wayward arms to pierce the great forest which lies
+beyond its edge.  To the west the broken land continues into greyness.  The
+howling of the icy wind is constant upon the ridgetops, tearing at the peaks
+and whistling through haggard patches of weeping pine.  
+~
+~
+0
+0 0 4
+D2
+~
+~
+0 0 26108
+W 5 0 0
+Z 5 5
+S
+#26110
+A Spiny Ridge~
+A shale-covered ridge stretches to the northwest from a high, round hill
+which rises in the southeast.  Facing the gradually descending march of the
+ridge, you can see its end some distance away, where it disappears into an
+unseen precipice.  In this direction the jagged granite spine of the ridge
+is to your left, while to the right a slope leads down into a
+northward-running valley.  
+~
+~
+0
+0 0 4
+D2
+~
+~
+0 0 26107
+D5
+~
+~
+0 0 26111
+W 5 0 0
+Z 5 5
+S
+#26111
+The Beginning of a Broad Valley~
+A broad valley is embraced by lines of jagged hills the the east and
+west, and is cut off to the south by a diagonal ridge.  The shaley slopes of
+this ridge make an awkward but achievable climb.  To the north the valley
+opens, its wide, stony floor broken with drifts of earth, from which sprout
+thickets of glossy-leaved spruce.  
+~
+~
+0
+0 0 4
+D0
+~
+~
+0 0 26112
+D4
+~
+~
+0 0 26110
+W 5 0 0
+Z 5 5
+S
+#26112
+A Broad Valley~
+Here a deep, rounded valley is embraced by hilltops to the east and west,
+climbing into a narrower valley to the south, and stretching away to the
+north.  The shaley slopes of the facing hills rise to craggy peaks topped
+with weather-torn growths of dark pine.  Here on the stony floor drifts of
+earth sprout thickets of resinous spruce.  Cold wind from the higher reaches
+swirls down into the valley whistling in the evergreen leaves.  Like craggy
+waves, the hills march to either side, their sharp peaks and curving saddles
+too steep to climb.  
+~
+~
+0
+0 0 4
+D0
+~
+~
+0 0 26114
+D2
+~
+~
+0 0 26111
+D3
+~
+~
+0 0 26113
+W 5 0 0
+Z 5 5
+S
+#26113
+A Broad Valley~
+Here a deep, rounded valley is embraced by hilltops to the east and west,
+climbing into a narrower valley to the southeast, and stretching away to the
+north.  The shaley slopes of the facing hills rise to craggy peaks topped
+with weather-torn growths of dark pine.  Here on the stony floor drifts of
+earth sprout thickets of resinous spruce.  Cold wind from the higher reaches
+swirls down into the valley whistling in the evergreen leaves.  Like craggy
+waves, the hills march to either side, their sharp peaks and curving saddles
+too steep to climb.  
+~
+~
+0
+0 0 4
+D0
+~
+~
+0 0 26115
+D1
+~
+~
+0 0 26112
+W 5 0 0
+Z 5 5
+S
+#26114
+A Broad Valley~
+Here a deep, rounded valley is embraced by hilltops to the east and west,
+climbing into a narrower valley to the northwest, and stretching away to the
+south.  The shaley slopes of the facing hills rise to craggy peaks topped
+with weather-torn growths of dark pine.  Here on the stony floor drifts of
+earth sprout thickets of resinous spruce.  Cold wind from the higher reaches
+swirls down into the valley whistling in the evergreen leaves.  Like craggy
+waves, the hills march to either side, their sharp peaks and curving saddles
+too steep to climb.  
+~
+~
+0
+0 0 4
+D2
+~
+~
+0 0 26112
+D3
+~
+~
+0 0 26115
+W 5 0 0
+Z 5 5
+S
+#26115
+A Broad Valley~
+Here a deep, rounded valley is embraced by hilltops to the east and west,
+climbing into a narrower valley to the north, and stretching away to the
+south. The shaley slopes of the facing hills rise to craggy peaks topped
+with weather-torn growths of dark pine.  Here on the stony floor drifts of
+earth sprout thickets of resinous spruce.  Cold wind from the higher reaches
+swirls down into the valley whistling in the evergreen leaves.  Like craggy
+waves, the hills march to either side, their sharp peaks and curving saddles
+too steep to climb.  
+~
+~
+0
+0 0 4
+D0
+~
+~
+0 0 26116
+D1
+~
+~
+0 0 26114
+D2
+~
+~
+0 0 26113
+W 5 0 0
+Z 5 5
+S
+#26116
+The Beginning of a Broad Valley~
+A broad valley is embraced by lines of jagged hills the the east and
+west, and ends to the north where the arms of two hills are thrust together.
+A rising crevice is formed between these spurs, down which trickles a tiny
+stream of water.  To the south the broad valley opens up, its wide, stony
+floor broken with drifts of earth, from which sprout thickets of
+glossy-leaved spruce.  
+~
+~
+0
+0 0 4
+D2
+~
+~
+0 0 26115
+D4
+~
+~
+0 0 26117
+W 5 0 0
+Z 5 5
+S
+#26117
+A Spiny, Fir-Clad Ridge~
+Formed by the out-thrust spurs of two southward hills, this jagged, rocky
+ridge extends northward, deep into the rugged hill country.  Interspersed
+with the knife-like granite outthrusts, thickets of dark-leaved fir bend in
+the bitter wind.  The weather-torn branches of these mishappen trees are
+clad in weeping veils of dark needles, and their shallow roots cling to the
+tenuous soil.  To the south the ridge ends, and a cleft between the hills
+drops away into a broad valley.  
+~
+~
+0
+0 0 4
+D0
+~
+~
+0 0 26118
+D5
+~
+~
+0 0 26116
+W 5 0 0
+Z 5 5
+S
+#26118
+A Spiny, Fir-Clad Ridge~
+Formed by the out-thrust spurs of two distant southward hills, this
+jagged, rocky ridge extends to the northwest, deep into the rugged hill
+country. Interspersed with the knife-like granite outthrusts, thickets of
+dark-leaved fir bend in the bitter wind.  The weather-torn branches of these
+mishappen trees are clad in weeping veils of dark needles, and their shallow
+roots cling to the tenuous soil.  A kink in the northward march of the ridge
+sends it in a westward arc around the shore of a wide, still lake.  A cleft
+in the side of the ridge channels a trickle of water into lake, and provides
+a means of descent.  
+~
+~
+0
+0 0 4
+D2
+~
+~
+0 0 26117
+D5
+~
+~
+0 0 26119
+W 5 0 0
+Z 5 5
+S
+#26119
+A Narrow Cleft~
+Cutting a straight passage down the side of a northwest-running ridge, a
+narrow cleft channels a trickling stream from the craggy, fir-clad heights
+into a wide, still lake to the north.  As the ground levels the cleft
+widens, only to meet the steep, shear walls of the cliffs bounding the lake.
+Here the tumbled rocks from the crags above choke the stream, and mosses and
+tiny ferns grow amongst the crevices.  
+~
+~
+0
+0 0 4
+D0
+~
+~
+0 0 26120
+D4
+~
+~
+0 0 26118
+W 5 0 0
+Z 5 5
+S
+#26120
+By the Shore of a Still Lake~
+A narrow shelf of pebbly ground forms the shore of a wide, still lake. 
+The lake stretches away to the northeast, surrounded in all directions by
+high, grey cliffs whose serrated peaks are reflected in the still waters
+against a dim sky.  In the very center of the lake is reflected the highest
+crag, a lofty bluff over the eastern shore whose spiney peak of jumbled
+black stone floats serenely in the lightless deep.  Here at the southwest
+corner of the lake a tiny stream trickles across the pebbly shore from a
+narrow cleft in the southern cliff.  
+~
+~
+0
+0 0 4
+D0
+~
+~
+0 0 26129
+D1
+~
+~
+0 0 26121
+D2
+~
+~
+0 0 26119
+W 5 0 0
+Z 5 5
+S
+#26121
+By the Shore of a Still Lake~
+A narrow shelf of pebbly ground forms the shore of a wide, still lake. 
+The lake stretches away to the north, surrounded in all directions by high,
+grey cliffs whose serrated peaks are reflected in the still waters against a
+dim sky.  In the very center of the lake is reflected the highest crag, a
+lofty bluff over the eastern shore whose spiney peak of jumbled black stone
+floats serenely in the lightless deep.  The shelf continues along the
+southern shore beneath an eroding granite face.  
+~
+~
+0
+0 0 4
+D1
+~
+~
+0 0 26122
+D3
+~
+~
+0 0 26120
+W 5 0 0
+Z 5 5
+S
+#26122
+By the Shore of a Still Lake~
+A narrow shelf of pebbly ground forms the shore of a wide, still lake. 
+The lake stretches away to the north, surrounded in all directions by high,
+grey cliffs whose serrated peaks are reflected in the still waters against a
+dim sky.  In the very center of the lake is reflected the highest crag, a
+lofty bluff over the eastern shore whose spiney peak of jumbled black stone
+floats serenely in the lightless deep.  The shelf continues along the
+southern shore to the west, but directly to the east the shore is blocked by
+great toppled splints of stone, which rise, step-like, to the cliffs above. 
+~
+~
+0
+0 0 4
+D3
+~
+~
+0 0 26121
+D4
+~
+~
+0 0 26123
+W 5 0 0
+Z 5 5
+S
+#26123
+A Stair of Toppled Granite~
+A natural stair is formed here of great pillars of granite, eroded and
+toppled from the cliff face to the south.  The stair overlooks a wide, still
+lake, which stretches away to the north.  At the base of the stair a narrow
+shore stretches eastward around the lake, while upward the stair meets the
+craggy cliff-tops.  
+~
+~
+0
+0 0 4
+D4
+~
+~
+0 0 26124
+D5
+~
+~
+0 0 26122
+W 5 0 0
+Z 5 5
+S
+#26124
+Overlooking a Still Lake~
+This craggy cliff-top forms a high stone girdle about a wide, still lake.
+Jutting upward from a narrow shore, the cliff\@s serrated peaks are framed
+against the sky above, and against the deeper blue of the reflective depths
+far below.  Just to the west the face of the cliff has fallen in a series of
+jumbled pillers, eroded by the harsh, cold wind of the heights.  Eastward
+the cliff continues about the southern edge of the lake.  
+~
+~
+0
+0 0 4
+D1
+~
+~
+0 0 26125
+D5
+~
+~
+0 0 26123
+W 5 0 0
+Z 5 5
+S
+#26125
+Overlooking a Still Lake~
+This craggy cliff-top forms a high stone girdle about a wide, still lake.
+Jutting upward from a narrow shore, the cliff\@s serrated peaks are framed
+against the sky above, and against the deeper blue of the reflective depths
+far below.  Here the brink curves northward, around the southeastern edge of
+the lake, and marches eastward, where the cliff-face is scored and broken
+with erosion.  
+~
+~
+0
+0 0 4
+D0
+~
+~
+0 0 26126
+D3
+~
+~
+0 0 26124
+W 5 0 0
+Z 5 5
+S
+#26126
+Overlooking a Still Lake~
+This craggy cliff-top forms a high stone girdle about a wide, still lake.
+Jutting upward from a narrow shore, the cliff\@s serrated peaks are framed
+against the sky above, and against the deeper blue of the reflective depths
+far below.  To the south the precipice bends around the southeastern edge of
+the lake, while to the north the ground rises.  At the peak of the rise,
+mounted upon the highest spire, a jumble of ruined black stone squats
+darkly.  Some ancient work of men, the remnants of its toppled towers thrust
+like crooked fingers against the sky.  
+~
+~
+0
+0 0 4
+D2
+~
+~
+0 0 26125
+D4
+~
+~
+0 0 26127
+W 5 0 0
+Z 5 5
+S
+#26127
+Before the Ruined Gates~
+The jumbled ruin of an ancient fortress sits atop the high peak of this
+ridge.  Its once-lofty towers are now shattered and in ruins, with only
+hollow shards of wood and stone left to recall their splendour.  The wall of
+the fortress is broken in many places, and the collapsed arch of a gaping
+gateway lies directly to the north.  To the west a sudden brink overlooks a
+wide, still lake far below.  The reflective, blue waters stretch to the
+north and south, and above the looming cliffs of the western shore the
+rising ridges of the hill country can be seen marching, spine upon jagged
+spine, into the distance.  Just to the south the edge of the cliff drops
+steeply.  
+~
+~
+0
+0 0 4
+D0
+~
+~
+0 0 26128
+D5
+~
+~
+0 0 26126
+W 5 0 0
+Z 5 5
+S
+#26128
+A Blackened Courtyard~
+Wracked by some great violence of fire and force, the wide courtyard of
+this fortress lies in blackened desolation.  Scorched flagstones have been
+heaved from their places, and lie strewn amongst the scattered fragments of
+the broken walls.  A few small buildings line the courtyard - a smithy, a
+stable, a servant\@s quarters - all now roofless and tumbled.  To the north
+lies the main keep of the fortress, its towers and high halls cast into
+ruin.  
+~
+~
+0
+0 4 4
+D0
+~
+~
+0 0 26130
+D2
+~
+~
+0 0 26127
+W 5 0 0
+Z 5 5
+S
+#26129
+By the Shore of a Still Lake~
+A narrow shelf of pebbly ground forms the shore of a wide, still lake. 
+The lake stretches away to the northeast, surrounded in all directions by
+high, grey cliffs whose serrated peaks are reflected in the still waters
+against a dim sky.  In the very center of the lake is reflected the highest
+crag, a lofty bluff over the eastern shore whose spiney peak of jumbled
+black stone floats serenely in the lightless deep.  To the south the shore
+begins to curve eastward, while to the north the waters have encroached upon
+the shore.  
+~
+~
+0
+0 0 4
+D2
+~
+~
+0 0 26120
+W 5 0 0
+Z 5 5
+S
+#26130
+A Ruined Hall~
+The broken walls of an ancient hall of men surround a fire-blasted and
+desolate space, now open to the bleak sky above.  Charred beams of wood and
+fragments of the stone walls still pierce the sky with harsh angles, and in
+the center of the room a once-great spiral staircase lies crumbled.  Its
+blackened marble steps rise several feet above the ground still, before
+dropping into a jumbled mass of broken stone and shattered wood.  The steps
+do, however, continue downward, through the floor of the hall and into a
+gaping hole whose bottom is beyond the blackness of its depth.  To the south
+an archway, still intact, leads to a courtyard.  
+~
+~
+0
+0 0 4
+D2
+~
+~
+0 0 26128
+D5
+~
+~
+0 0 26131
+W 5 0 0
+Z 5 5
+S
+#26131
+An Abyssal Shaft~
+Carved into the very rock of the hills, a great circular shaft drops away
+into black depths far below.  A narrow staircase of pale marble winds about
+the grey stone walls of the shaft, spiralling downward as far as the eye can
+see, and reaching the surface just above, where it climbs a little way into
+the air before falling in ruin.  The bleak sky can be seen through the
+shaft\@s circular opening.  
+~
+~
+0
+0 0 12
+D4
+~
+~
+0 0 26130
+D5
+~
+~
+0 0 26132
+W 5 0 0
+Z 5 5
+S
+#26132
+An Abyssal Shaft~
+Carved into the very rock of the hills, a great circular shaft drops away
+into black depths far below.  A narrow staircase of pale marble winds about
+the grey stone walls of the shaft, spiralling downward as far as the eye can
+see, and upward until it reaches the shaft\@s opening and its ruined upper
+span is sillouetted against the bleak sky.  
+~
+~
+0
+0 0 12
+D4
+~
+~
+0 0 26131
+D5
+~
+~
+0 0 26133
+W 5 0 0
+Z 5 5
+S
+#26133
+An Abyssal Shaft~
+Carved into the very rock of the hills, a great circular shaft drops away
+into black depths far below.  A narrow staircase of pale marble winds about
+the grey stone walls of the shaft.  Its downward spiral ends abruptly.  A
+gaping fissure in the shaft wall has sent a section of the staircase into
+the unseen depths.  Upward the staircase spirals about the shaft until it
+reaches the faint circle of sky high above.  In the rock wall next the the
+fissure a platform has been hewn leading into the fissure itself, where a
+dimly lit tunnel can be seen extending eastward.  
+~
+~
+0
+0 0 12
+D1
+~
+~
+0 0 26134
+D4
+~
+~
+0 0 26132
+W 5 0 0
+Z 5 5
+S
+#26134
+A Dark Stairway~
+A dark stairway of smooth, granite steps winds downward, bending to the
+north, and framed by shadowy bluestone walls.  Here pillars of the grey,
+quartz-streaked granite are set into the walls and hold aloft an arched
+ceiling, rimmed with ancient architraves.  Each pillar bears an iron sconce,
+in which torches burn with fitful red flames.  To the west the northern wall
+gives way, and a great abyss gapes before your feet.  
+~
+~
+0
+0 0 12
+E
+pillars~
+Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+~
+E
+pillar~
+Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+~
+D0
+~
+~
+0 0 26135
+D3
+~
+~
+0 0 26133
+T 86
+W 5 0 0
+Z 5 5
+S
+#26135
+A Dark Stairway~
+A stairwell of smooth, granite steps winds downward, bending to the west
+as it does.  To the south the stair continues its spiralling rise.  Pillars
+of the grey, quartz-streaked granite are set into the walls and hold aloft
+an arched ceiling, rimmed with ancient architraves.  Each pillar bears an
+iron sconce, in which torches burn with fitful red flames.  
+~
+~
+0
+0 0 12
+E
+pillar~
+Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+~
+E
+pillars~
+Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+~
+D2
+~
+~
+0 0 26134
+D5
+~
+~
+0 0 26136
+T 86
+W 5 0 0
+Z 5 5
+S
+#26136
+A Dark Stairway~
+A stairwell of smooth, granite steps winds downward to the west and to
+the east rises, curving south.  Shadowy bluestone walls frame the passageway
+and pillars of the grey, quartz-streaked granite set into the walls hold
+aloft an arched ceiling.  Each pillar bears an iron sconce, in which torches
+burn with fitful red flames.  
+~
+~
+0
+0 0 12
+E
+pillars~
+Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+~
+E
+pillar~
+Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+~
+D3
+~
+~
+0 0 26137
+D4
+~
+~
+0 0 26135
+T 86
+W 5 0 0
+Z 5 5
+S
+#26137
+A Dark Stairway~
+A stairwell of smooth, granite steps descends to the west, bound by
+shadowy bluestone walls.  Pillars of the grey, quartz-streaked granite are
+set into the walls and hold aloft an arched ceiling, rimmed with ancient
+architraves.  Each pillar bears an iron sconce, in which torches burn with
+fitful red flames.  
+~
+~
+0
+0 0 12
+E
+pillar~
+Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+~
+E
+pillars~
+Smooth, grey pillars are inset into the bluestone walls at ten foot
+intervals, where each rises to support a rib of the arched ceiling.  The
+granite of the pillars is streaked with jagged lines of quartz, which
+shimmers ethereally in some places, and in others is dark and harsh upon the
+eye.  Set into each pillar, about five feet above the ground, are iron
+sconces.  Each sconce bears a wooden torch, which burn with bright flames.  
+~
+D1
+~
+~
+0 0 26136
+D5
+~
+~
+0 0 12213
+T 86
+C SHUNNED~
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+M 0 26110 4 26105 1
+M 0 26100 1 26107 1
+M 0 26111 2 26109 1
+M 0 26110 4 26110 2
+M 0 26110 4 26110 2
+M 0 26112 2 26112 1
+M 0 26112 2 26115 1
+M 0 26111 2 26118 1
+M 0 26104 2 26123 1
+M 0 26104 2 26124 1
+M 0 26120 1 26137 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

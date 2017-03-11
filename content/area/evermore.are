@@ -1,0 +1,4620 @@
+#AREADATA
+Name The Evermore Plains~
+Builders Serachel~
+VNUMs 26000 26079
+Credits [SynAU] Synrael   Some junk area~
+Danger 0
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 26001
+exitbot plainsbot~
+an exitbot~
+An exitbot swings from the rafters.
+~
+~
+human~
+water scholar~
+ABDL 0 DFJLZ N 0
+60 0 10000d1+1 10000d1+1 0d0+0 none~
+hit~
+0 0 0 0
+0 ABCD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p west~
+mpinterpret $n $x
+if rand(2)
+if ishere($n)
+else
+mpat $n mptransfer $n 26050
+endif
+endif
+~
+|
+V4 26002
+ghost dream dreamghost scholarghost~
+a dream ghost~
+A dream ghost shimmers formlessly above the plain.
+~
+~
+human~
+water scholar~
+A 0 DFJZ N 0
+55 30 10000d1+1 0d0+0 10d10+20 pierce~
+stab~
+-25 -25 -25 -25
+HK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -25 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p play~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p commune~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p sing~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p cast~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p consider~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p read~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p examine~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p look~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p backstab~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p trip~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p bash~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p murder~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p kill~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>death_prog 100~
+mpseewizi
+mpat ghostbot mpforce ghostbot mpvaluedown 0
+mpecho As $I screams $l deathcry, $j fades away into nothing.
+mpgoto 26000
+~
+>rand_prog 100~
+if isanypchere($i)
+mpfocus $r
+if isfocused($i)
+if ispc($f)
+if mobvalue(2) == 1
+if isevil($f)
+mpvalueset 4 1
+endif
+if isneutral($f)
+if rand(15)
+mpvalueset 4 1
+endif
+endif
+endif
+if mobvalue(2) == 2
+if isgood($f)
+mpvalueset 4 1
+endif
+if isneutral($f)
+if rand(50)
+mpvalueset 4 1
+endif
+endif
+endif
+if mobvalue(2) == 0
+if isneutral($f)
+if rand(10)
+mpvalueset 4 1
+endif
+else
+if rand(25)
+mpvalueset 4 1
+endif
+endif
+endif
+endif
+if mobvalue(4) == 1
+mpechoat $f $I screams in rage at you and attacks!
+mpechoaround $f $I screams in rage at $F and attacks!
+mpkill $f
+endif
+mpvalueset 4 0
+endif
+endif
+mpsetskilled
+if mobvalue(1) == 100
+if snaffected($i) == 119
+else
+cast sanctuary
+endif
+endif
+if mobvalue(1) == 6
+if snaffected($i) == 119
+else
+cast sanctuary
+endif
+endif
+if mobvalue(1) == 3
+if mobvalue(9) == 1
+cast avatar
+mpvalueset 9 0
+endif
+endif
+if mobvalue(1) == 4
+if snaffected($i) == 67
+else
+cast fly
+endif
+endif
+if mobvalue(1) == 10
+if snaffected($i) == 67
+else
+cast fly
+endif
+endif
+if mobvalue(1) == 5
+if snaffected($i) == 84
+else
+cast immolation
+endif
+endif
+if mobvalue(1) == 11
+if snaffected($i) == 84
+else
+cast immolation
+endif
+endif
+mpunsetskilled
+if mobvalue(3) < 0
+mpvaluedown 3
+endif
+mpunfocus
+~
+>fight_prog 100~
+mpsetskilled
+if mobvalue(1) == 100
+if rand(25)
+cast iceblast $n
+else
+if rand(20)
+cast heal
+endif
+endif
+endif
+if mobvalue(1) == 1
+if snaffected($n) == 387
+if rand(26)
+cast stonefist $n
+else
+if rand(17)
+cast \@meteor strike\@
+endif
+endif
+else
+if rand(40)
+cast brittleform $n
+endif
+endif
+endif
+if mobvalue(1) == 2
+if rand(30)
+cast drain $n
+else
+if rand(15)
+cast \@power word fear\@ $r
+else
+if rand(15)
+cast agony $n
+endif
+endif
+endif
+endif
+if mobvalue(1) == 3
+if snaffected($n) == 427
+else
+if rand(30)
+cast spiritwrack
+endif
+endif
+endif
+if mobvalue(1) == 4
+if rand 25)
+cast \@chain lightning\@
+else
+if rand(16)
+cast windbind $r
+endif
+endif
+endif
+if mobvalue(1) == 5
+if rand(25)
+cast \@fire blast\@ $n
+else
+if rand(11)
+cast \@beam of fire\@ $n
+endif
+endif
+endif
+if mobvalue(1) == 6
+if rand(25)
+cast \@cure critical\@
+else
+if rand(10)
+cast \@cone of cold\@
+endif
+endif
+endif
+if mobvalue(1) == 7
+if rand(25)
+cast earthquake
+endif
+endif
+if mobvalue(1) == 8
+if rand(20)
+cast blindness $r
+else
+if rand(10)
+cast poison $n
+endif
+endif
+endif
+if mobvalue(1) == 9
+if rand(25)
+cast soulburn $n
+else
+if rand(6)
+cast unshackle
+endif
+endif
+endif
+if mobvalue(1) == 10
+if rand(25)
+cast \@lightning bolt\@ $n
+endif
+endif
+if mobvalue(1) == 11
+if rand(25)
+cast flamestrike $n
+endif
+endif
+if mobvalue(1) == 29
+if rand(25)
+cast \@thorn spray\@ $n
+endif
+endif
+mpunsetskilled
+~
+>greet_prog 100~
+if mobvalue(3) == 0
+mpvalueset 3 24
+if level($n) > 44
+mpset mob self level 58
+mpset mob self hp 11000
+mpset mob self dex 26
+mpset mob self str 26
+mpgrant self 6000 0 0
+else
+if level($n) > 37
+mpset mob self level 52
+mpset mob self hp 8000
+mpset mob self dex 24
+mpset mob self str 24
+mpgrant self 3000 0 0
+else
+if level($n) > 32
+mpset mob self level 47
+mpset mob self hp 6000
+mpset mob self dex 23
+mpset mob self str 23
+mpgrant self 1000 0 0
+else
+mpset mob self level 44
+mpset mob self hp 5000
+mpset mob self dex 22
+mpset mob self str 22
+mpgrant self 1000 0 0
+endif
+endif
+endif
+endif
+~
+>greet_prog 100~
+~
+|
+V4 26003
+ghost dream dreamghost templarghost~
+a dream ghost~
+A dream ghost shimmers formlessly above the plain.
+~
+~
+human~
+water scholar~
+AS 0 DFJZ N 0
+55 30 10000d1+1 0d0+0 10d10+50 slash~
+slash~
+-25 -25 -25 -25
+FHKN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -25 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p play~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p commune~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p sing~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p cast~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p consider~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p read~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p examine~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p look~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p backstab~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p trip~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p bash~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p murder~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p kill~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>death_prog 100~
+mpseewizi
+mpat ghostbot mpforce ghostbot mpvaluedown 0
+mpecho As $I screams $l deathcry, $j fades away into nothing.
+mpgoto 26000
+~
+>rand_prog 100~
+if isanypchere($i)
+mpfocus $r
+if isfocused($i)
+if ispc($f)
+if mobvalue(2) == 1
+if isevil($f)
+mpvalueset 4 1
+endif
+if isneutral($f)
+if rand(15)
+mpvalueset 4 1
+endif
+endif
+endif
+if mobvalue(2) == 2
+if isgood($f)
+mpvalueset 4 1
+endif
+if isneutral($f)
+if rand(50)
+mpvalueset 4 1
+endif
+endif
+endif
+if mobvalue(2) == 0
+if isneutral($f)
+if rand(10)
+mpvalueset 4 1
+endif
+else
+if rand(25)
+mpvalueset 4 1
+endif
+endif
+endif
+endif
+if mobvalue(4) == 1
+mpechoat $f $I screams in rage at you and attacks!
+mpechoaround $f $I screams in rage at $F and attacks!
+mpkill $f
+endif
+mpvalueset 4 0
+endif
+endif
+mpsetskilled
+if mobvalue(1) == 100
+if snaffected($i) == 119
+else
+cast sanctuary
+endif
+endif
+if mobvalue(1) == 6
+if snaffected($i) == 119
+else
+cast sanctuary
+endif
+endif
+if mobvalue(1) == 3
+if mobvalue(9) == 1
+cast avatar
+mpvalueset 9 0
+endif
+endif
+if mobvalue(1) == 4
+if snaffected($i) == 67
+else
+cast fly
+endif
+endif
+if mobvalue(1) == 10
+if snaffected($i) == 67
+else
+cast fly
+endif
+endif
+if mobvalue(1) == 5
+if snaffected($i) == 84
+else
+cast immolation
+endif
+endif
+if mobvalue(1) == 11
+if snaffected($i) == 84
+else
+cast immolation
+endif
+endif
+mpunsetskilled
+if mobvalue(3) < 0
+mpvaluedown 3
+endif
+mpunfocus
+~
+>greet_prog 100~
+if mobvalue(3) == 0
+mpvalueset 3 24
+if level($n) > 44
+mpset mob self level 58
+mpset mob self hp 11000
+mpset mob self dex 26
+mpset mob self str 26
+mpgrant self 6000 0 0
+else
+if level($n) > 37
+mpset mob self level 52
+mpset mob self hp 8000
+mpset mob self dex 24
+mpset mob self str 24
+mpgrant self 3000 0 0
+else
+if level($n) > 32
+mpset mob self level 47
+mpset mob self hp 6000
+mpset mob self dex 23
+mpset mob self str 23
+mpgrant self 1000 0 0
+else
+mpset mob self level 44
+mpset mob self hp 5000
+mpset mob self dex 22
+mpset mob self str 22
+mpgrant self 1000 0 0
+endif
+endif
+endif
+endif
+~
+>fight_prog 100~
+mpsetskilled
+if mobvalue(1) == 100
+if rand(25)
+cast iceblast $n
+else
+if rand(20)
+cast heal
+endif
+endif
+endif
+if mobvalue(1) == 1
+if snaffected($n) == 387
+if rand(26)
+cast stonefist $n
+else
+if rand(17)
+cast \@meteor strike\@
+endif
+endif
+else
+if rand(40)
+cast brittleform $n
+endif
+endif
+endif
+if mobvalue(1) == 2
+if rand(30)
+cast drain $n
+else
+if rand(15)
+cast \@power word fear\@ $r
+else
+if rand(15)
+cast agony $n
+endif
+endif
+endif
+endif
+if mobvalue(1) == 3
+if snaffected($n) == 427
+else
+if rand(30)
+cast spiritwrack
+endif
+endif
+endif
+if mobvalue(1) == 4
+if rand 25)
+cast \@chain lightning\@
+else
+if rand(16)
+cast windbind $r
+endif
+endif
+endif
+if mobvalue(1) == 5
+if rand(25)
+cast \@fire blast\@ $n
+else
+if rand(11)
+cast \@beam of fire\@ $n
+endif
+endif
+endif
+if mobvalue(1) == 6
+if rand(25)
+cast \@cure critical\@
+else
+if rand(10)
+cast \@cone of cold\@
+endif
+endif
+endif
+if mobvalue(1) == 7
+if rand(25)
+cast earthquake
+endif
+endif
+if mobvalue(1) == 8
+if rand(20)
+cast blindness $r
+else
+if rand(10)
+cast poison $n
+endif
+endif
+endif
+if mobvalue(1) == 9
+if rand(25)
+cast soulburn $n
+else
+if rand(6)
+cast unshackle
+endif
+endif
+endif
+if mobvalue(1) == 10
+if rand(25)
+cast \@lightning bolt\@ $n
+endif
+endif
+if mobvalue(1) == 11
+if rand(25)
+cast flamestrike $n
+endif
+endif
+if mobvalue(1) == 29
+if rand(25)
+cast \@thorn spray\@ $n
+endif
+endif
+mpunsetskilled
+~
+|
+V4 26004
+ghost dream dreamghost rogueghost~
+a dream ghost~
+A dream ghost shimmers formlessly above the plain.
+~
+~
+human~
+water scholar~
+AS 0 DFJPZ N 0
+55 30 10000d1+1 0d0+0 10d10+40 slash~
+slash~
+-25 -25 -25 -25
+FHJK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -25 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p play~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p commune~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p sing~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p cast~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p consider~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p read~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p examine~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p look~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p backstab~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p trip~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p bash~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p murder~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p kill~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>death_prog 100~
+mpseewizi
+mpat ghostbot mpforce ghostbot mpvaluedown 0
+mpecho As $I screams $l deathcry, $j fades away into nothing.
+mpgoto 26000
+~
+>greet_prog 100~
+if mobvalue(3) == 0
+mpvalueset 3 24
+if level($n) > 44
+mpset mob self level 58
+mpset mob self hp 11000
+mpset mob self dex 26
+mpset mob self str 26
+mpgrant self 6000 0 0
+else
+if level($n) > 37
+mpset mob self level 52
+mpset mob self hp 8000
+mpset mob self dex 24
+mpset mob self str 24
+mpgrant self 3000 0 0
+else
+if level($n) > 32
+mpset mob self level 47
+mpset mob self hp 6000
+mpset mob self dex 23
+mpset mob self str 23
+mpgrant self 1000 0 0
+else
+mpset mob self level 44
+mpset mob self hp 5000
+mpset mob self dex 22
+mpset mob self str 22
+mpgrant self 1000 0 0
+endif
+endif
+endif
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+mpfocus $r
+if isfocused($i)
+if ispc($f)
+if mobvalue(2) == 1
+if isevil($f)
+mpvalueset 4 1
+endif
+if isneutral($f)
+if rand(15)
+mpvalueset 4 1
+endif
+endif
+endif
+if mobvalue(2) == 2
+if isgood($f)
+mpvalueset 4 1
+endif
+if isneutral($f)
+if rand(50)
+mpvalueset 4 1
+endif
+endif
+endif
+if mobvalue(2) == 0
+if isneutral($f)
+if rand(10)
+mpvalueset 4 1
+endif
+else
+if rand(25)
+mpvalueset 4 1
+endif
+endif
+endif
+endif
+if mobvalue(4) == 1
+mpechoat $f $I screams in rage at you and attacks!
+mpechoaround $f $I screams in rage at $F and attacks!
+mpkill $f
+endif
+mpvalueset 4 0
+endif
+endif
+mpsetskilled
+if mobvalue(1) == 100
+if snaffected($i) == 119
+else
+cast sanctuary
+endif
+endif
+if mobvalue(1) == 6
+if snaffected($i) == 119
+else
+cast sanctuary
+endif
+endif
+if mobvalue(1) == 3
+if mobvalue(9) == 1
+cast avatar
+mpvalueset 9 0
+endif
+endif
+if mobvalue(1) == 4
+if snaffected($i) == 67
+else
+cast fly
+endif
+endif
+if mobvalue(1) == 10
+if snaffected($i) == 67
+else
+cast fly
+endif
+endif
+if mobvalue(1) == 5
+if snaffected($i) == 84
+else
+cast immolation
+endif
+endif
+if mobvalue(1) == 11
+if snaffected($i) == 84
+else
+cast immolation
+endif
+endif
+mpunsetskilled
+if mobvalue(3) < 0
+mpvaluedown 3
+endif
+mpunfocus
+~
+|
+V4 26005
+ghost dream dreamghost warriorghost~
+a dream ghost~
+A dream ghost shimmers formlessly above the plain.
+~
+~
+human~
+water scholar~
+AT 0 DFJZ N 0
+55 30 10000d1+1 0d0+0 10d10+60 slash~
+slash~
+-25 -25 -25 -25
+CEFHIK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -25 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p play~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p commune~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p sing~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p cast~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p consider~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p read~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p examine~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p look~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p backstab~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p trip~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p bash~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p murder~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>verb_prog p kill~
+mpstring mob self name $I ghost dream dreamghost
+mpinterpret $n $x
+mpstring mob self name ghost dream dreamghost
+~
+>time_prog 0~
+mpunfocus
+mpfocus $I
+if isfocused($i)
+else
+mpstring mob self name $I dream ghost dreamghost
+mpunwizi
+endif
+mpunfocus
+~
+>time_prog 0~
+mpunfocus
+mpfocus $I
+if isfocused($i)
+else
+mpstring mob self name $I dream ghost dreamghost
+mpunwizi
+endif
+mpunfocus
+~
+>rand_prog 100~
+if isanypchere($i)
+mpfocus $r
+if isfocused($i)
+if ispc($f)
+if mobvalue(2) == 1
+if isevil($f)
+mpvalueset 4 1
+endif
+if isneutral($f)
+if rand(15)
+mpvalueset 4 1
+endif
+endif
+endif
+if mobvalue(2) == 2
+if isgood($f)
+mpvalueset 4 1
+endif
+if isneutral($f)
+if rand(50)
+mpvalueset 4 1
+endif
+endif
+endif
+if mobvalue(2) == 0
+if isneutral($f)
+if rand(10)
+mpvalueset 4 1
+endif
+else
+if rand(25)
+mpvalueset 4 1
+endif
+endif
+endif
+endif
+if mobvalue(4) == 1
+mpechoat $f $I screams in rage at you and attacks!
+mpechoaround $f $I screams in rage at $F and attacks!
+mpkill $f
+endif
+mpvalueset 4 0
+endif
+endif
+mpsetskilled
+if mobvalue(1) == 100
+if snaffected($i) == 119
+else
+cast sanctuary
+endif
+endif
+if mobvalue(1) == 6
+if snaffected($i) == 119
+else
+cast sanctuary
+endif
+endif
+if mobvalue(1) == 3
+if mobvalue(9) == 1
+cast avatar
+mpvalueset 9 0
+endif
+endif
+if mobvalue(1) == 4
+if snaffected($i) == 67
+else
+cast fly
+endif
+endif
+if mobvalue(1) == 10
+if snaffected($i) == 67
+else
+cast fly
+endif
+endif
+if mobvalue(1) == 5
+if snaffected($i) == 84
+else
+cast immolation
+endif
+endif
+if mobvalue(1) == 11
+if snaffected($i) == 84
+else
+cast immolation
+endif
+endif
+mpunsetskilled
+if mobvalue(3) < 0
+mpvaluedown 3
+endif
+mpunfocus
+~
+>greet_prog 100~
+if mobvalue(3) == 0
+mpvalueset 3 24
+if level($n) > 44
+mpset mob self level 58
+mpset mob self hp 11000
+mpset mob self dex 26
+mpset mob self str 26
+mpgrant self 6000 0 0
+else
+if level($n) > 37
+mpset mob self level 52
+mpset mob self hp 8000
+mpset mob self dex 24
+mpset mob self str 24
+mpgrant self 3000 0 0
+else
+if level($n) > 32
+mpset mob self level 47
+mpset mob self hp 6000
+mpset mob self dex 23
+mpset mob self str 23
+mpgrant self 1000 0 0
+else
+mpset mob self level 44
+mpset mob self hp 5000
+mpset mob self dex 22
+mpset mob self str 22
+mpgrant self 1000 0 0
+endif
+endif
+endif
+endif
+~
+>death_prog 100~
+mpseewizi
+mpat ghostbot mpforce ghostbot mpvaluedown 0
+mpecho As $I screams $l deathcry, $j fades away into nothing.
+mpgoto 26000
+~
+|
+V4 26006
+ghostbot~
+a ghostbot~
+A ghostbot ambles along.
+~
+~
+human~
+water scholar~
+A 0 LP N 0
+60 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p s y n r a e l~
+if mobvalue(0) < 11
+mpmasstrigger
+endif
+~
+>rand_prog 30~
+mpwander
+~
+>time_prog 12~
+if mobvalue(0) < 11
+mpmasstrigger
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+>trigger_prog 100~
+if mobvalue(0) < 11
+if position($n) == 4
+mpvalueup 0
+mpfocus $n
+if class($n) < 6
+mpmload 26002
+else
+if class($n) < 12
+mpmload 26003
+else
+if class($n) < 16
+mpmload 26004
+else
+if class($n) < 24
+mpmload 26005
+else
+mpmload 26003
+endif
+endif
+endif
+endif
+mpstring mob dreamghost long $E
+mpstring mob dreamghost short $n
+mpforce dreamghost mpseewizi
+if class($n) == 1
+mpforce dreamghost mpvalueset 1 1
+endif
+if class($n) == 0
+mpforce dreamghost mpvalueset 1 100
+endif
+if class($n) == 2
+mpforce dreamghost mpvalueset 1 2
+endif
+if class($n) == 3
+mpforce dreamghost mpvalueset 1 3
+endif
+if class($n) == 4
+mpforce dreamghost mpvalueset 1 4
+endif
+if class($n) == 5
+mpforce dreamghost mpvalueset 1 5
+endif
+if class($n) == 6
+mpforce dreamghost mpvalueset 1 6
+endif
+if class($n) == 7
+mpforce dreamghost mpvalueset 1 7
+endif
+if class($n) == 8
+mpforce dreamghost mpvalueset 1 8
+endif
+if class($n) == 9
+mpforce dreamghost mpvalueset 1 9
+endif
+if class($n) == 10
+mpforce dreamghost mpvalueset 1 10
+endif
+if class($n) == 11
+mpforce dreamghost mpvalueset 1 11
+endif
+if class($n) == 12
+mpforce dreamghost mpvalueset 1 12
+endif
+if class($n) == 30
+mpforce dreamghost mpvalueset 1 30
+endif
+if isevil($n)
+mpset mob dreamghost align -1000
+mpforce dreamghost mpvalueset 2 3
+endif
+if isneutral($n)
+mpset mob dreamghost align 0
+mpforce dreamghost mpvalueset 2 0
+endif
+if isgood($n)
+mpset mob dreamghost align 1000
+mpforce dreamghost mpvalueset 2 1
+endif
+if israce($n) == HUMAN
+mpset mob dreamghost race HUMAN
+endif
+if israce($n) == AELIN
+mpset mob dreamghost race AELIN
+endif
+if israce($n) == NEFORTU
+mpset mob dreamghost race NEFORTU
+endif
+if israce($n) == CALADARAN
+mpset mob dreamghost race CALADARAN
+endif
+if israce($n) == ALATHARYA
+mpset mob dreamghost race ALATHARYA
+endif
+if israce($n) == KANKORAN
+mpset mob dreamghost race KANKORAN
+endif
+if israce($n) == CH\@TAREN
+mpset mob dreamghost race CH\@TAREN
+endif
+if israce($n) == SRRYN
+mpset mob dreamghost race SRRYN
+endif
+if israce($n) == SHUDDENI
+mpset mob dreamghost race SHUDDENI
+endif
+if israce($n) == ETHRON
+mpset mob dreamghost race ETHRON
+endif
+if sex($n) == 0
+mpset mob dreamghost sex 0
+endif
+if sex($n) == 1
+mpset mob dreamghost sex 1
+endif
+if sex($n) == 2
+mpset mob dreamghost sex 2
+endif
+endif
+endif
+~
+>time_prog 0~
+if mobvalue(0) < 11
+mpmasstrigger
+endif
+~
+|
+V4 26007
+dreamstonebot~
+dreamstonebot~
+A dreamstonebot turns stones into monsters.
+~
+~
+human~
+water scholar~
+ADLX 0 DFJLPZ N 0
+60 0 10000d1+1 10000d1+1 0d0+0 none~
+hit~
+0 0 0 0
+0 ABCDb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium unknown
+>verb_prog p examine~
+if objhere(26001)
+if compstr(2) == formation
+or compstr(2) == stone
+if compstr(3) != 
+if compstr(3) != formation
+or compstr(3) != stone
+mpinterpret $n $x
+break
+endif
+endif
+if rand(60)
+if isevil($n)
+mpvaluerand 0 26030 26054
+endif
+if isneutral($n)
+mpvaluerand 0 26037 26054
+endif
+if isgood($n)
+mpvaluerand 0 26037 26054
+endif
+mpmload $0
+mpforce 1. mptrigger $n
+else
+mpinterpret $n $x
+endif
+else
+mpinterpret $n $x
+endif
+else
+mpinterpret $n $x
+endif
+~
+>verb_prog p look~
+if objhere(26001)
+if compstr(2) == formation
+or compstr(2) == stone
+if compstr(3) != 
+if compstr(3) != formation
+or compstr(3) != stone
+mpinterpret $n $x
+break
+endif
+endif
+if rand(30)
+if isevil($n)
+mpvaluerand 0 26030 26054
+endif
+if isneutral($n)
+mpvaluerand 0 26037 26054
+endif
+if isgood($n)
+mpvaluerand 0 26037 26054
+endif
+mpmload $0
+mpforce 1. mptrigger $n
+else
+mpinterpret $n $x
+endif
+else
+mpinterpret $n $x
+endif
+else
+mpinterpret $n $x
+endif
+~
+|
+V4 26008
+dreamer stray male~
+a stray dreamer~
+Wandering aimlessly by, a stray dreamer passes his sleeping hours.
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 26030
+Melaith Hand human ~
+Melaith~
+Melaith, the Hand of the Lord Protector stands here, ready for battle.
+~
+A huge man stands before you, polishing a large double-bladed axe with a
+ragged cloth.  As a child, he was rescued from the Shuddeni Slave pens by an
+expedition led by Lord Protector Malyn.  Melaith grew to be strong as an ox,
+and rose quickly through Military Training.  Feeling indebted to Malyn,
+Melaith has devoted his life to protecting the Lord Protector.  
+~
+human~
+water scholar~
+ABTX 0 CFNVZa G 0
+60 20 7000d1+0 0d0+0 6d6+105 slash~
+cleave~
+-15 -15 -15 -8
+CDEFHIKNR AB
+26 0 0 0 0 33 0 0 0 0 0 0 0 0 33 0 0 33 0 33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A large unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26031
+bromrin captain alatharya leader guard~
+Captain Bromrin~
+Captain Bromrin, the alatharya leader of the Var Bandor guard, patrols the city.
+~
+A towering alatharya dressed in the uniform of a Var Bandor guard,
+Captain Bromrin marches sternly about the streets of the city, patrolling
+for lawbreakers.  His face is hard, his brow eternally furrowed in a glare,
+and he keeps one hand upon the hilt of his great claymore.  
+~
+alatharya~
+water scholar~
+APTX 0 DFJZ N 0
+60 75 8000d1+1 0d0+0 2d15+50 pierce~
+pierce~
+0 0 0 0
+CEFHKNT AB
+26 0 0 0 33 33 0 0 0 0 0 0 0 0 -33 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A large unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26032
+kachoja kankoran warrior~
+Kachoja~
+Kachoja, the legendary kankoran warrior, reclines on a couch.
+~
+Known far and wide as the greatest warrior the Kankoran race has produced,
+Kachoja has lead the forces of light into battle more times than any other
+living mortal general. Legendary for his ability to win at overwhelming
+odds, and for his custom of joining his troops at the front lines, Kachoja
+is an inspiring leader as well as a dazzling swordsman.
+~
+kankoran~
+water scholar~
+ABGPTX 0 NVZ G 0
+60 30 6000d1+1 100d10+50 10d30+1 slash~
+chop~
+-40 -40 -40 -40
+ACDEFHIKNV A
+26 0 0 0 0 0 0 0 -33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGIJKUV D medium unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26033
+rgaa bear~
+Rgaa~
+Rgaa, the Bear of Goran, sprawls mightily on the tiled floor.
+~
+Rgaa, one of the near-mythical Bears of Goran, has come to the Titan Castle
+to represent his kind in an upcoming Council. The Bears of Goran are a
+reclusive race, often said to have never existed. But many a goodly traveller
+has become lost in the Woods of Goran only to return with tales of large \@
+intelligent bears coming to their aid.
+~
+bear~
+water scholar~
+ABGPX 0 DFNVZ G 0
+60 30 8000d1+1 100d50+10 8d40+10 bash~
+crush~
+-20 -20 -20 -20
+DEO N
+26 0 0 0 0 33 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AGV ABCDEFHJKUV A medium unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26034
+captain titan eruin~
+Eruin the Titan Captain~
+Eruin, Captain of the Titans, stands ready to battle darkness.
+~
+The Titan Captain known as Eruin is the last of the truly great Titan
+warriors to remain in the land of Avendar.  He succeeded his older brother,
+Olonar, as Anirim\@s captain after the last battle of Oan, when Olonar saw
+fit to join the movement of the Titans into other worlds.  Eruin now stands
+ready to battle wherever he may be called, defending the light as directed
+by his king, Anirim.  
+~
+human~
+water scholar~
+ABGP 0 DHNZ G 0
+60 0 4000d1+1 0d0+0 9d5+70 none~
+hit~
+-20 -20 -20 -20
+CDEFHIKN 0
+26 0 0 33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26035
+seraph~
+the seraph~
+A seraph radiates a feeling of peace as it sits in contemplation.
+~
+The seraph is one of the most beautiful creatures you have ever seen. 
+Eyes of ancient wisdom look at you from a noble and proud face, and its
+whole being is surrounded with light.  Long wings that seem to be an
+extension of the seraph\@s own life energy grow out from its back and move
+gracefully as the seraph flies.  
+~
+celestial~
+water scholar~
+A 0 DFNTZ G 0
+60 30 22d240+1300 60d10+100 5d12+40 holy~
+divine power~
+-27 -27 -27 -9
+EFHIKQU BN
+26 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 100 -1
+ACHMV ABCDEFGHIJKP A medium unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26036
+griffin ancient gray~
+the ancient griffin~
+An ancient gray-furred griffin soars among the clouds.
+~
+An ancient gray-furred griffin soars amoung his younger kin, casting a
+noble eye about himself.  Much larger than even the greater male griffins,
+the ancient leader cuts an imposing figure.  Battlescars cross his back,
+testifying to the ancient one\@s survival ability.  
+~
+song bird~
+water scholar~
+AGPX 0 DTZ G 0
+60 30 9500d1+1 500d10+10 1d150+1 pierce~
+bite~
+-27 -27 -27 -27
+CDFHM 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AGHMVW ABCDEFGHIJKP A medium unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26037
+dragon flame massive orange boris~
+the flame dragon~
+A massive dragon, its scales the bright orange of pure flame, snarls viciously.
+~
+A gargantuan reptile with scales of bright, fiery orange, the flame
+dragon exudes heat in a massive, blistering wave.  The smell of brimstone
+and sulfur is thick around the beast, and sheets of flame rise from its back
+like mighty wings of pure fire.  Its claws are like scythes, and its maw
+glows with the heat of an inferno.  
+~
+dragon~
+water scholar~
+AFLX 0 DFJTV E 0
+60 60 10000d1+1 0d0+0 15d11+60 fire~
+flaming bite~
+-50 -50 -50 -50
+AFH ABH
+26 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMVZ ABCDEFGHIJKPQUVX A medium unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26038
+priest high shuddeni yithoul~
+the high priest~
+The high priest of Yithoul stands directing the work of his underlings.
+~
+The high priest of the Yithoul Temple stands in his dark robe, directing
+the wicked activities of his underlings.  
+~
+shuddeni~
+water scholar~
+AGKLPX 0 ABDJTUZ E 0
+60 25 3000d1+200 100d10+10 5d8+75 energy~
+magic~
+-20 -20 -20 -20
+FHK 0
+26 0 0 50 50 0 0 0 0 0 0 0 0 33 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMW ABCDEFGIJKP G medium unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26039
+captain lich~
+the lich captain~
+The captain of the lich guards stands at attention.
+~
+The captain of Gogoth\@s lich guards stands at attention, a skeletal
+figure clad in gruesome black armor.  
+~
+human~
+water scholar~
+ABFOPX 0 DOTZ E 0
+60 30 6000d1+1 0d0+0 5d5+90 slash~
+cleave~
+-20 -20 -20 -20
+CEFHKN 0
+26 0 0 33 33 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26040
+high kkhilgh~
+the high kkhilgh~
+The high kkhilgh reclines in splendor, producing the colony\@s eggs.
+~
+The high kkhilgh is a glorious being, reclining in the cottony padding
+that its cave is provided with.  Its 12\@ body is armored with thick chitin,
+and bulges with developing eggs.  The true ruler of the colony, the high
+kkhilgh makes all final decisions, and directs the purpose of its kind. 
+While it is protected by the colony\@s warriors, the high kkhilgh has its own
+defenses: a pair of wicked jaws, and the natural ability to produce
+electricity.  
+~
+centipede~
+water scholar~
+ABGPX 0 DFJZc N 0
+57 35 6000d1+1 50d100+100 5d5+70 lightning~
+shocking bite~
+-20 -20 -20 -20
+CEFKO J
+26 0 0 0 0 -20 20 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMOV ABCDEFGHIJK A large unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26041
+siyyad khil ayum khil\@ayum spiked massive giant~
+the siyyad khil\@ayum~
+A massive, spiked giant, the siyyad khil\@ayum snarls wickedly.
+~
+The siyyad khil\@ayum was the terrible leader of the foul race, until his
+kind were subdued by the hand of the Titans.  A massive specimen, the
+siyyad\@s eyes gleam with hatred and ferocify, and curving fangs protrude
+from his mouth.  
+~
+demon~
+water scholar~
+ABFPTX 0 0 E 0
+60 78 14000d1+1 0d0+0 5d8+101 pierce~
+pierce~
+-40 -40 -40 -40
+CEFHKN AB
+26 0 0 33 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+ACHMV ABCDEFGHIJKP A medium unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26042
+spider phase~
+the phase spider~
+The phase spider scurries along the cave with frightening speed.
+~
+A fearsome-looking spider with a 10\@ black body and long, spindly legs, the
+phase spider rushes along the cave passage, sensing prey in his hunting 
+ground.
+~
+centipede~
+water scholar~
+ADFGX 0 DFUVZ N 0
+40 20 11d110+689 100d100+100 5d8+19 pierce~
+bite~
+-5 -5 -5 -5
+GH ABLQ
+26 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMOPV ABCDEFGHIJKV A medium unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26043
+kzroth demon lord~
+Kzroth, the demon lord~
+Kzroth, the demon lord is here, glaring at you with fury.
+~
+Kzroth glares at you dark red eyes seeming to glow in contrast to his
+scorched charcoal black hide.  His skin is thick and when he moves flakes
+fall to the ground, almost as if his skin is atually burning and chipping
+off.  He reeks of urine, death and sulphur, making the air hard to breathe. 
+In fact, each breath he expels seems to darken and contaminate the
+surrounding air.  Massive hands, tipped with long claws that match the
+colour of your blood, swing at you, in unthinking rage.  
+~
+demon~
+water scholar~
+ABDFLPX 0 DFGJOVZac E 0
+60 30 10d55+6000 55d10+100 15d11+50 slash~
+claw~
+-24 -24 -24 -10
+CHMO ABHQa
+26 0 0 33 0 33 0 0 0 0 0 0 33 33 -33 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 55
+ACHMV ABCDEFGHIJKP A giant unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26044
+daemon demon khuzadaemon figure smoke~
+the khuzadaemon~
+A smoke-shrouded figure with red, glowing eyes stands in the hall.
+~
+A humanoid figure shrouded in roiling smoke sweeps terribly down the
+corridor, its glowing red eyes scanning for its prey.  
+~
+demon~
+water scholar~
+AX 0 DFUZ E 0
+60 -9999 10000d1+1 0d0+0 0d0+0 bash~
+suction~
+0 0 0 0
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+ACHMV ABCDEFGHIJKP A medium unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26045
+worm great seven headed seven-headed~
+a great seven-headed worm~
+A great seven-headed worm twists in its viscid excretions.
+~
+The massive tail of this beast, coiled and writhing, fills the bottom of
+this cave.  Seven long heads extend from the tail, each thinner than the
+tail yet still as thick as a man\@s leg.  The flailing serpentine heads fill
+the rest of the cave, their eyeless faces filled with razor-lined mouths. 
+The translucent skin of this abominable worm reveals its darkly pulsating
+innards.  
+~
+snake~
+water scholar~
+ADFLT 0 DJZb N 0
+57 55 10000d1+0 55d10+100 6d10+50 pierce~
+bite~
+-24 -24 -24 -7
+AFHM ABRb
+26 0 0 33 33 33 0 0 -33 -33 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGXYc ADEFKLQVX A medium flesh
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26046
+albino alligator huge large pale gator albinoalligator~
+the albino alligator~
+A huge, pale alligator swims within the murky lake.
+~
+A pale skin covers the massive body of this water-dwelling beast.  Its
+huge, jagged teeth, a rotting yellow, hang menacingly about its mouth. 
+Charcoal black eyes follow every movement that stirs the water.  Claws line
+its massive feet, twitching slightly as it paddles silently through the
+murky lake.  Its huge tail floats weightlessly in the waters, thrashing back
+and forth in silent rage.  
+~
+lizard~
+water scholar~
+AFTX 0 DFJZb E 0
+55 28 1d1+5928 0d0+0 10d5+65 pierce~
+chomp~
+-30 -35 -33 -27
+DFHM ABRa
+26 0 0 0 0 20 0 20 20 -15 0 0 0 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+ABGXc ACDEFHKLQUVX A huge flesh
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26047
+Ssenkhatha srryn warrior elder~
+Ssenkhatha~
+Ssenkhatha, Elder Warrior of the Srryn, rests near the fire.
+~
+A massive dark-scaled srryn stands before you, clad in tattered dark
+hides.  Aged but powerful, Ssenkhatha holds his place among the Elders. 
+Renown for his skill with blades, he is one of the most feared srryn in
+Sythtys.  A thick black robe is draped behind him, marked with the sigil of
+the Elder of Warriors.  
+~
+srryn~
+water scholar~
+ABDFGLPTX 0 DFV E 0
+60 54 15d15+22039 0d0+0 5d6+60 slash~
+slash~
+-44 -44 -44 -43
+CDFIKMNV AB
+26 0 0 0 20 0 0 0 20 -20 0 0 20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMX ABCDEFGIJKLQUVX C large flesh
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26048
+gharku heavy black demon behemoth consumptiondemon~
+a heavy black gharku~
+A black gharku pounds along.
+~
+A powerfully built demon, the gharku stands enshrined in dense, spined
+plates of midnight black chitin.  Thick, plated arms - replete with bony
+serrations - hang by the gharku\@s side, ending in massive, black pincers,
+capable of snapping a man in half.  The gharku\@s hulking weight rests upon
+short, squat legs, each one bent ever so slightly at the joint.  The legs
+extend onward into bony, clawed feet.  
+
+A seemingly human skull, wrapped tightly in grey, decaying skin, rests atop
+a stick of a neck, protruding only slightly forward from its hulking torso. 
+Its jaw is set into a permanent grin, jagged and broken teeth, thrusting
+forth from shriveled lips.  Bloodshot eyestalks erupt from the gharku\@s
+empty sockets, endlessly swinging about in search of prey.  
+~
+generic~
+water scholar~
+AX 0 DJZ E 0
+55 28 19d210+1050 55d10+100 6d10+25 bash~
+punch~
+-24 -24 -24 -7
+0 0
+26 50 50 0 30 0 0 0 0 0 0 0 0 70 -20 0 0 0 0 -30 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+AHMV ACDEFHKN A large flesh
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26049
+maglat tendril writhe~
+the maglat~
+The maglat\@s tendrils writhe hungrily as they fill the room.
+~
+An enormous bundle of thick tendrils surrounds the central jaws of the
+maglat.  Gummy secretions coat the floor near it, where its central location
+provides easy digestion of those who are drawn through the trap ceiling
+directly above it.  
+~
+centipede~
+water scholar~
+ABFGX 0 DJZ E 0
+51 25 18d200+920 0d0+0 5d10+25 none~
+hit~
+-21 -21 -21 -5
+0 0
+26 0 0 0 0 -20 20 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMOV ABCDEFGHIJK A large unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26050
+idcizon huge dog-like dog creature demon~
+the enormous fanged idcizon~
+A huge, dog-like creature with a slathering, toothy mouth squats by the door.
+~
+This monsterous specimen of an idcizon is fully the size of a lion.  Its
+massive, muscular jaws hang open, revealing ichor-coated gums which bristle
+with serrated fangs.  Greenish fluid drips from its mouth and its long,
+lolling tongue.  The eyes of the beast are beady and black, and peer out
+vacantly in opposite directions from either side of its oversized head.  Its
+dead stare is reminiscent of the mindless, hungry gaze of a shark. 
+Squatting dog-like on muscular hind legs, the idcizon shifts its ruddy,
+hairless body restlessly, its protruding ribcage heaving as it pants in the
+stale, cold air.  
+~
+wolf~
+water scholar~
+AB 0 DFJZ E 0
+40 20 16d170+976 40d10+100 5d8+20 pierce~
+bite~
+-15 -15 -15 -2
+FH ALQ
+26 0 0 0 0 0 0 0 0 0 0 0 0 33 -25 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+AGHMV ABCDEFGHIJKQV A medium flesh
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26051
+amber dragon~
+the amber dragon~
+An amber dragon is here, trying to get some sleep.
+~
+The dragon\@s scales shine dully, and you can see they are dented and
+scarred.  This dragon has apparently seen many fights in his day, and has
+retired here for some peace away from the hectic world.  
+~
+dragon~
+water scholar~
+ABDFGPX 0 DHJT N 0
+60 30 80d11+9000 55d10+100 15d11+50 slash~
+claw~
+-27 -27 -27 -11
+ACKMO ABEJ
+26 0 33 0 0 33 -33 0 33 -33 0 0 33 0 33 0 33 33 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sleep stand male 100 -1
+AHZ ACDEFGHIJKPQUVX ABHK giant scale
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26052
+chaja executioner~
+the chaja executioner~
+The chaja executioner awaits his next victim.
+~
+An enormous chaja standing 8\@ high, the executioner has been tattooed
+with swirling black patterns to signify his training in the arts of
+decapitation.  As broad as two humans, the executioner\@s bulging muscles
+flex and quiver as he shifts his weight, waiting for his next job.  
+~
+chaja~
+water scholar~
+ABG 0 DFJPVZ E 0
+60 80 8000d1+1 0d0+0 5d30+10 slash~
+cleave~
+-30 -30 -30 -15
+ACIJNO 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGHIJK G medium unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26053
+kankoran hunter kankoranhunter wolf-man wolfman wolfsafe~
+a kankoran hunter~
+A wolf-man stands barely visible in the forest.
+~
+A kankoran hunter crouches motionless amidst the forest.  The hunter is
+barely visible, his shadowy fur and clothing of earthen leather blending
+perfectly with surrounding foliage.  In one hand the hunter holds a great
+spear of ash.  
+~
+kankoran~
+water scholar~
+ADGLTW 0 DFJPZbc N 0
+58 100 20d220+4000 57d10+100 6d10+45 bash~
+punch~
+-26 -26 -26 -8
+EFHIJKNV ABb
+26 0 33 0 0 0 0 0 -33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJKUV D medium flesh
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+V4 26054
+Terror Creature Night~
+the night terror~
+The Night terror skitters about the plains.
+~
+Clouded in a fog of darkness, the night terror clicks as it skitters
+along the plains.  Barely visible in the dim lighting, a chill draft follows
+its progress.  
+~
+spirit~
+water scholar~
+AFG 0 DFTZ E 0
+55 26 19d210+1000 0d0+0 5d11+30 negative~
+life drain~
+-24 -24 -24 -7
+FH DKLMRb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ADHLMV ABCDEFGHIJK K medium unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+if isfocused($i)
+if ishere($f)
+mpechoat $f $I turns to face you, and suddenly leaps to attack!
+mpechoaround $f $I turns to face $F, and suddenly leaps to attack!
+mpkill $f
+else
+mptrack $f
+if rand(30)
+mptrackstep
+endif
+endif
+else
+mpvalueset 0 0
+endif
+endif
+~
+>trigger_prog 100~
+mpechoat $n Upon close expection, you notice that the strange stone formation looks almost exactly like $I.
+mpechoaround $n $N peers intently at the strange stone formation, which begins to shift and move before your eyes!
+mppurge strangestoneformationX
+mpvalueset 0 1
+mpfocus $n
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+26001
+formation stone strangestoneformationX~
+a strange stone formation~
+A strange stone formation rises from the sand.~
+~
+stone~
+trash Ya 0 0 P
+0 0 0 0 0
+55 10000 0 2 P
+0
+#0
+
+
+
+#ROOMS
+#26000
+Not in Your Wildest Dreams~
+~
+~
+0
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#26001
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26002
+D1
+~
+~
+0 0 26015
+D2
+~
+~
+0 0 26049
+D3
+~
+~
+0 0 26042
+W 5 0 0
+Z 5 5
+S
+#26002
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26003
+D1
+~
+~
+0 0 26016
+D2
+~
+~
+0 0 26001
+D3
+~
+~
+0 0 26036
+W 5 0 0
+Z 5 5
+S
+#26003
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26004
+D1
+~
+~
+0 0 26017
+D2
+~
+~
+0 0 26002
+D3
+~
+~
+0 0 26037
+W 5 0 0
+Z 5 5
+S
+#26004
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26005
+D1
+~
+~
+0 0 26018
+D2
+~
+~
+0 0 26003
+D3
+~
+~
+0 0 26038
+W 5 0 0
+Z 5 5
+S
+#26005
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26006
+D1
+~
+~
+0 0 26019
+D2
+~
+~
+0 0 26004
+D3
+~
+~
+0 0 26039
+W 5 0 0
+Z 5 5
+S
+#26006
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26007
+D1
+~
+~
+0 0 26020
+D2
+~
+~
+0 0 26005
+D3
+~
+~
+0 0 26040
+W 5 0 0
+Z 5 5
+S
+#26007
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26008
+D1
+~
+~
+0 0 26021
+D2
+~
+~
+0 0 26006
+D3
+~
+~
+0 0 26041
+W 5 0 0
+Z 5 5
+S
+#26008
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26009
+D1
+~
+~
+0 0 26022
+D2
+~
+~
+0 0 26007
+D3
+~
+~
+0 0 26049
+W 5 0 0
+Z 5 5
+S
+#26009
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26010
+D1
+~
+~
+0 0 26023
+D2
+~
+~
+0 0 26008
+D3
+~
+~
+0 0 26043
+W 5 0 0
+Z 5 5
+S
+#26010
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26011
+D1
+~
+~
+0 0 26024
+D2
+~
+~
+0 0 26009
+D3
+~
+~
+0 0 26044
+W 5 0 0
+Z 5 5
+S
+#26011
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26012
+D1
+~
+~
+0 0 26025
+D2
+~
+~
+0 0 26010
+D3
+~
+~
+0 0 26045
+W 5 0 0
+Z 5 5
+S
+#26012
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26013
+D1
+~
+~
+0 0 26026
+D2
+~
+~
+0 0 26011
+D3
+~
+~
+0 0 26046
+W 5 0 0
+Z 5 5
+S
+#26013
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26014
+D1
+~
+~
+0 0 26027
+D2
+~
+~
+0 0 26012
+D3
+~
+~
+0 0 26047
+W 5 0 0
+Z 5 5
+S
+#26014
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26015
+D1
+~
+~
+0 0 26028
+D2
+~
+~
+0 0 26013
+D3
+~
+~
+0 0 26048
+W 5 0 0
+Z 5 5
+S
+#26015
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26016
+D1
+~
+~
+0 0 26029
+D2
+~
+~
+0 0 26014
+D3
+~
+~
+0 0 26001
+W 5 0 0
+Z 5 5
+S
+#26016
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26017
+D1
+~
+~
+0 0 26030
+D2
+~
+~
+0 0 26015
+D3
+~
+~
+0 0 26002
+W 5 0 0
+Z 5 5
+S
+#26017
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26018
+D1
+~
+~
+0 0 26031
+D2
+~
+~
+0 0 26016
+D3
+~
+~
+0 0 26003
+W 5 0 0
+Z 5 5
+S
+#26018
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26019
+D1
+~
+~
+0 0 26032
+D2
+~
+~
+0 0 26017
+D3
+~
+~
+0 0 26004
+W 5 0 0
+Z 5 5
+S
+#26019
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26020
+D1
+~
+~
+0 0 26033
+D2
+~
+~
+0 0 26018
+D3
+~
+~
+0 0 26005
+W 5 0 0
+Z 5 5
+S
+#26020
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26021
+D1
+~
+~
+0 0 26034
+D2
+~
+~
+0 0 26019
+D3
+~
+~
+0 0 26006
+W 5 0 0
+Z 5 5
+S
+#26021
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26022
+D1
+~
+~
+0 0 26035
+D2
+~
+~
+0 0 26020
+D3
+~
+~
+0 0 26007
+W 5 0 0
+Z 5 5
+S
+#26022
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26023
+D1
+~
+~
+0 0 26036
+D2
+~
+~
+0 0 26021
+D3
+~
+~
+0 0 26008
+W 5 0 0
+Z 5 5
+S
+#26023
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26024
+D1
+~
+~
+0 0 26037
+D2
+~
+~
+0 0 26022
+D3
+~
+~
+0 0 26009
+W 5 0 0
+Z 5 5
+S
+#26024
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26025
+D1
+~
+~
+0 0 26038
+D2
+~
+~
+0 0 26023
+D3
+~
+~
+0 0 26010
+W 5 0 0
+Z 5 5
+S
+#26025
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26026
+D1
+~
+~
+0 0 26039
+D2
+~
+~
+0 0 26024
+D3
+~
+~
+0 0 26011
+W 5 0 0
+Z 5 5
+S
+#26026
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26027
+D1
+~
+~
+0 0 26040
+D2
+~
+~
+0 0 26025
+D3
+~
+~
+0 0 26012
+W 5 0 0
+Z 5 5
+S
+#26027
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26028
+D1
+~
+~
+0 0 26041
+D2
+~
+~
+0 0 26026
+D3
+~
+~
+0 0 26013
+W 5 0 0
+Z 5 5
+S
+#26028
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26029
+D1
+~
+~
+0 0 26042
+D2
+~
+~
+0 0 26027
+D3
+~
+~
+0 0 26014
+W 5 0 0
+Z 5 5
+S
+#26029
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26030
+D1
+~
+~
+0 0 26043
+D2
+~
+~
+0 0 26028
+D3
+~
+~
+0 0 26015
+W 5 0 0
+Z 5 5
+S
+#26030
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26031
+D1
+~
+~
+0 0 26044
+D2
+~
+~
+0 0 26029
+D3
+~
+~
+0 0 26016
+W 5 0 0
+Z 5 5
+S
+#26031
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26032
+D1
+~
+~
+0 0 26045
+D2
+~
+~
+0 0 26030
+D3
+~
+~
+0 0 26017
+W 5 0 0
+Z 5 5
+S
+#26032
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26033
+D1
+~
+~
+0 0 26046
+D2
+~
+~
+0 0 26031
+D3
+~
+~
+0 0 26018
+W 5 0 0
+Z 5 5
+S
+#26033
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26034
+D1
+~
+~
+0 0 26047
+D2
+~
+~
+0 0 26032
+D3
+~
+~
+0 0 26019
+W 5 0 0
+Z 5 5
+S
+#26034
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26035
+D1
+~
+~
+0 0 26048
+D2
+~
+~
+0 0 26033
+D3
+~
+~
+0 0 26020
+W 5 0 0
+Z 5 5
+S
+#26035
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26036
+D1
+~
+~
+0 0 26049
+D2
+~
+~
+0 0 26034
+D3
+~
+~
+0 0 26021
+W 5 0 0
+Z 5 5
+S
+#26036
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26037
+D1
+~
+~
+0 0 26002
+D2
+~
+~
+0 0 26035
+D3
+~
+~
+0 0 26022
+W 5 0 0
+Z 5 5
+S
+#26037
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26038
+D1
+~
+~
+0 0 26003
+D2
+~
+~
+0 0 26036
+D3
+~
+~
+0 0 26023
+W 5 0 0
+Z 5 5
+S
+#26038
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26039
+D1
+~
+~
+0 0 26004
+D2
+~
+~
+0 0 26037
+D3
+~
+~
+0 0 26024
+W 5 0 0
+Z 5 5
+S
+#26039
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26040
+D1
+~
+~
+0 0 26005
+D2
+~
+~
+0 0 26038
+D3
+~
+~
+0 0 26025
+W 5 0 0
+Z 5 5
+S
+#26040
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26041
+D1
+~
+~
+0 0 26006
+D2
+~
+~
+0 0 26039
+D3
+~
+~
+0 0 26026
+W 5 0 0
+Z 5 5
+S
+#26041
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26042
+D1
+~
+~
+0 0 26007
+D2
+~
+~
+0 0 26040
+D3
+~
+~
+0 0 26027
+W 5 0 0
+Z 5 5
+S
+#26042
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26043
+D1
+~
+~
+0 0 26001
+D2
+~
+~
+0 0 26041
+D3
+~
+~
+0 0 26028
+W 5 0 0
+Z 5 5
+S
+#26043
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26044
+D1
+~
+~
+0 0 26009
+D2
+~
+~
+0 0 26042
+D3
+~
+~
+0 0 26029
+W 5 0 0
+Z 5 5
+S
+#26044
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26045
+D1
+~
+~
+0 0 26010
+D2
+~
+~
+0 0 26043
+D3
+~
+~
+0 0 26030
+W 5 0 0
+Z 5 5
+S
+#26045
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26046
+D1
+~
+~
+0 0 26011
+D2
+~
+~
+0 0 26044
+D3
+~
+~
+0 0 26031
+W 5 0 0
+Z 5 5
+S
+#26046
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26047
+D1
+~
+~
+0 0 26012
+D2
+~
+~
+0 0 26045
+D3
+~
+~
+0 0 26032
+W 5 0 0
+Z 5 5
+S
+#26047
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26048
+D1
+~
+~
+0 0 26013
+D2
+~
+~
+0 0 26046
+D3
+~
+~
+0 0 26033
+W 5 0 0
+Z 5 5
+S
+#26048
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26049
+D1
+~
+~
+0 0 26014
+D2
+~
+~
+0 0 26047
+D3
+~
+~
+0 0 26034
+W 5 0 0
+Z 5 5
+S
+#26049
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26001
+D1
+~
+~
+0 0 26008
+D2
+~
+~
+0 0 26048
+D3
+~
+~
+0 0 26035
+W 5 0 0
+Z 5 5
+S
+#26050
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far to the west, a jagged line of blue and white marches along
+the horizon.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26051
+D1
+~
+~
+0 0 26049
+D2
+~
+~
+0 0 26052
+D3
+~
+~
+0 0 26051
+W 5 0 0
+Z 5 5
+S
+#26051
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far to the west a range of white-tipped mountains march, their
+rolling foothills breaking the perfect flatness of the plains.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26050
+D1
+~
+~
+0 0 26050
+D2
+~
+~
+0 0 26052
+D3
+~
+~
+0 0 26052
+W 5 0 0
+Z 5 5
+S
+#26052
+The Evermore Plains~
+Dusty flatlands stretch away to the north, south and east as far as the
+eye can see, while to the west the first mounds and hillocks gather into the
+rising foothills, which in turn rise into a great snow-capped mountain range
+in the distance.  The leaden clouds above churn across the plains,
+occasionally echoing with distant thunder.  The ground is hard-packed and
+cracked in some places, while in others thin drifts of fine sand form a
+rippled patchwork.  The sand varies in colour between earthy reds to dull
+bronze to coppery greens, with swathe upon swathe of varying hue merging to
+a dull brown in the great distance.  
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26050
+D1
+~
+~
+0 0 26051
+D2
+~
+~
+0 0 26051
+D3
+~
+~
+0 0 26053
+W 5 0 0
+Z 5 5
+S
+#26053
+The Evermore Plains~
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26051
+D1
+~
+~
+0 0 26052
+D2
+~
+~
+0 0 26050
+D3
+~
+~
+0 0 26054
+W 5 0 0
+Z 5 5
+S
+#26054
+The Evermore Plains~
+~
+~
+0
+0 8242 10
+D0
+~
+~
+0 0 26052
+D1
+~
+~
+0 0 26053
+D2
+~
+~
+0 0 26051
+W 5 0 0
+Z 5 5
+S
+#26055
+The Evermore Plains~
+~
+~
+0
+0 8246 10
+W 5 0 0
+Z 5 5
+S
+#26056
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8246 10
+W 5 0 0
+Z 5 5
+S
+#26057
+The Evermore Plains~
+~
+~
+0
+0 8246 10
+W 5 0 0
+Z 5 5
+S
+#26058
+The Evermore Plains~
+~
+~
+0
+0 8246 10
+W 5 0 0
+Z 5 5
+S
+#26059
+The Evermore Plains~
+~
+~
+0
+0 8246 10
+W 5 0 0
+Z 5 5
+S
+#26060
+The Evermore Plains~
+~
+~
+0
+0 8246 10
+W 5 0 0
+Z 5 5
+S
+#26061
+The Evermore Plains~
+~
+~
+0
+0 8246 10
+W 5 0 0
+Z 5 5
+S
+#26062
+The Evermore Plains~
+~
+~
+0
+0 8246 10
+W 5 0 0
+Z 5 5
+S
+#26063
+The Evermore Plains~
+~
+~
+0
+0 8246 10
+W 5 0 0
+Z 5 5
+S
+#26064
+The Evermore Plains~
+Dusty flatlands stretch from here to every horizon beneath a roiling sky.
+The leaden clouds above churn across the plains, occasionally echoing with
+distant thunder.  The ground is hard-packed and cracked in some places,
+while in others thin drifts of fine sand form a rippled patchwork.  The sand
+varies in colour between earthy reds to dull bronze to coppery greens, with
+swathe upon swathe of varying hue merging to a dull brown in the great
+distance.  Far away, strange stone formations can be seen rising from the
+flatlands.  
+~
+~
+0
+0 8246 10
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 26030 spec_executioner
+M 26031 spec_executioner
+M 26037 spec_breath_fire
+M 26042 spec_poison
+M 26043 spec_cast_fire
+M 26050 spec_poison
+M 26051 spec_breath_lightning
+S
+
+
+
+#RESETS
+M 0 26001 49 26001 1
+M 0 26006 1 26001 1
+M 0 26001 49 26002 1
+M 0 26001 49 26003 1
+M 0 26001 49 26004 1
+M 0 26001 49 26005 1
+M 0 26001 49 26006 1
+M 0 26001 49 26007 1
+M 0 26001 49 26008 1
+O 0 26001 0 26008
+M 0 26007 7 26008 1
+M 0 26001 49 26009 1
+M 0 26001 49 26010 1
+M 0 26001 49 26011 1
+M 0 26001 49 26012 1
+M 0 26001 49 26013 1
+M 0 26001 49 26014 1
+M 0 26001 49 26015 1
+M 0 26001 49 26016 1
+O 0 26001 0 26016
+M 0 26007 7 26016 1
+M 0 26001 49 26017 1
+M 0 26001 49 26018 1
+M 0 26001 49 26019 1
+M 0 26001 49 26020 1
+M 0 26001 49 26021 1
+M 0 26001 49 26022 1
+M 0 26001 49 26023 1
+M 0 26001 49 26024 1
+O 0 26001 0 26024
+M 0 26007 7 26024 1
+M 0 26001 49 26025 1
+M 0 26001 49 26026 1
+M 0 26001 49 26027 1
+M 0 26001 49 26028 1
+M 0 26001 49 26029 1
+M 0 26001 49 26030 1
+M 0 26001 49 26031 1
+M 0 26001 49 26032 1
+O 0 26001 0 26032
+M 0 26007 7 26032 1
+M 0 26001 49 26033 1
+M 0 26001 49 26034 1
+M 0 26001 49 26035 1
+M 0 26001 49 26036 1
+M 0 26001 49 26037 1
+M 0 26001 49 26038 1
+M 0 26001 49 26039 1
+M 0 26001 49 26040 1
+O 0 26001 0 26040
+M 0 26007 7 26040 1
+M 0 26001 49 26041 1
+M 0 26001 49 26042 1
+M 0 26001 49 26043 1
+M 0 26001 49 26044 1
+M 0 26001 49 26045 1
+M 0 26001 49 26046 1
+M 0 26001 49 26047 1
+M 0 26001 49 26048 1
+O 0 26001 0 26048
+M 0 26007 7 26048 1
+M 0 26001 49 26049 1
+S
+
+
+
+#GUILD
+#26038
+"greater demon summon"
+"nexus"
+"possession"
+"deathwalk"
+"suppress"
+#0
+
+S
+
+
+#SHOPS
+0
+
+
+
+#$

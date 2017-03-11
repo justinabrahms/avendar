@@ -1,0 +1,1095 @@
+#AREADATA
+Name The Merchant House~
+Builders Dovolente~
+VNUMs 3800 3829
+Credits [House] Staff     Merchant House Yo~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 3 1 1 2
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 3800
+bot entryway house template~
+a house entryway bot~
+A house entryway bot is here, idling away the hours.
+~
+This bot purges a stone from the house vault after a period of no
+characters of the house passing by, as empty houses shouldn\@t keep the
+Stones.  
+~
+human~
+water scholar~
+AL 0 DFJLPZe N 0
+52 26 35d107+1167 52d10+100 6d9+26 none~
+hit~
+-22 -22 -22 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 3801
+guard standard house template~
+the standard house guard template~
+A standard house guard patrols the grounds alertly.
+~
+This is a standard house guard which is stationed or wanders around the
+house.  
+~
+human~
+water scholar~
+AG 0 DFJZ N 0
+40 15 14d170+976 1d1+9999 5d6+18 slash~
+slash~
+-15 -15 -15 -5
+FHIKNU AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 50 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 3802
+guard elite house template~
+the elite house guard template~
+An elite house guard is stationed here.
+~
+This is an elite house guard which is stationed in the house.
+~
+human~
+water scholar~
+AG 0 DFJZ N 0
+52 26 35d107+1167 52d10+100 6d9+26 slash~
+slash~
+-22 -22 -22 -6
+FHIKNU AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 75 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 3803
+guard vault house template~
+vault guard house template~
+A vault guard stands here, waiting to be customized.
+~
+A vault guard template.
+~
+human~
+water scholar~
+ABGTX B DFZ N 0
+60 30 15000d1+1 15000d1+1 5d10+30 bash~
+pound~
+-20 -20 -20 -20
+ACEFHIKN ABPb
+26 0 0 33 33 0 0 0 0 0 0 0 33 0 0 0 0 33 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 3804
+bot vault merchant merchant_vaultbot~
+the merchant vault bot~
+The merchant vault bot studies a copy of The Rules of Acquisition.
+~
+It handles the usual vault business, which is primarily getting rid of
+npcs, preventing quits, and giving the pc invaders a time limit for their
+looting.  
+~
+human~
+water scholar~
+AL 0 DFJLPZe N 0
+52 26 35d107+1167 52d10+100 6d9+26 none~
+hit~
+-22 -22 -22 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog clockwork_stairway~
+mpfocus $n
+  mpechoat $f You hear a click, and the floor suddenly gives way as a brass-wrought stairway descends, depositing you back on the ground before raising back up.
+  mptransfer $f 3820
+  mpat 3820 mpforce $f look
+  mpat 3820 mpechoaround $f A slender brass-wrought stairway descends from the ceiling. After depositing $F on the ground, it raises back up.
+  mpunfocus
+endif
+~
+>verb_prog flip~
+if compstr(2) == lever
+  mpforce $n clockwork_stairway
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog switch~
+if compstr(2) == lever
+  mpforce $n clockwork_stairway
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog push~
+if compstr(2) == lever
+  mpforce $n clockwork_stairway
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog pull~
+if compstr(2) == lever
+  mpforce $n clockwork_stairway
+else
+  mpinterpret $n $x
+endif
+~
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+endif
+if value(0) == 1
+  mpforce $f clockwork_stairway
+endif
+mproomcmd mptrigger all
+~
+>verb_prog p quit~
+mpechoat $n You are unable to do that here.
+mpforce $n clockwork_stairway
+~
+>trigger_prog 100~
+if ispc($n)
+else
+  mppurge $n
+endif
+~
+|
+V4 3805
+bot entryway merchant~
+the merchant entryway bot~
+The merchant entryway bot is here, pining for attention.
+~
+This bot purges a stone from the house vault after a period of no
+characters of the house passing by, as empty houses shouldn\@t keep the
+Stones.  
+~
+human~
+water scholar~
+AL 0 DFJLPZe N 0
+52 26 35d107+1167 52d10+100 6d9+26 none~
+hit~
+-22 -22 -22 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 3806
+guard standard house template~
+a mercenary guard~
+An alert mercenary guard stands on the path, vigilant for trespassers. 
+~
+This is a standard house guard which is stationed or wanders around the
+house.  
+~
+human~
+water scholar~
+ADGL 0 DFJZ N 0
+40 15 14d170+976 1d1+9999 5d6+18 slash~
+slash~
+-15 -15 -15 -5
+FHIKNU AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 50 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if value(0) == 0
+  induct self merchant
+  mpvalueset 0 1
+endif
+~
+|
+V4 3807
+mercenary templar ethron company ram merchant_merc~
+a mercenary templar~
+An ethron mercenary from the Company of the Ram waits here.
+~
+~
+human~
+water scholar~
+AG 0 DFJZ N 0
+40 15 14d170+976 1d1+9999 5d6+18 slash~
+slash~
+-15 -15 -15 -5
+FHIKN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 50 12
+AHMV ABCDEFGHIJK A medium unknown
+V4 3808
+mercenary templar human jackal merchant_merc~
+a mercenary templar~
+A human mercenary from the Company of the Jackal waits here.
+~
+~
+human~
+water scholar~
+AG 0 DFJZ N 0
+40 15 14d170+976 1d1+9999 5d6+18 slash~
+slash~
+-15 -15 -15 -5
+FHIKNU AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 50 71
+AHMV ABCDEFGHIJK A medium unknown
+V4 3809
+mercenary templar nefortu zephyr merchant_merc~
+a mercenary templar~
+A nefortu mercenary from the Company of the Zephyr waits here.
+~
+~
+human~
+water scholar~
+AG 0 DFJZ N 0
+40 15 14d170+976 1d1+9999 5d6+18 slash~
+slash~
+-15 -15 -15 -5
+FHIKNU AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 50 69
+AHMV ABCDEFGHIJK A medium unknown
+#0
+
+
+
+#OBJECTS
+V13
+3800
+key brass intricate master vault merchant_vaultkey~
+an intricate brass key~
+An intricate brass key stamped with the seal of the Merchant Federation sits here.~
+~
+brass~
+key BPQX 0 0 AO
+0 0 0 0 0
+1 5 0 0 P
+0
+>verb_prog unlock~
+if compstr(2) == vault
+or compstr(2) == keyhole
+or compstr(2) == door
+or compstr(2) == up
+or compstr(2) == safe
+  if ispc($n)
+    if isinhouse($n)
+      opechoat $n You recall that you are obligated by contract to avoid entering the Master Vault.
+    else
+      if isowner($n)
+        if inroom($n) == 3820
+  opechoat $n You insert $i into the keyhole and turn. With a CLICK, the key is then pulled into the keyhole
+          opechoat $n A slender brass-wrought stairway descends from the ceiling. You step on, and then it raises back up.
+          opechoaround $n A brass-wrought stairway descends from the ceiling. $N steps on, and then it raises back up.
+          optransfer $n 3822
+          opforce $n look
+          opforce merchant_vaultbot mpfocus $n
+          opforce merchant_vaultbot mpvalueset 0 40
+          //opat 3822 opforce merchant_vaultbot mpfocus $n
+          //opat 3822 opforce merchant_vaultbot mpvalueset 0 40
+          oppurge self
+        endif
+      else
+    mpinterpret $n $x
+      endif
+    endif
+  endif
+endif
+~
+|
+V13
+3801
+bunks bunk rows bed beds~
+a plain bunk~
+Rows of double bunks are set against the eastern and western walls.~
+~
+unknown~
+furniture STYae 0 0 P
+10 1000000 EHKN 120 120
+1 16960 0 4 P
+0
+V13
+3802
+row bookshelves shelves east~
+a row of bookshelves~
+A row of bookshelves lines the east wall.~
+~
+stone~
+container OTYa 0 0 0
+0 0 0 0 0
+10 100 0 3 P
+0
+E
+row bookshelves shelves east~
+Made of a sturdy grey stone, these bookshelves appear built to stand the
+test of time.  They are mostly filled with various ponderings on fire magics
+with no clear organization.  Some heavy bookends are sitting unused nearby,
+their uselessness seeming to emphasize the disarray of the room.  
+~
+#0
+
+
+
+#ROOMS
+#3800
+Merchant House Control Room~
+{WBits:{x
+~
+~
+0
+0 4235316 0
+W 5 0 0
+Z 5 5
+S
+#3801
+A Path Along Gaald\@s Eastern Wall~
+A broad stone wall, half-overgrown with clinging ivy, encircles the small
+port city of Gaald.  This wide, wheel-rutted path runs parallel to the wall,
+keeping equal distance between the wall and the rocky shore of the
+peninsula.  A few lonely cypress trees stand here and there between the path
+and the shoreline, with tall brown grasses and squat, yellow-flowered gorse
+bushes providing little cover.  To the south, the path meets the main road
+outside the east gates of the city.  
+~
+~
+0
+0 0 13
+D0
+The path continues to the north.
+~
+~
+0 0 3802
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3802
+A Path Along Gaald\@s Eastern Wall~
+The merchant path continues, running between the rocky shoreline of the
+Gaald peninsula and the stout wall that encircles the port city.  The
+caravan wagons have left a double line of brown wheel ruts that cut through
+the sparse grasses.  Seabirds call in the distance, above the low murmuring
+of the waves, and the air is heavy with the tang of salt and the moisture of
+sea spray.  
+~
+~
+0
+0 0 13
+D0
+The path continues northward.
+~
+~
+0 0 3803
+D2
+The path continues to the south. In the distance, it joins the main Gaald roadway.
+~
+~
+0 0 3801
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3803
+A Path Along Gaald\@s Eastern Wall~
+Running between an ivy-overgrown wall and the rocky shoreline of the
+Gaald peninsula is this broad wheel-rutted path.  A large, limb-twisted
+cypress stands on one side of the path, a tall thin pine on the other.  The
+dull roar of the rolling waves breaking on the dark rocks of the shore is an
+ever present noise.  To the north, the path makes a gradual curve to the
+west, following the city wall.  
+~
+~
+0
+0 0 13
+D0
+The path stretches northward than curves to the west.
+~
+~
+0 0 3804
+D2
+The path continues.
+~
+~
+0 0 3802
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3804
+A Path Along the Outskirts of Gaald~
+The path rises slightly here as it curves around the outskirts of the
+port city of Gaald.  The increased elevation allows a glimpse, beyond the
+wall, of the dark-tiled roofs of homes, shops, and trading houses.  Far in
+the distance to the northeast, beyond the peninsula, a lighthouse rises from
+a small stony island just off the coast, a lit beacon shining from its
+heights.  
+~
+~
+0
+0 0 13
+D2
+The path continues to the south.
+~
+~
+0 0 3803
+D3
+The path continues to the west.
+~
+~
+0 0 3805
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3805
+A Path along the Northern Wall of Gaald~
+A broad stone wall, half-overgrown with clinging ivy, encircles the
+small port city of Gaald.  This wide, wheel-rutted path runs parallel to the
+wall, keeping equal distance between the wall and the rocky shore of the
+peninsula.  A few lonely cypress trees stand here and there between the path
+and the shoreline, with tall brown grasses and squat, yellow-flowered gorse
+bushes providing little cover.  To the west, the path leads to the northern
+gates of the city.  
+~
+~
+0
+0 0 13
+D1
+The path continues to the east, where it makes a gradual curve southward.  
+~
+~
+0 0 3804
+D3
+The northern gates of Gaald lie westward.  The path also curves to the
+north, running further down the coast of the peninsula.  
+~
+~
+0 0 3806
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3806
+Outside the Northern Gates of Gaald~
+The gates to the port city of Gaald are an iron-wrought work of artistry
+that seem more for show than defense, featuring a stylized eagle over a
+ship.  The thick granite frame and walls are encroached upon by ivy.  To the
+north and east, a well-worn path curves along the outskirts of the city,
+equidistant from the walls and the rocky shoreline of the Gaald peninsula. 
+Through the gates to the south, the sounds of bustling commerce from the
+trader houses and markets can be heard.  
+
+South links to 19025 (which will be changed to the \@northern gates of Gaald\@)
+~
+~
+0
+0 0 13
+D0
+To the north, a fortified guard station stands at the side of the path.  
+~
+~
+0 0 3807
+D1
+The path continues to the east.
+~
+~
+0 0 3805
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3807
+A Mercenary Guardpost~
+The path skirting along the northern edge of the Gaald here passes
+through a gap in a small fortification, a low wall of dark rough stone that
+runs from the rocky shoreline to the granite walls of Gaald.  There is no
+gate where the wall splits at the pathway, but just off to one side, a
+simple stone guardhouse has been constructed to provide shelter to
+mercenaries who defend the stately manor beyond.  
+~
+~
+0
+0 50 13
+D2
+The roadway leads to the south, to the Northern Gates of Gaald, with a
+branch running to the east around the city walls.  
+~
+~
+0 0 3806
+D3
+The path broadens westward into a straight, cobbled lane.
+~
+~
+0 0 3808
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3808
+A Paved Frontage Lane~
+Running near the side of the ivy-laced gray stone walls of Gaald is a
+lane of smooth white pavestones leading to and from a tall and stately
+manor, far to the west, and its various outbuildings.  To the east the lane
+gives way to a wide beaten path, a small stone guardhouse at its side. 
+Northwards, the shoreline is built up with a sturdy wooden pier.  
+~
+~
+0
+0 50 13
+D0
+A broad wooden dock lies to the north.
+~
+~
+0 0 3809
+D1
+A fortified mercenary guard station stands at the head of the lane, to
+the east.  
+~
+~
+0 0 3807
+D3
+The lane extends westward towards a tall and stately manor.
+~
+~
+0 0 3810
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3809
+A Broad Dock~
+The waters of the Lidraeu lap at the solid, sun-bleached wooden beams and
+planking of a broad pier.  Well-worn and nicked but in good repair, the dock
+is spacious, with room enough for several medium-to-large trading ships to
+moor.  Near the center of this stretch of the pier, a few gazebo-like
+shelters of rough wood and roofs of gray-slated tiles stand like sentinels,
+providing temporary shelter to cargo as it is being loaded and unloaded. 
+Beyond them, the dock extends further west.  
+~
+~
+0
+0 67108914 13
+D2
+The dock ends at a paved frontage lane.
+~
+~
+0 0 3808
+D3
+The dock extends to the west.
+~
+~
+0 0 3811
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3810
+Before the Iaran Manor~
+A well-kept lane passes between a long, multi-story wooden warehouse and
+the dock-lined Lidraeu seafront, running directly up to the large archway
+entrance of the stately manor to the west.  The manor is ostentatious
+compared to the nearby modest structures of Gaald, beyond the warehouse--its
+patterned surfaces of white marble alternate with gleaming polished tiles
+that seem to amplify the reflected light, and a graceful colonnade of
+braided marble pillars supports a high balcony that runs the length of the
+building\@s face.  Before reaching the archway, the lane passes a verdant
+lawn decorated with ornate bushes and raised beds of colorful and exotic
+flowers.  
+~
+~
+0
+0 50 13
+D0
+A broad wooden dock lies northward.
+~
+~
+0 0 3811
+D1
+The paved frontage lane continues to the east, and far in the distance
+ends at a mercenary guardpost.  
+~
+~
+0 0 3808
+D2
+~
+~
+3 0 3812
+D3
+~
+~
+0 0 3813
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3811
+A Broad Dock~
+The waters of the Lidraeu lap at the solid, sun-bleached wooden beams and
+planking of a broad pier.  Well-worn and nicked but in good repair, the dock
+is spacious, with room enough for several medium-to-large trading ships to
+moor.  Near the center of this stretch of the pier, a few gazebo-like
+shelters of rough wood and roofs of gray-slated tiles stand like sentinels,
+providing temporary shelter to cargo as it is being loaded and unloaded. 
+Beyond them, the dock extends further east.  
+~
+~
+0
+0 67108914 13
+D1
+The dock extends to the east.
+~
+~
+0 0 3809
+D2
+~
+~
+0 0 3810
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3812
+A Vast Warehouse~
+A spacious building of thick, smoothed wooden trunk columns and
+high-vaulted ceilings, the warehouse of the Federation of Merchants serves
+as a temporary repository for goods of the Federation members.  Portable
+wooden partitions section off areas of the building, and ladders lead up to
+access higher storage platforms that ring the walls.  All manner of storage
+bins, boxes, crates, chests, coffers, and barrels are carefully
+compartmentalized in the spaces provided.  A myriad of scents, from the
+sweetly exotic to pungently unpleasant, commingle in the air together over
+the underlying briny smell of the nearby waters.  
+~
+~
+0
+0 58 0
+E
+bins boxes crates chests coffers barrels platforms partitions sections~
+The various items of merchandise are carefully marked, many stamped or
+tagged with provenance, destination, and dates of arrival and departure.  
+~
+D0
+There is a large door set in the northern wall.
+~
+~
+3 0 3810
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3813
+A Spacious Foyer~
+A wide entry hall with high-vaulted ceilings serves as the chief entryway
+to the Iaran Manor, stronghold of the Federation of Merchants.  The hallway
+reflects the wealth and prestige of the House, with its gleaming white
+marble tiling, elaborate platinum-frosted trim-work, and elegant woven
+wall-hangings and elaborate portraits depicting famous merchant figures of
+years past.  The opening archway leads directly westward to the inner manor,
+and utilitarian but finely polished oak door in the southern wall door is
+inscribed with a plaque, stating simply \#Guard Barracks\#.  
+~
+~
+0
+0 58 0
+D1
+~
+~
+0 0 3810
+D2
+~
+~
+3 0 3814
+D3
+~
+~
+0 0 3816
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3814
+A Mercenary Bunkroom~
+Well-constructed but plain, the Merchant Federation barracks is a narrow,
+long room of marble block and a floor of polished ebony.  Rows of double
+bunks are set against the eastern and western walls.  A large silk banner
+with the crest of the Merchant Federation hangs down to cover most of the
+southern wall, and between the bunks to the west, narrow windows grant a
+view to the lawn that fronts the Iaran Manor.  A single doorway opens to the
+spacious Manor entryway.  
+~
+~
+0
+0 58 0
+D0
+~
+~
+3 0 3813
+M 125 H 125 V 125
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3815
+A Broad Hall~
+~
+~
+0
+0 58 0
+D0
+~
+~
+0 0 3816
+D3
+~
+~
+3 0 3825
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3816
+A Broad Hall~
+A broad stairway with an ornately wrought silver balustrade descends in a
+gradual, graceful half-spiral to rest at the western side of this spacious
+hall.  The same balustrade lines the room at the top of the stairway, mostly
+concealing it from view.  The stairway meets the hall floor along the
+western side of the room, just before the exotic carpets that cover much of
+the glossy white marble floor.  The hallway continues southward, but to the
+east narrows slightly to open entryway of the manor.  A doorway to the side
+of the stairway is framed in platinum-frosted, tastefully styled trim, and
+in the wall to the north, an open arch is likewise framed.  
+~
+~
+0
+0 58 0
+D0
+~
+~
+0 0 3824
+D1
+~
+~
+0 0 3813
+D2
+~
+~
+0 0 3815
+D3
+~
+~
+3 0 3823
+D4
+~
+~
+0 0 3817
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3817
+A Statuary Hall~
+~
+~
+0
+0 58 0
+D0
+~
+~
+0 0 3829
+D1
+~
+~
+0 0 3818
+D2
+~
+~
+0 0 3819
+D3
+~
+~
+3 0 3826
+D5
+~
+~
+0 0 3816
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3818
+A Statuary Hall~
+~
+~
+0
+0 58 0
+D1
+~
+~
+0 0 3828
+D2
+~
+~
+0 0 3820
+D3
+~
+~
+0 0 3817
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3819
+A Statuary Hall~
+~
+~
+0
+0 58 0
+D0
+~
+~
+0 0 3817
+D1
+~
+~
+0 0 3820
+D3
+~
+~
+3 0 3827
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3820
+Before the Master Vault~
+~
+~
+0
+0 58 0
+D0
+~
+~
+0 0 3818
+D1
+~
+~
+0 0 3821
+D3
+~
+~
+0 0 3819
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3821
+A Long Balcony~
+Stretching nearly the entire length along the face of the Iaran Manor is
+a wide, covered balcony.  A graceful wrought silver railing encircles potted
+ornamental plants and stylish Eqiril-woodcraft ironwood chairs.  Down below
+the balcony, which offers an excellent view of the Lidraeu shoreline along
+northern Gaald peninsula, a wide green lawn with ornametal trees and flowers
+is bisected by a lane which passes between a lengthy dock and tall warehouse
+building.  
+~
+~
+0
+0 50 1
+D0
+~
+~
+0 0 3828
+D3
+~
+~
+0 0 3820
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3822
+The Master Vault~
+The master vault of the Federation of Merchants is constructed entirely
+of polished brass.  Taller than it is wide, the room is full of shelves
+which hold the most prized artifacts of the House, and which are artfully
+constructed around the gears, pistons, and rods that handle the clockwork
+mechanisms of the vault.  In one corner of the room, a large lever engraved
+with the words \#stairway\# is situated.  
+~
+~
+0
+0 62 0
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3823
+A Wood-Paneled Lounge~
+~
+~
+0
+0 50 0
+D1
+~
+~
+3 0 3816
+W 5 0 0
+Z 5 5
+S
+#3824
+The Customs Office~
+The spacious, marble-tiled chamber is filled with polished wooden shelves
+that both run along the walls and cut across the room, dividing it into
+smaller areas.  The shelves are filled with stacked tablets, stacks of
+parchments, ring-bound and inscribed metal plates, piles of tubed scrolls,
+and all other manner of records.  Large wooden desks are set in each
+subsection of the room, some immaculately organized, others stacked with a
+jumble of parchments, ledger books, inkwells, and quills.  A platinum
+lantern hangs above each desk, refracting a surprising amount of light
+throughout the room.  
+~
+~
+0
+0 58 0
+D2
+~
+~
+0 0 3816
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3825
+A Ground-Floor Office in the Iaran Manor~
+~
+~
+0
+0 58 0
+D1
+~
+~
+3 0 3815
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3826
+An Opulent Office in the Iaran Manor~
+~
+~
+0
+0 58 0
+D1
+~
+~
+3 0 3817
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3827
+An Opulent Office in the Iaran Manor~
+~
+~
+0
+0 58 0
+D1
+~
+~
+3 0 3819
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3828
+A Long Balcony~
+Stretching nearly the entire length along the face of the Iaran Manor is
+a wide, covered balcony.  A graceful wrought silver railing encircles potted
+ornamental plants and stylish Eqiril-woodcraft ironwood chairs.  Down below
+the balcony, which offers an excellent view of the Lidraeu shoreline along
+northern Gaald peninsula, a wide green lawn with ornametal trees and flowers
+is bisected by a lane which passes between a lengthy dock and tall warehouse
+building.  
+~
+~
+0
+0 50 1
+D2
+~
+~
+0 0 3821
+D3
+~
+~
+0 0 3818
+C MERCHANT~
+W 5 0 0
+Z 5 5
+S
+#3829
+A Small Library~
+~
+~
+0
+0 58 0
+D2
+~
+~
+0 0 3817
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 3810 2 3
+D 0 3812 0 3
+D 0 3813 2 3
+D 0 3814 0 3
+D 0 3815 3 3
+D 0 3816 3 3
+D 0 3817 3 3
+D 0 3819 3 3
+D 0 3823 1 3
+D 0 3825 1 3
+D 0 3826 1 3
+D 0 3827 1 3
+M 0 3805 1 3807 1
+M 0 3806 1 3807 1
+O 0 3801 0 3814
+M 0 3804 1 3822 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

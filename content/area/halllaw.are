@@ -1,0 +1,2988 @@
+#AREADATA
+Name The Hall of Law~
+Builders Iandir Transmitt~
+VNUMs 12000 12049
+Credits [House] Iand/Ramc The Hall of Law~
+Danger 2
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 5 1 0
+Shades 5 5
+Stone 83
+End
+
+
+
+#MOBILES
+V4 12001
+golem stone gargantuan guard vault stonegolem sgol~
+the stone golem~
+A gargantuan stone golem, chiseled from solid granite, guards the Vault of Law.
+~
+Towering over even an alatharya, this massive stone golem sternly keeps
+watch for intruders.  The golem is hewn from solid granite in the form of a
+humanoid and a great silver crown is engraved into its chest.  A pair of
+eyes made from gleaming platinum peer watchfully over the hall as it stands,
+stoic.  
+~
+giant~
+water scholar~
+ABGTX B DFZ N 0
+60 30 15000d1+1 0d0+0 5d10+30 bash~
+pound~
+-20 -20 -20 -20
+ACEFHIKNO ABLPQRb
+26 0 0 33 33 0 0 0 0 0 0 0 100 0 0 0 0 100 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A large stone
+>speech_prog p I want something from the vault.~
+if isinhouse($n)
+if mobvalue(3) > 0
+say The lawless have intruded recently. I must not leave my post until the danger
+has passed. Ask again later.
+else
+if isfocused($i)
+say I\@m sorry, but I\@m busy getting something for $F.
+else
+mpvalueset 0 5
+mpfocus $n
+mpvaultprep $n
+endif
+endif
+endif
+if isinhouse($n)
+else
+say The contents of the vault are the property of the Guardians, $N!
+endif
+~
+>fight_prog 100~
+mpvalueset 3 70
+mpvaluerand 0 1 100
+if mobvalue(0) < 6
+mpechoat $n The stone golem lowers a shoulder and charges, slamming you against the wall!
+mpechoaround $n The stone golem lowers a shoulder and charges, slamming $N against the wall!
+mplag $n 3
+endif
+if snaffected($i) == 104
+mpremaffect $i 104
+endif
+if snaffected($i) == 107
+mpremaffect $i 107
+endif
+if snaffected($i) == 343
+mpremaffect $i 343
+endif
+if snaffected($i) == 233
+mpremaffect $i 233
+endif
+if snaffected($i) == 492
+mpremaffect $i 492
+endif
+if snaffected($i) == 685
+mpremaffect $i 685
+endif
+if snaffected($i) == 467
+mpremaffect $i 467
+endif
+if snaffected($i) == 466
+mpremaffect $i 466
+endif
+if snaffected($i) == 227
+mpremaffect $i 227
+endif
+if snaffected($i) == 474
+mpremaffect $i 474
+endif
+~
+>rand_prog 2~
+if isfocused($i)
+if mobvalue(0) < 0
+tell $f I have other duties to attend to. Speak more quickly next time.
+mpunfocus
+mpvalueset 0 0
+endif
+endif
+~
+>exit_prog 100~
+if valname($n) == $f
+mpunfocus
+mpvalueset 0 0
+endif
+~
+>rand_prog 100~
+if isfocused($i)
+if mobvalue(0) == 0
+say What is it you wish me to bring you?
+mpvaluedown 0
+else
+mpvaluedown 0
+endif
+endif
+if mobvalue(0) > 0
+mpvaluedown 3
+endif
+if snaffected($i) == 104
+mpremaffect $i 104
+endif
+if snaffected($i) == 107
+mpremaffect $i 107
+endif
+if snaffected($i) == 343
+mpremaffect $i 343
+endif
+if snaffected($i) == 233
+mpremaffect $i 233
+endif
+if snaffected($i) == 492
+mpremaffect $i 492
+endif
+if snaffected($i) == 685
+mpremaffect $i 685
+endif
+if snaffected($i) == 467
+mpremaffect $i 467
+endif
+if snaffected($i) == 466
+mpremaffect $i 466
+endif
+if snaffected($i) == 227
+mpremaffect $i 227
+endif
+if snaffected($i) == 474
+mpremaffect $i 474
+endif
+~
+>speech_prog p Show me the vault.~
+mpvaultshow $n
+~
+>speech_prog p Show me the vault~
+mpvaultshow $n
+~
+>rand_prog 40~
+if mobvalue(0) > 0
+mpvaluedown 0
+endif
+~
+>rand_prog 15~
+stand
+~
+>greet_prog 100~
+if isinhouse($n)
+\@Greetings, Defender of the Law.
+else
+if ispc($n)
+\@You will not be allowed to violate the Vault, $N!
+mpforce $n yell Help! I am being attacked by the stone golem!
+mpkill $n
+ht Guardians, to me! $N is attacking the Vault!
+endif
+endif
+ 
+~
+>give_prog all~
+if islimited($o)
+  mpvaultdrop $o
+else
+  say This item is not useful to us.
+  give $o $n
+endif
+~
+>speech_prog p Bring me:~
+if isfocused($i)
+if mobvalue(0) > 0 
+say I\@m still sorting through the vault.
+else
+mpvaultgive $f $x
+mpunfocus
+mpvalueset 0 0
+endif
+endif
+~
+|
+V4 12002
+soldier guard well well-armored armored~
+the soldier~
+An armored soldier stands guarding the Hall of Law from intruders.
+~
+A man suited in a full set of armor stands guarding the Hall of Law from
+any wrongful intruders.  The surface of his sturdy steel plate is embossed
+with the Crown of Iandir.  He holds a long steel spear in his hands,
+watchful and ready.  
+~
+human~
+water scholar~
+ABGX 0 DFHZ N 0
+40 21 16d100+459 0d0+0 5d6+15 pierce~
+pierce~
+-15 -15 -15 -15
+ACEFKN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>fight_prog 100~
+if rand(15)
+thrust
+endif
+~
+>load_prog 100~
+mpaddskill $i 452 100
+mpaddskill $i 179 40
+~
+>rand_prog 8~
+stand
+~
+>greet_prog 100~
+if isinhouse($n)
+bow $n
+else
+if ispc($n)
+mpforce $n yell Help! I am being attacked by the soldier!
+mpkill $n
+endif
+endif
+ 
+~
+|
+V4 12003
+soldier sergeant~
+the sergeant~
+A sergeant of the Guardians stands defending the Hall of Law.
+~
+A large man with hard features stands ready to block the entrance of any
+intruders.  The sergeant is clad in a suit of well-tended steel armor
+embossed with the Crown of Iandir.  He keeps a stern, alert watch over the
+Hall of Law, holding a sturdy longsword at the ready.  
+~
+human~
+water scholar~
+ABGX 0 DHZ N 0
+45 23 12d170+643 0d0+0 5d8+12 slash~
+slash~
+-15 -15 -15 -15
+ACEFKN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 8~
+stand
+~
+>greet_prog 100~
+if isinhouse($n)
+bow $n
+else
+if ispc($n)
+mpforce $n yell Help! I am being attacked by the sergeant!
+mpkill $n
+endif
+endif
+~
+|
+V4 12004
+guardianwarning~
+guardianwarning~
+Guardianwarner sits here.
+~
+~
+human~
+water scholar~
+ABDX 0 DFJLZ N 0
+0 0 100d100+100 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+if isinhouse($n)
+else
+if ispc($n)
+mpat 12010 mpforce golem ht Intruder in the Hall of Law! To Arms!
+endif
+endif
+~
+|
+V4 12005
+priest caladaran crown healer~
+the caladaran priest~
+A caladaran priest dressed in healer\@s robes prepares curative salves.
+~
+A tall caladaran dressed in flowing gray robes and bearing the mark of
+the Crown stands in the infirmary, ready to heal any Guardian of Law who
+requires it.  
+~
+caladaran~
+water scholar~
+AB 0 DFZ N 0
+57 28 20d220+1100 0d0+0 5d13+27 holy~
+divine power~
+-22 -22 -22 -9
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMW ABCDEFGIJKP AI medium unknown
+>load_prog 100~
+speak common
+~
+>greet_prog 100~
+if isinhouse($n)
+bow $n
+say Greetings, $N. Do you require healing?
+endif
+~
+>speech_prog p I am cursed~
+if isinhouse($n)
+if isfocused($i)
+say I am helping $F at the moment.
+else
+mpfocus $n
+mpvalueset 0 4
+mpvalueset 1 2
+say Please wait while I prepare the cleansing ritual.
+endif
+else
+say You are not a Guardian, $N.
+endif
+~
+>exit_prog 100~
+if valname($f) == $n
+tell $f I\@m afraid you\@ll have to stay if you need my help. Come back when you have time.
+mpunfocus
+endif
+~
+>rand_prog 100~
+prog add rand_prog 100
+if mobvalue(0) > 0 
+if mobvalue(1)==0
+if isfocused($i)
+say Ah, all is in readiness. 
+if mobvalue(0)==1
+emote applies a healing salve.
+cast \@heal\@ $f
+mpvalueset 0 0
+endif
+if mobvalue(0)==2
+emote applies an antidote.
+cast \@cure poison\@ $f
+mpvalueset 0 0
+endif
+if mobvalue(0)==3
+emote applies a curative mixture.
+cast \@cure disease\@ $f
+mpvalueset 0 0
+endif
+if mobvalue(0)==4
+emote gestures briefly.
+cast \@remove curse\@ $f
+mpvalueset 0 0
+endif
+if mobvalue(0)==5
+emote applies a refreshing herb.
+cast \@refresh\@ $f
+mpvalueset 0 0
+endif
+if mobvalue(0)==6
+emote applies a curative.
+cast \@cure blindness\@ $f
+mpvalueset 0 0
+endif
+endif
+mpunfocus
+endif
+mpvaluedown 1
+endif
+~
+>speech_prog p I am blind~
+if isinhouse($n)
+if isfocused($i)
+say I am helping $F at the moment.
+else
+mpfocus $n
+mpvalueset 0 6
+mpvalueset 1 3
+say Please wait while I prepare the curative.
+endif
+else
+say You are not a Guardian, $N.
+endif
+~
+>speech_prog p I am fatigued~
+if isinhouse($n)
+if isfocused($i)
+say I am helping $F at the moment.
+else
+mpfocus $n
+mpvalueset 0 5
+mpvalueset 1 1
+say Please wait while I prepare the necessary herbs.
+endif
+else
+say You are not a Guardian, $N.
+endif
+~
+>speech_prog p I am injured~
+if isinhouse($n)
+if isfocused($i)
+say I am helping $F at the moment.
+else
+mpfocus $n
+mpvalueset 0 1
+mpvalueset 1 5
+say Please wait while I prepare the healing salve.
+endif
+else
+say You are not a Guardian, $N.
+endif
+~
+>speech_prog p I am diseased~
+if isinhouse($n)
+if isfocused($i)
+say I\@m helping $F at the moment.
+else
+mpfocus $n
+mpvalueset 0 3
+mpvalueset 1 3
+say Please wait while I prepare the cure.
+endif
+else
+say You are not a Guardian, $N.
+endif
+~
+>speech_prog p I am poisoned~
+if isinhouse($n)
+if isfocused ($i)
+say I\@m busy tending to another at the moment.
+else
+mpfocus $n
+mpvalueset 0 2
+mpvalueset 1 3
+say Please wait while I prepare the antidote.
+endif
+else
+say You are not a Guardian, $N.
+endif
+~
+|
+V4 12006
+Ildavins woman Lawtrainer~
+Ildavins~
+A woman with iron-grey hair stands here, glaring about sternly.
+~
+A watcher of some repute, Ildavins served efficently, if brutally, in the
+court of the Patrician, Danrasad, for many years.  She began to follow the
+teachings of Rveyelhi not long after he ascended to divinity, and was
+eventually branded by him for her ruthless upholding of the law.  She has
+gone into semi-retirement after her long career as a Guardian, and now
+serves as a trainer to the guard.  
+
+A plain-looking woman, Ildavins\@ iron-gray hair is pulled back in a tight
+bun.  Despite being in the autumn of her life, the watchers wiry muscles are
+still lean and tight.  A pair of eyes as gray as her hair glare from beneath
+her thin brows, staring critically and watchfully.  
+~
+human~
+water scholar~
+ABDLTX 0 DFJZ N 0
+58 90 1000d3+12000 1d1+9999 5d12+50 bash~
+punch~
+-40 -40 -40 -38
+EFHK AB
+26 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 18
+AHMVW ABCDEFGHIJKP AFGK medium unknown
+>verb_prog p yield~
+if isinhouse($n)
+if isfighting($i)
+if isfighting($n)
+mpgoto $n
+if iswielding($i) == 12028
+emote snaps the slender training staff to her side.
+else
+if iswielding($i) == 12029
+emote snaps the silver-banded ebony staff to her side.
+wear suckstaff
+endif
+endif
+mpvalueset 0 0
+mpvaluerand 6 1 10
+if mobvalue(6) == 1
+emote gives a firm, wordless nod.
+endif
+if mobvalue(6) == 2
+say Remember, stay alert and aware in combat. The unexpected can be fatal.
+endif
+if mobvalue(6) == 3
+esay \@nods\@ If you are finished, you may go $N.
+endif
+if mobvalue(6) == 4
+say Strike quicker next time, slow attacks are parried attacks.
+endif
+if mobvalue(6) == 5
+say You are improving $N, good.
+endif
+if mobvalue(6) == 6
+esay \@says grimly\@ Don\@t underestimate me because of my age. Never underestimate an opponent.
+esay \@adds\@ Prepare for the worst, and anything less is a pleasant surprise.
+endif
+if mobvalue(6) == 7
+say Now let us hope you can do better against the criminals.
+endif
+if mobvalue(6) == 8
+say Watch your legs, you can\@t fight if you can\@t move.
+endif
+if mobvalue(6) == 9
+say Very well, rest then.
+endif
+if mobvalue(6) == 10
+emote gives a quick nod, turning to inspect her weapon.
+endif
+break
+endif
+endif
+endif
+mpinterpret $n $x
+~
+>hitprcnt_prog 10~
+if mobvalue(4) == 0
+emote smiles grimly, taking a packet from her belt.
+esay \@spits a bit of blood, then says\@ May my sight be unclouded.
+mpecho The Sigil of the Black Staff darkens, if such a thing is possible.
+mpaddaffect $i 646 51 24 0 0 0
+flash
+mpvalueset 4 100
+endif
+~
+>hitprcnt_prog 70~
+if mobvalue(5) == 0
+if isinhouse($i)
+esay \@growls\@ This is not a fight to the death. Stand down.
+mpvalueset 1 2
+mpvalueset 5 1
+endif
+endif
+~
+>rand_prog 100~
+if mobvalue(3) == 1
+mpvalueset 3 0
+bolo east $f
+tripwire east
+endif
+if mobvalue(4) == 0
+else
+mpvaluedown 4
+endif
+if hitprcnt($i) > 77
+mpvalueset 5 0
+mpvalueset 0 0
+endif
+~
+>fight_prog 100~
+if isinhouse($n)
+if mobvalue(0) == 0
+say A bit of training then, $N?
+esay \@nods twirling her staff sharply\@ Yield when you are finished.
+mpvalueset 0 1
+endif
+else
+if mobvalue(0) < 2
+emote narrows her eyes.
+say You would challenge the Guardians of Law?
+mpvalueset 0 2
+wear koolstaff
+endif
+endif
+if mobvalue(0) == 2
+if rand(40)
+if rand(50)
+twirl
+else
+pugil
+endif
+endif
+endif
+if mobvalue(1) == 2
+esay \@growls\@ Fool, I will defend myself!
+mpvalueset 0 2
+mpvalueset 1 3
+wear koolstaff
+endif
+if mobvalue(1) == 1
+mpvalueup 1
+endif
+if mobvalue(0) == 2
+if iswielding($i) == 12029
+else
+wear koolstaff
+endif
+else
+if iswielding($i) == 12028
+else
+wear suckstaff
+endif
+endif
+mpfocus $n
+if isinhouse($f)
+else
+mpvalueset 3 1
+endif
+~
+>load_prog 100~
+speak common
+mpaddskill $i 500 100
+mpaddskill $i 506 100
+mpaddskill $i 228 100
+mpaddskill $i 504 100
+mpaddskill $i 502 100
+mpaddskill $i 530 60
+~
+|
+V4 12007
+soldier armored guard armoryguard~
+the soldier~
+An armored soldier stands guarding the Hall of Law.
+~
+An armored soldier stands sternly guarding the Hall of Law from
+intruders.  His brightly polished armor bears the symbol of the Guardians of
+Law, and he moves with confidence and ease.  
+~
+human~
+water scholar~
+AT 0 DFJZ N 0
+50 25 18d200+920 0d0+0 5d12+25 none~
+hit~
+-20 -20 -20 -6
+CEHK 0
+26 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 12008
+aelin outfitter~
+the aelin outfitter~
+A slender aelin tends to the food and armor stores.
+~
+Tending to the armor and food stores of the Guardians of Law, this
+whip-slender aelin surveys the chamber with piercing blue eyes.  Waiting
+stoicly, he is clad in leather armor studded with silver crowns and bears a
+saber belted at his hip.  Short-cut brown hair tops his handsome face, and a
+pair of white-speckled gray wings sprout from his back.  
+~
+aelin~
+water scholar~
+ABX 0 DEFJTZ N 0
+51 25 18d200+920 0d0+0 5d12+25 slash~
+slash~
+-20 -20 -20 -6
+EFHKN 0
+26 0 0 0 0 -20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMW ABCDEFGIJKP AF medium unknown
+>speech_prog p Requesting equipment.~
+if isinhouse($n)
+if isbitset($n) == 12006
+say You have already been recently issued a set of equipment, $N.
+else
+say Very well, Guardian $N, here are your items. Use them well.
+emote pulls a sturdy canvas backpack from a shelf.
+mpbitset $n 12006 1
+mpaddaffect $n 479 60 72 27 12006 0
+if isbitset($n) == 12001
+mpoload 12010
+mpoload 12022 in canvas
+mpoload 12023 in canvas
+mpoload 12024 in canvas
+mpoload 12025 in canvas
+mpoload 12026 in canvas
+mpoload 12027 in canvas
+mpoload 12027 in canvas
+give canvas $n
+else
+mpoload 12010
+mpoload 12011 in canvas
+mpoload 12012 in canvas
+mpoload 12013 in canvas
+mpoload 12014 in canvas
+mpoload 12015 in canvas
+mpoload 12016 in canvas
+mpoload 12016 in canvas
+give canvas $n
+endif
+endif
+else
+yell $n is attempting to steal our supplies!
+mpmload 12007
+mpecho A soldier has arrived.
+mpforce armoryguard say Theft is punishable by death, $N!
+mpforce armoryguard mpkill $n
+endif
+~
+>load_prog 100~
+speak common
+~
+>greet_prog 100~
+if ispc($n)
+if isinhouse($n)
+else
+yell $N is invading the the stores!
+mpkill $n
+endif
+endif
+~
+|
+V4 12010
+spirit lonely~
+a lonely spirit~
+This lonely spirit has been left here to die.
+~
+~
+human~
+water scholar~
+AB 0 DFJLPZ N 0
+60 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>trigger_prog 100~
+if ispc($n)
+else
+mppurge $n
+endif
+~
+>verb_prog p quit~
+mpechoat $n Iandir would be most displeased with that.
+mptransfer $n 12010
+mpat 12010 mpforce $n look
+~
+>rand_prog 100~
+if mobvalue(0) > 0
+mpvaluedown 0
+endif
+if mobvalue(0) == 1
+mptransfer $f 12010
+mpat 12010 mpforce $f look
+endif
+mproomcmd mptrigger all
+~
+>exit_prog 100~
+mpunfocus
+~
+|
+V4 12011
+scribe shuddeni ancient~
+the shuddeni scribe~
+An ancient shuddeni scribe holds voluminous scrolls of information.
+~
+A lanky shuddeni, feeble and dessicated with age, stands behind a desk
+filled with scrolls.  The shuddeni scribe has devoted himself to recording
+information about the residents of Avendar, and how their behavior affects
+the Guardian task of enforcing law.  
+~
+shuddeni~
+water scholar~
+ABX B ADFJZ E 0
+51 35 3500d1+1 0d0+0 5d10+35 energy~
+magic~
+-21 -21 -21 -21
+FHK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 20 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMVW ABCDEFGHIJK AG medium unknown
+>load_prog 100~
+speak common
+mpaddaffect self 245 60 -1 27 0 2 P
+~
+>speech_prog p is not a raider.~
+if isinhouse($n)
+mpfocus $y1
+if ispc($f)
+mpbitset $f 12011 0
+say I have recorded it.
+endif
+else
+sneer $n
+endif
+mpunfocus
+~
+>speech_prog p is a raider.~
+if isinhouse($n)
+mpfocus $y1
+if ispc($f)
+mpbitset $f 12011 1
+say I have recorded it.
+endif
+else
+sneer $n
+endif
+mpunfocus
+~
+>greet_prog 100~
+if remembers($n)
+else
+if isinhouse($n)
+tell $n Say the words \#Tell me about..\# and name someone. I will inform you of their ethos.
+tell $n If you think someone is a Raider, say \#(Name) is a Raider.\# and I will record it.
+tell $n If you think someone has been falsely suspected, say \#(Name) is not a Raider.\# and I will record it.
+mpremember $n
+endif
+endif
+~
+>speech_prog p Tell me about~
+if isinhouse($n)
+mpfocus $y4
+else
+flare $n
+endif
+if isimmort($f)
+  mpunfocus
+endif
+if isfocused($i)
+if ispc($f)
+if ischaotic($f)
+say $F abides in chaos.
+mpget char $f wanted 0
+say $F has been wanted $0 times.
+endif
+endif
+if ispc($f)
+if islawful($f)
+say $F has a lawful mindset.
+mpget char $f wanted 0
+say $F has been wanted $0 times.
+endif
+endif
+if ispc($f)
+if isbalanced($f)
+say $F is neither chaotic or lawful.
+mpget char $f wanted 0
+say $F has been wanted $0 times.
+endif
+endif
+if ispc($f)
+if isbitset($f) == 12011
+say $F is suspected of being a Raider.
+endif
+endif
+else
+if isinhouse($n)
+say Who?
+endif
+endif
+mpunfocus
+~
+|
+V4 12012
+godlookupbot~
+the godlookupbot~
+The godlookupbot wonders if god really is out there.
+~
+~
+human~
+water scholar~
+ABDL 0 L N 0
+80 0 121d12+21 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p touch marble~
+mpechoaround $n $N touches the marble altar.
+if isbitset($n) == 12002
+mpat Iandir mpfocus Iandir
+if name($f) == Iandir
+mpechoat $n You touch the marble altar and sense the distant presence of Iandir.
+else
+mpechoat $n You touch the marble altar and sense... nothing.
+endif
+mpunfocus
+else
+mpechoat $n You touch the marble altar.
+endif
+~
+>verb_prog p touch ebony~
+mpechoaround $n $N touches the ebony altar.
+if isbitset($n) == 12002
+mpat Rveyelhi mpfocus Rveyelhi
+if name($f) == Rveyelhi
+mpechoat $n You touch the ebony altar and sense the distant presence of Rveyelhi.
+else
+mpechoat $n You touch the ebony altar and sense... nothing.
+endif
+mpunfocus
+else
+mpechoat $n You touch the ebony altar.
+endif
+~
+>verb_prog p touch altar~
+mpechoat $n The marble altar, or the ebony?
+~
+>load_prog 100~
+mpseewizi
+~
+|
+V4 12013
+scholar caladaran brown-robed brown robes~
+a caladaran scholar~
+A caladaran scholar of the Guardians stands clad in brown robes.
+~
+This tall caladarn scholar stands here watchfully, his thin, wiry form
+draped in brown robes.  Crowns embroidered in silver thread decorate the hem
+of his robes and he grips a long, thin staff in his frail-seeming hands. 
+Despite his thin appearance, he seems oddly immoveable and his barklike skin
+seems hard and stony.  
+~
+caladaran~
+water scholar~
+ABGX 0 DFHJZ N 0
+35 16 12d110+492 0d0+0 4d5+10 bash~
+pound~
+-12 -12 -12 -12
+FHK AB
+26 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMVW ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+stand
+if rand(60)
+if snaffected($i) == 70
+if snaffected($i) == 375
+else
+cast \@stabilize\@
+endif
+else
+cast \@fortify\@
+endif
+endif
+~
+>fight_prog 100~
+if rand(20)
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+if snaffected($n) == 387
+cast \@sandspray\@
+else
+cast \@brittleform\@
+endif
+endif
+if mobvalue(0) == 2
+if isflying($n)
+cast \@earthbind
+else
+cast \@slip\@
+endif
+endif
+if mobvalue(0) == 3
+if snaffected($n) == 380
+cast sandspray
+else
+cast density
+endif
+endif
+endif
+~
+>greet_prog 100~
+if isinhouse($n)
+bow $n
+if isbitset($n) == 12001
+if snaffected($n) == 70
+else
+cast fort $n
+endif
+endif
+else
+if ispc($n)
+mpforce $n yell Help! I\@m being attacked by a caladaran scholar!
+if rand(50)
+mpkill $n
+else
+if snaffected($n) == 387
+cast \@sandspray\@ $n
+else
+cast \@brittleform\@ $n
+endif
+endif
+endif
+endif
+~
+>load_prog 100~
+mpadaddskill $i 120 100
+mpadaddskill $i 380 90
+mpadaddskill $i 387 100
+mpadaddskill $i 53 81
+mpadaddskill $i 389 90
+mpadaddskill $i 70 100
+mpadaddskill $i 375 100
+~
+|
+V4 12014
+Gandalf Guardbot~
+Gandalf the Guardbot~
+Gandalf the Guardbot says \@YOU.. SHALL NOT.. PASS!
+~
+~
+human~
+water scholar~
+ADL 0 L N 0
+52 0 4d3+232 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>load_prog 100~
+mpseewizi
+~
+>speech_prog p escort~
+mpunfocus $i
+mpfocus $y2
+if isbitset($n) == 12000
+if ispc($f)
+if isinhouse($f)
+if ishere($f)
+mpechoat $f The soldier escorts you into the office.
+mpechoaround $f The soldier escorts $F into the office.
+mptransfer $f 12014
+mpat 12014 mpforce $f look
+mpat 12014 mpechoaround $f $F is escorted into the office.
+else
+break
+endif
+else
+mpforce well-armored say He is a criminal!
+endif
+else
+break
+endif
+else
+mpforce well-armored say You are not allowed to do such, $N.
+endif
+~
+>verb_prog p west~
+if isfight($n)
+  mpechoat $n No way! You\@re too busy fighting!
+  break
+endif
+if mobhere(12002)
+  if isinhouse($n)
+    if isbitset($n) == 12000
+      mpechoaround $n $N leaves west.
+      mptransfer $n 12014
+      mpat 12014 mpforce $n look
+      mpechoaround $n $N has arrived.
+    else
+      mpforce well-armored pmote moves to stop $N.
+      mpforce well-armored say I\@m sorry, $N, but you are not allowed in the Leader\@s office unless invited.
+    endif
+  else
+    break
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V4 12015
+orbbot~
+orbbot~
+Orbbot quietly controls the criminal underbelly of VB.
+~
+~
+human~
+water scholar~
+ADL 0 L N 0
+70 0 1d1+20392 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>load_prog 100~
+mpseewizi
+~
+>speech_prog p Paper.~
+if isbitset($n) == 12000
+mpecho A sheet of parchment appears on the desk with an audible \@pop\@!
+mpoload 12035 in desk
+else
+endif
+~
+>speech_prog p Paper~
+if isbitset($n) == 12000
+mpecho A sheet of parchment appears on the desk with an audible \@pop\@!
+mpoload 12035 in desk
+else
+endif
+~
+>verb_prog p stand oak~
+mpforce $n stand realrestdesk
+~
+>verb_prog p stand solid~
+mpforce $n stand realrestdesk
+~
+>verb_prog p sit solid~
+mpforce $n sit realrestdesk
+~
+>verb_prog p sit oak~
+mpforce $n sit realrestdesk
+~
+>verb_prog p rest solid~
+mpforce $n rest realrestdesk
+~
+>verb_prog p rest oak~
+mpforce $n rest realrestdesk
+~
+>verb_prog p sleep solid~
+mpforce $n sleep realrestdesk
+~
+>verb_prog p sleep oak~
+mpforce $n sleep realrestdesk
+~
+>verb_prog p sleep desk~
+mpforce $n sleep realrestdesk
+~
+>verb_prog p rest desk~
+mpforce $n rest realrestdesk
+~
+>verb_prog p stand desk~
+mpforce $n stand realrestdesk
+~
+>verb_prog p sit desk~
+mpforce $n sit realrestdesk
+~
+>verb_prog p look in orb~
+mpechoat $n You look into the orb.
+mpechoaround $n $N looks into the orb.
+if isbitset($n) == 12000
+mpechoat $n You hear a quiet voice in your mind as you look.
+mpechoat $n {BSay \@paper\@ and the desk will produce a sheet for you.{x
+mpechoat $n {BYou can escort a member of the Guardians into your office by typing: escort <player>.{x
+mpechoat $n The orb gives a warm pulse.
+if snaffected($n) == 7
+else
+mpaddaffect $n 7 30 20 18 5 0
+mpaddaffect $n 7 30 20 24 -5 0
+endif
+break
+endif
+if isinhouse($n)
+mpechoat $n The mist swirls. Nothing more.
+break
+else
+if israce($n) == SHUDDENI
+mpechoat $n The orb flares suddenly, searing into your soul!
+mpechoaround $n The orb flares suddenly, and a flash of light engulfs $N!
+mpdamtype $n 5 50 50 14
+else
+mpechoat $n The orb flares suddenly, searing your eyes!
+mpechoaround $n The orb flares suddenly, and a flash of light engulfs $N!
+mpaddaffect $n 688 80 8 18 -4 1
+endif
+endif
+~
+|
+V4 12016
+golem biezkul shuddeni void steel creature~
+Biezkul the Void Golem~
+A creature of steel and void, in the shape of a shuddeni, stands before you.
+~
+A tall thin form is here, his frame an eerie collection of cold blackened
+steel that absorbs the light of the room.  As you examine the form more
+closely, you notice that the blackened steel seems to be supported by
+nothing at all -- the inside of the frame is an empty cavity, devoid of all
+living tissue.  When you allow your gaze to fall upon his face, you notice
+only a smooth face with a prominent nose and no eyes that is composed of the
+same cold, blackened steel.  The figure is at once ominous and fascinating. 
+  
+As you gaze upon the motionless form, there is a a disturbing sense that 
+something yet lives within... Something in great agony.
+~
+shuddeni~
+water scholar~
+ABTX 0 ADFJ E 0
+53 27 35d111+1162 53d10+100 6d9+27 negative~
+chill of the void~
+-22 -22 -22 -6
+CFHKN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 50 -25 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACHMW ABCDEFGHIJKP 0 medium flesh
+>fight_prog 2~
+mpecho Tendrils of void shoot from Biezkul the Void Golem\@s hands!
+mpcast 50 50
+~
+>greet_prog 100~
+if inroom($i) < 12000
+or inroom($i) > 12050
+else
+  if isinhouse($n)
+  else
+    if ispc($n)
+      mpforce $n yell Help! I am being attacked by Biezkul!
+      mpkill $n
+    endif
+  endif
+endif
+~
+|
+V4 12017
+golem jidriln caladaran void steel creature~
+Jidriln the Void Golem~
+A creature of steel and void, in the shape of a caladaran, stands before you.
+~
+A being composed of the darkest steel is set before your gaze, at rest,
+and motionless.  Seeming eternally calm.  More sentinel than living
+creature.  The steel fits the golem\@s unnatural form like wicked armor. 
+Fitted gaps between each plate reveal pure blackness, pulling, absorbing
+the light near it.  Bent steel creates the horrifying visage, polished metal
+giving the twisted, obscene appearance of a caladaran.  
+  
+As you gaze upon the motionless form, there is a a disturbing sense that 
+something yet lives within... Something in great agony.
+~
+caladaran~
+water scholar~
+ABTX 0 DF E 0
+53 27 35d111+1162 53d10+100 6d9+27 negative~
+unholy grip~
+-22 -22 -22 -6
+CFHKN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 50 -25 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACHMW ABCDEFGHIJKP 0 medium flesh
+>fight_prog 2~
+mpecho Tendrils of void shoot from Jidriln the Void Golem\@s hands!
+mpcast 50 50
+~
+>greet_prog 100~
+if inroom($i) < 12000
+or inroom($i) > 12050
+else
+  if isinhouse($n)
+  else
+    if ispc($n)
+      mpforce $n yell Help! I am being attacked by Jidriln!
+      mpkill $n
+    endif
+  endif
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+12000
+stone power crystal large faceted stoneofpower~
+the Stone of Power~
+A large faceted crystal shines brilliantly with mystic energy.~
+~
+crystal~
+treasure ADGIS 0 G A
+0 0 0 0 0
+1 1000 0 0 P
+10
+>rand_prog 25~
+if iscarrying($o) == 12000
+else
+  if inroom() == 12218
+  or inroom() == 12217
+  or inroom() == 12216
+  or inroom() == 12221
+    mpvalueset sentryname A black-armored sentry
+    mpvalueset 0 12202
+  endif
+  if inroom() == 12051
+  or inroom() == 12072
+  or inroom() == 12071
+  or inroom() == 8884
+    mpvalueset sentryname A templar of Aramril
+    mpvalueset 0 12067
+  endif
+  if inroom() == 1877
+    mpvalueset sentryname A hooded sentry
+    mpvalueset 0 12119
+  endif
+  if inroom() == 3528
+    mpvalueset sentryname An armored soldier
+    mpvalueset 0 12011
+  endif
+  if value(0) > 0
+    mpmload 159
+    mpforce stonepowermovebot mpstring mob stonepowermovebot short %sentryname
+    mpforce stonepowermovebot mpecho %sentryname arrives.
+    mpforce stonepowermovebot get faceted
+    mpforce stonepowermovebot mpat $0 drop stone
+    mpat stonepowermovebot mpforce stonepowermovebot mpecho %sentryname departs.
+    mpat stonepowermovebot mppurge stonepowermovebot
+    mpvalueset 0 0
+  endif
+endif
+~
+>sac_prog 100~
+if inhouse($n) == CHAMPION
+or inhouse($n) == SHUNNED
+or inhouse($n) == RAIDER
+or inhouse($n) == GUARDIAN
+else
+mpechoat $n You are granted 2000 experience points for the sacrifice of a stone of power.
+mpxp $n 2000
+endif
+~
+>verb_prog invault_stonecheck~
+if compstr(1) == invault_stonecheck
+if inroom($n) == 12067
+  //Championvault
+  mpforce $n mpvalueup 0 1
+endif
+if inroom($n) == 12202
+  //Shunnedvault
+  mpforce $n mpvalueup 1 1
+endif
+if inroom($n) == 12119
+  //Raidervault
+  mpforce $n mpvalueup 2 1
+endif
+if inroom($n) == 12011
+  //Guardianvault
+  mpforce $n mpvalueup 3 1
+endif
+mpnextinterp $n $x
+else
+mpnextinterp
+endif
+~
+>rand_prog 100~
+if ispc($o)
+else
+if snaffected($o) == 19
+else
+opforce $o drop power
+endif
+endif
+~
+|
+V13
+12001
+orb entry guardianorb~
+the orb of entry~
+A small white orb hums softly, floating above the ground.~
+~
+energy~
+treasure BGPQSX 0 0 AO
+0 0 0 0 0
+1 10 0 2 P
+0
+E
+orb~
+Written on the orb are the words \#Allow me entrance!\#
+~
+>speech_prog p Allow me entrance!~
+if ispc($n)
+  if isinhouse($n)
+    opechoat The orb fails to respond to you.
+  else
+    if isowner($n)
+      if inroom($n) == 12010
+        opechoat $n You are transported to the vault!
+        opechoaround $n A gateway opens, and $N is pulled through!
+        optransfer $n 12011
+        opforce $n look
+        opat 12011 opforce spirit mpfocus $n
+        opat 12011 opforce spirit mpvalueset 0 40
+        oppurge self
+      endif
+    endif
+  endif
+endif
+~
+|
+V13
+12010
+backpack pack back canvas sturdy~
+a sturdy canvas backpack~
+A sturdy canvas backpack is here.~
+~
+cloth~
+container IPS 0 0 AK
+100 0 0 30 75
+0 20 0 2 P
+0
+>wear_prog 100~
+if inhouse($n) == GUARDIAN
+else
+opechoat $n You are zapped by $I and drop it.
+opechoaround $n $N is zapped by $I and drops it.
+opzap
+endif
+ 
+~
+|
+V13
+12011
+vest ringmail ring mail~
+a ringmail vest~
+A vest of sturdy ringmail is here.~
+~
+iron~
+armor IPU 0 0 AD
+7 7 7 4 0
+35 0 0 2 P
+0
+A
+19 1
+A
+18 1
+>wear_prog 100~
+if inhouse($n) == GUARDIAN
+else
+opechoat $n You are zapped by $I and drop it.
+opechoaround $n $N is zapped by $I and drops it.
+opzap
+endif
+~
+|
+V13
+12012
+skirt ring mail ringmail~
+a ringmail skirt~
+A skirt of sturdy ringmail is here.~
+~
+iron~
+armor IPU 0 0 AF
+7 7 7 4 0
+35 40 0 2 P
+0
+A
+19 1
+A
+18 1
+>wear_prog 100~
+if inhouse($n) == GUARDIAN
+else
+opechoat $n You are zapped by $I and drop it.
+opechoaround $n $N is zapped by $I and drops it.
+opzap
+endif
+~
+|
+V13
+12013
+sleeves pair ring mail ringmail~
+a pair of ringmail sleeves~
+A sturdy pair of ringmail sleeves are here.~
+~
+iron~
+armor IPU 0 0 AI
+7 7 7 4 0
+35 40 0 2 P
+0
+A
+19 1
+A
+18 1
+>wear_prog 100~
+if inhouse($n) == GUARDIAN
+else
+opechoat $n You are zapped by $I and drop it.
+opechoaround $n $N is zapped by $I and drops it.
+opzap
+endif
+~
+|
+V13
+12014
+gauntlets pair gray steel~
+a pair of gray steel gauntlets~
+A pair of gray steel gauntlets are here.~
+~
+iron~
+armor IPU 0 0 AH
+7 7 7 4 0
+35 40 0 1 P
+0
+A
+19 1
+A
+18 1
+>wear_prog 100~
+if inhouse($n) == GUARDIAN
+else
+opechoat $n You are zapped by $I and drop it.
+opechoaround $n $N is zapped by $I and drops it.
+opzap
+endif
+~
+|
+V13
+12015
+boots steel gray pair~
+a pair of gray steel boots~
+A pair of gray steel boots are here.~
+~
+iron~
+armor IPU 0 0 AG
+7 7 7 4 0
+35 40 0 2 P
+0
+A
+19 1
+A
+18 1
+>wear_prog 100~
+if inhouse($n) == GUARDIAN
+else
+opechoat $n You are zapped by $I and drop it.
+opechoaround $n $N is zapped by $I and drops it.
+opzap
+endif
+~
+|
+V13
+12016
+amulet symbol crown~
+an amulet bearing the symbol of a crown~
+A glittering amulet bearing the symbol of a crown is here.~
+~
+gold~
+armor AIPU 0 0 AC
+7 7 7 4 0
+35 40 0 1 P
+0
+A
+12 10
+A
+13 10
+>wear_prog 100~
+if inhouse($n) == GUARDIAN
+else
+opechoat $n You are zapped by $I and drop it.
+opechoaround $n $N is zapped by $I and drops it.
+opzap
+endif
+~
+|
+V13
+12017
+meat strips preserved~
+some preserved meat~
+Strips of preserved meat, wrapped in paper, rest on the floor.~
+~
+food~
+food S 0 F A
+80 50 0 0 0
+1 10 10 1 P
+0
+V13
+12018
+jar clay large~
+a clay jar~
+A large clay jar, designed to hold drinking water, rests here.~
+~
+earth~
+drink S 0 F A
+60 60 'water' 0 0
+1 20 20 1 P
+0
+V13
+12019
+lantern iron~
+an iron lantern~
+An iron lantern, solidly designed, rests here.~
+~
+iron~
+light A 0 F AO
+0 0 200 0 0
+10 0 50 1 P
+0
+V13
+12020
+beltpouch pouch belt canvas~
+a canvas beltpouch~
+A sturdy canvas beltpouch rests here.~
+~
+cloth~
+container S 0 F AL
+40 0 0 8 60
+10 10 100 2 P
+0
+V13
+12021
+barrel water large~
+a barrel of water~
+A large barrel of pure water supplies the Hall of Law.~
+~
+unknown~
+fountain 0 0 0 P
+1000 1000 'water' 0 0
+55 0 0 5 P
+0
+V13
+12022
+vest scalemail scale mail sturdy~
+a vest of sturdy scalemail~
+A vest of sturdy scalemail is here.~
+~
+iron~
+armor IPU 0 0 AD
+7 7 7 4 0
+35 100 0 2 P
+0
+A
+18 3
+A
+19 2
+A
+13 15
+E
+vest~
+This vest is made from leather-backed iron scales.
+~
+E
+scalemail~
+This vest is made from leather-backed iron scales.
+~
+E
+scale~
+This vest is made from leather-backed iron scales.
+~
+E
+mail~
+This vest is made from leather-backed iron scales.
+~
+E
+sturdy~
+This vest is made from leather-backed iron scales.
+~
+V13
+12023
+skirt scalemail sturdy scale mail~
+a sturdy scalemail skirt~
+A skirt of sturdy ringmail lies here.~
+~
+iron~
+armor IPU 0 0 AF
+7 7 7 4 0
+35 60 0 2 P
+0
+A
+18 1
+A
+19 3
+A
+2 -1
+E
+skirt~
+This skirt is made from leather-backed iron scales.
+~
+E
+scalemail~
+This skirt is made from leather-backed iron scales.
+~
+E
+scale~
+This skirt is made from leather-backed iron scales.
+~
+E
+mail~
+This skirt is made from leather-backed iron scales.
+~
+E
+sturdy~
+This skirt is made from leather-backed iron scales.
+~
+V13
+12024
+sleeves pair sturdy scale mail scalemail~
+a pair of sturdy scalemail sleeves~
+A sturdy pair of scalemail sleeves lie here.~
+~
+iron~
+armor IPU 0 0 AI
+7 7 7 4 0
+35 40 0 2 P
+0
+A
+18 2
+A
+19 2
+A
+1 1
+E
+sleeves~
+These sleeves are made from leather-backed iron scales.
+~
+E
+pair~
+These sleeves are made from leather-backed iron scales.
+~
+E
+sturdy~
+These sleeves are made from leather-backed iron scales.
+~
+E
+scale~
+These sleeves are made from leather-backed iron scales.
+~
+E
+mail~
+These sleeves are made from leather-backed iron scales.
+~
+E
+scalemail~
+These sleeves are made from leather-backed iron scales.
+~
+V13
+12025
+gauntlets pair iron silver silver-plated plated~
+a pair of silver-plated iron gauntlets~
+A pair of silver-plated iron gauntlets lie here.~
+~
+iron~
+armor IPU 0 0 AH
+7 7 7 4 0
+35 40 0 1 P
+0
+A
+18 2
+A
+19 1
+A
+2 2
+E
+gauntlets~
+The surface of these iron gauntlets have been plated with silver.
+~
+E
+pair~
+The surface of these iron gauntlets have been plated with silver.
+~
+E
+silver~
+The surface of these iron gauntlets have been plated with silver.
+~
+E
+iron~
+The surface of these iron gauntlets have been plated with silver.
+~
+E
+silver-plated~
+The surface of these iron gauntlets have been plated with silver.
+~
+E
+plated~
+The surface of these iron gauntlets have been plated with silver.
+~
+V13
+12026
+boots steel pair silver silver-plated plated~
+a pair of silver-plated steel boots~
+A pair of silver-plated steel boots lie here.~
+~
+steel~
+armor IPU 0 0 AG
+7 7 7 4 0
+35 40 0 2 P
+0
+A
+18 1
+A
+19 2
+A
+14 25
+E
+boots~
+These steel boots are plated with silver.
+~
+E
+steel~
+These steel boots are plated with silver.
+~
+E
+pair~
+These steel boots are plated with silver.
+~
+E
+silver~
+These steel boots are plated with silver.
+~
+E
+plated~
+These steel boots are plated with silver.
+~
+E
+silver-plated~
+These steel boots are plated with silver.
+~
+V13
+12027
+amulet symbol golden crown~
+a golden amulet bearing the symbol of a crown~
+A glittering amulet bearing the symbol of a crown is here.~
+~
+gold~
+armor AIPU 0 0 AC
+7 7 7 4 0
+35 40 0 1 P
+0
+A
+13 20
+A
+12 20
+A
+20 -2
+E
+crown~
+This golden amulet, hung on a silver chain, bears the symbol of a crown.
+~
+E
+golden~
+This golden amulet, hung on a silver chain, bears the symbol of a crown.
+~
+E
+symbol~
+This golden amulet, hung on a silver chain, bears the symbol of a crown.
+~
+E
+amulet~
+This golden amulet, hung on a silver chain, bears the symbol of a crown.
+~
+V13
+12028
+staff slender training suckstaff~
+a slender training staff~
+A slender staff lies here.~
+~
+wood~
+weapon NPS 0 F AN
+staff 5 5 1 F
+beating~
+51 80 250 2 P
+0
+A
+19 -40
+V13
+12029
+staff silver-banded ebony koolstaff~
+a silver-banded ebony staff~
+An ebony staff banded with silver lies here.~
+~
+ebony~
+weapon GNPS 0 F AN
+staff 5 12 1 F
+smash~
+51 100 0 2 P
+0
+A
+2 2
+A
+20 -2
+A
+18 7
+V13
+12030
+spear long steel~
+a long steel spear~
+A long steel spear lies here.~
+~
+steel~
+weapon 0 0 F AN
+spear 5 6 2 F
+pierce~
+33 160 1200 3 P
+0
+A
+17 -5
+E
+long~
+This long spear is forged from sturdy steel.
+~
+E
+steel~
+This long spear is forged from sturdy steel.
+~
+E
+spear~
+This long spear is forged from sturdy steel.
+~
+V13
+12031
+sigil black staff~
+the Sigil of the Black Staff~
+The Sigil of the Black Staff shouldn\@t be lying on the ground. Report it.~
+~
+shadow~
+armor CGSYa 0 0 AR
+10 10 10 25 0
+60 0 67034 0 P
+0
+A
+38 5
+A
+36 5
+A
+42 5
+E
+staff~
+A line of pure negative value marks the Sigil of the Black Staff, its
+chill presence seeming to absorb the light.  
+~
+E
+black~
+A line of pure negative value marks the Sigil of the Black Staff, its
+chill presence seeming to absorb the light.  
+~
+E
+sigil~
+A line of pure negative value marks the Sigil of the Black Staff, its
+chill presence seeming to absorb the light.  
+~
+V13
+12032
+solid oak desk~
+a solid oak desk~
+A solid oak desk sits in the middle of the room.~
+~
+oak~
+container GOS 0 0 P
+10000 0 0 30 0
+55 500 0 3 P
+0
+V13
+12033
+realrestdesk~
+a solid oaken desk~
+A solid oak desk sits in the middle of the room.~
+~
+oak~
+furniture Oe 0 0 P
+1 50000 ADGJ 300 300
+55 500 0 3 P
+0
+E
+orb~
+A small blue orb sits on a stand made of gossamer golden strands.  It
+seems to pulse and glow softly.  Mist seems to swirl within, beckoning you
+to gaze inside.  
+~
+V13
+12034
+wooden shelf~
+a wooden shelf~
+A wooden shelf stands here.~
+~
+wood~
+container OSe 0 0 P
+500 0 0 300 0
+55 400 0 3 P
+0
+V13
+12035
+sheet parchment single~
+a sheet of parchment~
+A single sheet of parchment lies here.~
+~
+parchment~
+writing 0 0 0 AO
+1 1200 1 0 0
+15 5 0 1 P
+0
+E
+sheet~
+This is a single sheet of parchment, curled slightly at the top and
+bottom edges.  The smooth front of the parchment seems suited for writing.  
+~
+E
+parchment~
+This is a single sheet of parchment, curled slightly at the top and
+bottom edges.  The smooth front of the parchment seems suited for writing.  
+~
+E
+single~
+This is a single sheet of parchment, curled slightly at the top and
+bottom edges.  The smooth front of the parchment seems suited for writing.  
+~
+V13
+12036
+crown gold guardians~
+the Crown of the Guardians~
+A golden crown blazes with magical power.~
+~
+gold~
+armor A 0 0 AE
+12 12 12 12 0
+51 3 172224 2 P
+0
+A
+13 30
+A
+12 60
+V13
+12037
+none~
+none~
+None~
+~
+unknown~
+trash G 0 0 0
+0 0 0 0 0
+52 0 0 0 P
+0
+E
+creature~
+A tall thin form is here, his frame an eerie collection of cold blackened
+steel that absorbs the light of the room.  As you examine the form more
+closely, you notice that the blackened steel seems to be supported by
+nothing at all -- the inside of the frame is an empty cavity, devoid of all
+living tissue.  When you allow your gaze to fall upon his face, you notice
+only a smooth face with a prominent nose and no eyes that is composed of the
+same cold, blackened steel.  The figure is at once ominous and fascinating. 
+  
+As you gaze upon the motionless form, there is a a disturbing sense that 
+something yet lives within... Something in great agony.
+~
+E
+steel~
+A tall thin form is here, his frame an eerie collection of cold blackened
+steel that absorbs the light of the room.  As you examine the form more
+closely, you notice that the blackened steel seems to be supported by
+nothing at all -- the inside of the frame is an empty cavity, devoid of all
+living tissue.  When you allow your gaze to fall upon his face, you notice
+only a smooth face with a prominent nose and no eyes that is composed of the
+same cold, blackened steel.  The figure is at once ominous and fascinating. 
+  
+As you gaze upon the motionless form, there is a a disturbing sense that 
+something yet lives within... Something in great agony.
+~
+E
+void~
+A tall thin form is here, his frame an eerie collection of cold blackened
+steel that absorbs the light of the room.  As you examine the form more
+closely, you notice that the blackened steel seems to be supported by
+nothing at all -- the inside of the frame is an empty cavity, devoid of all
+living tissue.  When you allow your gaze to fall upon his face, you notice
+only a smooth face with a prominent nose and no eyes that is composed of the
+same cold, blackened steel.  The figure is at once ominous and fascinating. 
+  
+As you gaze upon the motionless form, there is a a disturbing sense that 
+something yet lives within... Something in great agony.
+~
+E
+shuddeni~
+A tall thin form is here, his frame an eerie collection of cold blackened
+steel that absorbs the light of the room.  As you examine the form more
+closely, you notice that the blackened steel seems to be supported by
+nothing at all -- the inside of the frame is an empty cavity, devoid of all
+living tissue.  When you allow your gaze to fall upon his face, you notice
+only a smooth face with a prominent nose and no eyes that is composed of the
+same cold, blackened steel.  The figure is at once ominous and fascinating. 
+  
+As you gaze upon the motionless form, there is a a disturbing sense that 
+something yet lives within... Something in great agony.
+~
+E
+biezkul~
+A tall thin form is here, his frame an eerie collection of cold blackened
+steel that absorbs the light of the room.  As you examine the form more
+closely, you notice that the blackened steel seems to be supported by
+nothing at all -- the inside of the frame is an empty cavity, devoid of all
+living tissue.  When you allow your gaze to fall upon his face, you notice
+only a smooth face with a prominent nose and no eyes that is composed of the
+same cold, blackened steel.  The figure is at once ominous and fascinating. 
+  
+As you gaze upon the motionless form, there is a a disturbing sense that 
+something yet lives within... Something in great agony.
+~
+E
+golem~
+A tall thin form is here, his frame an eerie collection of cold blackened
+steel that absorbs the light of the room.  As you examine the form more
+closely, you notice that the blackened steel seems to be supported by
+nothing at all -- the inside of the frame is an empty cavity, devoid of all
+living tissue.  When you allow your gaze to fall upon his face, you notice
+only a smooth face with a prominent nose and no eyes that is composed of the
+same cold, blackened steel.  The figure is at once ominous and fascinating. 
+  
+As you gaze upon the motionless form, there is a a disturbing sense that 
+something yet lives within... Something in great agony.
+~
+V13
+12038
+none~
+none~
+None~
+~
+unknown~
+trash G 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+#0
+
+
+
+#ROOMS
+#12000
+The Guardian Bitroom~
+12000 == Guardian Leader
+12001 == Senior Guardian
+12002 == Elder Guardian
+12003 == Leader of VB
+12004 == Leader of Krilin
+12005 == Leader of Earandam
+
+Fun note- When you induct someone, data them with the age at which they become senior and elder!
+
+12006 == Lag on requesting eq.
+12007 == Received 1000 pts with VB Guard faction.
+12008 == Friend of VB Guard faction received \@friend status\@ info.
+12009 == Affect duration toggle for gate-guard reporting
+~
+~
+0
+0 565622 0
+W 5 0 0
+Z 5 5
+S
+#12001
+Inside the Gates of the Hall of Law~
+The enormous building known as the Hall of Law towers grandly to the
+east.  A pair of vast iron gates stand before the entrance, ready to guard
+the Hall from intruders.  The walls of the building are built from large
+blocks of pure gray marble, fit together almost seamlessly.  A stairway of
+the same gray marble ascends eastward into the Hall of Law.  
+~
+~
+1
+0 262194 1
+D3
+~
+~
+0 0 3528
+D4
+~
+~
+0 0 12002
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12002
+The Central Hall~
+The interior of the Hall of Law spreads in all directions, the gray
+marble walls lined with paintings of great Law-givers and -enforcers.  The
+vaulted ceiling of the hall arches high overhead, inlaid with intricately
+patterned silver.  To the north, east, and south, broad corridors lead to
+the various wings of the Hall of Law.  A wide marble stairway leads downward
+to the west.  
+A black marble plaque is set into the wall.
+~
+~
+1
+0 262202 0
+E
+black~
+The plaque reads:
+Here stand what remains of Jidriln and Biezkul. Formerly mighty warriors of
+Order, in their zeal they were overcome by lust for power, and foolishly
+bargained with the Demon Courts of Logor. Their ill-advised dealings with
+the Void left them unable to fulfill their duties as Guardians.
+  
+They stand here today as a warning to all Guardians. Do not lust for power;
+do not let zeal for Law become blindness; and do not betray your duty to the
+Hall.
+~
+E
+marble~
+The plaque reads:
+Here stand what remains of Jidriln and Biezkul. Formerly mighty warriors of
+Order, in their zeal they were overcome by lust for power, and foolishly
+bargained with the Demon Courts of Logor. Their ill-advised dealings with
+the Void left them unable to fulfill their duties as Guardians.
+  
+They stand here today as a warning to all Guardians. Do not lust for power;
+do not let zeal for Law become blindness; and do not betray your duty to the
+Hall.
+~
+E
+plaque~
+The plaque reads:
+Here stand what remains of Jidriln and Biezkul. Formerly mighty warriors of
+Order, in their zeal they were overcome by lust for power, and foolishly
+bargained with the Demon Courts of Logor. Their ill-advised dealings with
+the Void left them unable to fulfill their duties as Guardians.
+  
+They stand here today as a warning to all Guardians. Do not lust for power;
+do not let zeal for Law become blindness; and do not betray your duty to the
+Hall.
+~
+D0
+~
+~
+0 0 12003
+D1
+~
+~
+0 0 12008
+D2
+~
+~
+0 0 12013
+D5
+~
+~
+0 0 12001
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12003
+The North Hall~
+A broad corridor constructed of gray marble walls leads from the center
+of the Hall of Law, northward into the Hall of Readiness.  High above, the
+vaulted ceiling of the corridor gleams with a soft light, the inlaid silver
+glittering from an indistinct source of lumination.  
+~
+~
+1
+0 262202 0
+D0
+~
+~
+0 0 12005
+D2
+~
+~
+0 0 12002
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12004
+The Chamber of Training~
+This large, square room is walled on all sides with gray marble, save to
+the east where a passage leads to an intersection.  The floor is a sandy
+fighting pit, the marble stone of the eastern passage rising a foot above
+the dirt.  Here, Guardians of Law hone their skills to better apprehend the
+lawless and defend the cities.  
+~
+~
+1
+0 262202 0
+D1
+~
+~
+0 0 12005
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12005
+The Hall of Readiness~
+The Hall of Readiness is a large chamber with gray marble walls and
+floor, and a vaulted ceiling that arches high overhead.  It is here that the
+Guardians of Law gather to prepare themselves for battle against criminals,
+or for their grueling patrols of the cities.  To the north, a healer
+remedies injuries, west lies the training chamber, and east the outfitter
+stands.  
+~
+~
+1
+0 262202 0
+D0
+~
+~
+0 0 12007
+D1
+~
+~
+0 0 12006
+D2
+~
+~
+0 0 12003
+D3
+~
+~
+0 0 12004
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12006
+The Outfitting Chamber~
+The Commissary of the Guardians of Law is a large storage room, lined
+with shelves and crates of supplies, food, and general equipment.  Crowding
+shelves toward the back of the room are potions and scrolls reserved for the
+use of the Guardians.  An iron plaque is mounted on the wall.  
+~
+~
+1
+0 262202 0
+E
+plaque~
+Guardians of Law -- A donation is required for the use of these items. 
+The donation will be used for the acquisition of more such goods.
+LIST will show the goods available.
+
+To request a set of standard armor, say the words \#requesting equipment\#. 
+Be aware that these items can only be requested every few hours, and are not
+to be used by non-Guardians.  Senior Guardians shall be entrusted with more
+powerful goods, and are not to allow them to lesser Guardians.  
+~
+E
+iron~
+Guardians of Law -- A donation is required for the use of these items. 
+The donation will be used for the acquisition of more such goods.  LIST will
+show the goods available.  
+
+To request a set of standard armor, say the words \#requesting equipment\#. 
+Be aware that these items can only be requested every few hours, and are not
+to be used by non-Guardians.  Senior Guardians shall be entrusted with more
+powerful goods, and are not to allow them to lesser Guardians.  
+~
+D3
+~
+~
+0 0 12005
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12007
+The Infirmary of the Guardians~
+This long hallway is furnished with soft couches and beds, and lined with
+shelves containing bandages, healing salves, and other medicinal mixtures. 
+The walls and floor are constructed of familiar gray marble and adorned with
+holy symbols of the Gods of Law.  A plaque is mounted on the wall.  
+~
+~
+1
+0 262202 0
+E
+plaque~
+Guardians of Law
+Healing of many sorts may be obtained in this infirmary. Simply say
+one of the following phrases, and the priest will attend you:
+I am injured
+I am poisoned
+I am blind
+I am cursed
+I am diseased
+I am fatigued
+~
+D2
+~
+~
+0 0 12005
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12008
+The East Hall~
+A broad corridor constructed of gray marble walls leads from the center
+of the Hall of Law to the west, eastward into its very heart.  High above,
+the vaulted ceiling of the corridor gleams with a soft light, the inlaid
+silver glittering from an indistinct source of lumination.  
+~
+~
+1
+0 262202 0
+D1
+~
+~
+0 0 12010
+D3
+~
+~
+0 0 12002
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12009
+A Guard Station~
+A small alcove build into the north wall of the Hall of Law houses the
+defenders of the Vault, the last line of defense against intruders.  The
+walls are built of sturdy gray marble, mounted with two shields bearing the
+symbol of a golden crown.  To the south is the entrance to the Vault.  
+~
+~
+1
+0 262202 0
+D2
+~
+~
+0 0 12010
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12010
+The Hall of Law~
+The Hall of Law is a large chamber at the heart of the Guardian
+headquarters, a broad room with familiar gray marble walls and floor, the
+vaulted ceiling arching high overhead.  To the east, the Vault of Law is
+sealed by a massive iron door, protecting the various treasure gathered for
+the use of the Guardians.  North and south are guard stations, built in
+defense of the Vault.  A plaque is mounted on the wall.  
+~
+~
+1
+0 262202 0
+E
+plaque~
+Guardians of Law
+To see the contents of the Vault, speak the words:
+Show me the Vault.
+To prepare yourself to receive an item, speak the words:
+I want something from the Vault.
+To receive an item from the Vault, speak the words:
+Bring me: <item>
+To store something in the Vault, give it to the golem.
+~
+D0
+~
+~
+0 0 12009
+D2
+~
+~
+0 0 12012
+D3
+~
+~
+0 0 12008
+C GUARDIAN~
+W 0 1 0
+Z 5 5
+S
+#12011
+The Vault of Law~
+The Vault of Law is a massive room constructed with sturdy gray marble
+walls, and sealed from outsiders by an impenetrable iron door.  Against the
+north wall are sets of shelves, racks, and storage cases, designed to hold
+the treasures gathered for the use of the Guardians.  At the south end of
+the room is an altar, glowing with power.  
+~
+~
+3
+0 270522 0
+D3
+~
+~
+0 0 12010
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12012
+A Guard Station~
+A small alcove build into the south wall of the Hall of Law houses the
+defenders of the Vault, the last line of defense against intruders.  The
+walls are built of sturdy gray marble, mounted with two shields bearing the
+symbol of a golden crown.  To the north is the entrance to the Vault.  
+~
+~
+1
+0 262202 0
+D0
+~
+~
+0 0 12010
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12013
+The South Hall~
+A broad corridor constructed of gray marble walls leads from the center
+of the Hall of Law, southward into the Hall of Ideals.  High above, the
+vaulted ceiling of the corridor gleams with a soft light, the inlaid silver
+glittering from an indistinct source of lumination.  
+~
+~
+1
+0 262202 0
+D0
+~
+~
+0 0 12002
+D2
+~
+~
+0 0 12015
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12014
+The Office of the Guardian Leader~
+This walls and floors of this office are made of the same gray marble as
+the rest of the Hall of Law.  A shelf in the back stands for the filing of
+paperwork and a solid oaken desk sits in the center of the chamber.  A small
+blue orb lies on the surface of the desk, mounted on a base of gossamer
+golden thread as it sheds a soft glow about the room.  
+~
+~
+1
+0 262330 0
+E
+plaque~
+Laws are as follows. These laws apply to any region which has been designated 
+by the Guardians, and will be enforced mercilessly. Any who break the 
+law will be marked for a Reward. They will then be hunted by the 
+Guardians, and indeed by many of the land, for the god Iandir will 
+reward their killer. For more information about rewards, read the scroll 
+entitled \#help reward\#.
+Areas designated as law-observant are as follows: Var Bandor, Krilin 
+Fortress, Earendam, and the Hall of Law.
+1. Any person who attacks another person in a law-observant area will be 
+marked for a reward. Members of the Guardians may attack one who has 
+been marked at any time, for it is their calling to punish the 
+law-breakers. Guardians may choose to deputize non-chaotic people, who 
+are then temporarily allowed to attack criminals in law-observant areas. 
+These are the only exceptions.
+2. Any person who steals or attempts to steal from another within a law-
+observant area will be marked for a reward. The following offenses will 
+be considered theft: Taking items from another person\@s corpse without
+the owner\@s consent, taking items from the corpse of a recently-slain
+criminal, stealing items from another person\@s pet or mercenary or the 
+corpse thereof, and the actual act of stealing an item from another 
+person\@s possession. Members of the Guardians of Law, or deputies operating 
+under the instructions of a member of the Guardians of Law may at times take
+items from a person\@s corpse in the line of duty. This includes holding
+items to prevent theft and confiscating items to punish an offender.
+ 
+3. Any person who attacks a guildguard within a law-observant area will 
+be marked for a reward. Guardians of Law may attack guildguards in 
+pursuit of criminals.
+4. Any non-Guardian who enters the Hall of Law will be marked for a reward.
+5. Any person who recklessly uses a deadly skill within a law-observant
+area will be marked for a reward. A deadly skill will be defined as a
+skill or spell that can cause bodily damage to a person. Reckless use will
+be defined as use that has the potential to affect bystanders (ie, area-
+affect spells). Included are skills that make an area dangerous to
+travel, such as Wall of Fire or traps.
+ 
+6. Any person who directly aids a marked person will also be marked for 
+a reward. This includes supplying the marked person with potions, 
+scrolls, healing, refreshment, food, water, weapons, armor, and other 
+means of aid. Those who choose a marked person as a travelling companion 
+are advised to be very cautious, lest they run afoul of the law.
+~
+D1
+~
+~
+0 0 12015
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12015
+The Hall of Ideals~
+The Hall of Ideals is a large chamber with gray marble walls and floor,
+and a vaulted ceiling that arches high overhead.  It is here that the
+Guardians of Law gather to learn of the rules and laws that bind them, with
+two rooms of learning to the east and south.  West, the office of the
+Leaders of the Guardians lies and to the north, a hall leads to the center
+of the Hall of Law.  
+~
+~
+1
+0 262202 0
+D0
+~
+~
+0 0 12013
+D1
+~
+~
+0 0 12016
+D2
+~
+~
+0 0 12017
+D3
+~
+~
+131072 0 12014
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12016
+The Shrine of Law~
+A trio of small altars stand in this small, square room.  By the north
+wall, an altar of the same gray marble as the walls and floor stands, the
+Crown of Iandir carved into it.  Opposite it, by the southern wall, an ebony
+altar stands, a single line of slightly-darker obsidian scoring its surface,
+the mark of the Black Staff of Rveyelhi.  Against the western wall, a simple
+altar cast from bronze is etched with the scales of Jalassa.  A golden
+plaque displaying the Laws of Iandir is set into the wall over the marble
+altar, and an iron plaque is set into the eastern wall, divided into
+sections and filled with engravings.  
+~
+~
+1
+0 262202 0
+E
+bronze~
+A simple scale has been etched into the top of this plain, bronze altar.  
+~
+E
+organization~
+The Guardians of Law are a regimented force, divided by their home town
+and time served.  
+
+Guardians are based in their hometowns, and hold jurisdiction there.  A
+native guardian can overturn a mark made by a non-native Guardian of equal
+or lesser rank, if he feels it is unjust and incorrect.  The native
+Guardians of a given town are lead by the town Leader, if one exists.  The
+Guardian Leader of a town holds final judgement on all marks in his city,
+and answers only to the Guardian Leader in matters of his guarded city.  
+
+The Leader of House Guardian holds final judgement in all marks.  
+
+Guardians who have served the Halls of Law for twenty years are marked as
+Senior Guardians, and hold rank over those who have not served at least
+twenty years.  Those who have served for fifty years are known as Elder
+Guardians, and hold rank over those who have not served at least over fifty
+years.  The Town Leaders and the Guardian Leader hold rank over Elder and
+Senior guardians.  
+
+A Town Leader can enter without violence the guilds of his city by speaking
+the words \@Allow me entrance.  \@ The Leader of the Guardians may access
+guilds in any city in this way as well.  This power is to be used ONLY in
+the pursuit of criminals.  Abuse of this for any other reason will result in
+removal from house Guardian.  
+~
+E
+iron~
+The plaque is engraved with the following words:
+ 
+The Regulations Concerning Guardian Behavior
+Guardians should read concerning each topic listed.
+Marks
+Witnesses
+Deputies
+Raiding
+Guardians
+Organization
+~
+E
+plaque~
+The iron plaque, or the golden one?
+~
+E
+marks~
+When a Guardian has gathered sufficient evidence that a person has
+committed a crime, the Guardian must mark the person for a Reward.  If the
+evidence is insufficient, the Guardian must either continue investigation,
+or drop the case.  It is better to be sure of a person\@s guilt before
+placing a mark, rather than placing a mark and then seeking answers.  If you
+are unsure of how to proceed in a given situation, always ask a senior
+Guardian, or write a scroll to all Guardians concerning the matter. 
+Guardians who err only tarnish their house\@s reputation.  Once a person is
+determined to be guilty, they must be punished.  Pardons are never to be
+granted unless the mark was wrongfully placed.  
+
+When marking a criminal, the Guardian should tell the violator why they
+are being punished. At minimum, they should know which law they broke.
+~
+E
+witnesses~
+Witnesses may be accepted as evidence, provided that there are two or
+more people (other than the victim) who can verify that the crime took
+place.  (Or, of course, one Guardian.)  The testimony of known criminals or
+chaotic persons should be disregarded.  A confession of a crime, delivered
+to a Guardian, is always considered sufficient evidence.  
+~
+E
+deputies~
+The deputization process consists of confirming that a non-chaotic person
+is willing to act as a deputy, then declaring them to be a deputy.  The
+Guardian should inform all other Guardians of the deputization.  The deputy
+may then legally attack criminals within a law-observant area.  Usually
+deputization is declared for the duration of one specific task, such as
+bringing a certain criminal or criminals to justice.  Deputization never
+continues after either Guardian or deputy has left the land.  A deputy may
+attack criminals, but must obey all other laws as written.  
+~
+E
+raiding~
+Guardians should not raid other houses unless the other house has acted
+against the Guardian house recently, or unless the house in question has a
+number of members presently in violation of the law.  It is left to the
+judgement of the Guardians present whether the house in question has given
+sufficient offense.  However, Guardians are expected to use their common
+sense, and will be punished for acting unreasonably.  
+~
+E
+guardians~
+A Guardian should always obey the orders of a senior Guardian.  If you
+think a superior has made a grave mistake, or has broken a law, consult a
+higher authority within the House.  Never remove a mark placed by another
+Guardian; if you think it is improper, consult a higher authority.  
+
+~
+E
+golden~
+Laws are as follows.  These laws apply to any region which has been
+designated by the Guardians, and will be enforced mercilessly.  Any who
+break the law will be marked for a Reward.  They will then be hunted by the
+Guardians, and indeed by many of the land, for the god Iandir will reward
+their killer.  For more information about rewards, read the scroll entitled
+\#help reward\#.  
+
+Areas designated as law-observant are as follows: Var Bandor, Merchant
+Headquarters, Krilin Fortress, Earandam, The Patrician\@s Palace, Gaald and
+the Hall of Law.  
+
+1.  Any person who attacks another person in a law-observant area will be
+marked for a reward.  Members of the Guardians may attack one who has been
+marked at any time, for it is their calling to punish the law-breakers. 
+Guardians may choose to deputize non-chaotic people, who are then
+temporarily allowed to attack criminals in law-observant areas.  These are
+the only exceptions.  
+
+2.  Any person who steals or attempts to steal from another within a law-
+observant area will be marked for a reward.  The following offenses will be
+considered theft: Taking items from another person\@s corpse without the
+owner\@s consent, taking items from the corpse of a recently-slain criminal,
+stealing items from another person\@s pet or mercenary or the corpse thereof,
+and the actual act of stealing an item from another person\@s possession. 
+Members of the Guardians of Law, or deputies operating under the
+instructions of a member of the Guardians of Law may at times take items
+from a person\@s corpse in the line of duty.  This includes holding items to
+prevent theft and confiscating items to punish an offender.  
+
+3.  Any person who attacks a guildguard or the guard of one of the three
+Guardian offices within a law-observant area will be marked for a reward. 
+Guardians of Law may attack guildguards in pursuit of criminals.  
+
+4.  Any non-Guardian who enters the Hall of Law will be marked for a reward.
+
+
+5.  Any person who recklessly uses a deadly skill within a law-observant
+area will be marked for a reward.  A deadly skill will be defined as a skill
+or spell that can cause bodily damage to a person.  Reckless use will be
+defined as use that has the potential to affect bystanders (ie, area- affect
+spells).  Included are skills that make an area dangerous to travel, such as
+Wall of Fire or traps.  
+
+6.  Any person who directly aids a marked person will also be marked for a
+reward.  This includes supplying the marked person with potions, scrolls,
+healing, refreshment, food, water, weapons, armor, and other means of aid. 
+Those who choose a marked person as a travelling companion are advised to be
+very cautious, lest they run afoul of the law.  
+~
+E
+altar~
+The marble one, or the ebony?
+~
+E
+marble~
+The Crown of Law has been engraved into the top of this simple,
+rectangular altar.  
+~
+E
+ebony~
+A single, straight line of obsidian is engraved into the top of this
+simple, ebony altar.  
+~
+D3
+~
+~
+0 0 12015
+A 268440576
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12017
+The Chamber of the Guardians~
+The Chamber of the Guardians is a small, square room with gray marble
+walls and floor.  It is here that the Guardians of Law gather to learn of
+the rules and laws that bind them.  The south wall is dominated by a large
+iron plaque, divided into sections and filled with engravings.  
+~
+~
+1
+0 262202 0
+E
+stones~
+The stones of power are the key to accessing the powers of the House. They
+are to be guarded carefully when in our possession, and sought vigorously
+when they are elsewhere. Any Guardian who comes into possession of a stone
+should seek to secure it in the Vault as soon as possible. See the section
+of the plaque marked \@Powers\@ for more information on the number of stones
+required for each power.
+~
+E
+plaque~
+The plaque is engraved with the following words:
+Powers
+Stones
+ 
+You may look at a word for more information on that subject.
+~
+E
+powers~
+The first-tier power of the Guardian House is known as Criminal. This skill
+enables the Guardian to mark people for a reward. Read the scroll entitled
+help reward. This power requires no stones for its use.
+ 
+The second-tier power of the Guardian House is known as Perception. This
+skill allows the Guardian to see hidden and invisible beings. A Guardian
+under the influence of Perception will also be able to discern by the sound
+of the yelling whether a citizen is truly being attacked, or is trying to
+deceive. This power currently requires two stones for its use.
+ 
+The third-tier power of the Guardian House is known as Aegis of Law. This
+spell surrounds the Guardian with a shield which will block half of all
+damage caused by a criminal. It will also block one-fourth of the damage
+caused by those of chaotic mind. This power requires four stones for its
+use.
+ 
+The fourth-tier power of the Guardian House is known as Call Guards. This
+spell is to be cast on a criminal within the same general area as the
+Guardian. The spell will summon several guards who will then seek out the
+criminal and attempt to slay him, or at least detain him until the Guardian
+is able to arrive. This power requires seven stones for its use.
+ 
+The fifth-tier power of the Guardian House is known as Locate Criminal. This
+spell will reveal to a Guardian the location and companions of any criminal.
+This power requires ten stones for its use.
+~
+D0
+~
+~
+0 0 12015
+C GUARDIAN~
+W 5 0 0
+Z 5 5
+S
+#12018
+The Guardian Helpfile Rider Room~
+The Guardians of Law are a regimented force, divided by their home town
+and time served.  
+
+Guardians are based in their hometowns, and hold jurisdiction there.  A
+native guardian can overturn a mark made by a non-native Guardian of equal
+or lesser rank, if he feels it is unjust and incorrect.  The native
+Guardians of a given town are lead by the town Leader, if one exists.  The
+Guardian Leader of a town holds final judgement on all marks in his city,
+and answers only to the Guardian Leader in matters of his guarded city.  
+
+The Leader of House Guardian holds final judgement in all marks.  
+
+Guardians who have served the Halls of Law for twenty years are marked as
+Senior Guardians, and hold rank over those who have not served at least
+twenty years.  Those who have served for fifty years are known as Elder
+Guardians, and hold rank over those who have not served at least over fifty
+years.  The Town Leaders and the Guardian Leader hold rank over Elder and
+Senior guardians.  
+~
+~
+0
+0 565254 0
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 12001 spec_executioner
+M 12002 spec_executioner
+M 12003 spec_executioner
+M 12005 spec_executioner
+M 12006 spec_executioner
+M 12007 spec_executioner
+M 12008 spec_executioner
+S
+
+
+
+#RESETS
+D 0 12015 3 131072
+M 0 12002 8 12001 1
+E 0 12030 0 16
+M 0 12004 1 12001 1
+M 0 12016 1 12002 1
+M 0 12017 1 12002 1
+M 0 12002 8 12003 1
+E 0 12030 0 16
+M 0 12003 4 12003 1
+M 0 12006 1 12004 1
+E 0 12031 0 20
+G 0 12029 0
+E 0 12028 0 16
+M 0 12002 8 12005 1
+E 0 12030 0 16
+M 0 12008 1 12006 1
+G 0 12017 0
+G 0 12018 0
+G 0 12019 0
+G 0 12020 0
+O 0 12021 0 12006
+M 0 12005 1 12007 1
+M 0 12003 4 12009 1
+M 0 12001 1 12010 1
+E 0 12001 0 17
+E 0 1272 0 20
+M 0 12010 1 12011 1
+M 0 12013 1 12012 1
+M 0 12002 8 12013 1
+E 0 12030 0 16
+M 0 12003 4 12013 1
+M 0 12015 1 12014 1
+O 0 12033 0 12014
+O 0 12034 0 12014
+O 0 12032 0 12014
+M 0 12014 1 12015 1
+M 0 12002 8 12015 1
+E 0 12030 0 16
+M 0 12011 1 12017 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+12008 0 0 0 0 0 100 100 0 24 0
+0
+
+
+
+#$

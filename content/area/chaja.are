@@ -1,0 +1,6517 @@
+#AREADATA
+Name The Chaja Caves~
+Builders Iandir Iacobos~
+VNUMs 2700 2899
+Credits [ 5 35] Iandir    The Chaja Caves~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 5 0 0
+Shades 5 5
+Stone 82
+End
+
+
+
+#MOBILES
+V4 2701
+miner~
+a miner~
+A miner bends to his work, carving away at the cave wall.
+~
+Hailing from a local city, this miner has joined the mining expedition
+seeking valuable ores within these caves.
+~
+human~
+water scholar~
+AGL 0 Z G 0
+20 10 12d40+333 20d100+1 4d5+10 bash~
+pound~
+0 0 0 0
+IJNU 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 1~
+emote scrapes away a piece of ore from the cave wall.
+~
+|
+V4 2702
+miner burly~
+a burly miner~
+A burly miner, hardened by years of work, digs tirelessly at the cave wall.
+~
+Hardened by years of mining work, this human miner is strapping with
+muscles, and has stern look on his face.
+~
+human~
+water scholar~
+AGL 0 0 G 0
+25 17 12d45+707 25d100+1 5d5+13 slash~
+chop~
+-2 -2 -2 0
+CDJKU 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 1~
+emote glances at you.
+~
+|
+V4 2703
+leader miner mining~
+the mining leader~
+The leader of the mining expedition supervises his men\@s progress.
+~
+This is the man who organized the mining expedition out of nearby Krilin,
+and who financed the group\@s mining equipment.  He seems to be disturbed by
+something, perhaps a recent loss, and he casts nervous glances at the dark
+caves to the north.  
+~
+human~
+water scholar~
+AGL B 0 G 0
+30 15 1583d1+1 30d100+1 5d6+15 slash~
+slash~
+-3 -3 -3 0
+CFJKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 130 -1
+AHMV ABCDEFGHIJK A medium unknown
+>speech_prog p ~
+\\\\ the quest stuff
+if isgood($n)
+  if compx() == yes
+    tell $n Ah, my gratitude is eternal! The artifact was an enchanted compass that directed us to the richest ores. Without it we are lost, and the fool chaja stole into the lower reaches of these caves!
+    tell $n If you can return it to us, I will reward you with this heirloom, a magic pendant.
+    break
+  endif
+endif
+\\\\ the stone stuff
+if isnpc($n)
+or class($n) != 1
+or chosenpath($n) != wakened stone
+  if rand(1)
+    if rand(50)
+      snort $n
+    else
+      eyebrow $n
+    endif
+  endif
+else
+  if compx() == stone
+  or compx() == rock
+  or compx() == granite
+  or compx() == shale
+  or compx() == sandstone
+  or compx() == obsidian
+  or compx() == marble
+    say You can find common stone easily enough. Granite tends to be the main mass of the great mountain ranges, and it makes up most of the deeper stone layers as well.
+    say Sandstone is more plentiful in the western regions round about Earendam, or in the dry southlands. Shale, though, is found in and around great river valleys and swamps.
+    say Regions with past volcanic activity will have a lot of obsidian. And marble may be layered with any of the more common stone, depending on the location.
+    break
+  endif
+  if compx() == gem
+    say Gems? I\@ve got a friend name of Hyuet, a run-away chaja slave, who told me all about the gems he worked to find in the down-below tunnels.
+    break
+  endif
+  if compx() == opal
+    say Hyuet told me about opals all over a cave way down below, but since the srryn took it over, the shuddeni don\@t bother with it anymore, so he never had to work down there.
+    break
+  endif
+  if compx() == jade
+    say Hyuet told me about his slave gang working off a tunnel by the kkhilgh. Finding some nice jade, they were, til a kkhilgh warrior found them! Turned into a bloody mess, and that was how he escaped.
+    break
+  endif
+  if compx() == bloodstone
+    say I heard rumors about a cave in Nendor that had some bloodstone in it, but the bandits got too thick around there, and no one\@s been able to get it mined.
+    break
+  endif
+  if compx() == onyx
+  or compx() == topaz
+    say Hyuet says that he\@s seen sign of onyx and topaz down in the black temple, but you won\@t catch anyone of us trying to go down there. Thank you but I\@ll keep my hide unflayed!
+    break
+  endif
+  if compx() == quartz
+    say Yeah, we\@ve been taking a fair amount from the veins here. It looks like there\@s plenty to last us for long while to come.
+    break
+  endif
+  if compx() == aquamarine
+    say There\@s a valley on the edge of the Brintors, if not beyond. And old place, gives me the creeps. I once did some prospecting in the area, found a bit of aquamarine there, but didn\@t think a mine would pan out.
+    break
+  endif
+  if compx() == ruby
+    say Hyuet says the shuddeni overseers keep the miners in line by sending a few down to collect rubies every now and then. If they come back at all, it is blackened and burned.
+    emote shakes his head, scowling.
+    break
+  endif
+  if compx() == diamond
+  or compx() == emerald
+  or compx() == sapphire
+  or compx() == amethyst
+    say I wish I knew where to find those! I doubt I\@d have to spend my time picking through rubble and dust if I did.
+    break
+  endif
+  if rand(5)
+    say I don\@t know about that, but I do know a thing or two about stone and gems.
+  endif
+endif
+~
+>give_prog compass enchanted~
+if isgood($n)
+tell $n Ah! Our compass is returned! With deep gratitude, I reward you with this enchanted amulet.
+mpoload 2709
+give amulet $n
+endif
+mpjunk compass
+mpjunk compass
+mpjunk compass
+mpjunk compass
+mpjunk compass
+mpjunk compass
+mpjunk compass
+mpjunk compass
+mpjunk compass
+~
+>greet_prog 100~
+if remembers($n)
+else
+if isgood($n)
+tell $n Greetings, friend. We are in dire trouble, for a party of loathsome chaja crept into our camp and stole a valuable artifact. Can you help us regain what was lost? Please say \@yes\@!
+endif
+endif
+mpremember $n
+~
+|
+V4 2704
+snail cave~
+a cave snail~
+A large white cave snail crawls along the stone wall.
+~
+With a white shell measuring 3\@ in diameter, the large white cave snail
+crawls up the cave wall. Its long, rasping tongue is covered with sharp
+teeth, and it spits acid on the cave wall to aid its digestion.
+~
+centipede~
+water scholar~
+AGX 0 Z N 0
+9 5 5d20+141 9d10+50 2d5+5 acid~
+corrosive acid~
+0 0 0 0
+0 R
+26 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMOSV ABCDEFGHIJKLMQ A small unknown
+V4 2705
+beetle black~
+the black beetle~
+A large black cave beetle scurries along.
+~
+Measuring about 4\@ in length, this beetle scurries along the cave floor.
+~
+centipede~
+water scholar~
+AG 0 Z N 0
+11 5 5d30+180 5d10+20 3d5+1 pierce~
+bite~
+0 0 0 0
+F 0
+26 0 0 0 0 -20 20 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMOV ABCDEFGHIJK A small unknown
+>rand_prog 2~
+emote emits a loud clicking noise, warning you away.
+~
+|
+V4 2706
+red beetle~
+the red beetle~
+A red cave beetle flexes its mandibles threateningly.
+~
+The large red cave beetle walks slowly along the cave, flexing its sharp
+mandibles menacingly, and occasionally emitting a loud click. The abdomen
+of the beetle shines with a natural red luminesence.
+~
+centipede~
+water scholar~
+AG 0 Z N 0
+12 6 5d24+220 10d30+20 3d5+7 fire~
+flaming bite~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 50 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMOV ABCDEFGHIJK A small unknown
+>rand_prog 2~
+emote emits a loud clicking noise, warning you away.
+~
+>death_prog 20~
+mpecho The red beetle\@s glowing abdomen falls, intact, from its body.
+mpoload 2701
+~
+|
+V4 2707
+grub cave white~
+the cave grub~
+A large white cave grub squirms sightlessly.
+~
+A large white cave grub, its 3\@ body covered with a protective mucus layer,
+squirms along the floor of the cave.
+~
+centipede~
+water scholar~
+AG 0 Z N 0
+7 0 3d12+90 0d0+0 2d4+1 acid~
+digestion~
+5 5 5 5
+0 0
+26 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMORV ABCDEFGHIJK A medium unknown
+V4 2708
+bat cave~
+the cave bat~
+A black cave bat clings to the wall.
+~
+The black cave bat has large, leathery wings, sharp claws and teeth, and
+wide glaring eyes. It crawls along the cave wall, turning its head nervously 
+to test the sounds around it.
+~
+bat~
+water scholar~
+AGN 0 TZ N 0
+7 4 5d8+134 7d10+100 2d3+4 slash~
+claw~
+4 4 4 6
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGV ACDEFHJKP A medium unknown
+V4 2709
+lizard pale gray~
+the gray lizard~
+A pale gray cave lizard stalks along, searching for cave grubs.
+~
+A 4\@ long lizard with powerful jaws, this subterannean reptile has lost the
+use of its eyes from generations of living in the dark. The long claws are
+perfect for climbing cave walls, and the sharp teeth for crushing the armor
+of cave beetles.
+~
+lizard~
+water scholar~
+AGN 0 Z N 0
+20 10 12d40+333 0d0+0 4d5+10 pierce~
+bite~
+0 0 0 0
+F 0
+26 0 0 0 0 0 0 0 0 -33 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGXc ACDEFHKQV A medium unknown
+V4 2710
+fish cave~
+the cave fish~
+A sightless cave fish swims about.
+~
+White and eyeless, this cave fish has evolved to live in subterranean
+cave pools. Hunting insect larvae, the fish darts about the dark water.
+~
+human~
+water scholar~
+ABGX 0 0 N 0
+5 0 1d17+42 0d0+0 2d3+2 pierce~
+bite~
+0 0 0 0
+0 R
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMVb ABCDEFGHIJKMOW A medium unknown
+V4 2711
+monstrosity tentacled~
+the tentacled monstrosity~
+A seething mass of tentacles and slime, the monstrosity rises from the water to the attack.
+~
+A horrifying mass of tentacles and slime, this monstrosity of unknown origin
+lies in wait for fish or other creatures to swim by in the cave pool.
+~
+demon~
+water scholar~
+ABGX 0 BFQZ E 0
+35 4 12d81+677 0d0+0 5d8+18 bash~
+suction~
+-5 -5 -5 -5
+ADFHKN BR
+26 0 0 0 0 0 0 0 33 33 0 0 0 0 -33 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 140 -1
+ABCHMSV ABCDEFGHIJKNPV A medium unknown
+>greet_prog 100~
+mpecho {gThe water boils as a mass of tentacles bursts forth and reaches for you!{x
+mpkill $n
+~
+|
+V4 2712
+chaja servant gray gray-skinned~
+the chaja~
+A gray-skinned chaja servant rests on a stone.
+~
+A tall, thick-bodied humanoid, the chaja sits on a rock and stares at the
+floor, grumbling curses in a strange-sounding tongue. His gray skin is
+rough and gravelly in appearance, and his long black hair frames an ugly
+face with two white eyes that appear useless.
+~
+chaja~
+water scholar~
+AGL 0 FJZ E 0
+21 11 11d40+358 20d100+10 4d5+10 pierce~
+pierce~
+0 0 0 0
+CIKO 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 33 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMVW ABCDEFGHIJK G medium unknown
+V4 2713
+chaja large servant~
+the large chaja~
+A large chaja servant is working on setting up the camp.
+~
+A hulking gray-skinned humanoid, the large chaja is working to carry out
+his shuddeni master\@s orders. As he hauls the group\@s equipment around the
+encampment, his thick muscles bulge from the work.
+~
+chaja~
+water scholar~
+AGL 0 FJZ E 0
+24 11 11d55+487 10d50+50 5d6+1 slash~
+cleave~
+-2 -2 -2 -2
+CEJKO 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 33 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 10 -1
+AHMVW ABCDEFGHIJK G medium unknown
+V4 2714
+shuddeni leader~
+the shuddeni leader~
+The shuddeni leader of the party rests here, accepting the service of his attendants.
+~
+A short, exceedingly pale figure with stick-thin arms long, delicate
+hands, the shuddeni leader rests on a bedroll as the chaja servants set up
+the camp.  The hairless head is creased by the deep wrinkles normal to the
+shuddeni people, and the eyeless sockets give the face a skull-like visage. 
+~
+shuddeni~
+water scholar~
+AGL 0 ADFJZ E 0
+30 2 13d61+548 0d0+0 5d6+15 energy~
+magic~
+-9 -9 -9 0
+K 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 33 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 120 -1
+AHMVW ABCDEFGHIJK AG medium unknown
+>load_prog 100~
+speak common
+~
+>give_prog compass enchanted~
+if isevil($n)
+tell $n Yesssss, this is a most pleasant development. Take this ring and be on your way.
+mpoload 2710
+give ring $n
+endif
+mpjunk all
+~
+>speech_prog p yes~
+if isevil($n)
+tell $n Aaaaahh. A valuable enchanted compass was being carried by my bumbling servant, and he has disappeared. If you will return this compass to me, I will repay you with an enchanted ring.
+endif
+~
+>speech_prog p yes!~
+if isevil($n)
+tell $n Aaaaahh. A valuable enchanted compass was being carried by my bumbling servant, and he has disappeared. If you will return this compass to me, I will repay you with an enchanted ring.
+endif
+~
+>greet_prog 100~
+mpecho The shuddeni leader hisses at you.
+if isevil($n)
+tell $n Aaaahhh. Dark one, I will refrain from dispatching you if you will enter my service. A valuable treasure has been lost. Will you serve me? Say \@yes\@!
+endif
+~
+|
+V4 2715
+slug cave cslug white~
+the cave slug~
+A large white cave slug crawls along the cavern wall.
+~
+Measuring 7\@ in length, this enormous white cave slug crawls slowly up
+the cavern wall, rasping away the fungus with its long tongue and sharp
+teeth.  
+~
+centipede~
+water scholar~
+AGX 0 DFJZ N 0
+24 10 12d45+716 0d0+0 4d6+9 pierce~
+bite~
+-3 -3 -3 -3
+0 b
+26 0 0 -33 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMOSV ABCDEFGHIJKLM A medium unknown
+V4 2716
+worm cave large enormous~
+the large worm~
+An enormous cave worm inches along, its mandibles clacking.
+~
+The largest worm natural to this world, the white cave worm measures 10 feet
+in its adult stage. While lacking the armament of the cave beetles, or the
+resilience of the giant slugs, the cave worm defends itself with a pair of
+slashing pincers.
+~
+centipede~
+water scholar~
+AGX 0 FZ N 0
+23 12 10d50+305 0d0+0 4d5+11 slash~
+slice~
+2 2 2 2
+0 0
+26 0 0 -33 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMOV ABCDEFGHIJK A medium unknown
+V4 2717
+centipede yellow~
+the yellow centipede~
+A long, yellow centipede scurries about.
+~
+Its many legs scurrying frantically, this large yellow centipede rushes
+about the cave, seeking food. It clacks its pincers warningly as it senses
+your presence.
+~
+centipede~
+water scholar~
+AGX 0 FZ N 0
+18 9 9d35+327 0d0+0 3d5+10 pierce~
+bite~
+-2 -2 -2 -2
+F 0
+26 0 0 0 0 -20 20 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMORV ABCDEFGHIJK A medium unknown
+V4 2718
+chaja hunter~
+the chaja hunter~
+A chaja hunter crouches against the cave wall, awaiting his prey.
+~
+A young chaja at the peak of his physical abilities, this hunter is gathering
+food for his village. A sack at his waist will hold any prey that the chaja
+hunter collects.
+~
+chaja~
+water scholar~
+AG 0 FJZ E 0
+30 15 13d80+923 30d100+100 5d6+15 pierce~
+thrust~
+-2 -2 -2 -2
+DEFJKU 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 2 20
+AHMVW ABCDEFGHIJK G medium unknown
+V4 2719
+mold slime~
+the slime mold~
+A russet-colored slime mold blocks the cave pathway.
+~
+A large carnivorous fungus, this slime mold sprays acid on its victims,
+then slowly digests them. Its hunting capabilities consist of waiting
+on the cave ceiling, then dropping down on any passing prey.
+~
+human~
+water scholar~
+ABFX 0 JZ N 0
+10 5 8d11+212 10d10+100 2d5+5 acid~
+acidic bite~
+3 3 3 6
+0 0
+26 0 0 -33 33 0 0 0 -33 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMSV ABCDEFGHIJK A medium unknown
+>death_prog 100~
+mpseewizi
+mpat slimeloader mppurge slimeloader
+~
+>rand_prog 1~
+mppurge $i
+~
+|
+V4 2720
+leech giant~
+the giant leech~
+A giant leech feeds on the decaying corpse.
+~
+A 3\@ black flatworm, glistening with cave moisture, the giant leech uses
+its razor teeth to slice the flesh from a decaying humanoid corpse.
+~
+centipede~
+water scholar~
+AB 0 Z N 0
+10 0 5d22+167 0d0+0 2d5+5 pierce~
+bite~
+5 5 5 5
+0 0
+26 0 0 0 0 -20 20 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMORV ABCDEFGHIJK A medium unknown
+V4 2721
+spider phase~
+the phase spider~
+The phase spider scurries along the cave with frightening speed.
+~
+A fearsome-looking spider with a 10\@ black body and long, spindly legs, the
+phase spider rushes along the cave passage, sensing prey in his hunting 
+ground.
+~
+centipede~
+water scholar~
+ADFGX 0 DFUVZ N 0
+40 20 11d110+689 100d100+100 5d8+19 pierce~
+bite~
+-5 -5 -5 -5
+GH ABLQ
+26 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMOPV ABCDEFGHIJKV A medium unknown
+>greet_prog 100~
+if ispc($n)
+mpkill $n
+endif
+~
+>rand_prog 100~
+mpwander
+~
+>hitprcnt_prog 30~
+mpecho The phase spider shimmers and disappears!
+mpgrant $i 500 0 0
+mpecho The air shimmers, and the phase spider reappears!
+~
+>entry_prog 100~
+mpkill 2.
+~
+|
+V4 2722
+chaja bound~
+a bound chaja~
+The form of a chaja is visible within the spiderwebs, bound from head to foot.
+~
+A humanoid form is visible within the mass of spider silk that holds the 
+chaja bound, a prisoner waiting to become the phase spider\@s next meal. 
+~
+chaja~
+water scholar~
+ABG 0 JZ E 0
+20 -50 7d10+303 0d0+0 1d1+1 bash~
+punch~
+10 10 10 10
+0 A
+26 0 0 -33 -33 -33 -33 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 20
+AHMVW ABCDEFGHIJK G medium unknown
+V4 2723
+kkhilgh worker~
+the kkhilgh worker~
+An insect-like kkhilgh worker gathers fungus for its colony.
+~
+The 8\@ long insectoid kkhilgh worker is slowly gathering the fungus that
+its colony depends on for survival. Standing upright on its hind four legs,
+the worker uses the sharp, blade-like front appendages to scrape the fungus
+from the cave wall, then deposits its harvest in a pouch of some sort.
+~
+human~
+water scholar~
+AGX 0 0 N 0
+35 18 12d110+738 0d0+0 5d8+20 slash~
+slash~
+-5 -5 -5 -5
+FKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 26
+AHMOV ABCDEFGHIJK A medium unknown
+V4 2724
+stone loader bot~
+the stone loader bot~
+The stone loader bot roams under it as a tired nude Maori.
+~
+~
+human~
+water scholar~
+AB 0 DFJLPZ N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if mobvalue(0) == 1
+mpat 2891 give stone chaja
+endif
+if mobvalue(0) == 2
+mpat 1435 put stone in remains
+endif
+if mobvalue(0) == 3
+mpat 8389 give stone otyugh
+endif
+if mobvalue(0) == 4
+mpat 4570 give stone ssenkhatha
+endif
+if mobvalue(0) == 5
+mpat 7726 give stone shuddeni
+endif
+if mobvalue(0) == 6
+mpat 8216 give stone zombie
+endif
+if mobvalue(0) == 7
+mpat 8265 give stone wight
+endif
+if mobvalue(0) == 8
+mpat blink give stone blink
+endif
+if mobvalue(0) == 9
+mpat 7540 give stone master
+endif
+if mobvalue(0) == 10
+mpat 4648 put stone in crate
+endif
+if mobvalue(0) == 11
+mpat 3141 give stone byaeghyaki
+endif
+if mobvalue(0) == 12
+mpat 3131 drop stone
+endif
+if mobvalue(0) == 13
+mpat chadrassa give stone chadrassa
+endif
+if mobvalue(0) == 14
+mpat 8464 give stone wizard
+endif
+if mobvalue(0) == 15
+mpat 6850 give stone whore
+endif
+if mobvalue(0) == 16
+mpat 2772 give stone slug
+endif
+ 
+mpvalueset 0 17
+~
+>load_prog 100~
+if isoverlimit(2726)
+else
+mpoload 2726
+mpvaluerand 0 1 16
+endif
+ 
+~
+|
+V4 2725
+slimeloader~
+a slimeloader~
+The slimeloader peers about itself.
+~
+~
+human~
+water scholar~
+AB 0 DFJLZ N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 85~
+mpecho A soft sucking noise echoes from the tunnel to the south.
+mpat 2805 mppurge mold
+mpat 2805 mpmload 2719
+~
+|
+V4 2726
+ring loader bot loaderbot mob_2726~
+Ringloaderbot~
+Ringloaderbot will load the ring in the corpse if someone arrives who has the quest.
+~
+~
+human~
+water scholar~
+ADL 0 Le N 0
+1 1 1d1+15 1d10+100 1d0+1 none~
+~
+8 8 8 8
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>greet_prog 100~
+if objhere(2728)
+else
+  if isbitset($n) == 3711
+    if isbitset($n) == 3712
+    else
+      if remembers($n)
+      else
+        mpremember $n
+        mpoload 2728 in room
+        mpechoat $n You notice a small circle of silvery metal against the far wall of the cave.
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 2727
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+#0
+
+
+
+#OBJECTS
+V13
+2701
+abdomen red glowing~
+the glowing abdomen of a beetle~
+The glowing red abdomen of a cave beetle shines with natural luminesence.~
+~
+carrion~
+light AS 0 0 AO
+0 0 7 0 0
+12 10 10 1 P
+0
+V13
+2702
+cart mining~
+the mining cart~
+A mining cart awaits its load of ore.~
+~
+wood~
+container 0 0 F A
+5000 0 0 0 0
+20 5000 0 2 P
+0
+V13
+2703
+ring mud caked~
+a mud-caked ring~
+A ring caked with mud sits on the floor.~
+~
+silver~
+armor HM 0 F AB
+0 0 0 0 0
+15 10 0 0 P
+0
+A
+1 -5
+V13
+2704
+skeleton~
+the skeleton~
+A humanoid skeleton is sprawled on the cave floor.~
+~
+bone~
+container S 0 0 0
+0 0 0 0 0
+15 0 0 4 P
+0
+V13
+2705
+corpse chaja~
+the corpse of a chaja~
+The mutilated corpse of a chaja reposes on the ground.~
+~
+carrion~
+container S 0 F A
+1500 0 0 50 100
+20 1500 0 2 P
+0
+V13
+2706
+compass enchanted~
+an enchanted compass~
+An enchanted compass, made of bronze and inscribed with runes, hums here.~
+~
+bronze~
+treasure AB 0 F AO
+0 0 0 0 0
+10 30 280 2 P
+0
+>take_prog compass enchanted~
+if objvalue(0) == 0
+opvalueset 0 75
+endif
+~
+>rand_prog 100~
+if objvalue(0) > 0
+opvaluedown 0
+endif
+if objvalue(0) == 1
+opechoat $o The enchanted compass crumbles to dust.
+oppurge self
+endif
+~
+|
+V13
+2707
+mushroom~
+a subterranean mushroom~
+A subterranean mushroom grows out of the cave wall.~
+~
+plant~
+food S 0 F A
+10 50 0 0 0
+5 0 5 1 P
+0
+V13
+2708
+stream~
+the stream~
+A small stream flows out of the cave wall, spilling into the pool.~
+~
+water~
+fountain S 0 0 0
+15000 15000 'water' 0 0
+15 0 0 5 P
+0
+V13
+2709
+amulet engraved silver~
+an engraved silver amulet~
+An engraved silver amulet flashes in the light.~
+~
+silver~
+armor GK 0 0 AC
+4 4 4 4 0
+30 10 600 1 P
+0
+>fight_prog 5~
+if isworn($o)
+opecho_fight The silver amulet glows briefly.
+opcast 36 30
+endif
+~
+>fight_prog 6~
+if isworn($o)
+opecho_fight The silver amulet sends forth a spray of ice shards.
+opcast 82 30
+endif
+~
+|
+V13
+2710
+ring black stone polished~
+a ring of polished black stone~
+A ring of polished black stone rests here.~
+~
+stone~
+armor AJLS 0 0 AB
+3 3 3 3 0
+30 10 4450 0 P
+0
+A
+19 1
+A
+12 10
+A
+13 10
+>fight_prog 6~
+if isworn($o)
+opecho_fight The ring of polished black stone glows with dark energy!
+opcast 3 30
+endif
+~
+>fight_prog 5~
+if isworn($o)
+opecho_fight The ring of polished black stone shoots forth a beam of negative energy!
+opcast 100 15
+endif
+~
+|
+V13
+2711
+cloak patched~
+a patched cloak~
+A patched cloak, spattered with stains, rests here.~
+~
+cloth~
+armor S 0 F AC
+3 3 3 3 0
+10 20 1083 1 P
+0
+A
+4 1
+A
+18 2
+V13
+2712
+boots green~
+a pair of green boots~
+A pair of green boots is on the floor.~
+~
+leather~
+armor S 0 F AG
+4 4 4 0 0
+10 30 1430 2 P
+0
+A
+18 1
+A
+2 1
+A
+14 25
+V13
+2713
+gloves leather~
+a pair of leather gloves~
+A pair of leather gloves is here.~
+~
+leather~
+armor S 0 F AH
+3 3 3 0 0
+10 10 1245 1 P
+0
+A
+18 1
+A
+1 1
+A
+19 1
+V13
+2714
+belt black leather~
+a black leather belt~
+A black leather belt rests here.~
+~
+leather~
+armor S 0 F AL
+1 1 1 0 0
+10 10 1016 2 P
+0
+A
+18 2
+A
+5 1
+A
+24 -1
+V13
+2715
+hat felt~
+a felt hat~
+A felt hat sits on the floor.~
+~
+cloth~
+armor S 0 F AE
+5 5 5 0 0
+10 10 1580 2 P
+0
+A
+3 1
+A
+18 1
+A
+17 -5
+V13
+2716
+corpse adventurer deceased~
+the corpse~
+The corpse of a deceased adventurer is here.~
+~
+carrion~
+container S 0 0 0
+0 0 0 100 130
+10 1500 0 4 P
+0
+V13
+2717
+vial brown liquid~
+a vial of brown liquid~
+A vial of brown liquid sits in the dirt.~
+~
+glass~
+potion AS 0 0 A
+30 'sanctuary' '' '' ''
+30 10 15000 1 P
+3
+>rand_prog 100~
+if objvalue(0) == 0
+if ispc($o)
+opvalueset 0 900
+endif
+endif
+if objvalue(0) == 1
+opechoat $o The brown vial evaporates.
+oppurge self
+endif
+if objvalue(0) > 0
+opvaluedown 0
+endif
+~
+|
+V13
+2718
+mushroom white~
+a white mushroom~
+A white mushroom grows from the cave wall.~
+~
+plant~
+food S 0 F A
+20 50 0 0 0
+30 30 30 1 P
+0
+V13
+2719
+pickaxe mining axe pick~
+a pickaxe~
+A mining pickaxe rests here.~
+~
+steel~
+weapon 0 0 F AN
+axe 4 7 2 0
+pierce~
+25 180 358 2 P
+0
+V13
+2720
+mace finely fine wrought~
+a finely wrought mace~
+A finely wrought mace rests here.~
+~
+silver~
+weapon 0 0 F AN
+mace 5 6 1 0
+smash~
+30 130 2072 2 P
+12
+A
+18 3
+V13
+2721
+cloak red wool~
+a red wool cloak~
+A red wool cloak flutters slightly.~
+~
+cloth~
+armor S 0 F AK
+7 7 7 3 0
+30 50 9835 2 P
+10
+A
+13 20
+A
+18 2
+V13
+2722
+boots black leather pair~
+a pair of black leather boots~
+A pair of black leather boots sits here.~
+~
+leather~
+armor S 0 F AG
+5 5 5 2 0
+30 50 5303 2 P
+10
+A
+14 40
+A
+19 1
+A
+18 1
+V13
+2723
+bracelet ivory engraved~
+an engraved ivory bracelet~
+An engraved ivory bracelet rests here.~
+~
+ivory~
+armor S 0 F AM
+3 3 3 3 0
+30 30 8513 1 P
+10
+A
+14 15
+A
+13 15
+A
+12 15
+V13
+2724
+beltpouch belt pouch woven~
+a woven beltpouch~
+A woven beltpouch rests here.~
+~
+plant~
+container S 0 F AL
+20 A 0 20 50
+30 20 800 2 P
+0
+A
+2 1
+V13
+2725
+ring gold runed runes~
+a runed gold ring~
+A gold ring marked with mysterious runes rests here.~
+~
+gold~
+armor AG 0 F AB
+1 1 1 8 0
+30 10 8956 0 P
+5
+A
+18 3
+A
+19 2
+A
+17 -5
+V13
+2726
+stone faceted oddly-carved~
+an unevenly faceted stone~
+An oddly-carved stone with unevenly shaped facets glistens mysteriously.~
+~
+stone~
+treasure ABGS 0 0 AO
+0 0 0 0 0
+30 0 35000 2 P
+2
+>speech_prog kshalrash~
+if isworn($o)
+ oplag $n 1
+ opvalueup 3
+ opecho The unevenly faceted stone flashes brightly! 
+if isfight($o)
+ opvaluerand 0 1 25
+  if objvalue(0) == 1
+ opcast 89 99
+ endif
+ if objvalue(0) == 2
+ opcast 63 99
+ endif
+ if objvalue(0) == 3
+ opcast 81 99
+ endif
+ if objvalue(0) == 4
+ opcast 10 99
+ endif
+ if objvalue(0) == 5
+ opecho A sharp crackling noise is heard!
+ opcast 50 99
+ endif
+ if objvalue(0) == 6
+ opcast 60 99
+ endif
+ if objvalue(0) == 7
+ opcast 59 99
+ endif
+ if objvalue(0) == 8
+ opcast 119 99
+ endif
+ if objvalue(0) == 9
+ opcast 108 99
+ opcast 109 99
+ endif
+ if objvalue(0) == 10
+ opcast 110 99
+ endif
+ if objvalue(0) == 11
+ opechoat $n A soft glow covers you, and you are paralyzed!
+ opechoaround $n A soft glow covers $N, and $e is paralyzed!
+ oplag $n 5
+ endif
+ if objvalue(0) == 12
+ opechoat $o You feel confused!
+ opechoaround $o A soft glow covers $O, and $e looks confused!
+ opaddaffect 278 60 60 0 0 0
+ endif
+ if objvalue(0) == 13
+ opcast 120 99
+ endif
+ if objvalue(0) == 14
+ opcast 348 99
+ opremaffect 348
+ endif
+ if objvalue(0) == 15
+ opechoaround $r $R looks better!
+ opcast 77 50 $r
+ endif
+ if objvalue(0) == 16
+ opcast 341 99 $r
+ endif
+ if objvalue(0) == 17
+ opcast 355 99 $r
+ endif
+ if objvalue(0) == 18
+ opcast 681 99
+ opremaffect 681
+ endif
+ if objvalue(0) == 19
+ opcast 342 99
+ opremaffect 342
+ endif
+ if objvalue(0) == 20
+ opvaluerand 8 1 7
+  if objvalue(8) == 1
+  opcast 137 99
+  opcast 137 99
+  opcast 137 99
+  opcast 137 99
+  opcast 137 99
+  opcast 137 99
+  endif
+  if objvalue(8) == 2
+  opcast 360 99
+  opremaffect 360
+  opcast 360 99
+  opremaffect 360
+  opcast 360 99
+  opremaffect 360
+  endif
+  if objvalue(8) == 3
+  opecho A grey mist forms, and three wights leap forth!
+  opmload 8228
+  opmload 8228
+  opmload 8228
+  endif 
+  if objvalue(8) == 4
+  opecho A grey mist forms, and a swarm of butterflies emerges!
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  opmload 4101
+  endif
+  if objvalue(8) == 5
+  opcast 661 99
+  endif
+  if objvalue(8) == 6
+  opcast 404 99
+  endif
+  if objvalue(8) == 7
+  opcast 305 99
+  endif
+ endif
+ if objvalue(0) == 21
+ oproomcmd optrigger all
+ endif
+ if objvalue(0) == 22
+ opcast 680 99
+ endif
+ if objvalue(0) == 23
+ opcast 687 99
+ endif
+ if objvalue(0) == 24
+ opcast 584 99
+ endif
+ if objvalue(0) == 25
+ opcast 8 99 $n
+ endif
+ else
+ opvaluerand 0 1 35
+ if objvalue(0) == 1
+ opcast 29 99
+ endif
+ if objvalue(0) == 2
+ opcast 3 99
+ endif
+ if objvalue(0) == 3
+ opcast 551 99
+ endif
+ if objvalue(0) == 4
+ opcast 8 60 $n
+ endif
+ if objvalue(0) == 5
+ opcast 9 60 $n
+ endif
+ if objvalue(0) == 6
+ opcast 13 99
+ endif
+ if objvalue(0) == 7
+ opcast 18 90
+ endif
+ if objvalue(0) == 8
+ opcast 30 99
+ opcast 30 99
+ endif
+ if objvalue(0) == 9
+ opcast 34 50
+ endif
+ if objvalue(0) == 10
+ opcast 42 99
+ endif
+ if objvalue(0) == 11
+ opcast 31 99
+ endif
+ if objvalue(0) == 12
+ opcast 25 60 $n
+ endif
+ if objvalue(0) == 13
+ opcast 46 99
+ endif
+ if objvalue(0) == 14
+ opcast 54 99
+ endif
+ if objvalue(0) == 15
+ opcast 60 99
+ endif
+ if objvalue(0) == 16
+ opcast 70 99
+ endif
+ if objvalue(0) == 17
+ opcast 76 99
+ endif
+ if objvalue(0) == 18
+ opcast 90 99
+ endif
+ if objvalue(0) == 19
+ opcast 94 99
+ endif
+ if objvalue(0) == 20
+ opcast 110 99
+ endif
+ if objvalue(0) == 21
+ opcast 116 99
+ endif
+ if objvalue(0) == 22
+ opcast 128 99 $n
+ endif
+ if objvalue(0) == 23
+ opcast 132 99
+ endif
+ if objvalue(0) == 24
+ opcast 206 99
+ endif
+ if objvalue(0) == 25
+ opcast 396 99
+ opcast 396 99
+ endif
+ if objvalue(0) == 26
+ opcast 404 99
+ endif
+ if objvalue(0) == 27
+ opcast 584 99 $n
+ endif
+ if objvalue(0) == 28
+ opcast 31 99
+ endif
+ if objvalue(0) == 29
+ opcast 73 99
+ endif
+ if objvalue(0) == 30
+ opcast 137 99 
+ endif
+ if objvalue(0) == 31
+ opcast 137 99
+ endif
+ if objvalue(0) == 32
+  objvaluerand 8 1 10
+  if objvalue(8) < 10
+  opcast 338 99
+  endif
+  if objvalue(8) == 10
+  opcast 313 99
+  endif
+ endif
+ if objvalue(0) == 33
+ oproomcmd optrigger all
+ endif
+ if objvalue(0) == 34
+ opcast 63 99
+ endif
+ if objvalue(0) == 35
+ opcast 57 99 $n
+ endif
+endif
+endif
+if objvalue(3) == 30
+opecho The unevenly faceted stone grows hot and shatters!
+oppurge self
+endif
+~
+>trigger_prog 100~
+opvaluerand 0 1 4
+if objvalue(0) == 1
+opcast 119 51 $n
+endif
+if objvalue(0) == 2
+opechoat $n A soft glow covers you, and you are paralyzed!
+opechoaround $n A soft glow covers $N, and $e is paralyzed!
+oplag $n 6
+endif
+if objvalue(0) == 3
+opcast 2 51 $n
+endif
+if objvalue(0) == 4
+opcast 77 50 $n
+endif
+~
+>wear_prog 100~
+opechoat $o The stone begins to hum softly, and glows slightly warm in your grip.
+~
+|
+V13
+2727
+stone tablet circular ancient~
+a circular tablet of ancient stone~
+An ancient stone tablet lies here.~
+~
+stone~
+trash 0 0 F AO
+0 0 0 0 0
+25 40 0 1 P
+0
+E
+stone~
+This tablet seems extremely ancient, and bits of limestone are still
+adhered to its edges and surface, indicated a long period of time buried in
+the ground.  Carved in runic into its face is an inscription.  
+~
+E
+tablet~
+This tablet seems extremely ancient, and bits of limestone are still
+adhered to its edges and surface, indicated a long period of time buried in
+the ground.  Carved in runic into its face is an inscription.  
+~
+E
+circular~
+This tablet seems extremely ancient, and bits of limestone are still
+adhered to its edges and surface, indicated a long period of time buried in
+the ground.  Carved in runic into its face is an inscription.  
+~
+E
+ancient~
+This tablet seems extremely ancient, and bits of limestone are still
+adhered to its edges and surface, indicated a long period of time buried in
+the ground.  Carved in runic into its face is an inscription.  
+~
+E
+inscription~
+Know the two brothers of the Star
+Bone for Qwablith,
+Bittern Thorns for the Spawn.
+Sword of iron for the spined one,
+Sword of the bone for the scorpion\@s child.
+
+One is lesser, one is not. 
+Fear both, fear neither,
+both pay homage to the demon sign.
+~
+V13
+2728
+small silvery signet ring pewter crest~
+a small, silvery signet ring~
+A ring of silvery pewter lies here, a crest stamped into the metal.~
+~
+metal~
+armor P 0 0 AB
+1 1 1 8 0
+30 10 15 0 P
+0
+A
+13 2
+A
+17 -5
+E
+small silvery signet ring pewter~
+This small ring is made from a plain band of pewter, polished to a soft
+finish.  A simple crest of a long-legged heron is stamped into the metal.  
+~
+V13
+2729
+leather vambrace~
+a leather vambrace~
+A simple leather vambrace lies here.~
+~
+leather~
+armor 0 0 0 AM
+10 10 10 10 0
+20 18 0 0 P
+0
+A
+5 1
+A
+13 10
+E
+leather vambrace~
+This simple leather vambrace is made from several layers of hide, padded
+together and dried to a tough stiffness.  Reinforced with broad metal
+rivets, the vambrace is laced together under the wrist, designed to take the
+worst of a blow.  
+~
+V13
+2730
+bracer iron~
+an iron bracer~
+A bracer made from iron lies here.~
+~
+iron~
+armor 0 0 F AM
+5 5 5 0 0
+25 10 1620 1 P
+10
+A
+19 1
+A
+18 1
+A
+13 3
+E
+iron bracer~
+This sturdy iron bracer is designed to protect the forearm of its wearer.  
+~
+V13
+2731
+leggings pair chainmail chain mail~
+a pair of chainmail leggings~
+Some chainmail leggings lie here.~
+~
+steel~
+armor 0 0 F AF
+6 4 6 0 0
+30 120 1504 2 P
+12
+A
+19 1
+A
+13 6
+E
+leggings pair chainmail chain mail~
+These chainmail leggings are made of fine steel.  
+~
+#0
+
+
+
+#ROOMS
+#2700
+A Large Cavern~
+A large cavern stretches before you into darkness.  The ceiling is
+covered with hanging stalactites, and mighty stalagmites reach up from the
+cave floor, obstructing your path in some areas.  The cavern echoes with
+faint fluttering sounds, and the clicking of something hard against the
+stone walls.
+~
+~
+1
+0 9 12
+D2
+The cave continues south.
+~
+~
+0 0 2798
+D3
+The cave continues west.
+~
+~
+0 0 2799
+W 5 0 0
+Z 5 5
+S
+#2701
+The Mouth of the Cave~
+A gap in the face of the hill opens into a large cave.  The walls are
+slick with condensed moisture and growths of fungus.  There is a musty air
+to the natural passage that leads north.  Many footprints mar the soft dirt
+of the cave floor, packing it into a regular path in some areas.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2702
+D2
+~
+~
+0 0 4757
+W 5 0 0
+Z 5 5
+S
+#2702
+A Damp Cave~
+The damp cave continues, leading into the darkness to the north, and
+toward the light of a cave mouth to the south.  The cave walls drip with
+moisture, and subterranean fungi grow in colored patches.  The dirt of the
+floor is packed by many footprints.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2705
+D2
+The cave mouth is to the south.
+~
+~
+0 0 2701
+W 5 0 0
+Z 5 5
+S
+#2703
+A Mine Shaft~
+The small mine shaft tapers to an end at this point.  Several mining
+tools lean against the stone wall, and loose ore, still to be removed,
+scatters the ground.  The mine shaft returns to the east.  
+~
+~
+1
+0 9 12
+D1
+The mine shaft continues.
+~
+~
+0 0 2704
+W 5 0 0
+Z 5 5
+S
+#2704
+The Mine Shaft~
+The picks of the miners have carved this small mine shaft into the solid
+rock of the cave wall.  A vein of quartz is visible in the side of the
+shaft, and the miners have begun excavating around it.  The mine shaft
+continues west, and opens into the main cave to the east.  
+~
+~
+1
+0 9 12
+D1
+The mine shaft opens into the main cave.
+~
+~
+0 0 2705
+D3
+The mine shaft continues.
+~
+~
+0 0 2703
+T 86
+W 5 0 0
+Z 5 5
+S
+#2705
+The Mining Camp~
+This stretch of cave is crowded with mining equipment, bedrolls for
+several men, provisions, and various clutter.  Apparently this is the
+temporary camp of a mining party.  Further evidence lies in a mine shaft
+sunk into the west wall of the cave, and three mine carts partially filled
+with ore.  The main cave continues north and south.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2711
+D2
+The cave continues south.
+~
+~
+0 0 2702
+D3
+A mine shaft has been dug into the cave wall.
+~
+~
+0 0 2704
+W 5 0 0
+Z 5 5
+S
+#2706
+A Luminous Cave~
+The walls and ceiling of this rounded cave are coated with multicolored
+fungi which give off a faint luminesence.  The red, green, and yellow
+glowing patches provide enough light to see without further aid.  Trails of
+slime criss-cross the walls, disturbing the patterns of colored light. 
+Littering the floor are dried pieces of chitin and shards of a thick shell. 
+~
+~
+1
+0 8 12
+D0
+The cave continues north.
+~
+~
+0 0 2714
+D3
+The cave wall folds into a small side cave.
+~
+~
+0 0 2801
+W 5 0 0
+Z 5 5
+S
+#2707
+A Luminous Cave~
+The walls and ceiling of this rounded cave are coated with multicolored
+fungi which give off a faint luminesence.  The red, green, and yellow
+glowing patches provide enough light to see without further aid.  Trails of
+slime criss-cross the walls, disturbing the patterns of colored light. 
+Littering the floor are dried pieces of chitin and shards of a thick shell.
+~
+~
+1
+0 8 12
+D0
+The cave continues north.
+~
+~
+0 0 2716
+D1
+The cave continues east.
+~
+~
+0 0 2708
+W 5 0 0
+Z 5 5
+S
+#2708
+A Luminous Cave~
+The walls and ceiling of this rounded cave are coated with multicolored
+fungi which give off a faint luminesence.  The red, green, and yellow
+glowing patches provide enough light to see without further aid.  Trails of
+slime criss-cross the walls, disturbing the patterns of colored light. 
+Littering the floor are dried pieces of chitin and shards of a thick shell. 
+~
+~
+1
+0 8 12
+D0
+The cave continues north.
+~
+~
+0 0 2717
+D3
+The cave continues west.
+~
+~
+0 0 2707
+W 5 0 0
+Z 5 5
+S
+#2709
+A Mine Shaft~
+The small mine shaft tapers to an end at this point.  Several mining
+tools lean against the stone wall, and loose ore, still to be removed,
+scatters the ground.  The mine shaft returns to the east.  
+~
+~
+1
+0 9 12
+D1
+The mine shaft continues.
+~
+~
+0 0 2710
+W 5 0 0
+Z 5 5
+S
+#2710
+A Mine Shaft~
+The picks of the miners have carved this small mine shaft into the solid
+rock of the cave wall.  A vein of quartz is visible in the side of the
+shaft, and the miners have begun excavating around it.  The mine shaft
+continues west, and opens into the main cave to the east.  
+~
+~
+1
+0 9 12
+D1
+The mine shaft opens into the main cave.
+~
+~
+0 0 2711
+D3
+The mine shaft continues.
+~
+~
+0 0 2709
+W 5 0 0
+Z 5 5
+S
+#2711
+The Mining Camp~
+This stretch of cave is crowded with mining equipment, bedrolls for
+several men, provisions, and various clutter.  Apparently this is the
+temporary camp of a mining party.  Further evidence lies in mine shafts sunk
+into the east and west walls of the cave, and mine carts partially filled
+with ore.  The main cave continues north and south.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2718
+D1
+A mine shaft has been dug into the cave wall.
+~
+~
+0 0 2712
+D2
+The cave continues south.
+~
+~
+0 0 2705
+D3
+A mine shaft has been dug into the cave wall.
+~
+~
+0 0 2710
+W 5 0 0
+Z 5 5
+S
+#2712
+A Mine Shaft~
+The picks of the miners have carved this small mine shaft into the solid
+rock of the cave wall.  A vein of quartz is visible in the side of the
+shaft, and the miners have begun excavating around it.  The mine shaft
+continues east, and opens into the main cave to the west.  
+~
+~
+1
+0 9 12
+D1
+The mine shaft continues.
+~
+~
+0 0 2713
+D3
+The mine shaft opens into the main cave.
+~
+~
+0 0 2711
+T 86
+W 5 0 0
+Z 5 5
+S
+#2713
+A Mine Shaft~
+The small mine shaft tapers to an end at this point.  Several mining
+tools lean against the stone wall, and loose ore, still to be removed,
+scatters the ground.  The mine shaft returns to the west.  To the east, the
+shaft seems to have collapsed, a solid slab of rock blocking passage east
+abruptly.  
+~
+~
+1
+0 9 12
+D3
+The mine shaft continues.
+~
+~
+0 0 2712
+W 5 0 0
+Z 5 5
+S
+#2714
+A Luminous Cave~
+The walls and ceiling of this rounded cave are coated with multicolored
+fungi which give off a faint luminesence.  The red, green, and yellow
+glowing patches provide enough light to see without further aid.  Trails of
+slime criss-cross the walls, disturbing the patterns of colored light. 
+Littering the floor are dried pieces of chitin and shards of a thick shell.
+~
+~
+1
+0 8 12
+D0
+The cave continues north.
+~
+~
+0 0 2719
+D1
+The cave continues east.
+~
+~
+0 0 2715
+D2
+The cave continues south.
+~
+~
+0 0 2706
+W 5 0 0
+Z 5 5
+S
+#2715
+A Luminous Cave~
+The walls and ceiling of this rounded cave are coated with multicolored
+fungi which give off a faint luminesence.  The red, green, and yellow
+glowing patches provide enough light to see without further aid.  Trails of
+slime criss-cross the walls, disturbing the patterns of colored light. 
+Littering the floor are dried pieces of chitin and shards of a thick shell.
+~
+~
+1
+0 8 0
+D1
+The cave continues east.
+~
+~
+0 0 2716
+D3
+The cave continues west.
+~
+~
+0 0 2714
+W 5 0 0
+Z 5 5
+S
+#2716
+A Luminous Cave~
+The walls and ceiling of this rounded cave are coated with multicolored
+fungi which give off a faint luminesence.  The red, green, and yellow
+glowing patches provide enough light to see without further aid.  Trails of
+slime criss-cross the walls, disturbing the patterns of colored light. 
+Littering the floor are dried pieces of chitin and shards of a thick shell.
+~
+~
+1
+0 8 12
+D0
+The cave continues north.
+~
+~
+0 0 2721
+D2
+The cave continues south.
+~
+~
+0 0 2707
+D3
+The cave continues west.
+~
+~
+0 0 2715
+W 5 0 0
+Z 5 5
+S
+#2717
+A Luminous Cave~
+The walls and ceiling of this rounded cave are coated with multicolored
+fungi which give off a faint luminesence.  The red, green, and yellow
+glowing patches provide enough light to see without further aid.  Trails of
+slime criss-cross the walls, disturbing the patterns of colored light. 
+Littering the floor are dried pieces of chitin and shards of a thick shell. 
+~
+~
+1
+0 8 12
+D0
+The cave continues north.
+~
+~
+0 0 2722
+D2
+The cave continues south.
+~
+~
+0 0 2708
+W 5 0 0
+Z 5 5
+S
+#2718
+A Damp Cave~
+The damp cave winds its way north and south.  Moisture trickles down the
+stone walls, and patches of fungus grow in red and brown patterns.  The soft
+dirt of the cave floor is disturbed by occasional footprints.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2726
+D2
+The cave continues south.
+~
+~
+0 0 2711
+W 5 0 0
+Z 5 5
+S
+#2719
+A Luminous Cave~
+The walls and ceiling of this rounded cave are coated with multicolored
+fungi which give off a faint luminesence.  The red, green, and yellow
+glowing patches provide enough light to see without further aid.  Trails of
+slime criss-cross the walls, disturbing the patterns of colored light. 
+Littering the floor are dried pieces of chitin and shards of a thick shell. 
+~
+~
+1
+0 8 12
+D1
+The cave continues east.
+~
+~
+0 0 2720
+D2
+The cave continues south.
+~
+~
+0 0 2714
+D3
+A cave tunnel coated with slime mold leads west.
+~
+~
+0 0 2805
+W 5 0 0
+Z 5 5
+S
+#2720
+A Luminous Cave~
+The walls and ceiling of this rounded cave are coated with multicolored
+fungi which give off a faint luminesence.  The red, green, and yellow
+glowing patches provide enough light to see without further aid.  Trails of
+slime criss-cross the walls, disturbing the patterns of colored light. 
+Littering the floor are dried pieces of chitin and shards of a thick shell.
+~
+~
+1
+0 8 12
+D0
+The cave continues north.
+~
+~
+0 0 2727
+D1
+The cave continues east.
+~
+~
+0 0 2721
+D3
+The cave continues west.
+~
+~
+0 0 2719
+W 5 0 0
+Z 5 5
+S
+#2721
+A Luminous Cave~
+The walls and ceiling of this rounded cave are coated with multicolored
+fungi which give off a faint luminesence.  The red, green, and yellow
+glowing patches provide enough light to see without further aid.  Trails of
+slime criss-cross the walls, disturbing the patterns of colored light. 
+Littering the floor are dried pieces of chitin and shards of a thick shell.
+~
+~
+1
+0 8 12
+D1
+The cave continues east.
+~
+~
+0 0 2722
+D2
+The cave continues south.
+~
+~
+0 0 2716
+D3
+The cave continues west.
+~
+~
+0 0 2720
+W 5 0 0
+Z 5 5
+S
+#2722
+A Dry Cave Intersection~
+Four cave tunnels intersect in this small, dry cave.  To the north, a
+broad cave passage curves through the rock.  To the east, a small damp
+tunnel twists downward.  To the south and west are tunnels that emanate a
+faint glow.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2728
+D1
+The cave continues east.
+~
+~
+0 0 2723
+D2
+The cave continues south.
+~
+~
+0 0 2717
+D3
+The cave continues west.
+~
+~
+0 0 2721
+W 5 0 0
+Z 5 5
+S
+#2723
+A Damp Cave~
+The damp cave floor is slick with the water dripping from the ceiling and
+walls.  Fungus and slime molds contribute to the lack of friction underfoot.
+The air is stale and musty.  The damp cave twists to the east, and to the
+west it slopes upward into a small, dry cave.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2724
+D3
+The cave continues west.
+~
+~
+0 0 2722
+W 5 0 0
+Z 5 5
+S
+#2724
+A Damp Cave Intersection~
+The walls and floor of this cave are slick with moisture and fungus.  The
+ceiling dips down at this point, so that a tall man must bend over to
+continue.  The cave runs east and west, with a side tunnel branching to the
+north.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2729
+D1
+The cave continues east.
+~
+~
+0 0 2725
+D3
+The cave continues west.
+~
+~
+0 0 2723
+W 5 0 0
+Z 5 5
+S
+#2725
+A Damp Cave~
+The damp cave floor is slick with the water dripping from the ceiling and
+walls. Fungus and slime molds contribute to the lack of friction underfoot.
+The air is stale and musty.  The damp cave twists east and west.
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2726
+D3
+The cave continues west.
+~
+~
+0 0 2724
+W 5 0 0
+Z 5 5
+S
+#2726
+A Damp Cave~
+The winding cave splits into a four-way intersection, with one branch
+twisting north and the other branches curving west, south, and east.  Water
+drips from the ceiling, forming puddles on the cave floor, and the soft
+earth that lines the cave floor to the south slowly fades to the north and
+west.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2730
+D1
+The damp cave leads east.
+~
+~
+0 0 2802
+D2
+The cave continues south.
+~
+~
+0 0 2718
+D3
+The cave continues west.
+~
+~
+0 0 2725
+W 5 0 0
+Z 5 5
+S
+#2727
+A Narrow Tunnel~
+The cave narrows into a small tunnel that runs north and south.  The
+walls of this small passage flake chips of stone that shower you as you edge
+through.  The air is musty and cool.  A faint colored light emanates from
+the cave to the south.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2731
+D2
+The cave continues south.
+~
+~
+0 0 2720
+W 5 0 0
+Z 5 5
+S
+#2728
+A Dry Cave~
+The dry cave tunnel carves a path to the north and south.  The stone
+walls are patched with dried fungus, and the floor is gravel-strewn.  The
+air is musty and cold.  To the north you can see a side tunnel, and to the
+south an intersection is visible.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2732
+D2
+The cave continues south.
+~
+~
+0 0 2722
+W 5 0 0
+Z 5 5
+S
+#2729
+A Damp Cave~
+The damp cave floor is slick with the water dripping from the ceiling and
+walls.  Fungus and slime molds contribute to the lack of friction underfoot.
+The air is stale and musty.  The damp cave twists north and south.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2734
+D2
+The cave continues south.
+~
+~
+0 0 2724
+W 5 0 0
+Z 5 5
+S
+#2730
+A Damp Cave~
+The damp cave floor is slick with the water dripping from the ceiling and
+walls.  Fungus and slime molds contribute to the lack of friction underfoot.
+The air is stale and musty.  The damp cave twists north and south.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2736
+D2
+The cave continues south.
+~
+~
+0 0 2726
+W 5 0 0
+Z 5 5
+S
+#2731
+A Narrow Tunnel~
+The cave narrows into a small tunnel that runs north and south.  The
+walls of this small passage flake chips of stone that shower you as you edge
+through. The air is musty and cool.  A faint colored light emanates from
+the cave to the south.
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2737
+D2
+The cave continues south.
+~
+~
+0 0 2727
+W 5 0 0
+Z 5 5
+S
+#2732
+A Dry Cave~
+The dry cave tunnel carves a path to the north and south.  The stone
+walls are patched with dried fungus, and the floor is strewn with gravel. 
+To the east, a small tunnel with damp walls curves slightly downward.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2739
+D1
+The cave continues east.
+~
+~
+0 0 2733
+D2
+The cave continues south.
+~
+~
+0 0 2728
+W 5 0 0
+Z 5 5
+S
+#2733
+A Damp Tunnel~
+This narrow tunnel floor is slick with the water dripping from the
+ceiling and walls.  Fungus and slime molds contribute to the lack of
+friction underfoot.  The air is stale and musty.  The damp tunnel twists
+east and west.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2734
+D3
+The cave continues west.
+~
+~
+0 0 2732
+W 5 0 0
+Z 5 5
+S
+#2734
+A Damp Tunnel~
+The tunnel narrows at this point, making passage somewhat slower.  The
+walls and ceiling are slick with condensed moisture and fungus, and the
+smooth floor is slippery.  Branches of the tunnel lead east, west, and
+south.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2735
+D2
+The cave continues south.
+~
+~
+0 0 2729
+D3
+The cave continues west.
+~
+~
+0 0 2733
+W 5 0 0
+Z 5 5
+S
+#2735
+A Damp Cave Intersection~
+The walls and ceiling of this cave are slick with condensed moisture and
+growths of fungus and slime mold.  The floor is smooth, and the dampness
+makes walking somewhat difficult.  The tunnel curves to the north and east,
+and a side passage leads west.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2741
+D1
+The cave continues east.
+~
+~
+0 0 2736
+D3
+The cave continues west.
+~
+~
+0 0 2734
+W 5 0 0
+Z 5 5
+S
+#2736
+A Damp Cave~
+The damp cave floor is slick with the water dripping from the ceiling and
+walls.  Fungus and slime molds contribute to the lack of friction underfoot.
+The air is stale and musty.  The damp cave twists west and south.  
+~
+~
+1
+0 9 12
+D2
+The cave continues south.
+~
+~
+0 0 2730
+D3
+The cave continues west.
+~
+~
+0 0 2735
+W 5 0 0
+Z 5 5
+S
+#2737
+A Narrow Tunnel~
+The narrow tunnel continues north and south, and branches off to the
+east.  Flakes of stone crumble off the walls as you edge through the narrow
+opening, and the shards crunch beneath your feet.  Far to the south, you see
+a faint colored glow.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2742
+D1
+The cave continues east.
+~
+~
+0 0 2738
+D2
+The cave continues south.
+~
+~
+0 0 2731
+W 5 0 0
+Z 5 5
+S
+#2738
+A Narrow Tunnel~
+The narrow tunnel opens into a broad, dry cave to the east, and joins
+with another narrow tunnel to the west.  Flakes of stone crumble off the
+walls as you edge through the narrow opening, and the shards crunch beneath
+your feet.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2739
+D3
+The cave continues west.
+~
+~
+0 0 2737
+W 5 0 0
+Z 5 5
+S
+#2739
+A Dry Cave~
+The dry cave tunnel carves a path to the north and south.  The stone
+walls are patched with dried fungus, and the floor is strewn with gravel.  A
+narrow, dry tunnel curves to the west.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2743
+D2
+The cave continues south.
+~
+~
+0 0 2732
+D3
+The cave continues west.
+~
+~
+0 0 2738
+W 5 0 0
+Z 5 5
+S
+#2740
+A Dry Tunnel~
+The small, dry cave tunnel curves from the east to the north at this
+point.  The walls are covered with dry moss and fungus, and the gravel of
+the floor crunches beneath your feet.  To the east, the air feels damp, and
+the walls are a little moist.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2745
+D1
+The cave continues east.
+~
+~
+0 0 2741
+W 5 0 0
+Z 5 5
+S
+#2741
+A Cave Tunnel~
+This small tunnel curves off a large, damp tunnel to the south.  The air
+is musty and cool, and the walls are slick with moisture.  To the west, the
+cave is somewhat drier, and the floor is covered with gravel.  
+~
+~
+1
+0 9 12
+D2
+The cave continues south.
+~
+~
+0 0 2735
+D3
+The cave continues west.
+~
+~
+0 0 2740
+W 5 0 0
+Z 5 5
+S
+#2742
+A Narrow Tunnel~
+The narrow cave tunnel continues north and south.  As you edge through
+the narrow space, flakes of stone crumble off the walls and shards crunch
+beneath your feet.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2746
+D2
+The cave continues south.
+~
+~
+0 0 2737
+W 5 0 0
+Z 5 5
+S
+#2743
+A Dry Cave~
+The dry cave tunnel carves a path to the north and south.  The stone
+walls are patched with dried fungus, and the floor is strewn with gravel.  A
+broad, dry tunnel curves to the east.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2748
+D1
+The cave continues east.
+~
+~
+0 0 2744
+D2
+The cave continues south.
+~
+~
+0 0 2739
+W 5 0 0
+Z 5 5
+S
+#2744
+A Dry Tunnel~
+Branching off from a broad tunnel to the west, this small, dry passage
+curves to the east.  The walls are covered with dry moss and fungus, and the
+gravel of the floor crunches beneath your feet.  The air is cool and musty. 
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2745
+D3
+The cave continues west.
+~
+~
+0 0 2743
+W 5 0 0
+Z 5 5
+S
+#2745
+A Dry Tunnel~
+The small, dry cave tunnel curves from the west to the south at this
+point.  The walls are covered with dry moss and fungus, and the gravel of
+the floor crunches beneath your feet.  The air is cool and musty.  
+~
+~
+1
+0 9 12
+D2
+The cave continues south.
+~
+~
+0 0 2740
+D3
+The cave continues west.
+~
+~
+0 0 2744
+W 5 0 0
+Z 5 5
+S
+#2746
+A Narrow Tunnel~
+The narrow cave tunnel curves from the east to the south.  As you edge
+along, shards of stone flake off the wall and more shards crunch beneath
+your feet.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2747
+D2
+The cave continues south.
+~
+~
+0 0 2742
+W 5 0 0
+Z 5 5
+S
+#2747
+A Dry Tunnel~
+A dry cave tunnel opens from the cave to the east.  The stone walls are
+patched with dried fungus, and the floor is strewn with gravel.  To the
+west, the tunnel narrows considerably.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2748
+D3
+The cave continues west.
+~
+~
+0 0 2746
+W 5 0 0
+Z 5 5
+S
+#2748
+A Dry Cave~
+The dry cave tunnel carves a path to the north and south.  The stone
+walls are patched with dried fungus, and the floor is strewn with gravel.  A
+broad, dry tunnel curves to the west.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2749
+D2
+The cave continues south.
+~
+~
+0 0 2743
+D3
+The cave continues west.
+~
+~
+0 0 2747
+W 5 0 0
+Z 5 5
+S
+#2749
+The Cave Ending~
+The dry cave tunnel ends abruptly in a small, rounded cavern.  To the
+northwest, a crevice opens in the cave floor, and a narrow tunnel leads
+steeply downward.  The crevice drips with moisture, and slightly warmer air
+wafts up from it.  The dry cave continues to the south.  
+~
+~
+1
+0 9 12
+D2
+The cave continues south.
+~
+~
+0 0 2748
+D5
+The cave slopes steeply downward.
+~
+~
+0 0 2767
+W 5 0 0
+Z 5 5
+S
+#2750
+The Chaja Camp~
+The small cave to the north folds around in one corner to form this side
+area.  Swept free of the muddy footprints that lead here, the side cave is
+much drier and neater than the camp to the north.  A single bedroll is
+spread on the cave floor.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2751
+W 5 0 0
+Z 5 5
+S
+#2751
+The Chaja Camp~
+The cave floor slopes upward from the east, rising out of the mud and
+forming a small side cave adjoining the larger eastern area.  The water
+dripping from the ceiling is minimal.  Several large stones have been pulled
+into a circle, and a few sticks carved into crude tools are scattered on the
+floor.  Muddy footprints lead all around this small cave, and to the south
+and east.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2752
+D2
+The cave continues south.
+~
+~
+0 0 2750
+W 5 0 0
+Z 5 5
+S
+#2752
+The Chaja Camp~
+Three cave tunnels converge into a small open area.  The floor of the
+cave is covered with a thin layer of mud, caused by the droplets of water
+dripping steadily from the stalactites overhead.  Several large stones have
+been pulled together in a circle, apparently used as chairs.  A number of
+footprints are visible in the mud of the floor, making it clear that several
+bipeds have been in the area recently.  The cave slopes slightly upward to
+the west, rising out of the mud, and a broad cave leads to the north.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2757
+D1
+The cave continues east.
+~
+~
+0 0 2753
+D3
+The cave continues west.
+~
+~
+0 0 2751
+W 5 0 0
+Z 5 5
+S
+#2753
+A Muddy Tunnel~
+This muddy cave tunnel leads east and west.  Several sets of footprints
+leading west are visible in the mud on the floor of the tunnel.  Water drips
+from the stalactites on the ceiling forming puddles on the flor.  Echoing
+through the cave is the distant sound of trickling water.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2754
+D3
+The cave continues west.
+~
+~
+0 0 2752
+W 5 0 0
+Z 5 5
+S
+#2754
+A Muddy Tunnel~
+The muddy tunnel forks east and west at this point.  Several footprints
+leading west are visible in the mud.  To the east, the tunnel slopes upward
+and becomes somewhat drier.  To the west, the damp tunnel continues.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2758
+D1
+The cave continues east.
+~
+~
+0 0 2755
+D3
+The cave continues west.
+~
+~
+0 0 2753
+W 5 0 0
+Z 5 5
+S
+#2755
+A Side Tunnel~
+This small side tunnel branches off the main tunnel to the west.  Sloping
+upwards slightly, the mud lessens along this cave path, and the walls and
+ceiling are less damp.  The faint sound of trickling water echoes through
+the cave.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2756
+D3
+The cave continues west.
+~
+~
+0 0 2754
+W 5 0 0
+Z 5 5
+S
+#2756
+A Side Tunnel~
+This side tunnel joins another small tunnel to the north, and slopes
+upward to the west.  To the north, the tunnel is damp and the cave floor is
+muddy, and to the south, a dry cave opens through the cave wall.  The faint
+sound of trickling water echoes through this small cave.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2760
+D2
+A dry cave is to the south.
+~
+~
+0 0 2807
+D3
+The cave continues west.
+~
+~
+0 0 2755
+W 5 0 0
+Z 5 5
+S
+#2757
+A Broad Cave Tunnel~
+A broad, dry cave tunnel leads to the north and south.  The air is damp,
+and you can hear the dripping of water.  The ceiling of the cave is crowded
+with stalactites, and in a few areas you are forced to move around mighty
+formations of stalagmites rising up from the floor.  The curving side tunnel
+splits off to the east.  
+~
+~
+1
+0 9 12
+D0
+~
+~
+0 0 2764
+D1
+A side tunnel leads east.
+~
+~
+0 0 2808
+D2
+~
+~
+0 0 2752
+W 5 0 0
+Z 5 5
+S
+#2758
+A Muddy Tunnel~
+The cave tunnel branches off to the east, or continues north and south. 
+Several sets of footprints leading south are visible in the mud on the floor
+of the tunnel, and one set of prints breaks off to follow the east passage. 
+Water drips from the stalactites on the ceiling, forming muddy puddles. 
+Echoing through the caves, you can hear the faint sound of trickling water. 
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2763
+D1
+One set of footprints breaks off and follows the tunnel east.
+~
+~
+0 0 2759
+D2
+The footprints continue south.
+~
+~
+0 0 2754
+W 5 0 0
+Z 5 5
+S
+#2759
+A Muddy Side Tunnel~
+This side tunnel breaks off from the main cave to the west.  A single set
+of footprints, visible in the mud on the floor of the tunnel, leads east. 
+Water drips from the stalactites on the ceiling, forming muddy puddles. 
+Echoing through the caves, you can hear the faint sound of trickling water. 
+~
+~
+1
+0 9 12
+D1
+A single set of footprints leads east.
+~
+~
+0 0 2760
+D3
+The cave continues west.
+~
+~
+0 0 2758
+W 5 0 0
+Z 5 5
+S
+#2760
+The Muddy Side Tunnel~
+The muddy side tunnel runs east and west, with a break in the cave wall
+leading south.  A single set of footprints, visible in the mud on the floor
+of the tunnel, leads east.  Water drips from the stalactites on the ceiling,
+forming muddy puddles.  Echoing through the caves, you can hear the faint
+sound of trickling water.  
+~
+~
+1
+0 9 12
+D1
+The single set of footprints leads east, to the edge of a pool.
+~
+~
+0 0 2761
+D2
+The cave continues south.
+~
+~
+0 0 2756
+D3
+The cave continues west.
+~
+~
+0 0 2759
+W 5 0 0
+Z 5 5
+S
+#2761
+The Cave Pool~
+The muddy side tunnel opens into a large cave filled with murky water. 
+The faint splashing sound that has echoed through the caves originates at
+this pool.  The set of footprints leads up to the edge of the water, and it
+is apparent that whoever left the prints entered the pool.  
+~
+~
+1
+0 9 12
+D0
+To the north, the water ripples slightly, as if something therein is moving.
+~
+~
+0 0 2762
+D3
+The cave continues west.
+~
+~
+0 0 2760
+W 5 0 0
+Z 5 5
+S
+#2762
+The Cave Pool~
+At the north end of the cave, the pool begins to deepen, until it is
+almost 5\@ deep.  The sound of the stream splashing to the south echoes
+throughout the water-filled cave.  
+~
+~
+1
+0 9 12
+D2
+The cave pool continues south.
+~
+~
+0 0 2761
+W 5 0 0
+Z 5 5
+S
+#2763
+A Muddy Tunnel~
+The cave tunnel winds away from the intersection to the north.  Several
+sets of footprints leading south are visible in the mud on the floor of the
+tunnel.  Water drips from the stalactites on the ceiling, forming muddy
+puddles.  Echoing through the caves, you can hear the faint sound of
+trickling water.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2767
+D2
+In the mud to the south, the footprints continue.
+~
+~
+0 0 2758
+W 5 0 0
+Z 5 5
+S
+#2764
+A Broad Cave Tunnel~
+A broad, dry cave tunnel leads to the north and south.  The air is damp,
+and you can hear the dripping of water.  The ceiling of the cave is crowded
+with stalactites, and in a few areas you are forced to move around mighty
+formations of stalagmites rising up from the floor.
+~
+~
+1
+0 9 12
+D0
+~
+~
+0 0 2765
+D2
+~
+~
+0 0 2757
+W 5 0 0
+Z 5 5
+S
+#2765
+A Broad Cave Tunnel~
+A broad, dry cave tunnel leads to the east and south.  The air is damp,
+and you can hear the dripping of water.  The ceiling of the cave is crowded
+with stalactites, and in a few areas you are forced to move around mighty
+formations of stalagmites rising up from the floor.  
+~
+~
+1
+0 9 12
+D1
+~
+~
+0 0 2766
+D2
+~
+~
+0 0 2764
+W 5 0 0
+Z 5 5
+S
+#2766
+A Broad Cave Tunnel~
+A broad, dry cave tunnel leads to the east and west.  The air is damp,
+and you can hear the dripping of water.  The ceiling of the cave is crowded
+with stalactites, and in a few areas you are forced to move around mighty
+formations of stalagmites rising up from the floor.  
+~
+~
+1
+0 9 12
+D1
+~
+~
+0 0 2767
+D3
+~
+~
+0 0 2765
+W 5 0 0
+Z 5 5
+S
+#2767
+An Intersection of Tunnels~
+An intersection of cave tunnels forms a large open area here.  A wide,
+dark tunnel winds to the north, a broad tunnel leads west, a tunnel marked
+by several footprints leads to the south, and a very small cave is to the
+east.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2778
+D1
+The cave continues east.
+~
+~
+0 0 2768
+D2
+A muddy tunnel leads south, with several sets of footprints visible in the mud.
+~
+~
+0 0 2763
+D3
+The cave continues west.
+~
+~
+0 0 2766
+D4
+The crevice slopes steeply upward.
+~
+~
+0 0 2749
+W 5 0 0
+Z 5 5
+S
+#2768
+A Small Cave~
+The main passage leads to a small rounded cave.  A slight pool has formed
+from the dripping of water from the stalactites on the ceiling.  The small
+cave continues to the east, and the intersection of tunnels is to the west. 
+~
+~
+1
+0 9 12
+D1
+The small cave continues.
+~
+~
+0 0 2812
+D3
+The cave continues west.
+~
+~
+0 0 2767
+W 5 0 0
+Z 5 5
+S
+#2769
+A Dark Cave~
+The cave forms a curving natural passageway that turns from the north to
+the east.  The walls of the cave here are oddly shaped, creating unusual
+shadows that give the appearance of pitch-blackness all around you.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2774
+D1
+The cave continues east.
+~
+~
+0 0 2770
+W 5 0 0
+Z 5 5
+S
+#2770
+A Dark Cave~
+The cave forms a curving natural passageway that runs from west to east. 
+The walls of the cave here are oddly shaped, creating unusual shadows that
+give the appearance of pitch-blackness all around you.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2771
+D3
+The cave continues west.
+~
+~
+0 0 2769
+W 5 0 0
+Z 5 5
+S
+#2771
+A Dark Cave~
+The cave forms a curving natural passageway that turns from the west to
+the north.  The walls of the cave here are oddly shaped, creating unusual
+shadows that give the appearance of pitch-blackness all around you.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2775
+D3
+The cave continues west.
+~
+~
+0 0 2770
+W 5 0 0
+Z 5 5
+S
+#2772
+The Large Cavern~
+A large cavern stretches before you into darkness.  The ceiling is
+covered with hanging stalactites, and mighty stalagmites reach up from the
+cave floor, obstructing your path in some areas.  The cavern echoes with
+faint fluttering sounds, and the clicking of something hard against the
+stone walls.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2779
+D1
+The cave continues east.
+~
+~
+0 0 2773
+T 77
+W 5 0 0
+Z 5 5
+S
+#2773
+The Large Cavern~
+A large cavern stretches before you into darkness.  The ceiling is
+covered with hanging stalactites, and mighty stalagmites reach up from the
+cave floor, obstructing your path in some areas.  The cavern echoes with
+faint fluttering sounds, and the clicking of something hard against the
+stone walls.  
+~
+~
+1
+0 8 12
+D0
+The cave continues north.
+~
+~
+0 0 2780
+D3
+The cave continues west.
+~
+~
+0 0 2772
+T 77
+W 5 0 0
+Z 5 5
+S
+#2774
+A Dark Cave~
+The cave forms a curving natural passageway that stretches from the north
+to the south.  The walls of the cave here are oddly shaped, creating unusual
+shadows that give the appearance of pitch-blackness all around you.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2782
+D2
+The cave continues south.
+~
+~
+0 0 2769
+W 5 0 0
+Z 5 5
+S
+#2775
+A Dark Cave~
+The cave forms a curving natural passageway that turns from the south to
+the east.  The walls of the cave here are oddly shaped, creating unusual
+shadows that give the appearance of pitch-blackness all around you.  
+~
+~
+1
+0 9 12
+D1
+~
+~
+0 0 2776
+D2
+~
+~
+0 0 2771
+W 5 0 0
+Z 5 5
+S
+#2776
+A Dark Cave~
+The cave forms a curving natural passageway that runs from east to west. 
+The walls of the cave here are oddly shaped, creating unusual shadows that
+give the appearance of pitch-blackness all around you.
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2777
+D3
+The cave continues west.
+~
+~
+0 0 2775
+W 5 0 0
+Z 5 5
+S
+#2777
+A Dark Cave~
+The cave forms a curving natural passageway that runs from east to west. 
+The walls of the cave here are oddly shaped, creating unusual shadows that
+give the appearance of pitch-blackness all around you.  Another passage
+breaks off to the north.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2783
+D1
+The cave continues east.
+~
+~
+0 0 2778
+D3
+The cave continues west.
+~
+~
+0 0 2776
+W 5 0 0
+Z 5 5
+S
+#2778
+A Dark Cave~
+The cave forms a curving natural passageway that turns from the south to
+the west.  The walls of the cave here are oddly shaped, creating unusual
+shadows that give the appearance of pitch-blackness all around you.  
+~
+~
+1
+0 9 12
+D2
+The cave continues south.
+~
+~
+0 0 2767
+D3
+The cave continues west.
+~
+~
+0 0 2777
+W 5 0 0
+Z 5 5
+S
+#2779
+The Large Cavern~
+A large cavern stretches before you into darkness.  The ceiling is
+covered with hanging stalactites, and mighty stalagmites reach up from the
+cave floor, obstructing your path in some areas.  The cavern echoes with
+faint fluttering sounds, and the clicking of something hard against the
+stone walls.  A cave tunnel in the north wall leads out of the cavern.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2784
+D1
+The cave continues east.
+~
+~
+0 0 2780
+D2
+The cave continues south.
+~
+~
+0 0 2772
+W 5 0 0
+Z 5 5
+S
+#2780
+The Large Cavern~
+A large cavern stretches before you into darkness.  The ceiling is
+covered with hanging stalactites, and mighty stalagmites reach up from the
+cave floor, obstructing your path in some areas.  The cavern echoes with
+faint fluttering sounds, and the clicking of something hard against the
+stone walls.  A side tunnel leads east.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2781
+D2
+The cave continues south.
+~
+~
+0 0 2773
+D3
+The cave continues west.
+~
+~
+0 0 2779
+T 77
+W 5 0 0
+Z 5 5
+S
+#2781
+The Entrance to a Large Cave~
+The dark tunnel to the east broadens considerably into a small open area.
+To the west, a large cave filled with stalactites and stalagmites opens. 
+You can hear a faint fluttering sound echoing, and the clicking of something
+hard against a stone wall.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2782
+D3
+The cave continues west.
+~
+~
+0 0 2780
+W 5 0 0
+Z 5 5
+S
+#2782
+A Dark Cave~
+The cave forms a curving natural passageway that turns from the south to
+the west.  The walls of the cave here are oddly shaped, creating unusual
+shadows that give the appearance of pitch-blackness all around you.  
+~
+~
+1
+0 9 12
+D2
+The cave continues south.
+~
+~
+0 0 2774
+D3
+The cave continues west.
+~
+~
+0 0 2781
+W 5 0 0
+Z 5 5
+S
+#2783
+A Cave Passage~
+You stand in a natural cave passage that leads into the darkness
+northward, or opens into an intersection of tunnels south.  Water dripping
+from the ceiling of the cave makes the muddy stone floor slick, and fungus
+growing on the walls gives this passage a musty smell.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2786
+D2
+The cave continues south.
+~
+~
+0 0 2777
+W 5 0 0
+Z 5 5
+S
+#2784
+A Wide Cave Tunnel~
+A wide cave tunnel leads into the large cavern to the south, and curves
+into the darkness to the north.  The faint sound of fluttering insect wings
+echoes through the tunnel.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2787
+D2
+The cave continues south.
+~
+~
+0 0 2779
+W 5 0 0
+Z 5 5
+S
+#2785
+A Cave Passage~
+You stand in a natural cave passage that leads into the darkness to the
+north and east.  Water dripping from the ceiling of the cave makes the muddy
+stone floor slick, and fungus growing on the walls gives this passage a
+musty smell.
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2793
+D1
+The cave continues east.
+~
+~
+0 0 2786
+W 5 0 0
+Z 5 5
+S
+#2786
+A Cave Passage~
+You stand in a natural cave passage that leads into the darkness to the
+west and south.  Water dripping from the ceiling of the cave makes the muddy
+stone floor slick, and fungus growing on the walls gives this passage a
+musty smell.  
+~
+~
+1
+0 9 12
+D2
+The cave continues south.
+~
+~
+0 0 2783
+D3
+The cave continues west.
+~
+~
+0 0 2785
+W 5 0 0
+Z 5 5
+S
+#2787
+A Wide Cave Tunnel~
+A wide cave tunnel meets with two other caves to form a small open area
+here.  Water drips from the ceiling of the cave, forming murky puddles on
+the floor.  A dark tunnel leads north, and the main tunnel curves from south
+to east.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2794
+D1
+The cave continues east.
+~
+~
+0 0 2788
+D2
+The cave continues south.
+~
+~
+0 0 2784
+W 5 0 0
+Z 5 5
+S
+#2788
+A Wide Cave Tunnel~
+A wide cave tunnel leads into the large cavern to the east, and curves
+into the darkness to the west.  The faint sound of fluttering insect wings
+echoes through the tunnel.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2789
+D3
+The cave continues west.
+~
+~
+0 0 2787
+W 5 0 0
+Z 5 5
+S
+#2789
+A Large Cavern~
+A large cavern stretches before you into darkness.  The ceiling is
+covered with hanging stalactites, and mighty stalagmites reach up from the
+cave floor, obstructing your path in some areas.  The cavern echoes with
+faint fluttering sounds, and the clicking of something hard against the
+stone walls.  A cave tunnel in the west wall leads out of the cavern.
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2795
+D1
+The cave continues east.
+~
+~
+0 0 2790
+D3
+The cave continues west.
+~
+~
+0 0 2788
+W 5 0 0
+Z 5 5
+S
+#2790
+A Large Cavern~
+A large cavern stretches before you into darkness.  The ceiling is
+covered with hanging stalactites, and mighty stalagmites reach up from the
+cave floor, obstructing your path in some areas.  The cavern echoes with
+faint fluttering sounds, and the clicking of something hard against the
+stone walls.  A natural cave passage leads to the east.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2796
+D1
+The cave continues east.
+~
+~
+0 0 2791
+D3
+The cave continues west.
+~
+~
+0 0 2789
+W 5 0 0
+Z 5 5
+S
+#2791
+A Wide Cave Tunnel~
+A wide cave tunnel leads into the large cavern to the west, curves into
+the darkness to the east, and branches off to the south.  The faint sound of
+fluttering insect wings echoes through the tunnel.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2792
+D2
+~
+~
+0 0 2889
+D3
+The cave continues west.
+~
+~
+0 0 2790
+W 5 0 0
+Z 5 5
+S
+#2792
+A Wide Cave Tunnel~
+A wide cave tunnel leads into the large cavern to the east, and curves
+into the darkness to the west.  The faint sound of fluttering insect wings
+echoes through the tunnel.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2793
+D3
+The cave continues west.
+~
+~
+0 0 2791
+W 5 0 0
+Z 5 5
+S
+#2793
+A Large Cavern~
+A large cavern stretches before you into darkness.  The ceiling is
+covered with hanging stalactites, and mighty stalagmites reach up from the
+cave floor, obstructing your path in some areas.  The cavern echoes with
+faint fluttering sounds, and the clicking of something hard against the
+stone walls.  To the west and south, two cave tunnels wind into the murky
+blackness.  
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2797
+D2
+The cave continues south.
+~
+~
+0 0 2785
+D3
+The cave continues west.
+~
+~
+0 0 2792
+W 5 0 0
+Z 5 5
+S
+#2794
+A Curving Tunnel~
+The wide cave tunnel narrows into this smaller cave, which curves from
+the south to the west.  Water drips from the ceiling, and the beginnings of
+stalactites are visible.  Murky water puddles on the floor of the cave.  
+~
+~
+1
+0 9 12
+D2
+The cave continues south.
+~
+~
+0 0 2787
+D3
+~
+~
+0 0 2890
+T 65
+W 5 0 0
+Z 5 5
+S
+#2795
+A Large Cavern~
+A large cavern stretches before you into darkness.  The ceiling is
+covered with hanging stalactites, and mighty stalagmites reach up from the
+cave floor, obstructing your path in some areas.  The cavern echoes with
+faint fluttering sounds, and the clicking of something hard against the
+stone walls.  
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2796
+D2
+The cave continues south.
+~
+~
+0 0 2789
+W 5 0 0
+Z 5 5
+S
+#2796
+A Large Cavern~
+A large cavern stretches before you into darkness.  The ceiling is
+covered with hanging stalactites, and mighty stalagmites reach up from the
+cave floor, obstructing your path in some areas.  The cavern echoes with
+faint fluttering sounds, and the clicking of something hard against the
+stone walls.  
+~
+~
+1
+0 9 12
+D2
+The cave continues south.
+~
+~
+0 0 2790
+D3
+The cave continues west.
+~
+~
+0 0 2795
+W 5 0 0
+Z 5 5
+S
+#2797
+A Large Cavern~
+A large cavern stretches before you into darkness.  The ceiling is
+covered with hanging stalactites, and mighty stalagmites reach up from the
+cave floor, obstructing your path in some areas.  The cavern echoes with
+faint fluttering sounds, and the clicking of something hard against the
+stone walls.
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2799
+D1
+The cave continues east.
+~
+~
+0 0 2798
+D2
+The cave continues south.
+~
+~
+0 0 2793
+W 5 0 0
+Z 5 5
+S
+#2798
+A Large Cavern~
+A large cavern stretches before you into darkness.  The ceiling is
+covered with hanging stalactites, and mighty stalagmites reach up from the
+cave floor, obstructing your path in some areas.  The cavern echoes with
+faint fluttering sounds, and the clicking of something hard against the
+stone walls.
+~
+~
+1
+0 9 12
+D0
+The cave continues north.
+~
+~
+0 0 2700
+D3
+The cave continues west.
+~
+~
+0 0 2797
+W 5 0 0
+Z 5 5
+S
+#2799
+A Large Cavern~
+A large cavern stretches before you into darkness.  The ceiling is
+covered with hanging stalactites, and mighty stalagmites reach up from the
+cave floor, obstructing your path in some areas.  The cavern echoes with
+faint fluttering sounds, and the clicking of something hard against the
+stone walls.
+~
+~
+1
+0 9 12
+D1
+The cave continues east.
+~
+~
+0 0 2700
+D2
+The cave continues south.
+~
+~
+0 0 2797
+W 5 0 0
+Z 5 5
+S
+#2800
+The Chaja Cave Arachnid Observation Room~
+Big glass windows in the side of the cave allow the immortals of Pantheon
+to observe the incredible phase spider devouring more helpless mortals.  A
+crystal ball replays past scenes of mortal/arachnid meetings and the gory
+results.  The walls are lined with phase spider fan posters, and a full set
+of the Phase Spider comic book--in mint condition--are stored in cardboard
+boxes.  
+~
+~
+1
+0 557110 0
+W 5 0 0
+Z 5 5
+S
+#2801
+A Luminous Cave~
+The walls and ceiling of this rounded cave are coated with multicolored
+fungi which give off a faint luminesence.  The red, green, and yellow
+glowing patches provide enough light to see without further aid.  Trails of
+slime criss-cross the walls, disturbing the patterns of colored light. 
+Littering the floor are dried pieces of chitin and shards of a thick shell. 
+~
+~
+1
+0 8 12
+D1
+The cave continues.
+~
+~
+0 0 2706
+W 5 0 0
+Z 5 5
+S
+#2802
+A Damp Cave~
+The walls of this cave are slick with the moisture dripping from the
+ceiling.  The beginnings of stalactites hang overhead, and the cave floor is
+puddled with muddy water.  The tunnel opens into an intersection to the
+west, and continues to the east.  
+~
+~
+1
+0 9 12
+D1
+The damp cave continues.
+~
+~
+0 0 2803
+D3
+The damp cave continues.
+~
+~
+0 0 2726
+W 5 0 0
+Z 5 5
+S
+#2803
+A Damp Cave~
+The walls of this cave are slick with the moisture dripping from the
+ceiling.  The beginnings of stalactites hang overhead, and the cave floor is
+puddled with muddy water.  The tunnel curves north, or continues west.  
+~
+~
+1
+0 9 12
+D0
+The damp cave continues.
+~
+~
+0 0 2804
+D3
+The damp cave continues.
+~
+~
+0 0 2802
+W 5 0 0
+Z 5 5
+S
+#2804
+A Damp Cave~
+The walls of this cave are slick with the moisture dripping from the
+ceiling.  The beginnings of stalactites hang overhead, and the cave floor is
+puddled with muddy water.  The tunnel ends abruptly at this point.  The only
+exit visible is to the south.  
+~
+~
+1
+0 9 12
+D2
+The damp cave continues.
+~
+~
+0 0 2803
+W 5 0 0
+Z 5 5
+S
+#2805
+A Side Tunnel~
+This side tunnel branches off from the luminous cave to the east.  The
+walls and ceiling are coated with a thick layer of slime mold, a
+russet-colored fungus that ripples slightly, as if sensing your presence. 
+The tunnel curves to the north, or leads back to the east.  
+~
+~
+1
+0 9 12
+D0
+The side tunnel curves north.
+~
+~
+0 0 2806
+D1
+The luminous cave is to the east.
+~
+~
+0 0 2719
+W 5 0 0
+Z 5 5
+S
+#2806
+A Side Tunnel~
+The side tunnel comes to an abrupt end as the cave walls curve together,
+forming a small, rounded cave.  The walls are thinly coated with slime mold,
+and to the south, a greater amount of the fungus is visible.  
+~
+~
+1
+0 9 12
+D2
+The side tunnel returns south.
+~
+~
+0 0 2805
+W 5 0 0
+Z 5 5
+S
+#2807
+A Dry Cave~
+The cave floor slopes upward, and the mud turns into a thick coating of
+dust.  The walls of this small cave are dry, and small roots protrude near
+the ceiling.  The sound of dripping water echoes through the cave.  
+~
+~
+1
+0 9 12
+D0
+The muddy cave tunnel is north.
+~
+~
+0 0 2756
+W 5 0 0
+Z 5 5
+S
+#2808
+A Small Side Tunnel~
+A small side tunnel branches off the broad tunnel to the west.  The walls
+of this tunnel are composed of crumbling, moist clay, which clings to your
+clothing as you brush the sides of the tunnel.  The side tunnel curves
+northward, or returns to the west.  
+~
+~
+1
+0 9 12
+D0
+The side tunnel curves north.
+~
+~
+0 0 2809
+D3
+The side tunnel joins the broad cave to the west.
+~
+~
+0 0 2757
+W 5 0 0
+Z 5 5
+S
+#2809
+A Dead-End~
+The side tunnel comes to an end in a small cave with walls of moist clay.
+The air is chill and damp, and the lowering ceiling makes standing here
+uncomfortable.  The tunnel returns to the south.  
+~
+~
+1
+0 9 12
+D2
+~
+~
+0 0 2808
+W 5 0 0
+Z 5 5
+S
+#2810
+A Small Cave~
+You stand in a small, rounded cave.  The walls are damp with moisture
+dripping from the stalactites on the ceiling, and puddles have formed on the
+cave floor.  A narrow tunnel curves sharply downward, and the water of the
+cave floor trickles down in a slight stream.  
+~
+~
+1
+0 13 12
+D1
+The small cave continues.
+~
+~
+0 0 2811
+D5
+The tunnel slopes sharply downward.
+~
+~
+0 0 2840
+W 5 0 0
+Z 5 5
+S
+#2811
+A Small Cave~
+You stand in a small, rounded cave.  The walls are damp with moisture
+dripping from the stalactites on the ceiling, and puddles have formed on the
+cave floor.  The air is chill and damp.  The small cave has exits leading
+west and north.
+~
+~
+1
+0 9 12
+D0
+The small cave continues.
+~
+~
+0 0 2812
+D3
+The small cave continues.
+~
+~
+0 0 2810
+W 5 0 0
+Z 5 5
+S
+#2812
+A Small Cave~
+You stand in a small, rounded cave.  The walls are damp with moisture
+dripping from the stalactites on the ceiling, and puddles have formed on the
+cave floor.  The air is chill and damp.  The small cave has exits leading
+west and south.  
+~
+~
+1
+0 9 12
+D2
+The small cave continues.
+~
+~
+0 0 2811
+D3
+The small cave continues.
+~
+~
+0 0 2768
+W 5 0 0
+Z 5 5
+S
+#2813
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2816
+W 5 0 0
+Z 5 5
+S
+#2814
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2818
+W 5 0 0
+Z 5 5
+S
+#2815
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2819
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2816
+W 5 0 0
+Z 5 5
+S
+#2816
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2817
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2813
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2815
+W 5 0 0
+Z 5 5
+S
+#2817
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2818
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2820
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2816
+W 5 0 0
+Z 5 5
+S
+#2818
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2821
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2814
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2817
+W 5 0 0
+Z 5 5
+S
+#2819
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2827
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2815
+W 5 0 0
+Z 5 5
+S
+#2820
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2829
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2817
+W 5 0 0
+Z 5 5
+S
+#2821
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.  
+~
+~
+2
+0 9 12
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2818
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2830
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2822
+W 5 0 0
+Z 5 5
+S
+#2822
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2823
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2821
+W 5 0 0
+Z 5 5
+S
+#2823
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2832
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2822
+W 5 0 0
+Z 5 5
+S
+#2824
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2833
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2825
+W 5 0 0
+Z 5 5
+S
+#2825
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2826
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2824
+W 5 0 0
+Z 5 5
+S
+#2826
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2827
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2825
+W 5 0 0
+Z 5 5
+S
+#2827
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2835
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2819
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2826
+W 5 0 0
+Z 5 5
+S
+#2828
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2836
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2829
+W 5 0 0
+Z 5 5
+S
+#2829
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2820
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2837
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2828
+W 5 0 0
+Z 5 5
+S
+#2830
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2831
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2821
+W 5 0 0
+Z 5 5
+S
+#2831
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.  
+~
+~
+2
+0 9 12
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2830
+D5
+A trapdoor constructed of sticks and spiderweb is barely visible.
+~
+~
+3 0 2891
+W 5 0 0
+Z 5 5
+S
+#2832
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2840
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2823
+W 5 0 0
+Z 5 5
+S
+#2833
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2841
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2824
+W 5 0 0
+Z 5 5
+S
+#2834
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2843
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2835
+T 77
+W 5 0 0
+Z 5 5
+S
+#2835
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2827
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2834
+T 77
+W 5 0 0
+Z 5 5
+S
+#2836
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2845
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2828
+W 5 0 0
+Z 5 5
+S
+#2837
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2838
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2829
+W 5 0 0
+Z 5 5
+S
+#2838
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2847
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2837
+W 5 0 0
+Z 5 5
+S
+#2839
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2840
+W 5 0 0
+Z 5 5
+S
+#2840
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2832
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2839
+D4
+A tunnel slopes sharply upward.
+~
+~
+0 0 2810
+W 5 0 0
+Z 5 5
+S
+#2841
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2849
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2842
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2833
+T 77
+W 5 0 0
+Z 5 5
+S
+#2842
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2843
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2841
+T 77
+W 5 0 0
+Z 5 5
+S
+#2843
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2850
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2834
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2842
+T 77
+W 5 0 0
+Z 5 5
+S
+#2844
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2845
+W 5 0 0
+Z 5 5
+S
+#2845
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2846
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2844
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2836
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2851
+W 5 0 0
+Z 5 5
+S
+#2846
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2845
+W 5 0 0
+Z 5 5
+S
+#2847
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D1
+~
+~
+0 0 2848
+D2
+~
+~
+0 0 2838
+W 5 0 0
+Z 5 5
+S
+#2848
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D3
+~
+~
+0 0 2847
+D5
+A tunnel veers sharply downward.
+~
+~
+0 0 2874
+W 5 0 0
+Z 5 5
+S
+#2849
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2852
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2841
+W 5 0 0
+Z 5 5
+S
+#2850
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2854
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2843
+W 5 0 0
+Z 5 5
+S
+#2851
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D0
+The twisting, web-filled passages continue.
+~
+~
+0 0 2856
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2845
+W 5 0 0
+Z 5 5
+S
+#2852
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2853
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2849
+D4
+~
+~
+0 0 2890
+W 5 0 0
+Z 5 5
+S
+#2853
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2854
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2852
+W 5 0 0
+Z 5 5
+S
+#2854
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2850
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2855
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2853
+W 5 0 0
+Z 5 5
+S
+#2855
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D1
+The twisting, web-filled passages continue.
+~
+~
+0 0 2856
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2854
+W 5 0 0
+Z 5 5
+S
+#2856
+A Web-filled Maze~
+The walls of this cave passage are lined with a thick layer of spider\@s
+webbing, as if an enormous arachnid has marked the entire area as its lair. 
+The passages branch crazily, forming a confusing maze of tunnels.  A faint
+breeze fans the webs, carrying with it a slight odor of carrion.
+~
+~
+2
+0 9 12
+D2
+The twisting, web-filled passages continue.
+~
+~
+0 0 2851
+D3
+The twisting, web-filled passages continue.
+~
+~
+0 0 2855
+W 5 0 0
+Z 5 5
+S
+#2857
+A Straight Tunnel~
+The walls of this tunnel are obviously unnatural, having been smoothed
+with tools, broadened and straightened to the point where the tunnel does
+not curve at all.  It runs north and south into the darkness.  
+~
+~
+1
+0 9 12
+D0
+The straight tunnel continues.
+~
+~
+0 0 2859
+D2
+The tunnel leads south.
+~
+~
+0 0 7693
+W 5 0 0
+Z 5 5
+S
+#2858
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D0
+The winding tunnel curves onward.
+~
+~
+0 0 2860
+W 5 0 0
+Z 5 5
+S
+#2859
+A Straight Tunnel~
+The walls of this tunnel are obviously unnatural, having been smoothed
+with tools, broadened and straightened to the point where the tunnel does
+not curve at all.  It runs north and south into the darkness.  
+~
+~
+1
+0 9 12
+D0
+The straight tunnel continues.
+~
+~
+0 0 2862
+D2
+The straight tunnel continues.
+~
+~
+0 0 2857
+W 5 0 0
+Z 5 5
+S
+#2860
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D0
+The winding tunnel curves onward.
+~
+~
+0 0 2866
+D1
+The winding tunnel curves onward.
+~
+~
+0 0 2861
+D2
+The winding tunnel curves onward.
+~
+~
+0 0 2858
+W 5 0 0
+Z 5 5
+S
+#2861
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D1
+The winding tunnel runs into a straight, smooth tunnel.
+~
+~
+0 0 2862
+D3
+The winding tunnel curves onward.
+~
+~
+0 0 2860
+W 5 0 0
+Z 5 5
+S
+#2862
+A Straight Tunnel~
+The walls of this tunnel are obviously unnatural, having been smoothed
+with tools, broadened and straightened to the point where the tunnel does
+not curve at all.  It runs east and west into the darkness, with a branch
+running straight south.  
+~
+~
+1
+0 9 12
+D1
+The straight tunnel continues.
+~
+~
+0 0 2863
+D2
+The straight tunnel continues.
+~
+~
+0 0 2859
+D3
+The straight tunnel continues.
+~
+~
+0 0 2861
+W 5 0 0
+Z 5 5
+S
+#2863
+A Straight Tunnel~
+The walls of this tunnel are obviously unnatural, having been smoothed
+with tools, broadened and straightened to the point where the tunnel does
+not curve at all.  Three round holes are visible in the north wall of the
+tunnel.  It runs east and west into the darkness.  
+~
+~
+1
+0 9 12
+D1
+The straight tunnel continues.
+~
+~
+0 0 2864
+D3
+The straight tunnel continues.
+~
+~
+0 0 2862
+W 5 0 0
+Z 5 5
+S
+#2864
+A Straight Tunnel~
+The walls of this tunnel are obviously unnatural, having been smoothed
+with tools, broadened and straightened to the point where the tunnel does
+not curve at all.  It runs east and west into the darkness.  
+~
+~
+1
+0 9 12
+D1
+The straight tunnel continues.
+~
+~
+0 0 2865
+D3
+The straight tunnel continues.
+~
+~
+0 0 2863
+W 5 0 0
+Z 5 5
+S
+#2865
+A Straight Tunnel~
+The walls of this tunnel are obviously unnatural, having been smoothed
+with tools, broadened and straightened to the point where the tunnel does
+not curve at all.  It runs east and west into the darkness.
+~
+~
+1
+0 9 12
+D1
+The tunnel leads east.
+~
+~
+0 0 7601
+D3
+The straight tunnel continues.
+~
+~
+0 0 2864
+W 5 0 0
+Z 5 5
+S
+#2866
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D0
+The winding tunnel curves onward.
+~
+~
+0 0 2867
+D2
+The winding tunnel curves onward.
+~
+~
+0 0 2860
+W 5 0 0
+Z 5 5
+S
+#2867
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D1
+The winding tunnel curves onward.
+~
+~
+0 0 2868
+D2
+The winding tunnel curves onward.
+~
+~
+0 0 2866
+W 5 0 0
+Z 5 5
+S
+#2868
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D0
+The winding tunnel curves onward.
+~
+~
+0 0 2869
+D3
+The winding tunnel curves onward.
+~
+~
+0 0 2867
+W 5 0 0
+Z 5 5
+S
+#2869
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D0
+The winding tunnel curves onward.
+~
+~
+0 0 2873
+D2
+The winding tunnel curves onward.
+~
+~
+0 0 2868
+W 5 0 0
+Z 5 5
+S
+#2870
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D0
+The winding tunnel curves onward.
+~
+~
+0 0 2879
+D1
+The winding tunnel curves onward.
+~
+~
+0 0 2871
+W 5 0 0
+Z 5 5
+S
+#2871
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D1
+The winding tunnel curves onward.
+~
+~
+0 0 2872
+D3
+The winding tunnel curves onward.
+~
+~
+0 0 2870
+W 5 0 0
+Z 5 5
+S
+#2872
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D0
+The winding tunnel curves onward.
+~
+~
+0 0 2875
+D3
+The winding tunnel curves onward.
+~
+~
+0 0 2871
+W 5 0 0
+Z 5 5
+S
+#2873
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D0
+The winding tunnel curves onward.
+~
+~
+0 0 2877
+D2
+The winding tunnel curves onward.
+~
+~
+0 0 2869
+W 5 0 0
+Z 5 5
+S
+#2874
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.  At the south end, the tunnel turns sharply upward.  
+~
+~
+1
+0 13 12
+D0
+The winding tunnel curves onward.
+~
+~
+0 0 2883
+D4
+A tunnel curves steeply upward.
+~
+~
+0 0 2848
+W 5 0 0
+Z 5 5
+S
+#2875
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D0
+The winding tunnel curves onward.
+~
+~
+0 0 2880
+D1
+The winding tunnel curves onward.
+~
+~
+0 0 2876
+D2
+The winding tunnel curves onward.
+~
+~
+0 0 2872
+W 5 0 0
+Z 5 5
+S
+#2876
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D1
+The winding tunnel curves onward.
+~
+~
+0 0 2877
+D3
+The winding tunnel curves onward.
+~
+~
+0 0 2875
+W 5 0 0
+Z 5 5
+S
+#2877
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D1
+The winding tunnel curves onward.
+~
+~
+0 0 2878
+D2
+The winding tunnel curves onward.
+~
+~
+0 0 2873
+D3
+The winding tunnel curves onward.
+~
+~
+0 0 2876
+W 5 0 0
+Z 5 5
+S
+#2878
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D3
+The winding tunnel curves onward.
+~
+~
+0 0 2877
+W 5 0 0
+Z 5 5
+S
+#2879
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D2
+The winding tunnel curves onward.
+~
+~
+0 0 2870
+W 5 0 0
+Z 5 5
+S
+#2880
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.
+~
+~
+1
+0 9 12
+D0
+The winding tunnel curves onward.
+~
+~
+0 0 2884
+D2
+The winding tunnel curves onward.
+~
+~
+0 0 2875
+W 5 0 0
+Z 5 5
+S
+#2881
+An Oddly Formed Tunnel~
+This tunnel seems to be unnatural, but the walls do not appear to have
+been worked with chisels.  The marks are unusual, as if something had
+scraped, rather than chipped, the stone away, and then polished it to a fine
+glow. The fungus of the cave seems to flourish on this odd surface, as
+several patches of white mushrooms grow from the walls and floor.
+~
+~
+1
+0 9 12
+D0
+The oddly formed tunnel continues.
+~
+~
+0 0 2888
+D1
+The oddly formed tunnel continues.
+~
+~
+0 0 2882
+W 5 0 0
+Z 5 5
+S
+#2882
+An Oddly Formed Tunnel~
+This tunnel seems to be unnatural, but the walls do not appear to have
+been worked with chisels.  The marks are unusual, as if something had
+scraped, rather than chipped, the stone away, and then polished it to a fine
+glow. The fungus of the cave seems to flourish on this odd surface, as
+several patches of white mushrooms grow from the walls and floor.
+~
+~
+1
+0 9 12
+D1
+The oddly formed tunnel continues.
+~
+~
+0 0 7501
+D3
+The oddly formed tunnel continues.
+~
+~
+0 0 2881
+W 5 0 0
+Z 5 5
+S
+#2883
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.  
+~
+~
+1
+0 9 12
+D1
+The winding tunnel curves onward.
+~
+~
+0 0 2884
+D2
+The winding tunnel curves onward.
+~
+~
+0 0 2874
+W 5 0 0
+Z 5 5
+S
+#2884
+A Winding Tunnel~
+The walls of this tunnel curve sharply, twisting about through the earth.
+The cave floor is covered with a layer of rounded pebbles, such as one would
+find at the bottom of a stream.  Patches of lichens color the walls, and the
+air is damp and moist.  
+~
+~
+1
+0 9 12
+D1
+An oddly formed tunnel leads east.
+~
+~
+0 0 2885
+D2
+The winding tunnel curves onward.
+~
+~
+0 0 2880
+D3
+The winding tunnel curves onward.
+~
+~
+0 0 2883
+W 5 0 0
+Z 5 5
+S
+#2885
+An Oddly Formed Tunnel~
+This tunnel seems to be unnatural, but the walls do not appear to have
+been worked with chisels.  The marks are unusual, as if something had
+scraped, rather than chipped, the stone away, and then polished it to a fine
+glow.  The fungus of the cave seems to flourish on this odd surface, as
+several patches of white mushrooms grow from the walls and floor.  
+~
+~
+1
+0 9 12
+D1
+The oddly formed tunnel continues.
+~
+~
+0 0 2886
+D3
+The odd lines of the tunnel cease, and the natural tunnel resumes.
+~
+~
+0 0 2884
+W 5 0 0
+Z 5 5
+S
+#2886
+An Oddly Formed Tunnel~
+This tunnel seems to be unnatural, but the walls do not appear to have
+been worked with chisels.  The marks are unusual, as if something had
+scraped, rather than chipped, the stone away, and then polished it to a fine
+glow. The fungus of the cave seems to flourish on this odd surface, as
+several patches of white mushrooms grow from the walls and floor.
+~
+~
+1
+0 9 12
+D0
+The oddly formed tunnel continues.
+~
+~
+0 0 2893
+D1
+The oddly formed tunnel continues.
+~
+~
+0 0 2887
+D3
+The oddly formed tunnel continues.
+~
+~
+0 0 2885
+W 5 0 0
+Z 5 5
+S
+#2887
+An Oddly Formed Tunnel~
+This tunnel seems to be unnatural, but the walls do not appear to have
+been worked with chisels.  The marks are unusual, as if something had
+scraped, rather than chipped, the stone away, and then polished it to a fine
+glow. The fungus of the cave seems to flourish on this odd surface, as
+several patches of white mushrooms grow from the walls and floor.
+~
+~
+1
+0 9 12
+D1
+The oddly formed tunnel continues.
+~
+~
+0 0 2888
+D3
+The oddly formed tunnel continues.
+~
+~
+0 0 2886
+W 5 0 0
+Z 5 5
+S
+#2888
+An Oddly Formed Tunnel~
+This tunnel seems to be unnatural, but the walls do not appear to have
+been worked with chisels.  The marks are unusual, as if something had
+scraped, rather than chipped, the stone away, and then polished it to a fine
+glow. The fungus of the cave seems to flourish on this odd surface, as
+several patches of white mushrooms grow from the walls and floor.
+~
+~
+1
+0 9 12
+D2
+The oddly formed tunnel continues.
+~
+~
+0 0 2881
+D3
+The oddly formed tunnel continues.
+~
+~
+0 0 2887
+W 5 0 0
+Z 5 5
+S
+#2889
+A Dark Pit~
+As you step into the darkness, stones skitter beneath your feet, and you
+slide down a steep cave wall.  You land on a ledge in a pitch black crevice.
+No handholds are available to return upwards, but the ledge seems to slope
+sharply downward just beyond your resting place.  From below, a faint breeze
+brings the slight odor of carrion.  
+~
+~
+1
+0 9 0
+D5
+Directly below you is a tunnel lined with spiderwebs.  A breeze drifts up
+to you, carrying the odor of carrion.  
+~
+~
+0 0 2843
+W 5 0 0
+Z 5 5
+S
+#2890
+A Curving Tunnel~
+The narrow cave widens slightly into a small open area, and to the
+northwest, curves downward sharply into the darkness.  The water dripping
+from the ceiling echoes throughout the small cavern.  A slight breeze drifts
+up from the depths of the dark tunnel, carrying the faint odor of carrion
+with it.  
+~
+~
+1
+0 13 12
+D1
+The curving tunnel leads west.
+~
+~
+0 0 2794
+D5
+The tunnel slopes steeply downward into the darkness.
+~
+~
+0 0 2852
+T 65
+W 5 0 0
+Z 5 5
+S
+#2891
+The Phase Spider\@s Lair~
+The trapdoor opens into a large cave underneath the maze.  Several
+humanoid corpses lay about, dried and crumbling.  The smell of carrion grows
+stronger inside the lair, but it is still muted.  The walls are lined with
+web cocoons which held the phase spider\@s victims still while it fed.  
+~
+~
+1
+0 1 12
+D4
+The trapdoor leads up.
+~
+~
+3 0 2831
+W 5 0 0
+Z 5 5
+S
+#2892
+An Oddly Formed Tunnel~
+This tunnel seems to be unnatural, but the walls do not appear to have
+been worked with chisels.  The marks are unusual, as if something had
+scraped, rather than chipped, the stone away, and then polished it to a fine
+glow. The fungus of the cave seems to flourish on this odd surface, as
+several patches of white mushrooms grow from the walls and floor.
+~
+~
+1
+0 9 12
+D2
+The oddly formed tunnel continues.
+~
+~
+0 0 2893
+W 5 0 0
+Z 5 5
+S
+#2893
+An Oddly Formed Tunnel~
+This tunnel seems to be unnatural, but the walls do not appear to have
+been worked with chisels.  The marks are unusual, as if something had
+scraped, rather than chipped, the stone away, and then polished it to a fine
+glow. The fungus of the cave seems to flourish on this odd surface, as
+several patches of white mushrooms grow from the walls and floor.
+~
+~
+1
+0 9 12
+D0
+The oddly formed tunnel continues.
+~
+~
+0 0 2892
+D2
+The oddly formed tunnel continues.
+~
+~
+0 0 2886
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 2721 spec_poison
+S
+
+
+
+#RESETS
+D 0 2831 5 3
+D 0 2891 4 3
+M 0 2715 12 2700 1
+M 0 2716 12 2700 1
+M 0 2717 16 2700 1
+M 0 2718 12 2700 1
+O 0 2704 0 2700
+P 0 2703 100 2704 1
+M 0 2702 9 2703 1
+M 0 2701 9 2703 2
+M 0 2701 9 2703 2
+E 0 2719 0 16
+M 0 2701 9 2704 1
+M 0 2702 9 2704 1
+M 0 2701 9 2705 1
+M 0 2702 9 2705 1
+M 0 2703 1 2705 1
+E 0 2720 0 16
+E 0 2721 0 12
+E 0 2722 0 8
+E 0 2723 0 15
+E 0 2727 0 17
+O 0 2702 0 2705
+M 0 2704 12 2706 1
+M 0 2706 10 2706 1
+M 0 2707 12 2706 1
+M 0 2705 10 2707 1
+M 0 2706 10 2707 1
+M 0 2704 12 2708 1
+M 0 2705 10 2708 1
+M 0 2701 9 2709 1
+M 0 2702 9 2709 1
+E 0 2719 0 16
+M 0 2701 9 2710 1
+M 0 2702 9 2710 1
+M 0 2701 9 2711 1
+M 0 2702 9 2711 1
+O 0 2702 0 2711
+M 0 2701 9 2712 1
+M 0 2702 9 2712 1
+E 0 2719 0 16
+M 0 2701 9 2713 1
+M 0 2702 9 2713 2
+M 0 2702 9 2713 2
+E 0 2719 0 16
+M 0 2706 10 2714 1
+M 0 2707 12 2714 1
+M 0 2704 12 2715 1
+M 0 2706 10 2715 1
+M 0 2707 12 2715 1
+M 0 2704 12 2716 1
+M 0 2706 10 2716 1
+M 0 2707 12 2716 1
+M 0 2705 10 2717 1
+M 0 2706 10 2717 1
+M 0 2706 10 2719 1
+M 0 2704 12 2720 1
+M 0 2706 10 2720 1
+M 0 2705 10 2721 2
+M 0 2705 10 2721 2
+M 0 2706 10 2721 1
+M 0 2707 12 2721 1
+M 0 2704 12 2722 1
+M 0 2705 10 2722 1
+M 0 2706 10 2722 1
+M 0 2707 12 2722 1
+M 0 2707 12 2725 1
+M 0 2707 12 2726 1
+M 0 2704 12 2731 1
+M 0 2704 12 2732 1
+M 0 2704 12 2735 1
+M 0 2708 12 2735 1
+M 0 2705 10 2736 1
+M 0 2707 12 2736 1
+M 0 2708 12 2736 1
+M 0 2704 12 2738 1
+M 0 2705 10 2740 1
+M 0 2708 12 2740 1
+M 0 2705 10 2741 1
+M 0 2708 12 2741 1
+M 0 2705 10 2743 1
+M 0 2707 12 2743 1
+M 0 2708 12 2744 1
+M 0 2708 12 2745 1
+M 0 2708 12 2748 1
+M 0 2712 9 2750 3
+M 0 2712 9 2750 3
+M 0 2712 9 2750 3
+M 0 2713 9 2750 3
+M 0 2713 9 2750 3
+M 0 2713 9 2750 3
+M 0 2713 9 2750 3
+M 0 2712 9 2751 3
+M 0 2712 9 2751 3
+M 0 2712 9 2751 3
+M 0 2713 9 2751 3
+M 0 2713 9 2751 3
+M 0 2713 9 2751 3
+M 0 2713 9 2751 3
+M 0 2712 9 2752 3
+M 0 2712 9 2752 3
+M 0 2712 9 2752 3
+M 0 2713 9 2752 3
+M 0 2713 9 2752 3
+M 0 2713 9 2752 3
+M 0 2714 1 2752 1
+E 0 2731 0 7
+E 0 2730 0 14
+M 0 2710 2 2761 2
+M 0 2710 2 2761 2
+O 0 2708 0 2761
+M 0 2711 1 2762 1
+G 0 2705 0
+P 0 2706 1 2705 1
+M 0 2709 7 2769 1
+M 0 2718 12 2770 1
+M 0 2715 12 2771 1
+M 0 2715 12 2772 1
+M 0 2716 12 2772 1
+O 0 2707 0 2772
+M 0 2716 12 2773 1
+M 0 2717 16 2773 1
+M 0 2718 12 2773 1
+M 0 2715 12 2774 1
+M 0 2718 12 2774 1
+M 0 2709 7 2775 1
+M 0 2715 12 2777 1
+M 0 2709 7 2778 1
+M 0 2716 12 2779 1
+M 0 2717 16 2779 1
+M 0 2715 12 2780 1
+M 0 2716 12 2780 1
+M 0 2717 16 2780 1
+M 0 2718 12 2780 1
+M 0 2717 16 2781 1
+M 0 2709 7 2782 1
+M 0 2709 7 2783 1
+M 0 2718 12 2783 1
+M 0 2709 7 2784 1
+M 0 2717 16 2784 1
+M 0 2709 7 2785 1
+M 0 2715 12 2785 1
+M 0 2715 12 2786 1
+O 0 2707 0 2786
+M 0 2715 12 2787 1
+M 0 2709 7 2788 1
+M 0 2717 16 2788 1
+M 0 2716 12 2789 1
+M 0 2717 16 2789 1
+M 0 2718 12 2789 1
+M 0 2715 12 2790 1
+M 0 2716 12 2790 1
+M 0 2717 16 2790 1
+M 0 2709 7 2791 1
+M 0 2718 12 2792 1
+M 0 2717 16 2793 1
+M 0 2718 12 2794 2
+M 0 2718 12 2794 2
+M 0 2715 12 2795 1
+M 0 2716 12 2795 1
+M 0 2717 16 2795 1
+M 0 2716 12 2796 1
+M 0 2717 16 2796 1
+M 0 2718 12 2796 1
+M 0 2715 12 2797 1
+M 0 2716 12 2797 1
+M 0 2717 16 2797 1
+M 0 2716 12 2798 1
+M 0 2717 16 2798 2
+M 0 2717 16 2798 2
+M 0 2716 12 2799 1
+M 0 2717 16 2799 1
+M 0 2718 12 2799 1
+M 0 2720 1 2806 1
+O 0 2716 0 2806
+P 0 2711 999 2716 1
+P 0 2712 999 2716 1
+P 0 2713 999 2716 1
+P 0 2714 999 2716 1
+P 0 2715 999 2716 1
+M 0 2726 1 2806 1
+R 0 2817 3
+R 0 2821 3
+M 0 2721 1 2828 1
+R 0 2829 3
+R 0 2841 3
+R 0 2845 4
+R 0 2854 3
+M 0 2723 8 2881 1
+M 0 2723 8 2882 1
+M 0 2723 8 2886 1
+O 0 2718 0 2886
+M 0 2723 8 2887 1
+M 0 2723 8 2888 1
+O 0 2718 0 2888
+M 0 2722 1 2891 1
+E 0 2724 0 13
+P 0 2717 9999 2724 1
+P 0 2725 9999 2724 1
+M 0 2724 1 2891 1
+M 0 2723 8 2892 1
+O 0 2718 0 2892
+M 0 2723 8 2893 1
+O 0 2718 0 2893
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

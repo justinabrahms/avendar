@@ -1,0 +1,4049 @@
+#AREADATA
+Name The Eventide Inn~
+Builders Serachel~
+VNUMs 26080 26099
+Credits [ ALL ] Serachel  The Eventide Inn~
+Danger 2
+Security 1
+Areainfo 59
+Herbs 0
+Weather 0 0 0 0 0
+Weave 0 -1 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 26081
+Euemon Magorrian alatharya bartender~
+Euemon~
+A sober-faced alatharya looms behind the bar.
+~
+Euemon Magorrian is an aging alatharya, only about seven foot tall now
+that his huge bulk is stooping slightly under the weight of his years. 
+Euemon\@s silver-white hair has receeded leaving the top of his great skull
+bare, and the remainder is tied back in a short ponytail.  The alatharya\@s
+wrinkled face is somewhat ruddy, and his bulbous nose and prominent ears are
+quite pink, perhaps from a lifetime of sampling his inn\@s produce.  Standing
+proprietorially behind his bar, Euemon watches over the inn with a sort of
+ill-tempered pride.  
+~
+alatharya~
+water scholar~
+ABPTX B FJZ N 0
+60 100 1d1+23000 0d0+0 7d20+40 bash~
+punch~
+0 0 0 0
+ACEFIKTW AB
+26 0 0 0 20 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A large flesh
+>fight_prog 100~
+mpbitset $n 26081 1
+mpbitset $n 26082 0
+mpvalueset 0 0
+mpvalueset 1 0
+mpvalueset 2 0
+mpvalueset 3 0
+if mobvalue(5) == 0
+mpvalueset 5 1
+if rand(30)
+esay grunts Not...in...my...tavern!
+else
+if rand(50)
+esay growls That\@s it, $N!
+else
+esay growls If you want to fight, do it outside!
+endif
+endif
+mpsetskilled
+uppercut $n
+mpunsetskilled
+endif
+if rand(20)
+mpsetskilled
+uppercut $n
+mpunsetskilled
+endif
+~
+>verb_prog p wave~
+mpinterpret $n $x
+if ispc($n)
+if compstr(1) == wave
+or compstr(1) == wav
+if compstr(2) == Euemon
+or compstr(2) == Maggorian
+or compstr(2) == alatharya
+or compstr(2) == bartender
+if remembers($n)
+mpfocus $n
+mpvalueset 3 2
+else
+mpremember $n
+mpvalueset 3 1
+endif
+endif
+endif
+endif
+~
+>verb_prog p nod~
+mpinterpret $n $x
+if ispc($n)
+if compstr(1) == nod
+if compstr(2) == Euemon
+or compstr(2) == Maggorian
+or compstr(2) == alatharya
+or compstr(2) == bartender
+mpfocus $n
+mpvalueset 3 1
+endif
+endif
+endif
+~
+>exit_prog 100~
+mpforget $n
+~
+>rand_prog 100~
+if mobvalue(2) > 0
+mpvaluedown 2
+if mobvalue(2) == 0
+mpvalueset 0 0
+endif
+else
+if mobvalue(0) == 1
+mpvalueset 2 3
+endif
+endif
+if mobvalue(3) > 0
+if isfocused($i)
+if ishere($f)
+if mobvalue(3) == 1
+if isbitset($f) == 26081
+if remembers($f)
+else
+if rand(2)
+mpbitset $f 26081 0
+pmote scowls a bit, then nods at $F.
+else
+esay growls I have my eye on you, $F.
+endif
+endif
+else
+if remembers($f)
+pmote nods at $F.
+else
+if rand(30)
+esay grunts Welcome, $F. What are you drinking?
+mpvalueset 2 8
+mpvalueset 0 1
+else
+if rand(50)
+esay grunts What\@ll it be, $F?
+mpvalueset 2 8
+mpvalueset 0 1
+else
+pmote waves a heavy hand toward $F in greeting.
+endif
+endif
+endif
+endif
+mpremember $f
+endif
+if mobvalue(3) == 2
+if isbitset($f) == 26081
+think Prat.
+else
+if rand(30)
+esay grunts Farewell, $F. Come again when you may.
+else
+esay grunts Good journeys, $F.
+endif
+endif
+endif
+if mobvalue(3) == 3
+if isbitset($f) == 26081
+esay grunts I am well. As will you be if you stay out of trouble.
+else
+if rand(30)
+esay grunts Business is good, as always. What would you like?
+mpvalueset 2 8
+mpvalueset 0 1
+else
+if rand(50)
+pmote glances at $F hurriedly.
+esay grunts Busy. What can I get for you?
+mpvalueset 2 8
+mpvalueset 0 1
+else
+esay grunts Well enough. Well enough.
+endif
+endif
+endif
+endif
+if mobvalue(3) == 4
+esay \@straightens himself a little\@ If it\@s made in Avendar, then I can make it here. What would you like?
+mpvalueset 2 8
+mpvalueset 0 1
+endif
+endif
+mpunfocus
+endif
+mpvalueset 3 0
+endif
+mpvalueset 5 0
+~
+>verb_prog p buy~
+if compstr(1) == buy
+or compstr(1) == bu
+or compstr(1) == b
+else
+mpinterpret $n $x
+break
+endif
+if mobvalue(1) == 1
+if isbitset($n) == 26081
+if rand(1)
+if rand(90)
+esay grunts You\@re behaving yourself, right $N?
+mpbitset $n 26081 0
+endif
+endif
+else
+if rand(1)
+if rand(90)
+mpbitset $n 26082 1
+endif
+endif
+endif
+if isbitset($n) == 26082
+if rand(25)
+give 1. $n
+esay grunts Drink up $N, this one\@s on the house.
+mpvalueset 1 0
+break
+endif
+endif
+mpinterpret $n $x
+mpvalueset 1 0
+break
+endif
+mpvalueset 1 1
+if compx() == nymph
+or compx() == tears
+or compx() == absinthe
+or compx() == nymph\@s
+mpoload 3614
+mpforce $n buy tears
+break
+endif
+if compx() == blush
+mpoload 3615
+mpforce $n buy blush
+break
+endif
+if compx() == thrandian
+or compx() == thrandir
+if compx() == red
+or compx() == wine
+mpoload 12236
+mpforce $n buy thrandian
+break
+endif
+endif
+if compx() == mulled wine
+mpoload 15055
+mpforce $n buy mulled
+break
+endif
+if compx() == Aeldrar
+mpoload 19005
+mpforce $n buy Aeldrar
+break
+endif
+if compx() == keg
+if compx() == beer
+mpoload 6739
+mpforce $n buy keg
+break
+endif
+endif
+if compx() == mariner
+or compx() == mariner\@s
+if compx() == beer
+mpoload 19104
+mpforce $n buy mariner
+break
+endif
+endif
+if compx() == pitcherxxxxx
+or compx() == warm
+if compx() == beer
+mpoload 21621
+mpforce $n buy pitcher
+break
+endif
+endif
+if compx() == dark
+or compx() == brown
+if compx() == ale
+if compx() == flagon
+mpoload 6922
+mpforce $n buy flagon
+break
+else
+if compx() == mug
+mpoload 17073
+mpforce $n buy mug
+break
+else
+mpoload 15045
+mpforce $n buy tankard
+break
+endif
+endif
+endif
+endif
+if compx() == frothy
+if compx() == ale
+mpoload 1917
+mpforce $n buy frothy
+break
+endif
+endif
+if compx() == sailor\@s
+or compx() == sailor
+if compx() == ale
+mpoload 19004
+mpforce $n buy sailor
+break
+endif
+endif
+if compx() == amber
+or compx() == bottle
+if compx() == ale
+mpoload 19145
+mpforce $n buy amber
+break
+endif
+endif
+if compx() == mead
+if compx() == flagon
+mpoload 6990
+mpforce $n buy flagon
+break
+else
+if compx() == bottlexxxxx
+or compx() == yellowxxxxx
+or compx() == sweatxxxxx
+mpoload 21562
+mpforce $n buy bottle
+break
+else
+if compx() == honeyxxxxx
+mpoload 23806
+mpforce $n buy honey
+break
+else
+mpoload 6924
+mpforce $n buy mug
+break
+endif
+endif
+endif
+endif
+if compx() == brandy
+if compx() == bottle
+mpoload 21561
+mpforce $n buy bottle
+break
+else
+if compx() == decanter
+mpoload 7001
+mpforce $n buy decanter
+break
+else
+if compx() == cup
+mpoload 23072
+mpforce $n buy cup
+break
+else
+mpoload 3616
+mpforce $n buy brandy
+break
+endif
+endif
+endif
+endif
+if compx() == sherry
+or compx() == cheer
+mpoload 3617
+mpforce $n buy cheer
+break
+endif
+if compx() == verdah
+mpoload 23070
+mpforce $n buy verdah
+break
+endif
+if compx() == rum
+or compx() == Pirate\@s
+if compx() == flagon
+mpoload 13083
+mpforce $n buy flagon
+break
+else
+if compx() == hearty
+or compx() == glass
+mpoload 19146
+mpforce $n buy glass
+break
+else
+mpoload 3610
+mpforce $n buy rum
+break
+endif
+endif
+endif
+if compx() == liquer
+mpoload 3619
+mpforce $n buy liquer
+break
+endif
+if compx() == whisky
+mpoload 6991
+mpforce $n buy whisky
+break
+endif
+if compx() == wolf\@s
+or compx() == wolf
+or compx() == breath
+mpoload 6992
+mpforce $n buy breath
+break
+endif
+if compx() == Dragon\@s
+or compx() == Dragon
+mpoload 6711
+mpforce $n buy blood
+break
+endif
+if compx() == bull\@s
+or compx() == bull
+or compx() == blood
+mpoload 6988
+mpforce $n buy blood
+break
+endif
+if compx() == Dryad\@s
+or compx() == Dryad
+or compx() == Kiss
+mpoload 1955
+mpforce $n buy Kiss
+break
+endif
+if compx() == vodka
+mpoload 3618
+mpforce $n buy vodka
+break
+endif
+if compx() == orange juice
+mpoload 4055
+mpforce $n buy orange
+break
+endif
+if compx() == Dantaron
+or compx() == fire water
+mpoload 6986
+mpforce $n buy Dantaron
+break
+endif
+if compx() == clod
+mpoload 10599
+mpforce $n buy clod
+break
+endif
+if compx() == Brintor
+or compx() == Snow
+or compx() == Mountain
+mpoload 19006
+mpforce $n buy Snow
+break
+endif
+if compx() == water
+mpoload 23069
+mpforce $n buy water
+break
+endif
+if compx() == wine
+if compx() == white
+if compx() == bottle
+mpoload 19005
+mpforce $n buy bottle
+break
+else
+mpoload 26087
+mpforce $n buy glass
+break
+endif
+endif
+endif
+if compx() == wine
+if compx() == red
+if compx() == bottle
+mpoload 6925
+mpforce $n buy bottle
+break
+else
+mpoload 6923
+mpforce $n buy glass
+break
+endif
+endif
+endif
+if compx() == wine
+if compx() == bottle
+mpoload 6925
+mpforce $n buy bottle
+break
+else
+mpoload 6923
+mpforce $n buy glass
+break
+endif
+endif
+if compx() == beer
+mpoload 15046
+mpforce $n buy beer
+break
+endif
+if compx() == ale
+mpoload 6710
+mpforce $n buy ale
+break
+endif
+mpvalueset 1 0
+tell $n I don\@t sell that. Try again.
+~
+>speech_prog p ~
+mpvalueset 1 0
+if ispc($n)
+if mobvalue(0) == 0
+if compx() == me
+or compx() == like
+or compx() == want
+or compx() == sell
+or compx() == buy
+or compx() == give
+or compx() == Euemon
+or compx() == Magorrian
+or compx() == bar
+or compx() == bartender
+or compx() == barkeeper
+or compx() == innkeeper
+or compx() == alatharya
+or compx() == barkeep
+or compx() == have
+or compx() == how about
+or compx() == what about
+or compx() == can you
+or compx() == please
+or compx() == could use
+or compx() == love
+or compx() == adore
+or compx() == be nice
+or compx() == be great
+or compx() == be lovely
+or compx() == be good
+or compx() == be fine
+or compx() == be perfect
+or compx() == I get
+or compx() == innkeep
+or compx() == barman
+or compx() == you got
+or compx() == gimme
+or compx() == yyyyy
+or compx() == yyyyy
+or compx() == yyyyy
+or compx() == yyyyy
+or compx() == yyyyy
+or compx() == yyyyy
+or compx() == yyyyy
+or compx() == yyyyy
+or compx() == yyyyy
+or compx() == yyyyy
+mpvalueset 0 1
+endif
+endif
+else
+break
+endif
+if compx() == don\@t
+or compx() == not
+or compx() == zzzzz
+or compx() == zzzzz
+or compx() == zzzzz
+or compx() == zzzzz
+mpvalueset 0 0
+endif
+if mobvalue(0) == 1
+mpvalueset 0 0
+mpvalueset 1 1
+if compx() == nymph
+or compx() == tears
+or compx() == absinthe
+or compx() == nymph\@s
+mpoload 3614
+mpforce $n buy tears
+break
+endif
+if compx() == blush
+mpoload 3615
+mpforce $n buy blush
+break
+endif
+if compx() == thrandian
+or compx() == thrandir
+if compx() == red
+or compx() == wine
+mpoload 12236
+mpforce $n buy thrandian
+break
+endif
+endif
+if compx() == mulled wine
+mpoload 15055
+mpforce $n buy mulled
+break
+endif
+if compx() == Aeldrar
+mpoload 19005
+mpforce $n buy Aeldrar
+break
+endif
+if compx() == keg
+if compx() == beer
+mpoload 6739
+mpforce $n buy keg
+break
+endif
+endif
+if compx() == mariner
+or compx() == mariner\@s
+if compx() == beer
+mpoload 19104
+mpforce $n buy mariner
+break
+endif
+endif
+if compx() == pitcherxxxxx
+or compx() == warm
+if compx() == beer
+mpoload 21621
+mpforce $n buy pitcher
+break
+endif
+endif
+if compx() == frothy
+if compx() == ale
+mpoload 1917
+mpforce $n buy frothy
+break
+endif
+endif
+if compx() == sailor\@s
+or compx() == sailor
+if compx() == ale
+mpoload 19004
+mpforce $n buy sailor
+break
+endif
+endif
+if compx() == amber
+or compx() == bottle
+if compx() == ale
+mpoload 19145
+mpforce $n buy amber
+break
+endif
+endif
+if compx() == mead
+if compx() == flagon
+mpoload 6990
+mpforce $n buy flagon
+break
+else
+if compx() == bottlexxxxx
+or compx() == yellowxxxxx
+or compx() == sweatxxxxx
+mpoload 21562
+mpforce $n buy bottle
+break
+else
+if compx() == honeyxxxxx
+mpoload 23806
+mpforce $n buy honey
+break
+else
+mpoload 6924
+mpforce $n buy mug
+break
+endif
+endif
+endif
+endif
+if compx() == brandy
+if compx() == bottle
+mpoload 21561
+mpforce $n buy bottle
+break
+else
+if compx() == decanter
+mpoload 7001
+mpforce $n buy decanter
+break
+else
+if compx() == cup
+mpoload 23072
+mpforce $n buy cup
+break
+else
+mpoload 3616
+mpforce $n buy brandy
+break
+endif
+endif
+endif
+endif
+if compx() == sherry
+or compx() == cheer
+mpoload 3617
+mpforce $n buy cheer
+break
+endif
+if compx() == verdah
+mpoload 23070
+mpforce $n buy verdah
+break
+endif
+if compx() == rum
+or compx() == Pirate\@s
+if compx() == flagon
+mpoload 13083
+mpforce $n buy flagon
+break
+else
+if compx() == hearty
+or compx() == glass
+mpoload 19146
+mpforce $n buy glass
+break
+else
+mpoload 3610
+mpforce $n buy rum
+break
+endif
+endif
+endif
+if compx() == liquer
+mpoload 3619
+mpforce $n buy liquer
+break
+endif
+if compx() == whisky
+mpoload 6991
+mpforce $n buy whisky
+break
+endif
+if compx() == wolf\@s
+or compx() == wolf
+or compx() == breath
+mpoload 6992
+mpforce $n buy breath
+break
+endif
+if compx() == Dragon\@s
+or compx() == Dragon
+mpoload 6711
+mpforce $n buy blood
+break
+endif
+if compx() == bull\@s
+or compx() == bull
+or compx() == blood
+mpoload 6988
+mpforce $n buy blood
+break
+endif
+if compx() == Dryad\@s
+or compx() == Dryad
+or compx() == Kiss
+mpoload 1955
+mpforce $n buy Kiss
+break
+endif
+if compx() == vodka
+mpoload 3618
+mpforce $n buy vodka
+break
+endif
+if compx() == orange juice
+mpoload 4055
+mpforce $n buy orange
+break
+endif
+if compx() == Dantaron
+or compx() == fire water
+mpoload 6986
+mpforce $n buy Dantaron
+break
+endif
+if compx() == clod
+mpoload 10599
+mpforce $n buy clod
+break
+endif
+if compx() == Brintor
+or compx() == Snow
+or compx() == Mountain
+mpoload 19006
+mpforce $n buy Snow
+break
+endif
+if compx() == water
+mpoload 23069
+mpforce $n buy water
+break
+endif
+if compx() == wine
+if compx() == white
+if compx() == bottle
+mpoload 19005
+mpforce $n buy bottle
+break
+else
+mpoload 26087
+mpforce $n buy glass
+break
+endif
+endif
+endif
+if compx() == wine
+if compx() == red
+if compx() == bottle
+mpoload 6925
+mpforce $n buy bottle
+break
+else
+mpoload 6923
+mpforce $n buy glass
+break
+endif
+endif
+endif
+if compx() == wine
+if compx() == bottle
+mpoload 6925
+mpforce $n buy bottle
+break
+else
+mpoload 6923
+mpforce $n buy glass
+break
+endif
+endif
+if compx() == beer
+mpoload 15046
+mpforce $n buy beer
+break
+endif
+if compx() == ale
+if compx() == flagon
+mpoload 6922
+mpforce $n buy flagon
+break
+else
+if compx() == mug
+mpoload 17073
+mpforce $n buy mug
+break
+else
+mpoload 15045
+mpforce $n buy tankard
+break
+endif
+endif
+endif
+if compx() == ale
+if compx() == pale
+or compx() == light
+mpoload 6710
+mpforce $n buy ale
+break
+endif
+endif
+if compx() == newthingxxx
+or compx() == newthingxxx
+or compx() == newthingxxx
+mpoload newthingxxx
+mpforce $n buy newthingxxx
+break
+endif
+if compx() == newthingxxx
+or compx() == newthingxxx
+or compx() == newthingxxx
+mpoload newthingxxx
+mpforce $n buy newthingxxx
+break
+endif
+if compx() == newthingxxx
+or compx() == newthingxxx
+or compx() == newthingxxx
+mpoload newthingxxx
+mpforce $n buy newthingxxx
+break
+endif
+if compx() == newthingxxx
+or compx() == newthingxxx
+or compx() == newthingxxx
+mpoload newthingxxx
+mpforce $n buy newthingxxx
+break
+endif
+if compx() == specialzzz
+or compx() == specialzzz
+or compx() == specialzzz
+or compx() == specialzzz
+or compx() == specialzzz
+mpoload specialnnn
+mpforce $n buy specialnnn
+break
+endif
+mpvalueset 1 0
+if compx() == hungry
+or compx() == starving
+or compx() == food
+or compx() == eat
+or compx() == fffff1
+or compx() == fffff1
+or compx() == fffff1
+or compx() == fffff1
+or compx() == fffff1
+or compx() == fffff1
+pmote glances at $N, and nods toward the kitchen door.
+think Someone will fix you up.
+break
+endif
+if compx() == thirsty
+or compx() == thirst
+or compx() == parched
+or compx() == drink
+or compx() == on tap
+or compx() == ddddd1
+or compx() == ddddd1
+or compx() == ddddd1
+or compx() == ddddd1
+or compx() == ddddd1
+or compx() == ddddd1
+if mobvalue(3) == 0
+mpvalueset 3 4
+mpfocus $n
+break
+endif
+endif
+endif
+mpvalueset 1 0
+if compx() == I
+or compx() == I\@m
+or compx() == me
+or compx() == what
+or compx() == what\@s
+or compx() == iiiiii
+or compx() == iiiiii
+or compx() == iiiiii
+or compx() == iiiiii
+or compx() == iiiiii
+or compx() == iiiiii
+or compx() == iiiiii
+or compx() == iiiiii
+or compx() == iiiiii
+if compx() == hungry
+or compx() == starving
+or compx() == food
+or compx() == eat
+or compx() == fffff2
+or compx() == fffff2
+or compx() == fffff2
+or compx() == fffff2
+or compx() == fffff2
+or compx() == fffff2
+pmote glances at $N, and nods toward the kitchen door.
+think Someone will fix you up.
+break
+endif
+if compx() == thirsty
+or compx() == thirst
+or compx() == parched
+or compx() == drink
+or compx() == on tap
+or compx() == ddddd2
+or compx() == ddddd2
+or compx() == ddddd2
+or compx() == ddddd2
+or compx() == ddddd2
+or compx() == ddddd2
+if mobvalue(3) == 0
+mpvalueset 3 4
+mpfocus $n
+break
+endif
+endif
+endif
+if compx() == Euemon
+or compx() == Magorrian
+or compx() == bar
+or compx() == bartender
+or compx() == barkeeper
+or compx() == innkeeper
+or compx() == alatharya
+or compx() == barkeep
+or compx() == innkeep
+or compx() == barman
+or compx() == ttttt
+or compx() == ttttt
+or compx() == ttttt
+or compx() == ttttt
+or compx() == ttttt
+if compx() == greetings
+or compx() == hello
+or compx() == good day
+or compx() == good morrow
+or compx() == good evening
+or compx() == good morning
+or compx() == hiya
+or compx() == hi
+or compx() == heya
+or compx() == hey
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+if mobvalue(3) == 0
+mpvalueset 3 1
+mpfocus $n
+else
+pmote nods at $N.
+endif
+else
+if compx() == farewell
+or compx() == good bye
+or compx() == goodbye
+or compx() == yyyyy
+or compx() == yyyyy
+or compx() == yyyyy
+or compx() == yyyyy
+if mobvalue(3) == 0
+mpvalueset 3 2
+mpfocus $n
+else
+pmote nods at $N.
+endif
+else
+if compx() == how are you
+or compx() == how do you
+or compx() == what\@s up
+or compx() == how\@s
+or compx() == how fare
+or compx() == how is
+or compx() == news
+or compx() == zzzzz
+or compx() == zzzzz
+or compx() == zzzzz
+or compx() == zzzzz
+or compx() == zzzzz
+or compx() == zzzzz
+or compx() == zzzzz
+or compx() == zzzzz
+if mobvalue(3) == 0
+mpvalueset 3 3
+mpfocus $n
+else
+pmote nods at $N.
+endif
+endif
+endif
+endif
+endif
+~
+>verb_prog p list~
+if compstr(1) == list
+or compstr(1) == lis
+say Name your drink, $N, and I can make it.
+mpvalueset 0 1
+mpvalueset 2 8
+else
+mpinterpret $n $x
+endif
+~
+|
+V4 26082
+Merrojin nefortu~
+Merrojin~
+A charcoal-skinned nefortu sits at an old writing desk, quill in hand.
+~
+An older member of the Nefortu race, Merrojin\@s leathery skin has faded
+to a dark, charcoal shade, and his head is bald except for thick silver
+tufts of sideburns, in front of his unusually long, pointed ears.  The
+nefortu\@s upturned nose and pointed chin, and his wide, sly eyes, somehow
+manage to combine airs of sagacity and mischief.  
+~
+nefortu~
+water scholar~
+ADLX 0 DEFJTZ E 0
+50 15 5000d1+1 2000d1+1 6d5+20 slash~
+claw~
+-20 -20 -20 -20
+EFHK ABb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGHIJKP H medium unknown
+>load_prog 100~
+mpseewizi
+mpvalueset 2 1
+mptrigger $f
+~
+>speech_prog p ~
+if ispc($n)
+ if mobvalue(3) == 3
+  if isfocused($i)
+   if name($n) == $f
+    if isbitset($n) == 26083
+     if compx() == what
+     or compx() == how
+     or compx() == about
+     or compx() == describe
+     or compx() == what\@s
+     or compx() == information
+     or compx() == xxxxx
+     or compx() == xxxxx
+     or compx() == xxxxx
+     or compx() == xxxxx
+     or compx() == xxxxx
+     or compx() == xxxxx
+      mpvalueset 2 2
+     else
+      if compx() == orb
+      or compx() == seeing
+       if mobvalue(7) == 1
+       or mobvalue(8) == 1
+       or mobvalue(9) == 1
+        mpsetdata rewardtime
+        mpvalueset 0 1
+        mpvalueset 2 0
+        mpvalueset 6 15173
+        break
+       endif
+      endif
+      if compx() == lotharju
+      or compx() == blade
+       if mobvalue(7) == 2
+       or mobvalue(8) == 2
+       or mobvalue(9) == 2
+        mpsetdata rewardtime
+        mpvalueset 0 1
+        mpvalueset 2 0
+        mpvalueset 6 15300
+        break
+       endif
+      endif
+      if compx() == wand
+      or compx() == frost
+       if mobvalue(7) == 3
+       or mobvalue(8) == 3
+       or mobvalue(9) == 3
+        mpsetdata rewardtime
+        mpvalueset 0 1
+        mpvalueset 2 0
+        mpvalueset 6 15307
+        break
+       endif
+      endif
+      if compx() == Athanador\@s
+      or compx() == hourglass
+       if mobvalue(7) == 4
+       or mobvalue(8) == 4
+       or mobvalue(9) == 4
+        mpsetdata rewardtime
+        mpvalueset 0 1
+        mpvalueset 2 0
+        mpvalueset 6 15302
+        break
+       endif
+      endif
+      if compx() == helm
+      or compx() == warding
+       if mobvalue(7) == 5
+       or mobvalue(8) == 5
+       or mobvalue(9) == 5
+        mpsetdata rewardtime
+        mpvalueset 0 1
+        mpvalueset 2 0
+        mpvalueset 6 15310
+        break
+       endif
+      endif
+      if compx() == phase
+      or compx() == silk
+      or compx() == phase-silk
+      or compx() == cloak
+       if mobvalue(7) == 6
+       or mobvalue(8) == 6
+       or mobvalue(9) == 6
+        mpsetdata rewardtime
+        mpvalueset 0 1
+        mpvalueset 2 0
+        mpvalueset 6 15305
+        break
+       endif
+      endif
+     endif
+    endif
+   endif
+  endif
+ endif
+ if mobvalue(3) == 1
+ or mobvalue(3) == 2
+  if isfocused($i)
+   if name($n) == $f
+    if compx() == orb
+    or compx() == seeing
+     if mobvalue(7) == 1
+     or mobvalue(8) == 1
+     or mobvalue(9) == 1
+      mpsetdata orbofseeing
+      mpvalueset 0 1
+      break
+     endif
+    endif
+    if compx() == lotharju
+    or compx() == blade
+     if mobvalue(7) == 2
+     or mobvalue(8) == 2
+     or mobvalue(9) == 2
+      mpsetdata lotharjublade
+      mpvalueset 0 1
+      break
+     endif
+    endif
+    if compx() == wand
+    or compx() == frost
+     if mobvalue(7) == 3
+     or mobvalue(8) == 3
+     or mobvalue(9) == 3
+      mpsetdata wandoffrost
+      mpvalueset 0 1
+      break
+     endif
+    endif
+    if compx() == Athanador\@s
+    or compx() == hourglass
+     if mobvalue(7) == 4
+     or mobvalue(8) == 4
+     or mobvalue(9) == 4
+      mpsetdata athanadorshourglass
+      mpvalueset 0 1
+      break
+     endif
+    endif
+    if compx() == helm
+    or compx() == warding
+     if mobvalue(7) == 5
+     or mobvalue(8) == 5
+     or mobvalue(9) == 5
+      mpsetdata helmofwarding
+      mpvalueset 0 1
+      break
+     endif
+    endif
+    if compx() == phase
+    or compx() == silk
+    or compx() == phase-silk
+    or compx() == cloak
+     if mobvalue(7) == 6
+     or mobvalue(8) == 6
+     or mobvalue(9) == 6
+      mpsetdata phasesilkcloak
+      mpvalueset 0 1
+      break
+     endif
+    endif
+   endif
+  endif
+ endif
+ if mobvalue(3) == 1
+  if compx() == yes
+  or compx() == aye
+  or compx() == ok
+  or compx() == okay
+  or compx() == very well
+  or compx() == I\@ll do it
+  or compx() == why not
+  or compx() == I will
+  or compx() == shall
+  or compx() == indeed
+  or compx() == accept
+  or compx() == xxxxx
+  or compx() == xxxxx
+  or compx() == xxxxx
+  or compx() == xxxxx
+   if isfocused($i)
+    if name($n) == $f
+     mpremember $f 
+     mpmemvalset $f 1
+     mpbitset $f 26082 1
+     mpsetdata yesresponse
+     mpvalueset 0 1
+     break
+    endif
+   endif
+  endif
+ endif
+ if mobvalue(3) == 1
+ or mobvalue(3) == 2
+  if compx() == reward
+  or compx() == richly
+  or compx() == xxxxx
+  or compx() == xxxxx
+  or compx() == xxxxx
+   if isfocused($i)
+    if name($n) == $f
+     mpvalueset 0 1
+     mpsetdata rewardresponse
+     break
+    endif
+   endif
+  endif
+ endif
+endif
+~
+>data_prog rewardtime~
+2
+\@Hmm. Very well. If I can remember where I put it.
+emote rumages around the library for a moment.
+7
+\@Aha! Here it is.
+mpoload $6
+give 1. $f
+drop 1.
+mpvalueset 2 1
+mptrigger $f
+mpvalueset 0 0
+mpvalueset 3 3
+mpvalueset 4 8
+~
+>data_prog spellunexpected~
+pmote looks up at $F aghast.
+\@Where did you hear that? I have been seeking that passage for months!
+pmote quickly scrawls a line of text on his parchment, before glancing up at $F.
+mpoload ...
+\@As thanks, take this orb of seeing. It show you the location of anyone you search for. But use it sparingly. It won\@t last forever.
+7
+give orb $f
+drop orb
+mpmemvalset $f 0
+mpunfocus
+mpvalueset 0 0
+mpvalueset 3 4
+mpvalueset 4 8
+~
+>data_prog spellexpected~
+2
+\@That... that\@s it!
+smote Merrojin\@s eyes gleam brightly as he looks at $f.
+emote quickly scrawls a line of text on his parchment.
+6
+\@We made a bargain. What is your choice?
+mpvalueset 2 2
+mptrigger none
+mpvalueset 0 0
+mpvalueset 3 3
+mpvalueset 4 8
+~
+>data_prog rewardresponse~
+2
+\@The reward?
+emote brings a small, clawed hand up to his pointed chin in thought.
+6
+\@I shall give you a choice of several special items, which I have collected over the years.
+mpvalueset 2 2
+mptrigger $f
+mpvalueset 0 0
+mpvalueset 3 1
+mpvalueset 4 8
+~
+>data_prog yesresponse~
+2
+mpecho $I\@s eyes gleam brightly.
+\@You won\@t regret this. Now, you may enter the Realm of Dreams, body and all...
+\@from this very inn. The Eventide Inn touches upon that realm. It is in some ways a dream of all inns everywhere.
+\@Go into the sleeping chamber across the hallway to the west, and light the candle of siatha wax.
+\@Sleep, then, on the bed there, and the sweet smoke will take you into dreaming.
+\@The Evermore Plains will greet you. Beware the dream ghosts, and head westward to nightmare.
+4
+\@This is all I can tell you. Good luck!
+mpvalueset 0 0
+mpvalueset 3 2
+mpvalueset 4 8
+~
+>data_prog initrequest~
+2
+mpechoat $f $I glances at you.
+mpechoaround $f $I glances at $F.
+\@Have you ever had a dream, in which you knew something true.
+\@In which you learnt a thing, something which you\@d been searching for for a long, long time...
+\@But then when you woke, you\@d forgotten it again?
+2
+\@It happened to me last night.
+,holds up a rune-scrawled piece of parchment and waves it in the air.
+\@In a dream, as I slept at my desk, I wandered into a cave, where an old caladassi sat upon a seat of stone.
+\@The beast told me the final incantation of a spell. An incantation which I\@ve been searching for for weeks!
+2
+,slumps in his chair, his pointy ears drooping slightly.
+ \@But now it\@s gone. Forgotten! Only the caladassi knows it now, and I can hardly ask him!
+2
+pmote glances slyly at $F, his beady, black eyes narrowing.
+\@Unless someone was willing to fetch it back for me.
+2
+\@If you would do this - enter the dream realms, and find the beast, and bring back the incantation - I would reward you most richly!
+mpvalueset 3 1
+4
+pmote raises an eyebrow at $F.
+ \@What do you say? I can tell you how to get there if your answer is yes.
+mpvalueset 4 8
+mpvalueset 0 0
+~
+>data_prog itemvnumlist~
+15173
+15307
+15300
+15305
+15302
+15310
+~
+>data_prog itemshortlist~
+an orb of seeing
+a wand of frost
+a Lotharju Blade
+a phase-silk cloak
+Athanador\@s Hourglass
+a helm of warding
+~
+>trigger_prog 100~
+if mobvalue(2) == 0
+ if isbitset($n) == 26083
+  mpfocus $n
+  mpvalueset 0 2
+  break
+ endif
+ if isbitset($n) == 26084
+  mpfocus $n
+  mpvalueset 0 3
+  break
+ endif
+ if isbitset($n) == 26085
+ else
+  mpvalueset 0 1
+  mpsetdata initrequest
+  mpfocus $n
+ endif
+endif
+if mobvalue(2) == 1
+ mpvalueset 2 0
+ mpvaluerand 7 1 6
+ loop 1 to 20
+  if mobvalue(8) == 0
+   mpvaluerand 8 1 6
+  endif
+  if mobvalue(8) == $7
+   mpvalueset 8 0
+  endif
+ endloop
+ loop 1 to 30
+  if mobvalue(9) == 0
+   mpvaluerand 9 1 6
+  endif
+  if mobvalue(9) == $7
+  or mobvalue(9) == $8
+   mpvalueset 9 0
+  endif
+ endloop
+ mpsetdata itemvnumlist
+ loop 1 to 6
+  if mobvalue(7) == $v1
+   mpvalueset 6 $d
+   if isoverlimit($6)
+    mpvalueset 7 0
+   endif
+  endif
+  if mobvalue(8) == $v1
+   mpvalueset 6 $d
+   if isoverlimit($6)
+    mpvalueset 8 0
+   endif
+  endif
+  if mobvalue(9) == $v1
+   mpvalueset 6 $d
+   if isoverlimit($6)
+    mpvalueset 9 0
+   endif
+  endif
+  mpnextdata
+ endloop
+ if mobvalue(7) == 0
+  if mobvalue(8) == 0
+   if mobvalue(9) == 0
+    mpvalueset 7 1
+    mpvalueset 8 2
+   endif
+  endif
+ endif
+endif
+if mobvalue(2) == 2
+ mpvalueset 2 0
+ mpsetdata itemshortlist
+ loop 1 to 6
+  if mobvalue(7) == $v1
+   say $d
+  endif
+  if mobvalue(8) == $v1
+   say $d
+  endif
+  if mobvalue(9) == $v1
+   say $d
+  endif
+  mpnextdata
+ endloop
+endif
+~
+>rand_prog 100~
+if mobvalue(0) == 0
+ if mobvalue(5) == 1
+  if isfight($i)
+  else
+   mpvalueset 5 2
+   mpecho $I\@s head begins to nod.
+   sleep
+  endif
+ endif
+ if mobvalue(5) == 2
+  if position($i) != 4
+   if isanypchere($i)
+    if ispc($r)
+     mpvalueset 5 0
+     mptrigger $r
+    endif
+   endif
+  endif
+ endif
+else
+ if isfocused($i)
+  if ishere($f)
+   if mobvalue(0) == 1
+    mpvalueset 1 0
+    mpvalueset 1 $d
+    if mobvalue(1) > 0
+     mpnextdata
+     loop 1 to $1
+      $d
+      mpnextdata
+     endloop
+    else
+     $d
+     mpnextdata
+    endif
+   endif
+   if mobvalue(0) == 2
+    mpvalueset 0 0
+    pmote slowly pulls back his hood, and raises an eyebrow at $F.
+    \@Pleasant dreams, $f?
+   endif
+   if mobvalue(0) == 3
+    mpvalueset 0 0
+    pmote looks at $F.
+    if iscarrying($f) == 99999999
+     say $F, I see you found it. Shall we conclude our bargain?
+     pmote extends his small, black hand toward $F.
+    else
+     say No luck yet, $F?
+    endif
+   endif
+   if mobvalue(0) == 4
+    mpvalueset 0 0
+   endif
+  else
+   mpunfocus
+  endif
+ else
+  mpvalueset 0 0
+ endif
+endif
+if mobvalue(4) > 0
+ mpvaluedown 4
+ if mobvalue(4) == 0
+  mpvalueset 3 0
+ endif
+ if isanypchere($i)
+ else
+  mpvalueset 4 0
+  mpvalueset 3 0
+ endif
+endif
+~
+>greet_prog 100~
+if mobvalue(0) == 0
+ mptrigger $n
+endif
+~
+|
+V4 26083
+Orechlin aelin bard~
+Orechlin~
+An aelin bard leans back on his chair, his snowy wings stretching behind him.
+~
+An aelin man leans back on a wooden chair in the northwest corner of the
+room.  His feet are splayed out casually in front of him, and one is propped
+up on the woodpile near the fire.  Resting in his lap is a small, but very
+fine harp.  The aelin picks out the harp lazily, filling the room with soft
+melody.  The man\@s hair is black, and his fine-boned face is rosy from the
+firelight and from the goblet of red wine by his side, which he occasionally
+stops his strumming to reach for.  Snowy wings stretch out from the man\@s
+back and are pressed against the wall behind him.  
+~
+aelin~
+water scholar~
+ABX B DEFJTZ N 0
+57 50 7000d1+1 1000d1+1 10d10+10 pierce~
+stab~
+-60 -60 -60 -60
+EFHKW AB
+26 0 0 0 0 -20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMW ABCDEFGIJKP AF medium unknown
+>fight_prog 100~
+mpvalueset 0 0
+mpvalueset 6 0
+~
+>speech_prog stop enough cease desist end finish quiet silence~
+if ispc($n)
+if compstr(3) == 
+mpvalueset 0 0
+emote shrugs, and stops playing.
+else
+if compx() == Orechlin
+or compx() == bard
+or compx() == aelin
+mpvalueset 0 0
+emote shrugs, and stops playing.
+endif
+endif
+endif
+~
+>speech_prog p shut up~
+if ispc($n)
+if compstr(5) == 
+mpvalueset 0 0
+emote shrugs, and stops playing.
+else
+if compx() == Orechlin
+or compx() == bard
+or compx() == aelin
+mpvalueset 0 0
+emote shrugs, and stops playing.
+endif
+endif
+endif
+~
+>verb_prog p wave~
+mpinterpret $n $x
+if compstr(1) == wave
+if compstr(2) == Orechlin
+or compstr(2) == bard
+or compstr(2) == aelin
+wave $n
+endif
+endif
+~
+>verb_prog p shake~
+mpinterpret $n $x
+if compstr(1) == shake
+if ispc($n)
+if mobvalue(6) > 0
+if isfocused($i)
+if name($n) == $f
+mpvalueset 6 0
+mpunfocus
+emote sighs, and hums softly to himself.
+endif
+endif
+endif
+endif
+endif
+~
+>verb_prog p nod~
+mpinterpret $n $x
+if compstr(1) == nod
+if ispc($n)
+if mobvalue(6) > 0
+if isfocused($i)
+if name($n) == $f
+mpvalueset 6 0
+mpunfocus
+if mobvalue(0) == 0
+mpvalueset 0 1
+say What would you like to hear?
+say The ballad of the Walls of Nordath perhaps? A cheering tale...
+say Or I could sing for you the Nymph\@s Tears, an age-old tune.
+say Or something more modern? Brintor Frost?
+think Nothing else??
+think Nothing else??
+think Nothing else??
+think Nothing else??
+think Nothing else??
+think Nothing else??
+if israce($n) == ETHRON
+say I also know a short rhyme about the ethron.
+emote raises an eyebrow.
+endif
+endif
+endif
+endif
+else
+if compstr(2) == Orechlin
+or compstr(2) == bard
+or compstr(2) == aelin
+if mobvalue(0) == 0
+if mobvalue(6) == 0
+mpvalueset 6 1
+mpfocus $n
+endif
+endif
+endif
+endif
+endif
+endif
+~
+>speech_prog nordath nymph brintor ethron cup nymph\@s tears walls frost absinthe~
+if ispc($n)
+if mobvalue(0) < 7
+if compx() == do you
+or compx(1) == do
+or compx(1) == can
+or compx() == how
+or compx() == sing
+or compx() == tell
+or compx() == recite
+or compx() == play
+or compx() == give
+or compx() == know
+or compx() == Orechlin
+or compx() == bard
+or compx() == aelin
+or compx() == perform
+or compx() == regale
+or compx() == hear
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+mpvalueset 0 1
+endif
+if mobvalue(0) > 0
+mpvalueset 0 0
+if compx() == Nordath
+or compx() == walls
+mpvalueset 0 7
+break
+endif
+if compx() == Brintor
+or compx() == frost
+mpvalueset 0 126
+break
+endif
+if compx() == ethron
+mpvalueset 0 109
+break
+endif
+if compx() == cup
+or compx() == absinthe
+mpvalueset 0 100
+break
+endif
+if compx() == Nymph
+or compx() == tears
+mpvalueset 0 119
+break
+endif
+endif
+endif
+endif
+~
+>speech_prog sing tell recite play give singing recital perform regale~
+speak common
+if ispc($n)
+if mobvalue(0) < 7
+if compx() == song
+or compx() == tale
+or compx() == poem
+or compx() == poetry
+or compx() == ballad
+or compx() == verse
+or compx() == rhyme
+or compx() == tune
+or compx() == piece
+or compx() == what
+or compx() == bard
+or compx() == Orechlin
+or compx() == aelin
+or compx() == to me
+or compx() == to us
+or compx() == for me
+or compx() == for us
+or compx() == something
+or compx() == story
+or compx() == please
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+if mobvalue(0) < 2
+mpvalueset 0 1
+say What would you like to hear?
+say The ballad of the Walls of Nordath perhaps? A cheering tale...
+say Or I could sing for you the Nymph\@s Tears, an age-old tune.
+say Or something more modern? Brintor Frost?
+think Nothing else??
+think Nothing else??
+think Nothing else??
+think Nothing else??
+think Nothing else??
+think Nothing else??
+if israce($n) == ETHRON
+say I also know a short rhyme about the ethron.
+emote raises an eyebrow.
+endif
+endif
+endif
+endif
+endif
+~
+>speech_prog tale tales story stories song songs ballad ballads poem poems poetry music piece pieces rhyme rhymes~
+speak common
+if ispc($n)
+if mobvalue(0) < 7
+if compx() == what
+or compx() == know
+or compx() == can
+or compx() == which
+or compx() == list
+or compstr(1) == do
+or compstr(1) == how
+or compx() == Orechlin
+or compx() == bard
+or compx() == aelin
+or compx() == for me
+or compx() == for us
+or compx() == please
+or compx() == let\@s have
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+mpvalueset 0 1
+say The ballad of the Walls of Nordath perhaps? A cheering tale...
+say Or I could sing for you the Nymph\@s Tears, an age-old tune.
+say Or something more modern? Brintor Frost?
+think Nothing else??
+think Nothing else??
+think Nothing else??
+think Nothing else??
+think Nothing else??
+think Nothing else??
+if israce($n) == ETHRON
+say I also know a short rhyme about the ethron.
+wink $n
+endif
+endif
+endif
+endif
+~
+>speech_prog Orechlin bard aelin~
+if ispc($n)
+if compx() == greetings
+or compx() == hello
+or compx() == good day
+or compx() == good morrow
+or compx() == good evening
+or compx() == good morning
+or compx() == hiya
+or compx() == hi
+or compx() == heya
+or compx() == hey
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+if mobvalue(0) == 0
+if mobvalue(6) == 0
+mpvalueset 6 1
+mpfocus $n
+endif
+endif
+else
+if compx() == farewell
+or compx() == good bye
+or compx() == goodbye
+or compx() == yyyyy
+or compx() == yyyyy
+or compx() == yyyyy
+or compx() == yyyyy
+pmote waves idly to $N.
+else
+if compx() == how are you
+or compx() == how do you
+or compx() == what\@s up
+or compx() == how\@s it going
+or compx() == how\@s life
+or compx() == how\@s things
+or compx() == how fare
+or compx() == fare you
+or compx() == zzzzz
+or compx() == zzzzz
+or compx() == zzzzz
+or compx() == zzzzz
+or compx() == zzzzz
+or compx() == zzzzz
+if mobvalue(0) == 0
+if mobvalue(6) == 0
+if rand(20)
+say The fire is warm, the wine is good, and the company exquisite.
+else
+if rand(50)
+say All is well. And you?
+else
+if rand(20)
+say I\@m in the mood for a song. What about you?
+mpfocus $n
+mpvalueset 6 1
+else
+say Life couldn\@t be more grand, $N.
+pmote raises his glass to $N in a toast.
+endif
+endif
+endif
+endif
+endif
+else
+if mobvalue(0) == 0
+if mobvalue(6) == 0
+if compx() == drink
+or compx() == drinking
+or compx() == xyxyxy
+or compx() == xyxyxy
+or compx() == xyxyxy
+if compx() == what
+or compx() == do you
+or compx() == buy you
+or compx() == would
+or compx() == want
+or compx() == need
+or compx() == feel like
+or compx() == get you
+if rand(50)
+mpvalueset 0 100
+else
+emote waves his wine glass drunkenly in the air.
+say Not for me, friend $N.
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+~
+>speech_prog p ~
+if ispc($n)
+speak common
+if compx() == yes
+or compx() == aye
+or compx() == why not
+or compx() == ok
+or compx() == okay
+or compx() == certainly
+or compx() == very well
+or compx() == sure
+or compx() == hear
+or compx() == listen
+or compx() == pleasure
+or compx() == love
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+if mobvalue(6) > 0
+if isfocused($i) == $f
+if name($n) == $f
+mpvalueset 6 0
+mpunfocus
+if mobvalue(0) == 0
+mpvalueset 0 1
+say What would you like to hear?
+say The ballad of the Walls of Nordath perhaps? A cheering tale...
+say Or I could sing for you the Nymph\@s Tears, an age-old tune.
+say Or something more modern? Brintor Frost?
+think Nothing else??
+think Nothing else??
+think Nothing else??
+think Nothing else??
+think Nothing else??
+think Nothing else??
+if israce($n) == ETHRON
+say I also know a short rhyme about the ethron.
+emote raises an eyebrow.
+endif
+endif
+endif
+endif
+endif
+else
+if compx() == no
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+or compx() == xxxxx
+if mobvalue(6) > 0
+if isfocused($i) == $f
+if name($n) == $f
+emote plays a few chords on his harp, and sips on his wine.
+mpvalueset 6 0
+mpunfocus
+endif
+endif
+endif
+endif
+endif
+endif
+~
+>rand_prog 100~
+if mobvalue(0) > 0
+mpvalueup 0
+else
+if mobvalue(6) > 0
+if mobvalue(6) == 5
+mpvalueset 6 0
+mpunfocus
+break
+endif
+if mobvalue(6) == 1
+if isfocused($i)
+if ishere($f)
+if remembers($f)
+pmote raises an eyebrow and nods at $F.
+else
+if israce($f) == AELIN
+speak aelin
+endif
+if sex($f) == 2
+if rand(50)
+pmote glances up at $F.
+say My lady, may I have the honour of playing for you?
+else
+say Good morrow, fair lady.
+endif
+else
+if rand(30)
+say Good morrow, sir. Would you care for a song?
+else
+pmote smiles and nods at $F.
+endif
+endif
+mpremember $f
+endif
+else
+mpunfocus
+endif
+endif
+endif
+mpvalueup 6
+break
+endif
+if mobvalue(0) == 0
+if rand(3)
+if rand(10)
+emote plucks idly at his harp.
+break
+endif
+if rand(10)
+emote hums a short tune, accompanied by a few resonant chords from his harp.
+break
+endif
+if rand(14)
+mpjunk drink
+mpoload 26087
+drink drink
+break
+endif
+if rand(1)
+think Nothing to emote!
+break
+endif
+if rand(1)
+think Nothing to emote!
+break
+endif
+if rand(1)
+think Nothing to emote!
+break
+endif
+endif
+if rand(20)
+if rand(1)
+say Here\@s a crude northerner\@s song for you... called Brintor Frost I think.
+mpvalueset 0 126
+break
+endif
+if rand(1)
+mpvalueset 0 119
+break
+endif
+if rand(1)
+think Nothing to sing!
+break
+endif
+if rand(1)
+think Nothing to sing!
+break
+endif
+if rand(1)
+think Nothing to sing!
+break
+endif
+if rand(1)
+if israce($r) == ETHRON
+pmote glances sidelong at $R.
+mpvalueset 0 109
+break
+endif
+endif
+endif
+endif
+break
+endif
+if mobvalue(0) == 7
+mpvalueset 0 0
+speak common
+break
+endif
+if mobvalue(0) == 8
+say Here then is the ballad of the Walls of Nordath ... I warn you it\@s quite long.
+endif
+if mobvalue(0) == 9
+emote plucks experimentally at his harp.
+endif
+if mobvalue(0) == 10
+esay sings They slipped from southlands in shadow\@s dark,
+esay sings Saliva streamed from their sharp-teethed maws--
+endif
+if mobvalue(0) == 11
+esay sings From Sythtys\@ swamps came the silent hordes,
+esay sings The walls of Nordath to overcome.
+endif
+if mobvalue(0) == 13
+esay sings From Nordath\@s keep came the quiet hosts,
+esay sings Nine-hundred knights and their noble steeds--
+endif
+if mobvalue(0) == 14
+esay sings With water templars to stay, watch guard,
+esay sings The walls of Nordath to e\@er defend.
+endif
+if mobvalue(0) == 16
+esay sings The cavalry all in crimson clothed,
+esay sings Brandished banners, the blue-winged hawk--
+endif
+if mobvalue(0) == 17
+esay sings Their lances gleamed in glowing light,
+esay sings The walls of Nordath to e\@er defend.
+endif
+if mobvalue(0) == 19
+esay sings The forces clashed on the flatland\@s fields,
+esay sings Flames of srryn-fire filled the flats
+endif
+if mobvalue(0) == 20
+esay sings And panicked steeds of the Nordath knights,
+esay sings The walls of Nordath to overcome.
+endif
+if mobvalue(0) == 22
+esay sings The knights of Nordath in disarray
+esay sings Were beaten down, their banners burned--
+endif
+if mobvalue(0) == 23
+esay sings The Sythtys\@ spawn nine-hundred slayed,
+esay sings The walls of Nordath to overcome.
+endif
+if mobvalue(0) == 25
+esay sings Supplies srryn didn\@t have need to bring,
+esay sings The carnage they ate with the carrion crows--
+endif
+if mobvalue(0) == 26
+esay sings From Sythtys\@ heart came the hungry hordes,
+esay sings The walls of Nordath to overcome.
+endif
+if mobvalue(0) == 28
+drink drink
+endif
+if mobvalue(0) == 29
+esay sings The red-scaled raiders rounded the walls,
+esay sings The air rang out with their rageful roars--
+endif
+if mobvalue(0) == 30
+esay sings From Sythtys\@ deeps surged the screaming hordes,
+esay sings The walls of Nordath to overcome.
+endif
+if mobvalue(0) == 32
+esay sings All snarling, scaling the age-worn stone,
+esay sings Their hooks and ladders in cruel claws--
+endif
+if mobvalue(0) == 33
+esay sings From Sythtys\@ swamps swarmed the raiding hordes,
+esay sings The walls of Nordath to overcome.
+endif
+if mobvalue(0) == 35
+esay sings The black-hearts fell to the blizzard blasts
+esay sings From templars tall on the towering walls--
+endif
+if mobvalue(0) == 36
+esay sings They shone like stars in their auras white,
+esay sings The walls of Nordath to e\@er defend.
+endif
+if mobvalue(0) == 38
+esay sings The srryn\@s fierce templars of fire stepped forth,
+esay sings They flourished swords as their flamestrikes flew--
+endif
+if mobvalue(0) == 39
+esay sings Flames crackled as they clashed with ice,
+esay sings The walls of Nordath to overcome.
+endif
+if mobvalue(0) == 41
+esay sings The fire and frost-blasts filled the air--
+esay sings When steam and spark-lights the wind awayed,
+endif
+if mobvalue(0) == 42
+esay sings A single templar on siege-walls stood,
+esay sings The walls of Nordath to e\@er defend.
+endif
+if mobvalue(0) == 44
+drink drink
+endif
+if mobvalue(0) == 45
+esay sings Stood Serdon Shieldmark, the son of Srehld
+esay sings In sole defiance of srryn-fire strong--
+endif
+if mobvalue(0) == 46
+esay sings His flail he flourished with fearless force,
+esay sings The walls of Nordath to e\@er defend.
+endif
+if mobvalue(0) == 48
+esay sings On wings of flame rose a floating foe,
+esay sings Thensith, Srryn-Lord of Sythtys\@ thralls--
+endif
+if mobvalue(0) == 49
+esay sings His toothed trident with blood-taint dripped,
+esay sings The walls of Nordath to overcome.
+endif
+if mobvalue(0) == 51
+esay sings The flail turned trident, and trident flail
+esay sings As parried, the pierces and pummels proved--
+endif
+if mobvalue(0) == 52
+esay sings An hour did the sun see Shieldmark strive,
+esay sings The walls of Nordath to e\@er defend.
+endif
+if mobvalue(0) == 54
+esay sings Till fall did Thensith from flaming wings,
+esay sings All ice-blast injured, and ichored wounds--
+endif
+if mobvalue(0) == 55
+esay sings To srryn below, who the struggle saw,
+esay sings The walls of Nordath to overcome.
+endif
+if mobvalue(0) == 56
+esay sings Then shout did Shieldmark, the son of Srehld,
+esay sings as black darts pierced him from beasts below--
+endif
+if mobvalue(0) == 
+esay sings malicious the missiles, with poison maimed,
+esay sings The walls of Nordath to overcome.
+endif
+if mobvalue(0) == 58
+drink drink
+endif
+if mobvalue(0) == 59
+esay sings None now stood on the Nordath walls,
+esay sings to turn the tide of the reptile tribe--
+endif
+if mobvalue(0) == 60
+esay sings The broken gate, breached by battering rams,
+esay sings The walls of Nordath were overcome.
+endif
+if mobvalue(0) == 62
+esay sings The Nordath folk, in their fright and fear,
+esay sings Like sheep were slaughtered, the srryn spared none--
+endif
+if mobvalue(0) == 63
+esay sings They feasted freely on Nordath flesh,
+esay sings The walls of Nordath were overcome.
+endif
+if mobvalue(0) == 65
+esay sings They searched for corpse of the slain Shieldmark,
+esay sings hung high his head on the banner pole--
+endif
+if mobvalue(0) == 66
+esay sings Then srryn did songs to the Swamp God hiss,
+esay sings The walls of Nordath were overcome.
+endif
+if mobvalue(0) == 68
+esay sings The ruins remain of the rent stone walls,
+esay sings But memory fades, is forgotten by folk,  
+endif
+if mobvalue(0) == 69
+esay sings of blue-winged hawk, and the battle bold,
+esay sings The walls of Nordath to overcome.
+endif
+if mobvalue(0) == 71
+emote puts his harp aside.
+endif
+if mobvalue(0) == 72
+say Well, friends, I propose a toast!
+emote raises his glass.
+endif
+if mobvalue(0) == 73
+say That ever stout walls and sturdy heroes should stand between me and any nearby rampaging army of srryn!
+if isanypchere($i)
+mproomcmd mptrigger all
+endif
+endif
+if mobvalue(0) == 74
+{Y$I says under his breath \@And that they fare a little better than Nordath did.\@{x
+drink drink
+endif
+if mobvalue(0) == 74
+mpvalueset 0 5
+endif
+if mobvalue(0) == 101
+esay sings The absinthe of living
+esay sings Risen to my brain,\@  
+endif
+if mobvalue(0) == 102
+esay sings I drink life up--
+esay sings Heady pain burning,
+endif
+if mobvalue(0) == 103
+esay sings Flushing warmly down
+esay sings Til life pisses me out.\@ 
+endif
+if mobvalue(0) == 105
+esay sings Hand and voice
+esay sings May be shaky then,
+endif
+if mobvalue(0) == 106
+esay sings But let it not be whispered
+esay sings Heart or mind
+endif
+if mobvalue(0) == 107
+esay sings Evaporated from disuse.
+endif
+if mobvalue(0) == 108
+drink drink
+mpvalueset 0 5
+endif
+if mobvalue(0) == 110
+esay sings To all you hearty ethron men out there,
+endif
+if mobvalue(0) == 111
+esay sings A little song, to let you know I care!
+endif
+if mobvalue(0) == 112
+esay sings Your green skin, it turns me on.
+endif
+if mobvalue(0) == 113
+esay sings And your bodies, so young and strong!
+endif
+if mobvalue(0) == 114
+esay sings I have to admire how you handle your bow,
+endif
+if mobvalue(0) == 115
+esay sings Your broad chests, and well... below.
+endif
+if mobvalue(0) == 116
+esay sings Now, I must confess, I\@m a male ethron too,
+endif
+if mobvalue(0) == 117
+esay sings But stop by, and see all this ranger can do!
+endif
+if mobvalue(0) == 118
+mproomcmd mptrigger all
+mpvalueset 0 5
+endif
+if mobvalue(0) == 120
+emote wrinkles his brow in concentration as he tunes his harp.
+endif
+if mobvalue(0) == 121
+esay sings The days pass by like drops of rain,
+esay sings The full moons go and come again.
+endif
+if mobvalue(0) == 122
+esay sings In endless slaughter, drawn-out wars
+esay sings We pass the seconds, minutes, hours.
+endif
+if mobvalue(0) == 123
+esay sings Or do you ever pause to think,
+esay sings and rest your feet and have a drink,
+endif
+if mobvalue(0) == 124
+esay sings and listen to a gleeman\@s song?
+esay sings If not, you do yourself a wrong.
+endif
+if mobvalue(0) == 125
+emote runs his fingers across his harp, an ethereal tinkling fading to silence.
+mpvalueset 0 5
+endif
+if mobvalue(0) == 127
+emote takes a sip of wine, and clears his throat.
+endif
+if mobvalue(0) == 128
+esay sings Icicle-quick, the Brintor frost
+esay sings Paints somber pines a freezing white.
+endif
+if mobvalue(0) == 129
+esay sings Boughs bend, following the ritual
+esay sings Of acknowledging winter\@s weight,
+endif
+if mobvalue(0) == 130
+esay sings Limbering for a truer mountain winter.  
+endif
+if mobvalue(0) == 132
+esay sings Hill giants in grizzled furs hunch down, 
+esay sings Form yellow-toothed bearded scowls
+endif
+if mobvalue(0) == 133
+esay sings As the mountain slopes are secreted away, 
+esay sings Brown earth hidden under the pale chill.
+endif
+if mobvalue(0) == 134
+esay sings Wrapping wolf-cloaks close, they dream
+esay sings Giants\@ dreams by fires, dreams of warmer days, 
+endif
+if mobvalue(0) == 135
+esay sings A crush, a howl, a crunch below their clubs.  
+endif
+if mobvalue(0) == 136
+drink drink
+endif
+if mobvalue(0) == 137
+esay sings Soldiers steam-curse on Krilin\@s high watch, 
+esay sings As hoary frost invades the walk-worn stone.
+endif
+if mobvalue(0) == 138
+esay sings The hollow sounds of steps in cold armor 
+esay sings Slip down from the battlement, 
+endif
+if mobvalue(0) == 139
+esay sings Fall to the courtyard. 
+esay sings All eyes are on the peaked horizon,
+endif
+if mobvalue(0) == 140
+esay sings Ever vigilant for the rescue of the sun.
+endif
+if mobvalue(0) == 141
+emote leans back in his chair and relaxes.
+mpvalueset 0 5
+endif
+~
+>exit_prog 100~
+mpforget $n
+~
+>load_prog 100~
+speak common
+~
+>trigger_prog 100~
+if mobvalue(0) == 73
+if mobvalue(1) == 0
+if israce($n) == SRRYN
+mpechoat $n $I glances at you and swoons in fear.
+mpechoaround $n $I glances at $N and swoons in fear.
+mpvalueset 1 1
+endif
+endif
+endif
+if mobvalue(0) == 118
+if mobvalue(1) == 0
+if israce($n) == ETHRON
+if sex($n) == 1
+wink $n
+mpvalueset 1 1
+endif
+endif
+endif
+endif
+~
+|
+V4 26084
+Odella Magorrian alatharya woman old cook~
+Odella~
+An old alatharya woman bustles her mighty girth about the kitchen.
+~
+Old Odella Magorrian, wife of the innkeeper, busies herself about the
+kitchen, seeming to attend several tasks all at once.  She does so with
+surprising ease, given that her considerable bulk barely allows her to
+squeeze between the narrow passages formed by bench, table, rack and oven. 
+Yet the kitchen seems to fit her like a glove, and her bustling
+ministrations are clearly those of a master cook, judging by the delicious
+aromas which arise from the various pots and pans and the great, clay oven. 
+~
+alatharya~
+water scholar~
+ADLX 0 DFJPZ N 0
+50 15 5000d1+1 2000d1+1 5d8+10 bash~
+punch~
+-20 -20 -20 -20
+CK AB
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJK A large unknown
+>exit_prog 100~
+mpforget $n
+~
+>greet_prog 100~
+mpforget $n
+~
+>rand_prog 100~
+mpvalueset 1 0
+if rand(2)
+ mpsetskilled
+ sneak
+ mpunsetskilled
+ take bread kitchentable
+ vis
+ if iscarrying($i) == 15050
+  mpoload 15050 in kitchentable
+  mpjunk bread
+ else
+ ,takes a tray of hot loaves from the oven and places them on the kitchen table.
+  mpoload 15050 in kitchentable
+  mpoload 15050 in kitchentable
+  mpoload 15050 in kitchentable
+  mpoload 15050 in kitchentable
+  mpoload 15050 in kitchentable
+  break
+ endif
+endif
+if rand(1)
+ mpsetskilled
+ sneak
+ mpunsetskilled
+ take all.bread kitchentable
+ vis
+ ,takes a tray of hot loaves from the oven and places them on the kitchen table.
+ take all.stew kitchentable
+ mpjunk all
+ mpoload 15050 in kitchentable
+ mpoload 15050 in kitchentable
+ mpoload 15050 in kitchentable
+ mpoload 15050 in kitchentable
+ mpoload 15050 in kitchentable
+ break
+endif
+if rand(1)
+ ,gives the stew a quick stir, and adds a splash of wine.
+ break
+endif
+if rand(1)
+ ,opens the oven a fraction and checks on the baking bread.
+ break
+endif
+~
+>speech_prog p ~
+if ispc($n)
+ if mobvalue(0) == 0
+  if compx() == me
+  or compx() == like
+  or compx() == want
+  or compx() == sell
+  or compx() == buy
+  or compx() == give
+  or compx() == Odella
+  or compx() == Magorrian
+  or compx() == cook
+  or compx() == alatharya
+  or compx() == have
+  or compx() == how about
+  or compx() == what about
+  or compx() == can you
+  or compx() == please
+  or compx() == could use
+  or compx() == love
+  or compx() == adore
+  or compx() == be nice
+  or compx() == be great
+  or compx() == be lovely
+  or compx() == be good
+  or compx() == be fine
+  or compx() == be perfect
+  or compx() == get
+  or compx() == innkeep
+  or compx() == barman
+  or compx() == you got
+  or compx() == gimme
+  or compx() == I\@m
+  or compx() == might
+  or compx() == take
+  or compx() == purchase
+  or compx() == find
+  or compx() == yyyyy
+  or compx() == yyyyy
+  or compx() == yyyyy
+  or compx() == yyyyy
+  or compx() == yyyyy
+   mpvalueset 0 1
+  endif
+ endif
+else
+ break
+endif
+if compx() == don\@t
+or compx() == not
+or compx() == nothing
+or compx() == zzzzz
+or compx() == zzzzz
+or compx() == zzzzz
+ mpvalueset 0 0
+endif
+if mobvalue(0) == 1
+ mpvalueset 0 0
+ if compx() == hungry
+ or compx() == hunger
+ or compx() == starving
+ or compx() == food
+ or compx() == eat
+ or compx() == stew
+ or compx() == cauldron
+ or compx() == fare
+ or compx() == dinner
+ or compx() == lunch
+ or compx() == cooking
+ or compx() == sample
+ or compx() == taste
+ or compx() == victuals
+ or compx() == tucker
+ or compx() == sustenance
+ or compx() == bight
+ or compx() == bite
+ or compx() == edible
+ or compx() == tasty
+ or compx() == apetite
+ or compx() == starvation
+ or compx() == starved
+ or compx() == soup
+ or compx() == fffff1
+ or compx() == fffff1
+ or compx() == fffff1
+ or compx() == fffff1
+ or compx() == fffff1
+  if isbitset($n) == 26081
+   esay \@glares for a moment, and mutters,\@ Y\@ll be gettin\@ nothin\@ from my kitchen.
+   break
+  endif
+  if remembers($n)
+   say Y\@still hungry? This aint a charity, y\@know.
+   break
+  endif
+  if iscarrying($n) == 15320
+   say Y\@ll have to finish y\@first bowl afore y\@ll get another!
+   break
+  endif
+  if mobvalue(1) == 0
+   mpremember $n
+   emote takes a clay bowl and ladles out some rich stew from the cauldron.
+   mpoload 15320
+   give bowl $n
+   if iscarrying($i) == 15320
+    mpjunk bowl
+    emote places the bowl on the kitchen table.
+    mpoload 15320 in kitchentable
+   endif
+   if isfemale($n)
+    say Get that into y\@, lass.
+   else
+    say Get that into y\@, lad.
+   endif
+   mpvalueset 1 1
+  endif
+ else
+  if compx() == bread
+  or compx() == loaf
+  or compx() == loaves
+   if isbitset($n) == 26081
+    esay \@glares for a moment, and mutters,\@ Y\@ll be gettin\@ nothin\@ from my kitchen.
+    break
+   endif
+   mpsetskilled
+   sneak
+   mpunsetskilled
+   take bread kitchentable
+   vis
+   if iscarrying($i) == 15050
+    mpoload 15050 in kitchentable
+    mpjunk bread
+    esay \@gestures to the table, and says,\@ No need t\@stand on ceremony. Help y\@self.
+   else
+    esay \@nods at the oven, and says,\@ Y\@ll have t\@wait fer a bit. \@s still risin\@.
+   endif
+  endif
+ endif 
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+26081
+table dark polished wood round chair high-backed~
+a table of dark, polished wood~
+A table of dark, polished wood.~
+~
+wood~
+furniture OYae 0 0 P
+6 5000 ADGJ 0 0
+55 0 0 4 P
+0
+E
+table~
+A round table dominates the center of this chamber.  A beautiful piece of
+furniture, the table seems to have been carved from a single piece of dark,
+richly grained wood.  Its round surface is polished to a mirror sheen, while
+its legs twist and curve like natural tree limbs, weaving down from the
+table\@s center before splaying outward near the ground.  Six high-backed
+chairs surround the table, each made of the same wood, and upholstered in
+dark leather.  
+~
+E
+chair~
+Six high-backed chairs, each carved from a single piece of dark, richly
+grained wood, surround a polished, round table.  The chairs, though polished
+themselves, have been carved following the natural, twisting grain of the
+wood, so that they have the appearance of having grown into their current
+state.  The darkly tanned leather of their upholstery blends perfectly with
+the rich wood.  
+~
+E
+chairs~
+Six high-backed chairs, each carved from a single piece of dark, richly
+grained wood, surround a polished, round table.  The chairs, though polished
+themselves, have been carved following the natural, twisting grain of the
+wood, so that they have the appearance of having grown into their current
+state. The darkly tanned leather of their upholstery blends perfectly with
+the rich wood.  
+~
+E
+high-backed~
+Six high-backed chairs, each carved from a single piece of dark, richly
+grained wood, surround a polished, round table.  The chairs, though polished
+themselves, have been carved following the natural, twisting grain of the
+wood, so that they have the appearance of having grown into their current
+state. The darkly tanned leather of their upholstery blends perfectly with
+the rich wood.  
+~
+>verb_prog p look door~
+opinterpret $n $x
+if objhere(26082)
+opechoat $n A small brass key hangs by a nail on the doorpost.
+endif
+~
+|
+V13
+26082
+key small brass brasskey~
+a small brass key~
+A small brass key with many small teeth rests here.~
+~
+brass~
+key e 0 0 AOP
+0 0 0 0 0
+51 1 0 0 P
+0
+>take_prog key small brass brasskey~
+mpset obj brasskey extra 0
+~
+>verb_prog p s y n r a e l~
+mpset obj brasskey extra 0
+mpecho ???
+~
+|
+V13
+26083
+bar~
+the bar~
+The bar stretches from the western wall halfway across the room.~
+~
+unknown~
+furniture OYae 0 0 P
+20 10000 ADGJ 120 120
+0 0 0 4 P
+0
+E
+bar~
+The bar stretches from the western wall halfway across the room.  It
+separates this part of the common area from a quieter part to the north. 
+Just behind the bar in the western wall is a kitchen door.  
+~
+V13
+26086
+key bronze wood old shafted~
+a key of bronze and wood~
+An old key, bronze shafted with a wooden handle, lies here.~
+~
+bronze~
+key 0 0 0 AO
+0 0 0 0 0
+0 1 0 0 P
+0
+V13
+26087
+wine white greenish glass clear drink~
+a glass of white wine~
+A glass of clear, greenish white wine rests here.~
+~
+alcohol~
+drink 0 0 F AO
+10 10 'white wine' 0 0
+0 3 0 1 P
+0
+V13
+26088
+chessboard onyx and crystal small~
+an onyx and crystal chessboard~
+A small chessboard made of onyx and crystal stands in the corner.~
+~
+crystal~
+special 0 0 0 P
+1 0 0 0 0
+0 0 0 1 P
+0
+E
+chessboard~
+A small chessboard, about a square foot in size, rests upon a stand of
+polished wood.  The squares of the chessboard are of onyx and translucent
+crystal, as are the beautifully carved pieces.  The motif for this set is
+\@the War of Night\@, with the crystal pieces representing the forces of light
+- ch\@taren pawns and various heroes fighting under the queen, Rystaia, and
+the king, Jolinn.  The onyx pawns are a mixture of chaja and other hideous
+slaves, with demons as rooks, shuddeni templars as knights, and scholars of
+the void as bishops.  The black queen appears to be an aelin woman, and the
+black king an exquisitely carved dragon.  
+~
+V13
+26089
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+E
+slimpurple~
+A slim volume sits upon the shelf, neatly bound in purple-dyed leather and 
+marked on its front with flowing silver letters, which read,
+
+                    The Patrician\@s Daughter
+
+                               by
+                       Barandon Underwell
+~
+E
+patriciansdaughter~
+\\\#More wine?\# The serving women, her fine Earendam accent a melodious
+break in the bustle of the surrounding crowds.
+
+\#Wine? Why, open up a new bottle my dear, this one appears to be more
+than a bit empty. Vintage of the Silver Zephyr, that\@s a dear\#. The
+man doing the ordering the ordering hesitated for a moment, perhaps
+feeling a bit of the most recent bottle. Robed in fine silk adorned
+with bits and piece of ribbons and the occasional sewn jewel, he
+looked the part of an Earendam dandy. Young, rich, and quite possibly
+concerned nothing more than with the latest aesthetic fashion about
+the town.
+
+And yet, the man across the table from the youth seemed highly out of
+place in this tavern frequented by the upper crust of Earandam\@s
+nobility. Unshaven, unwashed, and clad only in poorly tanned leather,
+a skittering of whispers passed through the crowds of the elegant
+tavern as the young nobles eyed what was clearly some sort of rogue.
+
+The waitress, returning to the table with the new bottle of the wine,
+covertly listened to their conversation, hovering around the table of
+the two so very interesting gentleman.
+
+\#Do you have what I wanted, Zilba?\# snarled the bandit.
+
+\#Hjar, my good man. I would never think of denying you. As promised, I
+have here the ancient griffin ring, long held by my father, who passed
+it to me, clutching at his chest on his ill-tended deathbed, beset by
+plague...\#
+
+\#Shut yer yap! Ye stole it just like I did, only with yer fancy
+trickings rather than a good honest club. Hand it over!\#
+
+\#Well, shall we place our gifts to each other on the table?\#
+
+With a snort, the bandit pulled out a worn hide skin bag, dumping a
+small fortune in gems on the table. In one fluid motion, Zilba raked
+the gems into his own pocket, and placed a rather intricately carved
+ring with a feather on the table.
+
+Eyeing his prize greedily, the bandit clutched the ring to his hand,
+and jammed it onto a slightly dirty finger. \#It better work!\# he
+snapped, and began reading the script on the side of the
+ring. \#Taylandil\# he muttered. Grinning wickedly, the air scholar
+uttered a few words of his own surreptiously, and the bandit began
+floating off the ground!
+
+The waitress\@s mouth opened in a quiet \#O\# as she noticed a faint
+transparency to the ring. Zilba, noticing her glance, held a single
+finger briefly to his lips, and chuckled merrily, and their eyes met,
+both appreciating the joke. Laughing merrily, Zilba held up a small
+diamond, shouting \#Drinks for all courtesy of Zilba the Great,
+Archmagi of Air, Son of Earandam, Scholar Exuberant!\#
+
+And, just as his words echoed through the chamber, a loud banging came
+from without the tavern. \#Open up! In the name of the Patrician!\#
+
+The innkeep, a timid merchant of some repute among Earandam\@s small
+bult elite merchant class, cautiously opened the door.
+
+\#He is HERE! We have an order issued by the Patrician himself for the
+arrest of one Zilba Gralci, scholar of ill fame!\#, shouted the
+guardsmen.
+
+Standing up, Zilba grinned. \#I surrender...I surrender!\# Turning
+quickly, he grabbed the young serving girl and in one motion tossed
+the bag of gems up into the air, scattering gems wildly!
+
+Then, as the guardsmen ran toward him, pushing aside patrons and
+twirling his hands, tapping into a bit of the power of air, Zilba
+turned thrice in rapid succession, and out of the dust on the floor
+swirled an enormous air efreet!
+
+Roaring at its freedom in the elemental plane, the efreet went wild!
+It hurled tables about the room, brusing and battering patrons. Those
+who drew too close to its maw disappeared in bursts of magical air,
+flung about the surrounding air.
+
+Taking advantage of the distraction, Zilba whispered a few more words,
+softly, and in a matter of seconds no longer appeared as himself. A
+pale, blonde youth had become a stockier blacked haired nobleman, who
+still sat at a nearby table. Tugging at the young serving girls arm,
+he slipped out the kitchen exit of the tavern. Out in the street, they
+observed the guardsmen hauling away the bandit.
+
+\#Sarlock Drenigar, you are under arrest for banditry and associated
+with the known felon Zilba Gralci, and the pillaging of Var Bandor.\#
+
+The bandit chortled and called on his ring again. \#Taylandil!\# he
+shouted, then let out a moan of despair as the ring vanished into an
+insubstantial mist.  \#But...but...\# he stammered, as a diligent
+thief-taker tripped the man, and he stumbled and was quickly subdued.
+
+Zilba giggled, and the girl gasped. \#I can\@t go with you! You\@re
+wanted for stealing that ring, and associating with bandits!\#
+
+Zilba gasped \#My dear, I am shocked and apalled that you would even
+contemplate that I am a norhing more than a petty thief. Surely, my
+grin has been called rakish. Certainly, I am perhaps a poor judge of
+the character of my companions. But a thief? Hardly!\#
+
+\#But if you\@re not a thief, then you at least defrauded that bandit!\#
+
+\#Did I?\# he grinned, gazing evilly at the young women.
+
+Pulling the last of the gems out of the sack, he held it up to the
+light.
+
+\#Nothing but glass, my dear. A plan of mine from the beginning\#
+
+\#But...why go to all that trouble...fool the bandit...weird magic\#
+
+\#Why, to let the guards know I\@m here, of course! It wouldn\@t really
+be sporting to just skulk about and not let them know I was still in
+town!\#
+
+\#Then.. what were they after you for?\#
+
+\#Well, a thing lesser men might call a crime, but I am obliged to
+admit I have done from the goodness of my heart. In my search to free
+Avendar from its shackles, somewhere I seem to have... um...borrowed
+the Patrician\@s daughter.\#
+
+\#The Patrician\@s daughter!\#
+
+\#Yes, simply dreadful. She even has warts. But, nevertheless, the
+equally loathsome grandnephew of Baron Krilin has found some joy in
+her toad-like appearance, and they seem to enjoy some measure of love
+for each other. I, never one to pass up promises of huge purses of
+ACTUAL gold, have graciously agreed to secure not only their elopment,
+but their families approval as well.\#
+
+\#But why me?\#
+
+\#Because, unlike the other dreary aristocrats about this city, you
+have a rare gift - magic! And unless I miss my guess, you probably
+have the same whimsical association with the skies that I do.\#
+
+The girl opened her mouth, then was interrupting by Zilba, \#Don\@t
+bother to resist really, I\@ll just lash you up with air and toss you
+on a big disc until you agree. It happens to all the women in my
+life. Always the floating disc in the end...\#
+
+\#So anyway, girl, here\@s what we\@ll be doing. The Patrician has
+enlisted a charlatan of some cunning to help arrange things. Princess
+Listensia will be wed on the Day of the Sun, in two days time. Or
+rather, she will appear to be wed. Listensia, always a rather vacant
+sort, is rather easily copied by a talented illusionist. That\@s why
+we\@ll be on hand to make sure things turn out a little differently.\#
+
+\#Now, you fiddle around here, and I\@ll go.. pick up a few things. \#
+
+With a few words, he faded into a misty cloud, and was gone. The young
+girl, a bit jarred by the whole experience, began to think about what
+Zilba had said. She knew she had a gift, ever since that one lightning
+storm, as a child. Somehow, the lightning bolt that had struck her had
+just... flowed around her.
+
+An hour later she was in her room in the tavern, practicing her newly
+realized abilities, skittering a bolt of lightning over her knuckles,
+wondering what she had gotten into.
+
+                                ------
+
+Midday on the Day of the Sun, the weather was living up to the day\@s
+name. Zilba stood by his newfound companion, and both were carrying a
+variety of different oranments and small articles of armor, and Zilba
+seemed unusually happy. With them were a very toadlike young woman,
+and a rather pasty faced and pox-ridden young man.
+
+Stretching before them was the Plaza of the Patrician\@s palace,
+diamond steps leading down to the golden tile floor. Looking down on
+the wedding precession, Zilba nodded. \#Looks like it\@s time for some
+inclement weather\#. Holding his arms aloft, a cold northern wind
+began, bringing in thick black clouds from the Brintor. Small jags of
+lightning began striking all around the plaza, occasionally striking
+nearer and nearer the crowd of people.
+
+\#Ah, here we go inside the palace.\#
+
+Hurrying ahead of the crowd, Zilba set up inside the palace, tracing a
+small rune in the air.
+
+\#Stay here And don\@t move until I signal.\#
+
+Zilba muttered a few words under his breath, and disappeared
+completely. Chortling at his complete invisibility, he moved quietly
+amidst the crowd, and began conjuring. Bolting upright, the priest of
+Jolinn officiating the ceremony shouted, \#Where has the groom gone?\#
+People began shouting \#Why he\@s right there!\# \#No, wait, he\@s
+invisible!\# \#I can\@t see him at all!\# In a panic, the hapless Earandam
+groom looked to the Patrician for guidance.  Unhappily, the Patrician
+began shouting \#Fraud! I will not have this fool marry my daughter! In
+the presence of all assembled, I cast this man out of the city!\#
+
+Grabbing his mouth, the Patrician irked \#I didn\@t say that!\#
+
+\#Yes he did!\# said the priest of Jolinn, surprising most of the people
+in the room (including himself) with his frankness.
+
+\#Scholars! Guards! What IS going on?!?\# howled the patrician.
+
+Bursting boldly into the room, a wedge of the Patrician\@s finest
+darted in, alert for magical trickery...
+
+Right into a noxious green cloud, which began creeping along the floor
+of the room. Coughing and gagging, most of the nobles and a good
+number of the soldiers pressed for the exits of the room, leaving both
+the mood and the furnishings akimbo in the great chamber.
+
+From outside, there came a great roar, and a burst of shouts.
+
+\#Gods help us, we\@re outnumbered!\#, \#Death with honor, save the
+citizens!\#, \#Looters at the gate!\# came the series of shouts from the
+guards outside.
+
+\#Ah, that would be good Sarlock, come with his Raider friends\#,
+exhulted Zilba.
+
+The chamber was no emptied of its people, save the Patrician, his
+retinue, and a few of the guards and the illusionist in the employ of
+the Patrician.
+
+Zilba stepped forth, shedding his invisibility. \#Ah, Patrician! I\@ve
+come before you with a very urgent matter. You see, that woman in the
+ceremony isn\@t your daughter at all just some bits and pieces of light
+THIS charlatan has no doubt duped you into believing is the apple of
+your eye.\#
+
+With a thundering crack, the hired illusionist fell to the ground,
+struck deaf by Zilba\@s thunderous boom.
+
+\#He always was a bit of a hedge wizard. And, he couldn\@t hold his
+liqour, either. No greater sin, I\@m afraid...\#
+
+\#Guards! Guards!\# the Patrician shouted, his personal retinue heading
+towered Zilba.
+
+Clucking his tongue, Zilba lashed out with a jagged tempest, tossing
+guards about with wild abandon, doing everything from scratching to
+annihilating his opponents into helplessness.
+
+Those that remained, he let slip with a long arcing lightning bolt,
+which popped from one target to another, fizzling out just as it
+reached the Patrician.
+
+\#Now then, this priest here is going to perform the real ceremony!\#
+
+The priest stammered \#But.. but...\#
+
+\#Come now, are you a servant of Jolinn or the patrician? Unity, love,
+reducing your damage from evil by one fourth, that sort of
+thing. These happy two really DO want to be wed, you know.\# With a
+whistle, he brought forth the Princess and the Krilin noble, and
+coached the reluctant priest through a quick ceremony, while the
+Patrician fumed in helpless rage. He bolted for the door, but Zilba
+just caused a quick vacuum to form, sucking the man back into the
+room.
+
+All said and done, the two where married, and Zilba laughed and
+laughed. \#And now, friends, we shall have words with the Raiders!\#
+
+Pushing the party outside into the Plaza with gusts of air, they found
+themselves surrounded by a party of Raiders, mounted on their infamous
+birds of prey.
+
+\#You see, my dear, I decided that poor Sarlock probably DID deserve
+that ring after all, so I paid him to do a little raid he\@d already
+been planning, and those stones of power I liberated..\#
+
+Sarlock shouted to Zilba, \#So, you have the girl? I have the scrolls
+of ancient magic you asked for payment on delivery!\#
+
+Zilba tched, and answered \#I\@m afraid I\@ve had a rather unfortunate
+attack of conscience, good Sarlock. I\@ve decided to let the girl be
+wed, and you can have your fun here in Earandam.\#
+
+\#No toad-faced girl? Aarrrrgghhhh!\#.
+
+The bandit was livid with anger, and his Raiders advanced.
+
+Nonchalantly, Zilba whispered one word softly, and a roaring gale
+filled the room. Raiders were whipped away on their birds out of the
+room, leaving only the lone bandit chieftain.
+
+\#Aargh. I\@m more than enough to finish you, scholar!\#
+
+Sarlock advanced on Zilba, who actually seemed visible shaken. Still,
+he whispered to the Patrician, \#Pay attention this is the good bit!\#
+
+Weaving his hands a few times, he uttered more than a few malicious
+syllables at Sarlock.
+
+At first, Sarlock seemed nonplussed, but then Zilba picked up a fallen
+sword, which began to float beside him. With a soft swishing, it began
+hacking away at the bandit, while Zilba sat back and watched the
+results. Sarlock, under the influence of the early illusion, evidently
+seemd to see something more than a lone scholar floating a sword to
+hack away at him. Overwhelmed at his illusionary injuries, he fled
+away, flying his bird out of the city.
+
+\#Well, Patrician, I think you\@ll find you have a toad-faced daughter
+who loves you very much, and despite your taste for frontier life, a
+very valuable political ally in the Krilin boy. As for me and mine, I
+see your guards are heading this way, so I must bit you adieu for
+now!\#
+
+Taking the girl\@s arm, he dashed down the street.
+
+\#Where will we go the guards are at all the gates!\#
+
+\#As usual, you underestimate my resourcefulness. We are taking the
+river!\#
+
+\#But-\#
+
+\#Now, you recall what I told you about open mouths and flies.\#
+
+Taking hold of her, he jumped headfirst in the river. Just as they
+reached the surface, they found themselves surrounded in a bubble of
+clean air.
+
+Floating gently out of the city walls underwater, they emerged,
+bobbing in the Uthlin.
+
+\#Did I ever ask you your name? I thought not..\#, he said distractedly
+as they both disappeared in a puff of random air. \#Other people talk
+so much sometimes I can barely hear myself think.\#
+
+And they were gone.
+~
+V13
+26090
+harp Elanthe silvery silver wood strings~
+the Harp of Elanthe~
+A small harp of silvery wood, its strings shimmering like moonlight.~
+~
+wood~
+instrument AOa 0 0 AOP
+B 0 0 0 0
+51 20 16202732 2 P
+1
+A
+41 25
+A
+48 50
+A
+4 2
+A
+30 40
+A
+20 -8
+A
+13 30
+A
+12 80
+V13
+26091
+armchair~
+a faded red armchair~
+Two armchairs stand against the southern wall of this alcove.~
+~
+cloth~
+furniture OYae 0 0 P
+2 5000 FIL 150 150
+55 0 0 4 P
+0
+E
+chairs~
+Two armchairs stand against the southern wall of this alcove, well
+stuffed and upholstered in faded red fabric.  
+~
+E
+armchairs~
+Two armchairs stand against the southern wall of this alcove, well
+stuffed and upholstered in faded red fabric.  
+~
+E
+armchair~
+Two armchairs stand against the southern wall of this alcove, well
+stuffed and upholstered in faded red fabric.  
+~
+V13
+26092
+table chair wooden round~
+a round, wooden table~
+Several round, wooden tables stand about the common room.~
+~
+wood~
+furniture OYae 0 0 P
+20 100000 ADGJ 0 0
+55 0 0 4 P
+0
+V13
+26093
+couch couches over-stuffed~
+an over-stuffed couch~
+A couple of comfortable looking, well-stuffed couches are placed around the room.~
+~
+unknown~
+furniture OYae 0 0 P
+8 50000 FHK 150 180
+55 0 0 4 P
+0
+V13
+26094
+chair wooden~
+a wooden chair~
+A simple wooden chair, made from varnished pine, stands here.~
+~
+unknown~
+furniture OYae 0 0 P
+2 10000 EHK 0 0
+0 0 0 4 P
+0
+V13
+26095
+cot cots comfortable~
+a comfortable cot~
+Two comfortable cots are set against the east and west walls of this chamber.~
+~
+unknown~
+furniture OYae 0 0 P
+4 50000 EHK 200 250
+55 0 0 4 P
+0
+V13
+26096
+bed large comfortable canopied~
+a canopied bed~
+A large, canopied bed is set against the west wall of this room, facing the door.~
+~
+unknown~
+furniture OYae 0 0 P
+3 10000 EHK 250 250
+55 0 0 4 P
+0
+V13
+26097
+table sturdy oaken kitchen kitchentable~
+a sturdy kitchen table~
+Standing in the middle of the cluttered kitchen is a sturdy, oaken table.~
+~
+wood~
+container Yae 0 0 P
+100 0 0 100 0
+0 0 0 4 P
+0
+V13
+26098
+stew bowl rich meaty~
+none~
+A clay bowl full of rich, meaty stew sits here.~
+~
+food~
+food D 0 0 A
+80 50 0 0 0
+10 2 0 1 P
+0
+#0
+
+
+
+#ROOMS
+#26081
+A Lively Common room~
+This large, lively common room seems to be enjoying good patronage.  Most
+of the tables between the front door to the south to the solid looking bar
+in the north are already occupied.  The murmur of conversation, mostly
+friendly, sometimes raucous, rises from all about you.  Many candles flicker
+from their wall-bound iron holders, flooding the room with a warm light and
+casting dancing shadows on the dark beams of the ceiling and the slate-tiled
+floor.  Beyond the bar, which extends halfway across the room from the
+eastern wall, a broad stone archway separates this part of the common area
+from a quieter northerly section.  At the end of the bar, set in the western
+wall, is the kitchen door.  
+~
+~
+0
+0 8242 0
+D0
+~
+~
+0 0 26084
+D2
+~
+~
+3 0 15980
+D3
+~
+~
+3 0 26083
+W 5 0 0
+Z 5 5
+S
+#26082
+A Quiet Alcove~
+This small side-room is just large enough to fit the two armchairs
+against its southern wall, as well as the wooden staircase which winds
+upward from the northern wall.  The alcove is quite dark, lit only by the
+light of the common room to the west, and by a single candle which stands
+atop a little table in the center.  A third wooden chair has been pulled in
+here from the common room.  
+~
+~
+0
+0 8242 0
+E
+staircase~
+This curving wooden staircase faces the dark alcove from the northern
+wall, rising to a second level.  Beneath the staircase, hidden by its
+shadow, a narrow passageway leads northward into darkness.  
+~
+D3
+~
+~
+0 0 26084
+D4
+~
+~
+0 0 26085
+W 5 0 0
+Z 5 5
+S
+#26083
+A Busy Kitchen~
+Pots and pans hang from an iron ceiling rack, side by side with strings
+of all sorts of dried herbs and fruits and cured meats.  A great clay oven
+stands against the south wall, from which comes the aluring aroma of freshly
+baking bread.  A second fire burns in a hearth in the northern wall, over
+which hangs a large cauldron which, by its smell, probably holds a rich
+stew.  A swinging wooden door leads from the northern part of the east wall.
+~
+~
+0
+0 8242 0
+D1
+~
+~
+3 0 26081
+W 5 0 0
+Z 5 5
+S
+#26084
+By the Hearth~
+The cosy space is dominated by a large hearth in the northern wall, in
+which a bright fire burns atop a bed of hot coals.  The north and west walls
+of this chamber are of stone, and a small window looks out of the west wall
+over a grey ocean far below.  Several over-stuffed armchairs and couches,
+some occupied, stand about the room.  Above the fireplace a huge painting of
+a sailing ship riding a stormy ocean serves to emphasise the warmth and
+comfort of the inn.  Beyond a broad stone archway to the south is the
+noisier part of the common room, and to the east a narrow archway leads into
+a quiet alcove.  
+~
+~
+0
+0 8242 0
+D1
+~
+~
+0 0 26082
+D2
+~
+~
+0 0 26081
+W 5 0 0
+Z 5 5
+S
+#26085
+A Crooked Hallway~
+A crooked hallway leads south from here, past a number of doors, archways
+and side passages, and into shadows.  The walls of the hallway are of old
+wooden panels, hung copiously with small paintings and odd knick-knacks. 
+Against the narrow northern wall, for instance, hangs an old wolf\@s skin,
+while above the western archway hangs a well-polished sword.  This archway
+leads to a large sitting room, and opposite it the eastern wall opens into a
+staircase which spirals to the floor below.  
+~
+~
+0
+0 8242 0
+D2
+~
+~
+0 0 26086
+D3
+~
+~
+0 0 26090
+D5
+~
+~
+0 0 26082
+W 5 0 0
+Z 5 5
+S
+#26086
+A Crooked Hallway~
+A crooked hallway leads north and south from here, past a number of
+doors, archways and side passages.  The walls of the hallway are of old
+wooden panels, hung copiously with small paintings and odd knick-knacks. 
+Two portraits hang on either side of a door in the east wall, while a side
+passage opens in the west wall.  
+~
+~
+0
+0 8242 0
+D0
+~
+~
+0 0 26085
+D1
+~
+~
+3 0 26089
+D2
+~
+~
+0 0 26087
+D3
+~
+~
+0 0 26088
+W 5 0 0
+Z 5 5
+S
+#26087
+A Crooked Hallway~
+A crooked hallway leads roughly northward from here, past a number of
+side passages and doorways.  An oaken door stands in the western wall right
+next to you, and by the door stands a tall suit of armour, sagging slightly
+on its wooden dummy.  Opposite the suit stands a cabinet, nearly blocking
+the passageway.  Behind its glass doors can be seen a number of old but
+beautifully painted porcelain plates, alongside a few goblets of bronze.  On
+the south wall, at the end of the hallway, hangs a shield of blue and white.
+~
+~
+0
+0 8242 0
+E
+armor~
+This old suit of full-plate armor has clearly seen its days in battle,
+with notches and dents visible on most of its surfaces.  It has been
+painstakingly polished, and left forgotten in this cramped hallway.  
+~
+E
+armour~
+This old suit of full-plate armour has clearly seen its days in battle,
+with notches and dents visible on most of its surfaces.  It has been
+painstakingly polished, and left forgotten in this cramped hallway.  
+~
+E
+plates~
+The paintings on the plates are of pastural scenes, seemingly of the same
+verdant farming valley.  A few of them show different views of Lithling
+village.  Another common theme is that in the sky, in each picture, a small,
+blue, reptilian form flies in the distance.  
+~
+E
+shield~
+This sturdy shield, made of wood and steel, bears a device of three stars
+in an inverted triangle, argent on an azure field.  
+~
+D0
+~
+~
+0 0 26086
+D2
+~
+~
+67 0 1526
+D3
+~
+~
+3 0 26092
+W 5 0 0
+Z 5 5
+S
+#26088
+A Narrow Hallway~
+A narrow hallway leads eastward into a larger, north-south running
+passageway.  The walls of the hallway are of old wooden panels, hung with
+small paintings and odd knick-knacks.  In the western wall is set a
+sturdy-looking door with a brass doorknob, while in the south wall a smaller
+doorway stands.  An archway opens in the northern wall to reveal an
+upward-climbing wooden staircase.  
+~
+~
+0
+0 8242 0
+D0
+~
+~
+0 0 26096
+D1
+~
+~
+0 0 26086
+D2
+~
+~
+3 0 26091
+D3
+~
+~
+99 26082 26093
+W 5 0 0
+Z 5 5
+S
+#26089
+A Cluttered Library~
+A small, cluttered library occupies this chamber.  Bookshelves of
+different shapes and sizes line the walls and stand about the center of the
+room, leaving only an awkward network of nooks and aisles to move in.  The
+shelves are thick to bursting with both books and assorted oddments, and
+these also lie scattered about the scant remaining floor-space.  An ancient
+writing desk has been squeezed into the southeast corner, in front of a
+badly worn tapestry, and a single door leads through the western wall.  
+~
+~
+0
+0 8242 0
+E
+shelves~
+Hundred of books, charts and scrolls are stacked upon every surface. 
+Many treatise on mundane subjects have been collected, as well as several
+biographies bearing unfamiliar names.  A large collection of fictional works
+are interspersed with these.  The charts, which lie scrolled up, or tacked
+carelessly to walls, are quite unusual, most depicting lands and seas wholly
+unfamiliar.  Any shelf space unoccupied by writings has been filled instead
+with an incredible array of odds and ends.  
+~
+E
+oddments~
+An old sundial stands uselessly, blocking a path between bookshelves.  On
+one of these bookshelves stands a row of minature brass animals, while on
+another a music box stands open, its tiny figurine pirouetting in silence. 
+Three crystal vases stand atop another bookshelf, each holding a single
+flower, each unique, each also made of crystal.  A porcelain doll is crammed
+between a tome on dentistry and series of pirate novels.  Her beautiful
+child\@s face is pale, save her red-blushed cheeks, and her silvery wings are
+of silk, stuffed with wool.  
+~
+E
+ends~
+An old sundial stands uselessly, blocking a path between bookshelves.  On
+one of these bookshelves stands a row of minature brass animals, while on
+another a music box stands open, its tiny figurine pirouetting in silence. 
+Three crystal vases stand atop another bookshelf, each holding a single
+flower, each unique, each also made of crystal.  A porcelain doll is crammed
+between a tome on dentistry and series of pirate novels.  Her beautiful
+child\@s face is pale, save her red-blushed cheeks, and her silvery wings are
+of silk, stuffed with wool.  
+~
+E
+bookshelves~
+Hundred of books, charts and scrolls are stacked upon every surface. 
+Many treatise on mundane subjects have been collected, as well as several
+biographies bearing unfamiliar names.  A large collection of fictional works
+are interspersed with these.  The charts, which lie scrolled up, or tacked
+carelessly to walls, are quite unusual, most depicting lands and seas wholly
+unfamiliar.  Any shelf space unoccupied by writings has been filled instead
+with an incredible array of odds and ends.  
+~
+E
+odds~
+An old sundial stands uselessly, blocking a path between bookshelves.  On
+one of these bookshelves stands a row of minature brass animals, while on
+another a music box stands open, its tiny figurine pirouetting in silence. 
+Three crystal vases stand atop another bookshelf, each holding a single
+flower, each unique, each also made of crystal.  A porcelain doll is crammed
+between a tome on dentistry and series of pirate novels.  Her beautiful
+child\@s face is pale, save her red-blushed cheeks, and her silvery wings are
+of silk, stuffed with wool.  
+~
+D3
+~
+~
+3 0 26086
+W 5 0 0
+Z 5 5
+S
+#26090
+A Quiet Sitting Room~
+From this chamber the amiable din from the common room downstairs can be
+heard only faintly.  The room is of good size, space enough for several
+comfortable looking chairs and a low table near the center of the room.  A
+small fireplace is set in the northern wall, where a fire burns low.  Two
+small windows look out from either side of the red brick chimney, and
+another from the western wall.  A variety of hangings adorn every wall.  
+~
+~
+0
+0 8242 0
+D1
+~
+~
+0 0 26085
+W 5 0 0
+Z 5 5
+S
+#26091
+A Small Sleeping Chamber~
+This simply appointed sleeping chamber holds two cots, sidelong against
+the narrower east and west walls.  Next to the head of each cot, against the
+southern wall, are small tables, each holding a candle and a basin of water.
+Simple wooden chests stand by the foot of each cot, next to the door in the
+northern wall.  
+~
+~
+0
+0 8242 0
+D0
+~
+~
+3 0 26088
+W 5 0 0
+Z 5 5
+S
+#26092
+A Large Sleeping Chamber~
+This sleeping chamber is well appointed, with a large, comfortable bed
+against the west wall facing the door, a small fireplace in the north wall,
+and a sturdy oak cabinet next to the door against the east wall.  A small
+table also stands by the bed, holding a basin of cold water and a
+candlestick.  Against the western wall is a small desk, its chair pushed
+neatly beneath it.  Just above the desk a small window looks out over the
+rugged coastline which stretches for miles between forest and ocean.  
+~
+~
+0
+0 8242 0
+D1
+~
+~
+3 0 26087
+W 5 0 0
+Z 5 5
+S
+#26093
+A Room Overlooking the Ocean~
+Wide windows occupy all of the walls of this room, save the eastern, in
+which is set a sturdy-looking door, bound to the wall with huge brass
+hinges.  The western window overlooks a grey ocean, far below the high cliff
+upon which the inn stands.  From the north and south windows can be seen the
+line of the coast, where raging surf pounds against the cliffs for miles,
+and the dark forest which stretches eastward from the cliff-tops.  The room
+itself is appointed sparsely, with a single round table of polished, dark
+wood in the center of its slate-tiled floor, surrounded by six high-backed
+chairs.  
+~
+~
+0
+0 8242 0
+E
+west~
+The western window looks out over a grey and stormy ocean, which can be
+heard roaring against the bottom of the cliffs far below.  
+~
+E
+north~
+Through the window to the north a rugged line of cliffs can be seen
+stretching between forest and ocean for mile upon mile.  
+~
+E
+south~
+Through the window to the south a rugged line of cliffs can be seen
+stretching between forest and ocean for mile upon mile.  
+~
+E
+w~
+The western window looks out over a grey and stormy ocean, which can be
+heard roaring against the bottom of the cliffs far below.  
+~
+E
+n~
+Through the window to the north a rugged line of cliffs can be seen
+stretching between forest and ocean for mile upon mile.  
+~
+E
+s~
+Through the window to the south a rugged line of cliffs can be seen
+stretching between forest and ocean for mile upon mile.  
+~
+E
+door~
+This heavy door of stained hardwood is fitted to the stone lintel with
+huge hinges of brass.  The door knob and keyhole are also of polished brass.
+~
+E
+east~
+A heavy door is fitted to the eastern exit.
+~
+E
+e~
+A heavy door is fitted to the eastern exit.
+~
+D1
+~
+~
+99 26082 26088
+W 5 0 0
+Z 5 5
+S
+#26094
+The Attic~
+Grey light forms dusty beams, slanting downward from the small windows in
+each of the four walls of this cramped attic.  The air is chill here, and
+stale, and none of the warmth or life of the inn below seems to ever reach
+this high loft.  The narrow stairway leads into the center of the room,
+bordered by a semi-circular railing of old iron.  Beyond the stairway the
+room is cluttered from wall to wall with a dragon\@s hoard of junk.  
+~
+~
+0
+0 8242 0
+E
+south~
+Through the window to the south a rugged line of cliffs can be seen
+stretching between forest and ocean for mile upon mile.  
+~
+E
+north~
+Through the window to the north a rugged line of cliffs can be seen
+stretching between forest and ocean for mile upon mile.  
+~
+E
+west~
+The western window looks out over a grey and stormy ocean, which can be
+heard roaring against the bottom of the cliffs far below.  
+~
+E
+east~
+The eastern window looks out over a dark forest, which stretches to the
+horizon and beyond, in gently undulating waves of black foliage.  
+~
+E
+windows~
+Four windows look out from the north, south, east and west walls, the
+grey light which filters through them creating beams of dusty light, which
+reflect eerily about the cluttered room.  
+~
+E
+hoard~
+Old chests, some open and spilling with old clothing are littered about,
+amongst dilapidated furniture of once-superior craftmanship.  Two rusted
+suits of armour hang from one wall, opposite a row of hideous animal masks,
+clearly the work of a primitive, ritualistic people.  Tack and harness is
+piled in one corner, on top of a huge saddle clearly designed for some beast
+other than a horse.  A collection of ornate hat-stands occupy another
+corner, a few of which hold hats, yet more ornate than their stands. 
+Against another wall an old anchor leans, its chain trailing off amongst the
+junk on the floor.  Surrounding it are all manner of maritime paraphernalia,
+from a broken sextant, to a furled mainsail, to a long harpoon, lying
+beneath the rest.  Even a frayed hammock has been attached to the walls, and
+hangs loosely across the corner.  
+~
+E
+junk~
+Old chests, some open and spilling with old clothing are littered about,
+amongst dilapidated furniture of once-superior craftmanship.  Two rusted
+suits of armour hang from one wall, opposite a row of hideous animal masks,
+clearly the work of a primitive, ritualistic people.  Tack and harness is
+piled in one corner, on top of a huge saddle clearly designed for some beast
+other than a horse.  A collection of ornate hat-stands occupy another
+corner, a few of which hold hats, yet more ornate than their stands. 
+Against another wall an old anchor leans, its chain trailing off amongst the
+junk on the floor.  Surrounding it are all manner of maritime paraphernalia,
+from a broken sextant, to a furled mainsail, to a long harpoon, lying
+beneath the rest.  Even a frayed hammock has been attached to the walls, and
+hangs loosely across the corner.  
+~
+E
+n~
+Through the window to the north a rugged line of cliffs can be seen
+stretching between forest and ocean for mile upon mile.  
+~
+E
+s~
+Through the window to the south a rugged line of cliffs can be seen
+stretching between forest and ocean for mile upon mile.  
+~
+E
+e~
+The eastern window looks out over a dark forest, which stretches to the
+horizon and beyond, in gently undulating waves of black foliage.  
+~
+E
+w~
+The western window looks out over a grey and stormy ocean, which can be
+heard roaring against the bottom of the cliffs far below.  
+~
+D5
+~
+~
+0 0 26096
+W 5 0 0
+Z 5 5
+S
+#26095
+A Dark Hallway~
+The hallway is dark, barely lit by a torch on either wall, which flicker 
+gently. Soft red carpet mutes your footfalls, and absorbs most of the
+noise you make as you walk through.  The dark wooden panelling seems to suck
+in most of the light, making the hallway seem smaller than it really is. 
+The hallway continues to the north, and opens to the south into a slightly 
+wider alcove, passing first beneath a wooden staircase.
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 3676
+W 5 0 0
+Z 5 5
+S
+#26096
+A Narrow Staircase~
+This wooden staircase winds around to the right as it climbs to the level
+above.  The curving walls of the staircase\@s alcove are also of wood, and
+are hung with a series of unframed watercolours.  The base of the stairway
+faces southward, leading into an east-west running passageway.  
+~
+~
+0
+0 8242 0
+E
+paintings~
+Five small watercolours hang from the wood-panelled walls of this narrow
+staircase, three on the outer wall and two on the inner.  The watercolours
+are unframed, and all rendered by the same inexpert hand on thick canvas. 
+The depict a variety of landscapes, all fantastical in some way.  
+
+In the first, lowest on the outer wall, a broad plain, studded with
+impossible rock formations stretches to a bleak horizon.  In the second, a
+beautiful silver city perches in a high mountain pass, its minarets, towers
+and fortresses the stuff of fairytale.  The third is a watery wash of red -
+a broad crimson lake beneath a pink sky.  From the surface of the lake,
+seven serpentine heads extend, flailing at the clouds.  The fourth
+watercolour, or the first on the inner wall, depicts a dark forest, its
+gnarled trees painted with horrible faces and grasping limbs.  Behind one of
+the trees a pale girl-child peeks.  The last painting is of a stormy ocean,
+unremarkable except for the distant dragon which flies above the waves,
+black as night.  
+~
+E
+watercolors~
+Five small watercolours hang from the wood-panelled walls of this narrow
+staircase, three on the outer wall and two on the inner.  The watercolours
+are unframed, and all rendered by the same inexpert hand on thick canvas. 
+The depict a variety of landscapes, all fantastical in some way.  
+
+In the first, lowest on the outer wall, a broad plain, studded with
+impossible rock formations stretches to a bleak horizon.  In the second, a
+beautiful silver city perches in a high mountain pass, its minarets, towers
+and fortresses the stuff of fairytale.  The third is a watery wash of red -
+a broad crimson lake beneath a pink sky.  From the surface of the lake,
+seven serpentine heads extend, flailing at the clouds.  The fourth
+watercolour, or the first on the inner wall, depicts a dark forest, its
+gnarled trees painted with horrible faces and grasping limbs.  Behind one of
+the trees a pale girl-child peeks.  The last painting is of a stormy ocean,
+unremarkable except for the distant dragon which flies above the waves,
+black as night.  
+~
+E
+watercolours~
+Five small watercolours hang from the wood-panelled walls of this narrow
+staircase, three on the outer wall and two on the inner.  The watercolours
+are unframed, and all rendered by the same inexpert hand on thick canvas. 
+The depict a variety of landscapes, all fantastical in some way.  
+
+In the first, lowest on the outer wall, a broad plain, studded with
+impossible rock formations stretches to a bleak horizon.  In the second, a
+beautiful silver city perches in a high mountain pass, its minarets, towers
+and fortresses the stuff of fairytale.  The third is a watery wash of red -
+a broad crimson lake beneath a pink sky.  From the surface of the lake,
+seven serpentine heads extend, flailing at the clouds.  The fourth
+watercolour, or the first on the inner wall, depicts a dark forest, its
+gnarled trees painted with horrible faces and grasping limbs.  Behind one of
+the trees a pale girl-child peeks.  The last painting is of a stormy ocean,
+unremarkable except for the distant dragon which flies above the waves,
+black as night.  
+~
+D2
+~
+~
+0 0 26088
+D4
+~
+~
+0 0 26094
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 26081 2 3
+D 0 26081 3 3
+D 0 26083 1 3
+D 0 26086 1 3
+D 0 26087 2 67
+D 0 26087 3 3
+D 0 26088 2 3
+D 0 26088 3 99
+D 0 26089 3 3
+D 0 26091 0 3
+D 0 26092 1 3
+D 0 26093 1 99
+M 0 26081 1 26081 1
+O 0 26083 0 26081
+O 0 26092 0 26081
+O 0 26091 0 26082
+O 0 26094 0 26082
+M 0 26084 1 26083 1
+O 0 26097 0 26083
+M 0 26083 1 26084 1
+G 0 26087 0
+E 0 26090 0 17
+O 0 26093 0 26084
+M 0 26082 1 26089 1
+O 0 26088 0 26090
+O 0 26093 0 26090
+O 0 26094 0 26090
+O 0 26096 0 26092
+O 0 26081 0 26093
+O 0 26082 0 26093
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+26081 17 0 0 0 0 100 100 0 23 0
+0
+
+
+
+#$

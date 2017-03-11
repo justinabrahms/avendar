@@ -1,0 +1,4685 @@
+#AREADATA
+Name Catacombs of Var Bandor~
+Builders Khajran~
+VNUMs 25000 25199
+Credits [ 5 51] Khajran   Var Bandor Catacombs~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 25001
+black pudding amorphous~
+the black pudding~
+A mass of amorphous black pudding slurps slowly along the dungeon walls.
+~
+A pulsating mass of deep black acidic slime, the black pudding oozes slowly along the walls and floor of the tunnel.  You can make out odd formations and lumps under its surface, at least one vaguely human-shaped.
+~
+generic~
+water scholar~
+A 0 J G 0
+0 0 0d0+0 0d0+0 0d0+0 acid~
+acidic bite~
+0 0 0 0
+QR K
+26 0 33 0 0 33 33 33 -33 -33 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+BS 0 A large unknown
+>rand_prog 4~
+mpwander
+~
+>entry_prog 100~
+if inroom($i) == 25010
+mpecho The black pudding seems to shy away from the runic characters on the floor, skirting them to the east and north.
+endif
+~
+|
+V4 25002
+faceless one cloaked figure~
+the Faceless One~
+A cloaked figure stands here, its face covered by a featureless metallic mask.
+~
+A long, flowing cloak, black as the deepest of moonless nights, covers
+nearly every part of this figure\@s body.  The slender, agile hands are
+covered with a set of deep-black gloves, and its face is hidden behind a
+featureless metallic mask, which glimmers slightly in the cold, harsh light
+of the chamber.  
+~
+human~
+water scholar~
+AL 0 BD E 0
+51 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 25003
+ant black giant~
+the giant black ant~
+A black ant the size of a large dog scuttles through the corridor.
+~
+This insect, nearly the size of a dog, scuttles purposefully through the
+tunnels.  Its head swivels slowly from side to side, and its mandibles click
+together as it moves.  
+~
+centipede~
+water scholar~
+AC 0 Z N 0
+15 7 4d22+146 0d0+0 2d5+0 pierce~
+bite~
+0 0 0 0
+FU 0
+26 0 0 0 0 -33 33 0 0 33 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 100 -1
+ABGHMOV ACDEFK A medium unknown
+>death_prog 100~
+if iscarrying($i) == 25004
+mpecho As the ant expires, its mandibles relax their hold on the mushroom.
+mpjunk mushroom
+mpoload 25004 in room
+endif
+if inroom($i) == 25019
+mpforce athrademon mpecho The athrademon stops for a moment, panting, then carefully rearranges the rocks and dirt around the mushroom.
+endif
+if inroom($i) == 25020
+mpforce athrademon mpecho The athrademon stops for a moment, panting, then carefully rearranges the rocks and dirt around the mushroom.  With a loping gait, it returns northward.
+mpforce athrademon north
+endif
+mpat land5302 mpforce land5302 mpvalueup 0
+~
+>entry_prog 100~
+if inroom($i) == 25019
+or inroom($i) == 25020
+take mushroom
+endif
+if inroom($i) == 25021
+mpkill sormling
+endif
+if inroom($i) == 25038
+drink spring
+endif
+~
+|
+V4 25004
+athrademon demon small slender figure humanoid~
+the athrademon~
+A small, slender humanoid figure with two pairs of arms watches closely over the mushroom patches.
+~
+~
+generic~
+water scholar~
+AB 0 DF N 0
+20 10 12d40+378 0d0+0 4d5+10 slash~
+claw~
+-2 -2 -2 4
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+AHMV ABCDEFGHIJKU A medium unknown
+>rand_prog 4~
+mpecho The scrawny figure uses the sharp claws of its upper arms to scrape away a small patch of dirt around one of the smaller mushrooms.
+~
+>rand_prog 2~
+mpecho The creature looks at you warily, its eyes darting about, then lowers its head and continues tending the mushrooms.
+~
+>act_prog p death cry~
+get all.mushroom corpse
+drop all.mushroom
+emote attempts to return quietly to its post with the mushrooms.
+~
+>take_prog mushroom mushrooms grey gigantic~
+mpecho The athrademon makes an incomprehensible, high pitched roar of anger, and lunges at the thief of its mushrooms!
+mpkill $n
+~
+|
+V4 25005
+gaishon demon arachnoid scuttling~
+the gaishon~
+An small arachnoid demon is scuttling around here, its claws opening and snapping closed convulsively.
+~
+~
+generic~
+water scholar~
+A 0 0 N 0
+20 0 0d0+0 0d0+0 0d0+0 slash~
+claw~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+AHMV ABCDEFGHIJK A medium unknown
+V4 25006
+mushroom wizi getter demon bot hack~
+the wizi mushroom and demon getter bot hack~
+The wizi mushroom and demon getter bot hack stands here, impressive in its sheer hackosity.
+~
+Dude, you don\@t even want to know.
+~
+generic~
+water scholar~
+AL 0 LP N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>take_prog mushroom mushrooms grey gigantic~
+north
+if mobhere(25004)
+mpecho The athrademon shrieks and races southward!
+mpforce athrademon south
+south
+mpecho With a high-pitched scream, the athrademon races in from the north!
+mpforce athrademon kill $n
+else
+south
+endif
+~
+>load_prog 100~
+mpoload 25004
+mpoload 25004
+mpoload 25004
+drop all.mushroom
+north
+mpoload 25004
+mpoload 25004
+mpoload 25004
+drop all.mushroom
+south
+mpoload 25007
+mpoload 25007
+
+
+
+
+~
+|
+V4 25007
+reptilian squat form ni\@iyar demon reptile~
+the reptilian ni\@iyar~
+A squat reptilian form crouches under the plant, its eyes darting about rapidly.
+~
+~
+lizard~
+water scholar~
+AB 0 0 N 0
+0 0 8d40+250 0d0+0 0d0+0 pierce~
+bite~
+0 0 0 0
+F L
+26 0 0 0 0 0 0 0 33 -33 0 0 33 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+AGHMXc ABCDEFHIJKQV A medium unknown
+>take_prog red fruit asienja fleshy~
+mpecho The ni\@iyar snarls, and leaps at you, fangs bared.
+mpkill $n
+~
+|
+V4 25008
+asonju grey rubbery squat humanoid creature~
+the grey-skinned asonju~
+A squat humanoid creature with grey, rubbery skin watches from the back of the alcove.
+~
+~
+generic~
+water scholar~
+AB 0 DFJPQ N 0
+24 0 12d42+358 200d1+0 0d0+0 slash~
+claw~
+0 0 0 0
+0 0
+26 0 33 -33 0 0 0 0 0 0 0 0 33 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit sit none 0 -1
+ABHMV ABCDEFGHIJKQ A medium unknown
+>rand_prog 100~
+if mobvalue(0) > 0
+mpsetskilled
+hide
+mpunsetskilled
+mpvaluedown 0
+endif
+~
+|
+V4 25009
+sormling plump furry rodent rodent-like~
+the plump, furry sormling~
+A plump, furry, rodent-like creature, about three feet long, grazes on the mold.
+~
+~
+rabbit~
+water scholar~
+ALN 0 F N 0
+15 0 8d5+162 0d0+0 0d0+0 pierce~
+bite~
+0 0 0 0
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMV ABCDEFGHIJK A medium unknown
+>fight_prog 100~
+mpforce asonju mpecho The asonju leaps from its hiding place, claws extended!
+mpforce asonju mpkill $n
+~
+|
+V4 25010
+ant black giant gnawing~
+the giant black ant~
+A giant black ant is here, gnawing on a furry corpse.
+~
+This creature whips its head back and forth with great strength as it
+tears chunks of flesh from the corpse.  Its black chitinous armoring is
+spattered with blood.  
+~
+generic~
+water scholar~
+AL 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 pierce~
+bite~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMOV ABCDEFGHIJK A medium unknown
+V4 25011
+ant queen massive hulking black glistening squatting land5302~
+the queen ant~
+The queen ant is here, a massive hulking creature with a hard shell of glistening black, squatting in the center of the ring of stones.
+~
+This great creature, glorious in its alienness, squats in a circle of stones, its multifaceted eyes surveying all around it.
+~
+generic~
+water scholar~
+ABL 0 DF N 0
+35 17 12d110+738 0d0+0 6d6+12 pierce~
+bite~
+0 0 0 0
+0 0
+26 0 0 0 0 -33 33 0 0 33 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+O CEF A medium unknown
+>rand_prog 20~
+if mobvalue(0) > 0
+mpecho The queen squats lower, and a glistening white egg extrudes itself from the base of her abdomen.
+mpvaluedown 0
+mpat workerdude mpforce workerdude mpvalueup 0
+mpoload 25010 in room
+endif
+~
+>fight_prog 100~
+mpforce 1.soldier mpkill $n
+mpforce 2.soldier mpkill $n
+~
+|
+V4 25012
+clicker wizi~
+the wizi clicker~
+The wizi clicker is here, hanging out and clicking merrily.
+~
+It clicks better than you
+~
+generic~
+water scholar~
+A 0 L N 0
+28 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+0 0 A medium unknown
+>rand_prog 3~
+i@
+~
+|
+V4 25013
+soldier ant guarding~
+a large soldier ant~
+A large soldier ant stands here, guarding the queen.
+~
+This monstrous creature, nearly the size of a pony, sweeps its head back
+and forth, making clicking noises as it scans the room.  
+~
+generic~
+water scholar~
+AB 0 0 N 0
+28 0 12d45+881 0d0+0 4d5+15 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 -33 33 0 0 33 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+O CEF A medium unknown
+V4 25014
+ant swift moving worker swift-moving workerdude~
+a swift-moving worker ant~
+A swift-moving worker ant is here, pacing back and forth in the chamber.
+~
+~
+generic~
+water scholar~
+AB 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 pierce~
+bite~
+0 0 0 0
+F 0
+26 33 0 0 0 -33 33 0 0 33 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+O ACEF A medium unknown
+>rand_prog 15~
+if mobvalue(0) > 0
+if mobvalue(1) == 0
+mpvalueset 1 8
+mpvaluedown 0
+endif
+endif
+~
+|
+V4 25015
+ant large worker babywatcher~
+a large worker ant~
+A large worker ant stands near the back of the chamber, watching every motion closely.
+~
+~
+generic~
+water scholar~
+ABL 0 0 N 0
+27 0 0d0+0 0d0+0 0d0+0 pierce~
+bite~
+0 0 0 0
+0 0
+26 33 0 0 0 -33 33 0 0 33 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+O ACEF A medium unknown
+>rand_prog 30~
+if mobvalue(0) > 0
+if mobvalue(0) == 6
+mpvaluedown 0
+get egg
+if iscarrying($i) == 25010
+mpecho The large worker ant begins tending the egg, turning it over as it begins to crack.  A squirming white larva emerges.
+mpjunk egg
+mpmload 25016
+mpvalueup 1
+mpvalueup 1
+mpvalueup 1
+mpvalueup 1
+mpvalueup 1
+endif
+endif
+if mobvalue(0) == 1
+mpvaluedown 0
+get egg
+if iscarrying($i) == 25010
+mpecho The large worker ant begins tending the egg, turning it over as it begins to crack.  A squirming white larva emerges.
+mpjunk egg
+mpmload 25016
+mpvalueup 1
+mpvalueup 1
+mpvalueup 1
+mpvalueup 1
+mpvalueup 1
+endif
+endif
+mpvaluedown 0
+endif
+endif
+~
+|
+V4 25016
+larva ant white~
+a white ant larva~
+A white, wriggling ant larva rests in a small indentation.
+~
+~
+generic~
+water scholar~
+ABL 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+O ADEF A medium unknown
+>rand_prog 45~
+if mobvalue(0) > 0
+mpvaluedown 0
+endif
+if mobvalue(0) == 0
+mpmload 25017
+mpecho The larva squirms, and begins forming a cocoon-like shell around itself.
+ mpforce pupa mpvalueset 0 5
+mppurge self
+endif
+~
+>load_prog 100~
+mpvalueset 0 5
+~
+|
+V4 25017
+cocoon cocooned pale soft white rests pupa~
+a pale, cocooned ant pupa~
+A soft white cocoon rests in an indentation.
+~
+~
+generic~
+water scholar~
+ABL 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+O EF A medium unknown
+>rand_prog 25~
+if mobvalue(0) > 0
+mpvaluedown 0
+endif
+if mobvalue(0) == 0
+mpforce babywatcher mpecho The large worker ant approaches the pupa, using its frontmost limbs and mandibles to begin tearing away the cocoon.
+mpforce babywatcher mpecho As the cocoon is ripped away, a fully formed ant begins to emerge.
+mpforce babywatcher mpmload 25003
+mpforce babywatcher mppurge pupa
+endif
+~
+>load_prog 100~
+mpvalueset 0 5
+~
+|
+V4 25018
+humanoid creature twisted deformed~
+a deformed humanoid creature~
+A twisted, deformed humanoid creature leans against a wall, exhausted.
+~
+Stooping before you is a thing that might once have been human, but some
+foul process has rendered it too deformed to tell for certain.  Its spine is
+twisted, and its left arm is nearly withered away.  Its ribcage extrudes
+unatturally over an emaciated, concave stomach.  One of its wide-set eyes
+droops nearly halfway down its cheekbone, and the right half of its face is
+horribly scarred by acid burns.  One leg is almost half again as long as the
+other, and its frame is horribly bruised.  
+~
+human~
+water scholar~
+ABL 0 0 N 0
+0 -30 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>speech_prog p die?~
+mpecho The creature looks upward, sighing.
+say I am dead already.  My soul is dead.
+say They have taken it from me.  Long ago.
+~
+>death_prog 100~
+mpecho The creature kneels, silently thanking you as the killing blow falls.
+~
+>fight_prog 100~
+mpecho The creature looks beatifically heavenward as blows rain down upon it.
+~
+>fight_prog 75~
+mpecho As the blows rain down upon it, the creature lifts his arms, closing his eyes in rapture.
+~
+>speech_prog p kill you?~
+mpecho The creature closes its eyes, almost in rapture.
+say Once I was human.
+say Perhaps in death, I can be human again.
+~
+>speech_prog p kill?~
+mpecho The creature closes its eyes, almost in rapture.
+say Once I was human.
+say Perhaps in death, I can be human again.
+~
+>speech_prog p cabal?~
+mpecho The creature nods, wincing as his motion wrenches his spine painfully.
+say \@The Ijjaskiya Cabal.  The Council of Scholars should have rooted them out long ago...\@
+spit
+say \@But how could their new discoveries be made then?\@
+~
+>speech_prog p they?~
+mpecho The creature narrows his eyes.
+say The Cabal.
+mpecho The creature snarls.
+~
+>speech_prog p cabal~
+mpecho The creature nods, wincing as his motion wrenches his spine painfully.
+say The Ijjaskiya Cabal.  The Council of Scholars should have rooted them out long ago...
+spit
+say But how could their new discoveries be made then?
+~
+>speech_prog p die~
+mpecho The creature looks upward, sighing.
+say I am dead already.  My soul is dead.
+say They have taken it from me.  Long ago.
+~
+>rand_prog 100~
+if mobvalue(0) > 0
+mpvaluedown 0
+endif
+if mobvalue(0) == 0
+if isanypchere($i)
+else
+mpwizi
+endif
+endif
+~
+>greet_prog 100~
+if mobvalue(0) == 0
+mpecho A twisted, deformed creature shuffles into view , its face contorted with pain.
+mpunwizi
+mpecho The creature stares at you, its wide-set eyes boring into your soul.
+say Kill me.
+say Please.
+mpvalueset 0 10
+endif
+~
+>load_prog 100~
+mpwizi
+~
+|
+V4 25019
+bot acid wizi~
+the wizi acid bot~
+The wizi acid bot is here, waiting to fry your brain
+~
+~
+generic~
+water scholar~
+ABL 0 DFL N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+0 0 A medium unknown
+>take_prog breastplate plate steel corroded~
+mpechoat $n As you lay your hand on the breastplate, a corrosive acid burns you!
+mpdamage $n 2 15 10
+~
+|
+V4 25020
+mass pooling fluid viscous black crater ichor seething pool~
+a seething pool of ichor~
+A pooling mass of black, viscous fluid fills the crater, bubbling softly.
+~
+~
+generic~
+water scholar~
+AB 0 0 N 0
+45 0 0d0+0 0d0+0 0d0+0 acid~
+acidic bite~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV 0 A medium unknown
+V4 25021
+demon gaithra hulking~
+a hulking gaithra demon~
+An ebon-skinned creature stands squarely in the center of the corridor, deep-set eyes gazing fixedly forward.
+~
+~
+demon~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 B
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+ACHMV ABCDEFGHIJKP A medium unknown
+V4 25022
+no name~
+the black pudding spawn~
+A three-foot long mass of black fluid flails its pseudopods wildly.
+~
+~
+generic~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 25023
+apprentice human scholar void~
+the human apprentice~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 25024
+bot door doorbot~
+the void scholar doorbot~
+The void scholar doorbot is here, listening intently.
+~
+~
+human~
+water scholar~
+ABL 0 L N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>speech_prog p ar\@kurle maitya~
+mpunlock south
+mpflag exit south closed
+mpecho The southern door slides open slowly, a rush of wind blowing through it.
+~
+|
+V4 25025
+guard templar human dark~
+the templar guard~
+A human templar guard stands here, clad in dark armor.
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 25026
+mercenary guard human~
+a human mercenary guard~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 25027
+captain templar void human~
+the templar captain~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 25028
+guardian arakhuth four-legged beast red~
+the arakhuth guardian~
+A four-legged humanoid beast stands at the door, watching the corridor intensely.
+~
+~
+generic~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJKV A medium unknown
+V4 25029
+doorbot2~
+doorbot2~
+Doorbot2 is here, yo
+~
+~
+human~
+water scholar~
+AL 0 L N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 25030
+runedropperbot~
+runedropperbot~
+Runedropperbot
+~
+Runedropperbot
+~
+human~
+water scholar~
+AL 0 L N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 25031
+The Hand of the Faceless One~
+(no short description)~
+(no long description)
+~
+~
+caladaran~
+water scholar~
+ADL 0 0 N 0
+51 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMW ABCDEFGIJK I medium unknown
+V4 25032
+projects pet~
+Khajran\@s pet projects~
+Khajran\@s pet projects sit here, waiting to be coded
+~
+1. Directed emotes
+2. Adverb speech
+3. Fix all typos, everywhere
+~
+human~
+water scholar~
+A 0 L N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 25033
+ibelkhu ambassador shuddeni psionicist~
+Ibelkhu~
+Ibelkhu, the shuddeni ambassador, sits at the desk poring over some papers.
+~
+A slender, nearly skeletal shuddeni, Ibelkhu seems to fidget constantly,
+swiveling his eyeless face to watch the door quite often.  As he works, his
+long grey fingers tap idly on the desk.  His shoulders are slightly hunched
+over, and his head seems to sway slightly on his long, thin neck.  
+~
+shuddeni~
+water scholar~
+A 0 AJ E 0
+35 18 12d110+738 10d10+10 5d7+15 none~
+hit~
+0 0 0 0
+K 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 20 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit sit male 100 -1
+AHMW ABCDEFGIJ AG medium unknown
+>rand_prog 100~
+if mobvalue(0) > 0
+mpvaluedown 0
+endif
+~
+>fight_prog 100~
+if mobvalue(0) == 0
+mpvalueup 0
+mpecho Ibelkhu shouts {c\@Griluk asbekhai!\@{o
+mpforce griluk mpkill $n
+endif
+~
+>fight_prog 20~
+mpecho Ibelkhu concentrates for a moment.
+mpechoat $r Ibelkhu\@s psionic blast {r{rMANGLES{o{o you!
+mpechoaround $r Ibelkhu\@s psionic blast {rMANGLES{o $R!
+
+~
+|
+V4 25034
+chaja guard bodyguard mute hulking Griluk~
+the hulking chaja bodyguard~
+A hulking chaja bodyguard stands in the corner, dull eyes fixed on the door.
+~
+A massive, brutish chaja, the bodyguard stands slightly hunched over in
+the corner.  Piggish black eyes stare dully from under a heavy brow, and the
+slightly slack jaw reveals a mouth full of sharpened teeth.  Two large,
+jagged scars trace a path down the chaja\@s neck.  
+~
+chaja~
+water scholar~
+AT 0 JZ E 0
+38 20 11d120+885 0d0+0 6d7+20 bash~
+punch~
+0 0 0 0
+FIK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 20 0 0 0 20 0 -20 0 0 0 0 0 0 0 
+5 25033 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGHIJK G medium unknown
+V4 25035
+chair dropper bot~
+the chair dropper bot~
+The chair dropper b0t is here, dropping l33t chairZ on your a$$.
+~
+Ay de mi!  El chupacabras!
+~
+human~
+water scholar~
+A 0 L N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium unknown
+>load_prog 100~
+~
+|
+V4 25119
+an error~
+an error~
+Oops, my bad. -Dov
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+32 16 12d85+924 10d85+720 5d6+17 none~
+hit~
+-10 -10 -10 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+#0
+
+
+
+#OBJECTS
+V13
+25001
+helm kankorans~
+the Helm of the Kankorans~
+A great helm rests here, forged in the shape of a wolf\@s head.~
+~
+steel~
+armor 0 0 0 AE
+10 10 10 10 0
+0 10 4085 2 P
+1
+A
+18 2
+V13
+25002
+cloak faceless one~
+the Cloak of the Faceless One~
+A matte black cloak rests here, shifting in the light.~
+~
+cloth~
+armor BCG 0 0 AK
+7 7 7 12 0
+35 20 1575 2 P
+1
+E
+cloak~
+You notice an ornate inscription, the word \@Ayakrul\@, along the edge of the cloak.
+~
+>remove_prog 100~
+opforce $n vis
+~
+>speech_prog p ayakrul~
+opecho The Cloak of the Faceless One shifts, and merges with the shadows.
+opremaffect 87
+opaddaffect 87 35 -1 0 0 2
+
+~
+>wear_prog 100~
+opecho The Cloak of the Faceless One shifts and merges with the shadows.
+opaddaffect 87 35 -1 0 0 2
+~
+|
+V13
+25003
+mask faceless one metallic featureless~
+the Mask of the Faceless One~
+A metallic, featureless mask, meant to cover most of the head, lies here.~
+~
+unknown~
+armor BC 0 0 AE
+7 7 7 12 0
+0 0 1575 2 P
+1
+>remove_prog 100~
+opremaffect 45
+opechoat $n As you remove the mask, your vision returns to normal.
+~
+>wear_prog 100~
+opaddaffect 45 50 -1 0 0 8
+opechoat $n As you don the mask, you feel your plane of vision expanding somehow.
+~
+|
+V13
+25004
+mushroom mushrooms grey gigantic~
+a gigantic grey mushroom~
+A grey mushroom, nearly two feet tall, rests here.~
+~
+plant~
+food 0 0 F A
+60 50 0 0 0
+0 20 0 1 P
+0
+V13
+25005
+crystal multifaceted warm yellow~
+a brightly glowing crystal~
+A multifaceted crystal floats here, filling the room with a warm yellow light.~
+~
+crystal~
+gem A 0 F AO
+0 0 0 0 0
+30 2 13384 0 P
+0
+A
+12 30
+A
+3 2
+V13
+25006
+plant wide asienja~
+a wide-leaved asienja plant~
+A wide-leaved green plant grows here, several fleshy reddish fruit peeking out from under its foliage.~
+~
+plant~
+container 0 0 0 0
+100 0 0 100 0
+0 0 0 4 P
+0
+V13
+25007
+red fruit asienja fleshy~
+a fleshy red asienja fruit~
+A fleshy red fruit, quite edible-looking.~
+~
+unknown~
+food 0 0 F A
+45 50 0 0 0
+0 30 0 1 P
+0
+V13
+25008
+spring underground trickle~
+an underground spring~
+A small underground spring trickles water, which pools in small puddles on the earth below.~
+~
+unknown~
+fountain O 0 0 P
+0 0 'water' 0 0
+0 0 0 5 P
+0
+V13
+25009
+corpse sormling furry small stench~
+the corpse of a sormling~
+A small, furry corpse rests here, giving off a foul stench as it rots.~
+~
+carrion~
+npc_corpse 0 0 0 A
+0 0 0 0 0
+0 30 0 4 P
+0
+V13
+25010
+egg glistening ant sphere white~
+a glistening ant egg~
+A glistening white sphere rests here.~
+~
+food~
+food 0 0 0 A
+20 50 0 0 0
+0 0 0 1 P
+0
+V13
+25011
+guacamole~
+some guacamole~
+Very green~
+~
+food~
+food 0 0 0 A
+10 50 0 0 0
+0 0 0 1 P
+0
+V13
+25012
+breastplate plate steel corroded~
+a corroded steel breastplate~
+A steel breastplate, pitted and corroded by acid, rests here.~
+~
+steel~
+armor 0 0 F AD
+0 0 0 0 0
+0 0 0 2 P
+0
+V13
+25013
+belt obsidian~
+a belt of polished obsidian~
+A belt of polished obsidian rests here, gleaming slightly green.~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+V13
+25014
+key obsidian~
+(no short description)~
+(no description)~
+~
+obsidian~
+key 0 0 0 0
+0 0 0 0 0
+0 3 0 0 P
+0
+V13
+25015
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+weapon 0 0 0 0
+polearm 0 0 -1 F
+hit~
+0 0 0 3 P
+0
+V13
+25016
+ledger book thick bound volume~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+V13
+25017
+desk well-crafted oaken~
+a well-crafted oaken desk~
+A well-crafted oaken desk rests against the eastern wall, its surface remarkably well organized.~
+~
+unknown~
+container e 0 0 0
+0 AC 0 0 0
+0 0 0 4 P
+0
+V13
+25018
+staff dark metal slender~
+a slender staff of dark metal~
+A slender staff of some dark metal looks well-balanced.~
+~
+metal~
+weapon B 0 F AN
+staff 8 4 1 F
+smash~
+0 80 25177 3 P
+15
+A
+44 5
+A
+12 20
+V13
+25019
+cloak brown voluminous~
+a voluminous brown cloak~
+(no description)~
+~
+cloth~
+armor 0 0 F AK
+5 5 5 9 0
+0 35 21754 2 P
+15
+A
+12 20
+A
+44 5
+V13
+25020
+mace steel massive~
+a massive steel mace~
+A massive steel mace rests here, its flanged head inscribed with a few spidery runes.~
+~
+steel~
+weapon 0 0 F AN
+mace 7 4 1 0
+crush~
+38 150 2990 2 P
+50
+A
+1 2
+V13
+25021
+tunic dusty grey pile dust flecked~
+a dusty grey tunic~
+A grey tunic, flecked with dust, lies in a pile here.~
+~
+cloth~
+armor 0 0 F AD
+4 4 4 0 0
+0 45 90 2 P
+0
+V13
+25022
+chair council~
+a painted wooden chair~
+A chair, carved of some brown wood, rests here.  Its surface is painted with a swirling pattern of crimson paint.~
+~
+wood~
+furniture e 0 0 P
+12 10000 EH 100 100
+0 0 0 4 P
+0
+V13
+25023
+head chair spiked black chitinous~
+a massive chair forged of gleaming black chitin~
+A massive chair forged of some black chitinous substance looms at the head of the table.  Its many spikes and gleaming sharp edges would appear to make it an uncomfortable perch for a human.~
+~
+chitin~
+furniture e 0 0 P
+1 10000 E -10 -10
+0 0 0 4 P
+0
+E
+tapestry~
+The tapestry seems to depict a battle under a crimson sky, between humans
+and an array of ghastly demons.  The demons are winning.  
+~
+#0
+
+
+
+#ROOMS
+#25000
+The Cosmos~
+~
+~
+1
+0 524292 0
+W 5 0 0
+Z 5 5
+S
+#25001
+A Dark Cellar~
+This cellar appears to have been built to store wines and other niceties;
+the dust on its empty shelves, however, must have accumulated over hundreds
+of years.  Anything it once held must have been looted and sold long ago by
+the poverty-stricken denizens of the house above.  Other than the gaping
+hole, wide enough for an Alatharya to walk through, in the south wall, the
+place looks entirely bare.  
+~
+~
+1
+0 4194317 12
+E
+hole~
+The hole appears to have been blasted in the south wall by some great force.
+~
+D2
+~
+~
+0 0 25002
+W 5 0 0
+Z 5 5
+S
+#25002
+A Smooth-walled Tunnel~
+The massive hole torn in the north wall is nearly the only imperfection
+in this oddly smooth east-west tunnel.  The gray stone walls almost seem to
+reflect your light back at you as you move through the corridor.  Wide
+enough for three men to walk comfortably abreast, the nearly circular walls
+still make you a bit uncomfortable, as if they were closing in on you.  The
+air here, under the city, feels strangely thick, and your breathing seems to
+become hoarser with each step.  
+~
+~
+1
+0 4194313 12
+E
+wall~
+On closer examination, it looks as if the wall has been scoured clean by some process.
+~
+E
+hole~
+This hole seems to have been blasted in the north wall by some great force.
+~
+E
+walls~
+On closer examination, it looks as if the walls have been scoured clean
+by some process.  
+~
+D0
+~
+~
+0 0 25001
+D1
+~
+~
+0 0 25003
+D3
+~
+~
+0 0 25004
+W 5 0 0
+Z 5 5
+S
+#25003
+A Dead End~
+~
+~
+1
+0 4194313 12
+D1
+~
+~
+3 0 25006
+D3
+~
+~
+0 0 25002
+W 5 0 0
+Z 5 5
+S
+#25004
+Bend in a Smooth-Walled Tunnel~
+The tunnel sweeps a slow arc east and south here, the smooth walls
+curving almost imperceptibly into the blackness to either direction.  The
+gray stone remains so oddly smooth that your eyes seem to slide across it
+without finding any distinguishing marks to catch on.  Every so often, you
+hear unintelligible sounds echoing down the corridors ahead, somewhat
+muffled by the thickness of the air.  
+~
+~
+1
+0 4194313 12
+E
+walls~
+On closer examination, it appears that the walls have been scoured clean by some
+process.
+~
+D1
+~
+~
+0 0 25002
+D2
+~
+~
+0 0 25005
+W 5 0 0
+Z 5 5
+S
+#25005
+A Smooth-Walled Tunnel~
+The tunnel runs north and south here, its mirror-smooth gray walls
+receding slowly into the darkness.  You notice a bit of discoloration on one
+side; the east wall seems to have a few odd striations that almost appear to
+be dripping down the wall.  
+~
+~
+1
+0 4194313 12
+E
+striations~
+On closer inspection, the striations appear not to be marks in the wall itself, but some slimy substance coating it.
+
+~
+D0
+~
+~
+0 0 25004
+D2
+~
+~
+0 0 25010
+W 5 0 0
+Z 5 5
+S
+#25006
+~
+~
+~
+1
+0 0 0
+D3
+~
+~
+3 0 25003
+W 5 0 0
+Z 5 5
+S
+#25007
+Council Chamber~
+This spacious stone chamber appears to be kept remarkably clean.  The
+floor is tiled with some glistening black substance, streaked with veins of
+silver.  Resting in the center of the room is an ornate wooden table,
+surrounded by thirteen chairs.  All but the chair at the table\@s head are
+crafted from some dark, sturdy-looking brown wood with whorls of crimson
+paint adorning their backs and legs.  The head chair seems to be made of
+some black chitinous substance, forged into a spiked pattern that would not
+hold a human comfortably.  On the eastern wall hangs a large tapestry of
+vibrant color and intricate detail, depicting some large battle scene.  
+~
+~
+0
+0 0 0
+D3
+~
+~
+3 0 25099
+W 5 0 0
+Z 5 5
+S
+#25008
+The Chamber of the Hand~
+~
+~
+0
+0 0 0
+D0
+~
+~
+3 0 25103
+W 5 0 0
+Z 5 5
+S
+#25009
+The Library~
+~
+~
+0
+0 0 0
+D1
+~
+~
+3 0 25106
+W 5 0 0
+Z 5 5
+S
+#25010
+An Oddly-Formed Chamber~
+This nearly rectangular chamber is bisected diagonally by a string of
+carved runes, running along the floor from the northwest to the southeast
+corner.  Upon closer inspection, you notice that the runes in fact continue
+up the nearly ten-foot walls, and a mirror image of the inscription on the
+floor traces a similar path across the ceiling.  To the north and east of
+the inscription , the walls and floor remain nearly flawlessly smooth, as if
+scoured clean.  To the south and west, a drastic change occurs.  The rock is
+marked with the outcroppings and indentations that characterize most natural
+stone, making the mirror-smooth walls of the other chambers seem even more
+unearthly.  
+~
+~
+1
+0 4194313 12
+E
+runes~
+The runes are inscribed directly into the rock, in a script you do not
+recognize.  
+~
+D0
+~
+~
+0 0 25005
+D1
+~
+~
+0 0 25011
+D2
+~
+~
+0 0 25013
+D3
+~
+~
+0 0 25012
+W 5 0 0
+Z 5 5
+S
+#25011
+A Smooth-Walled Tunnel~
+These walls are as smooth as the rest, although the tunnel seems to begin
+tapering inward here.  There is a thick slimy residue dripping down the
+surface of the south side of the corridor; it almost seems to be giving off
+some sort of steam.  To the west, the tunnel opens up into a large
+intersection; to the east, it continues, mirror smooth, into shadow.  
+~
+~
+1
+0 4194313 12
+D1
+~
+~
+0 0 25037
+D3
+~
+~
+0 0 25010
+W 5 0 0
+Z 5 5
+S
+#25012
+A Wide Rock Tunnel~
+The tunnel here is broad and high, carved into the rock by some powerful,
+unseen process.  The stone here is craggy, filled with cracks and crevices,
+and probably somewhat treacherous underfoot.  The air is oddly fresh and
+clean for an underground tunnel, stirred intermittently by a gentle breeze
+that blows from the eastern entrance toward the west.  
+~
+~
+1
+0 4194317 12
+D1
+~
+~
+0 0 25010
+D3
+~
+~
+0 0 25014
+W 5 0 0
+Z 5 5
+S
+#25013
+A Wide Rock Tunnel~
+This tunnel, leading north and south, is hewn from some dark grey stone,
+The surface of the walls is jagged, craggy, covered with indentations and
+outcroppings, although the floor seems to have been worn somewhat smoother
+by the passage of many feet.  The air is utterly still, disturbed only by
+vague echoes from the corridor to the south.  
+~
+~
+1
+0 4194317 12
+D0
+~
+~
+0 0 25010
+D2
+~
+~
+0 0 25046
+W 5 0 0
+Z 5 5
+S
+#25014
+A Wide Rock Tunnel~
+The tunnel here is broad and high, carved into the rock by some powerful,
+unseen process.  The stone here is craggy, filled with cracks and crevices,
+and probably somewhat treacherous underfoot.  The air is oddly fresh and
+clean for an underground tunnel, stirred intermittently by a gentle breeze
+that blows from east to west.  
+~
+~
+1
+0 4194313 12
+D1
+~
+~
+0 0 25012
+D3
+~
+~
+0 0 25015
+W 5 0 0
+Z 5 5
+S
+#25015
+A Rubble-Strewn Rock Tunnel~
+A wide tunnel to the east comes to a sharp end here in this rubble-strewn
+rock intersection.  Tunnels to the north and south continue into the dense
+blackness, narrowing in either direction.  There are great pits and crevices
+all along the corridor here, and dust and debris scattered over the surface.
+~
+~
+1
+0 4194313 12
+D0
+~
+~
+0 0 25016
+D1
+~
+~
+0 0 25014
+D2
+~
+~
+0 0 25017
+W 5 0 0
+Z 5 5
+S
+#25016
+A Narrowing Tunnel, Dense with Shadows~
+The walls of this asymmetric tunnel jut out toward you at odd angles,
+creating strange shadow-patterns that play across the floor.  To the south,
+it widens a bit, diverging into shadow, and as it angles to the west it
+narrows slightly before opening up into what looks to be a large,
+well-lighted chamber.  
+~
+~
+1
+0 4194312 12
+D2
+~
+~
+0 0 25015
+D3
+~
+~
+0 0 25019
+W 5 0 0
+Z 5 5
+S
+#25017
+A Rubble-Strewn Rock Tunnel~
+This narrow rock tunnel is covered in rocks, dust and debris, with great
+gouges carved in the walls and floor.  It widens a bit to the north, and
+narrows further into the darkness to the east.  The air is deathly still,
+and dust is stirred up at any motion.  The rock here is grayish-brown,
+flecked with black and lined with a series of darkening strata that draw the
+eyes downward.  The impact to shatter it in so many places must have been
+tremendous.  
+~
+~
+1
+0 4194313 12
+D0
+~
+~
+0 0 25015
+D1
+~
+~
+0 0 25018
+W 5 0 0
+Z 5 5
+S
+#25018
+A Small, Rubble-Strewn Chamber~
+This chamber, cramped and shadowed, is covered in a thin layer of grey
+dust, and chunks and shards of rock are scattered around it in no obvious
+pattern.  The only exit is to the west, and there are a few scattered
+circular indentations in the dust leading in that direction.  The walls here
+appear to have been torn by some massive force, craters the size of a human
+head pocking its surface and creating an oddly alien image.  
+~
+~
+1
+0 4194313 12
+D3
+~
+~
+0 0 25017
+W 5 0 0
+Z 5 5
+S
+#25019
+A Subterranean Garden~
+You have entered an odd, unearthly chamber.  The tunnel widens here,
+abruptly feeding into a cavernous space, where the air is thick with
+something you can\@t quite pick out.  The rock here is quite dark, nearly
+black, and craggy with ridges and indentations.  A few stalactites and
+stalagmites jut out of its surface, spearing into the dank air like teeth in
+the maw of some great beast.  Odder still, there are several well-tended
+rows of smallish grey mushrooms wending their way around the various black
+ridges, with a few quite large ones cropping up at odd angles out of the
+floor and walls of the cavern.  
+~
+~
+1
+0 4194313 12
+D1
+~
+~
+0 0 25016
+D2
+~
+~
+0 0 25020
+D3
+~
+~
+0 0 25021
+W 5 0 0
+Z 5 5
+S
+#25020
+A Subterranean Garden~
+This cavernous space is almost oppressively silent, save for a few
+scratching sounds from the north and a slow dripping of water from an
+outcrop above your head, spreading little rivulets through the grainy dust
+at your feet.  There are well-tended rows of grey mushrooms here, although
+the vagaries of the cavern floor have forced them to be somewhat haphazard
+in their growth.  There is no breeze here, and the air is thick with what
+might be spores.  
+~
+~
+1
+0 4194313 12
+D0
+~
+~
+0 0 25019
+D3
+~
+~
+0 0 25022
+W 5 0 0
+Z 5 5
+S
+#25021
+A Subterranean Garden~
+This portion of the craggy rock chamber is coated with patches of
+slippery-looking greenish mold , with a few rivulets of muddy water running
+through and around them.  There is a shadowy alcove carved into the wall to
+the north, perhaps large enough for a small child to stand in, about three
+feet off the cavern floor.  The cavernous room continues to the east and
+south, with a small earthen tunnel leading off into the blackness to the
+west.  
+~
+~
+1
+0 4194313 12
+E
+alcove~
+On second look, the alcove is a bit deeper than you thought initally.  You can\@t quite see to the back of it.
+~
+D1
+~
+~
+0 0 25019
+D2
+~
+~
+0 0 25022
+D3
+~
+~
+0 0 25023
+W 5 0 0
+Z 5 5
+S
+#25022
+A Subterranean Garden~
+This rock chamber has a thin dusting of soil on the floor, which thickens
+toward the center of the cavern.  The ceiling here is covered with a dense
+forest of smaller stalactites, each slowly dripping water onto the floor. 
+You notice a scattering of broad leaves, some green, some brown, covering
+the central portion of this chamber.  The cavern continues to the north and
+east.  
+~
+~
+1
+0 4194312 12
+D0
+~
+~
+0 0 25021
+D1
+~
+~
+0 0 25020
+W 5 0 0
+Z 5 5
+S
+#25023
+A Cramped Earthen Tunnel~
+This earthen, musty tunnel is quite small, and anyone but a nefortu would
+have to bend uncomfortably to walk through it.  To the east, it opens
+abruptly into a large, lighted cavern.  To the west, it continues into the
+darkness.  The floor of this tunnel is worn with a dense trail of small
+circular markings.  
+~
+~
+1
+0 4194313 12
+E
+markings~
+~
+E
+markings~
+On closer inspection, the marks appear to be tracks of some kind.
+~
+D1
+~
+~
+0 0 25021
+D3
+~
+~
+0 0 25024
+W 5 0 0
+Z 5 5
+S
+#25024
+A Cramped Earthen Tunnel~
+This section of the tunnel is wide enough for three humans to walk
+abreast, but if the ceiling were any lower they might have to crawl.  The
+deep brown soil here is quite moist, relatively smooth above you and quite
+crumbled under your feet.  There is a trail of pockmarked indentations
+leading east and west.  A faint glow emanates from some opening farther to
+the east.  
+~
+~
+1
+0 4194313 12
+D1
+~
+~
+0 0 25023
+D3
+~
+~
+0 0 25025
+W 5 0 0
+Z 5 5
+S
+#25025
+A Cramped Earthen Tunnel~
+The tunnel forks sharply here, opening into a slightly larger chamber to
+the north and continuing into the inky blackness to the east and south.  At
+odd intervals, sluggish eddies of dry, warm air swirl through the tunnel
+from the east, but they lack enough force even to break the silence.  A
+densely worn path of circular indentations runs through the tunnel from east
+to south, with a few fresher-looking trails diverging into the chamber to
+the north.  
+~
+~
+1
+0 4194313 12
+D0
+~
+~
+0 0 25026
+D1
+~
+~
+0 0 25024
+D2
+~
+~
+0 0 25027
+W 5 0 0
+Z 5 5
+S
+#25026
+A Larger Earthen Chamber~
+A foul, putrid stench permeates the damp air in this chamber, which
+seems unstirred by the small eddies of wind audible from the passage to the
+south.  Some distance to the west, beyond the densely-packed soil wall of
+the chamber, you hear the unmistakable sound of rushing water.  The floor
+seems oddly viscous, squelching unpleasantly underfoot.  
+~
+~
+1
+0 4194313 12
+D2
+~
+~
+0 0 25025
+W 5 0 0
+Z 5 5
+S
+#25027
+A Cramped Earthen Tunnel~
+The walls seem to close in even tighter here, shrinking to such an extent
+that even a shuddeni might feel claustrophobic.  The soil is a deep brown,
+tending toward black, and the air is thick and moist.  From far to the west
+and above, through the tunnel walls, the distinct sound of rushing water --
+and a lot of it -- can be heard.  There is a dense trail of circular marks
+on the ground, leading both south and north into the darkness.  
+~
+~
+1
+0 4194313 12
+D0
+~
+~
+0 0 25025
+D2
+~
+~
+0 0 25028
+W 5 0 0
+Z 5 5
+S
+#25028
+A Musty, Crumbling Earthen Tunnel~
+The tunnel widens somewhat here, with a narrower section to the north. 
+It slowly curves between the north and east, tracing a broad path through
+the dark catacombs.  The air here is thick and musty, and the earth is dry,
+crumbling a bit with any impact.  The earth has also become somewhat
+rockier, with large jagged chunks of granite extruding from the soil at odd
+angles.  The trails of circular markings tend to run parallel to these,
+diverging around them.  
+~
+~
+1
+0 4194317 12
+D0
+~
+~
+0 0 25027
+D1
+~
+~
+0 0 25029
+W 5 0 0
+Z 5 5
+S
+#25029
+A Musty, Crumbling Earthen Tunnel~
+This large tunnel bores an east-west path through the earth, emerging
+from darkness and receding into darkness.  The air is uncomfortably thick,
+with an odd moldy odor that lingers on your clothes and armor.  The soil is
+dry and loose, filling the air with dust at the slightest disturbance.  It
+clusters in small piles around the jagged rocks that extrude from its
+surface all around the cylindrical tunnel, undisturbed by the passage that
+has worn trails in the floor.  
+~
+~
+1
+0 4194313 12
+D1
+~
+~
+0 0 25030
+D3
+~
+~
+0 0 25028
+W 5 0 0
+Z 5 5
+S
+#25030
+A Tunnel Intersection~
+This room is a T-shaped intersection of musty earthen tunnels, diverging
+from the western entrance toward the north and south.  The floor here has
+been trampled by the ants\@ constant labors, and the soil under your feet is
+hard-packed and unyielding.  A small, refreshing breeze flows through the
+passage here, ruffling your garments and cooling you.  
+~
+~
+1
+0 4194313 12
+D0
+~
+~
+0 0 25034
+D2
+~
+~
+0 0 25031
+D3
+~
+~
+0 0 25029
+W 5 0 0
+Z 5 5
+S
+#25031
+A Twisting Earthen Tunnel~
+The tunnels twist and coil like the tendrils of some great beast,
+diverging here to the east, west, and north.  The earth is deepest black,
+and has been traversed heavily, by the looks of it.  The ground and
+walls have become slightly rockier here, with jagged chunks of granite
+extruding from them.  The areas around these rocks appear to have been
+cleared away with a reasonable amount of care.  
+~
+~
+1
+0 4194313 12
+D0
+~
+~
+0 0 25030
+D1
+~
+~
+0 0 25033
+D3
+~
+~
+0 0 25032
+W 5 0 0
+Z 5 5
+S
+#25032
+A Twisting Earthen Tunnel~
+The tunnel wends its way through the dark earth, curving from an eastern
+passage to slope slightly downward to the south.  There are some fresh
+circular markings in the softer soil here, clustered on the eastern side of
+the passage.  
+~
+~
+1
+0 4194313 12
+D1
+~
+~
+0 0 25031
+D2
+~
+~
+0 0 25038
+W 5 0 0
+Z 5 5
+S
+#25033
+A Dark Earthen Chamber~
+The tunnel abruptly reaches a dead end here, where its diggers seem to
+have hit a solid rock wall.  The base of the chamber, just by the wall to
+the east, is hollowed out into a bowl-shaped area with a medium-large ring
+of stones surrounding it.  This primary ring is perhaps as wide as a grown
+man\@s armspan, and deep enough that its bottom cannot be seen from the
+entrance to the chamber.  There are smaller indentations, of the same sort,
+scattered across the chamber.  Back to the west, the tunnel widens again.  
+~
+~
+1
+0 4194313 12
+D3
+~
+~
+0 0 25031
+W 5 0 0
+Z 5 5
+S
+#25034
+A Wide Tunnel Intersection~
+The earthen tunnel diverges here, and the ground is well-matted with much
+travel.  To the east, it seems to end abruptly some distance ahead, and to
+the west it opens up sharply into what looks to be a very large chamber. 
+Southward, it narrows somewhat, although the trails of circular indentations
+continue in that direction.  
+~
+~
+1
+0 4194313 12
+D1
+~
+~
+0 0 25036
+D2
+~
+~
+0 0 25030
+D3
+~
+~
+0 0 25035
+W 5 0 0
+Z 5 5
+S
+#25035
+A Cavernous Earthen Chamber~
+The tunnel to the east opens up into a vast earthen chamber, the far side
+receding in shadows.  The earth in this chamber is quite dark, appearing
+almost moist to the touch.  A number of thick brown roots curl out from the
+high ceiling, and the musty odor here is almost overpowering.  Ringing the
+center of the chamber is a circle of sharp rocks pointed upward, each about
+three hands high.  
+~
+~
+1
+0 4194313 12
+E
+rocks~
+The rocks appear to have been sharpened by non-natural means.
+~
+D1
+~
+~
+0 0 25034
+W 5 0 0
+Z 5 5
+S
+#25036
+A Small, Shadowed Alcove~
+The tunnel narrows sharply here, closing in on all sides.  The floor is
+covered with glistening shards of some hard, black substance, strewn in
+seemingly random fashion over the soft earth.  To the west, the walls begin
+to encroach a bit less, whereas to the east they taper in sharply into a
+dead-end a short distance away.  There is a disturbing odor emanating from
+the floor here, intense and pungent.  
+~
+~
+1
+0 4194313 12
+E
+shards~
+The shards appear quite brittle to the touch, although they glisten with
+some sort of viscous fluid.  
+~
+D3
+~
+~
+0 0 25034
+W 5 0 0
+Z 5 5
+S
+#25037
+A Smooth-Walled Tunnel~
+These walls are as smooth as the rest, only a series of striations at
+knee level distinguishing up from down.  The grayish rock almost shines with
+its polish, and its nearly cylindrical shape further enhances its
+otherworldliness.  The shadows encroach, and the tunnel recedes into them to
+the east and west.  There is a strange viscous substance dripping down the
+southern wall, and it almost seems to be steaming.  
+~
+~
+1
+0 0 0
+D1
+~
+~
+0 0 25039
+D3
+~
+~
+0 0 25011
+W 5 0 0
+Z 5 5
+S
+#25038
+A Downward-Sloping Tunnel~
+Here, the earthen tunnel slopes downward for a time, ending in a larger
+chamber of moist black earth.  The ceiling is a mass of matted, tangled
+brown roots, dripping water at odd intervals.  It runs in rivulets down the
+walls, pooling in muddy puddles at your feet.  Embedded in the wall are a
+number of grey, smooth stones, covered in patches of brownish lichen.  
+~
+~
+1
+0 4194313 12
+D0
+~
+~
+0 0 25032
+W 5 0 0
+Z 5 5
+S
+#25039
+A Smooth-Walled Tunnel~
+Two tunnels converge here, into a triangle-shaped intersection.  The
+northern wall remains perfectly cylindrical, its surface mirror-like in its
+smoothness.  Blackish striations trace their way along the southern wall as
+it curves into the southern tunnel, while they emerge on the other side and
+run eastward into inky darkness.  To the west, the width of the tunnel seems
+to increase slightly.  
+~
+~
+1
+0 0 0
+D1
+~
+~
+0 0 25041
+D2
+~
+~
+0 0 25040
+D3
+~
+~
+0 0 25037
+W 5 0 0
+Z 5 5
+S
+#25040
+A Smooth-Walled Tunnel~
+The alien, mirror-smooth walls of this cylindrical tunnel lead from north
+to south, black striations tracing a dense path through the grayness along
+the corridor to either side.  From the south, an odd bubbling sound echoes,
+breaking the silence in what is otherwise eerily still and stale air.  A
+strange odor permeates this region, acrid and intense.  
+~
+~
+1
+0 0 0
+D0
+~
+~
+0 0 25039
+D2
+~
+~
+0 0 25042
+W 5 0 0
+Z 5 5
+S
+#25041
+A Smooth-Walled Tunnel~
+The mirror-smooth cylindrical walls trace a smooth arc here, slowly
+sweeping from east to north.  The black striations are broad here, a wide
+swath across the southern wall, and a viscous, clear fluid drips from them
+to pool at the base of the tunnel.  A strange odor permeates this region,
+acrid and intense.  
+~
+~
+1
+0 0 0
+D0
+~
+~
+0 0 25043
+D3
+~
+~
+0 0 25039
+W 5 0 0
+Z 5 5
+S
+#25042
+A Smooth-Walled Tunnel~
+The alien, mirror-smooth walls of this cylindrical tunnel trace a broad
+arc from north to east, black striations forming a dense convoluted path
+through the grayness along the corridor to either side.  From the corridor
+to the east, an odd bubbling sound echoes, breaking the silence in what is
+otherwise eerily still and stale air.  A strange odor permeates this region,
+acrid and intense.  
+~
+~
+1
+0 0 0
+D0
+~
+~
+0 0 25040
+D1
+~
+~
+0 0 25044
+W 5 0 0
+Z 5 5
+S
+#25043
+A Smooth-Walled Chamber~
+The walls of this chamber seem to have long been worn smooth by the
+passage of the black pudding, and the pattern of striations on the wall is
+dense and convoluted.  The walls are nearly perfectly circular, broken only
+by the tunnel leading to the south.  There is a strange, acrid stench to
+this place.  
+~
+~
+1
+0 0 0
+D2
+~
+~
+0 0 25041
+W 5 0 0
+Z 5 5
+S
+#25044
+A Smooth-Walled Tunnel~
+The alien, mirror-smooth walls of this cylindrical tunnel trace a broad
+arc from west to south, black striations forming a densely convoluted path
+through the grayness along the corridor to either side.  To the south, the
+tunnel widens into a larger chamber, and from that exit you can hear odd
+bubbling sounds at seemingly random intervals, echoing through the otherwise
+still, stale air.  This region has an intense stench, acrid and foul.  
+~
+~
+1
+0 0 0
+D2
+~
+~
+0 0 25045
+D3
+~
+~
+0 0 25042
+W 5 0 0
+Z 5 5
+S
+#25045
+A Smooth-Walled Chamber~
+The air hanging in this cavernous chamber is moist and sticky, and it
+reeks of things best left undescribed.  The walls, ceiling, and floor are
+all a shining steel-gray, mirror-smooth and slick.  About ten feet into the
+chamber, the floor drops sharply, into a wide circular indentation.  The
+only obvious exit is a corridor to the north.  
+~
+~
+1
+0 0 0
+D0
+~
+~
+0 0 25044
+W 5 0 0
+Z 5 5
+S
+#25046
+A Wide Rock Tunnel~
+This tunnel, leading north and south, is hewn from some dark grey stone,
+The surface of the walls is jagged, craggy, covered with indentations and
+outcroppings, although the floor seems to have been worn somewhat smoother
+by the passage of many feet.  The air is utterly still, disturbed only by
+vague echoes from the corridor to the south.  
+~
+~
+1
+0 4194313 12
+D0
+~
+~
+0 0 25013
+D2
+~
+~
+0 0 25047
+W 5 0 0
+Z 5 5
+S
+#25047
+A Wide Rock Tunnel~
+This tunnel, leading north and south, is hewn from some dark grey stone,
+The surface of the walls is jagged, craggy, covered with indentations and
+outcroppings, although the floor seems to have been worn somewhat smoother
+by the passage of many feet.  The air is utterly still, disturbed only by
+vague echoes from the corridor to the south.
+~
+~
+1
+0 4194313 12
+D0
+~
+~
+0 0 25046
+D2
+~
+~
+0 0 25048
+W 5 0 0
+Z 5 5
+S
+#25048
+A Fork in the Tunnel~
+The tunnel forks sharply here, descending deeper into the earth to the
+east, toward a better-lighted area to the west, and into the craggy rock to
+the north.  Vague, muffled echoes reverberate down the corridor to the west,
+and a moist breeze blows from the east.  
+~
+~
+0
+0 4194313 12
+D0
+~
+~
+0 0 25047
+D1
+~
+~
+0 0 25050
+D3
+~
+~
+0 0 25049
+W 5 0 0
+Z 5 5
+S
+#25049
+A Well-Kept, Lighted Tunnel~
+This tunnel seems a bit odd at first glance...  Perhaps because it\@s so
+clean.  Pulsing crystals embedded in the walls at even intervals give off a
+cold, harsh white light that casts stark shadows against the deep grey
+walls.  The sound of muffled voices echoes through the corridor, with odd,
+stilted cadences.  
+~
+~
+0
+0 4194312 12
+D1
+~
+~
+0 0 25048
+D3
+~
+~
+0 0 25051
+W 5 0 0
+Z 5 5
+S
+#25050
+A Narrow Stone Tunnel~
+This tunnel descends sharply into the earth to the west.  Slick green
+mold grows along the sides, although it seems to have been cleared at your
+feet.  With each step eastward, the air becomes damper, causing garments to
+cling and sweat to linger on the skin.  
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 25048
+W 5 0 0
+Z 5 5
+S
+#25051
+A Well-Kept, Lighted Tunnel~
+This tunnel seems a bit odd at first glance...  Perhaps because it\@s so
+clean.  Pulsing crystals embedded in the walls at even intervals give off a
+cold, harsh white light that casts stark shadows against the deep grey
+walls.  The sound of muffled voices echoes through the corridor, with odd,
+stilted cadences.  
+~
+~
+0
+0 4194312 12
+D1
+~
+~
+0 0 25049
+D3
+~
+~
+0 0 25052
+W 5 0 0
+Z 5 5
+S
+#25052
+A Well-Kept, Lighted Tunnel~
+This tunnel seems a bit odd at first glance...  Perhaps because it\@s so
+clean.  Pulsing crystals embedded in the walls at even intervals give off a
+cold, harsh white light that casts stark shadows against the deep grey
+walls.  The sound of muffled voices echoes through the corridor, with odd,
+stilted cadences.  The tunnel makes a sharp turn here, almost an entire
+quarter-turn from east to south.  
+~
+~
+1
+0 4 12
+D1
+~
+~
+0 0 25051
+D2
+~
+~
+0 0 25053
+W 5 0 0
+Z 5 5
+S
+#25053
+A Well-Kept, Lighted Tunnel~
+This tunnel seems a bit odd at first glance...  Perhaps because it\@s so
+clean.  Pulsing crystals embedded in the walls at even intervals give off a
+cold, harsh white light that casts stark shadows against the deep grey
+walls.  The sound of muffled voices echoes through the corridor, with odd,
+stilted cadences.  The corridor is straight, leading from north to south
+with no intervening curves.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 25052
+D2
+~
+~
+0 0 25054
+W 5 0 0
+Z 5 5
+S
+#25054
+A Dead End~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 25053
+D2
+~
+~
+39 0 25055
+W 5 0 0
+Z 5 5
+S
+#25055
+A Rune-Inscribed Tunnel~
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+39 0 25054
+D1
+~
+~
+0 0 25064
+D2
+~
+~
+0 0 25098
+D3
+~
+~
+0 0 25058
+W 5 0 0
+Z 5 5
+S
+#25056
+The Templar Captain\@s Chamber~
+~
+~
+0
+0 4 0
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D2
+~
+~
+3 0 25109
+W 5 0 0
+Z 5 5
+S
+#25057
+A Cluttered Chamber~
+~
+~
+0
+0 4 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D3
+~
+~
+3 0 25098
+W 5 0 0
+Z 5 5
+S
+#25058
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northeast to southwest. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D1
+~
+~
+0 0 25055
+D3
+~
+~
+0 0 25059
+W 5 0 0
+Z 5 5
+S
+#25059
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northeast to southwest. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  A large stone door looms to the west.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D1
+~
+~
+0 0 25058
+D2
+~
+~
+0 0 25060
+D3
+~
+~
+3 0 25092
+W 5 0 0
+Z 5 5
+S
+#25060
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northeast to southwest. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25059
+D3
+~
+~
+0 0 25061
+W 5 0 0
+Z 5 5
+S
+#25061
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage. There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northeast to southwest.  
+The air here is deathly still and bone-dry, although intermittent noises - 
+footsteps, low murmurings - signify that the region may not be devoid of life..f
+~
+~
+0
+0 0 0
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D1
+~
+~
+0 0 25060
+D2
+~
+~
+0 0 25090
+W 5 0 0
+Z 5 5
+S
+#25062
+\\#\#~
+~
+~
+0
+0 4 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D1
+~
+~
+3 0 25098
+W 5 0 0
+Z 5 5
+S
+#25063
+\\#\#~
+~
+~
+0
+0 4 0
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D2
+~
+~
+3 0 25072
+W 5 0 0
+Z 5 5
+S
+#25064
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage. There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northwest to southeast. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life. 
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D1
+~
+~
+0 0 25065
+D3
+~
+~
+0 0 25055
+W 5 0 0
+Z 5 5
+S
+#25065
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northwest to southeast. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  A large stone door looms to the east.  
+~
+~
+0
+0 0 0
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D1
+~
+~
+3 0 25070
+D2
+~
+~
+0 0 25066
+D3
+~
+~
+0 0 25064
+W 5 0 0
+Z 5 5
+S
+#25066
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northwest to southeast. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25065
+D1
+~
+~
+0 0 25067
+W 5 0 0
+Z 5 5
+S
+#25067
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northwest to southeast. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D2
+~
+~
+0 0 25068
+D3
+~
+~
+0 0 25066
+W 5 0 0
+Z 5 5
+S
+#25068
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northwest to southeast. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25067
+D2
+~
+~
+0 0 25071
+W 5 0 0
+Z 5 5
+S
+#25069
+Apprentice Chambers~
+This smallish stone room feels quite claustrophobic, crowded as it is
+with various objects and and accoutrements of the void templar\@s study.  A
+row of bunks lines the northern wall, the mattresses appearing clean but
+less than inviting.  The northwestern corner appears intended for weapon
+training, with three practice dummies lined up in a row, and wooden practice
+weapons and padded vests hung from hooks in the wall.  A row of metal chairs
+faces the southern wall, with a large stone podium on a slightly raised
+platform jutting out from it.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D1
+~
+~
+3 0 25087
+W 5 0 0
+Z 5 5
+S
+#25070
+Guard Chambers~
+This wide chamber is sparsely decorated, the monotony of its deep gray
+walls of stone broken only by a few small glow-crystals that shed a pale
+yellow light about the room.  The north wall is lined with a row of simple
+cots, each one with a small wooden crate at its base.  Along the south wall,
+a number of low, straw-filled pallets give off a highly unpleasant odor,
+amplified in the dry stillness of the air.  On the eastern wall hang a
+number of weapon-racks and closets, mostly empty.  On the western wall, near
+the only door, is a richly-colored tapestry, depicting some great blue-black
+creature arising from a pit, with tiny human and aelin figures cowering in
+fear.  
+~
+~
+0
+0 4 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D3
+~
+~
+3 0 25065
+W 5 0 0
+Z 5 5
+S
+#25071
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from north to south.  To the
+west, a corridor slopes slightly downward, and the runes branch off to
+follow it.  To the east, a large stone door looms.  
+~
+~
+0
+0 4194304 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25068
+D1
+~
+~
+3 0 25115
+D2
+~
+~
+0 0 25075
+D3
+~
+~
+0 0 25072
+W 5 0 0
+Z 5 5
+S
+#25072
+A Rune-Inscribed Corridor~
+This corridor is perhaps ten feet tall, and almost as wide.  Its deep
+grey stone is smooth, and mostly free of debris, though glowing crystals
+line the walls at regular intervals.  The center of the corridor\@s floor is
+marked by a trail of deep, blood-red runes, Strange, muffled tones break the
+stillness of the air at odd intervals, and yet the atmosphere feels somehow
+heavy.  To the west, the corridor continues, and to the east it seems to
+diverge.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+3 0 25063
+D1
+~
+~
+0 0 25071
+D2
+~
+~
+3 0 25074
+D3
+~
+~
+0 0 25103
+W 5 0 0
+Z 5 5
+S
+#25073
+Apprentice Chambers~
+This smallish stone room feels quite claustrophobic, crowded as it is
+with various objects and and accoutrements of the void scholar\@s study.  A
+row of bunks lines the northern wall, the mattresses appearing clean but
+less than inviting.  The northeastern corner appears intended for spell
+experimentation, with a few empty, well-oiled cages surrounding a large
+wooden chest.  A row of metal chairs faces the southern wall, with a large
+stone podium on a slightly raised platform jutting out from it.  A stone
+door is set in the western wall.  
+~
+~
+0
+0 4 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+podium~
+The podium appears to be molded from a single piece of quartz-flecked granite.
+~
+D3
+~
+~
+3 0 25078
+W 5 0 0
+Z 5 5
+S
+#25074
+\\#\#~
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+3 0 25072
+D2
+~
+~
+0 0 25075
+W 5 0 0
+Z 5 5
+S
+#25075
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northeast to southwest. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25071
+D2
+~
+~
+0 0 25076
+W 5 0 0
+Z 5 5
+S
+#25076
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northeast to southwest. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25075
+D3
+~
+~
+0 0 25077
+W 5 0 0
+Z 5 5
+S
+#25077
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northeast to southwest. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D1
+~
+~
+0 0 25076
+D2
+~
+~
+0 0 25078
+W 5 0 0
+Z 5 5
+S
+#25078
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northeast to southwest. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  On the eastern side of the corridor, a large stone door looms.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25077
+D1
+~
+~
+3 0 25073
+D3
+~
+~
+0 0 25079
+W 5 0 0
+Z 5 5
+S
+#25079
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northeast to southwest. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D1
+~
+~
+0 0 25078
+D3
+~
+~
+0 0 25082
+W 5 0 0
+Z 5 5
+S
+#25080
+Guest Chambers~
+This spacious chamber is an odd mix of spartan functionality and great
+opulence.  The walls are nearly unadorned, with only an ornate full-length
+mirror on the south wall to break the uniformity.  There are two sconces for
+torches near the door on the north wall, but both are empty.  The walls are
+polished to a nearly mirror-like sheen, and the floor is set with marble
+tiles that seem well-kept.  An imposing four-post bed, covered with lush
+silken blankets, stands against the wall to the west, while the eastern wall
+supports a well-crafted oaken desk.  
+~
+~
+0
+0 1 12
+E
+marble~
+These tiles are stamped with the mark of Kaelan, an ancient quarry in the
+Yagash mountains.  
+
+~
+E
+tiles~
+These tiles are stamped with the mark of Kaelan, an ancient quarry in the
+Yagash mountains.  
+~
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+mirror~
+The goldwork framing the mirror appears exquisitely crafted.
+~
+D0
+Set in the wall to the north is a large stone door.  
+~
+~
+3 0 25082
+W 5 0 0
+Z 5 5
+S
+#25081
+A Gaudily Decorated Chamber~
+~
+~
+0
+0 4 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D3
+~
+~
+3 0 25083
+W 5 0 0
+Z 5 5
+S
+#25082
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from east to west.  To the
+north, a corridor slopes slightly downward, and the runes branch off to
+follow it.  To the south, a large stone door looms.  
+~
+~
+0
+0 0 0
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25083
+D1
+~
+~
+0 0 25079
+D2
+~
+~
+3 0 25080
+D3
+~
+~
+0 0 25086
+W 5 0 0
+Z 5 5
+S
+#25083
+A Rune-Inscribed Corridor~
+This corridor is perhaps ten feet tall, and almost as wide.  Its deep
+grey stone is smooth, and mostly free of debris, though glowing crystals
+line the walls at regular intervals.  The center of the corridor\@s floor is
+marked by a trail of deep, blood-red runes, Strange, muffled tones break the
+stillness of the air at odd intervals, and yet the atmosphere feels somehow
+heavy.  To the north, the corridor continues, and to the south, it appears
+to diverge.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25106
+D1
+~
+~
+3 0 25081
+D2
+~
+~
+0 0 25082
+D3
+~
+~
+3 0 25084
+W 5 0 0
+Z 5 5
+S
+#25084
+An Austere Chamber~
+~
+~
+0
+0 4 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D1
+~
+~
+3 0 25083
+W 5 0 0
+Z 5 5
+S
+#25085
+\\#\#~
+~
+~
+0
+0 4 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D2
+~
+~
+3 0 25094
+W 5 0 0
+Z 5 5
+S
+#25086
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northwest to southeast. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D1
+~
+~
+0 0 25082
+D3
+~
+~
+0 0 25087
+W 5 0 0
+Z 5 5
+S
+#25087
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northwest to southeast. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  On the western side of the tunnel, a large stone door looms.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25088
+D1
+~
+~
+0 0 25086
+D3
+~
+~
+3 0 25069
+W 5 0 0
+Z 5 5
+S
+#25088
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northwest to southeast. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  
+
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D2
+~
+~
+0 0 25087
+D3
+~
+~
+0 0 25089
+W 5 0 0
+Z 5 5
+S
+#25089
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage. There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northwest to southeast. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25097
+D1
+~
+~
+0 0 25088
+W 5 0 0
+Z 5 5
+S
+#25090
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northeast to southwest.  
+The air here is deathly still and bone-dry, although intermittent noises - footsteps, low murmurings - signify that the region may not be devoid of life.
+~
+~
+0
+0 0 12
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25061
+D2
+~
+~
+0 0 25093
+W 5 0 0
+Z 5 5
+S
+#25091
+Food Storage~
+This clean, bare stone chamber is is lined with a number of wide shelves,
+each containing large sacks of flour as well as other dried foodstuffs.  The
+air here is quite dry, still, and cool, and it appears that little dust has
+been allowed to settle on the floor or on the shelves.  Near the west wall
+of the room is a stone pillar, about waist-high to a human, with a large
+book attached to its top.  The only exit seems to be a thick stone door set
+in the east wall.  
+~
+~
+0
+0 4 0
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D1
+~
+~
+3 0 25093
+W 5 0 0
+Z 5 5
+S
+#25092
+Laboratory~
+~
+~
+0
+0 4 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D1
+~
+~
+3 0 25059
+W 5 0 0
+Z 5 5
+S
+#25093
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from north to south.  To the
+east, a corridor slopes slightly downward, and the runes branch off to
+follow it.  To the west, a large stone door looms.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25090
+D1
+~
+~
+0 0 25094
+D2
+~
+~
+0 0 25097
+D3
+The door looks quite solid, with well-oiled hinges.
+~
+~
+3 0 25091
+W 5 0 0
+Z 5 5
+S
+#25094
+A Rune-Inscribed Corridor~
+This corridor is perhaps ten feet tall, and almost as wide.  Its deep
+grey stone is smooth, and mostly free of debris, though glowing crystals
+line the walls at regular intervals.  The center of the corridor\@s floor is
+marked by a trail of deep, blood-red runes, Strange, muffled tones break the
+stillness of the air at odd intervals, and yet the atmosphere feels somehow
+heavy.  To the east, the corridor continues, and to the west it seems to
+diverge.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+3 0 25085
+D1
+~
+~
+0 0 25109
+D2
+~
+~
+3 0 25095
+D3
+~
+~
+0 0 25093
+W 5 0 0
+Z 5 5
+S
+#25095
+\\#\#~
+~
+~
+0
+0 4 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+3 0 25094
+W 5 0 0
+Z 5 5
+S
+#25096
+A Rune-Inscribed Tunnel~
+~
+~
+0
+0 4 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+W 5 0 0
+Z 5 5
+S
+#25097
+A Rune-Inscribed Tunnel~
+This portion of the tunnel is apparently a small arc in a great circular
+passage.  There is a conspicuous absence of any sort of debris or detritus,
+and the entire area is well-lit by glowing crystals inlaid in the rock.  The
+black rock is set off by a set of deep, blood-red runes inscribed in it,
+tracing a slow, arcing path along the floor from northwest to southeast. 
+The air here is deathly still and bone-dry, although intermittent noises -
+footsteps, low murmurings - signify that the region may not be devoid of
+life.  
+~
+~
+0
+0 0 0
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25093
+D2
+~
+~
+0 0 25089
+W 5 0 0
+Z 5 5
+S
+#25098
+A Rune-Inscribed Corridor~
+This corridor is perhaps ten feet tall, and almost as wide.  Its deep
+grey stone is smooth, and mostly free of debris, though glowing crystals
+line the walls at regular intervals.  The center of the corridor\@s floor is
+marked by a trail of deep, blood-red runes, Strange, muffled tones break the
+stillness of the air at odd intervals, and yet the atmosphere feels somehow
+heavy.  To the south, the corridor continues, and to the north it appears to
+diverge.  
+~
+~
+0
+0 4194312 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25055
+D1
+~
+~
+3 0 25057
+D2
+~
+~
+0 0 25099
+D3
+~
+~
+3 0 25062
+W 5 0 0
+Z 5 5
+S
+#25099
+A Rune-Inscribed Corridor~
+This corridor is perhaps ten feet tall, and almost as wide.  Its deep
+grey stone is smooth, and mostly free of debris, though glowing crystals
+line the walls at regular intervals.  The center of the corridor\@s floor is
+marked by a trail of deep, blood-red runes, Strange, muffled tones break the
+stillness of the air at odd intervals, and yet the atmosphere feels somehow
+heavy.  To the north, the corridor continues, and to the south it ends in a
+stone door.  
+~
+~
+0
+0 4194312 12
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+0 0 25098
+D1
+~
+~
+3 0 25007
+D2
+~
+~
+7 0 25102
+W 5 0 0
+Z 5 5
+S
+#25100
+A Rune-Inscribed Corridor~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#25101
+A Rune-Inscribed Corridor~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#25102
+The Summoning Chamber~
+This cylindrical chamber is by no means small, but has a cramped air
+nonetheless.  It is ringed by an array of glowing crystals set in the stone,
+filling the room with a cold, harsh white light.  The walls here are quite
+smooth, nearly reflective in its deep blackness, although it is marred by a
+number of burn marks and deep, claw-like striations scoring the walls and
+ceiling.  On the floor, there is marked a rather simple pattern, laid out in
+blood-red runes that seem almost to writhe: four rays leading from the
+center of the chamber to doorways in each of the cardinal directions, and
+three concentric circles, the largest nearly flush with the walls and the
+smallest perhaps the armspan of a human in diameter.  
+~
+~
+0
+0 20971528 12
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.
+~
+D0
+~
+~
+7 0 25099
+D1
+~
+~
+7 0 25103
+D2
+~
+~
+7 0 25106
+D3
+~
+~
+7 0 25109
+D5
+~
+~
+11 0 25113
+W 5 0 0
+Z 5 5
+S
+#25103
+A Rune-Inscribed Corridor~
+This corridor is perhaps ten feet tall, and almost as wide.  Its deep
+grey stone is smooth, and mostly free of debris, though glowing crystals
+line the walls at regular intervals.  The center of the corridor\@s floor is
+marked by a trail of deep, blood-red runes, Strange, muffled tones break the
+stillness of the air at odd intervals, and yet the atmosphere feels somehow
+heavy.  To the east, the corridor continues, and to the west it ends in a
+stone door.  Another broad stone door is set in the wall to the south.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D1
+~
+~
+0 0 25072
+D2
+~
+~
+3 0 25008
+D3
+~
+~
+7 0 25102
+W 5 0 0
+Z 5 5
+S
+#25104
+A Rune-Inscribed Corridor~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#25105
+A Rune-Inscribed Corridor~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#25106
+A Rune-Inscribed Corridor~
+This corridor is perhaps ten feet tall, and almost as wide.  Its deep
+grey stone is smooth, and mostly free of debris, though glowing crystals
+line the walls at regular intervals.  The center of the corridor\@s floor is
+marked by a trail of deep, blood-red runes, Strange, muffled tones break the
+stillness of the air at odd intervals, and yet the atmosphere feels somehow
+heavy.  To the south, the corridor continues, and to the north, it ends in a
+stone door.  
+~
+~
+0
+0 0 12
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+7 0 25102
+D2
+~
+~
+0 0 25083
+D3
+~
+~
+3 0 25009
+W 5 0 0
+Z 5 5
+S
+#25107
+A Rune-Inscribed Corridor~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#25108
+A Rune-Inscribed Corridor~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#25109
+A Rune-Inscribed Corridor~
+This corridor is perhaps ten feet tall, and almost as wide.  Its deep
+grey stone is smooth, and mostly free of debris, though glowing crystals
+line the walls at regular intervals.  The center of the corridor\@s floor is
+marked by a trail of deep, blood-red runes, Strange, muffled tones break the
+stillness of the air at odd intervals, and yet the atmosphere feels somehow
+heavy.  To the west, the corridor continues, and to the east it ends in a
+stone door.  
+~
+~
+0
+0 0 0
+E
+rune~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+E
+runes~
+Upon closer examination, two things become evident: the runes form an
+unbroken line, each connected to the next, and the color is not some paint
+but actual blood, viscous to the touch, but seemingly a part of the rock
+itself.  
+~
+D0
+~
+~
+3 0 25056
+D1
+~
+~
+7 0 25102
+D3
+~
+~
+0 0 25094
+W 5 0 0
+Z 5 5
+S
+#25110
+A Rune-Inscribed Corridor~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#25111
+A Rune-Inscribed Corridor~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#25112
+Living Chambers~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 25114
+D2
+~
+~
+0 0 25113
+W 5 0 0
+Z 5 5
+S
+#25113
+A Narrow Corridor~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 25112
+D4
+~
+~
+11 0 25102
+W 5 0 0
+Z 5 5
+S
+#25114
+Living Chambers~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 25112
+W 5 0 0
+Z 5 5
+S
+#25115
+Dining Chamber~
+~
+~
+0
+0 0 0
+D3
+~
+~
+3 0 25071
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 25002 spec_cast_void
+M 25007 spec_poison
+M 25025 spec_cast_void
+M 25027 spec_cast_void
+S
+
+
+
+#RESETS
+D 0 25003 1 3
+D 0 25006 3 3
+D 0 25007 3 3
+D 0 25008 0 3
+D 0 25009 1 3
+D 0 25054 2 39
+D 0 25055 0 39
+D 0 25056 2 3
+D 0 25057 3 3
+D 0 25059 3 3
+D 0 25062 1 3
+D 0 25063 2 3
+D 0 25065 1 3
+D 0 25069 1 3
+D 0 25070 3 3
+D 0 25071 1 3
+D 0 25072 0 3
+D 0 25072 2 3
+D 0 25073 3 3
+D 0 25074 0 3
+D 0 25078 1 3
+D 0 25080 0 3
+D 0 25081 3 3
+D 0 25082 2 3
+D 0 25083 1 3
+D 0 25083 3 3
+D 0 25084 1 3
+D 0 25085 2 3
+D 0 25087 3 3
+D 0 25091 1 3
+D 0 25092 1 3
+D 0 25093 3 3
+D 0 25094 0 3
+D 0 25094 2 3
+D 0 25095 0 3
+D 0 25098 1 3
+D 0 25098 3 3
+D 0 25099 1 3
+D 0 25099 2 7
+D 0 25102 0 7
+D 0 25102 1 7
+D 0 25102 2 7
+D 0 25102 3 7
+D 0 25102 5 11
+D 0 25103 2 3
+D 0 25103 3 7
+D 0 25106 0 7
+D 0 25106 3 3
+D 0 25109 0 3
+D 0 25109 1 7
+D 0 25113 4 11
+D 0 25115 3 3
+O 0 25022 0 25007
+O 0 25022 0 25007
+O 0 25022 0 25007
+O 0 25022 0 25007
+O 0 25022 0 25007
+O 0 25022 0 25007
+O 0 25022 0 25007
+O 0 25022 0 25007
+O 0 25022 0 25007
+O 0 25022 0 25007
+O 0 25022 0 25007
+O 0 25022 0 25007
+O 0 25023 0 25007
+M 0 25004 2 25019 1
+O 0 25004 0 25019
+O 0 25004 0 25019
+O 0 25004 0 25020
+O 0 25004 0 25020
+O 0 25004 0 25020
+M 0 25006 1 25020 1
+M 0 25008 4 25021 1
+M 0 25009 4 25021 3
+M 0 25009 4 25021 3
+M 0 25009 4 25021 3
+M 0 25007 1 25022 1
+O 0 25005 0 25022
+O 0 25006 0 25022
+P 0 25007 5 25006 3
+O 0 25006 0 25022
+M 0 25003 10 25024 1
+M 0 25003 10 25025 1
+M 0 25010 1 25026 1
+O 0 25009 0 25026
+M 0 25003 10 25028 1
+M 0 25003 10 25029 1
+M 0 25003 10 25030 1
+M 0 25003 10 25032 1
+M 0 25015 1 25033 1
+M 0 25014 1 25033 1
+M 0 25011 5 25035 1
+M 0 25013 5 25035 2
+M 0 25013 5 25035 2
+M 0 25003 10 25036 1
+O 0 25008 0 25038
+O 0 25012 0 25043
+M 0 25019 1 25043 1
+O 0 25013 0 25043
+M 0 25020 1 25045 1
+M 0 25001 1 25045 1
+M 0 25018 1 25046 1
+M 0 25024 1 25054 1
+M 0 25029 1 25055 1
+M 0 25030 1 25055 1
+O 0 25017 0 25080
+M 0 25033 1 25080 1
+E 0 25018 0 16
+E 0 25019 0 12
+M 0 25034 1 25080 1
+E 0 25020 0 16
+E 0 25021 0 5
+M 0 25002 1 25102 1
+E 0 25003 0 6
+E 0 25002 0 12
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

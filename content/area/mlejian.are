@@ -1,0 +1,6179 @@
+#AREADATA
+Name The Mlejian Mountains~
+Builders Ramc Iacobos~
+VNUMs 20300 20399
+Credits [ 1 51] Ramc      The Mlejian Mountains~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 384
+Weather 0 1 0 3 4
+Weave 5 0 0
+Shades 5 5
+Stone 86
+End
+
+
+
+#MOBILES
+V4 20300
+deer tentacled ropy aberration abdeer~
+a tentacled aberration~
+What appears to be a deer covered in ropy tentacles is here, shivering.
+~
+What stands here appears to have once been a deer, the general shape of
+the body and its relatively untouched legs attesting to this.  Much of the
+flesh of the thing is gone now, however, replaced by thin, ropy tentacles. 
+Some of the whiplike tendrils, their color a sickly purplish-grey, bind
+tight about the stricken creature, while others flail mindlessly.  While the
+majority of the members end in nothing or are hidden altogether in the
+tangle of flesh, odd tentacles are tipped with snapping jaws or yellow,
+alien eyes.  
+~
+demon~
+water scholar~
+ADLN 0 JQZ N 0
+30 25 13d80+1187 0d0+0 5d6+15 slash~
+lash~
+-9 -9 -9 0
+FHI B
+26 0 50 0 10 0 0 0 -15 10 0 0 0 10 -10 0 0 0 0 -5 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABCGHV ABCDEFGHIJKMNP 0 medium flesh
+>greet_prog 30~
+if ispc($n)
+mpechoat $n A tentacled aberration suddenly leaps toward you!
+mpechoaround $n A tentacled aberration suddenly leaps toward $N!
+mpkill $n
+endif
+~
+>death_prog 100~
+mpecho The tentacled aberration falls to the ground, tentacles sprawling oddly.
+if rand(30)
+mpecho The chattering of the jawed tentacles ceases.
+else
+if rand(30)
+mpecho A limp, eye-tipped tendril seems to stare at you, the alien, yellow eye yet luminous.
+endif
+endif
+~
+>rand_prog 100~
+if rand(30)
+if ispc($r)
+mpechoat $r A tentacled aberration suddenly leaps toward you!
+mpechoaround $r A tentacled aberration suddenly leaps toward $R!
+mpkill $r
+endif
+endif
+~
+>fight_prog 100~
+if rand(20)
+mpechoat $n The tentacles on the aberration flail, entangling you.
+mpechoaround $n The tentacles on the aberration flail, entangling $N.
+mplag $n 2
+else
+if rand(30)
+mpfocus $n
+mpecho The aberration falls back, tentacles flailing weakly.
+mpgoto $f
+mpunfocus
+endif
+endif
+if rand(30)
+mpecho The mawed tentacles upon the aberration snap hungrily.
+else
+if rand(30)
+mpecho The aberration raises a tentacle, an alien yellow eye observing you.
+endif
+endif
+~
+|
+V4 20301
+srorsian ancient gigantic brown lizard~
+the ancient srorsian~
+A gigantic brown lizard lies lazily within the cave.
+~
+A massive, ancient specimen of the srorsian race, this brown scaled
+lizard rests in its cave.  Four massive, stumpy legs support a bulky body,
+its back arching into the air.  In comparison to the rest of its body, its
+head is relatively small.  A pair of dull, black eyes gaze from sockets,
+betraying nothing beyond an animal intelligence.  Razor teeth fill its small
+mouth, more for the catching of small animals and the eating of grass than
+anything else.  A thick tail tapers from its body, nearly ten feet in
+length.  The docile beast looks unalertly about its cavern, blinking its
+black eyes on occasion.  
+~
+lizard~
+water scholar~
+ABGNPX Q FJZ N 0
+58 33 12999d1+1 0d0+0 3d45+10 bash~
+crush~
+-26 -26 -26 -25
+ACDFHIK ABa
+26 0 0 0 0 20 0 20 20 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 61
+AGXc ACDEFHKQV 0 giant flesh
+>rand_prog 5~
+if mobvalue(1) == 1
+if inroom($i) == 20386
+south
+mpasound The ground quakes with the footfalls of a great beast.
+emote stomps into the room.
+break
+endif
+if inroom($i) == 20385
+if rand(50)
+south
+mpasound The ground quakes with the footfalls of a great beast.
+emote stomps into the room.
+break
+else
+north
+mpasound The ground quakes with the footfalls of a great beast.
+emote stomps into the room.
+break
+endif
+endif
+if inroom($i) == 20334
+north
+mpasound The ground quakes with the footfalls of a great beast.
+emote stomps into the room.
+break
+endif
+endif
+~
+>rand_prog 1~
+emote gives a snuffling grunt.
+~
+>rand_prog 1~
+emote raises its head lazily, black eyes blinking vacantly.
+~
+>load_prog 100~
+mpaddaffect $i 660 45 -1 0 0 0
+~
+>fight_prog 100~
+if mobvalue(0) == 1
+mpseewizi
+mpechoat $n The ancient srorsian comes down hard, {r>>>TRAMPLING<<<{x you beneath its massive bulk.
+mpechoaround $n The ancient srorsian comes down hard, {r>>>TRAMPLING<<<{x $N beneath its massive bulk.
+mpdamtype $n 4 45 80 1
+mplag $n 2
+mpvalueset 0 0
+mpunseewizi
+break
+endif
+if rand(5)
+if rand(50)
+mpechoat $r The ancient srorsian crushes you against the cave wall in the fray!
+mpechoaround $r The ancient srorsian crushes $R against the cave wall in the fray!
+mpdamtype $r 1 10 10 1
+mplag $r 3
+else
+mpecho The ancient srorsian rears, raising its massive forelegs.
+mpvalueset 0 1
+endif
+endif
+if mobvalue(1) == 0
+mpvalueset 1 1
+mpstring mob self long A gigantic brown lizard stomps through the cave.
+endif
+~
+>greet_prog 100~
+if rand(5)
+pmote raises its head to regard $N, grunting softly. 
+endif
+~
+|
+V4 20302
+goat brown brown-haired mountain~
+a brown-haired mountain goat~
+A brown-haired mountain goat bleats quietly.
+~
+This mountain goat is covered in thick, scraggly brown fur.  Wandering
+surefootedly, it searches out what vegetation it can find.  It bleats
+quietly from time to time, raising its head alertly.  
+~
+pig~
+water scholar~
+AGN 0 J N 0
+25 20 12d45+707 0d0+0 4d5+13 bash~
+charge~
+-5 -5 -5 2
+CH 0
+26 0 0 0 0 0 0 0 -10 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGV ACDEFHJKUV 0 medium flesh
+>rand_prog 1~
+emote gives a plaintive bleat.
+~
+>fight_prog 4~
+mpechoat $n A brown-haired mountain goat charges into you, knocking the wind out of you!
+mpechoaround $n A brown-haired mountain goat charges into $N!
+mplag $n 1
+mpdamtype 4 6 30 1
+~
+|
+V4 20303
+man pale sickly~
+a pale, sickly man~
+A pale, sickly man lies unconscious here, plague sores covering his body.
+~
+Tattered rags caked in foul-smelling filth adorn this pale and sickly man
+as he lies upon the stone.  Covered in plague sores and festering boils, the
+man seems to be in horrible agony as he slips in and out of consciousness. 
+His hair is plastered to his forehead by sweat and he murmurs
+unintelligably.  
+~
+human~
+water scholar~
+ADGL 0 JZ N 0
+10 5 174d1+17 0d0+0 1d1+5 bash~
+punch~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 50 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium flesh
+>data_prog warning~
+esay \@murmurs, voice weak\@ Th.. thank you..
+emote coughs violently.
+esay \@murmurs\@ Go.. go away from here..
+esay \@says, voice growing feverish\@ ..They.. they will do this too you too..
+emote moans softly as he attempts to speak.
+esay \@chokes out\@ I.. I escaped.. I thought I did.. the pipe..
+emote gives a weak, sobbing moan.
+2
+esay \@murmurs softly, eyes glazing in fear\@ ..then.. IT came..
+mpecho The sickly man\@s eyes roll back as he lapses into merciful unconsciousness.
+mpstring mob self long A pale, sickly man lies unconscious here.
+mpvalueset 1 1
+~
+>rand_prog 100~
+if hitprcnt($i) < 50
+mpcast 34 50
+endif
+$d
+mpnextdata
+if mobvalue(0) == 0
+if snaffected($i) == 104
+else
+mpstring mob self long A pale, sickly man lays upon the ground.
+mpecho The sicky man\@s eyelids flutter open.
+mpsetdata warning
+mpvalueset 0 1
+endif
+endif
+if rand(1)
+if mobvalue(1) == 1
+mpvalueset 0 0
+mpvalueset 1 0
+mpaddaffect $i 104 40 -1 1 -5 8388608
+mpecho Plague sores begin to spread across the sickly man\@s body.
+mpstring mob self long A pale, sickly man lies unconscious here, plague sores covering his body.
+endif
+endif
+~
+>load_prog 100~
+mpaddaffect $i 104 40 -1 1 -5 8388608
+~
+|
+V4 20304
+butterfly colorful~
+a colorful butterfly~
+A colorful butterfly flits about.
+~
+This colorful butterfly flits about the grove.  Its wings sport beautiful
+shades of black, yellow and blue, speckled with white.  
+~
+human~
+water scholar~
+ADGL 0 T N 0
+1 0 1d1+0 0d0+0 0d0+0 bash~
+slap~
+-90 10 -20 10
+FH 0
+26 0 0 0 0 0 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 1~
+if inroom($i) == 20338
+if rand(50)
+south
+else
+west
+endif
+break
+endif
+if inroom($i) == 20337
+if rand(50)
+north
+else
+west
+endif
+break
+endif
+if inroom($i) == 20339
+if rand(50)
+south
+else
+east
+endif
+break
+endif
+if inroom($i) == 20340
+if rand(50)
+north
+else
+east
+endif
+break
+endif
+~
+>rand_prog 1~
+if ispc($r)
+pmote gently alights on $R, fluttering off again after a brief moment.
+endif
+~
+|
+V4 20305
+stinkbot~
+the stinkbot~
+The stinkbot is here, smelling pretty goddamn bad.
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+20 0 34d23+34 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+if rand(3)
+if ispc($r)
+if isimmort($r)
+else
+mpechoat $r You reel, dry heaving as the stench overwhelms you.
+mpechoaround $r $R reels, dry heaving.
+mplag $r 1
+mpaddaffect $r 143 50 1 1 -3 16777216
+mpaddaffect $r 644 50 1 27 0 0
+endif
+endif
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+|
+V4 20306
+crevicebot~
+the crevicebot~
+The crevicebot is here, dancing like a monkey!
+~
+~
+human~
+water scholar~
+ADL 0 L N 0
+60 0 24d46+23 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p enter crevice~
+if isfight($n)
+mpechoat $n No way! You are still fighting!
+else
+if position($n) == 8
+mpechoat $n You enter the crevice.
+mpechoaround $n $N enters the crevice.
+mptransfer $n 20373
+mpat $n mpforce $n look
+mpat $n mpechoaround $n $N has arrived.
+mplag $n 1
+else
+mpechoat $n Nah... You feel too relaxed...
+endif
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+|
+V4 20307
+scratchbot~
+the scratchbot~
+The scratchbot only -seems- harmless at first..
+~
+~
+human~
+water scholar~
+ADL 0 DFJLZ N 0
+0 0 23d23+23 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>greet_prog 100~
+if rand(5)
+mpechoat $n You {rscratch{x yourself as you climb within the pipe.
+mpdamtype $n 1 2 1 3
+mpoload 20306 on $n
+endif
+~
+|
+V4 20308
+abomination filth-covered insectoid shape~
+a filth-covered abomination~
+A vaguely insectoid shape wallows in the pool, caked in filth.
+~
+This abomination is vaguely reminiscent of a flea of monstrous
+proportions, but only vaguely.  A pair of filth-caked mandibles chitter
+wildly, brakish ooze dripping from them.  A pair of compound eyes, a solid
+dull brown, are set on either side of the thing, and each of its limbs end
+in a jagged looking claw.  Its entire carapace is slathered in a thick layer
+of reeking filth, the odor foul, almost overpowering at times.  
+
+The beast sloshes about wildly in the pool, its chittering rising in
+agitation.  
+~
+centipede~
+water scholar~
+ABF 0 DFJZ N 0
+45 40 15d190+1071 0d0+0 1d50+30 acid~
+slime~
+-18 -18 -18 -4
+CEFHKO ABQ
+26 0 0 0 0 -5 0 5 -20 0 0 0 90 20 -20 0 0 90 50 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABGHMOV ABCDEFGHIJKUV 0 large flesh
+>rand_prog 1~
+emote sinks back into the foul muck of the pool.
+mppurge self
+~
+>death_prog 100~
+mpseewizi
+mppurge poobah
+mpmload 20311
+~
+>fight_prog 10~
+if ispc($r)
+mpechoat $r The filth-covered abomination spreads its mandibles wide, spraying you with brackish ooze!
+mpechoaround $r The filth-covered abomination spreads its mandibles wide, spraying $R with brackish ooze!
+mpdamtype $r 1 30 0 13
+mpdamtype $r 1 15 0 8
+mpdamtype $r 1 50 0 7
+mpseewizi
+if iscarrying($r) == 20308
+else
+mpoload 20308 on $r
+endif
+mpunseewizi
+endif
+~
+|
+V4 20309
+oberos rabbit~
+an oberos rabbit~
+An oberos rabbit wearing aviator\@s goggles pilots the helicopter.
+~
+~
+human~
+water scholar~
+ADL 0 L N 0
+89 0 232d2+2322 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>load_prog 100~
+mpvaluerand 0 20377 20382
+mpgoto $0
+mpmload 20307
+mpgoto 20300
+~
+|
+V4 20310
+poobah grand~
+the grand poobah~
+The grand abomination poobah is here, poobahing it up.
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+70 0 423d2+232 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+if mobhere(20311)
+mppurge pipebot
+endif
+~
+>verb_prog p enter pipe~
+if isimmort($n)
+mpnextinterp 
+else
+if mobhere(20308)
+mpechoat $n That\@ll be hard to do with the abomination in the way!
+else
+mpechoat $n As you attempt to enter the pipe, the muck burbles ominously.
+mpechoaround $n As $N attempts to enter the pipe, the muck burbles ominously.
+mpecho With a fearful stench, a filth-covered shape bursts to the surface!
+mpmload 20308
+mpforce abomination mpkill $n
+endif
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+|
+V4 20311
+pipebot~
+the pipebot~
+The pipebot doesn\@t throw abominations at you. Isn\@t he nice?
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+87 0 232d23+23 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p enter pipe~
+if isfight($n)
+mpechoat $n No way! You are still fighting!
+else
+if position($n) == 8
+mpechoat $n You climb up into the pipe.
+mpechoaround $n $N climbs into the pipe.
+mptransfer $n 20377
+mpat $n mpforce $n look
+mpat $n mpechoaround $n $N has arrived.
+mplag $n 1
+else
+mpechoat $n Nah... You feel too relaxed...
+endif
+endif
+~
+>rand_prog 100~
+if mobvalue(0) == 1
+else
+mpvalueset 0 1
+mpseewizi
+endif
+~
+|
+V4 20312
+alatharya alatharyan alath ranger murgdar large~
+an alatharyan ranger~
+A large alatharya is here, clad in dirty hides.
+~
+The silver skin of this massive alatharya has been dulled by the dirt and
+grime of a life lived outdoors.  His beard and hair are likewise unkempt,
+matted and dirty.  A pair of watchful brown eyes peer out from beneath bushy
+white eyebrows, displaying more animal cunning than intelligence.  The
+filthy hides and furs worn by the ranger create a mildly unpleasant smell,
+only made worse by his unwashed nature.  
+~
+alatharya~
+water scholar~
+ABDT 0 FJPZ N 0
+55 40 1d1000+5000 10000d1+234 6d10+30 bash~
+punch~
+-24 -24 -24 -15
+FHKNO AB
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 62
+AHMV ABCDEFGHIJK A large flesh
+>death_prog 100~
+mpecho An alatharyan ranger attemps to flee, stumbling a few steps before collapsing.
+~
+>rand_prog 100~
+if inroom($i) == 20383
+up
+camo
+endif
+if inroom($i) == 20336
+north
+camo
+endif
+mproomcmd mptrigger all
+if mobvalue(0) > 0
+camo
+endif
+if mobvalue(0) > 0
+if rand(20)
+if inroom($i) == 20338
+if rand(50)
+south
+else
+west
+endif
+break
+endif
+if inroom($i) == 20337
+if rand(50)
+north
+else
+west
+endif
+break
+endif
+if inroom($i) == 20339
+if rand(50)
+south
+else
+east
+endif
+break
+endif
+if inroom($i) == 20340
+if rand(50)
+north
+else
+east
+endif
+break
+endif
+endif
+endif
+~
+>trigger_prog 100~
+if ispc($n)
+if snaffected($n) == 519
+ambush $n
+mpkill $n
+endif
+if mobvalue(0) == 2 
+if remembers($n)
+ambush $n
+mpkill $n
+endif
+endif
+endif
+~
+>fight_prog 100~
+mpremember $n
+mpfocus $n
+if mobvalue(0) == 0
+flee
+if inroom($i) == 20383
+up
+setsnare
+camo
+mpvalueset 0 2
+endif
+break
+endif
+if mobvalue(2) == 10
+mpvalueset 0 2
+else
+mpvalueset 0 1
+endif
+/ mpvalue == 0 means he\@s at flee + snare mode
+/ mpvalue == 1 means he\@s on archery mode
+/ mpvalue == 2 means he\@s on ambush mode
+if mobvalue(0) == 2
+if rand(10)
+flee
+if inroom($i) == 20383
+up
+east
+endif
+if inroom($i) == 20336
+north
+west
+endif
+camo
+endif
+endif
+/Oi. Here it gets complicated.
+if mobvalue(0) == 1
+if rand(40)
+if inroom($i) == 20339
+flee
+if inroom($i) == 20338
+mpvalueup 2
+mpat $f mpecho An arrow sails into the room!
+shoot $f barbed west
+mpvalueset 0 2
+endif
+if inroom($i) == 20340
+mpvalueup 2
+mpat $f mpecho An arrow sails into the room!
+shoot $f barbed north
+mpvalueset 0 2
+endif
+if inroom($i) == 20383
+up
+east
+south
+camo
+mpvalueset 0 2
+endif
+endif
+if inroom($i) == 20338
+flee
+if inroom($i) == 20338
+else
+mpvalueup 2
+mpat $f mpecho An arrow sails into the room!
+shoot $f barbed
+mpvalueset 0 2
+endif
+endif
+if inroom($i) == 20340
+flee
+if inroom($i) == 20340
+else
+mpvalueup 2
+mpat $f mpecho An arrow sails into the room!
+shoot $f barbed
+mpvalueset 0 2
+endif
+endif
+if inroom($i) == 20337
+flee
+if inroom($i) == 20337
+else
+if inroom($i) == 20336
+north
+north
+west
+else
+mpvalueup 2
+mpat $f mpecho An arrow sails into the room!
+shoot $f barbed
+mpvalueset 0 2
+endif
+endif
+endif
+endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 520 100
+mpaddskill $i 519 100
+mpaddskill $i 247 100
+mpaddskill $i 244 100
+mpaddskill $i 272 100
+mpaddskill $i 524 100
+mpoload 103
+mpoload 103
+mpoload 103
+mpoload 103
+mpoload 103
+mpoload 103
+mpoload 103
+mpoload 103
+mpoload 103
+mpoload 103
+mpgoto 20300
+drop all
+get 1.
+get 1.
+get 1.
+get 1.
+get 1.
+get 1.
+get 1.
+get 1.
+get 1.
+get 1.
+mpgoto 20384
+~
+|
+V4 20313
+ibeilex small round pulpy demon~
+an ibeilex~
+A round, pulpy demon chitters from within its small cage.
+~
+This small demon resembles a flabby, misshapen ball more than anything
+else.  Spindly limbs sprout from the ibeilex\@s round torso and seemingly
+useless wings flap without result.  No eyes or head are visible sprouting
+from its black, leathery flesh, but despite this an odd chittering persists
+from it, its origin implaceable.  The doorless cage it is kept in is barely
+large enough to hold it, making the thing practically immobile.  
+~
+demon~
+water scholar~
+ABDLX 0 DFJZ E 0
+15 15 162d1+32 0d0+0 3d4+5 pierce~
+scratch~
+0 0 0 5
+0 Bb
+26 0 0 0 0 20 0 0 0 0 0 0 0 10 -20 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+ACH ABCDEFGHIJKP K small flesh
+>rand_prog 1~
+if rand(30)
+mpecho A quiet chittering comes from within an ibeilex.
+else
+if rand(50)
+emote flaps its small wings futilely.
+else
+emote shifts within its cage, swinging it slightly.
+endif
+endif
+~
+|
+V4 20314
+filthbot stinky~
+the stinky filthbot~
+The stinky filthbot is fastdidiously clean. How odd.
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+0 0 232d23+2 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>load_prog 100~
+mpseewizi
+~
+>greet_prog 100~
+if ispc($n)
+if isimmort($n)
+else
+if iscarrying($n) == 20308
+else
+mpoload 20308 on $n
+endif
+endif
+endif
+~
+|
+V4 20315
+scholar dark-robed summoner~
+a dark-robed scholar~
+A dark-robed scholar stands idly, face set in a frown.
+~
+A tall, plain-looking man, this scholar is clad in dark, heavy robes. 
+Brilliant green eyes are set in a disapproving face, short brown hair tops
+his head and the whole of it is framed by the black cowl of his robe.  The
+scholar inspects the scored pentagram at his feet idly, yet carefully.  
+
+The back of his hands, a seemingly healthy tint of bronze, are tattooed with
+black runes, appearing to be glyphs of protection.  
+~
+human~
+water scholar~
+AL 0 BDJUZ E 0
+47 30 14d200+886 100d50+50 5d8+22 bash~
+punch~
+-19 -19 -19 -5
+FHK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK AFGK medium flesh
+>rand_prog 100~
+if snaffected($i) == 125
+if snaffected($i) == 3
+if snaffected($i) == 110
+else
+cast \@protective shield
+endif
+else
+cast armor
+endif
+else
+cast \@shield
+endif
+~
+>fight_prog 100~
+if rand(50)
+mpvaluerand 0 1 2
+if mobvalue(0) == 1
+cast \@drain\@
+endif
+if mobvalue(0) == 2
+if snaffected($n) == 8
+or israce($n) == SHUDDENI
+if snaffected($n) == 107
+if snaffected($n) == 306
+if snaffected($n) == 39
+cast \@drain\@
+else
+cast \@curse\@
+endif
+else
+cast \@agony\@
+endif
+else
+cast \@pox\@
+endif
+else
+cast \@blind\@
+endif
+endif
+endif
+~
+>load_prog 100~
+speak arcane
+mpaddskill $i 8 100
+mpaddskill $i 107 95
+mpaddskill $i 306 80
+mpaddskill $i 39 99
+mpaddskill $i 52 100
+mpaddskill $i 125 95
+mpaddskill $i 3 95
+mpaddskill $i 110 90
+~
+|
+V4 20316
+guard templar man~
+a templar guard~
+A man armored in dark steel stands at attention by the door.
+~
+A rough-looking man clad in armors of darkened iron, this templar stands
+at attention, guarding the entrance to the building.  His weathered face
+bears many scars, and his stocky frame is well-muscled.  His eyes scan
+alertly as he maintains an iron grip on his halberd, appearing attentive to
+the point of paranoia.  
+~
+human~
+water scholar~
+ABT 0 DJUZ N 0
+45 40 15d190+911 800d1+200 5d9+22 slash~
+slice~
+-18 -18 -18 -4
+FHIKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 20317 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK AK medium flesh
+>speech_prog Unlock the door.~
+if isfriend($n) == 56
+say As you wish.
+unlock north
+else
+say No.
+endif
+~
+>fight_prog 100~
+if rand(20)
+if rand(50)
+cast \@pestilence\@
+else
+cast \@blight of adduthala\@
+endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 673 85
+mpaddskill $i 678 82
+~
+|
+V4 20317
+guard templar shuddeni~
+a shuddeni templar guard~
+A shuddeni armored in dark steel rests at loose attention.
+~
+This shuddeni is clad in dark armors tailored to her feminine frame. 
+Slight of build, this templar\@s lithe frame holds little muscle but much
+agility.  Standing comfortably, her eyeless gaze scans over her surroundings
+with a passing interest, seemingly unalert.  Despite this her fingers tense
+and untense nervously around the haft of her flail.  
+~
+shuddeni~
+water scholar~
+ABT 0 ADJZ E 0
+40 35 16d170+976 23d23+234 5d8+20 pierce~
+stab~
+-15 -15 -15 -2
+FHIN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 20 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 20316 0 0 0 0
+stand stand female 100 -1
+AHMW ABCDEFGIJ AGK medium flesh
+>fight_prog 100~
+if rand(20)
+if rand(50)
+cast \@harm\@
+else
+if snaffected($n) == 680
+if snaffected($n) == 8
+or israce($n) == SHUDDENI
+cast \@harm\@
+else
+cast \@blind
+endif
+else
+cast \@embrace of isetaton\@
+endif
+endif
+endif
+~
+>rand_prog 100~
+if snaffected($i) == 87 
+else
+cast \@invis
+endif
+~
+>load_prog 100~
+mpaddskill $i 87 95
+mpaddskill $i 8 100
+mpaddskill $i 75 100
+mpaddskill $i 680 83
+speak shuddeni
+~
+|
+V4 20318
+guard templar black-armored black armored VTdoorman Coolbean~
+a black-armored templar guard~
+A black-armored guard stands outside the doors of the tower.
+~
+This unmoving figure is armored in reflective black steel, standing at
+attention outside the doors of the Conclave.  An open-faced helm of the same
+glossy steel reveals a hard, attentive face whose eyes dart methodically. 
+Weapon in hand, the templar guard maintains a steady grip on it, his
+attentions devoted to his assignment.  
+~
+human~
+water scholar~
+ABTX 0 DGJUZ E 0
+45 40 15d190+911 131d121+1211 5d9+25 slash~
+slash~
+-18 -18 -18 -4
+CHIKN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 20318 20319 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK AK medium flesh
+>greet_prog 100~
+if mobhere(12556)
+say There will be no escape, ch\@taren!
+mpkill ouln
+endif
+~
+>fight_prog 100~
+if rand(25)
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+cast \@harm\@
+endif
+if mobvalue(0) == 2
+if snaffected($n) == 39
+if snaffected($n) == 8
+or israce($n) == SHUDDENI
+if snaffected($n) == 104
+cast \@harm\@
+else
+cast \@plague\@
+endif
+else
+cast \@blind\@
+endif
+else
+cast \@curse\@
+endif
+endif
+if mobvalue(0) == 3
+if snaffected($n) == 680
+cast \@siphon mana\@
+else
+cast \@embrace of isetaton\@
+endif
+endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 104 79
+mpaddskill $i 3 96
+mpaddskill $i 125 90
+mpaddskill $i 683 100
+mpaddskill $i 75 100
+mpaddskill $i 680 89
+mpaddskill $i 677 100
+mpaddskill $i 679 80
+mpaddskill $i 678 87
+mpaddskill $i 8 100
+mpaddskill $i 39 100
+~
+>rand_prog 100~
+if snaffected($i) == 3
+if snaffected($i) == 125
+else
+cast \@shield\@
+endif
+else
+cast \@armor\@
+endif
+~
+|
+V4 20319
+guard templar black-armored black armored VTdoorman Coolbean~
+a black-armored templar guard~
+A black-armored guard stands outside the doors of the tower.
+~
+This unmoving figure is armored in reflective black steel, standing at
+attention outside the doors of the Conclave.  An open-faced helm of the same
+glossy steel reveals a hard, attentive face whose eyes dart methodically. 
+Weapon in hand, the templar guard maintains a steady grip on it, his
+attentions devoted to his assignment.  
+~
+human~
+water scholar~
+ABTX 0 DGJUZ E 0
+45 40 15d190+911 131d121+1211 5d9+25 slash~
+slash~
+-18 -18 -18 -4
+CHIKN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 20318 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK AK medium flesh
+>greet_prog 100~
+if mobhere(12556)
+say Prepare to die, ch\@taren scum!
+mpkill ouln
+endif
+~
+>fight_prog 100~
+if rand(25)
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+cast \@harm\@
+endif
+if mobvalue(0) == 2
+if snaffected($n) == 104
+if snaffected($n) == 677
+cast \@blight\@
+else
+cast \@embrace of isestaton
+endif
+else
+cast plague
+endif
+endif
+if mobvalue(0) == 3
+if snaffected($i) == 679 
+cast \@siphon mana\@
+else
+cast \@demonic howl\@
+endif
+endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 104 79
+mpaddskill $i 3 96
+mpaddskill $i 125 90
+mpaddskill $i 683 100
+mpaddskill $i 75 100
+mpaddskill $i 680 89
+mpaddskill $i 677 100
+mpaddskill $i 679 80
+mpaddskill $i 678 87
+~
+>rand_prog 100~
+if snaffected($i) == 3
+if snaffected($i) == 125
+else
+cast \@shield\@
+endif
+else
+cast \@armor\@
+endif
+~
+|
+V4 20320
+lark bird mountain~
+a mountain lark~
+A mountain lark perches on a small outcropping near its nest.
+~
+Stone grey plumage covers this small bird as it stands perched on a small
+outcropping of rock overlooking its nest.  From time to time the lark issues
+a trilling chirp as its head swivels alertly.  
+~
+song bird~
+water scholar~
+ADGLN 0 T N 0
+1 1 1d4+1 0d0+0 1d2+1 pierce~
+peck~
+-1 -1 -1 1
+FH 0
+26 0 0 0 0 0 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGW ACDEFHKP 0 tiny flesh
+>rand_prog 3~
+mpecho A mountain lark lets out a quiet, trilling chirp.
+~
+|
+V4 20321
+finch spice bird~
+a spice finch~
+A spice finch flits from branch to branch.
+~
+This spice finch flits about the grove, its white-spotted body allowing
+it to blend slightly in the rocky terrain.  Black eyes peer out of a solid
+brown head as it flies from branch to branch, chirping quietly.  
+~
+song bird~
+water scholar~
+ADGHLN 0 T N 0
+1 1 1d4+1 0d0+0 1d2+1 pierce~
+peck~
+-1 -1 -1 1
+FH 0
+26 0 0 0 0 0 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGW ACDEFHKP 0 tiny flesh
+>rand_prog 1~
+if inroom($i) == 20338
+if rand(50)
+south
+else
+west
+endif
+break
+endif
+if inroom($i) == 20337
+if rand(50)
+north
+else
+west
+endif
+break
+endif
+if inroom($i) == 20339
+if rand(50)
+south
+else
+east
+endif
+break
+endif
+if inroom($i) == 20340
+if rand(50)
+north
+else
+east
+endif
+break
+endif
+~
+>rand_prog 2~
+emote flits into the foliage, disappearing.
+mppurge self
+~
+>rand_prog 3~
+emote chirps softly.
+~
+|
+V4 20322
+finchloader finch loader spicy~
+the spicy finchloader~
+That-sa SPICY finch-a loader!
+~
+~
+human~
+water scholar~
+AL 0 LP N 0
+0 0 232d2+232 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 2~
+mpecho A spice finch flits into view.
+mpmload 20321
+~
+>rand_prog 10~
+if inroom($i) == 20338
+if rand(50)
+south
+else
+west
+endif
+break
+endif
+if inroom($i) == 20337
+if rand(50)
+north
+else
+west
+endif
+break
+endif
+if inroom($i) == 20339
+if rand(50)
+south
+else
+east
+endif
+break
+endif
+if inroom($i) == 20340
+if rand(50)
+north
+else
+east
+endif
+break
+endif
+~
+|
+V4 20323
+lizard small grey~
+a small grey lizard~
+A small grey lizard crawls among the rocks.
+~
+This small gray lizard crawls about the ground, its rocky scales allowing
+it to blend in with the stone.  It stops from time to time to bask in the
+heat as it continues its search for food.  
+~
+lizard~
+water scholar~
+AGN 0 0 N 0
+2 2 1d3+2 0d0+0 1d2+1 pierce~
+bite~
+9 9 9 9
+0 0
+26 0 0 0 0 0 0 0 0 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGXc ACDEFHKQV 0 tiny flesh
+>rand_prog 1~
+if islight()
+emote basks in the sun.
+endif
+~
+|
+V4 20324
+pika small rodent~
+a pika~
+A small rodent scurries amongst the rocks with a mouthful of plants.
+~
+This tiny pika is mostly brown in color with small ears and no tail.  It
+bears small black eyes and a rabbit-like muzzle.  The rodent scurries about
+the rocks of its home, searching for plants to furnish its den.  
+~
+rabbit~
+water scholar~
+ADLN 0 0 N 0
+1 1 1d2+2 0d0+0 1d1+0 pierce~
+bite~
+9 9 9 9
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGV ACDEFHJK 0 tiny flesh
+>greet_prog 50~
+if ispc($n)
+if inroom($i) == 20306
+mpecho The pika gives a loud squeak, and scurries into the rocks!
+mpasound You hear a loud squeak from nearby!
+mppurge self
+break
+endif
+if inroom($i) == 20307
+mpecho The pika gives a loud squeak, and scurries down the rockpile.
+mpasound You hear a loud squeak from nearby!
+down
+emote scurries into the rocks!
+mppurge self
+break
+endif
+endif
+~
+>fight_prog 100~
+emote gives a loud squeak!
+mpasound You hear a loud squeak from nearby!
+flee
+~
+>rand_prog 2~
+if inroom($i) == 20306
+emote scurries up the rocks.
+up
+mpstring mob self long A small rodent perches alertly upon the rockfall.
+break
+endif
+if inroom($i) == 20307
+emote scurries down the rockfall.
+down
+mpstring mob self long A small rodent scurries amongst the rocks with a mouthful of plants.
+endif
+~
+|
+V4 20325
+chipmunk tiny~
+a tiny chipmunk~
+A tiny chipmunk scurries through the underbrush.
+~
+Incredibly small, this chipmunk wanders through the underbrush of the
+grove.  White and black stripes run down the side and back of the small
+rodent, as well as running from nose to ear.  
+~
+fox~
+water scholar~
+ADLN 0 Z N 0
+1 1 1d3+1 0d0+0 1d1+1 pierce~
+bite~
+5 5 5 10
+FH 0
+26 0 0 0 0 0 0 0 -10 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGV ACDEFHJKQV 0 tiny flesh
+>rand_prog 3~
+if mobvalue(0) == 0
+emote scurries up a tree, foraging.
+mpstring mob self long A tiny chipmunk forages in a tree.
+mpvalueset 0 1
+else
+emote climbs down a tree to the floor of the grove.
+mpstring mob self long A tiny chipmunk scurries through the underbrush.
+mpvalueset 0 0
+endif
+~
+>rand_prog 2~
+if mobvalue(0) == 0
+if inroom($i) == 20338
+if rand(50)
+south
+else
+west
+endif
+break
+endif
+if inroom($i) == 20337
+if rand(50)
+north
+else
+west
+endif
+break
+endif
+if inroom($i) == 20339
+if rand(50)
+south
+else
+east
+endif
+break
+endif
+if inroom($i) == 20340
+if rand(50)
+north
+else
+east
+endif
+break
+endif
+endif
+~
+|
+V4 20326
+test~
+test~
+Test
+~
+~
+human~
+water scholar~
+ADL 0 0 N 0
+60 0 1d1+20000 0d0+0 0d0+0 none~
+hit~
+-60 -50 -50 -50
+FK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>fight_prog 100~
+mpecho Zap zap zap!
+mpvaluerand 4 130 400
+mpdamtype $n $4 1 0 9
+mpdammess $n $4 \@fire-wreathed darkness\@ 9
+~
+>speech_prog arrow~
+if iscarrying($i) == 103
+say Yep
+endif
+~
+|
+V4 20327
+gravebot grave bot~
+gravebot~
+Gravebot has room enough in the crawlspace for one more body..
+~
+~
+human~
+water scholar~
+ADL 0 L N 0
+60 0 1d1+232 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>time_prog 20~
+if objhere(20332)
+else
+mpvalueset 0 0
+endif
+~
+>verb_prog p dig~
+if iswielding($n) == 15035
+or iswielding($n) == 15116
+if mobvalue(0) == 1
+mpechoat $n There is already a hole here.
+break
+else
+mpechoat $n You dig, uncovering a decaying body!
+mpechoaround $n $N digs into the earth, soon uncovering a decaying corpse.
+mpoload 20332 in room
+if isunderlimit(12543)
+mpoload 12543 in dirt-caked
+else
+endif
+mpmload 20328
+mpforce wootyo mpfocus $n
+mpforce wootyo mptrigger
+mpvalueset 0 1
+endif
+else
+mpechoat $n Dig with what?
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+|
+V4 20328
+demonic entity wootyo~
+a demonic entity~
+A demonic entity possesses folk.
+~
+~
+demon~
+water scholar~
+ADL 0 DLPT N 0
+60 0 1d1+3434 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 B
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACHMV ABCDEFGHIJKP 0 medium flesh
+>time_prog 6~
+if mobvalue(4) == 8
+mppurge self
+else
+mpvalueup 4
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+>greet_prog 100~
+if class($n) == 3
+or class($n) == 9
+mpforce $f snarl
+mpforce $f murder $n
+endif
+endif
+~
+>rand_prog 100~
+if ishere($f)
+else
+mpgoto $f
+endif
+~
+>trigger_prog 100~
+mpecho A barely noticable shimmer seems to darken the air over the body.
+mpechoat $f The odd darkness wafts over you!
+mpechoaround $f The odd darkness wafts over $F!
+if saves12($f) == 40
+if saves9($f) == 45
+if saves18($f) == 50
+mpechoat $f You feel some presence clawing at your mind, but force it away!
+mppurge self
+break
+endif
+endif
+endif
+mpechoat $f you feel some presence clawing at your mind, forcing it\@s way in!
+mpstring mob self long A demonic entity possesses $F.
+follow $f
+~
+|
+V4 20329
+doorman wizidoorman~
+Doorman~
+The wizi doorman is very interested if why you have come here. VERY interested.
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+0 0 1d1+2000 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog north~
+if isimmort($n)
+or isghost($n)
+mpnextinterp
+else
+if isfriend($n) == 56
+mpforce vtdoorman tell $n Greetings, $N.
+mpnextinterp
+else
+if class($n) == 8
+or class($n) == 2
+mpforce vtdoorman nod $n
+mpnextinterp
+else
+if mobhere(20318)
+or mobhere(20319)
+mpechoat $n A black-armored templar guard bars your way.
+mpechoaround $n A black-armored templar guard bars $N\@s way.
+mpforce VTdoorman say You may not enter without permission.
+else
+mpnextinterp
+endif
+endif
+endif
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+|
+V4 20330
+ch\@taren traveler traveldad~
+a ch\@taren traveler~
+A ch\@taren traveler camps here.
+~
+This ch\@taren traveler seems weary.  His clothing bears the wear of long
+travel and bloodied bandages wrap minor wounds.  He wears the garb of
+far-off Alensha, showing him to be far from home indeed.  His face is
+purposeful, despite his tired silver eyes, his posture determined.  
+~
+ch\@taren~
+water scholar~
+AL B CDGU G 0
+30 15 22d45+941 30d10+100 4d8+15 pierce~
+stab~
+-9 -9 -9 0
+HK 0
+26 0 0 0 10 0 0 0 0 0 0 0 0 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 
+5 12556 0 0 0 0
+stand stand male 100 51
+AHKMV ABCDEFGIJK AEK medium flesh
+>verb_prog p Andaquickexit~
+if ispc($n)
+break
+else
+say Farewell, $F! We return home.
+emote reaches out for a rune of spirit, pulling himself and his group across the weave.
+mpforce ouln mpgoto 20300
+mpgoto 20300
+endif
+~
+>verb_prog p rewardverbthing~
+if ispc($n)
+break
+else
+if isbitset($f) == 20330
+say I have already given you a reward, but accept my thanks, my friend.
+else
+say As promised, take this pendant to guard you from the void.
+mpoload 20335
+give pendant $f
+mpxp $f 2500
+mpechoat $f You feel more experienced!
+mpbitset $f 20330 1
+endif
+endif
+~
+>data_prog reunion~
+emote and Ouln hug for several minutes.
+rewardverbthing
+esay \@says, tears in his eyes\@ Thank you, $F. Thank you.
+Andaquickexit
+~
+>data_prog sadstory~
+esay \@sighs, beginning\@ You must know, my son was abducted by a group of void scholars.
+say We had come to Earendam to trade, but we were assaulted by a group of slavers near the docks.
+say I escaped, by my boy Ouln was taken.
+say I tracked down the slavers, only to find he was sold to the Aklaju for their dark arts..
+esay \@clenches his fist\@ I cornered a void scholar of Aklaju, and was able force him to tell me where he was being held.
+say Which.. led me to this tower. I cannot hope to breach it, but I cannot give up hope.
+say If you can brave the tower, and find my son, give him this and he will follow you out.
+give signet $f
+say Do not let Ouln run afoul of the templar guards, however! They will slay him on sight!
+say I will reward you as best I can should you return with my son.
+say Good luck, $F
+~
+>speech_prog p Yes.~
+if isgood($n)
+emote smiles brightly!
+esay \@says\@ Oh thank you, $N. Let me explain!
+mpfocus $n
+mpsetdata sadstory
+mpoload 20333
+endif
+~
+>rand_prog 85~
+$d
+mpnextdata
+~
+>greet_prog 100~
+if ispc($n)
+if isbitset($n) == 20330
+nod $n
+else
+if isgood($n)
+if remembers($n)
+nod $n
+else
+tell $n Please, kindhearted one, would you aid me? Say \@Yes.\@ if you are willing! 
+mpremember $n
+endif
+endif
+endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 687 100
+speak common
+~
+>fight_prog 100~
+if rand(10)
+cast \@ray of light\@
+endif
+~
+|
+V4 20331
+Reagentbot Reagentbot2~
+Reagentbot2~
+ReagentBot2 is ordering supplies as well.
+~
+~
+human~
+water scholar~
+AB 0 LP N 0
+20 0 1d1+23123 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>time_prog 1~
+if rand(10)
+if isanypchere()
+else
+get all shelves
+mppurge self
+break
+endif
+endif
+~
+>load_prog 100~
+if rand(70)
+mpoload 84
+put stick shelves
+endif
+if rand(60)
+mpoload 83
+put bone shelves
+endif
+if rand(15)
+mpoload 20336
+put mercury shelves
+endif
+~
+|
+V4 20332
+caladaran surveyor~
+a caladaran surveyor~
+A caladaran surveyor searches his surroundings for signs of mineral deposits.
+~
+This dusty caladaran wanders the Mlejian mountains, searching for the
+telltale signs of hidden mineral wealth.  He stops often to inspect the rock
+formations of the mountains, taking notes on a scrap of parchment as he does
+so.  A pack slung over his shoulder carries his camping supplies and food.  
+~
+caladaran~
+water scholar~
+AG 0 D N 0
+40 20 28d70+1116 40d10+100 5d8+20 bash~
+smash~
+-15 -15 -15 -3
+FK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMW ABCDEFGIJK AIK medium flesh
+>speech_prog p ~
+if isnpc($n)
+or class($n) != 1
+or chosenpath($n) != wakened stone
+  if rand(1)
+    if rand(50)
+      snort $n
+    else
+      eyebrow $n
+    endif
+  endif
+else
+  if compx() == stone
+  or compx() == rock
+  or compx() == granite
+  or compx() == shale
+  or compx() == sandstone
+  or compx() == obsidian
+  or compx() == marble
+    say You can find common stone easily enough. Granite tends to be the main mass of the great mountain ranges, and it makes up most of the deeper stone layers as well.
+    say Sandstone is more plentiful in the western regions round about Earendam, or in the dry southlands. Shale, though, is found in and around great river valleys and swamps.
+    say Regions with past volcanic activity will have a lot of obsidian. And marble may be layered with any of the more common stone, depending on the location.
+    break
+  endif
+  if compx() == gem
+    say Gems? Of which sort?
+    break
+  endif
+  if compx() == opal
+    say It isn\@t so hard to come across good opal. A ravine in the dry lands to the east of the mountains here has produced some quality gemstones.
+    sage
+    break
+  endif
+  if compx() == jade
+    say I met a miner who was half out of his wits, muttering about skeletal srryn. But he had some impressive rough jade pieces.
+    break
+  endif
+  if compx() == bloodstone
+    say This part of the mountains has a fair amount of bloodstone.
+    sage
+    break
+  endif
+  if compx() == onyx
+    say There are some caverns under the temple of the Forge Lord with onyx, or so I was told by an acquaintance.
+    break
+  endif
+  if compx() == quartz
+    say These mountains have some quartz deposits. Probably worth setting up a small mining operation in one of the caverns, I think, if it weren\@t for that beast.
+    sage
+    break
+  endif
+  if compx() == aquamarine
+    say There\@s a hidden canyon near the Dantaron wellspring. The place is thick with bandits, but they should still have some aquamarine deposits. Of course the bandits are too lazy to mine it--they\@d rather steal the finished jewels.
+    break
+  endif
+  if compx() == emerald
+  or compx() == topaz
+    say I\@ve heard that deep within the Kzaya-Ha canyon, there was a gemstone mine long ago. It produced topaz and even some emerald. But I\@m certainly not going to be surveying in there anytime soon.
+    shudder
+    break
+  endif
+  if compx() == diamond
+  or compx() == sapphire
+  or compx() == ruby
+  or compx() == amethyst
+    say I wish I knew where to find those! I doubt I\@d have to spend my time picking through rubble and dust if I did.
+    break
+  endif
+  if rand(5)
+    say I don\@t know about that, but I do know a thing or two about stone and gems.
+  endif
+endif
+~
+>load_prog 100~
+mpoload 20342
+mpvaluerand 1 1 3
+if mobvalue(1) == 1
+mpat 20359 put roll surveydrop
+endif
+if mobvalue(1) == 2
+mpat 20330 put roll surveydrop
+endif
+if mobvalue(1) == 3
+mpat 20312 put roll surveydrop
+endif
+speak common
+~
+>rand_prog 2~
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+emote looks around his surroundings carefully.
+endif
+if mobvalue(0) == 2
+peer
+endif
+~
+|
+V4 20333
+the srryn shaman~
+the srryn shaman~
+A srryn shaman hunches here, eyes glinting.
+~
+This brown-scaled srryn hunches over the rocky earth, clad in the garb of
+a shaman.  His tunic is made from tranluscent white lengths of shed reptile
+skin and his cloak sewn from animal furs.  His slit yellow eyes flash warily
+as he claws patterns in the ground before him, chanting.  
+~
+srryn~
+water scholar~
+AGL P DFJZ E 0
+45 23 31d84+1161 45d10+100 6d7+23 fire~
+flame~
+-18 -18 -18 -4
+FKMV B
+26 0 0 0 0 0 0 0 20 -20 0 0 20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 10 61
+AHMWX ABCDEFGIJKLPQUVX ACK medium unknown
+>load_prog 100~
+mpaddskill $i 84 100
+~
+>greet_prog 100~
+if ispc($n)
+if isenemy($n) == 61
+esay \@lunges, snarling\@ Death to all those who oppose Sythak\@s will!
+mpkill $n
+break
+endif
+if isfriend($n) == 61
+if israce($n) == srryn
+if remembers($n)
+nod $n
+else
+esay \@hisses\@ Our blessings on you, scalebrother.
+cast \@immolation\@ $n
+mpremember $n
+endif
+else
+if rand(30)
+esay \@hisses\@ You are tolerated warmblood, nothing more. Remember that.
+endif
+endif
+else
+if rand(20)
+esay \@hisses\@ Do not disturb our works, less you face my wrath.
+endif
+endif
+endif
+~
+>load_prog 100~
+speak arcane
+~
+|
+V4 20334
+srryn ranger Mlejiansrryn~
+the srryn ranger~
+A srryn ranger sulks here, hissing angrily.
+~
+This srryn is dressed in the tanned animal hides of a ranger.  His scales
+are sand-brown and dulled by long exposure to the elements.  He seems
+uncomfortable in his surroundings, and glances around uneasily from time to
+time as if waiting for something unwelcome.  
+~
+srryn~
+water scholar~
+AB 0 FJZ N 0
+35 18 25d57+1041 35d10+100 5d7+18 slash~
+bite~
+-12 -12 -12 -1
+FHKMV B
+26 0 0 0 0 0 0 0 20 -20 0 0 20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 20 61
+AHMX ABCDEFGIJKLQUVX AC medium flesh
+>data_prog Conclusion~
+esay \@hisses\@ We shall tolerate you in these caves until we do so no longer.
+esay \@nods\@ The bloodstone circlet will allow you to see in darkness when worn.
+esay \@adds\@ However, should you die, it will rot with your corpse. Be aware.
+say I have no more to say. Begone.
+~
+>give_prog scroll shed lizard hide~
+if cansee($i) == $n
+if ispc($n)
+if isbitset($n) == 20305
+say You have already done this service.
+else
+if isenemy($n)
+esay \@growls\@ Now you mock us? Begone!
+else
+esay \@hisses\@ Ahhh! You have done well, your reward..
+mpxp $n 5000
+mpechoat $n You feel more experienced!
+mpoload 20353
+give bloodstone $n
+mpfaction $n 61 800 0
+mpsetdata Conclusion
+mpbitset $n 20305 1
+mpjunk scroll
+endif
+endif
+endif
+else
+emote looks around him, trying to see who is there, then shrugs.
+endif
+~
+>data_prog srorsian~
+say Something was stolen from us.
+hiss
+esay \@hisses angrily\@ A scroll treasured by our shaman was taken, stolen by a filthy warmblood ranger!
+say He is an alatharya, you see, lurking in the groves to the northwest.
+say Return the scroll to me and I shall find a fitting reward..
+say Perhaps a circlet to let you see in darkness?
+emote hisses to himself, finished.
+mpvalueset 1 0
+~
+>speech_prog yes~
+if ispc($n)
+if isenemy($n) == 61
+snort
+else
+if mobvalue(1) == 0
+mpvalueset 1 1
+esay \@begins\@ Then listen..
+mpsetdata Srorsian
+endif
+endif
+endif
+~
+>rand_prog 100~
+$d
+mpnextdata
+~
+>load_prog 100~
+speak common
+~
+>greet_prog 100~
+if ispc($n)
+if isenemy($n) == 61
+hiss $n
+say Begone, profane one!
+break
+endif
+if isbitset($n) == 20305
+nod $n
+else
+if remembers($n)
+else
+mpremember $n
+tell $n You there, I\@ve a task if you wish to hear it. Say \@yes\@.
+endif
+endif
+endif
+~
+|
+V4 20335
+phoenix bird brilliant plumage mob_20335~
+a phoenix~
+A large bird with brilliant plumage preens its feathers.
+~
+This phoenix makes its eyrie in the high reaches of the Mlejian
+mountains.  It regards its surroundings with an unusual intelligence, its
+yellow slit-pupiled eyes bright and contemplative.  Its plumage is
+semi-reflective, brilliantly casting back any light with colors ranging from
+a deep blood crimson to fierce flame red to a piercing oranges and yellows. 
+A faint shimmering, as one might see over a campfire, surrounds the magical
+creature.  
+~
+song bird~
+water scholar~
+ABGPX 0 DTZ N 0
+60 30 9500d1+1 500d10+10 1d150+50 fire~
+flaming talon~
+-27 -27 -27 -27
+FH 0
+26 0 0 0 0 0 0 0 33 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACGHMVW ABCDEFHJKP A small unknown
+>death_prog 100~
+mpecho The phoenix falls to the ground and then crumbles abruptly into ash!
+mpoload 20356 in room
+if isbitset($n) == 20356
+else
+  mpaddrumor \@$I\@ If $N looks a bit singed lately, it\@s because $e has been hunting down phoenixes in the Mlejian Mountains.
+  mpbitset $n 20356 1
+endif
+\\\\ Leave the corpse in a clean-up room
+mpgoto 24000
+~
+>fight_prog 100~
+if rand(50)
+  if rand(50)
+    mpset mob self damtype 3
+    mpstring mob self damverb slashing beak
+  else
+    mpset mob self damtype 2
+    mpstring mob self damverb stabbing beak
+  endif
+else
+  mpset mob self damtype 4
+  mpstring mob self damverb flaming talon
+endif
+if rand(33)
+  if rand(50)
+    \\\\ Firestorm
+    mpecho $I spins in a swirl of crimson flame!
+    mpcast 65 60
+  else
+    \\\\ Dispersion
+    mpfocus $n
+    mpecho $I shrieks angrily!
+    mpcast 397 60
+  endif
+endif
+~
+>rand_prog 25~
+if inroom($i) == 20343
+  if isanypcarea()
+  else
+    \\\\ PCs left the area
+    mppurge self
+  endif
+else
+  \\\\ Return to the eyrie
+  mpecho $I looks about with unblinking eyes.
+  mpecho $I disappears in a puff of crimson smoke!
+  mpgoto 20343
+  mpecho $I arrives in a sudden burst of flame!
+  if isfocused($i)
+    if ishere($f)
+      mpkill $f
+    else
+      \\\\ If the target is not at eyrie, looks for 1 pc target and if none, leaves.
+      mpunfocus
+      mpecho $I looks about with unblinking eyes.
+      mpfocus $r
+      if ispc($f)
+        mpecho $I swoops at $F and attacks!
+        mpkill $f
+      else
+        mpecho $I disappears in a puff of crimson smoke!
+        mppurge self
+      endif
+    endif
+  endif
+ endif
+~
+|
+V4 20336
+phoenixbot bot~
+phoenixbot~
+Phoenixbot stands here, doing things with progs that rooms can\@t.
+~
+~
+human~
+water scholar~
+AL 0 DFJLZe N 0
+60 1 1d1+0 1d1+1 1d2+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog execute_plan_phoenix~
+if mobhere(20335)
+  mpechoat $n The phoenix flits towards you and attacks!
+  mpechoaround $n The phoenix flits towards $N and attacks!
+else
+  mpmload 20335
+  mpechoat $n A phoenix swoops down and attacks you!
+  mpechoaround $n A phoenix swoops down and attacks $N!
+endif
+mplag $n 2
+mpforce mob_20335 mpkill $n
+~
+>verb_prog p take~
+mpvalueset 0 0
+if iscarrying($n) == 20357
+else
+  mpvalueup 0 1
+endif
+mpinterpret $n $x
+if iscarrying($n) == 20357
+  mpvalueup 0 1
+endif
+if value(0) == 2
+  mpforce $n execute_plan_phoenix
+endif
+~
+>verb_prog p get~
+mpvalueset 0 0
+if iscarrying($n) == 20357
+else
+  mpvalueup 0 1
+endif
+mpinterpret $n $x
+if iscarrying($n) == 20357
+  mpvalueup 0 1
+endif
+if value(0) == 2
+  mpforce $n execute_plan_phoenix
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+20300
+earplugs wooden paid~
+a pair of earplugs~
+A pair of wooden earplugs lie here.~
+~
+wood~
+treasure S 0 0 AE
+0 0 0 0 0
+5 0 1201200 0 P
+0
+A
+20 3
+A
+48 80
+>remove_prog 100~
+mpremaffect 356
+~
+>wear_prog 100~
+mpaddaffect 356 60 -1 27 0 0
+~
+|
+V13
+20301
+Necronomicon cliff notes yellow black booklet~
+the cliff notes to the Necronomicon~
+A yellow and black booklet lies here.~
+~
+parchment~
+treasure CES 0 0 AO
+0 0 0 0 0
+80 3 0 0 P
+0
+V13
+20302
+joy pile~
+joy~
+Some joy lies in a pile here.~
+~
+unknown~
+trash 0 0 0 A
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+20303
+coke can cool refreshing red~
+a can of cool, refreshing coke~
+A red can lies here.~
+~
+steel~
+potion G 0 0 A
+60 'haste' 'revitalize' 'refresh' 'awaken'
+60 1 0 0 P
+0
+V13
+20304
+hide thick reptilian brown~
+a thick, reptilian hide~
+A thick, reptilian hide lies here, brown in color.~
+~
+flesh~
+armor QS 0 0 AK
+10 20 20 5 0
+51 300 59127 3 P
+20
+A
+35 3
+A
+33 3
+A
+2 -2
+A
+13 30
+E
+brown~
+This thick, brown hide seems to have been taken from a massive reptile. 
+It is quite durable, if heavy.  
+~
+E
+reptilian~
+This thick, brown hide seems to have been taken from a massive reptile. 
+It is quite durable, if heavy.  
+~
+E
+thick~
+This thick, brown hide seems to have been taken from a massive reptile. 
+It is quite durable, if heavy.  
+~
+E
+hide~
+This thick, brown hide seems to have been taken from a massive reptile. 
+It is quite durable, if heavy.  
+~
+V13
+20305
+bar metal filth-encrusted~
+a filth-encrusted metal bar~
+A metal bar lies here, coated in filth.~
+~
+steel~
+weapon 0 0 F AN
+mace 2 9 1 0
+smash~
+10 70 553 0 P
+0
+A
+45 -5
+A
+19 1
+E
+filth-encrusted~
+This metal bar appears to have been broken from something, both ends
+jagged.  Filth is encrusted on the shaft, reeking foully.  
+~
+E
+metal~
+This metal bar appears to have been broken from something, both ends
+jagged.  Filth is encrusted on the shaft, reeking foully.  
+~
+E
+bar~
+This metal bar appears to have been broken from something, both ends
+jagged.  Filth is encrusted on the shaft, reeking foully.  
+~
+V13
+20306
+developing plague Delayed Affect Item~
+a developing plague~
+A Ramc Delayed Affect Item(tm) lies here.~
+~
+unknown~
+trash Sd 0 0 A
+0 0 0 0 0
+90 0 0 0 P
+0
+>time_prog 13~
+if value(0) == 3
+  mpcast 104 40 $o
+  oppurge self
+  break
+else
+  opvalueup 0
+endif
+~
+|
+V13
+20307
+test ramctest item~
+ramc\@s all-purpose test item~
+Ramc\@s all-purpose test item.~
+~
+unknown~
+trash 0 0 0 AO
+0 0 0 0 0
+0 0 0 0 P
+0
+>speech_prog p I wanna be sick~
+mpecho Okay, $O
+opcast 104 99 $o
+~
+|
+V13
+20308
+filth reeking pile wizifilth fob~
+reeking filth is caked on this poor sap~
+Reeking filth. mm.~
+~
+unknown~
+trash Sd 0 0 A
+0 0 0 0 0
+90 50 0 0 P
+0
+>rand_prog 100~
+if isimmort($o)
+else
+if rand(5)
+mpechoaround $o A horrible stench wafts from $O.
+mpechoat $o The stench of filth wafts from you.
+endif
+if objvalue(0) == 200
+mpechoat $o The stench around you finally fades away.
+mppurge self
+break
+else
+opvalueup 0
+endif
+endif
+~
+>entry_prog 100~
+if isimmort($o)
+else
+mpechoaround $o The smell of reeking filth accompanies $O\@s arrival.
+endif
+~
+|
+V13
+20309
+bearskin sleeping pallet~
+a bearskin sleeping pallet~
+A dirty bearskin sleeping pallet lies here.~
+~
+hide~
+furniture Se 0 0 0
+3 10000 BEHK 130 101
+25 200 0 3 P
+0
+V13
+20310
+bow large sturdy~
+a large, sturdy bow~
+A large, sturdy-looking bow lies here.~
+~
+wood~
+bow S 0 F AO
+0 AC AD 0 0
+50 150 61207 3 P
+20
+A
+19 4
+A
+18 2
+A
+14 -50
+E
+sturdy~
+This bow is large, obviously sized for someone of great strength and
+height.  The wood of the bow is solid, and almost unbending.  
+~
+E
+large~
+This bow is large, obviously sized for someone of great strength and
+height.  The wood of the bow is solid, and almost unbending.  
+~
+E
+bow~
+This bow is large, obviously sized for someone of great strength and
+height.  The wood of the bow is solid, and almost unbending.  
+~
+V13
+20311
+club huge stone studded wooden~
+a huge, stone-studded club~
+A huge wooden club lies here, studded with stone.~
+~
+wood~
+weapon S 0 F AN
+mace 10 4 1 0
+bludgeoning~
+50 310 244786 3 P
+20
+A
+1 1
+A
+18 -1
+A
+19 4
+E
+club~
+A huge wooden club, its surface is studded with bits of jagged granite.
+~
+E
+huge~
+A huge wooden club, its surface is studded with bits of jagged granite.
+~
+E
+stone~
+A huge wooden club, its surface is studded with bits of jagged granite.
+~
+E
+studded~
+A huge wooden club, its surface is studded with bits of jagged granite.
+~
+E
+wooden~
+A huge wooden club, its surface is studded with bits of jagged granite.  
+~
+V13
+20312
+cage sturdy wire ~
+a sturdy wire cage~
+A sturdy wire cage hangs from the ceiling, runes marking its steel.~
+~
+steel~
+treasure CEG 0 0 P
+0 0 0 0 0
+30 120 0 1 P
+0
+E
+runes~
+Dark runes mark this wrought-iron cage.
+~
+V13
+20313
+shelves ~
+the shelves~
+Shelves line the storage room walls.~
+~
+wood~
+container Se 0 0 P
+500 0 0 100 100
+30 400 0 3 P
+0
+V13
+20314
+staff dark ironwood ebony-tipped tipped ebony~
+an ebony-tipped staff of dark ironwood~
+A dark ironwood staff lies here, either end tipped with black ebony.~
+~
+ironwood~
+weapon CEGJ 0 F AN
+staff 6 6 9 F
+draining smash~
+47 100 2800 2 P
+25
+A
+12 60
+E
+staff~
+A length of finely-hewn ironwood composes the bulk of this staff, its
+color a dark shade of brown.  Either end of the staff is capped with ebony
+wood of solid, reflective black.  The wood of this weapon has been scored
+with foul, harsh sigils.  
+~
+E
+dark~
+A length of finely-hewn ironwood composes the bulk of this staff, its
+color a dark shade of brown.  Either end of the staff is capped with ebony
+wood of solid, reflective black.  The wood of this weapon has been scored
+with foul, harsh sigils.  
+~
+E
+ironwood~
+A length of finely-hewn ironwood composes the bulk of this staff, its
+color a dark shade of brown.  Either end of the staff is capped with ebony
+wood of solid, reflective black.  The wood of this weapon has been scored
+with foul, harsh sigils.  
+~
+E
+ebony-tipped~
+A length of finely-hewn ironwood composes the bulk of this staff, its
+color a dark shade of brown.  Either end of the staff is capped with ebony
+wood of solid, reflective black.  The wood of this weapon has been scored
+with foul, harsh sigils.  
+~
+E
+tipped~
+A length of finely-hewn ironwood composes the bulk of this staff, its
+color a dark shade of brown.  Either end of the staff is capped with ebony
+wood of solid, reflective black.  The wood of this weapon has been scored
+with foul, harsh sigils.  
+~
+E
+ebony~
+A length of finely-hewn ironwood composes the bulk of this staff, its
+color a dark shade of brown.  Either end of the staff is capped with ebony
+wood of solid, reflective black.  The wood of this weapon has been scored
+with foul, harsh sigils.  
+~
+>hit_prog 5~
+mpechoat $o You feel an ebony-tipped staff of dark ironwood throb in your grasp.
+~
+|
+V13
+20315
+robes dark set~
+a set of dark robes~
+A set of dark robes lie in a pile here.~
+~
+cloth~
+armor CD 0 F AK
+4 2 4 15 0
+47 100 14712 2 P
+150
+A
+13 20
+A
+12 20
+E
+dark~
+A set of well-made robes of thick black cloth.
+~
+E
+robes~
+A set of well-made robes of thick black cloth.
+~
+E
+set~
+A set of well-made robes of thick black cloth.
+~
+V13
+20316
+scroll dark~
+a dark scroll~
+A dark scroll lies here.~
+~
+parchment~
+scroll GS 0 0 AO
+47 'summon' '' '' ''
+47 5 0 1 P
+2
+E
+scroll~
+Arcane words are penned in red ink upon the blackened surface of this
+parchment.  
+~
+E
+dark~
+Arcane words are penned in red ink upon the blackened surface of this
+parchment.  
+~
+V13
+20317
+halberd steel ironwood~
+a steel headed halberd with an ironwood shaft~
+A halberd lies here, shaft made of ironwood.~
+~
+ironwood~
+weapon S 0 F AN
+polearm 3 13 3 F
+chop~
+45 230 10300 3 P
+200
+A
+17 -5
+E
+halberd~
+This long shaft of ironwood is topped with a steel halberd blade.
+~
+E
+steel~
+This long shaft of ironwood is topped with a steel halberd blade.
+~
+E
+ironwood~
+This long shaft of ironwood is topped with a steel halberd blade.
+~
+V13
+20318
+flail runed dark steel~
+a runed flail of dark steel~
+A dark steel flail lies here, runes etched on its haft.~
+~
+steel~
+weapon CEFG 0 F AN
+flail 4 9 1 0
+smash~
+40 80 8552 1 P
+70
+A
+18 3
+A
+12 15
+E
+dark~
+Runes are etched in the haft of this flail.  From this scored length of
+steel a steel chain emerges, an iron ball hanging from it.  
+~
+E
+runed~
+Runes are etched in the haft of this flail.  From this scored length of
+steel a steel chain emerges, an iron ball hanging from it.  
+~
+E
+steel~
+Runes are etched in the haft of this flail.  From this scored length of
+steel a steel chain emerges, an iron ball hanging from it.  
+~
+E
+flail~
+Runes are etched in the haft of this flail.  From this scored length of
+steel a steel chain emerges, an iron ball hanging from it.  
+~
+V13
+20319
+shield dull iron~
+a dull iron shield~
+A dull iron shield lies here.~
+~
+iron~
+armor 0 0 F AJ
+9 9 9 0 0
+40 130 10689 2 P
+200
+A
+13 20
+A
+17 -5
+E
+shield~
+This shield is forged of dull iron.
+~
+E
+dull~
+This shield is forged of dull iron.
+~
+E
+iron~
+This shield is forged of dull iron.
+~
+V13
+20320
+key simple dark iron~
+a simple key of dark iron~
+A simple key of dark iron lies here.~
+~
+iron~
+key 0 0 F A
+0 0 0 0 0
+30 3 0 0 P
+0
+E
+key~
+This simple key is forged of dark iron.
+~
+E
+simple~
+This simple key is forged of dark iron.
+~
+E
+dark~
+This simple key is forged of dark iron.
+~
+E
+iron~
+This simple key is forged of dark iron.
+~
+V13
+20321
+key thin iron~
+a thin iron key~
+A thin iron key rests here.~
+~
+iron~
+key 0 0 F A
+0 0 0 0 0
+35 3 0 0 P
+0
+E
+key~
+This thin key is made of iron.
+~
+E
+thin~
+This thin key is made of iron.
+~
+E
+iron~
+This thin key is made of iron.
+~
+V13
+20322
+sword dark iron ebony~
+a dark iron sword with an ebony hilt~
+A dark iron sword with an ebony hilt lies here.~
+~
+iron~
+weapon CE 0 F AN
+sword 6 6 3 D
+slash~
+45 120 17471 2 P
+60
+A
+19 2
+A
+12 15
+E
+ebony~
+This longsword is forged of darkened iron.  A well-crafted ebony hilt and
+crossguard hold the sharpened blade.  
+~
+E
+dark~
+This longsword is forged of darkened iron.  A well-crafted ebony hilt and
+crossguard hold the sharpened blade.  
+~
+E
+iron~
+This longsword is forged of darkened iron.  A well-crafted ebony hilt and
+crossguard hold the sharpened blade.  
+~
+E
+sword~
+This longsword is forged of darkened iron.  A well-crafted ebony hilt and
+crossguard hold the sharpened blade.  
+~
+V13
+20323
+axe iron ebony haft~
+an ebony-hafted iron axe~
+An iron axe with an ebony haft lies here.~
+~
+iron~
+weapon CE 0 F AN
+axe 7 5 3 0
+hack~
+45 200 37588 2 P
+60
+A
+19 3
+A
+12 15
+E
+haft~
+A wickedly sharp axe blade is set into an ebony haft.
+~
+E
+ebony~
+A wickedly sharp axe blade is set into an ebony haft.
+~
+E
+iron~
+A wickedly sharp axe blade is set into an ebony haft.
+~
+E
+axe~
+A wickedly sharp axe blade is set into an ebony haft.
+~
+V13
+20324
+shield black reflective steel~
+a shield of reflective black steel~
+A reflective black steel shield lies here.~
+~
+steel~
+armor C 0 F AJ
+9 9 9 9 0
+45 100 12790 2 P
+100
+A
+47 1
+A
+19 2
+A
+12 15
+E
+steel~
+The strong steel of this shield is a glossy, reflective black.
+~
+E
+reflective~
+The strong steel of this shield is a glossy, reflective black.
+~
+E
+black~
+The strong steel of this shield is a glossy, reflective black.
+~
+E
+shield~
+The strong steel of this shield is a glossy, reflective black.
+~
+V13
+20325
+leaf brownish-yellow yellow~
+a brownish-yellow leaf~
+A brownish-yellow leaf lies here.~
+You recall hearing tales of specially grown bushes that allow one who
+chews their leaves to see into a man\@s heart.  You suspect this to be such a
+leaf.  
+~
+herb~
+pill G 0 F A
+30 'detect good' '' '' ''
+30 1 0 0 P
+0
+E
+yellow~
+A small, brownish-yellow leaf.  It smells rather tart.  
+~
+E
+brownish-yellow~
+A small, brownish-yellow leaf.  It smells rather tart. 
+~
+E
+leaf~
+A small, brownish-yellow leaf.  It smells rather tart.  
+~
+V13
+20326
+nest small~
+a small bird\@s nest~
+A small bird\@s nest woven from roots and sticks is nestled in a crook in the slope.~
+~
+plant~
+container e 0 0 P
+2 0 0 4 99
+1 2 0 0 P
+0
+V13
+20327
+egg small brown-speckled~
+a brown-speckled egg~
+A small, brown-speckled egg lies here.~
+~
+food~
+food 0 0 F A
+20 50 0 0 0
+5 1 0 0 P
+0
+E
+brown-speckled~
+This pale, glossy greenish-white egg is speckled with a buffish brown.
+~
+E
+small~
+This pale, glossy greenish-white egg is speckled with a buffish brown.
+~
+E
+egg~
+This pale, glossy greenish-white egg is speckled with a buffish brown.
+~
+>take_prog egg small brown-speckled~
+if mobhere(20320)
+mpechoat $n A mountain lark chirps in protest as you take the egg, pecking ineffectually at you!
+mpechoaround $n A mountain lark chirps in protest as $N takes the egg, pecking ineffectually at $m!
+endif
+~
+>take_prog egg small brown-speckled~
+if mobhere(20320)
+mpechoat A mountain lark chirps in protest as you take the egg, pecking ineffectually at you!
+mpechoaround A mountain lark chirps in protest as $N takes the egg, pecking ineffectually at $m!
+endif
+~
+|
+V13
+20328
+spring small~
+a small spring~
+A small spring bubbles near the back of the ledge, a thin line of water trickling down the slope.  ~
+~
+water~
+fountain Se 0 0 P
+0 0 'water' 0 0
+20 0 0 0 P
+0
+V13
+20329
+shallow puddle trickle~
+a shallow puddle~
+A thin line of water trickles down the slope, collecting in a shallow puddle.  ~
+~
+water~
+fountain Se 0 0 P
+0 0 'water' 0 0
+20 0 0 0 P
+0
+V13
+20330
+shirt dirty hides~
+a shirt of dirty hides~
+A shirt made from dirty hides lies here.~
+~
+hide~
+armor S 0 F AD
+10 10 10 0 0
+50 150 37417 2 P
+50
+A
+2 -1
+A
+19 3
+A
+13 20
+E
+shirt~
+This thick, heavy shirt is composed of dirty hides.
+~
+E
+dirty~
+This thick, heavy shirt is composed of dirty hides.
+~
+E
+hides~
+This thick, heavy shirt is composed of dirty hides.
+~
+V13
+20331
+leggings pair dirty hides~
+a pair of leggings made from dirty hides~
+A pair of leggings sewn from dirty hides lie here.~
+~
+hide~
+armor S 0 F AF
+9 9 9 0 0
+50 100 42978 2 P
+50
+A
+14 20
+A
+19 3
+A
+13 15
+E
+leggings~
+Sewn from thick, dirty hides, this large pair of leggings is quite
+durable.  
+~
+E
+pair~
+Sewn from thick, dirty hides, this large pair of leggings is quite
+durable.  
+~
+E
+dirty~
+Sewn from thick, dirty hides, this large pair of leggings is quite
+durable.  
+~
+E
+hides~
+Sewn from thick, dirty hides, this large pair of leggings is quite
+durable.  
+~
+V13
+20332
+corpse decaying dirt-caked~
+a decaying, dirt-caked corpse~
+A decaying corpse lies half-buried in the earth.~
+~
+flesh~
+container CE 0 0 P
+200 0 0 40 100
+34 0 0 2 P
+0
+>time_prog 10~
+opvalueup 1
+if objvalue(1) == 2
+oppurge self
+break
+endif
+~
+|
+V13
+20333
+ring signet alensha steel~
+an Alensha signet ring~
+A steel signet ring lies here~
+~
+steel~
+armor 0 0 0 AB
+1 1 1 0 0
+10 1 0 0 P
+0
+E
+steel~
+This simple signet ring bears a waterfall as its design.  
+~
+E
+alensha~
+This simple signet ring bears a waterfall as its design.
+~
+E
+signet~
+This simple signet ring bears a waterfall as its design.
+~
+E
+ring~
+This simple signet ring bears a waterfall as its design.
+~
+V13
+20334
+boots pair leather sturdy travel~
+a pair of sturdy travel boots~
+A pair of leather boots lie here.~
+~
+leather~
+armor S 0 F AG
+3 4 4 2 0
+30 50 4230 0 P
+0
+A
+13 12
+A
+14 24
+E
+travel~
+This sturdy boots are made to protect the feet during long travel.
+~
+E
+sturdy~
+This sturdy boots are made to protect the feet during long travel.
+~
+E
+pair~
+This sturdy boots are made to protect the feet during long travel.
+~
+E
+leather~
+This sturdy boots are made to protect the feet during long travel.
+~
+E
+boots~
+This sturdy boots are made to protect the feet during long travel.  
+~
+V13
+20335
+ivory pendant travelreward~
+an ivory pendant~
+An ivory pendant lies here.~
+~
+ivory~
+armor GKL 0 0 AC
+5 5 2 5 0
+40 1 7000 0 P
+0
+A
+13 10
+A
+41 2
+A
+20 -2
+>fight_prog 100~
+if isworn($o)
+if rand(1)
+if isevil($n)
+mpecho An ivory pendant glimmers.
+mpcast 141 40
+endif
+endif
+endif
+~
+|
+V13
+20336
+small container mercury~
+a small container of mercury~
+A small container lies here.~
+~
+mercury~
+treasure 0 0 0 AO
+0 0 0 0 0
+40 1 0 0 P
+0
+A
+14 30
+A
+4 2
+E
+container~
+A dense, silvery-white liquid is held within a glass container marked
+\#Mercury.\#  
+~
+E
+small~
+A dense, silvery-white liquid is held within a glass container marked
+\#Mercury.\#  
+~
+E
+mercury~
+A dense, silvery-white liquid is held within a glass container marked
+\#Mercury.\#  
+~
+V13
+20337
+dark metal breastplate plate~
+a dark metal breastplate~
+A breastplate make from some dark metal lies here.~
+~
+metal~
+armor 0 0 F AD
+8 8 8 0 0
+20 100 8000 1 P
+0
+A
+19 2
+A
+13 10
+E
+plate~
+This breastplate is made from a dark metal.
+~
+E
+breastplate~
+This breastplate is made from a dark metal.
+~
+E
+metal~
+This breastplate is made from a dark metal.
+~
+E
+dark~
+This breastplate is made from a dark metal.  
+~
+V13
+20338
+chainmail shoulder guard pile~
+a chainmail shoulder guard~
+A pile of chainmail lies here.~
+~
+iron~
+armor 0 0 F AC
+7 2 10 2 0
+40 30 6000 1 P
+40
+A
+13 15
+A
+18 2
+E
+chainmail~
+This chainmail shoulder guard drapes over the upper arm and shoulder to
+protect the arm without limiting movement.  
+~
+E
+guard~
+This chainmail shoulder guard drapes over the upper arm and shoulder to
+protect the arm without limiting movement.  
+~
+E
+shoulder~
+This chainmail shoulder guard drapes over the upper arm and shoulder to
+protect the arm without limiting movement.  
+~
+E
+pile~
+This chainmail shoulder guard drapes over the upper arm and shoulder to
+protect the arm without limiting movement.  
+~
+V13
+20339
+wide brimmed wide-brimmed wooden hat~
+a wide-brimmed wooden hat~
+A wide-brimmed wooden hat lies here.~
+~
+wood~
+armor S 0 F AE
+2 5 5 0 0
+30 10 1300 1 P
+0
+A
+13 5
+A
+18 1
+A
+12 5
+E
+wooden~
+This hat is made from a light wood.  While not very sturdy, or even very
+comfortable, its wide brim helps to shade the eyes.  
+~
+E
+wide-brimmed~
+This hat is made from a light wood.  While not very sturdy, or even very
+comfortable, its wide brim helps to shade the eyes.  
+~
+E
+brimmed~
+This hat is made from a light wood.  While not very sturdy, or even very
+comfortable, its wide brim helps to shade the eyes.  
+~
+E
+wide~
+This hat is made from a light wood.  While not very sturdy, or even very
+comfortable, its wide brim helps to shade the eyes.  
+~
+E
+hat~
+This hat is made from a light wood.  While not very sturdy, or even very
+comfortable, its wide brim helps to shade the eyes.  
+~
+V13
+20340
+blue wand stained dirty~
+a stained blue wand~
+A blue wand lies here, dirty and stained.~
+~
+wood~
+wand G 0 F AO
+40 2 2 'cure disease' 0
+40 1 3000 0 P
+20
+E
+script~
+The script reads- \#That the sick may be cured.\#  
+~
+E
+stained~
+This wand is carved from wood and was painted a peaceful shade cerulean
+blue.  It has seen signifigant wear, however, and dirt and mud have stained
+it.  A line of script is written down its length.  
+~
+E
+dirty~
+This wand is carved from wood and was painted a peaceful shade cerulean
+blue.  It has seen signifigant wear, however, and dirt and mud have stained
+it.  A line of script is written down its length.  
+~
+E
+blue~
+This wand is carved from wood and was painted a peaceful shade cerulean
+blue.  It has seen signifigant wear, however, and dirt and mud have stained
+it.  A line of script is written down its length.  
+~
+E
+wand~
+This wand is carved from wood and was painted a peaceful shade cerulean
+blue.  It has seen signifigant wear, however, and dirt and mud have stained
+it.  A line of script is written down its length.  
+~
+V13
+20341
+scattered rubble~
+the scattered rubble~
+Rubble is strewn and scattered about this cave.~
+~
+stone~
+container e 0 0 0
+300 0 0 10 100
+52 700 0 4 P
+0
+V13
+20342
+roll parchment surveyorquest~
+a roll of parchment~
+A roll of parchment lies here.~
+You muddle through the shorthand and make note of the following things- 
+
+An alatharyan ranger makes his home within and is dangerous if provoked.  A
+conclave of void scholars has a tower in its northern reaches.  There is a
+secret entrance into the Conclave via a waste pipe in the mountains.  There
+is a secret cave with some sort of tentacled..  Monster?  Within.  
+~
+parchment~
+map 0 0 0 AO
+0 0 0 0 0
+20 1 20 0 P
+0
+E
+parchment~
+This roll of parchment has a number of notes in some sort of shorthand on
+it.  From what you can puzzle out, it is an accounting of the dangers of the
+Mlejian Mountains.  The secretive writing style suggests this is the work of
+a professional surveyor.  Perhaps someone knowledgable with such lore could
+learn more.  
+~
+E
+roll~
+This roll of parchment has a number of notes in some sort of shorthand on
+it.  From what you can puzzle out, it is an accounting of the dangers of the
+Mlejian Mountains.  The secretive writing style suggests this is the work of
+a professional surveyor.  Perhaps someone knowledgable with such lore could
+learn more.  
+~
+V13
+20343
+rocks pile surveydrop~
+a pile of rocks~
+A pile of rocks lies at the bottom of the gully.~
+~
+stone~
+container e 0 0 0
+300 0 0 10 100
+52 700 0 4 P
+0
+V13
+20344
+pile broken stone piles surveydrop~
+a pile of broken stone~
+Piles of broken stone litter the ground.~
+~
+stone~
+container e 0 0 0
+300 0 0 10 100
+52 700 0 4 P
+0
+V13
+20345
+settled granite rubble surveydrop~
+the settled granite rubble~
+Granite rubble has settled here.~
+~
+granite~
+container e 0 0 0
+300 0 0 10 100
+52 700 0 4 P
+0
+V13
+20346
+spined bone srorsian-bone club~
+a spined srorsian-bone club~
+A spined bone club lies here.~
+You recognize this club as the kind created and consecrated by a cult of
+Sythrak in the Mlejian mountains.  Srorsian bone is wedded to the fangs of
+venomous snakes to create a sinister instrument of their god\@s wrath.  
+~
+bone~
+weapon CEGS 0 F AN
+mace 5 8 1 H
+smash~
+45 150 30000 1 P
+60
+E
+srorsian-bone~
+This club has been carved from the leg bone of a large srorsian.  Its
+surface has been carved with twisting serpents.  Several hollowed bone
+spines stick out from its surface, glistening with venom.  
+~
+E
+club~
+This club has been carved from the leg bone of a large srorsian.  Its
+surface has been carved with twisting serpents.  Several hollowed bone
+spines stick out from its surface, glistening with venom.  
+~
+E
+bone~
+This club has been carved from the leg bone of a large srorsian.  Its
+surface has been carved with twisting serpents.  Several hollowed bone
+spines stick out from its surface, glistening with venom.  
+~
+E
+spined~
+This club has been carved from the leg bone of a large srorsian.  Its
+surface has been carved with twisting serpents.  Several hollowed bone
+spines stick out from its surface, glistening with venom.  
+~
+V13
+20347
+tunic shed lizard skin~
+a tunic of shed lizard skin~
+A pile of shed lizard skin lies here.~
+~
+scale~
+armor 0 0 F AD
+4 1 4 4 0
+45 60 7585 1 P
+200
+A
+20 -2
+A
+13 15
+A
+36 1
+E
+lizard~
+This tunic has been crudely stitched together from the cast off skins of
+a great lizard.  
+~
+E
+skin~
+This tunic has been crudely stitched together from the cast off skins of
+a great lizard.  
+~
+E
+shed~
+This tunic has been crudely stitched together from the cast off skins of
+a great lizard.  
+~
+E
+tunic~
+This tunic has been crudely stitched together from the cast off skins of
+a great lizard.  
+~
+V13
+20348
+hide sooty cloak~
+a sooty hide cloak~
+A sooty cloak lies here.~
+~
+hide~
+armor 0 0 F AK
+3 3 3 0 0
+35 40 2427 0 P
+0
+A
+20 -1
+A
+13 10
+E
+hide~
+This goat hide cloak is filthy with soot.
+~
+E
+sooty~
+This goat hide cloak is filthy with soot.
+~
+E
+cloak~
+This goat hide cloak is filthy with soot.
+~
+V13
+20349
+sleeping furs filthy~
+some filthy sleeping furs~
+Sleeping furs are strewn about the chamber, filthy with soot, sand and ash.~
+~
+fur~
+furniture e 0 0 P
+4 10000000 BEHK 110 90
+20 70 0 0 P
+0
+V13
+20350
+firepit pit~
+the firepit~
+A firepit has been carved into the hard granite rock and is filled with the charred, skeletal remains of burnt offerings.~
+~
+stone~
+container e 0 0 P
+100000 0 0 7 100
+40 0 0 0 P
+0
+V13
+20351
+bone flute charred~
+a charred bone flute~
+A charred bone flute lies here.~
+This flute once belonged to a bard who wished to bring an end to the
+malevolent srryn in the southern mountains of Avendar.  It is said he met a
+bad end and only his flute, enchanted to withstand magical fire, survived.  
+~
+bone~
+instrument GY 0 F AO
+C 0 0 0 0
+20 5 3432 0 P
+0
+A
+36 2
+A
+20 -2
+E
+charred~
+This bone flute has been charred by flame.
+~
+E
+flute~
+This bone flute has been charred by flame.  
+~
+E
+bone~
+This bone flute has been charred by flame.
+~
+V13
+20352
+scroll shed lizard hide~
+a scroll of shed lizard hide~
+A scroll of shed lizard hide is here, waiting to be read.~
+~
+scale~
+writing S 0 F AO
+1 0 0 0 0
+35 50 1000 1 P
+10000
+E
+scroll1~
+Writing covers this long, scroll-like length of shed lizard hide.  
+
+\#With the blessings of Sythrak, Lord of Mires and Wastes, to we rule this
+realm.  It is in his name, Sythrak Lizard-Lord, that we raise his kin into
+mighty beasts!  It is the wrath of Sythrak Flame-Father that we will stoke
+and bring to bear on those who oppose the primacy of the srryn and the
+scale-born!  
+
+Father Sythrak, grant us your blessings as we raise our beasts of war to lay
+seige to the cities of the warmblooded.  The time will soon come when the
+srryn shall wax mighty once more!\#  
+~
+V13
+20353
+crude bloodstone circlet~
+a crude bloodstone circlet~
+A crude bloodstone circlet lies here.~
+Carved from magically fused bloodstones and granted the blessings of the
+shamans of Sythrak, this circlet grants the power to see in darkness to
+those who wear it.  The craft of making them is practiced by the reptile
+shamans of Sythrak in the Mlejian Mountains.  
+~
+bloodstone~
+jewelry DPS 0 0 AE
+0 0 0 0 0
+35 10 10000 0 P
+0
+E
+crude~
+This circled has been crudely hewn from a solid piece of bloodstone.  
+~
+E
+bloodstone~
+This circlet has been crudely hewn from a solid piece of bloodstone.  
+~
+E
+circlet~
+This circlet has been crudely hewn from a solid piece of bloodstone.
+~
+>remove_prog 100~
+opremaffect $n 86
+opechoat $n Your eyes stop glowing red.
+opechoaround $n $N\@s eyes stop glowing red.
+~
+>wear_prog 100~
+opaddaffect $n 86 35 -1 0 0 512
+opechoat $n Your eyes glow red as you don the circlet.
+opechoaround $n $N\@s eyes glow red as they don the circlet.
+~
+|
+V13
+20354
+sooty arrow~
+a sooty arrow~
+A sooty arrow lies here.~
+You recognize this arrow as one consecrated with fire magics by a cult of
+Sythrak followers in the Mlejian Mountains.  
+~
+wood~
+arrow CGS 0 F A
+11 100 406 0 0
+pierce~
+35 0 6000 0 P
+20
+E
+sooty~
+This arrow has been blackened with soot.
+~
+E
+arrow~
+This arrow has been blackened with soot.
+~
+V13
+20355
+eyrie bone blackened~
+a phoenix\@s eyrie~
+A phoenix eyrie of blackened bone sits in a solitary pine.~
+~
+wood~
+container OYae 0 0 P
+10 0 0 10 0
+1 0 0 2 P
+0
+E
+eyrie bone blackened~
+A thick jumble of interwined and heaped bone form the phoenix\@s eyrie. 
+The bones are blackened with soot.  
+~
+V13
+20356
+ash ashes pile faintly glowing~
+a pile of faintly glowing ash~
+A small pile of faintly glowing ash sits here.~
+~
+fire~
+treasure ADGSXYa 0 0 A
+0 0 0 0 0
+51 5 0 1 P
+1
+>verb_prog taste~
+if objtargetcarry()
+  if compstr(2) / ash
+  or compstr(2) / pile
+  or compstr(2) / faintly
+  or compstr(2) / glowing
+    mpaddaffect $n 400 60 24 0 0 0 O
+    mpechoat $n You take a pinch of ash from a pile of faintly glowing ash and taste it tentatively.
+    mpechoaround $n $N tastes a pinch of ash from a pile of faintly glowing ash.
+    // Bit Setting for Blood Pyre
+    if chosenpath($n) == golden flame
+      if isbitset($n) == 259
+      else
+        mpbitset $n 259 1
+        mpechoat $n {yYou gain new insight into the application of the Blood Pyre.{x
+      endif
+    else
+      mpechoat $n You considering tasting some ash, but you can\@t quite bring yourself to do it.
+    endif
+  else
+    mpechoat $n Taste what?
+  endif
+  opverbstop
+else
+  mpechoat $n Huh?
+endif
+~
+>rand_prog 100~
+if value(0) == 85
+  mpecho The ashes stir faintly.
+endif
+if value(0) == 90
+  mpecho The ashes begin to warm slightly.
+endif
+if value(0) == 95
+  mpecho The ashes begin to glow with heat!
+endif
+if value(0) == 100
+  mpecho A phoenix rises from the ashes!
+  mpmload 20335
+  mppurge self
+else
+  mpvalueup 0 1
+endif
+~
+|
+V13
+20357
+feather phoenix crimson golden highlights~
+a crimson phoenix feather~
+A crimson feather with golden highlights sits here.~
+~
+feather~
+wand DGXY 0 0 AO
+51 2 2 'firestorm' 0
+40 1 8000 1 P
+1
+>wear_prog 100~
+// Bit Setting for Blood Pyre
+if chosenpath($n) == golden flame
+  if isbitset($n) == 258
+  else
+    mpbitset $n 258 1
+     mpechoat $n {yYou gain new insight into the application of the Blood Pyre.{x
+    mpecho The feather disintigrates into a pull of white ash.
+    mppurge self
+  endif
+endif
+~
+|
+V13
+20373
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+#0
+
+
+
+#ROOMS
+#20300
+A Helicopter High Above the Mountains~
+The rythmic sound of the helicopter blade drowns out most noise, forcing
+you to raise your voice to be heard.  Looking down, you see mountains
+spreading to the west, mortals dying in droves within.  
+
+Oh.  And if you are a mortal and you are here, some fux0red up shit must be
+going down.  
+
+Bit 20356 - had a phoenix rumor created
+~
+~
+0
+0 557110 0
+W 5 0 0
+Z 5 5
+S
+#20301
+A Stone-Littered Trail~
+More a passable gouge in the jagged mountains than anything else, this
+trail inclines, leading deeper into the mountains.  Odd stones litter the
+path, seeming to be the remains of a cobbled road.  Their jagged presence
+makes travel on foot treacherous at best.  Fine sand has settled upon the
+rocky trail, blown in from the eastern waste.  
+~
+~
+0
+0 0 5
+D1
+~
+~
+0 0 24239
+D4
+A stone-littered trail climbs, continueing.
+~
+~
+0 0 20302
+W 5 0 0
+Z 5 5
+S
+#20302
+A Stone-Littered Trail~
+This gouge through the rocky foothills of the Mlejian mountains declines
+eastward toward the waste.  The path is littered with odd stones, seemingly
+the remains of a cobbled road.  Their presence now makes foot travel more
+difficult, rather than less.  East, a brown, barren plain seems to spread to
+the horizon while jagged mountain peaks line the western sky.  
+~
+~
+0
+0 0 5
+D3
+A rocky trail leads deeper into the mountains.
+~
+~
+0 0 20303
+D5
+A stone-littered trail descends toward the waste.
+~
+~
+0 0 20301
+W 5 0 0
+Z 5 5
+S
+#20303
+A Rocky, Stone-Littered Trail~
+A gouge through the rocky foothills of the Mlejian mountains, the granite
+stone about this curving trail is jagged and rough.  The path is littered
+with odd stones, seemingly the remains of a cobbled road.  Their presence
+now makes foot travel more difficult, rather than less.  Looking east, a
+brown, barren plain spreads to the limit of the horizon while the peaks of
+the mountain range rise high into the western sky.  
+~
+~
+0
+0 0 5
+D0
+The gouge through the foothills continues to run.
+~
+~
+0 0 20304
+D1
+A stone-littered trail descends toward the waste.
+~
+~
+0 0 20302
+W 5 0 0
+Z 5 5
+S
+#20304
+A Rocky, Stone-Littered Trail~
+A gouge through the rocky foothills of the Mlejian mountains, the granite
+stone about this twisting trail is jagged and rough.  The path is littered
+with odd stones, seemingly the remains of a cobbled road.  Their presence
+now makes foot travel more difficult, rather than less.  Looking east, a
+brown, barren plain spreads to the limit of the horizon while the peaks of
+the mountain range rise high into the western sky.  
+~
+~
+0
+0 0 5
+D0
+A rocky trail leads through the foothills.
+~
+~
+0 0 20305
+D2
+A rocky trail leads south through the foothills.
+~
+~
+0 0 20303
+W 5 0 0
+Z 5 5
+S
+#20305
+A Rocky, Stone-Littered Trail~
+A gouge through the rocky foothills of the Mlejian mountains, the granite
+stone about this curving trail is jagged and rough.  The path is littered
+with odd stones, seemingly the remains of a cobbled road.  Their presence
+now makes foot travel more difficult, rather than less.  Looking east, a
+brown, barren plain spreads to the limit of the horizon while the peaks of
+the mountain range rise high into the western sky.  
+~
+~
+0
+0 0 5
+D2
+A rocky trail leads through the foothills.
+~
+~
+0 0 20304
+D3
+A rockfall cuts off the trail.
+~
+~
+0 0 20306
+W 5 0 0
+Z 5 5
+S
+#20306
+An Abrupt End in a Stone-Littered Trail ~
+This gouge through the foothills of the Mlejian mountains comes to a
+sudden end here.  A rockfall fills the trail as it begins to turn northward,
+effectively cutting off travel in that direction.  The debris seems stable
+enough to climb, not especially steep and apparently settled.  The path also
+leads east, toward the brown, barren wastes.  
+~
+~
+0
+0 0 5
+D1
+A rocky trail leads through the foothills.
+~
+~
+0 0 20305
+D4
+The rockfall crests above.
+~
+~
+0 0 20307
+W 5 0 0
+Z 5 5
+S
+#20307
+Above a Rockfall~
+A rockfall of granite creates a uneven mountain path, despite its settled
+nature.  A gouge runs through the foothills of the Mlejian mountains to the
+south, cut off abruptly by the debris here.  The rubble now serves as a
+path, albeit a treacherous one, deeper into the jagged peaks which line the
+western sky.  To the east, a brown, barren plain spreads to the limit of the
+horizon.  
+~
+~
+0
+0 0 5
+D0
+A rocky, uneven path leads through the mountains.
+~
+~
+0 0 20308
+D5
+The rockfall descends into a rocky trail.
+~
+~
+0 0 20306
+W 5 0 0
+Z 5 5
+S
+#20308
+A Rocky Path~
+Uneven granite rubble composes this path, making travel on foot
+treacherous at best.  The debris seems to be the remains of some old
+rockslide by its settled appearance.  This trail winds along the side of a
+sheer granite slope leading north, deeper into the Mlejian mountains, and
+south toward the barren waste.  
+~
+~
+0
+0 0 5
+D0
+A rocky, uneven path leads through the mountains.
+~
+~
+0 0 20309
+D2
+A rockfall crests to the south.
+~
+~
+0 0 20307
+W 5 0 0
+Z 5 5
+S
+#20309
+A Rocky Path~
+Uneven granite rubble composes this path, making travel on foot
+treacherous at best.  The debris seems to be the remains of some old
+rockslide by its settled appearance.  This trail winds along the side of a
+steep, but not unclimbable, granite slope leading north, deeper into the
+Mlejian mountains, and south toward the barren waste.  
+~
+~
+0
+0 0 5
+D0
+A rocky, uneven path leads through the mountains.
+~
+~
+0 0 20310
+D2
+A rocky, uneven path leads through the mountains.
+~
+~
+0 0 20308
+D4
+A rocky slope rises, cresting to the west.
+~
+~
+0 0 20317
+W 5 0 0
+Z 5 5
+S
+#20310
+A Rocky Path~
+Uneven granite rubble composes this path, making travel on foot
+treacherous at best.  The debris seems to be the remains of some old
+rockslide by its settled appearance.  This trail winds along the side of a
+steep, but not unclimbable, granite slope.  The rockfall slopes downward to
+the east, settling on a jagged ledge.  The trail itself leads southwards
+into the foothills.  
+~
+~
+0
+0 0 5
+D2
+A rocky slope rises, cresting to the west.
+~
+~
+0 0 20309
+D5
+A rockfall slopes down to a jagged ledge.
+~
+~
+0 0 20311
+W 5 0 0
+Z 5 5
+S
+#20311
+A Jagged Ledge~
+A jutting piece of jagged granite forms a remarkably stable ledge on this
+treacherous slope.  Stones of the same material litter the ledge and slope,
+having tumbled from the rockfall above.  The stone of the decline is
+cracked, and a crevice can be seen in the northern rock, scarcely large
+enough to enter.  Below the ledge, the decline continues to descend.  
+~
+~
+0
+0 0 5
+D4
+The rockfall rises to a rocky path.
+~
+~
+0 0 20310
+D5
+The rockfall descends to a rocky path.
+~
+~
+0 0 20312
+W 5 0 0
+Z 5 5
+S
+#20312
+A Rocky Path~
+A rocky path consisting of settled granite rubble travels south from the
+base of a steep stone slope.  Further up the incline a jagged ledge juts
+from the slope.  The trail curves to the southeast, descending as it does
+so.  Eastward the ground drops off sharply, a gully visible at its base, its
+bottom dark.  
+~
+~
+0
+0 0 5
+D2
+The rocky trail descends, curving to the southeast.
+~
+~
+0 0 20313
+D4
+A rockslide rises to a jagged ledge.
+~
+~
+0 0 20311
+W 5 0 0
+Z 5 5
+S
+#20313
+A Rocky Decline~
+The rocky path continues to descend to the east, eventually terminating
+in a granite ledge.  The settled stone beneath you gives way to solid rock
+as the path continues. A rubble-strewn slope rises to the northeast, a jagged
+outcropping jutting from it.  A vaguely unpleasant smell seems to permeate
+the air.  
+~
+~
+0
+0 0 5
+D0
+A path leads to the base of a rocky slope.
+~
+~
+0 0 20312
+D1
+A rocky path leads to a ledge.
+~
+~
+0 0 20314
+W 5 0 0
+Z 5 5
+S
+#20314
+A Rocky Ledge~
+A foul, nauseating stench rises from the gully this granite ledge
+overlooks, wafting up from a dark pool within it.  A rocky path leads away
+from the ledge, curving to the northwest and higher into the Mlejian
+mountains.  The rock of the ledge is uneven, allowing one to climb down it
+into the vile-smelling gully.  
+~
+~
+0
+0 0 5
+D3
+A rocky path curves to the northwest.
+~
+~
+0 0 20313
+D5
+A slope descends into a foul-smelling gully.
+~
+~
+0 0 20315
+W 5 0 0
+Z 5 5
+S
+#20315
+A Foul-Smelling Gully~
+A foul, almost unbearable odor permeates this gully, reeking of decay,
+fecal waste and other more alien things.  Running north from the base of a
+granite ledge, the short gouge leads to a dark pool, the source of the
+unwholesome smell.  Its waters seem a brackish brown-black and they bubble
+unpleasantly.  
+~
+~
+0
+0 4 5
+D0
+A foul-looking pool fills the southern end of the gully.
+~
+~
+0 0 20316
+D4
+A slope climbs up to a rocky ledge.
+~
+~
+0 0 20314
+T 55
+W 5 0 0
+Z 5 5
+S
+#20316
+Before a Foul-Smelling Pool~
+A foul, almost unbearable odor fills the air, the noxious smell that of
+decay, fecal waste and other unwholesomely implaceable scents alien in
+nature.  Filling the northern end of the gully is a pool of brackish,
+brown-black sludge.  Its surface bubbles unpleasantly, the bubbles moving on
+eddies and currents that should not exist in a standing liquid.  Above the
+pool, jutting from the stone several feet over it, a metal pipe drips, the
+apparent source of the waste.  
+~
+~
+0
+0 0 5
+E
+pipe~
+A large rusted metal pipe juts from the rock over the pool.  It is large
+enough for even a large humanoid fit and it would seem that one could enter
+it if they were so inclined to brave the filth.  
+~
+D2
+A gully runs, ending in a rocky slope.
+~
+~
+0 0 20315
+W 5 0 0
+Z 5 5
+S
+#20317
+A Rocky Slope~
+This steep slope of granite rises at a treacherous angle, making climbing
+difficult.  The stone is relatively smooth, worn down by rockslides, wind
+and sand.  Rubble litters the base of the slope, forming a rocky path below
+you.  Some ways up, the slope crests, leading deeper into the Mlejian
+mountains.  A brown, barren plain is visible past the rocky foothills to the
+east, spreading out to the limit of the horizon.  
+~
+~
+0
+0 0 5
+D4
+The rocky slope comes to a crest.
+~
+~
+0 0 20318
+D5
+The slope descends to a rocky path.
+~
+~
+0 0 20309
+W 5 0 0
+Z 5 5
+S
+#20318
+The Crest of a Rocky Slope~
+The top of a steep, rocky slope, the ground here is formed of solid,
+stable granite.  The remains of a rockslide lay settled at the base of the
+slope, some ways down.  A rocky path leads north, traveling along a sheer
+ledge.  From this perch, the brown and barren wastes to the east spread to
+the limit of sight.  
+~
+~
+0
+0 0 5
+D0
+A rocky path travels along a ledge.
+~
+~
+0 0 20319
+D5
+A rocky slope descends to a mountain path.
+~
+~
+0 0 20317
+W 5 0 0
+Z 5 5
+S
+#20319
+A Rocky Path Along a Ledge~
+This path travels along a sheer ledge that drops off sharply to the east.
+The ground is solid, but uneven, making travel on foot treacherous.  The
+granite rock is easily climbable, allowing one to proceed westward, deeper
+into the Mlejian mountains.  The rocky trail itself decends slightly to the
+north, and crests in a rocky slope to the south.  
+~
+~
+0
+0 0 5
+D0
+A rocky path travels along a ledge.
+~
+~
+0 0 20320
+D2
+A rocky slope crests to the south.
+~
+~
+0 0 20318
+D4
+A rocky slope inclines to a jagged mountain path.
+~
+~
+0 0 20325
+W 5 0 0
+Z 5 5
+S
+#20320
+A Rocky Path Along a Ledge~
+This path travels along a sheer ledge that drops off sharply to the east.
+The ground is solid, but uneven, making travel on foot treacherous. 
+Descending sharply, the trail curves downward to the east, bits of rock
+scattering the ground.  
+~
+~
+0
+0 0 5
+D2
+A rocky path travels along a ledge.
+~
+~
+0 0 20319
+D5
+A trail descends sharply, curving as it does so.
+~
+~
+0 0 20321
+W 5 0 0
+Z 5 5
+S
+#20321
+A Curving, Rock-Strewn Trail~
+Curving to the southeast, this rocky path descends rather steeply.  Solid
+granite composes the path for the most part, but jagged rocks are strewn
+about the trail, making travel on foot treacherous at best.  Northward, the
+path rises sharply, leading higher and deeper into the Mlejian mountains.  
+~
+~
+0
+0 0 5
+D1
+A trail descends sharply, curving as it does so.
+~
+~
+0 0 20322
+D4
+The path rises sharply, traveling along a ledge.
+~
+~
+0 0 20320
+W 5 0 0
+Z 5 5
+S
+#20322
+A Curving, Rock-Strewn Trail~
+Curving to the southeast, this rocky path descends rather steeply toward
+a small gully.  Solid granite flecked with dark red and green crystals
+composes the path for the most part, but jagged rocks are strewn about the
+trail, making travel on foot treacherous at best.  The trail rises to the
+west, leading deeper into the Mlejian mountains.  
+~
+~
+0
+0 0 5
+D2
+A rock-strewn trail declines as it curves.
+~
+~
+0 0 20323
+D3
+A rock-strewn trail inclines as it curves.
+~
+~
+0 0 20321
+T 9
+W 5 0 0
+Z 5 5
+S
+#20323
+A Curving, Rock-Strewn Trail~
+Curving to the northwest, this rocky path rises steeply from a ledge
+overlooking a gully below.  Solid granite flecked with dark red and green
+crystals composes the path for the most part, but jagged rocks are strewn
+about the trail, making travel on foot treacherous at best.  It is possible
+to climb down into the rubble-strewn gouge, the rough face of the ledge
+allowing ample footing.  
+~
+~
+0
+0 0 5
+D0
+A rock-strewn trail inclines as it curves.
+~
+~
+0 0 20322
+D5
+A rock-strewn gully lies below the ledge.
+~
+~
+0 0 20324
+T 9
+W 5 0 0
+Z 5 5
+S
+#20324
+A Small, Rock-Strewn Gully~
+This gouge into the granite stone of the Mlejian mountains is surrounded
+on all sides by steep slopes; only to the north is it possible to climb
+them.  Jagged stones and other sundry rubble little the floor of the gully,
+making for uneven and treacherous footing.  Surrounded on all sides by rock,
+it is difficult to see anything but the sky from this place.  
+~
+~
+0
+0 0 12
+D4
+A ledge overlooks the gully.
+~
+~
+0 0 20323
+T 9
+W 5 0 0
+Z 5 5
+S
+#20325
+A Jagged Mountain Trail~
+Jagged spurs of granite make foot travel on this mountain trail
+hazardous.  The path winds through the Mlejian mountains in a westerly
+direction and slopes down to the east.  The path inclines as it travels
+westward, toward the high peaks stabbing into the sky.  
+~
+~
+0
+0 0 5
+D3
+A jagged trail travels through the mountains.
+~
+~
+0 0 20326
+D5
+A slope descends to a mountain path along a ledge.
+~
+~
+0 0 20319
+W 5 0 0
+Z 5 5
+S
+#20326
+A Jagged Mountain Trail~
+Jagged spurs of granite make foot travel on this mountain trail
+hazardous.  The path travels deeper into the Mlejian mountains as it winds
+to the west, rising as it does so.  East, the path declines toward a slope. 
+A sheer face of granite rises to the north, while the rocky earth rises to
+block travel in the opposite direction.  
+~
+~
+0
+0 0 5
+D1
+A jagged trail travels through the mountains.
+~
+~
+0 0 20325
+D3
+A jagged trail travels through the mountains.
+~
+~
+0 0 20327
+W 5 0 0
+Z 5 5
+S
+#20327
+A Jagged Mountain Trail~
+Jagged spurs of granite make foot travel on this mountain trail
+hazardous.  The path travels deeper into the Mlejian mountains as it winds
+to the west, rising as it does so.  The northern rock is less steep, cracked
+face making for firm climbing purchase.  The trail begins to turn as it
+continues west.  
+~
+~
+0
+0 0 5
+D1
+A jagged trail travels through the mountains.
+~
+~
+0 0 20326
+D3
+A jagged trail travels through the mountains.
+~
+~
+0 0 20328
+D4
+A jagged slope rises to the north.
+~
+~
+0 0 20341
+W 5 0 0
+Z 5 5
+S
+#20328
+A Turn in a Jagged Mountain Trail~
+Jagged spurs of granite make foot travel on this mountain trail
+hazardous.  The path travels deeper into the Mlejian mountains as it turns
+to the southwest.  South, the stone drops off, leaving a treacherous ledge
+for the path to follow along.  
+~
+~
+0
+0 0 5
+D1
+A jagged trail travels through the mountains.
+~
+~
+0 0 20327
+D2
+A jagged trail travels along a ledge.
+~
+~
+0 0 20329
+W 5 0 0
+Z 5 5
+S
+#20329
+A Jagged Mountain Trail Along a Ledge~
+The trail winds along a narrow band of relatively flat stone, a sheer
+granite slope to the north and a steep drop-off to the south.  The face of
+the southern ledge is marked with shallow gouges, chipped out by the
+elements.  The uneven surface allows one to climb down it to the gully
+below.  The path travels deeper into the Mlejian mountains to the west.  
+~
+~
+0
+0 0 5
+D0
+A jagged trail travels through the mountains.
+~
+~
+0 0 20328
+D3
+A jagged trail travels along a ledge.
+~
+~
+0 0 20333
+D5
+A slope decends into a gully.
+~
+~
+0 0 20330
+W 5 0 0
+Z 5 5
+S
+#20330
+A Rocky Gully~
+The solid, granite ground of this gully is cracked and uneven, its sides
+sloped as if a wedge had been ripped from the mountains themselves.  Sheer
+slopes of rock make imposing natural walls.  The northern face of the gully
+is gouged and uneven with a pile of rocks lying at its bottom making it seem
+treacherous, but possible, to climb.  The gouge continues to the west,
+widening somewhat.  
+~
+~
+0
+0 0 5
+D3
+A rocky gully widens.
+~
+~
+0 0 20331
+D4
+A slope crests in a ledge above.
+~
+~
+0 0 20329
+W 5 0 0
+Z 5 5
+S
+#20331
+A Rocky Gully~
+The solid, granite ground of this gully is cracked and uneven, its sides
+sloped as if a wedge had been ripped from the mountains themselves.  Sheer
+slopes of rock make imposing natural walls as they rise high overhead.  The
+widest part of the gouge, it narrows in either direction, a large cave
+visible in its northern face to the west.  
+~
+~
+0
+0 0 5
+D1
+A rocky gully narrows.
+~
+~
+0 0 20330
+D3
+A rocky gully narrows.
+~
+~
+0 0 20332
+W 5 0 0
+Z 5 5
+S
+#20332
+A Rocky Gully~
+A large crevice has been gouged into the northern wall of this gully. 
+The edges of the cave have been worn to relative smoothness and an animal
+smell wafts from it.  The solid, granite ground of this gully is cracked and
+uneven, its sides sloped as if a wedge had been ripped from the mountains
+themselves.  The northern face further west past the cave, is less steeply
+sloped, allowing one to climb with little difficulty.  The gouge continues
+to the east, widening somewhat.  
+~
+~
+0
+0 0 5
+D0
+A large, dark crevice looms here.
+~
+~
+0 0 20334
+D1
+A rocky gully widens.
+~
+~
+0 0 20331
+D4
+A claw-marked slope climbs out of the gully.
+~
+~
+0 0 20335
+W 5 0 0
+Z 5 5
+S
+#20333
+A Jagged Mountain Trail Along a Ledge~
+The trail winds along a narrow band of relatively flat stone, a sheer
+granite slope to the north and a steep drop-off to the south.  The southern
+face of the ledge falls steeply into a rocky gully.  Spurs of granite jut
+from the even ground, making travel on foot treacherous.  
+~
+~
+0
+0 0 5
+D1
+A jagged trail travels along a ledge.
+~
+~
+0 0 20329
+D3
+A jagged trail travels along a ledge.
+~
+~
+0 0 20335
+W 5 0 0
+Z 5 5
+S
+#20334
+A Large, Dry Cave~
+The large crevice expands into a larger cave passage, its dimensions
+huge.  The granite walls and floor have been worn smooth by habitation. 
+Cracked brown scales litter the ground, as well as whiteish tracts of shed,
+reptilian skin.  The air is filled with a strong, animal scent.  Small bones
+litter the corners of the cave, apparently belonging to some four-legged
+animal.  A smaller passage, blackened by soot, leads through the western
+wall.  Northward, the massive cave continues.  
+~
+~
+0
+0 8 12
+D0
+~
+~
+0 0 20385
+D2
+A gully runs outside the cave.
+~
+~
+0 0 20332
+D3
+~
+~
+0 0 20388
+W 5 0 0
+Z 5 5
+S
+#20335
+A Jagged Mountain Trail Along a Ledge~
+The trail winds along a narrow band of relatively flat stone, a sheer
+granite slope to the north and a steep drop-off to the south.  The face of
+the southern ledge is marked with shallow gouges, chipped out by the
+elements.  The uneven surface allows one to climb down it to the gully
+below.  The path travels deeper into the Mlejian mountains to the west.  
+~
+~
+0
+0 0 5
+D1
+A jagged trail travels along a ledge.
+~
+~
+0 0 20333
+D3
+A mossy path curves to the north.
+~
+~
+0 0 20336
+D5
+A claw-marked slope descends into a gully.
+~
+~
+0 0 20332
+W 5 0 0
+Z 5 5
+S
+#20336
+A Descending Mountain Trail~
+This granite path winds north, descending toward a small copse of thin,
+hardy trees.  Mossy earth covers most of the stone here, granting stable
+footing to the earthbound.  The brown-green carpet becomes more dense as it
+nears the grove.  The path rises to the east, running along a narrow, jagged
+ledge.  
+~
+~
+0
+0 0 5
+D0
+The path descends to a verdant mountain grove.
+~
+~
+0 0 20337
+D1
+A jagged trail travels along a ledge.
+~
+~
+0 0 20335
+W 5 0 0
+Z 5 5
+S
+#20337
+A Mountain Grove~
+The ground here is carpeted with moss and earth, the odd granite stone
+peeking out from the covering.  Thin, hardy trees rise from the earth. 
+Their verdant foliage provides a home for the birds whose quiet chirping
+seems to fill the grove.  Ferns and colorful wildflowers grow as well,
+filling the copse.  A rocky path curves toward the south, leading upwards.  
+~
+~
+0
+0 0 3
+D0
+The verdant grove spreads.
+~
+~
+0 0 20338
+D2
+A rocky path curves south from the grove.
+~
+~
+0 0 20336
+D3
+The verdant grove spreads.
+~
+~
+0 0 20340
+W 5 0 0
+Z 5 5
+S
+#20338
+A Mountain Grove~
+The ground here is carpeted with moss and earth, the odd granite stone
+peeking out from the covering.  Thin, hardy trees rise from the earth. 
+Their verdant foliage provides a home for the birds whose quiet chirping
+seems to fill the grove.  Ferns and colorful wildflowers grow as well,
+filling the copse.  Steep granite slopes rise to the north and east, a faint
+path winding its way up the northern face, while the grove expands to the
+southwest.  
+~
+~
+0
+0 0 3
+D0
+A faint path winds into the mountains.
+~
+~
+0 0 24651
+D2
+The verdant grove spreads.
+~
+~
+0 0 20337
+D3
+The verdant grove spreads.
+~
+~
+0 0 20339
+W 5 0 0
+Z 5 5
+S
+#20339
+A Mountain Grove~
+The ground here is carpeted with moss and earth, the odd granite stone
+peeking out from the covering.  Thin, hardy trees rise from the earth. 
+Their verdant foliage provides a home for the birds whose quiet chirping
+seems to fill the grove.  Ferns and colorful wildflowers grow as well,
+filling the copse.  A steep slope descends into a box canyon to the west,
+the greenery disappearing as it declines.  
+~
+~
+0
+0 0 3
+D1
+The verdant grove spreads.
+~
+~
+0 0 20338
+D2
+The verdant grove spreads.
+~
+~
+0 0 20340
+D5
+A slope descends into a box canyon.
+~
+~
+0 0 20383
+W 5 0 0
+Z 5 5
+S
+#20340
+A Mountain Grove~
+The ground here is carpeted with moss and earth, the odd granite stone
+peeking out from the covering.  Thin, hardy trees rise from the earth. 
+Their verdant foliage provides a home for the birds whose quiet chirping
+seems to fill the grove.  Ferns and colorful wildflowers grow as well,
+filling the copse.  Steep granite slopes rise to the south and west, the
+grove expanding to the northeast.  
+~
+~
+0
+0 0 3
+D0
+The verdant grove spreads.
+~
+~
+0 0 20339
+D1
+The verdant grove spreads.
+~
+~
+0 0 20337
+W 5 0 0
+Z 5 5
+S
+#20341
+A Jagged Slope~
+The surface of this steep granite slope is jagged and rough, rising to a
+crest some distance up.  Below, the base of the rise runs along a
+treacherous mountain trail.  A small bird\@s nest is nestled in one of the
+rocky inlets.  From this perch, the Mlejian mountains sprawl to the south, a
+series of sharp, gray peaks stabbing into the sky.  
+~
+~
+0
+0 0 5
+D4
+The jagged slope crests, northward.
+~
+~
+0 0 20342
+D5
+A jagged path runs along the base of the slope.
+~
+~
+0 0 20327
+W 5 0 0
+Z 5 5
+S
+#20342
+The Crest of a Jagged Slope~
+Atop a rise in the Mlejian mountains, a sweeping vista sprawls.  Jagged,
+gray peaks rend the very air as the range spreads in all directions save
+east, where a brown, barren waste stretches to the limit of the horizon.  To
+the north, a black stone tower rises ominously from a low valley, its dark
+walls reflecting little light.  A low depression upon the crest and a few
+scattered, ancient stones suggest this place once possessed a now-forgotten
+purpose.  Two broken juts of stone lean unevenly inward, a sad monument to
+its creators.  A rough slope descends southward toward a mountain trail.  
+~
+~
+0
+0 0 5
+E
+low depression~
+The central depression looks like it could have served as a pool or
+firepit in some long-forgotten age.  The weather and time have eroded it to
+little more than a shadow of itself, with no sign of water or ember
+remaining.  A few scattered, shaped stones and a pair of broken juts are all
+that remain of whatever was built here.  
+~
+E
+broken juts stone monument~
+The two juts of stone look like they might have once belonged to an arch,
+long crumbled by the march of ages.  Their shape and fracture suggest they
+may once have formed columns, but that may only be a trick of erosion and
+imagination.  The vague evidence of carving follows their outer surface,
+long indecipherable from wear.  
+~
+D1
+The crest continues to the east.
+~
+~
+0 0 20343
+D5
+A jagged slope descends steeply.
+~
+~
+0 0 20341
+A 256
+W 5 0 0
+Z 5 5
+S
+#20343
+The Crest of a Jagged Slope~
+Atop a rise in the Mlejian mountains, a sweeping vista sprawls.  Jagged,
+gray peaks rend the very air as the range spreads in all directions save
+east, where a brown, barren waste stretches to the limit of the horizon.  To
+the north, a black stone tower rises ominously from a low valley, its dark
+walls reflecting little light.  A path descends down a rocky slope toward
+the tower below.  Alongside the path, a solitary pine has found purchase in
+the rocks, a blacked eyrie held aloft in its upper branches.  
+~
+~
+0
+0 0 5
+D3
+The crest continues to the west.
+~
+~
+0 0 20342
+D5
+A path descends down the jagged slope.
+~
+~
+0 0 20344
+W 5 0 0
+Z 5 5
+S
+#20344
+A Path Along a Jagged Slope~
+This path runs down a steep slope of jagged grey granite.  Declining to
+the west, it descends toward an ominous looking tower of black stone.  The
+tower rests in a small valley, the Mlejian mountains rising close about it. 
+Above the trail, the slope crests, climbing southward.  
+~
+~
+0
+0 0 5
+D3
+A path descends down the jagged slope.
+~
+~
+0 0 20345
+D4
+The jagged slope crests, southward.
+~
+~
+0 0 20343
+W 5 0 0
+Z 5 5
+S
+#20345
+A Path Along a Jagged Slope~
+This path runs down a steep slope of jagged grey granite.  The trail
+declines to the floor of a small, rocky valley from which an ominous black
+tower rises into the sky.  A cobbled path seems to run around the eastern
+side of the circular tower, disappearing behind it.  The trail ascends to
+the east, climbing southeast to a jagged crest.  
+~
+~
+0
+0 0 5
+D1
+A path ascends up the jagged slope.
+~
+~
+0 0 20344
+D5
+The path descends to a small valley.
+~
+~
+0 0 20346
+W 5 0 0
+Z 5 5
+S
+#20346
+South of a Dark Tower~
+Even granite stone composes the ground at the base of the jagged slope
+rising to the south.  A trail runs up the slope, winding a treacherous path.
+In this relatively small valley, a large, black tower rises, filling it. 
+The dark stone walls reflect little light, and no apparent windows mark its
+surface.  A cobbled path runs from a pair of great double-doors in the
+building to the southeast, traveling east around the tower.  
+~
+~
+0
+0 0 5
+D0
+A rocky path winds around the tower.
+~
+~
+0 0 20351
+D1
+The rocky ground spreads eastward.
+~
+~
+0 0 20347
+D4
+A path ascends up the jagged slope.
+~
+~
+0 0 20345
+W 5 0 0
+Z 5 5
+S
+#20347
+South of a Dark Tower~
+Even granite stone composes the ground at the base of the steep jagged
+slope rising to the south.  In this relatively small valley, a large, black
+tower rises, filling it.  The dark stone walls reflect little light, and no
+apparent windows mark its surface.  To the north, a pair of great
+double-doors mark the entrance to the tower, a cobbled path winding east
+around the roughly circular building.  
+~
+~
+0
+0 0 5
+D0
+A pair of dark, ebony double-doors are set in the tower.
+~
+~
+0 0 20352
+D3
+The rocky ground spreads westward.
+~
+~
+0 0 20346
+W 5 0 0
+Z 5 5
+S
+#20348
+A Patch of Freshly-Turned Earth~
+The ground here is more earthen than stone, the earth itself seeming to
+have been freshly dug and patted down.  A dark tower rises directly to the
+east, the looming stone walls reflecting little light and no windows visible
+set into it.  A path winds south, around the roughly circular edifice, its
+surface rocky and uneven.  
+~
+~
+0
+0 0 2
+E
+earth~
+The earth here seems freshly dug and patted down.  
+~
+D2
+A rocky path winds around the tower.
+~
+~
+0 0 20349
+W 5 0 0
+Z 5 5
+S
+#20349
+A Rocky Path Around the Tower~
+The ground here is stony and uneven, a rocky path winding north and east
+around the looming tower.  The black stone walls reflect little and there
+are no visible windows.  To far to the east a set of great black
+double-doors allow entrance into the tower.  As the path curves northward it
+ends in an earthy gully.  
+~
+~
+0
+0 0 5
+D0
+A patch of loose earth marks this dead-end.
+~
+~
+0 0 20348
+D1
+A rocky path winds around the tower.
+~
+~
+0 0 20350
+W 5 0 0
+Z 5 5
+S
+#20350
+A Rocky Path Around the Tower~
+The ground here is stony and uneven, a rocky path winding around the base
+of the circular tower.  The black stone walls of the building reflect little
+light, and no windows are visible.  To the east a set of great black
+double-doors allow entrance into the tower.  
+~
+~
+0
+0 0 5
+D1
+A rocky path winds around the tower.
+~
+~
+0 0 20351
+D3
+A rocky path winds around the tower.
+~
+~
+0 0 20349
+W 5 0 0
+Z 5 5
+S
+#20351
+A Rocky Path Around the Tower~
+The ground here is stony and uneven, a rocky path winding around the base
+of the circular tower.  The black stone walls of the building reflect little
+light, and no windows are visible.  To the east a set of great ebony double
+doors allow entrance into the tower and a granite cobbled path begins. 
+Southward a steep trail winds upward along a rocky slope, winding
+treacherously.  
+~
+~
+0
+0 0 5
+D1
+A pair of dark, ebony double-doors are set in the tower.
+~
+~
+0 0 20352
+D2
+A jagged slope rises to the south.
+~
+~
+0 0 20346
+D3
+A rocky path winds around the tower.
+~
+~
+0 0 20350
+W 5 0 0
+Z 5 5
+S
+#20352
+The Doors to the Conclave of Arisuth~
+A black tower rises ominously to the north, its stone walls reflecting
+little light.  No decorations or windows adorn it, leaving its smooth,
+circular walls bare.  A pair of great double-doors, carved from ebony wood
+and decorated with jade and obsidian designs, are set into the stone.  A
+cobbled path of smooth granite leads from the door and around the curve of
+the tower toward the northeast.  Southward a steep trail winds upward along
+a rocky slope, winding treacherously.  
+~
+~
+0
+0 0 13
+D0
+A pair of great ebony double-doors allow entrance into the tower.
+~
+great ebony double-doors~
+66115 0 12501
+D1
+A cobbled path winds around the tower.
+~
+~
+0 0 20353
+D2
+A jagged ledge rises to the south.
+~
+~
+0 0 20347
+D3
+A rocky path winds around the tower.
+~
+~
+0 0 20351
+W 5 0 0
+Z 5 5
+S
+#20353
+A Cobbled Path Around the Tower~
+Smooth granite cobbles form this path, winding along the edge of the
+circular tower rising to the north.  The black stone walls of the building
+reflect little light and display no windows.  Westward the path ends in a
+set of ebony double-doors and the path inclines gently as it continues to
+the northeast.  
+~
+~
+0
+0 0 13
+D1
+A cobbled path winds around the tower.
+~
+~
+0 0 20354
+D3
+A pair of dark, ebony double-doors are set in the tower.
+~
+~
+0 0 20352
+W 5 0 0
+Z 5 5
+S
+#20354
+A Cobbled Path Around the Tower~
+Smooth granite cobbles form this path, winding along the edge of the
+circular tower rising to the north.  The black stone walls of the building
+reflect little light and display no windows.  Far westward the path ends in
+a set of ebony double-doors and the path inclines gently as it continues to
+the northeast.  
+~
+~
+0
+0 0 13
+D1
+A cobbled path winds around the tower.
+~
+~
+0 0 20355
+D3
+A cobbled path winds around the tower.
+~
+~
+0 0 20353
+W 5 0 0
+Z 5 5
+S
+#20355
+A Cobbled Path Around the Tower~
+Smooth granite cobbles form this path, winding along the edge of the
+circular tower rising to the northwest.  The black stone walls of the
+building reflect little light and display no windows.  The path ascends as
+it continues toward the north.  Westward the cobbled path continues to
+follow the curve of the tower toward its entrance.  
+~
+~
+0
+0 0 13
+D0
+A cobbled path winds around the tower.
+~
+~
+0 0 20356
+D3
+A cobbled path winds around the tower.
+~
+~
+0 0 20354
+W 5 0 0
+Z 5 5
+S
+#20356
+A Cobbled Path Around the Tower~
+Smooth granite cobbles form this path which winds along the edge of a
+roughly circular black tower.  The dark stone of the buildings walls reflect
+little light and display no windows.  The path gently inclines as it
+continues to the north and turns west around the tower as it heads south.  
+~
+~
+0
+0 0 13
+D0
+A cobbled path winds around the tower.
+~
+~
+0 0 20357
+D2
+A cobbled path winds around the tower.
+~
+~
+0 0 20355
+W 5 0 0
+Z 5 5
+S
+#20357
+A Cobbled Path Around the Tower~
+Smooth granite cobbles form this path, winding along the edge of the
+circular tower rising to the west.  The black stone walls of the building
+reflect little light and display no windows.  The path inclines as it
+continues to the north and a granite rise is visible in that direction. 
+Southward the trail descends following the curve of the tower.  
+~
+~
+0
+0 0 13
+D0
+A cobbled path turns from the tower.
+~
+~
+0 0 20358
+D2
+A cobbled path winds around the tower.
+~
+~
+0 0 20356
+W 5 0 0
+Z 5 5
+S
+#20358
+A Turn in the Cobbled Path~
+Smooth granite cobbles form this path, winding along the edge of the
+circular tower rising to the west.  The black stone walls of the building
+reflect little light and display no windows.  The path turns away from the
+tower here, heading east toward a granite rise.  Southward the path follows
+the curve of the tower and a gully runs between the rise and the building.  
+~
+~
+0
+0 0 13
+D0
+A small gully gouges through the rock of the mountain.
+~
+~
+0 0 20359
+D1
+A cobbled path continues.
+~
+~
+0 0 20360
+D2
+A cobbled path winds around the tower.
+~
+~
+0 0 20357
+W 5 0 0
+Z 5 5
+S
+#20359
+A Jagged Gully~
+A gouge between the granite rocks rising behind a dark tower to the
+southwest and the jagged slope of a rise to the east, this gully is
+effectively a dead end.  Piles of broken stone litter the ground, making
+footing unstable for the earthbound.  Southward, a cobbled path runs.  
+~
+~
+0
+0 0 5
+D2
+A cobbled path runs here.
+~
+~
+0 0 20358
+W 5 0 0
+Z 5 5
+S
+#20360
+A Cobbled Path~
+This curving path is made from smooth, well-fit cobbles of granite stone.
+The path inclines toward a rise to the north, a squat domed building of hewn
+gray rock set upon it.  To the west, a dark tower rises, its black stone
+walls reflecting little light.  The cobbled path runs westward along the
+base of the tower, disappearing as it turns around it.  
+~
+~
+0
+0 0 13
+D0
+A cobbled path inclines toward a rise.
+~
+~
+0 0 20361
+D3
+A cobbled path turns southward.
+~
+~
+0 0 20358
+W 5 0 0
+Z 5 5
+S
+#20361
+A Rising Cobbled Path~
+This path, made from smooth, well-fit cobbles of granite stone, rises
+sharply here.  The cobbled path climbs up a rocky slope toward the top of a
+rise where a squat, domed building stands.  To the west, a tall, black tower
+rises, its dark stone walls reflecting little light.  The path leads
+southwest toward this edifice, descending.  
+~
+~
+0
+0 0 13
+D2
+A cobbled path continues.
+~
+~
+0 0 20360
+D4
+A cobbled path acsends a steep rise.
+~
+~
+0 0 20362
+W 5 0 0
+Z 5 5
+S
+#20362
+A Descending Cobbled Path~
+This cobbled path, made from well-fit granite stone, winds down a rocky
+slope.  The path emerges from the large doors of a squat, domed building of
+grey stone to the east.  Rising a dozen feet or so, this rise expands to the
+north and east, the building perched upon it.  To the southwest, a dark
+tower of black stone rises, its walls reflecting little light.  
+~
+~
+0
+0 0 13
+D0
+A path runs along the edge of the rise.
+~
+~
+0 0 20363
+D1
+A pair of large iron double-doors mark the building entrance.
+~
+~
+0 0 20365
+D5
+A cobbled path descends the rise.
+~
+~
+0 0 20361
+W 5 0 0
+Z 5 5
+S
+#20363
+The Edge of a Rise~
+The uneven jagged stone of this ledge provides unsure footing as it
+travels around the west face of a squat, domed building.  The walls of the
+structure are formed from solid granite, as is the dome above it.  No
+apparent decoration adorns the building.  The ledge itself overlooks a
+jagged gully while a cobbled path winds down the rise to the south, toward
+an ominous black tower.  
+~
+~
+0
+0 0 5
+D0
+A path runs along the edge of the rise.
+~
+~
+0 0 20364
+D2
+A cobbled path runs along the rise.
+~
+~
+0 0 20362
+W 5 0 0
+Z 5 5
+S
+#20364
+The Edge of a Rise~
+The uneven jagged stone of this ledge provides unsure footing as it
+travels around the west face of a squat, domed building.  The walls of the
+structure are formed from solid granite, as is the dome above it.  No
+apparent decoration adorns the building.  The ledge itself overlooks a
+jagged gully as well as a cobbled path below, leading toward an ominous
+black tower that rises to the south.  
+~
+~
+0
+0 0 5
+D2
+A path runs along the edge of the rise.
+~
+~
+0 0 20363
+W 5 0 0
+Z 5 5
+S
+#20365
+The Entrance to a Small Building~
+A smooth cobbled path made from well-fit granite stone emerges from a
+large pair of doors set into this building.  The path travels west along the
+rise, eventually down a rocky slope to the small valley below.  The building
+itself is made of gray stone, the dome included.  The squat structure rises
+a dozen feet or so with no adornments save a large pair of iron
+double-doors, wide enough to allow a wagon through.  To the east rocky path
+leads along the edge of the rise toward a jagged slope.  
+
+To the southwest, a black tower rises into the air, dark stone walls
+reflecting little light.  
+~
+~
+0
+0 0 13
+D0
+A pair of iron double-doors mark the entrance to the building.
+~
+set of iron double-doors~
+327 20320 20369
+D1
+A path runs along the edge of the rise.
+~
+~
+0 0 20366
+D3
+A cobbled path runs along the rise.
+~
+~
+0 0 20362
+W 5 0 0
+Z 5 5
+S
+#20366
+Outside a Small Building~
+The uneven jagged stone of this ledge provides unsure footing as it
+travels around the south face of a squat, domed building.  The walls of the
+structure are formed from solid granite, as is the dome above it.  No
+apparent decoration adorns the building.  A pair of iron double-doors can be
+seen to the west, set into the edifice, a cobbled path leading from it. 
+This trail leads to a jagged slope as it continues to the east.  
+
+To the southwest, a black tower rises into the air, dark stone walls
+reflecting little light.  
+~
+~
+0
+0 0 5
+D1
+A jagged slope rises to a ledge.
+~
+~
+0 0 20367
+D3
+A pair of large iron double-doors mark the building entrance.
+~
+~
+0 0 20365
+W 5 0 0
+Z 5 5
+S
+#20367
+A Jagged Incline~
+A steep slope of jagged granite, this incline rises to a ledge some ways
+above.  The uneven nature of the rock makes climbing relatively easy,
+providing ample foot and handholds.  To the west, a squat, gray building
+sits, its rise overlooking a small valley from which an ominous black tower
+looms.  
+
+A thin line of water trickles down the slope, collecting in a shallow
+puddle.  
+~
+~
+0
+0 0 5
+D3
+A path runs along the edge of the rise.
+~
+~
+0 0 20366
+D4
+A ledge juts from the top of the slope.
+~
+~
+0 0 20368
+W 5 0 0
+Z 5 5
+S
+#20368
+A Ledge Overlooking the Mountains~
+A sweeping vista of the Mlejian mountains sprawls before you, its jagged
+granite peaks rending the southwestern horizon.  Closer, in a small valley,
+rises a tower of black stone, its dark walls reflecting little light.  The
+structure stands in sharp contrast to the grays of the Mlejian range.  The
+ledge overlooks a squat, domed edifice, its grays blending it with the rock
+about it.  A cobbled path leads from its entrance, down the rise and
+disappears behind the black tower.  A jagged slope leads down from the
+ledge, descending to the rise below.  
+
+A small spring bubbles near the back of the ledge, a thin line of water
+trickling down the slope.  
+~
+~
+0
+0 0 5
+D5
+A jagged slope descends to the rise
+~
+~
+0 0 20367
+W 5 0 0
+Z 5 5
+S
+#20369
+The Entrance to the Chamber of Transport~
+This wide hall, large enough for a wagon to easily travel though, is cut
+from solid granite.  A wooden door in the eastern wall marks the the only
+irregularity in the grey stone.  The hall travels north, turning a right
+angle to the east as it does so.  A set of iron double-doors, as large as
+the hall, allow for egress from the building.  
+~
+~
+0
+0 0 0
+D0
+The wide hall continues.
+~
+~
+0 0 20372
+D1
+A wooden door is set in the wall.
+~
+wooden door~
+323 20321 20370
+D2
+A pair of iron double-doors allow exit.
+~
+set of iron double-doors~
+327 20320 20365
+W 5 0 0
+Z 5 5
+S
+#20370
+A Reagent-Filled Storage Room~
+This musty room is liberally shelved.  Exotic herbs fill the air with the
+sharp smell of spices.  Minerals and bone, both mundane and rare, line the
+shelves, some ground to powder.  Other, less wholesome, things are stored on
+the shelves.  Glass jars hold the material remains of once-living things,
+hearts seeming to be especially prevalent in the grisly display.  
+
+A wooden door is set in the western wall.  
+~
+~
+0
+0 2 0
+D3
+A wooden door is set in the wall.
+~
+wooden door~
+323 20321 20369
+W 5 0 0
+Z 5 5
+S
+#20371
+Over a Large, Inscribed Pentagram~
+A large pentagram is cut with harsh perfection into the granite floor of
+this circular chamber.  It is contained within an equally perfect circle,
+harsh, blasphemous runes surrounding it.  The walls of the chamber are
+undecorated and unmarked, a wide hall, leading west, provides an exit.  
+The air here seems still and cold.
+~
+~
+0
+0 0 0
+D3
+The wide hall continues.
+~
+~
+0 0 20372
+W 5 0 0
+Z 5 5
+S
+#20372
+A Wide Hallway in the Chamber of Transport~
+This wide hall, large enough for a wagon to easily travel though, is cut
+from solid granite.  Turning a right angle, it leads eastward to a roughly
+circular chamber, an arcane figure inscribed in the floor.  South, a set of
+iron double-doors is visible down the hall.  
+~
+~
+0
+0 0 0
+D1
+A circular room lies here, arcane symbols scored into the floor.
+~
+~
+0 0 20371
+D2
+The wide hall continues.
+~
+~
+0 0 20369
+W 5 0 0
+Z 5 5
+S
+#20373
+A Shadowy Cave~
+Shadows play eerily about this rubble-strewn cave, making its dimensions
+difficult to discern.  Walls of gray granite surround you, a rift in them
+opening to the south.  The jagged nature of the walls suggest a violent
+formation, scattered rocks strengthening the suggestion.  The cave leads
+deeper into the Mlejian mountains to the north, descending slightly.  
+~
+~
+0
+0 0 12
+D0
+The shadowy cave continues.
+~
+~
+0 0 20374
+D2
+The crevice leads out onto a jagged ledge.
+~
+~
+0 0 20311
+W 5 0 0
+Z 5 5
+S
+#20374
+A Shadowy Cave~
+Shadows play eerily about this rubble-strewn cave, making its dimensions
+difficult to discern.  The jagged nature of the gray granite walls suggest a
+violent formation, scattered rocks strengthening the suggestion.  The cave
+declines slightly into the earth as it makes a abrupt eastward turn.  
+~
+~
+0
+0 0 12
+D1
+The shadowy cave continues.
+~
+~
+0 0 20375
+D2
+The shadowy cave continues.
+~
+~
+0 0 20373
+W 5 0 0
+Z 5 5
+S
+#20375
+A Shadowy Cave~
+Shadows play eerily about this rubble-strewn cave, making its dimensions
+difficult to discern.  The jagged nature of the gray granite walls suggest a
+violent formation, scattered rocks strengthening the suggestion.  The cave
+floor inclines as it travels to the west and levels in the opposite
+direction.  
+~
+~
+0
+0 0 12
+D1
+The shadowy cave continues.
+~
+~
+0 0 20376
+D3
+The shadowy cave continues.
+~
+~
+0 0 20374
+W 5 0 0
+Z 5 5
+S
+#20376
+A Shadowy Cave~
+Shadows play eerily about this rubble-strewn cave, making its dimensions
+difficult to discern.  The jagged nature of the gray granite walls suggest a
+violent formation, scattered rocks strengthening the suggestion.  A dead
+end, the ground seems smoother here, if only slightly.  The cave leads west,
+deeper into the shadows.  
+~
+~
+0
+0 0 12
+D3
+The shadowy cave continues.
+~
+~
+0 0 20375
+W 5 0 0
+Z 5 5
+S
+#20377
+A Foul, Waste-Encrusted Pipe~
+The metallic walls of this pipe are caked in mercifully unidentifiable
+waste.  The fetid stench of decay intermingles with that of organic waste as
+well as other unwholesomely alien smells.  A crude ladder of iron bars rises
+into the darkness, and a quiet dripping fills the pipe.  Downward the pipe
+ends, opening into a fetid pool outdoors.  
+~
+~
+0
+0 0 0
+D4
+The foul pipe continues into the darkness.
+~
+~
+0 0 20378
+D5
+A foul-looking pool looms below.
+~
+~
+0 0 20316
+W 5 0 0
+Z 5 5
+S
+#20378
+A Foul, Waste-Encrusted Pipe~
+The metallic walls of this pipe are caked in mercifully unidentifiable
+waste.  The fetid stench of decay intermingles with that of organic waste as
+well as other unwholesomely alien smells.  A crude ladder of iron bars rises
+into the darkness.  The pipe has a claustrophobic quality about it, dark and
+cramped with countless tons of granite surrounding it.  
+~
+~
+0
+0 0 0
+D4
+The foul pipe continues into the darkness.
+~
+~
+0 0 20379
+D5
+The foul pipe continues into the darkness.
+~
+~
+0 0 20377
+W 5 0 0
+Z 5 5
+S
+#20379
+A Foul, Waste-Encrusted Pipe~
+The metallic walls of this pipe are caked in mercifully unidentifiable
+waste.  The fetid stench of decay intermingles with that of organic waste as
+well as other unwholesomely alien smells.  A crude ladder of iron bars rises
+into the darkness, a single missing bar breaking the monotony of the lengthy
+pipe.  The place has a claustrophobic quality about it, dark and cramped
+with countless tons of granite surrounding it as it travels upward, sloping
+to the north.  
+~
+~
+0
+0 0 0
+D4
+The foul pipe continues into the darkness.
+~
+~
+0 0 20380
+D5
+The foul pipe continues into the darkness.
+~
+~
+0 0 20378
+W 5 0 0
+Z 5 5
+S
+#20380
+A Foul, Waste-Encrusted Pipe~
+The metallic walls of this pipe are caked in mercifully unidentifiable
+waste.  The fetid stench of decay intermingles with that of organic waste as
+well as other unwholesomely alien smells.  A crude ladder of iron bars rises
+into the darkness at a northernly angle, seeming yet to continue several
+hundred feet in either direction.  The place has a claustrophobic quality
+about it, dark and cramped with countless tons of granite surrounding it as
+it continues to wind, curving to the northwest slightly.  
+~
+~
+0
+0 0 0
+D0
+The foul pipe continues into the darkness.
+~
+~
+0 0 20381
+D5
+The foul pipe continues into the darkness.
+~
+~
+0 0 20379
+W 5 0 0
+Z 5 5
+S
+#20381
+A Turn in a Foul, Waste-Encrusted Pipe~
+The metallic walls of this pipe are caked in mercifully unidentifiable
+waste.  The fetid stench of decay intermingles with that of organic waste as
+well as other unwholesomely alien smells.  A crude ladder of iron bars rises
+into the darkness at a steep angle, leveling a bit as it descends to the
+south.  The place has a claustrophobic quality about it, dark and cramped
+with countless tons of granite surrounding it as it continues to wind,
+curving to the northwest slightly.  
+~
+~
+0
+0 0 0
+D2
+The foul pipe continues into the darkness.
+~
+~
+0 0 20380
+D4
+The foul pipe continues into the darkness.
+~
+~
+0 0 20382
+W 5 0 0
+Z 5 5
+S
+#20382
+A Foul, Waste-Encrusted Pipe~
+A rusted iron shutter blocks off the top of this pipe, mercifully
+unidentifiable waste caked about it.  The fetid stench of decay intermingles
+with that of organic waste as well as other unwholesomely alien smells.  A
+crude ladder of iron bars descends into the darkness.  The place has a
+claustrophobic quality about it, dark and cramped with countless tons of
+granite bearing down upon it.  
+~
+~
+0
+0 0 0
+D4
+The pipe opens up into some chamber above.
+~
+~
+0 0 12647
+D5
+The foul pipe continues into the darkness.
+~
+~
+0 0 20381
+W 5 0 0
+Z 5 5
+S
+#20383
+A Small Box Canyon~
+A small gouge into the granite stone of the Mlejian mountains, this
+canyon ends in a large cave to the west.  A hide is draped over the cave
+entrance, serving as a crude door.  A steep, rocky slope acsends to a grove
+above, verdant foliage visible over its crest.  The floor of the gully is
+devoid of any rubble and somewhat flat, making for stable footing.  
+~
+~
+0
+0 0 5
+D3
+A large cave lies here, a hide curtain acting as a crude door.
+~
+~
+0 0 20384
+D4
+A rocky slope rises to a verdant grove.
+~
+~
+0 0 20339
+W 5 0 0
+Z 5 5
+S
+#20384
+A Hide-Decorated Cave~
+The walls of this expansive granite cave are decorated with animal hides,
+both reptilian and mammalian.  The floor is likewise covered in furs, a
+bearskin sleeping pallet in the corner.  Much of the ground is covered in
+woodchips, gathered into neat piles along the edges of the cave for the most
+part.  A hide is draped over the exit of the cave to the east, acting as a
+crude, if ineffective, door.  
+~
+~
+0
+0 0 12
+D1
+A hide curtain, acting as a crude door, hangs here.
+~
+~
+0 0 20383
+W 5 0 0
+Z 5 5
+S
+#20385
+A Large, Dry Cave~
+Around you expands a large cave passage, its dimensions huge.  The stone
+walls and floor have been worn smooth by habitation.  Cracked brown scales
+litter the ground, as well as whiteish tracts of shed, reptilian skin.  The
+air is filled with a strong, animal scent.  Small bones litter the corners
+of the cave, apparently belonging to some four-legged animal.  A smaller
+passage, its entrance marked with crude chalk runes, leads through the
+eastern wall of the cave.  The massive cave continues to the north and
+south.  
+~
+~
+0
+0 8 12
+E
+runes~
+The white chalk runes seem to depict serpents and flames.  
+~
+D0
+~
+~
+0 0 20386
+D1
+~
+~
+0 0 20387
+D2
+~
+~
+0 0 20334
+T 86
+W 5 0 0
+Z 5 5
+S
+#20386
+A Large Cave Chamber~
+The passage ends in a large cave, its dimensions huge.  The stone walls
+and floor have been worn smooth by habitation.  Cracked brown scales litter
+the ground, as well as whiteish tracts of shed, reptilian skin.  The air is
+filled with a strong, animal scent.  Small bones litter the corners of the
+cave, apparently belonging to some manner of four-legged animal.  Red chalk
+has been used to scratch warding runes around the chamber.  
+~
+~
+0
+0 8 12
+D2
+~
+~
+0 0 20385
+T 86
+W 5 0 0
+Z 5 5
+S
+#20387
+A Shrine Within the Cave~
+The walls of this cave chamber have been blackened by soot, and the smell
+of smoke hangs in the air.  A firepit has been carved into the hard granite
+rock and is filled with the charred, skeletal remains of burnt offerings. 
+Chalk runes, serpentine in nature, have been carved around the pit and stand
+in stark contrast to the darkened stone.  A short passage leads out into a
+massive underground chamber to the west.  
+~
+~
+0
+0 8 12
+E
+runes~
+The white chalk runes around the firepit seem to depict serpents, great
+lizards and flames.  
+~
+D3
+~
+~
+0 0 20385
+W 5 0 0
+Z 5 5
+S
+#20388
+A Soot-Blackened Cave~
+The walls of this cave chamber have been blackened by soot, and the smell
+of smoke hangs in the air.  A firepit has been carved into the hard granite
+rock, filled with the glowing embers of a recent fire.  Sleeping furs are
+strewn about the chamber, filthy with soot, sand and ash.  A short passage
+leads out of the chamber and into a massive cave.  
+~
+~
+0
+0 8 12
+D1
+~
+~
+0 0 20334
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 20333 spec_cast_fire
+S
+
+
+
+#RESETS
+D 0 20352 0 66115
+D 0 20365 0 327
+D 0 20369 1 323
+D 0 20369 2 327
+D 0 20370 3 323
+M 0 20309 1 20300 1
+M 0 20323 6 20305 6
+M 0 20324 1 20306 1
+M 0 20302 6 20307 6
+M 0 20323 6 20309 6
+M 0 20306 1 20311 1
+O 0 20345 0 20312
+M 0 20302 6 20312 6
+M 0 20310 1 20316 1
+M 0 20305 1 20316 1
+M 0 20302 6 20318 6
+M 0 20302 6 20321 6
+M 0 20323 6 20323 6
+M 0 20332 1 20324 1
+E 0 20339 0 6
+E 0 20338 0 3
+M 0 20302 6 20327 6
+M 0 20323 6 20328 6
+O 0 20343 0 20330
+M 0 20323 6 20331 6
+M 0 20330 1 20333 1
+E 0 20334 0 8
+M 0 20302 6 20333 6
+M 0 20322 2 20337 2
+M 0 20304 2 20338 2
+M 0 20325 1 20339 1
+M 0 20322 2 20339 2
+M 0 20304 2 20340 2
+M 0 20320 1 20341 1
+O 0 20326 0 20341
+P 0 20327 4 20326 4
+M 0 20336 1 20343 1
+O 0 20355 0 20343
+P 0 20357 1 20355 1
+M 0 20327 1 20348 1
+M 0 20329 1 20352 1
+M 0 20319 1 20352 1
+G 0 20325 0
+E 0 20323 0 16
+E 0 20324 0 11
+M 0 20318 1 20352 1
+E 0 20322 0 16
+G 0 20325 0
+E 0 20324 0 11
+O 0 20344 0 20359
+M 0 20323 6 20364 6
+M 0 20317 1 20365 1
+E 0 20337 0 5
+E 0 20318 0 16
+E 0 20319 0 11
+M 0 20316 1 20365 1
+E 0 20337 0 5
+G 0 20320 0
+E 0 20317 0 16
+O 0 20329 0 20367
+O 0 20328 0 20368
+M 0 20331 1 20370 1
+O 0 20313 0 20370
+M 0 20313 1 20370 1
+O 0 20312 0 20370
+M 0 20315 1 20371 1
+G 0 20316 0
+G 0 20321 0
+G 0 20320 0
+E 0 20315 0 12
+E 0 20314 0 16
+M 0 20300 1 20374 1
+O 0 20341 0 20375
+P 0 20340 1 20341 1
+O 0 20305 0 20376
+M 0 20303 1 20376 1
+M 0 20314 6 20377 6
+M 0 20314 6 20378 6
+M 0 20314 6 20379 6
+M 0 20314 6 20380 6
+M 0 20314 6 20381 6
+M 0 20314 6 20382 6
+M 0 20312 1 20384 1
+G 0 20352 0
+E 0 20331 0 7
+E 0 20330 0 5
+E 0 20311 0 16
+E 0 20310 0 17
+O 0 20309 0 20384
+M 0 20301 1 20386 1
+G 0 20304 0
+O 0 20350 0 20387
+P 0 20351 1 20350 1
+M 0 20333 1 20387 1
+E 0 20347 0 5
+E 0 20346 0 16
+O 0 20349 0 20388
+M 0 20334 1 20388 1
+G 0 20354 0
+E 0 20348 0 12
+S
+
+
+
+#GUILD
+#20333
+"encase"
+"scry"
+"ice storm"
+#0
+
+S
+
+
+#SHOPS
+0
+
+
+
+#$

@@ -1,0 +1,5115 @@
+#AREADATA
+Name The Brintor Road~
+Builders Iandir Iacobos Saedacal Yzeek Brazen Fluxcat~
+VNUMs 4700 4799
+Credits [ ALL ] Iandir    The Brintor Road~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 2097152
+Weather 2 3 2 2 8
+Weave 5 0 0
+Shades 5 5
+Stone 82
+End
+
+
+
+#MOBILES
+V4 4700
+obscene construct miasma decay swirling blight spirit mob_4700~
+a swirling blight spirit~
+An obscene construct of miasma and decay swirls erratically here.
+~
+This hideous atrocity comprised of rotten flesh and decomposing organic
+matter swirls in a whirlwind of negative energy.  A bulbous mass of dripping
+black ichor holds two hollow sockets resembling eyes that glare wrathfully
+at it surroundings.  Many tentacle-like extremities, each ending in hooked
+jagged claws, propel it along with surprising speed and ferocity.  Its body
+emanates a corrosive aura and leaves a trail of caustic fumes in its wake.  
+~
+spirit~
+water scholar~
+ADX 0 DFJTUXZc E 0
+60 30 1d1+11999 60d10+100 7d12+50 disease~
+harrowing~
+-27 -27 -27 -9
+AFHK ABDEFGKLMQRb
+26 0 0 0 0 0 0 0 0 0 0 33 0 33 -33 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABDHIJLMV ABCDEFGHIJKNQU AK medium flesh
+>death_prog 100~
+pray $I was toasted by $N!
+~
+>entry_prog 100~
+mpremaffect self 377
+mpcast 377 60
+mpecho A wave of rancid fumes curdles the soil!
+~
+>fight_prog 40~
+mpfocus $r
+mpvaluerand 0 1 5
+if mobvalue(0) == 1
+  mpecho $I sprays liquified organic matter into a giant cloud all around itself!
+  mproomcmd mptrigger all
+endif
+if mobvalue(0) == 2
+  mpechoat $f $I spews a putrid, vomitous mass of decomposition upon you!
+  mpechoaround $f $I spews a putrid, vomitous mass of decomposition upon $N!
+  mpcast 104 60 $f
+endif
+if mobvalue(0) == 3
+  mpechoat $f A sickly, blistered tentacle unravels from $I and wraps about you!
+  mpechoaround $f A sickly, blistered tentacle unravels from $I and wraps about $F!
+  mpcast 107 60 $n
+  mplag $f 1
+endif
+if mobvalue(0) == 4
+  mpechoat $f $I glares wrathfully at you!
+  mpechoaround $f $I glares wrathfully at $F.
+  if saves17($f) == 60
+    mpechoat $f You resist $I\@s attempt to horrify you.
+    mpechoaround $f $F is unwavered by $I\@s attempt to horrify $M.
+  else
+    mpechoat $f You shudder as you feel $I\@s agonizing gaze!
+    mpechoaround $f $F shudders and turns pale as $E feels $I\@s agonizing gaze!
+    mpcast 306 60 $f
+  endif
+endif
+if mobvalue(0) == 5
+  mpecho $I calls together a large mass of decay, and quickly forms it into a vicious shura!
+  mpmload 1305
+  mpforce shura mpkill $f
+endif
+mpunfocus
+~
+>trigger_prog 100~
+if saves13($n) == 60
+  mpechoat $n The cloud stings your nose and eyes, but you resist the nauseating effects.
+else
+  mpechoat $n The cloud stings your eyes and nostrils, instantly inducing nausea.
+  mpechoaround $n $N begins to wheeze and moan as they inhale the diseased cloud!
+  mpforce $n puke
+  mplag $n 2
+  if snaffected($n) == 104
+    mpremaffect $n 104
+    mpaddaffect $n 104 60 16 1 -5 8388608
+  else
+    mpaddaffect $n 104 60 16 1 -5 8388608
+  endif
+endif
+~
+>hit_prog 100~
+mpfocus $n
+mpvaluerand 9 15 25
+if constitution($f) > $9
+else
+  if snaffected($n) == 105
+  else
+    mpechoat $f Your wound erupts with pain as your flesh rapidly begins to decay!
+    mpechoaround $f $F screams in pain as $S flesh begins to decay! 
+    mpaddaffect $n 105 60 3 1 -2 4096
+  endif
+endif
+mpunfocus
+~
+|
+V4 4701
+Kingmaker Huck mob_4701~
+Kingmaker Huck is here~
+Kingmaker Huck stands here, annointing leaders.
+~
+~
+human~
+water scholar~
+A 0 DJZe N 0
+50 0 10d10+10000 1d1+1 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog special_reload_prog~
+mpfocus $y2
+mpvalueset 0 1
+mpechoat Saedacal String-F is equal to $F
+~
+>speech_prog King~
+if iscarrying($n) == 4746
+  say You already are the King!  All Hail King $N!
+else
+  if isunderlimit(4746)
+    if isfriend($n) == 2
+      mpoload 4746 on $n
+      say Alright, you\@re the King now!
+    else
+      say Woops, gotta be friends with the Var Bandor Guard (set char self faction 2 1000) if you want to be King!
+    endif
+  else
+    say Sorry, enough Kings in the realm already!
+  endif
+endif
+~
+|
+V4 4702
+spybot~
+a spybot is here~
+A spybot gets ready here.
+~
+Duh.  It spies on j00!
+~
+human~
+water scholar~
+AB 0 DFJLPZ N 0
+1 0 1d1+10000 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 4730
+Faceless Quest Bot mob_4730~
+a faceless quest bot~
+A faceless quest bot stands here.
+~
+~
+generic~
+water scholar~
+ADL 0 DJZe N 0
+25 13 12d45+707 0d0+0 4d5+10 bash~
+hit~
+0 0 0 0
+0 Q
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>data_prog Quest 1~
+=== LAYOUT ===
+emote leans heavily on his staff.
+esay \@takes the flower in his hand and says\@ Yes... this will do perfectly!
+mpxp $n 1000
+mpfaction $n 44 +30 1
+FILLER
+emote nods and heads eastward, disappearing into the woods.
+esay \@sighs and says\@ Maybe I\@ll find someone to help me some other time.
+say Hail, traveler, would you be willing to help me find an ingredient for a poultice?
+=== MOB DETAILS ===
+Arren Synd, a Druid of Nendor, stands here leaning uneasily on his staff.
+Arren Synd
+Arren Synd Druid
+Human
+Male
+Good
+19605
+=== OBJECT DETAILS ===
+24002
+A senna flower is here.
+a senna flower
+Senna Flower
+=== QUEST DESCRIPTION ===
+say Ah, excellent.  The Senna flower is a rare flower that I use in creating some poultices.
+say They have been known to calm the mind with their subtle aroma.
+say Unfortunately, the last place I saw one was along the shore of a shallow stream in Nordath, a haunted fortress at the foot of the Brintors.
+say If I remember correctly the flower can be found in the ravine, underneath the shadow of some large evergreens.
+say You might have to {Wsearch{Y carefully to find it, but it should definitely be there.{n
+say Hurry back, I may need to leave at a moment\@s notice.
+mpvalueset 0 0
+~
+>data_prog Quest 2~
+=== LAYOUT ===
+emote leans heavily on his staff.
+esay \@takes the lily in his hand and says\@ A fresh one, too.  My sincerest thanks.
+mpxp $n 1200
+mpfaction $n 44 +30 1
+FILLER
+emote nods and heads eastward, disappearing into the woods.
+esay \@sighs and says\@ Maybe I\@ll find someone to help me some other time.
+say Hail, traveler, are you willing to help me find an ingredient for a poultice?
+=== MOB DETAILS ===
+Arren Synd, a Druid of Nendor, stands here leaning uneasily on his staff.
+Arren Synd
+Arren Synd Druid
+Human
+Male
+Good
+19530
+=== OBJECT DETAILS ===
+15223
+An orange lily is here.
+an orange lily
+Orange Lily Flower
+=== QUEST DESCRIPTION ===
+say Ah, excellent.  The orange lily is difficult to find in these parts.
+say They serve as an excellent reagent for simple druidic poultices.
+say The only place I have found them in the narrowest part of a rocky valley in the northwestern part of Morn forest.
+say You might have to {Wsearch{Y carefully to find it, but you shouldn\@t have too much difficulty finding it.{n
+say Do hurry back, I\@m not sure how much time I have.
+mpvalueset 0 0
+~
+>data_prog Quest 3~
+=== LAYOUT ===
+emote leans heavily on his staff.
+esay \@takes the moss and says\@ Thank you, friend.  This will be very helpful.
+mpxp $n 1200
+mpfaction $n 44 +30 1
+FILLER
+emote nods and heads northward, disappearing into the woods.
+esay \@sighs and says\@ Maybe I\@ll find someone to help me some other time.
+say Hail, traveler, can you help me find an ingredient for a poultice?
+=== MOB DETAILS ===
+Arren Synd, a Druid of Nendor, stands here leaning uneasily on his staff.
+Arren Synd
+Arren Synd Druid
+Human
+Male
+Good
+19609
+=== OBJECT DETAILS ===
+19555
+A piece of huchak moss is here.
+some huchak moss
+Huchak Moss Piece
+=== QUEST DESCRIPTION ===
+say I hope you can help, this one might be tough to gather.
+say Huchak moss grows east of here, along a path through the thick woods.
+say The properties of Huchak moss allow us to combine the simple elements that are common in druidic poultices. 
+say You might have to {Wsearch{Y carefully to find it and make sure to watch out for bandits.{n
+say Be safe and hurry back!
+mpvalueset 0 0
+~
+>data_prog Desc4~
+A druid stands here, leaning on a long oaken staff.  His simple grey
+robes and bracelet bear the markings of the Nendorin order.  His hood is
+pulled back revealing a mat of long, grey hair that frames his rough features.
+His hands and arms are weakened by age and he learns heavily on his staff.
+~
+>data_prog Quest 4~
+=== LAYOUT ===
+emote leans heavily on his staff.
+esay \@accepts the yuspira weed\@ Amazing, you found it!  I am forever in your debt, friend.
+mpxp $n 1400
+mpfaction $n 44 +40 1
+FILLER
+emote nods and heads northward, disappearing into the woods.
+esay \@sighs and says\@ Maybe I\@ll find someone to help me some other time.
+say Hail, traveler!  Have you any spare time to find an ingredient for a poultice?
+=== MOB DETAILS ===
+Arren Synd, a Druid of Nendor, stands here leaning uneasily on his staff.
+Arren Synd
+Arren Synd Druid
+Human
+Male
+Good
+19609
+=== OBJECT DETAILS ===
+24698
+A piece of yuspira weed is here.
+a yuspira weed
+Yuspira Weed
+=== QUEST DESCRIPTION ===
+say I need a piece of rare yuspira weed for a poultice I\@m putting together.
+say However, it only grows in the Mlejian Mountains in a forest of hardy pine.
+say If I could find some of this rare weed it would go a long way in helping the Nendorian order. 
+say You might have to {Wsearch{Y carefully to find it, but doubt you will have any trouble.{n
+say Be safe and hurry back, I must be back to the Circle soon!
+mpvalueset 0 0
+~
+>data_prog Quest 5~
+=== LAYOUT ===
+emote moves the hood of her cloak close to her face.
+esay \@accepts the parchment and tucks it into her cloak\@ This will go a long way.  You have my thanks.
+mpxp $n 2000
+mpfaction $n 46 -30 1
+mpfaction $n 5 +40 1
+emote curtsies thankfully and disappears into a nearby alley.
+emote disappears into the alley behind a nearby building.
+esay \@whispers\@ Perhaps you could aid me, citizen?
+=== MOB DETAILS ===
+A cloaked figure stands here, keeping to the shadows.
+the cloaked figure
+Lysia Nadyr Cloaked Figure
+aelin
+Female
+Neutral
+3575
+=== OBJECT DETAILS ===
+19072
+A piece of parchment adorned with the Gaald Duke\@s Seal lies here.
+a Gaald parchment
+Gaald Parchment Seal
+=== QUEST DESCRIPTION ===
+say I am collecting some pieces of interest from around the realms.
+say Unfortunately I am unable to gather some of them for...
+emote fiddles nervously with the folds of her grey cloak.
+esay \@finishes\@ personal reasons.
+say The piece I require is held in the Gaald library - A piece of parchment with the Gaald Duke\@s Seal.
+say You will have to {Wsearch{Y for it, but I am sure you will find it tucked in one of the bookshelves there.{n
+esay \@states evenly\@ You will have my gratitude if you can bring it to me.
+mpvalueset 0 0
+~
+>data_prog Quest 6~
+=== LAYOUT ===
+emote moves the hood of her cloak close to her face.
+esay \@accepts the signet ring and tucks it into her cloak\@ I am grateful.
+mpxp $n 2000
+mpfaction $n 24 -30 1
+mpfaction $n 5 +40 1
+emote curtsies thankfully and disappears into a nearby alley.
+emote disappears into the alley behind a nearby building.
+esay \@whispers\@ Have you time to aid a citizen in need?
+=== MOB DETAILS ===
+A cloaked figure stands here, keeping to the shadows.
+the cloaked figure
+Lysia Nadyr Cloaked Figure
+aelin
+Female
+Neutral
+3450
+=== OBJECT DETAILS ===
+1589
+A Krilin Signet ring lies here.
+a Krilin signet ring
+Krilin Signet Ring
+=== QUEST DESCRIPTION ===
+say I am collecting some pieces of interest from around the realms.
+say Unfortunately some of them are impossible for me to retrieve.
+emote tucks her hands into her cloak.
+say The piece I require is held in the Scholar\@s Hall in Krilin - a signet ring.
+say You will have to {Wsearch{Y amongst the scrolls there, but I am sure you will find it.{n
+esay \@states evenly\@ You will have my gratitude if you can bring it to me.
+mpvalueset 0 0
+~
+>data_prog Quest 7~
+=== LAYOUT ===
+emote moves the hood of her cloak close to her face.
+esay \@accepts the document and tucks it into her cloak\@ Excellent work.
+mpxp $n 2200
+mpfaction $n 45 -50 1
+mpfaction $n 5 +50 1
+emote curtsies thankfully and disappears into a nearby alley.
+emote disappears into the alley behind a nearby building.
+esay \@whispers\@ Perhaps you could be of use, citizen?
+=== MOB DETAILS ===
+A cloaked figure stands here, keeping to the shadows.
+the cloaked figure
+Lysia Nadyr Cloaked Figure
+aelin
+Female
+Neutral
+3410
+=== OBJECT DETAILS ===
+17089
+A Kor Thrandian schedule of troop rotations lies here.
+a Kor Thrandian schedule of troop rotations
+Schedule Troop Rotations
+=== QUEST DESCRIPTION ===
+say I am looking for a particularly interesting piece.
+say In Kor Thrandir there is a diagram of troop rotations.
+say It is tucked away in the Guard\@s Barracks within the fortress.
+emote nods secretively.
+say You will have to {Wsearch{Y amongst the beds there to find it.{n
+esay \@states\@ You will have my gratitude if you can bring it to me.
+mpvalueset 0 0
+~
+>data_prog Quest 10~
+=== LAYOUT ===
+emote rushes over to grab some spices from a cabinet and pour some into the stew.
+esay \@beams at $N as she takes the jar\@ This will do just fine!  Here is some gold to help you out!
+mpset mob self gold 10
+give 10 gold $n
+FILLER
+emote disappears into the kitchen amidst the sound of clanging pots and pans.
+esay \@sighs and hurries out the door\@ Maybe I\@ll have better luck at the market.
+esay \@stops preparing her stew briefly to address you\@ Want to make yourself useful?
+=== MOB DETAILS ===
+A rotund housewife hurries about preparing food.
+the rotund housewife
+Hyenna Millis rotund housewife
+Human
+Female
+Good
+4041
+=== OBJECT DETAILS ===
+11377
+A jar of sweet corn sits here.
+a jar of sweet corn
+Sweet Corn Jar
+=== QUEST DESCRIPTION ===
+say I need some ingredients for a stew I\@m preparing for Eril\@s monthly celebration.
+say I would be grateful if you could fetch me some sweet corn from the Palace kitchen in Earendam.
+say You\@ll find it in the Patrician\@s Palace - don\@t mind Raqenda, he won\@t mind you searching about.
+say You will have to {Wsearch{Y the cupboards a little, but that\@s all.{n
+say The Patrician\@s Palace is right in the middle of Earendam, you shouldn\@t have any trouble finding it!
+say Now be quick or I\@ll have to settle for the local corn at the market and that just won\@t do.
+mpvalueset 0 0
+~
+>data_prog Quest 9~
+=== LAYOUT ===
+emote rushes over to grab some spices from a cabinet and pour some into the stew.
+esay \@beams at $N as she takes the tomato\@ This will do just fine!  Here is some gold to help you out!
+mpset mob self gold 8
+give 8 gold $n
+FILLER
+emote disappears into the kitchen amidst the sound of clanging pots and pans.
+esay \@sighs and hurries out the door\@ Maybe I\@ll have better luck at the market.
+esay \@stops preparing her stew briefly to address you\@ Want to make yourself useful?
+=== MOB DETAILS ===
+A rotund housewife hurries about preparing food.
+the rotund housewife
+Hyenna Millis rotund housewife
+Human
+Female
+Good
+4041
+=== OBJECT DETAILS ===
+24674
+A ripe tomato lies here.
+a ripe tomato
+Ripe Tomato
+=== QUEST DESCRIPTION ===
+say I need some ingredients for a stew I\@m preparing for Eril\@s monthly celebration.
+say I would be very grateful if you could go by the farmer\@s field in Jandiska and gather a ripe tomato.
+say You can just go ahead and dig it up, that old caladaran and I have a bit of a history!
+say You will have to {Wsearch{Y the rows for the biggest one, but you\@ll have no problems I\@m sure.{n
+say You can find the Jandiska village by heading south out of Nendor and then west from the Savannah desert.
+say Be quick or I\@ll have to settle for the local tomatoes here at the market.
+say Now shoo!  Stay outta my way, I\@ve got lots of work to do until the celebration.
+mpvalueset 0 0
+~
+>data_prog Quest 8~
+=== LAYOUT ===
+emote rushes over to grab some spices from a cabinet and pour some into the stew.
+esay \@takes the capsicum pepper and grabs some coins from a drawer\@ This will do just fine!  Here is some gold to help you out!
+mpset mob self gold 5
+give 5 gold $n
+FILLER
+emote disappears into the kitchen amidst the sound of clanging pots and pans.
+esay \@sighs and hurries out the door\@ Maybe I\@ll have better luck at the market.
+esay \@stops briefly to address you\@ Well, don\@t just stand there!  Want to make yourself useful?
+=== MOB DETAILS ===
+A rotund housewife hurries about preparing food.
+the rotund housewife
+Hyenna Millis rotund housewife
+Human
+Female
+Good
+4041
+=== OBJECT DETAILS ===
+7119
+A capsicum pepper lies here.
+a capsicum pepper
+Capsicum Pepper
+=== QUEST DESCRIPTION ===
+say I need some ingredients for a stew I\@m preparing for Eril\@s monthly celebration.
+say I would be very grateful if you could go dig up a capsicum pepper in the Arien Way kitchens.
+say You can just borrow them, I know the cook there.
+say You will have to {Wsearch{Y in the cupboards, but you\@ll have no problems I\@m sure!{n
+say But if you don\@t mind, I\@ve lots of work to do here yet.  Hurry back or I\@ll have to settle for local spices.
+emote sighs and returns to her work.
+mpvalueset 0 0
+~
+>load_prog 100~
+speak common
+mpgoto 6100
+~
+>speech_prog yes yeah~
+if ispc($n)
+  if mobvalue(0) == 1
+    break
+  else
+    if mobvalue(4) == 0
+      mpvalueset 4 1
+      mpvalueset 1 500
+      mpvalueset 5 1000
+      mpsetdata Quest $9
+      loop 1 to 18
+        mpnextdata
+      endloop
+      mpmload 4731
+      rqmcommand $d
+      mpvalueset 6 $d
+      mpnextdata
+      mpstring obj obj_4730 long $d
+      mpnextdata
+      mpstring obj obj_4730 short $d
+      mpnextdata
+      mpstring obj obj_4730 name $d obj_4730
+//      mpat $6 rqmexdesc $9 $d
+    endif
+    mpvalueset 0 1
+    mpsetdata Quest $9
+    loop 1 to 23
+      mpnextdata
+    endloop
+  endif
+endif
+~
+>data_prog Desc6~
+An aelin stands here, garbed in a drab brown cloak.  Her wings extend out
+of her back through holes in her clothes, each painted with black dye to
+conceal them in the shadows.  Her dark eyes and high cheekbones make her
+look both regal and secretive.
+~
+>greet_prog 100~
+if ispc($n)
+  if remembers($n)
+    mpforget $n
+    break
+  else
+    if mobvalue(0) == 0
+      mpremember $n
+      mpsetdata Quest $9
+      loop 1 to 8
+        mpnextdata
+      endloop
+      $d
+    endif
+  endif
+endif
+~
+>speech_prog specialprogreset~
+if isimmort($n)
+  if mobvalue(1) < $5
+    mpvalueset 1 0
+  else
+    mpvalueset 5 0
+  endif
+endif
+~
+>data_prog Desc10~
+The large human woman looks extremely busy, working intently over a hot
+stove.  Her hair is slightly grey, and small lines crease the corners
+of her eyes and mouth.  She hums a lively tune to herself as she throws
+ingredients into the pot.  
+~
+>data_prog Desc9~
+The large human woman looks extremely busy, working intently over a hot
+stove.  Her hair is slightly grey, and small lines crease the corners
+of her eyes and mouth.  She hums a lively tune to herself as she throws
+ingredients into the pot.  
+~
+>data_prog Desc8~
+The large human woman looks extremely busy, working intently over a hot
+stove.  Her hair is slightly grey, and small lines crease the corners
+of her eyes and mouth.  She hums a lively tune to herself as she throws
+ingredients into the pot.  
+~
+>data_prog Desc7~
+An aelin stands here, garbed in a drab brown cloak.  Her wings extend out
+of her back through holes in her clothes, each painted with black dye to
+conceal them in the shadows.  Her dark eyes and high cheekbones make her
+look both regal and secretive.
+~
+>data_prog Desc5~
+An aelin stands here, garbed in a drab brown cloak.  Her wings extend out
+of her back through holes in her clothes, each painted with black tar to
+conceal them in the shadows.  Her dark eyes and high cheekbones make her
+look both regal and secretive.
+~
+>data_prog Desc3~
+A druid stands here, leaning on a long oaken staff.  His simple grey
+robes and bracelet bear the markings of the Nendorin order.  His hood is
+pulled back revealing a mat of long, grey hair that frames his rough features.
+His hands and arms are weakened by age and he learns heavily on his staff.
+~
+>data_prog Desc2~
+A druid stands here, leaning on a long oaken staff.  His simple grey
+robes and bracelet bear the markings of the Nendorin order.  His hood is
+pulled back revealing a mat of long, grey hair that frames his rough features.
+His hands and arms are weakened by age and he leans heavily on his staff.
+~
+>data_prog Desc1~
+A druid stands here, leaning on a long oaken staff.  His simple grey
+robes and bracelet bear the markings of the Nendorin order.  His hood is
+pulled back revealing a mat of long, grey hair that frames his rough features.
+His hands and arms are weakened by age and he learns heavily on his staff.
+~
+>give_prog all~
+if ispc($n)
+  if iscarrying($i) == 4730
+  or name($i) == obj_4730
+    mpjunk 1.
+    mpvalueset 0 0
+    mpsetdata Quest $9
+    loop 1 to 2
+      mpnextdata
+    endloop
+    $d
+    mpnextdata
+    $d
+    mpnextdata
+    $d
+    mpnextdata
+    $d
+    mpnextdata
+    $d
+    mpgoto 6100
+    mpvalueset 5 30
+    mpvalueset 4 0
+    mpforget $n
+  endif
+endif
+~
+>rand_prog 100~
+if mobvalue(0) == 1
+  $d
+  mpnextdata
+else
+  if rand(1)
+    mpsetdata Quest $9
+    mpnextdata
+    $d
+  endif
+endif
+if mobvalue(1) > 0
+  mpvaluedown 1
+endif
+if mobvalue(5) > 0
+  mpvaluedown 5
+endif
+if mobvalue(1) == 0
+  mpsetdata Quest $9
+  loop 1 to 7
+    mpnextdata
+  endloop
+  $d
+  mpgoto 6100
+  mpvalueset 0 0
+  mpvalueset 5 6
+  mpvalueset 1 1000
+  mpvalueset 4 0
+endif
+if mobvalue(5) == 0
+  mpvaluerand 9 1 10
+// CHANGE MPVALUERAND TO MATCH NUMBER OF QUESTS
+  mpsetdata Quest $9
+  loop 1 to 10
+    mpnextdata
+  endloop
+  mpstring mob self long $d
+  mpnextdata
+  mpstring mob self short $d
+  mpnextdata
+  mpstring mob self name $d mob_4730
+  mpdesc self Desc$9
+  mpnextdata
+  mpset mob self race $d
+  mpnextdata
+  mpset mob self sex $d
+  mpnextdata
+  mpset mob self align $d
+  mpnextdata
+  mpgoto $d
+  mpvalueset 1 500
+  mpvalueset 5 1000
+endif
+mpjunk 1.
+~
+|
+V4 4731
+Object Placement Droid mob_8731~
+an object placement droid~
+An object placement droid stands here.
+~
+~
+human~
+water scholar~
+AL 0 Le N 0
+25 13 12d45+707 0d0+0 4d5+10 none~
+hit~
+0 0 0 0
+0 Q
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog rqmcommand~
+if isimmort($n)
+or isnpc($n)
+  mpgoto $y2
+  mpoload 4730 in room
+  rqmexdesc $y3
+  mppurge self
+else
+  mppurge self
+endif
+~
+|
+V4 4732
+Ingaraxxi Demon Devourer~
+Ingaraxxi~
+Ingaraxxi the Devourer lumbers along here.
+~
+Ingaraxxi\@s giant form towers above you, towering almost thirty feet at
+the shoulders.  Tree-trunk arms are covered in the pulsing, dark runes of
+void magic, extract their toll on his body.  Countless wounds, the result of
+thousands of battles with the denizens of the Spirit realm, are unhealed,
+blood perpetually seeping from the marks of the blades of light.  His
+piecemeal armor is made up of black iron, shaped menacingly in the fires of
+the Inferno and forged into sharp, jagged edges.  Inside his
+disproportionately massive maw is a collection of sharp, jagged teeth,
+yellowed and chipped.  The demon wields a massive scourge which he drags
+along the ground with wanton disregard and a stone shield, the size of a
+table, strapped to his forearm, leaving his hand free to grapple with.  
+~
+giant~
+water scholar~
+AFLPTX F DFJZ E 0
+60 60 9d9+10000 1d1+5000 20d10+60 defilement~
+defilement~
+-30 -30 -30 -30
+DEFHK BMb
+26 0 0 10 10 10 10 0 10 10 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 55
+AHMV ABCDEFGHIJKLQUVX AK giant flesh
+>death_prog 100~
+mpecho A still-writhing piece of the demon\@s flesh is severed from its body!
+mpoload 4731 in room
+~
+>data_prog speakclass~
+FILLER
+FILLER
+regspeech
+regspeech
+spiritspeech
+regspeech
+regspeech
+waterspeech
+regspeech
+regspeech
+spiritspeech
+regspeech
+regspeech
+regspeech
+regspeech
+regspeech
+regspeech
+regspeech
+regspeech
+regspeech
+regspeech 
+regspeech
+regspeech
+spiritspeech
+regspeech
+psionspeech
+regspeech
+~
+>data_prog stratclass~
+FILLER
+FILLER
+procgrab
+procgrab
+procdemon spirit
+procgrab
+procgrab
+procdemon water
+procgrab
+procgrab
+procdemon spirit
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procgrab
+procdemon spirit
+procgrab
+procdemon psion
+procgrab
+~
+>data_prog pickclass~
+FILLER
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+18
+19
+20
+21
+23
+24
+25
+27
+28
+29
+~
+>data_prog speakrace~
+FILLER
+FILLER
+racespeech
+racespeech
+racespeech
+chtarenspeech
+racespeech
+racespeech
+racespeech
+racespeech
+racespeech
+shuddspeech
+racespeech
+~
+>data_prog stratrace~
+FILLER
+FILLER
+procdemon race
+procdemon race
+procdemon race
+proceat
+procdemon race
+procdemon race
+procdemon race
+procdemon race
+procdemon race
+procdemon shudd
+procdemon race
+~
+>data_prog pickrace~
+FILLER
+Aelin
+Alatharya
+Caladaran
+Ch\@taren
+Chaja
+Ethron
+Human
+Kankoran
+Nefortu
+Shuddeni
+Srryn
+~
+>verb_prog caltraps~
+if compstr(1) == c
+or compstr(1) == ca
+or compstr(1) == cal
+else
+  if compstr(2) ==  
+  else
+    if rand(5)
+      esay \@snarls\@ Get back here!
+      mpechoat $n As you attempt to escape, Ingaraxxi grabs you, throwing you bodily to the ground!
+      mpechoaround $n As $N attempts to escape, Ingaraxxi grabs $m, throwing $m bodily to the ground!
+      mplag $n 2
+      break
+    endif
+  endif
+endif
+mpinterpret $n $x
+~
+>verb_prog withdraw~
+if rand(5)
+  esay \@snarls\@  Where do you think you\@re going?
+  mpechoat $n As you attempt to withdraw, Ingaraxxi grabs you, throwing you bodily to the ground!
+  mpechoaround $n As $N attempts to withdraw, Ingaraxxi grabs $m, throwing $m bodily to the ground!
+  mplag $n 2
+else
+  mpnextinterp
+endif
+~
+>verb_prog flee~
+if rand(5)
+  esay \@snarls\@  I\@m not done with you yet.
+  mpechoat $n As you attempt to flee, Ingaraxxi grabs you, throwing you bodily to the ground!
+  mpechoaround $n As $N attempts to flee, Ingaraxxi grabs $m, throwing $m bodily to the ground!
+  mplag $n 2
+else
+  mpnextinterp
+endif
+~
+>data_prog psionspeech~
+emote grunts.
+esay \@says evenly\@ The mind is a dangerous thing...
+esay \@snorts and states\@ You wish to match wits with me, mortal?
+esay \@bellows\@ What use will your mind be after I dismember you?
+esay \@grunts and snorts\@ I am the scourge of minds, devourer of souls.
+~
+>data_prog racespeech~
+emote grunts.
+esay \@scoffs and says\@ Yours is a feeble race, why the Gods bothered creating you is beyond me.
+esay \@flicks his tongue and snorts\@ I don\@t remember your race achieving anything worth my attention.
+esay \@snorts\@ Declare me your master and I may let you keep your eyes and ears.
+esay \@sneers\@ After I return you to the soil I shall hunt your kind for all eternity.
+~
+>data_prog shuddspeech~
+emote grunts.
+esay \@spits in contempt\@ You lack wisdom if you tempt me, Shuddeni.
+esay \@sneers\@ You dare such blasphemy against your masters?
+esay \@bellows\@ I spare no one on the Battlefield, Shuddeni, not even you.
+esay \@cracks his whip\@ You would make a better thrall than a victim.
+~
+>data_prog chtarenspeech~
+emote grunts.
+esay \@licks his lips and says\@ Mmmm... Shimmerskins.  Tasty morsels.
+esay \@rubs his stomach and sneers\@ You will do nicely to appease my hunger.
+esay \@snorts\@ The Shimmerskins have kept me satiated since my creation, this time will be no different.
+esay \@drools and grunts\@ Slave or Dinner?  I prefer the latter.
+~
+>data_prog regspeech~
+emote grunts.
+esay \@scoffs and says\@ You are no match for me.
+esay \@snorts\@ You are unimportant, a peon amongst masters.
+esay \@bellows indignantly\@ You have no place on the Eternal Battlefield, welp.
+esay \@laughs darkly and asks\@ Is that all?
+~
+>data_prog spiritspeech~
+emote grunts.
+esay \@smirks and gloats\@ I can sense your Spirit weakening by the moment.
+esay \@grunts\@ What do you hope to do that thousands of other Spirit warriors could not?
+esay \@cracks his whip and gloats\@ If you\@re lucky I\@ll only devour your Spirit.
+esay \@
+~
+>data_prog waterspeech~
+emote grunts.
+esay \@sneers\@ Your mastery of the sphere of water is amateur when compared to my dominance of the Void.
+esay \@snorts\@ A healer?  You have nothing that will protect you from me.
+esay \@grunts and laughs\@ I\@ve destroyed hundreds of your kind on the Eternal Battlefield.
+esay \@bellows\@ Prepare your last rites, healer, you will spend an eternity in the Void.
+~
+>fight_prog 100~
+mpseewizi
+if name($n) == $f
+else
+  mpvalueset 2 -1
+endif
+mpfocus $n
+mpvaluerand spkchk 1 4
+if ispc($f)
+  if value(7) == 0
+    mpsetdata pickclass
+    loop 1 to 27
+      if class($f) == 0
+        if rand(75)
+          procdemon water
+        endif
+        mpsetdata waterspeech
+        if rand(3)
+          loop 1 to %spkchk
+            mpnextdata
+          endloop
+          $d
+        endif
+        break
+      endif
+      if class($f) == $d
+        mpsetdata stratclass
+        loop 1 to $v1
+          mpnextdata
+        endloop
+        if rand(75)
+          $d
+        endif
+        mpsetdata speakclass
+        loop 1 to $v1
+          mpnextdata
+        endloop
+        mpsetdata $d
+        if rand(3)
+          loop 1 to %spkchk
+            mpnextdata
+          endloop
+          $d
+        endif
+      endif
+      mpnextdata
+    endloop
+  else
+    if value(7) == 1
+      mpsetdata pickrace
+      loop 1 to 14
+        if israce($f) == $d
+          mpsetdata stratrace
+          loop 1 to $v1
+            mpnextdata
+          endloop
+          if rand(75)
+            $d
+          endif
+          mpsetdata speakrace
+          loop 1 to $v1
+            mpnextdata
+          endloop
+          mpsetdata $d
+          if rand(3)
+            loop 1 to %spkchk
+              mpnextdata
+            endloop
+            $d
+          endif
+        endif
+        mpnextdata
+      endloop
+    else
+      if value(7) == 2
+        if snaffected($i) == 684
+        else
+          if iscarrying($i) == 4744
+          else
+            mpslotpurge self 16
+            mpoload 4744 on self 16
+            pmote transforms his whip into a massive black sword!
+          endif
+          assume asp
+        endif
+        if value(9) > 0
+          if sector($i) == air
+          else
+            pmote snarls angrily and brings his foot down hard on the ground, causing an immense shockwave!
+            mproomcmd mptrigger all
+            mpvalueset 9 -12
+          endif
+        endif
+      endif
+    endif
+  endif
+else
+  proccharmie
+endif
+mpunseewizi
+~
+>data_prog psion~
+shieldbash
+768
+shieldbash
+Shilr Ksaen
+mpcast 677 60
+768
+shieldbash
+Shilr Ksaen
+mpcast 677 60
+presence
+esay \@bellows loudly\@ Your mind falters in my presence!
+mpgrant $f 0 -200 0
+mpvalueset 3 -5
+~
+>data_prog race~
+flay
+768
+flay
+Chi Enit
+mpcast 75 60
+768
+flay
+Itle Chirukh
+mpcast 678 60
+hatred
+esay \@spits through clenched teeth\@ Your protections are useless against the power of the Void!
+mpremaffect $f 119
+mpvalueset 3 -10
+~
+>data_prog shudd~
+shieldbash
+104
+flay
+Yudkicj Khakuk
+mpcast 104 60
+680
+flay
+Chi Iruyhiru
+mpcast 680 60
+magic
+pmote chants a few words in an arcane tongue and hurls a dark curse from his fingertips!
+mpcast 39 60
+mpvalueset 3 -10
+~
+>data_prog spirit~
+flay
+768
+flay
+Itle Chirukh
+mpcast 678 60
+768
+flay
+Shilr Ksaen
+mpcast 677 60
+spirit
+pmote chants a few words in an arcane tongue and then unleashes a black bolt from his fingertips!
+mpcast 75 60
+mpvalueset 3 -10
+~
+>data_prog water~
+shieldbash
+104
+shieldbash
+Yudkicj Khakuk
+mpcast 104 60
+8
+shieldbash
+Shilr Hnisn
+mpcast 8 60
+magic
+pmote steps back from battle briefly and calls down a sickening cloud of darkness over the room.
+mpat $i mpcast 681 60
+mpvalueset 3 -200
+~
+>verb_prog procdemon~
+mpsetdata $y2
+if value(2) > 1
+  mpvalueset 2 -2
+  if rand(33)
+    $d
+  else
+    if rand(50)
+      mpnextdata
+      if snaffected($f) == $d
+        mpnextdata
+        $d
+      else
+        loop 1 to 2
+          mpnextdata
+        endloop
+        esay \@utters the words\@ $d!
+        mpnextdata
+        $d
+      endif
+    else
+      loop 1 to 5
+        mpnextdata
+      endloop
+      if snaffected($f) == $d
+        mpnextdata
+        $d
+      else
+        loop 1 to 2
+          mpnextdata
+        endloop
+        esay \@utters the words\@ $d!
+        mpnextdata
+        $d
+      endif
+    endif
+  endif
+else
+  loop 1 to 9
+    mpnextdata
+  endloop
+  mpvalueup 8
+  mpvalueup 3
+  mpvalueup 2
+  if value(2) == 0
+    pmote breathes in, his frame growing in size as he draws forth his demonic $d.
+  else
+    if value(2) > 0
+      if value(3) > 0
+        loop 1 to 3
+          mpnextdata
+          $d
+        endloop
+      endif
+    endif
+  endif
+endif
+~
+>verb_prog proceat~
+// NEED TO CREATE STOMACH AND IMPROVE EMOTES
+if value(2) > 1
+  mpvaluerand dexchk 1 50
+    if dexterity($f) > %dexchk
+    or size($f) > medium
+      pmote tries to bite $F with his massive jaw but he\@s too large.
+    else
+      pmote grabs $F with his massive hands and {r###BITES###{n fiercely!
+      mplag $f $4
+      mpdamage $f 100 4 0
+// REINSTATE IF YOU WANT TO REALLY EAT
+//      mpmload 4733
+//      eateateat $f
+    endif
+    mpvalueset 2 -10
+  endif
+else
+  mpvalueup 2
+  if value(2) == 0
+    pmote breathes in, his frame growing in size as he draws forth demonic hunger.
+  else
+    if value(2) == 1
+      pmote bears down on $F!
+    endif
+  endif
+endif
+~
+>verb_prog procgrab~
+// NEED TO IMPROVE EMOTES
+if value(2) > 1
+  if size($f) > medium
+    pmote tries to grab $F with his massive hands but he\@s too large to be thrown.
+  else
+    mpvaluerand strchk 15 45
+    if strength($f) > %strchk
+    or snaffected($f) == 592
+      pmote tries to grab $F with one of his massive hands but can\@t get a good enough grip.
+    else
+      pmote grabs $F with his massive hand!
+      mpmload 4733
+      procthrow $f
+    endif
+    mpvalueset 2 -5
+  endif
+else
+  mpvalueup 2
+  if value(2) == 0
+    pmote breathes in, his frame growing in size as he draws forth demonic strength.
+  else
+    if value(2) == 1
+      pmote bears down on $F!
+    endif
+  endif
+endif
+~
+>verb_prog proccharmie~
+if rand(15)
+  if ischarmed($f)
+    if iscarrying($i) == 4742
+      esay \@spits in disgust and states\@ You think this minion is a match for my power?
+      pmote wraps the lashes of his scourge around the neck of $F and the scourge tightens with a will of its own!
+      esay \@utters the words\@ Slaijj Shakakraah!
+      mpecho $F dematerializes and implodes!
+      mpslay $f
+    endif
+  endif
+endif
+~
+>trigger_prog 100~
+if isnpc($n)
+or isflying($n)
+or dexterity($n) > 20
+else
+  if strength($n) > 20
+  or snaffected($n) == 375
+    mpechoat $n The shockwave knocks you off-balance but you manage to brace yourself against the full force of the shockwave.
+    mpechoaround $n $N stumbles but braces themselves from the full force of the shockwave.
+    mplag $n 3
+  else
+    mpechoat $n The shockwave knocks you off-balance and you are thrown off your feet!
+    mpechoaround $n $N stumbles and falls, unable to keep his footing!
+    mplag $n 4
+  endif
+endif
+~
+>rand_prog 100~
+if position($i) < 7
+  stand
+endif
+if value(3) < 0
+  mpvalueup 3 4
+endif
+if value(9) < 1
+  mpvalueup 9 4
+endif
+if hitprcnt($i) > 60
+  mpvalueset 7 0
+else
+  if hitprcnt($i) > 25
+    mpvalueset 7 1
+    if snaffected($i) == 682
+    else
+      if rand(4)
+        mpcast 682 60
+      endif 
+    endif
+  else
+    mpvalueset 7 2
+  endif
+endif
+// EQUIPMENT PROG
+if value(7) < 2
+  mpvalueset 1 0
+  if value(1) == 0
+    if iscarrying($i) == 4742
+    else
+      mpslotpurge self 16
+      mpoload 4742 on self 16
+      assume none
+      pmote summons a massive whip seemingly out of darkness into his hand and snaps it viciously.
+    endif
+    if iscarrying($i) == 4743
+    else
+      mpslotpurge self 11
+      mpoload 4743 on self 11
+      pmote conjures a gigantic shield out of shadow and attaches it to his monstrous forearm.
+    endif
+    mpvalueset 1 1
+  endif
+endif
+if istrack($i)
+  if iscarrying($i) == 4744
+    if inarea($f)
+      if rand(2)
+        mpecho using his gigantic sword to tear a whole in space, Ingaraxxi creates a portal to the Void.
+        mpecho The portal closes behind him.
+        mpgoto $f
+        mpecho A single massive blade emerges from the air, slicing open a rent in space.
+        mpecho From the tattered archway, Ingaraxxi steps forth.
+        mpkill $f
+      endif
+    endif
+  endif
+endif
+~
+>load_prog 100~
+mpaddskill self 672 100
+mpaddskill self 572 100
+mpaddskill self 684 100
+mpaddskill self 682 100
+mpaddskill self 104 100
+mpaddskill self 8 100
+mpaddskill self 681 100
+mpaddskill self 678 100
+mpaddskill self 677 100
+mpaddskill self 75 100
+mpaddskill self 680 100
+mpaddskill self 39 100
+~
+|
+V4 4733
+figure ghostly demonthrower~
+a ghostly figure~
+A ghostly figure hangs silently in the air.
+~
+~
+spirit~
+water scholar~
+AB 0 DFJLPTZ N 0
+1 0 1d1+10000 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 DKLRb
+26 0 0 0 0 0 0 0 0 50 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ADHLMV ABCDEFGHIJK K medium unknown
+>verb_prog eateateat~
+mpfocus $y2
+mpforce $n pmote brings $F to his mouth and devours $F whole!
+mpgoto 4143
+mptransfer $f
+mpforce $f look
+mppurge self
+~
+>verb_prog procthrow~
+mpfocus $y2
+mpgetroomvnum startrm
+if size($f) > small
+  mpvaluerand distchk 1 2
+else
+  mpvaluerand distchk 2 4
+endif
+mpvaluerand dirchk 1 4
+loop 1 to %distchk
+  if value(dirchk) == 1
+    mpvalueset dir west
+    west
+  else
+    if value(dirchk) == 2
+      mpvalueset dir east
+      east
+    else
+      if value(dirchk) == 3
+        mpvalueset dir north
+        north
+      else
+        mpvalueset dir south
+        south
+      endif
+    endif
+  endif
+endloop
+mpgetroomvnum endrm
+if value(startrm) == %endrm
+  mpechoat $f Ingaraxxi throws you to the ground violently, leaving you stunned and hurt!
+  mpechoaround $f Ingaraxxi throws $F to the ground violently, leaving $M stunned and hurt!
+  mpmath 4 $5 * 3
+  mplag $f $4
+  mpdamage $f 100 2 0
+else
+  mpechoat $f Ingaraxxi tosses you %dir-ward, away from the battle!
+  mpechoaround $f Ingaraxxi picks $F up and tosses $M %dir-ward, away from the battle!
+  mptransfer $f
+  mpmath 4 $5 * 2
+  mplag $f $4
+  mpdamage $f 100 $5 0
+  mpforce $f look
+  mpechoat $f You land heavily on your back, wounded and stunned!
+  mpechoaround $f $F flies into the room and lands heavily on their back, leaving $M wounded and stunned!
+endif
+mppurge self
+~
+|
+V4 4778
+Arenaflagbot arena flag bot~
+arenaflagbot~
+The Arenaflagbot is here, {yArenaon{x or {yArenaoff{x.
+~
+~
+human~
+water scholar~
+AB 0 0 N 0
+52 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 4779
+tourneybot bot~
+tourney bot~
+Tourneybot records and stuff
+~
+~
+human~
+water scholar~
+AB 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>trigger_prog 100~
+if remembers($n)
+  if mobvcheck($n) == 1
+    mpecho {W$N: $z win.{x
+  else
+    mpecho {W$N: $z wins.{x
+  endif
+endif
+~
+>verb_prog tourney~
+if isimmort($n)
+  if compstr(2) == on
+    if mobvalue(1) == 0
+      mpvalueset 2 0
+      mpfocus $y3
+      if isfocused($i)
+        mpvalueup 2    
+      else
+        mpechoat $n {RPlayer 1 name not found.{x
+      endif
+      mpfocus $y4
+      if isfocused($i)
+        mpvalueup 2
+      else
+        mpechoat $n {RPlayer 2 name not found.{x
+      endif
+      if mobvalue(2) == 2
+        mpvalueup 0
+        mpvalueup 1
+        mpfocus $y3 
+        mpremember $f
+        mpbitset $f 18653 1
+        mpecho {g$F may now enter as a combatant during round $0.{x
+        mpfocus $y4 
+        mpremember $f
+        mpbitset $f 18653 1
+        mpecho {g$F may now enter as a combatant during round $0.{x
+        mpecho {yAll others may enter as spectators.{x
+      else
+        mpechoat $n {RYou must supply the names of two combatants.{x
+      endif
+    else
+      mpecho {RA round is already in progress.{x
+    endif
+    mpvalueset 2 0
+  endif      
+  if compstr(2) == winner
+    if mobvalue(1) == 1
+      mpvalueset 2 0
+      mpfocus $y3
+      if isfocused($i)
+        mpvalueup 2    
+      else
+        mpechoat $n {RPlayer 1 name not found.{x
+      endif
+      mpfocus $y4
+      if isfocused($i)
+        mpvalueup 2
+      else
+        mpechoat $n {RPlayer 2 name not found.{x
+      endif
+      if mobvalue(2) == 2
+        mpvaluedown 1
+        mpfocus $y3 
+        mpmemvup $f
+        mpbitset $f 18653 0
+        mpecho {W$F is the winner of round $0!{x
+        mpfocus $y4 
+        mpbitset $f 18653 0
+        mpecho {R$F did not fare so well.{x
+      else
+        mpechoat $n{You must supply two combatant names.{x
+      endif
+      mpvalueset 2 0
+    else
+      mpecho {RA round is not in progress.{x
+    endif
+  endif
+  if compstr(2) == standings
+    mpecho {gAs the situation now stands. . .{x
+    if mobvalue(1) == 0
+      mpecho {gRound $0 ended.{x
+    else
+      mpecho {gRound $0 in progress.{x
+    endif
+    mproomcmd mptrigger all
+  endif
+  if compstr(2) == abort
+    if mobvalue(1) == 0
+      mpecho {RNo round in progress.{x
+    else
+      mpvalueset 2 0
+      mpecho {RRound aborted.{x
+      mpfocus $y3
+      if isfocused($i)
+        mpvalueup 2
+      else
+        mpechoat $n {RPlayer 1 name not found.{x
+      endif
+      mpfocus $y4
+      if isfocused($i)
+        mpvalueup 2
+      else
+        mpechoat $n {RPlayer 2 name not found.{x
+      endif
+      if mobvalue(2) == 2
+        mpfocus $y3 
+        mpbitset $f 18653 0
+        mpecho {g$F has been removed from this round.{x
+        mpfocus $y4
+        mpbitset $f 18653 0
+        mpecho {g$F has been removed from this round.{x
+        mpvaluedown 0 0
+        mpvalueset 1 0
+      else
+        mpechoat $n {RYou must supply two names of participants while a round is in progress.{x
+      endif
+      mpvalueset 2 0
+    endif
+  endif
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+4700
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tower of Water:{n
+{D================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Go south on Ilrin Street.   Watch for the intersection at 
+   Arcanos and Ilrin!
+6. Head east two rooms on Arcanos Street.  The guild door will
+   be to the south.
+7. {WOpen{n the {Wsouth{nern door and head south to go inside.
+8. Find Master Lenimbar and {Wgive{n him the {Wpackage{n!
+~
+V13
+4701
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tower of Earth:{n
+{D================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Go south on Ilrin Street.  Pass the -first- intersection with
+   Arcanos street and keep going south past the bend.
+6. When you reach the -second- intersection with Arcanos Street,
+   go east two rooms.
+7. {WOpen{n the {Wnorth{nern door and head north to go inside.
+8. Find Mistress Quirnelvra and {Wgive{n her the {Wpackage{n!
+~
+V13
+4702
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tower of Void:{n
+{D================================{n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Go south on Ilrin Street.   Watch for the intersection at 
+   Arcanos and Ilrin!
+6. Head east three rooms on Arcanos Street.  Arcanos bends to
+   the south here.
+7. Go south two rooms.  The guild will be to your west.
+8. {WOpen{n the {Wwest{nern door and head west to go inside.
+9. Find Master Shaviiran and {Wgive{n him the {Wpackage{n!
+~
+V13
+4703
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tower of Water and Spirit:{n
+{D============================================{n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Go south on Ilrin Street.   Watch for the intersection at 
+   Arcanos and Ilrin!
+6. Head east two rooms on Arcanos Street.  The guild door will
+   be to the south.
+7. {WOpen{n the {Wsouth{nern door and head south to go inside.
+8. Find Master Baldrae and {Wgive{n him the {Wpackage{n!
+~
+V13
+4704
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tower of Earth and Air:{n
+{D========================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Go south on Ilrin Street.  Pass the -first- intersection with
+   Arcanos street and keep going south past the bend.
+6. When you reach the -second- intersection with Arcanos Street,
+   go east two rooms.
+7. {WOpen{n the {Wnorth{nern door and head north to go inside.
+8. Find Master Nizayan and {Wgive{n him the {Wpackage{n!
+~
+V13
+4705
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tower of Void and Fire:{n
+{D========================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Go south on Ilrin Street.   Watch for the intersection at 
+   Arcanos and Ilrin!
+6. Head east three rooms on Arcanos Street.  Arcanos bends to
+   the south here.
+7. Go south two rooms.  The guild will be to your west.
+8. {WOpen{n the {Wwest{nern door and head west to go inside.
+9. Find Master Toloth and {Wgive{n him the {Wpackage{n!
+~
+V13
+4706
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tower of Water and Spirit:{n
+{D============================================{n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Go south on Ilrin Street.   Watch for the intersection at 
+   Arcanos and Ilrin!
+6. Head east two rooms on Arcanos Street.  The guild door will
+   be to the south.
+7. {WOpen{n the {Wsouth{nern door and head south to go inside.
+8. Find Master Porsom and {Wgive{n him the {Wpackage{n!
+~
+V13
+4707
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tower of Earth and Air:{n
+{D========================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Go south on Ilrin Street.  Pass the -first- intersection with
+   Arcanos street and keep going south past the bend.
+6. When you reach the -second- intersection with Arcanos Street,
+   go east two rooms.
+7. {WOpen{n the {Wnorth{nern door and head north to go inside.
+8. Find Master Tiuron and {Wgive{n him the {Wpackage{n!
+~
+V13
+4708
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tower of Void and Fire:{n
+{D========================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Go south on Ilrin Street.   Watch for the intersection at 
+   Arcanos and Ilrin!
+6. Head east three rooms on Arcanos Street.  Arcanos bends to
+   the south here.
+7. Go south two rooms.  The guild will be to your west.
+8. {WOpen{n the {Wwest{nern door and head west to go inside.
+9. Find Master Visedha and {Wgive{n him the {Wpackage{n!
+~
+V13
+4709
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tower of Water and Spirit:{n
+{D============================================{n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Go south on Ilrin Street.   Watch for the intersection at 
+   Arcanos and Ilrin!
+6. Head east two rooms on Arcanos Street.  The guild door will
+   be to the south.
+7. {WOpen{n the {Wsouth{nern door and head south to go inside.
+8. Find Mistress Enre and {Wgive{n her the {Wpackage{n!
+~
+V13
+4710
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tower of Earth and Air:{n
+{D========================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Go south on Ilrin Street.  Pass the -first- intersection with
+   Arcanos street and keep going south past the bend.
+6. When you reach the -second- intersection with Arcanos Street,
+   go east two rooms.
+7. {WOpen{n the {Wnorth{nern door and head north to go inside.
+8. Find Mistress Aemi and {Wgive{n her the {Wpackage{n!
+~
+V13
+4711
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tower of Void and Fire:{n
+{D========================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Go south on Ilrin Street.   Watch for the intersection at 
+   Arcanos and Ilrin!
+6. Head east three rooms on Arcanos Street.  Arcanos bends to
+   the south here.
+7. Go south two rooms.  The guild will be to your west.
+8. {WOpen{n the {Wwest{nern door and head west to go inside.
+9. Find Master Ajmayam and {Wgive{n him the {Wpackage{n!
+~
+V13
+4712
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Thieves\@ Circle:{n
+{D=================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Follow Sadrent Road north.  Pay attention to the cross streets.
+6. When Sadrent intersects with Dretch Street, take Dretch Street
+   east.
+7. When Dretch Street intersects with Sald Street, take Sald Street
+   north.
+8. Go one room north from the Dretch-Sald intersection.  To the east
+   will be an abandoned house. Go east into the house.
+9. {WOpen{n the trapdoor which leads {Wdown{n.  Enter, and find
+   Mistress Livna. {WGive{n her the {Wpackage{n!
+~
+V13
+4713
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Watcher\@s Enclave:{n
+{D===================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Go south twice.  To the west will be the Enclave.
+6. Go inside, and {Wgive{n the {Wpackage{n to Master Eithol!
+~
+V13
+4714
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Assassin\@s Chamber:{n
+{D====================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Follow Sadrent Road north.  Pay attention to the cross streets.
+6. When Sadrent intersects with Dretch Street, take Dretch Street
+   east.
+7. When Dretch Street intersects with Sald Street, take Sald Street
+   south.
+8. Follow Sald south until it reaches a dead-end.  The wall to the
+   south is a hidden door.
+9. {WOpen{n the door which leads {Wsouth{n.  Enter, and find Master
+   Akaltarath (a fellow who likes to wear hoods). {WGive{n 
+   him the {Wpackage{n!
+~
+V13
+4715
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Thieves\@ Circle:{n
+{D=================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Follow Sadrent Road north.  Pay attention to the cross streets.
+6. When Sadrent intersects with Dretch Street, take Dretch Street
+   east.
+7. When Dretch Street intersects with Sald Street, take Sald Street
+   north.
+8. Go one room north from the Dretch-Sald intersection.  To the east
+   will be an abandoned house. Go east into the house.
+9. {WOpen{n the trapdoor which leads {Wdown{n.  Enter, and find
+   Master Taldrin. {WGive{n him the {Wpackage{n!
+~
+V13
+4716
+vomitous fob puking dripping obj_4716~
+a vomitous fob of puking and dripping~
+A vomitous fob of puking and dripping rests here in a pool of goo.~
+~
+unknown~
+trash d 0 0 A
+0 0 0 0 0
+52 0 0 0 P
+0
+>tick_prog 100~
+if value(0) > 0
+  mpvaluedown 0 1
+endif
+~
+>rand_prog 100~
+if value(0) == 0
+  mpvalueset 0 10
+endif
+if value(0) > 0
+  mpfocus $o
+  if rand(13)
+    mpechoat $f Your garments drip with putrid, vomitous ooze.
+    mpechoaround $f $F\@s garments drip with putrid, vomitous ooze.
+    if rand(33)
+      mpechoat $f You retch and dry-heave at the stench.
+      mpechoaround $f $F buckles over dry-heaving and retching.
+      mpforce $f puke
+      mpforce $f groan
+      mplag $f 3
+    else
+      if rand(50)
+        mpechoat $f You grow dizzy from the foul odor and stinging fumes.
+        mpechoaround $f $F\@s face turns pale and $S eyes roll back into $S head.
+        mpforce $f swoon
+        if snaffected($f) == 644
+        else
+          mpaddaffect $f 644 60 2 0 0 0
+        endif
+        mplag $f 2
+      else
+        mpechoat $f The smell permeates your senses and seems to singe your nostrils, but you manage to swallow your urge to puke.
+        mpechoaround $f $F pauses for a moment and forces $Mself to swallow a fulsome mass.
+        mplag $f 1
+      endif
+    endif
+  endif
+endif
+if value(0) == 1
+  mpechoat $n The nauseating ooze fianlly dries up.
+  mppurge self
+endif
+~
+|
+V13
+4718
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tipsy Swordmaster:{n
+{D===================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Follow Sadrent Road north.  Pay attention to the cross streets.
+6. When Sadrent intersects with Raddin Street, take Raddin Street
+   east until it dead-ends.
+7. The Tipsy Swordmaster lies to the south.  Enter, and find Corporal
+   Garalon.  {WGive{n him the {Wpackage{n!
+~
+V13
+4719
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tipsy Swordmaster:{n
+{D===================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Follow Sadrent Road north.  Pay attention to the cross streets.
+6. When Sadrent intersects with Raddin Street, take Raddin Street
+   east until it dead-ends.
+7. The Tipsy Swordmaster lies to the south.  Enter, and find Master
+   Mengjaal.  {WGive{n him the {Wpackage{n!
+~
+V13
+4720
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tipsy Swordmaster:{n
+{D===================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Follow Sadrent Road north.  Pay attention to the cross streets.
+6. When Sadrent intersects with Raddin Street, take Raddin Street
+   east until it dead-ends.
+7. The Tipsy Swordmaster lies to the south.  Enter, and find Thane
+   Brondir.  {WGive{n him the {Wpackage{n!
+~
+V13
+4721
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Tipsy Swordmaster:{n
+{D===================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Follow Sadrent Road north.  Pay attention to the cross streets.
+6. When Sadrent intersects with Raddin Street, take Raddin Street
+   east until it dead-ends.
+7. The Tipsy Swordmaster lies to the south.  Enter, and find Master
+   Jolcherus.  {WGive{n him the {Wpackage{n!
+~
+V13
+4723
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Ranger\@s Glade:{n
+{D================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Follow Ilrin Street south to the south gate of the city.
+   Continue south into Nendor Forest.
+   {rWarning!! {WNendor Forest is filled with many dangers.{n
+              {WStay to the path!{n
+6. Once you reach the Forest Path, turn west onto a cleared path.
+   (if you see a small sign by the path, you went too far south)
+7. Turn south immediately to enter the ranger\@s glade.
+   Find Master Adwin and {Wgive{n him the {Wpackage{n!
+~
+V13
+4724
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+V13
+4725
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Nymph\@s Tears:{n
+{D================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head past the fountain in Center Square.  Continue east on
+   Aragol Street.
+5. Go east for two rooms on Aragol Street. To the south will be
+   the Nymph\@s Tears tavern.  Enter the tavern.
+6. Your guild is located in the back of the tavern, to the west
+   and south.  Find Mistress Mai\@lyraea and {Wgive{n her the 
+   {Wpackage{n!
+~
+V13
+4727
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Meeting Chamber for the Council of Scholars:{n
+{D=============================================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Go south on Ilrin Street.   Watch for the intersection at 
+   Arcanos and Ilrin!
+6. Head east three rooms on Arcanos Street.  Arcanos bends to
+   the south here.
+7. Go south four rooms.  The Meeting Chambers will be to your west.
+8. The alchemists\@ guild is in the basement.  Head west twice from
+   the street, and then north into the stairwell.
+9. Go down into the guild.  Find Master Bai\@soco and {Wgive{n him 
+   the {Wpackage{n!
+~
+V13
+4728
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Kisjam\@s Chambers:{n
+{D===================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Follow Ilrin Street south to the south gate of the city.
+   Continue south into Nendor Forest.
+   {rWarning!! {WNendor Forest is filled with many dangers.{n
+              {WStay to the path!{n
+6. Once you reach the Forest Path, turn west onto a cleared path.
+   (if you see a small sign by the path, you went too far south)
+   Continue west until the path splits north and south.
+7. Turn north, and follow the path until you see a spring.  Turn
+   east from here.
+8. Head east into the monastery.  You will have to open two doors
+   until you find yourself in a corridor.  Go to the end of the
+   corridor, but do not open the third door (or you will be in
+   the garden).
+9. Open the door to the south, and go south past the young monk
+   who is standing guard. Find Master Kisjam and {Wgive{n him 
+   the {Wpackage{n!
+~
+V13
+4729
+paper piece small note notepaper directions direction fine-print~
+a small piece of paper~
+A small piece of notepaper lies here, neat writing printed on it.~
+~
+parchment~
+trash SU 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+paper piece small note notepaper directions direction fine-print~
+{WDirections to the Druid\@s Circle:{n
+{D================================={n
+1. From the golden fountain, head south to the Chamber of Travel.
+2. The portal to the east will take you to Var Bandor.
+3. From the temple, head south once.
+4. Head east until you see the fountain in Center Square.
+5. Follow Ilrin Street south to the south gate of the city.
+   Continue south into Nendor Forest.
+   {rWarning: {WNendor Forest is filled with many dangers!{n
+              {WStay to the path!{n
+6. Follow the forest path south.  Pass one sign, and continue on
+   the path as it bends to the east and back again.
+7. Watch for a large, runed stone that marks the path.  Turn east
+   here.
+8. Follow the path east twice and south twice.
+9. Head east once more, and then turn south immediately to enter
+   the druid\@s circle. Find Inenilon Loebern and {Wgive{n him
+   the {Wpackage{n!
+~
+V13
+4730
+featureless quest object obj_4730~
+a featureless quest object~
+A featureless quest object lies here.~
+~
+unknown~
+treasure P 0 0 AO
+0 0 0 0 0
+10 5 0 1 P
+1
+>rand_prog 100~
+if value(1) == 0
+  mpset obj obj_4730 extra 268435456
+  mpvalueset 1 1
+  mpvalueset 0 500
+endif
+if value(0) > 0
+  mpvaluedown 0
+else
+  mpechoat $o $I crumbles into dust.
+  mppurge self
+endif
+~
+>data_prog ObjDesc1~
+prog delete data_prog ObjDesc1
+~
+|
+V13
+4731
+gloves demonflesh living dfgloves~
+a living piece of demonflesh~
+A living piece of writhing demonflesh is here~
+~
+flesh~
+weapon JMSTYZa 0 0 AH
+exotic 6 8 3 D
+claw~
+60 5 20000 1 P
+1
+A
+18 3
+A
+32 1
+A
+42 -2
+A
+47 -2
+A
+1 2
+A
+19 2
+A
+13 20
+>rand_prog 100~
+\\\\ AUTOWEAR
+if isheld($o)
+  if isworn($o)
+  else
+    mpechoaround $o The living demonflesh writhes in $O\@s hands, adhering itself to their hands!
+    mpechoat $o The living demonflesh writhes in your grasp, adhering to the skin of your hands.
+    if iswearslotfull($o) == 9
+      mpslotpurge $o 9
+      mpechoat $o The demonflesh encompasses your hands, disintegrating the armor!
+    endif
+    mpforce $o wear dfgloves
+  endif
+endif
+\\\\ CREEPING
+if value(1) == 0
+  if rand(3)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding up $O\@s arm and onto their wrists!
+      mpechoat $o The demonflesh writhes, sliding up your arm and onto your wrists!
+      if iswearslotfull($o) == 14
+        mpslotpurge $o 14
+        mpechoat $o The demonflesh encompasses your left wrist, disintegrating the armor!
+      endif
+      if iswearslotfull($o) == 15
+        mpslotpurge $o 15
+        mpechoat $o The demonflesh encompasses your right wrist, disintegrating the armor!
+      endif
+      mpoload 4732 on $o 14
+      mpoload 4733 on $o 15
+      mpvalueset 1 1
+      mplag $o 2
+    endif
+  endif
+endif
+\\\\ DAYLIGHT DAMAGE
+if islight()
+  if sector($o) == city
+  or sector($o) == field
+  or sector($o) == forest
+  or sector($o) == hills
+  or sector($o) == mountain
+  or sector($o) == swim
+  or sector($o) == air
+  or sector($o) == desert
+  or sector($o) == noswim
+  or sector($o) == road
+  or sector($o) == swamp
+    if rand(8)
+      mpechoaround $o The light of the sun singes $O\@s demonflesh!
+      mpechoat $o The light of the sun singes your demonflesh, {Rburning{n you!
+      if iswielding($o) == 4731
+        if iswielding($o) == 4732
+          if iswielding($o) == 4733
+            if iswielding($o) == 4734
+              if iswielding($o) == 4735
+                if iswielding($o) == 4736
+                  if iswielding($o) == 4737
+                    if iswielding($o) == 4738
+                      if iswielding($o) == 4739
+                        if iswielding($o) == 4740
+                          if iswielding($o) == 4741
+                            mpdamage $o 60 1 0
+                            mpgrant $o 0 -120 -96
+                          endif
+                          mpdamage $o 24 1 0
+                          mpgrant $o 0 -80 -48
+                          mpechoat $o The light of the sun distracts your thoughts.
+                        endif
+                        mpdamage $o 24 1 0
+                        mpgrant $o 0 0 -48
+                        mpechoat $o The heat of the sun drains your endurance.
+                      endif
+                      mpdamage $o 12 1 0
+                    endif
+                    mpdamage $o 12 1 0
+                  endif
+                  mpdamage $o 6 1 0
+                endif
+                mpdamage $o 6 1 0
+              endif
+              mpdamage $o 6 1 0
+            endif
+            mpdamage $o 6 1 0
+          endif
+          mpdamage $o 6 1 0
+        endif
+        mpdamage $o 6 1 0
+      endif
+    endif
+  endif
+endif
+\\\\ AUTOGRIP
+if snaffected($o) == 438
+else
+  mpaddaffect $o 438 50 -1 27 0 0
+  mpechoat $o You feel the strength of the demonflesh creep into your fingers, empowering your grip.
+endif
+~
+>remove_prog 100~
+mpremaffect $o 438
+mpechoat $o You feel the demonic strength leave your hands.
+~
+|
+V13
+4732
+bracer left demonflesh living dfbracerleft~
+a living piece of demonflesh~
+A living piece of writhing demonflesh is here~
+~
+flesh~
+armor JMPSTYZa 0 0 AM
+10 10 10 10 0
+60 5 20000 1 P
+1
+A
+32 1
+A
+42 -2
+A
+47 -2
+A
+19 2
+A
+18 2
+A
+13 10
+>rand_prog 100~
+\\\\ CREEPING
+if value(1) == 0
+  if rand(3)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding up $O\@s wrists and onto their arms!
+      mpechoat $o The demonflesh writhes, sliding up your wrists and onto your arms!
+      if iswearslotfull($o) == 10
+        mpslotpurge $o 10
+        mpechoat $o The demonflesh encompasses your arms, disintegrating the armor!
+      endif
+      mpoload 4734 on $o 10
+      mpvalueset 1 1
+      mplag $o 2
+    endif
+  endif
+endif
+~
+|
+V13
+4733
+bracer right demonflesh living dfbracerright~
+a living piece of demonflesh~
+A living piece of writhing demonflesh is here~
+~
+flesh~
+armor JMPSTYZa 0 0 AM
+10 10 10 10 0
+60 5 20000 1 P
+1
+A
+32 1
+A
+42 -2
+A
+47 -2
+A
+18 2
+A
+19 2
+A
+13 10
+V13
+4734
+armguards demonflesh living dfarmguards~
+a living piece of demonflesh~
+A living piece of writhing demonflesh is here~
+~
+flesh~
+armor JMPSTYZa 0 0 AI
+10 10 10 10 0
+60 5 20000 1 P
+1
+A
+18 2
+A
+32 4
+A
+42 -4
+A
+47 -4
+A
+19 4
+A
+13 20
+>rand_prog 100~
+\\\\ CREEPING
+if value(1) == 0
+  if rand(3)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding up $O\@s arms and onto their body!
+      mpechoat $o The demonflesh writhes, sliding up your arms and onto your body!
+      if iswearslotfull($o) == 12
+        mpslotpurge $o 12
+        mpechoat $o The demonflesh encompasses your body, disintegrating the armor!
+      endif
+      mpoload 4735 on $o 12
+      mpvalueset 1 1
+      mplag $o 2
+    endif
+  endif
+endif
+~
+|
+V13
+4735
+breastplate demonflesh living dfbreastplate~
+a living piece of demonflesh~
+A living piece of writhing demonflesh is here~
+~
+flesh~
+armor JMPSTYZa 0 0 AD
+12 12 12 12 0
+60 5 20000 1 P
+1
+A
+32 6
+A
+42 -6
+A
+47 -6
+A
+19 3
+A
+13 40
+A
+5 2
+>rand_prog 100~
+\\\\ CREEPING
+if value(1) == 0
+  if rand(3)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding down $O\@s body and onto their torso!
+      mpechoat $o The demonflesh writhes, sliding down your body and onto your torso!
+      if iswearslotfull($o) == 5
+        mpslotpurge $o 5
+        mpechoat $o The demonflesh encompasses your torso, disintegrating the armor!
+      endif
+      mpoload 4736 on $o 5
+      mpvalueset 1 1
+      mplag $o 2
+    endif
+  endif
+endif
+~
+|
+V13
+4736
+cloak demonflesh living dfcloak~
+a living piece of demonflesh~
+A living piece of writhing demonflesh is here~
+~
+flesh~
+armor JMPSTYZa 0 0 AK
+12 12 12 12 0
+60 5 20000 2 P
+1
+A
+18 2
+A
+19 3
+A
+20 -2
+A
+32 4
+A
+42 -4
+A
+47 -4
+A
+13 20
+>remove_prog 100~
+mpremaffect $o 117
+mpechoat $o The living demonflesh stops regenerating your wounds.
+~
+>rand_prog 100~
+\\\\ CREEPING
+if value(1) == 0
+  if rand(3)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding up $O\@s body and onto their neck!
+      mpechoat $o The demonflesh writhes, sliding up your body and onto your neck!
+      if iswearslotfull($o) == 3
+        mpslotpurge $o 3
+        mpechoat $o The demonflesh encompasses your neck, disintegrating the armor!
+      endif
+      if iswearslotfull($o) == 4
+        mpslotpurge $o 4
+        mpechoat $o The demonflesh encompasses your neck, disintegrating the armor!
+      endif
+      mpoload 4737 on $o 3
+      mpoload 4738 on $o 4
+      mpvalueset 1 1
+      mplag $o 2
+    endif
+  endif
+endif
+\\\\ AUTOREGEN
+if rand(10)
+  if sector($o) == city
+  or sector($o) == field
+  or sector($o) == forest
+  or sector($o) == hills
+  or sector($o) == mountain
+  or sector($o) == swim
+  or sector($o) == air
+  or sector($o) == desert
+  or sector($o) == noswim
+  or sector($o) == road
+  or sector($o) == swamp
+    if islight()
+      if snaffected($o) == 117
+        mpremaffect $o 117
+        mpechoat $o The living demonflesh stops regenerating your wounds.
+      endif
+    else
+      if snaffected($o) == 117
+      else
+        mpaddaffect $o 117 50 -1 27 0 268435456
+        mpechoat $o The living demonflesh begins to spontaneously regenerate.
+      endif
+    endif
+  else
+    if snaffected($o) == 117
+    else
+      mpaddaffect $o 117 50 -1 27 0 268435456
+      mpechoat $o The living demonflesh begins to spontaneously regenerate.
+    endif
+  endif
+endif
+~
+|
+V13
+4737
+neck top demonflesh living dfnecktop~
+a living piece of demonflesh~
+A living piece of writhing demonflesh is here~
+~
+flesh~
+armor JMPSTYZa 0 0 AC
+4 4 4 4 0
+60 5 20000 1 P
+1
+A
+47 -2
+A
+42 -2
+A
+32 2
+A
+18 2
+A
+12 20
+A
+13 10
+>rand_prog 100~
+\\\\ CREEPING
+if value(1) == 0
+  if rand(3)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding down $O\@s torso and onto their legs!
+      mpechoat $o The demonflesh writhes, sliding down your torso and onto your legs!
+      if iswearslotfull($o) == 7
+        mpslotpurge $o 7
+        mpechoat $o The demonflesh encompasses your legs, disintegrating the armor!
+      endif
+      mpoload 4739 on $o 7
+      mpvalueset 1 1
+      mplag $o 2
+    endif
+  endif
+endif
+~
+|
+V13
+4738
+neck bottom demonflesh living dfneckbottom~
+a living piece of demonflesh~
+A living piece of writhing demonflesh is here~
+~
+flesh~
+armor JMPSTYZa 0 0 AC
+4 4 4 4 0
+60 5 20000 1 P
+1
+A
+13 10
+A
+12 20
+A
+18 2
+A
+32 2
+A
+42 -2
+A
+47 -2
+V13
+4739
+legguards demonflesh living dflegguards~
+a living piece of demonflesh~
+A living piece of writhing demonflesh is here~
+~
+flesh~
+armor JMPSTYZa 0 0 AF
+10 10 10 10 0
+60 5 20000 2 P
+1
+A
+18 4
+A
+14 60
+A
+32 3
+A
+42 -3
+A
+47 -3
+A
+2 2
+A
+13 30
+>rand_prog 100~
+\\\\ CREEPING
+if value(1) == 0
+  if rand(3)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding down $O\@s legs and onto their feet!
+      mpechoat $o The demonflesh writhes, sliding down your legs and onto your feet!
+      if iswearslotfull($o) == 8
+        mpslotpurge $o 8
+        mpechoat $o The demonflesh encompasses your feet, disintegrating the armor!
+      endif
+      mpoload 4740 on $o 8
+      mpvalueset 1 1
+      mplag $o 2
+    endif
+  endif
+endif
+~
+|
+V13
+4740
+boots demonflesh living dfboots~
+a living piece of demonflesh~
+A living piece of writhing demonflesh is here~
+~
+flesh~
+armor JMPSTYZa 0 0 AG
+5 5 5 5 0
+60 5 20000 1 P
+1
+A
+18 2
+A
+19 2
+A
+47 -2
+A
+42 -2
+A
+32 1
+A
+14 60
+>remove_prog 100~
+mpremaffect $o 379
+mpechoat $o You feel the demonic endurance leave your feet.
+~
+>rand_prog 100~
+\\\\ CREEPING
+if value(1) == 0
+  if rand(3)
+    if rand(90)
+      mpechoaround $o The living demonflesh writhes, sliding up $O\@s neck and onto their face and head!
+      mpechoat $o The demonflesh writhes, sliding up your neck and onto your face and head!
+      if iswearslotfull($o) == 6
+        mpslotpurge $o 6
+        mpechoat $o The demonflesh encompasses your head, disintegrating the armor!
+      endif
+      mpoload 4741 on $o 6
+      mpvalueset 1 1
+    endif
+  endif
+endif
+\\\\ AUTOSMOOTH
+if sector($o) == underground
+  if snaffected($o) == 379
+  else
+    mpaddaffect $o 379 50 -1 27 0 0
+    mpechoat $o The demonflesh on your feet seems at home underground, easing the strain of movement.
+  endif
+else
+  if snaffected($o) == 379
+    mpremaffect $o 379
+    mpechoat $o The strain of walking returns as you walk above ground.
+  endif
+endif
+~
+|
+V13
+4741
+cap demonflesh living dfcap~
+a living piece of demonflesh~
+A living piece of writhing demonflesh is here~
+~
+flesh~
+armor JMPSTYZa 0 0 AE
+4 4 4 4 0
+60 5 20000 1 P
+1
+A
+47 -2
+A
+42 -2
+A
+32 2
+A
+20 -2
+A
+18 6
+A
+54 -8
+A
+12 60
+>remove_prog 100~
+mpremaffect $o 86
+mpremaffect $o 428
+mpechoat $o You feel the demonic vision and focus leave your mind.
+~
+>rand_prog 100~
+if rand(2)
+  if sector($o) == city
+  or sector($o) == field
+  or sector($o) == forest
+  or sector($o) == hills
+  or sector($o) == mountain
+  or sector($o) == swim
+  or sector($o) == air
+  or sector($o) == desert
+  or sector($o) == noswim
+  or sector($o) == road
+  or sector($o) == swamp
+    if islight()
+      if snaffected($o) == 8
+      else
+        mpaddaffect $o 8 50 10 18 -4 1
+        mpechoat $o The searing heat from the sun blinds you!
+      endif
+    endif
+  endif
+endif
+\\\\ AUTOINFRA
+if snaffected($o) == 86
+else
+  mpaddaffect $o 86 50 -1 27 0 0
+  mpechoat $o As the demonflesh covers your eyes, you feel your vision clear.
+endif
+\\\\ AUTOFOCUS
+if istime() == 23
+  if snaffected($o) == 428
+  else
+    mpaddaffect $o 428 50 12 27 0 0
+    mpechoat $o As the night prevails, the demonflesh unclutters and focuses your thoughts.
+  endif
+endif
+~
+|
+V13
+4742
+whip demon devourerwhip~
+a massive whip of bone and sinew~
+A massive whip of bone and sinew lies here.~
+~
+energy~
+weapon CEJMSZaf 0 0 AN
+whip 7 8 9 F
+defilement~
+45 70 50000 2 P
+1
+>rand_prog 100~
+if mobhere(4732)
+else
+  mpvalueup 0
+  if value(0) == 500
+  or value(0) == 1500
+    mpechoat $o $I begins to crumble, the magic that created it fading from it a little.
+  endif
+  if value(0) > 2000
+    mpecho $I crumbles into dust!
+    mppurge self
+  endif
+endif
+~
+|
+V13
+4743
+shield demon devourershield~
+a massive shield of blackened slate~
+An enormous shield of blackened slate lies here.~
+~
+onyx~
+armor BCEGHJSZaf 0 0 AJ
+20 20 20 20 0
+51 80 33080 2 P
+15
+>rand_prog 100~
+if mobhere(4732)
+else
+  mpvalueup 0
+  if value(0) == 500
+  or value(0) == 1500
+    mpechoat $o $I begins to crumble, the magic that created it fading from it a little.
+  endif
+  if value(0) > 2000
+    mpecho $I crumbles into dust!
+    mppurge self
+  endif
+endif
+~
+|
+V13
+4744
+sword demon defiler~
+a massive black-steel greatsword~
+A massive sword composed of notched, black steel lies here.~
+~
+energy~
+weapon CEJMSZaf 0 0 AN
+sword 7 8 9 F
+defilement~
+45 70 50000 2 P
+1
+>rand_prog 100~
+if mobhere(4732)
+else
+  mpvalueup 0
+  if value(0) == 500
+  or value(0) == 1500
+    mpechoat $o $I begins to crumble, the magic that created it fading from it a little.
+  endif
+  if value(0) > 2000
+    mpecho $I crumbles into dust!
+    mppurge self
+  endif
+endif
+~
+|
+V13
+4745
+Diamond Chain Pendant Brilliant ContingencyDiamond~
+a brilliant diamond attached to a runed silver chain~
+A brilliant diamond attached to a runed silver chain is here.~
+~
+diamond~
+jewelry ACYa 0 0 AC
+0 0 0 0 0
+60 40 10000 1 P
+1
+A
+12 -600
+E
+crack~
+Upon closer inspection of the diamond, it appears to be of flawless quality, showing no sign of imperfection.
+~
+E
+crack~
+~
+>rand_prog 100~
+if isworn($o)
+  if value(5) == 2
+    if hitprcnt($o) < 95
+      mptrigger $o
+    endif
+  endif
+  if value(5) == 3
+    if snaffected($o) == 127
+    or snaffected($o) == 203
+    or snaffected($o) == 652
+    or snaffected($o) == 253
+    or snaffected($o) == 252
+    or snaffected($o) == 260
+    or snaffected($o) == 506
+      if position($o) == 4
+        mptrigger $o
+      endif
+    endif
+  endif
+  if rand(6)
+    mpechoat $o {CThe diamond pendant glows briefly and a voice rings through your head...{n
+    if value(7) == 0
+    or value(0) < 2
+      if snaffected($o) == 119
+      or snaffected($o) == 308
+      or snaffected($o) == 132
+      or snaffected($o) == 362
+      or snaffected($o) == 415
+      or snaffected($o) == 399
+      or snaffected($o) == 551
+        if value(0) == 0
+          mpechoat $o {MThink{W one of the command words and become a master of magic!{n
+          mpvalueset 0 1
+        else
+          mpechoat $o {MContain{W one school of magic at a time within this diamond shell.{n
+          mpvalueset 0 2
+        endif
+      else
+        if value(0) == 1
+          mpechoat $o {MContain{W one school of magic at a time within this diamond shell.{n
+          mpvalueset 0 2
+        else
+          if value(7) == 1
+          else
+            mpechoat $o {WOnly one enchanted by powerful magics can take advantage of the diamond\@s power.{n
+          endif
+        endif
+      endif
+    else
+      if value(0) > 1
+        if value(0) == 2
+          mpechoat $o {MRestore{W all of the magics within the shell at your will.{n
+          mpvalueset 0 3
+        else
+          if value(0) == 3
+            mpechoat $o {WTry restoring the spells only when you are {MFighting{W.{n
+            mpvalueset 0 4
+          else
+            if value(0) == 4
+              mpechoat $o {WTry restoring the spells only when you are {MInjured{W.{n
+              mpvalueset 0 5
+            else
+              if value(0) == 5
+                mpechoat $o {WTry restoring the spells only when you are {MIncapacitated{W.{n
+                mpvalueset 0 6
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>wear_prog 100~
+mpvalueset 0 0
+~
+>verb_prog think~
+mpinterpret $n $x
+if compstr(1) == t
+else
+  if compstr(2) == contain
+    if value(7) > 0
+      mpecho The diamond flashes briefly, but nothing happens.
+      mplag $o 2
+      opverbstop
+      break
+    endif
+    if isworn($o)
+      mpfocus $o
+      mpget char $o level 8
+      mpsetdata none
+      mpvalueset 6 0
+      mpvalueset 1 0
+      if snaffected($o) == 119
+// Sanc check
+        mpvalueset 1 1
+        mpremaffect $o 119
+        if rand (5)
+          mpmath 9 $9 + 1
+        endif
+        mpvalueset 4 1
+        mpvalueset 7 1
+        mpecho {BThe diamond flashes wildly as it absorbs $F\@s Water enchantments!{n
+        if snaffected($o) == 3
+// Armor check
+          mpvalueset 1 2
+          mpremaffect $o 3
+          if rand (5)
+            mpmath 9 $9 + 1
+          endif
+          if snaffected($o) == 125
+// Shield check
+            mpvalueset 1 3
+            mpremaffect $o 125
+            if rand (5)
+              mpmath 9 $9 + 1
+            endif
+            if snaffected($o) == 206
+// Water Breathing check
+              mpvalueset 1 4
+              mpremaffect $o 206
+              if rand (5)
+                mpmath 9 $9 + 1
+               endif
+              if snaffected($o) == 7
+              or snaffected($o) == 26
+// Communion/Bless check
+                mpvalueset 1 5
+                mpremaffect $o 7
+                mpremaffect $o 26
+                if rand (5)
+                  mpmath 9 $9 + 1
+                endif
+                if snaffected($o) == 328
+// Protection from Fire
+                  mpvalueset 1 6
+                  mpremaffect $o 328
+                  if rand (5)
+                    mpmath 9 $9 + 1
+                  endif
+                  if snaffected($o) == 110
+// Protective Shield
+                    mpvalueset 1 7
+                    mpremaffect $o 110
+                    if rand (5)
+                      mpmath 9 $9 + 1
+                    endif
+                    if snaffected($o) == 330
+// Protection from Poison
+                      mpvalueset 1 8
+                      mpremaffect $o 7
+                      mpremaffect $o 330
+                      if rand (5)
+                        mpmath 9 $9 + 5
+                      endif
+                    endif
+                  endif
+                endif
+              endif
+            endif
+          endif
+        endif
+      else
+        if snaffected($o) == 308
+// Cloak of the Void check
+          mpvalueset 1 1
+          mpremaffect $o 308
+          if rand (5)
+            mpmath 9 $9 + 1
+          endif
+          mpvalueset 4 2
+          mpvalueset 7 1
+          mpecho {DThe diamond flashes wildly as it absorbs $F\@s Void enchantments!{n
+          if snaffected($o) == 3
+// Armor check
+            mpvalueset 1 2
+            mpremaffect $o 3
+            if rand (5)
+              mpmath 9 $9 + 1
+            endif
+            if snaffected($o) == 125
+// Shield check
+              mpvalueset 1 3
+              mpremaffect $o 125
+              if rand (5)
+                mpmath 9 $9 + 1
+              endif
+              if snaffected($o) == 103
+// Pass door check
+                mpvalueset 1 4
+                mpremaffect $o 103
+                if rand (5)
+                  mpmath 9 $9 + 1
+                endif
+                if snaffected($o) == 110
+// Prot Shield check
+                  mpvalueset 1 5
+                  mpremaffect $o 110
+                  if rand (5)
+                    mpmath 9 $9 + 5
+                  endif
+                endif
+              endif
+            endif
+          endif
+        else
+          if snaffected($o) == 132
+// Stoneskin check
+            mpvalueset 1 1
+            mpremaffect $o 132
+            if rand (5)
+              mpmath 9 $9 + 1
+            endif
+            mpvalueset 4 3
+            mpvalueset 7 1
+            mpecho {yThe diamond flashes wildly as it absorbs $F\@s Earth enchantments!{n
+            if snaffected($o) == 3
+// Armor check
+              mpvalueset 1 2
+              mpremaffect $o 3
+              if rand (5)
+                mpmath 9 $9 + 1
+              endif
+              if snaffected($o) == 125
+// Shield check
+                mpvalueset 1 3
+                mpremaffect $o 125
+                if rand (5)
+                  mpmath 9 $9 + 1
+                endif
+                if snaffected($o) == 70
+// Fortify check
+                  mpvalueset 1 4
+                  mpremaffect $o 70
+                  if rand (5)
+                    mpmath 9 $9 + 1
+                  endif
+                  if snaffected($o) == 73
+// Giant Strength check
+                    mpvalueset 1 5
+                    mpremaffect $o 73
+                    if rand (5)
+                      mpmath 9 $9 + 1
+                    endif
+                    if snaffected($o) == 375
+// Stabilize check
+                      mpvalueset 1 6
+                      mpremaffect $o 375
+                      if rand (5)
+                        mpmath 9 $9 + 1
+                      endif
+                      if snaffected($o) == 369
+// Stone Shell check
+                        mpvalueset 1 7
+                        mpremaffect $o 369
+                        if rand (5)
+                          mpmath 9 $9 + 5
+                        endif
+                      endif
+                    endif
+                  endif
+                endif
+              endif
+            endif
+          else
+            if snaffected($o) == 362
+// Gaseous Form check
+              mpvalueset 1 1
+              mpremaffect $o 362
+              if rand (5)
+                mpmath 9 $9 + 1
+              endif
+              mpvalueset 4 4
+              mpvalueset 7 1
+              mpecho {CThe diamond flashes wildly as it absorbs $F\@s Air enchantments!{n
+              if snaffected($o) == 3
+// Armor check
+                mpvalueset 1 2
+                mpremaffect $o 3
+                if rand (5)
+                  mpmath 9 $9 + 1
+                endif
+                if snaffected($o) == 125
+// Shield check
+                  mpvalueset 1 3
+                  mpremaffect $o 125
+                  if rand (5)
+                    mpmath 9 $9 + 1
+                  endif
+                  if snaffected($o) == 87
+                  or snaffected($o) == 96
+                  or snaffected($o) == 346
+// Greater Invis check
+                    mpvalueset 1 4
+                    mpremaffect $o 87
+                    mpremaffect $o 96
+                    mpremaffect $o 346
+                    if rand (5)
+                      mpmath 9 $9 + 1
+                    endif
+                    if snaffected($o) == 354
+// Wind wall check
+                      mpvalueset 1 5
+                      mpremaffect $o 354
+                      if rand (5)
+                        mpmath 9 $9 + 5
+                      endif
+                    endif
+                  endif
+                endif
+              endif
+            else
+              if snaffected($o) == 415
+// Spirit Shield check
+                mpvalueset 1 1
+                mpremaffect $o 415
+                if rand (5)
+                  mpmath 9 $9 + 1
+                endif
+                mpvalueset 4 5
+                mpvalueset 7 1
+                mpecho {YThe diamond flashes wildly as it absorbs $F\@s Spirit enchantments!{n
+                if snaffected($o) == 3
+// Armor check
+                  mpvalueset 1 2
+                  mpremaffect $o 3
+                  if rand (5)
+                    mpmath 9 $9 + 1
+                  endif
+                  if snaffected($o) == 125
+// Shield check
+                    mpvalueset 1 3
+                    mpremaffect $o 125
+                    if rand (5)
+                      mpmath 9 $9 + 1
+                    endif
+                    if snaffected($o) == 413
+// Thanatopsis check
+                      mpvalueset 1 4
+                      mpremaffect $o 413
+                      if rand (5)
+                        mpmath 9 $9 + 1
+                      endif
+                      if snaffected($o) == 428
+// Focus Mind check
+                        mpvalueset 1 5
+                        mpremaffect $o 428
+                        if rand (5)
+                          mpmath 9 $9 + 1
+                        endif
+                        if snaffected($o) == 7
+                        or snaffected($o) == 26
+// Communion/Bless check
+                          mpvalueset 1 6
+                          mpremaffect $o 7
+                          mpremaffect $o 26
+                          if rand (5)
+                            mpmath 9 $9 + 1
+                          endif
+                          if snaffected($o) == 416
+// Zeal check
+                            mpvalueset 1 7
+                            mpremaffect $o 416
+                            if rand (5)
+                             mpmath 9 $9 + 1
+                            endif
+                            if snaffected($o) == 103
+// Pass door check
+                              mpvalueset 1 8
+                              mpremaffect $o 103
+                              if rand (5)
+                                mpmath 9 $9 + 5
+                              endif
+                            endif
+                          endif
+                        endif
+                      endif
+                    endif
+                  endif
+                endif
+              else
+                if snaffected($o) == 399
+// Flare check
+                  mpvalueset 1 1
+                  mpremaffect $o 399
+                  if rand (5)
+                    mpmath 9 $9 + 1
+                  endif
+                  mpvalueset 4 6
+                  mpvalueset 7 1
+                  mpecho {RThe diamond flashes wildly as it absorbs $F\@s Fire enchantments!{n
+                  if snaffected($o) == 3
+// Armor check
+                    mpvalueset 1 2
+                    mpremaffect $o 3
+                    if rand (5)
+                      mpmath 9 $9 + 1
+                    endif
+                    if snaffected($o) == 125
+// Shield check
+                      mpvalueset 1 3
+                      mpremaffect $o 125
+                      if rand (5)
+                        mpmath 9 $9 + 1
+                      endif
+                      if snaffected($o) == 409
+// Wings of Flame check
+                        mpvalueset 1 4
+                        mpremaffect $o 409
+                        if rand (5)
+                          mpmath 9 $9 + 1
+                        endif
+                        if snaffected($o) == 84
+// Immolation check
+                          mpvalueset 1 5
+                          mpremaffect $o 84
+                          if rand (5)
+                            mpmath 9 $9 + 1
+                          endif
+                          if snaffected($o) == 71
+// Frenzy check
+                            mpvalueset 1 6
+                            mpremaffect $o 71
+                            if rand (5)
+                              mpmath 9 $9 + 1
+                            endif
+                            if snaffected($o) == 393
+// Flame Shield check
+                              mpvalueset 1 7
+                              mpremaffect $o 393
+                              if rand (5)
+                                mpmath 9 $9 + 5
+                              endif
+                            endif
+                          endif
+                        endif
+                      endif
+                    endif
+                  endif
+                else
+                  if snaffected($o) == 551
+// Bark Skin check
+                    mpvalueset 1 1
+                    mpremaffect $o 551
+                    if rand (5)
+                      mpmath 9 $9 + 1
+                    endif
+                    mpvalueset 4 7
+                    mpvalueset 7 1
+                    mpecho {GThe diamond flashes wildly as it absorbs $F\@s Nature enchantments!{n
+                    if snaffected($o) == 541
+// Forest walk check
+                      mpvalueset 1 2
+                      mpremaffect $o 541
+                      if rand (5)
+                        mpmath 9 $9 + 1
+                      endif
+                      if snaffected($o) == 552
+// Elemental Protection check
+                        mpvalueset 1 3
+                        mpremaffect $o 552
+                        if rand (5)
+                          mpmath 9 $9 + 1
+                        endif
+                        if snaffected($o) == 206
+// Water Breathing check
+                          mpvalueset 1 4
+                          mpremaffect $o 206
+                          if rand (5)
+                            mpmath 9 $9 + 1
+                          endif
+                          if snaffected($o) == 539
+// Giant Growth check
+                            mpvalueset 1 5
+                            mpremaffect $o 539
+                            if rand (5)
+                              mpmath 9 $9 + 1
+                            endif
+                            if snaffected($o) == 117
+// Regeneration check
+                              mpvalueset 1 6
+                              mpremaffect $o 117
+                              if rand (5)
+                                mpmath 9 $9 + 5
+                              endif
+                            endif
+                          endif
+                        endif
+                      endif
+                    endif
+                  endif
+                endif
+              endif
+            endif
+          endif
+        endif
+      endif
+      mplag $o 6
+    endif
+  else
+// Contingency states
+    if isworn($o)
+      if compstr(2) == fight
+      or compstr(2) == fighting
+        mpvalueset 5 1
+        mplag $o 2
+        mpechoat $o {WWhite steel glints briefly in the face of the diamond.{n
+      else
+        if compstr(2) == injury
+        or compstr(2) == injured
+          mpvalueset 5 2
+          mplag $o 2
+          mpechoat $o {RThe face of the diamond flares blood-red.{n
+        else
+          if compstr(2) == incapacitated
+            mpvalueset 5 3
+            mplag $o 2
+            mpechoat $o {DA shadow passes over the surface of the diamond.{n
+          else
+            if compstr(2) == restore
+              mptrigger $o
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>trigger_prog 100~
+if value(1) == 0
+or value(6) == 1
+else
+  if value(4) == 1
+    if rand($9)
+      mpsetdata prismaticspells
+      mpvalueset 1 10
+    else
+      mpsetdata waterspells
+    endif
+  else
+    if value(4) == 2
+      if rand($9)
+        mpsetdata prismaticspells
+        mpvalueset 1 10
+      else
+        mpsetdata voidspells
+      endif
+    else
+     if value(4) == 3
+       if rand($9)
+         mpsetdata prismaticspells
+         mpvalueset 1 10
+       else
+         mpsetdata earthspells
+       endif
+     else
+       if value(4) == 4
+         if rand($9)
+           mpsetdata prismaticspells
+           mpvalueset 1 10
+         else
+           mpsetdata airspells
+         endif
+       else
+         if value (4) == 5
+           if rand($9)
+             mpsetdata prismaticspells
+             mpvalueset 1 10
+           else
+             mpsetdata spiritspells
+           endif
+         else
+           if value(4) == 6
+             if rand($9)
+               mpsetdata prismaticspells
+               mpvalueset 1 10
+             else
+               mpsetdata firespells
+             endif
+           else
+             if value(4) == 7
+               if rand($9)
+                 mpsetdata prismaticspells
+                 mpvalueset 1 10
+               else
+                 mpsetdata naturespells
+               endif
+             endif
+           endif
+         endif
+       endif
+     endif
+   endif
+  endif
+  mplag $o 1
+  mpvalueset 5 0
+  mpvalueset 6 1
+  mpvalueset 7 0
+  loop 0 to $1
+    $d
+    mpnextdata
+  endloop
+endif
+~
+>fight_prog 100~
+if isworn($o)
+  if value(5) == 1
+    mptrigger $o
+  endif
+endif
+if value(5) == 2
+  if hitprcnt($o) < 95
+    mptrigger $o
+  endif
+endif
+~
+>data_prog prismaticspells~
+mpecho {WThe diamond falters then erupts with wild magic!{n
+mpcast 39 60 $o
+mpcast 400 60 $o
+mpcast 584 60 $o
+mpcast 356 60 $o
+mpcast 341 60 $o
+mpcast 425 60 $o
+~
+>data_prog waterspells~
+mpecho {BThe diamond shimmers and a burst of Water magic erupts!{n
+mpcast 119 $8
+mpcast 3 $8
+mpcast 125 $8
+mpcast 206 $8
+mpcast 26 $8
+mpcast 328 $8
+mpcast 110 $8
+mpcast 330 $8
+~
+>data_prog earthspells~
+mpecho {yThe diamond shimmers and a burst of Earth magic erupts!{n
+mpcast 132 $8
+mpcast 3 $8
+mpcast 125 $8
+mpcast 70 $8
+mpcast 73 $8
+mpcast 375 $8
+mpcast 369 $8
+~
+>data_prog voidspells~
+mpecho {DThe diamond shimmers and a burst of Void magic erupts!{n
+mpcast 308 $8
+mpcast 3 $8
+mpcast 125 $8
+mpcast 103 $8
+mpcast 110 $8
+~
+>data_prog airspells~
+mpecho {CThe diamond shimmers and a burst of Air magic erupts!{n
+mpcast 362 $8
+mpcast 3 $8
+mpcast 125 $8
+mpcast 346 $8
+mpcast 354 $8
+~
+>data_prog spiritspells~
+mpecho {YThe diamond shimmers and a burst of Spirit magic erupts!{n
+mpcast 415 $8
+mpcast 3 $8
+mpcast 125 $8
+mpcast 413 $8
+mpcast 428 $8
+mpcast 7 $8
+mpcast 416 $8
+mpcast 103 $8
+~
+>data_prog firespells~
+mpecho {RThe diamond shimmers and a burst of Fire magic erupts!{n
+mpcast 399 $8
+mpcast 3 $8
+mpcast 125 $8
+mpcast 409 $8
+mpcast 84 $8
+mpcast 71 $8
+mpcast 393 $8
+~
+>data_prog naturespells~
+mpecho {GThe diamond shimmers and a burst of Nature magic erupts!{n
+mpcast 551 $8
+mpcast 541 $8
+mpcast 552 $8
+mpcast 206 $8
+mpcast 539 $8
+mpcast 117 $8
+~
+>data_prog naturespells~
+mpecho {GThe diamond shimmers and a burst of Nature magic erupts!{n
+mpcast 551 $8
+mpcast 541 $8
+mpcast 552 $8
+mpcast 206 $8
+mpcast 539 $8
+mpcast 117 $8
+~
+|
+V13
+4746
+Kingmaker Memory Stick Fob~
+a Kingmaker Memory Stick Fob~
+Here lies the ancient Kingmaker Memory Stick Fob.~
+~
+unknown~
+gem d 0 0 A
+0 0 0 0 0
+55 0 0 0 P
+1
+>rand_prog 100~
+if isfocused()
+  mpforce mob_4701 say the fob is focused - no need to refocus
+else
+  mpforce mob_4701 say the fob is not focused
+  mpfocus $o
+  mpforce mob_4701 say the fob is now focused on $o
+endif
+if name($o) == $f
+  mpforce mob_4701 say $o is equal to $f - no need to reload
+  break
+else
+  if incontainer(11)
+    mppurge self
+  else
+  mpforce mob_4701 say $o is not equal to $f - reloading on mort and purging this version
+  mpforce mob_4701 mpoload 4746 on $f
+  mppurge self
+  endif
+endif
+mpforce mob_4701 mpfocus $f
+~
+>death_prog 100~
+mpforce mob_4701 mpoload 4746 on $f
+mpforce mob_4701 say I am trying to load 4746 on $F.
+~
+|
+V13
+4776
+cloak lava molten fire obj_24812~
+a cloak formed of molten lava~
+A cloak seemingly formed of molten lava lies here.~
+This cloak, crafted in the chaos of the plane of fire, is rumored to have
+been intended as a gift from the magmin to the warlords who led the siege in
+the War of Fire.  However, as the war was lost, the cloak has since been
+passed among the greater magmin as a symbol of power and influence over the
+material plane, and is imbued with the magics of fire.  
+The phrase \#Aegis of Fire!\# is said to activate some of its powers.
+~
+fire~
+armor ADGSY 0 0 AK
+10 10 10 10 0
+52 110 1698850 2 P
+1
+A
+12 30
+A
+17 -10
+A
+37 15
+A
+36 5
+E
+cloak molten lava~
+Warm to the touch, the cloak is as hard as stone, yet as flexible as
+silk.  Smoke and fire ripple along the cloak, combining with ambient light
+to create a dazzling display of refracted light.  
+~
+>rand_prog 100~
+if objvalue(0) == 1
+  mpechoat $o $I finishes recharging, and glows with a warm light.
+  opvaluedown 0
+endif
+if objvalue(0) == 375
+  mpechoat $o The heat in the air around you is drawn into $I
+  opvaluedown 0
+endif
+if objvalue(0) == 250
+  mpechoat $o $I pulses with a warm aura as it draws in the heat from the air around you.
+  opvaluedown 0
+endif
+if objvalue(0) == 125
+  mpechoat $o $I begins to ripple with smoke and fire as it draws in the heat from the air around you.
+  opvaluedown 0
+endif
+if objvalue(0) > 1
+  opvaluedown 0
+endif
+~
+>speech_prog p Aegis of Fire!~
+if objvalue(0) == 0
+  if isworn($n)
+    mpechoat $n {RThe cloak of molten lava blazes brightly, and envelops your body.{x
+    mpechoaround $n {RThe cloak of molten lava blazes brightly, and envelops $N\@s body.{x
+    mpcast 560 99 $n
+    opvalueset 0 500
+  endif
+else
+  mpechoat $n The power of the cloak is not ready to be called upon yet.
+endif
+~
+>wear_prog 100~
+mpechoat $n You feel the flames permeate your body.
+mpaddaffect $n 84 60 -1 20 -7 0
+mpaddaffect $n 84 60 -1 19 6 0
+~
+>remove_prog 100~
+mpechoat $n  You feel your connection to the flames fade.
+mpremaffect $n 84
+if snaffected($n) == 560
+  mpechoat $n As you remove the cloak, it draws away your inner warmth.
+  mpremaffect $n 560
+endif
+~
+|
+V13
+4777
+Sunthu long stone-shafted shining crystal spear socketed obj_24777~
+the dual-headed crystal spear, \#Sunthu\#~
+A long, dual-headed crystalline spear is here, its shaft decorated with an intricate relief.~
+Crafted by the skilled hands of the ancient alatharya, this spear, known
+as \#Sunthu\#, is made from a mystic crystal thought to once be used as a key
+part in the rune-engine.  The gems once adorning its head corresponded to
+the six prime magics.  The clarity of the crystal suggests that it could
+withstand the rigors of large amounts of energy being passed through it, and
+as such its value is undeterminable.  
+
+Though the rune-engine and its blueprints were destroyed in the Sundering,
+this may very well be the only artifact linked to the incident left in
+existence.  
+~
+crystal~
+weapon ABGJKSaf 0 0 AN
+spear 6 8 2 DF
+keen pierce~
+60 270 484408 2 P
+1
+A
+20 -1
+A
+19 3
+A
+18 3
+>hit_prog 100~
+if value(3) == 4
+  mpvalueset damverbI \@fiery burst\@
+else
+  if value(3) == 5
+    mpvalueset damverbI \@icy burst\@
+  else
+    if value(3) == 6
+      mpvalueset damverbI \@shocking burst\@
+    else
+      if value(3) == 9
+        mpvalueset damverbI \@shadowy burst\@
+      else
+        if value(3) == 10
+          mpvalueset damverbI \@holy burst\@
+        else
+          if value(3) == 15
+            mpvalueset damverbI \@radiant burst\@
+          else
+            if value(3) == 0
+              mpvalueset damverbI \@keen pierce\@
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+if value(4) == 4
+  mpvalueset damverbII \@fiery burst\@
+else
+  if value(4) == 5
+    mpvalueset damverbII \@icy burst\@
+  else
+    if value(4) == 6
+      mpvalueset damverbII \@shocking burst\@
+    else
+      if value(4) == 9
+        mpvalueset damverbII \@shadowy burst\@
+      else
+        if value(4) == 10
+          mpvalueset damverbII \@holy burst\@
+        else
+          if value(4) == 15
+            mpvalueset damverbII \@radiant burst\@
+          else
+            if value(4) == 0
+              mpvalueset damverbII \@keen pierce\@
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+mpmath 6 $h / 4
+if rand(50)
+  if value(3) == 0
+  else
+    mpdealdamage $n $O %damverbI $3 $6
+  endif
+else
+  if value(4) == 0
+  else
+    mpdealdamage $n $O %damverbII $4 $6
+  endif
+endif
+
+~
+>verb_prog p twist~
+if iswielding($n) == 4777
+  if compstr(2) == forward
+    mpechoat $n You feel the energy flow within Sunthu shift as you twist the forward shaft.
+    mpechoaround $n The energy emanating from Sunthu shifts as $N twists the runed shaft.
+    mpvalueup 1
+    if value(1) > 7
+      mpvalueset 1 1
+    endif
+    //Determining damtype of 1st end//
+    if value(1) == 1
+      mpvalueset 3 4
+      mpforce $n esay \@intones\@ Ith sel Yadut Azu!
+      mpecho {RThe forward point of Sunthu bursts into flame!{x
+    else
+      if value(1) == 2
+        mpvalueset 3 5
+        mpforce $n esay \@intones\@ Ith sel Uyich Eyirch!
+        mpecho {BThe forward point of Sunthu instantly freezes!{x
+      else
+        if value(1) == 3
+          mpvalueset 3 6
+          mpforce $n esay \@intones\@ Ith sel Du Karid!
+          mpecho {MThe forward point of Sunthu arcs with electrical energy!{x
+        else
+          if value(1) == 4
+            mpvalueset 3 9
+            mpforce $n esay \@intones\@ Ith sel Elitha Yapsa!
+            mpecho {DThe forward point of Sunthu seethes with malevolence!{x
+          else
+            if value(1) == 5
+              mpvalueset 3 10
+              mpforce $n esay \@intones\@ Ith sel Akho Yayiye!
+              mpecho {CThe forward point of Sunthu flickers with wrath!{x
+            else
+              if value(1) == 6
+                mpvalueset 3 15
+                mpforce $n esay \@intones\@ Ith sel Dyedm Hgelk!
+                mpecho {WThe forward point of Sunthu gleams with light!{x
+              else
+                if value(1) == 7
+                  mpvalueset 3 0
+                  mpforce $n esay \@intones\@ Ith sel Oyush Isic!
+                  mpecho The forward point of Sunthu discharges its stored energy.
+                endif
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+  else
+    if compstr(2) == rear
+      mpechoat $n You feel the energy flow within Sunthu shift as you twist the rear shaft.
+      mpechoaround $n The energy emanating from Sunthu shifts as $N twists the runed shaft.
+      mpvalueup 2
+      if value(2) > 7
+        mpvalueset 2 1
+      endif
+      //Determining damtype of 2nd end//
+      if value(2) == 1
+        mpvalueset 4 4
+        mpforce $n esay \@intones\@ Norezh sel Yadut Azu!
+        mpecho {RThe rear point of Sunthu bursts into flame!{x
+      else
+        if value(2) == 2
+          mpvalueset 4 5
+          mpforce $n esay \@intones\@ Norezh sel Uyich Eyirch!
+          mpecho {BThe rear point of Sunthu instantly freezes!{x
+        else
+          if value(2) == 3
+            mpvalueset 4 6
+            mpforce $n esay \@intones\@ Norezh sel Du Karid!
+            mpecho {MThe rear point of Sunthu arcs with electrical energy!{x
+          else
+            if value(2) == 4
+              mpvalueset 4 9
+              mpforce $n esay \@intones\@ Norezh sel Elitha Yapsa!
+              mpecho {DThe rear point of Sunthu seethes with malevolence!{x
+            else
+              if value(2) == 5
+                mpvalueset 4 10
+                mpforce $n esay \@intones\@ Norezh sel Akho Yayiye!
+                mpecho {CThe rear point of Sunthu flickers with wrath!{x
+              else
+                if value(2) == 6
+                  mpvalueset 4 15
+                  mpforce $n esay \@intones\@ Norezh sel Dyedm Hgelk!
+                  mpecho {WThe rear point of Sunthu gleams with light!{x
+                else
+                  if value(2) == 7
+                    mpvalueset 4 0
+                    mpforce $n esay \@intones\@ Norezh sel Oyush Isic!
+                    mpecho The rear point of Sunthu discharges its stored energy.
+                  endif
+                endif
+              endif
+            endif
+          endif
+        endif
+      endif
+    else
+      mpnextinterp
+    endif
+  endif
+  if value(3) == 0
+    mpvalueset forwardpoint keenly
+  else
+    if value(3) == 4
+      mpvalueset forwardpoint flaming red
+    else
+      if value(3) == 5
+        mpvalueset forwardpoint icy blue
+      else
+        if value(3) == 6
+          mpvalueset forwardpoint electric violet
+        else
+          if value(3) == 9
+            mpvalueset forwardpoint deathly black
+          else
+            if value(3) == 10
+              mpvalueset forwardpoint pure white
+            else
+              if value(3) == 15
+                mpvalueset forwardpoint with shining light
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+  if value(4) == 0
+    mpvalueset rearpoint keenly
+  else
+    if value(4) == 4
+      mpvalueset rearpoint flaming red
+    else
+      if value(4) == 5
+        mpvalueset rearpoint icy blue
+      else
+        if value(4) == 6
+          mpvalueset rearpoint electric violet
+        else
+          if value(4) == 9
+            mpvalueset rearpoint deathly black
+          else
+            if value(4) == 10
+              mpvalueset rearpoint pure white
+            else
+              if value(4) == 15
+                mpvalueset rearpoint with shining light
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+  mpstring obj self long A two-headed crystalline spear is here, its tips gleaming %forwardpoint and %rearpoint.
+else
+  mpnextinterp
+endif
+~
+|
+V13
+4778
+reaver fob reaverfob~
+a reaverfob~
+A soul reaver fob is FAEK.~
+~
+unknown~
+trash GOad 0 0 AP
+0 0 0 0 0
+52 0 0 3 P
+0
+>all_death_prog 100~
+if name($n) / $o
+  opset obj pccorpse wear 1
+endif
+~
+|
+V13
+4799
+shaft broken wood~
+a broken shaft~
+A shaft of ancient, broken wood lies here.~
+~
+wood~
+trash BGS 0 0 AO
+0 0 0 0 0
+50 170 0 2 P
+0
+#0
+
+
+
+#ROOMS
+#4701
+The Earendam Road~
+The Earendam Road continues north and south as the Earendam Grasslands
+fade into rolling foothills.  The narrow strip of stones curves over the low
+hills, a broken or missing stone marring the path here and there.  To the
+north, the Brintor Mountains tower majestically, the snow-capped peaks
+rising into the clouds. 
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4702
+D2
+~
+~
+0 0 4744
+W 5 0 0
+Z 5 5
+S
+#4702
+The Earendam Road~
+The Earendam Road continues north and south as the Earendam Grasslands
+fade into rolling foothills.  The narrow strip of stones curves over the low
+hills, a broken or missing stone marring the path here and there.  To the
+north, the Brintor Mountains tower majestically, the snow-capped peaks
+rising into the clouds. 
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4703
+D2
+~
+~
+0 0 4701
+W 5 0 0
+Z 5 5
+S
+#4703
+The Earendam Road~
+The Earendam Road continues north and south as the Earendam Grasslands
+fade into rolling foothills.  The narrow strip of stones curves over the low
+hills, a broken or missing stone marring the path here and there.  To the
+north, the Brintor Mountains tower majestically, the snow-capped peaks
+rising into the clouds. 
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4704
+D2
+~
+~
+0 0 4702
+W 5 0 0
+Z 5 5
+S
+#4704
+The Earendam Road~
+The Earendam Road continues north and south as the Earendam Grasslands
+fade into rolling foothills.  The narrow strip of stones curves over the low
+hills, a broken or missing stone marring the path here and there.  To the
+east, an old faded road leads over a hill, in the direction of the Uthlin
+Ocean.  To the north, the Brintor Mountains tower majestically, the
+snow-capped peaks rising into the clouds.  
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4705
+D1
+~
+~
+0 0 4748
+D2
+~
+~
+0 0 4703
+W 5 0 0
+Z 5 5
+S
+#4705
+The Earendam Road~
+The Earendam Road continues north and south as the Earendam Grasslands
+fade into rolling foothills.  The narrow strip of stones curves over the low
+hills, a broken or missing stone marring the path here and there.  To the
+north, the Brintor Mountains tower majestically, the snow-capped peaks
+rising into the clouds. 
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4706
+D2
+~
+~
+0 0 4704
+W 5 0 0
+Z 5 5
+S
+#4706
+The Earendam Road~
+The Earendam Road continues north and south as the Earendam Grasslands
+fade into rolling foothills.  The narrow strip of stones curves over the low
+hills, a broken or missing stone marring the path here and there.  To the
+north, the Brintor Mountains tower majestically, the snow-capped peaks
+rising into the clouds. 
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4707
+D2
+~
+~
+0 0 4705
+W 5 0 0
+Z 5 5
+S
+#4707
+The Earendam Road~
+The Earendam Road continues north and south through the foothills of the
+Brintor Mountains.  The condition of the narrow strip of stones deteriorates
+as the distance from Earendam increases, until the missing stones outnumber
+the remaining ones.  To the north, the majestic purple peaks tower, rising
+from the foothills in breathtaking grandeur.  
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4708
+D2
+~
+~
+0 0 4706
+W 5 0 0
+Z 5 5
+S
+#4708
+The Earendam Road~
+The Earendam Road continues north and south through the foothills of the
+Brintor Mountains.  The condition of the narrow strip of stones deteriorates
+as the distance from Earendam increases, until the missing stones outnumber
+the remaining ones.  To the north, the North Forest spreads over the Brintor
+foothills.  
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 5952
+D2
+~
+~
+0 0 4707
+W 5 0 0
+Z 5 5
+S
+#4709
+The Earendam Road~
+The Earendam Road continues north and south through the foothills of the
+Brintor Mountains.  The condition of the narrow strip of stones deteriorates
+as the distance from Earendam increases, until the missing stones outnumber
+the remaining ones.  To the north, the majestic purple peaks tower, rising
+from the foothills in breathtaking grandeur.  To the south, the lush North
+Forest spreads over the foothills.  
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4710
+D2
+~
+~
+0 0 5979
+W 5 0 0
+Z 5 5
+S
+#4710
+The Earendam Road~
+The Brintor Mountains tower before you, a narrow mountain trail leading
+to the north.  To the south, the ruined Earendam Road leads into the
+foothills, and to the west, the North Brintor Road skirts the lower
+mountains and foothills of the Brintor range.  Eastward, an enormous
+obsidian stone marks the beginning of the Vorinden Road.  
+~
+~
+1
+0 0 13
+E
+obsidian~
+Carved in the rock are the words \#Vorinden Road\#.
+~
+E
+stone~
+Carved in the rock are the words \#Vorinden Road\#.
+~
+D0
+~
+~
+0 0 502
+D1
+~
+~
+0 0 30101
+D2
+~
+~
+0 0 4709
+W 5 0 0
+Z 5 5
+S
+#4728
+The Brintor Road~
+The Brintor Road continues to push through the rolling foothills, leading
+to the mountain communities to the north.  Ahead, the Brintor Range towers
+majestically, the snow-capped peaks reaching to the heavens.  The evergreens
+grow much thicker as the mountains approach, forming into a forest at the
+very base of the range.  
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 5901
+D2
+~
+~
+0 0 4729
+W 5 0 0
+Z 5 5
+S
+#4729
+The Brintor Road~
+The wide dirt way known as the Brintor Road leads north out of the Arien
+Plains, now giving way to the rolling foothills of the Brintor Mountains. 
+The low scrub bushes that populated the prairies are now interspersed with
+struggling evergreens and patches of rough grass.  Far to the north you can
+make out the outline of the Brintor peaks against the sky. 
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4728
+D2
+~
+~
+0 0 4730
+W 5 0 0
+Z 5 5
+S
+#4730
+The Brintor Road~
+The wide dirt way known as the Brintor Road leads north out of the Arien
+Plains, now giving way to the rolling foothills of the Brintor Mountains. 
+The low scrub bushes that populated the prairies are now interspersed with
+struggling evergreens and patches of rough grass.  Far to the north you can
+make out the outline of the Brintor peaks against the sky.
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4729
+D2
+~
+~
+0 0 4731
+W 5 0 0
+Z 5 5
+S
+#4731
+The Brintor Road~
+The wide dirt way known as the Brintor Road leads north out of the Arien
+Plains, now giving way to the rolling foothills of the Brintor Mountains. 
+The low scrub bushes that populated the praries are now interspersed with
+struggling evergreens and patches of rough grass.  Far to the north you can
+make out the outline of the Brintor peaks against the sky.  A small side
+path, formed by the recent passing of wagon wheels, leads toward a small
+cluster of hills to the east.  
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4730
+D1
+~
+~
+0 0 4755
+D2
+~
+~
+0 0 4732
+W 5 0 0
+Z 5 5
+S
+#4732
+The Brintor Road~
+The wide dirt way known as the Brintor Road leads north out of the Arien
+Plains, now giving way to the rolling foothills of the Brintor Mountains. 
+The low scrub bushes that populated the praries are now interspersed with
+struggling evergreens and patches of rough grass.  Far to the north you can
+make out the outline of the Brintor peaks against the sky. 
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4731
+D2
+~
+~
+0 0 4733
+W 5 0 0
+Z 5 5
+S
+#4733
+The Brintor Road~
+The wide dirt way known as the Brintor Road leads north out of the Arien
+Plains, now giving way to the rolling foothills of the Brintor Mountains. 
+The low scrub bushes that populated the praries are now interspersed with
+struggling evergreens and patches of rough grass.  Far to the north you can
+make out the outline of the Brintor peaks against the sky. 
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4732
+D1
+~
+~
+0 0 4734
+W 5 0 0
+Z 5 5
+S
+#4734
+The Brintor Road~
+The wide dirt way known as the Brintor Road leads north out of the Arien
+Plains, now giving way to the rolling foothills of the Brintor Mountains. 
+The low scrub bushes that populated the praries are now interspersed with
+struggling evergreens and patches of rough grass.  Far to the north you can
+make out the outline of the Brintor peaks against the sky. 
+~
+~
+1
+0 0 13
+D2
+~
+~
+0 0 4735
+D3
+~
+~
+0 0 4733
+W 5 0 0
+Z 5 5
+S
+#4735
+The Brintor Road~
+The wide dirt way known as the Brintor Road leads north out of the Arien
+Plains, now giving way to the rolling foothills of the Brintor Mountains. 
+The low scrub bushes that populated the praries are now interspersed with
+struggling evergreens and patches of rough grass.  Far to the north you can
+make out the outline of the Brintor peaks against the sky. 
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4734
+D2
+~
+~
+0 0 4736
+W 5 0 0
+Z 5 5
+S
+#4736
+The Brintor Road~
+The wide dirt way known as the Brintor Road leads north through the Arien
+Plains, gashing a brown line through the monotony of the praries.  Deep ruts
+carved into the road indicate the passing of carts and caravans seeking
+trade with the people of the Brintor Mountains to the north.
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4735
+D2
+~
+~
+0 0 4737
+W 5 0 0
+Z 5 5
+S
+#4737
+The Brintor Road~
+The wide dirt way known as the Brintor Road leads north through the Arien
+Plains, gashing a brown line through the monotony of the praries.  Deep ruts
+carved into the road indicate the passing of carts and caravans seeking
+trade with the people of the Brintor Mountains to the north.
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4736
+D2
+~
+~
+0 0 4738
+W 5 0 0
+Z 5 5
+S
+#4738
+The Brintor Road~
+The wide dirt way known as the Brintor Road leads north through the Arien
+Plains, gashing a brown line through the monotony of the praries.  Deep ruts
+carved into the road indicate the passing of carts and caravans seeking
+trade with the people of the Brintor Mountains to the north.
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4737
+D2
+~
+~
+0 0 4739
+W 5 0 0
+Z 5 5
+S
+#4739
+The Brintor Road~
+The wide dirt way known as the Brintor Road leads north through the Arien
+Plains, gashing a brown line through the monotony of the praries.  Deep ruts
+carved into the road indicate the passing of carts and caravans seeking
+trade with the people of the Brintor Mountains to the north.
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4738
+D2
+~
+~
+0 0 4740
+W 5 0 0
+Z 5 5
+S
+#4740
+The Brintor Road~
+The wide dirt way known as the Brintor Road leads north through the Arien
+Plains, gashing a brown line through the monotony of the praries.  Deep ruts
+carved into the road indicate the passing of carts and caravans seeking
+trade with the people of the Brintor Mountains to the north.   
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4739
+D2
+~
+~
+0 0 4741
+W 5 0 0
+Z 5 5
+S
+#4741
+The Brintor Road~
+The wide dirt way known as the Brintor Road leads north through the Arien
+Plains, gashing a brown line through the monotony of the praries.  Deep ruts
+carved into the road indicate the passing of carts and caravans seeking
+trade with the people of the Brintor Mountains to the north.  
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4740
+D2
+~
+~
+0 0 4742
+W 5 0 0
+Z 5 5
+S
+#4742
+The Brintor Road~
+The wide dirt way known as the Brintor Road leads north through the Arien
+Plains, gashing a brown line through the monotony of the praries.  Deep ruts
+carved into the road indicate the passing of carts and caravans seeking
+trade with the people of the Brintor Mountains to the north.  South, the
+Arien Road leads between Earendam and Var Bandor.
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4741
+D2
+~
+~
+0 0 4743
+W 5 0 0
+Z 5 5
+S
+#4743
+The Brintor Road~
+The wide dirt way known as the Brintor Road leads north through the Arien
+Plains, gashing a brown line through the monotony of the praries.  Deep ruts
+carved into the road indicate the passing of carts and caravans seeking
+trade with the people of the Brintor Mountains to the north.  South, the
+Arien Road leads between Earendam and Var Bandor.
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4742
+D2
+~
+~
+0 0 8875
+W 5 0 0
+Z 5 5
+S
+#4744
+The Earendam Road~
+The Earendam Road continues north and south as the Earendam Grasslands
+fade into rolling foothills.  The narrow strip of stones curves over the low
+hills, a broken or missing stone marring the path here and there.  To the
+north, the Brintor Mountains tower majestically, the snow-capped peaks
+rising into the clouds. 
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4701
+D2
+~
+~
+0 0 4745
+W 5 0 0
+Z 5 5
+S
+#4745
+The Earendam Road~
+The Earendam Road continues north and south as the Earendam Grasslands
+fade into rolling foothills.  The narrow strip of stones curves over the low
+hills, a broken or missing stone marring the path here and there.  To the
+north, the Brintor Mountains tower majestically, the snow-capped peaks
+rising into the clouds. 
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4744
+D2
+~
+~
+0 0 4746
+W 5 0 0
+Z 5 5
+S
+#4746
+The Earendam Road~
+The Earendam Road continues north and south as the Earendam Grasslands
+fade into rolling foothills.  The narrow strip of stones curves over the low
+hills, a broken or missing stone marring the path here and there.  To the
+north, the Brintor Mountains tower majestically, the snow-capped peaks
+rising into the clouds.  
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4745
+D2
+~
+~
+0 0 4747
+W 5 0 0
+Z 5 5
+S
+#4747
+The Earendam Road~
+The Earendam Road is a narrow strip of stones, many broken or missing
+from the passage of time.  The road was once heavily travelled by caravans
+and merchants trading with the mountain outposts to the north, but in recent
+years the road has fallen into disuse, and is no longer actively maintained.
+The Earendam Road leads north and south through the grasslands.
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4746
+D2
+~
+~
+0 0 5795
+W 5 0 0
+Z 5 5
+S
+#4748
+A Faded Dirt Road~
+A faded dirt road leads from the Brintor Road to the west over a rounded
+hill to the east.  Climbing the hill, the grasslands are visible to the
+south, like a vast sea of green.  North, the Brintor Mountains tower
+majestically, their snow-capped peaks rising into the clouds.  
+~
+~
+1
+0 0 13
+D1
+~
+~
+0 0 4749
+D3
+~
+~
+0 0 4704
+W 5 0 0
+Z 5 5
+S
+#4749
+A Faded Dirt Road~
+A faded dirt road leads from the Brintor Road to the west over a rounded
+hill to the east.  Climbing the hill, the grasslands are visible to the
+south, like a vast sea of green.  North, the Brintor Mountains tower
+majestically, their snow-capped peaks rising into the clouds.  
+~
+~
+1
+0 0 13
+D1
+~
+~
+0 0 4750
+D3
+~
+~
+0 0 4748
+W 5 0 0
+Z 5 5
+S
+#4750
+A Faded Dirt Road~
+The faded dirt road climbs into the foothills of the Brintor range to the
+west, and to the east declines into the lower coastal area.  Far in the
+distance, the gray waters of the Uthlin Ocean are visible.  
+~
+~
+1
+0 0 13
+D1
+~
+~
+0 0 4751
+D3
+~
+~
+0 0 4749
+W 5 0 0
+Z 5 5
+S
+#4751
+A Faded Dirt Road~
+The faded dirt road climbs into the foothills of the Brintor range to the
+west, and to the east declines into the lower coastal area.  Far in the
+distance, the gray waters of the Uthlin Ocean are visible.
+~
+~
+1
+0 0 13
+D1
+~
+~
+0 0 4752
+D3
+~
+~
+0 0 4750
+W 5 0 0
+Z 5 5
+S
+#4752
+Nearing the Uthlin Ocean~
+The faded dirt road leads down from the rolling foothills, and into the
+lower coastal area.  The smell of saltwater is in the air, and to the east,
+the Uthlin Ocean spreads vast and gray.  Far in the distance to the
+northwest, the peaks of the Brintor Mountains are just visible over the
+beginnings of the foothills.  
+~
+~
+1
+0 0 13
+D1
+~
+~
+0 0 4753
+D3
+~
+~
+0 0 4751
+W 5 0 0
+Z 5 5
+S
+#4753
+Nearing the Uthlin Ocean~
+The thick grasses give way to a brown, rocky coastline and the chill gray
+waters of the Uthlin Ocean.  The ocean spreads endlessly to the east, and
+the air is filled with a sharp saltwater smell.  Waves lap softly against
+the pebbles of the beach.  To the west, a faded dirt road leads inland.  
+~
+~
+1
+0 0 13
+D3
+~
+~
+0 0 4752
+W 5 0 0
+Z 5 5
+S
+#4754
+The Mountain Overlook~
+A rocky ledge juts from between two mountain peaks, overlooking the
+foothills.  From this vantage point, the Brintor and Earendam roads are
+clearly visible, sprawling lines etched in the trees of the foothills.  The
+cold mountain air whips around you, and high overhead an eagle circles.  
+~
+~
+1
+0 16777216 13
+D0
+~
+~
+0 0 530
+W 1 0 -1
+Z 5 5
+S
+#4755
+A Path Through the Foothills~
+A small path formed by the recent passing of wagon wheels leads through
+the foothills, sinking deeply into the earth of the foothills.  To the
+north, the trail bends toward a group of foothills rising above the others. 
+To the west, the trail returns toward the Brintor Road.  
+~
+~
+1
+0 0 13
+D1
+~
+~
+0 0 4756
+D3
+~
+~
+0 0 4731
+W 5 0 0
+Z 5 5
+S
+#4756
+A Path Through the Foothills~
+A small path formed by the recent passing of wagon wheels leads through
+the foothills, sinking deeply into the earth of the foothills.  To the
+north, the trail bends toward a group of foothills rising above the others. 
+To the west, the trail returns toward the Brintor Road.  
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 4757
+D3
+~
+~
+0 0 4755
+W 5 0 0
+Z 5 5
+S
+#4757
+A Path to a Hill~
+To the north, the path veers sharply toward a cluster of low foothills. 
+An opening in the face of the nearest hill leads into a cavern, and to the
+south, the lower foothills spread vastly.  Far in the distance, the peaks of
+the Brintor Mountains tower above the horizon, a grand spectacle in the
+background.  
+~
+~
+1
+0 0 13
+D0
+~
+~
+0 0 2701
+D2
+~
+~
+0 0 4756
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+M 0 4730 1 4730 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

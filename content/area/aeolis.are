@@ -1,0 +1,2358 @@
+#AREADATA
+Name The Shrine of the Rose~
+Builders Aeolis~
+VNUMs 22450 22499
+Credits [ ALL ] Aeolis    Shrine of the Rose~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 5 0 1
+Shades 5 5
+Stone 44
+End
+
+
+
+#MOBILES
+V4 22451
+silver guardian translucent figure~
+the silver guardian~
+A translucent figure in shining silver armor guards the gate.
+~
+A nearly insubstantial being, the silver guardian is clad from nearly
+head to foot in a gleaming suit of silver armor.  Two pale red eyes can be
+seen from behind his visored helmet, but little more.  A silver guantleted
+hand grasps a longsword firmly, never wavering from its ready position.  
+~
+generic~
+water scholar~
+ABDGLTX 0 CDFGHNV G 0
+65 150 29000d1+1 65d10+65 15d25+100 holy~
+divine power~
+-100 -100 -100 -100
+ACFHKQ ABLQRSab
+26 0 0 85 85 0 0 0 0 0 0 0 0 -33 33 0 50 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+CDL 0 A medium unknown
+>verb_prog P north~
+if isopen($n) == 0
+  if iscarrying($n) == 1290
+    if adrenaline($n) > 0
+      mpechoat $n The silver guardian gently places his sword in front of you.
+      mpechoaround $n The silver guardian gently places his sword in front of $N.
+      say I\@m sorry, $N, you must calm down before entering this place of tranquility.
+    else
+      mptrans $n 22452
+      mpforce $n look
+      mpechoat $n The gates slowly glide shut behind you.
+      mpechoaround $n $N has arrived.
+      mpechoaround $n The gates slowly glide shut as $N enters the shrine.
+      mpechoaround $i $N leaves north.
+      mpechoaround $i The gates slowly glide shut as $N enters the shrine.
+      mpflag exit north + closed locked
+      mpat 22452 mpflag exit south + closed locked
+    endif
+  else
+    if isevil($n)
+      mpechoat $n The silver guardian leaps in front of you.
+      mpechoaround $n The silver guardian leaps in front of $N.
+      yell You will not enter this sacred place, $n!
+      mpkill $n
+    else
+      mpechoat $n The silver guardian gently places his sword in front of you.
+      mpechoaround $n The silver guardian gently places his sword in front of $N.
+      say I\@m sorry, $N, only those who bear the rose may enter this sacred place.
+    endif
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>fight_prog 35~
+if rand(25)
+  mpechoat $n The silver guardian glares at you, his gaze searing deep into your soul!
+  mpechoaround $n The silver guardian glares menacingly at $N.
+  mpcast 141 75 $n
+else
+  if rand(50)
+    mpcast 421 75 $n
+  else
+    mpcast 352 75 $n
+  endif
+endif
+~
+|
+V4 22452
+gate southroseguard bot~
+the gate~
+The southern gate rose program is here, looking bored.
+~
+~
+human~
+water scholar~
+ABDGLVX 0 DFL N 0
+0 0 1d1+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog P ram north~
+if isopen($n) == 0
+  mpinterpret $n $x
+else
+  mpechoat $n As you slam into the gates, power from the gate is unleashed into you, leaving you dazed.
+  mpechoaround $n The gates course with power as $N rams into them, and $e bounces off, dazed.
+  mpcast 425 60 $n
+endif
+~
+>verb_prog P cast knock north~
+mpinterpret $n $x
+if isopen($n) != 0
+  mpechoat $n The gates begin to crackle with power as they absorb your magic, and focus it back towards you!
+  mpechoaround $n The gates begin to crackle with power as they absorb $N\@s magic, and focus it back towards $m!
+  mpvalueset 0 50
+  mpcast 89 $0 $n
+endif
+~
+>verb_prog P pick north~
+if isopen($n) == 0
+  mpinterpret $n $x
+else
+  mpechoat $n As you attempt to pick the lock, the rose surrounding it shifts suddenly, and you are pricked by one of its thorns.
+  mpechoaround $n As $N attempts to pick the lock, the rose surrounding it shifts suddenly, and $e is pricked by one of its thorns.
+  mpcast 105 55 $n
+endif
+~
+>verb_prog p unlock gate~
+if iscarrying($n) == 1290
+  if isopen($n) == 0
+    mpinterpret $n $x
+  else
+    mpechoat $n As your raise your hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpechoaround $n As $N raises $s hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpflag exit north - closed locked
+    mpat 22452 mpflag exit south - closed locked
+  endif
+else
+  mpinterpret $n $x
+endif
+if iscarrying($n) == 1290
+  if isopen($n) == 0
+    mpinterpret $n $x
+  else
+    mpechoat $n As your raise your hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpechoaround $n As $N raises $s hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpat 22452 mpecho The gates softly swing open.
+    mpflag exit north - closed locked
+    mpat 22452 mpflag exit south - closed locked
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog P unlock north~
+if iscarrying($n) == 1290
+  if isopen($n) == 0
+    mpinterpret $n $x
+  else
+    mpechoat $n As your raise your hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpechoaround $n As $N raises $s hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpat 22452 mpecho The gates softly swing open.
+    mpflag exit north - closed locked
+    mpat 22452 mpflag exit south - closed locked
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog p close gate~
+if isopen($n) == 0
+  if iscarrying($n) == 1290
+    mpechoat $n The gates shimmer softly as you close them, and a silver rose entwines itself around the lock.
+    mpechoaround $n The gates shimmer softly as $N closes them, and a silver rose entwines itself around the lock.
+    mpat 22452 mpecho The gates shimmer softly as $N closes them.
+    mpflag exit north + closed locked
+    mpat 22452 mpflag exit south + closed locked
+  else
+    if isgood($n)
+      mpechoat $n The gates refuse to move at your touch.
+      mpechoaround $n $N attempts to close the gates, but they refuse to move.
+    else
+      mpechoat $n As your hand nears the gate, electricity leaps from the bars and shocks you!
+      mpechoaround $n As $N reaches to close the gate, electricity leaps from the bars and shocks $m!
+      mpdamtype $n 1 10 10 6
+    endif
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog P close north~
+if isopen($n) == 0
+  if iscarrying($n) == 1290
+    mpechoat $n The gates shimmer softly as you close them, and a silver rose entwines itself around the lock.
+    mpechoaround $n The gates shimmer softly as $N closes them, and a silver rose entwines itself around the lock.
+    mpat 22452 mpecho The gates shimmer softly as $N closes them.
+    mpflag exit north + closed locked
+    mpat 22452 mpflag exit south + closed locked
+  else
+    if isgood($n)
+      mpechoat $n The gates refuse to move at your touch.
+      mpechoaround $n $N attempts to close the gates, but they refuse to move.
+    else
+      mpechoat $n As your hand nears the gate, electricity leaps from the bars and shocks you!
+      mpechoaround $n As $N reaches to close the gate, electricity leaps from the bars and shocks $m!
+      mpdamtype $n 1 10 10 6
+    endif
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog P open north~
+if iscarrying($n) == 1290
+  if isopen($n) == 0
+    mpinterpret $n $x
+  else
+    mpechoat $n As your raise your hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpechoaround $n As $N raises $s hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpat 22452 mpecho The gates softly swing open.
+    mpflag exit north - closed locked
+    mpat 22452 mpflag exit south - closed locked
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog p open gate~
+if iscarrying($n) == 1290
+  if isopen($n) == 0
+    mpinterpret $n $x
+  else
+    mpechoat $n As your raise your hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpechoaround $n As $N raises $s hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpat 22452 mpecho The gates softly swing open.
+    mpflag exit north - closed locked
+    mpat 22452 mpflag exit south - closed locked
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+|
+V4 22453
+gate bot northroseguard~
+the gate~
+The northern gate rose program is here, looking bored.
+~
+~
+human~
+water scholar~
+ABDGLVX 0 DFL N 0
+0 0 1d1+0 1d1+0 1d1+0 none~
+hit~
+-27 -27 -27 -9
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p south~
+if isopen($n) == 2
+  mptrans $n 22451
+  mpforce $n look
+  mpechoat $n The gates slowly glide shut behind you.
+  mpechoaround $n $N has arrived.
+  mpechoaround $n The gates slowly glide shut as $N leaves the shrine.
+  mpechoaround $i $N leaves south.
+  mpechoaround $i The gates slowly glide shut as $N leaves the shrine.
+  mpflag exit south + closed locked
+  mpat 22451 mpflag exit north + closed locked
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog P unlock south~
+if iscarrying($n) == 1290
+  if isopen($n) == 2
+    mpinterpret $n $x
+  else
+    mpechoat $n As your raise your hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpechoaround $n As $N raises $s hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpat 22451 mpecho The gate softly swings open.
+    mpflag exit south - closed locked
+    mpat 22451 mpflag exit north - closed locked
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog p close gate~
+if isopen($n) == 2
+  if iscarrying($n) == 1290
+    mpechoat $n The gates shimmer softly as you close them, and a silver rose entwines itself around the lock.
+    mpechoaround $n The gates shimmer softly as $N closes them, and a silver rose entwines itself around the lock.
+    mpat 22451 mpecho The gates shimmer softly as $N closes them.
+    mpflag exit south + closed locked
+    mpat 22451 mpflag exit north + closed locked
+  else
+    if isgood($n)
+      mpechoat $n The gates refuse to move at your touch.
+      mpechoaround $n $N attempts to close the gates, but they refuse to move.
+    else
+      mpechoat $n As your hand nears the gate, electricity leaps from the bars and {rshocks{x you!
+      mpechoaround $n As $N reaches to close the gate, electricity leaps from the bars and {rshocks{x $m!
+      mpdamtype $n 1 10 10 6
+    endif
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog P close south~
+if isopen($n) == 2
+  if iscarrying($n) == 1290
+    mpechoat $n The gates shimmer softly as you close them, and a silver rose entwines itself around the lock.
+    mpechoaround $n The gates shimmer softly as $N closes them, and a silver rose entwines itself around the lock.
+    mpat 22451 mpecho The gates shimmer softly as $N closes them.
+    mpflag exit south + closed locked
+    mpat 22451 mpflag exit north + closed locked
+  else
+    if isgood($n)
+      mpechoat $n The gates refuse to move at your touch.
+      mpechoaround $n $N attempts to close the gates, but they refuse to move.
+    else
+      mpechoat $n As your hand nears the gate, electricity leaps from the bars and {rshocks{x you!
+      mpechoaround $n As $N reaches to close the gate, electricity leaps from the bars and {rshocks{x $m!
+      mpdamtype $n 1 10 10 6
+    endif
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog p unlock gate~
+if iscarrying($n) == 1290
+  if isopen($n) == 2
+    mpinterpret $n $x
+  else
+    mpechoat $n As your raise your hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpechoaround $n As $N raises $s hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpat 22451 mpecho The gate softly swings open.
+    mpflag exit south - closed locked
+    mpat 22451 mpflag exit north - closed locked
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog p open gate~
+if iscarrying($n) == 1290
+  if isopen($n) == 2
+    mpinterpret $n $x
+  else
+    mpechoat $n As your raise your hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpechoaround $n As $N raises $s hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpat 22451 mpecho The gate softly swings open.
+    mpflag exit south - closed locked
+    mpat 22451 mpflag exit north - closed locked
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>verb_prog P open south~
+if iscarrying($n) == 1290
+  if isopen($n) == 2
+    mpinterpret $n $x
+  else
+    mpechoat $n As your raise your hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpechoaround $n As $N raises $s hand towards the gate, the rose surrounding the lock untwines, and the doors softly swing open.
+    mpat 22451 mpecho The gate softly swings open.
+    mpflag exit south - closed locked
+    mpat 22451 mpflag exit north - closed locked
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+|
+V4 22454
+flower bed bot whiterosemaker~
+a beautiful flower bed~
+A beautiful flower bed filled with fragrant white roses is here.
+~
+~
+human~
+water scholar~
+ABDGLVX 0 DFL N 0
+0 0 1d1+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+mpvalueset 0 0
+~
+>verb_prog p pick rose~
+mpechoat $n You pick a fragrant white rose from the flower bed.
+mpechoaround $n $N picks a fragrant white rose from the flower bed.
+mpoload 22452 on $n
+mpvalueup 0 1
+if mobvalue(0) >= 5
+  mppurge self
+endif
+~
+|
+V4 22455
+shrine templebot bot~
+the shrine~
+The templebot is here, granting spells, and looking cool.
+~
+~
+human~
+water scholar~
+ABDGLVX 0 DFL N 0
+0 0 1d1+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+mpseewizi
+~
+>verb_prog p drink~
+mpinterpret $n $x
+if compstr(2) == fountain
+or compstr(2) == 
+  mpechoat $n You feel the cleansing waters of the fountain flow through you.
+  mpcast 111 60 $n
+endif
+~
+>rand_prog 1~
+if rand(50)
+  mpzecho A gentle breeze blows past you, carrying the faint sounds of merry laughter.
+else
+  mpzecho The faint fragrance of roses drifts by on the wind.
+endif
+ 
+~
+>greet_prog 100~
+if snaffected($n) == 7
+else
+  mpechoat $n As you enter the shrine, the fragrance of roses fills the air, and your spirit is lightened.
+  mpechoat $n You feel blessed.
+  mpaddaffect $n 7 58 64 18 7 0
+  mpaddaffect $n 7 58 64 24 -7 0
+endif
+~
+|
+V4 22456
+ghostly swordmaster deraneth~
+Deraneth~
+A ghostly swordmaster floats here, his swords bared against the darkness.
+~
+The ghostly form of Deraneth floats here, looking around carefully.  In
+his hands he grasps two glowing longswords, although they appear to be more
+extensions to his apparation than actual objects.  He is clad in the same
+finery that is depicted in his statue, although his look is more determined.
+His movements are graceful and precise, giving the sense that he was once a
+formidable warrior.  
+~
+human~
+water scholar~
+ABDGLTX 0 DFNTUVc G 0
+60 30 20d230+1250 60d10+600 6d10+40 slash~
+slash~
+0 0 0 0
+0 ABCDa
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if islight() == 1
+  mpecho The ghostly form of Deraneth slowly fades away.
+  mppurge self
+endif
+~
+>greet_prog 100~
+mpechoat $n Deraneth gallantly salutes you with his sword.
+mpechoaround $n Deraneth gallantly salutes $N with his sword.
+~
+>fight_prog 100~
+mpechoat $n Your soul burns in agony as you strike the spirit of Deraneth!
+mpechoaround $n $N screams in agony as $e strikes at the spirit of Deraneth!
+mpzecho A loud clap of thunder echoes through the clearing.
+mpcast 8 60 $n
+mpecho The spirit of Deraneth fades away.
+note to aeolis
+note subject Deraneth attacked!
+note + $n attacked the spirit of Deraneth.
+note post
+mppurge self
+~
+|
+V4 22457
+spiritgenerator generator bot~
+the spirit generator~
+A spirit generator is here, like something straight from Gauntlet.
+~
+~
+human~
+water scholar~
+ABDGLVX 0 DFL N 0
+0 0 1d1+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 30~
+if istime() == 0
+  if mobvalue(0) == 0
+    mpecho A ghostly apparation rises from the ground.
+    mpmload 22456
+    mpvalueset 0 1
+  endif
+else
+  mpvalueset 0 0
+endif
+~
+|
+V4 22458
+pondbot~
+the pond~
+The pondbot is here, basking in the sun.
+~
+~
+human~
+water scholar~
+ABDGLVX 0 DFL N 0
+0 0 100d10+100 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog P pick fruit~
+mpechoat $n You pick an orange pol\@ana fruit from the gnarled tree.
+mpechoaround $n $N picks an orange pol\@ana fruit from the gnarled tree.
+mpoload 22457 on $n
+~
+>rand_prog 1~
+mpecho A fish breaks the surface of the water with a graceful jump, and dives back into the pond.
+~
+|
+V4 22459
+hillbot~
+the apple tree~
+The hillbot is here, rolling down the hill.
+~
+~
+human~
+water scholar~
+ABDGLVX 0 DFL N 0
+0 0 100d10+100 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p pick apple~
+mpechoat $n You pick an apple from a nearby tree.
+mpechoaround $n $N picks an apple from a nearby tree.
+mpoload 22458 on $n
+~
+|
+V4 22460
+fish fishbot bot~
+the fish~
+There\@s something fishy about the fishbot...
+~
+~
+human~
+water scholar~
+ABDGLVX 0 DFL N 0
+0 0 1d1+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p look stream~
+if mobvalue(0) == 0
+  mpechoat $n The slick forms of small fish swim about below the surface of the stream.
+else
+  mpechoat $n You glance about the stream for fish, but do not spot any nearby.
+endif
+~
+>verb_prog p look fish~
+if mobvalue(0) == 0
+  mpechoat $n The slick forms of small fish swim about below the surface of the stream.
+else
+  mpechoat $n You glance about the stream for fish, but do not spot any nearby.
+endif
+~
+>rand_prog 100~
+if mobvalue(0) > 0
+  mpvaluedown 0
+endif
+~
+>verb_prog p catch fish~
+if mobvalue(0) == 0
+  mpvaluerand 1 1 30
+  mpechoat $n You lower your arms into the water, hoping to catch a fish...
+  mpechoaround $n $N lowers $s arms into the water...
+  mpvalueset 0 8
+  if dexterity($n) > $1
+    mpechoat $n ... and you get one!
+    mpechoaround $n ... and comes out with a small fish!
+    mpoload 22459 on $n
+  else
+    mpechoat $n ... but don\@t manage to get one.
+    mpechoaround $n ... but doesn\@t manage to get anything.
+  endif
+else
+  mpechoat $n You glance into the stream, but don\@t see any fish nearby.
+endif
+~
+|
+V4 22461
+pathbot bot trees~
+the trees~
+The pathbot is here, dropping things on your head.  Oh no!
+~
+~
+human~
+water scholar~
+ABDGLVX 0 DFL N 0
+0 0 1d1+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p pick cherries~
+mpechoat $n You pick a handful of cherries from the nearby trees.
+mpechoaround $n $N picks a handful of cherries from the nearby trees.
+mpoload 22460 on $n
+ 
+~
+|
+V4 22462
+happyfunbot~
+the gate watcher~
+The happyfunbot is here.  Isn\@t it happy?
+~
+~
+human~
+water scholar~
+ABDGLVX 0 DFL N 0
+60 0 100d10+100 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+mpseewizi
+~
+>verb_prog P east~
+mptellimm aeolis $N approaches the silver gates.
+mpnextinterp
+~
+|
+V4 22463
+silver guardian translucent figure~
+the silver testmob~
+A translucent figure in shining silver armor guards the gate.
+~
+A nearly insubstantial being, the silver guardian is clad from nearly
+head to foot in a gleaming suit of silver armor.  Two pale red eyes can be
+seen from behind his visored helmet, but little more.  A silver guantleted
+hand grasps a longsword firmly, never wavering from its ready position.  
+~
+generic~
+water scholar~
+ABDGLT 0 CDFGHNV G 0
+65 150 29000d1+1 65d10+65 15d25+100 holy~
+divine power~
+-100 -100 -100 -100
+ACFHKQ ABLQRSab
+26 0 0 85 85 0 0 0 0 0 0 0 0 -33 33 0 50 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+CDL 0 A medium unknown
+>rand_prog 100~
+mpvaluerand 0 1 8
+if mobvalue(0) < 4
+mpecho The air suddenly charges with power as the ch\@taren scholar reaches the climax of her spell.
+else
+if mobvalue(0) == 4
+emote rests a moment, taxed from her hard work.
+endif
+endif
+~
+|
+V4 22464
+pillar male form slender swirling column rose petal petals aeol avatar~
+a pillar of swirling petals~
+A slender male form is described in a swirling column of rose petals.
+~
+A mass of fragrant rose petals whirl on a tall column of air.  Each of
+the petals is bright and fresh, untouched by blemish, age, or stain.  The
+petals vary in a delicate range from palest pink through pure white to a
+warm ivory.  As the petals spin, currents in the air halt their movement
+occasionally, a space at the center of the pillar suggesting more than
+describing a slender male form.  
+~
+human~
+water scholar~
+ADLPTX B ACDFJPTe G 0
+70 70 1d1+12999 1d1+6999 8d9+35 illusion~
+energy~
+-33 -33 -33 -12
+FHKN ABLQUb
+26 0 0 0 0 0 0 0 -20 0 0 0 100 -10 50 0 0 100 0 50 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMVWX ABCDEFGHIJKLQUVX ACDFGHK large flesh
+V4 22499
+testbot~
+a testbot~
+A testbot is here, ready to test.
+~
+~
+human~
+barbarian~
+AL BG 0 N 0
+51 25 18d200+920 20d100+200 5d10+25 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>speech_prog p Testbot, get me a drink!~
+// hoobooy...
+say I\@m sorry Dave...
+
+say I\@m afraid I can\@t do that.
+mpslay $n
+~
+>death_prog 100~
+mpecho I just died!  My killer was $N!
+~
+>all_death_prog 100~
+mpecho $N was just killed!
+mpecho T is $T!
+~
+>speech_prog p Testbot, 0wn~
+mpfocus $y3
+if isfocused($i)
+  mpat $f say I shall 0wnz0r u, $F!
+  mpechoat $f You feel 0wned by Testbot!
+  mpechoaround $f You are 0wned by Testbot!
+  mpaddaffect $f 769 60 -1 6 -2 0 A \@ownage of the bot\@
+else
+  say Cannot 0wn them.
+endif
+~
+>speech_prog p Testbot, do you have a tracking target?~
+if istrack($i)
+  say Yes, I am tracking someone.
+else
+  say No, I am not tracking anyone.
+endif
+~
+>speech_prog p Testbot, find~
+say Finding $y3, sir!
+mpfindpath $y3 200
+if haspath($i)
+say Found path, sir!
+else
+say Could not find path, sir!
+endif
+salute $n
+~
+>speech_prog p Testbot, do you have a path?~
+if haspath($i)
+  say Sir, yes sir!
+else
+  say Sir, no sir!
+endif
+~
+>speech_prog p Testbot, go forth and conquer!~
+say Going forth, sir!
+mppathstep
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+22451
+silver key~
+a small silver key on a chain~
+A small shining silver key is attached to a thin silver chain.~
+~
+silver~
+key GHKLMPUZ 0 0 AC
+0 0 0 0 0
+60 4 0 0 P
+0
+E
+silver key~
+A small shining key is attached to a thin chain, its tiny links securely forged.
+~
+V13
+22452
+fragrant white rose~
+a fragrant white rose~
+A beautiful white rose emits a fragrant aroma.~
+~
+plant~
+trash PSU 0 0 AO
+0 0 0 0 0
+10 1 0 2 P
+0
+V13
+22453
+fine silver longsword engraved rose~
+a fine silver longsword engraved with a rose~
+An fine silver longsword lies here, its blade elegantly engraved with a rose.~
+~
+silver~
+weapon AGHIKLMY 0 0 AN
+sword 3 18 3 0
+slash~
+65 50 1129453 2 P
+2
+A
+18 5
+A
+19 2
+A
+13 50
+A
+20 -2
+E
+fine silver longsword engraved rose~
+The workmanship of the longsword is exceptional, its weight so perfectly balanced
+that it seems to take on a life of its own.  An elegant rose has been engraved
+at the base of the blade, just above the finely worked hilt.
+~
+>hit_prog 1~
+if isevil($n)
+mpechoat $n You feel the wrath of the rose wrack your dark spirit!
+opcastoff 131 55
+endif
+~
+>fight_prog 5~
+if isevil($n)
+  opecho A fine silver longsword engraved with a rose glows with a holy light.
+  opcastoff 131 60
+endif
+~
+|
+V13
+22454
+gleaming silver breastplate~
+a gleaming silver breastplate~
+A large silver breastplate lies here gleaming.~
+~
+silver~
+armor AGIKLY 0 0 AD
+12 9 15 10 0
+55 100 272483 2 P
+1
+A
+13 30
+A
+12 25
+A
+38 10
+A
+29 5
+A
+20 -3
+E
+gleaming silver breastplate~
+The gleaming silver breastplate has been perfectly formed and is enscribed on the
+front with the image of a rose-entwined silver sword, the symbol of Aeolis.
+~
+V13
+22455
+visored helmet silver gleaming~
+a visored silver helmet~
+A gleaming silver helmet with a thin visor lies here.~
+~
+silver~
+armor GIY 0 0 AE
+7 15 12 12 0
+55 80 171332 2 P
+1
+A
+44 10
+A
+20 -2
+A
+18 1
+A
+48 10
+E
+visored helmet silver gleaming~
+The gleaming silver helmet has a raisable visor to either protect the eyes or
+provide better sight, and appears to be expertly crafted, offering great
+protection.
+~
+V13
+22456
+healing fountain tiny~
+a tiny fountain~
+A tiny healing fountain is here.~
+~
+stone~
+fountain Ie 0 0 0
+0 0 'water' 0 0
+0 0 0 5 P
+0
+E
+healing~
+A tiny fountain burbles softly in the middle of the shrine.
+~
+V13
+22457
+pol\@ana fruit orange~
+an orange pol\@ana fruit~
+A smooth orange piece of fruit lies here.~
+~
+plant~
+food 0 0 0 A
+40 50 0 0 0
+1 5 0 1 P
+0
+E
+orange fruit~
+The pol\@ana fruit is an ellipsoid in shape, slightly larger at the
+bottom, and covered in a shiny, dark orange skin.  Inside, the fruit is a
+lighter orange in color, pulpy, and very sweet.  
+~
+V13
+22458
+apple red~
+a red apple~
+A red apple is here.~
+~
+plant~
+food 0 0 0 A
+20 50 0 0 0
+1 3 12064 1 P
+0
+A
+12 29
+E
+red apple~
+A red apple looks fresh and juicy.
+~
+>verb_prog eat~
+if objtargetcarry()
+  mpinterpret $n $x
+  if isheld($n)
+  else
+    mpechoat $n Mmm... the apple tastes great!
+  endif
+  opverbstop
+else
+  mpnextinterp
+endif
+~
+|
+V13
+22459
+fish small~
+a small fish~
+A small fish lies on the ground.~
+~
+flesh~
+food 0 0 0 A
+25 50 0 0 0
+1 10 0 1 P
+0
+V13
+22460
+handful cherries~
+a handful of cherries~
+A small handful of cherries is scattered about.~
+~
+plant~
+food 0 0 0 A
+20 50 0 0 0
+1 3 0 1 P
+0
+E
+handful cherries~
+The cherries are dark red in colour, appearing to be perfectly ripe.
+~
+V13
+22461
+gleaming gauntlets silver~
+gleaming silver gauntlets~
+A pair of silver gauntlets lies here, gleaming in the light.~
+~
+silver~
+armor GIKLY 0 0 AH
+0 0 0 0 0
+55 50 6371 1 P
+1
+A
+18 3
+A
+19 2
+E
+gleaming gauntlets silver~
+These gauntlets have been exquisitely crafted, and offer great flexibility
+to those who wear them.  Their pure silver surface gleams in the light.
+~
+V13
+22462
+swordmaster statue~
+a statue of deraneth~
+The statue of Deraneth is here.~
+~
+stone~
+trash ae 0 0 0
+0 0 0 0 0
+60 0 0 2 P
+0
+E
+swordmaster statue~
+The statues depicts the figure of a quite noble-looking human clad in very
+fine clothing, posed in an idle position with his hands placed on his hips,
+and a brilliant smile on his face.  On his back are two long sheathes, the
+hilts of elegantly designed swords protruding from the tops.  The block
+underneath the statue bears the following engraving:
+ 
+                            In memory of
+                           Deraneth A\@Kir
+ 
+                         Noble courtier, and 
+                    valiant defender of Earendam.
+~
+V13
+22463
+ethron statue~
+a statue of jadeya~
+A statue of Jadeya is here.~
+~
+stone~
+trash ae 0 0 0
+0 0 0 0 0
+60 0 0 2 P
+0
+E
+ethron statue~
+This statue depicts a short ethron woman upraising a delicate rose in an
+apparent offering to the gods.  Beautiful, long hair cascades down around
+her, and she is garbed in long, flowery fineries, quite atypical for one her
+her people.  Around her neck she wears an amulet in the shape of a pegasus,
+and a joyful look fills her eyes as she stares skywards.  The pedestal on
+which she stands bears the following enscription:
+ 
+                               Jadeya
+                         Servant of Rystaia
+ 
+                       An ethron girl who left  
+                    the forest to find the world,
+ 
+                       With an aura of purity
+                     which no man could resist.
+~
+V13
+22480
+winter silver ring~
+the Ring of Winter~
+A silver ring inset with a snowflake of light-blue celestite is here.~
+~
+silver~
+jewelry GIKYa 0 0 ABP
+0 0 0 0 0
+55 5 91103 0 P
+1
+A
+12 40
+A
+13 25
+A
+20 -2
+E
+winter silver ring~
+The Ring of Winter consists of a thin band of pure silver, inset with a
+small piece of light-blue celestite, cut into the shape of a simple
+snowflake.  The ring feels slightly cold to the touch.  On the underside of
+the band, beneath the gem, is inscribed the letter \@S\@ in archaic script.  
+~
+>fight_prog 5~
+if isworn($o)
+  opechoat $o The Ring of Winter grows cold for a moment.
+  opechoaround $o The Ring of Winter glows brightly.
+  opcastoff 81 60
+endif
+~
+>wear_prog 100~
+if name($n) == sance
+or name($n) == aeolis
+else
+  opzap
+  opechoat $n You are zapped by the Ring of Winter and drop it.
+  opechoaround $n $N is zapped by the Ring of Winter and drops it.
+endif
+~
+>rand_prog 100~
+if isheld($o)
+  if name($o) == sance
+  or name($o) == aeolis
+    if objvalue(1) == 0
+      if snaffected($o) == 552
+        opvalueset 1 2
+      else
+        opvalueset 1 1
+      endif
+    endif
+    if isseason() == winter
+      if isworn($o)
+        opvalueset 1 2
+        if snaffected($o) == 552
+        else
+          opechoat $o The Ring of Winter grows cold for a moment, and you feel protected. 
+          opaddaffect 552 55 -1 36 25 0
+          opaddaffect 552 55 -1 37 25 0
+        endif
+        break
+      endif
+    endif
+    if objvalue(1) == 2
+      opvalueset 1 1
+      if snaffected($o) == 552
+        opechoat $o You feel the protection of the Ring of Winter fade away.
+        opremaffect 552
+      endif
+    endif
+    break
+  endif
+endif
+if isheld($o)
+  opechoat $o The Ring of Winter flashes brightly and disappears.
+else
+  opecho The Ring of Winter flashes brightly and disappears.
+endif
+opfocus sance
+if isfocused()
+  if iscarrying($f) == 22480
+  else
+    opat $f opoload 22480 on $f
+    opechoat $f The Ring of Winter shimmers into existance.
+  endif
+endif
+oppurge self
+~
+|
+V13
+22481
+locket silver rose~
+a silver locket engraved with a rose~
+A simple silver locket engraved with a delicate rose lies here.~
+~
+silver~
+container GIKYa 0 0 ACP
+0 BCD 0 0 0
+55 8 2157022 2 P
+0
+A
+18 2
+A
+13 10
+A
+14 25
+A
+17 -5
+A
+44 5
+A
+41 20
+A
+20 -2
+E
+locket silver rose~
+The locket hangs on threads of pure silver, their thin lengths magically
+bound and strengthened.  The heart shaped pendant is engraved on both sides
+with the image of a single rose.  The locket seems as though it contains
+something within, but appears to be magically sealed.  
+~
+>rand_prog 100~
+if isheld($o)
+  if name($o) == aeolis
+  or name($o) == sydonus
+    break
+  endif
+endif
+if isheld($o)
+  opechoat $o A silver locket engraved with a rose flashes brightly and disappears.
+else
+  opecho A silver locket engraved with a rose flashes brightly and disappears.
+endif
+opfocus sydonus
+if isfocused()
+  if iscarrying($f) == 22481
+  else
+    opat $f opoload 22481 on $f
+    opechoat $f A silver locket engraved with a rose shimmers into existance.
+  endif
+endif
+oppurge self
+~
+>wear_prog 100~
+if name($n) == aeolis
+or name($n) == sydonus
+else
+  opechoat $n You are zapped by a silver locket engraved with a rose and drop it.
+  opechoaround $n $N is zapped by a silver locket engraved with a rose and drops it.
+  opzap $n
+endif
+~
+>fight_prog 5~
+if isworn($o)
+  opecho A silver locket engraved with a rose hums softly.
+  opcast 34 60 $o
+endif
+~
+|
+V13
+22482
+fine silver chain sapphire pendant~
+a fine silver chain with a sapphire pendant~
+A chain of pure silver lies curled on the ground, a sapphire pendant in the shape of a sword attached.~
+~
+cloth~
+jewelry AIKLa 0 0 ACP
+0 0 0 0 0
+55 1 105163 0 P
+1
+A
+9 -20
+A
+36 7
+A
+18 1
+A
+12 20
+A
+54 2
+V13
+22483
+skirt silk sky-blue~
+a long skirt of sky-blue silk~
+A long skirt of fine, sky-blue silk lies here.~
+~
+silk~
+trash IKL 0 0 AFP
+0 0 0 0 0
+55 5 1029598 2 P
+0
+A
+12 50
+A
+13 50
+V13
+22484
+armbands engraved silver~
+a pair of engraved silver armbands~
+Two finely-crafted armbands of pure silver are here.~
+~
+silver~
+armor GIKLYa 0 0 AIP
+1 0 4 2 0
+55 5 37804 1 P
+0
+A
+1 1
+A
+41 5
+A
+39 5
+E
+armbands engraved silver~
+The two thin silver armbands are engraved with the precision of a master
+artisan, the markings fine and precise.  Around the outer edges, wandering
+vines have been etched, small roses spread along them.  A single word is
+inscribed on each of the bands, in beautiful aelin script: \@Srun\@ and
+\@Ildal\@.  
+~
+>remove_prog 100~
+if name($n) == Aeolis
+or name($n) == Yesa
+  mpremaffect $n 108
+  mpechoat $n The watchful presence about you departs.
+endif
+~
+>wear_prog 100~
+if name($n) == Aeolis
+or name($n) == Yesa
+  mpaddaffect $n 108 55 -1 24 -1 8192
+  mpechoat $n You sense Aeolis\@ watchful presence surround you, protecting you from harm.
+else
+  opzap
+endif
+~
+|
+V13
+22489
+delete me please~
+delete me please~
+Delete me please~
+~
+silver~
+weapon AGHIKLMY 0 0 AN
+sword 3 18 3 0
+wrath of the angry mongoose~
+65 50 1129453 2 P
+2
+A
+20 -2
+A
+13 50
+A
+19 2
+A
+18 5
+E
+fine silver longsword engraved rose~
+The workmanship of the longsword is exceptional, its weight so perfectly balanced
+that it seems to take on a life of its own.  An elegant rose has been engraved
+at the base of the blade, just above the finely worked hilt.
+~
+V13
+22490
+shirt shining silver chainmail~
+a shirt of shining silver chainmail~
+A shirt of shining silver chainmail is here.~
+~
+silver~
+armor GIKLa 0 0 AD
+10 10 10 10 0
+53 1 3500 2 P
+0
+V13
+22491
+crested white tabard~
+a crested white tabard~
+A crested white tabard is lying here.~
+~
+cloth~
+armor GIKLa 0 0 AK
+10 10 10 10 0
+53 1 3500 2 P
+0
+V13
+22492
+breeches pair leather~
+a pair of leather breeches~
+A pair of leather breeches lies here.~
+~
+leather~
+armor GIKLa 0 0 AF
+10 10 10 10 0
+53 1 3500 2 P
+0
+V13
+22493
+black suede gloves~
+a pair of black suede gloves~
+A pair of black suede gloves lies here.~
+~
+velvet~
+armor GIKLa 0 0 AH
+10 10 10 10 0
+53 1 3500 1 P
+0
+V13
+22494
+suede boots black~
+a pair of black suede boots~
+A pair of black suede boots lies here.~
+~
+leather~
+armor GIKLa 0 0 AG
+10 10 10 10 0
+53 1 3500 2 P
+0
+V13
+22495
+scabbard leather~
+a finely-worked leather scabbard~
+A leather scabbard engraved with the symbol of a rose lies here.~
+~
+leather~
+armor KLSY 0 0 AL
+5 5 5 5 0
+53 25 500 2 P
+1
+V13
+22496
+sigil~
+a sigil of some sort~
+A cool, refreshing bottle of Coke fizzes here.~
+~
+flesh~
+armor MYZa 0 0 AR
+0 0 0 0 0
+58 8 0 1 P
+0
+E
+fizz~
+Mm.. look at that fizz.
+~
+E
+~
+~
+>rand_prog 100~
+mpvaluerand 2 1 100
+mpvaluedown 2 $1
+if objvalue(2) < 0
+  if rand(25)
+    mpechoat $o Your feet begin to twitch... you feel the urge... to... dance!
+    mpechoat $o You quickly break out into a merry jig!
+    mpechoaround $o Without warning, $O breaks into a merry jig!
+  else
+    if roomflag($o) == no_recall
+    or roomflag($o) == nogate
+    or isfighting($o)
+    or move($o) <= 0
+      mpget char $o level 3
+      mpechoat $o You feel a strange sense of entrapment... as if you should be elsewhere.
+      mpechoat $o Suddenly, your skin grows hot, and you are surrounded in flames!
+      mpcast 84 $3
+    else
+      mpechoat $o Suddenly, you feel your body begin to shimmer violently... you disappear!
+      mpechoaround $o Suddenly, $O\@s body begins to shimmer violently... then disappears!
+      mpcast 137 60
+      mpechoat $o You find yourself... elsewhere.      
+      mpvalueup 1 3
+    endif
+  endif
+endif
+if objvalue(4) > 0
+  mpvalueup 4
+    if objvalue(4) == 100
+      mpechoat $o Your sigil slowly fades away.
+      mpslotremove $o 20
+  endif
+endif
+~
+>verb_prog p jump~
+if isowner($n)
+  mpechoat $n You perform a quick jump into the air.
+  mpechoaround $n $N performs a quick jump into the air.
+  mpvalueup 0
+  if objvalue(0) == 3
+    if roomflag($n) == no_recall
+    or roomflag($n) == nogate
+    or isfighting($n)
+    or move($n) <= 0
+      mpechoat $n Energy briefly crackles from your sigil, but quickly dissipates.
+    else
+      mpechoat $n Suddenly, you feel your body begin to shimmer violently... you disappear!
+      mpechoaround $n Suddenly, $N\@s body begins to shimmer violently... then disappears!
+      mpcast 137 60
+      mpechoat $n You find yourself... elsewhere.
+    endif
+    mpvalueset 0 0
+    mpvalueup 1 10
+    if objvalue(4) == 0
+      mpvalueset 4 1
+    endif
+  endif
+else
+  mpnextinterp
+endif
+
+~
+>verb_prog p trigger~
+mptrigger $n
+~
+>trigger_prog 100~
+mpecho Triggered!
+~
+|
+V13
+22497
+deck cards all~
+a deck of cards~
+A deck of cards lies here, closed.~
+~
+parchment~
+special ACIYf 0 0 AL
+2 0 0 0 0
+60 0 1513200 1 P
+0
+A
+42 100
+>speech_prog p group teleport test~
+mpcast 357 60
+~
+>wear_prog 100~
+opvalueset 0 1
+~
+>verb_prog p flourish~
+>verb_prog p flourish
+if isowner($n)
+if isworn($o)
+if compstr(2) == cloak
+or compstr(2) == zephyr
+or compstr(2) == shimmering
+opechoat $o The zephyr cloak shimmers, and you are drawn into its depths!
+opechoaround $o $O\@s zephyr cloak shimmers, and $e disappears in a flash of light!
+opcast 137 51
+opvaluedown 0
+if objvalue(0) == 0
+opechoat $o Your zephyr cloak vanishes, its magic exhausted.
+oppurge self
+break
+endif
+else
+opinterpret $n $x
+endif
+else
+opinterpret $n $x
+endif
+else
+opinterpret $n $x
+endif
+~
+|
+V13
+22498
+thin longsword blade glass glassblade~
+a thin longsword with a blade of glass~
+A thin longsword with a blade of glass lies here.~
+~
+glass~
+weapon GKL 0 0 AN
+sword 5 9 3 0
+slash~
+58 120 195585 2 P
+0
+A
+20 -1
+>speech_prog p test~
+mpvalueset 0 1
+mpecho Value 0 is $0
+mpvalueset 0 0
+mpecho Value 0 is $0
+~
+>rand_prog 100~
+if objvalue(0) == 1
+  mpvaluedown 1
+  if objvalue(1) == 0
+    mpecho A thin longsword with a blade of glass stops glowing.
+    mpset obj glassblade extra 3136
+    mpvalueset 0 0
+  endif
+endif
+~
+>entry_prog 100~
+loop 1 to 10000
+  mpfocus $v1.
+  if isfocused()
+    if ishere($f)
+      if isevil($f)
+        if objvalue(0) == 0
+          mpecho A thin longsword with a blade of glass begins to glow softly.
+          mpset obj glassblade extra 3137
+          mpvalueset 1 20
+          mpvalueset 0 1
+          break
+        else
+          mpecho A thin longsword with a blade of glass pulses briefly.
+          mpvalueset 1 20
+          break
+        endif
+      endif
+    else
+      if objvalue(0) == 1
+        mpecho A thin longsword with a blade of glass stops glowing.
+        mpset obj glassblade extra 3136
+        mpvalueset 1 0
+        mpvalueset 0 0
+      endif
+      break
+    endif
+  else
+    if objvalue(0) == 1
+      mpecho A thin longsword with a blade of glass stops glowing.
+      mpset obj glassblade extra 3136
+      mpvalueset 1 0
+      mpvalueset 0 0
+    endif
+    break
+  endif
+endloop
+~
+>greet_prog 100~
+loop 1 to 10000
+  mpfocus $v1.
+  if isfocused()
+    if ishere($f)
+      if isevil($f)
+        if objvalue(0) == 0
+          mpecho A thin longsword with a blade of glass begins to glow softly.
+          mpset obj glassblade extra 3137
+          mpvalueset 1 20
+          mpvalueset 0 1
+          break
+        else
+          mpecho A thin longsword with a blade of glass pulses briefly.
+          mpvalueset 1 20
+          break
+        endif
+      endif
+    else
+      if objvalue(0) == 1
+        mpecho A thin longsword with a blade of glass stops glowing.
+        mpset obj glassblade extra 3136
+        mpvalueset 1 0
+        mpvalueset 0 0
+      endif
+      break
+    endif
+  else
+    if objvalue(0) == 1
+      mpecho A thin longsword with a blade of glass stops glowing.
+      mpset obj glassblade extra 3136
+      mpvalueset 1 0
+      mpvalueset 0 0
+    endif
+    break
+  endif
+endloop
+~
+>verb_prog p say Boo!~
+opecho We will now test the power of mpnextinterp.
+mpnextinterp
+mpinterpret $n $x
+opecho Now you have seen...
+~
+>verb_prog p say Boo!~
+~
+>speech_prog p Begone, cesti.~
+opecho Purging...
+oppurge self
+~
+|
+V13
+22499
+nature spirit~
+a tiny nature spirit~
+A nature spirit lies here.~
+Tra la la
+~
+energy~
+treasure 0 0 0 AHO
+0 0 0 0 0
+60 0 10000 2 P
+0
+>data_prog nose~
+The nature spirit has the cutest little nose.
+~
+>verb_prog test~
+mpdesc self nose
+~
+>speech_prog p Spirit, echo for me!~
+if isowner($o)
+  mpecho {GE{gchoing!{x
+else
+  mpnextinterp
+endif
+~
+>verb_prog p loadme~
+mpoload $y2 on $n
+~
+|
+#0
+
+
+
+#ROOMS
+#22450
+~
+/---------------------------------------------------------------------\\
+|              AVENDAR: THE CRUCIBLE OF LEGENDS -- HELP               |
+\\---------------------------------------------------------------------/
+
+You can get a help on a variety of topics to guide you through the
+playing of Avendar.  Simply type help \@<subject>\@ to gain help on
+a certain topic.  Here\@s a list of general topics you can search for
+help on to get you started:
+
+GETTING STARTED - The basics of Avendar and MUDding in general.
+INFORMATION - How to get info on yourself and your surroundings.
+MOVEMENT - How to move around in the world of Avendar.
+INTERACTION - How to interact with objects and items in Avendar.
+COMMUNICATION - How to communicate with others in Avendar.
+COMBAT - How to engage (and survive!) combat in Avendar.
+
+Be sure to pay attention to the \#See Also\# located at the bottom of
+many of the helpfiles, as they often point to other useful pieces of
+information on the topic you\@re reading on.
+
+If you are stuck or confused and cannot find help on a certain topic,
+please read \@help PRAY\@ for instructions on how to contact an immortal
+who may be able to help you.
+
+
+/---------------------------------------------------------------------\\
+|                              MOVEMENT                               |
+\\---------------------------------------------------------------------/
+
+Avendar consists of \@rooms\@, through which you may traverse.  The
+basic commands for doing so represent the directions in which you
+may move:
+
+north, east, south, west, up, down
+
+Typing any of these (or simply the first letter thereof) will move
+your character in the specified direction, so long as there is an
+associated exit in the direction you are attempting to move.  You
+can determine the valid exits from a room by observing the list that
+is displayed by default whenever you enter a new location, which
+appears below the room description, looking something like:
+
+[Exits: east up]
+
+You may also view the exits from a room by typing \@exits\@, which will
+give you a more descriptive explanation of the connecting rooms.
+(Note: If the above exit information is not being displayed upon
+entering new rooms, you may have accidently turned this display off.
+Type \@autoexit\@ to turn the function back on.)
+
+At times you may need to open a door in order to be able to proceed
+in a direction.  Exits with closed doors do not appear in the exit
+list until they have been opened, so be sure to read room descriptions
+carefully, as that is the only way of making sure you\@re not missing
+something!  In order to open a door, simply type \@open <direction>\@.
+Once again, direction may be specified by simply the first letter.
+If the door is locked, and you have the appropriate key, you may first
+unlock the door by typing \@unlock <direction>\@.  As well, doors may
+be closed and locked with the \@close\@ and \@lock\@ commands,
+respectively.
+
+Now you have the basics of moving around in the land of Avendar.  You
+will also want to view the helps below to learn more:
+
+See also: RECALL, POSITIONS
+
+
+/---------------------------------------------------------------------\\
+|                              POSITIONS                              |
+\\---------------------------------------------------------------------/
+
+While travelling in Avendar, you can assume a number of different
+positions, from sitting, to standing, to lying down.  The basic
+commands for changing position are:
+
+sleep, rest, sit, stand
+
+When sleeping or resting, you will regain your health, mana, and
+movement more quickly, but you are restricted in the actions you
+may perform in each state.  When sleeping you will regenerate more
+quickly than when resting, and cannot see your surroundings.
+
+As well, if there is an object in the room that allows it, you may
+use any above the above commands with an optional <target> to 
+assume that position on or by the object.  For example:
+
+\@sleep bedroll\@
+You go to sleep on a thick bedroll.
+
+
+/---------------------------------------------------------------------\\
+|                               RECALL                                |
+\\---------------------------------------------------------------------/
+
+Syntax: \@recall\@ (or /)
+
+The \@recall\@ command may be used by characters of level 10 or less,
+by people in a ghostly state, or by druids with an existing circle of
+stones.
+
+Recall prays to the appropriate gods or nature spirits for miraculous
+transportation from where you are back to the appropriate temple of
+your hometown, or stone circle.
+
+\@/\@ is a synonym for \@recall\@.
+
+Recall costs half of your movement points.
+
+Recall doesn\@t work in certain god-forsaken rooms.  Characters
+afflicted by certain curses may not recall at all.
+
+You may not recall from the middle of battle, or while your adrenaline
+is gushing from combat.
+
+See also: \@WORD OF RECALL\@, SPIRITRECALL
+
+
+/---------------------------------------------------------------------\\
+|                            COMMUNICATION                            |
+\\---------------------------------------------------------------------/
+
+Communication is the most essential part of your interactions in
+Avendar.  You may communicate with others in a number of different
+ways, to express yourself in the role you have chosen.  Bear in mind
+that all communication while in Avendar should be In Character (in
+other words, in the role of your character), unless you are using the
+\@ooc\@ chat channel.  The basic commands used for communicating are:
+
+say, esay, tell, gtell, yell, think, emote, pmote, smote, ooc
+
+Please view the helps for the above commands for details on their
+usages.
+
+As well, certain characters will have access to the following
+communication commands:
+
+dt (for druids using \@commune with nature\@), sing (for bards), and
+ht/house (for characters who are members of one of Avendar\@s houses)
+
+See also: ROLEPLAYING, PRAY, NOTE
+~
+~
+0
+0 565558 0
+W 5 0 0
+Z 5 5
+S
+#22451
+Before the Silver Gates~
+A magnificent pair of silver gates glints in the light and crosses the
+entire width of the path to the north.  The craftsmanship of the gates is
+astounding, the curves giving the unmistakable impression of elegance and
+beauty.  The gates are connected in the middle by a simple lock, which is
+entwined with a single red rose.  Beyond the gates you can see a pristine
+clearing, and a path leading to a small domed building.  Off to the side of
+the path lies a small patch of fragrant white roses.  To the east and south
+of here, the forest becomes dense and impassable, while the path continues
+to the west.  
+~
+~
+0
+0 50 3
+D0
+The silver gates lie to the north.
+~
+gate~
+65639 22451 22452
+D3
+The path continues through the trees.
+~
+~
+0 0 22461
+A 1
+W 5 0 0
+Z 5 5
+S
+#22452
+Path to the Shrine~
+A small dirt path runs by here, leading north towards the shrine to
+Aeolis, and south towards the silver gates that make the entrance to this
+clearing.  Small cherry trees grow along the side of the road, although
+their bounty cannot be seen cluttering the path itself.  To the east of here
+you can see a duelling circle and jousting lists setup, while to the west
+lies an area interspersed with a large number of trees.  
+~
+~
+0
+0 268697650 2
+E
+tree cherry cherries~
+Cherries hang from the trees here, ripe for the picking.
+~
+D0
+The Shrine of the Rose glints in the light.
+~
+~
+0 0 22453
+D1
+A small dueling yard lies to the east.
+~
+~
+0 0 22460
+D2
+The silver gates lie to the south.
+~
+~
+65639 22451 22451
+D3
+A number of trees are scattered about here.
+~
+~
+0 0 22459
+W 5 0 0
+Z 5 5
+S
+#22453
+The Shrine of the Rose~
+A soft rose-coloured light fills the area, shining down through the
+tinted glass which makes up the domed ceiling of the shrine.  The small
+panes above you are sectioned into the shape of a rose, and separated by
+thin strips of pure silver.  The structure itself is constructed in a
+circular shape, although only a curved wall at the north side, and two
+silver pillars to the south hold up the encompassing roof.  Vines wrap their
+way about the building, their growth apparently carefully tended.  Standing
+at the middle of the northern wall is a tall silver statue of a beautiful
+aelin woman atop an engraved pedestal, while in the middle of the shrine a
+tiny fountain endlessly spurts a small stream of pure water.  A holy feeling
+pervades the entire place, filling it with a sense of peacefulness.  
+~
+~
+0
+0 268697650 0
+E
+statue pedestal~
+The statue depicts the figure of a beautiful aelin woman, wings carefully
+folded behind her, gently smelling a long-stemmed rose.  A pleasant smile is
+etched on her face, and her eyes are closed as she takes in the fragrance of
+the flower.  What appears to be a long silken dress covers her form, flowing
+to an imaginary breeze.  Below the statue, the pedastal is engraved with the
+following enscription: 
+ 
+                                 Lynaia,
+                       For you I will never regret.
+ 
+~
+D1
+A small memorial yard lies to the east.
+~
+~
+0 0 22454
+D2
+A path leads towards the silver gates.
+~
+~
+0 0 22452
+D3
+A peaceful meadow spreads out to the west.
+~
+~
+0 0 22458
+W 0 0 2
+Z 5 5
+S
+#22454
+The Memorial Grounds~
+Many trees reach high above you, carefully placed around the section
+known as the memorial grounds.  A number of small paths interweave across
+the area, winding between markers of varying types, in memory of some of the
+most famous gallants in Avendarian history.  A few memorials in the form of
+statues are found about the grounds, their silver surfaces glinting in the
+light.  The first is of a noble looking human swordmaster, another depicts a
+man holding a harp, and another is of a female ethron woman proffering a
+rose to the heavens.  To the north of here rises a small hill, while to the
+south the accessories of the dueling yard can be seen.  The trees grow more
+dense to the east, making passage impossible, while directly to the west,
+the shrine of the rose stands.  
+~
+~
+0
+0 262194 2
+E
+ethron~
+This statue depicts a short ethron woman upraising a delicate rose in an
+apparent offering to the gods.  Beautiful, long hair cascades down around
+her, and she is garbed in long, flowery fineries, quite atypical for one her
+her people.  Around her neck she wears an amulet in the shape of a pegasus,
+and a joyful look fills her eyes as she stares skywards.  The pedestal on
+which she stands bears the following enscription:
+ 
+                               Jadeya
+                         Servant of Rystaia
+ 
+                       An ethron girl who left  
+                    the forest to find the world,
+ 
+                       With an aura of purity
+                     which no man could resist.
+ 
+~
+E
+statues~
+You see the statues of a noble swordmaster and an ethron woman here.
+~
+E
+swordmaster statue noble~
+The statues depicts the figure of a quite noble-looking human clad in very
+fine clothing, posed in an idle position with his hands placed on his hips,
+and a brilliant smile on his face.  On his back are two long sheathes, the
+hilts of elegantly designed swords protruding from the tops.  The block
+underneath the statue bears the following engraving:
+ 
+                            In memory of
+                           Deraneth A\@Kir
+ 
+                         Noble courtier, and 
+                    valiant defender of Earendam.
+~
+D0
+A small hill rises to the north.
+~
+~
+0 0 22455
+D2
+A small dueling yard lies to the south.
+~
+~
+0 0 22460
+D3
+The Shrine of the Rose glints in the light.
+~
+~
+0 0 22453
+W 5 0 0
+Z 5 5
+S
+#22455
+Atop a Small Hill~
+A slight breeze assails you as you perch atop a small hill.  From this
+vantage point, the entire clearing the shrine encompasses can be easily
+seen, the rose-topped building itself sitting directly in the centre of its
+surroundings.  Lush grass covers this small mound of earth, and a few small
+apple trees provide shade for those who would wish it.  To the south a small
+yard filled with silver statues can be seen, while directly to the west of
+here lies a large pond.  A dense forest rises to the north and east, making
+movement in those directions impossible.  
+~
+~
+0
+0 262162 4
+E
+tree apple~
+Shiny red apples hang from the trees, ripe for the picking.
+~
+D2
+A small memorial yard lies to the south.
+~
+~
+0 0 22454
+D3
+A quiet pond sits calmly to the west.
+~
+~
+0 0 22456
+M 125 H 125 V 125
+W 5 0 0
+Z 5 5
+S
+#22456
+A Quiet Pond~
+A large pond dominates this area, its pristine blue water rippling gently
+in the breeze.  A small influx from a stream to the west prevents the pool
+from becoming stagnant, and the excess is drained away by another small
+brook flowing off to the north, into an impassable forest.  The peaceful
+reservoir shimmers as light from above shines down and reflects off its
+surface.  A large, gnarled tree bearing an exotic orange fruit stands just
+off the southern edge of the pond, nearing the back of the shrine, casting a
+pleasant shade over the area.  
+~
+~
+0
+0 67371058 2
+E
+tree fruit~
+Exotic orange fruit hangs from the tree, ripe for the picking.
+~
+D1
+A small hill rises to the east.
+~
+~
+0 0 22455
+D3
+A small waterfall falls to the west of here.
+~
+~
+0 0 22457
+M 125 H 125 V 125
+W 5 0 0
+Z 5 5
+S
+#22457
+A Small Waterfall~
+Water cascades down from a small rise to the west of here, flowing out of
+the dense trees of the forest.  A thin rocky stream continues on to the
+east, filling the area with the sounds of gentle babbling.  The slick forms
+of fish and other dimiutive aquatic creatures can be seen gliding beneath
+the surface, swept down from whatever may be the source of this tiny river. 
+To the east of here the stream appears to congregate in a small pond
+reservoir, and to the south you can see a lush meadow.  To the west and
+north a dense forest rises, making movement in those directions impossible. 
+~
+~
+0
+0 262194 3
+D1
+The stream running east fills into a large pond.
+~
+~
+0 0 22456
+D2
+A peaceful meadow spreads out to the south.
+~
+~
+0 0 22458
+M 125 H 125 V 125
+W 5 0 0
+Z 5 5
+S
+#22458
+A Peaceful Meadow~
+Lush green grass covers the length of this slightly bowl-shaped meadow. 
+Flowers of varying colours and type bloom in patches all around you, and
+butterflies flit to and fro about.  A statue of pure white marble sits in
+the centre of the area, its smooth surface glinting in the light.  To the
+east of here you can see the shrine of Aeolis shining softly, and to the
+north the sounds of running water can be heard.  A number of trees covers
+the area to the south of you, while to the west a dense forest makes
+movement impossible.  
+~
+~
+0
+0 268697650 2
+E
+statue~
+Carved entirely of white marble, the statue depicts a young aelin woman,
+her form remarkably delicate and feminine.  Her entire body flows and curves
+fluidly, covered only by the graceful, sloping cover of a thin robe.
+
+She is positioned with her back arched, her legs drawn back.  Her toes grow
+firmly from the pedestal beneath, raising her body at a forward angle.
+Behind her, two massive, perfectly detailed wings stretch skyward, drawn
+wide, stylized similarly to that of an angel.  Long, lithe arms, uncovered,
+extend out in front of her, angled downward, hands clasped around the hilt
+of a beautifully crafted sword.  A thin and delicate rose entwines the
+blade, the flower itself close to the girl\@s magnificently crafted fingers.
+
+Her neck is also arched, lending her chin slightly up, her gaze skyward.
+Her face is radiant and striking, crafted with extraordinary care to
+maintain the tender smile glancing her lips.  Her hair drifts softly on a
+static wind, flowing over the girl\@s pointed ears, showing painstaking
+artisanship.  A rose rests over her left ear, strands of hair softly
+cascading to either side of it.
+
+On the pedestal, a small plaque reads:
+
+                            For the Lord I Adore
+                           Eternally in Your Care 
+                      Yesa Aea\@ria, Archmagus of Waters
+~
+D0
+A small waterfall runs out of the forest to the north.
+~
+~
+0 0 22457
+D1
+The Shrine of the Rose glints in the light.
+~
+~
+0 0 22453
+D2
+A number of trees are scattered about to the south.
+~
+~
+0 0 22459
+M 125 H 125 V 125
+W 5 0 0
+Z 5 5
+S
+#22459
+Among a Few Trees~
+Trees are scattered all about this area, covering the spectrum from
+saplings of oak and pine, to ancient monuments of time in varieties of
+spruce and elm, and even types which are not native to the lands of Avendar.
+The sounds of birds chirping merrily sweep down from their treetop homes,
+and the small featured figures flit from perch to perch.  A rich layer of
+soft grass covers the area, providing a comfortable surface to relax upon. 
+To the south and west the trees become more dense and impassable, but to the
+north you can see the beginnings of a small valley.  To the east a path runs
+between the silver gates and the shrine to Aeolis.  
+~
+~
+0
+0 262194 3
+D0
+A peaceful meadows spreads out to the north.
+~
+~
+0 0 22458
+D1
+To the east lies a small path.
+~
+~
+0 0 22452
+M 125 H 125 V 125
+W 5 0 0
+Z 5 5
+S
+#22460
+The Dueling Yard~
+A long jousting list dominates this area of the clearing, its length
+seperated down the middle by a thin silver rail.  Off to the side a large
+dueling circle has been erected for friendly competition and honing of
+skills.  To the east, before the dense forest of trees which blocks the
+eastern and southern directions from this place, stands a number of archery
+lanes, seperated by rows of beautiful pink roses.  To the west of here lies
+the path which runs between the silver gates and the shrine to Aeolis, and
+to the north you can see the statues of the memorial ground.  
+~
+~
+0
+0 262450 3
+D0
+A small memorial yard lies to the north.
+~
+~
+0 0 22454
+D3
+A small path lies to the west.
+~
+~
+0 0 22452
+W 5 0 0
+Z 5 5
+S
+#22461
+A Shaded Path~
+Light filters down from between the branches of large trees that loom and
+intertwine overhead, illuminating the small forest path.  The trail travels
+to the west, where you can hear the sound of a rushing waterfall, and to the
+east, where you can make out the glinting of silver.  Dense foliage rises to
+the north and south, making movement in those directions impossible.  
+~
+~
+0
+0 50 3
+D1
+The path ends in a set of silver gates to the east.
+~
+~
+0 0 22451
+D3
+The path continues through the trees.
+~
+~
+0 0 22462
+W 5 0 0
+Z 5 5
+S
+#22462
+A Shaded Path~
+Light filters down from between the branches of large trees that loom and
+intertwine overhead, illuminating the small forest path.  The trail travels
+to the west, where you can hear the sound of a rushing waterfall, and to the
+east, where you can make out the glinting of silver.  Dense foliage rises to
+the north and south, making movement in those directions impossible.  
+~
+~
+0
+0 50 3
+D1
+The path continues through the trees.
+~
+~
+0 0 22461
+D3
+~
+~
+0 0 2900
+W 5 0 0
+Z 5 5
+S
+#22497
+An Empty Room~
+This room is empty, with no doors or windows.  
+~
+~
+0
+0 565318 14
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 22451 0 65639
+D 0 22452 2 65639
+M 0 22454 1 22451 1
+M 0 22452 1 22451 1
+M 0 22451 1 22451 1
+E 0 22451 0 3
+E 0 22453 0 16
+E 0 22454 0 5
+E 0 22455 0 6
+E 0 22461 0 9
+M 0 22461 1 22452 1
+M 0 22453 1 22452 1
+M 0 22455 1 22453 1
+O 0 22456 0 22453
+M 0 22457 1 22454 1
+M 0 22459 1 22455 1
+M 0 22458 1 22456 1
+M 0 22460 1 22457 1
+M 0 22462 1 22461 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

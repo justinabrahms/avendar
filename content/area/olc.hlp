@@ -1,0 +1,486 @@
+#HELPS
+
+-1 SUGGESTED~
+
+Weapon Averages
+Level 5         6       2d5, 3d3, 4d2
+Level 10        8       2d7, 4d3
+Level 15        10      2d9, 3d6, 4d4, 5d3, 7d2
+Level 20        12      3d7, 4d5, 5d4, 6d3, 8d2
+Level 25        14      4d6, 7d3
+Level 30        16      3d10, 4d7, 8d3, 11d2 (avg 17 = 4d7)???
+Level 33        17      5d6, 7d4
+Level 35        18      3d11, 4d8, 6d5, 9d3, 12d2
+Level 37        19      3d12
+Level 40        20      3d10, 4d9, 5d7, 8d4, 10d3
+Level 45        21      3d13, 6d6, 7d5
+Level 50        22      3d14, 4d10, 5d8, 9d4, 11d3
+Level 55        23      2d22
+Level 60        24      3d15, 4d11, 6d7, 7d6, 8d4, 12d3
+Level 60+       25      3d16, 5d9, 10d4
+Level 60+       26      4d12
+Level 60+       27      3d17, 5d10, 6d8. 9d5, 11d4
+Level 65+       28+     3d18, 4d13, 7d7, 8d6
+
+
+Weights
+Short sword     100-120
+Long sword      160-180
+Claymore        220-300
+
+Hand axe        140-170
+Axe             180-220
+Battleaxe       240-280
+Great axe       300-350
+
+Dagger          40-90
+
+Spear           140-220
+
+Polearm         180-300
+
+Mace            160-220
+Great mace      220-300
+
+Flail           70-150
+
+Whip            40-80
+
+Staff           80-150
+
+
+
+
+Armor
+Level 1         1/1/1/0
+Level 5         3/3/3/0
+Level 10        4/4/4/0
+Level 20        6/6/6/0
+Level 30        8/8/8/0
+Level 40        9/9/9/0
+Level 50        10/10/10/0
+Level 60        15/15/15/0
+~
+-1 HITDICE 'HIT DICE'~
+I took the time to extensively test the values on "help hitdice", and 
+come up with what I believe to be accurate values. Of course, it's hard 
+for me to simulate a real group, and we should remember that these 
+people are all insanely stacked right now. The point is: These might 
+change at some time in the future. But I'm confident enough of the 
+accuracy that I'm going to ask everyone to go back through their areas 
+and make sure the mobs fit. IMPORTANT: Hitroll turns out to be a MAJOR 
+factor in how hard a mob is. It's very important that the hitrolls are 
+appropriate. An appropriate hitroll is level/2.
+  Can we please get on this in a timely fashion... I'm suffering about 
+20 times more than you guys are, so let's just get it done. When you've 
+done it, send me a note on 8765 telling me which areas you've updated.
+  And now for the real values. The values with an asterisk next to them 
+are the ones that I've changed since the list I sent out last. Be sure 
+you check all your mobs, even if they're not in the starred range.
+
+                level:     dice          
+                1:       1d2+6        
+                  2:       1d3+15      
+                  3:       1d6+24      
+                  5:      1d17+42      
+                  10:      3d22+96     
+                  15:      5d30+161    
+               *20:      8d40+220
+               *25:      9d45+500
+               *30:     10d80+700
+                35:    10d110+600   
+                40:    14d170+850
+                45:    14d190+850  
+                  50:    18d200+920
+                57:    20d220+1100
+~
+-1 OLC EDIT~
+Syntax: EDIT AREA [create/reset] [vnum]		- Area Creation and Repoping.
+Syntax: EDIT ROOM ( [create] [vnum] )		- Room Creation and Editing.
+Syntax: EDIT OBJ  [create] <vnum>		- Object Creation and Editing.
+Syntax: EDIT MOB  [create] <vnum>		- Mobile Creation and Editing.
+
+Syntax: ASAVE  <world/area/changed/list>	- Save Editing to Disk.
+Syntax: ALIST                                   - Listing of Areas.
+Syntax: RESET  See Help Resets.			- Set Game Resets.
+
+Definition: [optional]  <required>  (combined arguments)
+
+     The above commands are used to expand the game world.  The original
+code is based on was written by Surreality and installed in The Isles by Locke.
+It was then converted to work with Envy by Jason Dinkel, and ported to ROM
+2.3 by Hans Birkeland (Hugin). Port to Rom 2.4 by Ivan Toledo.
+
+     Inside an editor, typing COMMANDS lists working commands and ? gives
+help. AEDIT and REDIT default to the current area or room. EDIT ROOM RESET
+resets the current room.  Most commands with no arguments display syntax.
+See also help: AEDIT REDIT MEDIT OEDIT
+~
+
+
+
+0 ALIST~
+Syntax: ALIST
+
+This command gives you a listing of all the areas along with their
+vnum assignments and the builder(s) assigned to editing them.
+~
+
+
+
+0 AEDIT~
+Syntax: edit area	 -Enters the editor for the current area.
+Syntax: edit area <vnum> -Enters the editor for the selected area.
+
+The follow commands are available from within the AEDITOR:
+
+age <number>        - set the age of the area
+builder <player>    - toggle that builder's access
+commands            - prints a list of possible commands
+create              - create a brand new area and switch to it
+done                - exits the area editor and returns to normal play
+filename <filename> - change the file name for the area (be careful)
+name <name>         - change the 'AREAS' name of this area
+reset               - resets the current area
+security <rating>   - set the security rating for this area
+show                - hitting return, or 'show' shows the area stats
+vnum <lower> <upper>- set the lower and upper vnum's
+lvnum <lower>       - set the lower vnum
+uvnum <upper>       - set the upper vnum
+<flags>             - area flags, type ? AREA for a list
+~
+
+
+
+0 REDIT~
+Syntax: edit room		-Enters the editor for the current room.
+
+The following commands are available from within the REDITOR:
+
+commands            - prints a list of possible commands
+create <vnum>       - creates a room with a certain vnum
+desc                - edit description of room
+done                - exists the room editor and returns to normal play
+ed                  - type this command for additonal extra-description help
+format              - format(wordwrap) the room description
+name <room title>   - changes the room title
+show                - hitting return, or 'show' shows the room stats
+oshow <vnum>        - shows an object with given vnum
+olist               - lists objects in this area.
+mshow <vnum>        - shows a mobile with given vnum
+mlist               - lists mobiles in this area.
+<room-flags>        - room attributes, type ? ROOM for a list
+<sector>            - terrain of room, type ? SECTOR for a list
+<direction>         - see help EXIT, or type <dir> ?
+~
+
+
+
+0 EXIT~
+For exits, type the direction (north/s/e/w) followed by:
+
+dig <vnum>         - creates the room and makes a two way link
+link <room vnum>   - make a two way link
+room <room vnum>   - make a one way link (use with caution)
+key <object vnum>  - makes specified object the vnum of the key required
+name <door name>   - makes the door's name/keywords = to the given name
+desc               - edit the description of the exit
+delete             - delete this exit
+<exit-flags>       - type ? EXIT for a list(make exit door, locked etc.)
+
+The exit flags are presented in the following manner.  The capitalized
+flags are ones not included in the reset info.  i.e. closed is due to
+a player closing the door and not due to the door being set to be closed.
+
+-South to [ 3744] Key: [   -1] Exit flags: [door CLOSED bashed pickproof]
+~
+
+
+
+0 OEDIT~
+Syntax: edit object <vnum>	-Enters the editor for the selected object.
+
+The following commands are available from within the OEDITOR:
+
+addaffect           - applies an affect to an object, no args for help
+delaffect           - removes an affect to an object, no args for help
+commands            - prints a list of possible commands
+cost <gold>         - sets the gold value of the object
+create <vnum>       - creates object with specified vnum
+done                - exits the object editor and returns to normal play
+ed                  - type this for info on adding/editing extended descripts
+long                - edit long description (the one in the room)
+name <keywords>     - sets the keywords on an object
+short <desc>        - sets the 'name' of an object (a sword, a fish etc)
+show                - hitting return, or 'show' shows the object stats
+v0 <num>            - sets the value '0' on the object
+v1 <num>            - sets the value '1' on the object
+v2 <num>            - sets the value '2' on the object
+v3 <num>            - sets the value '3' on the object
+v4 <num>            - sets the vlaue '4' on the objcet
+weight <num>        - sets the weight of the object
+type         	    - type of object, type ? TYPE for a list
+extra		    - attributes of object, type ? EXTRA for a list
+wear                - where object is worn, type ? WEAR for a list
+material            - material the object is made from
+prog                - type this for info on adding/editing objprogs
+~
+
+
+
+0 MEDIT~
+Syntax: medit <vnum>		-Enters the editor for the selected mobile.
+
+The following commands are available from within the MEDITOR:
+
+alignment <value>   - set the mobile's alignment
+commands            - prints a list of possible commands
+create <vnum>       - creates mobile with specified vnum
+desc                - edit the mobile's description (when looked at)
+done                - exits the mobile editor and returns to normal play
+level <level>       - set the mobile's level
+long                - edit long description (the one in the room)
+name <keywords>     - sets the keywords on an mobile
+shop                - type this command for further information
+short <desc>        - sets the 'name' of an mobile (a sword, a fish etc)
+show                - hitting return, or 'show' shows the mobile stats
+spec                - sets a mobiles spec proc, type ? SPEC for a list
+sex                 - set the mobile's sex, type ? SEX for a list
+act                 - mobiles actions, type ? ACT for a list
+affect              - mobile affects, type ? AFFECT for a list
+armor		    - set the mobile's ac, type ? ARMOR for a list
+form		    - mobiles body-form, type ? FORM for a list
+part		    - mobiles bodyparts, type ? PART for a list
+imm		    - mobile is immune to, type ? IMM for a list
+res		    - mobile is resistant to, type ? RES for a list
+vuln		    - mobile is vulnerable to, type ? VULN for a list
+material	    - material mobile is made from, no list available
+off		    - offensive behaviour, type ? OFF for a list
+size		    - size, type ? SIZE for a list
+hitdice		    - dice to toss to get mobile's hitpoints
+manadice	    - dice to toss to get mobile's mana
+damdice		    - dice to toss to get mobile's hand to hand damage
+prog                - type this for info on adding/editing mobprogs
+
+type 'help HITDICE', 'help MANADICE', 'help DAMDICE' for lists of reasonable dice 
+combinations on different levels.
+~
+
+
+
+
+0 MANADICE~
+A high number of dice makes for less variance in mobiles mana.
+The values the server generates for merc-type mobs is
+
+  <level> d 10 + 100
+
+where level is the level of the mobile.
+~
+
+
+
+0 DAMDICE~
+A high number of dice makes for less variance in mobiles hitpoints.
+Suggested values are:
+
+       Level      dice       min      min    mean
+        1         1d2+0       1        2       2
+        2         1d2+1       2        3       3
+        3         1d3+2       3        5       4
+        5         2d3+2       4        8       6
+       10         2d5+5       7       15      11
+       15         3d5+8      11       23      17
+       20         4d5+10     14       30      22
+       30         5d6+15     20       45      33
+       50         5d10+25    30       75      53
+
+Mean is the arithmetic mean.  The values in parenthesis are the the
+standard merc values.  (Will be put in when there's time to calculate
+them...)
+~
+
+
+
+
+0 RESETS~
+Syntax: RESET <number> OBJ <vnum> <location on body>    - equips last mobile
+        RESET <number> OBJ <vnum> inside <obj vnum>     - store in container
+        RESET <number> OBJ <vnum> room                  - store in room
+        RESET <number> MOB <vnum> [<max #>]             - load a mobile
+        RESET <number> DELETE                           - delete a reset
+
+RESET alone will display the resets in the current room.  The <number> will
+be displayed with this list.  Typing ? WEAR-LOC will list possible locations
+that an object can be loaded to.  The [<max #>] is the maximum number of
+mobiles allowed in this room and will default to 1 if no number is entered.
+
+For resets to be successful make sure that you add them in a logical order.
+For example if you are equiping a mobile don't load a container in the room
+and fill it with some objects and then continue equiping the mobile.  It is
+likely that resets will backfire if they are not carefully entered.
+
+If you wish to reset the room then use EDIT ROOM RESET.  
+~
+
+
+
+0 MOB_AC~
+The values ROM generates for a merc format mob is:
+
+   level      pierce    bash    slash   exotic
+     1          95       95       95      95
+     5          70       70       70      85
+    10          40       40       40      70
+    15           5        5        5      55
+    20         -25      -25      -25      40
+    25         -55      -55      -55      20
+    30         -90      -90      -90       5
+    35        -120     -120     -120     -10
+    40        -150     -150     -150     -25
+    45        -180     -180     -180     -40
+    50        -215     -215     -215     -55
+    55        -245     -245     -245     -70
+    60        -275     -275     -275     -90
+    65        -305     -305     -305    -105
+    70        -340     -340     -340    -120
+    80        -400     -400     -400    -150
+
+These values are 10 times what you would put in an area file. This
+is because the server multiplies what it reads from file with 10.
+~
+
+
+
+0 ITEM_LIGHT~
+.   value 0    unused
+   value 1    unused
+   value 2    hours of light available, 0 is dead, -1 or 999 is infinite            
+   value 3    unused
+   value 4    unused
+~
+
+
+
+0 ITEM_STAFF_WAND~
+.   value 0    level
+   value 1    max charges
+   value 2    current charges
+   value 3    spell name
+   value 4    unused
+
+
+An up-to-date list of spells can be obtained by typing:
+? SPELLS [ignore/attack/defend/self/object/all]
+~
+
+
+0 ITEM_SCROLL_POTION_PILL~
+.   value 0    level
+   value 1    spell name 1
+   value 2    spell name 2
+   value 3    spell name 3
+   value 4    unused
+
+An up-to-date list of spells can be obtained by typing:
+? SPELLS [ignore/attack/defend/self/object/all]
+~
+
+
+
+
+0 ITEM_ARMOR~
+.   value 0    ac pierce
+   value 1    ac bash
+   value 2    ac slash
+   value 3    ac exotic (magic)
+   value 4    unused
+~
+
+
+
+
+0 ITEM_WEAPON~
+.   value 0    weapon class.
+   value 1    number of dice to roll.
+   value 2    type of dice to roll.
+   value 3    weapon type.
+   value 4    special weapon type.
+
+An up-to-date list of values can be obtained by typing
+? WCLASS
+help WEAPON_DICE
+? WEAPON
+? WTYPE
+~
+
+
+
+0 WEAPON_DICE~
+These are the values the server generates automatically when
+converting a merc-format mobile to ROM format.  A higher
+number of dice gives less variance in damage.  There is no
+dice-bonus on weapon dice.
+
+      level:   dice 
+        1:     1d8
+        2:     2d5
+        3:     2d5
+        5:     2d6
+       10:     4d5
+       20:     5d5
+       30:     5d7
+       50:     5d11
+~
+
+
+
+0 ITEM_CONTAINER~
+.   value 0    weight capacity
+   value 1    flags: closeable, pickproof, closed, locked            
+   value 2    key vnum
+   value 3    unused
+   value 4    unused
+
+An up-to-date list of flags can be obtained by typing
+? CONTAINTER
+~
+
+
+
+0 ITEM_DRINK~
+.   value0    capacity
+   value 1    current quantity
+   value 2    liquid type
+   value 3    poisoned?
+   value 4    unused
+
+An up-to-date list of liquid types can be obtained by typing
+? LIQUID
+~
+
+
+
+0 ITEM_FOOD~
+.   value 0    hours of food value
+   value 1    unused
+   value 2    unused
+   value 3    poisoned?
+   value 4    unused
+~
+
+
+
+0 ITEM_MONEY~
+.   value 0    value in gold pieces
+   value 1    unused
+   value 2    unused
+   value 3    unused
+   value 4    unused
+~
+
+
+0 $~
+
+
+#$

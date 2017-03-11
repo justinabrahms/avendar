@@ -1,0 +1,2515 @@
+#AREADATA
+Name The School of Heroes~
+Builders Jolinn  Neongrey Ninjadyne~
+VNUMs 3700 3799
+Credits [ 1 10] ninjagrey The School of Heroes~
+Danger 1
+Security 9
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+End
+
+
+
+#MOBILES
+V4 3700
+Arafis Tindel aging gate guard human man~
+Arafis Tindel~
+An aging gate guard stands here, welcoming new arrivals.
+~
+The retired adventurer Arafis Tindel stands watch over the wrought iron
+gates of the School of Heroes.  A human of advancing years, he distinguished
+himself in the defense of Earendam during the fourth Kankoran War.  Only a
+young water templar, he challenged some of the invaders and protected a
+number of the city guard.  After being recognized for his valor, he took a
+position at the famed School of Heroes as its ceremonial gate guard.  His
+face is a bit haggard and sports a well-trimmed beard, its salt and pepper
+look matching his short hair.  
+~
+human~
+water scholar~
+AB B GHZ G 0
+30 10 12d100+250 1d1+999 10d4+25 bash~
+punch~
+-15 -15 -15 -15
+IK AB
+26 0 0 0 0 0 0 0 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 74
+AHMV ABCDEFGHIJK AK medium unknown
+>fight_prog 100~
+if snaffected($i) != 573
+     assume living
+endif
+~
+>greet_prog 100~
+if remembers($n)
+else
+     mpremember $n
+     if ispc($n)
+          say Welcome to the School of Heroes.
+          bow
+     endif
+     if newbie($n)
+          ooc $n Welcome to Avendar!
+          ooc $n The School of Heroes is a starting area, to acquaint you with how to play the game.
+          ooc $n Remember to read the description of each room and to look at the NPCs who talk to you.
+          ooc $n Following their instructions and reading signs will help you learn much more quickly.
+          ooc $n You should be familiar with the \@examine\@ command, so please type: {Rhelp examine{x
+     endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 162 100
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 573 100
+~
+|
+V4 3701
+Loqel Arastha olive green olive-green burly ethron~
+Loqel Arastha~
+An olive-green ethron clad in brown robes directs young adventurers.
+~
+Loqel Arastha is a burly, stoic ethron from the forest of Qilarn.  Once a
+part of the Eqiril clan, he set out on his own as a youth to make his
+fortune.  Although he wandered for a much of his young adulthood, he was
+enamoured by life within the School of Heroes.  He, in turn, decided that he
+could best venerate his goddess, Lielqan, by serving within its walls.  He
+spends his days and nights directing young heroes to their respective
+destinies, be they for better or worse.  
+~
+ethron~
+water scholar~
+ABDG B 0 N 0
+25 10 10d100+200 1d1+99 10d4+20 bash~
+punch~
+-10 -10 -10 -10
+K AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 74
+AHMVW ABCDEFGHIJK AJ medium unknown
+>load_prog 100~
+speak common
+~
+>greet_prog 100~
+if remembers($n)
+else
+     mpremember $n
+     if isgood($n)
+          say Your future lies east, $N.
+          break
+     endif
+     if isevil($n)
+          say Your destiny lies west, $N.
+          break
+     endif
+     if isneutral($n)
+          say Your path lies north, $N.
+          break
+     endif
+endif
+~
+|
+V4 3702
+Aiasha Ly\@rae acolyte dawn silver haired silver-haired ch\@taren girl~
+Aiasha Ly\@rae~
+A silver-haired ch\@taren girl guides the pure-hearted.
+~
+A tall, attractive ch\@taren girl named Aiasha Ly\@rae serves as the
+School\@s acolyte of dawn.  Born in Jh\@ten on the isle of Alensha, she has
+traveled far in the service of her faith.  Like virtually all of her race,
+she seems timeless, her beauty and golden shimmer frozen in perpetual youth.
+Her silver hair is short and wild, and her vibrant green eyes are alive with
+mischief.  She is tasked with aiding young heroes in knowing themselves and
+the movements of their souls.  A small teardrop tattoo glitters beside her
+left eye.  
+~
+ch\@taren~
+water scholar~
+AB B DU G 0
+25 10 10d100+200 1d1+99 10d4+20 light~
+searing touch~
+-10 -10 -10 -10
+K AB
+26 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 0 10 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 74
+AHKMV ABCDEFGHIJKV AE medium unknown
+>load_prog 100~
+speak common
+mpaddaffect $i 415 25 -1 0 0 0
+~
+>greet_prog 100~
+if remembers($n)
+else
+     mpremember $n
+     if isgood($n)
+          if islawful($n)
+               esay suggests Go south, $N.
+               break
+          endif
+     endif
+     if isgood($n)
+          if isbalanced($n)
+               esay suggests Go east, $N.
+               break
+          endif
+     endif
+     if isgood($n)
+          if ischaotic($n)
+               esay suggests Go north, $N.
+               grin $n
+               break
+          endif
+     endif
+endif
+~
+|
+V4 3703
+Eronth Todok towering armored alatharya soldier~
+Eronth Todok~
+A towering, armored alatharya soldier stands beside the dais.
+~
+The towering, muscular figure of Eronth Todok bears all of the ancient
+majesty of the alatharyan race.  His features are chiseled and stern, and
+his long white hair is pulled back into a high ponytail.  His silvery skin
+and dark eyes both suggest some experience as a traveler.  He serves the
+School of Heroes as its acolyte of balance, and is a well-known believer in
+the goddess, Enirra.  He is dressed in a few pieces of platemail, but has
+left his imposing arms bare.  When he speaks, it is only to lead the young
+to the adjoining chambers.  
+~
+alatharya~
+water scholar~
+ABT B 0 N 0
+25 10 10d100+300 1d1+99 10d4+30 bash~
+punch~
+-10 -10 -10 -10
+FK AB
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 100 74
+AGHMV ABCDEFGHIJK A large unknown
+>greet_prog 100~
+if remembers($n)
+else
+     mpremember $n
+     if isneutral($n)
+          if islawful($n)
+               esay rumbles East, $N.
+               break
+          endif
+     endif
+     if isneutral($n)
+          if isbalanced($n)
+               esay rumbles North, $N.
+               nod $n
+               break
+          endif
+     endif
+     if isneutral($n)
+          if ischaotic($n)
+               esay rumbles West, $N.
+               break
+          endif
+     endif
+endif
+~
+|
+V4 3704
+Jajikk acolyte nightfall gaunt robed shuddeni~
+Jajikk~
+A gaunt, robed shuddeni keeps a quiet vigil.
+~
+Jajikk is a robed shuddeni tasked with guarding the Chamber of Night. 
+His presence within the School is unusual, with many swirling rumors as to
+where he is from and to what clan he was born.  He is gaunt, with grey,
+sagging skin that glistens with expensive Yithoulian oil.  Like all
+shuddeni, he has no eyes, and his ridged face adheres to an alien aesthetic
+that only they can truly understand.  He directs young travelers to those
+chambers which will speak to the darkness within their souls and ensures
+that the braziers which flank the altar remain filled with burning coals.  
+~
+shuddeni~
+water scholar~
+AB B ADJUZ E 0
+25 10 10d100+200 1d1+99 10d4+30 negative~
+chill touch~
+-10 -10 -10 -10
+K ABb
+26 0 0 0 0 0 0 0 0 0 0 0 0 20 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 74
+ABGHMVW ABCDEFGHIJ AGK medium unknown
+>load_prog 100~
+speak common
+mpaddaffect $i 308 25 -1 17 -25 0
+~
+>greet_prog 100~
+if remembers($n)
+else
+     mpremember $n
+     if isevil($n)
+          if islawful($n)
+               esay mutters Proceed to the south, $N.
+               break
+          endif
+     endif
+     if isevil($n)
+          if isbalanced($n)
+               esay mutters Proceed to the west, $N.
+               break
+          endif
+     endif
+     if isevil($n)
+          if ischaotic($n)
+               esay mutters Proceed to the north, $N.
+               break
+          endif
+     endif
+endif
+~
+|
+V4 3705
+fountain~
+the fountain~
+A fountain is here, waiting to kick your ass
+~
+~
+fido~
+water scholar~
+ABHU B L N 0
+1 0 1d1+7 1d1+99 1d3+0 slash~
+claw~
+10 10 10 10
+FJR AB
+26 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 100 0
+ABGMV ABCDEFHJKQUV A medium unknown
+>greet_prog 100~
+if isgood($n)
+     if islawful($n)
+          tell $n Peer into my depths and know your own.
+     endif
+endif
+~
+|
+V4 3706
+statue~
+the Titan statue~
+There is a statue here, waiting to kick your ass.
+~
+~
+fido~
+water scholar~
+ABU B JLZ N 0
+2 1 2d2+20 1d1+99 1d4+1 slash~
+claw~
+8 8 8 10
+FNR AB
+26 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 100 0
+ABGMV ABCDEFHJKQUV A medium unknown
+>greet_prog 100~
+if isgood($n)
+     if isbalanced($n)
+          tell $n Look upon me, young adventurer, and see your destiny.
+     endif
+endif
+~
+|
+V4 3707
+Mirror~
+the mirror of truth~
+The mirror of truth is here, waiting to break into a thousand pieces and kick your ass.
+~
+~
+human~
+water scholar~
+ABGT B CHL G 0
+30 10 1d1+1318 1d1+999 2d4+30 bash~
+beating~
+-15 -15 -15 -15
+ACEFHIKN ABCD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+if isgood($n)
+     if ischaotic($n)
+          tell $n Look into my depths and shed the veil of self-deception.
+     endif
+endif
+~
+|
+V4 3708
+crown~
+the crown of law~
+The crown of law is here, waiting to poke you with pointy sharp things.
+~
+He is big and bad.  Don\@t mess with him.
+~
+human~
+water scholar~
+ABGT B CHL G 0
+30 15 13d80+923 1d1+999 5d6+15 bash~
+beating~
+-9 -9 -9 0
+ACEFHIKN ABCD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+if isneutral($n)
+     if islawful($n)
+          tell $n Gaze upon me and know your potential.
+     endif
+endif
+~
+|
+V4 3709
+platinum scales~
+the platinum scale~
+The scales are here. They look like a real wimp.
+~
+~
+rabbit~
+water scholar~
+ABGHU B L G 0
+1 0 1d1+10 1d1+99 1d3+0 pierce~
+bite~
+10 10 10 10
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 0 0
+AGV ACDEFHJK A tiny unknown
+>greet_prog 100~
+if isneutral($n)
+     if isbalanced($n)
+          tell $n Look upon me and learn the measure of your soul.
+     endif
+endif
+~
+|
+V4 3710
+reflective orb~
+the reflective orb~
+The reflective orb totally flashes you.
+~
+~
+lizard~
+water scholar~
+ABGU B L E 0
+2 0 2d2+20 1d1+99 1d4+1 pierce~
+bite~
+8 8 8 10
+R 0
+26 0 0 0 0 0 0 0 0 -33 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 0 0
+AGXc ACDEFHKQV A small unknown
+>greet_prog 100~
+if isneutral($n)
+     if ischaotic($n)
+          tell $n Look upon me.  Know yourself... if you choose to.
+     endif
+endif
+~
+|
+V4 3711
+void~
+The Void~
+The void is here, emenating menace.
+~
+~
+pig~
+water scholar~
+AGU B L N 0
+3 1 3d3+30 1d1+99 1d6+1 bash~
+charge~
+7 7 7 9
+CDFR 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 0 0
+AGV ACDEFHJK A medium unknown
+>greet_prog 100~
+if isevil($n)
+     if islawful($n)
+          tell $n Gaze into the void, but know that it, in turn, looks into you.
+     endif
+endif
+~
+|
+V4 3712
+dragon statue~
+the dragon statue~
+A statue of a dragon looks menacing as hell.
+~
+~
+fox~
+water scholar~
+AGHU B LZ G 0
+1 1 1d1+12 1d1+99 1d3+1 pierce~
+bite~
+8 8 8 10
+FHNR 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 0 0
+AGV ACDEFHJKQV A small unknown
+>greet_prog 100~
+if isevil($n)
+     if isbalanced($n)
+          tell $n Lift your eyes to me, seeker, and know the darkness within.
+     endif
+endif
+~
+|
+V4 3713
+raging fire~
+the raging fire~
+A mean looking fire is here.
+~
+~
+unique~
+water scholar~
+ABGU B L N 0
+0 0 1d1+0 1d1+99 1d1+0 acid~
+digestion~
+10 10 10 10
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AGQc AFHM A tiny unknown
+>greet_prog 100~
+if isevil($n)
+     if ischaotic($n)
+          tell $n Look into the flames, if you dare.
+     endif
+endif
+~
+|
+V4 3714
+magic mouth~
+the Magic Mouth~
+A magic mouth floats here, grinning at you.
+~
+Called into being by the scholars of this school, the magic mouth floats
+here, directing young travellers.  
+~
+fido~
+water scholar~
+ADLTUX B DFHZ N 0
+30 1 1d1+13195 1d1+99 1d1+0 pierce~
+bite~
+5 5 5 8
+EFKR ABCD
+26 0 0 -33 0 0 0 0 33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 100 74
+ABGMV ABCDEFHJKQUV A large unknown
+>fight_prog 100~
+mpechoat $n The Magic Mouth lunges towards you!
+mpechoaround $n The Magic Mouth lunges towards $N!
+mpvaluerand 0 2 3
+mpdamfrom $n $0 \@quick bite\@ The Magic Mouth
+mpdamage $n 1 2 1
+~
+>verb_prog p kill mouth~
+mpechoat $n An invisible force protects the magic mouth.
+~
+>exit_prog 100~
+tell $n And don\@t forget to read all the plaques!
+~
+>greet_prog 100~
+ooc $n {BFor general help on getting around, type \#help\#.
+ooc $n {BIf you\@re really new, read help STARTING{X
+if isbitset($n) == 3710
+else
+tell $n Welcome to the school of heroes!
+tell $n If you\@re new here, you should head north.
+tell $n If you want to leave the school, you can head south.
+mpbitset $n 3710 1
+endif
+~
+|
+V4 3715
+mouth magic grinning~
+the magic mouth~
+A magic mouth hovers in mid-air, grinning nonchalantly.
+~
+More magic than matter, this disembodied mouth is little more than a set
+of rich red lips.  Its origin is a mystery of sorts, as it simply appeared
+within the School during its original construction and never saw fit to
+leave.  Since then, it has become something of a mascot, and a celebrated
+addition to the School lounge.  It is said to not be bound by planar space,
+and inhabits all of its favorite locations at once.  
+~
+generic~
+water scholar~
+ABDLX B DFTU N 0
+1 1 10d100+200 1d1+99 1d1+1 energy~
+kiss~
+-10 -10 -10 -10
+0 ABCD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 74
+CHJL L A small unknown
+>speech_prog p ~
+if compx() == Yes
+or compx() == Yeah
+or compx() == I guess
+     say Have you been practicing in the Hall of Trials, the Tower of Testing, or have you been somewhere else?
+     break
+endif
+if compx() == No
+or compx() == Nah
+or compx() == Not really
+     say Gee, that\@s too bad.
+     say Well, if you\@re bored, we can talk for a bit.  
+     esay suggests Maybe some real cities will catch your interest?
+     break
+endif
+if compx() == Hall
+or compx() == Trials
+     say There\@s a lot of neat stuff down in the Hall.
+     esay adds So much to see, and learn, and do!  Well, at least, I think so.
+     esay laughs I hear you can make some good money, too, for when you head out to the cities.
+     break
+endif
+if compx() == Tower
+or compx() == Testing
+     say It\@s kind of dangerous in there!  But you have to learn somehow.
+     esay adds If you\@re quick with a sword and a little clever, you\@ll do it no problem.
+     esay adds And then you can get your sigil!
+     break
+endif
+if compx() == Sigil
+     say Graduates of the School get a sigil at the end of the Tower of Testing.
+     esay explains You can get by that big lug to see the proprietor if you have the sigil, too.
+     esay laughs And he gives out a present if you visit him!
+     break
+endif
+if compx() == Proprietor
+     say The School of Heroes is owned by a guy named Zebenar Kinest.
+     esay explains He used to be really well-known all over for killing travelers.
+     esay explains After you see him, you should head out to the cities.
+     esay adds I\@ll tell you more if you want.
+     break
+endif
+if compx() == Cities
+or compx() == City
+     say There are a lot of major cities in Avendar.
+     esay explains Var Bandor, Earendam, Krilin, Gaald, Ashta Harrud, Ilodaiya, Jh\@ten, Kor Thrandir...
+     esay explains ...and villages, like Jandiska, Eril, Inessa, and Elm.
+     break
+endif
+if compx() == Var
+or compx() == Bandor
+     say Var Bandor is a major trade city at the fork of two rivers, the Dantaron and the Aragol.
+     esay explains It\@s at the general center of everything which makes it pretty well-traveled.
+     esay explains It\@s just north of the forest of Nendor.
+     break
+endif
+if compx() == Nendor
+     say Nendor is a forest south of Var Bandor.
+     esay explains It\@s a pretty dangerous place, but you have to go through it to go further south.
+     esay exclaims They say there\@s an emerald dragon there!
+     break
+endif
+if compx() == Emerald
+or compx() == Dragon
+     say The emerald dragon is really famous!
+     esay confides I hear it eats young adventurers whole!
+     esay laughs But not you, right?  ...right?
+     break
+endif
+if compx() == Dantaron
+     say It\@s a big river that crosses from the Uthlin Ocean, through Earendam, past Var Bandor, and onward.
+     esay explains It\@s a major trade route, you know.  Oh, and it meets up with the Aragol, too.
+     esay explains It passes by Lithling Valley, too, which is a really rich area.
+     break
+endif
+if compx() == Aragol
+     say It\@s one of the rivers that passes Var Bandor.
+     esay explains It passes by the edge of Lithling Valley, and leads to Jasa Lake.
+     esay explains Oh, I guess there\@s a village there, too!
+     break
+endif
+if compx() == River
+or compx() == Rivers
+     say There are two major rivers you should know about.
+     esay names The Dantaron and the Aragol.
+     break
+endif
+if compx() == Jasa
+or compx() == Lake
+     say Jasa Lake is at the end of the Aragol river, and there\@s a village there too.
+     esay explains People go there to fish and relax, usually.
+     esay explains Oh, and I\@ve heard they have a problem with an overpopulation of srryn.
+     break
+endif
+if compx() == Lithling
+or compx() == Valley
+     say Lithling Valley is one of the richest areas in the region.
+     esay explains It\@s where a lot of Earendam\@s nobility like to spend their time.
+     esay explains It has plantations, and vineyards... you know, that kind of thing.
+     break
+endif
+if compx() == Krilin
+or compx() == Fortress
+     say It\@s way up in the Brintor Mountains.
+     esay explains It was built to protect the mountain people from hill giants.
+     esay ponders They\@re a bloodthirsty lot, those hill giants.
+     break
+endif
+if compx() == Hill
+or compx() == Giants
+     say They live up in the Brintor Mountains, not far from Krilin.
+     esay explains They really want to get rid of that fortress, I think.
+     esay explains I hear there\@s attacks up there all the time.
+     break
+endif
+if compx() == Brintors
+or compx() == Brintor
+or compx() == Mountains
+     say It\@s a mountain range that crosses a lot of the area north of Earendam and Var Bandor.
+     esay explains On the other side of it is the Ryarl, where a lot of kankoran live.
+     esay adds There\@s a monastery there, too.
+     break
+endif
+if compx() == Ryarl
+     say The Ryarl is the place most kankoran come from.
+     esay explains It\@s a frozen plain where one of their major packs lives.
+     esay explains It\@s right near the Hakurah monastery.
+     break
+endif
+if compx() == Hakurah
+or compx() == Monastery
+     say It\@s a temple near Krilin and the Ryarl.
+     esay explains It\@s a place where mentalists train their various skills.
+     esay explains They have some pretty great liqueur, too!
+     break
+endif
+if compx() == Gaald
+     say Gaald is a city to the far west, on the edge of the Sea of Lidreau.
+     esay explains The legends say it\@s all that\@s left of Caal, a destroyed human empire.
+     esay explains They fish a lot there, and grow tobacco.  They\@re also a trade link to Ilodaiya.
+     break
+endif
+if compx() == Sea
+or compx() == Lidreau
+     say The western side of the continent ends at the Sea of Lidreau.
+     esay explains It separates Gaald from Ilodaiya, the home of the aelin.
+     esay explains I\@ve heard the man who watches the lighthouse helps young travelers with supplies.
+     break
+endif
+if compx() == Ilodaiya
+     say That\@s the ancient home of the aelin.
+     esay explains They say it\@s built upon a giant floating disc, some kind of artifact.
+     esay explains I\@ve never been there, myself, but it sounds fantastic.
+     break
+endif
+if compx() == Ashta
+or compx() == Harrud
+     say Ashta Harrud is one of the oldest human settlements.
+     esay explains It\@s far to the south, across the Crimson Sands.
+     esay explains Nobody seems to be getting there lately.  I wonder if something\@s out there...?
+     break
+endif
+if compx() == Crimson
+or compx() == Sands
+     say It\@s a huge desert in the south, a giant wasteland.
+     esay explains It separates Ashta Harrud from a lot of the region because it\@s so hard to cross.
+     esay explains There\@s all kinds of nasty things there, I\@ve heard.
+     break
+endif
+if compx() == Jandiska
+     say Jandiska is a village of caladaran that\@s south of Nendor and across the savannah.
+     esay explains It\@s a home of debates, with a lot of simple-living folks.
+     esay adds Although it\@s dangerous to cross the savannah.  Lions and all.
+     break
+endif
+if compx() == Savannah
+     say It\@s a big grassland to the south of Nendor.
+     esay explains Lots of hunting done there, and haven for wild animals.
+     esay explains The village of Jandiska isn\@t far from there, too.
+     break
+endif
+if compx() == Eril
+     say Eril is a small village just south of Var Bandor, through the forest of Nendor.
+     esay explains It\@s a place for more... citified ethron than the ones you see in Qilarn.
+     esay explains I hear they make great jam there, too.
+     break
+endif
+if compx() == Qilarn
+     say It\@s a big forest to the northwest of Var Bandor, between it and Gaald.
+     esay explains The Eqiril clan lives there, which is a big group of ethron.
+     esay explains They say that the ethron restored the forest after the fall of Caal.
+     break
+endif
+if compx() == Caal
+     say It was a big human empire that was destroyed by the srryn before the rise of the Republic.
+     esay explains It spanned a large part of the continent, actually.
+     esay explains Its ancient rival, the kingdom of Gogoth, is still standing.  Well, in a manner of speaking.
+     break
+endif
+if compx() == Gogoth
+or compx() == Kingdom
+     say The kingdom of Gogoth is a horrifying place.
+     esay explains The entire place is cursed, and it\@s teeming with zombies and other nightmares.
+     esay explains The plains around it, Shargob-- now that\@s somewhere you don\@t ever want to be.
+     break
+endif
+if compx() == Shargob
+     say Those are the cursed plains, and nowhere a young adventurer should go.
+     esay explains They\@re south of Qilarn and on them is the fallen kingdom of Gogoth.
+     esay warns If you value your life, you won\@t go out there!  Very dangerous.
+     break
+endif
+if compx() == Inessa
+     say Inessa is a little village across the Arien Plains and on the edge of the forest of Morn.
+     esay explains It\@s a sleepy place, where a lot of forest folk live.
+     esay explains They have ties with the nearby village of Elm.
+     break
+endif
+if compx() == Elm
+     say Elm is a little village within the forest of Morn.
+     esay explains It can be tricky to find, and the woods aren\@t very inviting.
+     esay explains Wild people live out there, living off the forest and its creatures.
+     break
+endif
+if compx() == Morn
+     say It\@s a forest north of Qilarn.
+     esay explains Dangerous place.  I\@ve heard there\@s all sorts of nasties roaming around.
+     esay explains But, adventurers always go there anyway...
+     dismay
+     break
+endif
+if compx() == Arien
+     say The Arien Plains are a huge expanse of grassland between Earendam and Var Bandor.
+     esay explains There\@s a lot of foot traffic between the two cities along that road.
+     esay confides I\@d watch myself there, though, I hear it\@s a big site for battles.
+     break
+endif
+if compx() == Kor
+or compx() == Thrandir
+     say Kor Thrandir is a military city north of Earendam.
+     esay explains It sits over top of a great seal that blocks one of the major routes of the shuddeni.
+     esay laughs Although I wouldn\@t go there for fun, I hear it\@s a popular travel destination for adventurers.
+     break
+endif
+if compx() == Uthlin
+or compx() == Ocean
+     say That\@s the east ocean, and it\@s roughly east of Earendam.
+     esay adds Lots of stuff out there.  Griffins, ships, and an island not far off called Alensha.
+     break
+endif
+if compx() == Earendam
+or compx() == Republic
+     say Earendam\@s the biggest city around.  It was once called the Republic, but isn\@t so much of one now.
+     esay explains It\@s ruled by the Patrician, although the current one is a woman named Vaelania.
+     esay explains It has a big port on the Uthlin Ocean.
+     break
+endif
+if compx() == Griffins
+     say The griffins are magical creatures that live in an aerie off the coast of the Uthlin.
+     esay explains They\@re beloved by a lot of people because they\@re blessed by the gods.
+     break
+endif
+if compx() == Alensha
+or compx() == Island
+or compx() == Isle
+     say Alensha is a picturesque island far off the coast of the Uthlin.
+     esay explains You have to take a ship to get there because it\@s so far.
+     esay explains It\@s one of the homes of the ch\@taren, since it houses their city, Jh\@ten.
+     break
+endif
+if compx() == Jh\@ten
+     say It\@s a ch\@taren city on the isle of Alensha.
+     esay explains It\@s been sealed off because of a magical plague for some time.
+     esay laughs One day they\@ll start letting people back in!
+     break
+endif
+if compx() == Patrician
+or compx() == Vaelania
+or compx() == Elinstad
+     say The current Patrician is the daughter of the last one, Danrasad.
+     esay adds He was killed during the Eyeblight War, and she was elected not long ago.
+     say She\@s a good girl who\@s grown up a lot since that whole ugly affair...
+     break
+endif
+if compx() == Danrasad
+     say He was the Patrician of Earendam until his murder during the Eyeblight War.
+     esay explains His daughter, Vaelania, is the Patrician now.  Even though she\@s a woman.
+     break
+endif
+if compx() == Eyeblight
+     say Big war not too long ago, between the shuddeni and, well, everyone else.
+     esay explains All of the cities of the surface came together in an alliance to beat them.
+     esay explains Eventually, the shuddeni were routed, which they probably deserved.
+     break
+endif
+if compx() == Somewhere else
+     say Where have you been?  One of Avendar\@s cities, perhaps?
+     break
+endif
+~
+>greet_prog 100~
+if remembers($n)
+     say Hi again, $N.  Anything new since the last time we talked?
+     break
+else
+     say Hey $N, anything interesting happening?
+     ooc $n The magic mouth is an interactive NPC who will respond when spoken to.
+     ooc $n It is part of a tutorial to familiarize you with communication and NPC scripting.
+     ooc $n For further information on communication basics, type: {Rexamine plaque{x
+     ooc $n To begin, just answer the magic mouth.
+     mpremember $n
+     break
+endif
+~
+|
+V4 3716
+Judicas Alisto dour dark haired dark-haired healer man~
+Judicas Alisto~
+A dour, dark-haired healer keeps watch over the altar.
+~
+The healer Judicas Alisto is one of the many students of the Tower of
+Salyra in Earendam.  After spending a number of years aiding the city\@s sick
+and wounded, both in the Tower and its expansive undercity, he was rewarded
+for his diligence with opportunity.  Archmage Lydara, the city\@s most
+well-known Water scholar, recommended him for a new position opening within
+the School of Heroes.  He graciously accepted, and vowed to use his magic to
+assist young heroes in their beginnings.  He is tall and dark haired,
+although his demeanor is often a grave one.  
+~
+human~
+water scholar~
+ABa B DH G 0
+25 6 10d100+200 1d1+99 4d10+20 cold~
+iceshard~
+-14 -14 -14 -14
+K AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 15
+AHMV ABCDEFGHIJK AK medium unknown
+>give_prog all~
+if ispc($n)
+        if number() == 3760
+                if isbitset($n) == 3709
+                        say Thank you.
+                else
+                        mpbitset $n 3709 1
+                        mpset mob self gold 1
+                        give 1 gold $n
+                        esay \@nods gravely to $N, saying\@ Thank you.
+                        if newbie($n)
+                                ooc $n You should try the {wheal{x command while you are here, to view a list of services offered by all healers.
+                                ooc $n You can generally find a healer at any altar in the game, and you may run across others throughout the world.
+                                ooc $n You have completed the Test of Altars!
+                                ooc $n You should go back east into the Hall of Trials, and continue north to the next test.
+                        endif
+                endif
+        else
+                give 1. $n
+                say No, this is not it.
+        endif
+endif
+~
+>rand_prog 100~
+if isfocused ($i)
+        $d
+        mpnextdata
+else
+        if iscarrying($i) == 3760
+                mpjunk bracelet
+        endif
+endif
+~
+>data_prog yes_notnew~
+say Thank you. An unfortunate student passed recently.
+say I believe there is her bracelet within that altar there. Pass it to me, would you?
+mpremember $f
+mpunfocus
+~
+>data_prog yes_new~
+say Thank you.
+esay \@nods to the altar in the room, saying\@ When a person dies, their body remains where they fell, with all of their property.
+say What is not retrieved from the body, either by that unfortunate or his friends or enemies will eventually return to their altar when the body decays.
+say Anyone may take anything they find from an altar. I believe there is a bracelet within that altar there. Pass it to me, would you?
+ooc $f If you die, and you still have any items on your body, those items will eventually return to the altar that you {wrecall{r to.{x
+ooc $f Sometimes, this is the best option if you don\@t know how to get back to your body. The {wcorpsewhere{r command can help you find where your body is, too.
+ooc $f It doesn\@t provide directions, but since it gives you a general idea of the location, it\@s easier to get help from other players to find it.
+ooc $f You can either type {wget all altar{r to get everything from an altar (or any other container), or simply {wget{r a specific item from the {waltar{r.{x
+ooc $f You can also look at {whelp death{r to learn more about what happens to you when you die in Avendar.
+mpremember $f
+mpunfocus
+~
+>speech_prog p ~
+if ispc($n)
+        if isfocused($i)
+                break
+        endif
+endif
+if compx() == yes
+or compx() == altar
+or compx() == help
+or compx() == yeah
+or compx() == yup
+or compx() == I will
+or compx() == I can
+or compx() == of course
+or compx() == try
+        mpfocus $n
+        if newbie($n)
+                mpsetdata yes_new
+                break
+        else
+                mpsetdata yes_notnew
+                break
+        endif
+endif
+~
+>greet_prog 100~
+if ispc($n)
+        if cansee($i) == $n
+                if isbitset($n) == 3709
+                        if rand(50)
+                                pmote spares a short nod to $N.
+                                break
+                        endif
+                else
+                        if remembers($n)
+                                if iscarrying($n) == 3760
+                                        esay \@nods absently to $N, saying\@ Yes, pass me that bracelet, would you?
+                                        if newbie($n)
+                                                ooc $n Type give bracelet judicas.
+                                        endif
+                                else
+                                        esay \@waves to the altar, saying\@ Get the bracelet from there, please.
+                                        break
+                                endif
+                        else
+                                esay \#spares a glance for $N and says\# Could you assist me with a small task?
+                                if newbie($n)
+                                        ooc $n This test is about altars. Please type {wsay yes{r to continue with it.{x
+                                endif
+                                break
+                        endif
+                endif
+        endif
+endif
+~
+|
+V4 3717
+Mehtai Vazlen balding white haired white-haired alchemist man~
+Mehtai Vazlen~
+A balding, white-haired alchemist stares at his glassware.
+~
+An alchemist who studies with the Erudite Eye, Mehtai Vazlen is
+considered as insane as he is brilliant.  The top of his head is balding,
+with wispy white hair that hangs low over his neck.  He has spent hours in
+this disorganized laboratory, doing his best to create new and novel
+potions.  His efforts have not always been successful; his laboratory used
+to be closer to the personal quarters of the School staff until a number of
+\#accidents\# occurred.  His workspace was relocated into the Hall of Trials,
+so his creations ostensibly serve the School mission.  
+~
+human~
+water scholar~
+AB B DJZ N 0
+25 6 1d1+1318 1d1+999 10d4+20 acid~
+acidic splash~
+-10 -10 -10 -10
+FIK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 250 74
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+if ispc($n)
+        if cansee($i) == $n
+                if isbitset($n) == 3708
+                        if rand(50)
+                                esay \#chortles at $N, saying\# Good stuff, wasn\@t it!
+                                break
+                        endif
+                else
+                        if remembers($n)
+                                if iscarrying($n) == 3759
+                                        esay \@rubs his hands together, saying\@ What\@s the hold-up? Try the potion! It\@s good for you!
+                                        if newbie($n)
+                                                ooc $n You can drink potions by using the {Wquaff{r command. Try {Wquaff burbling{x now!
+                                        endif
+                                else
+                                        esay \@narrows his eyes as he looks to $N, saying\@ You haven\@t tried it yet, I can tell! Did you lose it? I can make you up another!
+                                        break
+                                endif
+                        else
+                                esay \#looks up as $N arrives, and chortles\# Just in time. You\@ll try my newest concoction, won\@t you?
+                                if newbie($n)
+                                        ooc $n This test is about potions. Please type {wsay yes{r to continue with it.{x
+                                endif
+                                break
+                        endif
+                endif
+        endif
+endif
+~
+>speech_prog p ~
+if ispc($n)
+        if isfocused($i)
+                break
+        endif
+endif
+if compx() == yes
+or compx() == concoction
+or compx() == help
+or compx() == yeah
+or compx() == yup
+or compx() == I will
+or compx() == I can
+or compx() == of course
+or compx() == try
+        mpfocus $n
+        if newbie($n)
+                mpsetdata yes_new
+                break
+        else
+                mpsetdata yes_notnew
+                break
+        endif
+endif
+~
+>data_prog yes_new~
+say Excellent, excellent.
+emote rummages around though some shelves, eventually coming up with a bottle filed with a murky, burbling liquid.
+say It\@s my special formula. Just {Wquaff{Y it and you\@ll see.
+say Don\@t worry, there\@s nothing bad in there for you! Healthy, yes, healthy.
+ooc $f Potions are magical liquids that will cast a spell on you when you {Wquaff{r them.{x
+ooc $f They usually contain beneficial spells, such as {wfly{R or {wword of recall{r, though sometimes they have dangerous spells as well.{x
+ooc $f You should always try and make sure you know what a potion does before you quaff it.
+ooc $f To try this potion, try the command {Wquaff burbling{x.
+mpoload 3759
+give 1. $f
+mpremember $f
+mpunfocus
+~
+>data_prog yes_notnew~
+say Excellent, excellent.
+emote rummages around though some shelves, eventually coming up with a bottle filed with a murky, burbling liquid.
+say It\@s my special formula. Just quaff it and you\@ll see.
+say Don\@t worry, there\@s nothing bad in there for you! Healthy, yes, healthy.
+mpoload 3759
+give 1. $f
+mpremember $f
+mpunfocus
+~
+>rand_prog 100~
+if isfocused ($i)
+        $d
+        mpnextdata
+else
+        if iscarrying($i) == 3759
+                mpjunk burbling
+        endif
+endif
+~
+|
+V4 3718
+Teloqi short well built well-built ethron girl druid~
+Teloqi~
+A short, well-built ethron girl waits at the poolside.
+~
+Teloqi is a short, well-built ethron girl with pale green skin.  Her hair
+is a mess of deep green ringlets, which hang down to either side of her
+heart-shaped face.  The outline of a leaf has been tattooed over the left
+half of her face in a darker shade of green.  Once a druid of the Nendorin
+order, she left her forest home to become an adventurer.  After a near-fatal
+accident during her travels, she was nursed to health by Kashelle Eroq. 
+When she recovered, she and Kashelle came to the School of Heroes together
+to train and teach.  
+~
+ethron~
+water scholar~
+ABCJT B DJZ G 0
+25 6 10d100+200 1d1+999 10d4+20 pierce~
+thornspray~
+-10 -10 -10 -10
+FIJK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 74
+AHMVW ABCDEFGHIJK AJ medium unknown
+>act_prog swims down.~
+if ispc($n)
+        if remembers($n)
+                mpmemvset 1 $n
+        endif
+endif
+~
+>speech_prog p ~
+if ispc($n)
+        if isfocused($i)
+                break
+        endif
+endif
+if compx() == yes
+or compx() == problem
+or compx() == help
+or compx() == yeah
+or compx() == yup
+or compx() == I will
+or compx() == I can
+or compx() == of course
+        mpfocus $n
+        if newbie($n)
+                mpsetdata yes_new
+                break
+        else
+                mpsetdata yes_notnew
+                break
+        endif
+endif
+if compx() == ready
+        if remembers($n)
+        mpfocus $n
+        if newbie($n)
+                mpsetdata ready_new
+                break
+        else
+                mpsetdata ready_notnew
+                break
+        endif
+endif
+endif
+~
+>greet_prog 100~
+if ispc($n)
+        if cansee($i) == $n
+                if isbitset($n) == 3704
+                        if rand(50)
+                                esay \@smiles at $N, saying\@ Thanks for helping me earlier!
+                                break
+                        endif
+                else
+                        if remembers($n)
+                                if iscarrying($n) == 3753
+                                        esay exclaims Oh, you\@ve found it!
+                                        break
+                                endif
+                                if mobvcheck($n) == 1
+                                        tell $n Did you manage to find it? I hope you\@re not too wet!
+                                        break
+                                endif
+                                if mobvcheck($n) == 2
+                                        tell $n When you\@re ready to head into the pool to look for my ring, just say {wI\@m ready{g and I\@ll help you breathe underwater.{x
+                                        break
+                                endif
+                                tell $n Have you managed to find my ring yet?
+                                break
+                        else
+                                esay \@turns to $N, and asks\@ Oh, hello there! Would you be able to help me out with a little problem?
+                                if newbie($n)
+                                        ooc $n This test is about underwater rooms. Please type {wsay yes{r to continue with it.{x
+                                endif
+                                break
+                        endif
+                endif
+        endif
+endif
+~
+>rand_prog 100~
+if isfight($i)
+else
+        if iscarrying($i) == 3753
+                if value(4) == 0
+                        mpat 3737 drop ring
+                        mpvalueset 4 1
+                        break
+                endif
+                if value(5) == 25
+                        mpat 3737 drop ring
+                        mpvalueset 5 0
+                else
+                        mpvalueup 5
+                endif
+        endif
+endif
+if isfocused ($i)
+        $d
+        mpnextdata
+endif
+~
+>give_prog all~
+if ispc($n)
+        if number() == 3753
+                if isbitset($n) == 3704
+                        say Oh, you\@ve found it again for me. I think I\@d lose my head if it wasn\@t attached.
+                else
+                        mpbitset $n 3704 1
+                        mpset mob self gold 1
+                        give 1 gold $n
+                        esay exclaims You\@ve found my ring! Thank you so much.
+                        if newbie($n)
+                                ooc $n You have completed the Test of Water!
+                                ooc $n You should go back east into the Hall of Trials, and continue north to the next test.
+                        endif
+                endif
+        else
+                give 1. $n
+                say I\@m sorry, I don\@t think that\@s it. Thank you for trying.
+                sigh
+        endif
+endif
+~
+>data_prog ready_notnew~
+say All right, get ready!
+cast \@water breathing\@ $f
+esay \@nods to $F, saying\@ You should be all set, then. Good luck.
+mpmemvset 1 $f
+mpunfocus
+~
+>data_prog ready_new~
+say All right, get ready!
+cast \@water breathing\@ $f
+esay \@nods to $F, saying\@ You should be all set, then. Good luck.
+ooc $f You may now move {wdown{r into the pool. Be careful that you don\@t take too long: if you stay once the spell has expired, you\@ll start to drown!{x
+mpmemvset 1 $f
+mpunfocus
+~
+>data_prog yes_notnew~
+say I dropped my ring in the pool of water over there.
+emote nods down into the pool.
+say I would go get it myself, but I\@m not much of a swimmer.
+say If you\@d like to go in and look for it for me, I can make you able to breathe underwater for a while.
+say Just say that you\@re ready when you\@d like to go in.
+mpremember $f
+mpmemvset 2 $f
+mpunfocus
+~
+>data_prog yes_new~
+say I dropped my ring in the pool of water over there.
+emote nods down into the pool.
+say I would go get it myself, but I\@m not much of a swimmer.
+say If you\@d like to go in and look for it for me, I can make you able to breathe underwater for a while.
+say Just say that you\@re {wready{Y when you\@d like to go in.
+{xmpremember $f
+mpmemvset 2 $f
+ooc $f Type {wsay I\@m ready{r when you\@d like to try to get the ring from the pool.{x
+mpunfocus
+~
+>load_prog 100~
+mpaddaffect $n 551 25 -1 17 -35 0 A
+mpaddaffect $n 551 25 -1 32 5 0 A
+mpaddaffect $n 245 25 -1 0 0 2 P
+speak co
+mpaddskill $i 206 100
+mpoload 3753
+~
+|
+V4 3719
+Rshil black scaled srryn rotting templar~
+Rshil~
+A black scaled srryn with an rotting left arm avoids the shadows.
+~
+A large, black-scaled srryn, Rshil came to the School of Heroes for
+refuge.  He refused to explain what exactly he was trying to escape, but
+when the School staff saw him, they knew he was in dire need.  His left arm
+is not black at all, but rather an unhealthy, decaying grey-green.  Water
+scholars at the School were unable to determine the nature of his
+affliction, but agreed to allow him to stay.  His talents lie in the way of
+the Serpent, and he has since agreed to assist the School with some of their
+testing in the Hall of Trials.  
+~
+srryn~
+water scholar~
+AB B DJZ E 0
+25 6 10d100+200 1d1+999 10d4+20 negative~
+vile touch~
+-14 -14 -14 -14
+IKMV ABb
+26 0 0 0 0 0 0 0 20 -20 0 0 20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 74
+AHMX ABCDEFGHIJKLQUVX ACK medium unknown
+>rand_prog 100~
+if isfight($i)
+else
+        if value(4) == 0
+                mpat 3739 drop mouse
+                mpvalueset 4 1
+                break
+        endif
+        if value(5) == 1
+                mpoload 3758
+                mpat 3739 drop mouse
+                mpvalueset 5 0
+        else
+                if value(5) != 0
+                        mpvaluedown 5
+                endif
+        endif
+endif
+if isfocused ($i)
+        $d
+        mpnextdata
+endif
+~
+>give_prog all~
+if ispc($n)
+        if number() == 3758
+                if isbitset($n) == 3705
+                        esay hisses Yes! Mine!
+                        pmote glances quickly from side to side before lifting the mouse by the tail and devouring it swiftly.
+                        eat mouse
+                        mpvalueset 5 25
+                else
+                        mpbitset $n 3705 1
+                        esay \@hisses, as he snaps the mouse into his jaws\@ Yes, my mouse!
+                        eat mouse
+                        mpvalueset 5 25
+                        pmote shoves a coin in $N\@s hands.
+                        say Take it! Go, leave me!
+                        mpset mob self gold 1
+                        give 1 gold $n
+                        if newbie($n)
+                                ooc $n You have completed the Test of Darkness!
+                                ooc $n You should go back east into the Hall of Trials, and continue north to the next test.
+                        endif
+                endif
+        else
+                give 1. $n
+                esay snaps This is not my mouse!
+        endif
+endif
+~
+>data_prog light_notnew~
+esay snaps Yes! It is dark! That is why you must go!
+say If you cannot see, buy a light!
+mpmemvset 1 $f
+mpunfocus
+~
+>data_prog light_new~
+esay snaps Yes! It is dark! That is why you must go!
+say If you cannot see, buy a light!
+ooc $f The White Satchel, where you can buy a light, is in the Hall of Arms.
+ooc $f To get there, you should head south back to the Adventurer\@s Lounge, then back up to Foyer. Remember to {wwear{x the pendant once you have bought it!
+mpmemvset 1 $f
+mpunfocus
+~
+>data_prog yes_notnew~
+esay hisses I had a mouse.
+esay \@slides his long tongue over his scaled lips, saying\@ Delicious, delicious. 
+esay \@practically jumps as his arm twitches, then continues in a rush\@ But I must be vigilant, always vigilant, or else.
+esay hisses But he is clever. While he distracted me, he threw the mouse in there!
+emote jerks his head to the darkened room to the east.
+esay commands You will go fetch it for me! If you cannot see, get a light! Do not ask why I do not do it!
+mpremember $f
+mpmemvset 2 $f
+mpunfocus
+~
+>data_prog yes_new~
+esay hisses I had a mouse.
+esay \@slides his long tongue over his scaled lips, saying\@ Delicious, delicious. 
+esay \@practically jumps as his arm twitches, then continues in a rush\@ But I must be vigilant, always vigilant, or else.
+esay hisses But he is clever. While he distracted me, he threw the mouse in there!
+emote jerks his head to the darkened room to the east.
+esay commands You will go fetch it for me! If you cannot see, get a light! Do not ask why I do not do it!
+mpremember $f
+mpmemvset 2 $f
+ooc $f You will need a means of seeing in the dark to find the mouse. Shuddeni, kankoran, and nefortu are all naturally able to see in the dark.
+ooc $f If you are not one of those races, you will need a means of seeing in the dark. If you type {wlook plaque{x you will see a list of ways you can see in the dark.
+ooc $f If you do not already have a glowing item or other relevant skill, you can buy a brass pendant at the White Satchel elsewhere in the school. Make sure to wear it first!
+mpunfocus
+~
+>speech_prog p ~
+if ispc($n)
+        if isfocused($i)
+                break
+        endif
+endif
+if compx() == yes
+or compx() == problem
+or compx() == help
+or compx() == yeah
+or compx() == yup
+or compx() == I will
+or compx() == I can
+or compx() == of course
+        mpfocus $n
+        if newbie($n)
+                mpsetdata yes_new
+                break
+        else
+                mpsetdata yes_notnew
+                break
+        endif
+endif
+if compx() == light
+or compx() == dark
+or compx() == can\@t see
+        if remembers($n)
+                mpfocus $n
+                if newbie($n)
+                        mpsetdata light_new
+                        break
+                else
+                        mpsetdata light_notnew
+                        break
+                endif
+        endif
+endif
+~
+>act_prog leaves east.~
+if ispc($n)
+        if remembers($n)
+                mpmemvset 1 $n
+        endif
+endif
+~
+>greet_prog 100~
+if ispc($n)
+        if cansee($i) == $n
+                if isbitset($n) == 3705
+                        if rand(50)
+                                pmote hisses in $N\@s direction, then snaps his attention back to the darkness, staring at something there.
+                                break
+                        endif
+                else
+                        if remembers($n)
+                                if iscarrying($n) == 3758
+                                        esay hisses Yes, yes, there it is, give it to me!
+                                        break
+                                endif
+                                if mobvcheck($n) == 1
+                                        tell $n Where is it? Bring it, bring it now!
+                                        break
+                                endif
+                                if mobvcheck($n) == 2
+                                        tell $n A light! You will need a light to find my mouse!
+                                        break
+                                endif
+                                tell $n Where is it, where is my mouse!
+                                break
+                        else
+                                if israce($n) == srryn
+                                        esay \#jerks his attention to $N, and hisses\# You, clutchling! You will help me, yes?
+                                else
+                                        esay \@hisses at $N, demanding\@ You, warmblood! You will perform a task for me!
+                                endif
+                                if newbie($n)
+                                        ooc $n This test is about darkened rooms. Please type {wsay yes{r to continue with it.{x
+                                endif
+                                break
+                        endif
+                endif
+        endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 168 100
+speak co
+~
+|
+V4 3720
+Arriden scruff thick waisted thick-waisted human thief~
+Arriden~
+A scruffy, thick-waisted human looks meaningfully at the pile of junk.
+~
+Arriden is an overweight human with a bulging waist line.  His hair is
+scraggly and grey, and he has a similarly discheveled grey beard.  He was
+once an adventurer, but during the course of his travels, he gained an
+unnatural fondness for collection.  When he arrived at the School of Heroes,
+he was carrying eight different swords and two entire sets of armor in a
+heavy pack.  He was ostracized by almost everyone for his hoarding ways, and
+was only allowed to stay if he gave up some of his collection.  He
+reluctantly agreed, and spends his hours searching through the School\@s junk
+room for forgotten treasures.  
+~
+human~
+water scholar~
+AB B FJZ N 0
+25 6 10d100+200 1d1+99 10d4+20 bash~
+punch~
+-10 -10 -10 -10
+FK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 300 74
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if isfight($i)
+else
+        if value(4) == 0
+                mpoload 3757 in room
+                mpvalueset 4 1
+                break
+        endif
+        if value(5) == 1
+                esay \@bumps up against one of the piles, and his monocle falls off. He says\@ Oops.
+                remove monocle
+                mppurge monocle
+                mpoload 3757 in room
+                mpvalueset 5 0
+        else
+                if value(5) != 0
+                        mpvaluedown 5
+                endif
+        endif
+endif
+if isfocused ($i)
+        $d
+        mpnextdata
+endif
+~
+>give_prog all~
+if ispc($n)
+        if number() == 3757
+                if isbitset($n) == 3706
+                        esay \@lifts the monocle to his eye, saying\@ Ah, wonderful. I don\@t know what I\@d do without you, $N.
+                        wear monocle
+                        mpvalueset 5 25
+                else
+                        mpbitset $n 3706 1
+                        esay \@raises the monocle to his eye, fitting it in place. He says\@ Perfect. Thank you, $N.
+                        wear monocle
+                        esay \@goes through his bag, saying\@ I had an executioner\@s axe somewhere that should be perfect... bother, I can\@t find it.
+                        mpvalueset 5 25
+                        esay \#presses a coin into $N\@s hands, saying\# This will have to do instead.
+                        mpset mob self gold 1
+                        give 1 gold $n
+                        if newbie($n)
+                                ooc $n You have completed the Test of Darkness!
+                                ooc $n You should go back east into the Hall of Trials, and continue north to the next test.
+                        endif
+                endif
+        else
+                give 1. $n
+                esay \@shakes his head, saying\@ Oh, dear, this isn\@t it. And they\@re watching me very closely lately to make sure I don\@t carry too much, you know.
+        endif
+endif
+~
+>data_prog search_notnew~
+esay \@makes a vague gesture at the mess, saying\@ It\@s here somewhere. You just need to search for it
+mpunfocus
+~
+>data_prog search_new~
+esay \@makes a vague gesture at the mess, saying\@ It\@s here somewhere. You just need to {Wsearch{Y for it.{x
+ooc $f Use the {Wsearch{x command to try and find the monocle.
+mpunfocus
+~
+>data_prog yes_notnew~
+esay \@waves around, saying\@ As you can see, things are a bit disorganized here.
+say Unfortunately, I dropped my precious monocle not long ago, and I\@m having no luck finding it myself.
+say You\@ll have to {Wsearch{Y to find it, and don\@t be surprised it it takes a few tries. I\@m sure I can find something nice for you if you help.{x
+mpremember $f
+mpmemvset 2 $f
+mpunfocus
+~
+>data_prog yes_new~
+esay \@waves around, saying\@ As you can see, things are a bit disorganized here.
+say Unfortunately, I dropped my precious monocle not long ago, and I\@m having no luck finding it myself.
+say You\@ll have to {Wsearch{Y to find it, and don\@t be surprised it it takes a few tries. I\@m sure I can find something nice for you if you help.{x
+mpremember $f
+mpmemvset 2 $f
+ooc $f You will need to use the {Wsearch{r command to look for the monocle.{x
+ooc $f Stashed items are relatively uncommon, so you will not need to use the command often, but especially in cluttered-seeming rooms, you can often find many useful items.
+ooc $f As well, bandits are able to use the stash skill in order to hide an item such that the only way to find it is by searching!
+mpunfocus
+~
+>speech_prog p ~
+if ispc($n)
+        if isfocused($i)
+                break
+        endif
+endif
+if compx() == yes
+or compx() == problem
+or compx() == help
+or compx() == yeah
+or compx() == yup
+or compx() == I will
+or compx() == of course
+        mpfocus $n
+        if newbie($n)
+                mpsetdata yes_new
+                break
+        else
+                mpsetdata yes_notnew
+                break
+        endif
+endif
+if compx() == search
+or compx() == look
+or compx() == find
+or compx() == monocle
+        if remembers($n)
+                mpfocus $n
+                if newbie($n)
+                        mpsetdata search_new
+                        break
+                else
+                        mpsetdata search_notnew
+                        break
+                endif
+        endif
+endif
+~
+>greet_prog 100~
+if ispc($n)
+        if cansee($i) == $n
+                if isbitset($n) == 3706
+                        if rand(50)
+                                pmote mimes tipping at hat to $N, nearly dropping one of his swords.
+                                break
+                        endif
+                else
+                        if remembers($n)
+                                if iscarrying($n) == 3757
+                                        esay \@waves to $N, declaring\@ Ahh, you\@ve found my monocle!
+                                        break
+                                endif
+                                if mobvcheck($n) == 2
+                                        if newbie($n)
+                                                tell $n My monocole should be in this room, if you {Gsearch{g for it!{x
+                                                break
+                                        else
+                                                tell $n My monocle should be in this room, if you search for it!
+                                                break
+                                        endif
+                                endif
+                                tell $n Have you found my monocle yet?
+                                break
+                        else
+                                esay \@moves towards $N, saying\@ You, there. I have a small problem. You\@ll help me, yes?
+                                if newbie($n)
+                                        ooc $n This test is about hidden objects. Please type {wsay yes{r to continue with it.{x
+                                endif
+                                break
+                        endif
+                endif
+        endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 157 100
+~
+|
+V4 3721
+Bookman bookbot book guy~
+Bookman~
+Bookman is here, waiting to read your ass.
+~
+~
+human~
+water scholar~
+AL B L N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p read about chaja~
+mpremember $n
+mpforce $n look schoolchap11
+mpmemvset 11 $n
+~
+>verb_prog p Read Section 9~
+if remembers($n)
+     if mobvcheck($n) == 1
+          mpforce $n look alathsec9
+          break
+     endif
+     if mobvcheck($n) == 2
+          mpforce $n look aelinsec9
+          break
+     endif
+     if mobvcheck($n) == 3
+          mpforce $n look srrynsec9
+          break
+     endif
+     if mobvcheck($n) == 4
+          mpforce $n look humansec9
+          break
+     endif
+     if mobvcheck($n) == 5
+          mpforce $n look caladsec9
+          break
+     endif
+     if mobvcheck($n) == 6
+          mpforce $n look ethsec9
+          break
+     endif
+     if mobvcheck($n) == 7 
+          mpforce $n look shudsec9
+          break
+     endif
+     if mobvcheck($n) == 8
+          mpforce $n look nefsec9
+          break
+     endif
+     if mobvcheck($n) == 9
+          mpforce $n look chtsec9
+          break
+     endif
+     if mobvcheck($n) == 10
+          mpforce $n look kanksec9
+          break
+     endif
+     if mobvcheck($n) == 11
+          mpforce $n look chajasec9
+          break
+     endif
+else
+     mpechoat $n You need to specify what race you\@re reading about first.
+endif
+~
+>verb_prog p Read Section 8~
+if remembers($n)
+     if mobvcheck($n) == 1
+          mpforce $n look alathsec8
+          break
+     endif
+     if mobvcheck($n) == 2
+          mpforce $n look aelinsec8
+          break
+     endif
+     if mobvcheck($n) == 3
+          mpforce $n look srrynsec8
+          break
+     endif
+     if mobvcheck($n) == 4
+          mpforce $n look humansec8
+          break
+     endif
+     if mobvcheck($n) == 5
+          mpforce $n look caladsec8
+          break
+     endif
+     if mobvcheck($n) == 6
+          mpforce $n look ethsec8
+          break
+     endif
+     if mobvcheck($n) == 7 
+          mpforce $n look shudsec8
+          break
+     endif
+     if mobvcheck($n) == 8
+          mpforce $n look nefsec8
+          break
+     endif
+     if mobvcheck($n) == 9
+          mpforce $n look chtsec8
+          break
+     endif
+     if mobvcheck($n) == 10
+          mpforce $n look kanksec8
+          break
+     endif
+     if mobvcheck($n) == 11
+          mpforce $n look chajasec8
+          break
+     endif
+else
+     mpechoat $n You need to specify what race you\@re reading about first.
+endif
+~
+>verb_prog p Read Section 7~
+if remembers($n)
+     if mobvcheck($n) == 1
+          mpforce $n look alathsec7
+          break
+     endif
+     if mobvcheck($n) == 2
+          mpforce $n look aelinsec7
+          break
+     endif
+     if mobvcheck($n) == 3
+          mpforce $n look srrynsec7
+          break
+     endif
+     if mobvcheck($n) == 4
+          mpforce $n look humansec7
+          break
+     endif
+     if mobvcheck($n) == 5
+          mpforce $n look caladsec7
+          break
+     endif
+     if mobvcheck($n) == 6
+          mpforce $n look ethsec7
+          break
+     endif
+     if mobvcheck($n) == 7 
+          mpforce $n look shudsec7
+          break
+     endif
+     if mobvcheck($n) == 8
+          mpforce $n look nefsec7
+          break
+     endif
+     if mobvcheck($n) == 9
+          mpforce $n look chtsec7
+          break
+     endif
+     if mobvcheck($n) == 10
+          mpforce $n look kanksec7
+          break
+     endif
+     if mobvcheck($n) == 11
+          mpforce $n look chajasec7
+          break
+     endif
+else
+     mpechoat $n You need to specify what race you\@re reading about first.
+endif
+~
+>verb_prog p Read Section 6~
+if remembers($n)
+     if mobvcheck($n) == 1
+          mpforce $n look alathsec6
+          break
+     endif
+     if mobvcheck($n) == 2
+          mpforce $n look aelinsec6
+          break
+     endif
+     if mobvcheck($n) == 3
+          mpforce $n look srrynsec6
+          break
+     endif
+     if mobvcheck($n) == 4
+          mpforce $n look humansec6
+          break
+     endif
+     if mobvcheck($n) == 5
+          mpforce $n look caladsec6
+          break
+     endif
+     if mobvcheck($n) == 6
+          mpforce $n look ethsec6
+          break
+     endif
+     if mobvcheck($n) == 7 
+          mpforce $n look shudsec6
+          break
+     endif
+     if mobvcheck($n) == 8
+          mpforce $n look nefsec6
+          break
+     endif
+     if mobvcheck($n) == 9
+          mpforce $n look chtsec6
+          break
+     endif
+     if mobvcheck($n) == 10
+          mpforce $n look kanksec6
+          break
+     endif
+     if mobvcheck($n) == 11
+          mpforce $n look chajasec6
+          break
+     endif
+else
+     mpechoat $n You need to specify what race you\@re reading about first.
+endif
+~
+>verb_prog p Read Section 5~
+if remembers($n)
+     if mobvcheck($n) == 1
+          mpforce $n look alathsec5
+          break
+     endif
+     if mobvcheck($n) == 2
+          mpforce $n look aelinsec5
+          break
+     endif
+     if mobvcheck($n) == 3
+          mpforce $n look srrynsec5
+          break
+     endif
+     if mobvcheck($n) == 4
+          mpforce $n look humansec5
+          break
+     endif
+     if mobvcheck($n) == 5
+          mpforce $n look caladsec5
+          break
+     endif
+     if mobvcheck($n) == 6
+          mpforce $n look ethsec5
+          break
+     endif
+     if mobvcheck($n) == 7 
+          mpforce $n look shudsec5
+          break
+     endif
+     if mobvcheck($n) == 8
+          mpforce $n look nefsec5
+          break
+     endif
+     if mobvcheck($n) == 9
+          mpforce $n look chtsec5
+          break
+     endif
+     if mobvcheck($n) == 10
+          mpforce $n look kanksec5
+          break
+     endif
+     if mobvcheck($n) == 11
+          mpforce $n look chajasec5
+          break
+     endif
+else
+     mpechoat $n You need to specify what race you\@re reading about first.
+endif
+~
+>verb_prog p Read Section 4~
+if remembers($n)
+     if mobvcheck($n) == 1
+          mpforce $n look alathsec4
+          break
+     endif
+     if mobvcheck($n) == 2
+          mpforce $n look aelinsec4
+          break
+     endif
+     if mobvcheck($n) == 3
+          mpforce $n look srrynsec4
+          break
+     endif
+     if mobvcheck($n) == 4
+          mpforce $n look humansec4
+          break
+     endif
+     if mobvcheck($n) == 5
+          mpforce $n look caladsec4
+          break
+     endif
+     if mobvcheck($n) == 6
+          mpforce $n look ethsec4
+          break
+     endif
+     if mobvcheck($n) == 7 
+          mpforce $n look shudsec4
+          break
+     endif
+     if mobvcheck($n) == 8
+          mpforce $n look nefsec4
+          break
+     endif
+     if mobvcheck($n) == 9
+          mpforce $n look chtsec4
+          break
+     endif
+     if mobvcheck($n) == 10
+          mpforce $n look kanksec4
+          break
+     endif
+     if mobvcheck($n) == 11
+          mpforce $n look chajasec4
+          break
+     endif
+else
+     mpechoat $n You need to specify what race you\@re reading about first.
+endif
+~
+>verb_prog p Read Section 3~
+if remembers($n)
+     if mobvcheck($n) == 1
+          mpforce $n look alathsec3
+          break
+     endif
+     if mobvcheck($n) == 2
+          mpforce $n look aelinsec3
+          break
+     endif
+     if mobvcheck($n) == 3
+          mpforce $n look srrynsec3
+          break
+     endif
+     if mobvcheck($n) == 4
+          mpforce $n look humansec3
+          break
+     endif
+     if mobvcheck($n) == 5
+          mpforce $n look caladsec3
+          break
+     endif
+     if mobvcheck($n) == 6
+          mpforce $n look ethsec3
+          break
+     endif
+     if mobvcheck($n) == 7 
+          mpforce $n look shudsec3
+          break
+     endif
+     if mobvcheck($n) == 8
+          mpforce $n look nefsec3
+          break
+     endif
+     if mobvcheck($n) == 9
+          mpforce $n look chtsec3
+          break
+     endif
+     if mobvcheck($n) == 10
+          mpforce $n look kanksec3
+          break
+     endif
+     if mobvcheck($n) == 11
+          mpforce $n look chajasec3
+          break
+     endif
+else
+     mpechoat $n You need to specify what race you\@re reading about first.
+endif
+~
+>verb_prog p Read Section 2~
+if remembers($n)
+     if mobvcheck($n) == 1
+          mpforce $n look alathsec2
+          break
+     endif
+     if mobvcheck($n) == 2
+          mpforce $n look aelinsec2
+          break
+     endif
+     if mobvcheck($n) == 3
+          mpforce $n look srrynsec2
+          break
+     endif
+     if mobvcheck($n) == 4
+          mpforce $n look humansec2
+          break
+     endif
+     if mobvcheck($n) == 5
+          mpforce $n look caladsec2
+          break
+     endif
+     if mobvcheck($n) == 6
+          mpforce $n look ethsec2
+          break
+     endif
+     if mobvcheck($n) == 7 
+          mpforce $n look shudsec2
+          break
+     endif
+     if mobvcheck($n) == 8
+          mpforce $n look nefsec2
+          break
+     endif
+     if mobvcheck($n) == 9
+          mpforce $n look chtsec2
+          break
+     endif
+     if mobvcheck($n) == 10
+          mpforce $n look kanksec2
+          break
+     endif
+     if mobvcheck($n) == 11
+          mpforce $n look chajasec2
+          break
+     endif
+else
+     mpechoat $n You need to specify what race you\@re reading about first.
+endif
+~
+>verb_prog p read about caladaran~
+mpremember $n
+mpforce $n look schoolchap5
+mpmemvset 5 $n
+~
+>verb_prog p read about kankoran~
+mpremember $n
+mpmemvset 10 $n
+mpforce $n look schoolchap10
+~
+>verb_prog p read about ch\@taren~
+mpremember $n
+mpmemvset 9 $n
+mpforce $n look schoolchap9
+~
+>verb_prog p read about nefortu~
+mpremember $n
+mpmemvset 8 $n
+mpforce $n look schoolchap8
+~
+>verb_prog p read about shuddeni~
+mpremember $n
+mpmemvset 7 $n
+mpforce $n look schoolchap7
+~
+>verb_prog p read about ethron~
+mpremember $n
+mpmemvset 6 $n
+mpforce $n look schoolchap6
+~
+>verb_prog p read about humans~
+mpremember $n
+mpmemvset 4 $n
+mpforce $n look schoolchap4
+~
+>verb_prog p read about srryn~
+mpremember $n
+mpforce $n look schoolchap3
+mpmemvset 3 $n
+~
+>verb_prog p read about aelin~
+mpremember $n
+mpmemvset 2 $n
+mpforce $n look schoolchap2
+~
+>verb_prog p read about alatharya~
+mpremember $n
+mpforce $n look schoolchap1
+mpmemvset 1 $n
+~
+>verb_prog p Read Section 1~
+if remembers($n)
+     if mobvcheck($n) == 1
+          mpforce $n look alathsec1
+          break
+     endif
+     if mobvcheck($n) == 2
+          mpforce $n look aelinsec1
+          break
+     endif
+     if mobvcheck($n) == 3
+          mpforce $n look srrynsec1
+          break
+     endif
+     if mobvcheck($n) == 4
+          mpforce $n look humansec1
+          break
+     endif
+     if mobvcheck($n) == 5
+          mpforce $n look caladsec1
+          break
+     endif
+     if mobvcheck($n) == 6
+          mpforce $n look ethsec1
+          break
+     endif
+     if mobvcheck($n) == 7 
+          mpforce $n look shudsec1
+          break
+     endif
+     if mobvcheck($n) == 8
+          mpforce $n look nefsec1
+          break
+     endif
+     if mobvcheck($n) == 9
+          mpforce $n look chtsec1
+          break
+     endif
+     if mobvcheck($n) == 10
+          mpforce $n look kanksec1
+          break
+     endif
+     if mobvcheck($n) == 11
+          mpforce $n look chajasec1
+          break
+     endif
+else
+     mpechoat $n You need to specify what race you\@re reading about first.
+endif
+~
+|
+V4 3722
+Shiguln dark skinned dark-skinned giant chaja sguildguard~
+Shiguln~
+A dark-skinned giant blocks the eastern passage.
+~
+A monstrous dark-skinned creature named Shiguln serves as the guardian of
+the Hall of Victors.  His milk-white eyes and expanse of thick body-hair are
+common for a chaja, although he keeps far cleaner than most.  Having escaped
+from his shuddeni masters at a young age, he wandered aimlessly until a kind
+soul brought him to the School of Heroes.  Knowing that he would not be safe
+if they forced him to leave, the School staff allowed him to stay.  He
+watches the entrance to the Hall, allowing only those branded with the
+School\@s sigil to pass.  
+~
+chaja~
+water scholar~
+ABTX B DFJZ E 0
+45 15 15d100+900 0d0+0 10d4+30 bash~
+crush~
+-30 -30 -30 -30
+FIK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -20 0 0 0 0 -20 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 74
+AHMVW ABCDEFGHIJK AG large flesh
+>load_prog 100~
+speak common
+~
+>greet_prog 100~
+if remembers($n)
+else
+     mpremember $n
+     if newbie($n)
+          ooc $n The {RHall of Victors{r only allows characters branded with the School sigil to enter.
+          ooc $n You can obtain this sigil by completing the {RTower of Testing{r successfully.
+          ooc $n However, you should complete the {RHall of Trials{r before attempting the Tower.
+     endif
+endif
+~
+|
+V4 3723
+Weaponbot bot~
+Weaponbot~
+Weaponbot handles some early-on stuff.
+~
+~
+human~
+water scholar~
+ADL 0 Le N 0
+1 1 1d1+15 1d10+100 1d0+1 none~
+~
+8 8 8 8
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p recall~
+if isimmort($n)
+else
+  mpoload 3739 on $n
+  mpforce $n init_3739
+  //mpoload 3744 on $n
+  //mpforce $n setfocusit
+  if class($n) == 5
+    mpoload 3745 on $n
+    mpforce $n setfocus_3745
+  endif
+if newbie($n)
+tell $n You noob.
+endif
+endif
+mpinterpret $n $x
+~
+>exit_prog 100~
+if isimmort($n)
+else
+  mpoload 3739 on $n
+  mpforce $n init_3739
+endif
+~
+|
+V4 3724
+Firebot bot mob_3724~
+Firebot~
+Firebot helps make phoenix fire work.
+~
+~
+human~
+water scholar~
+ADL 0 Le N 0
+1 1 1d1+15 1d10+100 1d0+1 none~
+~
+8 8 8 8
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+mpoload 3745 on $f
+mpforce $f SetFocus_3745
+mppurge self
+~
+>verb_prog p SetFocus_3724~
+if name($n) == $i
+mpfocus $y2
+endif
+~
+|
+V4 3725
+Eliaj Onat pudgy nefortean nefortu merchant male~
+Eliaj Onat~
+A pudgy nefortean merchant peruses a long scroll at his desk.
+~
+Eliaj Onat is an overweight male nefortu who serves on the Var Bandor
+Merchant Council.  His tiny, bat-like stature gives him a far rounder shape
+than he may deserve.  His hairless face is amiable but shrewd, his eyes
+bright and attentive.  On assignment from the Council, he works within the
+School of Heroes, seeing to the delivery of packages to the various guilds
+within the city.  His cleverness in suggesting young adventurers serve as
+unpaid couriers backfired when the Council required him to oversee all of
+their distribution personally.  
+~
+nefortu~
+water scholar~
+ABX B DEFJZ N 0
+25 3 10d100+200 0d0+0 10d4+20 bash~
+punch~
+-10 -10 -10 -10
+K AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 20 -20 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 250 3
+AHMVW ABCDEFGHIJKP AH small flesh
+>speech_prog p ~
+if compx() == Yes
+or compx() == Yeah
+or compx() == Okay
+  if value(0) == 1
+    esay \@claps his hands together, and says\@ Fabulous!  Now then...
+    mpvalueset 1 1
+    mpvalueset 0 0
+    mpfocus $n
+    mpbitset $n 3700 1
+    mpget char $n class 2
+    mpsetdata questinfo$2
+    break
+  else
+    esay \@asks\@ Hmm?  What is it?
+    pmote chitters for a moment, before turning his attention back to his scroll.
+    break
+  endif
+endif
+if compx() == No
+  sigh
+  say Well.  Let me know if you change your mind.
+  break
+endif
+~
+>trigger_prog 100~
+if isbitset($n) == 3700 //Quest accepted
+  if isbitset($n) == 3701 //Quest done
+    break
+  else
+    mpget char $n class 2
+    mpmath 5 4700 + $2
+    if iscarrying($n) == $5
+      tell $n Hurry along, now!  Best deliver that package!
+    else
+      furrow
+      say Hm!  It looks like you lost the directions.
+      esay adds Here\@s a fresh copy!
+      mpoload $5
+      give fine-print $n
+    endif
+  endif
+else
+  if iswielding($n) == 8511
+    tell $n $N, $N, $N!
+    if class($n) == 1
+    or class($n) == 9
+    or class($n) == 10
+    or class($n) == 12
+    or class($n) == 25
+      tell $n I have a package for one of your guildmistresses.
+    else
+      tell $n I have a package for one of your guildmasters.
+    endif
+    tell $n Will deliver it?  Say yes if you will.
+    mpvalueset 0 1
+  else
+    if isbitset($n) == 3702
+      nod $n
+    else
+      tell $n Ah, once you\@ve completed your challenges, return to me.
+      tell $n I have a task for you.
+    endif
+  endif
+endif
+~
+>load_prog 100~
+mpoload 22259
+wear medallion
+speak common
+~
+>rand_prog 100~
+if value(1) == 1
+  $d
+  mpnextdata
+  mpvalueup 4
+else
+  if value(4) == 3
+    mpoload 3718
+    give a_hard_time $f
+    emote holds up a small piece of paper.
+    say I\@ve written the directions down for you.
+    mpvalueup 4
+    break
+  endif
+  if value(4) == 4
+    mpget char $f class 2
+    mpmath 5 4700 + $2
+    mpoload $5  
+    say You need to look!  Look at the directions.
+    give fine-print $f
+    esay adds I\@m sure they will reward you for your... prompt service!
+    mpvalueset 4 0
+  endif
+endif
+~
+>data_prog questinfo29~
+say You\@re a druid, so, you\@re looking for Inenilon Loebern.
+esay explains He can be found in the druid\@s circle south of Var Bandor.
+mpvalueset 1 0
+~
+>data_prog questinfo28~
+say You\@re a psionicist, so, you\@re looking for Kisjam the Elder.
+esay explains He can be found in the Alajian monastery south of Var Bandor.
+mpvalueset 1 0
+~
+>data_prog questinfo27~
+say You\@re an alchemist, so, you\@re looking for Professor Bai\@soco.
+esay explains He can be found in the basement of the Meeting Chambers in Var Bandor.
+mpvalueset 1 0
+~
+>data_prog questinfo25~
+say You\@re a bard, so, you\@re looking for Mistress Mai\@lyraea.
+esay explains She can be found in the bard\@s guild in the Nymph\@s Tears in Var Bandor.
+mpvalueset 1 0
+~
+>data_prog questinfo23~
+say You\@re a ranger, so, you\@re looking for Adwin Feridur.
+esay explains He can be found in the ranger\@s glade south of Var Bandor.
+mpvalueset 1 0
+~
+>data_prog questinfo21~
+say You\@re a gladiator, so, you\@re looking for Jolcherus Fatian.
+esay explains He can be found in the Tipsy Swordmaster in Var Bandor.
+mpvalueset 1 0
+~
+>data_prog questinfo20~
+say You\@re a barbarian, so, you\@re looking for Thane Brondir.
+esay explains He can be found in the Tipsy Swordmaster in Var Bandor.
+mpvalueset 1 0
+~
+>data_prog questinfo19~
+say You\@re a swordmaster, so, you\@re looking for Master Mengjaal.
+esay explains He can be found in the Tipsy Swordmaster in Var Bandor.
+mpvalueset 1 0
+~
+>data_prog questinfo18~
+thought
+say You\@re a fighter, so, you\@re looking for Corporal Garalon.
+esay explains He can be found in the Tipsy Swordmaster in Var Bandor.
+mpvalueset 1 0
+~
+>data_prog questinfo15~
+say You\@re a bandit, so, you\@re looking for Th

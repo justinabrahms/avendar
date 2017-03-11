@@ -1,0 +1,7140 @@
+#AREADATA
+Name The Oak and Ivy Inn~
+Builders Aeolis Rystaia~
+VNUMs 11451 11499
+VNUMs 16400 16499
+Credits [ ALL ] Aeol/Rys  The Oak and Ivy Inn~
+Danger 0
+Security 1
+Areainfo 59
+Herbs 64
+Weather 2 2 2 1 0
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 16400
+tarik man fat~
+Tarik~
+A fat, bearded man stands behind the bar, surveying the area.
+~
+Tarik is nearly as wide as he is tall, but manages his weight with ease. 
+He makes up for his lack of hair with a curly mustache and beard, and his
+bare arms are covered in a thick fuzz.  His eyes are a dark brown, and
+barely visible over his round cheeks, but they have a glint of canny
+intelligence that his chubby, friendly face otherwise does not portray.  
+~
+human~
+water scholar~
+AB 0 D N 0
+45 23 35d85+2000 45d10+100 6d7+23 bash~
+punch~
+-18 -18 -18 -4
+C AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>verb_prog p rent bridal suite~
+if mobvalue(4) == 0
+  mpoload 16433
+  mpset obj key timer 48
+  mpechoat $n You hand some coins to $I.
+  mpechoaround $n $N hands some coins to $I.
+  if sex($n) == 0
+    say Thank you!  Here is your room key, I\@m quite sure you will find everything to your liking.
+  endif
+  if sex($n) == 1
+    say Thank you, sir!  Here is your room key, I\@m quite sure you will find everything to your liking.
+  endif
+  if sex($n) == 2
+    say Thank you, ma\@am!  Here is your room key, I\@m quite sure you will find everything to your liking.
+  endif
+  give key $n
+  say Just head up the stairs, your room is at the end of the hallway.
+  mpvalueset 4 360
+  break
+endif
+mpvalueset 9 0
+loop 0 to 2
+  if mobvalue(9) != -1
+  mpvalueset 9 $$v1
+  if mobvalue(9) == 0
+    tell $n I\@m sorry, but that room is not currently available.
+    tell $n However, we have other rooms available for rent, should you be interested.
+    mpvalueset 9 -1
+  endif
+endloop
+if mobvalue(3) == 0
+  tell $n I\@m sorry, but that room is not currently available.
+  tell $n However, our nice room is still available, should you be interested.
+else
+  tell $n I\@m sorry, but there are currently no rooms available for rent at the inn.
+endif
+~
+>verb_prog p rent nice room~
+if mobvalue(3) == 0
+  mpoload 16432
+  mpset obj key timer 48
+  mpechoat $n You hand some coins to $I.
+  mpechoaround $n $N hands some coins to $I.
+  if sex($n) == 0
+    say Thank you!  Here is your room key, I\@m quite sure you will find everything to your liking.
+  endif
+  if sex($n) == 1
+    say Thank you, sir!  Here is your room key, I\@m quite sure you will find everything to your liking.
+  endif
+  if sex($n) == 2
+    say Thank you, ma\@am!  Here is your room key, I\@m quite sure you will find everything to your liking.
+  endif
+  give key $n
+  say The nicest room we have, and I wager the nicest outside of Earendam proper!
+  say  Just head up the stairs, to the end of the hallway, it will be the door marked with a \@2\@, on your left.
+  mpvalueset 3 360
+  break
+endif
+mpvalueset 9 0
+loop 0 to 2
+  if mobvalue(9) != -1
+  mpvalueset 9 $$v1
+  if mobvalue(9) == 0
+    tell $n I\@m sorry, but that room is not currently available.
+    if mobvalue(4) == 0
+      tell $n However, we have normal rooms available for rent, as well as our bridal suite.
+    else
+      tell $n However, we have some of our regular rooms still available for rent, should you be interested.
+    endif
+    mpvalueset 9 -1
+  endif
+endloop
+if mobvalue(4) == 0
+  tell $n I\@m sorry, but that room is not currently available.
+  tell $n However, our bridal suite is still available, should you be interested.
+else
+  tell $n I\@m sorry, but there are currently no rooms available for rent at the inn.
+endif
+~
+>verb_prog p rent room~
+mpvalueset 9 0
+loop 0 to 2
+  if mobvalue(9) != -1
+    mpvalueset 9 $$v1
+    if mobvalue(9) == 0
+      mpmath 9 16429 + $v1
+      mpoload $9
+      mpset obj key timer 48
+      mpechoat $n You hand some coins to $I.
+      mpechoaround $n $N hands some coins to $I.
+      if sex($n) == 0
+        say Thank you, here is your room key.  I\@m hope you find everything to your liking.
+      endif
+      if sex($n) == 1
+        say Thank you sir, here is your room key.  I hope you find everything to your liking.
+      endif
+      if sex($n) == 2
+        say Thank you ma\@am, here is your room key.  I hope you find everything to your liking.
+      endif
+      give key $n
+      mpvalueset 8 $v1
+      if mobvalue(8) == 0
+        say Room number one.  Head up the stairs and turn right, first door on the left.
+      endif
+      if mobvalue(8) == 1
+        say Room number four.  Head up the stairs, and to the end of the hallway, it will be the door on the right.
+      endif
+      if mobvalue(8) == 2
+        say Room number five.  Head up the stairs and turn right, first door on the right.
+      endif
+      mpvalueset $v1 360
+      mpvalueset 9 -1
+    endif
+  endif
+endloop
+if mobvalue(9) != -1
+  if mobvalue(3) == 0
+    tell $n I\@m sorry, we have none of our standard rooms available right now.
+    tell $n However, our fine room is available if you wish to spend a few extra coins.
+    break
+  endif
+  if mobvalue(4) == 0
+    tell $n I\@m sorry, we have but the only room we have available to rent at this time is our bridal suite, though it makes a fine and comfortable room for anyone.
+    tell $n Please let me know if you wish to rent it, you surely would not be disappointed.
+     break
+  endif
+  tell $n I\@m sorry, none of our rooms are available to rent right now.
+endif
+~
+>verb_prog p list~
+if compstr(1) == l
+or compstr(1) == li
+  mpnextinterp
+else
+  tell $n We also have some fine rooms available for rent!
+  tell $n Three standard, and two for those with more refined tastes, one of which is a perfect bridal suite.
+  tell $n If you\@re interesting in renting a room, you can \@rent room\@, \@rent nice room\@, or \@rent bridal suite\@.
+endif
+~
+>rand_prog 100~
+loop 0 to 4
+  mpvalueset 9 $$v1
+  if mobvalue(9) > 0
+    mpvaluedown $v1
+  endif
+endloop
+~
+|
+V4 16401
+elarcil barkeep ethron bartender man strong~
+Elarcil~
+A strong looking ethron man stands behind the bar, lazily surveying the room.
+~
+Elarcil stands patiently behind the bar, occaisionally wiping down the
+bar or some glasses.  He\@s fairly tall for an ethron, and more than a few
+scars mark his face and hands.  Messy dark green hair hangs down nearly to
+his shoulders, and his hazel eyes seem languid but aware.  
+~
+ethron~
+water scholar~
+AB 0 D N 0
+45 23 35d85+1500 45d10+100 6d7+27 bash~
+punch~
+-18 -18 -18 -4
+CI AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGHIJK AJ medium flesh
+>verb_prog p list~
+if compstr(1) == l
+or compstr(1) == li
+  mpnextinterp
+else
+  mpinterpret $n $x
+  tell $n If you\@d like to know more about the [wines] I have to offer, feel free to ask.
+endif
+~
+>speech_prog wine wines~
+if compx() == again
+else
+  if remembers($n)
+    break
+  endif
+endif
+mpechoat $n $I looks at you.
+mpechoaround $n $I looks at $N.
+if sex($n) == 0
+  say Interested in a bottle of wine?  Let me tell you about the vintages we currently have to offer...
+endif
+if sex($n) == 1
+  say Interested in a bottle of wine, sir?  Let me tell you about the vintages we currently have to offer...
+endif
+if sex($n) == 2
+  say Interested in a bottle of wine, m\@lady?  Let me tell you about the vintages we currently have to offer...
+endif
+mpvalueset gnum 1
+loop 16405 to 16412
+  mpvalueset fnum 0
+  if value(gnum) == 1
+    mpvalueset astr First,
+  endif
+  if value(gnum) == 2
+    mpvalueset astr Next,
+  endif
+  if value(gnum) == 3
+    mpvalueset astr And finally,
+  endif
+  if iscarrying($i) == 16405
+    if value(fnum) != -1
+      mpvalueup fnum
+    endif
+    if value(fnum) == %gnum
+      say %astr we have a nice bottle of white from Qilarn, well aged and full of flavour.
+      mpvalueup gnum
+      mpvalueset fnum -1
+    endif
+  endif
+  if iscarrying($i) == 16406
+    if value(fnum) != -1
+      mpvalueup fnum
+    endif
+    if value(fnum) == %gnum
+      say %astr we have a beautiful white wine from the Hyloth region, crisp and refreshing.
+      mpvalueup gnum
+      mpvalueset fnum -1
+    endif
+  endif
+  if iscarrying($i) == 16407
+    if value(fnum) != -1
+      mpvalueup fnum
+    endif
+    if value(fnum) == %gnum
+      say %astr we have a nice, buttery white, brought here by merchants from deep in the south.  Made somewhere in the vicinity of Ashta Harrud, I believe.
+      mpvalueup gnum
+      mpvalueset fnum -1
+    endif
+  endif
+  if iscarrying($i) == 16408
+    if value(fnum) != -1
+      mpvalueup fnum
+    endif
+    if value(fnum) == %gnum
+      say %astr a red from the wine masters in Lithling, with pleasant fruity tones, perfect for an afternoon outdoors.
+      mpvalueup gnum
+      mpvalueset fnum -1
+    endif
+  endif
+  if iscarrying($i) == 16409
+    if value(fnum) != -1
+      mpvalueup fnum
+    endif
+    if value(fnum) == %gnum
+      say %astr a nice bottle of red from the North.  The cooler weather there adds a character to the wine that I find quite delightful.
+      mpvalueup gnum
+      mpvalueset fnum -1
+    endif
+  endif
+  if iscarrying($i) == 16410
+    if value(fnum) != -1
+      mpvalueup fnum
+    endif
+    if value(fnum) == %gnum
+      say %astr a bottle of late harvest wine, the well ripened grapes providing a nice sweet taste.
+      mpvalueup gnum
+      mpvalueset fnum -1
+    endif
+  endif
+  if iscarrying($i) == 16411
+    if value(fnum) != -1
+      mpvalueup fnum
+    endif
+    if value(fnum) == %gnum
+      say %astr we have a beautiful bottle of merlot, straight from Ilodaiya.  And if I may say so, the aelins do know how to make an exquisite wine.
+      mpvalueup gnum
+      mpvalueset fnum -1
+    endif
+  endif
+  if iscarrying($i) == 16412
+    if value(fnum) != -1
+      mpvalueup fnum
+    endif
+    if value(fnum) == %gnum
+      say %astr a delicious dessert wine, perfect for sitting back and sipping after any of the fine meals Clariss has to offer.
+      mpvalueup gnum
+      mpvalueset fnum -1
+    endif
+  endif
+endloop
+mpremember $n
+~
+>time_prog 6~
+if value(0) >= 1440
+  mpat 16400 drop all.bottle
+  mpat 16400 mppurge
+  loop 0 to 2
+    mpmath b 8 - $v1
+    mpvaluerand a 1 %b
+    mpvalueset bottle 16405
+    mpvalueset c 0
+    loop 1 to 8
+      if value(a) != 0
+        if iscarrying($i) == %bottle
+        else
+          mpvalueup c
+        endif
+        if value(c) == %a
+          mpoload %bottle
+          mpvalueset a 0
+        endif
+        mpvalueup bottle
+      endif
+    endloop
+  endloop
+  mpvalueset 0 0
+endif
+mpforget all
+~
+>load_prog 100~
+loop 0 to 2
+  mpmath b 8 - $v1
+  mpvaluerand a 1 %b
+  mpvalueset bottle 16405
+  mpvalueset c 0
+  loop 1 to 8
+    if value(a) != 0
+      if iscarrying($i) == %bottle
+      else
+        mpvalueup c
+      endif
+      if value(c) == %a
+        mpoload %bottle
+        mpvalueset a 0
+      endif
+      mpvalueup bottle
+    endif
+  endloop
+endloop
+mpvalueset 0 0
+speak common
+~
+>rand_prog 100~
+mpvalueup 0
+~
+|
+V4 16402
+suli woman cook~
+Suli~
+A plump cheeked woman bustles about the kitchen.
+~
+Suli is a sweet looking woman, in her 30\@s, smudges of flour unable to
+mask her rosy colour.  She has long brown hair, bound in a bun at the base
+of her neck, and a smattering of freckles cover her snub nose.  Suli moves
+with the deft assurance that only confidence can bring, and she seems at
+home surrounded by the implements of her kitchen.  
+~
+human~
+water scholar~
+AB 0 0 G 0
+35 18 25d57+1041 35d10+100 5d7+18 bash~
+punch~
+-12 -12 -12 -1
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 16403
+clariss waitress dark curly woman~
+Clariss~
+A dark, curly haired waitress moves confidently throughout the inn.
+~
+Clariss has obviously inherited most of her features from her father,
+Tarik.  She shares his lack of height, and dark curly hair, though her
+figure is nicely curved, if a bit chubby.  She moves throughout the inn with
+assurance, a smile for all the regulars, and kind words of greeting.  
+~
+human~
+water scholar~
+ADG 0 0 G 0
+35 18 25d57+1041 35d10+100 5d7+18 bash~
+punch~
+-12 -12 -12 -1
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>load_prog 100~
+if istime() < 4
+or istime() >= 11
+  randomitems
+else
+  setbreakfast
+endif
+~
+>data_prog breakfastitems~
++----------------------------------+
+| Today\@s Breakfast                |
+|                                  |
+| Cinnamon raisin bread            |
+| Sweetened porridge               |
+| Toast with honey                 |
++----------------------------------+
+~
+>verb_prog p setbreakfast~
+if ispc($n)
+  mpnextinterp
+  break
+endif
+if valname($n) == $i
+  mpat 16400 drop all
+  mpat 16400 mppurge
+  mpoload 16425
+  mpoload 16426
+  mpoload 16427
+  mpoload 16400
+  mpoload 16401
+  mpoload 16402
+  mpoload 16403
+  mpoload 16404
+  mpdesc 16403 breakfastitems \@sign chalkboard\@
+endif
+
+~
+>verb_prog p randomitems~
+if ispc($n)
+  mpnextinterp
+  break
+endif
+if valname($n) == $i
+  mpat 16400 drop all
+  mpat 16400 mppurge
+  mpvalueset sign +----------------------------------+{/| Today\@s Specials                 |{/|                                  |{/
+  mpvaluerand 0 16413 16415
+  mpoload $0
+  if value(0) == 16413
+    mpvalueset tstr | Roasted chicken                  |{/
+  endif
+  if value(0) == 16414
+    mpvalueset tstr | Beer-basted ribs                 |{/
+  endif
+  if value(0) == 16415
+    mpvalueset tstr | Sliced beef with gravy           |{/
+  endif
+  mpconcat sign sign tstr
+  mpvaluerand 1 16416 16418
+  mpoload $1
+  if value(1) == 16416
+    mpvalueset tstr | Mashed potatoes                  |{/
+  endif
+  if value(1) == 16417
+    mpvalueset tstr | Corn on the cob                  |{/
+  endif
+  if value(1) == 16418
+    mpvalueset tstr | Rice-stuffed bellpepper          |{/
+  endif
+  mpconcat sign sign tstr
+  mpvaluerand 2 16419 16421
+  mpoload $2
+  if value(2) == 16419
+    mpvalueset tstr | Freshly baked bread              |{/
+  endif
+  if value(2) == 16420
+    mpvalueset tstr | Spicy vegetable soup             |{/
+  endif
+  if value(2) == 16421
+    mpvalueset tstr | Rye bread with cheese            |{/
+  endif
+  mpconcat sign sign tstr
+  mpvaluerand 3 16422 16424
+  mpoload $3
+  if value(3) == 16422
+    mpvalueset tstr | Blueberry pie                    |{/
+  endif
+  if value(3) == 16423
+    mpvalueset tstr | Strawberries with cream          |{/
+  endif
+  if value(3) == 16424
+    mpvalueset tstr | Spiced apple sauce with raisins  |{/
+  endif
+  mpconcat sign sign tstr
+  mpvalueset bottomline +----------------------------------+{/
+  mpconcat sign sign bottomline
+  mpdesc 16403 sign \@sign chalkboard\@
+  mpoload 16400
+  mpoload 16401
+  mpoload 16402
+  mpoload 16403
+  mpoload 16404
+else
+  mpnextinterp
+endif
+~
+>time_prog 4~
+setbreakfast
+~
+>time_prog 11~
+randomitems
+~
+|
+V4 16404
+alatharya bouncer large burly ivybouncer1~
+an alatharya bouncer~
+A large burly alatharya looks over the patrons silently, watching for any disturbance.
+~
+The bouncer is tall, even for an alatharya, though his head is still a
+good span from the high ceilings of the Inn.  His long white hair is held
+back from his face in a neat ponytail, and streams down his back.  His form
+is hardened with muscle and sinew, and various small scars show evidence of
+a long past as a warrior of some sort.  For now, he seems content to watch
+the crowd, his eyes ever alert for disturbance or theft.  
+~
+alatharya~
+water scholar~
+ABDLT 0 Z N 0
+50 25 35d100+1300 50d10+100 6d8+25 bash~
+punch~
+-21 -21 -21 -5
+CEKS AB
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>load_prog 100~
+mpaddskill $i 178 100
+mpaddskill $i 252 100
+~
+>fight_prog 100~
+mpfocus $n
+if isbitset($n) == 16401
+else
+  mpbitset $n 16401 1
+  mpaddaffect $n 479 60 120 27 16401 0
+endif
+if isfocused() == 1
+  rescue $f1
+endif
+if mobvalue(0) == 0
+  pummel
+  mpvalueset 0 1
+else
+  mpvalueset 0 0
+endif
+~
+>rand_prog 100~
+if isfocused()
+  if inarea($f)
+    if inroom($f) == 16401
+      mpunfocus 0
+      mpunfocus 1
+      mpfindpath 16404 11
+      mppathstep
+      break
+    endif
+    if ishere($f)
+    else
+      mpfindpath $f 11
+      mppathstep
+    endif
+    if ishere($f)
+    else
+      mppathstep
+    endif
+    if ishere($f)
+      if position($f) == 4
+        mpechoaround $f $I picks up $F, and drags $M out of the Inn.
+        mptrans $f 16401
+        mpat 16401 $F is dragged out of the Inn.
+        mpunfocus
+      else
+        yell You will not disturb the peace of this inn, $F!
+        pummel $f
+      endif
+    endif
+  else
+    mpunfocus 0
+    mpunfocus 1
+    if inroom($i) != 16404
+      mpfindpath 16404 11
+      mppathstep
+    endif
+  endif
+else
+  if inroom($i) != 16404
+    mpfindpath 16404 11
+    mppathstep
+  endif
+endif
+~
+|
+V4 16405
+alatharya bouncer alatharyan man ivybouncer2~
+an alatharya bouncer~
+An alatharyan man slowly paces the room, watching for trouble.
+~
+This alatharya man seems a bit older, perhaps a retired of adventurer of
+some sort.  His silvery skin seems to have dulled with age, though his eyes
+retain the steely glint of one who has done much, and fears little.  He has
+an air of confidence and ease that many find comforting who visit the Inn,
+and he seems vigilant for any disorder in the room.  
+~
+alatharya~
+water scholar~
+ABDLT 0 Z N 0
+50 25 35d100+1300 50d10+100 6d8+25 bash~
+punch~
+-21 -21 -21 -5
+CEKS AB
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>load_prog 100~
+mpaddskill $i 178 100
+mpaddskill $i 252 100
+~
+>fight_prog 100~
+mpfocus $n
+if isbitset($n) == 16401
+else
+  mpbitset $n 16401 1
+  mpaddaffect $n 479 60 120 27 16401 0
+endif
+if isfocused() == 1
+  rescue $f1
+endif
+if mobvalue(0) == 0
+  pummel
+  mpvalueset 0 1
+else
+  mpvalueset 0 0
+endif
+~
+>rand_prog 100~
+if isfocused()
+  if inarea($f)
+    if inroom($f) == 16401
+      mpunfocus 0
+      mpunfocus 1
+      mpfindpath 16412 11
+      mppathstep
+      break
+    endif
+    if ishere($f)
+    else
+      mpfindpath $f 11
+      mppathstep
+    endif
+    if ishere($f)
+    else
+      mppathstep
+    endif
+    if ishere($f)
+      if position($f) == 4
+        mpechoaround $f $I picks up $F, and drags $M out of the Inn.
+        mptrans $f 16401
+        mpat 16401 $F is dragged out of the Inn.
+        mpunfocus
+      else
+        yell You will not disturb the peace of this inn, $F!
+        pummel $f
+      endif
+    endif
+  else
+    mpunfocus 0
+    mpunfocus 1
+    if inroom($i) != 16412
+      mpfindpath 16412 11
+      mppathstep
+    endif
+  endif
+else
+  if inroom($i) != 16412
+    mpfindpath 16412 11
+    mppathstep
+  endif
+endif
+~
+|
+V4 16406
+woman human bouncer wiry strong ivybouncer3~
+a human bouncer~
+A strong, wiry woman stands here, watching the crowd intently.
+~
+The woman seems strong and capable, her muscles slim but clearly defined.
+Her hair is a brown so dark it is nearly black, and it is held back from her
+face by many smaller braids.  A large scar is barely noticable on her left
+cheek, probably recieved quite a long time ago, though the rest of her body
+shows little evidence of such marks.  Her movements are quick and deft, and
+similarly her gaze scans the crowd, looking for any disturbance.  
+~
+human~
+water scholar~
+ABDLT 0 0 N 0
+50 25 34d100+1200 50d10+100 6d8+20 bash~
+punch~
+-21 -21 -21 -5
+CEHKS AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>load_prog 100~
+mpaddskill $i 178 100
+mpaddskill $i 252 100
+~
+>fight_prog 100~
+mpfocus $n
+if isbitset($n) == 16401
+else
+  mpbitset $n 16401 1
+  mpaddaffect $n 479 60 120 27 16401 0
+endif
+if isfocused() == 1
+  rescue $f1
+endif
+if mobvalue(0) == 0
+  pummel
+  mpvalueset 0 1
+else
+  mpvalueset 0 0
+endif
+~
+>rand_prog 100~
+if isfocused()
+  if inarea($f)
+    if inroom($f) == 16401
+      mpunfocus 0
+      mpunfocus 1
+      mpfindpath 16409 11
+      mppathstep
+      break
+    endif
+    if ishere($f)
+    else
+      mpfindpath $f 11
+      mppathstep
+    endif
+    if ishere($f)
+    else
+      mppathstep
+    endif
+    if ishere($f)
+      if position($f) == 4
+        mpechoaround $f $I picks up $F, and drags $M out of the Inn.
+        mptrans $f 16401
+        mpat 16401 $F is dragged out of the Inn.
+        mpunfocus
+      else
+        yell You will not disturb the peace of this inn, $F!
+        pummel $f
+      endif
+    endif
+  else
+    mpunfocus 0
+    mpunfocus 1
+    if inroom($i) != 16409
+      mpfindpath 16409 11
+      mppathstep
+    endif
+  endif
+else
+  if inroom($i) != 16409
+    mpfindpath 16409 11
+    mppathstep
+  endif
+endif
+~
+|
+V4 16407
+ethron bouncer man heavy-set ivybouncer4~
+an ethron bouncer~
+A heavy-set ethron is here, relaxed and keeping a watchful eye on the gardens.
+~
+The ethron is heavily built, though his bulky is much more due to muscle
+than fat.  His hair is a messy dark green, and falls into his face despite
+best efforts.  It doesn\@t seem to affect his vision at all though, and he
+scans the crowd intently, wary for any trouble.  His slow, languid grace is
+deceptive, and at any sign of a problem, he is there almost as soon as it
+begins.  
+~
+ethron~
+water scholar~
+ABDLT 0 0 N 0
+50 25 35d100+1300 50d10+100 6d8+25 bash~
+punch~
+-21 -21 -21 -5
+CEKS AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGHIJK J medium flesh
+>load_prog 100~
+mpaddskill $i 178 100
+mpaddskill $i 252 100
+~
+>fight_prog 100~
+mpfocus $n
+if isbitset($n) == 16401
+else
+  mpbitset $n 16401 1
+  mpaddaffect $n 479 60 120 27 16401 0
+endif
+if isfocused() == 1
+  rescue $f1
+endif
+if mobvalue(0) == 0
+  pummel
+  mpvalueset 0 1
+else
+  mpvalueset 0 0
+endif
+
+~
+>rand_prog 100~
+if isfocused()
+  if inarea($f)
+    if inroom($f) == 16401
+      mpunfocus 0
+      mpunfocus 1
+      mpfindpath 16416 11
+      mppathstep
+      break
+    endif
+    if ishere($f)
+    else
+      mpfindpath $f 11
+      mppathstep
+    endif
+    if ishere($f)
+    else
+      mppathstep
+    endif
+    if ishere($f)
+      if position($f) == 4
+        mpechoaround $f $I picks up $F, and drags $M out of the Inn.
+        mptrans $f 16401
+        mpat 16401 $F is dragged out of the Inn.
+        mpunfocus
+      else
+        yell You will not disturb the peace of this inn, $F!
+        pummel $f
+      endif
+    endif
+  else
+    mpunfocus 0
+    mpunfocus 1
+    if inroom($i) != 16416
+      mpfindpath 16416 11
+      mppathstep
+    endif
+  endif
+else
+  if inroom($i) != 16416
+    mpfindpath 16416 11
+    mppathstep
+  endif
+endif
+~
+|
+V4 16408
+bard qarista aragil bardess~
+Qarista~
+Qarista Aragil, bardess of song and lore, stands on the small stage.
+~
+Qarista\@s beauty and talent are reknowned through-out Avendar, and seeing
+her face to face simply confirms all rumours.  Her hair is a dark, shiny
+brown, and curls down her back to just below her rather small waist.  Her
+skin gleams with vitality and health, a translucent green that looks to be
+softer than silk.  Though she is petite, her form is perfectly curved and
+her every movement flows with her words.  Her eyes, above all, appeal to the
+crowd that watches her, a deep hazel that seem to echo and amplify the
+emotion of each song she sings.  Her face and figure pale, however, when
+compared to the velvet sweetness of her voice.  As she sings, moving
+slightly to the music or running her nimble fingers over the strings of her
+lute, her voice echoes with molasses and honey, a sultry soft sound that
+seduces even the most cynical of listeners.  
+~
+ethron~
+water scholar~
+ADL 0 0 G 0
+50 25 34d100+1173 50d10+100 6d8+25 bash~
+punch~
+-21 -21 -21 -5
+FH AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 200 -1
+AHMVW ABCDEFGHIJK AJ medium flesh
+>data_prog act3~
+2
+say Now I shall recite the poem, \#Arien Dawning\#.
+mpvalueset 0 2
+2
+emote pauses for a moment, quietly clearing her throat.
+mpvalueset 0 2
+2
+Gone with the morning sun\@s first feather light,
+mpvalueset 0 2
+2
+The silent twins, like crystal spheres of seers
+mpvalueset 0 2
+2
+Grow faint, their stately dance hid from our sight.
+mpvalueset 0 2
+2
+The plains are wet with dew that hangs like tears
+mpvalueset 0 2
+2
+On tender blades of green, and golden spears.
+mpvalueset 0 2
+2
+The wheel-creaks and the footsteps soon dispell
+mpvalueset 0 2
+2
+What stories Arien\@s eventide would tell--
+mpvalueset 0 2
+2
+The west wind\@s whispered hints of woodland dreams
+mpvalueset 0 2
+2
+And silver-blue Dantaron\@s lullabies.
+mpvalueset 0 2
+2
+The swirls of wayside dust suffuse the beams
+mpvalueset 0 2
+2
+That emanate from towered eastern skies.
+mpvalueset 0 2
+3
+emote bows before the crowd.
+mpvalueset 0 3
+mpvalueset 1 60
+~
+>data_prog act2~
+2
+say I will now recite a seldom-heard poem penned by Cifete, a reknowned bard of days past...
+mpvalueset 0 2
+say In fact, it is the last poem any had known her to write,
+say a somber, sentimental piece,
+2
+say but I hope you will bear with me as I speak it.
+mpvalueset 0 2
+2
+emote assumes a distant, thoughtful gaze as she prepares to speak.
+mpvalueset 0 2
+say With setting sun the trees bleed red,
+say and prepare for gathering night,
+say sleep-shrouded children settle in bed,
+2
+say and Mother breathes dark the light.
+mpvalueset 0 2
+say The wolves coalesce into silver shapes,
+say lifting powerful muzzles to wind,
+say the fox and bear take young by nape,
+2
+say for with howl the hunt begins.
+mpvalueset 0 2
+say Some taverns get rowdy, some inns find laughter,
+say as barkeeps tap their kegs,
+say some men prepare bodies for the here-after,
+2
+say some men lift voice and beg.
+mpvalueset 0 2
+4
+emote pauses respectfully for a moment, then takes a small bow.
+say Thank you.
+mpvalueset 0 3
+mpvalueset 1 60
+~
+>data_prog act1~
+2
+say Now, I shall recite a poem originally penned by Cifete, a reknowned bard of days past...
+mpvalueset 0 2
+say It bears no name, but needs none,
+say as it will resound clearly with any who have ever yearned for adventure in their lives.
+emote smiles, looking around the crowd, as she prepares to speak.
+say Our feet they tread for two days nigh,
+say our bodies are worn, our spirit not high,
+say but behold! above in dusky sky,
+2
+say rays o\@ red and gold reach mine eye.
+mpvalueset 0 2
+say My sword I grip with strength revital,
+say my voice I lift like Court Recital,
+say my mates they battle with chant \@n\@ slash,
+2
+say our foe it breathes with brimstone \@n\@ ash.
+mpvalueset 0 2
+say The shadows, they lengthen, the battle seems lost,
+say then my mate t\@ fore wields the Frost,
+say our foe it pauses, our foe it doubts,
+2
+say my mate t\@ flank allows a shout.
+mpvalueset 0 2
+say With rally cry we charge again,
+2
+say steel pierces scales
+flesh we rend.
+mpvalueset 0 2
+say We stand as victors, we gaze t\@ sky,
+say we wipe our brow, we heave a sigh,
+say for dusk has come \@gain so soon,
+2
+say and t\@ town we go t\@ claim our boon.
+mpvalueset 0 2
+2
+emote pauses for a moment, then takes a small bow.
+mpvalueset 0 3
+mpvalueset 1 6
+~
+>data_prog intro~
+emote smiles warmly to the crowd, taking a moment to look everyone over.
+say Greetings, friends and patrons of the Oak and Ivy.
+3
+say My name is Qarista, as some of you may know, and I hope to entertain you this evening.
+mpvalueset 0 3
+mpvalueset 1 1
+~
+>rand_prog 100~
+if value(0) == 0
+  speak common
+  mpsetdata intro
+  mpvalueset 0 1
+  break
+endif
+if value(0) == 1
+  mpvalueset 2 0
+  mpvalueset 2 $d
+  if mobvalue(2) > 0
+    mpnextdata
+    loop 1 to $2
+      $d
+      mpnextdata
+    endloop
+  else
+    $d
+    mpnextdata
+  endif
+  break
+endif
+if value(0) == 2
+  if value(1) > 0
+    mpmath tempval1 $1 / 10
+    mpmath tempval2 ($1 + 9) / 10
+    if value(tempval1) == %tempval2
+      emote continues to softly play her lute?
+    endif
+  endif
+  mpvaluedown 1
+  if value(1) <= 0
+    mpvalueset 0 1
+  endif
+  break
+endif
+if value(0) == 3
+  if value(3) == 1
+    say I hope you have all had a wonderful evening, it is time I retired.  A good night to you all.
+    emote smiles warmly to the audience, and curtsies deeply, before leaving the stage.
+    mppurge self
+    break
+  endif
+  mpvaluedown 1
+  if value(1) == 0
+    mpvaluerand actnum 1 3
+    mpsetdata act%actnum
+    mpvalueset 0 1
+  endif
+endif
+~
+>time_prog 5~
+mpvalueset 3 1
+~
+|
+V4 16409
+eolidil bard aelin~
+Eolidil~
+The aelin bard Eolidil stands on the small stage, performing for the crowd.
+~
+Tall and thin, Eolidil has a strength of presence that commands attention
+even in a busy crowded Inn such as this one.  His blond hair ends neatly at
+his shoulders, framing a wide mouth and eyes which more than one patron have
+found captivating.  His movements are deft and precise, and serve to
+heighten and underline each word he utters.  
+~
+aelin~
+water scholar~
+ABDL 0 ET N 0
+35 18 25d57+1041 35d10+100 5d7+18 bash~
+punch~
+-12 -12 -12 -1
+FN AB
+26 0 0 0 0 -20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 200 -1
+AHMVW ABCDEFGHIJKP AF medium flesh
+>data_prog act2~
+2
+say Next I shall play a tune of my own creation, and its story I must tell...
+mpvalueset 0 2
+2
+say One evening, with Lunus amongst the stars and casting its pale light fully upon the land, I walk foolishly through a darkened wood.
+mpvalueset 0 2
+2
+say Suddenly, I see lights moving through the trees ahead, and curiosity takes the best of me.
+mpvalueset 0 2
+2
+say With as much stealth as I could muster, I approached and came upon a small clearing.
+mpvalueset 0 2
+2
+say I witnessed that which few can claim to have seen... a powerful ritual of the great druids!
+mpvalueset 0 2
+2
+say Soon my perch was discovered, and I was bound never to speak of what I saw... but the experience moved me so that I turn to my flute to express what I saw that night.
+mpvalueset 0 2
+say Without further ado, \#Druid in the Moonlight\#.
+emote closes his eyes, and raises his flute to his lips.
+3
+emote begins to play a dark, haunting melody.
+mpvalueset 0 2
+mpvalueset 1 60
+mpecho The final note of the song drifts away, and Eolidil opens his eyes, and takes a deep breath.
+3
+emote lowers the flute from his lips, and bows deeply.
+mpvalueset 0 3
+mpvalueset 1 60
+~
+>rand_prog 100~
+if value(0) == 0
+  speak common
+  mpsetdata intro
+  mpvalueset 0 1
+  break
+endif
+if value(0) == 1
+  mpvalueset 2 0
+  mpvalueset 2 $d
+  if mobvalue(2) > 0
+    mpnextdata
+    loop 1 to $2
+      $d
+      mpnextdata
+    endloop
+  else
+    $d
+    mpnextdata
+  endif
+  break
+endif
+if value(0) == 2
+  if value(1) > 0
+    mpmath tempval1 $1 / 10
+    mpmath tempval2 ($1 + 9) / 10
+    if value(tempval1) == %tempval2
+      emote continues to softly play his flute.
+    endif
+  endif
+  mpvaluedown 1
+  if value(1) <= 0
+    mpvalueset 0 1
+  endif
+  break
+endif
+if value(0) == 3
+  if value(3) == 1
+    say Thank you all for coming to the Oak and Ivy, it is time I took my leave.  Well wishes to you all.
+    bow
+    mppurge self
+    break
+  endif
+  mpvaluedown 1
+  if value(1) == 0
+    mpvaluerand actnum 1 2
+    mpsetdata act%actnum
+    mpvalueset 0 1
+  endif
+endif
+~
+>data_prog intro~
+emote bows before his collected audience.
+say Greetings, fine patrons of the Oak and Ivy.
+3
+say For those with whom I may be unfamiliar, my name is Eolidil, by way of Ilodaiya.
+mpvalueset 0 3
+mpvalueset 1 1
+~
+>data_prog act1~
+say This next song I shall perform is entitled \#Upon Feathered Wings\#...
+emote closes his eyes, and raises his flute to his lips.
+3
+emote begins to play a soft, uplifting melody.
+mpvalueset 0 2
+mpvalueset 1 60
+mpecho The final note of the song drifts away, and Eolidil opens his eyes.
+3
+emote lowers the flute from his lips, and bows deeply.
+mpvalueset 0 3
+mpvalueset 1 60
+~
+>data_prog songend~
+emote open his eyes, and lowers the flute from his lips.
+3
+emote bows deeply.
+mpvalueset 0 3
+mpvalueset 1 75
+~
+>time_prog 5~
+mpvalueset 3 1
+~
+|
+V4 16410
+laenira cho\@raiel ch\@taren bard~
+Laenira~
+Laenira Velashavel stands on the small stage, smiling serenely as she performs for the crowd.
+~
+Laenira is a slightly built and sweet looking ch\@taren woman; smiling
+whenever she is not singing.  Her hair is a gleaming gold, and falls down
+her back encased in a fine mesh of thin silver threads.  Her eyes are a
+wide, unfathomable dark grey, shining with inner light and peace.  She wears
+many layers of thin silks slightly less transparent than her skin, giving
+her an almost ghostly appearance.  
+~
+ch\@taren~
+water scholar~
+ABDL 0 U G 0
+40 20 28d70+1116 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -2
+FH AB
+26 0 0 0 10 0 0 0 0 0 0 0 0 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 200 -1
+AHKMV ABCDEFGHIJK AE medium flesh
+>rand_prog 100~
+if value(0) == 0
+  speak common
+  mpsetdata intro
+  mpvalueset 0 1
+  break
+endif
+if value(0) == 1
+  mpvalueset 2 0
+  mpvalueset 2 $d
+  if mobvalue(2) > 0
+    mpnextdata
+    loop 1 to $2
+      $d
+      mpnextdata
+    endloop
+  else
+    $d
+    mpnextdata
+  endif
+  break
+endif
+if value(0) == 2
+  if value(1) > 0
+    mpmath tempval1 $1 / 10
+    mpmath tempval2 ($1 + 9) / 10
+    if value(tempval1) == %tempval2
+      emote continues to softly strum her fingers across her harp.
+    endif
+  endif
+  mpvaluedown 1
+  if value(1) <= 0
+    mpvalueset 0 1
+  endif
+  break
+endif
+if value(0) == 3
+  if value(3) == 1
+    say The hour grows early, and I must depart to greet the day.  I hope you have all enjoyed the evening.
+    esay \@says brightly\@ I know I have!
+    emote smiles towards the audience, and curtsies deeply, before gracefully leaving the stage.
+    mppurge self
+    break
+  endif
+  mpvaluedown 1
+  if value(1) == 0
+    mpvaluerand actnum 1 1
+    mpsetdata act%actnum
+    mpvalueset 0 1
+  endif
+endif
+
+~
+>data_prog intro~
+emote smiles brightly, her outfit shimmering in the torchlight.
+say Greetings, all!
+4
+say I am known as Laenira Velashavel, and I shall entertain you this evening.
+emote carefully sets her harp down beside herself, upon a small stool.
+mpvalueset 0 3
+mpvalueset 1 1
+~
+>data_prog act1~
+2 
+say This next song is entitled the \#Wishcrag Song\#,
+mpvalueset 0 2
+say A sad song, yet very beautiful,
+say though I hope that few of you have ever had to shed tears for the Sea King.
+2
+emote smiles softly, sitting down beside her harp.
+mpvalueset 0 2
+2
+emote begins to softly play her harp, preparing to sing.
+mpvalueset 0 2
+esay sings There\@s a silver sail on a golden bay
+esay sings Where the sun lays down to rest.
+esay sings There my love, eyes bright as the twin full moons
+esay sings Sojourns in the distant west.
+esay sings Not a day has passed since he sailed away
+esay sings That I haven\@t shed a tear-
+esay sings Not for sorrow\@s sake, neither for heartache,
+esay sings But an offering for my dear.
+esay sings They are salty prayers to the Ocean Lord,
+esay sings Might Uthlin, King of Seas,
+esay sings That he calm the waves of the golden bay
+esay sings That he rein the gusting breeze,
+esay sings That the silver sails bring my dearest home,
+esay sings Back to green Alensha\@s shore,
+esay sings And then hand in hand, shall my love and I
+esay sings Thank the Sea-King evermore.
+2
+emote plays a final chord on her harp, echoing her last words.
+mpvalueset 0 2
+4
+emote stands up and smiles, bowing quickly.
+say Hope you liked it!
+mpvalueset 0 3
+mpvalueset 1 60
+~
+>time_prog 5~
+mpvalueset 3 1
+~
+|
+V4 16411
+ar\@hon arhon bard dusky man~
+Ar\@hon~
+Ar\@hon, a dusky bard from far-off lands, sits on the small stage.
+~
+Ar\@hon is somewhat unsettling looking, his bright green eyes almost
+glowing in contrast to his dusky dark skin.  His hair is a short and spiky
+black; tousled to give him a bit of a rakish, mischievious look.  His hands
+are worn and knuckles scarred, much unlike the usual care one would expect a
+bard to pay to one of their most valuable possesions, and it adds a slightly
+dangerous air to his presence.  
+~
+human~
+water scholar~
+ABDL 0 0 N 0
+35 18 25d57+1041 35d10+100 5d7+24 bash~
+punch~
+-12 -12 -12 -1
+FJN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 200 -1
+AHMV ABCDEFGHIJK A medium flesh
+>time_prog 5~
+mppurge self
+~
+|
+V4 16412
+jyar guard alatharya muscular tall~
+Jyar~
+A tall, muscular alatharya watches the door to the Oak and Ivy Inn.
+~
+Jyar is tall and manages to convey a quiet air of dignity that one
+wouldn\@t expect from hired muscle.  His hair is a faintly bluish silver, and
+is bound at the back of his head in a single small braid.  He watches over
+the inn with genuine care, taking note of all who pass through the doors.  
+~
+alatharya~
+water scholar~
+ABL 0 DZ N 0
+52 25 40d100+1300 50d10+100 6d8+29 bash~
+punch~
+-21 -21 -21 -5
+CS AB
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 16413
+gedwesin merchant travelling~
+Gedwesin the merchant~
+Gedwesin, a travelling merchant bearing fine quality goods, is here, smiling to all potential customers.
+~
+Gedwesin is quite a dapper looking man, short but capable-looking.  He
+has a small black mustache covering his upper lip, and a neatly clipped
+beard frames his slightly chubby face.  Each smile flashes pristine white
+teeth to his customers, and his brown eyes convey sincerity to each person
+he deals with.  
+~
+human~
+water scholar~
+ABL 0 D N 0
+50 25 34d100+1173 50d10+100 6d8+25 bash~
+punch~
+-21 -21 -21 -5
+FU AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 250 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+mpvalueup 0
+if value(0) == 1
+  emote climbs down from the seat of the cart, and stretches widely.
+  esay \@says, seemingly to himself,\@ Ah, here at last.  Travel on those mountain roads wears a man down.
+  break
+endif
+if value(0) == 2
+  emote takes a deep breath.
+  yell Come, valued patrons of the Oak and Ivy!  $I is here, with wares both common and exotic, values sure to entice even the most frugal of buyers.
+  break
+endif
+if value(0) == 359
+  say Well, the day is young, and it is time I was on my way... farewell!
+  break
+endif
+if value(0) == 360
+  emote climbs into his ornate cart, flicks the reins once, and lurches into motion, leaving to the west.
+  mppurge gedwesinguard
+  mppurge merchantcart
+  mppurge self
+  break
+endif
+~
+|
+V4 16414
+guard burly gedwesinguard~
+the burly merchant guard~
+A burly guard watches over Gedwesin.
+~
+The guard is heavily muscled, and bears the signs of more than one
+battle.  He is dressed up in finery, matching his master Gedwesin\@s outfit,
+but it is unable to disguise the dangerous aura he eminates.  His hair is
+cut neat and short, so short in fact that you are able to notice the top of
+the guard\@s ear has been sliced off at some point in his career.  
+~
+human~
+water scholar~
+ABL 0 DF N 0
+50 25 36d100+1300 50d10+100 6d8+30 bash~
+punch~
+-21 -21 -21 -5
+CEIKU AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 16413 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 16415
+scholar aelin water man salyra ivytourist1~
+an aelin water scholar~
+An aelin man in the robes of the Tower of Salyra wanders the Inn.
+~
+The man has shiny black hair, pulled neatly back into a pony tail.  His
+features are sharp and angular, almost unpleasantly so, but his eyes are
+large and show an amount of compassion that softens his face.  Long, bony
+fingers barely reach past the dark blue sleeves of the robe that covers his
+entire form.  
+~
+aelin~
+water scholar~
+AG 0 ET G 0
+25 13 19d35+818 25d10+100 4d6+13 bash~
+punch~
+-5 -5 -5 2
+0 0
+26 0 0 0 0 -20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGHIJKP AF medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16416
+ranger ivytourist2~
+a ranger~
+A ranger lounges about on a wooden chair, lazily looking about the inn.
+~
+Tousled brown hair nearly obscures a pair of thoughtful hazel eyes.  The
+ranger is muscled and capable looking, though for the moment he seems
+completely relaxed.  He has obviously made an effort to wash up, but his
+fingernails are still black with dirt, and his clothes betray a long life
+outdoors.  
+~
+human~
+water scholar~
+AB 0 0 N 0
+20 10 15d26+572 20d10+100 3d7+10 bash~
+punch~
+-3 -3 -3 3
+FN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16417
+man nobleman aristocrat aristocratic ivytourist3~
+a nobleman~
+An aristocratic looking man sits here, relaxing in the common room.
+~
+Short blond hair surrounds a pale, handsome face.  The man\@s mouth seems
+perpetually curved into a slightly smug half-smile, partially hidden by a
+neatly trimmed mustache and goatee.  The man moves with refined grace,
+delicately sipping from his drink as he relaxes in the comfortable chair.  
+~
+human~
+water scholar~
+ABG 0 0 N 0
+15 8 12d18+371 15d10+100 3d5+8 bash~
+punch~
+0 0 0 4
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 140 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16418
+templar ch\@taren air ivytourist4~
+the air templar~
+A ch\@taren templar hurries through the room.
+~
+Long golden hair flows unbounded down the templars back, shimmering
+softly in the lights of the inn.  Her face is clear, with a lush and full
+mouth that is quick to smile or laugh.  Her form is thinly muscled, honed
+from the arts of war, and her eyes sparkle with intelligence, honed from the
+arts of magic.  
+~
+ch\@taren~
+water scholar~
+AG 0 U N 0
+35 18 25d57+1041 35d10+100 5d7+18 bash~
+punch~
+-12 -12 -12 -1
+FH 0
+26 0 0 0 10 0 0 0 0 0 0 0 0 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHKMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16419
+girl pale blonde ivytourist5~
+the girl~
+A pale, blonde girl sits quietly on the grass, lightly stroking the petals of a rose.
+~
+The girl is quite frail and fragile looking, her cheeks slightly hollowed
+and slight shadows darkening the skin under her eyes.  Her gauntness seems
+not to be one of hunger, but one of sickness, and there is a quiet sadness
+to the air about her as she quietly admires the flowers in the garden.  
+~
+human~
+water scholar~
+ADGL 0 0 G 0
+10 5 8d11+212 10d10+100 2d5+5 bash~
+punch~
+3 3 3 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16420
+artist ivytourist6~
+the artist~
+An artist stands here, drawing in a small book.
+~
+Garbed in loose clothes that are lightly spattered with inks of various
+colours, the artist draws with a deep intensity, though hardly looking at
+the pages he coats in lines and smudges.  Looking from tree to flower to
+plant, his movements are quick and flowing as he commits the drawings to his
+book, and turns to start another page anew.  
+~
+ch\@taren~
+water scholar~
+AG 0 U N 0
+10 5 8d11+212 10d10+100 2d5+5 bash~
+punch~
+3 3 3 6
+0 0
+26 0 0 0 10 0 0 0 0 0 0 0 0 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHKMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16421
+woman assassin ivytourist7~
+the assassin~
+A woman sits in the corner, her cloak pulled up to hide her face.
+~
+Eyes so dark a blue they seem almost violet regard the room, barely
+visible in a face hidden by a large, enveloping cloak.  The rest of her form
+is similarly hidden, and she sits quietly and still, though quite alert.  
+~
+human~
+water scholar~
+ABG 0 0 E 0
+40 20 28d70+1116 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -3
+FHKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16422
+kankoran man well-groomed well groomed ivytourist8~
+a kankoran man~
+A well-groomed kankoran sits at one of the tables, drinking deeply from his cup.
+~
+The kankoran is covered in a light, mottled grey fur, which seems quite
+well-groomed.  He is obviously quite strong, his shoulders broad and arms
+only slightly thinner than his legs.  His eyes are small and black, watching
+the room about him alertly.  Two stripes of paint dye the fur from the
+corner of his left eye, and reach down to just below his jaw, their colours
+a dark red and a sapphire blue.  
+~
+kankoran~
+water scholar~
+ABGT 0 Z N 0
+25 13 19d35+818 25d10+100 4d6+13 slash~
+claw~
+-6 -6 -6 1
+FNV 0
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJKUV A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16423
+woman kankoran ivytourist8~
+a kankoran woman~
+Leaning back in her chair, a kankoran woman lazily surveys the Inn.
+~
+Fit and lightly muscled, the kankoran woman is covered in dark grey fur
+that looks to be quite soft to the touch.  The woman looks at ease, lazily
+and almost arrogantly sprawling in her chair, her dark brown eyes surverying
+the room and her companions equally.  
+~
+kankoran~
+water scholar~
+ABGT 0 Z N 0
+25 13 19d35+818 25d10+100 4d6+13 slash~
+claw~
+-6 -6 -6 1
+CFV 0
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJKUV AD medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16424
+kankoran large burly well-muscled muscled ivytourist8~
+a burly kankoran~
+A large, burly and well-muscled kankoran sits on the edge of his chair, engrossed in conversation with his companions.
+~
+The kankoran\@s fur is a muddy grey, knotted and dirty.  His ears are
+larger than on most kankoran, and the left one is missing a large chunk,
+causing it to fall slightly lopsided along his head.  His clothes are
+roughly stitched together from undyed hides and furs, and he speaks in a
+rough, kankoran accent with his packmates.  
+~
+kankoran~
+water scholar~
+ABGT 0 Z N 0
+30 15 22d45+941 30d10+100 4d8+15 slash~
+claw~
+-9 -9 -9 0
+FHIV 0
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJKUV AD medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16425
+mother woman ethron dark-haired dark ivytourist9~
+the mother~
+A dark-haired ethron woman sits at one of the tables with her son.
+~
+Long, dark brown hair curls down the ethron woman\@s back, and around her
+pleasant smiling face.  Her eyes are a golden hazel that contrast warmly
+against her deep green skin.  Small lines bracket her mouth and eyes,
+indicating a life of laughter and a ready smile.  Her figure is full and
+beginning to attain the slightly stout shape of the matronly, but a sparkle
+of youth still illuminates her eyes and gives energy to her actions 
+~
+ethron~
+water scholar~
+ABG 0 0 G 0
+10 5 8d11+212 10d10+100 2d5+5 bash~
+punch~
+3 3 3 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMVW ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16426
+boy ethron cute little ivytourist9~
+the little boy~
+A cute little ethron boy dangles his legs from his chair, looking around at the Inn\@s patrons with unabashed interest.
+~
+Curly reddish brown hair falls in a mop over the boys face and ears.  His
+eyes, barely visible, are a warm hazel, and are set somewhat far apart on
+his face, giving him a wide-eyed and inquisitive look.  He still retains
+traces of baby fat, looking to be perhaps four or five years of age, and his
+smile betrays the existence of a deep dimple on each cheek.  
+~
+ethron~
+water scholar~
+ADGL 0 0 G 0
+5 3 4d5+89 5d10+100 2d2+3 bash~
+punch~
+6 6 6 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 5 -1
+AHMVW ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16427
+scholar caladaran man earth ivytourist10~
+a caladaran earth scholar~
+A caladaran man sits quietly in the corner.
+~
+The man has greyish, rough looking skin, coarse even for a caladaran. 
+His eyes are heavy lidded, and seem perpetually nearly closed, giving him a
+lethargic and sleepy appearance.  Similarly, he moves slowly, seeming much
+older than he appears at first glance.  
+~
+caladaran~
+water scholar~
+ADL 0 0 N 0
+20 10 15d26+572 20d10+100 3d7+10 bash~
+punch~
+-3 -3 -3 3
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGHIJK AI medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16428
+man peasant nefortu ivytourist11~
+a nefortu peasant~
+A nefortu man rests on one of the wooden chairs, slowly savouring a mug of Eril\@s Finest.
+~
+The man is a little rough and scraggly looking, a bit thin and hairline
+receeding.  His wings, though mostly hidden by his clothing and position,
+seem rough and coarse, more like a thick treated leather than the thin
+membrane of most nefortu folk.  Grime still cakes the creases of his
+fingers, and smudges his face, and he certainly does not seem to possess the
+amount of coin it would normally take to stay at this inn.  Nevertheless, he
+sits quietly and sips his drink, savouring his ale as though it were the
+finest wine.  
+~
+nefortu~
+water scholar~
+AG 0 ETZ N 0
+5 3 4d5+89 5d10+100 2d2+3 bash~
+punch~
+6 6 6 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 80 -1
+AHMVW ABCDEFGHIJKP A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16429
+noblewoman woman brown ivytourist12~
+a noblewoman~
+A woman with long, gleaming dark brown hair sits at one of the tables, watching the stage.
+~
+This woman is obviously of noble birth, arrogance and station surrounding
+her form like a cloak.  She sits regally, her face turned towards the stage,
+her long brown hair falling in a silky smooth wave down her back, nearly
+reaching to the seat of her chair.  Her eyes are a light greyish blue, the
+colour of chalcedony, and are framed by thick dark eyelashes.  
+~
+human~
+water scholar~
+AG 0 0 N 0
+15 8 12d18+371 15d10+100 3d5+8 bash~
+punch~
+0 0 0 4
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16430
+Feralak man old ivytourist13~
+Feralak~
+An old man sits on a chair pulled up next to the fire.
+~
+Feralek seems bleached by the winds of time, his skin falling in pale
+wrinkles, most of which is hidden by his shaggy festucine hair and beard. 
+His eyes are a pale turquoise, barely visible under bushy white eyebrows. 
+He moves with the slow, awkward dignity of the aged, limbs and muscles now
+protesting the abuse of the past.  His voice, when he speaks, belies his
+age, a smooth and low tenor that soothes the ear.  A faint smell seems to
+permeate his clothing, something like the smell of the air after a
+rainstorm, fresh but slightly of the sea.  
+~
+human~
+water scholar~
+ADGL 0 0 G 0
+35 18 25d57+1041 35d10+100 5d7+18 bash~
+punch~
+-12 -12 -12 -1
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16431
+man young handsome ivytourist14~
+the young man~
+A handsome young man sits at a cherrywood table, smiling happily.
+~
+This \@man\@ seems he has barely reached the term, his bright eyes and
+smooth skin betraying his youth.  His eyebrows are a dark brown, contrasting
+with his short, light blond hair, and they match his thick black eyelashes. 
+His eyes are a clear midnight blue, wide and expressive.  He seems somewhat
+tall for a human, and though he is not extremely muscular looking, he seems
+fit and quite hale.  
+~
+human~
+water scholar~
+ABG 0 0 G 0
+10 5 8d11+212 10d10+100 2d5+5 bash~
+punch~
+3 3 3 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16432
+lady girl young pretty ivytourist14~
+the girl~
+A pretty young lady sits at a cherrywood table, cheeks flushed a rosy red.
+~
+Brown hair nearly so pale as to be blonde falls around the girls face in
+ribbons of curls, defying the attempt she has apparently made to tie her
+hair in a ponytail at the back of her head.  Her face is heart shaped, and
+her mouth though bare of paint, is a dark rose pink.  Her movements are
+contained and self-conscious, eyes hidden by long lashes as she looks down
+at the table.  
+~
+human~
+water scholar~
+ADGL 0 0 G 0
+10 5 8d11+212 10d10+100 2d5+5 bash~
+punch~
+3 3 3 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16433
+Galyn Illirast aelin man handsome ivytourist15~
+Galyn Illirast~
+A handsome aelin man sits at a round table.
+~
+Galyn Illirast sits at ease, his blond hair held back from his face in a
+loose ponytail, framing a handsome, if arrogant, face.  His high cheekbones
+and chiseled jaw seem more suited to a diplomat than the warrior that he
+seems to be, sword hanging easily from his hip.  In contrast to his
+marble-cold good looks, his smile is slow and warm, and he draws the gaze of
+more than one female customer 
+~
+aelin~
+water scholar~
+ABG 0 ET N 0
+35 18 25d57+1041 35d10+100 5d7+18 bash~
+punch~
+-12 -12 -12 -1
+FIKN 0
+26 0 0 0 0 -20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGHIJKP 0 medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16434
+Eviyena Illirast aelin woman arrogant ivytourist15~
+Eviyena Avoryl~
+An arrogant looking aelin woman laughs from her chair.
+~
+Eviyena Avoryl rests here, relaxed, arrogant, and beautiful.  Her dark
+grey eyes with a faint hint of green in them gaze out at the world with
+amused interest, and her full mouth is often quirked in a sardonic grin. 
+Her skin is rather pale and smooth, a light marble against her red hair. 
+Intricately done, her auburn locks fall in a multitude of braids, trailing
+down her back.  
+~
+aelin~
+water scholar~
+ABG 0 ET G 0
+35 18 25d57+1041 35d10+100 5d7+18 bash~
+punch~
+-12 -12 -12 -1
+FKN 0
+26 0 0 0 0 -20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMVW ABCDEFGHIJKP 0 medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16435
+Jaeristil ch\@taren scholar green ivytourist16~
+Jaeristil~
+A ch\@taren scholar sits here, perusing the small selection of books.
+~
+Jaeristil has long white-blond hair, with a single, thin braid trailing
+down on the left side of his head.  His eyes are a placid honey brown that
+seem only a few shades darker than his translucent gold skin.  His form is
+thin, almost gangly, and clearly attests to a life spent in libraries and
+apothocaries, rather than in battle.  He is quietly examining the books in
+the library, reading with an ardent intensity, quickly flipping from page to
+page.  
+~
+ch\@taren~
+water scholar~
+AG 0 U G 0
+20 10 15d26+572 20d10+100 3d7+10 bash~
+punch~
+-3 -3 -3 3
+F 0
+26 0 0 0 10 0 0 0 0 0 0 0 0 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHKMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16436
+Alyristil man ethron brown-haired brown ivytourist17~
+Alyristil~
+A brown-haired ethron man sits at the bar.
+~
+Large dark brown eyes solemnly examine the world around Alyristil, barely
+visible under the hair of almost the exact same hue.  His face is strong and
+slightly angular, his skin the pale green common to ethron.  He seems rather
+quiet and thoughtful, though the stubborn set of his jaw belies a strong
+inner will.  Alyristil wears a variety of armor, all of it well cared for,
+and it accentuates his muscular form.  His flail is ready at his side, but
+he doesn\@t seem as prone to using it as one may assume from his powerful
+form.  Instead, Alyristil is content to watch, speaking rarely, and only
+after consideration.  
+~
+ethron~
+water scholar~
+ABGT 0 0 G 0
+25 13 19d35+818 25d10+100 4d6+13 bash~
+punch~
+-6 -6 -6 1
+FIK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16437
+Rhakotil kankoran brown brown-furred ivytourist18~
+Rhakotil~
+A brown-furred kankoran prowls through the Common Room.
+~
+Still bearing evidence of a long journey on the roads, it is difficult to
+see the colour of Rhakotil\@s fur beneath all the dust and dirt he has
+accumulated.  His eyes are a surprisingly vivid green, surrounded by tufts
+of brownish black fur, and beneath them his muzzle is slightly open, showing
+glints of sharp yellow teeth.  He looks quite bulky and strong, and
+extremely out of place among the crowd of patrons in the inn.  
+~
+kankoran~
+water scholar~
+AG 0 Z N 0
+30 15 22d45+941 30d10+100 4d8+15 bash~
+punch~
+-9 -9 -9 0
+FV 0
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJKUV D medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16438
+Nayalin nefortu man ivytourist19~
+Nayalin~
+His arms nearly overburdered with food, a short, stubby-winged nefortu flies through here.
+~
+Small black eyes glint from a rather unremarkable face, only
+distinguished by a fine, thin scar running from his left ear down to his
+jaw.  His skin in a dark chocolate in colour, only slightly lighter than his
+eyes.  He is quite thin, though muscled, but his wings seem a bit shorter
+than they ought to be when considering the length of his arms.  As a
+consequence, it seems, he flies with a slightly jumpy gait, and currently
+can hardly do even that, with his arms burdened with more than one plate of
+food.  
+~
+nefortu~
+water scholar~
+AG 0 ETZ N 0
+25 13 19d35+818 25d10+100 4d6+13 bash~
+punch~
+-6 -6 -6 1
+FN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 150 -1
+AHMVW ABCDEFGHIJKP A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16439
+Svissnya srryn woman black black-scaled slim ivytourist20~
+Svissnya~
+A slim, black-scaled srryn lounges in her chair, disdainfully ignoring the crowd.
+~
+Lithe and strong, Svissyna stands here, relaxed and yet giving the
+impression of readiness for battle.  Sleek black scales cover her body,
+adding to her impression of whipcord strength and hardiness.  Her black eyes
+resemble those of a predator, cold and attentive to the movements around
+her, watching for an advantage.  
+~
+srryn~
+water scholar~
+AG 0 0 E 0
+25 13 19d35+818 25d10+100 4d6+13 bash~
+punch~
+-6 -6 -6 1
+MV 0
+26 0 0 0 0 0 0 0 20 -20 0 0 20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMVX ABCDEFGHIJKLQUVX AC medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16440
+Aeraen Val\@kirim aelin woman beautiful ivytourist21~
+Aeraen Val\@kirim~
+A beautiful aelin woman with shining black hair strolls through the inn.
+~
+Exotic deep green eyes that sparkle with good humour and intelligence
+gaze out at the world through long black bangs which hang down and partially
+obscure her face.  Her face, round and pixie-like, is quite pale, a striking
+contrast to her long raven black hair.  She is very delicately built, and
+relatively short, and she moves with quick and deft grace on her sleekly
+feathered wings.  
+~
+aelin~
+water scholar~
+AG 0 ET G 0
+40 20 28d70+1116 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -3
+FIK 0
+26 0 0 0 0 -20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMVW ABCDEFGHIJKP A medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16441
+Isijora caladaran woman druid ivytourist22~
+Isijora~
+A caladaran woman sits by the pond, examining the various plants that flourish around it.
+~
+The first thing that stands out about Isijora is her long mahogany hair,
+woven with ivy and leaves from the forest.  The green of the leaves causes
+her hair to look more red in hue, and brings out the similar paler green in
+her almond shaped eyes.  Her skin is a dark oaken hue, weathered and tanned
+by growing up outdoors, but fairly smooth to the touch.  
+
+Long-limbed and willowy, Isijora is fairly tall, even for one of her race. 
+Her movements are slight and silent, carrying with her an aura of placidity.
+Her hands, though delicate and deft, betray an inner energy and emotion.  As
+she speaks or falls into thought, they are constantly moving, fidgeting and
+gesturing to illustrate her ideas.  
+~
+caladaran~
+water scholar~
+ADGL 0 0 N 0
+15 8 12d18+371 15d10+100 3d5+8 bash~
+punch~
+0 0 0 4
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 80 -1
+AHMVW ABCDEFGHIJK AI medium flesh
+>rand_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  if value(0) == 0
+    emote departs.
+    mppurge self
+    break
+  endif
+endif
+~
+|
+V4 16442
+woman caladaran~
+the caladaran woman~
+A caladaran woman sits quietly on a chair pulled up next to the fire.
+~
+The woman looks to be in her middle years, perhaps about 140 in age.  Her
+hair is a dark brown, streaked with ribbons of grey, and it\@s pulled back
+into a single, thick braid.  Two glittering green eyes regard the room with
+a calm intelligence, but primarily she gazes at the fire, seemingly lost in
+thought.  
+~
+caladaran~
+water scholar~
+AB 0 0 N 0
+15 8 12d18+371 15d10+100 3d5+8 bash~
+punch~
+0 0 0 4
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 80 -1
+AHMW ABCDEFGIJK A medium flesh
+V4 16443
+man dusky skinned patron~
+the man~
+A dusky skinned man sits at a cherrywood table, eating his meal.
+~
+Long, straight hair falls into the man\@s face and down his back, ending
+just below his shoulders.  His eyes, though fixed on his plate for the
+moment, seem to be a dark brown, thinly lashed and flat.  He is dressed in
+dark red leathers, not loose enough to completely hide the muscles that
+could only have come from years of work.  
+~
+human~
+water scholar~
+AB 0 0 N 0
+10 5 8d11+212 10d10+100 2d5+5 bash~
+punch~
+3 3 3 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 90 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 16444
+woman brown~
+the woman~
+A woman with long brown hair sits at the bar, laughing.
+~
+The woman seems to be in good spirits, though the flush on her cheeks
+indicates it may be due to the spirits she has herself consumed.  Her hair
+is long and wavy, a dark sienna that she seems prone to tossing over her
+shoulder.  There is a large pinkish birthmark on her left arm, partially
+covered by her blue shirt.  
+~
+human~
+water scholar~
+AB 0 0 G 0
+5 3 4d5+89 5d10+100 2d2+3 bash~
+punch~
+6 6 6 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 110 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 16445
+man~
+the man~
+A man sits at a table, his legs casually crossed as he drinks.
+~
+The man has shiny black hair cut short, ending just beneath his ears.  He
+wears several silver earrings in his left ear, the faceted studs winking in
+the light.  As he opens his mouth to take another drink, a glint of metal
+reveals two silver teeth.  
+~
+human~
+water scholar~
+AB 0 0 N 0
+12 6 9d14+271 12d10+100 2d6+6 bash~
+punch~
+1 1 1 5
+J 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 110 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 16446
+woman old lady~
+the old woman~
+Sitting quietly, an old woman finishes her meal.
+~
+The woman looks to be getting on in years, her hair a steel grey and tied
+tightly back from her face.  Fine wrinkles bracket her mouth and eyes, and
+her hands tremble slightly as sure uses her utensils.  Her cheek and wrist
+bones and sharply defined, barely any fat between them and her leathery
+skin.  
+~
+human~
+water scholar~
+ADL 0 0 N 0
+3 2 3d3+50 3d10+100 1d1+0 bash~
+punch~
+7 7 7 8
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 85 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 16447
+man~
+the man~
+A man rests on a cushioned chair, an exhausted look on his face.
+~
+The man is well-dressed but dusty, looking weary after a days travel.  He
+rests on a comfortable looking chair, with little regard to the events
+around him.  His fatigue is apparent from a glance, and his movements are
+the sluggish sort of one awake for days.  
+~
+human~
+water scholar~
+ADL 0 0 G 0
+8 4 6d9+158 8d10+100 2d4+4 bash~
+punch~
+4 4 4 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 16490
+Ninone girl ethron~
+Ninone~
+An ethron girl is here, standing near the door.
+~
+Ninone is small and quite slender for an ethron, but she looks quite
+strong regardless, her arms corded with slim muscles.  Her hair is held back
+into a loose ponytail, though wisps of it have escaped and fall into her
+face.  Her eyes reveal a placid and competant nature, their brown depths
+lacking in intelligence but kindly all the same.  
+~
+ethron~
+water scholar~
+ADL 0 0 G 0
+20 10 15d26+572 20d10+100 3d7+10 bash~
+punch~
+-3 -3 -3 3
+0 B
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMW ABCDEFGIJK AJ medium flesh
+V4 16491
+boy short~
+a boy~
+A short, mop-haired boy runs past, fetching water for the baths.
+~
+The boy has straight, brown hair that seems to flop as it pleases about
+his chubby face.  He seems to be about eleven years of age, full of energy
+and vigor, muscles wiry and strong from his work in the inn.  
+~
+human~
+water scholar~
+ADL 0 0 N 0
+10 5 8d11+212 10d10+100 2d5+5 bash~
+punch~
+3 3 3 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 15 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 16499
+ivyinnloader ivy elemental~
+the ivy elemental~
+An ivy elemental brings tourists to the inn.
+~
+~
+spirit~
+water scholar~
+ABDVX 0 DFLTZ N 0
+60 30 38d138+1080 60d10+100 7d9+30 none~
+~
+-27 -27 -27 -9
+0 DKLRb
+26 0 0 0 0 0 0 0 0 50 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ADHLMV ABCDEFGHIJK K medium flesh
+>load_prog 100~
+loadtourist
+loadtourist
+~
+>rand_prog 100~
+mpvalueup 0
+if value(0) == 45
+  if rand(25)
+    loadtourist
+  endif
+  mpvalueset 0 0
+endif
+~
+>data_prog torooms~
+6
+16402
+16404
+16407
+16408
+16411
+16412
+~
+>verb_prog p loadtourist~
+if ispc($n)
+  mpnextinterp
+  break
+endif
+if valname($n) == $i
+  mpvaluerand tnum 1 22
+  mpfocus ivytourist%tnum
+  if isfocused($i)
+    break
+  endif
+  mpsetdata torooms
+  mpvaluerand trans 1 $d
+  loop 1 to %trans
+    mpnextdata
+  endloop
+  if value(tnum) == 1
+    mpmload 16415
+    mpfocus 1.
+    say Loading $F to room $d.
+    if isoverlimit(16483)
+    else
+      mpoload 16483 on $f 3
+    endif
+    mpset char $f mobvalue 0 720
+    mptrans $f $d
+  endif
+  if value(tnum) == 2
+    mpmload 16416
+    mpfocus 1.
+    say Loading $F to room $d.
+    if isoverlimit(16484)
+    else
+      mpoload 16484 on $f 10
+    endif
+    mpset char $f mobvalue 0 720
+    mptrans $f $d
+  endif
+  if value(tnum) == 3
+      mpmload 16417
+      mpfocus 1.
+      say Loading $F to room $d.
+      if isoverlimit(16485)
+      else
+        mpoload 16485 on $f 1
+      endif
+      mpset char $f mobvalue 0 720
+      mptrans $f $d
+  endif
+  if value(tnum) == 4
+      mpmload 16418
+      mpfocus 1.
+      say Loading $F to room $d.
+      if isoverlimit(16486)
+      else
+        mpoload 16486 on $f 9
+      endif
+      if isoverlimit(16487)
+      else
+        mpoload 16487 on $f 6
+      endif
+      mpset char $f mobvalue 0 720
+      mptrans $f $d
+  endif
+  if value(tnum) == 5
+      mpvaluerand trans 16416 16417
+      mpmload 16419
+      mpfocus 1.
+      say Loading $F to room %trans.
+      if isoverlimit(16488)
+      else
+        mpoload 16488 on $f 7
+      endif
+      mpset char $f mobvalue 0 720
+      mptrans $f %trans
+  endif
+  if value(tnum) == 6
+      mpvaluerand trans 16416 16419
+      mpmload 16420
+      mpfocus 1.
+      say Loading $F to room %trans.
+      mpsetchar $f mobvalue 0 720
+      mptrans $f %trans
+  endif
+  if value(tnum) == 7
+      mpmload 16421
+      mpfocus 1.
+      say Loading $F to room 16405.
+      if isunderlimit(16489)
+        mpoload 16489 on $f 10
+      endif
+      if isunderlimit(16490)
+        mpoload 16490 on $f 9
+      endif
+      if isunderlimit(16491)
+        mpoload 16491 on $f 13
+      endif
+      mpset char $f mobvalue 0 720
+      mptrans $f 16405
+  endif
+  if value(tnum) == 8
+      mpmload 16422
+      mpfocus 1.
+      say Loading $F to room $d.
+      if isunderlimit(16492)
+        mpoload 16492 on $f 16
+      endif
+      mpset char $f mobvalue 0 720
+      mptrans $f $d
+      mpmload 16423
+      mpfocus 1.
+      say Loading $F to room $d.
+      if isunderlimit(16493)
+        mpoload 16493 on $f 17
+      endif
+      if isunderlimit(16494)
+        mpoload 16494 on $f 7
+      endif
+      mpset char $f mobvalue 0 720
+      mptrans $f $d
+      mpmload 16424
+      mpfocus 1.
+      say Loading $F to room $d.
+      if isunderlimit(16495)
+        mpoload 16495 on $f 12
+      endif
+      mpset char $f mobvalue 0 720
+      mptrans $f $d
+  endif
+  if value(tnum) == 9     
+      mpmload 16425
+      mpfocus 1.
+      say Loading $F to room $d.
+      mpset char $f mobvalue 0 720
+      mptrans $f $d
+      mpmload 16426
+      mpfocus 1.
+      say Loading $F to room $d.
+      mpset char $f mobvalue 0 720
+      mptrans $f $d
+  endif
+  if value(tnum) == 10
+      mpmload 16427
+      mpfocus 1.
+      say Loading $F to room 16405.
+      if isunderlimit(16496)
+        mpoload 16496 on $f 17
+      endif
+      mpset char $f mobvalue 0 720
+      mptrans $f 16405
+  endif
+  if value(tnum) == 11
+      mpmload 16428
+      mpfocus 1.
+      say Loading $F to room $d.
+      if isunderlimit(16497)
+        mpoload 16497 on $f 12
+      endif
+      mpset char $f mobvalue 0 720
+      mptrans $f $d
+  endif
+  if value(tnum) == 12
+      mpmload 16429
+      mpfocus 1.
+      say Loading $F to room 16413.
+      if isunderlimit(16498)
+        mpoload 16498 on $f 8
+      endif
+      mpset char $f mobvalue 0 720
+      mptrans $f 16413
+  endif
+  if value(tnum) == 13
+      mpmload 16430
+      mpfocus 1.
+      say Loading $F to room 16406.
+      mpset char $f mobvalue 0 720
+      mptrans $f 16406
+  endif
+  if value(tnum) == 14
+      mpmload 16431
+      mpfocus 1.
+      say Loading $F to room $d.
+      mpset char $f mobvalue 0 720
+      mptrans $f $d
+      mpmload 16432
+      mpfocus 1.
+      say Loading $F to room $d.
+      if isunderlimit(11467)
+        mpoload 11467 on $f 5
+      endif
+      mpset char $f mobvalue 0 720
+      mptrans $f $d
+  endif
+  if value(tnum) == 15
+    mpmload 16433
+    mpfocus 1.
+    say Loading $F to room $d.
+    if isunderlimit(16499)
+      mpoload 16499 on $f 14
+    endif
+    if isunderlimit(11451)
+      mpoload 11451 on $f 1
+    endif
+    mpset char $f mobvalue 0 720
+    mptrans $f $d
+    mpmload 16434
+    mpfocus 1.
+    say Loading $F to room $d.
+    if isunderlimit(11452)
+      mpoload 11452 on $f 7
+    endif
+    if isunderlimit(11453)
+      mpoload 11453 on $f 5
+    endif
+    if isunderlimit(11454)
+      mpoload 11454 on $f 16
+    endif
+    mpset char $f mobvalue 0 720
+    mptrans $f $d
+  endif
+  if value(tnum) == 16
+    mpmload 16435
+    mpfocus 1.
+    say Loading $F to room 16415.
+    if isunderlimit(11455)
+      mpoload 11455 on $f 16
+    endif
+    if isunderlimit(11459)
+      mpoload 11459 on $f
+    endif
+    mpset char $f mobvalue 0 720
+    mptrans $f 16415
+  endif
+  if value(tnum) == 17
+    if rand(50)
+      mpvalueset trans 16403
+    else
+      mpvalueset trans 16409
+    endif
+    mpmload 16436
+    mpfocus 1.
+    say Loading $F to room %trans.
+    if isunderlimit(11456)
+      mpoload 11456 on $f 16
+    endif
+    mpset char $f mobvalue 0 720
+    mptrans $f %trans
+  endif
+  if value(tnum) == 18
+    mpmload 16437
+    mpfocus 1.
+    say Loading $F to room $d.
+    if isunderlimit(11457)
+      mpoload 11457 on $f 9
+    endif
+    mpset char $f mobvalue 0 720
+    mptrans $f $d
+  endif
+  if value(tnum) == 19
+    mpmload 16438
+    mpfocus 1.
+    say Loading $F to room $d.
+    if isunderlimit(11458)
+      mpoload 11458 on $f 13
+    endif
+    mpset char $f mobvalue 0 720
+    mptrans $f $d
+  endif
+  if value(tnum) == 20
+    mpmload 16439
+    mpfocus 1.
+    say Loading $F to room $d.
+    if isunderlimit(11460)
+      mpoload 11460 on $f 16
+    endif
+    mpset char $f mobvalue 0 720
+    mptrans $f $d
+  endif
+  if value(tnum) == 21
+    mpmload 16440
+    mpfocus 1.
+    say Loading $F to room $d.
+    if isunderlimit(11461)
+      mpoload 11461 on $f
+    endif
+    if isunderlimit(11462)
+      mpoload 11462 on $f 3
+    endif
+    if isunderlimit(11463)
+      mpoload 11463 on $f 5
+    endif
+    mpset char $f mobvalue 0 720
+    mptrans $f $d
+  endif
+  if value(tnum) == 22
+    mpmload 16441
+    mpfocus 1.
+    say Loading $F to room 16418.
+    if isunderlimit(11462)
+      mpoload 11462 on $f 14
+    endif
+    mpset char $f mobvalue 0 720
+    mptrans $f 16418
+  endif
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+11451
+ring gold sunstone thick~
+a gold and sunstone ring~
+A thick gold ring, inset with a shining sunstone, has been left here.~
+~
+gold~
+jewelry 0 0 0 AB
+0 0 0 0 0
+35 5 40000 0 P
+25
+A
+20 -1
+A
+19 1
+A
+18 1
+A
+12 10
+A
+44 3
+A
+13 10
+V13
+11452
+leggings scalemail scale mail well-cut tailored pair~
+a pair of tailored scalemail leggings~
+A pair of well-cut leggings, made from scale, lie here.~
+~
+scale~
+armor 0 0 0 AF
+7 7 7 4 0
+35 70 4700 2 P
+0
+A
+18 2
+A
+2 2
+A
+13 10
+V13
+11453
+shirt scalemail scale mail light grey form-fitting form fitting~
+a form-fitting scalemail shirt~
+A shirt of light grey scalemail lies here.~
+~
+scale~
+armor 0 0 0 AD
+7 7 7 4 0
+35 80 6000 2 P
+0
+A
+18 3
+A
+13 15
+V13
+11454
+sword ornate ornately sharp-edged sharp hilt~
+a sharp-edged ornate sword~
+A sword with an ornately crafted hilt lies on the ground.~
+~
+steel~
+weapon 0 0 0 AN
+sword 6 5 3 0
+slash~
+35 0 3800 2 P
+0
+A
+19 1
+A
+18 3
+V13
+11455
+staff wood tulip tulipwood red reddish~
+a staff of carved tulipwood~
+A staff carved of reddish wood has been left on the ground.~
+~
+wood~
+weapon G 0 0 AN
+staff 6 3 1 0
+pound~
+20 100 8000 3 P
+30
+A
+13 5
+A
+12 25
+V13
+11456
+flail steel polished~
+a flail of polished steel~
+A steel flail, polished to a shine, lies on the ground.~
+~
+steel~
+weapon G 0 0 0
+flail 4 6 1 0
+pound~
+25 85 3000 2 P
+0
+A
+4 1
+A
+12 10
+A
+13 5
+A
+20 -1
+V13
+11457
+gauntlets pair studded~
+a pair of studded gauntlets~
+A pair of gauntlets lined with small metallic studs lie here.~
+~
+scale~
+armor 0 0 0 AH
+6 6 6 0 0
+30 50 15000 1 P
+60
+A
+19 3
+A
+18 -3
+V13
+11458
+belt silk blue purple patterned pattern dyed~
+a patterned silk belt~
+A belt dyed with dark patterns in blue and purple is coiled up in a pile on the floor.~
+~
+silk~
+armor S 0 0 AL
+3 3 3 0 0
+25 15 2200 1 P
+0
+A
+19 1
+A
+18 2
+A
+2 2
+V13
+11459
+scroll nily ch\@vashao blue string bound~
+a scroll labelled \@nily ch\@vashao\@~
+A scroll, bound with a dark blue string, lies forgotten here.~
+~
+parchment~
+scroll 0 0 0 A
+20 'water breathing' 'water walk' '' ''
+20 10 1200 1 P
+0
+V13
+11460
+whip spiked black leather long steel spikes spike~
+a spiked black whip~
+A long whip of black leather, lined with small black steel spikes, is in a coil on the ground.~
+~
+leather~
+weapon 0 0 0 AN
+whip 4 6 3 0
+whip~
+26 65 3800 1 P
+0
+A
+18 -1
+A
+19 2
+V13
+11461
+scroll penned brown ink yellow yellowed roll~
+a scroll penned in dark brown ink~
+A yellowed scroll lies here, neatly rolled up.~
+~
+parchment~
+scroll 0 0 0 A
+40 'stone skin' '' '' ''
+40 15 3000 1 P
+0
+V13
+11462
+collar carnelian carnelians golden gold orange gemstone~
+a gold collar, inset with carnelians~
+A golden collar, inset with small chips of an orange gemstone lies here.~
+~
+gold~
+jewelry G 0 0 AC
+0 0 0 0 0
+40 5 0 1 P
+0
+A
+13 15
+A
+14 15
+A
+12 15
+V13
+11463
+vest platinum studded dark leather studs stud~
+a vest studded with platinum~
+A dark leather vest with gleaming platinum studs lies here, folded neatly.~
+~
+leather~
+armor 0 0 0 AD
+9 9 9 9 0
+40 65 35000 2 P
+35
+A
+19 3
+A
+12 20
+V13
+11464
+bracelet purple berries thin~
+a bracelet of purple berries~
+A thin bracelet of purple berries lies on the ground.~
+~
+plant~
+jewelry GS 0 0 AM
+0 0 0 0 0
+15 5 800 1 P
+0
+A
+12 5
+V13
+11467
+blouse white low-cut low cut ruffled pile~
+a low-cut, ruffled blouse~
+A white blouse, ruffled at the neck and sleeves, sits in a neat pile on the ground.~
+~
+cloth~
+armor 0 0 0 AD
+1 1 1 0 0
+10 15 200 1 P
+0
+A
+54 1
+V13
+11472
+book hard bound hard-bound dark brown leather fourth trial vashel~
+a hard-bound book entitled \@The Fourth Trial of Vashel\@~
+A book bound in dark brown leather has been left here.~
+~
+parchment~
+trash 0 0 0 A
+0 0 0 0 0
+1 15 0 1 P
+0
+E
+five~
+\#They have given up their lives and meaning to you because yours was the
+path of least resistance.  These empty husks cannot be relied upon to save
+your life.  If you had lead a life of challenge and strife, instead of
+living a life of ease, hidden behind the excuse of your Vow of Pacifism and
+content behind the so-called safety of your masses and sainthood, then
+perhaps you could have had a chance.\#  Stated Vashel in a calm voice.  She
+watched impassively as Brezistem cried a scream of rage and sorrow as he
+reached within his robe to pull out a hidden dagger and attempted to charge
+her with nothing on his mind but the preservation of his own life.  
+
+With a single fluid motion, Vashel unsheathed her blade with god-like speed
+and slew the raving holy man as he charged with a flimsy dagger in his hand.
+In that same fluid motion she had turned and proceeded to walk down the path
+of the mountain, as the pitiful cries of Brezistem\@s followers welled up
+behind her, as they realized that now they would once again have the
+responsibility to make and accept the consequences of their own actions.  
+
+With that our tale ends, as Vashel heads from her fourth Trial: to slay two
+men, as different from each other as light is to day, but yet similar in
+less obvious ways.  Both though different, had the same corrosive affect
+upon the people around them, and both had been silenced so that people in
+that day and age could be forged to a higher potential.  From this fourth
+Trial, Vashel strode purposefully onwards to her fifth, unmindful of the
+need for rest, but only with the purpose of finishing her quest on her mind.
+
+~
+E
+four~
+It was then upon the eve to a dark night that Vashel climbed the
+mountain, carrying a torch to announce her presence.  To all whom asked,
+Vashel announced that she had come to slay their holy man, Brezistem.  His
+followers were aghast, but were unable even to muster a suitable defense
+against her.  Too many of them were stricken by the realization that their
+Oath barred their way, and could do nothing but stand by as they saw her
+climb trail up the mountain.  Some attempted to form a barrier before her,
+but days of fasting and lack of physical activity had left them too weak to
+truly even be noticed by Vashel as she swept by.  
+
+Thus it was utter simplicity once more for Vashel to climb to the summit of
+the mountain, where Brezistem had chosen to live, surrounded by his
+followers whom he treated as servants in return for his teachings.  Here he
+stood by the door as he cried plaintively to Vashel when she strode close,
+\#Why?  Why do you do this, and why do my followers not save me from my
+peril?\#  
+
+\#Because you have corrupted these servants of yours so that they are nothing
+but shadows, without will and honor.  This new world and age requires beings
+of strength who are willing to enter the crucible to be made stronger and
+purer, not those who do not even have the will to make decisions for
+themselves\# replied Vashel.  
+
+Page [five]...
+~
+E
+three~
+\#Why?  Why do you do this, and why do my followers not save me from my
+peril?\#  He cried from his throne.  
+
+\#Because you have corrupted these servants of yours so that they are nothing
+but shadows, who are without will and honor.  This new world and age
+requires beings of strength who are willing to enter the crucible to be made
+stronger and purer, not those who do not even have the will to make
+decisions for themselves\# replied Vashel.  \#They have given up their lives
+and meaning to you out of fear and coercion.  These empty husks cannot be
+relied upon to save your life.  If you had but remained the warrior you were
+in the past, instead of living a life of sloth, content behind the so-called
+safety of your masses, then perhaps you could have had a chance.\#  Stated
+Vashel in a calm voice as she unsheathed her blade with god-like speed and
+slew the cowering Onzen upon his throne.  In that same fluid motion she had
+turned and proceeded to walk out of the Dark Valley, without a single motion
+of resistance by Onzen\@s thousands of followers.  
+
+The second mortal for the fourth trial dwelled high in the mountains.  He
+was a holy messiah by the name of Brezistem, who was known by many as the
+Saint of Peace.  Legend has it that Brezistem had gone through life, never
+taking the life of another.  In his middle years he retreated to a mountain
+where he gathered followers, whom he then preached the art of peace to. 
+Each of them had sworn a Vow of Pacifism, to never harm the life of another.
+Thousands of his followers upon the mountain awoke each morning to fasting
+and meditation, in order so that they could more quickly reach a state where
+they would never be able to harm the life of another ever again.  
+
+Page [four]...
+~
+E
+two~
+It was Vashel however that pursued a path less traveled.  She walked to
+test her skills and her mettle, but in doing so she also wished to prove the
+worth of these new races to the eyes of the Gods.  While the alatharya had
+brought dishonor to all mortals by their jealousy and treachery, Vashel
+strove to show that the new races would not stray down that path.  It would
+come to be that after a score of years, Vashel\@s quest finally captured the
+attention of Dolgrael, the Divine of War.  The legendary year-long
+discussion between the two, deep within the Forge of Dolgrael, are the stuff
+and myth of another tale entirely, but suffice to say that at the end of it,
+an accord had been reached.  Dolgrael had given Vashel nine Trials to prove
+to him the worth of these new races.  And with that she set out, not yet
+knowing that these trials in their entirety would span the length of
+decades, but such was her resolve that even had she known she would only
+have moved onward with the same determination.  
+
+With that our tale begins, as Vashel heads to face her fourth Trial: to slay
+two men, as different from each other as light is to day, but yet similar in
+less obvious ways.  The first man was named Onzen, the self titled Tyrant of
+the Dark Valley.  Onzen was known and feared throughout his region as a once
+powerful warrior that had conquered the valley, and built his dark throne
+there.  From there, his enslaved worshippers performed dark rites and
+sacrifices to appease their master.  
+
+To slay this foe Vashel approached the valley at the dawn of the new day. 
+Tired and dazed from their night of unholy rituals, most of Onzen\@s
+followers were too befuddled to even consider a resistance.  Of the
+thousands massed in the valley, most of them had already lost their will to
+fight and were but empty shells that only blindly accepted the orders of
+their master.  Thus it was utter simplicity for Vashel to stride to the
+center of the valley, where Onzen sat upon his throne.  It became apparent
+from a distance that Onzen the mighty warrior had atrophied from years of
+indulgent living, and now could barely muster the energy to move himself
+from his throne.  When finally Onzen became cognizant of his danger, his
+shrill voice carried far and high, demanding first assistance, and then to
+beg for mercy when none of his followers would stand against Vashel.  
+
+Page [three]...
+~
+E
+book hard bound hard-bound dark brown leather fourth trial vashel~
+\@The Fourth Trial of Vashel\@
+
+Recorded by Nehruin, high priest of the Lord Dolgrael
+
+In those days following the Sundering the races knew fear for the world had
+been changed, and paradise had been lost forever.  In those dangerous times
+mortals were forced to forge new paths and new ways to survive.  Magic and
+lore had been divided, and as the dangers of the wild encroached, people
+clung to whatever fragments would suit them best.  Those who lived within
+the woods practiced the arts of forest and nature, while those who lived in
+the mountains lived and died by the arts of stone and earth.  But even in
+these dangerous times, there were those people who thrived in the
+possibilities of the age.  These were the people who spent not their lives
+purely on the basis of survival, but on something far more epic.  
+
+One of these mortals came from a village whose name has long since been lost
+to the ashes of time.  She was Vashel, the first mistress of the sword art
+known as Aktzezehye\@ginta, a sword form known for the deadly speed in which
+a blade could be unsheathed.  Often for the masters of the Aktzezehye\@ginta,
+it is possible to slay ones foe, without the foe ever realizing the blade
+has been drawn.  
+
+While not much is known of Vashel\@s beginnings, it is known that she and her
+brother were two sides of a same coin.  One walked with a tune in his heart
+and wanderlust in his soul, the other walked with the grim resolve of a soul
+of steel and the calm quiet of determination in her heart.  But both knew
+honor and courage, and it was that which held these two sides together.  
+
+Page [two]...
+~
+V13
+11473
+book brown dark leather volume one gemstones avendar~
+volume one of Gemstones of Avendar~
+A book bound with dark brown, cracked leather lies here, the title etched on the cover with gold leaf.~
+~
+parchment~
+trash 0 0 0 A
+0 0 0 0 0
+1 20 0 1 P
+0
+E
+book brown dark leather volume one gemstones avendar~
+As any earth scholar would be pleased to tell you, stone is very
+important to the world of magic.  Even more so, however, are the precious
+and semi-precious gems we mine from it.  Few things are as potent as a
+channel, and focus, as the correct gemstone used in the correct manner.  
+
+While any gem, and really any thing, can be enchanted thus, certain gems
+have an undeniable affinity with particular abilities and protections.  One
+could enspell an emerald or a citrine, for example, to grant the user
+extended mental energies, and such an enchantment would hold.  Had the
+caster been more particular, and used a pearl perhaps, the benefit of that
+same spell could have as much as tripled!  
+
+Within these pages I shall give brief outlines of the description of each
+stone, and a short summary of the folklore and traits associated with them. 
+Indeed, one need not be able to channel magic to find benefit from many of
+the gems listed herein.  
+
+Included in this volume are the following stones: Amber, Amethyst,
+Aquamarine, Bloodstone, Carnelian, Citrine, Diamond, Emerald and Garnet.  
+~
+E
+amber~
+AMBER
+=====
+Generally a brownish orange to light yellow in colour, amber tends to 
+be translucent, even when unpolished.  The kankorans believe it to be 
+solidified sunlight, and value the gem highly.  The kohli people value 
+the stone even more so, as it is quite rare in their cave habitats, and 
+it holds some religious significance as well.
+
+A weak stone as far as magical ability is concerned, it is useful for 
+minor benefits, or occasionally as an aid for channeling air magics.  
+Many wise women and healers praise it for its positive effects on those 
+who have arthritis or similar pains of the joints.
+~
+E
+amethyst~
+AMETHYST
+========
+This type of quartz is renown for its lovely purple colour; the more 
+intense the hue, the more valued the gem.  A great many scholars wear 
+this stone, as it aids in meditation and mental tranquility.  Some people
+also use it in day-to-day life, as it is thought to give a boost to the
+immune system.  Some nobles are partial to goblets adorned with amethysts,
+or carved entirely out of the stone, as it is said to curb drunkenness.
+
+For those who study arcane magic, this stones power is limited, at 
+best.  Many of those newer to the magics of enchantment may erroneously 
+believe its deep purple colour would lend itself to properties spiritual 
+in nature (due to the seventh chakra).  In actuality the flawed nature 
+of amethyst quartz does not hold well any spells cast upon it.
+~
+E
+aquamarine~
+AQUAMARINE
+==========
+Another fairly weak gem magically speaking, the aquamarine is none-the-
+less valued highly in some cultures.  Sailors and those who live close
+to the ocean believe the stone lucky, and superstitiously think it to
+bring good fortune to seafarers.  The origin of this belief is unclear, 
+but it is thought to be a practice of worship for some long forgotten 
+god.  In some villages the strength of their belief is so strong that if 
+a person accidentally cracks or breaks a piece of aquamarine, they will 
+not sail for a full year, believing baleful spirits will seek revenge.
+~
+E
+bloodstone~
+BLOODSTONE
+==========
+Despite its name, bloodstone is a deep pine green in colour.  It actually
+gets its name from the flecks of dark red buried within the green rock,
+said to be the crystallized remains of the blood of Varharl, the legendary
+titan.  People today generally wear it for aid with their circulation, but
+there is little magical worth in it beyond that.
+
+Bloodstone is, of course, the birthstone of the month of the Sundering, 
+the month Varharl gave his life to save many of the inhabitants of 
+Avendar.
+~
+E
+carnelian~
+CARNELIAN
+=========
+Carnelian is a lovely bright orange to reddish orange colour, which 
+slowly becomes more and more red the longer it is left in the sun.  Yet 
+another variety of quartz, it aids clear thinking as many of the quartz 
+family do.  It is also said to be good for the skin, clearing blemishes 
+and aiding the healing of scars and such marks.  It is a useful stone 
+in that it can be enchanted with many minor enchantments, but shows no 
+clear bias to any particular magic.
+
+Carnelian is the stone of the Reaping, and is oft worn by children of that
+month to promote fertility.
+~
+E
+citrine~
+CITRINE
+=======
+Citrine tends to a bright yellow in colour, and bears a close relation 
+to amethyst in formation, though is less favoured.  A fairly common 
+stone, it is a symbol of loyalty, faithfulness, and youth.  It is also 
+said that wearing a piece of citrine about the throat brings energy to the 
+wearer.
+
+It is best enchanted with protective magics, but is relatively poor at 
+holding any other sort of spell.  Therefore, it is often put aside in 
+favour of strong cousins.
+
+Its sparkling warm colour destined it to be the birthstone of those 
+born during the Dawning.
+~
+E
+diamond~
+DIAMOND
+=======
+Arguably among the most powerful of stones, diamonds are valued by 
+scholars and nobles alike.  While they are quite rare, they are also 
+difficult to mine, causing their value on the market to be quite high!
+
+The gem itself is said to bring clarity of thought, an obvious aid to any
+spellcaster.  Beyond that, it holds well nearly any enchantment put upon
+it.  It is especially useful at absorbing spells that grant the wearer
+resistance to hostile magics, and increased mental energy.  Diamonds are
+also useful in that they amplify the other stones powers, making anything
+they are set with much stronger.
+
+Some scholars theorize that the hardness of a stone, that is its 
+durability and difficulty to break, is directly related to the strength of 
+the enchantments it can hold.  Indeed, the diamond seems to be a prime 
+example of this phenomenon (termed the Grasie Rule by the scholar who
+first set it out, Rolane Grasie.)
+~
+E
+emerald~
+EMERALD
+=======
+An exquisite green stone, and somewhat rare, the emerald has long been 
+a favourite among bards and storytellers.  Beyond the simple beauty of 
+the stone, which makes it a natural choice for those who make their 
+living on the stage, the emerald is easy to enspell with glamours to make 
+the owner more appealing.  Also, to sleep wearing an emerald is said to 
+enhance the dreams of the sleeper, leaving them inspired by the realms 
+of their unconscious when they wake.
+~
+E
+garnet~
+GARNET
+======
+Usually a deep red in colour, garnet can rarely also be found in shades 
+of blue and purple.  Often, unless held up to the light, a garnet can 
+appear to be a solid black.  A common aid for memory, and worn to ward 
+off headaches and nightmares, garnet is a fairly mundane stone, and 
+frequently found in srryn beadwork.
+
+Though it is not a particularly strong stone, garnet is useful for 
+minor enchantments, and is especially good at warding off the cold, when 
+used correctly.
+
+Garnet is the birthstone for the month of Valectis, and is thought to 
+bring luck and warmth to those born during this cold month.
+~
+V13
+11474
+book blue dark leather volume two gemstones avendar worn~
+volume two of Gemstones of Avendar~
+A worn looking book, bound in dark blue leather, lies here, the title etched in flaking gold leaf.~
+~
+parchment~
+trash 0 0 0 A
+0 0 0 0 0
+1 20 0 1 P
+0
+E
+pearl~
+PEARL
+=====
+Pearls are formed inside shellfish, and are found in various shades of 
+white, pink, and black.  Many cultures have independently adopted the 
+pearl as a symbol of chastity and purity, and they are common in the 
+jewelry of young female nobles.
+
+Pearls are fairly strong, and quite useful at enhancing and extending 
+mental capabilities.  Black pearls are especially good at providing 
+resistances to various types of magics.
+~
+E
+opal~
+OPAL
+====
+Opal is among the most valuable of gems, and is usually found in a 
+sparkling white, though it also comes in hues of black, blue, and red 
+(fire opal).  It is extremely useful for arcane rituals, and can be quite 
+a powerful aid for astral projection.  According to Nefortu lore, opals 
+are the singed and melted remains of clouds touched by Bayyal, that then 
+fell to the earth.  Regardless of origin, opals tend to be found by the 
+water, and must be soaked thoroughly on occasion to keep their shine.
+
+The different shades of opals are useful for different things, though all 
+share an affinity for protection magics of some sort.  Blue opals are best 
+at protection from harmful magics, and bring luck to travelers on long
+voyages, especially across the sea.  Black opals aid the health of the 
+wearer, and are among the most powerful to enchant.  Fire opals, those of 
+a reddish orange colour, are extremely tricky to enchant as the results 
+are difficult to predict, but they have a large amount of potential.
+~
+E
+book blue dark leather volume two gemstones avendar worn~
+Welcome to the second volume of Gemstones of Avendar.  Within these pages
+are descriptions and information on the following stones: Hematite, Jade,
+Jasper, Lapis Lazuli, Malachite, Moonstone, Obsidian, Onyx, Opal and Pearl. 
+~
+E
+hematite~
+HEMATITE
+========
+Hematite is a semi-precious gem favoured by warriors and templars.  It is
+a deep silvery black that when ground on a polishing wheel, turns the
+water cooling it to a dark bloody red.  Kankorans call this gem \#Darrack\#,
+and in times past would strap cloth beaded with hematite over wounds in
+battle, believing it to staunch blood and give them strength to continue.
+The kankoran people are not the only ones to attribute such things to the
+stone; many cultures believe the gem to grant the user willpower and
+courage.
+
+Hematite holds minor enchantments well, especially those of physical
+durability and stamina.  As for more powerful magics, it is not as useful
+as many other gems, and requires a skilled caster indeed to evoke
+stronger enchantments.
+
+Birthstone of the month of Tyrilis, gifting a child of that month with
+hematite jewelry is thought to assure them health and long life.
+~
+E
+jade~
+JADE
+====
+Commonly ranging from a pale ivory green to a deep moss green, jade can
+rarely be found in colours such as white, red, black, and yellow.  The
+most rare, and also most mystically powerful type of jade is a milky 
+lavender in colour.  Known for encouraging calmness and cool, logical
+thought, jade is quite popular in jewelry and small sculpture.  Simply
+touching a piece of jade is considered lucky in the southern wastes,
+where they believe the stone bestows a blessing on the user.
+
+Jade lends itself to enchantments that boost and aid the intellect, but
+it is a fairly powerful focus and will work well with most enchantments.
+
+The wisdom and clarity of the Titan Nelena naturally led jade to be the
+birthstone of her month, Nelennamir.
+~
+E
+jasper~
+JASPER
+======
+Jasper is a variety of chalcedony that comes in many colours, and is oft
+used in beadwork.  It is believed to help vision, both physical sight and
+also psychic foresight.  It\@s also thought to protect the wearer against
+snake and spider bites.  As an arcane stone, its value is negligible.
+~
+E
+lapis lazuli~
+LAPIS LAZULI
+============
+This stone is a medium, opaque blue, often veined with white, and
+sparkles with golden flecks in the light.  It is favoured by royalty,
+and is thought to help protect the wearer from evil.  In folklore a
+somewhat opposing idea is put forth, that vampires wear this gem to
+protect them from the harmful rays of the sun.  Regardless, lapis is
+rather weak, best at enchantments that aid the mind.
+
+Lapis lazuli is the birthstone for the month of Lyceonis, and often
+worn during times of strife to aid the user in overcoming their
+troubles.
+~
+E
+malachite~
+MALACHITE
+=========
+Malachite is a deep green stone, banded with stripes of dark green or
+black.  Most people are already familiar with this gem as it is said to
+protect children, especially from sickness and disease.  It is a quite
+common decoration on cradles and in childrens jewelry.  It is also
+believed to bring patience and reduce tension.
+
+Malachite is quite delicate and breaks easily, and following the Grasie
+Rule, it is quite difficult to enchant.
+
+Elanthemir, being a common month for births, hosts this gem as its
+birthstone.
+~
+E
+moonstone~
+MOONSTONE
+=========
+The shimmery gem comes in a variety of colours, though always shines blue
+or white.  The most precious (and powerful) moonstones are those of a
+nearly colourless white, that shine blue in the light.  Moonstones have
+many connections to the spiritual realm, and are often used by sages to
+help them remember past lives.
+
+While this stone is weak on its own, when paired with a diamond or sapphire,
+it can be quite a powerful tool for the unconscious.  For this reason it is
+very popular with spirit scholars, both as jewelry and as a magical aid.
+
+Moonstone is said to bring peaceful sleep and safety, especially to those
+out at night, to those born during Kyanamir.
+~
+E
+obsidian~
+OBSIDIAN
+========
+Obsidian is simply a form of cooled lava that tends to a glassy black
+colour.  Varieties of it include snowflake obsidian, which is weaker and
+flawed with small white marks (the \@snowflakes\@), and apache\@s tear, which
+is a translucent brown when held up to the light.  It has been used for
+centuries as mirrors, and more commonly as blades and arrowheads.
+
+There are many negative connections to this stone, as it is often used in
+sacrificial blades, and indeed some of the negative impressions are valid.
+While this stone is fairly strong, especially at protecting the user from
+magical attack, it is difficult to enchant the gem without causing it to
+drain the wearer as well.  Often those who use obsidian talismans are frail
+and more prone to sickness.
+
+Obsidian was at one time considered the birthstone for those born during
+Lyceonis, but the disfavour this gem has fallen in to caused it to be
+replaced by lapis lazuli.
+~
+E
+onyx~
+ONYX
+====
+Pure onyx tends to be black, though is not uncommonly found in shades of
+white, grey and brown.  It is mostly used for decoration, though it is
+supposed to aid in clear thinking and positivity.  Onyx is pretty common,
+and is without par in its ability to protect the wearer from hostile
+spells.  A more rare variety, sardonyx, which is a deep reddish colour,
+is even stronger, and is also useful in honing the intellect of the user.
+
+Onyx is the stone for the month of the Setting, and sardonyx is considered
+especially lucky for those born during this time.
+~
+V13
+11475
+book heavy three gemstones avendar dark green leather~
+volume three of Gemstones of Avendar~
+A heavy looking book, bound in dark green leather lies here.~
+~
+parchment~
+trash 0 0 0 A
+0 0 0 0 0
+1 20 0 1 P
+0
+E
+turquoise~
+TURQUOISE
+=========
+A marbly, somewhat lumpy stone, turquoise gets its name from its bright,
+opaque hue.  This stone is oft associated with singers and public
+speakers, as it is thought to bring fluidity of speech and to improve
+lung capacity.  As it is fairly soft and easy to find, it has been used
+in jewelry for many centuries by all manners of people.
+
+It is fairly weak, magically speaking, though just about any culture could
+give you a myth or story associated with the gem.  In more recent times,
+it is usually enchanted with such things as a bard may request, but the
+stone shows no particular affinity with anything.
+
+Turquoise is the stone of the month of Converumir, and when worn on those
+summer days, thought to bring protection from danger to the wearer.
+~
+E
+tourmaline~
+TOURMALINE
+==========
+A rather interesting stone, tourmaline grows in straight rods, rather than 
+the usual crystalline formation.  It comes in many hues, most commonly
+purple, green, and pink.  While not typically an abundant stone, it can
+usually be found in mountains in the warmer areas of Avendar.
+
+Green tourmaline is said to bring balance and peace of heart to men, and
+the pink, to women.  It is also quite useful for enchantments that boost
+the awareness and agility of the user.
+~
+E
+tiger tigers eye tigerseye~
+TIGER\@S EYE
+===========
+Tiger\@s eye is a banded brown and black stone, and when tilted in the
+light, the colours seem to shift and move.  It can also be found in other
+colours which share the same properties as the original stone: Cat\@s Eye
+(green), Bull\@s Eye (red), and Hawk\@s Eye (blue).  It is commonly worn as
+beads and earrings, and is thought to ground a person, and soften
+stubbornness.  As a focus for spells, tiger\@s eye is useful for aiding the 
+health of the user, but little else.
+
+The birthstone for the month of the Burning, it is said to gift someone born
+during this month with a piece of tiger\@s eye will protect them from the
+ill winds of fate (though possibly at the expense of the giver!)
+~
+E
+sunstone~
+SUNSTONE
+========
+It is said until the War of the Night, sunstone was simply a brown variety 
+of agate.  But upon the entry of the ch\@taren into the realm, this stone 
+began to sparkle and gleam, earning its current name.  Regardless of the 
+truth of this story, sunstone is a warm orangish brown in colour with many 
+tiny specks of gold that reflect and sparkle in even the dimmest light.  
+This stone is sacred to the followers of Rystaia, and is thought to give 
+any who wear it courage and positivity in the face of despair.
+
+Sunstone is somewhat uncommon, but is an excellent tool in defending the 
+mind against mental attack or intrusion.  It is also fairly useful in 
+granting the wearer extended health and psychic energy.
+
+Sunstone is the birthstone for the month of Rystaiamir, and it is thought 
+that children who carry sunstone with them will grow up to be good-natured 
+and humble.
+~
+E
+sapphire~
+SAPPHIRE
+========
+Sapphires are closely related to rubies and share many of their same 
+properties.  While the most famous sapphires are blue, they actually do 
+come in a variety of colours, such as yellow, orange, green and pink.  
+Sapphires are thought to be a beneficial aid to enhancing psychic 
+abilities.
+
+Sapphires are sacred to Jolinn, and for this reason they are a popular 
+choice as a tool for channeling water magics.  For any water scholar, the 
+sapphire is the gem of choice for any enchantment; for the blessings of 
+Jolinn and the strength and flexibility of the gem.
+~
+E
+ruby~
+RUBY
+====
+Sometimes referred to as \#the blood of sorcerers\#, ruby is a deep 
+transparent red.  It aids in circulation and problems of the blood, and 
+revitalizes the user.  Known as a gem of passion, it is a popular 
+adornment on wedding bands.  An extremely powerful gem (and second in 
+hardness only to diamond), rubies can be enchanted to hold nearly any 
+spell.  Above all they are best at extending mental and physical energies.  
+Star rubies are highly valued as well, though more for their appearance 
+than any particular aid magically speaking.
+~
+E
+rose~
+ROSE QUARTZ
+===========
+Rose quartz is, as the name implies, a lovely pink variety of quartz.  It 
+is thought to bring emotions to the surface, and when worn with amethyst, 
+brings love to the wearer.  It is a tradition in caladaran culture to gift 
+someone with a piece of rose quartz if you seek his or her forgiveness in 
+some matter.  For obvious reasons, this stone is oft associated with 
+Aeolis, and is held sacred by his followers.
+
+A fairly frail and weak gem, it is best at enchantments to aid the user in 
+being charming and glib.  Some level of protective magics can be cast upon 
+it as well, but it does not excel in any aspect.
+~
+E
+quartz~
+QUARTZ
+======
+Quartz is sometimes unfairly termed the \#poor mans diamond\#, but is 
+actually quite useful of its own right.  It helps balance mind and body, 
+and is commonly used as a focus for other gems.  Smoky quartz, which is a 
+beautiful translucent brown, is without par when enchanted to aid the 
+health of the wearer.  Often other gems are used in lieu of smoky quartz 
+when such benefits are needed because this variety of quartz is extremely 
+rare on this continent.
+
+Some types of quartz occasionally have streaks of golden looking rutile 
+within it.  These pieces of quartz are called rutilated quartz, and 
+generally occur only in clear and smoky varieties (not the subtypes of 
+quartz such as amethyst, citrine, etc).  Smoky rutilated quartz is valued 
+highly by healers for its benefits in speeding recovery of the gravely 
+ill.
+
+The most valuable of all forms of quartz to the scholar and mage is termed 
+\#phantom quartz\#, and has a second (or third, or more) quartz fragment 
+grown inside the larger piece.  It is best left unpolished, and can be 
+enchanted to bring extensive mental energies to the user when held.
+~
+E
+peridot~
+PERIDOT
+=======
+This is a fairly common stone that is found only in a warm, olive green.  
+It is thought to help one realize their dreams, and enhance their 
+creativity, so it is very popular among artists and writers.  As a magical 
+gem, it is fairly simply to enchant with spells to make the user more 
+agile and quick, but extremely difficult to enchant it with anything else.
+
+Peridot is the birthstone for the month of Year\@s End.  Wearing it,
+especially during this month, is thought to bring optimism and hope to
+the user.
+~
+E
+book heavy three gemstones avendar dark green leather~
+Third volume: Peridot, Quartz, Rose Quartz, Ruby, Sapphire, Sunstone,
+Tiger\@s Eye, Topaz, Tourmaline, Turquoise 
+~
+V13
+11478
+book ogre hyacinthe girl worn green leather~
+a book entitled \@The Ogre and the Hyacinthe Girl\@~
+A book bound in worn green leather lies here, the pages rumpled with evidence of many browsing fingers.~
+~
+parchment~
+trash 0 0 0 A
+0 0 0 0 0
+1 20 0 1 P
+0
+E
+four~
+No one knows exactly how the Hyacinthe Girl rid Inessa of its ogre she
+insisted she wanted to face the ogre alone and assured the village she would
+return without harm done to head nor foot.  Ask any villager (young and old)
+to tell the tale and their answers will vary.  Some will say she warded the
+village with self-grown hyacinthes planted on the outskirts where forest
+melts into village path, wards that the ogre could not overcome nor overstep
+no matter how persistent, driven in the opposite direction by madness and
+confusion.  Others will say she exchanged words with the ogre (the Hyacinthe
+Girl was supposedly quite proficient in ogre-tongue) and asked him in quiet,
+civil, nightingale tones to leave Inessa and restrict his hunting to Morn. 
+As the story goes, when the ogre refused, the Hyacinthe Girl took a
+hyacinthe from a small but simple, worn herb pouch and gave it to the ogre. 
+Smirking, the ogre attempted to crush, destroy and rid itself of the
+hyacinthe and the Hyacinthe Girl, but to no avail.  The cursed and
+ogre-warded hyacinthe eventually drove the ogre mad and into the higher
+crests and cliffs north of Inessa where he gibbered, drooled and ate dirt
+for sustenance years on end, nearly wasting to unimaginable frailty.  But
+the story most villagers do not tell yet believe, is the Hyacinthe Girl
+merely looked at the filthy ogre with her silver moonlit tinted eyes for a
+moment, to the ogre, longer than eternity itself and the ogre fled.  
+
+Whichever story is true (or not), Inessa was ogre-free from the day the
+Hyacinthe Girl returned from the forest unharmed, until her timely death
+seventy years later.  Villagers also say when the Hyacinthe Girl died (her
+lips still stained raspberry, her cheeks smooth and her eyes still haunted
+with silver moonlight) all hyacinthes from the Sea of Lidreau to Var Bandor
+crumbled and wilted with her.  Some also say the ogre returned (knowing of
+the death of the Hyacinthe Girl) to extract revenge upon the village which
+harboured the girl who drove him to madness, insanity and eating dirt. 
+Whichever story you believe, to this day villagers under the tutelage of the
+druids of Eril attempt to grow magically-warded hyacinthes which never bloom
+to maturity.  Other villagers have learned to hunt during seventy years
+(passing along the knowledge to their children) and some have even been
+successful at driving the ogre back to the northern cliffs for months on
+end.  But as if for assurance or protection, on each hunt the villagers
+carry a single hayacinthe in his pouch naturally cultivated by Anya in hopes
+that somehow someway the spirit of the Hyacinthe Girl is still alive.  
+~
+E
+three~
+But not long after the Hyacinthe Girl came to be one with the village of
+Inessa, a forest ogre began to ravage the village and the surrounding areas.
+The ogre was a filthy beast that smelled of sour, rotting things and took a
+liking for young tender meat, not caring if the meat was of songbird,
+wolf-pup, yearling or cooing infant.  With fear and anger on knitted brow
+and coated with words of bravado, Inessa amassed its villagers to kill the
+ogre.  Belarik the Smith even offered weapons and armor for the triumphant
+one who returned to his smithy with the ogres head, an offer he made after
+the ogre attempted to devour his son and the wolf-pup one dusky winter eve.
+
+Of course, none were successful in their hunt.  Inessa was not a village of
+warriors it was a village of tanners, masons, wheelwrights,
+horticulturalists and homesteaders.  The villagers did not know how to hunt
+and kill the ogre their hunting was limited to deer and the occasional rogue
+silver-maned wolf that found the strange smells of the village curious and
+enticing.  The villagers were not surprised when they saw their neighbours
+and sons and fathers and uncles return without a vaguely head-shaped
+blood-stained burlap sack or when some of those same neighbours and sons and
+fathers and uncles returned maimed and mangled, or even without beating
+hearts and blood coursing through veins.  But just the same, none were
+surprised when the Hyacinthe Girl sought out the village elders and meekly
+offered to rid Inessa of its ogre problem for nothing at all.  One long look
+in her eyes and you knew she could rid the world of the moon if she so
+wished.
+
+Page [four]...
+~
+E
+two~
+Most people were unsettled by the gaze of the Hyacinthe Girl and for good
+colour of a moonlit forest at night.  If she were not smiling, if she were
+seemingly pondering thoughts that kings, lord high generals and patricians
+would only ponder, if she were gazing in the distance as if she were afraid
+(or amused) the horizon would reach out and kiss her with a soft tenderness
+on those raspberry-stained lips of hers, one thought insane violence was
+ready to erupt from within, unleashed on whomever was about.  But if she
+smiled at you, if she graced you with a lovely grin, well, you felt as if
+you were the only in your world and hers and eternity with her had just
+begun.  
+
+So, it was no wonder the village of Inessa quickly took to the Hyacinthe
+Girl and welcomed her as one of their own.  When Arik the Tanner made his
+daily walk to his shop every morning, he stopped not only to speak to Inessa
+the rowan tree but to the Hyacinthe Girl also as she frolicked and played
+with Tomik and his wolf-pup.  In turn, for the gratitude and the food and
+sleeping pallet a different villager offered her each night, the Hyacinthe
+Girl acted as their village healer, vanishing poison ivy rashes before the
+villagers eyes, providing natural antidote and antiseptic for venom bites
+from insect and reptile alike and even mixing the occasional herbal
+concoctions for hang-over cures.  Yes, the village of Inessa took the
+Hyacinthe Girl as one of her own and even adored her, as long as they didnt
+look to long in her silver-moonlit shining eyes.  
+
+Page [three]...  
+~
+E
+book ogre hyacinthe girl worn green leather~
+The Ogre and the Hyacinthe Girl
+
+by Cifete Elath-del
+
+No one was quite sure where the Hyacinthe Girl came from.  One chill autumn
+morn she appeared in Inessa as if she walked there upon the red-gold rays of
+the sun itself, her laugh like nightingale song, while she played and
+frolicked with Tomik and his wolf-pup near the rowan tree.  Some of the
+villagers believed her to be the daughter of muttering Old Althea of Morn,
+for the Hyacinthe Girl was an herbalist like Inessa had never seen before
+and probably will never see again.  Other villagers believed her to be the
+love-child of a tryst between druid Rhuidar of the far northern mountains
+and druidess Alisren of Nendor the powerful regenerative herblore of the
+Hyacinthe Girl could rival some of the lesser water scholars and only a
+druidess with such herblore would be taught that knowledge at the knee of
+such powerful druid-parents.  Who the Hyacinthe Girl truly was not divined
+and she wasnt telling when asked whence from she came she would tilt her
+head teasingly and chuckled her nightingale-laugh as she responded, \@From
+the forest.  \@
+
+The Hyacinthe Girl was a truly beautiful creature and made the men of Inessa
+quickly forget Anya and her supple deerskin leggings.  Her lips looked as if
+she had been tasting raspberries all morn, her nose was as pert as a
+toddling child, her wheat-blonde mussed hair was woven with hawthorn flowers
+and juniper cone-berries, her stature was sleek, willowy and lithe and her
+eyes--- well her eyes were certainly her most interesting feature.  
+
+Page [two]...
+~
+V13
+11479
+perfumefob~
+the perfumefob~
+(no description)~
+~
+unknown~
+trash ade 0 0 A
+0 0 0 0 0
+0 0 0 0 P
+0
+>rand_prog 100~
+if value(1) > 0
+  mpvaluedown 1
+  if value(1) == 0
+    mpechoat $o The scent of your perfume fades away.
+    mppurge self
+    break
+  endif
+endif
+if rand(1)
+  if rand(65)
+    if value(0) == 1
+      mpechoaround $o The gentle, floral scent of lilies wafts away from $b.
+      mpechoat $o The gentle, floral scent of lilies wafts around you.
+      break
+    endif
+    if value(0) == 2
+      mpechoaround $o The gentle, earthy scent of sandlewood wafts away from $b.
+      mpechoat $o The gentle, earthy scent of sandlewood wafts around you.
+      break
+    endif
+    if value(0) == 3
+      mpechoaround $o The gentle, soothing scent of vanilla wafts away from $b.
+      mpechoat $o The gentle, soothing scent of vanilla wafts around you.
+      break
+    endif
+    if value(0) == 4
+      mpechoaround $o The gentle, exotic scent of jasmine wafts away from $b.
+      mpechoat $o The gentle, exotic scent of jasmine wafts around you.
+      break
+    endif
+    if value(0) == 5
+      mpechoaround $o The gentle, fresh scent of citrus wafts away from $b.
+      mpechoat $o The gentle, fresh scent of citrus wafts around you.
+      break
+    endif
+    if value(0) == 6
+      mpecho The gentle, fragrant scent of roses wafts away from $b.
+      mpechoat $o The gentle, fragrant scent of roses wafts around you.
+      break
+    endif
+  endif
+endif
+~
+|
+V13
+16400
+ale mug Eril\@s Finest~
+a mug of Eril\@s Finest~
+A mug of ale brims over, slopping onto the ground.~
+~
+glass~
+drink N 0 F A
+30 30 'dark ale' 0 1
+1 20 7 1 P
+0
+E
+ale mug eril finest~
+The mug is sturdy and made of thick flawed glass.  The ale inside the
+glass is a warm, frothy brown and smells somewhat of oak.  
+~
+V13
+16401
+decanter brandy~
+a decanter of brandy~
+A glass decanter, filled with brandy, has been left here.~
+~
+glass~
+drink N 0 F A
+15 15 'brandy' 0 1
+1 10 120 1 P
+0
+E
+decanter brandy~
+The decanter is small, and made of slightly smoky glass.  A faceted
+stopper covers the top of the bottle, containing the dark amber liquid
+inside.  
+~
+V13
+16402
+mead flagon~
+a flagon of mead~
+A flagon of mead has been left here.~
+~
+wood~
+drink N 0 F A
+10 10 'mead' 0 1
+1 10 30 1 P
+0
+E
+flagon mead~
+~
+V13
+16403
+glass framboise tall thin dark red liqueur berry~
+a thin glass of berry liqueur~
+A tall, thin glass filled with dark red liqueur rests here.~
+~
+glass~
+drink N 0 F A
+10 10 'framboise' 0 1
+1 5 35 0 P
+0
+E
+glass framboise tall thin dark red liqueur berry~
+The glass is tall and curves slightly outward, and is filled with a dark
+purplish red liqueur.  
+~
+V13
+16404
+whisky shot small glass~
+a shot of fine whisky~
+A small glass, filled with whisky, has been set here.~
+~
+glass~
+drink N 0 F A
+2 2 'whisky' 0 1
+1 5 35 0 P
+0
+E
+whisky shot small glass~
+The shot glass is small and made from a dark, flawed glass and a pungent
+whisky nearly slops over the rounded rim.  
+~
+V13
+16405
+wine white qilarn aged bottle dark green~
+a bottle of aged Qilarn white wine~
+A dark green bottle has been left here.~
+~
+glass~
+drink N 0 0 A
+45 45 'white wine' 0 1
+1 15 300 1 P
+0
+V13
+16406
+wine white hyloth bound bottle dark red wax stopper~
+a bound bottle of crisp Hyloth white wine~
+A bottle with a dark red wax stopper lies here.~
+~
+glass~
+drink N 0 0 A
+45 45 'white wine' 0 1
+1 15 280 1 P
+0
+V13
+16407
+wine white buttery southern tinted purple purplish liquid bottle~
+a tinted bottle of buttery Southern white wine~
+A bottle of purplish tinted glass has been left here, partially filled with liquid.~
+~
+glass~
+drink N 0 0 A
+45 45 'white wine' 0 1
+1 15 310 1 P
+0
+V13
+16408
+wine red dark fruity lithling bottle~
+a bottle of fruity Lithling red wine~
+A bottle partially filled with dark red wine lies here.~
+~
+glass~
+drink N 0 0 A
+45 45 'red wine' 0 1
+1 15 350 1 P
+0
+V13
+16409
+wine red bottle northern~
+a bottle of Northern red wine~
+A bottle of red wine sits on the ground.~
+~
+glass~
+drink N 0 0 A
+45 45 'red wine' 0 1
+1 15 280 1 P
+0
+V13
+16410
+wine red bottle sweet small late harvest~
+a small bottle of late harvest red wine~
+A small bottle of sweet smelling wine sits on the ground.~
+~
+glass~
+drink N 0 0 A
+35 35 'red wine' 0 1
+1 12 300 1 P
+0
+V13
+16411
+wine aelin ilodaiyan thin necked thin-necked tall bottle~
+a thin-necked bottle of Ilodaiyan wine~
+A tall, thin-necked bottle has been set here.~
+~
+glass~
+drink N 0 0 A
+40 40 'aelin wine' 0 1
+1 12 420 1 P
+0
+V13
+16412
+wine dessert lavender bottle translucent~
+a lavender bottle of dessert wine~
+A bottle of translucent lavender glass lies here.~
+~
+glass~
+drink N 0 0 A
+25 25 'icewine' 0 1
+1 15 500 1 P
+0
+V13
+16413
+chicken slow roasted slow-roasted basted honey plate brown~
+a plate of some slow-roasted chicken~
+Some honey-basted chicken sits on a plate, roasted a medium brown.~
+~
+food~
+food NS 0 0 A
+60 50 0 0 0
+1 20 100 1 P
+0
+V13
+16414
+ribs beer basted beer-basted plate brown juicy~
+a plate of beer-basted ribs~
+A plate piled high with dark brown and juicy looking ribs has been set here.~
+~
+food~
+food NS 0 0 A
+60 50 0 0 0
+1 20 120 1 P
+0
+V13
+16415
+beef gravy plate thin slices steaming spicy hot~
+a plate of thin slices of beef, drizzled with steaming gravy~
+A plate of thin slices of beef, covered in a hot and spicy smelling gravy, has been left here.~
+~
+food~
+food NS 0 0 A
+60 50 0 0 0
+1 20 110 1 P
+0
+V13
+16416
+potatoes mashed creamy butter chives~
+some creamy mashed potatoes~
+A small plate of mashed potatoes, creamy with butter, have been set here.~
+~
+food~
+food NS 0 0 A
+20 50 0 0 0
+1 10 40 1 P
+0
+V13
+16417
+corn cob yellow butter salt steaming~
+a buttered cob of corn~
+A steaming yellow cob of corn has been left here, slathered in butter and salt.~
+~
+food~
+food NS 0 0 A
+20 50 0 0 0
+1 10 30 1 P
+0
+V13
+16418
+pepper bellpepper baked rice spice green~
+a baked bellpepper, stuffed with rice~
+A large, dark green pepper has been left here, smelling of spice.~
+~
+food~
+food NS 0 0 A
+20 50 0 0 0
+1 10 35 1 P
+0
+V13
+16419
+bread sweet roll baked fresh freshly~
+a roll of sweet bread~
+A roll of freshly baked sweet bread has been set here, steaming slightly.~
+~
+food~
+food NS 0 0 A
+16 50 0 0 0
+1 7 25 1 P
+0
+V13
+16420
+soup vegetable bowl spicy spicy-smelling small~
+a bowl of spicy vegetable soup~
+A small bowl of spicy-smelling soup has been set here.~
+~
+food~
+food NS 0 0 A
+16 50 0 0 0
+1 7 30 1 P
+0
+V13
+16421
+bread rye cheese dark~
+a piece of rye bread with cheese~
+A piece of dark rye bread covered in a thick slab of cheese lies here.~
+~
+food~
+food NS 0 0 A
+16 50 0 0 0
+1 7 25 1 P
+0
+V13
+16422
+pie blueberry slice warm flaky crust blue berry~
+a slice of blueberry pie~
+A slice of blueberry pie sits here, the crust flaky and warm.~
+~
+food~
+food NS 0 0 A
+40 50 0 0 0
+1 10 70 1 P
+0
+V13
+16423
+strawberries strawberry cream bowl fresh red ripe~
+a small bowl of strawberries with fresh cream~
+A small bowl, filled with ripe, red strawberries has been set here, drizzled with cream.~
+~
+food~
+food NS 0 0 A
+40 50 0 0 0
+1 10 75 1 P
+0
+V13
+16424
+apple sauce cinnamon cinnamon-spiced spiced raisins bowl applesauce~
+a bowl of cinnamon-spiced apple sauce with raisins~
+A bowl of apple sauce sits here, lightly sprinked with cinnamon.~
+~
+food~
+food NS 0 0 A
+40 50 0 0 0
+1 10 65 1 P
+0
+V13
+16425
+bread cinnamon raisin fresh baked slice~
+a slice of cinnamon raisin bread~
+A thick slice of fresh baked cinnamon raisin bread lies here.~
+~
+food~
+food NS 0 0 A
+48 50 0 0 0
+1 15 65 1 P
+0
+V13
+16426
+porridge bowl sweet sweetened sweet-smelling~
+a bowl of sweetened porridge~
+A sweet-smelling bowl of porridge is here.~
+~
+food~
+food NS 0 0 A
+48 50 0 0 0
+1 15 65 1 P
+0
+V13
+16427
+bread slice thick honey toast~
+a thick slice of toast, drizzled with honey~
+A thick slice of fresh baked bread has been left here, drizzled with honey.~
+~
+food~
+food NS 0 0 A
+48 50 0 0 0
+1 15 80 1 P
+0
+V13
+16428
+key iron plain long~
+a long iron key~
+A plain iron key has been left here.~
+~
+iron~
+key 0 0 0 A
+0 0 0 0 0
+1 5 0 0 P
+0
+V13
+16429
+key iron ornate one~
+an ornate iron key, etched with the word \@One\@~
+An ornate key has been left here.~
+~
+iron~
+key 0 0 0 A
+0 0 0 0 0
+1 5 500 0 P
+0
+V13
+16430
+key iron ornate four~
+an ornate iron key, etched with the word \@Four\@~
+An ornate key has been left here.~
+~
+iron~
+key 0 0 0 A
+0 0 0 0 0
+1 5 850 0 P
+0
+V13
+16431
+key iron ornate five~
+an ornate iron key, etched with the word \@Five\@~
+An ornate key has been left here.~
+~
+iron~
+key 0 0 0 A
+0 0 0 0 0
+1 5 850 0 P
+0
+V13
+16432
+key iron ornate two~
+an ornate iron key, etched with the word \@Two\@~
+An ornate key has been left here.~
+~
+iron~
+key 0 0 0 A
+0 0 0 0 0
+1 5 500 0 P
+0
+V13
+16433
+key iron ornate three~
+an ornate iron key, etched with the word \@Three\@~
+An ornate key has been left here.~
+~
+iron~
+key 0 0 0 A
+0 0 0 0 0
+1 5 0 0 P
+0
+V13
+16434
+cleaver sharp sharpened well-sharpened~
+a sharp cleaver~
+A well-sharpened cleaver lies on the ground.~
+~
+metal~
+weapon 0 0 F AN
+dagger 4 7 3 0
+stab~
+30 50 880 1 P
+0
+A
+18 2
+E
+cleaver sharp sharpened well-sharpened~
+The cleaver looks as though it has been well taken care of, the blade
+glinting along its razor sharp edge.  The handle is made of polished wood,
+possibly oak, and a small leather loop is attached to the base.  
+~
+V13
+16435
+blanket fur fur-lined black soft~
+a soft, fur-lined blanket~
+A beautiful, black fur-lined blanket is spread out on the ground.~
+~
+cloth~
+furniture 0 0 0 A
+1 300 EHK 120 115
+1 120 1500 4 P
+0
+E
+blanket fur fur-lined black soft~
+The blanket is made of some extremely smooth material, dyed a deep rich
+black, and oiled to help keep moisture out.  It\@s lined throughout the
+inside with warm, dark brown fur, soft enough that it may belong to a rabbit
+or similar animal.  Small holes have been stitched along three sides of the
+blanket, and a cord of black leather is woven through the holes, allowing
+the blanket to be laced up against the cold.  
+~
+V13
+16436
+pouch silk finely stitched silver silvery~
+a finely stitched silk pouch~
+A silvery silk pouch lies wrinkled on the ground.~
+~
+silk~
+container 0 0 0 A
+50 0 0 15 60
+1 10 750 1 P
+0
+V13
+16437
+canteen leather black smooth~
+a black leather canteen~
+A canteen with smooth black leather stretched over the surface lies discarded here.~
+~
+metal~
+drink 0 0 0 A
+150 150 'water' 0 0
+1 30 150 1 P
+0
+V13
+16438
+cloak silver silk draped long lined fine pile folded~
+a draped silver silk cloak~
+A long, lined cloak of fine silver silk sits here in a neatly folded pile.~
+~
+silk~
+armor DG 0 0 AK
+5 5 5 5 0
+50 60 45000 3 P
+40
+A
+45 5
+A
+40 5
+A
+12 30
+A
+13 15
+V13
+16439
+vial perfume lily-scented lily scented crystal liquid small~
+a crystal vial of lily-scented perfume~
+A small crystal vial, etched with a lily, lies here.~
+~
+crystal~
+treasure S 0 0 A
+0 0 0 0 0
+1 5 850 0 P
+0
+E
+vial perfume lily-scented lily scented crystal liquid small~
+This vial of lily-scented perfume has 3 uses remaining, which you can \@apply\@.
+~
+>verb_prog p apply~
+if objtargetcarry()
+  if value(0) == 0
+    mpechoat $o Your perfume bottle is empty.
+    break
+  endif
+  if iscarrying($o) == 11479
+    mpechoat $o You still have perfume applied, you must wait until the scent fades.
+    break
+  endif
+  mpvaluedown 0
+  mpoload 11479 on $o
+  mpset obj perfumefob objvalue 0 1
+  mpset obj perfumefob objvalue 1 1080
+  mpechoat $o You apply a bit of the lily-scented perfume.
+  if value(0) == 0
+    mpvalueset newdesc This vial of lily-scented perfume is empty.
+  else
+    if value(0) == 1
+      mpvalueset usevar use
+    else
+      mpvalueset usevar uses
+    endif
+    mpvalueset newdesc This vial of lily-scented perfume has $0 %usevar remaining, which you can \@apply\@.
+  endif
+  mpdesc self newdesc vial perfume lily-scented lily scented crystal liquid small
+else
+  mpnextinterp
+endif
+~
+>load_prog 100~
+mpvalueset 0 3
+~
+|
+V13
+16440
+vial perfume sandlewood-scented sandlewood scented crystal liquid small leaf~
+a crystal vial of sandlewood-scented perfume~
+A small crystal vial, etched with a leaf, lies here.~
+~
+crystal~
+treasure S 0 0 A
+0 0 0 0 0
+1 5 850 0 P
+0
+E
+vial perfume sandlewood-scented sandlewood scented crystal liquid small leaf~
+This vial of sandlewood-scented perfume has 3 uses remaining, which you can \@apply\@.
+~
+>verb_prog p apply~
+if objtargetcarry()
+  if value(0) == 0
+    mpechoat $o Your perfume bottle is empty.
+    break
+  endif
+  if iscarrying($o) == 11479
+    mpechoat $o You still have perfume applied, you must wait until the scent fades.
+    break
+  endif
+  mpvaluedown 0
+  mpoload 11479 on $o
+  mpset obj perfumefob objvalue 0 2
+  mpset obj perfumefob objvalue 1 1080
+  mpechoat $o You apply a bit of the sandlewood-scented perfume.
+  if value(0) == 0
+    mpvalueset newdesc This vial of sandlewood-scented perfume is empty.
+  else
+    if value(0) == 1
+      mpvalueset usevar use
+    else
+      mpvalueset usevar uses
+    endif
+    mpvalueset newdesc This vial of sandlewood-scented perfume has $0 %usevar remaining, which you can \@apply\@.
+  endif
+  mpdesc self newdesc vial perfume sandlewood-scented sandlewood scented crystal liquid small leaf
+else
+  mpnextinterp
+endif
+~
+>load_prog 100~
+mpvalueset 0 3
+~
+|
+V13
+16441
+vial perfume vanilla-scented vanilla scented crystal liquid small flower~
+a crystal vial of vanilla-scented perfume~
+A small crystal vial, etched with a flower, lies here.~
+~
+crystal~
+treasure S 0 0 A
+0 0 0 0 0
+1 5 850 0 P
+0
+E
+vial perfume vanilla-scented vanilla scented crystal liquid small flower~
+This vial of vanilla-scented perfume has 3 uses remaining, which you can \@apply\@.
+~
+>verb_prog p apply~
+if objtargetcarry()
+  if value(0) == 0
+    mpechoat $o Your perfume bottle is empty.
+    break
+  endif
+  if iscarrying($o) == 11479
+    mpechoat $o You still have perfume applied, you must wait until the scent fades.
+    break
+  endif
+  mpvaluedown 0
+  mpoload 11479 on $o
+  mpset obj perfumefob objvalue 0 3
+  mpset obj perfumefob objvalue 1 1080
+  mpechoat $o You apply a bit of the vanilla-scented perfume.
+  if value(0) == 0
+    mpvalueset newdesc This vial of vanilla-scented perfume is empty.
+  else
+    if value(0) == 1
+      mpvalueset usevar use
+    else
+      mpvalueset usevar uses
+    endif
+    mpvalueset newdesc This vial of vanilla-scented perfume has $0 %usevar remaining, which you can \@apply\@.
+  endif
+  mpdesc self newdesc vial perfume vanilla-scented vanilla scented crystal liquid small flower
+else
+  mpnextinterp
+endif
+~
+>load_prog 100~
+mpvalueset 0 3
+~
+|
+V13
+16442
+vial perfume jasmine-scented jasmine scented crystal liquid small~
+a crystal vial of jasmine-scented perfume~
+A small crystal vial, etched with jasmine, lies here.~
+~
+crystal~
+treasure S 0 0 A
+0 0 0 0 0
+1 5 850 0 P
+0
+E
+vial perfume jasmine-scented jasmine scented crystal liquid small~
+This vial of jasmine-scented perfume has $0 uses remaining, which you can \@apply\@.
+~
+>verb_prog p apply~
+if objtargetcarry()
+  if value(0) == 0
+    mpechoat $o Your perfume bottle is empty.
+    break
+  endif
+  if iscarrying($o) == 11479
+    mpechoat $o You still have perfume applied, you must wait until the scent fades.
+    break
+  endif
+  mpvaluedown 0
+  mpoload 11479 on $o
+  mpset obj perfumefob objvalue 0 4
+  mpset obj perfumefob objvalue 1 1080
+  mpechoat $o You apply a bit of the jasmine-scented perfume.
+  if value(0) == 0
+    mpvalueset newdesc This vial of jasmine-scented perfume is empty.
+  else
+    if value(0) == 1
+      mpvalueset usevar use
+    else
+      mpvalueset usevar uses
+    endif
+    mpvalueset newdesc This vial of jasmine-scented perfume has $0 %usevar remaining, which you can \@apply\@.
+  endif
+  mpdesc self newdesc vial perfume jasmine-scented jasmine scented crystal liquid small
+else
+  mpnextinterp
+endif
+~
+>load_prog 100~
+mpvalueset 0 3
+~
+|
+V13
+16443
+vial perfume citrus-scented citrus scented crystal liquid small orange~
+a crystal vial of citrus-scented perfume~
+A small crystal vial, etched with an orange, lies here.~
+~
+crystal~
+treasure S 0 0 A
+0 0 0 0 0
+1 5 850 0 P
+0
+E
+vial perfume citrus-scented citrus scented crystal liquid small orange~
+This vial of citrus-scented perfume has 3 uses remaining, which you can \@apply\@.
+~
+>verb_prog p apply~
+if objtargetcarry()
+  if value(0) == 0
+    mpechoat $o Your perfume bottle is empty.
+    break
+  endif
+  if iscarrying($o) == 11479
+    mpechoat $o You still have perfume applied, you must wait until the scent fades.
+    break
+  endif
+  mpvaluedown 0
+  mpoload 11479 on $o
+  mpset obj perfumefob objvalue 0 5
+  mpset obj perfumefob objvalue 1 1080
+  mpechoat $o You apply a bit of the citrus-scented perfume.
+  if value(0) == 0
+    mpvalueset newdesc This vial of citrus-scented perfume is empty.
+  else
+    if value(0) == 1
+      mpvalueset usevar use
+    else
+      mpvalueset usevar uses
+    endif
+    mpvalueset newdesc This vial of citrus-scented perfume has $0 %usevar remaining, which you can \@apply\@.
+  endif
+  mpdesc self newdesc vial perfume citrus-scented citrus scented crystal liquid small orange
+else
+  mpnextinterp
+endif
+~
+>load_prog 100~
+mpvalueset 0 3
+~
+|
+V13
+16444
+vial perfume rose-scented rose scented crystal liquid small~
+a crystal vial of rose-scented perfume~
+A small crystal vial, etched with a rose, lies here.~
+~
+crystal~
+treasure S 0 0 A
+0 0 0 0 0
+1 5 850 0 P
+0
+E
+vial perfume rose-scented rose scented crystal liquid small~
+This vial of rose-scented perfume has 3 uses remaining, which you can \@apply\@.
+~
+>verb_prog p apply~
+if objtargetcarry()
+  if value(0) == 0
+    mpechoat $o Your perfume bottle is empty.
+    break
+  endif
+  if iscarrying($o) == 11479
+    mpechoat $o You still have perfume applied, you must wait until the scent fades.
+    break
+  endif
+  mpvaluedown 0
+  mpoload 11479 on $o
+  mpset obj perfumefob objvalue 0 6
+  mpset obj perfumefob objvalue 1 1080
+  mpechoat $o You apply a bit of the rose-scented perfume.
+  if value(0) == 0
+    mpvalueset newdesc This vial of rose-scented perfume is empty.
+  else
+    if value(0) == 1
+      mpvalueset usevar use
+    else
+      mpvalueset usevar uses
+    endif
+    mpvalueset newdesc This vial of rose-scented perfume has $0 %usevar remaining, which you can \@apply\@.
+  endif
+  mpdesc self newdesc vial perfume rose-scented rose scented crystal liquid small
+else
+  mpnextinterp
+endif
+~
+>load_prog 100~
+mpvalueset 0 3
+~
+|
+V13
+16445
+gloves black velvet pair~
+a pair of black velvet gloves~
+A pair of beautifully stitched black velvet gloves rest folded on the ground.~
+~
+velvet~
+armor G 0 0 AH
+5 5 5 5 0
+50 10 35000 1 P
+5
+A
+13 10
+A
+19 3
+A
+20 -3
+V13
+16446
+gloves white suede pair immaculate~
+a pair of white suede gloves~
+A pair of immaculate, white gloves, crafted from suede, lie here.~
+~
+leather~
+armor G 0 0 AH
+5 5 5 5 0
+50 15 12000 1 P
+30
+A
+13 20
+A
+47 -5
+A
+43 -5
+V13
+16447
+scarf fine wool purple soft~
+a fine wool scarf~
+A soft purple wool scarf lies pooled on the ground.~
+~
+cloth~
+armor G 0 0 AC
+5 5 5 5 0
+50 10 5000 1 P
+40
+A
+12 30
+A
+37 -5
+V13
+16448
+coat red scarlet deep silk silk-lined lined pile~
+a deep scarlet, silk-lined coat~
+A scarlet coat lined with silk lies here, folded in a pile.~
+~
+silk~
+armor DG 0 0 AD
+8 8 8 8 0
+50 50 100000 2 P
+10
+A
+13 15
+A
+12 15
+A
+19 4
+A
+23 -5
+V13
+16449
+boots tall high black pair silk silk-lined lined~
+a pair of high, black silk-lined boots~
+A tall black pair of silk-lined boots are set here.~
+~
+cloth~
+armor G 0 0 AG
+5 5 5 5 0
+50 40 10000 1 P
+20
+A
+13 10
+A
+14 50
+A
+29 -5
+V13
+16450
+chair small chairs~
+a small, comfortable chair~
+A few small chairs are clustered about, their cushions padded in a soft, dark blue fabric.  A faint pattern of darker blue flowers is apparent on the arm and back rests of the chairs, giving them an elegant but comfortable look.~
+~
+cloth~
+furniture ae 0 0 P
+8 10000 EFHI 105 105
+1 6000 0 3 P
+0
+V13
+16451
+sofa couch dark blue~
+a soft, dark blue couch~
+A dark blue sofa sits infront of the fire, surrounded by a scattering of chairs.~
+~
+cloth~
+furniture a 0 0 P
+3 1000 EFHI 110 105
+1 6000 0 3 P
+0
+V13
+16452
+chair chairs leather red dark comfortable~
+a comfortable looking red leather chair~
+A few dark red leather chairs are clustered about.~
+~
+leather~
+furniture a 0 0 P
+5 10000 EFHI 110 105
+1 6000 0 3 P
+0
+V13
+16453
+chair rocking wood~
+a wooden rocking chair~
+The rocking chair is old, but ornately crafted, and painted a creamy white.  Small leaves and flowers are carved out of the top of the backrest, and painted in bright tones of red and green.~
+~
+wood~
+furniture ae 0 0 P
+1 1000 EF 100 105
+1 200 0 3 P
+0
+V13
+16454
+bench orante wooden wood~
+an orante wooden bench~
+The benches are made of old, treated wood that has well withstood the test of time.  The sides supporting the wooden seat are a fine wrought iron that twirls into intricate patterns of roses and ivy.~
+~
+wood~
+furniture ae 0 0 P
+6 1000 EFHI 100 100
+1 1000 0 3 P
+0
+V13
+16455
+chessboard quartz hematite~
+a hematite and quartz chessboard~
+A chessboard of hematite and quartz sits against the western wall, underneath a large window.~
+~
+stone~
+special 0 0 0 P
+1 0 0 0 0
+1 0 0 2 P
+0
+E
+quartz~
+The chessboard is beautifully carved, the pieces hewn out of quartz and
+hematite.  Each piece has extrodinary detail, the fine lines on the hair and
+clothing of the pawns as distinct as the faces on the king and queen.  The
+characters on the white side of the board, carved of quartz, each bear the
+wings of the aelin race, and their knights ride on pegasi.  The hematite
+figurines seem to be nefortu, on the black side of the board.  Each of the
+knights on that side seem to ride small, red-eyed drakes.  
+~
+E
+chessboard~
+The chessboard is beautifully carved, the pieces hewn out of quartz and
+hematite.  Each piece has extrodinary detail, the fine lines on the hair and
+clothing of the pawns as distinct as the faces on the king and queen.  The
+characters on the white side of the board, carved of quartz, each bear the
+wings of the aelin race, and their knights ride on pegasi.  The hematite
+figurines seem to be nefortu, on the black side of the board.  Each of the
+knights on that side seem to ride small, red-eyed drakes.  
+~
+E
+hematite~
+The chessboard is beautifully carved, the pieces hewn out of quartz and
+hematite.  Each piece has extrodinary detail, the fine lines on the hair and
+clothing of the pawns as distinct as the faces on the king and queen.  The
+characters on the white side of the board, carved of quartz, each bear the
+wings of the aelin race, and their knights ride on pegasi.  The hematite
+figurines seem to be nefortu, on the black side of the board.  Each of the
+knights on that side seem to ride small, red-eyed drakes.  
+~
+V13
+16456
+lute abalone inlays~
+a lute with abalone inlays~
+A beautifully crafted lute with abalone patterns inlaid on the body has been set here.~
+~
+wood~
+instrument G 0 0 AO
+B 0 0 0 0
+30 40 7300 2 P
+0
+A
+54 1
+A
+3 1
+A
+12 30
+V13
+16457
+harp silver roses wood wooden~
+a harp etched with silver roses~
+A sleekly carved wooden harp rests here, etched with silver roses.~
+~
+wood~
+instrument G 0 0 AO
+B 0 0 0 0
+30 50 2200 2 P
+0
+A
+54 2
+A
+20 -2
+V13
+16458
+horn brass intricate crafted beautiful~
+a beautifully crafted brass horn~
+A brass horn covered in intricate patterns and designs has been left on the ground.~
+~
+brass~
+instrument G 0 0 AO
+D 0 0 0 0
+30 30 2100 1 P
+0
+A
+54 1
+A
+18 3
+E
+horn brass intricate crafted beautiful~
+The horn is well-polished and maintained.  It is covered in intricate
+patterns of raised brass, detailing small clusters of berries and flowers. 
+Along the base of the horn there are some tiny, and exquisitely carved
+dragonflies hidden amongst the patterns, looking almost ready to dart off
+the smooth brass surface and into the air.  
+~
+V13
+16459
+flute silver ivory inlaid~
+a silver flute inlaid with ivory~
+A flute lies on the ground, shining softly in the light.~
+~
+silver~
+instrument G 0 0 AO
+C 0 0 0 0
+30 20 2400 1 P
+0
+A
+54 1
+A
+13 10
+A
+2 1
+V13
+16460
+chair wooden wood~
+a wooden chair~
+A well-used but comfortable looking wooden chair sits here, a thin dark red cushion padding the back of the seat.~
+~
+wood~
+furniture e 0 0 0
+8 80000 EH 105 105
+1 6000 0 0 P
+0
+V13
+16461
+table cherrywood round~
+a round cherrywood table~
+A round cherrywood table sits here, surrounded by sturdy wooden chairs.  The surface is slightly scratched, but shows signs of being lovingly and well polished.~
+~
+wood~
+furniture e 0 0 0
+0 6000 N 0 0
+1 6000 0 0 P
+0
+V13
+16462
+barstool stool seat~
+a leather barstool~
+A line of tall barstools, covered in dark red leather, stretches along the bar.~
+~
+leather~
+furniture e 0 0 0
+12 0 E 105 105
+1 500 0 3 P
+0
+V13
+16463
+bar polished wooden~
+the polished wooden bar~
+The bar is scuffed slightly, but well-maintained, the dark wood surface gleaming dully with wax.~
+~
+wood~
+furniture e 0 0 0
+0 4000 N 0 0
+1 2000 0 3 P
+0
+V13
+16464
+bench benches wood wooden~
+a polished maple bench~
+The bench is carved of pure maple, and sanded down so as to be remarkably smooth.~
+~
+wood~
+furniture e 0 0 0
+10 0 EH 105 105
+1 4000 0 3 P
+0
+V13
+16465
+tub copper gleaming baths bath~
+a gleaming copper tub~
+The copper tub shines dully in the light, a few nicks and scratches along the rim but otherwise well polished.~
+~
+copper~
+furniture e 0 0 0
+2 0 FI 0 0
+1 7000 0 3 P
+0
+V13
+16466
+washbasin wash basin brass sink~
+a gleaming brass washbasin~
+The washbasin is a shiny brass, with nary a mark or fingerprint upon it.  The light from the room reflects off the gleaming metal, and bathes the room in a golden glow.~
+~
+brass~
+fountain e 0 0 0
+0 0 'water' 0 0
+1 1000 0 3 P
+0
+V13
+16467
+pool shimmering water blue pond~
+the shimmering pond~
+The pool shimmers softly in the light, its tranquility barely stirred by a passing breeze.~
+~
+water~
+fountain e 0 0 0
+0 0 'water' 0 0
+1 600 0 3 P
+0
+V13
+16468
+desk~
+a desk~
+The desk looks old, and upon closer examination you note a pattern of tiny leaves on either side of the surface, stretching from the wall to the front of the table.~
+~
+wood~
+furniture e 0 0 0
+0 1000 NO 0 0
+1 7000 0 3 P
+0
+V13
+16469
+bed double double-sized large quilt oak~
+a large bed~
+A large bed with oak posts sits in the corner, covered in a colourful quilt.~
+~
+wood~
+furniture S 0 0 0
+3 0 EHK 115 110
+1 7000 0 3 P
+0
+V13
+16470
+bed comfortable large blue~
+a comfortable bed~
+A large, comfortable looking bed, covered in a thick dark blue blanket.~
+~
+wood~
+furniture S 0 0 0
+2 0 EHK 125 125
+1 1000 0 3 P
+0
+V13
+16471
+cabinet mahogany~
+a mahogany cabinet~
+Made of pure, dark mahogany wood, the cabinet gleams with polish and care.  A small brass handle opens up a double door to see inside.~
+~
+wood~
+container Se 0 0 0
+150 AC 0 100 50
+1 1000 0 3 P
+0
+V13
+16472
+table coffee small~
+a small coffee table~
+The coffee table is small but obviously of high quality, with intricate scrolling carved along the border and down the legs.~
+~
+wood~
+furniture Se 0 0 0
+0 700 N 0 0
+1 400 0 2 P
+0
+V13
+16473
+chest iron~
+an iron chest~
+The chest is made of thick, black iron, and looks quite servicable and strong.  A small, newer looking lock hangs from the lid, with a small image of a crown upon it.~
+~
+iron~
+container e 0 0 0
+200 AC 0 100 100
+1 600 0 2 P
+0
+V13
+16474
+nightstand small~
+a nightstand~
+Made of a dark wood that looks to be maple or oak, the nightstand is sanded but not polished.  A small drawer is set in the top part, and the remaining space is a cubby hole ideal for books.~
+~
+wood~
+container e 0 0 0
+30 AC 0 20 100
+0 400 0 2 P
+0
+V13
+16475
+sofa well-cushioned well cushioned couch~
+a well-cushioned sofa~
+A pair of sofas face each other, cushioned with plush, dark grey pillows.~
+~
+cloth~
+furniture S 0 0 0
+6 0 EH 110 110
+1 1200 0 3 P
+0
+V13
+16476
+bed linen mattress black posted large silk white lace~
+a large, comfortable bed~
+The bed is quite large, and stacked high with fluffy looking pillows.  A thick, warm looking blanket is smoothed over the matress, the surface looking soft and inviting.~
+~
+wood~
+furniture Se 0 0 0
+3 0 EHK 150 150
+1 2000 0 3 P
+0
+V13
+16477
+loveseat sofa couch love seat~
+a loveseat~
+The loveseat is covered in a creamy white fabric, and has a few small but beautifully stitched pillows placed artfully along the backrest.~
+~
+cloth~
+furniture Se 0 0 0
+2 0 EH 115 115
+1 1500 0 3 P
+0
+V13
+16478
+table dining small~
+a dining table~
+The table is covered in a thin white cloth, and set in the middle is a bouquet of newly budding roses.~
+~
+wood~
+furniture Se 0 0 0
+0 100 N 0 0
+1 600 0 3 P
+0
+V13
+16479
+bottle sherry glass etched decanter~
+a decanter of sherry~
+An etched glass bottle, containing some dark red liqueursits here.~
+~
+glass~
+drink 0 0 F A
+30 30 'sherry' 0 1
+1 15 120 1 P
+0
+V13
+16480
+key metal long~
+a long metal key~
+A gleaming metal key lies here.~
+~
+metal~
+key 0 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+V13
+16481
+cart wooden ornate large merchantcart~
+a wooden cart~
+A large, ornate wooden cart sits at the side of the path.~
+~
+wood~
+furniture S 0 0 P
+2 10000 FIO 105 100
+1 9000 0 4 P
+0
+V13
+16482
+rock stone large~
+a large rock~
+A large rock sits by the door to the Inn, partially shaded by the trees above.~
+~
+stone~
+furniture 0 0 0 P
+1 0 EH 110 100
+1 2000 0 3 P
+0
+V13
+16483
+pendant turquoise silver chain pool~
+a turquoise pendant~
+A silver chain lies in a pool on the ground, almost covering the turquoise pendant attached to it.~
+~
+silver~
+jewelry G 0 0 AC
+0 0 0 0 0
+25 1 5000 0 P
+0
+A
+12 20
+A
+20 -2
+E
+chain~
+The silver chain is made of fine interlocking loops of pure silver. 
+Hanging from the middle is a bright piece of turquoise, wrapped in thin
+silver wires.  
+~
+E
+silver~
+The silver chain is made of fine interlocking loops of pure silver. 
+Hanging from the middle is a bright piece of turquoise, wrapped in thin
+silver wires.  
+~
+E
+pendant~
+The silver chain is made of fine interlocking loops of pure silver. 
+Hanging from the middle is a bright piece of turquoise, wrapped in thin
+silver wires.  
+~
+E
+turquoise~
+The silver chain is made of fine interlocking loops of pure silver. 
+Hanging from the middle is a bright piece of turquoise, wrapped in thin
+silver wires.  
+~
+V13
+16484
+sleeves black lined pair~
+a pair of black, lined sleeves~
+A pair of black sleeves lie here.~
+~
+cloth~
+armor D 0 0 AI
+6 6 6 0 0
+20 20 1100 2 P
+0
+A
+18 2
+E
+sleeves~
+The sleeves are made of a dark, thick cloth which is somewhat coarse to
+the touch.  The insides and edges, however, are lined with a soft black
+material which also serves to add an extra layer of protection against the
+elements.  
+~
+E
+black~
+The sleeves are made of a dark, thick cloth which is somewhat coarse to
+the touch.  The insides and edges, however, are lined with a soft black
+material which also serves to add an extra layer of protection against the
+elements.  
+~
+E
+lined~
+The sleeves are made of a dark, thick cloth which is somewhat coarse to
+the touch.  The insides and edges, however, are lined with a soft black
+material which also serves to add an extra layer of protection against the
+elements.  
+~
+E
+pair~
+The sleeves are made of a dark, thick cloth which is somewhat coarse to
+the touch.  The insides and edges, however, are lined with a soft black
+material which also serves to add an extra layer of protection against the
+elements.  
+~
+V13
+16485
+ring amethyst beautiful white gold white-gold crafted~
+a white-gold ring, inset with an amethyst~
+A beautiful ring of crafted white gold has been left here.~
+~
+gold~
+treasure 0 0 0 AB
+0 0 0 0 0
+15 8 3000 0 P
+0
+A
+54 1
+E
+ring~
+The ring is thick and wide, the weight of the gold heavy in your hand. 
+The amethyst in the middle is multifaceted and sparkles in the dimmest of
+lights, shining a deep clear purple.  
+~
+E
+white~
+The ring is thick and wide, the weight of the gold heavy in your hand. 
+The amethyst in the middle is multifaceted and sparkles in the dimmest of
+lights, shining a deep clear purple.  
+~
+E
+gold~
+The ring is thick and wide, the weight of the gold heavy in your hand. 
+The amethyst in the middle is multifaceted and sparkles in the dimmest of
+lights, shining a deep clear purple.  
+~
+E
+white-gold~
+The ring is thick and wide, the weight of the gold heavy in your hand. 
+The amethyst in the middle is multifaceted and sparkles in the dimmest of
+lights, shining a deep clear purple.  
+~
+E
+crafted~
+The ring is thick and wide, the weight of the gold heavy in your hand. 
+The amethyst in the middle is multifaceted and sparkles in the dimmest of
+lights, shining a deep clear purple.  
+~
+E
+beautiful~
+The ring is thick and wide, the weight of the gold heavy in your hand. 
+The amethyst in the middle is multifaceted and sparkles in the dimmest of
+lights, shining a deep clear purple.  
+~
+E
+amethyst~
+The ring is thick and wide, the weight of the gold heavy in your hand. 
+The amethyst in the middle is multifaceted and sparkles in the dimmest of
+lights, shining a deep clear purple.  
+~
+V13
+16486
+gloves silver mesh fine pair~
+a pair of fine, silver mesh gloves~
+A pair of gloves lie on the floor, crafted from silver mesh.~
+~
+silver~
+armor GI 0 0 AH
+8 8 8 4 0
+35 40 5800 1 P
+45
+A
+19 2
+A
+18 -1
+A
+13 10
+E
+gloves~
+The gloves are crafted from tiny interlocking links of silver, and they
+gleam softly in the light.  
+~
+E
+silver~
+The gloves are crafted from tiny interlocking links of silver, and they
+gleam softly in the light.  
+~
+E
+mesh~
+The gloves are crafted from tiny interlocking links of silver, and they
+gleam softly in the light.  
+~
+E
+fine~
+The gloves are crafted from tiny interlocking links of silver, and they
+gleam softly in the light.  
+~
+E
+pair~
+The gloves are crafted from tiny interlocking links of silver, and they
+gleam softly in the light.  
+~
+V13
+16487
+coif silver mesh fine pool~
+a fine, silver mesh coif~
+A pool of silver mesh lies on the ground.~
+~
+silver~
+armor GI 0 0 AE
+8 8 8 8 0
+35 50 5500 1 P
+65
+A
+19 2
+A
+18 -1
+A
+12 10
+E
+coif~
+The coif is fashioned out of many tiny, interlocking links of silver. 
+Small silver balls dangle from the edges of the coif, and they clink
+together softly as the coif is moved.  
+~
+E
+silver~
+The coif is fashioned out of many tiny, interlocking links of silver. 
+Small silver balls dangle from the edges of the coif, and they clink
+together softly as the coif is moved.  
+~
+E
+mesh~
+The coif is fashioned out of many tiny, interlocking links of silver. 
+Small silver balls dangle from the edges of the coif, and they clink
+together softly as the coif is moved.  
+~
+E
+fine~
+The coif is fashioned out of many tiny, interlocking links of silver. 
+Small silver balls dangle from the edges of the coif, and they clink
+together softly as the coif is moved.  
+~
+E
+pool~
+The coif is fashioned out of many tiny, interlocking links of silver. 
+Small silver balls dangle from the edges of the coif, and they clink
+together softly as the coif is moved.  
+~
+V13
+16488
+skirt peach lily soft pale lilies embroidered fabric~
+a pale peach skirt embroidered with lilies~
+A skirt sewn of soft peach fabric lies folded on the ground.~
+~
+cloth~
+armor 0 0 0 AF
+2 1 2 0 0
+10 35 970 2 P
+0
+A
+12 5
+A
+13 5
+E
+skirt peach lily soft pale lilies embroidered fabric~
+The skirt is made from a brushed peach fabric, thick and soft to the
+touch.  All along the hem, large white lilies have been embroidered in white
+and pale yellow thread.  
+~
+V13
+16489
+sleeves dark grey leather pair large~
+a pair of dark grey leather sleeves~
+A large pair of grey sleeves lie on the ground.~
+~
+leather~
+container 0 0 0 AI
+10 0 0 10 90
+40 40 6000 1 P
+0
+A
+17 -9
+A
+2 2
+A
+18 3
+A
+19 1
+E
+sleeves dark grey leather pair large~
+The sleeves are made of thin, flexible leather, dyed to a dark, mottled
+grey.  
+~
+V13
+16490
+gloves claws steel thin black pair long~
+a pair of black gloves with thin steel claws~
+A pair of black gloves lie here, with long, thin spikes on them lie here.~
+~
+metal~
+weapon 0 0 0 AH
+exotic 5 8 2 H
+claw~
+40 40 30000 1 P
+15
+A
+18 2
+A
+19 1
+E
+gloves claws steel thin black pair long~
+The gloves are made of thick black leather, and reinforced with bits of
+steel.  Extending from the back of the gloves are thin spikes, curved and
+long enough to reach past the fingers.  
+~
+V13
+16491
+belt black leather pouches pouch beltpouch compartment compartments wide lined~
+a black leather belt lined with pouches~
+A wide belt of black leather lies here, lined with tiny compartments.~
+~
+leather~
+container G 0 0 AL
+7 AC 0 7 90
+40 30 8000 1 P
+0
+A
+17 -5
+A
+5 1
+A
+40 3
+A
+19 1
+E
+belt black leather pouches pouch beltpouch compartment compartments wide lined~
+The belt is thick, but flexible, and adjusted by leather ties in the
+back.  All along the sides of the belt are tiny little pouches, ideal for
+storing a few small things.  
+~
+V13
+16492
+polearm long feathers tall~
+a long polearm, decorated with feathers~
+A tall polearm has been left here, feathers lying on the ground.~
+~
+steel~
+weapon G 0 0 AN
+polearm 4 6 2 F
+pierce~
+25 185 7394 3 P
+0
+A
+13 10
+A
+19 2
+E
+polearm long feathers tall~
+Made of heavy steal, the polearm is quite long and looks well-maintained.
+The handle has been wrapped with thin strips of leather for better grip, and
+small, brightly coloured feathers dangle from the base.  
+~
+V13
+16493
+shield hide large~
+a hide shield~
+A large shield of hide rests here.~
+~
+hide~
+armor 0 0 0 AJ
+7 7 7 5 0
+25 80 1200 2 P
+0
+A
+17 -5
+A
+22 3
+V13
+16494
+leggings thick pair hide~
+a thick pair of hide leggings~
+A pair of leggings crafted from thick hide have been set here.~
+~
+hide~
+armor 0 0 0 AF
+7 7 7 0 0
+25 70 8000 2 P
+0
+A
+14 -15
+A
+2 -1
+A
+13 20
+V13
+16495
+cloak hide thick hides bulky~
+a bulky, hide cloak~
+A cloak of thick hides has been left on the ground.~
+~
+hide~
+armor 0 0 0 K
+8 8 8 0 0
+30 60 3900 3 P
+0
+A
+18 3
+A
+13 8
+V13
+16496
+rod wand crystalline crystal gleaming~
+a crystalline rod~
+A gleaming rod of clear crystal shines softly from the ground.~
+~
+crystal~
+wand 0 0 0 AO
+20 5 4 'fly' 0
+20 20 0 1 P
+0
+V13
+16497
+poncho soft leather~
+a soft leather poncho~
+A poncho of soft, brushed leather lies here.~
+~
+leather~
+armor 0 0 0 AK
+3 3 3 0 0
+5 45 650 2 P
+0
+A
+20 -1
+V13
+16498
+sandals pair white leather high bleach bleached~
+a pair of high white leather sandals~
+A pair of bleached white leather sandals lie here in pristine condition.~
+~
+leather~
+armor 0 0 0 AG
+4 4 4 0 0
+15 25 740 1 P
+0
+A
+2 1
+A
+14 15
+V13
+16499
+bracer blue dragonscale dragon scale thick~
+a blue dragonscale bracer~
+A thick, blue dragonscale bracer lies here.~
+~
+dragonscale~
+armor SY 0 0 AM
+10 10 10 5 0
+42 45 11000 1 P
+3
+A
+1 1
+A
+2 1
+A
+19 2
+A
+18 2
+#0
+
+
+
+#ROOMS
+#16400
+The Lair of the Burninator~
+Burninating the people..  In the thatched-roof cottages!  
+
+Bits used:
+16401 -- Set for fighting in Inn.
+~
+~
+0
+0 32772 0
+W 5 0 0
+Z 5 5
+S
+#16401
+Outside The Oak And Ivy Inn~
+Winding lengths of green ivy creep upwards along the worn stone exterior
+of a moderately-sized building, from which a finely painted sign hangs
+proclaiming it to be the \@Oak and Ivy\@.  Against the walls below stem
+seemingly well-tended rose bushes, intertwining with the tangled vines.  A
+beaten dirt path leads in from the main road to the west, ending at a sturdy
+wooden door which provides entry into the inn.  A large rock sits nearby,
+its top smoothed from use.  Paned windows are inset on either side of the
+door, through which flickering torchlight can be seen inside.  
+~
+~
+1
+0 4 3
+D1
+A large oaken door marks the entry to the Oak and Ivy Inn.
+~
+~
+0 0 16402
+W 5 0 0
+Z 5 5
+P
+>time_prog 8~
+if value(0) == 0
+  mpmload 16413
+  mpfocus gedwesin
+  mpmload 16414
+  mpoload 16481
+  mpoload 16435 on $f
+  mpoload 16436 on $f
+  mpoload 16437 on $f
+  loop 0 to 2
+    mpmath b 12 - $v1
+    mpvaluerand a 1 %b
+    mpvalueset mitem 16438
+    mpvalueset c 0
+    loop 1 to 12
+      if value(a) != 0
+        if iscarrying($f) == %mitem
+        else
+          mpvalueup c
+        endif
+        if value(c) == %a
+          mpoload %mitem on $f
+          mpvalueset a 0
+        endif
+        mpvalueup mitem
+      endif
+    endloop
+  endloop
+  mpecho A large, horse-drawn cart pulls up in front of the inn.
+  mpvaluerand 1 5 7
+endif
+mpvalueup 0
+if value(0) == $1
+  mpvalueset 0 0
+endif
+~
+|
+S
+#16402
+Common Room~
+Large rounded tables are spread about the common area of the inn, their
+surfaces somewhat scratched and otherwise marred.  Numerous wooden chairs
+surround each one, also appearing worn with use.  The room is well lit,
+light merrily flickering from both torches affixed to the supports, and
+candles hanging down within small iron chandeliers.  The main door of the
+inn opens up to the west, and a long bar can be seen to the south.  
+~
+~
+1
+0 8 0
+D0
+The common room continues to the north, with a chessboard set up by the
+window.  
+~
+~
+0 0 16404
+D1
+The common room continues to the east, small tables and chairs scattered
+about for comfort.  
+~
+~
+0 0 16408
+D2
+A large, polished bar takes up much of the wall to the south, surrounded
+by red leather barstools.  
+~
+~
+0 0 16403
+D3
+A large oaken door opens up to a small path leading away from the Inn.
+~
+~
+0 0 16401
+W 5 0 0
+Z 5 5
+S
+#16403
+At The Bar~
+A large, polished bar extends out from the western wall, running parallel
+to the southern face of the inn.  Edged in gleaming silver, meticulous care
+has been taken in keeping the surface from becoming tarnished or scratched
+over time, the loving hand of the bartender obvious.  Candles flicker from
+within worked glass jars sitting on top of the bar, the light reflecting
+warmly off the shining wood.  Hanging on the wall behind the bar is a small
+chalkboard, informing patrons about current events and specials of the day. 
+The bar continues on to the east, and the common room of the inn lies to the
+north.  
+~
+~
+1
+0 12 0
+E
+\@sign chalkboard\@~
++----------------------------------+
+| Today\@s Breakfast                |
+|                                  |
+| Cinnamon raisin bread            |
+| Sweetened porridge               |
+| Toast with honey                 |
++----------------------------------+
+~
+E
+sign chalkboard~
++----------------------------------+{/| Today\@s Specials                 |{/|                                  |{/| Beer-basted ribs                 |{/| Corn on the cob                  |{/| Freshly baked bread              |{/| Blueberry pie                    |{/+----------------------------------+{/~
+D0
+Tables are scattered about to the north, with a cleared area in front of
+the door to the Inn.  
+~
+~
+0 0 16402
+D1
+The bar continues to the east, running along the southern wall.
+~
+~
+0 0 16409
+W 5 0 0
+Z 5 5
+S
+#16404
+Common Room~
+Large rounded tables are spread about the common area of the inn, their
+surfaces somewhat scratched and otherwise marred.  Numerous wooden chairs
+surround each one, also appearing worn with use.  The room is well lit,
+light merrily flickering from both torches affixed to the supports, and
+candles hanging down within small iron chandeliers.  A large paned window
+offers a pleasant view to the west, beneath which is situated a small gaming
+table.  
+~
+~
+1
+0 8 0
+D0
+A cosy, dimly lit corner lies to the north, with large, comfortable
+looking chairs scattered about.  
+~
+~
+0 0 16405
+D1
+The central area of the common room lies to the east.
+~
+~
+0 0 16407
+D2
+The common room continues to the south, the tables farther apart to
+accommodate the entrance to the Inn.  
+~
+~
+0 0 16402
+W 5 0 0
+Z 5 5
+S
+#16405
+A Cozy Corner of the Common Room~
+This corner of the inn is set apart from the common room, its area
+instead occupied by many comfortable looking chairs and couches, along with
+a number of short tables and stands.  All of the furniture here has been
+very worn in, giving it an inviting presence.  The lighting is fairly dim,
+though the candles against the wall have clearly been placed to afford
+suitable illumination to those sitting in certain locations.  A few painted
+landscapes hang from the smoothed stone walls, and a number of throw rugs
+are spread about, adding colour to the area.  A bit of warmth emanates from
+the crackling hearth to east, and to the south floods in light and laughter
+from the common room.  
+~
+~
+1
+0 8 0
+D1
+A large fireplace dominates the northern wall, to the east, with many
+chairs scattered about to face it.  
+~
+~
+0 0 16406
+D2
+The common room extends on to the south, with a small chessboard set
+beside a large window.  
+~
+~
+0 0 16404
+W 5 0 0
+Z 5 5
+S
+#16406
+Before a Fireplace~
+Crackling flames dance peacefully within the stone fireplace set into the
+northern facade, eminating heat outwards into the inn.  Hanging from the
+wall above looms the trophied head of a sabre-toothed beast, with a small
+golden plaque underneath proclaiming the name of the hunter that fell it. 
+Upon the mantle are set other conversation pieces, including the long
+spindling horn of a dragon.  An elegant woven rug is spread out in front of
+the hearth, slightly worn from its time here in service, surrounded by
+couches and chairs for those looking to enjoy the fire.  
+~
+~
+1
+0 8 0
+D1
+To the east there is a small stage, set up in front of a few tables and
+chairs.  
+~
+~
+0 0 16413
+D2
+The central area of the common room lies to the south.
+~
+~
+0 0 16407
+D3
+A dimly lit corner lies to the west, dominated by a few large comfortable
+looking chairs.  
+~
+~
+0 0 16405
+W 5 0 0
+Z 5 5
+P
+>rand_prog 1~
+// Should happen 1 out of every 150 rand_progs or so.
+if rand(67)
+  mpecho The dancing flames within the fireplace crackle merrily.
+endif
+~
+|
+S
+#16407
+Common Room~
+Large rounded tables are spread about the common area of the inn, their
+surfaces somewhat scratched and otherwise marred.  Numerous wooden chairs
+surround each one, also appearing worn with use.  The room is well lit,
+light merrily flickering from both torches affixed to the supports, and
+candles hanging down within small iron chandeliers.  A bit of additional
+warmth emenates in from the north, and the common room continues in other
+directions.  
+~
+~
+1
+0 8 0
+D0
+A large fireplace dominates the northern wall, surrounded by a scattering
+of comfortable looking chairs.  
+~
+~
+0 0 16406
+D1
+The common room continues to the east.
+~
+~
+0 0 16412
+D2
+The common room continues to the south.
+~
+~
+0 0 16408
+D3
+The common room continues to the west, with a stone chessboard sitting
+under a large window.  
+~
+~
+0 0 16404
+W 5 0 0
+Z 5 5
+S
+#16408
+Common Room~
+Large rounded tables are spread about the common area of the inn, their
+surfaces somewhat scratched and otherwise marred.  Numerous wooden chairs
+surround each one, also appearing worn with use.  The room is well lit,
+light merrily flickering from both torches affixed to the supports, and
+candles hanging down within small iron chandeliers.  The common room expands
+in all directions, with a long bar standing to the south.  
+~
+~
+1
+0 8 0
+D0
+The common room continues to the north.
+~
+~
+0 0 16407
+D1
+The common room continues to the east.
+~
+~
+0 0 16411
+D2
+A large, polished bar takes up much of the wall to the south, surrounded
+by red leather barstools.  
+~
+~
+0 0 16409
+D3
+The common room continues to the west, with a large oaken door on the
+western wall.  
+~
+~
+0 0 16402
+W 5 0 0
+Z 5 5
+S
+#16409
+At The Bar~
+A large, polished bar extends from the west, running parallel to the
+southern face of the inn.  Edged in gleaming silver, meticulous care has
+been taken in keeping the surface from becoming tarnished or scrached over
+time, the loving hand of the bartender obvious.  Candles flicker from within
+worked glass jars sitting on top of the bar, the light reflecting warmly off
+the shining wood.  A swinging door is set into the wall, from within the
+tantilizing smell of a kitchen emerges.  To the east of here, a small
+staircase raises to the upper level of the inn, while the bar continues to
+the west.  The common room of the inn lies to the north.  
+~
+~
+1
+0 12 0
+D0
+The common room lies to the north, round cherrywood tables scattered about for the patrons of the Inn.
+~
+~
+0 0 16408
+D1
+To the east, a narrow staircase leads up to the rooms on the second floor
+of the Inn.  
+~
+~
+0 0 16410
+D2
+A wooden swinging door set in the southern wall blocks the entrance to
+the kitchen.  
+~
+~
+3 0 16420
+D3
+The bar continues to the west, running along the southern wall.
+~
+~
+0 0 16403
+W 5 0 0
+Z 5 5
+P
+>greet_prog 100~
+if isfocused()
+  break
+endif
+if isbitset($n) == 16401
+  loop 1 to 4
+    mpfocus ivybouncer$v1 0
+    if isfocused()
+      if isfighting($f)
+      or isfocused($f)
+      else
+        mpforce ivybouncer$v1 mpfocus $n 0
+      endif
+    endif
+  endloop
+  mpfocus $n 0
+endif
+~
+>rand_prog 100~
+if isfocused()
+  if ishere($f)
+    mpvalueset vstr $f1
+    loop 1 to 4
+      mpfocus ivybouncer$v1 1
+      if isfocused() == 1
+        if isfighting($f1)
+        else
+          mpvalueset 1 0
+          if isfocused($f1)
+            if isfighting($f)
+            else
+              mpvalueset 1 1
+            endif
+          endif
+          if value(1) == 0
+            mpforce ivybouncer$v1 mpfocus $f 0
+            mpforce ivybouncer$v1 mpfocus %vstr 1
+            if ishere($f1)
+            else
+              mpforce ivybouncer$v1 mpfindpath $f 11
+              mpforce ivybouncer$v1 mppathstep
+            endif
+            if ishere($f1)
+              if position($f) == 4
+                mpechoaround $f $F1 picks up $F, and drags $M out of the Inn.
+                mpat 16401 mpecho $F is dragged out of the Inn.
+                mptrans $f 16401
+                mpforce ivybouncer$v1 mpunfocus
+              else
+                mpforce ivybouncer$v1 yell You will not disturb the peace of this inn, $F!
+                mpforce ivybouncer$v1 pummel $f
+              endif
+            endif
+          endif
+        endif
+      endif
+    endloop
+    mpfocus %vstr 1
+  else
+    mpunfocus 0
+    mpunfocus 1
+  endif
+endif
+~
+>attack_prog 100~
+if isimmort($n)
+or isnpc($n)
+  break
+endif
+if isfocused() == 1
+  if valname($n) == $f1
+    break
+  endif
+endif
+if isbitset($n) == 16401
+else
+  mpbitset $n 16401 1
+  mpaddaffect $n 479 60 120 27 16401 0
+endif
+if isfocused()
+  if ishere($f)
+    break
+  endif
+endif
+loop 1 to 4
+  mpfocus ivybouncer$v1 0
+  if isfocused()
+    if isfighting($f)
+    else
+      mpforce ivybouncer$v1 mpfocus $n 0
+      mpforce ivybouncer$v1 mpfocus $t 1
+      if ishere($f)
+      else
+        mpforce ivybouncer$v1 mpfindpath $n 11
+        mpforce ivybouncer$v1 mppathstep
+      endif
+      if ishere($f)
+        mpforce ivybouncer$v1 yell You will not disturb the peace of this inn, $N!
+        mpforce ivybouncer$v1 pummel $n
+      endif    
+    endif
+  endif
+endloop
+mpfocus $n 0
+mpfocus $t 1
+~
+|
+S
+#16410
+Bottom of the Stairs~
+A narrow set of wooden stairs ascends to the south, before reaching a
+landing illuminated by a single torch and turning westwards, leading towards
+the second level of the inn.  A small dartboard hangs from the southern
+wall, and a rough line has been scratched into the floor near the base of
+the stairs to mark the distance for competitors.  The common room of the inn
+extends outwards to the north of here, while the bar lies to the west.  
+~
+~
+1
+0 12 0
+D0
+The common room lies to the north, with a small hallway leading east.
+~
+~
+0 0 16411
+D3
+A large, polished bar dominates the area to the west.
+~
+~
+0 0 16409
+D4
+The wooden stairs lead up to a wood panelled hallway, well lit by torches.  
+~
+~
+0 0 16423
+W 5 0 0
+Z 5 5
+S
+#16411
+Common Room~
+Large rounded tables are spread about the common area of the inn, their
+surfaces somewhat scratched and otherwise marred.  Numerous wooden chairs
+surround each one, also appearing worn with use.  The room is well lit,
+light merrily flickering from both torches affixed to the supports, and
+candles hanging down within small iron chandeliers.  A small hallway extends
+to the east of here, while to the south a small staircase leads towards the
+upper level.  
+~
+~
+1
+0 8 0
+D0
+The common room continues to the north.
+~
+~
+0 0 16412
+D1
+A small, poorly lit hallway leads east out of the common room.  
+~
+~
+0 0 16414
+D2
+To the south, a narrow staircase leads up to the rooms on the second
+floor of the Inn.  
+~
+~
+0 0 16410
+D3
+The common room continues to the west.
+~
+~
+0 0 16408
+W 5 0 0
+Z 5 5
+S
+#16412
+Common Room~
+Large rounded tables are spread about the common area of the inn, their
+surfaces somewhat scratched and otherwise marred.  Numerous wooden chairs
+surround each one, also appearing worn with use.  The room is well lit,
+light merrily flickering from both torches affixed to the supports, and
+candles hanging down within small iron chandeliers.  A small stage can be
+seen to the north of here, while the common room continues in other
+directions.  
+~
+~
+1
+0 8 0
+D0
+To the north there is a small stage, set up in front of a few tables and
+chairs.  
+~
+~
+0 0 16413
+D2
+A common room continues to the south, with a small hallway leading east.  
+~
+~
+0 0 16411
+D3
+The common room continues to the west.
+~
+~
+0 0 16407
+W 5 0 0
+Z 5 5
+S
+#16413
+A Small Stage~
+A small platform raises up from floor in the corner of the room, its
+surface well polished, though still sporting obvious wear from the many who
+have tread upon it.  Tables are set around the perimeter, all of their
+surrounding chairs angled towards the stage, to afford their occupants a
+proper view.  A thin rail runs along the ceiling, with plush red curtains
+hanging at either end, waiting to be closed.  Slight warmth emanates from
+the fireplace to the west of here, while the common room of the inn opens up
+to the south.  
+~
+~
+1
+0 8 0
+D2
+The common room extends to the south.
+~
+~
+0 0 16412
+D3
+The common room extends to the west, a large fireplace dominating the
+northern wall.  
+~
+~
+0 0 16406
+W 5 0 0
+Z 5 5
+P
+>time_prog 15~
+mpvaluerand 0 0 5
+if roomvalue(0) <= 2
+  mpmload 16408
+  mpoload 16456 on qarista
+  mpforce qarista emote gracefully glides onto the stage, and turns to face her audience.
+endif
+if roomvalue(0) == 3
+  mpmload 16409
+  mpoload 16457 on eolidil
+  mpforce eolidil emote carefully steps up onto the stage, and turns to face the audience.
+endif
+if roomvalue(0) == 4
+  mpmload 16410
+  mpoload 16458 on laenira
+  mpforce Laenira emote gracefully glides onto the stage, and turns to face the audience.
+endif
+if roomvalue(0) == 5
+  mpmload 16411
+  mpoload 16459 on ar\@hon
+  mpforce ar\@hon emote deftly leaps up onto the stage, quickly turning to face the audience.
+endif
+~
+|
+S
+#16414
+Small Hallway~
+This tiny hallway is somewhat dark, relying on light from elsewhere for
+illumination.  A single painting hangs against the eastern wall, with a tiny
+golden plaque below it.  To the north, a windowed doorway leads into a small
+garden, while an unmarked door lies to the south.  The common room of the
+inn opens up to the west.  
+~
+~
+1
+0 12 0
+D0
+A small windowed door leads north to a small patio in a well-tended
+garden.  
+~
+~
+0 0 16416
+D2
+A small bookroom lies to the south, stocked with books for the traveling
+scholars who frequent the Inn.  
+~
+~
+1 0 16415
+D3
+The common room lies to the west, round cherrywood tables scattered about
+for the patrons of the Inn.  
+~
+~
+0 0 16411
+W 5 0 0
+Z 5 5
+S
+#16415
+A Quiet Bookroom~
+The musty smell of old paper permeates this small chamber, originating
+from the many books which occupy the small stands of shelves lining the
+room.  A large window is set into the eastern wall to catch the early
+morning sun, and torches resting in elegant silver sconces accompany a
+hanging iron chandelier set with candles to provide sufficient light for
+comfortable reading at any hour.  The room is notably silent except for the
+sounds occuring from within, providing a suitable environment for perusing
+the collection.  A single rectangular table sits in the middle of room,
+while multiple plush chairs are strewn about in an apparently random
+fashion.  A single door leads out of the library to the north.  
+~
+~
+1
+0 8 0
+D0
+A faintly lit hallway lies to the north, providing access to the rest of
+the Inn.  
+~
+~
+1 0 16414
+W 5 0 0
+Z 5 5
+S
+#16416
+In The Garden~
+Lush green grass covers the ground here, carefully tended and matted only
+slightly by the traversal of many visitors.  A beautiful garden grows up
+against the wall of the inn to the east, its length bursting with the
+colours of a variety of different flowers and plants, and lending a sweet
+fragrance to the surrounding area.  A small stone patio has been built
+around the door leading back into the building to the south, upon which a
+worn wooden rocking chair sits.  The garden continues to the north, and also
+to the east, where a massive oak tree can be seen towering.  
+~
+~
+1
+0 0 2
+D0
+The garden continues to the north.
+~
+~
+0 0 16417
+D1
+A large oak tree provides shade to the east.
+~
+~
+0 0 16419
+D2
+A small windowed door leads south to a dimly lit hallway.
+~
+~
+0 0 16414
+W 5 0 0
+Z 5 5
+S
+#16417
+In The Garden~
+Lush green grass covers the ground here, carefully tended and matted only
+slightly by the traversal of many visitors.  A beautiful garden grows up
+against the wall of the inn to the east, its length bursting with the
+colours of a variety of different flowers and plants, and lending a sweet
+fragrance to the surrounding area.  An old wooden fence runs along the
+treeline to the north, seperating the area from the surrounding forest, and
+a few slatted benches with fine metalworked ends are spread about.  A sense
+of peace permeates this place as the gentle sounds of nature echo all
+around, birds chirping and the winds rustling the leaves of the great trees.
+The garden continues to the south and also to the east, where a small pond
+ripples lightly.  
+~
+~
+1
+0 0 2
+D1
+A small pond lies to the east.
+~
+~
+0 0 16418
+D2
+The garden continues to the south, and beyond it, a small grey stone
+patio.  
+~
+~
+0 0 16416
+W 5 0 0
+Z 5 5
+S
+#16418
+Beside a Small Pond~
+Clear blue water shimmers lightly, filling the circular pond which
+dominates this area.  A few tall reeds break the surface of the natural
+reservoir, and tiny creatures can be seen flitting about the scattered
+lilypads.  Lush green grass covers the surroundings, bordered by an old
+wooden fence which seperates it from the forest to the north and east.  A
+couple of slatted benches with fine metalworked ends sit facing the water. 
+A sense of peace permeates this place as the pond endlessly ripples, and the
+sounds of birds chirping and trees rustling fill the air.  The inn and
+garden lie to the west, and a great oak towers to the south.  
+~
+~
+1
+0 0 2
+D2
+A large oak tree provides shade to the south.
+~
+~
+0 0 16419
+D3
+A small garden lies to the west.
+~
+~
+0 0 16417
+W 5 0 0
+Z 5 5
+S
+#16419
+Under a Great Oak~
+Dark, verdant leaves fill the sky above you, growing from a massive oak
+tree which towers into the air.  Lush green grass covers the ground,
+becoming sparse near the base of the rounded trunk, cast in a permanent
+shade from the foliage.  A sense of tranquility permeates this place as the
+sounds of rustling leaves and chirping birds trickle down from within the
+ancient branches.  An old wooden fence runs along the east and south,
+seperating this area from the surrounding forest.  Nestled into the corner
+stands a small stone marker, a single symbol engraved upon it.  The garden
+continues to the west and also to the north, where a small pond ripples
+lightly.  
+~
+~
+1
+0 0 3
+D0
+A small pond lies to the north.
+~
+~
+0 0 16418
+D3
+A small patio lies to the west, surrounded by a beautiful garden.
+~
+~
+0 0 16416
+W 5 0 0
+Z 5 5
+P
+>rand_prog 1~
+mpecho The plentiful leaves of the great tree rustle in the blowing wind.
+~
+|
+S
+#16420
+The Kitchen~
+Counters and tables dominate this area, their surfaces covered in
+partially prepared food, and unused portions.  Various utensils hang from
+iron racks which are attached to the ceiling, and a large stone hearth in
+the southern wall flares hotly, over which both a spit and a large cooking
+pot are situated.  A small wood stove is set in the corner, with an oven
+used for baking bread nearby.  The smells of the preparing foods mingle in
+the air, creating a pleasurably enticing aroma.  The door to a pantry leads
+out to the west, while a swinging door to the north leads into the main area
+of the inn.  
+~
+~
+1
+0 8 0
+D0
+A wooden swinging door set in the northern wall leads to the main part of
+the Inn.  
+~
+~
+3 0 16409
+D3
+A small door leads west to a fully-stocked pantry.
+~
+~
+0 0 16421
+W 5 0 0
+Z 5 5
+S
+#16421
+The Pantry~
+A magical chill hangs in the air here, keeping cool the many foodstuffs
+that line the walls and floor.  Large flanks of beast hang from metal hooks
+on the ceiling, and hearty bags of flour and oats are heaped into the
+corners.  Unmarked jars of powders and herbs rest on thin wooden shelves,
+along with fresh-looking fruits and vegetables.  A small trapdoor is set
+into the floor, and a doorway leads east, from beyond which the delightful
+aroma of the kitchen can be smelt.  
+~
+~
+1
+0 8 0
+D1
+A small door leads east to a large, bright kitchen.
+~
+~
+0 0 16420
+D5
+~
+~
+6 16480 16422
+W 5 0 0
+Z 5 5
+S
+#16422
+A Wine Cellar~
+This room is cool and dark, its walls lined with wooden racks holding
+many different bottles of wine, some dusty with age.  A few casks of
+brandies and fine liqueurs are piled near the small stairway leading back up
+into the pantry.  
+~
+~
+1
+0 8 0
+D4
+~
+~
+6 0 16421
+W 5 0 0
+Z 5 5
+S
+#16423
+Top of the Stairs~
+A narrow set of wooden stairs descends to the east, leading towards the
+main floor of the inn.  A wooden panelled hallway begins to the west of
+here, extending northwards, its length illuminated by bright torches hanging
+within elegant silver sconces.  
+~
+~
+1
+0 12 0
+D3
+The hallway continues to the west.
+~
+~
+0 0 16424
+D5
+A set of narrow stairs lead down into the brightly lit main room of the
+Inn.  
+~
+~
+0 0 16410
+W 5 0 0
+Z 5 5
+S
+#16424
+A Hallway~
+This brightly lit hallway is illuminated by the flickering light of
+torches, hanging within elegant silver sconces.  The area is well-kept, the
+floors clean and the fixtures polished.  A door is set into the southern
+wall, a small silver placard upon it declaring it as the entrance to the
+baths, and to the west lies an unmarked door.  The hallway extends to the
+north, and turns to the west where stairs lead down to the main level of the
+inn.  
+~
+~
+1
+0 8 0
+D0
+The hallway continues to the north.
+~
+~
+0 0 16425
+D1
+The hallway ends, and a small narrow staircase leads down to the main
+part of the Inn.  
+~
+~
+0 0 16423
+D2
+The entrance to the baths lie to the south.
+~
+~
+3 0 16435
+D3
+A plain wooden doorway leads west to Tarik\@s room.  
+~
+~
+7 16428 16427
+W 5 0 0
+Z 5 5
+S
+#16425
+A Hallway~
+This brightly lit hallway is illuminated by the flickering light of
+torches, hanging within elegant silver sconces.  The area is well-kept, the
+floors clean and the fixtures polished.  Two small paintings hang on either
+side of the hallway, beside the doors leading into the sleeping quarters,
+adding a decorative touch to the otherwise simple decor.  The hallway
+extends to the north and south.  
+~
+~
+1
+0 8 0
+D0
+The hallway continues to the north.
+~
+~
+0 0 16426
+D1
+A carved wooden doorway leads east to a small room, the door marked with
+a silver \#5\#.  
+~
+~
+7 16431 16429
+D2
+The hallway continues to the south.
+~
+~
+0 0 16424
+D3
+A carved wooden doorway leads west to a small room, the door marked with
+a silver \#1\#.  
+~
+~
+7 16429 16428
+W 5 0 0
+Z 5 5
+S
+#16426
+A Hallway~
+This brightly lit hallway is illuminated by the flickering light of
+torches, hanging within elegant silver sconces.  The area is well-kept, the
+floors clean and the fixtures polished.  The hallway extends towards the
+south, and numbered doors are set into the three adjoining walls.  
+~
+~
+1
+0 8 0
+D0
+A carved wooden doorway leads north to a small room, the door marked with
+a silver \#3\#.  
+~
+~
+7 16433 16432
+D1
+A carved wooden doorway leads east to a small room, the door marked with
+a silver \#4\#.  
+~
+~
+7 16430 16430
+D2
+The hallway continues to the south.
+~
+~
+0 0 16425
+D3
+A carved wooden doorway leads west to a small room, the door marked with
+a silver \#2\#.
+~
+~
+7 16432 16431
+W 5 0 0
+Z 5 5
+S
+#16427
+Owner\@s Room~
+This small living space has a comfortable feel to it, its contents
+arranged with care.  An old double-sized bed fills one corner of the room,
+its frame worn with age, a large iron chest sitting at its foot.  A small
+nightstand sits below a draped window set into the western wall, containing
+one drawer and holding a few tattered books below.  Various tokens and
+trinkets line a shelf built along the wall, running above the bed.  Painted
+portraits hang on the northern wall of the room, a polished desk sitting
+beside them.  A door opens to the east, leading out into the hallway.  
+~
+~
+1
+0 8 0
+D1
+A plain doorway leads east to the hallway.
+~
+~
+7 0 16424
+W 5 0 0
+Z 5 5
+S
+#16428
+A Small Room~
+This sleeping quarter is small but well-kept, feeling cozy rather than
+cramped.  A wooden frame holds a comfortable looking bed in the corner,
+beside which a polished bedside table stands.  A window is set into the
+western wall, clean dark drapes hanging on either side of it.  A door stands
+to the east, opening into the hallway.  
+~
+~
+1
+0 8 0
+D1
+A doorway leads east to the hall.
+~
+~
+7 0 16425
+W 5 0 0
+Z 5 5
+S
+#16429
+A Small Room~
+This sleeping quarter is small but well-kept, feeling cozy rather than
+cramped.  A wooden frame holds a comfortable looking bed in the corner,
+beside which a polished bedside table stands.  A window is set into the
+eastern wall, clean dark drapes hanging on either side of it.  A door stands
+to the west, opening into the hallway.  
+~
+~
+1
+0 8 0
+D3
+~
+~
+7 0 16425
+W 5 0 0
+Z 5 5
+S
+#16430
+A Small Room~
+This sleeping quarter is small but well-kept, feeling cozy rather than
+cramped.  A wooden frame holds a comfortable looking bed in the corner,
+beside which a polished bedside table stands.  A window is set into the
+eastern wall, clean dark drapes hanging on either side of it.  A door stands
+to the west, opening into the hallway.  
+~
+~
+1
+0 8 0
+D3
+A doorway leads west to the hall.
+~
+~
+7 0 16426
+W 5 0 0
+Z 5 5
+S
+#16431
+A Nice Room~
+Fine furniture and accoutrements adorn this well-appointed room, the area
+conveying a sense of refined class and taste.  Elegant yet comfortable
+looking chairs and sofas surround a small coffee table, an exquisite rug of
+deep red spread out beneath them.  A number of curiosities hang decoratively
+on the walls, including a polished hunting sabre with a small gold engraving
+below it.  In the corner stands a solid mahogany cabinet, beside which a
+paned window looks out into the front yard of the inn.  A door opens to the
+east into the hallway, and the room continues to the north, where a bed can
+be seen.  
+~
+~
+1
+0 8 0
+D0
+The bedroom area of the room lies to the north, dominated by a large
+four-post bed.  
+~
+~
+0 0 16434
+D1
+A doorway leads east to the hall.
+~
+~
+7 0 16426
+W 5 0 0
+Z 5 5
+S
+#16432
+A Nice Room~
+Crackling flames dance peacefully within the stone fireplace set into the
+northern wall of the room, filling this luxurious suite with a pleasant
+warmth.  Small candles are set atop the mantle, and a comfortable loveseat
+sits facing the hearth, the distance dictated by a large white bearskin
+splayed across the floor.  Against the southern wall, near the door leading
+back into the hallway, is set a small dining table, a chair placed on either
+side.  The gentle fragrence of roses fills the air, presumably emenating
+from a few tiny golden urns set about the room.  
+~
+~
+1
+0 8 0
+D1
+The bedroom area of the room lies to the east, dominated by a large white
+bed, piled with pillows.  
+~
+~
+0 0 16433
+D2
+A doorway leads south to the hall.
+~
+~
+7 0 16426
+W 5 0 0
+Z 5 5
+S
+#16433
+A Nice Room~
+Beautiful white lace drapery cascades down from bars affixed to the
+ceiling, surrounding a large bed which dominates this end of the room.  The
+mattress appears to be plush and comfortable, covered in fine silk sheets,
+and a multitude of fluffy pillows are piled upon it, stacked against an
+ornate headboard.  Twin bedside tables sit on either side, a few small
+candles scattered atop the surface of each.  At the end of the room, set
+into the eastern wall, a large paned window allows a view of the garden
+outside.  The glass along the edges has been crafted by a skilled hand,
+stained and worked to depict a string of roses on every side.  
+~
+~
+1
+0 8 0
+D3
+The room continues to the west to a cozy sitting area with a large
+fireplace.  
+~
+~
+0 0 16432
+W 5 0 0
+Z 5 5
+S
+#16434
+A Nice Room~
+A large posted bed dominates this end of the room, the endboards well
+polished, and the mattress covered in fine linen sheets dyed black.  A
+single painting hangs on the opposing wall, depicting a landscape scene. 
+The room continues to the south.  
+~
+~
+1
+0 8 0
+D2
+The room comtinues to the south with a small, elegant sitting area.  
+~
+~
+0 0 16431
+W 5 0 0
+Z 5 5
+S
+#16435
+Changing Room~
+Long wooden benches have been built into the structure here, lining the
+perimeter of this fairly plain room.  Hanging pegs are scattered about the
+walls, and in the centre of the room stands a large washbasin.  A sign is
+placed beside the door leading to the west, and to the north leads back into
+a small hallway.  
+~
+~
+0
+0 8 0
+D0
+A plain door leads north to a hallway.
+~
+~
+3 0 16424
+D3
+The main baths lie to the west, copper tubs gleaming in the light.
+~
+~
+1 0 16436
+W 5 0 0
+Z 5 5
+S
+#16436
+Bath Room~
+The air in this room feels somewhat damp, and thin stone tiles have been
+laid across the floor, the gaps filled with grout to protect the wooden base
+below.  A pair of large copper tubs sit near the centre of the room, a short
+distance apart, a low table sitting between them with a few small bottles of
+oils and fragrances upon it.  A string hangs down above each of the baths,
+running up to a tiny set of hanging bells.  A few clean white towels hang
+off of bars affixed to the walls, below slightly ajar windows placed at even
+intervals near the ceiling.  The only visible exit is a door set into the
+eastern wall, leading back to the changing room.  
+~
+~
+0
+0 8 0
+D1
+Some wooden benches lie to the east, and a doorway to the hall.
+~
+~
+1 0 16435
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 16409 2 3
+D 0 16414 2 1
+D 0 16415 0 1
+D 0 16420 0 3
+D 0 16421 5 6
+D 0 16422 4 6
+D 0 16424 2 3
+D 0 16424 3 7
+D 0 16425 1 7
+D 0 16425 3 7
+D 0 16426 0 7
+D 0 16426 1 7
+D 0 16426 3 7
+D 0 16427 1 7
+D 0 16428 1 7
+D 0 16429 3 7
+D 0 16430 3 7
+D 0 16431 1 7
+D 0 16432 2 7
+D 0 16435 0 3
+D 0 16435 3 1
+D 0 16436 1 1
+M 0 16499 1 16400 1
+M 0 16412 1 16401 1
+O 0 16460 0 16402
+O 0 16461 0 16402
+M 0 16400 1 16403 1
+O 0 16462 0 16403
+O 0 16463 0 16403
+O 0 16455 0 16404
+O 0 16460 0 16404
+O 0 16461 0 16404
+M 0 16404 1 16404 1
+O 0 16452 0 16405
+O 0 16451 0 16406
+O 0 16450 0 16406
+M 0 16442 1 16406 1
+M 0 16403 1 16407 1
+O 0 16460 0 16407
+O 0 16461 0 16407
+M 0 16445 1 16407 1
+G 0 16404 0
+O 0 16460 0 16408
+O 0 16461 0 16408
+M 0 16446 1 16408 1
+M 0 16401 1 16409 1
+G 0 16400 0
+G 0 16401 0
+G 0 16402 0
+G 0 16403 0
+G 0 16404 0
+O 0 16463 0 16409
+O 0 16462 0 16409
+M 0 16406 1 16409 1
+M 0 16444 1 16409 1
+O 0 16460 0 16411
+O 0 16461 0 16411
+M 0 16443 1 16411 1
+O 0 16460 0 16412
+O 0 16461 0 16412
+M 0 16405 1 16412 1
+O 0 16450 0 16413
+O 0 16461 0 16413
+M 0 16447 1 16413 1
+O 0 16450 0 16415
+O 0 16453 0 16416
+M 0 16407 1 16416 1
+O 0 16454 0 16417
+O 0 16467 0 16418
+M 0 16402 1 16420 1
+E 0 16434 0 16
+O 0 16468 0 16427
+O 0 16469 0 16427
+O 0 16473 0 16427
+O 0 16474 0 16427
+O 0 16470 0 16428
+O 0 16470 0 16429
+O 0 16470 0 16430
+O 0 16450 0 16431
+O 0 16471 0 16431
+P 0 16479 1 16471 1
+O 0 16472 0 16431
+O 0 16475 0 16431
+O 0 16450 0 16432
+O 0 16477 0 16432
+O 0 16478 0 16432
+O 0 16476 0 16433
+O 0 16476 0 16434
+O 0 16464 0 16435
+O 0 16466 0 16435
+M 0 16490 1 16435 1
+O 0 16465 0 16436
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+16401 0 0 0 0 0 100 100 0 0 0
+16403 0 0 0 0 0 100 100 0 0 0
+16413 0 0 0 0 0 100 100 0 0 0
+0
+
+
+
+#$

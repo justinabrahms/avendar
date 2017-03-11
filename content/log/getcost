@@ -1,0 +1,55 @@
+#!/usr/bin/perl 
+use strict;
+
+my $player = shift;
+my $lastowner = shift;
+our $cost;
+our $count;
+our %results;
+our %lastowners;
+
+print "Checking $player for value of items previously owned by $lastowner.\n";
+
+open (F, "/home/pantheon/avprod/player/$player") or die "$!";
+
+$/ = undef;
+my $lines = <F>;
+close F;
+
+my @lines = (split /#O/, $lines);
+
+foreach (@lines) {
+	if (/LstO.*$lastowner.*\n/) {
+
+	/Vnum (\w+)\n/;
+	my $vnum = $1;
+
+	/Cost (\w+)\n/;
+	my $val = $1;
+
+	/LstO (.+)\n/;
+	my $lsto = $1;
+	$lastowners{$vnum} = $1;
+
+	$results{$vnum} = $val;
+	$cost += $val;	
+	$count++;
+	
+	}
+}
+print "$count items, total value: $cost\n";
+
+=comment
+while ((my ($key, $value)) = each %results) {
+	print "$key worth $value \tlast owners: $lastowners{$key}\n";
+}
+=cut
+
+while ((my ($key, $value)) = each %results) {
+format STDOUT =
+@<<<<<<<@<<<<<<<<<<@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+$key, $value, $lastowners{$key}
+.
+write;
+}
+

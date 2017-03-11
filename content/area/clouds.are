@@ -1,0 +1,2599 @@
+#AREADATA
+Name The Spirit Palace~
+Builders Rystaia Iacobos~
+VNUMs 2158 2199
+Credits {30 51} Rystaia   The Spirit Palace~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+End
+
+
+
+#MOBILES
+V4 2160
+Thalin assistant~
+Thalin~
+The librarian\@s assistant stands here, gathering books.
+~
+Thalin seems young, but wise none-the-less.  His gawky movements are
+strangly paired with his delicate touch as he carefully picks up books left
+in the hallway.  
+~
+human~
+water scholar~
+ABDM 0 DFNT G 0
+40 20 16d170+976 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -2
+F 0
+26 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHMV ABCDEFGHIJK AEK medium unknown
+>death_prog 100~
+mpflag exit east - fake
+~
+>verb_prog east~
+if mobhere(2160)
+if class($n) == 3
+if adrenaline($n) > 0 
+say You should calm down before going into the library.
+else
+if isfight($n)
+mpechoat $n No way! You\@re too busy fighting!
+else
+mptransfer $n 2186
+mpat 2186 mpforce $n look 
+endif
+endif
+else
+say Only those who study the magics of spirit may go into the library.
+endif
+else
+mptransfer $n 2186
+mpat 2186 mpforce $n look 
+if class($n) == 9
+if adrenaline($n) > 0 
+say You should calm down before going into the library.
+else
+if isfight($n)
+mpechoat $n No way! You\@re too busy fighting!
+else
+mptransfer $n 2186
+mpat 2186 mpforce $n look 
+endif
+endif
+endif
+else
+mptransfer $n 2186
+mpat 2186 mpforce $n look
+endif
+~
+|
+V4 2161
+morihd librarian~
+Morihd~
+The head librarian sits at his desk, watching the staircase closely.
+~
+Morihd\@s face is creased with lines, making him look older than time. 
+His pale grey hair flows down to the collar of his dark grey robe, and a
+stern look never seems to leave his face.  
+~
+human~
+water scholar~
+ABDM 0 DFNT G 0
+50 25 18d200+920 50d10+100 5d10+25 bash~
+punch~
+-21 -21 -21 -6
+FKQ AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 80 0
+AHMV ABCDEFGHIJK ADEFIJK medium unknown
+>death_prog 100~
+mpflag exit up fake
+~
+>verb_prog up~
+if mobhere(2161)
+if class($n) == 3
+if adrenaline($n) > 0 
+say You should calm down before going upstairs.
+else
+if isfight($n)
+mpechoat $n No way! You\@re too busy fighting!
+else
+mptransfer $n 2183
+mpat 2183 mpforce $n look 
+endif
+endif
+else
+say Only those who study the magics of spirit may go upstairs.
+endif
+else
+mptransfer $n 2183
+mpat 2183 mpforce $n look 
+if class($n) == 9
+if adrenaline($n) > 0 
+say You should calm down before going upstairs.
+else
+if isfight($n)
+mpechoat $n No way! You\@re too busy fighting!
+else
+mptransfer $n 2183
+mpat 2183 mpforce $n look 
+endif
+endif
+endif
+else
+mptransfer $n 2183
+mpat 2183 mpforce $n look
+endif
+~
+|
+V4 2162
+mistress korlian~
+Mistress Korlian~
+Mistress Korlian stands here, preparing to teach her next class.
+~
+Mistress Korlian is a beautiful woman, and has no doubt had more than one
+student leave a rose for her.  She smiles sweetly, but you feel that
+underneath that soft smile is a core of strength.  
+~
+human~
+water scholar~
+ABDJKb 0 DFHJNTZ G 0
+58 24 20d230+1100 58d10+100 5d11+31 bash~
+punch~
+-25 -26 -26 -8
+FKQ AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 110 0
+AHMV ABCDEFGHIJK AEJK medium unknown
+>rand_prog 1~
+mpecho Mistress Korlian whispers a few words of power, and is surrounded by a pale glow for an instant.
+~
+>rand_prog 3~
+mpecho Mistress Korlian idly trails a finger along a petal of the blue rose.
+~
+>rand_prog 2~
+mpecho Mistress Korlian summons a scholar, and gives him a message to take to the Arch-Mage.
+~
+|
+V4 2163
+Master Nayshan~
+Master Nayshan~
+Master Nayshan looks at you patiently.
+~
+Master Nayshan stands here calmly, almost unnaturally still.  His golden
+skin shimmers slightly in the light, and his wide grey eyes regard the world
+with an infinite patience.  
+~
+ch\@taren~
+water scholar~
+ABDJKb 0 DFHJNTUZ G 0
+55 22 20d220+1100 55d10+100 5d11+30 bash~
+punch~
+-24 -24 -24 -7
+FKQ AB
+26 0 0 0 33 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 120 0
+AHKMV ABCDEFGIJK ABDEFHIJK medium unknown
+>rand_prog 2~
+mpecho Master Nayshan erases the diagram on the board, and redraws it carefully.
+~
+>rand_prog 1~
+emote goes over the notes handed in to him, shaking his head ruefully.
+~
+|
+V4 2164
+shilrin arch-mage mage archmage~
+Arch-Mage Shilrin~
+The arch-mage Shilrin sits here in contemplation.
+~
+Shilrin seems lost in thought as she stares out her window over the realm
+of Avendar.  No one knows how old she is, but faint signs of age darken her
+golden skin and pale hair.  An intangible aura of power surrounds her, the
+leavings of years in study of her art.  
+~
+ch\@taren~
+water scholar~
+ADKLPX 0 DFGHJNTUZc G 0
+60 30 8000d1+1000 90d20+800 5d12+55 energy~
+magic~
+-25 -25 -25 -14
+EFKQ AB
+26 0 0 0 33 0 0 0 0 0 0 0 33 -20 33 33 0 33 0 33 0 33 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 200 0
+AHKMV ABCDEFGIJK AEJK medium unknown
+>fight_prog 100~
+if value(0) > 0
+  mpvaluedown 0
+  break
+endif
+if isfight($r) == $i
+  if snaffected($r) == 425
+    if snaffected($r) == 93
+      mpcast 131 60
+    else
+      if class($r) < 12
+      or class($r) == 29
+        mpcast 93 60 $r
+      endif
+    endif
+  else
+    mpcast 425 60 $r
+    mpvalueset 0 1
+  endif
+endif
+~
+>load_prog 100~
+speak common
+~
+>rand_prog 100~
+if mobvalue(0) > 0
+  mpvalueup 0
+endif
+if mobvalue(0) == 4
+  mpkill $f
+  mpvalueset 0 0
+endif
+if rand(20)
+if mobvalue(7) > 0
+mpvaluedown 7
+endif
+endif
+~
+>greet_prog 100~
+if isevil($n)
+if ispc($n)
+tell $n Leave now, and do not taint my palace any further.
+mpvalueset 0 1
+mpfocus $n
+endif
+endif
+if isgood($n)
+if ispc($n)
+if sex($n) == 1
+tell $n Greetings, brother of the light.
+endif
+if sex($n) == 2
+tell $n Greetings, sister of the light.
+endif
+if sex($n) == 0
+tell $n Greetings, creature of the light.
+endif
+if snaffected($n) == 7
+break
+else
+if mobvalue(7) > 0
+break
+else
+mpaddaffect $n 7 55 40 18 7 0
+mpaddaffect $n 7 55 40 24 -7 0
+if snaffected($n) == 108
+else
+mpaddaffect $n 108 55 40 0 0 8192
+endif
+mpechoat $n Arch-Mage Shilrin grants you the favor of her god.
+mpvalueset 7 500
+endif
+endif
+endif
+endif
+if isneutral($n)
+if ispc($n)
+tell $n Greetings, Balancewalker.
+endif
+endif
+~
+|
+V4 2165
+girl student ethron~
+an ethron student~
+A small ethron girl stands here, awed by the majesty of the palace.
+~
+The ethron girl seems very out of element, looking around in amazement at
+the many sights in the palace.  She wears a homemade woven necklace around
+her neck, a token to remind her of her home while she is away.  
+~
+ethron~
+water scholar~
+AGL 0 JNTZ G 0
+25 12 11d50+424 25d10+100 5d5+13 bash~
+punch~
+-5 -5 -5 2
+FQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 30 0
+AHMVW ABCDEFGHIJKP J medium unknown
+>rand_prog 3~
+emote fingers her necklace nervously, and tried to remember her home.
+~
+|
+V4 2166
+scholar~
+a scholar~
+A scholar walks through the palace, lost in thought.
+~
+A young man, the scholar seems distracted, his sky blue eyes distant has
+he walks along.  Light blond hair feathers over his forehead, and his pale
+skin indicates he spends much of his time indoor studying.  Indeed, though
+he seems distracted, his face shows an unusual intelligence for one of his
+age.  
+~
+human~
+water scholar~
+AG 0 NT G 0
+40 20 16d170+976 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -2
+FQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHMV ABCDEFGHIJK AIK medium unknown
+>rand_prog 2~
+emote suddenly smiles.
+say Ah, of course!
+~
+>rand_prog 1~
+emote mutters thoughtfully to himself.
+~
+|
+V4 2167
+scholar~
+a scholar~
+A spirit scholar strolls by, looking carefree.
+~
+A quite good looking man of about 25 or so smiles back at you, his face
+alight with happiness.  Mussed dark brown hair tops his head, and his grey
+eyes have a bit of a roguish glint.  
+~
+human~
+water scholar~
+AG 0 DNTZ G 0
+45 22 10d148+835 45d10+100 5d9+23 bash~
+punch~
+-18 -18 -18 -4
+FQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHMV ABCDEFGHIJK AK medium unknown
+V4 2168
+scholar~
+a scholar~
+A scholar passes through, on her way to visit Master Nayshan.
+~
+Long black hair surrounds the small dark face of the scholar.  She walks
+briskly towards the classrooms, to ask Master Nayshan for some help on the
+spell he taught her yesterday.  
+~
+human~
+water scholar~
+AG 0 NT G 0
+45 22 10d148+835 45d10+100 5d9+23 bash~
+punch~
+-18 -18 -18 -4
+FQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 0
+AHMV ABCDEFGHIJK AK medium unknown
+V4 2169
+scholar~
+a frazzled scholar~
+A scholar carrying a pile of books weaves through the room.
+~
+The ch\@taren student looks like he hasn\@t slept in a while, his golden
+skin pale and hair in a mess.  He weaves about, trying desperately to see
+over his huge pile of books.  
+~
+ch\@taren~
+water scholar~
+AL 0 NTU G 0
+45 22 10d148+835 45d10+100 5d9+23 bash~
+punch~
+-18 -18 -18 -4
+FQ 0
+26 0 0 -33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHKMV ABCDEFGHIJK AE medium unknown
+>rand_prog 2~
+mpecho A book falls from the top of the pile the scholar carries, and he nearly upsets all of them as he bends to retrieve it.
+~
+|
+V4 2170
+man researcher~
+the researcher~
+A man sits here, using the ample references of the library.
+~
+The man is about middle-age, and he sits here reading through some of the
+many books the library keeps open to the public.  Occasionally he pauses in
+his reading to jot down a note, or thoughtfully scratch his chin.  
+~
+human~
+water scholar~
+AL 0 NT G 0
+45 22 10d148+835 45d10+100 5d9+23 bash~
+punch~
+-18 -18 -18 -4
+FQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHMV ABCDEFGHIJK AF medium unknown
+>rand_prog 5~
+mpvaluerand 0 1 5
+if mobvalue(0) == 1
+emote scratches his chin as he turns to the next page in his book.
+endif
+~
+|
+V4 2171
+scholar woman ch\@taren~
+a scholar~
+A ch\@taren woman works on perfecting a new spell.
+~
+The woman frowns in concentration, as she studies a scroll she holds. 
+Her golden skin seems slightly flushed, as though she were attempting some
+labourous physical task, rather than casting a spell.  
+~
+ch\@taren~
+water scholar~
+AGL 0 NTU G 0
+40 20 16d170+976 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -2
+FQ 0
+26 0 0 0 33 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 0
+AHKMV ABCDEFGHIJK AE medium unknown
+>rand_prog 1~
+mpcast 415 45
+emote gestures, and a sparkling shield of force surrounds her for a moment.
+~
+>rand_prog 3~
+mpvaluerand 0 1 8
+if mobvalue(0) < 4
+mpecho The air suddenly charges with power as the ch\@taren scholar reaches the climax of her spell.
+else
+if mobvalue(0) == 4
+emote rests a moment, taxed from her hard work.
+endif
+endif
+~
+>rand_prog 3~
+~
+|
+V4 2172
+scholar~
+a scholar~
+A scholar sits here, looking dreamily out a window.
+~
+The girl stares out the window looking over the clouds, instead of going
+about her studying.  Long light brown hair surrounds her heart-shaped face,
+and a pair of green eyes seem to be looking at something no one else can
+see.  
+~
+human~
+water scholar~
+AGL 0 NT G 0
+40 20 16d170+976 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -2
+FQ 0
+26 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 105 0
+AHMV ABCDEFGHIJK AEJK medium unknown
+>greet_prog 25~
+mpechoat $r A scholar looks up from the window at you, curiously.
+tell $r What brings you here?
+~
+|
+V4 2173
+scholar caladaran~
+a caladaran scholar~
+A caladaran scholar sits here in study.
+~
+The caladaran scholar sits peacefully, studying on of the many books in
+the library.  He studies hard, enjoying the learning experience, though
+he\@ll never be able to master all that is spirit magic.  
+~
+caladaran~
+water scholar~
+AGL 0 NT G 0
+40 20 16d170+976 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -2
+FQ 0
+26 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHMVW ABCDEFGHIJKP AIK medium unknown
+V4 2174
+spirit templar~
+a spirit templar~
+A spirit templar practices the art of using sword and spell together.
+~
+The templar works at the timing of her spells, lunging forward, then
+drawing back to cast.  Her long blonde hair is held back from her face yet
+some wisps escape to fall into her eyes, but nothing seems to break her
+concentration.  
+~
+human~
+water scholar~
+AGL 0 DNTZ G 0
+50 25 18d200+920 50d10+100 5d10+25 bash~
+punch~
+-21 -21 -21 -6
+EFIJKQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 0
+AHMV ABCDEFGHIJK AK medium unknown
+>rand_prog 2~
+mpecho The templar shakes her head ruefully, and resumes her position.
+~
+|
+V4 2175
+deshmin leader templar~
+Deshmin~
+Deshmin, leader of the Spirit Templars, stands here.
+~
+Deshmin stands proudly, almost arrogant except for the friendly grin that
+stretches across his face.  He takes after his mother, the arch-mage, in his
+build and is dedicated to serving her and the cause of the light.  
+~
+ch\@taren~
+water scholar~
+AEL 0 CDFHNTUVZc G 0
+55 22 5000d1+1000 55d10+100 5d11+30 bash~
+punch~
+-24 -24 -24 -7
+EFJKQ B
+26 0 0 0 20 0 0 0 0 33 0 0 33 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHKMV ABCDEFGHIJK AEK medium unknown
+>load_prog 100~
+speak common
+~
+>rand_prog 1~
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+emote lazily polishes his dagger.
+else
+if mobvalue(0) == 2
+smile $r
+else
+emote watches the entrance to the palace, standing at attention.
+endif
+endif
+~
+>greet_prog 15~
+mpecho Deshmin nods to you.
+say Greetings.. may the Light guide you always.
+emote grins mischieviously.
+say And let it bring you happiness.
+~
+|
+V4 2176
+spirit templar~
+a spirit templar~
+A spirit templar watches his fighting style in the mirror.
+~
+The man is bathed in a fine sheen of sweat as he works to improve his
+skill with his chosen weapon, the flail.  He keeps a careful eye on the
+mirrors, checking for any mistake he may have in his form or style as he
+swings and parries again and again.  
+~
+human~
+water scholar~
+AGL 0 DNTZ G 0
+45 22 10d148+835 45d10+100 5d9+23 bash~
+punch~
+-18 -18 -18 -4
+EFIJKQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHMV ABCDEFGHIJK AK medium unknown
+>rand_prog 1~
+mpecho The templar stops a moment, and checks his smile in the mirror.
+~
+|
+V4 2177
+scholar~
+a scholar~
+A scholar sits here, studying intently.
+~
+The woman absently pushes her bright red hair out of her face as she
+reads the book which has captured her intrest.  Upon closer examination, you
+realize it is not a book of spirit lore, but rather an amusing tale of the
+long ago hero.  
+~
+human~
+water scholar~
+AGL 0 DNT G 0
+40 20 16d170+976 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -2
+FQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 0
+AHMV ABCDEFGHIJK AK medium unknown
+V4 2178
+kankoran spirit templar~
+a spirit templar~
+A kankoran spirit templar strolls through the palace.
+~
+His grey fur is combed neatly, and a sparkle in his eye makes it seem as
+if he is holding in laughter.  What he finds amusing is not as apparent, but
+his step and manner indicate that he finds the world to be quite an
+entertaining place.  
+~
+kankoran~
+water scholar~
+AG 0 DNTZ G 0
+45 22 10d148+835 45d10+100 5d9+23 bash~
+punch~
+-18 -18 -18 -4
+EFJKQV 0
+26 0 0 0 0 0 0 0 -33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 0
+AHMV ABCDEFGHIJKUV ADK medium unknown
+V4 2179
+scholar woman ch\@taren~
+a scholar~
+A ch\@taren woman walks by, humming tunelessly to herself.
+~
+The woman nods to you as she notices your attention, and continues to hum
+to herself.  She seems in a good mood, her golden skin shimmering with
+warmth.  
+~
+ch\@taren~
+water scholar~
+AG 0 DNTUZ G 0
+45 22 10d148+835 45d10+100 5d9+23 bash~
+punch~
+-18 -18 -18 -4
+EFJKQ 0
+26 0 0 0 33 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 110 0
+AHKMV ABCDEFGHIJK AEK medium unknown
+>rand_prog 10~
+mpvaluerand 0 1 9
+if mobvalue(0) == 1
+  emote hums a few bars of Sitheus\@ Folly.
+endif
+if mobvalue(0) == 2
+  emote hums a bit of The Ethron King.
+endif
+if mobvalue(0) == 3
+  emote hums some of The Princess and the Auctioneer, singing some of the words under her breath.
+endif
+if mobvalue(0) == 4
+  emote smiles in memory as she softly hums Druid in the Moonlight.
+endif
+if mobvalue(0) == 5
+  emote hums a quiet version of Dantaron River.
+endif
+if mobvalue(0) == 6
+  emote hums the first few bars of The Farmer of Limbo, but ends laughing too hard to continue.
+endif
+if mobvalue(0) == 7
+  emote hums a fast version of Cally, My Dear.
+endif
+if mobvalue(0) == 8
+  emote quietly begins to sing Lady of the Roses, her voice mellow and sweet.
+endif
+~
+|
+V4 2180
+scholar~
+the scholar~
+A scholar sits at a large desk, intently copying from an old dusty book.
+~
+The scholar has his brow furrowed in concentration as he reads through
+the old book in his hands.  His long black hair keeps falling into his face,
+but he pays no notice and pushes it away absent-mindedly as he turns another
+page.  
+~
+human~
+water scholar~
+ABG 0 D G 0
+40 20 16d170+976 40d10+100 5d8+20 bash~
+punch~
+-15 -15 -15 -2
+FHQ 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 0
+AHMV ABCDEFGHIJK A medium flesh
+V4 2181
+the travelling bard~
+the travelling bard~
+A bard strolls by, a sack over his shoulder, and instrument in hand.
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium flesh
+#0
+
+
+
+#OBJECTS
+V12
+2160
+chair white~
+a comfortable chair~
+A comfortable white chair sits in a pool of light.~
+~
+wood~
+furniture 0 0 0
+1 3000 EHK 150 150
+1 1300 0 4 P
+3
+V12
+2161
+globe rose glass ball~
+a rose-coloured globe~
+A beautiful glowing ball of rose coloured glass has been left here.~
+~
+glass~
+treasure A 0 AO
+0 0 0 0 0
+30 40 17783 2 P
+1
+A
+5 -1
+A
+12 30
+A
+3 1
+A
+13 -5
+A
+20 -2
+V12
+2162
+cabinet wood~
+a wooden cabinet~
+A heavy wood cabinet sits here.~
+~
+wood~
+container 0 0 P
+2000 ABC 0 50 1
+1 400 0 4 P
+0
+V12
+2163
+pegasus figurine carving~
+a pegasus figurine~
+A small carving of a pegasus stands proudly.~
+~
+ivory~
+treasure IKY 0 AO
+0 0 0 0 0
+30 10 6240 2 P
+0
+A
+20 -3
+V12
+2164
+book heavy~
+a book~
+A heavy book lies here on a table.~
+~
+parchment~
+map 0 0 A
+0 0 0 0 0
+1 40 540 1 P
+0
+E
+third~
+Opening the book to the third section, you read:
+
+ The Bears of Goran
+
+Though their presence has been lost in time due to their reclusive nature,
+the wood of Goran is populated with these large, intelligent animals.
+Thought to be a creation of Lord Jolinn, the Bears of Goran are highly
+civilized and more than one traveller lost in the woods has been aided by
+these light-following creatures.
+
+Beyond their dedication to helping those in their wood, and their ties with
+the Titans, little is known about these bears, including why they prefer to
+remain so cut off from the rest of civilization.
+~
+E
+second~
+Opening the book to the second section, you read:
+
+ The Vesler Snake
+
+Rumoured to live in distant swamps on another continent, the vesler snake,
+also known as the one-eyed snake, has one of the most toxic venoms of any
+land bound creature.  Used by alchemists and assassins of yore, just one
+nick of a blade coated in the venom is said to render the victim paralyzed,
+if not dead.  Those who have survived encounters with the vesler snake\@s
+venom are often left blinded or retain partial paralysis.  Reliable
+information on the snake is difficult to find, as the vesler was hunted
+into near extinction, not only for its potent venom but also for its
+beautiful blue shimmering blue scales, which are highly prized and priced
+by any knowledgeable on the subject.
+
+~
+E
+first~
+Opening the book to the first section, you read:
+
+ The Blade of Varmein (The Blade of Magic)
+
+Forged in times past the Blade of Varmein, or as it is more commonly
+known, the Blade of Magic, was created by one of the ancient Alatharya\@s
+greatest craftsmen and scholars.  What scraps of information remain tell
+of years of preparation and powerful rituals the like of which modern
+Avendar has never seen.  The end result was the Blade of Varmein, most
+likely named after its creator, a weapon which contained the perfect meld
+of magic and steel.  So strong was the force of energy put into this
+blade that holding it was akin to holding a slice of pure magic.  Kept in
+the ancient capital, it was displayed in their tower of artifacts as a
+symbol of the perfect unity of magic and the material plane.
+
+When the Sundering occurred, a terrible explosion tore apart the tower the
+Blade of Varmein was kept in, as the blade was so pure that it was also
+divided.  The explosion was so great that none in the tower survived
+and nothing remained but a fine sand, the remnants of the stone of which
+it had been built.  Rumours have circulated since that the blade remains
+on Avendar this day, but in many pieces scattered throughout the world.
+Myth and fairytale tell of six blades which united will again form the
+ancient weapon, but those familiar with the subject believe a seventh
+blade to be needed to unite the six, a center for the power to be focused
+through.
+
+As to what will happen if the blades are reunited, that is even more of
+a mystery.  According to fairytale, the world will once again have access
+to the pure form of magic lost so long ago.  Legend, however, warns of a
+day in the future when the children of the Three seek to undo what They
+have done, and merge the six powers into one once more.  This day, the
+legends predict, will be the end of all that is Avendar.  Most who study
+the histories doubt something so extreme and a few adventurers of past
+have sought to find these mythical blades, though none have yet found
+concrete evidence that the Blade of Varmein exists in any form at all.
+~
+E
+book~
+The book is quite heavy, bound and rebound a few times, but with care. 
+The title is etched on the front in goldleaf, worn away at some points by
+years of handling.  
+
+     Myth, Legend, and Fact:
+   A Compilation of Knowledge
+    From the  Sea of Lidreau
+      to the Uthlin Ocean
+
+ By Kreighlit, Scholar of Earth
+ and Seeker of Knowledge
+
+Opening the book, you see three sections marked by a velvet ribbon.
+
+The first is titled \#The Blade of Varmein\#.
+The second is titled \#The Vesler Snake\#.
+The third is titled \#The Bears of Goran\#.
+~
+V12
+2165
+staff spirit light~
+the Staff of Spirit~
+A beautiful staff of light illumes the room.~
+~
+energy~
+weapon AIKLSYa 0 AN
+staff 6 7 10 F
+wrath~
+60 50 280932 3 P
+1
+A
+4 2
+A
+3 2
+A
+13 30
+A
+12 50
+>fight_prog 4~
+if isworn($o)
+opvaluerand 0 1 5
+opecho The Staff of Spirit glows for a moment.
+if objvalue(0) == 1
+opcast 141 51
+endif
+if objvalue(0) == 2
+opcast 425 51
+endif
+if objvalue(0) == 3
+opcast 130 51
+endif
+if objvalue(0) == 4
+opcast 131 51
+endif
+if objvalue(0) == 5
+opcast 93 51
+endif
+endif
+endif
+~
+>remove_prog 100~
+opremaffect 412
+opechoat $n You feel your heavenly guardian depart.
+~
+>wear_prog 100~
+opaddaffect 412 51 -1 0 0 0
+opechoat $n A translucent pair of wings form behind you briefly, then dissolve into nothing.
+~
+|
+V12
+2166
+robe ages energy~
+the Robe of Ages~
+A robe of woven energy lies here.~
+~
+energy~
+armor BD 0 AK
+11 13 12 11 0
+53 30 328500 2 P
+2
+A
+13 50
+A
+12 30
+A
+20 -3
+V12
+2167
+bracelet silver pure~
+a bracelet of pure silver~
+A heavy bracelet of silver glints in the light.~
+~
+silver~
+jewelry I 0 AM
+0 0 0 0 0
+51 20 60500 1 P
+9
+A
+13 25
+A
+20 -5
+V12
+2168
+ring sunlight light golden~
+a ring of sunlight~
+A ring of golden light warms the room.~
+~
+energy~
+treasure ADIK 0 AB
+0 0 0 0 0
+50 5 157000 0 P
+9
+A
+12 50
+A
+20 -4
+V12
+2169
+ring silver etched~
+an etched silver ring~
+A delicate silver ring is barely visible against the ground.~
+~
+silver~
+armor 0 0 AB
+5 7 5 3 0
+43 3 14750 0 P
+40
+A
+12 20
+A
+13 15
+A
+3 1
+A
+2 1
+V12
+2170
+robe white shimmering~
+a shimmering white robe~
+A white robe shimmers against the ground.~
+~
+silk~
+armor AI 0 AK
+9 9 8 5 0
+45 30 66900 2 P
+65
+A
+12 50
+V12
+2171
+band blue velvet~
+a velvet blue band~
+A band of blue velvet lies here.~
+~
+velvet~
+armor I 0 AE
+9 11 9 9 0
+50 5 61750 2 P
+20
+A
+13 35
+A
+18 3
+A
+5 1
+V12
+2172
+blade white pure~
+a pure white blade~
+A pure white blade has been set here.~
+~
+steel~
+weapon 0 0 AN
+sword 5 7 15 0
+searing light~
+45 80 34500 2 P
+20
+A
+19 3
+A
+18 2
+A
+13 10
+V12
+2173
+dagger silver~
+a silver dagger~
+A silver dagger is partially obscured on the floor.~
+~
+silver~
+weapon I 0 AN
+dagger 2 22 10 0
+wrath~
+50 20 70500 1 P
+15
+A
+12 15
+A
+18 4
+A
+19 1
+V12
+2174
+dagger sapphire~
+a dagger inset with a single sapphire~
+A beautiful but deadly looking dagger gleams beckoningly.~
+~
+steel~
+weapon AGI 0 AN
+dagger 5 9 5 0
+freezing bite~
+52 30 250250 1 P
+1
+A
+19 4
+A
+18 2
+A
+2 2
+V12
+2175
+flail polished~
+a polished flail~
+A well-cared for flail sits here.~
+~
+steel~
+weapon AI 0 AN
+flail 7 5 1 0
+pound~
+40 60 15000 2 P
+50
+A
+12 10
+A
+13 10
+A
+18 1
+A
+19 2
+V12
+2176
+breastplate polished~
+a polished breastplate~
+A polished breastplate shines in the light.~
+~
+steel~
+armor Y 0 AD
+10 10 10 6 0
+40 120 5750 2 P
+50
+A
+3 1
+A
+18 2
+A
+19 1
+V12
+2177
+shirt chainmail enchanted~
+an enchanted chainmail shirt~
+A pile of chainmail lies here.~
+~
+steel~
+armor AI 0 AD
+12 12 10 10 0
+53 80 43500 2 P
+9
+A
+19 3
+A
+12 20
+A
+13 15
+V12
+2178
+leggings blue dragonscale~
+a pair of blue dragonscale leggings~
+A heavy pair of blue dragonscale leggings lie here.~
+~
+dragonscale~
+armor SY 0 AF
+10 10 10 5 0
+42 90 13700 2 P
+40
+A
+2 1
+A
+18 3
+A
+1 1
+A
+19 2
+V12
+2179
+cape blue silvery~
+a silvery blue cape~
+A dark blue cape shimmers silver against the ground.~
+~
+velvet~
+armor 0 0 AK
+10 10 10 10 0
+50 50 69250 2 P
+20
+A
+13 35
+A
+12 15
+A
+19 2
+V12
+2180
+boots soft black leather~
+a pair of soft leather boots~
+A pair of soft black boots lie here.~
+~
+leather~
+armor 0 0 AG
+8 9 8 3 0
+45 40 9750 2 P
+30
+A
+12 20
+A
+14 30
+A
+18 2
+A
+19 1
+V12
+2181
+gauntlets blue dragonscale~
+a pair of blue dragonscale gauntlets~
+A supple pair of dragonscale gauntlets lie here.~
+~
+dragonscale~
+armor 0 0 AH
+10 10 10 5 0
+42 50 10750 1 P
+40
+A
+1 1
+A
+2 1
+A
+18 2
+A
+19 2
+V12
+2182
+shirt scalemail tough~
+a tough scalemail shirt~
+A pile of battered scalemail lies in a puddle.~
+~
+steel~
+armor 0 0 AD
+8 8 8 3 0
+42 60 14500 2 P
+100
+A
+13 15
+A
+19 2
+A
+18 2
+A
+5 2
+V12
+2183
+sleeves scale scalemail~
+a pair of scalemail sleeves~
+A dusty pair of scalemail sleeves lie here.~
+~
+steel~
+armor 0 0 AI
+8 8 8 4 0
+40 60 6500 2 P
+0
+A
+13 10
+A
+19 1
+A
+18 2
+A
+5 1
+V12
+2184
+necklace woven leather bead~
+a woven necklace~
+A necklace of woven leather and beads waits for its owner.~
+~
+leather~
+jewelry 0 0 AC
+0 0 0 0 0
+30 8 14200 1 P
+0
+A
+4 1
+A
+13 10
+A
+17 -5
+A
+20 -2
+V12
+2185
+bracer crafted ancient golden gold~
+an ancient crafted bracer~
+A crafted golden bracer lies here, collecting dust.~
+~
+gold~
+armor AK 0 AM
+7 7 7 11 0
+46 10 21150 1 P
+5
+A
+12 30
+A
+4 3
+A
+13 20
+V12
+2186
+spectacles old~
+an old pair of spectacles~
+A thick pair of old spectacles lies in the dust.~
+~
+metal~
+treasure Y 0 AE
+0 0 0 0 0
+35 5 8000 2 P
+0
+A
+3 1
+A
+4 1
+A
+13 10
+A
+17 -5
+A
+22 -2
+V12
+2187
+book velvet bound~
+a velvet bound book~
+A velvet bound book lays here.~
+~
+velvet~
+trash 0 0 AO
+0 0 0 0 0
+30 40 42 2 P
+0
+V12
+2188
+amulet opal chain silvery~
+an opal amulet~
+A glittering opal lies here, trailing a silvery chain.~
+~
+opal~
+jewelry F 0 AC
+0 0 0 0 0
+50 10 61600 1 P
+9
+A
+17 -8
+A
+12 45
+V12
+2189
+shield scaled scales~
+a scaled shield~
+A shield of scales sits here.~
+~
+scale~
+armor 0 0 AJ
+8 9 9 3 0
+41 40 4150 2 P
+0
+A
+13 10
+A
+12 10
+V12
+2190
+scroll rumpled~
+a rumpled scroll~
+A rumpled scroll flutters on the ground.~
+~
+parchment~
+scroll 0 0 A
+40 'detect evil' 'protection evil' 'armor' ''
+35 2 10000 1 P
+0
+V12
+2191
+scroll smooth~
+a smooth scroll~
+A smooth scroll sits on a wooden stand.~
+~
+parchment~
+scroll 0 0 A
+38 'mass flying' 'mass invis' 'group teleport' ''
+50 2 55000 1 P
+5
+V12
+2192
+potion vial silver strange liquid~
+a silver potion~
+A vial of strange silver liquid fills the air with a sweet scent.~
+~
+glass~
+potion A 0 A
+45 'regeneration' 'cure critical' '' ''
+45 5 13000 1 P
+8
+V12
+2193
+wooden stand heavy tome~
+the tome~
+A heavy tome sits on an old wooden stand in the center of the room.~
+~
+parchment~
+trash AGI 0 0
+0 0 0 0 0
+51 120 400 2 P
+1
+V12
+2194
+book books large stands~
+the books~
+Some large books are set out on stands.~
+~
+parchment~
+trash 0 0 0
+0 0 0 0 0
+40 340 0 2 P
+0
+V12
+2195
+book old dusty~
+an old dusty book~
+An old dusty book lies on the ground.~
+~
+parchment~
+trash 0 0 A
+0 0 0 0 0
+40 50 450 2 P
+0
+E
+three~
+Many years after the War of Night, when the Spirit Palace had become
+fairly well established, it was noticed that some strange activity was
+happening in the caves of Mount Enrien.  Unsettled by this, as it was
+very close to the prison of the demon lord Kzroth, a few scholars were
+sent to explore and establish what had happened.
+
+In the mountain they found a group who referred to themselves as \#Kohli\#
+and appeared to be the last remanents of a race which had lived for many
+years deep underground.  Observing the kohli while invisible, it was
+eventually deduced that some massive, evil creature had forced them from
+their homes, and was responsible for their now sparse population.  The
+amber dragon, upon hearing the details, realized it was the void dragon
+Tzet-Sabanthe.  Knowing the pure corruption and evil that the dark dragon
+was, the amber dragon sought it and drove it off, unwilling to allow it
+to destroy an entire race.  The kohli, thankful and awestruck, came to
+worship the amber dragon as their diety, and elected to stay in their
+new city, close to their god.  It was not until sometime later that the
+details of this were discovered, however, due to the generally seclusive
+nature of the amber dragon.
+~
+E
+two~
+The Spirit Palace, in all its beauty and glory, has attracted many who
+hate it for those it houses.  Between the six magics a balance has always
+existed, keeping a peace that is understood by most powerful scholars.
+Envy and hate cloud reason, however, and during the rule of the fifth
+great Arch-Mage, Gaene Vosatair, dark stirrings were heard.  A group of
+void and fire scholars broke from their guilds to create their own sect,
+the Maevis\@Hra, which loosely translates into \#Bringers of Darkness\#.
+Hoping to eliminate the presence of the golden light that is Spirit,
+they performed many dark rituals, a twisted meld of pain and darkness.
+Believing themselves strong enough to fight this small sect, the many
+schools of spirit around Avendar prepared to defend themselves, and those
+at the palace settled down for war.
+
+To the spirit scholars, triumph was never in doubt.  The Arch-Mage,
+however, had underestimated the Maevis\@Hra and their fanatical devotion
+to their cause.  The night the Maevis\@Hra struck has been burned into
+legend as the greatest tragedy ever to befall the scholars of Spirit.
+All over Avendar spirit schools were besieged by scholars and their vile
+demons.  The guild in Drellan Myr fell early, burned to the ground by
+unnatural fires, and not leaving any survivors.  For the Spirit Palace
+was saved the darkwalkers strongest ally, the demon lord Kzroth, a being of
+fire and destruction.  He cut through the palace defences easily,
+feasting on the bodies of those he killed, and growing stronger for each
+one.
+
+Knowing the demon must be stopped, or it would most likely succeed in
+destroying the palace, Arch-Mage Vosatair went out to fight him alone,
+giving his body up to become a true avatar.  By giving all his soul to
+his transformation, he became more powerful than any before him, burning
+up his own life energy.  The battle between the Arch-Mage and Kzroth was
+long, but eventually Kzroth was weakened enough to be trapped.  The
+remaining Maevis\@Hra fled at his defeat, and Kzroth was locked in a
+magically warded cell within the mountain.  When the cell was closed,
+the Arch-Mage fell and as the consuming light dissipated, so did he, until
+nothing remained of either.
+~
+E
+one~
+The Spirit Palace was first suggested about a decade after the magics of
+air had been let loose upon the land.  Realizing the destructive force
+of pure entropy, and the seeming weakening of the barrier between the magic
+of air and the prime material in the clouds around the ancient Mountain
+Enrien, a young human scholar suggested a place of work and magic be
+built nearby.  Not only would this palace serve to watch over the beings
+of chaos that roamed this energy-charged place, but it would also be a
+symbol of the strength and hope that spirit magic itself represented.
+The young man, Heclan Nayber, would become the first Arch-Mage of the
+Spirit Palace, and its first leader.  Always wise beyond his years, his
+decision was oft proven a good one as time progressed.
+~
+E
+book~
+Dusty and quite old, the book looks to have passed through many hands
+during its time in the library.  The title on the front has long since worn
+away, but upon opening the book, the title is clearly written in a heavy
+hand.  
+
+    A History of the Spirit Tower
+
+Three pages have been marked by students of the past.
+
+(Read one, two, three)
+~
+V12
+2196
+belt yellow piece patterned cloth long~
+a patterned yellow belt~
+A long piece of patterned yellow cloth has been left here.~
+~
+cloth~
+armor 0 0 AL
+6 6 6 4 0
+37 20 4750 2 P
+0
+A
+20 -2
+A
+12 15
+V12
+2197
+no name~
+(no short description)~
+(no description)~
+~
+unknown~
+trash 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+V12
+2199
+..~
+the Sigil of the Soaring Pegasus~
+..~
+~
+flesh~
+armor HIMZ 0 R
+10 10 10 10 0
+52 1 49117 0 P
+0
+A
+13 30
+A
+20 -5
+#0
+
+
+
+#ROOMS
+#2158
+A Training Room~
+This large room is for young spirit mages to train and test themselves in
+their newly learned spells, and to sometimes stay the night if what they
+need to learn will take more than one session to grasp.  The walls raise up,
+made of some sort of material the seems a cross between white marble and the
+misty clouds outside.  A small table and chair made of the same material sit
+against the far wall, and off in the corner a white bed stands, looking
+comfortable and warm.  The whole room glows with light, whether a residue of
+practiced spells or by design, it is difficult to tell.  A single door leads
+north, back to the main part of the palace.  
+~
+~
+1
+0 8 0
+D0
+You see the door to the hallway.
+~
+~
+3 0 2161
+S
+#2159
+A Training Room~
+This large room is for young spirit mages to train and test themselves
+in their newly learned spells, and to sometimes stay the night if what they
+need to learn will take more than one session to grasp.  The walls raise up,
+made of some sort of material the seems a cross between white marble and the
+misty clouds outside.  A small table and chair made of the same material sit
+against the far wall, and off in the corner a white bed stands, looking
+comfortable and warm.  The whole room glows with light, whether a residue of
+practiced spells or by design, it is difficult to tell.  A single door leads
+north, back to the main part of the palace.  
+~
+~
+1
+0 8 0
+D0
+You see the door to the hallway.
+~
+~
+3 0 2160
+S
+#2160
+A Hallway~
+The hallway turns here, leading north and west, the corridors emitting a
+soft light.  A soft dark red carpet, covered in tiny little designs, muffles
+your step as you continue through the palace.  The walls are bare, unlike in
+most parts of the palace, and a small door leads south, into one of the
+training rooms.  
+~
+~
+1
+0 8 0
+D0
+The hallway continues.
+~
+~
+0 0 2169
+D2
+You see the door to a training room.
+~
+~
+3 0 2159
+D3
+The hallway continues.
+~
+~
+0 0 2161
+S
+#2161
+A Hallway~
+The hallway runs east and west of here, the corridors emitting a soft
+light.  A soft dark red carpet, covered in tiny little designs, muffles your
+step as you continue through the palace.  A series of portraits line the
+northern wall, opposite a plain doorway.  Each portrait depicts the former
+rulers of the palace of the spirit, leading back to the founder, a wise
+looking old man.  
+~
+~
+1
+0 8 0
+E
+portrait portraits~
+The first portrait shows the most recent leader before Shilrin, the
+current arch-mage.  Like Shilrin, the former leader was a ch\@taren, as many
+of the other people depicted in the portraits are.  All of the people
+depicted are either human, ch\@taren, or ethron in hertitage.  It is strange
+that the founder of the spirit palace was a human, but he looks wise and
+knowing, and was reputedly a good leader.  
+~
+D1
+The hallway continues.
+~
+~
+0 0 2160
+D2
+You see the door to a training room.
+~
+~
+3 0 2158
+D3
+You see a split in the hallway.
+~
+~
+0 0 2162
+S
+#2162
+A Hallway~
+The hallway runs east and west of here, the corridors emitting a soft
+light.  A soft dark red carpet, covered in tiny little designs, muffles your
+step as you continue through the palace.  The occasional tapestry on the
+wall breaks the bareness of the white walls, the skillful weavings sometimes
+whimsical, sometimes seeming lifelike enough to step out from the picture. 
+North lies the classrooms where the guildmasters teach those who travel to
+the palace to learn.  
+~
+~
+1
+0 8 0
+E
+tapestry tapestries~
+The tapestry that draws your eye on this wall depicts what appears to be
+a tall, beautiful white tower, towering over a large field of red roses
+which spread out around it.  The top of the building is lost in the midsts
+of the clouds, through which bright beams of sunlight can be seen.  
+~
+E
+tapestry~
+~
+D0
+You see the doorway to the classrooms.
+~
+~
+1 0 2167
+D1
+You see a hallway.
+~
+~
+0 0 2161
+D2
+You see the huge entranceway to the palace.  
+~
+~
+0 0 2192
+D3
+You see a hallway.
+~
+~
+0 0 2163
+S
+#2163
+A Hallway~
+The hallway runs east and west of here, the corridors emitting a soft
+light.  A soft dark red carpet, covered in tiny little designs, muffles your
+step as you continue through the palace.  A large portrait hangs on the
+north wall, facing a plain doorway.  The portrait is apparently of one of
+the archmagi of spirit, now controller of the palace of the spirit, her
+knowing gaze keeping vigilant watch.  
+~
+~
+1
+0 8 0
+E
+portrait~
+Arch-Mage Shilrin is plain, but her intelligence shines through her eyes,
+even in the painting.  The painter has surrounded her in a radiance that is
+very appropriate, making her look almost holy in her connection and faith in
+her magic.  
+~
+D1
+You see a split in the hallway.
+~
+~
+0 0 2162
+D2
+You see the door to a training room.
+~
+~
+3 0 2191
+D3
+The hallway continues.
+~
+~
+0 0 2164
+S
+#2164
+A Hallway~
+The hallways turns here, leading north and east, the corridors emitting a
+soft light.  A soft dark red carpet, covered in tiny little designs, muffles
+your step as you continue through the palace.  The walls are bare, unlike in
+most parts of the palace, and a small door leads south, into one of the
+training rooms.  
+~
+~
+1
+0 8 0
+D0
+The hallway continues.
+~
+~
+0 0 2165
+D1
+The hallway continues.
+~
+~
+0 0 2163
+D2
+You see the door to a training room.
+~
+~
+3 0 2190
+S
+#2165
+A Hallway~
+The hallway continues here, the dark red carpet leading north to the west
+tower, and south to the main part of the castle.  The walls of the corridor
+are covered with detailed murals, showing the entrance of spirit magic into
+the world of Avendar.  
+~
+~
+1
+0 8 0
+E
+mural~
+The first image of the mural shows the ch\@taren pouring through a gateway
+to the horrified gaze of void scholars.  The ch\@taren move into the second
+part of the mural, where other races are shown with the ch\@taren, trying to
+learn the essence of spirit magic.  The final part of the mural shows many
+different races in various stages of many wonderous spells, as the use of
+spirit magic spread throughout Avendar.  
+~
+D0
+The hallway continues.
+~
+~
+0 0 2174
+D2
+The hallway continues.
+~
+~
+0 0 2164
+S
+#2166
+A Classroom~
+A few tables and chairs are set here, arranged to face the center of the
+room, where a large desk sits.  The walls are bare and unadorned, and the
+curved ceiling seems to amplify the voice of the person standing in the
+center.  The only impractical thing in the whole room is a single rose set
+on the desk, its pale blue colour standing out against the pure white of the
+rest of the room.  East lies the way back to the hall, and to the other
+classroom.  
+~
+~
+1
+0 8 0
+E
+rose blue~
+The rose glows faintly, it\@s beautiful pale blue colour the result of
+nothing natural.  The petals and stem seem shaped perfectly, each detail
+delicate and smooth.  
+~
+D1
+You see the entrance to the classrooms.
+~
+~
+0 0 2167
+S
+#2167
+The Entrance to the Classrooms~
+A small bookcase is set against the wall, filled with books for quick
+reference for the students.  A comfortable looking chair sits next to the
+bookcase, facing south into the hallway.  West and east lie classrooms for
+young students of spirit, small so the teachers can dedicate their attention
+to the students personally.  
+~
+~
+1
+0 8 0
+D1
+You see Mistress Korlian\@s classroom.  
+~
+~
+0 0 2168
+D2
+You see the doorway to the hallway.
+~
+~
+1 0 2162
+D3
+You see Master Nayshan\@s classroom.
+~
+~
+0 0 2166
+S
+#2168
+A Classroom~
+A few tables and chairs are set here, arranged to face the center of the
+room, where a large desk sits.  A large diagram is drawn on the far wall,
+showing the place of spirit relative to the other elements, and smaller
+diagrams line the other walls.  The room pulses with the powers taught
+here, faint motes of light sparkling in one corner of the room, and the exit
+leading back to the hallway lies to the west.  
+~
+~
+1
+0 8 0
+E
+diagram~
+Air
+         | 
+Spirit  |  / Fire
+        |/
+        /|
+Water /  |   Void
+         |
+       Earth
+~
+D3
+You see the entrance to the classrooms.
+~
+~
+0 0 2167
+S
+#2169
+A Hallway~
+The hallway is bright and cheerful as you continue to follow the dark red
+carpet.  The bustle of aspiring spirit scholars can be heard to the south,
+but as the hallway continues north the noise becomes more and more faint.  
+~
+~
+1
+0 8 0
+D0
+The hallway continues.
+~
+~
+0 0 2170
+D2
+The hallway continues.
+~
+~
+0 0 2160
+S
+#2170
+The Entrance to the Library~
+The tall pillars mark the entrance to the library, one of the best in all
+of Avendar, and certainly the best for anything related to spirit magic. 
+There is a thick silence covering the area, broken only by the occasional
+sound of a book being set down on a table.  The light feeling of the rest of
+the palace continues here as well, but everything seems muted and
+constrained for the sake of concentration.  
+~
+~
+1
+0 8 0
+D0
+The library continues.
+~
+~
+0 0 2171
+D1
+The library continues.
+~
+~
+0 0 2173
+D2
+You see a hallway.
+~
+~
+0 0 2169
+S
+#2171
+The Library~
+Heavy bookcases line the walls and crisscross the floor.  They seem to be
+filled with books of every sort, from farming to alchemy to sewing. 
+Elegantly scripted signs explain what sort of books are in each bookcase. 
+There appear to be hundreds of books on any topic you could possibly
+imagine.  The entrance to the library lies to the south, and the library
+continues on to the east.  
+~
+~
+1
+0 8 0
+D1
+The library continues.
+~
+~
+0 0 2172
+D2
+You see the entrance to the library.
+~
+~
+0 0 2170
+S
+#2172
+The Library~
+Heavy bookcases line the walls and crisscross the floor.  Some desks have
+been set up to the south, and throughout the tall towers of books, some
+comfortable chairs are scattered.  The library continues on to the west, and
+to the south a staircase leads up to the next level of the library, where
+all the spirit tomes are kept.  
+~
+~
+1
+0 8 0
+D2
+The library continues.
+~
+~
+0 0 2173
+D3
+The library continues.
+~
+~
+0 0 2171
+S
+#2173
+The Library~
+A few bookcases are set up in the northern part of the room, but most of
+the room is taken up with a huge desk, apparently where the librarian works,
+and a staircase leading upstairs to the second level of the library.  Anyone
+who desires knowledge is allowed in the main part of the library, but only
+those following the path of spirit are allowed to go up and study the
+magical tomes stored there.  
+~
+~
+1
+0 8 0
+D0
+The library continues.
+~
+~
+0 0 2172
+D3
+You see the entrance to the library.
+~
+~
+0 0 2170
+D4
+You see the stairs leading up to the second level of the library.
+~
+~
+131072 0 2183
+S
+#2174
+A Bend in the Hallway~
+The hall is well lit from the faint glow coming from the pure white
+walls.  Deep blue carpet leads west down the hallway, and north to the plain
+doorway of one of the bedrooms.  South, deep red carpet trails away, heading
+towards the main part of the palace.  
+~
+~
+1
+0 8 0
+D0
+You see the door to Master Nayshan\@s room.
+~
+~
+3 0 2175
+D2
+The hallway continues.
+~
+~
+0 0 2165
+D3
+The hallway continues.
+~
+~
+0 0 2177
+S
+#2175
+Master Nayshan\@s Room~
+This room is plain, the bed neatly made, and the chair pushed under the
+desk.  A large painting is set on the wall, a bizarre yet strangely
+beautiful landscape.  The bed posts and desk are all covered in intricate
+carvings, some of which seem so detailed they must have taken decades to
+complete.  A window looks north over the world of Avendar, and a small door
+leads south to the rest of the palace.  
+~
+~
+1
+0 8 0
+D2
+You see the door to the hallway.
+~
+~
+3 0 2174
+S
+#2176
+Mistress Korlian\@s Room~
+The room is almost too crowded, whatever space not strictly needed for
+walking is taken up with a bookcase or a strange object of some sort.  The
+dark blue carpet is barely visible, only in thin paths from the door on the
+southern wall to the bed and desk.  A beautiful view of Avendar is almost
+totally obscured by a large stand filled with books and knicknacks.  A large
+pile of books sits precariously on a bunch of clothes set on the desk, one
+wrong movement to send everything falling.  
+~
+~
+1
+0 8 0
+D2
+You see the door to the hallway.
+~
+~
+3 0 2177
+S
+#2177
+Bottom of the West Tower~
+A wide staircase leads up to the next level of the west tower of the
+spirit palace.  The stairs look almost slippery, they\@re so smooth.  North
+lies the doorway to one of the bedrooms, and the dark blue carpet leads away
+east to the hallway back to the main part of palace.  
+~
+~
+1
+0 8 0
+D0
+You see the door to Mistress Korlian\@s room.
+~
+~
+3 0 2176
+D1
+The hallway continues.
+~
+~
+0 0 2174
+D4
+The stairs curve up to the second level of the tower.
+~
+~
+0 0 2178
+S
+#2178
+A Small Hallway~
+A wide set of stairs leads down to the bottom level of the tower, the
+steps shiny and smooth.  The hallway is well lit with the light from the
+walls, and a small window on the south wall looks out over the main part of
+the palace, to the cloudy panorama beyond.  Dark blue carpet covers the
+floor, muting your footsteps as you pass.  North lies a small door, leading
+to the librarian\@s bedroom, and the hallway continues on to the east.  
+~
+~
+1
+0 8 0
+D0
+You see the door to Morihd\@s room.
+~
+~
+3 0 2179
+D1
+The hallway continues.
+~
+~
+0 0 2181
+D5
+The stairs curve down to the first level of the tower.
+~
+~
+0 0 2177
+S
+#2179
+Morihd\@s Room~
+This room belongs to the head librarian, and seems little used.  The bed
+set against the west wall is neatly made, and except a robe lying on a
+chair, the room appears to be uninhabited.  The dark blue carpet absorbs the
+sound of your footsteps, and the quiet of the room seems very suited for its
+owner.  A window looks out north over the world below, and a larger window
+looks west, over the bridge of mist.  A small door leads south to the
+hallway.  
+~
+~
+1
+0 8 0
+D2
+You see the door to the hallway.
+~
+~
+3 0 2178
+S
+#2180
+Thalin\@s Room~
+This room belongs to the librarian\@s assistant, his possessions few and
+scattered throughout the room.  A comfortable bed is set against the west
+wall, but most of the room is dominated by a huge bookcase filled with a few
+books, mostly a large collection of figurines.  Besides the extensive
+collection, there seem to be little else of personal value in the room.  A
+small door leads south into the tower, and a window looks out north to the
+world of Avendar below.  
+~
+~
+1
+0 8 0
+D2
+You see the door to the hallway.
+~
+~
+3 0 2181
+S
+#2181
+A Small Hallway~
+A curved staircase leads up to the top level of the west tower, the
+bedroom of the spirit master.  The soft glow of the walls beckons you east
+down a long hallway, and west to the steps leading downstairs.  A small door
+leads north to the librarian assisstant\@s room, and a little window looks
+out over the palace to the south.  
+~
+~
+1
+0 8 0
+D0
+You see the door to Thalin\@s room.
+~
+~
+3 0 2180
+D1
+The hallway continues.
+~
+~
+1 0 2137
+D3
+The hallway continues.
+~
+~
+0 0 2178
+D4
+You see the entrance to Arch-Magi Shilrin\@s room.
+~
+~
+3 0 2182
+S
+#2182
+The Arch-Magi\@s Room~
+The room is suffused with light, both from the walls, and from the
+windows looking out towards each of the four compass points.  North you can
+see the vast realm of Avendar spread out like a beautiful carpet, from the
+green forests of Nendor to the distant blue sparkle of the Uthlin Ocean. 
+West the shimmer of a bridge of mist catches your eye, and east lies a view
+of the opposite tower, glowing in the sunlight.  The arch-mage can overlook
+all of the cloudy world the spirit mages live in at the southern window, and
+a desk sitting infront of the window indicates she does just that.  The room
+is sparsly but richly furnished, and the only exit appears to be the
+twisting staircase leading back down the tower.  
+~
+~
+1
+0 8 0
+E
+south~
+Looking out the window, you see the soft, eternally calm white clouds
+around the spirit palace.  The creatures of light that have made their home
+in the clouds pass in and out of view, as do various scholars from the
+palace.  The areas seems perpetually filled with light and peace, giving the
+aura of calm to all who pass through.  
+~
+D5
+You see the stairs leading down to the second level of the tower.
+~
+~
+3 0 2181
+S
+#2183
+The Second Level of the Library~
+The heavy bookcases here almost shimmer with power, so many books of
+magic knowledge and lore stored together.  The bookcases are spread further
+apart than in the lower level, and there are many desks set up for the
+scholars to sit and study the tomes.  The library continues to the north and
+west, and a staircase leads downstairs to the main part of the library.  
+~
+~
+1
+0 2359354 0
+D0
+You see rows of desks.
+~
+~
+0 0 2184
+D3
+The library continues.
+~
+~
+0 0 2186
+D5
+You see the stairs leading down to the main part of the library.
+~
+~
+0 0 2173
+S
+#2184
+The Second Level of the Library~
+Many desks are set up here, each equipped with a large pile of parchment
+and a few bottles of ink.  Here the scholars can sit and study the books of
+magic, and copy down whatever information they need for their research.  The
+library continues to the south and the more valuble and rare books lie to
+the west.  
+~
+~
+1
+0 2359354 0
+D2
+The library continues.
+~
+~
+0 0 2183
+D3
+You see several stands set up.
+~
+~
+0 0 2185
+S
+#2185
+The Second Level of the Library~
+The heavy bookcases of the rest of library are few here, most of the
+space taken up with wooden stands holding open incredibly thick and heavy
+books.  Chairs are scattered throughout the room, for the scholars to sit on
+as they study these large tomes.  East lie some desks and south the library
+continues.  
+~
+~
+1
+0 2359354 0
+D1
+You see rows of desks.
+~
+~
+0 0 2184
+D2
+The library continues.
+~
+~
+0 0 2186
+S
+#2186
+The Second Level of the Library~
+Heavy bookcases stand in the eastern part of the room, and a desk is set
+to the west by the entrance to a long hallway.  A narrow staircase leads up
+to the top level of the tower where the most rare and powerful books of
+magic are kept.  The library continues to the east and north, where some
+stands are set up to hold the heavier books.  
+~
+~
+1
+0 2359354 0
+D0
+You see several stands set up.
+~
+~
+0 0 2185
+D1
+The library continues.
+~
+~
+0 0 2183
+D3
+You see a hallway.
+~
+~
+1 0 2189
+D4
+You see the stairs to the top level of the library.
+~
+~
+0 0 2187
+S
+#2187
+The Top Level of the Library~
+Thick wooden stands are set up, holding some heavy books that glow
+faintly with power.  The windows in the room are covered with dark blue
+curtains, but the room is still well lit with the glow of magic.  Aside from
+the stands, the room is empty, with just a narrow staircase leading
+downstairs.  
+~
+~
+1
+0 2359354 0
+D5
+You see the stairs to the second level of the library.
+~
+~
+0 0 2186
+S
+#2188
+A Small Hallway~
+The hallway is almost more like a bridge, the walls and ceiling made so
+thin they are transparent.  Comfortable chairs and short tables are set
+along the hallway, the area meant entirely for relaxation and reading.  To
+the west lies the entrance to a tower, and the dark blue carpet heads east
+along the hall to the library.  
+~
+~
+1
+0 8 0
+D1
+The hallway continues.
+~
+~
+0 0 2189
+D3
+The hallway continues.
+~
+~
+0 0 2137
+S
+#2189
+A Small Hallway~
+The hallway is almost more like a bridge, the walls and ceiling made so
+thin they are transparent.  Comfortable chairs and short tables are set
+along the hallway, the area meant entirely for relaxation and reading. 
+Further to the west lies the entrance to a tower, and the dark blue carpet
+heads east to the library.  
+~
+~
+1
+0 8 0
+D1
+You see the library.
+~
+~
+131073 0 2186
+D3
+The hallway continues.
+~
+~
+0 0 2188
+S
+#2190
+A Training Room~
+This large room is for spirit templars to train and test themselves in
+their newly learned skills, and to sometimes sometimes stay the night if
+what they need to learn will take more than one session to grasp.  The walls
+raise up, made of some sort of material the seems a cross between white
+marble and the misty clouds outside.  A small table and chair made of the
+same material sit against the far wall, and off in the corner a white bed
+stands, looking comfortable and warm.  A thin mat covers the floor in the
+east corner of the room, facing a mirror for the students to examine their
+technique.  The whole room glows with light, whether a residue of practiced
+spells or by design, it is difficult to tell.  A single door leads north,
+back to the main part of the palace.  
+~
+~
+1
+0 8 3
+D0
+You see the doorway to the hall.
+~
+~
+3 0 2164
+S
+#2191
+A Training Room~
+This large room is for spirit templars to train and test themselves in
+their newly learned skills, and to sometimes sometimes stay the night if
+what they need to learn will take more than one session to grasp.  The walls
+raise up, made of some sort of material the seems a cross between white
+marble and the misty clouds outside.  A small table and chair made of the
+same material sit against the far wall, and off in the corner a white bed
+stands, looking comfortable and warm.  A thin mat covers the floor in the
+east corner of the room, facing a mirror for the students to examine their
+technique.  The whole room glows with light, whether a residue of practiced
+spells or by design, it is difficult to tell.  A single door leads north,
+back to the main part of the palace.  
+~
+~
+1
+0 8 0
+D0
+You see the doorway to the hall.
+~
+~
+3 0 2163
+S
+#2192
+The Entranceway~
+The walls, ceiling and floor are perfectly smooth, and glow a soft
+white.  They seem to be made of a soft yet solid material, a combination of
+cool hard marble, and the light wispy clouds outside.  Intricate tapestries
+line the walls, depicting beautiful scenes of elegant magical creatures, and
+white clad mages preforming miracles.  The hallway continues to the north,
+into the Palace of the Spirit, and south, a large set of double doors lead
+into the bright daylight outside.  
+~
+~
+1
+0 0 0
+E
+tapestry tapestries~
+The numerous tapestries lining the walls show creatures of the light,
+like the pegasi and other beings in the clouds, and others, like a pure
+silver dragon depicted in the one closest to the entranceway.  The mystical
+creatures are often accompanied with a spirit scholar either communicating
+with it, or preforming spirit magic under the creatures approving eyes.  
+~
+D0
+You see an intersection in the hallways.
+~
+~
+0 0 2162
+D2
+You see the faint haziness of white clouds.
+~
+~
+0 0 2024
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 2158 0 3
+D 0 2159 0 3
+D 0 2160 2 3
+D 0 2161 2 3
+D 0 2162 0 1
+D 0 2163 2 3
+D 0 2164 2 3
+D 0 2167 2 1
+D 0 2173 4 131072
+D 0 2174 0 3
+D 0 2175 2 3
+D 0 2176 2 3
+D 0 2177 0 3
+D 0 2178 0 3
+D 0 2179 2 3
+D 0 2180 2 3
+D 0 2181 0 3
+D 0 2181 1 1
+D 0 2181 4 3
+D 0 2182 5 3
+D 0 2186 3 1
+D 0 2189 1 131073
+D 0 2190 0 3
+D 0 2191 0 3
+M 0 2171 1 2158 1
+G 0 2190 0
+M 0 2172 1 2159 1
+G 0 2192 0
+M 0 2166 1 2160 1
+M 0 2179 1 2161 1
+G 0 2191 0
+M 0 2175 1 2162 1
+E 0 2174 0 16
+E 0 2177 0 5
+E 0 2178 0 7
+E 0 2179 0 12
+E 0 2180 0 8
+E 0 2181 0 9
+E 0 2199 0 20
+E 0 2173 0 19
+M 0 2167 1 2165 1
+M 0 2162 1 2166 1
+E 0 2169 0 1
+E 0 2170 0 12
+E 0 2171 0 6
+M 0 2163 1 2168 1
+E 0 2170 0 12
+E 0 2169 0 1
+E 0 2185 0 14
+M 0 2168 1 2169 1
+M 0 2170 1 2170 1
+M 0 2165 1 2171 1
+E 0 2184 0 3
+M 0 2169 1 2172 1
+M 0 2161 1 2173 1
+E 0 2186 0 6
+O 0 2161 0 2175
+O 0 2162 0 2176
+P 0 2163 1 2162 1
+P 0 2164 1 2162 1
+M 0 2164 1 2182 1
+E 0 2188 0 3
+E 0 2165 0 16
+E 0 2166 0 12
+E 0 2167 0 14
+E 0 2168 0 1
+E 0 2199 0 20
+M 0 2180 1 2184 1
+G 0 2195 0
+E 0 2196 0 13
+O 0 2194 0 2185
+M 0 2173 1 2186 1
+M 0 2178 1 2186 1
+O 0 2193 0 2187
+M 0 2177 1 2188 1
+O 0 2160 0 2188
+M 0 2160 1 2189 1
+O 0 2160 0 2189
+M 0 2176 1 2190 1
+E 0 2175 0 16
+E 0 2176 0 5
+M 0 2174 1 2191 1
+E 0 2172 0 16
+E 0 2182 0 5
+E 0 2183 0 10
+E 0 2189 0 11
+S
+
+
+
+#GUILD
+#2162
+'mass peace'
+'rune of spirit'
+#0
+
+#2163
+'create focus'
+#0
+
+#2164
+'astral projection'
+'avenging seraph'
+'avatar'
+#0
+
+S
+
+
+#SHOPS
+0
+
+
+
+#$

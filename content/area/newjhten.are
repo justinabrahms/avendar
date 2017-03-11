@@ -1,0 +1,5034 @@
+#AREADATA
+Name Jh\@ten, Reloaded~
+Builders Staff Neongrey Ninjadyne Dovolente Jolinn~
+VNUMs 2400 2699
+Credits [ ALL ] Staff     Jh\@ten Reloaded~
+Danger 0
+Security 1
+Areainfo 59
+Herbs 0
+Weather 0 0 0 0 0
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+#0
+
+
+
+#OBJECTS
+V13
+2410
+stony fountain jhtenfountain gnarled~
+an organic, stony fountain~
+A stony fountain twists out of the ground, gnarled and bulbous.~
+~
+bone~
+fountain Ya 0 0 P
+0 0 'water' 1 0
+52 0 0 0 P
+0
+E
+stony jhtenfountain curvaceous stony fountain~
+This stony fountain erupts, trumpetlike, from deep in the heart of
+Jh\@ten.  The rough material is reminiscent of limestone or old coral, yet
+slightly translucent; glimmers of light play subtly beneath its surface. 
+Gnarled and organic in shape, it catches water in a shallow pool at its 
+base.
+~
+>rand_prog 3~
+if isanypchere()
+  mpvaluerand 0 1 10
+  if value(0) == 1
+    mpecho $I gurgles, the sound echoing up from deep below.
+  endif
+  if value(0) == 2
+    mpecho $I gurgles hollowly.
+  endif
+  if value(0) == 3
+    mpecho Wisps of water vapor puff out of $I.
+  endif
+  if value(0) == 4
+    mpecho Some water spits, burbling, out of $I.
+    mpmath 2 $2 + 5
+  endif
+  if value(0) == 5
+    mpecho With a wet gurgle, water pours from $I for several seconds.
+    mpmath 2 $2 + 5
+  endif
+  if value(0) == 6
+    mpecho $I erupts, fizzing water high into the air!
+    mpvalueset 3 2
+    mpmath 2 $2 + 30
+  endif
+  if value(0) == 7
+    mpecho $I gushes a hissing plume of vapor skywards!
+    mpvalueset 3 1
+    mpmath 2 $2 + 9
+  endif
+  if value(0) == 8
+    mpecho $I shoots volumes of water skywards with a dull roar!
+    mpasound A dull, watery rumble sounds nearby.
+    mpvalueset 3 2
+    mpmath 2 $2 + 100
+  endif
+  if value(0) == 9
+    mpecho Water vapor erupts from $I, trailing slightly in the breeze.
+    mpvalueset 3 1
+    mpmath 2 $2 + 20
+  endif
+  if value(0) == 10
+    mpecho $I sprays a small burst of water into the air, puffing loudly.
+    mpvalueset 3 1
+    mpmath 2 $2 + 8
+  endif
+else
+  mpmath 2 $2 + 10
+endif
+~
+>data_prog fountaindesc~
+This stony fountain erupts, trumpetlike, from deep in the heart of
+Jh\@ten.  The rough material is reminiscent of limestone or old coral, yet
+slightly translucent; glimmers of light play subtly beneath its surface. 
+Gnarled and organic in shape, it catches water in a shallow pool at its base.
+~
+>data_prog verbs~
+springs from
+springs from
+twists out of
+erupts from
+sprouts from
+twists out of
+erupts from
+~
+>data_prog nouns~
+protrusion
+protrusion
+spout
+fountain
+fountain
+~
+>rand_prog 100~
+if value(3) == 1
+  mpecho Cool, delicate spray slowly settles around you.
+  mpvalueset 3 0
+endif
+if value(3) == 2
+  mpecho Water splashes down, soaking everything.
+  mpvalueset 3 1
+endif
+if value(9) == 0
+  mpvaluerand 0 1 7
+  mpsetdata adjectives
+  loop 0 to $0
+    mpnextdata
+  endloop
+  mpvalueset adj $d
+//mpecho adj loop is $0 and $d
+  mpvaluerand 0 1 5
+  mpsetdata verbs
+  loop 0 to $0
+    mpnextdata
+  endloop
+  mpvalueset verb $d
+//mpecho verb loop is $0  and $d
+  mpvaluerand 0 1 3
+  mpsetdata nouns
+  loop 0 to $0
+    mpnextdata
+  endloop
+  mpvalueset noun $d
+//mpecho noun loop is $0 and $d
+  mpstring obj self short a %adj stony fountain
+  mpstring obj self long A stony %noun %verb the ground, curvaceous and %adj.
+  mpstring obj self name stony fountain %noun %adj jhtenfountain curvaceous
+  mpdesc self fountaindesc %noun
+  mpdesc self fountaindesc %adj
+  mpvalueset 9 1
+endif
+if value(2) > 0
+  mpset obj self value3 FALSE
+  if rand(40)
+    mpvaluedown 2
+  endif
+  if rand(1)
+    if rand(33)
+      mpecho Water gurgles softly in the fountain\@s basin, draining slowly away.
+    else
+      mpecho Some of the water in the basin seeps away into the rock.
+    endif
+  endif
+  if value(2) == 0
+    mpset obj self value3 TRUE
+    mpecho The last of the water in $I\@s basin drains away.
+  endif
+endif
+~
+>data_prog adjectives~
+bulbous
+slender
+spiralling
+twisted
+sinuous
+calcareous
+nodular
+bulbous
+spiralling
+~
+|
+#0
+
+
+
+#ROOMS
+#2400
+Starfish Control~
+Rooms 2400-2451: http://goo.gl/VGgez -- Arm I - The Forest [Greenhouse, Al\@Wye maze, Gardens, Dawngate, Bard Guild]
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#2401
+Outside the Gates of Jh\@ten~
+A silvery road passes over the gleaming emerald waters of the Bay of Shao
+here, as stable and as dry as if it were laid over the flattest of plains. 
+The waters crash tempestuously against the rocks at the base of the walls of
+Jh\@ten, close enough to send spray flying here but the water lapping at the
+edge of the path is as placid as could be.  The salt in the air is thick
+here, giving each breath a distinctly marine taste.  The road winds its way
+over the Bay to the northwest and the verdant mainland of Alensha. 
+Southward, the gleaming golden walls of Jh\@ten stretch out, surrounding a
+wide gap that stands open, affording an eye level view of an expansive
+forest just beyond.  Spirit-lights sparkle above a tiny point of something
+crystalline that gleams in the distance, and the great spires of the city\@s
+temple to Rystaia reach even further to pierce the heavens.  
+~
+~
+0
+0 0 6
+D2
+~
+~
+0 0 2402
+W 5 0 0
+Z 5 5
+P
+>verb_prog close_gate_1_outside~
+if isnpc($n)
+or isimmort($n)
+        mpsetexit south none
+        mpdesc here gate_closed
+else
+        mpnextinterp
+endif
+~
+>verb_prog open_gate_1_outside~
+if isnpc($n)
+or isimmort($n)
+        mpsetexit south 2402
+        mpdesc here gate_open
+else
+        mpnextinterp
+endif
+~
+>data_prog gate_closed~
+A silvery road passes over the gleaming emerald waters of the Bay of Shao
+here, as stable and as dry as if it were laid over the flattest of plains. 
+The waters crash tempestuously against the rocks at the base of the walls of
+Jh\@ten, close enough to send spray flying here but the water lapping at the
+edge of the path is as placid as could be.  The salt in the air is thick
+here, giving each breath a distinctly marine taste.  The road winds its way
+over the Bay to the northwest and the verdant mainland of Alensha. 
+Southward, the gleaming golden walls of Jh\@ten stretch out, surrounding a
+nest of spiny golden coral that stops up what may have once been a gap
+between them.  The road drifts to a halt just before the blockage, fading
+into the rocks beneath.  The odd spirit-light can be seen sparking high up
+into the air in a brilliant splash of colour, and not even the walls can
+dwarf the great spires at the centre of the city, twisting so high the tops
+can barely be seen from here.  
+~
+>data_prog gate_open~
+A silvery road passes over the gleaming emerald waters of the Bay of Shao
+here, as stable and as dry as if it were laid over the flattest of plains. 
+The waters crash tempestuously against the rocks at the base of the walls of
+Jh\@ten, close enough to send spray flying here but the water lapping at the
+edge of the path is as placid as could be.  The salt in the air is thick
+here, giving each breath a distinctly marine taste.  The road winds its way
+over the Bay to the northwest and the verdant mainland of Alensha. 
+Southward, the gleaming golden walls of Jh\@ten stretch out, surrounding a
+wide gap that stands open, affording an eye level view of an expansive
+forest just beyond.  Spirit-lights sparkle above a tiny point of something
+crystalline that gleams in the distance, and the great spires of the city\@s
+temple to Rystaia reach even further to pierce the heavens.  
+~
+|
+S
+#2402
+Inside the Gates of Jh\@ten~
+The great golden walls of Jh\@ten come to a natural gap here, parting to
+allow passage onto the mainland over a smooth, silvery road.  The emerald
+waters of the Bay of Shao lap close to the road where it drifts toward the
+water, but that seems to not make the path appreciably more slippery in the
+least.  The warm salt scent of the air is strongest here, tickling the nose
+with its marine tang.  To the east and west, stairs have been carved up to
+the tops of the walls, following their smooth, faint curves.  Southward the
+silver road begins to meander through a great, cultivated grove of ironwood
+and pines that grow almost to the wall itself.  The tip of a clear, tear-
+shaped building can be seen from here, rising over the tops of the trees
+from a hill to the southeast, gleaming in the drifting spirit-lights.  Far
+to the southeast, you can make out the wild, reaching spires of the temple
+of Rystaia at the centre of the city.  
+~
+~
+0
+0 262144 1
+E
+stairs~
+The stairs ascend zig-zag up the interior of the wall, leading up to the
+top.  
+~
+E
+tear teardrop tip clear building southeast~
+The tall, pointed tip of the building is made of a glittering,
+translucent crystal.  As spirit-lights flicker through the air past it, the
+crystal shimmers and catches the light brightly.  
+~
+E
+temple spire spires rystaia~
+The spires of the temple are easily the tallest thing that can be seen
+from here, perpetually wreathed in frothy whips of mist and light.  
+~
+D0
+~
+~
+0 0 2401
+D1
+~
+~
+0 0 2403
+D2
+~
+~
+0 0 2408
+D3
+~
+~
+0 0 2406
+W 5 0 0
+Z 5 5
+P
+>verb_prog close_gate_1_inside~
+if isnpc($n)
+or isimmort($n)
+        mpsetexit north none
+        mpdesc here gate_closed
+else
+        mpnextinterp
+endif
+~
+>verb_prog open_gate_1_inside~
+if isnpc($n)
+or isimmort($n)
+        mpsetexit north 2401
+        mpdesc here gate_open
+else
+        mpnextinterp
+endif
+~
+>data_prog gate_closed~
+The great golden walls of Jh\@ten come to a natural gap here, but a great
+outgrowth of spiny-looking coral, like a golden briar bush blocks up that
+gap.  A smooth, silvery road drifts to a stop just before the blockage,
+fading so fluidly as to make it difficult to tell where it actually ends.  A
+marine tang faintly tickles the nose here, as if from far further away than
+would be suggested by the nearness of Bay of Shao.  To the east and west,
+stairs have been carved up to the tops of the walls, following their smooth,
+faint curves.  Southward the silver road begins to meander through a great,
+cultivated grove of ironwood and pines that grow almost to the wall itself. 
+The tip of a clear, tear-shaped building can be seen from here, rising over
+the tops of the trees from a hill to the southeast, gleaming in the drifting
+spirit-lights.  Far to the southeast, you can make out the wild, reaching
+spires of the temple of Rystaia at the centre of the city.  
+~
+>data_prog gate_open~
+The great golden walls of Jh\@ten come to a natural gap here, parting to
+allow passage onto the mainland over a smooth, silvery road.  The emerald
+waters of the Bay of Shao lap close to the road where it drifts toward the
+water, but that seems to not make the path appreciably more slippery in the
+least.  The warm salt scent of the air is strongest here, tickling the nose
+with its marine tang.  To the east and west, stairs have been carved up to
+the tops of the walls, following their smooth, faint curves.  Southward the
+silver road begins to meander through a great, cultivated grove of ironwood
+and pines that grow almost to the wall itself.  The tip of a clear, tear-
+shaped building can be seen from here, rising over the tops of the trees
+from a hill to the southeast, gleaming in the drifting spirit-lights.  Far
+to the southeast, you can make out the wild, reaching spires of the temple
+of Rystaia at the centre of the city.  
+~
+|
+S
+#2403
+Atop the Golden Walls of Jh\@ten~
+These magnificent golden walls tower above the Bay of Shao, whose emerald
+green waters lap against the rocks of the shore far below.  Tracing a
+winding, almost serendipitous course, the walls protect the northwestern arm
+of the haven of Jh\@ten.  The most visible part of the city from here is not
+actually cultivated -- the interior is instead forest.  Beginning with
+copses of Brintorean pines and Qilarni ironwood towards the west, the native
+trees stop when they reach a high hill on which is set a teardrop-shaped
+clear building.  From there grow the fabled Al\@Wye, whose quicksilver trunks
+reflect and dazzle.  Further east a giant structure made of mother of pearl
+shell is ensconced in the wall and has a network of gardens and fountains
+south of it.  Taller even than these walls though is the temple of Rystaia,
+whose wild spires mark the center of the haven.  The walls continue to the
+south, and end in a gate-like structure to the west.  
+~
+~
+0
+0 262144 1
+E
+golden~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is not actually ch\@lonin
+as the songs say -- it is instead a kind of coral material.  It appears
+amazingly durable for a material which upon closer examination appears to be
+a less-than-solid lattice of calcified matter.  The exterior is sharp to the
+touch and threatens injury to unassisted climbers, while the interior is
+polished to a smooth buff.  
+~
+E
+teardrop-shaped~
+The building is made of some translucent crystal, and is shaped like a
+delicate teardrop.  From here, it looks to contain greenery and some wild
+floral colors.  
+~
+E
+teardrop~
+The building is made of some translucent crystal, and is shaped like a
+delicate teardrop.  From here, it looks to contain greenery and some wild
+floral colors.  
+~
+E
+wall~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is not actually ch\@lonin
+as the songs say -- it is instead a kind of coral material.  It appears
+amazingly durable for a material which upon closer examination appears to be
+a less-than-solid lattice of calcified matter.  The exterior is sharp to the
+touch and threatens injury to unassisted climbers, while the interior is
+polished to a smooth buff.  
+~
+E
+stairs~
+The stairs descend zig-zag down the interior of the wall, leading to grounds of the haven.
+~
+E
+temple~
+The monumental spires of Rystaia\@s temple are easily taller than anything
+else in the city.  The center of ch\@taren life and worship in the haven, its
+heights are wreathed in effervescent wisps of light, while the gardens at
+its base are ever so slightly occluded by the faint orangeish exhalations of
+Jh\@ten.  
+~
+E
+rystaia~
+The monumental spires of Rystaia\@s temple are easily taller than anything
+else in the city.  The center of ch\@taren life and worship in the haven, its
+heights are wreathed in effervescent wisps of light, while the gardens at
+its base are ever so slightly occluded by the faint orangeish exhalations of
+Jh\@ten.  
+~
+E
+bay~
+Waves from the Bay of Shao crash against the northern side of Jh\@ten. 
+Somewhat less shielded by the harbor and the haven\@s mass, the water here
+tends to be choppier and wilder.  No places to moor ships or boats are
+visible from here.  
+~
+E
+shao~
+Waves from the Bay of Shao crash against the northern side of Jh\@ten. 
+Somewhat less shielded by the harbor and the haven\@s mass, the water here
+tends to be choppier and wilder.  No places to moor ships or boats are
+visible from here.  
+~
+E
+bay of shao~
+Waves from the Bay of Shao crash against the northern side of Jh\@ten. 
+Somewhat less shielded by the harbor and the haven\@s mass, the water here
+tends to be choppier and wilder.  No places to moor ships or boats are
+visible from here.  
+~
+E
+al\@wye~
+Viewed from high above, the mirrored barks and shimmering leaves of the
+Al\@Wye trees effectively hide their interior in a maze of quicksilver
+reflections and scattered light.  
+~
+E
+wall~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is not actually ch\@lonin
+as the songs say -- it is instead a kind of coral material.  It appears
+amazingly durable for a material which upon closer examination appears to be
+a less-than-solid lattice of calcified matter.  The exterior is sharp to the
+touch and threatens injury to unassisted climbers, while the interior is
+polished to a smooth buff.  
+~
+D2
+The wall curves to the south from here, continuing along the shores of
+the bay.  
+~
+~
+0 0 2404
+D3
+The walls come to an end west of here, terminating in the gate which
+sometimes links Jh\@ten to the mainland.  
+~
+~
+0 0 2402
+W 5 0 0
+Z 5 5
+S
+#2404
+Atop the Golden Walls of Jh\@ten~
+These magnificent golden walls tower above the Bay of Shao, whose emerald
+green waters lap against the rocks of the shore far below.  The walls follow
+a relatively straight course here, protecting the northwestern arm of the
+haven of Jh\@ten from assault by sea.  The most visible part of the city from
+here is not actually cultivated -- the interior is actually forest. 
+Beginning with copses of Brintorean pines and Qilarni ironwood towards the
+west, the native trees stop when they reach a high hill on which is set a
+clear, teardrop-shaped building.  From there grow the fabled Al\@Wye, whose
+quicksilver trunks reflect and dazzle.  Further east a giant structure made
+of mother of pearl shell is ensconced in the wall and has a network of
+gardens and fountains south of it.  Past those stands the temple of Rystaia,
+whose wild spires pierce the low-hanging clouds over the city, dwarfing
+everything else in Jh\@ten.  From here, the only way to continue is to the
+north and east, where the golden wall continues.  
+~
+~
+0
+0 262144 1
+E
+golden~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is not actually ch\@lonin
+as the songs say -- it is instead a kind of coral material.  It appears
+amazingly durable for a material which upon closer examination appears to be
+a less-than-solid lattice of calcified matter.  The exterior is sharp to the
+touch and threatens injury to unassisted climbers, while the interior is
+polished to a smooth buff.  
+~
+E
+walls~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is not actually ch\@lonin
+as the songs say -- it is instead a kind of coral material.  It appears
+amazingly durable for a material which upon closer examination appears to be
+a less-than-solid lattice of calcified matter.  The exterior is sharp to the
+touch and threatens injury to unassisted climbers, while the interior is
+polished to a smooth buff.  
+~
+E
+wall~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is not actually ch\@lonin
+as the songs say -- it is instead a kind of coral material.  It appears
+amazingly durable for a material which upon closer examination appears to be
+a less-than-solid lattice of calcified matter.  The exterior is sharp to the
+touch and threatens injury to unassisted climbers, while the interior is
+polished to a smooth buff.  
+~
+E
+teardrop-shaped~
+The building is made of some translucent crystal, and is shaped like a
+delicate teardrop.  From here, it looks to contain greenery and some wild
+floral colors.  
+~
+E
+teardrop~
+The building is made of some translucent crystal, and is shaped like a
+delicate teardrop.  From here, it looks to contain greenery and some wild
+floral colors.  
+~
+E
+east~
+The wall becomes more winding and twisting to the east, continuing along
+the shores of the bay.  
+~
+E
+spiral~
+This building looks as though it were almost carved out of a giant,
+spiral shell, growing out of the ground.  Its surface is almost luminescent,
+replete with oranges, golds, reds, and even the occasional purples or blue. 
+With closer examination, it seems that these colors change not just with the
+angle of view, but also over time -- gently shifting to some internal rhythm
+so that one or another gradually comes to dominate, then fades.  
+~
+E
+bay of shao~
+Waves from the Bay of Shao crash against the northern side of Jh\@ten. 
+Somewhat less shielded by the harbor and the haven\@s mass, the water here
+tends to be choppier and wilder.  No places to moor ships or boats are
+visible from here.  
+~
+E
+bay~
+Waves from the Bay of Shao crash against the northern side of Jh\@ten. 
+Somewhat less shielded by the harbor and the haven\@s mass, the water here
+tends to be choppier and wilder.  No places to moor ships or boats are
+visible from here.  
+~
+E
+rystaia~
+The monumental spires of Rystaia\@s temple are easily taller than anything
+else in the city.  The center of ch\@taren life and worship in the haven, its
+heights are wreathed in effervescent wisps of light, while the gardens at
+its base are ever so slightly occluded by the faint orangeish exhalations of
+Jh\@ten.  
+~
+D0
+The wall curves to the north from here, continuing along the shores of the bay.
+~
+~
+0 0 2403
+D1
+~
+~
+0 0 2405
+W 5 0 0
+Z 5 5
+S
+#2405
+Atop the Golden Walls of Jh\@ten~
+These magnificent golden walls tower above the Bay of Shao, whose emerald
+green waters lap against the rocks of the shore far below.  The walls follow
+a swooping and bending course, protecting the northwestern arm of the haven
+of Jh\@ten from assault by sea.  South and west of here grows a forest of the
+fabled Al\@Wye, whose quicksilver trunks reflect and dazzle.  Due south of
+here is a spiral structure, tucked into a fold of the wall and made of some
+iridescent material resembling mother of pearl.  Beyond it lies a network of
+gardens and fountains, which connect to the center of the haven.  There
+stands the temple of Rystaia, whose wild spires pierce the low-hanging
+clouds over the city, dwarfing everything else in Jh\@ten.  From here, the
+walls wind to both the west and north, and a narrow stair leads down
+to the ground near the entrance to the spiral building.  
+~
+~
+0
+0 262144 1
+E
+golden~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is not actually ch\@lonin
+as the songs say -- it is instead a kind of coral material.  It appears
+amazingly durable for a material which upon closer examination appears to be
+a less-than-solid lattice of calcified matter.  The exterior is sharp to the
+touch and threatens injury to unassisted climbers, while the interior is
+polished to a smooth buff.  
+~
+E
+gardens~
+The gardens are full of life native to Jh\@ten and presumably from the
+ch\@taren\@s original home.  In their center is some sort of fountain, ringed
+with tufa-like growths.  
+~
+E
+shell~
+This building looks as though it were almost carved out of a giant,
+spiral shell, growing out of the ground.  Its surface is almost luminescent,
+replete with oranges, golds, reds, and even the occasional purples or blue. 
+With closer examination, it seems that these colors change not just with the
+angle of view, but also over time -- gently shifting to some internal rhythm
+so that one or another gradually comes to dominate, then fades.  
+~
+E
+spiral~
+This building looks as though it were almost carved out of a giant,
+spiral shell, growing out of the ground.  Its surface is almost luminescent,
+replete with oranges, golds, reds, and even the occasional purples or blue. 
+With closer examination, it seems that these colors change not just with the
+angle of view, but also over time -- gently shifting to some internal rhythm
+so that one or another gradually comes to dominate, then fades.  
+~
+E
+stairs~
+The stairs descend zig-zag down the interior of the wall, leading to
+grounds of the haven.  
+~
+E
+shao~
+Waves from the Bay of Shao crash against the northern side of Jh\@ten. 
+Somewhat less shielded by the harbor and the haven\@s mass, the water here
+tends to be choppier and wilder.  No places to moor ships or boats are
+visible from here.  
+~
+E
+bay of shao~
+Waves from the Bay of Shao crash against the northern side of Jh\@ten. 
+Somewhat less shielded by the harbor and the haven\@s mass, the water here
+tends to be choppier and wilder.  No places to moor ships or boats are
+visible from here.  
+~
+E
+bay~
+Waves from the Bay of Shao crash against the northern side of Jh\@ten. 
+Somewhat less shielded by the harbor and the haven\@s mass, the water here
+tends to be choppier and wilder.  No places to moor ships or boats are
+visible from here.  
+~
+E
+al\@wye~
+Viewed from high above, the mirrored barks and shimmering leaves of the
+Al\@Wye trees effectively hide their interior in a maze of quicksilver
+reflections and scattered light.  
+~
+E
+rystaia~
+The monumental spires of Rystaia\@s temple are easily taller than anything
+else in the city.  The center of ch\@taren life and worship in the haven, its
+heights are wreathed in effervescent wisps of light, while the gardens at
+its base are ever so slightly occluded by the faint orangeish exhalations of
+Jh\@ten.  
+~
+E
+wall~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is not actually ch\@lonin
+as the songs say -- it is instead a kind of coral material.  It appears
+amazingly durable for a material which upon closer examination appears to be
+a less-than-solid lattice of calcified matter.  The exterior is sharp to the
+touch and threatens injury to unassisted climbers, while the interior is
+polished to a smooth buff.  
+~
+E
+building~
+This building looks as though it were almost carved out of a giant,
+spiral shell, growing out of the ground.  Its surface is almost luminescent,
+replete with oranges, golds, reds, and even the occasional purples or blue. 
+With closer examination, it seems that these colors change not just with the
+angle of view, but also over time -- gently shifting to some internal rhythm
+so that one or another gradually comes to dominate, then fades.  
+~
+D3
+The wall curves to the south from here, continuing along the shores of
+the bay.  
+~
+~
+0 0 2404
+D5
+A zig-zagging stair carved in the side of the wall leads down to the
+entrance of the building below.  
+~
+~
+0 0 2441
+W 5 0 0
+Z 5 5
+S
+#2406
+Atop the Golden Walls of Jh\@ten~
+These magnificent golden walls tower above Jh\@ten, equal parts protection
+for the interior of the haven and sea wall for a glimmering lagoon to the
+south.  The most visible part of the city from here is actually forested
+land.  Beginning with copses of Brintorean pines and Qilarni ironwood towards
+the west, the native trees stop when they reach a high hill on which is set
+a teardrop-shaped clear building.  From there grow the fabled Al\@Wye, whose
+quicksilver trunks reflect and dazzle.  Knitting these two disparate regions
+together is a silver path, which fairly darts through the warp and woof of
+all the forests in sight.  Further east a network of gardens and fountains
+is visible, leading towards the center of the Jh\@ten.  There, the wild
+spires of the temple of Rystaia are easily the tallest structure in the
+haven.  The walls continue to the south, but come to an end after meeting a
+gate-like structure to the east.  The only way down to the ground of the
+forest below is via a set of stairs carved in the interior of the walls.  
+~
+~
+0
+0 262144 1
+E
+stairs~
+The stairs descend zig-zag down the interior of the wall, leading to
+grounds of the haven.  
+~
+E
+walls~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is not actually ch\@lonin
+as the songs say -- it is instead a kind of coral material.  It appears
+amazingly durable for a material which upon closer examination appears to be
+a less-than-solid lattice of calcified matter.  The exterior is sharp to the
+touch and threatens injury to unassisted climbers, while the interior is
+polished to a smooth buff.  
+~
+E
+teardrop-shaped~
+The building is made of some translucent crystal, and is shaped like a
+delicate teardrop.  From here, it looks to contain greenery and some wild
+floral colors.  
+~
+E
+teardrop~
+The building is made of some translucent crystal, and is shaped like a
+delicate teardrop.  From here, it looks to contain greenery and some wild
+floral colors.  
+~
+E
+al\@wye~
+Viewed from high above, the mirrored barks and shimmering leaves of the
+Al\@Wye trees effectively hide their interior in a maze of quicksilver
+reflections and scattered light.  
+~
+E
+lagoon~
+Protected between two arms of Jh\@ten, the lagoon glimmers with a pale
+blue glow, emanating from underneath its surface.  The lagoon has some sort
+of beach further east, with mooring points for the ch\@taren pleasure craft
+of varying descriptions which sail its placid waters.  The western edge of
+the lagoon is protected by a sea wall, connecting on a narrow point between
+the two arms.  
+~
+E
+rystaia~
+The monumental spires of Rystaia\@s temple are easily taller than anything
+else in the city.  The center of ch\@taren life and worship in the haven, its
+heights are wreathed in effervescent wisps of light, while the gardens at
+its base are ever so slightly occluded by the faint orangeish exhalations of
+Jh\@ten.  
+~
+E
+temple~
+The monumental spires of Rystaia\@s temple are easily taller than anything
+else in the city.  The center of ch\@taren life and worship in the haven, its
+heights are wreathed in effervescent wisps of light, while the gardens at
+its base are ever so slightly occluded by the faint orangeish exhalations of
+Jh\@ten.  
+~
+E
+walls~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is not actually ch\@lonin
+as the songs say -- it is instead a kind of coral material.  It appears
+amazingly durable for a material which upon closer examination appears to be
+a less-than-solid lattice of calcified matter.  The exterior is sharp to the
+touch and threatens injury to unassisted climbers, while the interior is
+polished to a smooth buff.  
+~
+E
+wall~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is not actually ch\@lonin
+as the songs say -- it is instead a kind of coral material.  It appears
+amazingly durable for a material which upon closer examination appears to be
+a less-than-solid lattice of calcified matter.  The exterior is sharp to the
+touch and threatens injury to unassisted climbers, while the interior is
+polished to a smooth buff.  
+~
+D1
+The walls come to an end west of here, terminating in the gate which
+sometimes links Jh\@ten to the mainland.  
+~
+~
+0 0 2402
+D2
+The wall curves to the south from here, continuing along the shores of
+the lagoon.  
+~
+~
+0 0 2407
+D5
+A zig-zagging stair carved in the side of the wall leads down to the
+forest below.  
+~
+~
+0 0 2414
+W 5 0 0
+Z 5 5
+S
+#2407
+Atop the Golden Walls of Jh\@ten~
+These magnificent golden walls tower above Jh\@ten, equal parts protection
+for the interior of the haven and sea wall for a glimmering lagoon to the
+south.  The walls follow a swooping and bending course, protecting the
+northwestern arm of the haven of Jh\@ten from assault by sea.  North and west
+of here grows a forest of the fabled Al\@Wye, whose quicksilver trunks
+reflect and dazzle.  Directly north of here is a network of gardens and
+fountains, alive with vivid floral growth and lush trees.  Past the gardens
+is a spiral shell-like structure, tucked in a fold of the north wall. 
+Eastward lies the center of the haven, where stands the temple of Rystaia,
+whose wild spires pierce the low-hanging clouds over the city, dwarfing
+everything else in Jh\@ten.  From here, the wall bends north and south, and a
+set of stairs carved in the interior of the wall leads down to the Al\@Wye
+forest.  
+~
+~
+0
+0 262144 1
+E
+golden~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is not actually ch\@lonin
+as the songs say -- it is instead a kind of coral material.  It appears
+amazingly durable for a material which upon closer examination appears to be
+a less-than-solid lattice of calcified matter.  The exterior is sharp to the
+touch and threatens injury to unassisted climbers, while the interior is
+polished to a smooth buff.  
+~
+E
+walls~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is not actually ch\@lonin
+as the songs say -- it is instead a kind of coral material.  It appears
+amazingly durable for a material which upon closer examination appears to be
+a less-than-solid lattice of calcified matter.  The exterior is sharp to the
+touch and threatens injury to unassisted climbers, while the interior is
+polished to a smooth buff.  
+~
+E
+wall~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is not actually ch\@lonin
+as the songs say -- it is instead a kind of coral material.  It appears
+amazingly durable for a material which upon closer examination appears to be
+a less-than-solid lattice of calcified matter.  The exterior is sharp to the
+touch and threatens injury to unassisted climbers, while the interior is
+polished to a smooth buff.  
+~
+E
+spiral~
+This building looks as though it were almost carved out of a giant,
+spiral shell, growing out of the ground.  Its surface is almost luminescent,
+replete with oranges, golds, reds, and even the occasional purples or blue. 
+With closer examination, it seems that these colors change not just with the
+angle of view, but also over time -- gently shifting to some internal rhythm
+so that one or another gradually comes to dominate, then fades.  
+~
+E
+garden~
+The gardens are full of life native to Jh\@ten and presumably from the
+ch\@taren\@s original home.  In their center are some sort of fountains,
+ringed with tufa-like growths.  
+~
+E
+temple~
+The monumental spires of Rystaia\@s temple are easily taller than anything
+else in the city.  The center of ch\@taren life and worship in the haven, its
+heights are wreathed in effervescent wisps of light, while the gardens at
+its base are ever so slightly occluded by the faint orangeish exhalations of
+Jh\@ten.  
+~
+E
+rystaia~
+The monumental spires of Rystaia\@s temple are easily taller than anything
+else in the city.  The center of ch\@taren life and worship in the haven, its
+heights are wreathed in effervescent wisps of light, while the gardens at
+its base are ever so slightly occluded by the faint orangeish exhalations of
+Jh\@ten.  
+~
+E
+stairs~
+The stairs descend zig-zag down the interior of the wall, leading to the grounds of the haven.
+~
+E
+fountains~
+The gardens are full of life native to Jh\@ten and presumably from the
+ch\@taren\@s original home.  In their center are some sort of fountains,
+ringed with tufa-like growths.  
+~
+E
+garden~
+The gardens are full of life native to Jh\@ten and presumably from the
+ch\@taren\@s original home.  In their center are some sort of fountains,
+ringed with tufa-like growths.  
+~
+E
+al\@wye~
+Viewed from high above, the mirrored barks and shimmering leaves of the
+Al\@Wye trees effectively hide their interior in a maze of quicksilver
+reflections and scattered light.  
+~
+E
+lagoon~
+Protected between two arms of Jh\@ten, the lagoon glimmers with a pale
+blue glow, emanating from underneath its surface.  The lagoon has some sort
+of beach further east, with mooring points for the ch\@taren pleasure craft
+of varying descriptions which sail its placid waters.  The western edge of
+the lagoon is protected by a sea wall, connecting on a narrow point between
+the two arms.  
+~
+D0
+The wall curves to the north from here, continuing along the shores of
+the lagoon.  
+~
+~
+0 0 2406
+D5
+A zig-zagging stair carved in the side of the wall leads down to the
+forest below.  
+~
+~
+0 0 2425
+W 5 0 0
+Z 5 5
+S
+#2408
+A Verdant Glade~
+This verdant glade is carpeted with soft, flowing grass, and surrounded
+on all sides by pines and flowering goldenrain trees.  Overhead drift wispy
+bits of spirit-light and hazy pollen, accenting rays which give the place a
+constant feel of light in the morning.  The warm air and rich soil of Jh\@ten
+have left the forests about the glade thick with foliage and greenery, but
+there is a pronounced absence of weeds and other thorny underbrush.  At
+first glance there are no immediate exits, but a quick scan of the forest
+edge reveals cunningly hidden paths heading off in all directions.  
+~
+~
+0
+0 134479872 3
+E
+goldenrain~
+The goldenrain trees are a deciduous tree native to Alensha.  These are
+in bloom, dotted with their characteristic four-leaved flowers.  Faint
+silvery fronds snake up their trunks, wrapping themselves around the
+branches of their dome-shaped bough.  
+~
+E
+pines~
+These are tall, healthy specimens of Brintorean pines.  The strong smell
+of pine gum is all about them, and their bushy needles are a rich green.  
+~
+D0
+The forest stretches to the north, but seems to grow thinner a bit
+further on.  
+~
+~
+0 0 2402
+D1
+Brintorean pines are in abundance to the east.  
+~
+~
+0 0 2409
+D2
+More goldenrain trees are visible to the south, and the ground slopes
+faintly upwards.  
+~
+~
+0 0 2412
+D3
+Goldenrain trees stretch off to the west.  
+~
+~
+0 0 2415
+W 5 0 0
+Z 5 5
+S
+#2409
+A Forest of Brintorean Pines~
+This is a forest of tall, sleek pines, redolent with the smell of pine
+gum and the spicy tang of the air in Jh\@ten.  Small shrubs and vines grow
+here and there, but the most of the ground is kept free of other plants by
+the litter of needles and giant pine cones that accompany the trees.  Gazing
+upwards, the warm air has lead to a faint haze, which shines as errant
+spirit-lights drift through the tops of the trees.  Forest continues in
+every direction save north, where the heights of the haven\@s walls are
+visible in the distance.  
+~
+~
+0
+0 262144 3
+E
+pines~
+Barely visible through the haze, the high golden walls of Jh\@ten tower
+over even the tops of the pines.  
+~
+E
+shelf mushrooms~
+The mushrooms are smaller than a finger, but grow on almost all the pine
+trees.  Dry and rubbery, their one notable feature is their gold color,
+which is about the shade of Jh\@ten\@s walls.  
+~
+E
+mushrooms~
+The mushrooms are smaller than a finger, but grow on almost all the pine
+trees.  Dry and rubbery, their one notable feature is their gold color,
+which is about the shade of Jh\@ten\@s walls.  
+~
+E
+pine~
+Tall and straight, the pines are easily tall enough to be a ship\@s mast
+and then some.  They seem devoid of the typical blemishes and blights of
+untended trees.  The occasional golden shelf mushroom grows up the side, but
+otherwise they stand free and clear of each other.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Most are
+in the haze high above ground level, providing the forest with a milky glow.
+~
+E
+brintorean~
+Tall and straight, the pines are easily tall enough to be a ship\@s mast
+and then some.  They seem devoid of the typical blemishes and blights of
+untended trees.  The occasional golden shelf mushroom grows up the side, but
+otherwise they stand free and clear of each other.  
+~
+E
+pine~
+Tall and straight, the pines are easily tall enough to be a ship\@s mast
+and then some.  They seem devoid of the typical blemishes and blights of
+untended trees.  The occasional golden shelf mushroom grows up the side, but
+otherwise they stand free and clear of each other.  
+~
+E
+pines~
+Tall and straight, the pines are easily tall enough to be a ship\@s mast
+and then some.  They seem devoid of the typical blemishes and blights of
+untended trees.  The occasional golden shelf mushroom grows up the side, but
+otherwise they stand free and clear of each other.  
+~
+D1
+The pines give way to oaks to the east.  
+~
+~
+0 0 2410
+D2
+The pine forest continues to the south.  
+~
+~
+0 0 2411
+D3
+The pine trees end to the west as they meet with a clearing.  
+~
+~
+0 0 2408
+W 5 0 0
+Z 5 5
+S
+#2410
+A Forest of Nendorin Oaks~
+Large, branching oaks grow everywhere, and no path is visible to trace a
+course through this overhanging forest.  Covered with broad, leafy branches,
+the trees bear the fat acorns characteristic of those which grow in the
+woods of Nendor.  Squirrels and other small woodland animals occasionally
+peek into sight, but then just as quickly vanish up the trunks of the oaks,
+or down burrows near the base of the trees.  Brightening up shady areas are
+spirit-lights, which float through any gloom and shine with an effervescent
+silver light.  From here, every direction is passable save the north.  
+~
+~
+0
+0 262144 3
+E
+lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep silver glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness.  Most drift around
+eye-level or above, but every so often one will show up near the ground like
+some furtive will-o\@-the-wisp.  
+~
+E
+acorns~
+These large acorns are a dark brown and black at the tips, and grow in
+groups of three.  Bitter to the taste, they are used by the rangers of
+Nendor in tanning hides.  
+~
+E
+ferns~
+These are garden-variety ferns, thriving in the damp and warm shade of
+the oak\@s base.  
+~
+E
+moss~
+These balls are little tangles of leathery tendrils.  Each tendril is
+pearl colored, and ever so faintly translucent to the light around it.  
+~
+E
+balls~
+These balls are little tangles of leathery tendrils.  Each tendril is
+pearl colored, and ever so faintly translucent to the light around it.  
+~
+E
+oak~
+These oaks all have white-grey bark, and are fairly tall despite the
+tendency of their branches to bend over low to the ground.  Their leaves are
+a rich, vibrant green, and most bear clusters of acorns identifying them as
+the famous Nendorin oaks.  Small, pearl-colored balls of moss are tangled on
+the oak\@s branches, and tiny ferns grow underfoot.  
+~
+E
+oaks~
+These oaks all have white-grey bark, and are fairly tall despite the
+tendency of their branches to bend over low to the ground.  Their leaves are
+a rich, vibrant green, and most bear clusters of acorns identifying them as
+the famous Nendorin oaks.  Small, pearl-colored balls of moss are tangled on
+the oak\@s branches, and tiny ferns grow underfoot.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep silver glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness.  Most drift around
+eye-level or above, but every so often one will show up near the ground like
+some furtive will-o\@-the-wisp.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep silver glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness.  Most drift around
+eye-level or above, but every so often one will show up near the ground like
+some furtive will-o\@-the-wisp.  
+~
+D1
+The oak forest continues to the east.  
+~
+~
+0 0 2417
+D2
+The oak forest bends to the south, eventually giving way to pines.  
+~
+~
+0 0 2411
+D3
+The oak forest gives way to pines to the west.
+~
+~
+0 0 2409
+W 5 0 0
+Z 5 5
+S
+#2411
+A Forest of Brintorean Pines~
+This is a forest of tall, sleek pines, redolent with the smell of pine
+gum and the spicy tang of the air in Jh\@ten.  Small shrubs and vines grow
+here and there, but the most of the ground is kept free of other plants by
+the litter of needles and giant pine cones that accompany the trees.  Gazing
+upwards, the warm air has lead to a faint haze, which shines as errant
+spirit-lights drift through the tops of the trees.  
+~
+~
+0
+0 262144 3
+E
+mushrooms~
+The mushrooms are smaller than a finger, but grow on almost all the pine
+trees.  Dry and rubbery, their one notable feature is their gold color,
+which is about the shade of Jh\@ten\@s walls.  
+~
+E
+brintorean~
+Tall and straight, the pines are easily tall enough to be a ship\@s mast
+and then some.  They seem devoid of the typical blemishes and blights of
+untended trees.  The occasional golden shelf mushroom grows up the side, but
+otherwise they stand free and clear of each other.  
+~
+E
+pines~
+Tall and straight, the pines are easily tall enough to be a ship\@s mast
+and then some.  They seem devoid of the typical blemishes and blights of
+untended trees.  The occasional golden shelf mushroom grows up the side, but
+otherwise they stand free and clear of each other.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Most are
+in the haze high above ground level, providing the forest with a milky glow.
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Most are
+in the haze high above ground level, providing the forest with a milky glow.
+~
+D0
+The pines continue to the north.
+~
+~
+0 0 2409
+D1
+The forest bends a little to the east, and pines give way to oaks.  
+~
+~
+0 0 2410
+D2
+The forest heads along the side of a small hill to the south as pines
+give way to oaks.  
+~
+~
+0 0 2417
+D3
+There is a small rise to the west, and the pines give way to goldenrain
+trees.  
+~
+~
+0 0 2412
+W 5 0 0
+Z 5 5
+S
+#2412
+A Gentle Slope in a Goldenrain Forest~
+Goldenrain trees grow scattershot here across a gentle slope.  Bountiful
+and lush, their vivid yellow buds are a striking contrast to the black,
+loamy soil of the ground.  Looking southwards up the slope, a unusual
+building made from a crystal teardrop is visible, glittering from the
+drifting spirit-lights that wreath the treeline.  Down the slope to the
+north the goldenrains open in a clearing, while they grow thicker and more
+lush to the west.  Eastwards, tall Brintorean pines pick up, marking a
+change in the composition of the forest.  
+~
+~
+0
+0 0 3
+E
+building~
+The building is made of some translucent crystal, tinted with a very
+faint honey color.  Roughly shaped like a teadrop, the edges of the crystal
+shimmer as spirit-lights dance through the air around its pointed peak. 
+Within, it is possible to discern the shapes of foliage and various colorful
+flowers.  
+~
+E
+teardrop-shaped~
+The building is made of some translucent crystal, tinted with a very
+faint honey color honey color.  Roughly shaped like a teadrop, the edges of
+the crystal shimmer as spirit-lights dance through the air around its
+pointed peak.  Within, it is possible to discern the shapes of foliage and
+various colorful flowers.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Most
+drift around eye-level or above, but every so often one will show up near
+the ground like some furtive will-o\@-the-wisp.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Most
+drift around eye-level or above, but every so often one will show up near
+the ground like some furtive will-o\@-the-wisp.  
+~
+E
+crystal~
+The building is made of some translucent crystal, tinted with a very
+faint honey color honey color.  Roughly shaped like a teadrop, the edges of
+the crystal shimmer as spirit-lights dance through the air around its
+pointed peak.  Within, it is possible to discern the shapes of foliage and
+various colorful flowers.  
+~
+E
+teardrop~
+The building is made of some translucent crystal, tinted with a very
+faint honey color.  Roughly shaped like a teadrop, the edges of the crystal
+shimmer as spirit-lights dance through the air around its pointed peak. 
+Within, it is possible to discern the shapes of foliage and various colorful
+flowers.  
+~
+E
+trees~
+These goldenrain trees are in bloom, and dotted with their characteristic
+flowers.  Faint silver fronds snake up their trunks, smelling faintly of
+berry.  
+~
+E
+goldenrain~
+These goldenrain trees are in bloom, and dotted with their characteristic
+flowers.  Faint silver fronds snake up their trunks, smelling faintly of
+berry.  
+~
+E
+goldenrains~
+~
+D0
+The goldenrain trees open in a clearing to the north.  
+~
+~
+0 0 2408
+D1
+To the east is a forest largely composed of Brintorean pines.  
+~
+~
+0 0 2411
+D2
+The entrance to the teardrop-shaped building lies up the slope.  
+~
+~
+0 0 2418
+D3
+To the west the goldenrain trees grow thicker and more lush.  
+~
+~
+0 0 2413
+W 5 0 0
+Z 5 5
+S
+#2413
+A Forest of Goldenrain Trees~
+Goldenrain trees grow here with wild abandon.  Bountiful and lush, their
+rounded boughs are laden with vivid yellow buds.  Native to Alensha, these
+trees nevertheless flourish here in the woodlands of Jh\@ten.  Small shrubs
+and flowering plants also grow, somehow managing to be everywhere while not
+actually being underfoot.  Without the glow of the spirit-lights that drift
+silently through the air, little identifies this place as even being on
+Jh\@ten -- the woods are thick enough that there is nothing other than forest
+within sight.  
+~
+~
+0
+0 262144 3
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Most
+drift around eye-level or above, but every so often one will show up near
+the ground like some furtive will-o\@-the-wisp.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Most
+drift around eye-level or above, but every so often one will show up near
+the ground like some furtive will-o\@-the-wisp.  
+~
+E
+trees~
+These goldenrain trees are in bloom, and dotted with their characteristic
+flowers.  Faint silver fronds snake up their trunks, smelling faintly of
+berry.  
+~
+E
+goldenrain~
+These goldenrain trees are in bloom, and dotted with their characteristic
+flowers.  Faint silver fronds snake up their trunks, smelling faintly of
+berry.  
+~
+E
+goldenrains~
+These goldenrain trees are in bloom, and dotted with their characteristic
+flowers.  Faint silver fronds snake up their trunks, smelling faintly of
+berry.  
+~
+D0
+The goldenrain forest continues to the north.
+~
+~
+0 0 2415
+D1
+The goldenrain forest continues to the east.  
+~
+~
+0 0 2412
+D2
+The goldenrain trees thin a bit to the south, giving way to a copse of
+ironwoods.  
+~
+~
+0 0 2416
+D3
+The goldenrain forest continues to the west.  
+~
+~
+0 0 2414
+W 5 0 0
+Z 5 5
+S
+#2414
+Near the Edge of the Goldenrain Forest~
+Goldenrain trees grow here with wild abandon.  Bountiful and lush, their
+rounded boughs are laden with vivid yellow buds.  Native to Alensha, these
+trees nevertheless flourish here in the woodlands of Jh\@ten.  From here,
+signs of that haven are readily apparent -- from the subtle drift of
+spirit-lights which illuminate the shadows of the forest to the towering
+walls of Jh\@ten, which peek over the edges of trees.  Trails deeper into the
+woods lead north and south, while a zig-zagging staircase is visible on the
+part of the wall visible to the west.  
+~
+~
+0
+0 262144 3
+E
+walls~
+The tops of the golden walls of Jh\@ten are visible over the treeline
+here.  Sinuous and flowing, they swirl around the edges of the haven,
+providing a formidable barrier to any assault.  Peeking through the western
+treeline, you can see a zig-zagging stairwell that heads up the interior of
+the wall.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Most
+drift around eye-level or above, but every so often one will show up near
+the ground like some furtive will-o\@-the-wisp.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Most
+drift around eye-level or above, but every so often one will show up near
+the ground like some furtive will-o\@-the-wisp.  
+~
+E
+wall~
+The tops of the golden walls of Jh\@ten are visible over the treeline
+here.  Sinuous and flowing, they swirl around the edges of the haven,
+providing a formidable barrier to any assault.  Peeking through the western
+treeline, you can see a zig-zagging stairwell that heads up the interior of
+the wall.  
+~
+E
+trees~
+These goldenrain trees are in bloom, and dotted with their characteristic
+flowers.  Faint silver fronds snake up their trunks, smelling faintly of
+berry.  
+~
+E
+goldenrain~
+These goldenrain trees are in bloom, and dotted with their characteristic
+flowers.  Faint silver fronds snake up their trunks, smelling faintly of
+berry.  
+~
+D0
+The goldenrain forest continues to the north.
+~
+~
+0 0 2415
+D2
+The goldenrain forest continues to the south.  
+~
+~
+0 0 2413
+D4
+These stairs are carved on the interior side of the wall, and zig-zag up to the top of the wall.
+~
+~
+0 0 2406
+W 5 0 0
+Z 5 5
+S
+#2415
+A Forest of Goldenrain Trees~
+Goldenrain trees grow here with wild abandon.  Bountiful and lush, their
+rounded boughs are laden with vivid yellow buds.  Native to Alensha, these
+trees nevertheless flourish here in the woodlands of Jh\@ten.  Small shrubs
+and flowering plants also grow, somehow managing to be everywhere while not
+actually being underfoot.  Without the glow of the spirit-lights that drift
+silently through the air, little identifies this place as even being on
+Jh\@ten -- the woods are thick enough that there is nothing other than forest
+within sight.  
+~
+~
+0
+0 262144 3
+E
+goldenrains~
+These goldenrain trees are in bloom, and dotted with their characteristic
+flowers.  Faint silver fronds snake up their trunks, smelling faintly of
+berry.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Most
+drift around eye-level or above, but every so often one will show up near
+the ground like some furtive will-o\@-the-wisp.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist, glimmering
+with a deep inner glow.  They came in a motley variety of shapes and sizes,
+and pulse with varying degrees of brightness and color.  Most drift around
+eye-level or above, but every so often one will show up near the ground like
+some furtive will-o\@-the-wisp.  
+~
+E
+trees~
+These goldenrain trees are in bloom, and dotted with their characteristic
+flowers.  Faint silver fronds snake up their trunks, smelling faintly of
+berry.  
+~
+E
+goldenrain~
+These goldenrain trees are in bloom, and dotted with their characteristic
+flowers.  Faint silver fronds snake up their trunks, smelling faintly of
+berry.  
+~
+D1
+The goldenrain trees grow a little thinner to the east.  
+~
+~
+0 0 2408
+D2
+Goldenrain trees continue to the south.  
+~
+~
+0 0 2413
+D3
+Goldenrain trees continue to the west.  
+~
+~
+0 0 2414
+W 5 0 0
+Z 5 5
+S
+#2416
+A Small Hill in a Copse of Qilarni Ironwoods~
+This copse of ironwood grows on the side of a small hill.  Their dark
+brown bark and glossy green leaves mark them as being Qilarni, where they
+are much-loved by the ethron .  The warm, humid air of Jh\@ten has done
+wonders for them, turning them into fairly tall specimens of their breed. 
+Looking up to the top of the hill, an unusual building made from a crystal
+teardrop is visible, glittering in a flock of drifting spirit-lights.  The
+ironwoods maintain some space between each other, revealing the high golden
+walls of Jh\@ten to the west.  The forest continues unabated in most other
+directions, but a very out of place trail paved with some silverish glass
+begins just to the south of here.  
+~
+~
+0
+0 262144 3
+E
+ants~
+The ants are a tawny color, and seem intent on carrying away little bits
+of debris and dead leaves from the ironwoods.  
+~
+E
+ironwood~
+The ironwoods are bushy trees with ridged bark, colored a dark grey. 
+They have simple, tough leaves, and overall give the impression of being
+quite hardy.  No vines or moss grow on the ironwoods, but each tree is
+replete with its own trail of carpenter ants.  
+~
+E
+ironwoods~
+The ironwoods are bushy trees with ridged bark, colored a dark grey. 
+They have simple, tough leaves, and overall give the impression of being
+quite hardy.  No vines or moss grow on the ironwoods, but each tree is
+replete with its own trail of carpenter ants.  
+~
+E
+glass~
+This trail is made of a silvery material which is actually translucent. 
+Sparkling grass is visible underneath it, and its path loops and whorls
+before heading off into the trees.  
+~
+E
+silverish~
+This trail is made of a silvery material which is actually translucent. 
+Sparkling grass is visible underneath it, and its path loops and whorls
+before heading off into the trees.  
+~
+E
+trail~
+This trail is made of a silvery material which is actually translucent. 
+Sparkling grass is visible underneath it, and its path loops and whorls
+before heading off into the trees.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Most
+here are drifting up the hill around the crystal building, but every so
+often one will show up near the ground like some furtive will-o\@-the-wisp.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Most
+here are drifting up the hill around the crystal building, but every so
+often one will show up near the ground like some furtive will-o\@-the-wisp.  
+~
+E
+wall~
+The tops of the golden walls of Jh\@ten are visible between and over the
+treeline here.  Sinuous and flowing, they swirl around the edges of the
+haven, providing a formidable barrier to any assault.  
+~
+E
+crystal~
+The building is made of some translucent crystal, tinted with a very
+faint honey color honey color.  Roughly shaped like a teadrop, the edges of
+the crystal shimmer as spirit-lights dance through the air around its
+pointed peak.  Within, it is possible to discern the shapes of foliage and
+various colorful flowers.  
+~
+E
+building~
+The building is made of some translucent crystal, tinted with a very
+faint honey color honey color.  Roughly shaped like a teadrop, the edges of
+the crystal shimmer as spirit-lights dance through the air around its
+pointed peak.  Within, it is possible to discern the shapes of foliage and
+various colorful flowers.  
+~
+E
+teardrop~
+The building is made of some translucent crystal, tinted with a very
+faint honey color honey color.  Roughly shaped like a teadrop, the edges of
+the crystal shimmer as spirit-lights dance through the air around its
+pointed peak.  Within, it is possible to discern the shapes of foliage and
+various colorful flowers.  
+~
+E
+golden~
+The tops of the golden walls of Jh\@ten are visible between and over the
+treeline here.  Sinuous and flowing, they swirl around the edges of the
+haven, providing a formidable barrier to any assault.  
+~
+E
+walls~
+The tops of the golden walls of Jh\@ten are visible between and over the
+treeline here.  Sinuous and flowing, they swirl around the edges of the
+haven, providing a formidable barrier to any assault.  
+~
+D0
+The ironwood trees gradually fade into a goldenrain forest that begins to the north.
+~
+~
+0 0 2413
+D1
+The ironwood trees grow alongside the hill to the east, then meet a
+forest of unusual mirrored trees.  
+~
+~
+0 0 2423
+D2
+This trail is made from some some unusual material of translucent silver,
+and heads off between a thicker patch of ironwood trees.  
+~
+~
+0 0 2451
+D4
+~
+~
+0 0 2419
+W 5 0 0
+Z 5 5
+S
+#2417
+A Gentle Hill in a Forest of Nendorin Oaks~
+Large, branching oaks grow everywhere on this gentle hill.  Covered with
+broad, leafy branches, the trees bear the fat acorns characteristic of those
+which grow in the woods of Nendor.  Squirrels and other small woodland
+animals occasionally peek into sight, but then just as quickly vanish up the
+trunks of the oaks, or down burrows near the base of the trees.  Brightening
+up shady areas are spirit-lights, which float through any gloom and shine
+with an effervescent silver light.  Looking up the slope, a unusual building
+made from a crystal teardrop is visible, glittering from same drifting
+spirit-lights.  Forest continues in every other direction, wrapping around
+the edges of the hill.  
+~
+~
+0
+0 262144 3
+E
+acorns~
+These large acorns are a dark brown and black at the tips, and grow in
+groups of three.  Bitter to the taste, they are used by the rangers of
+Nendor in tanning hides.  
+~
+E
+ferns~
+These are garden-variety ferns, thriving in the damp and warm shade of
+the oak\@s base.  
+~
+E
+balls~
+These balls are little tangles of leathery tendrils.  Each tendril is
+pearl colored, and ever so faintly translucent to the light around it.  
+~
+E
+moss~
+These balls are little tangles of leathery tendrils.  Each tendril is
+pearl colored, and ever so faintly translucent to the light around it.  
+~
+E
+oaks~
+These oaks all have white-grey bark, and are fairly tall despite the
+tendency of their branches to bend over low to the ground.  Their leaves are
+a rich, vibrant green, and most bear clusters of acorns identifying them as
+the famous Nendorin oaks.  Small, pearl-colored balls of moss are tangled on
+the oak\@s branches, and tiny ferns grow underfoot.  
+~
+E
+oak~
+These oaks all have white-grey bark, and are fairly tall despite the
+tendency of their branches to bend over low to the ground.  Their leaves are
+a rich, vibrant green, and most bear clusters of acorns identifying them as
+the famous Nendorin oaks.  Small, pearl-colored balls of moss are tangled on
+the oak\@s branches, and tiny ferns grow underfoot.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep silver glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness.  Most drift around
+eye-level or above, but every so often one will show up near the ground like
+some furtive will-o\@-the-wisp.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep silver glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness.  Most drift around
+eye-level or above, but every so often one will show up near the ground like
+some furtive will-o\@-the-wisp.  
+~
+E
+teardrop~
+The building is made of some translucent crystal, tinted with a very
+faint honey color honey color.  Roughly shaped like a teadrop, the edges of
+the crystal shimmer as spirit-lights dance through the air around its
+pointed peak.  Within, it is possible to discern the shapes of foliage and
+various colorful flowers.  
+~
+E
+building~
+The building is made of some translucent crystal, tinted with a very
+faint honey color honey color.  Roughly shaped like a teadrop, the edges of
+the crystal shimmer as spirit-lights dance through the air around its
+pointed peak.  Within, it is possible to discern the shapes of foliage and
+various colorful flowers.  
+~
+D0
+The oak forest gives way to pines to the west.
+~
+~
+0 0 2411
+D1
+The oaks give way to a stunning forest of trees with mirrored bark.  
+~
+~
+0 0 2424
+D2
+The oaks give way to a stunning forest of trees with mirrored bark.  
+~
+~
+0 0 2423
+D3
+The oak forest continues to the west.  
+~
+~
+0 0 2410
+D4
+~
+~
+0 0 2421
+W 5 0 0
+Z 5 5
+S
+#2418
+North End of the Eth\@Mava~
+The eth\@mava is a greenhouse on a grand scale, enfolded by teardrop-
+shaped walls of impossibly thin crystal soaring overhead.  Shaped by the
+magic of druids and scholars of earth, the entire edifice is a gift from the
+ethron of Alensha to Jh\@ten.  Built to protect the rare and often delicate
+flora of the ch\@taren\@s original home, the interior is a sprawling riot of
+plants; some on terraces, others in freestanding urns, but most left free to
+grow unimpeded.  Soft, golden light suffuses everything here, punctuated by
+the brilliant but momentary sparkles from spirit-lights drifting through the
+hothouse-haze of the air.  The smells of the place teeter somewhere between
+an olfactory symphony and cacophony -- a heady performance that mixes floral
+aromas with saffron, jasmine, and citrus, all interlaced with the faint
+cinnamon spice smell of the haven.  To the south lies the center of the
+greenhouse, while a tingle in the air to the north marks the exit from this
+place.  
+
+To go here: tulips which change color to match Jh\@ten\@s mood.  
+~
+~
+0
+0 262152 3
+E
+plants~
+Wild and ragged flowers sprout up from every free inch of ground here.  
+~
+E
+scene~
+The images on the urns are predominantly of ancient ethron.  The ones
+near the entrance depict ethron wandering and hunting woods of goldenrain
+trees, living what most ethron would consider an idyllic life.  
+~
+E
+images~
+The images on the urns are predominantly of ancient ethron.  The ones
+near the entrance depict ethron wandering and hunting woods of goldenrain
+trees, living what most ethron would consider an idyllic life.  
+~
+E
+painted~
+The images on the urns are predominantly of ancient ethron.  The ones
+near the entrance depict ethron wandering and hunting woods of goldenrain
+trees, living what most ethron would consider an idyllic life.  
+~
+E
+urns~
+The urns look like overly tall flower pots, but contain ferns. 
+Predominantly red, there are also purple, mauve, indigo, and even milky
+white specimens.  Most of the urns have images painted on them, each
+reflecting a related scene.  
+~
+E
+terraces~
+Shimmering vines with vivid orange flowers wrap around the ironwood of
+these terraces.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+teardrop-shaped~
+These walls are made of someone impossibly thin crystal, colored a honey
+hue of gold.  Shaped by some daring combination of earth and druidical
+magics, they both protect the interior from the exterior world while
+suffusing the area with a salutary effect.  
+~
+E
+walls~
+These walls are made of someone impossibly thin crystal, colored a honey
+hue of gold.  Shaped by some daring combination of earth and druidical
+magics, they both protect the interior from the exterior world while
+suffusing the area with a salutary effect.  
+~
+E
+crystal~
+These walls are made of someone impossibly thin crystal, colored a honey
+hue of gold.  Shaped by some daring combination of earth and druidical
+magics, they both protect the interior from the exterior world while
+suffusing the area with a salutary effect.  
+~
+D0
+The exit to the north lies through a simple archway cut in the crystal. 
+Some protective ward tingles on approach, marking a border between the
+interior of the eth\@mava and the haven outside.  
+~
+~
+0 0 2412
+D2
+The eth\@mava continues to the south, growing grander as you approach its
+center.  
+~
+~
+0 0 2420
+W 5 0 0
+Z 5 5
+S
+#2419
+West End of the Eth\@Mava~
+The eth\@mava is a greenhouse on a grand scale, enfolded by
+teardrop-shaped walls of impossibly thin crystal soaring overhead.  Shaped
+by the magic of druids and scholars of earth, the entire edifice is a gift
+from the ethron of Alensha to Jh\@ten.  Built to protect the rare and often
+delicate flora of the ch\@taren\@s original home, the interior is a sprawling
+riot of plants; some on terraces, others in freestanding urns, but most left
+free to grow unimpeded.  Soft, golden light suffuses everything here,
+punctuated by the brilliant but momentary sparkles from spirit-lights
+drifting through the hothouse-haze of the air.  The smells of the place
+teeter somewhere between an olfactory symphony and cacophony -- a heady
+performance that mixes floral aromas with saffron, jasmine, and citrus, all
+interlaced with the faint cinnamon spice smell of the haven.  To the east
+lies the center of the greenhouse, while a tingle in the air to the west
+marks the exit from this place.  
+
+To go here: Plant whose fruit grows only in Dream.
+~
+~
+0
+0 262152 0
+E
+plants~
+Row after row of flowers grow around here.  Each has a tall stalk and a
+flower head consisting of multiple smaller florets -- a bit like a
+dandelion, except that each tiny segment is made of pure light.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+walls~
+These walls are made of someone impossibly thin crystal, colored a honey
+hue of gold.  Shaped by some daring combination of earth and druidical
+magics, they both protect the interior from the exterior world while
+suffusing the area with a salutary effect.  
+~
+E
+crystal~
+These walls are made of someone impossibly thin crystal, colored a honey
+hue of gold.  Shaped by some daring combination of earth and druidical
+magics, they both protect the interior from the exterior world while
+suffusing the area with a salutary effect.  
+~
+E
+teardrop-shaped~
+These walls are made of someone impossibly thin crystal, colored a honey
+hue of gold.  Shaped by some daring combination of earth and druidical
+magics, they both protect the interior from the exterior world while
+suffusing the area with a salutary effect.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+urns~
+The urns look like over tall pots, but contain ferns.  Predominantly red,
+there are also purple, mauve, indigo, and even milky white specimens.  Most
+of the urns have images painted on them, each reflecting a related scene.  
+~
+E
+painted~
+The images on the urns are predominantly of ancient ethron in groups. 
+Conspicuous gaps are present in the groups, and various woodland scenes
+imply they have vanished down some forward path.  
+~
+E
+images~
+The images on the urns are predominantly of ancient ethron in groups. 
+Conspicuous gaps are present in the groups, and various woodland scenes
+imply they have vanished down some forward path.  
+~
+E
+scene~
+The images on the urns are predominantly of ancient ethron in groups. 
+Conspicuous gaps are present in the groups, and various woodland scenes
+imply they have vanished down some forward path.  
+~
+E
+terraces~
+Faintly glowing berries grow on green vines, which have completely
+covered the ironwood terrace.  
+~
+D1
+The eth\@mava continues to the east, growing grander as you approach its
+center.  
+~
+~
+0 0 2420
+D3
+The exit to the west lies through a simple archway cut in the crystal. 
+Some protective ward tingles on approach, marking a border between the
+interior of the eth\@mava and the haven outside.  
+~
+~
+0 0 2416
+W 5 0 0
+Z 5 5
+S
+#2420
+The Center of the Eth\@Mava~
+The center of the eth\@mava is a treasure trove of rare, delicate, and
+magical flora from the ch\@taren\@s original home.  Evanescent orchids
+condense into being, then fade just as quickly when they are subjected to
+attention.  Several intricate gold bushes make a faint sound like chimes
+whenever a breeze rustles by, and circles of glittering flowers ring
+ironwood benches for visitors to rest.  Two installations demand notice: one
+is a mirror-barked Al\@Wye tree growing on a mound of soil from Jh\@ten. 
+Another is a gargantuan golden flower, easily as tall as a man and as broad
+as a horse.  Overhead, tear-drop shaped walls of impossibly thin crystal
+glass come to a point, protecting the contents of the greenhouse with an
+edifice fused from a daring combination of earth and druidical magic. 
+Honey-yellow light suffuses the room from all points, punctuated by the
+brilliant but momentary sparkles from spirit-lights drifting through the
+hothouse-haze of the air.  Exits in every direction lead only to more of the
+greenhouse.  
+
+To Do: Benches, nectar prog for golden flower.
+~
+~
+0
+0 262152 3
+E
+flowers~
+The orchids have a knack for appearing as glimmering and almost real,
+then vanishing in a twinkle of light whenever your attention focuses on
+them.  
+~
+E
+bushes~
+The bushes are incredibly dense, and in fact it is impossible to discern
+anything about what lies inside them.  What is clear is that some musical
+notes emanate from within at any stirring of their structure.  
+~
+E
+benches~
+The benches are hand-shaped ironwood, done in the simple and rustic style
+of the Lenqara ethron clan.  
+~
+E
+al\@wye~
+The Al\@Wye are tropical trees native to the ch\@taren\@s original home. 
+Their tall, broad-leaved blades are shaped like any other tree one might
+find in a tropical region, but their similarities to reality end.  Every
+part of the tree is like a quicksilver mirror, reflecting a dazzling
+kaleidoscope of the light and its surroundings.  This Al\@Wye bears some
+large, if immature nuts, which grow on the very top of the tree.  
+
+In the front of the tree is a wooden marker.
+~
+E
+tree~
+The Al\@Wye are tropical trees native to the ch\@taren\@s original home. 
+Their tall, broad-leaved blades are shaped like any other tree one might
+find in a tropical region, but their similarities to reality end.  Every
+part of the tree is like a quicksilver mirror, reflecting a dazzling
+kaleidoscope of the light and its surroundings.  This Al\@Wye bears some
+large, if immature nuts, which grow on the very top of the tree.  
+
+In the front of the tree is a wooden marker.
+~
+E
+marker~
+The marker has words in ethron, ch\@taren, and common.  They all say
+roughly the same thing: \#The ch\@taren have saved the Lenqara, the Lenqara
+will save the Al\@Wye.\#  
+~
+E
+wooden~
+The marker has words in ethron, ch\@taren, and common.  They all say
+roughly the same thing: \#The ch\@taren have saved the Lenqara, the Lenqara
+will save the Al\@Wye.\#  
+~
+E
+mound~
+The mound of earth is clearly Jh\@ten stuff.  Tiny, silver fronds run
+through it like roots, and it smells of the faintly cinammon-spice air of
+the haven.  
+~
+E
+soil~
+The mound of earth is clearly Jh\@ten stuff.  Tiny, silver fronds run
+through it like roots, and it smells of the faintly cinammon-spice air of
+the haven.  
+~
+E
+flower~
+Mysterious even on the world from which the ch\@taren hailed, these
+flowers were known as the \#Theo\@i \@Ilaia\#, or \#Time\@s Tears\#.  Large and
+golden honey-suckle like flowers, how and when they blossomed were unknown
+-- as was when they produced their rare and magical nectar.  This one is a
+particularly large and hale specimen, and is reported to have bloomed after
+the ch\@taren saved the ethron of Alensha from something they refer to only
+as \#the crooked road\#.  
+~
+E
+gargantuan~
+Mysterious even on the world from which the ch\@taren hailed, these
+flowers were known as the \#Theo\@i \@Ilaia\#, or \#Time\@s Tears\#.  Large and
+golden honey-suckle like flowers, how and when they blossomed were unknown
+-- as was when they produced their rare and magical nectar.  This one is a
+particularly large and hale specimen, and is reported to have bloomed after
+the ch\@taren saved the ethron of Alensha from something they refer to only
+as \#the crooked road\#.  
+~
+E
+golden~
+Mysterious even on the world from which the ch\@taren hailed, these
+flowers were known as the \#Theo\@i \@Ilaia\#, or \#Time\@s Tears\#.  Large and
+golden honey-suckle like flowers, how and when they blossomed were unknown
+-- as was when they produced their rare and magical nectar.  This one is a
+particularly large and hale specimen, and is reported to have bloomed after
+the ch\@taren saved the ethron of Alensha from something they refer to only
+as \#the crooked road\#.  
+~
+E
+nuts~
+The nuts, like the rest of the Al\@Wye, are covered in reflective silver. 
+Despite being about the size of a man\@s hand, they are quite immature.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+spirit~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+crystal~
+These walls are made of someone impossibly thin crystal, colored a honey
+hue of gold.  Shaped by some daring combination of earth and druidical
+magics, they both protect the interior from the exterior world while
+suffusing the area with a salutary effect.  
+~
+E
+walls~
+These walls are made of someone impossibly thin crystal, colored a honey
+hue of gold.  Shaped by some daring combination of earth and druidical
+magics, they both protect the interior from the exterior world while
+suffusing the area with a salutary effect.  
+~
+E
+tear-drop~
+These walls are made of someone impossibly thin crystal, colored a honey
+hue of gold.  Shaped by some daring combination of earth and druidical
+magics, they both protect the interior from the exterior world while
+suffusing the area with a salutary effect.  
+~
+D0
+The eth\@mava continues to the north.
+~
+~
+0 0 2418
+D1
+The eth\@mava continues to the east.
+~
+~
+0 0 2421
+D2
+The eth\@mava continues to the west.
+~
+~
+0 0 2422
+D3
+The eth\@mava continues to the west.
+~
+~
+0 0 2419
+W 5 0 0
+Z 5 5
+S
+#2421
+East End of the Eth\@Mava~
+The eth\@mava is a greenhouse on a grand scale, enfolded by
+teardrop-shaped walls of impossibly thin crystal soaring overhead.  Shaped
+by the magic of druids and scholars of earth, the entire edifice is a gift
+from the ethron of Alensha to Jh\@ten.  Built to protect the rare and often
+delicate flora of the ch\@taren\@s original home, the interior is a sprawling
+riot of plants; some on terraces, others in freestanding urns, but most left
+free to grow unimpeded.  Soft, golden light suffuses everything here,
+punctuated by the brilliant but momentary sparkles from spirit-lights
+drifting through the hothouse-haze of the air.  The smells of the place
+teeter somewhere between an olfactory symphony and cacophony -- a heady
+performance that mixes floral aromas with saffron, jasmine, and citrus, all
+interlaced with the faint cinnamon spice smell of the haven.  To the west
+lies the center of the greenhouse, while a tingle in the air to the east
+marks the exit from this place.  
+
+To go here: Translucent butterflies.
+~
+~
+0
+0 134479880 3
+E
+crystal~
+These walls are made of someone impossibly thin crystal, colored a honey
+hue of gold.  Shaped by some daring combination of earth and druidical
+magics, they both protect the interior from the exterior world while
+suffusing the area with a salutary effect.  
+~
+E
+walls~
+These walls are made of someone impossibly thin crystal, colored a honey
+hue of gold.  Shaped by some daring combination of earth and druidical
+magics, they both protect the interior from the exterior world while
+suffusing the area with a salutary effect.  
+~
+E
+teardrop-shaped~
+These walls are made of someone impossibly thin crystal, colored a honey
+hue of gold.  Shaped by some daring combination of earth and druidical
+magics, they both protect the interior from the exterior world while
+suffusing the area with a salutary effect.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+urns~
+The urns look like over tall pots, but contain ferns.  Predominantly red,
+there are also purple, mauve, indigo, and even milky white specimens.  Most
+of the urns have images painted on them, each reflecting a related scene.  
+~
+E
+images~
+The images on the urns are predominantly of ancient ethron, who stand by
+a great Bay, welcoming the ch\@taren to Alensha.  In the woods of the island,
+some dark and shadowy figures stir, twisted and warped.  
+~
+E
+painted~
+The images on the urns are predominantly of ancient ethron, who stand by
+a great Bay, welcoming the ch\@taren to Alensha.  In the woods of the island,
+some dark and shadowy figures stir, twisted and warped.  
+~
+E
+scene~
+The images on the urns are predominantly of ancient ethron, who stand by
+a great Bay, welcoming the ch\@taren to Alensha.  In the woods of the island,
+some dark and shadowy figures stir, twisted and warped.  
+~
+E
+plants~
+Little cone-shaped plants grow everywhere here, each with a kind of
+silvery \#lid\# that opens and closes.  Careful study reveals they open when
+spirit-lights are near, and close when they are away, raising a little
+tympanum inside themselves to absorb the radiance.  
+~
+E
+terraces~
+This ironwood terrace is covered with vines that look vaguely like grape
+vines -- and oddly dip as though bearing the weight of bunches of grapes
+without any in sight.  
+~
+D1
+The exit to the east lies through a simple archway cut in the crystal. 
+Some protective ward tingles on approach, marking a border between the
+interior of the eth\@mava and the haven outside.  
+~
+~
+0 0 2417
+D3
+The eth\@mava continues to the west, growing grander as you approach its
+center.  
+~
+~
+0 0 2420
+W 5 0 0
+Z 5 5
+S
+#2422
+South End of the Eth\@Mava~
+The eth\@mava is a greenhouse on a grand scale, enfolded by
+teardrop-shaped walls of impossibly thin crystal soaring overhead.  Shaped
+by the magic of druids and scholars of earth, the entire edifice is a gift
+from the ethron of Alensha to Jh\@ten.  Built to protect the rare and often
+delicate flora of the ch\@taren\@s original home, the interior is a sprawling
+riot of plants; some on terraces, others in freestanding urns, but most left
+free to grow unimpeded.  Soft, golden light suffuses everything here,
+punctuated by the brilliant but momentary sparkles from spirit-lights
+drifting through the hothouse-haze of the air.  The smells of the place
+teeter somewhere between an olfactory symphony and cacophony -- a heady
+performance that mixes floral aromas with saffron, jasmine, and citrus, all
+interlaced with the faint cinnamon spice smell of the haven.  To the north
+lies the center of the greenhouse, while a tingle in the air to the south
+marks the exit from this place.  
+
+To go here: Flower that tracks light from ch\@taren home plane which no longer exists.
+~
+~
+0
+0 262152 3
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  They
+drift through the tops of the eth\@mava, occasionally sparkling star-like in
+the haze.  
+~
+E
+crystal~
+These walls are made of someone impossibly thin crystal, colored a honey
+hue of gold.  Shaped by some daring combination of earth and druidical
+magics, they both protect the interior from the exterior world while
+suffusing the area with a salutary effect.  
+~
+E
+walls~
+These walls are made of someone impossibly thin crystal, colored a honey
+hue of gold.  Shaped by some daring combination of earth and druidical
+magics, they both protect the interior from the exterior world while
+suffusing the area with a salutary effect.  
+~
+E
+teardrop-shaped~
+These walls are made of someone impossibly thin crystal, colored a honey
+hue of gold.  Shaped by some daring combination of earth and druidical
+magics, they both protect the interior from the exterior world while
+suffusing the area with a salutary effect.  
+~
+E
+urns~
+The urns look like overly tall flower pots, but contain ferns. 
+Predominantly red, there are also purple, mauve, indigo, and even milky
+white specimens.  Most of the urns have images painted on them, each
+reflecting a related scene.  
+~
+E
+painted~
+The images on the urns are ones of battle.  Ancient ethron and radiant
+ch\@taren spirit lords do battle against dark shapes in a forest, shedding
+their blood together in the pitched fighting 
+~
+E
+images~
+The images on the urns are ones of battle.  Ancient ethron and radiant
+ch\@taren spirit lords do battle against dark shapes in a forest, shedding
+their blood together in the pitched fighting 
+~
+E
+scene~
+The images on the urns are ones of battle.  Ancient ethron and radiant
+ch\@taren spirit lords do battle against dark shapes in a forest, shedding
+their blood together in the pitched fighting 
+~
+E
+plants~
+Slender, kelp-like fronds grow from the ground, each tipped with a
+delicate feather-shaped structure.  Periodically, they realize a spicy haze
+of spores into the air.  
+~
+E
+terraces~
+This ironwood terrace is draped in chains of wiry moss, all golden-hued
+and tingling to the touch.  
+~
+D0
+The eth\@mava continues to the north, growing grander as you approach its
+center.  
+~
+~
+0 0 2420
+D2
+The exit to the south lies through a simple archway cut in the crystal. 
+Some protective ward tingles on approach, marking a border between the
+interior of the eth\@mava and the haven outside.  
+~
+~
+0 0 2423
+W 5 0 0
+Z 5 5
+S
+#2423
+A Copse of Qilarni Ironwoods on a Steep Rise~
+This copse of ironwood grows on the side of a steep rise.  Their dark
+brown bark and glossy green leaves mark them as being of Qilarn, where they
+are much-loved by the ethron.  The warm, humid air of Jh\@ten has done
+wonders for the trees, turning them into fairly tall specimens of their
+breed.  Looking north to the top of the rise, an unusual building made from
+a crystal teardrop is visible, glittering in a flock of drifting spirit-
+lights.  Down the rise and to the south, ironwoods slowly thin out and are
+replaced by a thick forest of Al\@Wye -- fabled for their mirrored bark. 
+Conventional woodlands proceed in every other direction, wrapping around the
+hill that makes up this rise.  
+~
+~
+0
+0 262144 3
+E
+teardrop~
+The building is made of some translucent crystal, tinted with a very
+faint honey color honey color.  Roughly shaped like a teadrop, the edges of
+the crystal shimmer as spirit-lights dance through the air around its
+pointed peak.  Within, it is possible to discern the shapes of foliage and
+various colorful flowers.  
+~
+E
+building~
+The building is made of some translucent crystal, tinted with a very
+faint honey color honey color.  Roughly shaped like a teadrop, the edges of
+the crystal shimmer as spirit-lights dance through the air around its
+pointed peak.  Within, it is possible to discern the shapes of foliage and
+various colorful flowers.  
+~
+E
+crystal~
+The building is made of some translucent crystal, tinted with a very
+faint honey color honey color.  Roughly shaped like a teadrop, the edges of
+the crystal shimmer as spirit-lights dance through the air around its
+pointed peak.  Within, it is possible to discern the shapes of foliage and
+various colorful flowers.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Most
+here are drifting up the hill around the crystal building, but every so
+often one will show up near the ground like some furtive will-o\@-the-wisp.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner glow.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Most
+here are drifting up the hill around the crystal building, but every so
+often one will show up near the ground like some furtive will-o\@-the-wisp.  
+~
+E
+ironwoods~
+The ironwoods are bushy trees with ridged bark, colored a dark grey. 
+They have simple, tough leaves, and overall give the impression of being
+quite hardy.  No vines or moss grow on the ironwoods, but each tree is
+replete with its own trail of carpenter ants.  
+~
+E
+ironwood~
+The ironwoods are bushy trees with ridged bark, colored a dark grey. 
+They have simple, tough leaves, and overall give the impression of being
+quite hardy.  No vines or moss grow on the ironwoods, but each tree is
+replete with its own trail of carpenter ants.  
+~
+E
+ants~
+The ants are a tawny color, and seem intent on carrying away little bits
+of debris and dead leaves from the ironwoods.  
+~
+D0
+The entrance to the teardrop-shaped building lies up the rise.  
+~
+~
+0 0 2422
+D1
+The copse of ironwoods gives way to a forest of Nendorin oaks to the east.  
+~
+~
+0 0 2417
+D2
+The oaks give way to a stunning forest of trees with mirrored bark.  
+~
+~
+0 0 2426
+D3
+The ironwoods continue to the south.  
+~
+~
+0 0 2416
+W 5 0 0
+Z 5 5
+S
+#2424
+Between Silver and Gold~
+This commonplace strip of land commands an uncommon view.  It runs
+between a towering golden wall to the north and a forest of trees with
+quicksilver bark to the south.  The wall keeps pace with the winding and
+twisting course of the reflecting forest, with forms and design which seem
+every bit as organic as the silver flora.  The trees shimmer with light, but
+their mirror-like surface reveals little about the interior of the woods. 
+Westward, a more conventional forest of oak trees begins, while to the east
+the woods thin out and eventually turn into gardens.  
+~
+~
+0
+0 262144 2
+E
+wall~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is about the same color
+as the fabled ch\@lonin, but is in actuality a kind of coral material. 
+Amazingly durable and thick, the interior has been polished to a smooth
+buff, rendering it effectively unclimbable.  
+~
+E
+walls~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is about the same color
+as the fabled ch\@lonin, but is in actuality a kind of coral material. 
+Amazingly durable and thick, the interior has been polished to a smooth
+buff, rendering it effectively unclimbable.  
+~
+E
+trees~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of everything around them.  
+~
+E
+tree~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of everything around them.  
+~
+E
+quicksilver~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of everything around them.  
+~
+E
+forest~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of everything around them.  
+~
+D1
+The mirror forest thins out to the east, open in an expansive garden area.  
+~
+~
+0 0 2441
+D2
+A stunning forest of trees with mirrored bark begins to the north.  
+~
+~
+0 0 2429
+D3
+A forest of Nendorin oaks begins to the west.  
+~
+~
+0 0 2417
+W 5 0 0
+Z 5 5
+S
+#2425
+Between Silver and Gold~
+This commonplace strip of land commands an uncommon view.  It runs
+between towering golden walls to the south, and a forest of trees with
+quicksilver bark to the north.  The walls keep pace with the winding and
+twisting course of the reflecting forest, with forms and design which seem
+almost as organic as the silver flora.  The trees shimmer with light, but
+their mirror-like nature reveals little about the interior of the woods. 
+The walls cut off further travel to the east, but a striking trail of
+silverish glass picks up to the west.  A set of zig-zagging stairs provides
+access to the golden heights, while northward travel into the interior of
+the forest leads to parts unknown.  
+~
+~
+0
+0 262144 2
+E
+tree~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of everything around them.  
+~
+E
+trees~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of everything around them.  
+~
+E
+wall~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is about the same color
+as the fabled ch\@lonin, but is in actuality a kind of coral material. 
+Amazingly durable and thick, the interior has been polished to a smooth
+buff.  Effectively unclimbable, a zig-zagging staircase carved in the face
+of the wall fortunately allows ascent to its heights.  
+~
+E
+walls~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is about the same color
+as the fabled ch\@lonin, but is in actuality a kind of coral material. 
+Amazingly durable and thick, the interior has been polished to a smooth
+buff.  Effectively unclimbable, a zig-zagging staircase carved in the face
+of the wall fortunately allows ascent to its heights.  
+~
+E
+stairs~
+These stairs are carved on the interior side of the wall, and zig-zag up
+to the top of the golden heights.  
+~
+E
+trail~
+This trail is made of a silvery material which is actually translucent. 
+Sparkling glass is visible underneath it, and its path loops and whorls
+before heading off along the wall.  
+~
+E
+glass~
+This trail is made of a silvery material which is actually translucent. 
+Sparkling glass is visible underneath it, and its path loops and whorls
+before heading off along the wall.  
+~
+E
+translucent~
+This trail is made of a silvery material which is actually translucent. 
+Sparkling glass is visible underneath it, and its path loops and whorls
+before heading off along the wall.  
+~
+E
+silverish~
+This trail is made of a silvery material which is actually translucent. 
+Sparkling glass is visible underneath it, and its path loops and whorls
+before heading off along the wall.  
+~
+E
+forest~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of everything around them.  
+~
+D0
+A stunning forest of trees with mirrored bark begins to the north.  
+~
+~
+0 0 2430
+D3
+This trail is made from some some unusual material of translucent silver, heading off along the wall.
+~
+~
+0 0 2451
+D4
+These stairs are carved on the interior side of the wall, and zig-zag up to the top of the golden heights.
+~
+~
+0 0 2407
+W 5 0 0
+Z 5 5
+S
+#2426
+Amongst the Al\@Wye~
+An infinite regress of scattered reflections explode about this forest of
+Al\@Wye, each clad in perfect mirror-like bark.  The faintest fog of gold
+covers the treeline, a mix of the cool, moist air and the spicy-floral
+exhalations of the omnipresent Jh\@ten.  Despite the tall height and broad,
+overhanging leaves of the trees, soft light pervades this area -- some
+leaking through the fog, but most from spirit-lights which drift by,
+reflected in the trees.  Determining any fixed path or even sign of
+direction is difficult here, as the Al\@Wye result in a dizzying cascade of
+motion for even the tiniest change in perspective.  
+~
+~
+0
+0 262144 3
+E
+al\@wye~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+tree~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+trees~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+spirit-lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+jh\@ten~
+There are signs of the haven everywhere.  Tiny, fronds burst up from the
+orange soil, spiralling up the trunks of the tree towards the light of the
+sky.  Little puffs of pollen occasionally burst into the air from the
+fronds, giving substance to the humid air.  
+~
+E
+spirit-light~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+D0
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2427
+D1
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2423
+D2
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2426
+D3
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2430
+W 5 0 0
+Z 5 5
+S
+#2427
+Amongst the Al\@Wye~
+An infinite regress of scattered reflections explode about this forest of
+Al\@Wye, each clad in perfect mirror-like bark.  The faintest fog of gold
+covers the treeline, a mix of the cool, moist air and the spicy-floral
+exhalations of the omnipresent Jh\@ten.  Despite the tall height and broad,
+overhanging leaves of the trees, soft light pervades this area -- some
+leaking through the fog, but most from spirit-lights which drift by,
+reflected in the trees.  Determining any fixed path or even sign of
+direction is difficult here, as the Al\@Wye result in a dizzying cascade of
+motion for even the tiniest change in perspective.  
+~
+~
+0
+0 262144 3
+E
+al\@wye~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+tree~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+trees~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+spirit-lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit-light~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+jh\@ten~
+There are signs of the haven everywhere.  Tiny, fronds burst up from the
+orange soil, spiralling up the trunks of the tree towards the light of the
+sky.  Little puffs of pollen occasionally burst into the air from the
+fronds, giving substance to the humid air.  
+~
+D0
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2438
+D1
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2428
+D2
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2430
+D3
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2427
+W 5 0 0
+Z 5 5
+S
+#2428
+Amongst the Al\@Wye~
+An infinite regress of scattered reflections explode about this forest of
+Al\@Wye, each clad in perfect mirror-like bark.  The faintest fog of gold
+covers the treeline, a mix of the cool, moist air and the spicy-floral
+exhalations of the omnipresent Jh\@ten.  Despite the tall height and broad,
+overhanging leaves of the trees, soft light pervades this area -- some
+leaking through the fog, but most from spirit-lights which drift by,
+reflected in the trees.  Determining any fixed path or even sign of
+direction is difficult here, as the Al\@Wye result in a dizzying cascade of
+motion for even the tiniest change in perspective.  
+~
+~
+0
+0 262144 3
+E
+al\@wye~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+tree~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+trees~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+spirit-lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit-light~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+jh\@ten~
+There are signs of the haven everywhere.  Tiny, fronds burst up from the
+orange soil, spiralling up the trunks of the tree towards the light of the
+sky.  Little puffs of pollen occasionally burst into the air from the
+fronds, giving substance to the humid air.  
+~
+D0
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2431
+D1
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2430
+D2
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2428
+D3
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2435
+W 5 0 0
+Z 5 5
+S
+#2429
+Amongst the Al\@Wye~
+An infinite regress of scattered reflections explode about this forest of
+Al\@Wye, each clad in perfect mirror-like bark.  The faintest fog of gold
+covers the treeline, a mix of the cool, moist air and the spicy-floral
+exhalations of the omnipresent Jh\@ten.  Despite the tall height and broad,
+overhanging leaves of the trees, soft light pervades this area -- some
+leaking through the fog, but most from spirit-lights which drift by,
+reflected in the trees.  Determining any fixed path or even sign of
+direction is difficult here, as the Al\@Wye result in a dizzying cascade of
+motion for even the tiniest change in perspective.  
+~
+~
+0
+0 262144 3
+E
+al\@wye~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+tree~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+trees~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+spirit-lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit-light~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+jh\@ten~
+There are signs of the haven everywhere.  Tiny, fronds burst up from the
+orange soil, spiralling up the trunks of the tree towards the light of the
+sky.  Little puffs of pollen occasionally burst into the air from the
+fronds, giving substance to the humid air.  
+~
+D0
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2429
+D1
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2426
+D2
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2427
+D3
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2424
+W 5 0 0
+Z 5 5
+S
+#2430
+Amongst the Al\@Wye~
+An infinite regress of scattered reflections explode about this forest of
+Al\@Wye, each clad in perfect mirror-like bark.  The faintest fog of gold
+covers the treeline, a mix of the cool, moist air and the spicy-floral
+exhalations of the omnipresent Jh\@ten.  Despite the tall height and broad,
+overhanging leaves of the trees, soft light pervades this area -- some
+leaking through the fog, but most from spirit-lights which drift by,
+reflected in the trees.  Determining any fixed path or even sign of
+direction is difficult here, as the Al\@Wye result in a dizzying cascade of
+motion for even the tiniest change in perspective.  
+~
+~
+0
+0 262144 3
+E
+al\@wye~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+tree~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+trees~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+spirit-lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit-light~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+jh\@ten~
+There are signs of the haven everywhere.  Tiny, fronds burst up from the
+orange soil, spiralling up the trunks of the tree towards the light of the
+sky.  Little puffs of pollen occasionally burst into the air from the
+fronds, giving substance to the humid air.  
+~
+D0
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2430
+D1
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2437
+D2
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2429
+D3
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2426
+W 5 0 0
+Z 5 5
+S
+#2431
+Amongst the Al\@Wye~
+An infinite regress of scattered reflections explode about this forest of
+Al\@Wye, each clad in perfect mirror-like bark.  The faintest fog of gold
+covers the treeline, a mix of the cool, moist air and the spicy-floral
+exhalations of the omnipresent Jh\@ten.  Despite the tall height and broad,
+overhanging leaves of the trees, soft light pervades this area -- some
+leaking through the fog, but most from spirit-lights which drift by,
+reflected in the trees.  Determining any fixed path or even sign of
+direction is difficult here, as the Al\@Wye result in a dizzying cascade of
+motion for even the tiniest change in perspective.  
+~
+~
+0
+0 262144 3
+E
+al\@wye~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+tree~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+trees~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+spirit-lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit-light~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+jh\@ten~
+There are signs of the haven everywhere.  Tiny, fronds burst up from the
+orange soil, spiralling up the trunks of the tree towards the light of the
+sky.  Little puffs of pollen occasionally burst into the air from the
+fronds, giving substance to the humid air.  
+~
+D0
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2426
+D1
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2427
+D2
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2430
+D3
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2432
+W 5 0 0
+Z 5 5
+S
+#2432
+Amongst the Al\@Wye~
+An infinite regress of scattered reflections explode about this forest of
+Al\@Wye, each clad in perfect mirror-like bark.  The faintest fog of gold
+covers the treeline, a mix of the cool, moist air and the spicy-floral
+exhalations of the omnipresent Jh\@ten.  Despite the tall height and broad,
+overhanging leaves of the trees, soft light pervades this area -- some
+leaking through the fog, but most from spirit-lights which drift by,
+reflected in the trees.  Determining any fixed path or even sign of
+direction is difficult here, as the Al\@Wye result in a dizzying cascade of
+motion for even the tiniest change in perspective.  
+~
+~
+0
+0 262144 3
+E
+al\@wye~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+tree~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+trees~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+spirit-lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit-light~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+jh\@ten~
+There are signs of the haven everywhere.  Tiny, fronds burst up from the
+orange soil, spiralling up the trunks of the tree towards the light of the
+sky.  Little puffs of pollen occasionally burst into the air from the
+fronds, giving substance to the humid air.  
+~
+D0
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2436
+D1
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2426
+D2
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2433
+D3
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2429
+W 5 0 0
+Z 5 5
+S
+#2433
+Amongst the Al\@Wye~
+An infinite regress of scattered reflections explode about this forest of
+Al\@Wye, each clad in perfect mirror-like bark.  The faintest fog of gold
+covers the treeline, a mix of the cool, moist air and the spicy-floral
+exhalations of the omnipresent Jh\@ten.  Despite the tall height and broad,
+overhanging leaves of the trees, soft light pervades this area -- some
+leaking through the fog, but most from spirit-lights which drift by,
+reflected in the trees.  Determining any fixed path or even sign of
+direction is difficult here, as the Al\@Wye result in a dizzying cascade of
+motion for even the tiniest change in perspective.  
+~
+~
+0
+0 262144 3
+E
+al\@wye~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+tree~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+trees~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+spirit-lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit-light~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+jh\@ten~
+There are signs of the haven everywhere.  Tiny, fronds burst up from the
+orange soil, spiralling up the trunks of the tree towards the light of the
+sky.  Little puffs of pollen occasionally burst into the air from the
+fronds, giving substance to the humid air.  
+~
+D0
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2427
+D1
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2431
+D2
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2434
+D3
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2424
+W 5 0 0
+Z 5 5
+S
+#2434
+Amongst the Al\@Wye~
+An infinite regress of scattered reflections explode about this forest of
+Al\@Wye, each clad in perfect mirror-like bark.  The faintest fog of gold
+covers the treeline, a mix of the cool, moist air and the spicy-floral
+exhalations of the omnipresent Jh\@ten.  Despite the tall height and broad,
+overhanging leaves of the trees, soft light pervades this area -- some
+leaking through the fog, but most from spirit-lights which drift by,
+reflected in the trees.  Determining any fixed path or even sign of
+direction is difficult here, as the Al\@Wye result in a dizzying cascade of
+motion for even the tiniest change in perspective.  
+~
+~
+0
+0 262144 3
+E
+al\@wye~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+tree~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+trees~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+surroundings of the forest.  Since the entire forest is Al\@wye, this results
+in an infinite regression of imagery at every step.  
+~
+E
+spirit-lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit-light~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+spirit lights~
+Little bits of light drift through the forest, occasionally peeking
+will-o\@-the-wisp-like out from behind a tree.  Already numinous in everyday
+circumstances, the spirit-lights are truly fantastical in this environment,
+where their rippling light echoes through the mirrored bark of the trees.  
+~
+E
+jh\@ten~
+There are signs of the haven everywhere.  Tiny, fronds burst up from the
+orange soil, spiralling up the trunks of the tree towards the light of the
+sky.  Little puffs of pollen occasionally burst into the air from the
+fronds, giving substance to the humid air.  
+~
+D0
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2430
+D1
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2425
+D2
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2436
+D3
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2435
+W 5 0 0
+Z 5 5
+S
+#2435
+Jh\@ten~
+Huge, silver fronds burst out of the ground, each topped with an
+exquisite feather tip from which a flood of orange-gold spores emerges. 
+Taking a breath here means inhaling some of these spores and their thick,
+almost cloying cinnamon scent.  Despite the appearance that the fronds are
+growing out of the ground, there is almost no soil here; instead there is
+mix of shell and coral, piebald-patterned and warm to the top.  It is atop
+this shell that is the heart of the largest cluster of fronds where the haze
+of spores is thickest, totally filling the air.  Glimmering spirit-lights
+dance and swirl around the tops of the fronds, their radiance diffusing all
+around, giving everything here a numinous glow.  Surrounding the area is a
+forest of the silver-barked Al\@Wye trees, which provide enough space around
+the fronds to turn this into a kind of clearing.  
+~
+~
+0
+0 262148 3
+E
+tree~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+everything around it.  
+~
+E
+trees~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+everything around it.  
+~
+E
+al\@wye~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+everything around it.  
+~
+E
+quicksilver~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+everything around it.  
+~
+E
+silver-barked~
+These tall, broad-leaved trees are shaped like any other tree one might
+find in a tropical region, but their surface defies description.  Every part
+of the tree is like a quicksilver mirror, reflecting the light and
+everything around it.  
+~
+E
+fronds~
+~
+E
+fronds~
+Silvery-white, these fronds unfurl from holes in the ground with giant,
+flowing stalks easily taller than an alatharya.  Crowning each stalk is a
+feathery and divided \#leaf\#, which is a network of pink feathery thin
+filaments.  Even when the wind is silent, the fronds stir and shudder.  With
+every bit of motion, their tips let out a cloud of orange spores, which feel
+the air with a redolent cinnamon haze.  
+~
+E
+frond~
+Silvery-white, these fronds unfurl from holes in the ground with giant,
+flowing stalks easily taller than an alatharya.  Crowning each stalk is a
+feathery and divided \#leaf\#, which is a network of pink feathery thin
+filaments.  Even when the wind is silent, the fronds stir and shudder.  With
+every bit of motion, their tips let out a cloud of orange spores, which feel
+the air with a redolent cinnamon haze.  
+~
+E
+tip~
+The tip is what is the part most properly described as a frond.  Feather
+thin and silk-soft, the crown of the fronds is responsible for letting loose
+the clouds of spores which fill this clearing.  
+~
+E
+feather~
+The tip is what is the part most properly described as a frond.  Feather
+thin and silk-soft, the crown of the fronds is responsible for letting loose
+the clouds of spores which fill this clearing.  
+~
+E
+holes~
+These holes are smooth openings in the coral shell of the ground. 
+Examining them over time, you can see spirit-lights occasionally floating up
+from the depths, or entering them after descending along the base of the
+fronds.  That may explain the phosphorescent glow which is ever so faintly
+visible peering down one of the holes.  
+~
+E
+holes~
+These holes are smooth openings in the coral shell of the ground. 
+Examining them over time, you can see spirit-lights occasionally floating up
+from the depths, or entering them after descending along the base of the
+fronds.  That may explain the phosphorescent glow which is ever so faintly
+visible peering down one of the holes.  
+~
+E
+spores~
+These spores are an orange-gold, and almost jet out of the tips of the
+fronds in this clearing.  Each is just large enough to be visible, and fills
+the room with a cloying cinnamon.  Near the center of the clearing, the
+spores are thickest -- dense enough to color the ground.  
+~
+E
+spore~
+These spores are an orange-gold, and almost jet out of the tips of the
+fronds in this clearing.  Each is just large enough to be visible, and fills
+the room with a cloying cinnamon.  Near the center of the clearing, the
+spores are thickest -- dense enough to color the ground.  
+~
+E
+ground~
+Nearest to the fronds, the ground here has no soil at all.  Instead, it
+is made from shell, coral-rough and warm to the touch.  The shell is mainly
+a salmon color, with a piebald pattern of oranges and gold all over its
+surface.  
+
+In the middle of the densest cluster of fronds, the shell is covered with
+the spores drifting all over this room.  Several smooth patches are on the
+shell there, making for comfortable seating if one wished to simply sit and
+experience the sights and smells of this place.  
+~
+E
+shell~
+Nearest to the fronds, the ground here has no soil at all.  Instead, it
+is made from shell, coral-rough and warm to the touch.  The shell is mainly
+a salmon color, with a piebald pattern of oranges and gold all over its
+surface.  
+
+In the middle of the densest cluster of fronds, the shell is covered with
+the spores drifting all over this room.  Several smooth patches are on the
+shell there, making for comfortable seating if one wished to simply sit and
+experience the sights and smells of this place.  
+~
+E
+coral~
+Nearest to the fronds, the ground here has no soil at all.  Instead, it
+is made from shell, coral-rough and warm to the touch.  The shell is mainly
+a salmon color, with a piebald pattern of oranges and gold all over its
+surface.  
+
+In the middle of the densest cluster of fronds, the shell is covered with
+the spores drifting all over this room.  Several smooth patches are on the
+shell there, making for comfortable seating if one wished to simply sit and
+experience the sights and smells of this place.  
+~
+E
+pattern~
+Nearest to the fronds, the ground here has no soil at all.  Instead, it
+is made from shell, coral-rough and warm to the touch.  The shell is mainly
+a salmon color, with a piebald pattern of oranges and gold all over its
+surface.  
+
+In the middle of the densest cluster of fronds, the shell is covered with
+the spores drifting all over this room.  Several smooth patches are on the
+shell there, making for comfortable seating if one wished to simply sit and
+experience the sights and smells of this place.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Here,
+they seem drawn to the fronds that fill the clearing, dancing and swirling
+around their stalks.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Here,
+they seem drawn to the fronds that fill the clearing, dancing and swirling
+around their stalks.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Here,
+they seem drawn to the fronds that fill the clearing, dancing and swirling
+around their stalks.  
+~
+E
+smooth~
+It looks like someone could easily sit here, free of the danger of
+scraping against the rough coral structure of the ground.  
+~
+E
+patches~
+It looks like someone could easily sit here, free of the danger of
+scraping against the rough coral structure of the ground.  
+~
+D0
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2429
+D1
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2427
+D2
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2430
+D3
+Lines and clusters of mirror-like trees extend away as far as you can see.  
+~
+~
+0 0 2426
+W 5 0 0
+Z 5 5
+S
+#2436
+A Ch\@taren Topiary~
+This is the southern end of a what passes for a formal garden among the
+ch\@taren.  Spirit-lights drift over the silvery grass underfoot, and a
+hodge-podge of unique and unusual trees trace out a border for this place. 
+Fantastically shaped hedges and bushes are scattered throughout the area. 
+Despite their somewhat random placement, shapes can be discerned in the
+bushes: A leviathan, a dragon, an elephant, several humanoid figures, and
+several unrecognizable creatures.  From here, more of the garden extends to
+the north, and exits through the trees leave in every other direction.  
+~
+~
+0
+0 262144 2
+E
+leviathan~
+This waxy, green bush has been trimmed into the shape of an enormous
+leviathan.  A creature out of the fables of sailors on the Uthlin, it has
+been depicted here as having triangular fins and wriggling tentacles, both
+exaggerated for dramatic effect.  
+~
+E
+dragon~
+This dragon has been carved out of a bush with red-gold leaves. 
+Fantastic and soaring, it has a long, trailing tail and bat wings.  Its
+claws and teeth are cut with particular care, and designed to invoke a
+moment of terror in their contemplation.  
+~
+E
+elephant~
+This elephant has been cut out of a bush with blue-grey flowers and green
+leaves.  One of its front legs is arched high, and its trunk arcs up in a
+silent trumpet.  Despite being made with some care, the proportions of the
+elephant seem a bit off -- as if the topiary gardener who made this had
+never seen an elephant in the flesh.  
+~
+E
+figures~
+The humanoid figures appear to be knights or templars of some kind,
+trimmed out of bushes with bright yellow leaves.  Carrying shields and
+swinging daring swords, the knights glare across the garden at the dragon.  
+~
+E
+unrecognized~
+Some of the creatures could almost be abstract shapes -- wavering
+toruses, sharp right angles, and even a bush trimmed into a spiral.  A few
+are a little more visible organic: A starfish shape with dangling tendrils
+underneath, and a fat triangle with dozens of little legs.  
+~
+E
+hedges~
+If you want to examine a specific topiary animal or shape, simply specify the one you mean. (E.g., \#Examine dragon\#).
+~
+E
+bushes~
+If you want to examine a specific topiary animal or shape, simply specify
+the one you mean.  (E.  G.  , \#Examine dragon\#).  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist, flashing
+with a deep inner glow.  They came in a motley variety of shapes and sizes,
+and pulse with varying degrees of brightness and color.  Most drift around
+near ground level, occasionally drifting up to the tips of creatures in the
+topiary.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist, flashing
+with a deep inner glow.  They came in a motley variety of shapes and sizes,
+and pulse with varying degrees of brightness and color.  Most drift around
+near ground level, occasionally drifting up to the tips of creatures in the
+topiary.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist, flashing
+with a deep inner glow.  They came in a motley variety of shapes and sizes,
+and pulse with varying degrees of brightness and color.  Most drift around
+near ground level, occasionally drifting up to the tips of creatures in the
+topiary.  
+~
+E
+unique~
+There are some of the fabled silver-barked Al\@Wye trees, a few
+goldenrains here and there, and tall, spiny trees of an unknown varietal.  
+~
+E
+unusual~
+There are some of the fabled silver-barked Al\@Wye trees, a few
+goldenrains here and there, and tall, spiny trees of an unknown varietal.  
+~
+E
+trees~
+There are some of the fabled silver-barked Al\@Wye trees, a few
+goldenrains here and there, and tall, spiny trees of an unknown varietal.  
+~
+D0
+The gardens extends to the north, and a large fountain is visible.  
+~
+~
+0 0 2440
+D1
+A trail of some translucent silver material begins between two tall
+goldenrain trees.  
+~
+~
+0 0 2450
+W 5 0 0
+Z 5 5
+S
+#2437
+A Small Orchard~
+This is the western end of what passes for a formal garden among the
+ch\@taren.  A small orchard of fruit bearing trees grow all around here, of
+varying shapes and sizes but all native to Jh\@ten.  Small benches are
+arranged scattershot about the grounds; most in the shade, but a few in open
+clearings.  Drifting through the branches of the trees are the haven\@s
+ubiquitous spirit-lights, which peak through the branches like twinkling
+will-o\@-the-wisps.  From here, the center of the garden lies to the east,
+while a slender trail slips into a forest of quicksilver silver to the west.
+
+To do: Put benches and fruit trees here (consult Kestrel on fruits).
+~
+~
+0
+0 262144 3
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist, flashing
+with a deep inner glow.  They came in a motley variety of shapes and sizes,
+and pulse with varying degrees of brightness and color.  Every so often, one
+will peek through the branches of a nearby tree like some mischievous
+will-o\@-the-wisp.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist, flashing
+with a deep inner glow.  They came in a motley variety of shapes and sizes,
+and pulse with varying degrees of brightness and color.  Every so often, one
+will peek through the branches of a nearby tree like some mischievous
+will-o\@-the-wisp.  
+~
+E
+spirit light~
+The spirit-lights are little gossamer things of light and mist, flashing
+with a deep inner glow.  They came in a motley variety of shapes and sizes,
+and pulse with varying degrees of brightness and color.  Every so often, one
+will peek through the branches of a nearby tree like some mischievous
+will-o\@-the-wisp.  
+~
+E
+benches~
+The benches are made from polished ironwood, carved into the stylized
+organic shapes popular among the ethron.  
+~
+E
+bench~
+The benches are made from polished ironwood, carved into the stylized
+organic shapes popular among the ethron.  
+~
+D1
+The garden stretches off to the east, where a large fountain is visible.  
+~
+~
+0 0 2440
+D3
+A stunning forest of trees with mirrored bark begins to the west.
+~
+~
+0 0 2427
+W 5 0 0
+Z 5 5
+S
+#2438
+A Lush Green Lawn~
+This is the northern end of what passes for a formal garden among the
+ch\@taren.  Delicate golden bushes hedge in a lush, green lawn here, and
+spirit-lights drift underfoot in and out of the grass, flickering like
+summer fireflies.  Open and uncluttered, the lawn smells of wild grass while
+still being neatly maintained.  More of this garden stretches off to the
+south, while to the north stands a building shaped like a spiral shell.  
+~
+~
+0
+0 262144 2
+E
+bushes~
+The hedges are a network of rope-thin vines with delicate golden leaves.  
+~
+E
+hedges~
+The hedges are a network of rope-thin vines with delicate golden leaves.  
+~
+E
+golden~
+The hedges are a network of rope-thin vines with delicate golden leaves.  
+~
+E
+lawn~
+The lawn looks to be regularly trimmed, but closer examination reveals
+that it has simply stopped growing at a height which is pleasing to look and
+walk upon.  
+~
+E
+grass~
+The lawn looks to be regularly trimmed, but closer examination reveals
+that it has simply stopped growing at a height which is pleasing to look and
+walk upon.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist, flashing
+with a deep inner glow.  They came in a motley variety of shapes and sizes,
+and pulse with varying degrees of brightness and color.  Like tiny
+fireflies, they dart in and out of the blades of grass that make up the
+lawn.  
+~
+E
+spirit light~
+The spirit-lights are little gossamer things of light and mist, flashing
+with a deep inner glow.  They came in a motley variety of shapes and sizes,
+and pulse with varying degrees of brightness and color.  Like tiny
+fireflies, they dart in and out of the blades of grass that make up the
+lawn.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist, flashing
+with a deep inner glow.  They came in a motley variety of shapes and sizes,
+and pulse with varying degrees of brightness and color.  Like tiny
+fireflies, they dart in and out of the blades of grass that make up the
+lawn.  
+~
+E
+lights~
+The spirit-lights are little gossamer things of light and mist, flashing
+with a deep inner glow.  They came in a motley variety of shapes and sizes,
+and pulse with varying degrees of brightness and color.  Like tiny
+fireflies, they dart in and out of the blades of grass that make up the
+lawn.  
+~
+D0
+The garden ends to the north, stopping at a building shaped like a spiral
+shell.  
+~
+~
+0 0 2441
+D2
+The grden stretches off to the south, and a large fountain is visible.  
+~
+~
+0 0 2440
+W 5 0 0
+Z 5 5
+S
+#2439
+A Gazebo in a Flower Garden~
+This is the eastern end of what passes for a formal garden among the
+ch\@taren.  Long curves of flowers twist and spiral everywhere here, a
+rainbow of wild and striking colors.  Amidst the center of the garden sits a
+white gazebo, built on top of a small rise to catch any errant breezes.  The
+garden extends from here to the west, opening in a wider area centered
+around a fountain.  A curious path of translucent silver leaves the garden
+to the east, passing through a low wall of pink coral to enter the center of
+the haven.  There, the wild spires of the temple of Rystaia tower over
+everything else in Jh\@ten, wreathed in frothy whips of mist and a veritable
+flock of spirit-lights.  
+~
+~
+0
+0 262144 2
+E
+flowers~
+The flowers are all native to Jh\@ten, and seem to have been chosen for
+their bright, vibrant hues.  They grow in spirals and curving arcs of color,
+swirling everywhere in a veritable rainbow of color.  
+~
+E
+rainbow~
+The flowers are all native to Jh\@ten, and seem to have been chosen for
+their bright, vibrant hues.  They grow in spirals and curving arcs of color,
+swirling everywhere in a veritable rainbow of color.  
+~
+E
+spiral~
+The flowers are all native to Jh\@ten, and seem to have been chosen for
+their bright, vibrant hues.  They grow in spirals and curving arcs of color,
+swirling everywhere in a veritable rainbow of color.  
+~
+E
+flower~
+The flowers are all native to Jh\@ten, and seem to have been chosen for
+their bright, vibrant hues.  They grow in spirals and curving arcs of color,
+swirling everywhere in a veritable rainbow of color.  
+~
+E
+gazebo~
+The gazebo is made of ironwood and painted white.  Little organic
+flourishes here and there suggest ethron craftsmanship.  
+~
+E
+silver~
+This path is made of a silvery material which is actually translucent. 
+Sparkling grass is visible underneath it, and its path loops and whorls as
+it heads off east into the center of Jh\@ten.  
+~
+E
+translucent~
+This path is made of a silvery material which is actually translucent. 
+Sparkling grass is visible underneath it, and its path loops and whorls as
+it heads off east into the center of Jh\@ten.  
+~
+E
+translucent~
+This path is made of a silvery material which is actually translucent. 
+Sparkling grass is visible underneath it, and its path loops and whorls as
+it heads off east into the center of Jh\@ten.  
+~
+E
+white~
+The gazebo is made of ironwood and painted white.  Little organic
+flourishes here and there suggest ethron craftsmanship.  
+~
+E
+spires~
+The monumental spires of Rystaia\@s temple are easily taller than anything
+else in the city.  The center of ch\@taren life and worship in the haven, its
+heights are wreathed in effervescent wisps of light, while its base is ever
+so slightly occluded by the faint orangeish exhalations of Jh\@ten.  
+~
+E
+temple~
+The monumental spires of Rystaia\@s temple are easily taller than anything
+else in the city.  The center of ch\@taren life and worship in the haven, its
+heights are wreathed in effervescent wisps of light, while its base is ever
+so slightly occluded by the faint orangeish exhalations of Jh\@ten.  
+~
+E
+rystaia~
+The monumental spires of Rystaia\@s temple are easily taller than anything
+else in the city.  The center of ch\@taren life and worship in the haven, its
+heights are wreathed in effervescent wisps of light, while its base is ever
+so slightly occluded by the faint orangeish exhalations of Jh\@ten.  
+~
+E
+coral~
+The wall is made from salmon-pink coral, and rises smoothly from the soil
+of the ground.  
+~
+E
+wall~
+The wall is made from salmon-pink coral, and rises smoothly from the soil
+of the ground.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist, flashing
+with a deep inner glow.  They came in a motley variety of shapes and sizes,
+and pulse with varying degrees of brightness and color.  Some dance along
+the tops of the flowers here, while many more are visible around the spires
+of the temple of Rystaia.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist, flashing
+with a deep inner glow.  They came in a motley variety of shapes and sizes,
+and pulse with varying degrees of brightness and color.  Some dance along
+the tops of the flowers here, while many more are visible around the spires
+of the temple of Rystaia.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist, flashing
+with a deep inner glow.  They came in a motley variety of shapes and sizes,
+and pulse with varying degrees of brightness and color.  Some dance along
+the tops of the flowers here, while many more are visible around the spires
+of the temple of Rystaia.  
+~
+D1
+This path is made from some unusual material of translucent silver, and
+heads off towards the center of Jh\@ten.  
+~
+~
+0 0 2449
+D3
+The center of the garden lies to the west, where a large fountain is
+visible.  
+~
+~
+0 0 2440
+W 5 0 0
+Z 5 5
+S
+#2440
+draft \#Dawn\# Gate~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 2438
+D1
+~
+~
+0 0 2439
+D2
+~
+~
+0 0 2436
+D3
+~
+~
+0 0 2437
+W 5 0 0
+Z 5 5
+S
+#2441
+Near the Home of the Ilrel\@sai~
+A great, spiral shell grows out of the ground here.  Its surface is
+resplendent, almost glowing with striking oranges, golds, reds, and even the
+occasional purples or blue.  Home to the bardic conclave known as the
+Ilrel\@sai, it is safely ensconced in a northern fold of Jh\@ten\@s walls. 
+Almost as tall as the ramparts of those same walls, it is surrounded by a
+flock of the spirit-lights which drift through the haven\@s skies.  Away from
+the wall to the south lies an extensive network of gardens and fountains. 
+The walls continue to the west, while an unusual path of translucent silver
+winds off to the east towards Jh\@ten\@s center.  The only other exit lies up
+a narrow zig-zagging staircase which has been carved to the side of the
+Ilrel\@sai.  
+~
+~
+0
+0 262144 1
+E
+shell~
+Home to the ch\@taren bardic conclave known as the Ilrel\@sai (\#Song
+Dreamer\# or \#Dream Singers\# depending on the scholar), this building is a
+giant spiral shell.  Growing seamlessly out of the loamy soil of Jh\@ten, its
+surface is iridescent -- a mother of pearl type material, replete with
+oranges, golds, reds, and even the occasional purples or blue.  With closer
+examination, it seems that these colors change not just with the angle of
+view, but also over time -- gently shifting to some internal rhythm so that
+one or another gradually comes to dominate, then fades.  
+~
+E
+spiral~
+Home to the ch\@taren bardic conclave known as the Ilrel\@sai (\#Song
+Dreamers\# or \#Dream Singers\# depending on the scholar), this building is a
+giant spiral shell.  Growing seamlessly out of the loamy soil of Jh\@ten, its
+surface is iridescent -- a mother of pearl type material, replete with
+oranges, golds, reds, and even the occasional purples or blue.  With closer
+examination, it seems that these colors change not just with the angle of
+view, but also over time -- gently shifting to some internal rhythm so that
+one or another gradually comes to dominate, then fades.  
+~
+E
+spiral~
+Home to the ch\@taren bardic conclave known as the Ilrel\@sai (\#Song
+Dreamer\# or \#Dream Singers\# depending on the scholar), this building is a
+giant spiral shell.  Growing seamlessly out of the loamy soil of Jh\@ten, its
+surface is iridescent -- a mother of pearl type material, replete with
+oranges, golds, reds, and even the occasional purples or blue.  With closer
+examination, it seems that these colors change not just with the angle of
+view, but also over time -- gently shifting to some internal rhythm so that
+one or another gradually comes to dominate, then fades.  
+~
+E
+wall~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is about the same color
+as the fabled ch\@lonin, but is in actuality a kind of coral material. 
+Amazingly durable and thick, the interior has been polished to a smooth
+buff.  Effectively unclimbable, a zig-zagging staircase carved in the face
+of the wall fortunately allows ascent to its heights.  
+~
+E
+walls~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is about the same color
+as the fabled ch\@lonin, but is in actuality a kind of coral material. 
+Amazingly durable and thick, the interior has been polished to a smooth
+buff.  Effectively unclimbable, a zig-zagging staircase carved in the face
+of the wall fortunately allows ascent to its heights.  
+~
+E
+stairs~
+These stairs are carved on the interior side of the wall, and zig-zag up
+to the top of the golden heights.  
+~
+E
+golden~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is about the same color
+as the fabled ch\@lonin, but is in actuality a kind of coral material. 
+Amazingly durable and thick, the interior has been polished to a smooth
+buff.  Effectively unclimbable, a zig-zagging staircase carved in the face
+of the wall fortunately allows ascent to its heights.  
+~
+E
+gold~
+Following the wall\@s course is an exercise in tracing graceful but
+unexpected curves.  Golden in appearance, the wall is about the same color
+as the fabled ch\@lonin, but is in actuality a kind of coral material. 
+Amazingly durable and thick, the interior has been polished to a smooth
+buff.  Effectively unclimbable, a zig-zagging staircase carved in the face
+of the wall fortunately allows ascent to its heights.  
+~
+E
+silver~
+This trail is made of a silvery material which is actually translucent. 
+Sparkling grass is visible underneath it, and its path loops and whorls
+before heading off to the east.  
+~
+E
+path~
+This trail is made of a silvery material which is actually translucent. 
+Sparkling grass is visible underneath it, and its path loops and whorls
+before heading off to the east.  
+~
+E
+translucent~
+This trail is made of a silvery material which is actually translucent. 
+Sparkling grass is visible underneath it, and its path loops and whorls
+before heading off to the east.  
+~
+E
+ilrel\@sai~
+Home to the ch\@taren bardic conclave known as the Ilrel\@sai (\#Song
+Dreamer\# or \#Dream Singers\# depending on the scholar), this building is a
+giant spiral shell.  Growing seamlessly out of the loamy soil of Jh\@ten, its
+surface is iridescent -- a mother of pearl type material, replete with
+oranges, golds, reds, and even the occasional purples or blue.  With closer
+examination, it seems that these colors change not just with the angle of
+view, but also over time -- gently shifting to some internal rhythm so that
+one or another gradually comes to dominate, then fades.  
+~
+E
+center~
+The center of Jh\@ten is dominated by the temple of Rystaia, whose wild
+and reaching spires reach up to the clouds above Jh\@ten.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Here,
+they not only drift around the tops of the spiral shell, they readily enter
+and leave through an archway cut in its southern wall.  
+~
+E
+spirit light~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Here,
+they not only drift around the tops of the spiral shell, they readily enter
+and leave through an archway cut in its southern wall.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse with varying degrees of brightness and color.  Here,
+they not only drift around the tops of the spiral shell, they readily enter
+and leave through an archway cut in its southern wall.  
+~
+D0
+A simple archway leads north into the interior of the spiral building.  
+~
+~
+0 0 2442
+D1
+This trail is made from some unusual material of translucent silver, and
+heads off to the east towards Jh\@ten\@s center.  
+~
+~
+0 0 2448
+D2
+An extensive network of gardens and fountains lie to the south.  
+~
+~
+0 0 2438
+D3
+A patch of land runs between the golden walls and a silver forest to the
+south.  
+~
+~
+0 0 2424
+D4
+These stairs are carved on the interior side of the wall, and zig-zag up
+to the top of the golden heights.  
+~
+~
+0 0 2405
+W 5 0 0
+Z 5 5
+P
+>data_prog night~
+A great, spiral shell grows out of the ground here.  In the darkness of
+night, it glows with phosphorescent oranges, golds, reds, and even the
+occasional purples or blue.  Home to the bardic conclave known as the
+Ilrel\@sai, it is safely ensconced in a northern fold of Jh\@ten\@s walls. 
+Almost as tall as the ramparts of those same walls, it is surrounded by its
+own constellation of the spirit-lights which drift through the haven\@s
+skies.  Away from the wall to the south lies an extensive network of gardens
+and fountains.  The walls continue to the west, while an unusual path of
+translucent silver winds off to the east towards Jh\@ten\@s center.  The only
+other exit lies up a narrow zig-zagging staircase which has been carved to
+the side of the Ilrel\@sai.  
+~
+>data_prog day~
+A great, spiral shell grows out of the ground here.  Its surface is
+resplendent, almost glowing with striking oranges, golds, reds, and even the
+occasional purples or blue.  Home to the bardic conclave known as the
+Ilrel\@sai, it is safely ensconced in a northern fold of Jh\@ten\@s walls. 
+Almost as tall as the ramparts of those same walls, it is surrounded by a
+flock of the spirit-lights which drift through the haven\@s skies.  Away from
+the wall to the south lies an extensive network of gardens and fountains. 
+The walls continue to the west, while an unusual path of translucent silver
+winds off to the east towards Jh\@ten\@s center.  The only other exit lies up
+a narrow zig-zagging staircase which has been carved to the side of the
+Ilrel\@sai.  
+~
+|
+S
+#2442
+In the Home of the Ilrel\@Sai~
+Home to the bardic conclave known as the Ilrel\@sai, this chamber
+resembles the interior of some great shell.  Phosphorescent walls pulse with
+an internal rhythm, and a spiral path corkscrews up and around, reaching all
+the way to a platform high above.  Most striking is the Aenea, a well dug
+into the surface of Jh\@ten and located directly to the north of here. 
+Spirit-lights jet up in and out of its depths, rising to the top of the
+chamber and then drifting gently down from there.  The chamber is
+acoustically perfect; sound from the top platform sounds as though it is
+inches away, and the beginnings of some deeper notes can be felt through
+vibrations in the floor and air.  A simple archway provides an exit in the
+shell wall to the south, while the spiral path curves around the Aenea,
+eventually ascending to the west.  
+~
+~
+0
+0 2359308 0
+E
+shell~
+The surface of the walls are iridescent -- a mother of pearl type shell,
+replete with oranges, golds, reds, and even the occasional purples or blue. 
+With closer examination, it seems that these colors change not just with the
+angle of view, but also over time -- gently shifting to some internal rhythm
+so that one or another gradually comes to dominate, then fades.  
+~
+E
+walls~
+The surface of the walls are iridescent -- a mother of pearl type shell,
+replete with oranges, golds, reds, and even the occasional purples or blue. 
+With closer examination, it seems that these colors change not just with the
+angle of view, but also over time -- gently shifting to some internal rhythm
+so that one or another gradually comes to dominate, then fades.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse bright white.  They descend and ascend into the Aenea,
+occasionally scattering off the roof high above.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse bright white.  They descend and ascend into the Aenea,
+occasionally scattering off the roof high above.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse bright white.  They descend and ascend into the Aenea,
+occasionally scattering off the roof high above.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse bright white.  They descend and ascend into the Aenea,
+occasionally scattering off the roof high above.  
+~
+E
+well~
+Directly in the center of this chamber is the Aenea, a giant well carved
+in the surface of Jh\@ten.  Spirit-lights by the hundreds stream in and out
+of the hole, providing twinkly illumination for the surrounding area. 
+Peering down the edge of the well, the orange and pink coral walls
+eventually fade out of site -- implying a depth of several hundred feet at
+least.  A gentle, marine zephyr gusts out of the Aenea, carrying with it
+odors of exotic spices and the sea.  Owing to the shape of the spiral
+chamber, every sound made here echoes down the shaft of the well, becoming
+lost in its subterrene deepness.  
+~
+E
+aenea~
+Directly in the center of this chamber is the Aenea, a giant well carved
+in the surface of Jh\@ten.  Spirit-lights by the hundreds stream in and out
+of the hole, providing twinkly illumination for the surrounding area. 
+Peering down the edge of the well, the orange and pink coral walls
+eventually fade out of site -- implying a depth of several hundred feet at
+least.  A gentle, marine zephyr gusts out of the Aenea, carrying with it
+odors of exotic spices and the sea.  Owing to the shape of the spiral
+chamber, every sound made here echoes down the shaft of the well, becoming
+lost in its subterrene deepness.  
+~
+E
+ramp~
+The long, spiral ramp begins here, stretching north and then bending west.  
+~
+E
+archway~
+The archway is a smooth opening in the shell wall, unadorned by any marking 
+~
+E
+platform~
+The platform is high above here, located at the top of the spiraling
+ramp.  From it, you would be able to look directly down onto the Aenea.  
+~
+E
+wall~
+The surface of the walls are iridescent -- a mother of pearl type shell,
+replete with oranges, golds, reds, and even the occasional purples or blue. 
+With closer examination, it seems that these colors change not just with the
+angle of view, but also over time -- gently shifting to some internal rhythm
+so that one or another gradually comes to dominate, then fades.  
+~
+D2
+Gardens and greenspace lie outside the chamber to the south.  
+~
+~
+0 0 2441
+D3
+The long, spiral ramp begins here, stretching north and then ascending
+slightly to the west.  
+~
+~
+0 0 2443
+W 5 0 0
+Z 5 5
+S
+#2443
+A Spiral Path~
+This spiral paths bends and swoops around the walls of this chamber,
+which resembles the interior of some great shell.  Near the empty space in
+the center jets a column of spirit-lights, illuminating everything around
+them.  Looking down, the wispy lights come from a deep well in the surface
+of ground, leading far below Jh\@ten.  Looking up, the lights become less
+frenetic as they hit the ceiling and swirl around a raised platform at the
+very top of the ramp.  The phosphorescent walls are dotted with nearly a
+dozen niches, each wide enough for a man to easily stand.  Listening
+carefully, the low notes of a powerful harmonic sound reverberate around the
+spiral and through those same niches, testament to the perfection of the
+chamber\@s geometry.  From here, the path corkscrews up and to the south, and
+down and to the east.  
+~
+~
+0
+0 2359308 0
+E
+well~
+Directly below you in the center of this chamber is the Aenea, a giant
+well carved in the surface of Jh\@ten.  Spirit-lights by the hundreds stream
+in and out of the hole, providing twinkly illumination for the surrounding
+area.  Such is its depth that eventually the walls fade out of sight,
+pointing to a depth of over several hundred feet.  A gentle, marine zephyr
+gusts out of the Aenea, carrying with it odors of exotic spices and the sea.
+Owing to the shape of the spiral chamber, every sound made here echoes down
+the shaft of the well, becoming lost in its subterrene deepness.  
+~
+E
+aenea~
+Directly below you in the center of this chamber is the Aenea, a giant
+well carved in the surface of Jh\@ten.  Spirit-lights by the hundreds stream
+in and out of the hole, providing twinkly illumination for the surrounding
+area.  Such is its depth that eventually the walls fade out of sight,
+pointing to a depth of over several hundred feet.  A gentle, marine zephyr
+gusts out of the Aenea, carrying with it odors of exotic spices and the sea.
+Owing to the shape of the spiral chamber, every sound made here echoes down
+the shaft of the well, becoming lost in its subterrene deepness.  
+~
+E
+spiral~
+The path follows a spiral pattern as it corkscrews up and down.  
+~
+E
+niches~
+Each of these narrow niches is about two feet wide and about six feet
+tall, with enough space for a ch\@taren to stand comfortably.  The echoes
+that are already strong in the chamber are amplified in the niches, and
+closer examination reveals a network of tubes connecting them together may
+be in part responsible.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse bright white.  They descend and ascend into the Aenea,
+occasionally scattering off the roof high above.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse bright white.  They descend and ascend into the Aenea,
+occasionally scattering off the roof high above.  
+~
+E
+spirit lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse bright white.  They descend and ascend into the Aenea,
+occasionally scattering off the roof high above.  
+~
+E
+walls~
+The surface of the walls are iridescent -- a mother of pearl type shell,
+replete with oranges, golds, reds, and even the occasional purples or blue. 
+With closer examination, it seems that these colors change not just with the
+angle of view, but also over time -- gently shifting to some internal rhythm
+so that one or another gradually comes to dominate, then fades.  
+
+A network of niches dots the wall, each just wide enough to allow someone to
+stand inside.  
+~
+E
+shell~
+The surface of the walls are iridescent -- a mother of pearl type shell,
+replete with oranges, golds, reds, and even the occasional purples or blue. 
+With closer examination, it seems that these colors change not just with the
+angle of view, but also over time -- gently shifting to some internal rhythm
+so that one or another gradually comes to dominate, then fades.  
+
+A network of niches dots the wall, each just wide enough to allow someone to
+stand inside.  
+~
+E
+platform~
+The platform is near the top of the chamber, where the spiraling ramp
+ends.  From it, you would be able to look directly down onto the Aenea.  
+~
+D1
+The path spirals downwards to the south.  
+~
+~
+0 0 2442
+D2
+The path spirals upwards to the south.
+~
+~
+0 0 2444
+W 5 0 0
+Z 5 5
+S
+#2444
+A Spiral Path~
+This spiral paths bends and swoops around the walls of this chamber,
+which resembles the interior of some great shell.  Near the empty space in
+the center jets a column of spirit-lights, illuminating everything around
+them.  Looking down, the wispy lights come from a deep well in the surface
+of ground, leading far below Jh\@ten.  Looking up, the lights become less
+frenetic as they hit the ceiling and swirl around a raised platform at the
+top of the ramp.  Large, silvery fronds grow out of the sides of the chamber
+here, turned into unusual hammocks that dot the nearby walls.  Listening
+carefully, the low notes of a powerful harmonic sound build here,
+reverberating around the spiral, testament to this chamber\@s perfect
+geometry.  The path path corkscrews down to the north, and makes its final
+ascent to the east.  
+~
+~
+0
+0 2359308 0
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse bright white.  They descend and ascend into the Aenea,
+occasionally scattering off the roof high above.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse bright white.  They descend and ascend into the Aenea,
+occasionally scattering off the roof high above.  
+~
+E
+spirit light~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse bright white.  They descend and ascend into the Aenea,
+occasionally scattering off the roof high above.  
+~
+E
+spiral~
+The path follows a spiral pattern as it corkscrews up and down.  
+~
+E
+aenea~
+Directly below you in the center of this chamber is the Aenea, a giant
+well carved in the surface of Jh\@ten.  Spirit-lights by the hundreds stream
+in and out of the hole, providing twinkly illumination for the surrounding
+area.  Such is its depth that eventually the walls fade out of sight,
+pointing to a depth of over several hundred feet.  A gentle, marine zephyr
+gusts out of the Aenea, carrying with it odors of exotic spices and the sea.
+Owing to the shape of the spiral chamber, every sound made here echoes down
+the shaft of the well, becoming lost in its subterrene deepness.  
+~
+E
+well~
+Directly below you in the center of this chamber is the Aenea, a giant
+well carved in the surface of Jh\@ten.  Spirit-lights by the hundreds stream
+in and out of the hole, providing twinkly illumination for the surrounding
+area.  Such is its depth that eventually the walls fade out of sight,
+pointing to a depth of over several hundred feet.  A gentle, marine zephyr
+gusts out of the Aenea, carrying with it odors of exotic spices and the sea.
+Owing to the shape of the spiral chamber, every sound made here echoes down
+the shaft of the well, becoming lost in its subterrene deepness.  
+~
+E
+platform~
+The platform is near the top of the chamber, where the spiraling ramp
+ends.  From it, you would be able to look directly down onto the Aenea.  
+~
+E
+wall~
+The surface of the walls are iridescent -- a mother of pearl type shell,
+replete with oranges, golds, reds, and even the occasional purples or blue. 
+With closer examination, it seems that these colors change not just with the
+angle of view, but also over time -- gently shifting to some internal rhythm
+so that one or another gradually comes to dominate, then fades.  
+
+The shell-like walls have a variety of silvery fronds growing out of them
+here.  Enterprising bards from the Ilrel\@sai have shaped these with time and
+twine into hammocks for sleeping.  
+~
+E
+walls~
+The surface of the walls are iridescent -- a mother of pearl type shell,
+replete with oranges, golds, reds, and even the occasional purples or blue. 
+With closer examination, it seems that these colors change not just with the
+angle of view, but also over time -- gently shifting to some internal rhythm
+so that one or another gradually comes to dominate, then fades.  
+
+The shell-like walls have a variety of silvery fronds growing out of them
+here.  Enterprising bards from the Ilrel\@sai have shaped these with time and
+twine into hammocks for sleeping.  
+~
+E
+shell~
+The surface of the walls are iridescent -- a mother of pearl type shell,
+replete with oranges, golds, reds, and even the occasional purples or blue. 
+With closer examination, it seems that these colors change not just with the
+angle of view, but also over time -- gently shifting to some internal rhythm
+so that one or another gradually comes to dominate, then fades.  
+
+The shell-like walls have a variety of silvery fronds growing out of them
+here.  Enterprising bards from the Ilrel\@sai have shaped these with time and
+twine into hammocks for sleeping.  
+~
+E
+fronds~
+Long, silvery fronds grow out of the shell-like wall.  Still quite alive,
+they have been shaped over time by the bards of the Ilrel\@sai into hammocks.
+About two dozen dangle from various parts of the wall near here, providing
+ready access for the weary.  
+~
+E
+silvery~
+Long, silvery fronds grow out of the shell-like wall.  Still quite alive,
+they have been shaped over time by the bards of the Ilrel\@sai into hammocks.
+About two dozen dangle from various parts of the wall near here, providing
+ready access for the weary.  
+~
+E
+hammocks~
+Long, silvery fronds grow out of the shell-like wall.  Still quite alive,
+they have been shaped over time by the bards of the Ilrel\@sai into hammocks.
+About two dozen dangle from various parts of the wall near here, providing
+ready access for the weary.  
+~
+D0
+The path spirals downwards to the north.
+~
+~
+0 0 2443
+D1
+The path continues its ascent to the east, eventually ending in the
+platform that overlooks the Aenea.  
+~
+~
+0 0 2446
+W 5 0 0
+Z 5 5
+S
+#2446
+A Platform high above the Aenea~
+This platform of coral sits at the top of a winding, spiral path along
+the phosophorescent walls of this chamber.  Looking over the edge of the
+platform provides a view straight down into the Aenea, a fathomless well dug
+in the surface of Jh\@ten.  Despite its immense depths, the Aenea is not at
+all dark.  Spirit-lights stream in and out of the well by the hundreds,
+rising in a column of glittering motes that sparkle with light and then
+scatter like fireflies through the air.  Echoing all around is a permanent
+low harmonic, preserved by the perfect spiral geometry of the chamber.  The
+only exit is to the west, where the path ramps downward to the level below. 
+~
+~
+0
+0 2359338 1
+E
+platform~
+While it is unclear whether this is true coral or not, the edges of this
+platform certainly grow out of the shells that make up the chamber\@s walls,
+and its edges are corrugated and rough.  The actual ground of the platform
+is warm to the touch, and has been sanded smooth.  
+~
+E
+coral~
+While it is unclear whether this is true coral or not, the edges of this
+platform certainly grow out of the shells that make up the chamber\@s walls,
+and its edges are corrugated and rough.  The actual ground of the platform
+is warm to the touch, and has been sanded smooth.  
+~
+E
+well~
+The Aenea is a giant well carved in Jh\@ten.  Spirit-lights by the
+hundreds stream in and out of the hole, revealing walls of orange and gold. 
+Such is its depth that eventually the walls fade out of sight, pointing to a
+depth of over several hundred feet.  A gentle, marine zephyr gusts out of
+the Aenea, carrying with it odors of exotic spices and the sea.  Owing to
+the shape of the spiral chamber, every sound made here echoes and cascades
+down, presumably eventually becoming lost in the subterrene deepness.  
+~
+E
+hole~
+The Aenea is a giant well carved in Jh\@ten.  Spirit-lights by the
+hundreds stream in and out of the hole, revealing walls of orange and gold. 
+Such is its depth that eventually the walls fade out of sight, pointing to a
+depth of over several hundred feet.  A gentle, marine zephyr gusts out of
+the Aenea, carrying with it odors of exotic spices and the sea.  Owing to
+the shape of the spiral chamber, every sound made here echoes and cascades
+down, presumably eventually becoming lost in the subterrene deepness.  
+~
+E
+aenea~
+The Aenea is a giant well carved in Jh\@ten.  Spirit-lights by the
+hundreds stream in and out of the hole, revealing walls of orange and gold. 
+Such is its depth that eventually the walls fade out of sight, pointing to a
+depth of over several hundred feet.  A gentle, marine zephyr gusts out of
+the Aenea, carrying with it odors of exotic spices and the sea.  Owing to
+the shape of the spiral chamber, every sound made here echoes and cascades
+down, presumably eventually becoming lost in the subterrene deepness.  
+~
+E
+spirit-lights~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse bright white.  They descend and ascend into the Aenea,
+occasionally scattering off the roof to drift about the room.  
+~
+E
+spirit-light~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse bright white.  They descend and ascend into the Aenea,
+occasionally scattering off the roof to drift about the room.  
+~
+E
+spirit light~
+The spirit-lights are little gossamer things of light and mist,
+glimmering with a deep inner shine.  They came in a motley variety of shapes
+and sizes, and pulse bright white.  They descend and ascend into the Aenea,
+occasionally scattering off the roof to drift about the room.  
+~
+E
+harmonic~
+The presence of the harmonic is actually visible as a standing wave in
+the path of the spirit-lights as they drift around the chamber.  
+~
+E
+spiral~
+The spiral is nature\@s perfect shape, and this path tries to match one as
+it descends down to ground level and the Aenea.  
+~
+E
+walls~
+The surface of the walls are iridescent -- a mother of pearl type shell,
+replete with oranges, golds, reds, and even the occasional purples or blue. 
+With closer examination, it seems that these colors change not just with the
+angle of view, but also over time -- gently shifting to some internal rhythm
+so that one or another gradually comes to dominate, then fades.  
+~
+E
+uzumaki~
+The spiral is nature\@s perfect shape.
+~
+D3
+The path spirals down to the west.  
+~
+~
+0 0 2444
+W 5 0 0
+Z 5 5
+S
+#2448
+draft Silver Road 3~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 2441
+W 5 0 0
+Z 5 5
+S
+#2449
+draft Silver Road 2~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 2439
+W 5 0 0
+Z 5 5
+S
+#2450
+draft Silver Road 1~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 2436
+W 5 0 0
+Z 5 5
+S
+#2451
+draft Silver Road 4~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#2589
+~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#2590
+~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#2591
+~
+~
+~
+0
+0 4 0
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+O 0 2410 0 2440
+O 0 2410 0 2440
+O 0 2410 0 2440
+O 0 2410 0 2440
+O 0 2410 0 2440
+O 0 2410 0 2440
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

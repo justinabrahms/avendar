@@ -1,0 +1,3476 @@
+#AREADATA
+Name The Tower of Aramril~
+Builders Jolinn Iacobos~
+VNUMs 12050 12099
+Credits {House} Joln/Ramc The Tower of Aramril~
+Danger 2
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+End
+
+
+
+#MOBILES
+V4 12051
+Aranthas titan defender guard houseguard champion~
+Aranthas the Bold~
+Aranthas the Bold stands his watch here, guarding the vault of the Champions.
+~
+Aranthas the Bold stands here, clad in the armor of a Champion of
+Avendar.  One of the last Titans to work actively in the world, he has
+worked tirelessly to aid the Champions in their long battle against evil. 
+The firstborn of the titan king Anirim, he has numbered among the Champions
+since the beginning, and now spends his days defending the tower and Vault. 
+~
+human~
+water scholar~
+ABKTX 0 DFHNZ G 0
+60 60 1d1+11000 0d0+0 5d10+20 holy~
+divine power~
+-20 -20 -20 -20
+ACEFHIK ABLQb
+26 0 0 20 20 0 0 0 0 0 0 0 0 30 20 0 20 0 0 20 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 120 23
+AHMV ABCDEFGHIJK A giant unknown
+>trigger_prog 100~
+//Removed the ghost transfer because it made it hard to loot own corpse
+//Just uncomment the lines below to add it back in.
+if level($n) > 51
+or isnpc($n)
+else
+//if isghost($n)
+//if inhouse($n) == CHAMPION
+//else
+//if rand(20)
+//say Begone, spirit!
+//mpechoaround $n With a rush of air, $N fades from sight!
+//mpechoat $n With a roar, you are blasted from the Dome of the Sun!
+//mptrans $n 3513
+//mpforce $n look
+//endif
+//endif
+//else
+if inhouse($n) == CHAMPION
+else
+mpkill $n 
+endif
+endif
+//endif
+~
+>fight_prog 100~
+mpvalueset 3 100
+mpvaluerand 2 1 50
+if mobvalue(2) == 1
+mpecho Aranthas holds an open palm to $N, and a stream of ice blasts forth!
+mpcast 81 60 
+endif
+if mobvalue(2) == 2
+mpecho Aranthas glares at $N, and their hands are slowly covered in a layer of frost!
+mpcast 341 51
+endif
+if mobvalue(2)==3
+mpecho Aranthas closes his massive hand into a fist, drawing the heat from $N\@s weapon!
+mpcast 340 51
+endif
+if mobvalue(2)==4
+mpecho Aranthas is bathed in a soft blue glow.
+mpcast 34 51
+mpcast 326 51
+endif
+if mobvalue(2)==5
+mpcast 69 51
+endif
+~
+>speech_prog p I want something from the vault~
+if mobvalue(3) > 0
+say Someone has recently attacked the vault, and I\@m still on guard.
+say Ask again after the danger has passed.
+else
+if isinhouse($n)
+if isfocused($i)
+say I\@m sorry, but I\@m busy getting something for $F.
+else
+mpvalueset 0 5
+mpfocus $n
+mpvaultprep $n
+endif
+else
+say The contents of the vault are the property of the Champions, $N!
+endif
+endif
+~
+>speech_prog p I want something from the vault.~
+if mobvalue(3) > 0
+say Someone has recently attacked the vault, and I\@m still on guard.
+say Ask again after the danger has passed.
+else
+if isinhouse($n)
+if isfocused($i)
+say I\@m sorry, but I\@m busy getting something for $F.
+else
+mpvalueset 0 5
+mpfocus $n
+mpvaultprep $n
+endif
+else
+say The contents of the vault are the property of the Champions, $N!
+endif
+endif
+~
+>rand_prog 2~
+if isfocused($i)
+if mobvalue(0) < 0
+tell $f I\@m sorry, but I can\@t afford to wait around for your request any longer. Ask again later.
+mpunfocus
+mpvalueset 0 0
+endif
+endif
+~
+>exit_prog 100~
+if valname($n) == $f
+tell $f I\@m sorry, but I can\@t wait around for your request any longer. Ask again when you have the time.
+mpunfocus
+mpvalueset 0 0
+endif
+~
+>rand_prog 100~
+if isfocused($i)
+if mobvalue(0) == 0
+say I am ready to hear your request.
+mpvaluedown 0
+else
+mpvaluedown 0
+endif
+endif
+if mobvalue(3) > 0
+mpvaluedown 3
+endif
+mproomcmd mptrigger all
+if snaffected($i) == 8
+or snaffected($i) == 104
+or snaffected($i) == 107
+or snaffected($i) == 306
+or snaffected($i) == 58
+or snaffected($i) == 105
+emote utters words of purifying magic.
+mpcast 111 99
+break
+endif
+if snaffected($i) == 236
+or snaffected($i) == 227
+or snaffected($i) == 474
+or snaffected($i) == 233
+or snaffected($i) == 456
+or snaffected($i) == 492
+emote utters words of mending magic.
+mpcast 326 99
+break
+endif
+~
+>give_prog all~
+if islimited($o)
+  mpvaultdrop $o
+else
+  say This item is not worthy of sitting in our vault.
+  give $o $n
+endif
+~
+>greet_prog 100~
+if isimmort($n)
+else
+if isinhouse($n)
+\@Ho, $N!
+else
+if ispc($n)
+yell Intruders in the Tower! To arms! To arms!
+mpforce $n yell Help! I am being attacked by Aranthas the Bold!
+mpkill $n
+ht $N has entered the Dome of the Sun! The vault is threatened! To arms! To arms!
+endif
+endif
+endif
+~
+>speech_prog p Bring me:~
+if isfocused($i)
+if mobvalue(0) > 0 
+say I\@m still sorting through the vault.
+else
+mpvaultgive $f $x
+mpunfocus
+mpvalueset 0 0
+endif
+endif
+~
+>speech_prog p Show me the vault~
+mpvaultshow $n
+ 
+~
+>speech_prog p Show me the vault.~
+mpvaultshow $n
+~
+|
+V4 12052
+guardsman templar guard champion man houseguard ChampST~
+the templar guard~
+A templar of the tower of Aramril stands his guard here.
+~
+Resplendant in a brilliant white tabard edged in blue, this templar
+stands guard at his post within the Tower of Aramril.  He bears in his hand
+a blade formed of shining light, holding it at the ready to defend.  The
+templar\@s armor, gleaming steel chased with gold, is of high quality and
+well cared for, the symbols of the Gods of Light engraved upon it.  
+~
+human~
+water scholar~
+ABD 0 DFJZ G 0
+40 15 17d175+978 1d1+9999 5d6+18 light~
+searing light~
+-15 -15 -15 -5
+FHIKNU AB
+26 0 0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 12052 12053 0 0 0
+stand stand male 90 0
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+mproomcmd mptrigger all
+if rand(10)
+if snaffected($i) == 692
+else
+cast truesight
+break
+endif
+endif
+if rand(50)
+if snaffected($i) == 7
+else
+cast bless
+endif
+endif
+~
+>fight_prog 100~
+if rand(15)
+mpvaluerand 0 1 6
+if mobvalue(0) == 1
+cast \@ray of light\@
+endif
+if mobvalue(0) == 2
+if snaffected($n) == 698
+cast \@ray of light\@
+else
+cast \@wrath of kyana\@
+endif
+endif
+if mobvalue(0) == 3
+if snaffected($n) == 682
+cast \@exorcise\@
+else
+cast \@ray of light\@
+endif
+endif
+if mobvalue(0) == 4
+if israce($n) == demon
+cast \@unshackle\@ $n
+else
+cast \@ray of light\@
+endif
+endif
+if mobvalue(0) == 5
+cast \@ray of light\@
+endif
+if mobvalue(0) == 6
+sortie
+endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 691 100
+mpaddskill $i 687 100
+mpaddskill $i 698 100
+mpaddskill $i 693 100
+mpaddskill $i 688 100
+mpaddskill $i 7 100
+mpaddskill $i 418 100
+mpaddskill $i 692 100
+mpaddskill $i 696 100
+battlecry For Aramril and the Light!
+~
+>trigger_prog 100~
+if cansee($n)
+if level($n) > 51
+or isnpc($n)
+else
+if isghost($n)
+if inhouse($n) == CHAMPION
+else
+endif
+else
+if inhouse($n) == CHAMPION
+else
+mpkill $n 
+endif
+endif
+endif
+endif
+~
+>greet_prog 100~
+if isinhouse($n)
+or isimmort($n)
+else
+if ispc($n)
+yell Intruder in the tower! To arms! To arms!
+if inroom($i) == 12052
+ht $N assaults Aramril!
+endif
+if rand(10)
+cast \@ray of light\@ $n
+else
+mpkill $n
+endif
+else
+if snaffected($n) == 304
+mpforce $n yell Help! I am being attacked by a guardsman!
+mpkill $n
+endif
+endif
+endif
+~
+>greet_prog 100~
+~
+|
+V4 12053
+guardsman templar guard champion man houseguard ChampWT~
+the templar guard~
+A templar of the tower of Aramril stands his guard here.
+~
+Resplendant in a deep blue tabard edged in white, this templar stands
+guard at his post within the Tower of Aramril.  He bears in his hand a
+solid-looking mace, holding it at the ready to defend.  The templar\@s armor,
+gleaming steel chased with gold, is of high quality and well cared for, the
+symbols of the Gods of Light engraved upon it.  
+~
+human~
+water scholar~
+ABD 0 DFHJZ G 0
+35 20 10d120+600 1d1+9999 5d6+18 bash~
+smash~
+-12 -12 -12 -4
+CFHIKU AB
+26 0 0 0 0 0 0 0 25 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 12053 12052 0 0 0
+stand stand male 90 0
+AHMV ABCDEFGHIJK A medium unknown
+>fight_prog 100~
+if rand(17)
+mpvaluerand 0 1 6
+if mobvalue(0) == 1
+cast icebolt
+endif
+if mobvalue(0) == 2
+cast heatsink
+endif
+if mobvalue(0) == 3
+cast \@cone of cold\@
+endif
+if mobvalue(0) == 4
+if hitprcnt($i) < 50
+cast \@cure crit
+else
+cast icebolt
+endif
+endif
+if mobvalue(0) == 5
+if hitprcnt($i) < 70
+cast \@cure crit
+else
+cast \@cone of cold\@
+endif
+endif
+if mobvalue(0) == 6
+if hitprcnt($i) < 80
+cast \@cure crit
+else
+cast \@icebolt
+endif
+endif
+endif
+~
+>rand_prog 100~
+mproomcmd mptrigger all
+if rand(50)
+if snaffected($n) == 119
+if hitprcnt($i) < 90
+cast \@cure crit\@
+else
+endif
+else
+c sanc
+endif
+endif
+~
+>trigger_prog 100~
+if cansee($n)
+if level($n) > 51
+or isnpc($n)
+else
+if isghost($n)
+if inhouse($n) == CHAMPION
+else
+endif
+else
+if inhouse($n) == CHAMPION
+else
+mpkill $n 
+endif
+endif
+endif
+endif
+~
+>greet_prog 100~
+if isinhouse($n)
+or isimmort($n)
+else
+if ispc($n)
+yell Intruder in the tower! To arms! To arms!
+if inroom($i) == 12052
+ht Invaders in the courtyard!
+endif
+if rand(10)
+cast \@icebolt\@ $n
+else
+mpkill $n
+endif
+else
+if snaffected($n) == 304
+mpforce $n yell Help! I am being attacked by a guardsman!
+mpkill $n
+endif
+endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 340 100
+mpaddskill $i 119 100
+mpaddskill $i 34 100
+mpaddskill $i 569 100
+mpaddskill $i 580 100
+~
+|
+V4 12054
+scholar ch\@taren champscholar houseguard~
+a ch\@taren scholar~
+A ch\@taren scholar tends the library of the Champions.
+~
+This slender ch\@taren woman is draped in a gauzy white and blue robe, the
+cuffs of which are edged in golden thread.  Her silver hair is tied back in
+a short ponytail and her like-colored eyes gaze watchfully about the Tower
+library.  The symbols of Rystaia and Jolinn adorn her clothing, a testament
+to her beliefs.  
+~
+ch\@taren~
+water scholar~
+ABD B DFJNUZ G 0
+35 15 10d150+550 1d1+9999 4d7+18 holy~
+wrath~
+-13 -13 -13 -6
+FHK AB
+26 0 0 0 10 0 0 0 0 0 0 0 0 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 80 0
+AHKMV ABCDEFGHIJK AEK medium unknown
+>trigger_prog 100~
+if cansee($n)
+if level($n) > 51
+or isnpc($n)
+else
+if isghost($n)
+if inhouse($n) == CHAMPION
+else
+endif
+else
+if inhouse($n) == CHAMPION
+else
+cast lifebolt $n
+endif
+endif
+endif
+~
+>rand_prog 100~
+if rand(60)
+if hitprcnt($i) < 90
+cast \@cure crit\@
+else
+mproomcmd mptrigger all
+endif
+endif
+~
+>fight_prog 100~
+if rand(33)
+mpvaluerand 0 1 7
+if mobvalue(0) == 1
+if isevil($n)
+cast spiritwrack
+else
+cast \@life bolt
+endif
+endif
+if mobvalue(0) == 2
+if snaffected($n) == 425
+cast \@life bolt
+else
+cast \@spirit block
+endif
+endif
+if mobvalue(0) == 3
+if snaffected($n) == 93
+cast \@manabarbs
+else
+if isevil($n)
+cast spiritwrack
+else
+cast \@life bolt\@
+endif
+endif
+endif
+if mobvalue(0) == 4
+if hitprcnt($i) < 70
+cast \@cure crit
+else
+cast \@life bolt
+endif
+endif
+if mobvalue(0) == 5
+cast subdue
+endif
+if mobvalue(0) == 6
+cast \@cure crit\@
+endif
+if mobvalue(0) == 7
+if hitprcnt($i) < 90
+cast \@cure crit\@
+else
+cast \@life bolt
+endif
+endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 134 100
+mpaddskill $i 131 100
+mpaddskill $i 425 100
+mpaddskill $i 93 100
+mpaddskill $i 421 100
+mpaddskill $i 34 100
+~
+>greet_prog 100~
+if isinhouse($n)
+or isimmort($n)
+else
+if ispc($n)
+yell $N assaults the Library!
+if rand(50)
+mpkill $n
+else
+if rand(60)
+cast subdue $n
+else
+cast \@spirit block\@ $n
+endif
+endif
+endif
+endif
+~
+|
+V4 12055
+gleeman~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+V4 12056
+guard gate man greeter~
+the gate guard~
+A gate guard greets those who come to the tower.
+~
+Dressed in the garb of the Champions of Avendar, this gate guard greets
+those who come to the Tower of Aramril.  
+~
+human~
+water scholar~
+AB B DF G 0
+30 15 13d161+659 0d0+0 5d6+15 slash~
+slash~
+-8 -8 -8 -2
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 85 0
+AHMV ABCDEFGHIJK A medium unknown
+>give_prog stone power crystal large faceted stoneofpower~
+ht $N has given us a Stone of Power.
+say Thank you.
+mpecho At the guard\@s call, a soldier appears. He takes the stone and departs.
+mpat 12067 drop faceted
+~
+>give_prog stone power crystal large faceted~
+ht $N has given us a Stone of Power.
+say Thank you.
+mpecho At the guard\@s call, a soldier appears. He takes the stone and departs.
+mpat 12067 drop faceted
+~
+>greet_prog 100~
+if ispc($n)
+  if isinhouse($n)
+    if snaffected($n) == 198
+      mpechoat $n {YThe gate guard whispers privately \@Welcome to the Tower.\@{n
+    else
+      if isbitset($n) == 12053
+        if sex($n) == 2
+          esay \@snaps to attention, saluting $N\@ Welcome to the Tower of Aramril, Lady $N!
+        else
+          esay \@snaps to attention, saluting $N\@ Welcome to the Tower of Aramril, Lord $N!
+        endif
+      else
+        mpvaluerand 1 1 6
+        if value(1) == 1
+          esay \@nods at $N\@ Welcome to the Tower of Aramril.
+        endif
+        if value(1) == 2
+          esay \@gives a crisp nod\@ Welcome to the Tower of Aramril, $N.
+        endif
+        if value(1) == 3
+          pmote offers $N a small smile in greeting, stiffening to attention.
+        endif
+        if value(1) == 4
+          pmote bows his head respectfully at $N.
+        endif
+      endif
+    endif
+  else
+      if isgood($n)
+        say I\@m sorry, but I can only admit Champions. You\@d best wait here.
+      endif
+    endif
+    if isneutral($n)
+      say I\@m sorry, but you are not a Champion. You\@d best remain here.
+    endif
+    if isevil($n)
+      yell Evil approaches the tower!
+    endif
+endif
+~
+|
+V4 12057
+ealiryon healer~
+Ealiryon~
+Ealiryon Ysandil tends to the chapel here.
+~
+Ealiryon Ysandil tends the chapel of Jolinn in the Tower of Aramril,
+meticulously keeping the sanctity of this place.  A reknowned scholar among
+the Ethron, he has since joined the Champions after his retirement from a
+life of adventuring.  
+ 
+{YEaliryon says \@I can offer my healing to weary travellers\@{x
+ 
+{YEaliryon says \@For healing, simple say \#I require healing.\#\@{x
+{YEaliryon says \@For poison cures, say \#I am poisoned and need it cleansed from my body.\#{x\@
+{YEaliryon says \@For disease cures, say \#I have contracted a disease and need it cured.\#\@
+{YEaliryon says \@For curses, say \#I have been cursed, and ask that you remove it.\#\@
+{YEaliryon says \@For tiredness, say \#I am tired, and need refreshment.\#\@
+{YEaliryon says \@For blindness, say \#I am blind, please restore my sight.\#\@{x
+~
+ethron~
+water scholar~
+ABa B DFHN G 0
+55 25 20d210+1100 0d0+0 5d10+25 cold~
+icy smash~
+-24 -24 -24 -7
+FHK AB
+26 0 0 0 0 0 0 0 25 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 110 0
+AHMVW ABCDEFGHIJKP AJK medium unknown
+>load_prog 100~
+emote murmurs quietly, blessing the chapel.
+mproomaddaffect 691 90 -1 0 0 0
+speak common
+~
+>verb_prog p heal~
+if isinhouse($n)
+  if compstr(2) == 
+    \@I can offer my healing to weary travellers
+    mpecho {x
+    \@For healing, simple say \#I require healing.\#
+    \@For poison cures, say \#I am poisoned and need it cleansed from my body.\#
+    \@For disease cures, say \#I have contracted a disease and need it cured.\#
+    \@For curses, say \#I have been cursed, and ask that you remove it.\#
+    \@For tiredness, say \#I am tired, and need refreshment.\#
+    \@For blindness, say \#I am blind, please restore my sight.\#
+    \@To be brought back from the dead, type \#heal resurrect.\#
+    break
+  endif
+  if compstr(2) == resurrect
+    mpnextinterp
+    break
+  endif
+  if compstr(2) != 
+  or compstr(2) != resurrect
+    mpechoat $n You can\@t do that here.
+else
+say You would attempt to trick me, intruder?
+yell $N assaults the chapel! To arms!
+mpkill $n
+endif
+~
+>load_prog 100~
+speak common
+~
+>speech_prog p I have been cursed, and ask that you remove it.~
+if isinhouse($n)
+if isfocused($i)
+say I am busy tending to another at the moment.
+else
+mpfocus $n
+mpvalueset 0 4
+mpvalueset 1 2
+say I will require time to prepare. Please be patient.
+endif
+else
+say My services are only for Champions, $N.
+endif
+~
+>rand_prog 1~
+if isfocused($i)
+say I\@m afraid I can\@t wait all day, as I have others to care for.
+mpunfocus
+mpvalueset 0 0
+mpvalueset 1 0
+endif
+~
+>exit_prog 100~
+if valname($n) == $f
+tell $f I\@ll have to help you later, as I don\@t have time to wait.
+mpunfocus
+endif
+~
+>rand_prog 100~
+if mobvalue(0) > 0 
+if mobvalue(1)==0
+if isfocused($i)
+say I\@m done preparing. 
+if mobvalue(0)==1
+say Jolinn heal your wounds.
+cast \@heal\@ $f
+mpvalueset 0 0
+endif
+if mobvalue(0)==2
+say Jolinn cleanse the poison from your body.
+cast \@cure poison\@ $f
+mpvalueset 0 0
+endif
+if mobvalue(0)==3
+say Jolinn cure you from the ravages of this disease.
+cast \@cure disease\@ $f
+mpvalueset 0 0
+endif
+if mobvalue(0)==4
+say Jolinn\@s blessing banish this curse.
+cast \@remove curse\@ $f
+mpvalueset 0 0
+endif
+if mobvalue(0)==5
+say Jolinn restore your strength.
+cast \@refresh\@ $f
+mpvalueset 0 0
+endif
+if mobvalue(0)==6
+say Jolinn restore your sight.
+cast \@cure blindness\@ $f
+mpvalueset 0 0
+endif
+endif
+mpunfocus
+endif
+mpvaluedown 1
+endif
+~
+>speech_prog p I am blind, please restore my sight.~
+if isinhouse($n)
+if isfocused($i)
+say I am busy tending to another at the moment.
+else
+mpfocus $n
+mpvalueset 0 6
+mpvalueset 1 3
+say I will require time to prepare. Please be patient.
+endif
+else
+say My services are only for Champions, $N.
+endif
+~
+>speech_prog p I am tired, and need refreshment.~
+if isinhouse($n)
+if isfocused($i)
+say I am busy tending to another at the moment.
+else
+mpfocus $n
+mpvalueset 0 5
+mpvalueset 1 1
+say I will require time to prepare. Please be patient.
+endif
+else
+say My services are only for Champions, $N.
+endif
+~
+>speech_prog p I require healing.~
+if isinhouse($n)
+if isfocused($i)
+say I am busy tending to another at the moment.
+else
+mpfocus $n
+mpvalueset 0 1
+mpvalueset 1 5
+say I will require time to prepare. Please be patient
+endif
+else
+say My services are only for the Champions, $N.
+endif
+~
+>speech_prog p  I have been cursed, and I ask that you remove it.~
+if isinhouse($n)
+if isfocused($i)
+say I am busy tending to another at the moment.
+else
+mpfocus $n
+mpvalueset 0 4
+mpvalueset 1 2
+say I will require time to prepare. Please be patient.
+endif
+else
+say My services are only for Champions, $N.
+endif
+~
+>speech_prog p I have contracted a disease and need it cured.~
+if isinhouse($n)
+if isfocused($i)
+say I\@m busy tending to another at the moment.
+else
+mpfocus $n
+mpvalueset 0 3
+mpvalueset 1 3
+say I will require time to prepare. Please be patient.
+endif
+else
+say My services are only for Champions, $N.
+endif
+~
+>speech_prog p I am poisoned and need it cleansed from my body.~
+if isinhouse($n)
+if isfocused ($i)
+say I\@m busy tending to another at the moment.
+else
+mpfocus $n
+mpvalueset 0 2
+mpvalueset 1 3
+say I will require time to prepare. Please be patient.
+endif
+else
+say My services are only for Champions, $N.
+endif
+~
+|
+V4 12058
+fountainbot~
+the magic of the fountain~
+The fountainbot is here, trickling softly.
+~
+~
+human~
+water scholar~
+ADL 0 DFJLZ N 0
+52 0 1d100+1000 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p drink~
+if compstr(2) == fountain
+or compstr(2) == 
+  if inhouse($n) == CHAMPION
+    if snaffected($n) == 7
+      mpinterpret $n $x
+    else
+      if isbitset($n) == 12050
+        mpvalueset 1 12
+        mpvalueset 0 15
+        if isbitset($n) == 12051
+          mpvalueset 1 14
+          mpvalueset 0 20
+          if isbitset($n) == 12052
+            mpvalueset 1 20
+            mpvalueset 0 26
+            if isbitset($n) == 12053
+              mpvalueset 1 24
+              mpvalueset 0 28
+            endif
+          endif
+        endif
+      endif
+      mpechoat $n You feel the fountain\@s purity invigorate you as you sip from it.
+      mpaddaffect $n 7 $0 $1 18 3 0
+      mpaddaffect $n 7 $0 $1 24 -3 0
+      mpinterpret $n $x
+    endif
+  endif
+  if isevil($n)
+    if snaffected($n) == 39
+      mpinterpret $n $x
+    else
+      mpechoat $n You feel the hand of Jolinn closing about you as you sip the sacred fountain.
+      mpaddaffect $n 39 10 10 18 3 0
+      mpaddaffect $n 39 10 10 24 3 0
+      mpinterpret $n $x
+    endif
+  else
+    mpinterpet $n $x
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+|
+V4 12059
+Antlarus armorer ~
+Antlarus~
+Antlarus works diligently at the forge.
+~
+Antlarus works the forge here in the tower of Aramril, providing basic
+weapons and the like for the Champions.  Once reknowned in Earendam as an
+earth scholar, he now serves as the armorer for the tower of Aramril.  
+ 
+{YAntlarus says \@Why hullo there!\@{X
+{YAntlarus says \@I can make swords, axes, daggers, breastplates, maces, or spears.\@{X
+{YAntlarus says \@If you want me to make, let\@s say, a sword for you, just say{X
+{YAntlarus says \@Could you make a sword for me?{X
+~
+human~
+water scholar~
+ADL J DFJZ G 0
+50 28 20d220+1100 0d0+0 5d13+27 bash~
+pound~
+-22 -22 -22 -9
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 120 0
+AHMV ABCDEFGHIJK A medium unknown
+>data_prog axe~
+emote takes a partially formed axe head from his supply of metal.
+emote takes the axe head with a pair of tongs, and holds it over the hot flame of the forge.
+emote places the axe head on the anvil.
+mpecho Using a smith\@s hammer, Antlarus begins to pound the axe into shape.
+mpecho Done shaping the axe head, Antlarus grabs the axe with the tongs.
+emote plunges the axe head into a trough of water, filling the room with a gout of steam.
+mpecho After the axe head has cooled, Antlarus reaches into the trough and holds it aloft.
+emote leans over the axe head, and attaches a wooden shaft to the base.
+mpecho Antlarus binds the axe and handle together, muttering a soft chant under his breath.
+emote looks over the axe carefully, checking the craftsmanship of his work.
+mpoload 12057
+give axe $f
+mpunfocus
+~
+>data_prog spear~
+emote takes a partially formed spear head from his supply of metal.
+emote takes the spear head with a pair of tongs, and holds it over the hot flame 
+of the forge.
+emote places the spear head on the anvil.
+mpecho Using a smith\@s hammer, Antlarus begins to pound the spear into shape.
+mpecho Done shaping the spear head, Antlarus grabs the axe with the tongs.
+emote plunges the spear head into a trough of water, filling the room with a gout of steam.
+mpecho After the spear head has cooled, Antlarus reaches into the trough and holds it aloft.
+emote leans over the spear head, and attaches a wooden shaft to the base.
+mpecho Antlarus binds the spear and shaft together, muttering a soft chant under his breath.
+emote looks over the spear carefully, checking the craftsmanship of his work.
+mpoload 12059
+give spear $f
+mpunfocus
+~
+>data_prog dagger~
+emote takes a partially formed steel dagger from his supply of weapons.
+emote takes the dagger with a pair of tongs, and holds it over the hot flame of the forge. 
+emote places the red-hot dagger of metal on the anvil.
+mpecho Using a smith\@s hammer, Antlarus begins to pound the dagger into shape.
+mpecho Done shaping the dagger, Antlarus grabs it with the tongs.
+emote plunges the dagger into a trough of water, filling the room with a gout of steam.
+mpecho After the dagger has cooled, Antlarus reaches into the trough and holds it aloft.
+emote leans over the dagger, and mutters a soft mystical chant.
+mpecho The dagger is covered in a soft glow. When the light recedes, it is a finished weapon.
+emote looks over the dagger carefully, checking the craftsmanship of his work.
+mpoload 12056
+give dagger $f
+mpunfocus
+~
+>data_prog armor~
+emote takes a pile of partially formed sheets of steel from a pile of metal.
+emote holds the sheets of metal in the forge with a pair of tongs.
+emote places the red-hot sheets of metal on an anvil.
+mpecho Using a smith\@s hammer, Antlarus begins to pound the sheets into shape.
+mpecho Done shaping the sheets, Antlarus manuevers the still hot metal together into a breastplate.
+emote plunges the breastplate into a trough of water, filling the room with a gout of steam.
+mpecho After the breastplate has cooled, Antlarus reaches into the trough and holds it aloft.
+emote leans over the breastplate, uttering a mystical chant.
+mpecho The breastplate is bathed in a soft glow, which recedes, leaving a polished piece of armor.
+emote looks over the breastplate carefully, examining his craftsmanship.
+endif
+mpoload 12054
+give breastplate $f
+mpunfocus
+~
+>data_prog mace~
+emote takes a partially formed ball of steel from his supply of metal.
+emote takes the ball of metal with a pair of tongs, and holds it over the hot flame of the forge.
+emote places the red-hot ball of metal on the anvil.
+mpecho Using a smith\@s hammer, Antlarus begins to pound the ball into shape.
+mpecho Done shaping the ball into the head of a mace, Antlarus grabs the mace with the tongs.
+mpecho After the head has cooled, Antlarus reaches into the trough and holds it aloft.
+emote leans over the mace head, and attaches a wooden shaft to the base.
+mpecho Antlarus binds the mace and handle together, muttering a soft chant under his breath.
+emote looks over the mace carefully, checking the craftsmanship of his work.
+mpoload 12055
+give mace $f
+mpunfocus
+~
+>data_prog sword~
+emote takes a partially molded sword from a pile of half-finished weapons.
+emote takes the sword and holds it over the hot flame of the forge.
+emote places the red-hot sword on an anvil.
+mpecho Using a smith\@s hammer, Antlarus begins to pound the longsword into shape.
+mpecho Done shaping the sword, Antlarus grabs the still-hot sword with a pair of tongs.
+emote plunges the sword into a trough of water, filling the air with a gout of steam.
+mpecho After the sword has cooled, Antlarus reaches into the trough, and holds the sword aloft.
+emote leans over the still wet sword, chanting to himself in an arcane tongue.
+mpecho The sword gleams and shines under the influence of Antlarus\@ spell, polished by an unseen hand.
+emote looks over the sword carefully, checking the craftsmanship of his work.
+mpoload 12053
+give sword $f
+mpunfocus
+~
+>speech_prog p Could you make a spear for me?~
+if inhouse($n) == CHAMPION
+if isevil($n)
+say How dare one such as yourself ask me for anything!
+mpkill $n
+break
+endif
+else
+say My services are only for Champions.
+break
+endif
+if isfocused($i)
+say I\@m afraid I can only work on one project at a time, $N. 
+else
+mpfocus $n
+say Your spear will be ready in just a bit, $F
+mpsetdata spear
+endif
+~
+>speech_prog p Could you make a axe for me? ~
+if inhouse($n) == CHAMPION
+if isevil($n)
+say How dare one such as yourself ask me for anything!
+mpkill $n
+break
+endif
+else
+say My services are only for Champions.
+break
+endif
+if isfocused($i)
+say I\@m afraid I can only work on one project at a time, $N. 
+else
+mpfocus $n
+say Your axe will be ready in just a bit, $F
+mpsetdata axe
+endif
+~
+>speech_prog p Could you make an axe for me?~
+if inhouse($n) == CHAMPION
+if isevil($n)
+say How dare one such as yourself ask me for anything!
+mpkill $n
+break
+endif
+else
+say My services are only for Champions.
+break
+endif
+if isfocused($i)
+say I\@m afraid I can only work on one project at a time, $N. 
+else
+mpfocus $n
+say Your axe will be ready in just a bit, $F
+mpsetdata axe
+endif
+~
+>speech_prog p Could you make a dagger for me?~
+if inhouse($n) == CHAMPION
+if isevil($n)
+say How dare one such as yourself ask me for anything!
+mpkill $n
+break
+endif
+else
+say My services are only for Champions.
+break
+endif
+if isfocused($i)
+say I\@m afraid I can only work on one project at a time, $N. 
+else
+mpfocus $n
+say Your dagger will be ready in just a bit, $F
+mpsetdata dagger
+endif
+~
+>speech_prog p Could you make a breastplate for me?~
+if inhouse($n) == CHAMPION
+if isevil($n)
+say How dare one such as yourself ask me for anything!
+mpkill $n
+break
+endif
+else
+say My services are only for Champions.
+break
+endif
+if isfocused($i)
+say I\@m afraid I can only work on one project at a time, $N. 
+else
+mpfocus $n
+say Your breastplate will be ready in just a bit, $F
+mpsetdata armor
+endif
+~
+>speech_prog p Could you make a mace for me?~
+if inhouse($n) == CHAMPION
+if isevil($n)
+say How dare one such as yourself ask me for anything!
+mpkill $n
+break
+endif
+else
+say My services are only for Champions.
+break
+endif
+if isfocused($i)
+say I\@m afraid I can only work on one project at a time, $N. 
+else
+mpfocus $n
+say Your mace will be ready in just a bit, $F
+mpsetdata mace
+endif
+~
+>speech_prog p Could you make a sword for me?~
+if inhouse($n) == CHAMPION
+if isevil($n)
+say How dare one such as yourself ask me for anything!
+mpkill $n
+break
+endif
+else
+say My services are only for Champions.
+break
+endif
+if isfocused($i)
+say I\@m afraid I can only work on one project at a time, $N. 
+else
+mpfocus $n
+say Your sword will be ready in just a bit, $F
+mpsetdata sword
+endif
+~
+>rand_prog 75~
+if isfocused($i)
+if ishere($f)
+$d
+mpnextdata
+else
+tell $f I\@m sorry, I\@m too busy with other work to come track you down when I\@m done with your request.
+mpunfocus
+endif
+else
+endif
+~
+|
+V4 12060
+Cavalindra ethron woman~
+Cavalindra~
+Cavalindra tends to the supply room.
+~
+Cavalindra is an unusually thin ethron, dressed in the simple spun
+clothing of the folk of Qilarn.  A noted traveling merchant, she now works
+provisioning the tower of Aramril.  
+~
+ethron~
+water scholar~
+ADL 0 DFJZ G 0
+57 28 20d220+1100 0d0+0 5d13+27 bash~
+pound~
+-22 -22 -22 -9
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 130 0
+AHMW ABCDEFGIJK AJ medium unknown
+>load_prog 100~
+speak common
+~
+>verb_prog p list~
+if inhouse($n) == CHAMPION
+if rand(30)
+say I hate to charge a fellow Champion, but the profits all go toward the orphanage.
+mpinterpret $n $x
+else
+mpinterpret $n $x 
+endif
+else
+if isevil($n)
+say Be off with you, evildoer!
+if rand(30)
+mpmload 12052
+mpforce guard mpkill $n
+endif
+else
+say I only do business with Champions.
+endif
+endif
+~
+>verb_prog p buy~
+if inhouse($n) == CHAMPION
+mpinterpret $n $x
+else
+if isevil($n)
+say Be off with you, evildoer!
+if rand(40)
+mpmload 12052
+mpforce guard mpkill $n
+endif
+else
+say I only do business with Champions.
+endif
+endif
+~
+|
+V4 12061
+champwhore~
+champwhore~
+Champwhore is here, proffering cigars.
+~
+~
+human~
+water scholar~
+ADLX 0 DFJLZ N 0
+1 0 1d10+100 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>exit_prog 100~
+mpunfocus
+~
+>verb_prog p quit~
+mpechoat $n You are whisked away by the magic of the vault to the outside.
+mptransfer $n 3499
+mpinterpret $n $x
+~
+>rand_prog 100~
+if mobvalue(0) > 0
+mpvaluedown 0
+endif
+if mobvalue(0) == 1
+mptransfer $f 12066
+mpat 12066 mpforce $f look
+mpunfocus
+endif
+~
+|
+V4 12062
+lookout bot lookoutbot~
+the lookout~
+The lookout bot is here. Look out!
+~
+~
+human~
+water scholar~
+ADLX 0 DFJLZ N 0
+53 0 1d1+10 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK A medium unknown
+>load_prog 100~
+mpseewizi
+~
+>verb_prog p where~
+mpinterpret $n $x
+mpechoat $n To look out onto the plains, use \@look out\@.
+~
+>verb_prog p look out~
+if isfight($n) 
+mpechoat $n You\@re too busy fighting to look out from the top of the tower!
+else
+mpechoat $n You look out from the top of the tower, scanning the Arien plains. 
+mptrans $n 8891
+mpforce $n where
+mptrans $n 12070
+endif
+~
+|
+V4 12063
+Galyndir Dallan bot galyndirbot mob_12063~
+Galyndir~
+Galyndir Dallan the bot peers down, tipping off his buddies.
+~
+If you can see me, tell the Immortals.
+~
+human~
+water scholar~
+AB B DFLe G 0
+55 25 20d210+1100 0d0+0 5d10+25 bash~
+twirling strike~
+-24 -24 -24 -7
+FHK AB
+26 0 0 0 0 0 0 0 25 0 0 0 0 0 0 0 0 0 0 50 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 110 0
+AHMVW ABCDEFGHIJKP AJK medium unknown
+>exit_prog 100~
+if isinhouse($n)
+or isimmort($n)
+or isnpc($n)
+else
+  if isghost($n)
+    ht $N\@s spirit has departed from the foyer.
+  else
+    ht $N has departed from the foyer.
+  endif
+endif
+~
+>greet_prog 100~
+if isimmort($n)
+or isnpc($n)
+else
+  if isinhouse($n)
+    mpbitset $n 12050 1
+    if isbitset($n) == 12055
+    else
+      ht Welcome to the Tower of Aramril, $N.  
+      ht I am assigned to watch the Foyer and to warn others of the Order should enemies approach.
+      mpbitset $n 12055 1
+    endif
+  else
+    if isghost($n)
+      ht $N\@s spirit approaches the Tower.
+    else
+      ht $N approaches the Tower.
+    endif
+  endif  
+endif
+~
+>load_prog 100~
+induct galyndirbot champion
+~
+|
+V4 12064
+Galyndir Dallan test bot galyndirtestbot mob_12064~
+Galyndirtest~
+Galyndir Dallan the bot peers down, tipping off his buddies.
+~
+If you can see me, tell the Immortals.
+~
+human~
+water scholar~
+AB B DFLe G 0
+55 25 20d210+1100 0d0+0 5d10+25 bash~
+twirling strike~
+-24 -24 -24 -7
+FHK AB
+26 0 0 0 0 0 0 0 25 0 0 0 0 0 0 0 0 0 0 50 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 110 0
+AHMVW ABCDEFGHIJKP AJK medium unknown
+>exit_prog 100~
+mpvalueset 1 1
+mproomcmd mptrigger $n
+~
+>greet_prog 100~
+mpvalueset 1 2
+mproomcmd mptrigger $n
+~
+>trigger_prog 100~
+if isimmort($n)
+or iswizi($n)
+else
+  if isinhouse($n)
+    mpfocus $n
+  endif
+  if isnpc($n)
+    if isfollow($n) == $f
+    else
+      if value(1) == 1
+        ht $N has departed from the foyer. 
+      endif
+      if value(1) == 2
+        ht $N has arrived in the foyer. 
+      endif      
+    endif
+  else
+    if isinhouse($n)
+    else
+      if isghost($n)
+        if value(1) == 1
+          ht $N\@s spirit has departed from the foyer. 
+        endif
+        if value(1) == 2
+          ht $N\@s spirit has arrived in the foyer. 
+        endif 
+      else
+        if value(1) == 1
+          ht $N has departed from the foyer. 
+        endif
+        if value(1) == 2
+          ht $N has arrived in the foyer. 
+        endif 
+      endif
+    endif
+  endif
+endif
+~
+>load_prog 100~
+induct mob_12064 champion
+~
+|
+V4 12066
+aranthas~
+Aranthas the Bold~
+Aranthas the Bold is here, guarding the Tower of Aramril
+~
+Aranthas the Bold stands here, clad in the armor of a Champion of
+Avendar.  One of the last Titans to work actively in the world, he has
+worked tirelessly to aid the Champions in their long battle against evil. 
+The firstborn of the titan king Anirim, he has numbered among the Champions
+since the beginning, and now spends his days defending the tower and Vault. 
+~
+human~
+water scholar~
+ABTX 0 DFHJNVZ G 0
+60 80 50d50+10000 0d0+0 15d30+40 slash~
+slash~
+0 0 0 0
+CEFHIKN AB
+26 0 0 40 40 0 0 0 0 0 0 0 0 40 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 120 0
+AHMV ABCDEFGHIJK ABCDEFHIJK large flesh
+V4 12067
+Akraelyn Champion emeritus trainer train ctrainer gladiator~
+Akraelyn~
+Akraelyn, Son of Jolinn, stands ready to train his fellow Champions.
+~
+A man of middling height, Akraelyn stands resolutely before you.  Broad
+across the shoulders, with well defined muscles, his thick arms are crossed
+with faded scars.  His dark, weather-worn skin is covered loosely by a
+coarse, short-sleeved tunic.  Thick bands of iron are wrapped about his
+forearms, each one engraved with the sign of the Sapphire Spear.  Quiet in
+appearance, he carries himself like a hunted beast, his wary eyes ever
+searching over the surrounding area.  
+
+Closely cut locks of unkempt, greying hair frame his hardened face.  The
+shadow cast by the tired strands falls over a noble brow, which looms
+majestically over his clear green eyes.  Thick, grizzly stubble lines his
+resolute jaw, giving him a rough and disheveled appearance.  Once-full
+cheeks have grown thin, enunciating the authoritative aspect of his chin.  
+
+Now retired from his legendary career, Akraelyn is still renowned for his
+legendary exploits.  A man who began life in the slave pits of Ashta Harrud,
+he escaped to walk the lands of Avendar as a Champion and follower of
+Jolinn.  In time, he came to be leader of his Order, and guided the Tower of
+Aramril through the turbulent years marking the rise of the Coven of the
+Shunned.  From facing the dread Tzet-Sabanthe to his travails in the realm
+of dreams, he proved his mettle time and again as battle leader.  Now, he
+has returned from wandering Avendar as leader emeritus, and trains young
+Champions, putting them through their paces here in the tower garden.  
+~
+human~
+water scholar~
+ADJKLTb B JNZ G 0
+58 100 15000d1+1 1d1+3000 5d12+60 slash~
+slash~
+-28 -28 -28 -28
+AEFIJK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 120 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p yield~
+if isinhouse($n)
+if isfighting($i)
+if isfighting($n)
+mpgoto $n
+emote steps back, fight ending.
+wear weakband
+mpvalueset 0 0
+mpvaluerand 6 1 5
+if mobvalue(6) == 1
+esay \@nods\@ Good job. Nice to see you are improving, $N.
+endif
+if mobvalue(6) == 2
+emote just nods.
+endif
+if mobvalue(6) == 3
+say Always room for improvement, $N.
+endif
+if mobvalue(6) == 4
+say Be more careful, $N. Our enemies won\@t be as forgiving as I.
+endif
+if mobvalue(6) == 5
+say Not too bad. Give it some time.
+endif
+break
+endif
+endif
+endif
+mpinterpret $n $x
+~
+>rand_prog 100~
+if hitprcnt($i) > 40
+mpvalueset 5 0
+mpvalueset 0 0
+endif
+~
+>hitprcnt_prog 40~
+if mobvalue(5) == 0
+if isinhouse($i)
+esay \@winces\@ This is beginning to hurt..
+mpvalueset 1 2
+mpvalueset 5 1
+endif
+endif
+~
+>fight_prog 100~
+if isinhouse($n)
+  if mobvalue(0) == 0
+    esay \@nods\@ Some training, $N? Yield when you want me to stop the fight.
+    mpflag mob self off - kick
+    mpflag mob self off - dirt_kick
+    mpflag mob self off - trip
+    mpflag mob self off - disarm
+    mpvalueset 0 1
+  endif
+else
+  if mobvalue(0) < 2
+    esay \@growls\@ Invaders? We\@ll see about this.
+    mpflag mob self off + kick
+    mpflag mob self off + dirt_kick
+    mpflag mob self off + trip
+    mpflag mob self off + disarm
+    rem weakband
+    mpvalueset 0 2
+  endif
+endif
+if mobvalue(0) == 2
+  if rand(50)
+    if snaffected($n) == 236
+    or israce($n) == shuddeni
+      if rand(25)
+        cross
+      else
+        if rand(25)
+          feint
+        else
+          if rand(25)
+            ca icebolt
+          else
+            disarm
+            bash
+          endif
+        endif
+      endif
+    else
+      gouge
+    endif
+  endif
+endif
+if mobvalue(1) == 2
+  if isinhouse($n)
+    esay \@frowns\@ I need a rest. We stop this fight.
+    mpgoto 12064
+  endif
+endif
+if mobvalue(1) == 1
+  mpvalueup 1
+endif
+if mobvalue(0) == 2
+  remove weakband
+else
+  wear weakband
+endif
+if isinhouse($n)
+else
+  mpvalueset 3 1
+endif
+~
+>load_prog 100~
+mpaddskill $i 437 100
+mpaddskill $i 236 100
+mpaddskill $i 728 100
+mpaddskill $i 560 100
+mpaddskill $i 168 100
+mpoload 12073 on $i 16
+mpoload 12074 on $i
+~
+|
+V4 12068
+newdreambot dreambot newdream~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+AL 0 DFJLPZ N 0
+52 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 50~
+if mobvalue(3) > 1
+mpvaluedown 3
+break
+endif
+if mobvalue(3) == 1
+mpvalueset 0 0
+mpvalueset 1 0
+mpvalueset 3 0
+break
+endif
+if position($f) == 4
+if mobvalue(0) == 0
+mpvaluerand 1 1 4
+if mobvalue(1) == 1
+mpsetdata dreamone
+mpvalueset 0 1
+endif
+if mobvalue(1) == 2
+mpsetdata dreamtwo
+mpvalueset 0 1
+endif
+if mobvalue(1) == 3
+mpsetdata dreamthree
+mpvalueset 0 1
+endif
+if mobvalue(1) == 4
+mpsetdata dreamfour
+mpvalueset 0 1
+endif
+else
+endif
+if mobvalue(0) == 1
+$d
+mpnextdata
+endif
+else
+mpvalueset 0 0
+mpvalueset 1 0
+endif
+~
+>data_prog dreamone~
+tell Jolinn $f is my focus.
+mpechoat $f As you drift off to sleep, you find yourself in the most unusual dream...
+mpechoat $f You race across barren plains, with a tower to your back.
+mpechoat $f In front of you is a sapphire chalice, forever just out of reach.
+mpechoat $f The plains stretch to a forest dripping with blood, which turns into a quiet shack perched atop massive cliffs.
+mpechoat $f As you touch the chalice, it shatters into a thousand pieces, each one reflecting the face of a laughing bard.
+mpvalueset 3 100
+~
+>data_prog dreamfour~
+mpechoat $f As you drift off to sleep, you find yourself in the most unusual dream...
+mpechoat $f A ring of fire cuts through the dark air, but a white light hides behind it.
+mpechoa $f Figures in dark robes step through the ring, and toss a veil onto the night sky, obscuring the moon and stars.
+mpechoat $f A white sword cleaves the veil, and fights a skull which screeches an eldritch song. 
+mpvalueset 3 100
+~
+>data_prog dreamthree~
+mpechoat $f As you drift off to sleep, you find yourself in the most unusual dream...
+mpechoat $f A swarthy gypsy laughs, and a courtesan dances.
+mpechoat $f A golden city on a cold sea houses a lonely man, and a bright flame consumes mountains to the north.
+mpechoat $f You race into a pool of flame, only to be consumed by your own fears.
+mpvalueset 3 100
+~
+>data_prog dreamtwo~
+mpechoat $f As you drift off to sleep, you find yourself in the most unusual dream...
+mpechoat $f Flames dance about snow-covered plains, scorching the ground black.
+mpechoat $f A spear is hurled into the heart of flame, and it is quenched. 
+mpechoat $f The face of the woman you love appears, wreathed in fire, and just as quickly vanishes, and is replaced with the vision of a  white castle in the mountains, empty and abandoned.
+mpvalueset 3 100
+~
+|
+V4 12069
+Kyez-Ralin Kyez Ralin devil fire~
+Kyez-Ralin~
+The fire devil Kyez-Ralin stands here, lighting the room with his flames.
+~
+Kyez-Ralin is a being of pure flame, standing over eight feet tall.  His
+shape is roughly humanoid, but lacks any material form, as it consists
+entirely of a reddish-black flame.  Searing heat radiates out from the
+devil\@s form, extending several feet from the surface of what are already
+red-hot flames.  Golden globes of flickering heat float where eyes should
+be, and tendrils of fire snake out from his body.  
+~
+human~
+water scholar~
+ADLT 0 DFJ E 0
+60 70 20d220+3000 0d0+0 6d10+35 fire~
+flame~
+-24 -24 -24 -24
+FHK ABDHMNOPQT
+26 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 12070
+flame spirit lesser devil~
+a lesser fire devil~
+A lesser fire devil burns through the area.
+~
+This tall, winding pillar of flame blazes without any apparent source of
+fuel.  It has little to mark it as a sentient being at all, save sinister
+black eyes which peer out from the maelstrom of the pillar\@s fire.  
+~
+human~
+water scholar~
+AT 0 DFJZ E 0
+47 60 14d190+1042 0d0+0 5d8+20 fire~
+flame~
+-18 -18 -18 -6
+FHK H
+26 0 0 0 50 0 0 0 0 -35 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>fight_prog 4~
+mpvaluerand 1 1 3
+if mobvalue(1) == 1
+mpcast 63 45
+endif
+if mobvalue(1) == 2
+mpcast 205 35
+endif
+if mobvalue(1) == 3
+mpcast 402 45
+endif
+~
+|
+V4 12071
+Corolon Lanthis thin man artisan architect~
+Corolon Lanthis~
+Corolon Lanthis sits here, engrossed in his work.
+~
+Corolon Lanthis is a tall, thin man, clad in the regal browns and gold of
+a master artisan.  Well into his middle years, Corolon is well-known as one
+of Earendam\@s most respected architects, the expensive trim of his robe and
+his ostentatious accoutrements underscoring his financial as well as
+artistic success.  
+~
+human~
+water scholar~
+ADL 0 DFJ N 0
+35 30 12d80+1231 0d0+0 5d6+18 bash~
+pound~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 0
+AHMV ABCDEFGHIJK 0 medium flesh
+>speech_prog house~
+look $n
+say You\@re interested in purchasing a house, you say?  Well, you\@ve certainly come to the right place.
+say I work for the Earendam Builders Council, collecting fees for both land and building purchases.
+say For the sum of 10,000 gold coins, the Builders Council will arrange for you a plot of land on the Avendarian countryside, and will take care of building a modest home for you.
+say You may choose to have your abode built anywhere about, within reason you understand, though the final decision on location does reside at the will of the Council.
+say If this sounds like something that would interest you, please hand me the appropriate fee, and I will contact the Council on your behalf to begin the process.
+~
+>bribe_prog 100~
+smile $n
+esay \@says cheerfully\@ An excellent decision, $N!  An excellent decision indeed!
+esay continues I am sure you\@ll be quite pleased with your purchase.
+say I will contact the builders\@ council immediately, and one of them will be in touch with you shortly to arrange the details of this transaction.
+emote pulls out a heavily runed box from behind the counter, and opens the ornate lid.
+emote places the coins inside, closes the lid, and chants softly.
+echo The heavily runed box glows brightly.
+emote replaces the box under the counter.
+say There we are, safe and sound.  Now have a good day, and someone will contact you.  I can\@t say how long for sure, the builders council is notoriously slow at times.
+mptakecoins self 1000000
+note to aeolis
+note subject ** $N has purchased a HOUSE! **
+note + $N has paid the neccessary fees for purchasing a house.
+note send
+~
+|
+#0
+
+
+
+#OBJECTS
+V12
+12051
+sapphire star champsapphire~
+a star sapphire~
+An exquisite star sapphire rests on the floor.~
+~
+sapphire~
+treasure QU 0 A
+0 0 0 0 0
+51 0 0 0 P
+0
+E
+star~
+Exquisitely crafted, this gem hums with a strange power.  Under the
+surface of the stone, the words \@Zilba Cilath\@ seem to float, a shimmering
+white against a blue background.  
+~
+E
+sapphire~
+Exquisitely crafted, this gem hums with a strange power.  Under the
+surface of the stone, the words \@Zilba Cilath\@ seem to float, a shimmering
+white against a blue background.  
+~
+>speech_prog p Zilba Cilath~
+if isinhouse($n)
+if isowner($n)
+opechoat $n The sapphire fails to respond to you.
+endif
+else
+if isowner($n)
+if inroom($n) == 12066
+opechoat $n The walls of the vault turn misty as you are drawn inward.
+opechoaround $n The walls of the vault grow misty, and $N is drawn inward.
+optransfer $n 12067
+opforce $n look
+opat 12067 opforce champwhore mpfocus $n
+opat 12067 opforce champwhore mpvalueset 0 35
+opforce $n drop champsapphire
+endif
+endif
+endif
+~
+|
+V12
+12052
+fountain crystal crystalline gushing ~
+the crystalline fountain~
+A crystalline fountain gushes pure water high into the air.~
+~
+unknown~
+fountain Oa 0 0
+-1 -1 'water' 0 0
+0 0 0 5 P
+0
+E
+crystal~
+Its base carved from pure crystal, pure water gushes out of this fountain
+high into the air.  
+~
+E
+crystalline~
+Its base carved from pure crystal, pure water gushes out of this fountain
+high into the air.  
+~
+E
+crystalline~
+~
+E
+fountain~
+Its base carved from pure crystal, pure water gushes out of this fountain
+high into the air.  
+~
+V12
+12053
+longsword sword crested aramril~
+a crested longsword~
+A sword crested with the sign of Aramril rests on the ground.~
+~
+steel~
+weapon KL 0 AN
+sword 4 8 3 0
+slash~
+25 120 0 2 P
+0
+A
+19 1
+A
+18 1
+A
+1 1
+E
+crest~
+The crest of Aramril depicts a morning glory, framed by a horizontal
+spear.  
+~
+E
+crested~
+This longsword is forged from sturdy Brintor steel.  The base of the
+hilt is molded into the crest of Aramril.  
+~
+E
+sword~
+This longsword is forged from sturdy Brintor steel.  The base of the
+hilt is molded into the crest of Aramril.  
+~
+E
+longsword~
+This longsword is forged from sturdy Brintor steel.  The base of the
+hilt is molded into the crest of Aramril.  
+~
+>wear_prog 100~
+if inhouse($n) == CHAMPION
+else
+opechoat $n You are zapped by $I and drop it.
+opechoaround $n $N is zapped by $I and drops it.
+opzap
+endif
+~
+|
+V12
+12054
+breastplate plate steel engraved~
+an engraved steel breastplate~
+An engraved steel breastplate lies on the ground.~
+~
+steel~
+armor IKL 0 AD
+6 6 6 2 0
+25 170 0 2 P
+0
+A
+19 2
+A
+13 15
+E
+crest~
+The crest of Aramril depicts a morning glory, framed by a horizontal
+spear.  
+~
+E
+steel~
+Forged from sturdy steel, this breastplate is engraved with the crest of
+Aramril.  
+~
+E
+plate~
+Forged from sturdy steel, this breastplate is engraved with the crest of
+Aramril.  
+~
+E
+breastplate~
+Forged from sturdy steel, this breastplate is engraved with the crest of
+Aramril.  
+~
+E
+engraved~
+Forged from sturdy steel, this breastplate is engraved with the crest of
+Aramril.  
+~
+>wear_prog 100~
+if inhouse($n) == CHAMPION
+else
+opechoat $n You are zapped by $I and drop it.
+opechoaround $n $N is zapped by $I and drops it.
+opzap
+endif
+~
+|
+V12
+12055
+mace steel crested~
+a crested steel mace~
+A crested steel mace lies on the ground.~
+~
+steel~
+weapon KL 0 AN
+mace 4 8 1 0
+crush~
+25 120 0 2 P
+0
+A
+19 1
+E
+aramril~
+The crest of Aramril depicts a morning glory, framed by a horizontal
+spear.  
+~
+E
+crest~
+The crest of Aramril depicts a morning glory, framed by a horizontal
+spear.  
+~
+E
+crested~
+This mace is forged from sturdy Brintor steel.  The base of the shaft is
+molded into the crest of Aramril.  
+~
+E
+steel~
+This mace is forged from sturdy Brintor steel.  The base of the shaft is
+molded into the crest of Aramril.  
+~
+E
+mace~
+This mace is forged from sturdy Brintor steel.  The base of the shaft is
+molded into the crest of Aramril.  
+~
+>wear_prog 100~
+if inhouse($n) == CHAMPION
+else
+opechoat $n You are zapped by $I and drop it.
+opechoaround $n $N is zapped by $I and drops it.
+opzap
+endif
+~
+|
+V12
+12056
+dagger crested steel~
+a crested steel dagger~
+A crested steel dagger lies on the ground.~
+~
+steel~
+weapon KL 0 AN
+dagger 4 8 2 0
+stab~
+25 60 0 1 P
+0
+A
+13 3
+A
+12 10
+E
+aramril~
+The crest of Aramril depicts a morning glory, framed by a horizontal
+spear.  
+~
+E
+crest~
+The crest of Aramril depicts a morning glory, framed by a horizontal
+spear.  
+~
+E
+crested~
+This dagger is forged from sturdy Brintor steel.  The base of the hilt is
+molded into the crest of Aramril.  
+~
+E
+steel~
+This dagger is forged from sturdy Brintor steel.  The base of the hilt is
+molded into the crest of Aramril.  
+~
+E
+dagger~
+This dagger is forged from sturdy Brintor steel.  The base of the hilt is
+molded into the crest of Aramril.  
+~
+>wear_prog 100~
+if inhouse($n) == CHAMPION
+else
+opechoat $n You are zapped by $I and drop it.
+opechoaround $n $N is zapped by $I and drops it.
+opzap
+endif
+~
+|
+V12
+12057
+axe crested steel~
+a crested steel axe~
+A crested steel axe lies on the ground.~
+~
+steel~
+weapon KL 0 AN
+axe 4 8 3 0
+chop~
+25 130 0 2 P
+0
+A
+19 1
+A
+1 1
+E
+aramril~
+The crest of Aramril depicts a morning glory, framed by a horizontal
+spear.  
+~
+E
+crest~
+The crest of Aramril depicts a morning glory, framed by a horizontal
+spear.  
+~
+E
+crested~
+This axe is forged from sturdy Brintor steel.  The base of the haft is
+molded into the crest of Aramril.  
+~
+E
+steel~
+This axe is forged from sturdy Brintor steel.  The base of the haft is
+molded into the crest of Aramril.  
+~
+E
+axe~
+This axe is forged from sturdy Brintor steel.  The base of the haft is
+molded into the crest of Aramril.  
+~
+>wear_prog 100~
+if inhouse($n) == CHAMPION
+else
+opechoat $n You are zapped by $I and drop it.
+opechoaround $n $N is zapped by $I and drops it.
+opzap
+endif
+~
+|
+V12
+12058
+bag sleeping white cloth soft~
+a white cloth sleeping bag~
+A sleeping bag made of soft white cloth lies here.~
+~
+cloth~
+furniture DIS 0 A
+1 5000 BEIL 125 120
+1 20 3000 1 P
+0
+E
+bag~
+This white sleeping bag is made from soft white cloth.  Inside it,
+healing runes have been sewn into the cloth with blue thread.  
+~
+E
+sleeping~
+This white sleeping bag is made from soft white cloth.  Inside it,
+healing runes have been sewn into the cloth with blue thread.  
+~
+E
+white~
+This white sleeping bag is made from soft white cloth.  Inside it,
+healing runes have been sewn into the cloth with blue thread.  
+~
+E
+cloth~
+This white sleeping bag is made from soft white cloth.  Inside it,
+healing runes have been sewn into the cloth with blue thread.  
+~
+E
+soft~
+This white sleeping bag is made from soft white cloth.  Inside it,
+healing runes have been sewn into the cloth with blue thread.  
+~
+>wear_prog 100~
+if inhouse($n) == CHAMPION
+else
+opechoat $n You are zapped by $I and drop it.
+opechoaround $n $N is zapped by $I and drops it.
+opzap
+endif
+~
+|
+V12
+12059
+spear steel-tipped steel~
+a steel-tipped spear~
+A steel-tipped spear lies on the ground.~
+~
+steel~
+weapon KL 0 AN
+spear 4 8 2 F
+stab~
+25 120 2000 3 P
+0
+A
+18 2
+E
+steel~
+This spear is made of stout oak, topped with a sharp steel tip.  
+~
+E
+steel-tipped~
+This spear is made of stout oak, topped with a sharp steel tip.  
+~
+E
+spear~
+This spear is made of stout oak, topped with a sharp steel tip.  
+~
+>wear_prog 100~
+if inhouse($n) == CHAMPION
+else
+opechoat $n You are zapped by $I and drop it.
+opechoaround $n $N is zapped by $I and drops it.
+opzap
+endif
+~
+|
+V12
+12060
+rations iron~
+some iron rations~
+Some packed iron rations lie on the ground.~
+~
+unknown~
+food 0 0 AO
+50 50 0 0 0
+1 20 60 1 P
+0
+E
+iron~
+These iron rations are wrapped in the enormous leaf of an ironwood. 
+Inside are a loaf of hardbread, along with some dried meat.  
+~
+E
+rations~
+These iron rations are wrapped in the enormous leaf of an ironwood. 
+Inside are a loaf of hardbread, along with some dried meat.  
+~
+V12
+12061
+waterskin bladder~
+a waterskin bladder~
+A waterskin bladder lies on the ground.~
+~
+hide~
+drink 0 0 AO
+150 150 'water' 0 0
+1 40 35 1 P
+0
+E
+waterskin~
+This waterskin is made from the bladder of a goat, and is designed for
+use on long journies.  
+~
+E
+bladder~
+This waterskin is made from the bladder of a goat, and is designed for
+use on long journies.  
+~
+V12
+12062
+torch pine pitch~
+a pine torch~
+A pine torch lies on the ground.~
+~
+wood~
+light A 0 AO
+0 0 400 0 0
+1 10 30 1 P
+0
+E
+pine~
+Made from a carved pine branch, the tip of this torch is dipped in
+long-burning pitch.  
+
+But indeed, what can one really tell from a torch just by looking at it so
+offhandedly?  One must take the time to appreciate the fine pine wood of
+this stalwart torch, harvested by a blessed saw by a high priest of Jolinn
+himself.  It was obviously stripped lovingly of its bark and leaves with the
+utmost care and the most practiced of hands, the work worthy of a demi-god;
+such is its perfection.  
+
+The pitch itself is of the most stunning of quality.  Made from pitch,
+plaster and linseed oil laced with faint traces of lavender for a pleasing
+scent, any lord would be proud to bear a torch adorned with such.  No doubt
+some magic was involved in its creation, so long-burning is the dark
+mixture.  
+
+Ah.  A pine torch.  And what a pine torch it is.  
+~
+E
+torch~
+Made from a carved pine branch, the tip of this torch is dipped in
+long-burning pitch.  
+
+But indeed, what can one really tell from a torch just by looking at it so
+offhandedly?  One must take the time to appreciate the fine pine wood of
+this stalwart torch, harvested by a blessed saw by a high priest of Jolinn
+himself.  It was obviously stripped lovingly of its bark and leaves with the
+utmost care and the most practiced of hands, the work worthy of a demi-god;
+such is its perfection.  
+
+The pitch itself is of the most stunning of quality.  Made from pitch,
+plaster and linseed oil laced with faint traces of lavender for a pleasing
+scent, any lord would be proud to bear a torch adorned with such.  No doubt
+some magic was involved in its creation, so long-burning is the dark
+mixture.  
+
+Ah.  A pine torch.  And what a pine torch it is.  
+~
+V12
+12063
+backpack pack white canvas sturdy~
+a white canvas backpack~
+A sturdy backpack lies here, canvas dyed white.~
+~
+cloth~
+container IKS 0 AK
+400 A 0 50 35
+40 50 5000 2 P
+0
+E
+backpack~
+This sturdy backpack is made of white-dyed canvas cloth.  Blue runes are
+stiched aside the seams of this well-crafted pack.  The flap, which allows
+the backpack to be closed, bears a beautifully sewn rose-entwined sapphire
+spear.  
+~
+E
+pack~
+This sturdy backpack is made of white-dyed canvas cloth.  Blue runes are
+stiched aside the seams of this well-crafted pack.  The flap, which allows
+the backpack to be closed, bears a beautifully sewn rose-entwined sapphire
+spear.  
+~
+E
+white~
+This sturdy backpack is made of white-dyed canvas cloth.  Blue runes are
+stiched aside the seams of this well-crafted pack.  The flap, which allows
+the backpack to be closed, bears a beautifully sewn rose-entwined sapphire
+spear.  
+~
+E
+canvas~
+This sturdy backpack is made of white-dyed canvas cloth.  Blue runes are
+stiched aside the seams of this well-crafted pack.  The flap, which allows
+the backpack to be closed, bears a beautifully sewn rose-entwined sapphire
+spear.  
+~
+E
+sturdy~
+This sturdy backpack is made of white-dyed canvas cloth.  Blue runes are
+stiched aside the seams of this well-crafted pack.  The flap, which allows
+the backpack to be closed, bears a beautifully sewn rose-entwined sapphire
+spear.  
+~
+V12
+12064
+twice-blessed gloves twice blessed chainmail pair~
+a pair of twice-blessed gloves~
+A pair of blessed chainmail gloves lies here.~
+~
+steel~
+armor BKL 0 AHP
+10 10 10 7 0
+52 30 50000 1 P
+1
+A
+19 3
+A
+18 3
+E
+pair~
+These gloves are made from chainmail and burnished leather.  Emblazoned
+on their backs are the symbols of a pegasus in flight and a golden hand.  
+~
+E
+chainmail~
+These gloves are made from chainmail and burnished leather.  Emblazoned
+on their backs are the symbols of a pegasus in flight and a golden hand.  
+~
+E
+blessed~
+These gloves are made from chainmail and burnished leather.  Emblazoned
+on their backs are the symbols of a pegasus in flight and a golden hand.  
+~
+E
+twice~
+These gloves are made from chainmail and burnished leather.  Emblazoned
+on their backs are the symbols of a pegasus in flight and a golden hand.  
+~
+E
+gloves~
+These gloves are made from chainmail and burnished leather.  Emblazoned
+on their backs are the symbols of a pegasus in flight and a golden hand.  
+~
+E
+twice-blessed~
+These gloves are made from chainmail and burnished leather.  Emblazoned
+on their backs are the symbols of a pegasus in flight and a golden hand.  
+~
+>remove_prog 100~
+opechoat $o You feel yourself slow down.
+opechoat $o You feel less holy.
+opremaffect 76
+opremaffect 7
+opremaffect 7
+~
+>wear_prog 100~
+if inhouse($n) == champion
+opechoat $o You feel yourself moving more quickly.
+opechoat $o You feel holy and pure.
+if snaffected($n) == 76
+else
+opaddaffect 76 51 -1 2 4 2097152
+endif
+if snaffected($n) == 7
+else
+opaddaffect 7 51 -1 18 7 0
+opaddaffect 7 51 -1 24 -7 0
+endif
+else
+opzap $n
+endif
+~
+|
+V12
+12065
+ch\@lonin sword blade gold golden~
+a ch\@lonin sword~
+A translucent gold sword lies here.~
+~
+unknown~
+weapon AKLa 0 ANP
+sword 8 6 15 0
+searing light~
+52 170 520000 2 P
+1
+A
+24 -2
+E
+ch\@lonin~
+Made from a solid piece of the legendary ch\@lonin, this sword is a
+delicate shade of translucent gold.  A soft yellow glow emanates from the
+entire blade, and the silver hilt tingles with magical energy.  
+~
+E
+blade~
+Made from a solid piece of the legendary ch\@lonin, this sword is a
+delicate shade of translucent gold.  A soft yellow glow emanates from the
+entire blade, and the silver hilt tingles with magical energy.  
+~
+E
+sword~
+Made from a solid piece of the legendary ch\@lonin, this sword is a
+delicate shade of translucent gold.  A soft yellow glow emanates from the
+entire blade, and the silver hilt tingles with magical energy.  
+~
+E
+gold~
+Made from a solid piece of the legendary ch\@lonin, this sword is a
+delicate shade of translucent gold.  A soft yellow glow emanates from the
+entire blade, and the silver hilt tingles with magical energy.  
+~
+E
+golden~
+Made from a solid piece of the legendary ch\@lonin, this sword is a
+delicate shade of translucent gold.  A soft yellow glow emanates from the
+entire blade, and the silver hilt tingles with magical energy.  
+~
+>wear_prog 100~
+if isgood($n)
+else
+  opzap $n
+endif
+~
+>rand_prog 50~
+if isworn($o)
+if rand(8)
+opvaluerand 0 1 2
+if objvalue(0) == 1
+if snaffected($o) == 416
+else
+opechoat $o Energy courses through the sword, and your spirit soars!
+opcast 416 51
+endif
+endif
+if objvalue(0) == 2
+if snaffected($o) == 108
+else
+opechoat $o A warm, golden glow radiates from the sword, briefly surrounding you in its aura. 
+opechoaround $o A warm, golden glow briefly radiates from $O\@s sword.
+opcast 108 51
+endif
+endif
+endif
+endif
+if isworn($o)
+if roomaffected($o) == 681
+or roomaffected($o) == 598
+if snaffected($o) == 697
+else
+opechoat $o Your sword emits a blinding pulse of light, illuminating the room!
+opecharound $o $o\@s sword emits a blinding pulse of light, illuminating the room!
+opcast 697 51
+endif
+endif
+endif
+~
+>fight_prog 3~
+if isworn($o)
+if israce($n) == SHUDDENI
+opechoat $n An angry ray of light wells up from the ch\@lonin blade, {rBLASTING{x you!
+opechoaround $n An angry ray of light wells up from the ch\@lonin sword, {rBLASTING{x $N!
+opdamage $n 1 75 150
+else
+opechoat $n A ray of light wells up from the ch\@lonin blade, {rBLASTING{x you!
+opechoaround $n A ray of light wells up from the ch\@lonin sword, {rBLASTING{x $N!
+opdamage $n 1 75 90
+endif
+endif
+~
+|
+V12
+12066
+mace solid solid-looking steel~
+a solid-looking steel mace~
+A solid-looking steel mace is here.~
+~
+steel~
+weapon IKLNP 0 AN
+mace 5 6 1 0
+smash~
+35 120 0 2 P
+0
+V12
+12067
+blade shining light~
+a blade of shining light~
+A blade of shining light is here.~
+~
+energy~
+weapon IKLNPS 0 AN
+sword 5 6 15 0
+searing light~
+40 1 0 2 P
+0
+V12
+12068
+staff wood ivory-colored ivory~
+a staff of ivory-colored wood~
+A staff of ivory-colored wood lies here.~
+As any fool could see, this staff is made from magically bleached ash.  I
+mean, you knew it.  Certainly your groupmates did, right?  What?  Did they
+think it came from an ivorywood tree?  How silly.  I bet they believe in
+owlbears too.  Hah.  Ivorywood trees indeed.  
+
+Oh, and it also appears to have holy blessings upon it, making its blows
+felt more within the soul than the flesh.  
+~
+wood~
+weapon IKLNPS 0 AN
+exotic 4 7 10 F
+wrath~
+35 50 0 2 P
+0
+E
+staff~
+This staff is made from a snowy white wood and tingles with energy to the
+very touch.  
+~
+E
+wood~
+This staff is made from a snowy white wood and tingles with energy to the
+very touch.  
+~
+E
+ivory-colored~
+This staff is made from a snowy white wood and tingles with energy to the
+very touch.  
+~
+E
+ivory~
+This staff is made from a snowy white wood and tingles with energy to the
+very touch.  
+~
+V12
+12069
+chair oak table~
+a chair at the massive oak table~
+One of the many chairs surrounding the oak table sits here.~
+~
+wood~
+furniture Se 0 P
+30 300000 BEHK 100 100
+60 40 0 3 P
+0
+V12
+12070
+cot bunk bed barracks~
+one of the many cots and bunks~
+Rows and rows of cots and bunks fill this room.~
+~
+cloth~
+furniture Se 0 P
+30 10000 BEHK 140 120
+60 500 0 3 P
+0
+V12
+12071
+low dining table~
+a low wooden dining table~
+Low wooden dining tables are arranged casually about the room, benches to s~
+~
+wood~
+container Se 0 P
+4000 0 0 200 100
+60 500 0 4 P
+0
+V12
+12072
+bench benches wooden~
+a wooden bench at the table~
+Wooden benches sit by the tables.~
+~
+wood~
+furniture Se 0 P
+20 3000 BEHK 90 90
+60 400 0 3 P
+0
+V12
+12073
+padded net weakband~
+a padded net~
+A padded net lies here.~
+~
+cloth~
+net HIKLNPSZa 0 AO
+0 0 0 0 0
+60 0 0 0 P
+100
+A
+18 -30
+A
+19 -50
+E
+net~
+This net is marked with runes of reverse protection.
+~
+E
+padded~
+This net is marked with runes of reverse protection.
+~
+#0
+
+
+
+#ROOMS
+#12050
+Barracks~
+This room is much longer than it is wide, stretching a long ways both
+north and south.  The room is filled with rows and rows of cots and bunks,
+but otherwise is very sparsely furnished.  A small hearth on the south wall
+provides warmth, and the only exit lies north.  
+~
+~
+1
+0 42 0
+D0
+A three-way junction lies to the north.
+~
+~
+0 0 12053
+M 110 H 130 V 100
+C CHAMPION~
+S
+#12051
+Foyer of the Tower of Aramril~
+Carved from light-yellow stones, this enclosed room is the foyer to the
+Tower of Aramril, home of the Champions of the Light.  Bright wall hangings
+adorn the east and west walls, depicting scenes and symbols from the history
+of the Champions.  The courtyard of the tower opens to the north, while a
+raised iron portcullis provides egress to the south.  
+~
+~
+1
+0 42 0
+E
+symbols~
+There are many symbols present here, a great many of them the religious
+sigils of deities, or the standards of houses from bygone days.  Most
+attention has been paid to renditions of a sapphire spear, a red rose, a
+starry sky, and a golden pegasus.  
+~
+E
+scenes~
+The scenes are numerous and varying, but there are a few notable ones. 
+Three humans lead an army of aelin and their own kind against a horde of
+srryn, the tower is defended in a desperate battle against the shuddeni and
+their minions, and a great void dragon is defeated by magics of spirit in a
+fight atop the tower.  
+~
+D0
+The tower\@s courtyard lies to the north.
+~
+~
+0 0 12052
+D2
+The Arien plains stretch off into the distance outside of the tower.
+~
+~
+0 0 8884
+C CHAMPION~
+S
+#12052
+Courtyard~
+Exits lead off in the cardinal directions from the courtyard.  A tall
+ceiling arches overhead, giving an already large area the impression of
+immense size.  Small stone benches dot the cobblestone floor, offering a
+resting place here in the center of the tower.  
+~
+~
+1
+0 42 0
+D0
+A stairwell lies to the north.
+~
+~
+0 0 12059
+D1
+A three-way junction lies to the east.
+~
+~
+0 0 12053
+D2
+The foyer to the tower lies to the south.
+~
+~
+0 0 12051
+D3
+A three-way junction lies to the west.
+~
+~
+0 0 12056
+C CHAMPION~
+S
+#12053
+A Three-Way Junction~
+The courtyard from the east narrows here, walls to the north and south
+sloping inward.  Northward, you can make out the sounds of metal being
+pounded and a faint smell of ash.  To the south, scuff marks on the floor
+indicate a room which sees a considerable amount of traffic.  
+~
+~
+1
+0 42 0
+D0
+An armory lies to the north.
+~
+~
+0 0 12055
+D2
+The barracks lie to the south.
+~
+~
+0 0 12050
+D3
+A courtyard lies to the west.
+~
+~
+0 0 12052
+C CHAMPION~
+S
+#12055
+Armory~
+Most of this stone room is taken up by a massive forge.  Wooden crates
+line the east wall, most fill with the coal used as fuel for the fire.  A
+small chimney directs soot and ash out of the room, but does little to abate
+the heat.  In the center of the room is a large anvil, littered with a
+blacksmith\@s tools.  Finished weapons hang on the east wall, near the
+buckets of water used for quenching metal.  The only exit lies to the south,
+through a small doorway into a larger area.  
+~
+~
+1
+0 42 0
+D2
+A three-way junction lies to the south.
+~
+~
+0 0 12053
+C CHAMPION~
+S
+#12056
+A Three-Way Junction~
+The courtyard from the west narrows here, walls to the north and south
+sloping inward.  A small room lies to the north, while from the south comes
+the sounds of a large number of people.  
+~
+~
+1
+0 42 0
+D0
+A store room lies to the north.
+~
+~
+0 0 12058
+D1
+The tower\@s courtyard lies to the east.
+~
+~
+0 0 12052
+D2
+The dining hall lies to the south.
+~
+~
+0 0 12057
+C CHAMPION~
+S
+#12057
+The Dining Hall~
+This large chamber is filled with low wooden dining tables, arranged
+casually about the room.  An enormous hearth provides warmth for the room,
+as well as a place for gathering after dinner.  The only exit is north,
+where the dining hall ends.  
+~
+~
+1
+0 42 0
+D0
+A three-way junction lies to the north.
+~
+~
+0 0 12056
+C CHAMPION~
+S
+#12058
+The Store Room~
+Lined with wooden shelves, this room is filled with provisions and other
+general supplies.  Barrels and barrels of salted meats, flour, and wine are
+stacked at the end of the room, indicating a larder that is suprisingly well
+stocked.  
+~
+~
+1
+0 42 0
+D2
+A three-way junction lies to the south.
+~
+~
+0 0 12056
+C CHAMPION~
+S
+#12059
+Stairwell~
+A stone stairwell zigzags its way up the side of the north wall, leading
+up to the second floor of the tower.  A landing provides access to the
+stairs here, while a large courtyard lies south.  
+~
+~
+1
+0 42 0
+D2
+The tower\@s courtyard lies to the south.
+~
+~
+0 0 12052
+D4
+The stairwell leads upwards to the second floor.
+~
+~
+0 0 12060
+C CHAMPION~
+S
+#12060
+Stairwell~
+A stone stairwell zig-zags its way up the side of the north wall, heading
+down to the first floor and up to the third.  A small landing breaks off
+here, allowing access to the second floor, which opens up to the south.  
+~
+~
+1
+0 42 0
+D2
+The second floor lies to the south.
+~
+~
+0 0 12061
+D4
+The stairwell leads upwards to the Dome of the Sun.
+~
+~
+0 0 12065
+D5
+The stairwell leads downwards to the first floor.
+~
+~
+0 0 12059
+C CHAMPION~
+S
+#12061
+The Second Floor~
+The second floor of the Tower of Aramril is a high chamber, with its tall
+roof looming over a floor assembled from carved stone blocks.  Carved
+archways loom east, west, and south, exiting the room as the ceiling slants
+downward.  The only other exit lies north, where a stairwell is carved in
+the north wall.  
+~
+~
+1
+0 42 0
+D0
+The stairwell lies to the north.
+~
+~
+0 0 12060
+D1
+A meditation chamber lies to the east, beyond the archway.
+~
+~
+0 0 12063
+D2
+A temple lies to the south, beyond the archway.
+~
+~
+0 0 12062
+D3
+A garden lies to the west, beyond the archway.
+~
+~
+0 0 12064
+C CHAMPION~
+S
+#12062
+The Chapel~
+A barrel vaulted chapel, this portion of the tower is a holy place
+devoted to the worship of Jolinn, patron deity of the Champions.  Stained
+glass windows line the east and west sides of the room, while a row of pews
+leads to an altar to the south.  The exit from this holy place lies through
+a rounded archway to the north.  
+~
+~
+1
+0 42 0
+D0
+The only exit from the temple lies beyond the archway to the north.
+~
+~
+0 0 12061
+C CHAMPION~
+S
+#12063
+The Meditation Chamber~
+Silence drapes this brown-stoned chamber.  Illuminated only by a small
+candelabra, the room is sparsely furnished with a series of meditation mats
+on the floor.  A small shrine to Rystaia is the only other adornment, the
+icon of the pegasus acting as a focus for those who seek peace here.  The
+only other exit lies west, where a large chamber opens.  
+~
+~
+1
+0 42 0
+D3
+The rest of the second floor lies beyond the archway to the west.
+~
+~
+0 0 12061
+M 130 H 110 V 100
+C CHAMPION~
+S
+#12064
+A Secluded Garden~
+Carefully tended, the deep greens of this garden are a sharp contrast to
+the yellow stones of the tower.  Soft grass grows underfoot, and some small
+trees and bushes allow visitors to immerse themselves in the glade.  A small
+wooden shrine rises out of the ground, a monument to the gods of light. 
+Blessed by Jolinn, this glade seems especially verdant for a grove
+confined to a tower.  The only exit lies to the east, out through an archway
+into the second floor of the tower.  
+~
+~
+1
+0 42 3
+D1
+The rest of the second floor lies beyond the garden to the east.
+~
+~
+0 0 12061
+M 100 H 110 V 104
+C CHAMPION~
+S
+#12065
+Stairwell~
+This stone stairwell zig-zags its way down the side of the north wall,
+heading down to the second floor.  A small landing breaks off here, allowing
+access to the third floor, which opens to the south.  
+~
+~
+1
+0 42 0
+D2
+The Dome of the Sun lies to the south.
+~
+~
+0 0 12066
+D5
+The stairwell leads downwards to the second floor.
+~
+~
+0 0 12060
+C CHAMPION~
+S
+#12066
+The Dome of the Sun~
+Here on the top floor, the Dome of the Sun caps the Tower of Aramril. 
+Made from the scales of the golden fire devil An\@akarta, the dome was
+erected in triumph after the Last Battle of the War of Fire.  To the north,
+stairs lead down, and arched doorways leave the room to the east and west. 
+To the south, however, lies the great Vault of the Champions, where the most
+prized possessions of the champions lie, and the greatest evils are sealed
+away from Avendar.  The only other exit is from a stairwell in the southeast
+corner, which leads up to a small door leading outside the tower.  
+~
+~
+1
+0 58 0
+D0
+The stairwell lies to the north.
+~
+~
+0 0 12065
+D1
+A library lies to the east.
+~
+~
+0 0 12068
+D3
+A council chamber lies to the west.
+~
+~
+0 0 12069
+D4
+The stairwell leads to the top of the tower.
+~
+~
+3 0 12070
+C CHAMPION~
+S
+#12067
+The Vault of the Champions~
+Carved from pure grey marble and marked with mystical runes, this vault
+is an enormous room, easily large enough to hold a stone giant, or even a
+dragon.  Supported by enormous tons of stone, the Vault appears designed to
+survive a very large amount of punishment.  Various chests and other
+sundries rest in the room, holding the treasures of the Champions, as well
+as serving as a prison for many of the world\@s evils.  The exit from this
+vault lies through a granite archway to the north.  
+~
+~
+3
+0 8368 0
+D0
+~
+~
+0 0 12066
+C CHAMPION~
+S
+#12068
+The Library~
+This small library is used by the Champions to record the history of
+their order, as well as a repository of ancient knowledge.  Small shelves
+are arranged in neat rows, with a small alcove where a table and some chairs
+are arranged for detailed study.  An archway leads west out of the room.  
+ 
+Sitting on a pedestal is a book titled \#Commandments of the Champions.\#
+~
+~
+1
+0 42 0
+E
+book~
+Commandments of the Champions
+ 
+As given by Jolinn, Lord of the Sapphire Spear
+ 
+As the tenets of our Order are three, so too are the Commandments divided.
+ 
+I. Courage
+ 
+1. Champions are expected to exemplify moral courage, always striving to 
+behave in a manner keeping with their ideals.
+2. Champions are required to challenge evil should it intrude on the Tower of 
+Aramril. While not expected to perish foolishly, Champions are expected
+to harry enemies so long as they walk the grounds of the tower.
+ 
+II. Justice
+ 
+1. Do not quarrel with a man, unless his heart be black, or he has done wrong
+in your sight.
+2. A Champion must try to correct injustice wherever he sees it. Whenever a
+Champion witnesses an unjust act, it is his duty to attempt to correct the 
+injustice.
+ 
+III. Mercy
+ 
+1. Always succor those free from the taint of evil when they are in need.
+2. Always allow for repentance in one\@s foes -- but do not be blind to those 
+who do evil.
+ 
+~
+E
+commandments~
+Commandments of the Champions
+ 
+As given by Jolinn, Lord of the Sapphire Spear
+ 
+As the tenets of our Order are three, so too are the Commandments divided.
+ 
+I. Courage
+ 
+1. Champions are expected to exemplify moral courage, always striving to 
+behave in a manner keeping with their ideals.
+2. Champions are required to challenge evil should it intrude on the Tower of 
+Aramril. While not expected to perish foolishly, Champions are expected
+to harry enemies so long as they walk the grounds of the tower.
+ 
+II. Justice
+ 
+1. Do not quarrel with a man, unless his heart be black, or he has done wrong
+in your sight.
+2. A Champion must try to correct injustice wherever he sees it. Whenever a
+Champion witnesses an unjust act, it is his duty to attempt to correct the 
+injustice.
+ 
+III. Mercy
+ 
+1. Always succor those free from the taint of evil when they are in need.
+2. Always allow for repentance in one\@s foes -- but do not be blind to those 
+who do evil.
+~
+D3
+The Dome of the Sun lies to the west.
+~
+~
+0 0 12066
+C CHAMPION~
+S
+#12069
+The Council Hall~
+This room is dominated by a massive circular oak table, around which are
+arranged seats for all the Champions of Avendar.  Murals decorate the walls,
+depicting great battles from the history of the Order, as well as its
+greatest heroes.  The exit lies through a stone archway to the east.  
+~
+~
+1
+0 42 0
+D1
+The Dome of the Sun lies to the east.
+~
+~
+0 0 12066
+C CHAMPION~
+S
+#12070
+Atop the Tower~
+Atop the Tower of Aramril, beside the Dome of the Sun, this small
+watchtower juts into the sky.  Standing on a small balcony, the surrounding
+countryside is visible for miles around, allowing for easy location of
+trouble in the surrounding locales.  
+~
+~
+1
+0 42 2
+D5
+The stairwell leads down to the Dome of the Sun.
+~
+~
+3 0 12066
+C CHAMPION~
+S
+#12071
+The Champion Machinery Closet~
+12050 = Champie (probably won\@t be crucial, but please set anyway)
+12051 = Champie Level II
+12052 = Champie Level III
+12053 = Champie LEADINAT0R
+12054 = Galyndir\@s said \@hi\@.
+~
+~
+0
+0 557334 0
+M -10 H -10 V 0
+S
+#0
+
+
+
+#SPECIALS
+M 12057 spec_cast_water
+S
+
+
+
+#RESETS
+D 0 12066 4 3
+D 0 12070 5 3
+O 0 12070 0 12050
+M 0 12056 1 12051 1
+M 0 12063 1 12051 1
+M 0 12053 5 12052 1
+E 0 12066 0 16
+M 0 12052 6 12052 1
+E 0 12067 0 16
+O 0 12052 0 12052
+M 0 12058 1 12052 1
+M 0 12053 5 12053 1
+E 0 12066 0 16
+M 0 12059 1 12055 1
+M 0 12052 6 12056 1
+E 0 12067 0 16
+O 0 12072 0 12057
+O 0 12071 0 12057
+M 0 12060 1 12058 1
+G 0 12060 0
+G 0 12061 0
+G 0 12062 0
+G 0 12063 0
+G 0 12058 0
+M 0 12052 6 12060 1
+E 0 12067 0 16
+M 0 12052 6 12061 1
+E 0 12067 0 16
+M 0 12053 5 12061 1
+E 0 12066 0 16
+M 0 12057 1 12062 1
+M 0 12067 1 12064 1
+E 0 1212 0 20
+E 0 12073 0 17
+E 0 12064 0 9
+E 0 12065 0 16
+M 0 12051 1 12066 1
+G 0 12051 0
+M 0 12061 1 12067 1
+M 0 12054 1 12068 1
+E 0 12068 0 16
+O 0 12069 0 12069
+M 0 12053 5 12069 1
+E 0 12066 0 16
+M 0 12052 6 12070 1
+E 0 12067 0 16
+M 0 12062 1 12070 1
+S
+
+
+
+#GUILD
+#12051
+'soulblade'
+'brotherhood'
+'holy avenger'
+'reveal'
+'scourge of darkness'
+#0
+
+#12067
+'whip'
+'sword'
+'spear'
+'staff'
+'knife'
+'polearm'
+'mace'
+'flail'
+'dagger'
+'axe'
+'soulblade'
+'scourge of darkness'
+'brotherhood'
+'reveal'
+'holy avenger'
+'dual wield'
+'meditation'
+'kick'
+'fast healing'
+'third attack'
+'second attack'
+'shield block'
+'dodge'
+'parry'
+'enhanced damage'
+'warcry'
+'fetish'
+'boneshatter'
+'rage'
+'fury'
+'bloodlust'
+'ram'
+'hand to hand'
+'shield block'
+'dirt kicking'
+'fast healing'
+'enhanced damage'
+'grapple'
+'brutal damage'
+'savagery'
+'berserk'
+'hew'
+'bludgeon'
+'grapple'
+'bash'
+'dual wield'
+'sword'
+'spear'
+'axe'
+'mace'
+'soulblade'
+'scourge of darkness'
+'brotherhood'
+'reveal'
+'holy avenger'
+'retreat'
+'counterattack'
+'thrust'
+'scouting'
+'forced march'
+'counter'
+'rally'
+'phalanx'
+'cover'
+'drive'
+'guard'
+'readiness'
+'bandage'
+'pommel'
+'hand to hand'
+'rescue'
+'throw'
+'withdraw'
+'pugil'
+'fend'
+'staff'
+'haggle'
+'flank'
+'disarm'
+'bash'
+'trip'
+'hand to hand'
+'spear'
+'polearm'
+'knife'
+'sword'
+'dagger'
+'rescue'
+'fourth attack'
+'form of the whirlwind'
+'form of the panther'
+'form of the spider'
+'favored blade'
+'offhand parry'
+'offhand disarm'
+'versatility'
+'form of the wasp'
+'form of the viper'
+'trance'
+'rescue'
+'form of the bear'
+'form of the rose'
+'form of the dragon'
+'form of the mockingbird'
+'form of the mongoose'
+'form of the hawk'
+'form of the cat'
+'form of the eagle'
+'form of the monkey'
+'form of the serpent'
+'form of the reed'
+'form of the boar'
+'form of the crab'
+'form of the bull'
+'lore'
+'disarm'
+'dagger'
+'sword'
+'trip'
+'lore'
+'meditation'
+'fast healing'
+'disarm'
+'dual wield'
+'dagger'
+'sword'
+'fourth attack'
+'dual wield'
+'meditation'
+'kick'
+'fast healing'
+'third attack'
+'second attack'
+'shield block'
+'dodge'
+'parry'
+'enhanced damage'
+'feint'
+'rescue'
+'strip'
+'corner'
+'entangle'
+'cross'
+'batter'
+'cleave'
+'choke'
+'legsweep'
+'lash'
+'grip'
+'decapitate'
+'mace'
+'ensnare'
+'gouge'
+'hamstring'
+'impale'
+'entangle'
+'disarm'
+'bash'
+'trip'
+'hand to hand'
+'whip'
+'flail'
+'axe'
+'knife'
+'sword'
+'dagger'
+'rescue'
+'fourth attack'
+'spear'
+#0
+
+S
+
+
+#SHOPS
+12060 0 0 0 0 0 100 100 0 23 0
+0
+
+
+
+#$

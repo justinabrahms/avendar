@@ -1,0 +1,7304 @@
+#AREADATA
+Name Castle Gogoth~
+Builders Iandir   Ztheir~
+VNUMs 8228 8319
+VNUMs 631 639
+Credits [25 51] Ian/ninja Castle Gogoth~
+Danger 2
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 1 1 -2
+Shades 1 5
+Stone 82
+End
+
+
+
+#MOBILES
+V4 8228
+wight undead prisoner~
+a wight~
+The wight of a former prisoner crouches here, snarling.
+~
+A crouched humanoid figure with slimy white skin and sharp, protruding
+teeth, this wight is what remains of one of the castle\@s former prisoners. 
+Its mouth is twisted into a permanent snarl, as it tears at the ancient
+manacles bound to its deathly wrists.  
+~
+human~
+water scholar~
+AFGO 0 DJZ E 0
+39 17 11d110+698 100d1+50 5d7+18 slash~
+claw~
+-9 -9 -9 -9
+F BLPQ
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 8278 0 0 0 0
+stand stand none 5 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>fight_prog 5~
+mpechoat $n The wight hisses hatefully and reaches for you!
+mpechoaround $n The wight hisses hatefully and reaches for $N!
+mpcast 52 20
+~
+>fight_prog 5~
+emote glares at you hatefully and hisses.
+~
+|
+V4 8229
+chotha death knight~
+Chotha the Death Knight~
+The black-boned lich, Chotha, lingers in the castle.
+~
+Chotha is an unwholesome and shadowy figure, his yellow and black bones
+rigid and cracked.  Rotting cords of sinew hang from his animate corpse,
+dust accumulating within the open maw of his abdomen.  In life, he was a
+eunuch from Ashta Harrud, who came to the kingdom as part of an agreement
+between the two nation-states.  His prowess in battle was exceptional, and
+he came to serve Raspal as a Death Knight.  He is famed for his skill with a
+scimitar, and is said to have slaughtered the families of those who spoke
+out against the king.  
+~
+human~
+water scholar~
+AFGO 0 DJ E 0
+44 20 15d170+923 100d1+50 5d8+20 slash~
+slash~
+-15 -15 -15 -15
+FK BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(25)
+        if rand(50)
+                lunge
+        else
+                if rand(50)
+                        gash
+                else
+                        pommel
+                endif
+                mpvalueset 9 1
+        endif
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 189 100
+mpaddskill $i 157 100
+mpaddskill $i 225 100
+mpaddskill $i 859 100
+mpaddskill $i 452 100
+mpaddskill $i 449 100
+mpaddaffect $i 443 44 -1 18 5 0 A
+mpaddaffect $i 443 44 -1 19 5 0 A
+~
+|
+V4 8230
+yshag death knight~
+Yshag the Death Knight~
+Lord Yshag moves slowly about, half of his skull missing.
+~
+Lord Yshag is a monstrous, hulking lich whose body has been slowly
+rotting from his black bones.  Half of his skull is missing and empty, the
+dim light of the castle filtering through his open eye socket.  Some claimed
+he was a barbarian from the outlands, said to worship a blood-mad goddess. 
+He was first an unofficial enforcer, but with the ascendance of the Death
+Knights, he was hand-picked to serve among them.  He is known for the
+gigantic claymore he wielded while living, and the many acts of butchery he
+committed with it.  
+~
+human~
+water scholar~
+AFGO 0 DJ E 0
+44 20 15d170+923 100d1+50 5d8+20 slash~
+slash~
+-15 -15 -15 -15
+FK BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 52 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(25)
+        mpvaluerand 8 1 3
+        if value(8) == 1
+                hew
+        endif
+        if value(8) == 2
+                if cansee($n) == $i
+                        dirt
+                else
+                        bash
+                endif
+        endif
+        if value(8) == 3
+                if snaffected($i) == 461
+                        bash
+                else
+                        rage
+                endif
+        endif
+        mpvalueset 9 1
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 189 100
+mpaddskill $i 157 100
+mpaddskill $i 461 100
+mpaddskill $i 168 100
+mpaddskill $i 170 100
+mpaddskill $i 458 100
+mpaddskill $i 231 100
+mpaddskill $i 234 100
+mpaddskill $i 226 100
+mpaddskill $i 232 100
+mpaddskill $i 931 100
+mpaddaffect $i 232 44 -1 18 6 0
+mpaddaffect $i 232 44 -1 19 6 0
+~
+|
+V4 8231
+bashra death knight~
+Bashra the Death Knight~
+The feral lich, Lord Bashra, seeks his next prey.
+~
+Lord Bashra is a surprisingly sleek and feral-looking skeleton, blackened
+skin clinging to his decaying body.  He is hunched forward, predatory, with
+long wisps of hair trailing down his back.  He was among Gogoth\@s best
+horsemen, and was called upon to serve the Death Knights early on.  He was
+trained to wield the axe, which was his weapon of choice when terrorizing
+the townsfolk and the countryside.  He is said to have burned farms who
+harbored opposition to the king or helped their fearful countrymen to escape
+the country during its last years.  
+~
+human~
+water scholar~
+AFGO 0 DJ E 0
+44 20 15d170+923 100d1+50 5d8+20 slash~
+slash~
+-15 -15 -15 -15
+FK BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 52 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(25)
+        mpvaluerand 8 1 3
+        if value(8) == 1
+                hew
+        endif
+        if value(8) == 2
+                if cansee($n) == $i
+                        dirt
+                else
+                        bash
+                endif
+        endif
+        if value(8) == 3
+                bash
+        endif
+        mpvalueset 9 1
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 189 100
+mpaddskill $i 157 100
+mpaddskill $i 226 100
+mpaddskill $i 168 100
+mpaddskill $i 170 100
+mpaddskill $i 232 100
+mpaddskill $i 930 100
+mpaddaffect $i 232 44 -1 18 6 0
+mpaddaffect $i 232 44 -1 19 6 0
+~
+|
+V4 8232
+chtagn death knight~
+Chtagn the Death Knight~
+Lord Chtagn, a wiry and skeletal Death Knight, is here.
+~
+Lord Chtagn is a wiry and skeletal lich, his dry, black skin stretched
+tight and lined with ancient scars.  His chest bears a particularly
+gruesome-looking wound, with splintered ribs protuding from it.  In life, he
+was said to be a follower of the White Falcon, expressing his murderous
+nature in a series of lethal duels.  He slew so many foes under the auspices
+of friendly battle that he was hated throughout the kingdom.  His reputation
+won him an audience with Raspal, and after his defeat, was forced to put his
+scythe to work for the nation\@s Death Knights.  
+~
+human~
+water scholar~
+AFGO 0 DJ E 0
+44 20 15d170+923 100d1+50 5d8+20 slash~
+slash~
+-15 -15 -15 -15
+FK BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(25)
+        if rand(50)
+                lunge
+        else
+                if rand(50)
+                        rout
+                else
+                        disarm
+                endif
+                mpvalueset 9 1
+        endif
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 189 100
+mpaddskill $i 157 100
+mpaddskill $i 449 100
+mpaddskill $i 452 100
+mpaddskill $i 849 100
+mpaddaffect $i 443 44 -1 18 5 0 A
+mpaddaffect $i 443 44 -1 19 5 0 A
+~
+|
+V4 8233
+iichal death knight~
+Iichal the Death Knight~
+A short, stocky lich, Iichal, looms here.
+~
+Iichal is short and stocky, his skin and muscle slow to fully decay. 
+What skin remains is covered with horrific gashes, which leak black ichor
+down along his thick, sticky legs.  He was famous in Gogoth for his exploits
+against the hill giants, which made him a hero to the people of the
+Brintors.  Yet, those who knew him knew that this veneer did not conceal his
+sadism, malice, and cruelty.  He is said to have tortured men, women and
+children who were imprisoned in the castle dungeon, and aided the lich
+prince in his many diabolic experiments.  
+~
+human~
+water scholar~
+AFGO 0 DJ E 0
+44 20 15d170+923 100d1+50 5d8+20 slash~
+slash~
+-15 -15 -15 -15
+FK BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(25)
+        if rand(50)
+                kick
+        else
+                if rand(50)
+                        ensnare
+                else
+                        strip
+                endif
+                mpvalueset 9 1
+        endif
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 189 100
+mpaddskill $i 157 100
+mpaddskill $i 441 100
+mpaddskill $i 235 100
+mpaddskill $i 176 100
+mpaddskill $i 517 100
+~
+|
+V4 8234
+kthrrar death knight~
+Kthrrar the Death Knight~
+Kthrrar, the undead kankoran abomination, lurches by.
+~
+Lord Kthrrar was one of the rare kankoran to find favor in the court of
+King Rasadal Gogoth VII.  Even his terrible lich form is imposing, the
+withering skin covered in crumbling fur.  It is said that he came to the
+kingdom of Gogoth after the collapse of the Republic.  His ferocity and
+cruelty struck the fancy of Raspal, the king\@s brother, and he was inducted
+into the country\@s Death Knights.  He was known for cutting out the tongues
+of human prisoners and eating them in a grisly spectacle.  Ever hungering
+for battle, he still seeks the taste of blood.  
+~
+kankoran~
+water scholar~
+AFGO 0 DJZ E 0
+44 20 15d170+923 100d1+50 5d8+20 slash~
+slash~
+-15 -15 -15 -15
+FKV BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 52 -1
+ABHIMV ABCDEFGHIJKUV AD medium carrion
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(25)
+        mpvaluerand 8 1 3
+        if value(8) == 1
+                grapple
+        endif
+        if value(8) == 2
+                if cansee($n) == $i
+                        dirt
+                else
+                        bash
+                endif
+        endif
+        if value(8) == 3
+                if snaffected($i) == 461
+                        bash
+                else
+                        rage
+                endif
+        endif
+        mpvalueset 9 1
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 189 100
+mpaddskill $i 157 100
+mpaddskill $i 461 100
+mpaddskill $i 168 100
+mpaddskill $i 170 100
+mpaddskill $i 458 100
+mpaddskill $i 231 100
+mpaddskill $i 234 100
+mpaddskill $i 930 100
+mpaddskill $i 931 100
+mpaddskill $i 232 100
+mpaddaffect $i 232 44 -1 18 6 0
+mpaddaffect $i 232 44 -1 19 6 0
+~
+|
+V4 8235
+skashai death knight~
+Skashai the Death Knight~
+The tall skeleton of Lord Skashai lurks within the hall.
+~
+Lord Skashai is hardly more than a skeleton, covered only by a
+translucent film of skin.  He is tall, but stalks with a hunch throughout
+Castle Gogoth.  He was considered a nobleman of honor during his life, and
+well known for his association with the foreign aelin city of Ilodaiya. 
+According to legend, he made a pact with Raspal to allow his son to leave
+the city.  Raspal agreed, but only on the condition that Skashai renounce
+his faith and become a Death Knight.  His crumbling body dwells forever in
+the service of the lich king, feasting upon the living.  
+~
+human~
+fighter~
+AFGO 0 DJ E 0
+44 20 15d170+923 100d1+50 5d8+20 slash~
+slash~
+-15 -15 -15 -15
+FK BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 52 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(25)
+        if rand(50)
+                lunge
+        else
+                if isflying($n)
+                        disarm
+                else
+                        sweep
+                endif
+                mpvalueset 9 1
+        endif
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 189 100
+mpaddskill $i 157 100
+mpaddskill $i 452 100
+mpaddskill $i 449 100
+mpaddskill $i 453 100
+mpaddskill $i 861 100
+mpaddskill $i 171 100
+mpaddskill $i 179 100
+mpaddaffect $i 443 44 -1 18 5 0 A
+mpaddaffect $i 443 44 -1 19 5 0 A
+~
+|
+V4 8236
+khavha death knight~
+Khavha the Death Knight~
+The torched shuddeni corpse, Khavha, is here.
+~
+Khavha is an imperious skeletal shuddeni, his posture oddly rigid despite
+his death.  His body appears to have been burned extensively, with only bits
+of his charred flesh remaining upon his eyeless skull.  During the kingdom\@s
+final years, he served Raspal and the Death Knights as overseer of the
+city\@s criminal code.  His imposition of a strict curfew led to many brutal
+deaths, imprisonments, and torture.  His frightful tyranny touched the lives
+of all who lived in Gogoth, and he was widely feared for his extreme
+attitude and overwhelming use of force.  
+~
+shuddeni~
+earth templar~
+AFGO 0 ADJ E 0
+44 20 15d170+923 100d1+50 5d8+20 slash~
+slash~
+-15 -15 -15 -15
+K BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 -1
+ABHIMW ABCDEFGHIJ AGK medium carrion
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(25)
+        if rand(50)
+                inertialstrike
+        else
+                bash
+        endif
+        mpvalueset 9 1
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if snaffected($i) != 70
+        cast \@fortify\@
+        break
+endif
+if snaffected($i) != 132
+        cast \@stone skin\@
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 593 100
+mpaddskill $i 588 100
+mpaddskill $i 589 100
+mpaddskill $i 168 100
+mpaddskill $i 453 100
+mpaddaffect $i 70 44 -1 24 -5 0 A
+mpaddaffect $i 70 44 -1 13 88 0 A
+mpaddaffect $i 132 44 -1 32 20 0 A
+mpaddaffect $i 132 44 -1 17 -40 0 A
+~
+|
+V4 8237
+varshag death knight~
+Varshag the Death Knight~
+The foul-smelling atrocity, Lord Varshag, languishes here.
+~
+Lord Varshag is a foul smelling atrocity whose bent neck leans his
+blackened skull to the left.  The upper half of his body has been burned,
+the singed flesh and darkened bone reeking of decay.  In life, he was a
+ruthless noble who commanded the loyalty of much of the court with his
+devious plotting and physical acumen.  According to legend, he attempted to
+seduce Queen Wythea in an abortive attempt to murder the king and claim the
+throne for himself.  For his folly, he was lashed to the chapel altar and
+lit on fire, his violent agony a reminder of the price of betrayal.  
+~
+human~
+earth templar~
+AFGO 0 DJ E 0
+48 20 14d190+873 14d190+873 5d9+17 slash~
+slash~
+-18 -18 -18 -4
+K BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 52 -1
+ABHIMV ABCDEFGHIJK AK medium carrion
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(25)
+        mpvaluerand 8 1 3
+        if value(8) == 1
+                inertialstrike
+        endif
+        if value(8) == 2
+                cast \@magnetic grasp\@
+        endif
+        if value(8) == 3
+                cast \@sandspray\@
+        endif
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 120 100
+mpaddskill $i 594 100
+mpaddskill $i 588 100
+mpaddskill $i 589 100
+mpaddskill $i 593 100
+mpaddaffect $i 70 44 -1 24 -5 0 A
+mpaddaffect $i 70 44 -1 13 88 0 A
+mpaddaffect $i 132 44 -1 32 20 0 A
+mpaddaffect $i 132 44 -1 17 -40 0 A
+~
+|
+V4 8238
+krothin death knight~
+Krothin the Death Knight~
+Lord Krothin is here, a shambling horror of decaying flesh.
+~
+Lord Krothin is a shambling, animate horror of sharp, black bones and
+decaying flesh.  Many of his teeth are missing, and what few remain are
+jagged and broken.  As a youth, he caught the eye of Princess Bhara, who
+facilitated a rapid ascent from his common birth to lordship.  His skill
+with the polearm was immense, and needed little convincing to join Raspal\@s
+Death Knights.  After the princess tired of him, he grew ever more bitter,
+hateful, and finally, murderous.  Legends say that when he spoke ill of
+Bhara, Raspal struck him in the face with a marble bust.  
+~
+human~
+fighter~
+AFGO 0 DJ E 0
+50 20 15d190+873 100d1+50 5d9+17 slash~
+slash~
+-18 -18 -18 -4
+FK BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(25)
+        if rand(50)
+                lunge
+        else
+                sweep
+                mpvalueset 9 1
+        endif
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 179 100
+mpaddskill $i 452 100
+mpaddskill $i 453 100
+mpaddskill $i 449 100
+mpaddaffect $i 443 44 -1 18 5 0 A
+mpaddaffect $i 443 44 -1 19 5 0 A
+~
+|
+V4 8239
+xamon death knight~
+Xamon the Death Knight~
+Xamon, a frail-looking Death Knight with one arm, is here.
+~
+Xamon is a frail-looking lich with one of its arms missing.  A patchwork
+of ancient, rotting stitches cross what remains of its body, with ribs
+piercing through the filmy skin.  A masochist in life, he enjoyed being the
+subject of a variety of ritual tortures.  This penchant allowed him to not
+only survive, but enjoy, a lengthy study among the shuddeni.  Upon his
+return to Gogoth, many believed he was having an affair with a fellow Death
+Knight, Naggush the fallen.  It is said that he witnessed Naggush\@s
+beheading, and severed his own arm later that night.  
+~
+human~
+water scholar~
+AFGO 0 DJU E 0
+48 20 14d190+873 14d190+873 5d9+17 slash~
+slash~
+-18 -18 -18 -4
+K BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 52 -1
+ABCHIMV ABCDEFGHIJK AK medium carrion
+>fight_prog 100~
+if rand(25)
+        mpvaluerand 8 1 3
+        if value(8) == 1
+                cast \@siphon mana\@
+        endif
+        if value(8) == 2
+                if cansee($n) == $i
+                        cast \@blindness\@
+                else
+                        cast \@harm\@
+                endif
+        endif
+        if value(8) == 3
+                if snaffected($n) == 104
+                        cast \@harm\@
+                else
+                        cast \@plague\@
+                endif
+        endif
+endif
+~
+>rand_prog 100~
+if snaffected($i) != 87
+        cast \@invisibility\@
+        break
+endif
+~
+>load_prog 100~
+mpaddaffect $i 675 48 -1 0 0 0
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 75 100
+mpaddskill $i 677 100
+mpaddskill $i 8 100
+mpaddskill $i 104 100
+mpaddskill $i 673 100
+mpaddskill $i 87 100
+~
+|
+V4 8240
+chulru death knight~
+Chulru the Death Knight~
+The slimy, rotting lich of Lord Chulru is here.
+~
+Lord Chulru\@s animate remains rival the terror he instilled in life.  His
+skeletal shoulders are broad, and much of his body remains withered, slimy,
+and unrotted.  He was considered a master of all weapons, having proven
+himself in arenas throughout the Republic and the underworld.  Born in
+Gogoth, his many victories and spectacular bloodlust made him a hand-picked
+choice of Prince Raspal.  His lordship was both swift and shocking given his
+reputation as a showman.  He was given a great skull-shaped mace after
+killing six fleeing deserters with his bare hands.  
+~
+human~
+water scholar~
+AFGO 0 DJ E 0
+48 20 14d190+873 1d1+500 5d9+17 slash~
+slash~
+-18 -18 -18 -4
+FK BLPQ
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(25)
+        if rand(50)
+                kick
+        else
+                if cansee($n) == $i
+                        gouge
+                else
+                        batter
+                endif
+                mpvalueset 9 1
+        endif
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 189 100
+mpaddskill $i 157 100
+mpaddskill $i 433 100
+mpaddskill $i 176 100
+mpaddskill $i 517 100
+mpaddskill $i 236 100
+mpaddaffect $i 870 44 -1 18 9 0 A
+mpaddaffect $i 870 44 -1 19 9 0 A
+~
+|
+V4 8241
+servant lich~
+the lich servant~
+A horrifying lich servant stands here.
+~
+This withering, clawed lich was once a servant of the Gogothi royal
+family.  The terrible curse upon the kingdom has transformed her into this
+nightmarish form, leaving her with little more than the will to feed.  She
+wanders aimlessly about in a grim mockery of her former responsibilites.  
+~
+human~
+water scholar~
+AFGO 0 DJ E 0
+57 25 18d200+920 100d1+50 5d10+13 slash~
+claw~
+-21 -21 -21 -5
+FK BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+~
+>fight_prog 100~
+if rand(1)
+  if rand(1)
+    moan
+  endif
+endif
+~
+|
+V4 8242
+naggush death knight~
+Naggush the Death Knight~
+The wretched, headless corpse of Naggush shambles through the castle.
+~
+Naggush is a particularly wretched creature, his head entirely missing. 
+The rest of his decaying body moves with a disturbing, animalistic gait,
+claw-like bones splitting the skin of his fingers.  He is said to have
+served as a priest of Jolinn, before he sold his soul to be with the woman
+he loved.  When he lost her, he joined the Death Knights to regain a purpose
+in life.  He is rumored to have had a torrid affair with his fellow Knight,
+Xamon the masochist.  Naggush was beheaded three nights before the kingdom\@s
+collapse while Xamon watched.  
+~
+human~
+water scholar~
+AFGO 0 DJ E 0
+45 20 10d120+685 10d120+685 5d9+17 slash~
+slash~
+-12 -12 -12 -12
+FK BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 52 -1
+ABHIMV ABCDEFGHIJK AK medium carrion
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(25)
+        mpvaluerand 8 1 3
+        if value(8) == 1
+                cast \@firebolt\@
+        endif
+        if value(8) == 2
+                bash
+                mpvalueset 9 1
+        endif
+        if value(8) == 3
+                if snaffected($n) == 59
+                        cast \@firebolt\@
+                else
+                        cast \@coronal glow\@
+                endif
+        endif
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 157 100
+mpaddskill $i 657 100
+mpaddskill $i 59 100
+mpaddskill $i 168 100
+mpaddskill $i 1093 100
+mpaddaffect $i 84 44 -1 24 -5 0 A
+mpaddaffect $i 84 44 -1 19 5 0 A
+mpaddaffect $i 71 44 -1 19 9 0 A
+mpaddaffect $i 71 44 -1 18 9 0 A
+mpaddaffect $i 71 44 -1 17 37 0 A
+mpaddaffect $i 409 44 -1 2 2 524288 A
+~
+|
+V4 8243
+blathsa captain death knight~
+Blathsa the Death Knight Captain~
+The spiked, nightmarish lich of Lord Blathsa wanders about.
+~
+Lord Blathsa is a nightmare of a creature, with black spikes protruding
+from much of his body.  His eye sockets are empty, with red ichor rolling
+from them down the length of his skeletal frame.  Captain of the Death
+Knights, he was the right hand of Prince Raspal, and the king\@s military
+advisor.  He is said to have led many successful campaigns before the curse
+fell upon the kingdom, and was considered a relentless and brilliant
+tactician.  It is said that his spiked staff was a gift from the king
+himself, as a sign of his meritorious service.  
+~
+human~
+fighter~
+AFGO 0 DJ E 0
+55 30 19d210+1000 100d1+50 5d12+30 slash~
+slash~
+-21 -21 -21 -5
+FK BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 122 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>fight_prog 100~
+if rand(25)
+        if rand(50)
+                lunge
+        else
+                pugil
+        endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 189 100
+mpaddskill $i 452 100
+mpaddskill $i 453 100
+mpaddskill $i 449 100
+mpaddskill $i 228 100
+mpaddaffect $i 443 44 -1 18 5 0 A
+mpaddaffect $i 443 44 -1 19 5 0 A
+~
+|
+V4 8244
+vrathis death knight~
+Vrathis the Death Knight~
+The withered, skeletal form of Lord Vrathis is here.
+~
+Lord Vrathis is a slender skeleton, his body withered from the weight of
+untold ages.  His jaw hangs crookedly from his blackened skull, his stature
+uneven due to a weak knee.  During his early life, he was renowned
+throughout the kingdom as a remarkable warrior-poet.  At the prime of his
+life, he was driven insane by the sudden and unexpected death of his beloved
+wife.  His madness drove him to murder, torture, and hatred, and at the
+beckoning of Raspal, became anointed as a Death Knight.  His dark lusts and
+murderous bent live on in the form of a lich.  
+~
+human~
+water scholar~
+AFGO 0 DFJ E 0
+45 20 15d190+911 100d1+50 5d9+17 slash~
+slash~
+-21 -21 -21 -5
+FK BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(25)
+        if rand(50)
+                dirt
+        else
+                disarm
+        endif
+        mpvalueset 9 1
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 183 100
+mpaddskill $i 751 100
+mpaddskill $i 170 100
+mpaddskill $i 171 100
+~
+|
+V4 8245
+wythea queen lich~
+Wythea the Lich Queen~
+The wretched, bent skeleton of Wythea the Lich Queen is here.
+~
+Wythea, Queen of Gogoth, is little more than a wretched and bent
+skeleton.  Her once delicate fingers are black and broken, and her
+nightmarish face drips with black ichor.  While living, she was renowned for
+her magnificent beauty and notorious for her cruelty.  Legends say that
+those who displeased her were skinned alive, and that her special hatred was
+reserved for young women.  Her appetites were vast and unrestrained, leading
+to multiple affairs which scandalized the kingdom.  Her lich lingers within
+the castle, a permanent testament to her many evils.  
+~
+human~
+water scholar~
+ABFGO 0 DJU E 0
+58 20 1d1+6050 1d1+6050 20d11+1 slash~
+claw~
+-35 -35 -35 -35
+HK BLPb
+26 0 0 50 50 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 140 -1
+ABHIMV ABCDEFGHIJK AK medium carrion
+>data_prog attack_spells~
+beam of fire
+firestorm
+flame tongue
+consume
+~
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(50)
+        mpvaluerand 8 0 3
+        if snaffected($n) == 400
+                mpvaluerand 8 0 1
+        endif
+        mpsetdata attack_spells
+        mpnextdata $8
+        cast \@$d\@
+        if value(8) > 1
+                mpvalueset 9 1
+        endif
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if snaffected($i) != 71
+        cast \@frenzy\@
+        break
+endif
+if snaffected($i) != 84
+        cast \@immolation\@
+        break
+endif
+if snaffected($i) != 409
+        cast \@wings of flame\@
+        break
+endif
+~
+>load_prog 100~
+mpaddaffect $i 399 58 -1 0 0 0
+mpaddskill $i 187 100
+mpaddskill $i 403 100
+mpaddskill $i 205 100
+mpaddskill $i 65 100
+mpaddskill $i 400 100
+mpaddskill $i 71 100
+mpaddskill $i 84 100
+mpaddskill $i 409 100
+~
+|
+V4 8246
+bhara princess lich~
+Bhara the Lich Princess~
+Bhara the Lich Princess lingers here, chest torn open.
+~
+The animate corpse of Princess Bhara is a petite exercise in horror.  Her
+expression is frozen in a tormented scream, her cheeks long having hollowed
+and her eyes rotted out.  She moves with a feverish, unnatural speed, her
+decaying chest split open to reveal a heartless void.  In life, she was
+known both for her beauty and her lack of restraint.  Palace servants
+considered her a malicious hell-cat and suffered under her cruelty.  Her
+viciousness is eternally preserved in this ghastly form, with no charm left
+to conceal her torturous whims.  
+~
+human~
+water scholar~
+ABFGO 0 DJU E 0
+58 30 1d1+6020 1d1+6020 20d10+2 slash~
+claw~
+-40 -40 -40 -40
+HK BLP
+26 0 0 50 50 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 200 -1
+ABHIMV ABCDEFGHIJK AK medium carrion
+>data_prog attack_spells~
+beam of fire
+firestorm
+flame tongue
+consume
+~
+>load_prog 100~
+mpaddaffect $i 399 58 -1 0 0 0
+mpaddskill $i 187 100
+mpaddskill $i 403 100
+mpaddskill $i 205 100
+mpaddskill $i 65 100
+mpaddskill $i 400 100
+mpaddskill $i 71 100
+mpaddskill $i 84 100
+mpaddskill $i 409 100
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if snaffected($i) != 71
+        cast \@frenzy\@
+        break
+endif
+if snaffected($i) != 84
+        cast \@immolation\@
+        break
+endif
+if snaffected($i) != 409
+        cast \@wings of flame\@
+        break
+endif
+~
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(50)
+        mpvaluerand 8 0 3
+        if snaffected($n) == 400
+                mpvaluerand 8 0 1
+        endif
+        mpsetdata attack_spells
+        mpnextdata $8
+        cast \@$d\@
+        if value(8) > 1
+                mpvalueset 9 1
+        endif
+endif
+~
+|
+V4 8247
+raspal lich prince~
+Raspal the Lich Prince~
+The hulking, skeletal form of Raspal stands here.
+~
+The king\@s brother, Raspal, is a hulking skeletal warrior, the tatters of
+his skin hanging from his black bones.  His presence is imposing despite his
+ancient death, his rotting muscle still possessing quite a bit of strength. 
+During his life, he was among Gogoth\@s most famous warriors, and is said to
+have both taught and commanded Gogoth\@s infamous Death Knights.  The
+animosity between he and the king over Princess Bhara was well-known, and
+the flame of his hatred burns within him.  He battles all who still live,
+sharing his suffering with those who enter his domain.  
+~
+human~
+fighter~
+ABFGO 0 DJU E 0
+58 30 6000d1+20 100d1+100 20d11+12 slash~
+slash~
+-40 -40 -40 -40
+FHK BLPQb
+26 0 0 50 50 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 200 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>data_prog attack_skills~
+lunge
+disarm
+shieldbash
+~
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(50)
+        mpvaluerand 8 0 2
+        mpsetdata attack_skills
+        mpnextdata $8
+        $d
+        if value(8) > 0
+                mpvalueset 9 1
+        endif
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 189 100
+mpaddskill $i 157 100
+mpaddskill $i 162 100
+mpaddskill $i 453 100
+mpaddskill $i 449 100
+mpaddskill $i 572 100
+mpaddskill $i 452 100
+mpaddskill $i 171 100
+mpaddaffect $i 443 58 -1 18 7 0 A
+mpaddaffect $i 443 58 -1 19 7 0 A
+~
+|
+V4 8248
+shaia lich princess~
+Shaia the Lich Princess~
+The nightmarish Princess Shaia waits upon her rotting bed.
+~
+The withered form of Shaia, the Queen\@s sister, is a nightmare of bone
+and rot.  Her once-curves are long stripped of their charms, with blackened
+bone protruding through the leathery remains of her skin.  Once a ruthless
+and sensual manipulator, she was reputed to have seduced many within
+Gogoth\@s court.  As well, it was rumored that she was having an affair with
+the king during the collapse of his domain.  She waits on the rotting
+remains of her bed in a sad mockery of seduction, her ravenous hunger
+driving her to feast upon the agony of the living.  
+~
+human~
+water scholar~
+ABFGO 0 DJU E 0
+58 20 1d1+6020 1d1+6020 20d10+20 slash~
+claw~
+-40 -40 -40 -40
+K BLPQb
+26 0 0 50 50 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 200 -1
+ABHIMV ABCDEFGHIJK AK medium unknown
+>data_prog attack_spells~
+drain
+enervating ray
+blindness
+curse
+pox
+agony
+enfeeblement
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if snaffected($i) != 87
+        cast \@invisibility\@
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 8 100
+mpaddskill $i 39 100
+mpaddskill $i 107 100
+mpaddskill $i 58 100
+mpaddskill $i 306 100
+mpaddskill $i 20 100
+mpaddskill $i 52 100
+mpaddskill $i 87 100
+~
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(50)
+        mpvaluerand 8 0 6
+        mpsetdata attack_spells
+        mpnextdata $8
+        cast \@$d\@
+        if value(8) > 4
+                mpvalueset 9 1
+        endif
+endif
+~
+|
+V4 8249
+icyuth death knight~
+Icyuth the Death Knight~
+The slight, dexterious lich, Lord Icyuth, is here.
+~
+Lord Icyuth is a shockingly dexterious lich who sticks to the shadows of
+Castle Gogoth.  His body is withered but largely whole, save for a massive
+gash down his left side, from which the rotting remains of his entrails
+hang.  He was one of Gogoth\@s most well-known aristocrat, whose celebrity
+largely centered on his daring feats of acrobatics.  He was forced to choose
+between death, or becoming a Death Knight, after he was caught having an
+affair with Princess Shaia.  In undeath, he plies his deadly skill against
+any living foe who enters the castle.  
+~
+human~
+water scholar~
+ABFGO 0 DFJP E 0
+40 20 16d170+976 100d1+50 11d11+15 slash~
+slash~
+-12 -12 -12 -12
+FK BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if isaffected($i) == 65536
+else
+        hide
+        break
+endif
+~
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(25)
+        if rand(50)
+                kick
+        else
+                if cansee($n) == $i
+                        blindingdust
+                else
+                        nerve
+                endif
+        endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 157 100
+mpaddskill $i 255 100
+mpaddskill $i 176 100
+mpaddskill $i 909 100
+mpaddskill $i 256 100
+mpaddskill $i 486 100
+mpaddskill $i 192 100
+~
+|
+V4 8250
+bahtan lich prince~
+Bahtan the Lich Prince~
+The adolescent corpse of Bahtan the Lich Prince is here.
+~
+Bahtan, heir to the black throne of Gogoth, is a fearful adolescent
+corpse.  The handsomeness of youth has long left him, much of his face
+having rotted to expose black teeth and a fractured skull.  His chest has
+nearly collapsed in upon itself, the ragged remains of his skin barely
+concealing the injuries which took his life.  During his short lifetime,
+Bahtan was hailed as a prodigy of the highest order, as well as a heartless
+killer.  His grotesque experimentation on living prisoners filled the castle
+with screams, and he savors the sound, even in death.  
+~
+human~
+water scholar~
+ABFGO 0 DJU E 0
+58 30 1d1+6050 1d1+6050 20d11+2 bash~
+crush~
+-40 -40 -40 -40
+HK BLPQb
+26 0 0 50 50 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 140 -1
+ABHIMV ABCDEFGHIJK AK medium unknown
+>data_prog attack_spells~
+drain
+enervating ray
+blindness
+curse
+pox
+agony
+enfeeblement
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if snaffected($i) != 87
+        cast \@invisibility\@
+        break
+endif
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 8 100
+mpaddskill $i 39 100
+mpaddskill $i 107 100
+mpaddskill $i 58 100
+mpaddskill $i 306 100
+mpaddskill $i 20 100
+mpaddskill $i 52 100
+mpaddskill $i 87 100
+~
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(50)
+        mpvaluerand 8 0 6
+        mpsetdata attack_spells
+        mpnextdata $8
+        cast \@$d\@
+        if value(8) > 4
+                mpvalueset 9 1
+        endif
+endif
+~
+|
+V4 8251
+guard lich wanderlichguard~
+the lich guard~
+A lich guard stands here, guarding the court of Gogoth.
+~
+Formerly a member of the King\@s elite personal guards, this warrior is
+now a horrifying lich.  Still bearing its ancient weapons and skull- crested
+armor, he patrols the crumbling court of Gogoth, seeking to slay whatever
+intruders might dare approach his deathless master.  
+~
+human~
+water scholar~
+AFGO 0 DJ E 0
+58 27 20d220+1100 100d2+50 5d5+50 slash~
+chop~
+-21 -21 -5 -18
+CEFKN BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 189 100
+~
+>rand_prog 1~
+mpwander
+~
+|
+V4 8252
+ksathan priest lich~
+Ksathan the Lich Priest~
+Ksathan the Lich Priest waits here, a horror of fire and bone.
+~
+The lich priest, Ksathan, is a horror of fire and bone.  Clad in the
+blackened, tattered garb of a holy man, his fleshless face is lit from
+within by two blazing eyes.  According to legend, it was he who first set
+the king upon the path to destruction, and he who conducted the first of
+many blasphemous rites.  Tales of the fearful rituals performed in the
+chapel terrorized the city of Gogoth, and struck fear into the hearts of the
+king\@s enemies.  His animate remains dwell in the court of his king forever,
+his tongue missing and jaw shattered.  
+~
+human~
+water scholar~
+ABFGOX 0 DJ E 0
+60 25 1d1+10010 1d1+10010 15d20+10 slash~
+claw~
+-60 -60 -60 -60
+HK ABLPQb
+26 0 0 50 50 0 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 400 -1
+ABHIMV ABCDEFGHIJK AK medium carrion
+>data_prog attack_spells~
+beam of fire
+firestorm
+fire blast
+disintegration
+smoke
+consume
+flame tongue
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if snaffected($i) != 71
+        cast \@frenzy\@
+        break
+endif
+if snaffected($i) != 84
+        cast \@immolation\@
+        break
+endif
+if snaffected($i) != 409
+        cast \@wings of flame\@
+        break
+endif
+if snaffected($i) != 395
+        cast \@wall of fire\@ south
+        break
+endif
+~
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(75)
+        mpvaluerand 8 0 6
+        if snaffected($n) == 328
+        or snaffected($n) == 119
+                mpvalueset 8 6
+        endif
+        mpsetdata attack_spells
+        mpnextdata $8
+        cast \@$d\@
+        if value(8) > 2
+                mpvalueset 9 1
+        endif
+endif
+~
+>load_prog 100~
+mpaddaffect $i 399 58 -1 0 0 0
+mpaddskill $i 187 100
+mpaddskill $i 403 100
+mpaddskill $i 205 100
+mpaddskill $i 65 100
+mpaddskill $i 400 100
+mpaddskill $i 71 100
+mpaddskill $i 84 100
+mpaddskill $i 409 100
+mpaddskill $i 6 100
+mpaddskill $i 129 100
+mpaddskill $i 395 100
+mpaddskill $i 405 100
+mpaddskill $i 1093 100
+~
+|
+V4 8253
+gogoth lich king~
+Gogoth the Lich King~
+The Lich King Gogoth sits deathless upon his eternal throne.
+~
+King Rasadal Gogoth VII, the final monarch of the kingdom of Gogoth and
+the grasslands of Shargob, is a towering skeleton clad in a rotting purple
+robe.  His withered flesh is grey and tight, with long grey hair hanging
+limply from his head.  Unholy power crackles through his skeletal frame, his
+empty eye sockets burning with malevolent red light.  It is said that he
+sought the secrets of the Demon God, Xiginath, in his mad quest for eternal
+life.  From his black throne, he presides forever over his undead kingdom.  
+~
+human~
+water scholar~
+ABFGOPX 0 DJUZ E 0
+65 50 1d1+20000 1d1+15000 6d22+250 negative~
+deathly chill~
+-100 -100 -100 -100
+FK ABLMQb
+26 0 0 80 80 0 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 666 -1
+AHIMV ABCDEFGHIJK AK medium carrion
+>verb_prog p0m~
+if valname($n) == $i
+        if isaffected($f) == 8388608
+                cast \@drain\@ $f
+        else
+                cast \@plague of madness\@ $f
+        endif
+endif
+~
+>verb_prog w34k3n~
+if valname($n) == $i
+        if snaffected($f) == 143
+                cast \@drain\@ $f
+        else
+                cast \@weaken\@ $f
+        endif
+endif
+~
+>verb_prog enf33ble~
+if valname($n) == $i
+        if snaffected($f) == 58
+                cast \@drain\@ $f
+        else
+                cast \@enfeeblement\@ $f
+        endif
+endif
+~
+>verb_prog ag0ny~
+if valname($n) == $i
+        if snaffected($f) == 306
+                cast \@drain\@ $f
+        else
+                cast \@agony\@ $f
+        endif
+endif
+~
+>verb_prog p0werw0rd~
+if valname($n) == $i
+        if snaffected($f) == 139
+                cast \@drain\@ $f
+        else
+                cast \@power word fear\@ $f
+        endif
+endif
+~
+>verb_prog p0is0n~
+if valname($n) == $i
+        if snaffected($f) == 105
+                cast \@drain\@ $f
+        else
+                cast \@poison\@ $f
+        endif
+endif
+~
+>data_prog attack_spells~
+cast \@drain\@ $f
+p0is0n
+p0werw0rd
+ag0ny
+enf33ble
+w34k3n
+p0m
+~
+>fight_prog 100~
+if value(7) == 0
+        mpvalueset 7 41
+endif
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(90)
+        mproomcmd mptrigger all
+        mpvalueset 6 1
+        mproomcmd mptrigger all
+        mpvalueset 6 0
+        if isfocused($i)
+                if class($f) == 0
+                        if rand(75)
+                                mpfocus $n
+                        endif
+                endif
+        else
+                mpfocus $n
+        endif
+        mpvaluerand 8 0 6
+        mpsetdata attack_spells
+        mpnextdata $8
+        $d
+        if value(8) > 1
+                mpvalueset 9 1
+        endif
+endif
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if value(7) > 0
+        if value(7) == 1
+                if snaffected($i) == 754
+                        break
+                endif
+                cast \@abominable rune\@
+        endif
+        mpvaluedown 7
+endif
+~
+>load_prog 100~
+mpaddskill $i 699 100
+mpaddskill $i 143 100
+mpaddskill $i 58 100
+mpaddskill $i 8 100
+mpaddskill $i 306 100
+mpaddskill $i 139 100
+mpaddskill $i 105 100
+mpaddskill $i 52 100
+mpaddskill $i 754 100
+mpaddskill $i 157 100
+~
+>verb_prog holyshitbeatthefuckinglichkinghellyeah~
+if isnpc($n)
+        break
+endif
+if isbitset($n) == 8253
+or level($n) == 51
+        mpaddrumor \#$I\# I can\@t believe it!  They say $N battled King Gogoth... and won!
+        break
+endif
+mpbitset $n 8253 1
+mpechoat $n You were awarded a 25000 experience bonus for defeating King Gogoth!
+mpxp $n 25000
+mpaddrumor \#$I\# Did you hear?  $N fought King Gogoth... and survived!  And $e hadn\@t even finished $s training!
+~
+>trigger_prog 100~
+if ispc($n)
+        if value(6) == 1
+                if rand(50)
+                        if class($n) == 18
+                        or class($n) == 6
+                        or class($n) == 9
+                        or class($n) == 19
+                                mpfocus $n
+                        endif
+                endif
+        else
+                if class($n) == 0
+                or class($n) == 27
+                        mpfocus $n
+                endif
+        endif
+endif
+~
+>death_prog 100~
+if isunderlimit(8267)
+        mpoload 8267 on self
+endif
+mproomcmd holyshitbeatthefuckinglichkinghellyeah all
+~
+|
+V4 8267
+Grathan alatharya lich captain guard~
+Grathan the lich captain~
+Grathan, captain of the lich guard, stands at attention.
+~
+Grathan, captain of the guard, stands over ten feet tall, his massive
+skeleton thick with rotting slabs of muscle.  From his stature it is obvious
+that he was an alatharya in life, but the curse of Gogoth has transformed
+him into a fearful undead monstrosity.  It is said that he served the king
+faithfully for twenty years as his personal bodyguard, and attempted to
+defend his master\@s honor until the bitter end.  In death, he continues to
+serve, maintaining a solemn vigil within the court.  
+~
+alatharya~
+fighter~
+ABFOPX 0 DJZ E 0
+60 30 1d1+7000 0d0+0 5d5+90 slash~
+cleave~
+-20 -20 -20 -20
+FHK ABLPQb
+26 0 0 33 33 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 290 -1
+ABHIMV ABCDEFGHIJK A large carrion
+>data_prog attack_skills~
+lunge
+sweep
+disarm
+rout
+bash
+~
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 189 100
+mpaddskill $i 157 100
+mpaddskill $i 452 100
+mpaddskill $i 449 100
+mpaddskill $i 453 100
+mpaddskill $i 861 100
+mpaddskill $i 171 100
+mpaddskill $i 179 100
+mpaddskill $i 849 100
+mpaddskill $i 168 100
+mpaddaffect $i 443 60 -1 18 7 0 A
+mpaddaffect $i 443 60 -1 19 7 0 A
+~
+>rand_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+~
+>fight_prog 100~
+if value(9) > 0
+        mpvaluedown 9
+        break
+endif
+if rand(50)
+        mpvaluerand 8 0 4
+        mpsetdata attack_skills
+        mpnextdata $8
+        $d
+        if value(8) > 0
+                mpvalueset 9 1
+        endif
+endif
+~
+|
+V4 8270
+death knight~
+the Death Knight~
+A horrific Death Knight patrols the feasting hall.
+~
+A horrific skeletal figure clad in black armor, this Death Knight was a
+minor lord in the service of King Rasadal Gogoth VII.  His name, title, and
+identity long forgotten, it mindlessly serves the his captain even in death.
+He stalks the halls of the castle, ever seeking life to feed upon.  
+~
+human~
+water scholar~
+AFGO 0 DJ E 0
+42 20 15d170+949 100d1+50 5d8+20 slash~
+slash~
+-15 -15 -15 -15
+CEFIK BLPQ
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 100 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+V4 8271
+guard lich~
+the lich guard~
+A lich guard stands here, guarding the court of Gogoth.
+~
+Formerly a member of King Gogoth\@s elite personal squadron, this guard is
+now a horrifying lich. Its only purpose is to destroy anything that might
+attempt to go near its master.
+~
+human~
+water scholar~
+ABFGO 0 D E 0
+58 27 20d220+1100 100d2+50 5d5+50 slash~
+chop~
+-21 -21 -5 -18
+CDEFKN BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 100 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+V4 8272
+symbolbot symbolbot11 bot~
+the symbolbot11~
+The symbolbot11 is here, handing on tetragon-y goodness.
+~
+~
+human~
+water scholar~
+ADL 0 DFJLZ N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p study~
+if compstr(2) == symbol
+or compstr(2) == tetragon
+or compstr(2) == concave
+or compstr(2) == irregular
+or compstr(2) == altar
+or compstr(2) == carved
+  if skill1250($n) > 0
+    if hassymbol($n) == 11
+      mpechoat $n That symbol is one with which you are already familiar.
+    else
+      mpforce $n look symbolvision
+      mpaddsymbol $n 11
+      mplag $n 4
+      break
+    endif
+  else
+    mpechoat $n You lack the knowledge to fully comprehend this symbol.
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+|
+V4 8273
+specterloader~
+the specterloader~
+The specterloader loads him up some specters, mmmhmmm.
+~
+~
+human~
+water scholar~
+AB 0 L N 0
+52 0 0d0+0 0d0+0 0d0+0 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 8274
+zombie palace guard undead~
+the zombie palace guard~
+An undead palace guard stands watch.
+~
+This standing corpse is dressed in the iron armor of Gogoth\@s palace
+guard.  In its withered hands, it wields the traditional weapon of its
+profession, an iron spear.  More lively in its motions than lesser zombies,
+it watches mindlessly for intruders to devour.  
+~
+human~
+fighter~
+AFGLO 0 DJ E 0
+32 15 12d80+898 0d0+0 5d6+15 slash~
+slash~
+-4 -4 -4 0
+FKU BLPQ
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABHIMV ABCDEFGHIJK A medium carrion
+>load_prog 100~
+mpaddskill $i 187 100
+mpaddskill $i 188 100
+mpaddskill $i 179 100
+~
+>rand_prog 1~
+if rand(1)
+  if rand(20)
+    pmote glares about purposelessly with unseeing eyes.
+  else
+  pmote stares with vacant hatred into nothingness.
+  endif
+endif
+~
+|
+V4 8275
+wraith gloom wisp wispy transparent mob_8275~
+a gloom wraith~
+A transparent wraith floats here, emitting an eerie green light.
+~
+A long, billowing shade of deep, poisonous green hovers here, the
+shapeless form little more than a ghostly cloak draped over an unseen
+figure.  A pair of scabrous, transparent hands protrude from under the
+cloak, twisted and clawed.  The face cannot be seen, concealed by the folds
+of the cowl.  Some unfelt breeze stirs the wraith\@s garment, insubstantial
+cloth filling and swaying silently.  A weird, unearthly illumination
+flickers from within the wraith, filling the area with inconstant, ghostly
+green light.  
+~
+demon~
+water scholar~
+AFGOT 0 DFJZ E 0
+44 24 10d5+200 100d1+50 5d7+18 negative~
+ethereal grasp~
+-9 -9 -9 -9
+FHK BDHIKMRTXb
+26 0 0 0 0 0 0 0 0 0 50 0 0 0 -50 0 0 0 0 -50 0 0 0 -50 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABCHIMV ABCDEFGHIJKP A medium unknown
+>trigger_prog 100~
+if snaffected($n) == 192
+  mpechoat $n The wraith\@s light plays over you, revealing your position.
+  mpset mob $i level 60
+  mpforce $n vis
+  mpset mob $i level 44
+  if rand(20)
+    break
+  endif
+endif
+if snaffected($n) == 531
+  mpechoat $n The wraith\@s light plays over you, revealing your position.
+  mpset mob $i level 60
+  mpforce $n vis
+  mpset mob $i level 44
+  if rand(20)
+    break
+  endif
+endif
+if value(2) == 1
+  mpget char $n curhp 3
+  mpget char $n curmana 4
+  mpvaluerand 5 5 20
+  mpmath $3 - $5
+  mpvaluerand 5 5 20
+  mpmath $4 - $5
+  mpset char $n curhp $3
+  mpset char $n curmana $4
+endif
+~
+>rand_prog 100~
+if isanypchere($i)
+  if rand(60)
+    if rand(1)
+      mpvalueset 2 1
+      mpvaluerand 1 1 5
+      if value(1) == 1
+        mpecho A chill flows through you.
+      endif
+      if value(1) == 2
+        mpecho $I moans softly.
+      endif
+      if value(1) == 3
+        mpecho The room grows cold for a moment.
+      endif
+      if value(1) == 4
+        mpecho An inexplicable sense of fear washes through you, then passes.
+      endif
+      if value(1) == 5
+        mpecho $I\@s cloak flutters silently, and you feel a momentary chill.
+      endif
+    endif
+    mproomcmd mptrigger all
+  endif
+else
+  mpvaluerand 0 1 2500
+  if value(0) == 1
+    mpasound A low moan sounds nearby.
+  endif
+  if value(0) == 2
+    mpasound Someone groans despondently, the sound far-off and insubstantial.
+  endif
+  if value(0) == 3
+    mpasound You hear a faint, keening moan somewhere nearby.
+  endif
+  if value(0) == 4
+    mpasound Someone sobs to themself close by.
+  endif
+endif
+mpvalueset 2 0
+~
+>load_prog 100~
+mpaddaffect $i 600 60 -1 19 5 0
+~
+>death_prog 100~
+if rand(10)
+emote throws its head back, howling in a silent scream.
+endif
+emote simply fades away.
+mpgoto 9799
+~
+|
+V4 8276
+undead cup cupbearer~
+the undead cupbearer~
+The undead cupbearer stands here, absently plucking at its putrid flesh.
+~
+Unlike most undead creatures, this one appears to some degree aware of
+the decay of its body.  It occasionally makes neurotic plucking motions at
+its torso, tearing away strips of rotten flesh with its black, clawlike
+fingernails.  Its tattered garments were one those of a cupbearer, an
+occupation further attested to by its small stature, closer to that of an
+adolescent human.  Occasionally, it forces a tonal whining noise through its
+shredded, rotten lips, perhaps in an attempt to sing for its master.  
+~
+human~
+water scholar~
+AFGO 0 D E 0
+60 34 40d140+1100 60d10+100 8d10+35 pierce~
+jab~
+-27 -27 -27 -9
+CEFKN BLPQb
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 250 -1
+ABHMV ABCDEFGHIJK A medium carrion
+>fight_prog 7~
+mpfocus $r
+if ispc($r)
+  mpvaluerand 1 1 150
+  if skill172($f) <= $1
+  or skill177($f) <= $1
+    mpechoat $f The undead cupbearer lunges at you, sinking its rotten teeth into your neck!
+    mpechoaround $f The undead cupbearer lunges at $F, sinking its rotten teeth into $S neck!
+    mpdamage $f 6 6 6
+    mpaddaffect $f 105 0 8 0 0 4096
+    mpaddaffect $f 859 0 8 0 0 65536 O
+  else
+    mpechoat $f The undead cupbearer lunges at you, but you nimbly dodge out of the way.
+    mpechoaround $f The undead cupbearer lunges at $F, but $M nimbly dodges out of the way.
+  endif
+else
+endif
+~
+>rand_prog 2~
+if rand_2
+  if isfighting($i)
+  else
+    mpwander
+  endif
+endif
+~
+|
+V4 8277
+lootbot~
+the lootbot~
+The lootbot is here, waiting to loot for the lute.
+~
+~
+human~
+water scholar~
+A 0 Le N 0
+60 30 38d138+1080 60d10+100 7d9+30 none~
+~
+-27 -27 -27 -9
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 8278
+Kalchin necromancer shuddeni emaciated~
+Kalchin the Necromancer~
+An emaciated shuddeni is fettered to the wall.
+~
+Kalchin the Necromancer is chained here, bound in the ruins of Gogoth for
+a long-forgotten offense.  His wrinkled gray skin is wrapped in tattered
+shreds of ancient, filthy fabric.  Fragile-looking bones are clearly visible
+beneath his starved flesh, but the hatred in his eyeless face has lost none
+of its potency over the years.  
+~
+shuddeni~
+water scholar~
+ABK 0 ADFJ E 0
+52 26 1d1+6000 52d10+100 6d9+26 negative~
+black magic~
+-22 -22 -22 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 20 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMW ABCDEFGIJ AGK medium flesh
+>verb_prog testomatic~
+mpecho Focused on $f
+mptransfer $f 631
+~
+>all_death_prog 100~
+mpecho Someone has died
+if isfocused($i)
+  mpvalueset 1 1
+  mpecho hullo, it seems $F has died!
+  mpat $f mpecho hello you are dead
+  mptransfer $f 631
+endif
+~
+>rand_prog 100~
+if isfighting($i)
+else
+  $d
+  mpnextdata
+endif
+~
+>data_prog choice~
+mpecho {Y Kalchin says, \@Death is the essence of the void.\@{x
+mpecho {Y Kalchin says, \@You must pass through both, to understand either.\@{x
+mpecho Kalchin shifts slightly, rattling his chains.
+mpecho {Y Kalchin says, \@Go on. I\@ll wait here.\@{x
+~
+>data_prog shpiel~
+mpecho {Y Kalchin says, \@Necromancy, the art of arts.\@{x
+mpecho {Y Kalchin says, \@For those of us who turn our backs on eternity to linger here a little longer.\@{x
+mpecho {Y Kalchin warns, \@Don\@t imagine that when you die you\@ll find answers. That is the sacrifice we make for our art.\@{x
+mpecho {Y Kalchin lifts his face and asks, \@Is that what you want?\@{x
+~
+>speech_prog Yes~
+if value(0) == 1
+  mpvalueset 0 2
+  mpsetdata shpiel
+else
+  if value(0) == 2
+    mpsetdata choice
+    mpfocus $n
+    mpecho Currently focused on $F
+  endif
+endif
+~
+>greet_prog 100~
+if ispc($n)
+  if level($n) >= 30
+    if majorsphere($n) == void
+      if minorsphere($n) == void
+        if chosenpath($n) == none
+  if value(0) == 0
+            mpecho {Y Kalchin raises himself up in his chains and says, \@You wish to learn from me?\@{x
+    mpvalueset 0 1
+      endif
+  if value(1) == 1
+    mpecho Kalchin whispers something, and your spirit is forced inexorably back into your body.
+astrip $f
+mppurge corpse
+mpset skill $f \@greater void necromancer\@ 1
+            mpset chosenpath $f \@necromancer\@
+            mpstring char $f title default
+mpechoat $f {g Kalchin tells you, \@Go, and make use of what time you have left.\@{x
+            mpunfocus
+            mpvalueset 0 0
+mpvalueset 1 0
+  endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 631
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+#0
+
+
+
+#OBJECTS
+V13
+8228
+knife kitchen butcher rusty~
+a rusty kitchen knife~
+A rusty kitchen knife sits here.~
+~
+steel~
+weapon 0 0 F AN
+dagger 1 1 3 0
+cut~
+20 20 3 1 P
+0
+O cut~
+>wear_prog 100~
+opechoat $o The knife twists in your hand, scratching you!
+opaddaffect 105 60 25 0 0 4096
+opforce $o remove knife
+opforce $o drop knife
+~
+|
+V13
+8229
+beef salted ancient~
+some ancient salted beef~
+Some ancient salted beef is here.~
+~
+carrion~
+food CES 0 F A
+45 50 0 0 0
+1 10 0 1 P
+0
+>eat_prog 100~
+mpechoat $n While the heavy salting that preserved the meat seems to have staved off the worst of the mold, enough seems to have permeated the beef that the nauseating taste is enough to turn even the strongest stomach.
+mpcast 62 60 $n
+~
+|
+V13
+8230
+pork salted ancient~
+some ancient salted pork~
+Some ancient salted pork is here.~
+~
+carrion~
+food CES 0 F A
+45 50 0 0 0
+1 10 0 1 P
+0
+>eat_prog 100~
+mpechoat $n While the heavy salting that preserved the meat seems to have staved off the worst of the mold, enough seems to have permeated the pork that the nauseating taste is enough to turn even the strongest stomach.
+mpcast 62 60 $n
+~
+|
+V13
+8231
+shattered cupboard~
+the cupboard~
+A cupboard stands open.~
+~
+wood~
+container STae 0 0 P
+0 A 0 0 0
+0 30000 0 4 P
+0
+E
+shattered cupboard~
+This cupboard stands open, one of its doors shattered and broken.  It
+leans unevenly against the castle wall, dust covering its surfaces.  
+~
+V13
+8232
+mace rusting iron~
+a rusting iron mace~
+An old iron mace is rusting here.~
+~
+iron~
+weapon CE 0 F AN
+mace 9 3 1 0
+crush~
+25 150 2500 2 P
+0
+A
+1 -1
+A
+2 -1
+A
+12 -10
+A
+19 2
+O crush~
+V13
+8233
+greaves leather cracked~
+some cracked leather greaves~
+Some cracked and dusty leather greaves lie here.~
+~
+leather~
+armor CES 0 F AF
+5 3 5 0 0
+25 40 5400 2 P
+0
+A
+1 -2
+A
+12 -5
+A
+19 2
+V13
+8234
+sleeves chain mail rusted~
+rusted chainmail sleeves~
+Some rusted chainmail sleeves sit here.~
+~
+steel~
+armor CE 0 F AI
+4 4 4 4 0
+25 40 820 2 P
+0
+A
+19 1
+A
+12 -1
+V13
+8235
+manacles iron~
+iron manacles~
+A pair of iron manacles are here.~
+~
+iron~
+armor CDEHM 0 F AM
+1 1 1 1 0
+30 400 30 1 P
+0
+A
+1 -3
+A
+2 -3
+>data_prog freedom~
+grunt
+emote stumbles, and nearly falls.
+mutter
+esay \@croaks feebly\@ My...thanks, brave ones.
+emote fumbles around, finding a pair of dirty pants.  He pulls them on painfully.
+esay \@leans heavily against the wall\@ I will...help as I might.  I am most weak at the moment.
+esay \@waves a hand, exhausted\@ Go on, for now.
+mpvalueset 1 2
+~
+>rand_prog 100~
+if value(1) == 1
+  mpoload 8235 on $i 14
+  mpoload 8828 on $i 7
+  mpsetdata freedom
+  $d
+  mpnextdata
+endif
+if value(1) == 2
+  emote slumps to the ground.
+  mpstring mob self long Akraelyn slumps here, exhausted.
+  mpvalueset 1 3
+endif
+if mobhere(340)
+  scream
+  mpkill shuddeni
+endif
+~
+|
+V13
+8236
+plate armor black~
+black plate armor~
+A suit of black plate armor is here.~
+~
+iron~
+armor CEM 0 F AD
+10 10 10 10 0
+35 200 3500 2 P
+400
+A
+19 2
+A
+18 2
+A
+13 10
+E
+black plate armor~
+This suit of black plate armor is exceptionally old, but still in
+impressive condition.  It is engraved on the shoulder plates and chest plate
+with the skull-crest of Gogoth.  
+~
+V13
+8237
+scimitar black runed~
+a runed black scimitar~
+A long, curved scimitar decorated with runes lies on the ground.~
+~
+steel~
+weapon Jf 0 F AN
+sword 6 6 3 0
+slash~
+35 110 20000 2 P
+15
+A
+18 3
+A
+19 3
+A
+12 10
+E
+scimitar black runed~
+This long, curved scimitar is adorned with a variety of runes, etched
+into the surface of the blade.  The markings are ancient and grave, giving
+the weapon a sinister look.  
+~
+O slash~
+V13
+8238
+claymore blood encrusted~
+a blood-encrusted claymore~
+A large claymore, encrusted with blood, is here.~
+~
+steel~
+weapon CEGHJ 0 F AN
+sword 6 6 3 F
+cleave~
+35 220 55000 2 P
+15
+A
+19 4
+A
+2 2
+E
+claymore blood encrusted~
+This massive claymore has a long, straight blade and an ornate black
+handle.  The blade itself has a red tinge, and brown, clinging blood sticks
+to the steel.  
+~
+O cleave~
+V13
+8239
+axe crimson war war-axe~
+a crimson war-axe~
+A huge, curved crimson war-axe lies here.~
+~
+iron~
+weapon CDEGJ 0 F AN
+axe 2 22 3 F
+chop~
+35 330 35000 2 P
+15
+A
+19 5
+A
+18 -1
+E
+crimson war axe war-axe~
+This heavy, two-handed axe is cast in a dull crimson, which follows from
+the thick iron blade down the handle.  The grip is ancient and cracked, but
+still intact.  
+~
+O chop~
+V13
+8240
+scythe bone handled~
+a bone-handled scythe~
+A bone-handled scythe gleams here.~
+~
+bone~
+weapon BCEJ 0 F AN
+exotic 7 5 3 0
+slice~
+35 110 10000 2 P
+15
+A
+18 2
+A
+19 2
+A
+20 -2
+E
+scythe bone handled~
+This scythe has a curved steel blade, mounted upon reinforced bones. 
+Yellowed over time, they give the weapon an especially grim look in
+conjunction with its sharp edge.  
+~
+O slice~
+V13
+8241
+coiled black whip~
+a coiled black whip~
+A coiled black whip is here, waiting to be used.~
+~
+energy~
+weapon CEJS 0 F AN
+whip 4 9 9 0
+life drain~
+45 70 50000 2 P
+15
+A
+18 4
+A
+19 4
+A
+13 -10
+E
+coiled black whip~
+A long, coiled whip is here, its length crackling with dark power.  The
+onyx handle is engraved with a variety of shuddeni symbols, and the end of
+it comes to a sharp point.  
+~
+O life drain~
+V13
+8242
+spear white frost~
+the white spear, \#Frost\#~
+A white spear lies here coated with frost.~
+~
+iron~
+weapon BCEJ 0 F AN
+spear 3 10 5 F
+freezing bite~
+35 140 24000 3 P
+15
+A
+19 2
+A
+18 3
+A
+36 2
+E
+spear white frost~
+\@Frost\@ is a white longspear forged from iron.  A crystal of rough
+amethyst adorns the back end, and the entire surface is covered with a thin
+layer of pale frost.  
+~
+O freezing bite~
+V13
+8243
+poleaxe pole axe jagged iron~
+a jagged iron poleaxe~
+A jagged iron poleaxe is here.~
+~
+iron~
+weapon CEJM 0 F AN
+polearm 2 21 2 F
+thrust~
+35 180 31000 3 P
+15
+A
+19 3
+A
+13 20
+E
+jagged iron poleaxe pole axe~
+This long poleaxe is made in the ancient Gogothi style, the sharp end
+long worn to a jagged edge.  Corrosion lines its surface, but it seems
+sufficiently strong despite it.  
+~
+O thrust~
+V13
+8244
+spear dragonbone dragon bone~
+a spear carved from dragonbone~
+A spear carved from the bone of a dragon rests here.~
+~
+dragonbone~
+weapon BCEJS 0 F AN
+spear 6 6 2 F
+stab~
+35 150 30000 3 P
+15
+A
+19 3
+A
+18 2
+A
+36 4
+E
+spear dragonbone dragon bone~
+This spear has been carved from the massive bone of an elder dragon. 
+Along the length, various shuddeni markings have been etched, dire in
+appearance.  
+~
+O stab~
+V13
+8245
+Herald Darkness battleaxe axe~
+a battleaxe named, \#Herald of Darkness\#~
+A large battleaxe rests here, humming.~
+~
+iron~
+weapon BCEJM 0 F AN
+axe 2 22 3 F
+slice~
+48 250 40000 2 P
+15
+A
+19 3
+A
+13 20
+O slice~
+V13
+8246
+glaive black flames~
+a black glaive encircled in flames~
+A black glaive encircled in flames rests here.~
+~
+iron~
+weapon CEJf 0 F AN
+polearm 4 10 4 F
+flame~
+50 150 30000 3 P
+15
+A
+18 2
+A
+19 2
+O flame~
+V13
+8247
+dagger agony~
+the sharp dagger, \#Agony\#~
+A sharp dagger sits here.~
+~
+steel~
+weapon BCEJ 0 F AN
+dagger 2 21 2 0
+stab~
+40 60 31500 1 P
+15
+A
+18 2
+A
+19 1
+O stab~
+V13
+8248
+mace skull shaped skull-shaped~
+a skull-shaped mace~
+A glowing mace lies here, the ball carved to resemble a skull.~
+~
+bone~
+weapon ACEJS 0 F AN
+mace 6 6 1 0
+crush~
+48 140 75000 2 P
+15
+A
+12 50
+A
+19 3
+E
+mace skull skull-shaped shaped~
+This mace is weighted to fit in one hand, and is made from a forged
+Gogothi iron.  The ball has been carved in the shape of a human skull,
+complete with grim death-smile.  
+~
+O crush~
+V13
+8249
+dagger torment wicked black~
+the wicked black dagger, \#Torment\#~
+A wicked-looking black dagger oozes a grim black substance.~
+~
+steel~
+weapon BCEJ 0 F AN
+dagger 2 15 7 0
+acidic bite~
+40 30 33000 1 P
+15
+A
+12 45
+A
+18 1
+A
+19 1
+E
+dagger torment wicked black~
+This wicked-looking black dagger is made from Gogothi steel.  Dim runes
+mark the blade\@s edge, which oozes a sickly black ichor.  
+~
+O acidic bite~
+V13
+8250
+Nightfall dark flail bone~
+the bone flail, \#Nightfall\#~
+A dark flail made of bone is here.~
+~
+bone~
+weapon CEGJS 0 F AN
+flail 3 10 1 0
+crush~
+40 80 30000 2 P
+15
+A
+18 9
+E
+nightfall dark flail bone~
+This light flail has been assembled from darkened bones.  The top of the
+flail has been spiked with sharpened bone protrusions and reinforced with
+magic.  
+~
+O crush~
+V13
+8251
+staff spiked death knight~
+a spiked black staff~
+A spiked black staff sits here.~
+~
+ebony~
+weapon CEJS 0 F AN
+staff 9 4 1 F
+pound~
+40 120 45784 3 P
+15
+A
+18 6
+E
+spiked staff death knight~
+This spiked black staff is lined with ornate gold trim, signifying it as
+a ceremonial weapon of sorts.  Just above the grip is the skull-seal of
+Gogoth.  
+~
+O pound~
+V13
+8252
+mace spiked~
+a wickedly spiked mace~
+A wickedly spiked mace sits here.~
+~
+iron~
+weapon CEJ 0 F AN
+mace 10 3 1 0
+smash~
+40 150 50000 2 P
+15
+A
+19 4
+E
+spiked mace~
+This iron mace has a head of wicked spikes, sharpened into thick points. 
+Rust clings to the mace\@s entirety, suggestive of its unusual age.  
+~
+O smash~
+V13
+8253
+writing desk~
+the large writing desk~
+The large writing desk has a book on it.~
+~
+oak~
+container Oae 0 0 P
+50 AC 0 50 0
+50 0 0 4 P
+0
+E
+writing desk~
+This large writing desk was once of exquisite make, carved from some rare
+or exotic wood.  The years have not been kind, blackening, staining, and
+weakening it with decay.  Despite this, it has a still-functional drawer
+which hangs slightly open.  On the top of the desk, an open book waits, the
+writing of the final pages still legible.  
+~
+V13
+8254
+open book~
+the book~
+A thick book sits open on the desk.~
+~
+parchment~
+trash AEOae 0 0 P
+0 0 0 0 0
+50 0 0 2 P
+0
+E
+open book~
+The thick book sits on the desk, open to a hand-written page.  It reads: 
+
+Tonight I will at last invoke the Great Conjuration.  Father Ksathan
+continues his attempts to dissuade me, may the devils curse his false piety.
+I believe I will have his tongue cut out, and force him to witness my final
+steps into the Powers of Immortality.  Nothing can go wrong!  Have I not
+learned the secrets of the Demon Lord Xiganath?  Have I not discerned the
+cause of Iopasi\@s ancient failure in the greater rituals?  
+
+This very day, I have called the Handmaidens.  I ground the bones of several
+city urchins with mortar and pestle, and inscribed the Tetragon.  For fuel,
+I used the corpse of Sir Alre, an itinerant spirit templar who took too much
+of an interest in the special religious services I held in the chapel.  
+
+My wife blanched when I cut the heart out of our daughter Bhara.  Her blood
+mingled with the salt on the floor, again the Tetragon, this time in
+preparation for the Tree.  How could Wythea object when the fruit it will
+bear will let us taste of life undying?  Is not any price worth it?  Has she
+not read?  
+
+It is written in the Dark Tome, \#And he who may successfully conjure the
+Last of these Conjurations, shall never lie in the grave, and the power of
+the Death God will run through him.\#  Such exultation to know that it is I
+this prophet spoke of!  I go now to make ready my final preparations.  When
+next I sit at this desk, deathless will I be.  
+~
+V13
+8255
+polearm black~
+a black polearm~
+A black polearm glints wickedly.~
+~
+iron~
+weapon BCEJ 0 F AN
+polearm 6 7 2 F
+thrust~
+50 200 50000 3 P
+25
+O thrust~
+V13
+8256
+ring skull symbol gogoth~
+a skull ring~
+A ring marked with the skull symbol of Gogoth sits here.~
+~
+silver~
+armor ACEJa 0 F AB
+5 5 5 5 0
+51 5 33324 0 P
+5
+A
+19 3
+A
+13 20
+E
+skull ring symbol gogoth~
+This heavy silver ring is adorned with a black mounting, upon which is
+the silver skull-crest of Gogoth.  Despite its advanced age, it shows no
+sign of tarnish.  
+~
+V13
+8257
+gown rotting mouldering~
+a rotting, mouldering gown~
+A rotting, mouldering gown sits in a heap.~
+~
+cloth~
+armor CEGJSa 0 F AD
+1 1 1 12 0
+51 20 83296 2 P
+15
+A
+1 -2
+A
+12 40
+A
+13 40
+V13
+8258
+boots cracked ancient leather~
+a pair of ancient, cracked leather boots~
+A pair of ancient, cracked leather boots rests here.~
+~
+leather~
+armor CEGJSa 0 F AG
+8 8 8 0 0
+51 30 29838 2 P
+15
+A
+13 -35
+A
+19 3
+A
+18 3
+V13
+8259
+cloak ancient fetid~
+an ancient, fetid cloak~
+An ancient, fetid cloak sits in a foul heap.~
+~
+carrion~
+armor CEFGJSa 0 F AK
+15 15 15 15 0
+51 20 25900 2 P
+15
+A
+24 -7
+A
+13 -10
+A
+17 -20
+V13
+8260
+sleeves lich~
+the Sleeves of the Lich~
+Sewn from human flesh, the grotesque Sleeves of the Lich rest here.~
+~
+carrion~
+armor BCEFGJSa 0 F AI
+15 15 15 15 0
+51 20 21919 2 P
+15
+A
+13 -35
+A
+19 2
+A
+2 3
+A
+1 3
+V13
+8261
+leggings undead~
+the Leggings of the Undead~
+The hideous Leggings of the Undead rest in a heap.~
+~
+carrion~
+armor CEFGJSa 0 F AF
+6 6 6 0 0
+51 20 42866 2 P
+15
+A
+13 20
+A
+19 2
+A
+18 1
+A
+12 35
+V13
+8262
+shield rune onyx~
+a rune-covered onyx shield~
+A rune-covered onyx shield rests here.~
+~
+onyx~
+armor BCEGHJMSa 0 F AJ
+7 7 7 0 0
+51 80 33080 2 P
+15
+A
+17 -5
+A
+24 -5
+A
+19 3
+A
+18 3
+V13
+8263
+belt jade skull buckle~
+a jade belt with a skull-shaped buckle~
+A jade belt with a skull-shaped buckle sits here.~
+~
+jade~
+container ACEGJSa 0 F AL
+30 E 0 500 50
+51 30 223567 2 P
+15
+A
+3 1
+A
+4 1
+A
+20 -1
+A
+24 -1
+A
+13 5
+A
+12 5
+A
+18 4
+A
+19 2
+A
+17 -10
+V13
+8264
+circlet black silver~
+a black and silver circlet~
+A finely wrought black and silver circlet rests here.~
+~
+silver~
+armor CEGJMa 0 F AE
+10 10 10 10 0
+51 40 50064 2 P
+15
+A
+2 1
+A
+12 20
+A
+14 50
+A
+18 6
+V13
+8265
+amulet skull human undead~
+an Amulet of the Undead~
+A grisly amulet carved from a human skull rests here.~
+~
+bone~
+armor CEFGJSa 0 0 AC
+1 1 1 10 0
+51 20 390897 1 P
+2
+A
+13 50
+A
+20 -1
+V13
+8266
+necklace fingerbones finger bone loop leather~
+a Necklace of Fingerbones~
+A loop of leather with ten finger bones strung through it sits here.~
+~
+bone~
+armor CEFGJSa 0 0 AC
+1 1 1 10 0
+51 20 65897 1 P
+2
+A
+12 50
+A
+20 -4
+V13
+8267
+hand gogoth~
+the Hand of Gogoth~
+A mummified hand, withered flesh clinging to it, rests here.~
+~
+carrion~
+weapon ABCEFGHJLM 0 0 AN
+exotic 8 7 9 0
+deathly chill~
+55 80 1211600 2 P
+1
+A
+13 -30
+A
+12 60
+O deathly chill~
+V13
+8268
+mask skull gogoth skull-mask~
+the Skull-Mask of Gogoth~
+An iron mask, intricately forged to resemble a human skull, rests on the ground.~
+~
+iron~
+armor ABCEFGHJLM 0 0 AE
+2 2 2 2 0
+55 200 1100000 2 P
+1
+A
+4 -5
+A
+3 5
+>remove_prog 100~
+opremaffect 44
+~
+>wear_prog 100~
+if isheld($o)
+opechoat $o Your vision feels sharper.
+opaddaffect 44 51 -1 0 0 32
+endif
+ 
+~
+|
+V13
+8269
+wand blackened wood~
+a blackened wand~
+A wand crafted from blackened wood sits here.~
+~
+wood~
+wand S 0 0 AO
+52 1 1 'acid breath' 0
+51 10 0 1 P
+3
+V13
+8270
+scroll void~
+a Scroll of Void~
+A black scroll sits here, seeming to swirl with dark power.~
+~
+parchment~
+scroll FS 0 0 AO
+55 'enfeeblement' 'weaken' 'agony' 'plague of madness'
+51 10 0 1 P
+2
+V13
+8271
+wand crackling~
+a crackling wand~
+A wand made of crackling energy floats just above the ground.~
+~
+energy~
+wand ABS 0 F AO
+54 1 1 'disintegration' 0
+51 20 0 1 P
+0
+V13
+8272
+wand crimson~
+a crimson wand~
+A wand made of deep crimson wood rests here.~
+~
+wood~
+wand CDEGS 0 0 AO
+54 1 1 'vortex' 0
+51 10 0 1 P
+3
+V13
+8273
+scroll mysterious~
+a mysterious scroll~
+A scroll covered with mysterious runes is here.~
+~
+parchment~
+scroll AES 0 F A
+54 'mindshell' 'protective shield' 'protection good' ''
+51 20 0 1 P
+0
+V13
+8274
+belt damnation~
+the Belt of Damnation~
+A belt of black silk radiates negative energy.~
+~
+cloth~
+armor ABCDEGJLSa 0 0 AL
+1 1 1 8 0
+55 80 700000 2 P
+1
+>wear_prog 100~
+opechoat $o You feel weak!
+opechoat $o You scream as plague sores break out on your skin!
+opechoat $o You can\@t see!
+opechoat $o You feel uncomfortable.
+opechoat $o You feel sick, as poison courses through your veins!
+opechoaround $o $O looks weaker.
+opechoaround $o $O screams as plague sores break out on $s skin!
+opechoaround $o $O looks blinded!
+opechoaround $o $O looks very sick.
+opaddaffect 105 60 20 0 0 4096
+opaddaffect 39 60 60 0 0 1024
+opaddaff 8 60 20 0 0 1
+opaddaff 104 60 20 0 0 8388608
+opaddaff 143 60 20 1 -10 16777216
+ 
+~
+>fight_prog 2~
+opecho_fight The Belt of Damnation crackles with negative energy!
+opcastoff 104 99
+~
+>fight_prog 2~
+opecho_fight The Belt of Damnation crackles with negative energy!
+opcastoff 39 99
+~
+>fight_prog 2~
+opecho_fight The Belt of Damnation crackles with negative energy!
+opcastoff 105 99
+~
+>fight_prog 2~
+opecho_fight The Belt of Damnation crackles with negative energy!
+opcastoff 143 99
+~
+>fight_prog 2~
+opecho_fight The Belt of Damnation crackles with negative energy!
+opcastoff 58 99
+~
+>fight_prog 2~
+opecho_fight The Belt of Damnation crackles with negative energy!
+opcastoff 8 99
+~
+|
+V13
+8275
+halberd black glowing long long-handled~
+a glowing black halberd~
+A long-handled halberd glows with an unholy light.~
+~
+iron~
+weapon ACEGJLM 0 0 AN
+polearm 5 10 2 F
+thrust~
+51 300 510852 3 P
+2
+A
+19 4
+A
+17 -15
+A
+24 -5
+O thrust~
+V13
+8276
+helmet black gogoth lich captain~
+the black helmet of the lich captain~
+A black helmet marked with the symbol of Gogoth rests here.~
+~
+iron~
+armor CDGHJLMa 0 F AE
+20 20 20 20 0
+51 100 59048 2 P
+20
+A
+19 3
+A
+18 4
+V13
+8277
+spear black~
+a black spear~
+An ancient black spear rests here.~
+~
+iron~
+weapon 0 0 F AN
+spear 6 7 2 F
+thrust~
+51 130 92172 3 P
+35
+O thrust~
+V13
+8278
+parchment scrap ragged~
+a ragged scrap of parchment~
+A ragged scrap of parchment bears some near-illegible words.~
+~
+parchment~
+trash SU 0 F A
+0 0 0 0 0
+51 1 0 2 P
+0
+E
+parchment~
+The ragged scrap of parchment bears the following
+barely-legible words:
+         demons slew the mighty Ulyon, severing the
+   defeated the armies of    an     Silbanth fell
+               bore away the silver shield, causing great
+hero had been heard            ring a
+ in yell the words \@Life!\@, \@Protection!\@, and \@Transport!\@
+~
+E
+scrap~
+The ragged scrap of parchment bears the following
+barely-legible words:
+         demons slew the mighty Ulyon, severing the
+   defeated the armies of    an     Silbanth fell
+               bore away the silver shield, causing great
+hero had been heard            ring a
+  in yell the words \@Life!\@, \@Protection!\@, and \@Transport!\@
+~
+V13
+8279
+vellum sheet~
+a torn sheet of vellum~
+A sheet of vellum torn from a book rests here.~
+~
+parchment~
+trash SU 0 F A
+0 0 0 0 0
+51 1 0 2 P
+0
+E
+sheet~
+A sheet of vellum torn from a book bears the following
+smudged words:
+The High War-Mage Memang created many wonderous devices
+in his 450-year rule of the kingdom, not the least of which
+was the gold-banded staff that he imbued with a portion of
+his very soul. This staff was rumored to exert control over
+the forces of magic itself, to be able to affect the binding
+of enchantments, and to be able to direct the flow of mana.
+The Priest of Sishimn reported that the words Memang used
+to control the staff were:  Sosan, Irullanuz, Urulu, Aminai
+~
+E
+vellum~
+A sheet of vellum torn from a book bears the following
+smudged words:
+The High War-Mage Memang created many wonderous devices
+in his 450-year rule of the kingdom, not the least of which
+was the gold-banded staff that he imbued with a portion of
+his very soul. This staff was rumored to exert control over
+the forces of magic itself, to be able to affect the binding
+of enchantments, and to be able to direct the flow of mana.
+The Priest of Sishimn reported that the words Memang used
+to control the staff were:  Sosan, Irullanuz, Urulu, Aminai
+~
+V13
+8280
+page tattered paper~
+a tattered page of paper~
+A tattered page of paper sits, covered with dust.~
+~
+parchment~
+trash SU 0 F A
+0 0 0 0 0
+51 1 0 2 P
+0
+E
+tattered~
+Anue aeksa giredash\@shu gireshya.  Chiyama min triridketl.  Rirunas
+hlishal n\@lenkuna ulharja.  Esharik bhel mrarja zhajil ci\@a.  Suna wurul
+mnekktekuma kanusuma mrihariketl.  Qllemneng ch\@umas darideqketl.  Desum\@ash
+ulhaitl esh tuka.  Daneshm invri ketl nra muru alledlakmel.  M\@yeg ilolug
+horunarja ma\@a cehtla.  Kallshic nashmelideq hrikkar zha.  Dran metr\@inghma.
+Aranurug kunashketl moruma suneshumas.  Nu\@u jyahc uithsi nig-aris bal. 
+Eyilukk cyaki nophnach xeh shiryas.  Tulhantketl sen kur\@uhene hamel. 
+Znayesh charu\@zira vradhmu ishighal.  Il ahkol mne mirugar dahg. 
+Deshma\@urug nikuma nekktar tarin\@kuma tonth.  Durriru himnen mne hlishal
+hich\@u.  Zha arussiy sryma y\@gollon.  Mintiya naya jalsuma dija\@llsuma
+sunumas.  Busin ashtulhkuma sanumas.  
+~
+E
+page~
+Anue aeksa giredash\@shu gireshya.  Chiyama min triridketl.  Rirunas
+hlishal n\@lenkuna ulharja.  Esharik bhel mrarja zhajil ci\@a.  Suna wurul
+mnekktekuma kanusuma mrihariketl.  Qllemneng ch\@umas darideqketl.  Desum\@ash
+ulhaitl esh tuka.  Daneshm invri ketl nra muru alledlakmel.  M\@yeg ilolug
+horunarja ma\@a cehtla.  Kallshic nashmelideq hrikkar zha.  Dran metr\@inghma.
+Aranurug kunashketl moruma suneshumas.  Nu\@u jyahc uithsi nig-aris bal. 
+Eyilukk cyaki nophnach xeh shiryas.  Tulhantketl sen kur\@uhene hamel. 
+Znayesh charu\@zira vradhmu ishighal.  Il ahkol mne mirugar dahg. 
+Deshma\@urug nikuma nekktar tarin\@kuma tonth.  Durriru himnen mne hlishal
+hich\@u.  Zha arussiy sryma y\@gollon.  Mintiya naya jalsuma dija\@llsuma
+sunumas.  Busin ashtulhkuma sanumas.  
+~
+E
+paper~
+Anue aeksa giredash\@shu gireshya.  Chiyama min triridketl.  Rirunas
+hlishal n\@lenkuna ulharja.  Esharik bhel mrarja zhajil ci\@a.  Suna wurul
+mnekktekuma kanusuma mrihariketl.  Qllemneng ch\@umas darideqketl.  Desum\@ash
+ulhaitl esh tuka.  Daneshm invri ketl nra muru alledlakmel.  M\@yeg ilolug
+horunarja ma\@a cehtla.  Kallshic nashmelideq hrikkar zha.  Dran metr\@inghma.
+Aranurug kunashketl moruma suneshumas.  Nu\@u jyahc uithsi nig-aris bal. 
+Eyilukk cyaki nophnach xeh shiryas.  Tulhantketl sen kur\@uhene hamel. 
+Znayesh charu\@zira vradhmu ishighal.  Il ahkol mne mirugar dahg. 
+Deshma\@urug nikuma nekktar tarin\@kuma tonth.  Durriru himnen mne hlishal
+hich\@u.  Zha arussiy sryma y\@gollon.  Mintiya naya jalsuma dija\@llsuma
+sunumas.  Busin ashtulhkuma sanumas.  
+~
+V13
+8281
+key silver tarnished~
+a tarnished silver key~
+A tarnished silver key lies here.~
+~
+silver~
+key CM 0 0 AO
+0 0 0 0 0
+51 5 0 0 P
+1
+E
+tarnished~
+This silver key is exceptional tarnished and worn, suggestive of its
+advanced age.  
+~
+E
+silver~
+This silver key is exceptional tarnished and worn, suggestive of its
+advanced age.  
+~
+E
+key~
+This silver key is exceptional tarnished and worn, suggestive of its
+advanced age.  
+~
+>rand_prog 50~
+if objvalue(0) == 0
+if ispc($o)
+opvalueset 0 1
+opvalueset 1 300
+endif
+endif
+if objvalue(1) > 1
+opvaluedown 1
+endif
+if objvalue(1) == 1
+opechoat $o The silver key crumbles into dust.
+oppurge self
+endif
+~
+|
+V13
+8282
+spear ancient rusted~
+an ancient, rusted spear~
+An ancient, rusted spear is here.~
+~
+steel~
+weapon CE 0 F AN
+spear 4 6 2 F
+pierce~
+25 80 0 3 P
+0
+A
+19 2
+A
+18 1
+O pierce~
+V13
+8283
+platemail plate mail rusted ancient~
+a suit of ancient, rusted platemail~
+A suit of ancient platemail rusts here.~
+~
+steel~
+armor CE 0 F AD
+5 5 8 8 0
+25 100 0 2 P
+0
+A
+12 -5
+A
+18 -1
+A
+2 -1
+A
+13 5
+A
+19 2
+V13
+8284
+cornmeal corn moldy meal~
+some moldy cornmeal~
+Some molding cornmeal sits here.~
+~
+food~
+food ES 0 F A
+15 50 0 0 0
+1 1 0 1 P
+0
+E
+corn cornmeal moldy meal~
+Preserved by the curse of the Gogoth, this corn meal has molded for over
+hundreds and hundreds of years.  It is slimy to the touch, and smells
+rancid.  
+~
+>eat_prog 100~
+mpechoat $n You swallow the slimy, gritty cornmeal, sharp pains grinding through your stomach scant moments later.
+mpcast 62 60 $n
+~
+|
+V13
+8285
+bread loaf moldy molding~
+a molding loaf of bread~
+An ancient loaf of bread molds here.~
+~
+food~
+food ES 0 F A
+15 50 0 0 0
+1 1 0 1 P
+0
+E
+loaf bread moldy molding~
+This molding loaf of bread has been preserved for hundreds, if not
+thousands years by the curse of Gogoth.  Its current state of edibility is
+dubious, but it is a remarkable showcase of varying shades of blue and
+green.  
+~
+>eat_prog 100~
+mpechoat $n The bread is rock-hard on the outside and outright mushy on the inside, with a sour tang from the mould that threatens to take the roof off your mouth.
+mpcast 699 60 $n
+~
+|
+V13
+8286
+no name~
+(no short description)~
+(no description)~
+~
+bronze~
+armor CJ 0 0 AD
+15 15 15 10 0
+45 170 1560 0 P
+3
+V13
+8287
+heavy cuirass black iron~
+a black iron cuirass~
+A heavy cuirass of black iron is here.~
+~
+iron~
+armor BCEGJ 0 0 AD
+15 15 15 10 0
+45 170 39490 2 P
+2
+A
+42 8
+A
+19 4
+E
+heavy cuirass black iron~
+This heavy cuirass is made from black iron, and its surface hums with
+dark magic.  Upon the chest is the skull-crest of Gogoth, with two chips of
+rubies set into its eyes.  
+~
+V13
+8288
+bracelet silver skulls charms skull skull-shaped~
+a bracelet strung with silver skulls~
+A bracelet strung with skull-shaped charms is here.~
+~
+silver~
+armor CEGJ 0 0 AM
+5 5 9 9 0
+52 10 34901 0 P
+1
+A
+31 5
+A
+13 25
+A
+12 25
+A
+20 -1
+E
+bracelet silver skulls charms skull skull-shaped~
+This bracelet is made from three black cords, twisted around one another.
+From it, a series of silver charms are strung, each one in the shape of the
+skull-seal of Gogoth.  
+~
+V13
+8289
+thick iron collar skull~
+an iron collar set with a skull~
+A thick iron collar is here, marked with a skull.~
+~
+iron~
+armor CEGJMZ 0 0 AC
+5 5 9 9 0
+55 100 12394 2 P
+1
+A
+2 4
+A
+19 4
+A
+20 -1
+E
+thick iron collar skull~
+This thick iron collar is very much akin to one worn by a massive dog,
+except with an unusual magical lock instead of a mundane one.  The front is
+emblazoned with a silver skull seal, identifying it as an artifact of
+Gogoth.  
+~
+V13
+8290
+belt bronze heavy segmented tarnished obj_8290~
+a segmented bronze belt~
+A heavy belt of segmented bronze lies here, tarnished.~
+~
+bronze~
+armor CEJ 0 0 AL
+3 3 15 8 0
+45 125 1560 0 P
+2
+A
+19 1
+A
+13 10
+E
+belt bronze heavy segmented tarnished obj_8290~
+This heavy belt is made of chunky segments of bronze strung on a strip of
+thick leather.  The piece is clearly ancient; remarkably, the leather seems
+supple and strong, though its exterior is mouldering and cracked.  The
+bronze itself contains a thick layer of cloudy tarnish.  A buckle with the
+grinning skull-crest of Gogoth clasps the belt shut.  
+~
+V13
+8291
+shirt mouldering velvet grey gray obj_8291~
+a mouldering velvet shirt~
+A mouldering shirt of velvet has faded to grey.~
+~
+velvet~
+armor CE 0 0 AD
+5 8 8 0 0
+30 34 60 0 P
+5
+A
+54 -1
+A
+20 -1
+A
+13 10
+V13
+8292
+lamp bronze tarnished tarnish~
+a tarnished bronze lamp~
+A tarnished bronze lamp is here, flickering with green flame.~
+~
+unknown~
+light ACEJPf 0 0 O
+0 0 999 0 0
+50 50 0 0 P
+1
+V13
+8293
+breeches mouldering velvet grey gray obj_8293~
+mouldering velvet breeches~
+Mouldering velvet breeches lie here, long-faded to a faint grey.~
+~
+velvet~
+armor CE 0 0 AF
+5 8 8 0 0
+30 34 60 0 P
+5
+A
+13 10
+A
+20 -1
+A
+54 -1
+V13
+8294
+belt brocade fetid gold thread obj_8294~
+a fetid brocade belt~
+A fetid brocade belt moulders here, gold thread long since faded away.~
+~
+cloth~
+armor CEJ 0 0 AL
+4 4 4 4 0
+30 10 450 0 P
+5
+A
+13 5
+A
+20 -1
+E
+belt brocade fetid gold thread obj_8294~
+This belt of ropelike threads was once gilded and shiny.  Now it is
+tarnished and dirty, mouldering away.  The belt still seems usable, however.
+The knotted tassels at the ends have all but rotted away, leaving a
+decidedly fetid air about them.  
+~
+V13
+8295
+pair heavy iron knuckles~
+a pair of heavy iron knuckles~
+A pair of heavy iron knuckles waits to be worn.~
+~
+iron~
+weapon CEJ 0 0 AH
+exotic 5 6 1 0
+crush~
+50 95 249409 1 P
+1
+A
+1 2
+A
+18 2
+A
+19 2
+A
+2 2
+E
+pair heavy iron knuckles~
+This pair of heavy knuckles is made from black iron.  It bears the silver
+skull-seal of Gogoth, corrosion dulling parts of its ancient surface.  
+~
+O crush~
+V13
+8296
+ragged smoldering priest\@s priest robe~
+a ragged, smoldering priest\@s robe~
+A ragged priest\@s robe is here, smoldering with unnatural heat.~
+~
+carrion~
+armor CDEGJLa 0 0 AD
+2 2 2 2 0
+52 80 40505 2 P
+1
+A
+20 -9
+A
+12 100
+A
+3 3
+E
+ragged smoldering priest\@s priest robe~
+The ancient remains of this robe appear to have been in the service of
+Jolinn, with some its spear and shield still faintly visible amidst the
+tatters.  Heat rises off of it, the fabric ever burning, but never turning
+to ash.  
+~
+>rand_prog 1~
+if rand(1)
+  mpecho $I smoke faintly, emitting the smell of half-cooked meat.
+endif
+~
+|
+V13
+8297
+gloves lace crumbling yellowed yellow~
+a crumbling pair of lace gloves~
+A pair of lace gloves, yellowed and brittle, sit here.~
+~
+lace~
+armor EGJU 0 0 AH
+1 0 0 0 0
+46 3 990 0 P
+2
+A
+20 -3
+A
+12 30
+E
+gloves lace crumbling yellowed yellow~
+This pair of lace gloves seem as though they were made long enough to
+reach the elbow.  In their current state, however, to stretch them so would
+likely crumble them to powder.  The once-supple silken fabric is now
+yellowed and brittle, the threads cracking and fraying with each movement.  
+~
+V13
+8298
+corset silk rotted rotting silken bone~
+a rotted silk corset~
+A silken corset has been discarded here, rotted fabric exposing bone stays.~
+~
+silk~
+armor EJS 0 0 AD
+4 3 5 3 0
+47 35 20500 2 P
+1
+A
+20 -2
+A
+12 20
+A
+13 20
+E
+corset silk rotted rotting silken bone~
+Once an elegant construction of satin and lace, this corset is now a
+mouldering ruin, shreds of fabric barely managing to hold together the
+whalebone stays and metal clasps.  The lacing that once tightened the corset
+is frayed through, now no longer able in the least to provide the definition
+to shape the garment was once made for.  
+~
+V13
+8299
+skull shaped brooch silver chain~
+a skull brooch~
+A skull-shaped brooch is here, hanging from a slender chain.~
+~
+silver~
+armor AGJa 0 0 AC
+3 1 3 1 0
+51 15 30402 1 P
+2
+A
+13 30
+A
+12 30
+A
+20 -1
+E
+skull shaped brooch silver chain~
+This brooch is affixed to a long, slender chain.  Despite its obviously
+advanced years, the silver surface holds an impressive polish.  The brooch
+itself is carved into the skull-crest of Gogoth.  
+~
+V13
+8300
+drum bound human skin~
+a drum bound with human skin~
+A black drum is here, bound with human skin.~
+~
+ebony~
+instrument CEJLf 0 F AO
+A 0 0 0 0
+48 50 11000 1 P
+15
+A
+19 2
+A
+12 40
+E
+drum bound human skin~
+This drum is made of aging ebony, much of its lustre long lost.  The drum
+head is made from stretched human flesh, grey and taut, and strung with
+grisly sinew.  
+~
+V13
+8301
+scroll embers ancient gilt red gold~
+the Scroll of Embers~
+An ancient scroll, edges gilt in red gold, sits here.~
+~
+parchment~
+writing ADGXYa 0 0 AO
+1 0 0 0 0
+55 40 0 1 P
+1
+E
+scroll1~
+Giving is an unquestionable evil, therefore consumption is an
+unquestionable good.  And what is Fire but consumption given expression of
+and for itself?  Conflict is the ultimate truth of existence; is not a self
+only distinguished from its environment by struggle against it?  And where
+can strife for existence, the war to BE, be found in a purer form than in
+Fire?  
+
+We are seekers of a truth not to be found in the cold world of mud, an
+expression for the resonance it evokes in the deepest core of being.  Not
+for us the pablum of healing waters, not for us the arbiter of scales or
+invulnerable shield.  Our part is the chaos of maelstroms, bone-breaking
+laughter, rapture of destruction!  True power comes not from controlling or
+channeling or even embracing that rapture, but from being embraced BY it, to
+become part of that self, for only in Fire can two selves join truly
+together, not contending but uniting in a perfect incandescence.  
+~
+>verb_prog read~
+if objtargetcarry()
+  mpinterpret $n $x
+  if compstr(2) / scroll
+  or compstr(2) / embers
+  or compstr(2) / ancient
+  or compstr(2) / gilt
+  or compstr(2) / red
+  or compstr(2) / gold
+    // Bit Setting for Blood Pyre
+    if chosenpath($n) == golden flame
+      if isbitset($n) == 261
+      else
+        mpbitset $n 261 1
+        mpechoat $n {yYou gain new insight into the application of the Blood Pyre.{x
+        // Adds Consume for 12 hours
+        mpaddaffect $n 400 60 24 0 0 0 O
+      endif
+    endif
+  endif
+ opverbstop
+else
+  mpnextinterp
+endif
+~
+|
+V13
+8302
+sheaf notes~
+a sheaf of notes~
+A sheaf of notes is here, bound with a leather strap.~
+~
+parchment~
+writing 0 0 F AO
+1 0 0 0 0
+30 14 0 1 P
+0
+E
+sheaf1~
+=== Notes on the Scroll of Embers ===
+
+As laid down by Ksathan, Priest of the Unquenchable Blaze
+
+A deeper understanding of the Scroll\@s true worth can only be achieved in a
+Pyre of pure red.  I myself endeavored this, and I myself attained it.  With
+smoke I began the rite, and with wand I furthered it.  This is no practice
+of mere hedge magic, but one such as myself finds little difficulty in it
+nonetheless.  Who, indeed, could stand before me?  His Grace, rife with
+darkened powers?  My blaze shall illuminate the dark corners, and rend to
+ash all baser machinations.  And thus I completed the ritual, with tooth of
+dragon, and called forth the Purifying Flame.  
+
+It was then that I truly Understood my Path.  It led through Fire, to
+ancient beast no less noble than dragon.  On that Path of Fire I laid down
+my offering, that it might sup.  And when it appeared I offered it an
+Ending, and drew forth from Within the purest of gems, which I offered to
+Him.  Thus I grant to Him His realm, a place of light unending.  And so it
+shall be offered again, and again, until the breaking of the world.  
+~
+#0
+
+
+
+#ROOMS
+#8228
+Inside the Palace Gates~
+Inside the massive black palace gates, a spacious entry hall looms.  Once
+an imposing sight, the upper reaches of the hall are lost in darkness. 
+Centuries-old torches sit in rusty brackets lining the walls, and molding
+tapestries lie in fetid heaps.  The stench of death dominates the palace,
+and evil seems to radiate from within.  The entry hall leads north into the
+palace, and the gates open to the south.  
+~
+~
+1
+0 8250 0
+D0
+The entry hall leads farther into the palace.
+~
+~
+0 0 8231
+D2
+You see outside the palace gates.
+~
+~
+3 0 8227
+W 5 0 0
+Z 5 5
+S
+#8229
+The Palace Barracks~
+This ancient barracks appears to have been both long destroyed and long
+ransacked, with its many bunks, footlockers, and supplies reduced to
+meaningless rubble.  The stone walls have been raked with any number of
+weapons, appearing as though a great brawl once occurred here.  Part of the
+ceiling has crumbled down, interspersing the rotting debris with large
+chunks of rock.  The air is close and foul, with the scents of the hall
+above and the death within intermingling into a truly horrid synthesis.  The
+barracks continues to the north.  
+~
+~
+1
+0 8250 0
+D0
+The palace barracks continue north.
+~
+~
+0 0 8238
+W 5 0 0
+Z 5 5
+S
+#8230
+The Ancient Palace Entry Hall~
+This enormous entry hall takes up much of the castle\@s ground level, with
+the ceiling high above disappearing into darkness.  Stone columns follow a
+long line to the east, just offset from the hall\@s center.  The floor here
+is tile, cracked and worn from untold years, and layered in dust, bone, and
+debris.  Little adorns the castle\@s interior walls, with most of their
+finery long rotted.  The air is heavy with foul smells, and darkness shrouds
+much of the vast chamber.  The hall continues north and east.  
+~
+~
+1
+0 8250 0
+D0
+The entry hall continues north.
+~
+~
+0 0 8235
+D1
+~
+~
+0 0 8231
+W 5 0 0
+Z 5 5
+S
+#8231
+The Ancient Palace Entry Hall~
+This enormous entry hall takes up much of the castle\@s ground level, with
+the ceiling high above disappearing into darkness.  Stone columns line
+either side of the grand carpet which leads through the hall, cracked and
+stained with age.  The carpet, as well, has blackened and mouldered, little
+more than a shadow of its former glory.  The air is heavy with foul smells,
+and darkness shrouds the outer reaches of the hall.  To the south is the
+entrance to the palace, while to the north, east, and west, the hall
+continues.  
+~
+~
+1
+0 8250 0
+D0
+The entry hall continues north.
+~
+~
+0 0 8236
+D1
+~
+~
+0 0 8232
+D2
+The entry hall continues south.
+~
+~
+0 0 8228
+D3
+The entry hall continues west.
+~
+~
+0 0 8230
+W 5 0 0
+Z 5 5
+S
+#8232
+The Ancient Palace Entry Hall~
+This enormous entry hall takes up much of the castle\@s ground level, with
+the ceiling high above disappearing into darkness.  Stone columns follow a
+long line to the west, just offset from the hall\@s center.  The floor here
+is tile, cracked and worn from untold years, and layered in dust, bone, and
+debris.  Little adorns the castle\@s interior walls, with most of their
+finery long rotted.  The air is heavy with foul smells, and darkness shrouds
+much of the vast chamber.  The hall continues north and west.  
+~
+~
+1
+0 8250 0
+D0
+The entry hall continues north.
+~
+~
+0 0 8237
+D3
+The entry hall continues west.
+~
+~
+0 0 8231
+W 5 0 0
+Z 5 5
+S
+#8233
+The Ancient Armory~
+The back of the armory has completely collapsed, with the castle\@s outer
+wall having mostly broken down into it.  Much of the floor is entirely
+buried by shattered stone, the hole in the wall not quite large enough to
+fit through.  A cold, sickening wind blows in from the plains of Shargob,
+sending the dust of the chamber swirling about.  Broken metal plates are
+strewn throughout, the only concession to the armory\@s original purpose. 
+The destruction lessens to the north.  
+~
+~
+1
+0 8250 0
+D0
+~
+~
+0 0 8234
+W 5 0 0
+Z 5 5
+S
+#8234
+The Ancient Armory~
+The armory of Castle Gogoth lay in ruins, the room dark and silent. 
+Broken armor and weapon racks lay toppled onto the floor, splintered and
+twisted.  The floor is covered with dust and stony debris, the ancient tiles
+cracked and jutting upward.  Long forgotten torches lay on the floor,
+crumbling and black, and a fetid breeze flows into the room from the south. 
+To the south, the armory appears to havec collapsed in on itself, while it
+continues to the north.  
+~
+~
+1
+0 8250 0
+D0
+The exit to the armory is here.
+~
+~
+0 0 8243
+D2
+The armory continues south.
+~
+~
+0 0 8233
+W 5 0 0
+Z 5 5
+S
+#8235
+The Ancient Palace Entry Hall~
+This enormous entry hall takes up much of the castle\@s ground level, with
+the ceiling high above disappearing into darkness.  Stone columns follow a
+long line to the east, just offset from the hall\@s center.  The floor here
+is tile, cracked and worn from untold years, and layered in dust, bone, and
+debris.  Little adorns the castle\@s interior walls, with most of their
+finery long rotted.  The air is heavy with foul smells, and darkness shrouds
+much of the vast chamber.  The hall continues north, east, and south.  
+~
+~
+1
+0 8250 0
+D0
+The entry hall continues north.
+~
+~
+0 0 8240
+D1
+~
+~
+0 0 8236
+D2
+The entry hall continues south.
+~
+~
+0 0 8230
+W 5 0 0
+Z 5 5
+S
+#8236
+The Ancient Palace Entry Hall~
+This enormous entry hall takes up much of the castle\@s ground level, with
+the ceiling high above disappearing into darkness.  Stone columns line
+either side of the grand carpet which leads through the hall, cracked and
+stained with age.  The carpet, as well, has blackened and mouldered, little
+more than a shadow of its former glory.  The air is heavy with foul smells,
+and darkness shrouds the outer reaches of the hall.  The carpet leads north
+and south, while the hall also extends to the east and west.  
+~
+~
+1
+0 8250 0
+D0
+The entry hall continues north.
+~
+~
+0 0 8241
+D1
+~
+~
+0 0 8237
+D2
+The entry hall continues south.
+~
+~
+0 0 8231
+D3
+The entry hall continues west.
+~
+~
+0 0 8235
+W 5 0 0
+Z 5 5
+S
+#8237
+The Ancient Palace Entry Hall~
+This enormous entry hall takes up much of the castle\@s ground level, with
+the ceiling high above disappearing into darkness.  Stone columns follow a
+long line to the west, just offset from the hall\@s center.  The floor here
+is tile, cracked and worn from untold years, and layered in dust, bone, and
+debris.  Little adorns the castle\@s interior walls, with most of their
+finery long rotted.  The air is heavy with foul smells, and darkness shrouds
+much of the vast chamber.  The hall continues north, west, and south.  
+~
+~
+1
+0 8250 0
+D0
+The entry hall continues north.
+~
+~
+0 0 8242
+D2
+The entry hall continues south.
+~
+~
+0 0 8232
+D3
+The entry hall continues west.
+~
+~
+0 0 8236
+W 5 0 0
+Z 5 5
+S
+#8238
+The Palace Barracks~
+This ancient barracks appears to have been both long destroyed and long
+ransacked, with its many bunks, footlockers, and supplies reduced to
+meaningless rubble.  The stone walls have been raked with any number of
+weapons, appearing as though a great brawl once occurred here.  Part of the
+ceiling has crumbled down, interspersing the rotting debris with large
+chunks of rock.  The air is close and foul, with the scents of the hall
+above and the death within intermingling into a truly horrid synthesis.  To
+the north, an open doorway leads to the barracks\@ common room.  
+~
+~
+1
+0 8250 0
+D0
+The common room lies to the north.
+~
+~
+0 0 8239
+D2
+The barracks continue south.
+~
+~
+0 0 8229
+W 5 0 0
+Z 5 5
+S
+#8239
+The Guards\@ Common Room~
+This small common room once served the palace guard with a place to
+socialize while off-duty.  Its stone walls still hang with a variety of
+hooks, for schedules, banners, or other decorations; however, they have long
+since crumbled, rotted, or burned.  Much of this chamber is filled with
+scorch marks from some long-ago fire, and its tables and chairs lay in
+depressing ruins.  The air is close and foul, the dust of the room stirred
+into it by the slightest motion.  An open doorway leads south, into the
+barracks.  
+~
+~
+1
+0 8250 0
+D1
+The palace entry hall lies east.
+~
+~
+3 0 8240
+D2
+The palace barracks lie south.
+~
+~
+0 0 8238
+W 5 0 0
+Z 5 5
+S
+#8240
+The Ancient Palace Entry Hall~
+This enormous entry hall takes up much of the castle\@s ground level, with
+the ceiling high above disappearing into darkness.  Stone columns follow a
+long line to the east, just offset from the hall\@s center.  The floor here
+is tile, cracked and worn from untold years, and layered in dust, bone, and
+debris.  Little adorns the castle\@s interior walls, with most of their
+finery long rotted.  The air is heavy with foul smells, and darkness shrouds
+much of the vast chamber.  The ruined kitchen lies to the north, while the
+castle\@s ancient barracks are to the west.  
+~
+~
+1
+0 8250 0
+D0
+The entry hall continues north.
+~
+~
+3 0 8245
+D1
+~
+~
+0 0 8241
+D2
+The entry hall continues south.
+~
+~
+0 0 8235
+D3
+The entry hall continues west.
+~
+~
+3 0 8239
+W 5 0 0
+Z 5 5
+S
+#8241
+The Ancient Palace Entry Hall~
+This enormous entry hall takes up much of the castle\@s ground level, with
+the ceiling high above disappearing into darkness.  Stone columns line
+either side of the grand carpet which leads through the hall, cracked and
+stained with age.  The carpet, as well, has blackened and mouldered, little
+more than a shadow of its former glory.  The air is heavy with foul smells,
+and darkness shrouds the outer reaches of the hall.  The carpeted path leads
+north, leading into a short hallway.  The entry hall continues to the east,
+south, and west.  
+~
+~
+1
+0 8250 0
+D0
+The entry hall continues north.
+~
+~
+0 0 8246
+D1
+~
+~
+0 0 8242
+D2
+The entry hall continues south.
+~
+~
+0 0 8236
+D3
+The entry hall continues west.
+~
+~
+0 0 8240
+W 5 0 0
+Z 5 5
+S
+#8242
+The Ancient Palace Entry Hall~
+This enormous entry hall takes up much of the castle\@s ground level, with
+the ceiling high above disappearing into darkness.  Stone columns follow a
+long line to the west, just offset from the hall\@s center.  The floor here
+is tile, cracked and worn from untold years, and layered in dust, bone, and
+debris.  Little adorns the castle\@s interior walls, with most of their
+finery long rotted.  The air is heavy with foul smells, and darkness shrouds
+much of the vast chamber.  A mouldering pantry lies to the north, while the
+long-forgotten armory is to the east.  
+~
+~
+1
+0 8250 0
+D0
+The entry hall continues north.
+~
+~
+3 0 8247
+D1
+The palace armory lies to the east.
+~
+~
+3 0 8243
+D2
+The entry hall continues south.
+~
+~
+0 0 8237
+D3
+The entry hall continues west.
+~
+~
+0 0 8241
+W 5 0 0
+Z 5 5
+S
+#8243
+The Entry to the Palace Armory~
+The armory of Castle Gogoth lay in ruins, the room dark and silent. 
+Broken armor and weapon racks lay toppled onto the floor, splintered and
+twisted.  The floor is covered with dust and stony debris, the ancient tiles
+cracked and jutting upward.  Long forgotten torches lay on the floor,
+crumbling and black, and a fetid breeze swirls about from the south.  The
+stone is covered with bloody filth, and the walls are lined with fierce
+gouges.  A door leads west, into the entry hall, while the armory continues
+to the south.  
+~
+~
+1
+0 8250 0
+D2
+The armory lies south.
+~
+~
+0 0 8234
+D3
+The entry hall lies west.
+~
+~
+3 0 8242
+W 5 0 0
+Z 5 5
+S
+#8244
+The Ruined Kitchen~
+The ruined palace kitchen is dominated by a massive hearth, much of which
+has caved in upon itself.  The various cupboards and preparation furniture
+is battered or blasted, as if a great explosion took place within the room. 
+Half-melted metal cookware is strewn about, between the broken stone, dust,
+and yellowed bones.  The room smells of death, nearly overpoweringly, and
+dust floats freely through the air.  To the east, the crumbling kitchen
+continues.  
+~
+~
+1
+0 8250 0
+E
+counter~
+The counter is dusty.
+~
+D1
+The kitchen entrance lies to the east.
+~
+~
+0 0 8245
+W 5 0 0
+Z 5 5
+S
+#8245
+Entrance to the Ruined Kitchen~
+The ruined palace kitchen is dominated by a massive hearth, much of which
+has caved in upon itself.  The various cupboards and preparation furniture
+is battered or blasted, as if a great explosion took place within the room. 
+Half-melted metal cookware is strewn about, between the broken stone, dust,
+and yellowed bones.  The room smells of death, nearly overpoweringly, and
+dust floats freely through the air.  To the west, the kitchen continues,
+while the doorway to the south leads toward the palace entry hall.  
+~
+~
+1
+0 8250 0
+D2
+The palace entry hall lies south.
+~
+~
+3 0 8240
+D3
+The palace kitchen lies west.
+~
+~
+0 0 8244
+W 5 0 0
+Z 5 5
+S
+#8246
+The Ancient Palace Hallway~
+A short hallway connects the grand entrance hall of Castle Gogoth to the
+rotting stairwell which connects its many floors.  The walls were once
+adorned with exotic tapestries, which have long since rotted into
+unidentifiable rags.  A suit of toppled armor is scattered across the floor;
+another set, still standing, is on the opposite side of the hall.  The floor
+is covered in mouldering, blackened carpet, covered by dust and debris, and
+the air is stifling and vile.  To the north, the stairwell awaits, while the
+shadowy entry hall lies south.  
+~
+~
+1
+0 8250 0
+E
+standing~
+The standing suit of armor is still recognizable, although corroded
+beyond repair.  It is rumored to have belonged to King Xerkas Gogoth, who
+declared the neutrality of the kingdom during the invasion of its northern
+neighbor, Caal, during the War of Fire.  According to legend, it was he who
+first brought the study of Fire magic to Gogoth, and it would become a
+defining factor of its history until the kingdom\@s collapse.  The armor
+bears a series of indentations where golden crests were once inlaid, but
+they have long since been pried free and stolen.  
+~
+E
+toppled~
+The toppled set of armor is forged from black iron and marked with the
+skull-crest of Gogoth.  It appears to have belonged to some great hero of
+ages long past, but corrosion and time have worn it down into uselessness. 
+Its buckles and straps are rotted through or broken, and its crumbling
+pieces are scattered across the floor.  
+~
+E
+suit armor~
+There are two sets of armor in the room, one standing, and one toppled.  
+~
+D0
+You see some rotting stairs.
+~
+~
+0 0 8249
+D2
+The palace entry hall is south.
+~
+~
+0 0 8241
+W 5 0 0
+Z 5 5
+S
+#8247
+Entrance to the Ruined Pantry~
+This pantry once contained much of the food store for the palace and its
+inhabitants.  The many exotic foodstuffs, as well as more mundane breads and
+meats, are long ruined, most of them having rotted through their containers.
+Dust and filth have settled over the entire affair, making everything here
+somehow even more unappealing.  The air is stuffy and thick with the smell
+of death, making the gloomy chamber even more revolting.  To the west, the
+pantry continues, while the door south leads to the palace entry hall.  
+~
+~
+1
+0 8250 0
+D1
+The ruined pantry lies east.
+~
+~
+0 0 8248
+D2
+The entry hall spreads to the south.
+~
+~
+3 0 8242
+W 5 0 0
+Z 5 5
+S
+#8248
+The Ruined Pantry~
+This pantry once contained much of the food store for the palace and its
+inhabitants.  The many exotic foodstuffs, as well as more mundane breads and
+meats, are long ruined, most of them having rotted through their containers.
+Dust and filth have settled over the entire affair, making everything here
+somehow even more unappealing.  A shattered cupboard stands open, leaning
+against one wall.  The air is stuffy and thick with the smell of death,
+making the gloomy chamber even more revolting.  To the west, the pantry
+continues.  
+~
+~
+1
+0 8250 0
+D3
+To the west is the pantry exit.
+~
+~
+0 0 8247
+W 5 0 0
+Z 5 5
+S
+#8249
+The Rotting Palace Stairway~
+The short hallway ends with a large room paneled in rotting wood.  A
+large stairwell dominates the chamber, ascending to the Castle\@s feasting
+hall, and another descending to the dungeon.  Great banners that once
+adorned the walls have long rotted, and the torches which lined the walls
+have crumbled to dust.  The carpet which covers the floor is long decayed,
+spotted with black and stained with blood and ichor.  A powerful odor wells
+up from the dungeon, clouding this place with a foul stench.  The hallway
+leads south into the entry hall.  
+~
+~
+1
+0 8254 0
+D2
+The ancient hallway goes south.
+~
+~
+0 0 8246
+D4
+The rotting stairs lead up to the great feasting hall.
+~
+~
+0 0 8266
+D5
+The rotting stairs lead down to the palace dungeon.
+~
+~
+0 0 8250
+W 5 0 0
+Z 5 5
+S
+#8250
+The Palace Dungeon~
+The stairs descend into the dark, gloomy palace dungeon.  Unlit torches
+sit forgotten in brackets along the stairs, and the stone walls are
+splattered with ancient filth.  The last few steps disappear into a horrid,
+black layer of offal, long having hardened into a sickening carapace.  The
+air is oppressive and vile, mixing the overpowering stench of death and the
+dank scent of cold stone.  To the south, a corridor leads through the
+dungeon, while stairs lead upward into the palace proper.  
+~
+~
+1
+0 8254 12
+D2
+The foul dungeon lies south.
+~
+~
+0 0 8252
+D4
+The rotting stairs lead upwards.
+~
+~
+0 0 8249
+T 86
+W 5 0 0
+Z 5 5
+S
+#8251
+A Foul Dungeon Cell~
+This dungeon cell is as tiny as it is revolting, the stone walled smeared
+with ancient blood, slime, and excrement.  Filth coats the floor in a film
+of thick, gelatinous slime, making each breath of the heavy air almost
+unbearable.  Rusted iron manacles and heavy, broken chains hang limply from
+the walls.  There are no windows, only the corroded bars and the long
+collapsed door to give any possible escape from the gloom.  To the east is
+the corridor which traverses the dungeon.  
+~
+~
+1
+0 8250 12
+D1
+The cell exits east.
+~
+~
+0 0 8252
+T 86
+W 5 0 0
+Z 5 5
+S
+#8252
+The Foul Dungeon~
+This cramped corridor runs north and south between two rows of cells. 
+The barred iron doors have fallen free of their hinges, long ago rendered
+useless by corrosion.  The floor is covered by debris and ancient filth, a
+mixture of blood, offal and slime.  Ancient torch mountings have come loose
+from the stone walls, twisted and empty, and foul grime darkens every
+surface.  The air is putrid, a mixture of the reek of excrement and death. 
+To the east and west are ancient prison cells, while the corridor through
+the dungeon continues to the south.  To the north, stairs lead upward.  
+~
+~
+1
+0 8250 12
+D0
+The foul dungeon continues.
+~
+~
+0 0 8250
+D1
+A foul dungeon cell lies here.
+~
+~
+0 0 8253
+D2
+The foul dungeon continues.
+~
+~
+0 0 8255
+D3
+A foul dungeon cell lies here.
+~
+~
+0 0 8251
+T 86
+W 5 0 0
+Z 5 5
+S
+#8253
+A Foul Dungeon Cell~
+This dungeon cell is as tiny as it is revolting, the stone walled smeared
+with ancient blood, slime, and excrement.  Filth coats the floor in a film
+of thick, gelatinous slime, making each breath of the heavy air almost
+unbearable.  Rusted iron manacles and heavy, broken chains hang limply from
+the walls.  There are no windows, only the corroded bars and the long
+collapsed door to give any possible escape from the gloom.  To the west is
+the corridor which traverses the dungeon.  
+~
+~
+1
+0 8250 12
+D3
+The cell exits west.
+~
+~
+0 0 8252
+T 86
+W 5 0 0
+Z 5 5
+S
+#8254
+A Foul Dungeon Cell~
+This dungeon cell is as tiny as it is revolting, the stone walled smeared
+with ancient blood, slime, and excrement.  Filth coats the floor in a film
+of thick, gelatinous slime, making each breath of the heavy air almost
+unbearable.  Rusted iron manacles and heavy, broken chains hang limply from
+the walls.  There are no windows, only the corroded bars and the long
+collapsed door to give any possible escape from the gloom.  To the east is
+the corridor which traverses the dungeon.  
+~
+~
+1
+0 8250 12
+D1
+The cell exits east.
+~
+~
+0 0 8255
+T 86
+W 5 0 0
+Z 5 5
+S
+#8255
+The Foul Dungeon~
+This cramped corridor runs north and south between two rows of cells. 
+The barred iron doors have fallen free of their hinges, long ago rendered
+useless by corrosion.  The floor is covered by debris and ancient filth, a
+mixture of blood, offal and slime.  Ancient torch mountings have come loose
+from the stone walls, twisted and empty, and foul grime darkens every
+surface.  The air is putrid, a mixture of the reek of excrement and death. 
+To the east and west are ancient prison cells, while the corridor through
+the dungeon continues north and south.  
+~
+~
+1
+0 8250 12
+D0
+The foul dungeon continues.
+~
+~
+0 0 8252
+D1
+A foul dungeon cell lies here.
+~
+~
+0 0 8256
+D2
+The foul dungeon continues.
+~
+~
+0 0 8258
+D3
+A foul dungeon cell lies here.
+~
+~
+0 0 8254
+T 86
+W 5 0 0
+Z 5 5
+S
+#8256
+A Foul Dungeon Cell~
+This dungeon cell is as tiny as it is revolting, the stone walled smeared
+with ancient blood, slime, and excrement.  Filth coats the floor in a film
+of thick, gelatinous slime, making each breath of the heavy air almost
+unbearable.  Rusted iron manacles and heavy, broken chains hang limply from
+the walls.  There are no windows, only the corroded bars and the long
+collapsed door to give any possible escape from the gloom.  To the west is
+the corridor which traverses the dungeon.  
+~
+~
+1
+0 8250 12
+D3
+The cell exits west.
+~
+~
+0 0 8255
+T 86
+W 5 0 0
+Z 5 5
+S
+#8257
+A Foul Dungeon Cell~
+This dungeon cell is as tiny as it is revolting, the stone walled smeared
+with ancient blood, slime, and excrement.  Filth coats the floor in a film
+of thick, gelatinous slime, making each breath of the heavy air almost
+unbearable.  Rusted iron manacles and heavy, broken chains hang limply from
+the walls.  There are no windows, only the corroded bars and the long
+collapsed door to give any possible escape from the gloom.  To the east is
+the corridor which traverses the dungeon.  
+~
+~
+1
+0 8250 12
+D1
+The cell exits east.
+~
+~
+0 0 8258
+T 86
+W 5 0 0
+Z 5 5
+S
+#8258
+The Foul Dungeon~
+This cramped corridor runs north and south between two rows of cells. 
+The barred iron doors have fallen free of their hinges, long ago rendered
+useless by corrosion.  The floor is covered by debris and ancient filth, a
+mixture of blood, offal and slime.  Ancient torch mountings have come loose
+from the stone walls, twisted and empty, and foul grime darkens every
+surface.  The air is putrid, a mixture of the reek of excrement and death. 
+To the east and west are ancient prison cells, while the corridor through
+the dungeon continues north and south.  
+~
+~
+1
+0 8250 12
+D0
+The foul dungeon continues.
+~
+~
+0 0 8255
+D1
+A foul dungeon cell lies here.
+~
+~
+0 0 8259
+D2
+The foul dungeon continues.
+~
+~
+0 0 8261
+D3
+A foul dungeon cell lies here.
+~
+~
+0 0 8257
+T 86
+W 5 0 0
+Z 5 5
+S
+#8259
+A Foul Dungeon Cell~
+This dungeon cell is as tiny as it is revolting, the stone walled smeared
+with ancient blood, slime, and excrement.  Filth coats the floor in a film
+of thick, gelatinous slime, making each breath of the heavy air almost
+unbearable.  Rusted iron manacles and heavy, broken chains hang limply from
+the walls.  There are no windows, only the corroded bars and the long
+collapsed door to give any possible escape from the gloom.  To the west is
+the corridor which traverses the dungeon.  
+~
+~
+1
+0 8250 12
+D3
+The cell exits west.
+~
+~
+0 0 8258
+T 86
+W 5 0 0
+Z 5 5
+S
+#8260
+A Foul Dungeon Cell~
+This dungeon cell is as tiny as it is revolting, the stone walled smeared
+with ancient blood, slime, and excrement.  Filth coats the floor in a film
+of thick, gelatinous slime, making each breath of the heavy air almost
+unbearable.  Rusted iron manacles and heavy, broken chains hang limply from
+the walls.  There are no windows, only the corroded bars and the long
+collapsed door to give any possible escape from the gloom.  To the east is
+the corridor which traverses the dungeon.  
+~
+~
+1
+0 8250 12
+D1
+The cell exits east.
+~
+~
+0 0 8261
+T 86
+W 5 0 0
+Z 5 5
+S
+#8261
+The Foul Dungeon~
+This cramped corridor runs north and south between two rows of cells. 
+The barred iron doors have fallen free of their hinges, long ago rendered
+useless by corrosion.  The floor is covered by debris and ancient filth, a
+mixture of blood, offal and slime.  Ancient torch mountings have come loose
+from the stone walls, twisted and empty, and foul grime darkens every
+surface.  The air is putrid, a mixture of the reek of excrement and death. 
+To the east and west are ancient prison cells, while the corridor through
+the dungeon continues north and south.  
+~
+~
+1
+0 8250 12
+D0
+The foul dungeon continues.
+~
+~
+0 0 8258
+D1
+A foul dungeon cell lies here.
+~
+~
+0 0 8262
+D2
+The foul dungeon continues.
+~
+~
+0 0 8264
+D3
+A foul dungeon cell lies here.
+~
+~
+0 0 8260
+T 86
+W 5 0 0
+Z 5 5
+S
+#8262
+A Foul Dungeon Cell~
+This dungeon cell is as tiny as it is revolting, the stone walled smeared
+with ancient blood, slime, and excrement.  Filth coats the floor in a film
+of thick, gelatinous slime, making each breath of the heavy air almost
+unbearable.  Rusted iron manacles and heavy, broken chains hang limply from
+the walls.  There are no windows, only the corroded bars and the long
+collapsed door to give any possible escape from the gloom.  To the west is
+the corridor which traverses the dungeon.  
+~
+~
+1
+0 8250 12
+D3
+The cell exits west.
+~
+~
+0 0 8261
+T 86
+W 5 0 0
+Z 5 5
+S
+#8263
+A Foul Dungeon Cell~
+This dungeon cell is as tiny as it is revolting, the stone walled smeared
+with ancient blood, slime, and excrement.  Filth coats the floor in a film
+of thick, gelatinous slime, making each breath of the heavy air almost
+unbearable.  Rusted iron manacles and heavy, broken chains hang limply from
+the walls.  There are no windows, only the corroded bars and the long
+collapsed door to give any possible escape from the gloom.  To the east is
+the corridor which traverses the dungeon.  
+~
+~
+1
+0 8250 12
+D1
+The cell exits east.
+~
+~
+0 0 8264
+T 86
+W 5 0 0
+Z 5 5
+S
+#8264
+The End of the Foul Dungeon~
+This cramped corridor runs north and south between two rows of cells. 
+The barred iron doors have fallen free of their hinges, long ago rendered
+useless by corrosion.  The floor is covered by debris and ancient filth, a
+mixture of blood, offal and slime.  Ancient torch mountings have come loose
+from the stone walls, twisted and empty, and foul grime darkens every
+surface.  The air is putrid, a mixture of the reek of excrement and death. 
+To the east and west are ancient prison cells, while the corridor through
+the dungeon continues to the north.  
+~
+~
+1
+0 8250 12
+D0
+The foul dungeon continues.
+~
+~
+0 0 8261
+D1
+A foul dungeon cell lies here.
+~
+~
+0 0 8265
+D3
+A foul dungeon cell lies here.
+~
+~
+0 0 8263
+T 86
+W 5 0 0
+Z 5 5
+S
+#8265
+A Foul Dungeon Cell~
+This dungeon cell is as tiny as it is revolting, the stone walled smeared
+with ancient blood, slime, and excrement.  Filth coats the floor in a film
+of thick, gelatinous slime, making each breath of the heavy air almost
+unbearable.  Rusted iron manacles and heavy, broken chains hang limply from
+the walls.  There are no windows, only the corroded bars and the long
+collapsed door to give any possible escape from the gloom.  To the west is
+the corridor which traverses the dungeon.  
+~
+~
+1
+0 8250 12
+D3
+The cell exits west.
+~
+~
+0 0 8264
+T 86
+W 5 0 0
+Z 5 5
+S
+#8266
+The Rotting Palace Stairway~
+These wood-lined, rotting steps lead up from the palace\@s entry hall
+toward the great feasting hall.  An arched entryway leads south into it,
+with a huge rendition of Gogoth\@s skull-crest set into the ancient tiles. 
+The door to the hall is long missing, its broken hinges sticking out visibly
+from one side.  The rich carpet that once covered the stairs is long-rotted,
+its deep crimson darkened into a tattered black.  The stairway continues
+upward toward a higher level of the castle, and downward toward the entry
+hall.  
+~
+~
+1
+0 8254 0
+D2
+The grand feasting hall continues.
+~
+~
+0 0 8269
+D4
+The stairs lead up to the private chambers of the palace.
+~
+~
+0 0 8287
+D5
+The stairs lead down to the entry hall.
+~
+~
+0 0 8249
+W 5 0 0
+Z 5 5
+S
+#8267
+The Northwest Corner of the Feasting Hall~
+The walls of this corner of the feasting hall are dominated by great
+maps, showing much of the known world.  The debris of collapsed tables are
+interspersed with torn, crumbling parchment, its meaning long lost to the
+march of years.  The stone walls, where visible, are stained by sprays of
+blood or ancient grime.  One of the chandeliers that line the ceiling of the
+hall has fallen, adding to the destruction.  The feasting hall continues to
+the east and south.  
+~
+~
+1
+0 8250 0
+E
+walls maps map~
+A series of huge maps have been left hanging limply from the walls, drawn
+with a variety of arrows directing troop movements.  Although large portions
+of the map have crumbled away, it is obvious that this was intended to be
+used for planning of some long-forgotten upcoming military campaign.  It
+seems to daringly suggest the violent take-over of Var Bandor, with lines
+leading onward, to both Gaald and eventually Earendam.  
+~
+D1
+The great feasting hall continues.
+~
+~
+0 0 8268
+D2
+The great feasting hall continues.
+~
+~
+0 0 8272
+W 5 0 0
+Z 5 5
+S
+#8268
+The Great Feasting Hall~
+This vast hall is filled with long tables and broken wooden chairs.  A
+thick layer of dust coats the debris, concealing much of its ancient
+grandeur.  Chandeliers hang from the ceiling, and before the fall, provided
+light; in the present, they do little to illuminate the gloomy expanse.  The
+air is thick and foul, and a sense of lingering evil makes the atmosphere
+even more chilling.  The feasting hall continues to the east, west, and
+south.  
+~
+~
+1
+0 8250 0
+D1
+The great feasting hall continues.
+~
+~
+0 0 8269
+D2
+The great feasting hall continues.
+~
+~
+0 0 8273
+D3
+The great feasting hall continues.
+~
+~
+0 0 8267
+W 5 0 0
+Z 5 5
+S
+#8269
+The Entrance to the Great Feasting Hall~
+The entrance to the great feasting hall of Castle Gogoth bears the
+kingdom\@s great skull crest emblazoned upon the open tile of the floor. 
+Some great calamity struck near its center, long cracks radiating outward. 
+Dust, debris, and ancient splotches of blood conceal quite a bit of the
+floor, and a gloomy darkness shrouds hangs heavy over the rest of the hall. 
+The air is stale and foul, and tinged with an evil chill.  The stairwell
+waits to the north, while the hall spreads out to the east, west, and south.
+~
+~
+1
+0 8250 0
+D0
+The great feasting hall continues.
+~
+~
+0 0 8266
+D1
+The great feasting hall continues.
+~
+~
+0 0 8270
+D2
+The great feasting hall continues.
+~
+~
+0 0 8274
+D3
+The great feasting hall continues.
+~
+~
+0 0 8268
+W 5 0 0
+Z 5 5
+S
+#8270
+The Great Feasting Hall~
+This vast hall is filled with long tables and broken wooden chairs.  A
+thick layer of dust coats the debris, concealing much of its ancient
+grandeur.  Chandeliers hang from the ceiling, and before the fall, provided
+light; in the present, they do little to illuminate the gloomy expanse.  The
+air is thick and foul, and a sense of lingering evil makes the atmosphere
+even more chilling.  The feasting hall continues to the east, west, and
+south.  
+~
+~
+1
+0 8250 0
+D1
+The great feasting hall continues.
+~
+~
+0 0 8271
+D2
+The great feasting hall continues.
+~
+~
+0 0 8275
+D3
+The great feasting hall continues.
+~
+~
+0 0 8269
+W 5 0 0
+Z 5 5
+S
+#8271
+The Northeast Corner of the Feasting Hall~
+This corner of the feasting hall is filled with ancient wooden tables and
+collapsed chairs.  Chandeliers hang above, thick with dust and giving of no
+light, their candles long having crumbled away.  The walls are cold, dark
+stone, and a prominent painting hangs unevenly on the east wall.  Darkness
+shrouds much of the hall, the sense of lingering evil too prominent to shake
+off, and the air is fouled by floating dust and the smell of death.  To the
+west and south, the feasting hall continues.  
+~
+~
+1
+0 8250 0
+E
+prominent painting uneven east wall~
+A large painting hangs unevenly on the wall, many of its colors dulled by
+the passage of time.  It depicts a youthful Lord Chtagn during the seventh
+Tournament of the Falcon, which was held in the city of Gogoth.  It is a
+particularly impressive looking rendition of the Lord performing the final
+blow against his fallen opponent, Srasan, with his iconic bone scythe.  The
+crowds of Gogothi citizens cheer in the background.  
+~
+D2
+The great feasting hall continues.
+~
+~
+0 0 8276
+D3
+The great feasting hall continues.
+~
+~
+0 0 8270
+W 5 0 0
+Z 5 5
+S
+#8272
+The West Side of the Feasting Hall~
+This side of the feasting hall is filled with ancient wooden tables and
+collapsed chairs.  Chandeliers hang above, thick with dust and giving of no
+light, their candles long having crumbled away.  The walls are cold, dark
+stone, and a crumbling yellow banner is displayed upon the west wall. 
+Darkness shrouds much of the hall, the sense of lingering evil too prominent
+to shake off, and the air is fouled by floating dust and the smell of death.
+To the north and west, the feasting hall continues.  
+~
+~
+1
+0 8250 0
+E
+crumbling yellow banner west wall~
+A crumbling yellow banner represents house Neshkan, bearing its unusual
+black tree seal.  Lord Varshag, one of the most prominent members of the
+Gogothi court, was of this house, and attempted to seize the throne before
+the kingdom\@s collapse.  
+~
+D0
+The great feasting hall continues.
+~
+~
+0 0 8267
+D1
+The great feasting hall continues.
+~
+~
+0 0 8273
+D2
+The great feasting hall continues.
+~
+~
+0 0 8277
+W 5 0 0
+Z 5 5
+S
+#8273
+The Great Feasting Hall~
+This vast hall is filled with long tables and broken wooden chairs.  A
+thick layer of dust coats the debris, concealing much of its ancient
+grandeur.  Chandeliers hang from the ceiling, and before the fall, provided
+light; in the present, they do little to illuminate the gloomy expanse.  The
+air is thick and foul, and a sense of lingering evil makes the atmosphere
+even more chilling.  The feasting hall continues to the north, east, west,
+and south.  
+~
+~
+1
+0 8250 0
+D0
+The great feasting hall continues.
+~
+~
+0 0 8268
+D1
+The great feasting hall continues.
+~
+~
+0 0 8274
+D2
+The great feasting hall continues.
+~
+~
+0 0 8278
+D3
+The great feasting hall continues.
+~
+~
+0 0 8272
+W 5 0 0
+Z 5 5
+S
+#8274
+The Great Feasting Hall~
+This vast hall is filled with long tables and broken wooden chairs.  A
+thick layer of dust coats the debris, concealing much of its ancient
+grandeur.  Chandeliers hang from the ceiling, and before the fall, provided
+light; in the present, they do little to illuminate the gloomy expanse.  The
+air is thick and foul, and a sense of lingering evil makes the atmosphere
+even more chilling.  The feasting hall continues to the north, east, west,
+and south.  
+~
+~
+1
+0 8250 0
+D0
+The great feasting hall continues.
+~
+~
+0 0 8269
+D1
+The great feasting hall continues.
+~
+~
+0 0 8275
+D2
+The great feasting hall continues.
+~
+~
+0 0 8279
+D3
+The great feasting hall continues.
+~
+~
+0 0 8273
+W 5 0 0
+Z 5 5
+S
+#8275
+The Great Feasting Hall~
+This vast hall is filled with long tables and broken wooden chairs.  A
+thick layer of dust coats the debris, concealing much of its ancient
+grandeur.  Chandeliers hang from the ceiling, and before the fall, provided
+light; in the present, they do little to illuminate the gloomy expanse.  The
+air is thick and foul, and a sense of lingering evil makes the atmosphere
+even more chilling.  The feasting hall continues to the north, east, west,
+and south.  
+~
+~
+1
+0 8250 0
+D0
+The great feasting hall continues.
+~
+~
+0 0 8270
+D1
+The great feasting hall continues.
+~
+~
+0 0 8276
+D2
+The great feasting hall continues.
+~
+~
+0 0 8280
+D3
+The great feasting hall continues.
+~
+~
+0 0 8274
+W 5 0 0
+Z 5 5
+S
+#8276
+The East Side of the Feasting Hall~
+This side of the feasting hall is filled with ancient wooden tables and
+collapsed chairs.  Chandeliers hang above, thick with dust and giving of no
+light, their candles long having crumbled away.  The walls are cold, dark
+stone, and a broken-framed painting hangs unevenly on the east wall. 
+Darkness shrouds much of the hall, the sense of lingering evil too prominent
+to shake off, and the air is fouled by floating dust and the smell of death.
+The feasting hall continues to the north, west, and south.  
+~
+~
+1
+0 8250 0
+E
+broken framed broken-framed painting east wall~
+A painting hangs here, the frame broken but the image still visible. 
+Although thick dust clings to the canvas, it is an obvious rendition of Lord
+Skashai the Noble, seen here shaking the hand of a representative of the
+Ilodaiyan house, Linphori.  The image is set within this very hall, with the
+high chandaliers lighting the pact between the two families.  Behind them,
+the other nobles of Gogoth look on in deference.  
+~
+D0
+The great feasting hall continues.
+~
+~
+0 0 8271
+D2
+The great feasting hall continues.
+~
+~
+0 0 8281
+D3
+The great feasting hall continues.
+~
+~
+0 0 8275
+W 5 0 0
+Z 5 5
+S
+#8277
+The West Side of the Feasting Hall~
+This side of the feasting hall is filled with ancient wooden tables and
+collapsed chairs.  Chandeliers hang above, thick with dust and giving of no
+light, their candles long having crumbled away.  The walls are cold, dark
+stone, and a deep blue banner is displayed upon the west wall.  Darkness
+shrouds much of the hall, the sense of lingering evil too prominent to shake
+off, and the air is fouled by floating dust and the smell of death.  To the
+north and west, the feasting hall continues.  
+~
+~
+1
+0 8250 0
+E
+deep blue banner west wall~
+The dusty, deep blue banner here marks the prominence of house Tiesi, and
+is marked by its once-famous white robin.  Iichal the Giantslayer, one of
+Gogoth\@s most renowned heroes, was the sixth son of this estate.  
+~
+D0
+The great feasting hall continues.
+~
+~
+0 0 8272
+D1
+The great feasting hall continues.
+~
+~
+0 0 8278
+D2
+The great feasting hall continues.
+~
+~
+0 0 8282
+W 5 0 0
+Z 5 5
+S
+#8278
+The Great Feasting Hall~
+This vast hall is filled with long tables and broken wooden chairs.  A
+thick layer of dust coats the debris, concealing much of its ancient
+grandeur.  Chandeliers hang from the ceiling, and before the fall, provided
+light; in the present, they do little to illuminate the gloomy expanse.  The
+air is thick and foul, and a sense of lingering evil makes the atmosphere
+even more chilling.  The feasting hall continues to the north, east, west,
+and south.  
+~
+~
+1
+0 8250 0
+D0
+The great feasting hall continues.
+~
+~
+0 0 8273
+D1
+The great feasting hall continues.
+~
+~
+0 0 8279
+D2
+The great feasting hall continues.
+~
+~
+0 0 8283
+D3
+The great feasting hall continues.
+~
+~
+0 0 8277
+W 5 0 0
+Z 5 5
+S
+#8279
+The Great Feasting Hall~
+This vast hall is filled with long tables and broken wooden chairs.  A
+thick layer of dust coats the debris, concealing much of its ancient
+grandeur.  Chandeliers hang from the ceiling, and before the fall, provided
+light; in the present, they do little to illuminate the gloomy expanse.  The
+air is thick and foul, and a sense of lingering evil makes the atmosphere
+even more chilling.  The feasting hall continues to the north, east, west,
+and south.  
+~
+~
+1
+0 8248 0
+D0
+The great feasting hall continues.
+~
+~
+0 0 8274
+D1
+The great feasting hall continues.
+~
+~
+0 0 8280
+D2
+The great feasting hall continues.
+~
+~
+0 0 8284
+D3
+The great feasting hall continues.
+~
+~
+0 0 8278
+W 5 0 0
+Z 5 5
+S
+#8280
+The Great Feasting Hall~
+This vast hall is filled with long tables and broken wooden chairs.  A
+thick layer of dust coats the debris, concealing much of its ancient
+grandeur.  Chandeliers hang from the ceiling, and before the fall, provided
+light; in the present, they do little to illuminate the gloomy expanse.  The
+air is thick and foul, and a sense of lingering evil makes the atmosphere
+even more chilling.  The feasting hall continues to the north, east, west,
+and south.  
+~
+~
+1
+0 8250 0
+D0
+The great feasting hall continues.
+~
+~
+0 0 8275
+D1
+The great feasting hall continues.
+~
+~
+0 0 8281
+D2
+The great feasting hall continues.
+~
+~
+0 0 8285
+D3
+The great feasting hall continues.
+~
+~
+0 0 8279
+W 5 0 0
+Z 5 5
+S
+#8281
+The East Side of the Feasting Hall~
+This side of the feasting hall is filled with ancient wooden tables and
+collapsed chairs.  Chandeliers hang above, thick with dust and giving of no
+light, their candles long having crumbled away.  The walls are cold, dark
+stone, and an ancient painting provides the only color on the east wall. 
+Darkness shrouds much of the hall, the sense of lingering evil too prominent
+to shake off, and the air is fouled by floating dust and the smell of death.
+The feasting hall continues to the north, west, and south.  
+~
+~
+1
+0 8250 0
+E
+ancient painting color east wall~
+This ancient painting depicts the Gogothi lord, Vrathis, performing
+before the king\@s court.  Although the colors have long faded, the grandeur
+is not lost, nor are the lines of his flamboyant bardic regalia.  He appears
+to be in the process of enacting some dramatic play, complete with a grand,
+sweeping gesture.  His handsome face is one alight with pleasure and
+confidence, although the image is broken by deep cracks in the canvas.  
+~
+D0
+The great feasting hall continues.
+~
+~
+0 0 8276
+D2
+The great feasting hall continues.
+~
+~
+0 0 8286
+D3
+The great feasting hall continues.
+~
+~
+0 0 8280
+W 5 0 0
+Z 5 5
+S
+#8282
+The Southwest Corner of the Feasting Hall~
+This corner of the feasting hall is filled with ancient wooden tables and
+collapsed chairs.  Chandeliers hang above, thick with dust and giving of no
+light, their candles long having crumbled away.  The walls are cold, dark
+stone, and a banner bearing a faded crest is displayed upon the west wall. 
+Darkness shrouds much of the hall, the sense of lingering evil too prominent
+to shake off, and the air is fouled by floating dust and the smell of death.
+To the north and west, the feasting hall continues.  
+~
+~
+1
+0 8250 0
+E
+banner faded crest west wall~
+This banner represents the lineage of house Artagus, and displays its
+spear-and-shield crest.  Lord Blathsa, Gogoth\@s highest general, was the
+final scion, his name marked prominently upon the faded, decaying fabric.  
+~
+D0
+The great feasting hall continues.
+~
+~
+0 0 8277
+D1
+The great feasting hall continues.
+~
+~
+0 0 8283
+W 5 0 0
+Z 5 5
+S
+#8283
+The Great Feasting Hall~
+This vast hall is filled with long tables and broken wooden chairs.  A
+thick layer of dust coats the debris, concealing much of its ancient
+grandeur.  Chandeliers hang from the ceiling, and before the fall, provided
+light; in the present, they do little to illuminate the gloomy expanse.  The
+air is thick and foul, and a sense of lingering evil makes the atmosphere
+even more chilling.  The feasting hall continues to the north, east, and
+west.  
+~
+~
+1
+0 8250 0
+D0
+The great feasting hall continues.
+~
+~
+0 0 8278
+D1
+The great feasting hall continues.
+~
+~
+0 0 8284
+D3
+The great feasting hall continues.
+~
+~
+0 0 8282
+W 5 0 0
+Z 5 5
+S
+#8284
+The Great Feasting Hall~
+This vast hall is filled with long tables and broken wooden chairs.  A
+thick layer of dust coats the debris, concealing much of its ancient
+grandeur.  Chandeliers hang from the ceiling, and before the fall, provided
+light; in the present, they do little to illuminate the gloomy expanse.  The
+air is thick and foul, and a sense of lingering evil makes the atmosphere
+even more chilling.  The feasting hall continues to the north, east, and
+west.  
+~
+~
+1
+0 8250 0
+D0
+The great feasting hall continues.
+~
+~
+0 0 8279
+D1
+The great feasting hall continues.
+~
+~
+0 0 8285
+D3
+The great feasting hall continues.
+~
+~
+0 0 8283
+W 5 0 0
+Z 5 5
+S
+#8285
+The Great Feasting Hall~
+This vast hall is filled with long tables and broken wooden chairs.  A
+thick layer of dust coats the debris, concealing much of its ancient
+grandeur.  Chandeliers hang from the ceiling, and before the fall, provided
+light; in the present, they do little to illuminate the gloomy expanse.  The
+air is thick and foul, and a sense of lingering evil makes the atmosphere
+even more chilling.  The feasting hall continues to the north, east, and
+west.  
+~
+~
+1
+0 8250 0
+D0
+The great feasting hall continues.
+~
+~
+0 0 8280
+D1
+The great feasting hall continues.
+~
+~
+0 0 8286
+D3
+The great feasting hall continues.
+~
+~
+0 0 8284
+W 5 0 0
+Z 5 5
+S
+#8286
+The Southeast Corner of the Feasting Hall~
+This corner of the feasting hall is filled with ancient wooden tables and
+collapsed chairs.  Chandeliers hang above, thick with dust and giving of no
+light, their candles long having crumbled away.  The walls are cold, dark
+stone, and a half-burned painting hangs stubbornly from the east wall. 
+Darkness shrouds much of the hall, the sense of lingering evil too prominent
+to shake off, and the air is fouled by floating dust and the smell of death.
+To the north and west, the feasting hall continues.  
+~
+~
+1
+0 8250 0
+E
+half burned half-burned painting east wall~
+Although half of it is burned, much of this painting is in remarkably
+good shape.  It depicts the Gogothi champion, Lord Chulru, in upon his final
+victory in Earendam\@s grand colosseum.  He raises a greatsword above his
+head, which bears the kingdom\@s crest, roaring in exultation.  His opponent,
+and much of the lower half of his body, are not visible due to the canvas
+having burned away.  Stubborn grime spots much of the image.  
+~
+D0
+The great feasting hall continues.
+~
+~
+0 0 8281
+D3
+The great feasting hall continues.
+~
+~
+0 0 8285
+W 5 0 0
+Z 5 5
+S
+#8287
+The Rotting Palace Stairway~
+These wood-lined, rotting steps lead up from the feasting hall and into a
+long hallway.  Tarnished, gold-lined torch brackets line the walls between
+paintings of the last Gogothi royal family.  The atmosphere is still, as if
+somehow expectant, and the musty scent of rot hangs heavy in the air.  Grime
+clings to the walls, from the bottom up, and the rich carpet molds
+underfoot.  The hall continues south into darkness.  
+~
+~
+1
+0 8254 0
+E
+princess bhara~
+The painting of Princess Bhara is weathered and cracked, with mold
+creeping upward from the bottom.  The image is that of an astonishingly
+beautiful girl, dressed in white and bearing a handful of once-colorful
+flowers.  She wears a pendant bearing the skull-crest of Gogoth, and has a
+long fall of blonde hair.  
+~
+E
+prince bahtan~
+The painting of Prince Bahtan is yellowed and speckled with grime. 
+However, his youthful face and dashing looks can still be discerned despite
+it.  He seems young, in his late teens, dressed in the ancient finery of
+Gogothi royalty.  His hand rests upon the throne of Gogoth, and his eyes
+stare imperiously into the beyond.  
+~
+E
+paintings painting gogothi royal family~
+Two paintings are in this portion of the hall: one of Prince Bahtan, and
+one of Princess Bhara.  
+~
+D2
+The gloomy corridor stretches south.
+~
+~
+0 0 8290
+D5
+The stairway leads down.
+~
+~
+0 0 8266
+W 5 0 0
+Z 5 5
+S
+#8288
+Prince Bahtan\@s Laboratory~
+Adjoined to the Prince\@s bedroom is a devastated laboratory.  More than
+one shattered aparatus is strewn about the room, their destruction failing
+to hide their once-diabolic intent.  Various liquids have stained, burned,
+and ruined the carpet underfoot, in addition to the excess of decay, debris,
+and dust.  What remains of a richly furnished workspace is against the west
+wall, some of its metal contraptions rusted but otherwise undamaged.  The
+ceiling is cracked overhead, and through them seep the revolting smells of
+the floor above.  The bedchamber proper is to the east.  
+~
+~
+1
+0 268443706 0
+D1
+The bedchambers continue.
+~
+~
+0 0 8289
+W 5 0 0
+Z 5 5
+S
+#8289
+Prince Bahtan\@s Bedchambers~
+This large bedroom was once richly furnished with only the finest the
+kingdom of Gogoth had to offer.  However, its rare woods are splintered; its
+exquisite velvets and silks lay in mouldering tatters; and the great works
+of art that once adorned its walls are torched and ruined.  Everything is
+covered in a thick layer of dust and debris, the air stifling with the smell
+of death.  Large scratches cross the walls in a number of places, marked
+with trails of ancient blood.  The remains of a laboratory wait to the west,
+while a carved wooden door leads south into the hall.  
+~
+~
+1
+0 8250 0
+D2
+The door opens into the gloomy hallway.
+~
+~
+3 0 8294
+D3
+The bedchambers continue.
+~
+~
+0 0 8288
+W 5 0 0
+Z 5 5
+S
+#8290
+A Gloomy Hallway~
+This gloomy hallway has a high ceiling and is carpeted with a decaying
+crimson rug.  Tarnished, gold-lined torch brackets line the walls between
+paintings of the last Gogothi royal family.  The atmosphere is still, as if
+somehow expectant, and the musty scent of rot hangs heavy in the air.  Grime
+clings to the walls, from the bottom up.  The darkness extends to the south,
+toward the royal chambers, and the stairway downward is to the north.  
+~
+~
+1
+0 8250 0
+E
+prince raspal princess shaia~
+A cracked painting depicts Prince Raspal, the king\@s brother, and
+Princess Shaia, the queen\@s sister.  Raspal is a hulk of a man, with broad
+shoulders highlighted by the tight fit of his royal attire.  His expression
+is one of determination and resolve, and largely absent of mirth.  Shaia, on
+the other hand, has a cheerful, pleasant look, her delicate face framed by
+short, blonde hair.  She wears a fine black dress, her finger adorned with a
+ring bearing the skull-crest of Gogoth.  
+~
+E
+king rasadal queen wythea~
+This painting depicts King Rasadal Gogoth VII and his wife, Queen Wythea.
+He is standing, the skull-crown of his nation adorning his grey-haired head.
+He looks stern but gracious, with one hand upon his wife\@s shoulder.  Wythea
+is the picture of mature beauty, with a flowing gown with tight lacing along
+the side.  Her hair is long and dark, framing her face.  The background of
+the picture has darkened considerably, giving it a more ominous feel than
+the artist may have intended.  
+~
+E
+paintings painting gogothi royal family~
+Two paintings are in this portion of the hall: one of King Rasadal and
+Queen Wythea, and one of Prince Raspal and Princess Shaia.  
+~
+D0
+The rotting palace stairway lies to the north.
+~
+~
+0 0 8287
+D2
+The gloomy hallway continues south, to the royal quarters.
+~
+~
+0 0 8295
+W 5 0 0
+Z 5 5
+S
+#8291
+Princess Bhara\@s Bedchambers~
+This bedroom was once among the most fashionable in the castle, appointed
+with magnificent drapes, paintings, and imported furniture.  Even now,
+ruined as it is, the chamber still has a distinctly Harrudim flair, with
+much of its ostentation done in the style of the far south.  Yet, mold and
+decay have claimed the once-exotic furnishings, rendering them worthless. 
+Three different standing mirrors crowd the northwest corner of the room, all
+of them shattered and stained with dried blood.  A scorched continuation of
+the bedroom waits to the east, while a wooden door leads south.  
+~
+~
+1
+0 8250 0
+D1
+The bedchambers continue.
+~
+~
+0 0 8292
+D2
+~
+~
+3 0 8296
+W 5 0 0
+Z 5 5
+S
+#8292
+Princess Bhara\@s Bedchambers~
+The rear portion of this bedroom once housed the Princess\@ impressive
+canopied bed and her great wardrobe.  The remains of clothes are strewn
+about the room, and the bed has entirely collapsed in on itself.  The entire
+affair appears to have been set aflame, the mix of debris containing rotting
+carpet, destroyed clothing and shattered wood.  The walls are blackened and
+scorched, with little having survived the inferno intact.  The air hangs
+heavy with floating ash and horrid smells.  The bedchambers continue to the
+west.  
+~
+~
+1
+0 8250 0
+D3
+The bedchambers continue.
+~
+~
+0 0 8291
+W 5 0 0
+Z 5 5
+S
+#8293
+The Royal Servant\@s Quarters~
+This room served as the bedroom for the many servants of the royal
+family.  Although spacious, it quickly grew tight when many of them were
+assembled within.  Compared to other rooms on this floor, it is humble, its
+furnishings less opulent.  The centuries have not been kind, leaving
+virtually all of them in varying states of collapse.  Many beds are ruined
+and sting the air with their horrific scents.  Most of the hangings and
+mountings have rotted away, leaving only lonely protrusions where they once
+hung.  To the east, a door leads back to the hall.  
+~
+~
+1
+0 8250 0
+D1
+~
+~
+3 0 8294
+W 5 0 0
+Z 5 5
+S
+#8294
+A Gloomy Hallway~
+This part of the hall contains ancient, cracked oil paintings, which hang
+crookedly along the stone walls.  The rotting carpet is torn in several
+places, and the air is thick with the smell of decay.  A large, intricately
+carved door, made from rare, foreign wood, leads north to the bedchamber of
+Prince Bahtan.  Another, smaller door leads west into the chamber reserved
+for the palace servants.  The hall continues to the east and south, its ends
+fading into darkness.  
+~
+~
+1
+0 8250 0
+D0
+A door leads to the royal bedchambers.
+~
+~
+3 0 8289
+D1
+The gloomy hall continues.
+~
+~
+0 0 8295
+D2
+The gloomy hall continues.
+~
+~
+0 0 8299
+D3
+A door leads to the royal bedchambers.
+~
+~
+3 0 8293
+W 5 0 0
+Z 5 5
+S
+#8295
+A Gloomy Hallway~
+A long, gloomy hall wends its way through this floor of the castle,
+providing access to the royal chambers.  The dark carpet\@s original color is
+indistinguishable between rot and copious dried blood.  The aged walls are
+unadorned save for an occasional broken frame or rotted tapestry.  Each step
+through the hall billows dust from the decaying carpet, and the heavy smell
+of decay fills the air.  The hall continues in all of the cardinal
+directions.  
+~
+~
+1
+0 8250 0
+D0
+The dark hallway leads to the stairs.
+~
+~
+0 0 8290
+D1
+The hallway continues toward the royal bedrooms.
+~
+~
+0 0 8296
+D2
+The hallway continues south.
+~
+~
+0 0 8300
+D3
+The hallway continues toward the royal bedrooms.
+~
+~
+0 0 8294
+W 5 0 0
+Z 5 5
+S
+#8296
+A Gloomy Hallway~
+This part of the hall contains ancient, cracked oil paintings, which hang
+crookedly along the stone walls.  The rotting carpet is torn in several
+places, and the air is thick with the smell of decay.  A large, intricately
+carved door, made from rare, foreign wood, leads north to the bedchamber of
+Princess Bhara.  A tarnished silver door leads east, its arched top
+suggesting that it leads to the royal family\@s personal chapel.  The hall
+continues to the west and south, its ends fading into darkness.  
+~
+~
+1
+0 8250 0
+E
+silver~
+The silver door is warded with various magical runes of protection, and
+furnished with a sturdy lock.  
+~
+D0
+A carved door leads to the royal bedchambers.
+~
+~
+3 0 8291
+D1
+A silver door lies to the east.  
+~
+silver door~
+65639 8281 8297
+D2
+The gloomy hall continues.
+~
+~
+0 0 8301
+D3
+The gloomy hall continues.
+~
+~
+0 0 8295
+W 5 0 0
+Z 5 5
+S
+#8297
+The Defiled Chapel~
+This desecrated and blasted chamber is all that remains of the royal
+chapel of Gogoth.  The walls are covered with a sickly green mold, decorated
+by shattered holy symbols.  Fitful, murky light illuminates the chamber,
+passing through a filth-encrusted oculus high above.  Kneeling pads and
+prayer rails are burned and hacked to bits, littering the floor.  An altar,
+stained with blood and ichor, stands in fallen splendor on a platform to the
+east.  Carved into it is a diabolic symbol, prominently visible on its
+marble top.  The only exit from this chamber lies through a silver door to
+the west.  
+~
+~
+5
+0 8250 0
+E
+concave~
+The symbol on the altar is of an irregular, concave tetragon.  Due to its
+obvious mystical nature, more might be gained from studying it.  
+~
+E
+tetragon~
+The symbol on the altar is of an irregular, concave tetragon.  Due to its
+obvious mystical nature, more might be gained from studying it.  
+~
+E
+irregular~
+The symbol on the altar is of an irregular, concave tetragon.  Due to its
+obvious mystical nature, more might be gained from studying it.  
+~
+E
+tetragon~
+The symbol on the altar is of an irregular, concave tetragon.  Due to its
+obvious mystical nature, more might be gained from studying it.  
+~
+E
+symbol~
+The symbol on the altar is of an irregular, concave tetragon.  Due to its
+obvious mystical nature, more might be gained from studying it.  
+~
+E
+symbolvision~
+The symbol is a concave tetragon, its irregular shape drawn with broad
+strokes.  Interlaced with the edge of the tetragon are sinister stars and
+diamonds, their sharp edges dangerously adjacent to each other.  At the
+center of the inscription is a pointed cross, each leg tipped with an
+unpleasant barb.  
+
+The entire symbol pulses as you look at it, and its edges seem to crawl. 
+Unable to draw away from this motion, your surroundings fade, and you find
+yourself somewhere vastly different.....  
+
+
+
+You stand in a bleak, lifeless place.  Towering overhead, a blasphemous bole
+of bark and wood erupts from the ground.  Its boughs and branches are thick
+enough to occlude the sky, and its true height is almost impossible to gauge
+with the amount of overgrowth present.  
+
+Syrupy, blood-red sap oozes out of inner pores of the tree, coagulating in
+ugly clumps at its base.  Visible also are twisted and corrupted roots,
+which seem more to violate the rough ground than to draw sustenance from it.
+
+
+In lieu of fruits, the heads of various living things hang from the tips of
+the branches, each putrefying face a mask of unspeakable agony.  Keening,
+the heads cry out, perversely imitating the patterns of wind through thick
+forest.  
+
+And now, you see that the tree is tended by groups of demons.  Noticing your
+attentions, they swarm around you, dragging you to the tree.  Soon, you are
+buried neck-deep in the barren soil, entombed near the horrid tree.  Without
+warning, one of the roots quivers, and snakes toward you across the ground! 
+
+
+Unable to move, the root slithers down your throat, and lodges itself deep
+within you.  As your life ebbs away, drained by the Tree, you begin to
+scream, falling into harmony with the heads above......  
+
+
+
+Trembling, you stand once more in the desecrated chapel.  You sense that the
+tetragon\@s vision is now a part of you for better or for worse.  
+~
+E
+altar~
+The altar is made from a single block of white marble, which has been
+hideously stained with blood and a dark blue ichor.  Carved into the top of
+the altar is a irregular, concave tetragon.  
+~
+E
+silver~
+The silver door is warded with various magical runes of protection, and
+furnished with a sturdy lock.  
+~
+E
+symbols~
+The holy symbols are of the most prominent deities of the light -- Jolinn
+and Rystaia in particular.  Pieces of them still hang on the walls, but they
+have been blasted apart, as if by some great force.  
+~
+E
+holy~
+The holy symbols are of the most prominent deities of the light -- Jolinn
+and Rystaia in particular.  Pieces of them still hang on the walls, but they
+have been blasted apart, as if by some great force.  
+~
+D3
+A silver door lies to the west.
+~
+silver door~
+65639 8281 8296
+W 5 0 0
+Z 5 5
+S
+#8298
+Prince Raspal\@s Sitting Room~
+This chamber is particularly long, mirroring the layout of the king\@s
+room on the far side of the hall.  This section was once used to give
+audience to those who wished to petition Prince Raspal about diplomacy, war,
+or service within the nation\@s Death Knights.  Ruined, indistinguishable
+paintings rot out of their tarnished frames, and a series of marble busts
+are toppled, shattered, onto the floor.  Three couches, likely used for such
+audiences, lay in ruins, their covers mouldered and decaying.  The eastern
+door leads to the hall, while the bedroom waits to the south.  
+~
+~
+1
+0 8250 0
+D1
+~
+~
+3 0 8299
+D2
+The bedchambers continue.
+~
+~
+0 0 8303
+W 5 0 0
+Z 5 5
+S
+#8299
+A Gloomy Hallway~
+This part of the hall contains ancient, cracked oil paintings, which hang
+crookedly along the stone walls.  The rotting carpet is torn in several
+places, and the air is thick with the smell of decay.  A large, intricately
+carved door, made from rare, foreign wood, leads south to the bedchamber of
+Princess Shaia.  A second, ebony door leads west into the bedchamber of
+Prince Raspal.  The hall continues to the east and north, its ends fading
+into darkness.  
+~
+~
+1
+0 8250 0
+D0
+The gloomy hall continues.
+~
+~
+0 0 8294
+D1
+The gloomy hall continues.
+~
+~
+0 0 8300
+D2
+A door leads to the royal bedchambers.
+~
+~
+3 0 8304
+D3
+A door leads to the royal bedchambers.
+~
+~
+3 0 8298
+W 5 0 0
+Z 5 5
+S
+#8300
+A Gloomy Hallway~
+A long, gloomy hall wends its way through this floor of the castle,
+providing access to the royal chambers.  The dark carpet\@s original color is
+indistinguishable between rot and copious dried blood.  The aged walls are
+unadorned save for an occasional broken frame or rotted tapestry.  Each step
+through the hall billows dust from the decaying carpet, and the heavy smell
+of decay fills the air.  The hall continues in all of the cardinal
+directions.  
+~
+~
+1
+0 8250 0
+D0
+The gloomy hallway continues.
+~
+~
+0 0 8295
+D1
+The gloomy hallway continues.
+~
+~
+0 0 8301
+D2
+South is a crimson stairway, leading upwards.
+~
+~
+0 0 8305
+D3
+The gloomy hallway continues.
+~
+~
+0 0 8299
+W 5 0 0
+Z 5 5
+S
+#8301
+A Gloomy Hallway~
+This part of the hall contains ancient, cracked oil paintings, which hang
+crookedly along the stone walls.  The rotting carpet is torn in several
+places, and the air is thick with the smell of decay.  A large, intricately
+carved door, made from rare, foreign wood, leads south to the bedchamber of
+Queen Wythea.  A second, ebony door leads east into the personal chambers of
+the king.  The hall continues to the west and north, its ends fading into
+darkness.  
+~
+~
+1
+0 8200 0
+D0
+The gloomy hall continues.
+~
+~
+0 0 8296
+D1
+A door leads to the royal bedchambers.
+~
+~
+3 0 8302
+D2
+A door leads to the royal bedchambers.
+~
+~
+3 0 8306
+D3
+The gloomy hall continues.
+~
+~
+0 0 8300
+W 5 0 0
+Z 5 5
+S
+#8302
+King Gogoth\@s Bedchambers~
+The personal chambers of King Rasadal Gogoth VII are enormous, with
+spacious walls featuring a variety of crumbling banners.  Rusted shields,
+emblazoned with the royal crest, and long-ruined ceremonial weapons lay upon
+the filthy, decaying carpet beneath the hooks that once held them.  What was
+once an ornate dresser sits in ruins, and the huge bed has entirely rotted
+through.  Thick dust coats the room, although the room is refreshing in that
+it only stinks of mold and decay.  The chamber continues to the south, into
+the king\@s study.  
+~
+~
+1
+0 8250 0
+D2
+King Gogoth\@s study lies to the south.
+~
+~
+0 0 8307
+D3
+The gloomy hallway lies west.
+~
+~
+3 0 8301
+W 5 0 0
+Z 5 5
+S
+#8303
+Prince Raspal\@s Bedchambers~
+Everything within this bedchamber looks as though it has been chopped,
+clawed, and splintered into pieces.  Pieces of fine art, furniture, linens,
+and various treasures are all strewn about, empty hooks and scratched stone
+serving as the room\@s only decorations.  The decaying carpet is nearly
+entirely obscured by the crumbling refuse, a layer of dust having
+accumulated on top of it.  The air is heavy and vile, making it difficult to
+breathe.  The only exit is to the north, where the remains of the Prince\@s
+sitting room await.  
+~
+~
+1
+0 8250 0
+D0
+The bedchambers continue.
+~
+~
+0 0 8298
+W 5 0 0
+Z 5 5
+S
+#8304
+Princess Shaia\@s Bedchambers~
+The bedroom of Princess Shaia was surely an impressive affair at its
+prime.  The bed is spectacularly crafted, although the thoroughly-stained
+matress is consumed by rot and the canopy hangs in sad shreds from its
+posts.  Much of the room appears to have once been intended to seem
+romantic, with blackened, decaying heart-shaped pillows.  The furniture lays
+mostly in ruins, shattered into splintered pieces about the floor.  The air
+in the room is a sickening array of horrible odors, mundane and not.  A
+carved door leads north, back to the hall.  
+~
+~
+1
+0 8250 0
+D0
+The door opens into a gloomy hallway.
+~
+~
+3 0 8299
+W 5 0 0
+Z 5 5
+S
+#8305
+The Crimson Stairway~
+A large staircase, carpeted in mildewed crimson, ascends to the courtroom
+of Rasadal Gogoth VII.  Matching paint adorns the wood panels which cover
+the walls, each splintered and decaying.  Blackened splotches of untold
+amounts of blood stain the floor and walls, from where victims of the king\@s
+wrath were once ejected from the court.  The scents of death and rot are
+oppressive, as is the almost-tangible malice of the kingdom\@s curse.  The
+wide steps lead upward into darkness, while a gloomy hall awaits to the
+north.  
+~
+~
+1
+0 8254 0
+D0
+A gloomy hallway spreads to the north.
+~
+~
+0 0 8300
+D4
+The crimson stairway leads up to the courtroom.
+~
+~
+0 0 8318
+W 5 0 0
+Z 5 5
+S
+#8306
+Queen Wythea\@s Bedchambers~
+This large chamber was once the elegant bedroom of Queen Wythea.  The
+room\@s mirrored ceiling is violently cracked, large shards shattered upon
+the floor below.  Its many elegant furnishings are long destroyed, including
+her large, sumptuous bed, which lays in charred ruins.  The entire room is
+blasted by flames, its metal fixtures melted down the stone walls.  The
+stench of death and decay is especially thick here, particularly from the
+scorched, stained rubble that was once her bed.  A carved wooden door to the
+north leads back to the hall.  
+~
+~
+1
+0 8250 0
+D0
+~
+~
+3 0 8301
+W 5 0 0
+Z 5 5
+S
+#8307
+King Gogoth\@s Study~
+To the south of the bedroom is Rasadal Gogoth VII\@s personal study. 
+Against the south and west walls are tall, elaborate bookshelves made of
+richly carved wood; yet, there is little organzation to be found.  Open
+books are strewn about, many on the floor, and all of them have suffered
+from mold, rot, and ruin.  The carpet is mouldered and tattered, its
+once-deep red a pitiful, slimy black.  A large writing desk sits with its
+back to the east wall, a large reading chair sitting before it with the
+stuffing torn out.  The king\@s bedchamber awaits to the north.  
+~
+~
+1
+0 8250 0
+D0
+The king\@s bedchambers lie to the north.
+~
+~
+0 0 8302
+W 5 0 0
+Z 5 5
+S
+#8308
+The Courtroom of Gogoth~
+The courtroom of Rasadal Gogoth VII is a gloomy, dilapidated affair, with
+dust and crumbling stone falling from the high ceiling.  This portion of the
+court is especially blackened, its ancient banners and ornamentation utterly
+consumed by flame.  Bits of ash and debris coat the floor and hang lifeless
+in the stale air.  The once-patterned inlays along the courtroom wall have
+melted and leaked down the aging stone like golden tears.  Great pillars
+loom high above, scorched and cracked.  The raised dais of the throne is
+directly to the east, while the hall continues to the south.  
+~
+~
+4
+0 8250 0
+D1
+The court of Gogoth continues.
+~
+~
+0 0 8309
+D2
+The court of Gogoth continues.
+~
+~
+0 0 8311
+W 5 0 0
+Z 5 5
+S
+#8309
+The Grand Throne of Gogoth~
+The black throne of Rasadal Gogoth VII towers above you on a raised dais.
+Designed to impose, whoever sits upon this throne looks down upon the
+courtroom, and quite possibly, all of the kingdom and its domain.  Marble
+pillars support the high, dimly visible ceiling, the cracks, dust, and
+heaviness of age long having settled upon the hall.  The stench of death is
+powerful and stifling, making it difficult to catch a full breath.  Although
+the courtroom itself is silent, a low buzzing sound fills the air.  The
+courtroom continues to the east, south, and west.  
+~
+~
+4
+0 8250 0
+D1
+The court of Gogoth continues.
+~
+~
+0 0 8310
+D2
+The court of Gogoth continues.
+~
+~
+0 0 8312
+D3
+The court of Gogoth continues.
+~
+~
+0 0 8308
+W 5 0 0
+Z 5 5
+S
+#8310
+The Courtroom of Gogoth~
+The courtroom of Rasadal Gogoth VII is a gloomy, dilapidated affair, with
+dust and crumbling stone falling from the high ceiling.  Along the entire
+east side of the hall are spotted, rotting silken banners displaying the
+ancient Gogothi crest.  Much of the majesty of these decorations has long
+passed, but their sheer size still manages to be imposing.  Tarnished gold
+ornamentation is visible this close to the wall, which form a series of
+dramatic, patterned inlays into the eastern stone.  Marble pillars rise
+into the darkness high above.  The raised dais of the throne is directly to
+the west, while the hall continues to the south.  
+~
+~
+3
+0 8250 0
+D2
+The court of Gogoth continues.
+~
+~
+0 0 8313
+D3
+The court of Gogoth continues.
+~
+~
+0 0 8309
+W 5 0 0
+Z 5 5
+S
+#8311
+The Courtroom of Gogoth~
+The courtroom of Rasadal Gogoth VII is a gloomy, dilapidated affair, with
+dust and crumbling stone falling from the high ceiling.  Along the entire
+west side of the hall are spotted, rotting silken banners displaying the
+ancient Gogothi crest.  Much of the majesty of these decorations has long
+passed, but their sheer size still manages to be imposing.  Tarnished gold
+ornamentation is visible this close to the wall, which form a series of
+dramatic, patterned inlays into the western stone.  Marble pillars rise
+into the darkness high above.  The courtroom continues to the north, east
+and south.  
+~
+~
+3
+0 8250 0
+D0
+The court of Gogoth continues.
+~
+~
+0 0 8308
+D1
+The court of Gogoth continues.
+~
+~
+0 0 8312
+D2
+The court of Gogoth continues.
+~
+~
+0 0 8314
+W 5 0 0
+Z 5 5
+S
+#8312
+The Courtroom of Gogoth~
+The courtroom of Rasadal Gogoth VII spreads out, the far walls barely
+visible through the castle\@s tangible gloom.  Ancient marble pillars line
+the court, supporting the darkened, crumbling ceiling.  The once-posh carpet
+that led from the lower stairwell to the throne has long since rotted and
+blackened, marked by the rare footstep.  Dust and debris line the courtroom,
+as well as the odd splatter of dried blood stains.  The hall is silent, and
+the aura of wickedness pervasive in the castle hangs in the air, heavy and
+oppressive.  To the north lies the raised dais of the king\@s black throne,
+while to the south, east, and west, the courtroom continues.  
+~
+~
+3
+0 8250 0
+D0
+The court of Gogoth continues.
+~
+~
+0 0 8309
+D1
+The court of Gogoth continues.
+~
+~
+0 0 8313
+D2
+The court of Gogoth continues.
+~
+~
+0 0 8315
+D3
+The court of Gogoth continues.
+~
+~
+0 0 8311
+W 5 0 0
+Z 5 5
+S
+#8313
+The Courtroom of Gogoth~
+The courtroom of Rasadal Gogoth VII is a gloomy, dilapidated affair, with
+dust and crumbling stone falling from the high ceiling.  Along the entire
+east side of the hall are spotted, rotting silken banners displaying the
+ancient Gogothi crest.  Much of the majesty of these decorations has long
+passed, but their sheer size still manages to be imposing.  Tarnished gold
+ornamentation is visible this close to the wall, which form a series of
+dramatic, patterned inlays into the eastern stone.  Marble pillars rise
+into the darkness high above.  The courtroom continues to the north, west,
+and south.  
+~
+~
+3
+0 8250 0
+D0
+The court of Gogoth continues.
+~
+~
+0 0 8310
+D2
+The court of Gogoth continues.
+~
+~
+0 0 8316
+D3
+The court of Gogoth continues.
+~
+~
+0 0 8312
+W 5 0 0
+Z 5 5
+S
+#8314
+The Courtroom of Gogoth~
+The courtroom of Rasadal Gogoth VII is a gloomy, dilapidated affair, with
+dust and crumbling stone falling from the high ceiling.  Along the entire
+west side of the hall are spotted, rotting silken banners displaying the
+ancient Gogothi crest.  Much of the majesty of these decorations has long
+passed, but their sheer size still manages to be imposing.  Tarnished gold
+ornamentation is visible this close to the wall, which form a series of
+dramatic, patterned inlays into the western stone.  Marble pillars rise
+into the darkness high above.  The courtroom continues to the north, east
+and south.  
+~
+~
+3
+0 8250 0
+D0
+The court of Gogoth continues.
+~
+~
+0 0 8311
+D1
+The court of Gogoth continues.
+~
+~
+0 0 8315
+D2
+The court of Gogoth continues.
+~
+~
+0 0 8317
+W 5 0 0
+Z 5 5
+S
+#8315
+The Courtroom of Gogoth~
+The courtroom of Rasadal Gogoth VII spreads out, the far walls barely
+visible through the castle\@s tangible gloom.  Ancient marble pillars line
+the court, supporting the darkened, crumbling ceiling.  The once-posh carpet
+that led from the lower stairwell to the throne has long since rotted and
+blackened, marked by the rare footstep.  Dust and debris line the courtroom,
+as well as the odd splatter of dried blood stains.  The hall is silent, and
+the aura of wickedness pervasive in the castle hangs in the air, heavy and
+oppressive.  The courtroom continues in all of the cardinal directions.  
+~
+~
+3
+0 8250 0
+D0
+The court of Gogoth continues.
+~
+~
+0 0 8312
+D1
+The court of Gogoth continues.
+~
+~
+0 0 8316
+D2
+The court of Gogoth continues.
+~
+~
+0 0 8318
+D3
+The court of Gogoth continues.
+~
+~
+0 0 8314
+W 5 0 0
+Z 5 5
+S
+#8316
+The Courtroom of Gogoth~
+The courtroom of Rasadal Gogoth VII is a gloomy, dilapidated affair, with
+dust and crumbling stone falling from the high ceiling.  Along the entire
+east side of the hall are spotted, rotting silken banners displaying the
+ancient Gogothi crest.  Much of the majesty of these decorations has long
+passed, but their sheer size still manages to be imposing.  Tarnished gold
+ornamentation is visible this close to the wall, which form a series of
+dramatic, patterned inlays into the eastern stone.  Marble pillars rise
+into the darkness high above.  The courtroom continues to the north, west,
+and south.  
+~
+~
+3
+0 8250 0
+D0
+The court of Gogoth continues.
+~
+~
+0 0 8313
+D2
+The court of Gogoth continues.
+~
+~
+0 0 8319
+D3
+The court of Gogoth continues.
+~
+~
+0 0 8315
+W 5 0 0
+Z 5 5
+S
+#8317
+The Courtroom of Gogoth~
+The courtroom of Rasadal Gogoth VII is a gloomy, dilapidated affair, with
+dust and crumbling stone falling from the high ceiling.  Along the entire
+west side of the hall are spotted, rotting silken banners displaying the
+ancient Gogothi crest.  Much of the majesty of these decorations has long
+passed, but their sheer size still manages to be imposing.  Tarnished gold
+ornamentation is visible this close to the wall, which form a series of
+dramatic, patterned inlays into the western stone.  Marble pillars rise
+into the darkness high above.  The courtroom continues to the north and
+east.  
+~
+~
+3
+0 8250 0
+D0
+The court of Gogoth continues.
+~
+~
+0 0 8314
+D1
+The court of Gogoth continues.
+~
+~
+0 0 8318
+W 5 0 0
+Z 5 5
+S
+#8318
+The Courtroom of Gogoth~
+The courtroom of Rasadal Gogoth VII spreads out, the far walls barely
+visible through the castle\@s tangible gloom.  Ancient marble pillars line
+the court, supporting the darkened, crumbling ceiling.  The once-posh carpet
+that led from the lower stairwell to the throne has long since rotted and
+blackened, marked by the rare footstep.  Dust and debris line the courtroom,
+as well as the odd splatter of dried blood stains.  The hall is silent, and
+the aura of wickedness pervasive in the castle hangs in the air, heavy and
+oppressive.  The courtroom continues to the north, east, and west, while the
+mouldering carpet leads down a stairwell to the floor below.  
+~
+~
+3
+0 8250 0
+D0
+The court of Gogoth continues.
+~
+~
+0 0 8315
+D1
+The court of Gogoth continues.
+~
+~
+0 0 8319
+D3
+The court of Gogoth continues.
+~
+~
+0 0 8317
+D5
+The crimson stairway leads down.
+~
+~
+0 0 8305
+W 5 0 0
+Z 5 5
+S
+#8319
+The Courtroom of Gogoth~
+The courtroom of Rasadal Gogoth VII is a gloomy, dilapidated affair, with
+dust and crumbling stone falling from the high ceiling.  Along the entire
+east side of the hall are spotted, rotting silken banners displaying the
+ancient Gogothi crest.  Much of the majesty of these decorations has long
+passed, but their sheer size still manages to be imposing.  Tarnished gold
+ornamentation is visible this close to the wall, which form a series of
+dramatic, patterned inlays into the eastern stone.  Marble pillars rise
+into the darkness high above.  The courtroom continues to the north and
+west.  
+~
+~
+3
+0 8250 0
+D0
+The court of Gogoth continues.
+~
+~
+0 0 8316
+D3
+The court of Gogoth continues.
+~
+~
+0 0 8318
+W 5 0 0
+Z 5 5
+S
+#631
+A Cold Black Void~
+You are floating in an infinite void, protected from the unfathomable
+cold only because you have no flesh to injure.  There are no sounds, no
+smells; only the cold, and the darkness-- absolute save for a faint glimmer
+of silver, far, far away.  Perhaps there is warmth there.  
+
+But not for you.
+~
+~
+0
+0 4727106 1
+D0
+~
+~
+0 0 631
+D1
+~
+~
+0 0 631
+D2
+~
+~
+0 0 631
+D3
+~
+~
+0 0 631
+D4
+~
+~
+0 0 631
+D5
+~
+~
+0 0 8174
+M 0 H 0 V 0
+W 4 0 0
+Z 4 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 8228 2 3
+D 0 8239 1 3
+D 0 8240 0 3
+D 0 8240 3 3
+D 0 8242 0 3
+D 0 8242 1 3
+D 0 8243 3 3
+D 0 8245 2 3
+D 0 8247 2 3
+D 0 8289 2 3
+D 0 8291 2 3
+D 0 8293 1 3
+D 0 8294 0 3
+D 0 8294 3 3
+D 0 8296 0 3
+D 0 8296 1 65639
+D 0 8297 3 65639
+D 0 8298 1 3
+D 0 8299 2 3
+D 0 8299 3 3
+D 0 8301 1 3
+D 0 8301 2 3
+D 0 8302 3 3
+D 0 8304 0 3
+D 0 8306 0 3
+M 0 8274 50 8228 1
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8229 3
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8229 3
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8229 3
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8230 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8230 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8231 1
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8232 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8232 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8233 3
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8233 3
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8233 3
+E 0 8282 0 16
+E 0 8283 0 5
+O 0 8116 0 8234
+O 0 8117 0 8234
+O 0 8232 0 8234
+M 0 8274 50 8234 3
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8234 3
+E 0 8283 0 5
+E 0 8282 0 16
+M 0 8274 50 8234 3
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8235 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8235 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8236 1
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8237 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8237 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8238 3
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8238 3
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8238 3
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8239 3
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8239 3
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8239 3
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8240 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8240 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8241 1
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8242 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8242 2
+E 0 8282 0 16
+E 0 8283 0 5
+O 0 8234 0 8243
+O 0 8233 0 8243
+M 0 8274 50 8243 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8243 2
+E 0 8282 0 16
+E 0 8283 0 5
+O 0 8228 0 8244
+M 0 8274 50 8244 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8244 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8245 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8245 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8246 1
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8247 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8247 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8248 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8248 2
+E 0 8282 0 16
+E 0 8283 0 5
+O 0 8231 0 8248
+P 0 8230 1 8231 1
+P 0 8229 1 8231 1
+P 0 8284 1 8231 1
+P 0 8285 1 8231 1
+M 0 8274 50 8249 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8249 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8250 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8274 50 8250 2
+E 0 8282 0 16
+E 0 8283 0 5
+M 0 8228 30 8251 2
+E 0 8235 0 15
+M 0 8228 30 8251 2
+E 0 8235 0 15
+M 0 8228 30 8252 2
+E 0 8235 0 15
+M 0 8228 30 8252 2
+E 0 8235 0 15
+M 0 8228 30 8253 2
+E 0 8235 0 15
+M 0 8228 30 8253 2
+E 0 8235 0 15
+M 0 8228 30 8254 2
+E 0 8235 0 15
+M 0 8228 30 8254 2
+E 0 8235 0 15
+M 0 8228 30 8255 2
+E 0 8235 0 15
+M 0 8228 30 8255 2
+E 0 8235 0 15
+M 0 8228 30 8256 2
+E 0 8235 0 15
+M 0 8228 30 8256 2
+E 0 8235 0 15
+M 0 8228 30 8257 2
+E 0 8235 0 15
+M 0 8228 30 8257 2
+E 0 8235 0 15
+M 0 8228 30 8258 2
+E 0 8235 0 15
+M 0 8228 30 8258 2
+E 0 8235 0 15
+M 0 8228 30 8259 2
+E 0 8235 0 15
+M 0 8228 30 8259 2
+E 0 8235 0 15
+M 0 8228 30 8260 2
+E 0 8235 0 15
+M 0 8228 30 8260 2
+E 0 8235 0 15
+M 0 8228 30 8261 2
+E 0 8235 0 15
+M 0 8228 30 8261 2
+E 0 8235 0 15
+M 0 8228 30 8262 2
+E 0 8235 0 15
+M 0 8228 30 8262 2
+E 0 8235 0 15
+M 0 8228 30 8263 2
+E 0 8235 0 15
+M 0 8228 30 8263 2
+E 0 8235 0 15
+M 0 8228 30 8264 2
+E 0 8235 0 15
+M 0 8228 30 8264 2
+E 0 8235 0 15
+M 0 8228 30 8265 2
+E 0 8235 0 15
+M 0 8228 30 8265 2
+E 0 8235 0 15
+M 0 8231 1 8267 1
+E 0 8236 0 5
+E 0 8239 0 16
+M 0 8230 1 8268 1
+E 0 8236 0 5
+E 0 8238 0 16
+M 0 8229 1 8269 1
+E 0 8236 0 5
+E 0 8237 0 16
+M 0 8235 1 8270 1
+E 0 8236 0 5
+E 0 8243 0 16
+M 0 8236 1 8271 1
+E 0 8236 0 5
+E 0 8244 0 16
+M 0 8232 1 8272 1
+E 0 8236 0 5
+E 0 8240 0 16
+M 0 8270 8 8273 1
+M 0 8233 1 8274 1
+E 0 8236 0 5
+E 0 8241 0 16
+M 0 8234 1 8275 1
+E 0 8236 0 5
+E 0 8242 0 16
+M 0 8270 8 8276 1
+M 0 8240 1 8277 1
+E 0 8236 0 5
+E 0 8248 0 16
+M 0 8239 1 8278 1
+E 0 8236 0 5
+E 0 8247 0 16
+M 0 8270 8 8279 1
+M 0 8238 1 8280 1
+E 0 8236 0 5
+E 0 8246 0 16
+M 0 8237 1 8281 1
+E 0 8236 0 5
+E 0 8245 0 16
+M 0 8249 1 8282 1
+E 0 8236 0 5
+E 0 8249 0 16
+M 0 8242 1 8283 1
+E 0 8236 0 5
+E 0 8250 0 16
+M 0 8243 1 8284 1
+E 0 8236 0 5
+E 0 8251 0 16
+M 0 8270 8 8285 1
+M 0 8244 1 8286 1
+E 0 8236 0 5
+E 0 8252 0 16
+E 0 8300 0 17
+M 0 8250 1 8288 1
+E 0 8256 0 2
+E 0 8265 0 3
+E 0 8266 0 4
+E 0 8288 0 14
+M 0 8241 15 8289 1
+M 0 8241 15 8290 1
+M 0 8241 15 8291 1
+M 0 8246 1 8292 1
+E 0 8256 0 2
+E 0 8259 0 12
+E 0 8260 0 10
+E 0 8299 0 3
+M 0 8241 15 8293 2
+M 0 8241 15 8293 2
+M 0 8241 15 8294 1
+M 0 8241 15 8295 1
+M 0 8241 15 8295 1
+M 0 8241 15 8296 1
+M 0 8272 1 8297 1
+M 0 8241 15 8298 1
+M 0 8241 15 8299 1
+M 0 8241 15 8300 1
+M 0 8241 15 8301 1
+M 0 8241 15 8302 1
+M 0 8247 1 8303 1
+E 0 8256 0 2
+E 0 8261 0 7
+E 0 8262 0 11
+E 0 8287 0 5
+M 0 8248 1 8304 1
+E 0 8256 0 2
+E 0 8263 0 13
+E 0 8264 0 6
+E 0 8297 0 9
+E 0 8298 0 5
+M 0 8245 1 8306 1
+E 0 8256 0 2
+E 0 8257 0 5
+E 0 8258 0 8
+O 0 8253 0 8307
+O 0 8254 0 8307
+M 0 8241 15 8307 1
+P 0 8278 9999 8253 1
+P 0 8279 9999 8253 1
+P 0 8280 9999 8253 1
+P 0 8301 1 8253 1
+P 0 8302 1 8253 1
+M 0 8252 1 8308 1
+G 0 8269 0
+G 0 8271 0
+G 0 8272 0
+G 0 8270 0
+G 0 8273 0
+E 0 8274 0 13
+E 0 8296 0 5
+E 0 8281 0 17
+M 0 8253 1 8309 1
+E 0 8268 0 6
+M 0 8267 1 8310 1
+E 0 8275 0 16
+E 0 8276 0 6
+E 0 8289 0 3
+M 0 8251 12 8311 1
+E 0 8277 0 16
+M 0 8271 4 8312 1
+E 0 8295 0 9
+M 0 8251 12 8313 1
+E 0 8277 0 16
+M 0 8251 12 8314 1
+E 0 8255 0 16
+M 0 8251 12 8315 1
+E 0 8277 0 16
+M 0 8251 12 8316 1
+E 0 8255 0 16
+M 0 8251 12 8317 1
+E 0 8255 0 16
+M 0 8251 12 8318 1
+E 0 8255 0 16
+M 0 8251 12 8319 1
+E 0 8277 0 16
+S
+
+
+
+#GUILD
+#8278
+"direfeast"
+"deathswarm"
+"bone reaper"
+"phylactery"
+"Grave Beat"
+"barrowmist"
+"revenant"
+"corpsesense"
+"corpsesense"
+"deathswarm"
+"revenant"
+#0
+
+S
+
+
+#SHOPS
+0
+
+
+
+#$

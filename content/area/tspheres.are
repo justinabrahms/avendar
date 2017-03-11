@@ -1,0 +1,5099 @@
+#AREADATA
+Name Tower of the Spheres~
+Builders Aeolis Fluxcat Neongrey~
+VNUMs 20100 20299
+Credits [20 51] Aeolis    Order of the Spheres~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 3 2 1 4
+Weave 5 0 0
+Shades 5 5
+End
+
+
+
+#MOBILES
+V4 20101
+drapebot~
+the drapebot~
+The drapebot is here, protecting the innocent.
+~
+~
+human~
+water scholar~
+ABDGLX 0 DFLZ N 0
+53 0 100d100+100 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 CD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog P scan west~
+if inroom($n) == 20101
+  mpechoat $n You push aside the drapery and look into the room.
+  mpechoaround $n $N pushes aside the drapery to the west and looks through.
+  mpat 20102 mpecho $N pushes aside the drapery and looks into the room.
+endif
+if inroom($n) == 20103
+  mpechoat $n You push aside the drapery and look into the hallway.
+  mpechoaround $n $N pushes aside the drapery and peers into the hallway.
+  mpat 20101 mpecho $N pushes aside the drapery to the east and looks into the hallway.
+endif
+mpinterpret $n $x
+~
+>verb_prog P scan east~
+if inroom($n) == 20101
+  mpechoat $n You push aside the drapery and look into the room.
+  mpechoaround $n $N pushes aside the drapery to the east and looks through.
+  mpat 20103 mpecho $N pushes aside the drapery and looks into the room.
+endif
+if inroom($n) == 20102
+  mpechoat $n You push aside the drapery and look into the hallway.
+  mpechoaround $n $N pushes aside the drapery and peers into the hallway.
+  mpat 20101 mpecho $N pushes aside the drapery to the west and looks into the hallway.
+endif
+mpinterpret $n $x
+~
+|
+V4 20202
+crash test dummy m20202~
+Crash the Test Dummy~
+Crash the Test Dummy is here, waiting to be abused.
+~
+~
+human~
+water scholar~
+ADL 0 e N 0
+1 0 1d2+6666 1d2+6666 1d2+0 bash~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 666 -1
+AHMSV ABCDEFGHIJK A medium flesh
+>verb_prog m20202_foc~
+if isfocused($i)
+  say I am focused on $F0.
+else
+  say I am unfocused.
+endif
+~
+>verb_prog m20202_test~
+if isbitset($f0) == 20202
+  say $F0\@s 20202 bit is set as 1.
+else
+  say $F0\@s 20202 bit is set as NULL.
+endif
+~
+>verb_prog m20202_bit1~
+mpbitset $f0 20202 1
+m20202_test
+~
+>verb_prog m20202_bit0~
+mpbitset $f0 20202 0
+m20202_test
+~
+>verb_prog m20202_affbit1~
+mpaddaffect $f0 479 60 2 27 20202 1
+~
+>verb_prog m20202_affbit0~
+mpaddaffect $f0 479 60 2 27 20202 0
+~
+>verb_prog m20202_start~
+mpecho A mystical object falls from the sky onto Crash\@s lap.
+mpoload 20202
+mpfocus $n 0
+say F0 is set as $F0.
+~
+|
+V4 20290
+hill giant skull crusher skullcrusher m20290~
+a hill giant skullcrusher~
+A hill giant skullcrusher hulks here.
+~
+The hill giant lumbers heavily, his imposing height spanning thirteen
+feet.  Cracked skulls of various creatures, both animal and sentient, are
+roped together through their vacant eye sockets, draping his massive body in
+clattery adornment.  His limbs are thick with muscle and matted with coarse
+black hair.  His wildly maned head is disproportionately small for his huge
+frame.  Two beady eyes, close set and unintelligent, scan his surroundings
+with a glazed look.  
+~
+giant~
+water scholar~
+A KLMN 0 E 0
+53 26 8000d1+1 51d10+100 7d9+33 bash~
+crushing blow~
+-21 -21 -21 -6
+0 0
+26 0 0 0 0 0 0 0 20 20 -20 0 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 large flesh
+>rand_prog 100~
+// Look in room for target
+mpseewizi
+mpvalueset 1 0
+mproomcmd mptrigger all
+if isfocused($f1)
+  if ishere($f1)
+    murder $f1
+  endif
+else
+  if isfocused($f0)
+    if ishere($f0)
+      murder $f0
+    endif
+  endif
+endif
+mpvalueset 1 1
+mproomcmd mptrigger all
+trophy corpse head
+savagery
+mpunseewizi
+if value(0) == 0
+// Load skills
+  // Mace
+  mpaddskill $i 160 100
+  // Dual Wield
+  mpaddskill $i 157 100
+  // Second Attack
+  mpaddskill $i 187 100
+  // Third Attack
+  mpaddskill $i 188 100
+  // Dodge
+  mpaddskill $i 172 100
+  // Parry
+  mpaddskill $i 177 100
+  // Boneshatter
+  mpaddskill $i 456 100
+  // Bludgeon
+  mpaddskill $i 181 100
+  // Grapple
+  mpaddskill $i 234 100
+  // Fury
+  mpaddskill $i 460 100
+  // Warcry
+  mpaddskill $i 459 100
+  // Savagery
+  mpaddskill $i 232 100
+  // Load EQ
+  mpoload 513 on $i 16
+  mpoload 8402 on $i 19
+  mpoload 514 on $i 5
+  mpoload 8407 on $i 13
+  mpoload 8408 on $i
+  battlecry I CRUSH YOUR SKULLL!!!
+  mpvalueset 0 1
+else
+// Wander
+  mpvaluerand 0 1 6
+  if value(0) == 1
+    north
+    break
+  endif
+  if value(0) == 2
+    east
+    break
+  endif
+  if value(0) == 3
+    west
+    break
+  endif
+  if value(0) == 4
+    south
+    break
+  endif
+  if value(0) == 5
+    down
+    break
+  endif
+  if value(0) == 6
+    up
+  endif
+endif
+~
+>trigger_prog 100~
+if value(1) == 0
+// Look for and focus on PC target
+  if ispc($n)
+    if isbitset($n) == 346
+    or isimmort($n)
+    else
+      if class($n) == 0
+      or class($n) == 25
+      or hitprcnt($n) < 20
+        mpfocus $n 1
+      else
+        mpfocus $n 0
+      endif
+    endif
+  endif
+else
+// Look for and attack NPC target
+  if name($n) / Krilin
+  or name($n) / sasoldier
+  or isgood($n)
+    if isfight($i)
+    else
+      kill $n
+      if rand(10)
+        yell DIEE LITTLE MEN!!!
+      endif
+    endif
+  endif
+endif
+~
+>fight_prog 100~
+mpvalueup 9
+if value(9) > 2
+  mpvalueset 9 0
+  mpvaluerand 2 1 8
+  if value(2) == 1
+    if snaffected($i) == 459
+      bludgeon
+    else
+      warcry
+    endif
+    break
+  endif
+  if value(2) == 2
+    grapple
+    break
+  endif
+  if value(2) == 3
+    boneshatter arm
+    if rand(10)
+      yell I BREAK YOUR ARM!!!
+    endif
+    break
+  endif
+  if value(2) == 4
+    boneshatter leg
+    if rand(10)
+      yell I BREAK YOUR LEG!!!
+    endif
+    break
+  endif
+  if value(2) == 5
+    bludgeon
+    if rand(10)
+      yell I SMASH YOUR SKULLL!!!
+    endif
+    break
+  endif
+  if value(2) == 6
+    fury
+    break
+  endif
+  if value(2) == 7
+    if hitprcnt($i) < 10
+      emote throws back his head and roars with fury!
+      flee
+      flee
+      flee
+      mpwander
+      break
+    else
+      mpvalueset 2 8
+    endif
+  endif
+  if value(2) == 8
+    // Special attack
+    mpseewizi
+    if rand(15)
+      pmote slams his clubs together, narrowly missing $N\@s head!
+      mpunseewizi
+      break
+    endif
+    mpget char $N curhp 4
+    if iswearslotfull($n) == 6
+      pmote slams his clubs together, crushing $N\@s head and shatters $s armor!
+      mpslotpurge $n 6
+      mpdamtype $n 10 15 35 1
+    else
+      pmote slams his clubs together, crushing $N\@s head!
+      mpdamtype $n 12 20 85 1
+      // Thunderclap
+      mpaddaffect $n 356 51 1 0 0 16777216 o
+    endif
+    mpget char $N curhp 5
+    mpmath 3 $4 - $5
+    mpdammess $n $3 \@crushing blow\@
+    mplag $n 2
+    mpunseewizi
+  endif
+endif
+~
+|
+V4 20291
+hill giant marauder mob20291~
+a hill giant marauder~
+A hill giant marauder is prowling here.
+~
+The hill giant prowls with a predatory hunch to his hairy back, still
+reaching an impressive height of about a dozen feet.  Huge meaty hands, the
+size of a human\@s head, are balled into menacing fists, with knuckles
+scarred and beaten down into a flush blunt surface.  A consistent layer of
+dirt covers the entirety of his massive body, rendering him into an
+enormous, but darkened figure.  Two beady eyes, close set and unintelligent,
+glance about furtively with the look of a hungry animal.  
+~
+giant~
+water scholar~
+A LM 0 E 0
+53 33 7000d1+1 60d10+100 6d8+27 bash~
+wild punch~
+-33 -33 -33 -33
+0 0
+26 0 0 0 0 0 0 0 20 20 -20 0 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK 0 giant flesh
+>rand_prog 100~
+// Look in room for target
+mpseewizi
+mpvalueset 1 0
+hide
+mproomcmd mptrigger all
+if isfocused($f1)
+  if ishere($f1)
+    ambush $f1
+    murder $f1
+  endif
+else
+  if isfocused($f0)
+    if ishere($f0)
+      ambush $f0
+      murder $f0
+    endif
+  endif
+endif
+mpvalueset 1 1
+mproomcmd mptrigger all
+get 1. corpse
+get 1. corpse
+get 1. corpse
+mpunseewizi
+if value(0) == 0
+// Load skills
+  // Hand to Hand
+  mpaddskill $i 175 100
+  // Dual Wield
+  mpaddskill $i 157 100
+  // Pugilism
+  mpaddskill $i 514 100
+  // Second Attack
+  mpaddskill $i 187 100
+  // Third Attack
+  mpaddskill $i 188 100
+  // Dodge
+  mpaddskill $i 172 100
+  // Parry
+  mpaddskill $i 177 100
+  // Knee Shatter
+  mpaddskill $i 517 100
+  // Pummel
+  mpaddskill $i 252 100
+  // Kick
+  mpaddskill $i 176 100
+  // Bash
+  mpaddskill $i 168 100
+  // Hide
+  mpaddskill $i 192 100
+  // Ambush
+  mpaddskill $i 247 100
+  // Bind
+  mpaddskill $i 321 100
+  // Steal
+  mpaddskill $i 199 100
+  // Uppercut
+  mpaddskill $i 253 100
+  // Dirt Kicking
+  mpaddskill $i 170 100
+  // Load EQ
+  mpoload 514 on $i 5
+  mpoload 8407 on $i 13
+  mpoload 1507 on $i 6
+  mpoload 10209 on $i 10
+  mpvalueset 0 1
+else
+// Wander
+  mpvaluerand 0 1 6
+  if value(0) == 1
+    north
+  endif
+  if value(0) == 2
+    east
+  endif
+  if value(0) == 3
+    west
+  endif
+  if value(0) == 4
+    south
+  endif
+  if value(0) == 5
+    down
+  endif
+  if value(0) == 6
+    up
+  endif
+  hide
+endif
+~
+>fight_prog 100~
+mpvalueup 9
+if value(9) > 2
+  mpvalueset 9 0
+  mpvaluerand 2 1 6
+  if value(2) == 1
+    bash
+    break
+  endif
+  if value(2) == 2
+    kick
+    if rand(10)
+      yell I BREAK YOUR KNEEE!!!
+    endif
+    break
+  endif
+  if value(2) == 3
+    pummel
+    break
+  endif
+  if value(2) == 4
+    if cansee($n) == $i
+      dirt
+    else
+      pummel
+    endif
+    break
+  endif
+  if value(2) == 5
+    if hitprcnt($i) < 10
+      emote throws back his head and roars with fury!
+      flee
+      flee
+      flee
+      mpwander
+    else
+      uppercut
+    endif
+    break
+  endif
+  if value(2) == 6
+    uppercut
+    if rand(10)
+      yell I BREAK YOUR JAWW!!!
+    endif
+  endif
+endif
+~
+>trigger_prog 100~
+if value(1) == 0
+// Look for and focus on PC target
+  if ispc($n)
+    if isbitset($n) == 346
+    or isimmort($n)
+    else
+      if class($n) == 0
+      or class($n) == 25
+      or hitprcnt($n) < 20
+        mpfocus $n 1
+      else
+        mpfocus $n 0
+      endif
+      if position($n) == 4
+        bind $n
+        steal 1. corpse
+        steal 1. corpse
+        steal 1. corpse
+        if rand(10)
+          yell I TAKE YOUR SHINIES!!!
+        endif
+      endif
+    endif
+  endif
+else
+// Look for and attack NPC target
+  if name($n) / Krilin
+  or name($n) / sasoldier
+  or isgood($n)
+    if isfight($i)
+    else
+      hide
+      ambush $n
+      kill $n
+      if rand(10)
+        yell DIEE PUNY PEOPLE!!!
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 20292
+hill giant champion mob20292~
+a hill giant champion~
+A hill giant champion is here.
+~
+The hill giant moves with a confident swagger, standing at a towering
+height fourteen feet.  Several scalps dangle from his belt, signifying his
+victories.  Jagged scars zigzag across the rotund belly of this behemoth,
+depicting a life devoted to bloody combat.  His head is completely bald,
+which is striking due to the hairy nature of his kind.  He is old and
+grizzled, walking evidence of brutal survival.  Two beady eyes, close set
+and unintelligent, search the area for his next challenger or victim.  
+~
+giant~
+water scholar~
+A KLM 0 E 0
+55 30 8000d1+1 60d10+100 10d10+30 bash~
+hammering blow~
+-44 -44 -44 -44
+A 0
+26 0 0 0 0 0 0 0 20 20 -20 0 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK 0 giant flesh
+>rand_prog 100~
+// Look in room for target
+mpseewizi
+mpvalueset 1 0
+mproomcmd mptrigger all
+if isfocused($f1)
+  if ishere($f1)
+    murder $f1
+  endif
+else
+  if isfocused($f0)
+    if ishere($f0)
+      murder $f0
+    endif
+  endif
+endif
+mpvalueset 1 1
+mproomcmd mptrigger all
+mpunseewizi
+if value(0) == 0
+// Load skills
+  // Spear
+  mpaddskill $i 163 100
+  // Second Attack
+  mpaddskill $i 187 100
+  // Third Attack
+  mpaddskill $i 188 100
+  // Fourth Attack
+  mpaddskill $i 189 100
+  // Dodge
+  mpaddskill $i 172 100
+  // Parry
+  mpaddskill $i 177 100
+  // Disarm
+  mpaddskill $i 171 100
+  // Legsweep
+  mpaddskill $i 229 100
+  // Gouge
+  mpaddskill $i 236 100
+  // Hamstring
+  mpaddskill $i 233 100
+  // Impale
+  mpaddskill $i 227 100
+  // Corner
+  mpaddskill $i 440 100
+  // Load EQ
+  mpoload 514 on $i 5
+  mpoload 8407 on $i 13
+  mpoload 8401 on $i 16
+  mpoload 8406 on $i
+  mpoload 8406 on $i
+  mpoload 8406 on $i
+  mpvalueset 0 1
+else
+// Wander
+  mpvaluerand 0 1 6
+  if value(0) == 1
+    north
+    break
+  endif
+  if value(0) == 2
+    east
+    break
+  endif
+  if value(0) == 3
+    west
+    break
+  endif
+  if value(0) == 4
+    south
+    break
+  endif
+  if value(0) == 5
+    down
+    break
+  endif
+  if value(0) == 6
+    up
+  endif
+endif
+~
+>fight_prog 100~
+mpvalueup 9
+if value(9) > 2
+  mpvalueset 9 0
+  mpvaluerand 2 1 6
+  if value(2) == 1
+    bash
+    break
+  endif
+  if value(2) == 2
+    impale
+    if rand(10)
+      yell YOU HAVE GUTS!!!
+    endif
+    break
+  endif
+  if value(2) == 3
+    hamstring
+    break
+  endif
+  if value(2) == 4
+    if cansee($n) == $i
+      gouge
+    else
+      legsweep
+    endif
+    break
+  endif
+  if value(2) == 5
+    if hitprcnt($i) < 10
+      emote throws back his head and roars with fury!
+      flee
+      flee
+      flee
+      mpwander
+    else
+      mpvalueset 2 6
+    endif
+  endif
+  if value(2) == 6
+    // Special attack
+    mpseewizi
+    if rand(15)
+      pmote lunges forward to grab $N, but clumsily falls flat!
+      mpunseewizi
+      break
+    endif
+    mpget char $N curhp 4
+    pmote grabs and throttles $N by $s neck!
+    mpdamage $n 13 23 37
+    mpget char $N curhp 5
+    mpmath 3 $4 - $5
+    mpdammess $n $3 throttling
+    // Knockout
+    mpknockout $n
+    // Sleep
+    mpaddaffect $n 435 55 2 0 0 131072
+    mplag $n 2
+    mpunseewizi
+  endif
+endif
+~
+>trigger_prog 100~
+if value(1) == 0
+// Look for and focus on PC target
+  if ispc($n)
+    if isbitset($n) == 346
+    or isimmort($n)
+    else
+      if class($n) == 0
+      or class($n) == 25
+      or hitprcnt($n) < 20
+        mpfocus $n 1
+      else
+        mpfocus $n 0
+      endif
+    endif
+  endif
+else
+// Look for and attack NPC target
+  if name($n) / Krilin
+  or name($n) / sasoldier
+  or isgood($n)
+    if isfight($i)
+    else
+      kill $n
+      if rand(10)
+        yell I AM COMING FOR YOUU!!!
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 20294
+black winged aelin MOB_20294~
+a black-winged aelin~
+A black-wing aelin hovers here, half shrouded by shadows.
+~
+~
+aelin~
+water scholar~
+AG LM DEF N 0
+51 26 34d103+1170 51d10+100 6d8+26 none~
+~
+-21 -21 -21 -6
+0 0
+26 0 0 0 0 -20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 225 -1
+AHMVW ABCDEFGHIJKP 0 medium flesh
+>fight_prog 100~
+mpvalueset 0 0
+mpvalueset 1 0
+mpfocus $n 0
+if value(2) == 1
+  if ishere($f0)
+  else
+    flee
+    flee
+    mpfindpath $f0 3
+    loop 1 to 3
+      mppathstep
+    endloop
+    muffle $f0 murder $f0
+  endif
+else
+  if rand(25)
+    if hitprcnt($f0) > 66
+      mproomcmd mptrigger all
+      if value(0) == 1
+        flee
+        flee
+        mpfindpath $f1 1
+        mppathstep $f1
+        muffle $f1 murder $f1
+        mpfocus $f1 0
+      endif
+      if value(0) == 2
+        hit $f1
+        mpfocus $f1 0
+      endif
+    endif
+  endif
+endif
+if rand(33)
+  if value(1) == 0
+    if hitprcnt($f0) < 25
+      mptrack $f0
+      if isflying($f0)
+      else
+        trip
+        mpvalueset 1 1
+      endif
+    endif
+  endif
+  if value(1) == 0
+    if cansee($f0) == $i
+      if israce($f0) == shuddeni
+      else
+        if snaffected($f0) == 646
+        else
+          blinding
+          mpvalueset 1 1
+        endif
+      endif
+    endif
+  endif
+  if value(1) == 0
+      if iswearslotfull($f0) == 16
+        nerve
+      else
+        vital
+      endif
+    endif
+  endif
+endif
+mpvalueset 2 0
+-
+done
+~
+>verb_prog flee~
+mpnextinterp
+if rand(50)
+  if valname($n) != $i
+    mpvalueset 2 1
+    if isfight($n) == $i
+      mpfocus $n 0
+      mptrack $f0
+    endif
+  endif
+endif
+~
+>trigger_prog 100~
+if valname($n) != $f0
+  if isgroup($n) & $f0
+    if isfight($n) != $i
+      mpfocus $n 1
+      mpvalueset 0 1
+    else
+      if value(1) == 0
+        mpfocus $n 1
+        mpvalueset 0 2
+      endif
+    endif
+  endif
+endif
+~
+>rand_prog 100~
+if value(2) == 1
+  mpfindpath $f0 3
+  loop 1 to 3
+    mppathstep
+  endloop
+  muffle $f0 murder $f0
+  mpvalueset 2 0
+else
+  sneak
+  if snaffected($i) == 483
+    if rand(10)
+      caltraps
+    endif
+  else
+    mproomcmd disguise all
+  endif
+  if istrack($f0)
+    mptrackstep
+  else
+    mpwander
+  endif
+endif
+~
+>greet_prog 100~
+if valname($n) == $f0
+  if value(3) > 0
+    hide
+    craft sleep
+    muffle $f0 dart $f0
+    mpvaluedown 3
+  else
+    if value(4) > 0
+      hide
+      craft pain
+      muffle $f0 dart $f0
+      mpvaluedown 4
+    else
+      hide
+      muffle $f0 murder $f0
+    endif
+  endif
+endif
+~
+>verb_prog p loadup~
+mpaddskill $i 156 100
+mpaddskill $i 157 95
+mpaddskill $i 172 95
+mpaddskill $i 177 90
+mpaddskill $i 187 100
+mpaddskill $i 198 100
+mpaddskill $i 192 100
+mpaddskill $i 186 95
+mpaddskill $i 255 85
+mpaddskill $i 256 85
+mpaddskill $i 480 85
+mpaddskill $i 482 95
+mpaddskill $i 483 100
+mpaddskill $i 486 85
+mpaddskill $i 487 100
+mpaddskill $i 488 100
+mpaddskill $i 489 100
+mpaddskill $i 490 85
+mpaddskill $i 492 85
+mpoload 17043 on $i 16
+loop 1 to 6
+  mpoload 45 on $i
+endloop
+loop 1 to 3
+  prepare 1 sleep
+  prepare 1 pain
+endloop
+mpvalueset 3 3
+mpvalueset 4 3
+mpecho Fully loaded.
+~
+|
+V4 20295
+Eekewmee eqme eq bot MOB_20295~
+Eekewmee~
+Eekewmee is hunched over here, burdened with a bulging knapsack.
+~
+Eekewmee is hunched over here, engulfed by a bulging knapsack.  A
+cardboard sign hangs around his straining neck: 
+
+Please, relieve me of my burden and use the command:
+
+eqme <11, 25, 35, 40, 43, 51, 52>
+
+Or, burden me with all of your goods with this command:
+
+uneqme
+
+Thank you.
+~
+human~
+water scholar~
+AB 0 0 N 0
+51 26 34d103+1170 51d10+100 6d8+26 none~
+~
+-21 -21 -21 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog eqme~
+if compstr(2) == 11
+  mpsetdata eq_newb
+else
+  if compstr(2) == 25
+    mpsetdata eq_lo
+  else
+    if compstr(2) == 35
+      mpsetdata eq_mid
+    else
+      if compstr(2) == 40
+        mpsetdata eq_hi
+      else
+        if compstr(2) == 43
+          mpsetdata eq_hero
+        else
+          if compstr(2) == 51
+            mpsetdata eq_deck
+          else
+            if compstr(2) == 52
+              if isneutral($n)
+                mpsetdata eq_n
+              else
+                if isgood($n)
+                  mpsetdata eq_g
+                else
+                  mpsetdata eq_e
+                endif
+              endif
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+mpvalueset 0 1
+loop 1 to 30
+  if value(0) < 16
+    mpoload $d on $n $v1
+    mpvalueup 0
+    mpnextdata
+  else
+    mpoload $d on $n
+    mpnextdata
+  endif
+endloop
+mpecho After a great flurry, Eekewmee assesses $N and nods in approval.
+~
+>verb_prog p foodme~
+mpoload 3090 on $N
+mpecho Fooding $N.
+~
+>verb_prog p statme~
+if compstr(2) == loud
+  mpget char $N str 1
+  mpecho Strength    : $1
+  mpget char $N int 1
+  mpecho Intelligence: $1
+  mpget char $N wis 1
+  mpecho Wisdom      : $1
+  mpget char $N dex 1
+  mpecho Dexterity   : $1
+  mpget char $N con 1
+  mpecho Constitution: $1
+  mpget char $N chr 1
+  mpecho Charisma    : $1
+  mpecho {RMAXING{n
+endif
+mpvalueset 0 17
+loop 1 to 9
+  mpset char $N str $0
+  mpvalueup 0
+endloop
+mpvalueset 0 17
+loop 1 to 9
+  mpset char $N int $0
+  mpvalueup 0
+endloop
+mpvalueset 0 17
+loop 1 to 9
+  mpset char $N wis $0
+  mpvalueup 0
+endloop
+mpvalueset 0 17
+loop 1 to 9
+  mpset char $N con $0
+  mpvalueup 0
+endloop
+mpvalueset 0 17
+loop 1 to 9
+  mpset char $N dex $0
+  mpvalueup 0
+endloop
+mpvalueset 0 17
+loop 1 to 9
+  mpset char $N chr $0
+  mpvalueup 0
+endloop
+if compstr(2) == loud
+  mpget char $N str 1
+  mpecho Strength    : $1
+  mpget char $N int 1
+  mpecho Intelligence: $1
+  mpget char $N wis 1
+  mpecho Wisdom      : $1
+  mpget char $N dex 1
+  mpecho Dexterity   : $1
+  mpget char $N con 1
+  mpecho Constitution: $1
+  mpget char $N chr 1
+  mpecho Charisma    : $1
+endif
+~
+>verb_prog uneqme~
+mploot $n all
+loop 1 to 30
+  mpslotpurge $n $v1
+  mpjunk
+endloop
+mpecho After a great flurry, Eekewmee assesses $N and sighs in disappointment.
+~
+>data_prog eq_n~
+17039
+17039
+17023
+17023
+17030
+519
+17033
+17034
+17032
+17031
+2013
+17035
+7412
+2918
+2918
+13532
+17142
+13734
+25524
+13732
+11362
+17141
+17036
+9610
+6171
+~
+>data_prog eq_e~
+17039
+17039
+17023
+17023
+8422
+8421
+8425
+8426
+13723
+12647
+22684
+8427
+7412
+2918
+2918
+8275
+13532
+12511
+13734
+13845
+13837
+17141
+13732
+11362
+6171
+~
+>data_prog eq_g~
+17039
+17039
+17023
+17023
+8440
+8439
+8448
+25538
+12064
+8449
+3223
+4005
+7412
+8442
+8442
+17142
+15142
+15143
+13532
+8443
+22453
+17141
+10255
+6171
+2165
+~
+>data_prog eq_deck~
+1519
+1519
+9421
+23088
+1938
+1942
+1940
+1943
+22206
+1941
+7510
+7703
+1933
+518
+518
+2908
+13532
+8453
+7633
+7066
+1518
+13750
+5495
+~
+>data_prog eq_hero~
+23055
+2725
+7649
+7649
+24730
+22513
+7616
+15154
+1932
+7615
+7510
+22202
+5222
+518
+518
+8243
+13532
+7013
+7013
+7057
+7633
+7634
+1322
+1573
+~
+>data_prog eq_hi~
+23055
+2725
+1517
+1517
+23059
+23061
+23057
+23058
+23062
+23060
+9412
+10211
+10318
+23063
+2723
+8243
+7117
+1512
+1512
+10256
+7634
+7632
+10351
+10346
+~
+>data_prog eq_mid~
+1930
+1930
+2711
+2711
+9410
+9411
+509
+19531
+6916
+9413
+9412
+3603
+505
+13715
+13715
+9614
+8511
+17001
+23068
+7009
+7009
+2720
+7632
+7048
+6917
+7007
+~
+>data_prog eq_lo~
+512
+512
+2711
+2711
+507
+2715
+509
+24038
+3767
+508
+4044
+2721
+505
+15038
+15038
+9614
+8511
+17001
+10238
+13815
+13815
+17044
+7048
+3425
+4061
+~
+>data_prog eq_newb~
+24026
+24026
+2711
+2711
+507
+2715
+509
+2712
+3767
+508
+3765
+510
+2714
+4031
+4031
+3761
+8511
+9614
+3740
+3741
+3762
+3763
+3764
+3783
+~
+|
+V4 20296
+severed leg MOB_20296~
+a severed leg~
+A severed leg flops on the ground, kicking mindlessly.
+~
+~
+human~
+water scholar~
+AO 0 0 N 0
+15 8 12d18+371 15d10+100 3d5+8 none~
+~
+0 0 0 4
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 small flesh
+>rand_prog 100~
+if value(0) < 20
+  mpvalueup 0
+  mpecho LEG VALUE 0 IS NOW AT $0.
+else
+  mpecho A severed leg twitches, then lies still.
+  mppurge self
+  mpoload 20299
+endif
+~
+|
+V4 20297
+severed arm MOB_20297~
+a severed arm~
+A severed arm claws the ground, flailing mindlessly.
+~
+~
+human~
+water scholar~
+AO 0 0 N 0
+20 10 15d26+572 20d10+100 3d7+10 none~
+~
+-3 -3 -3 3
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 small flesh
+>rand_prog 100~
+if value(0) < 20
+  mpvalueup 0
+  mpecho ARM VALUE 0 IS NOW AT $0.
+else
+  mpecho A severed arm writhes, then lies still.
+  mppurge self
+  mpoload 20298
+endif
+~
+|
+V4 20298
+severed head MOB_20298~
+a severed head~
+A severed head rolls on the ground, biting rabidly.
+~
+~
+human~
+water scholar~
+AO 0 0 N 0
+15 8 12d18+371 15d10+100 3d5+8 none~
+~
+0 0 0 4
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 tiny flesh
+>rand_prog 100~
+if value(0) < 20
+  mpvalueup 0
+  mpecho HEAD VALUE 0 IS NOW AT $0.
+else
+  mpecho A severed head chatters its teeth, then rolls its eyes back.
+  mppurge self
+  mpoload 20297
+endif
+~
+|
+V4 20299
+undead citizen MOB_20299~
+an undead citizen~
+An undead citizen shambles through the area mindlessly.
+~
+~
+human~
+water scholar~
+AO 0 0 N 0
+25 13 19d35+818 25d10+100 4d6+13 none~
+~
+-6 -6 -6 1
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 100 -1
+AHIMV ABCDEFGHIJK 0 medium flesh
+>hitprcnt_prog 10~
+if value(2) == 0
+  mpecho The undead citizen is decapitated!
+  mpmload 20298
+  mpvalueup 2
+else
+    mpecho ...head is already decapitated.
+  endif
+endif
+~
+>hitprcnt_prog 20~
+if value(2) == 0
+  mpecho The undead citizen is decapitated!
+  mpmload 20298
+  mpvalueup 2
+else
+    mpecho ...head is already decapitated.
+  endif
+endif
+~
+>hitprcnt_prog 25~
+if value(1) == 0
+  mpecho A leg is severed from the undead citizen\@s body!
+  mpmload 20296
+  mpvalueup 1
+else
+  if value(1) == 1
+    mpecho A leg is severed from the undead citizen\@s body!
+    mpmload 20296
+    mpvalueup 1
+  else
+    mpecho ...all legs are already severed.
+  endif
+endif
+~
+>hitprcnt_prog 33~
+if value(1) == 0
+  mpecho A leg is severed from the undead citizen\@s body!
+  mpmload 20296
+  mpvalueup 1
+else
+  if value(1) == 1
+    mpecho A leg is severed from the undead citizen\@s body!
+    mpmload 20296
+    mpvalueup 1
+  else
+    mpecho ...all legs are already severed.
+  endif
+endif
+~
+>hitprcnt_prog 50~
+if value(0) == 0
+  mpecho An arm is severed from the undead citizen\@s body!
+  mpmload 20297
+  mpvalueup 0
+else
+  if value(0) == 1
+    mpecho An arm is severed from the undead citizen\@s body!
+    mpmload 20297
+    mpvalueup 0
+  else
+    mpecho ...all arms are already severed.
+  endif
+endif
+~
+>hitprcnt_prog 66~
+if value(0) == 0
+  mpecho An arm is severed from the undead citizen\@s body!
+  mpmload 20297
+  mpvalueup 0
+else
+  if value(0) == 1
+    mpecho An arm is severed from the undead citizen\@s body!
+    mpmload 20297
+    mpvalueup 0
+  else
+    mpecho ...all arms are already severed.
+  endif
+endif
+~
+>hitprcnt_prog 75~
+if value(0) == 0
+  mpecho An arm is severed from the undead citizen\@s body!
+  mpmload 20297
+  mpvalueup 0
+else
+  if value(0) == 1
+    mpecho An arm is severed from the undead citizen\@s body!
+    mpmload 20297
+    mpvalueup 0
+  else
+    mpecho ...all arms are already severed.
+  endif
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+20101
+thin staff engraved runes staffoffire~
+a thin staff engraved with runes~
+A staff lies here, its length engraved with burned runes.~
+~
+wood~
+weapon 0 0 0 AN
+staff 9 5 1 F
+smash~
+55 100 455000 3 P
+1
+>rand_prog 100~
+if objvalue(0) > 0
+  opvaluedown 0
+  if objvalue(0) == 0
+    if isworn($o)
+      opechoat $o The ends of a thin staff engraved with runes extinguish.
+    endif
+    opset obj staffoffire value3 27
+  endif
+endif
+~
+>speech_prog p yucandus~
+if compstr(1) == yucandus
+  if compstr(2) == 
+    if isworn($n)
+      if objvalue(0) == 0
+        opechoat $n The ends of a thin staff engraved with runes burst into flame!
+        opechoaround $n The ends of a thin staff engraved with runes burst into flame!
+        opset obj staffoffire value3 29
+        opvalueset 0 150
+      endif
+    endif
+  endif
+endif
+if compstr(1) == ia
+  if compstr(2) == yucandus
+    if compstr(3) == 
+      if isworn($n)
+        if objvalue(0) > 0
+          opechoat $n The ends of a thin staff engraved with runes extinguish.
+          opechoaround $n The ends of a thin staff engraved with runes extinguish.
+          opvalueset 0 0
+          opset obj staffoffire value3 27
+        endif
+      endif
+    endif
+  endif
+endif
+~
+|
+V13
+20102
+table~
+a glass-topped table~
+A table inset with glass sits in the middle of the room.~
+~
+glass~
+furniture e 0 0 0
+0 0 N 0 0
+58 0 0 4 P
+0
+>verb_prog p get pitcher~
+opechoat $n A silver pitcher remains firmly affixed to the table.
+~
+>verb_prog p take pitcher~
+opechoat $n A silver pitcher remains firmly affixed to the table.
+~
+>verb_prog p get glass~
+if iscarrying($n) == 20103
+  opechoat $n A small glass of water remains firmly affixed to the table.
+else
+  opechoat $n You take a small glass of water off the table.
+  opechoaround $n $N takes a small glass of water off the table.
+  opecho Another small glass of water shimmers into existence on the table.
+  opoload 20103 on $n
+endif
+~
+>verb_prog p take glass~
+if iscarrying($n) == 20103
+  opechoat $n A small glass of water remains firmly affixed to the table.
+else
+  opechoat $n You take a small glass of water off the table.
+  opechoaround $n $N takes a small glass of water off the table.
+  opecho Another small glass of water shimmers into existence on the table.
+  opoload 20103 on $n
+endif
+~
+|
+V13
+20103
+glass water~
+a small glass of water~
+A small glass of water is here.~
+~
+glass~
+drink GSU 0 0 A
+20 20 'water' 0 0
+0 0 0 1 P
+0
+V13
+20104
+globe orb glowing~
+a glowing orb~
+The orb pulses lazily to the rhythm of the music.~
+~
+glass~
+trash Se 0 0 0
+0 0 0 0 0
+58 0 0 2 P
+0
+>verb_prog p touch~
+if compstr(2) == globe
+or compstr(2) == orb
+  opechoat $n As you touch the orb, it begins to glow brightly, and the volume of the music grows louder.
+  opechoaround $n As $N touches the orb, it begins to glow brightly, and the volume of the music grows louder.
+  opechoat $n The music fades to its original volume as you remove your hand.
+  opechoaround $n The music fades to its original volume as $N removes $s hand.
+  opat 20101 opecho You briefly make out the sound of music to the east.
+else
+  opinterpret $n $x
+endif
+~
+|
+V13
+20105
+chessboard~
+an elegant marble chessboard~
+A marble chessboard sits against the wall, carved soapstone pieces arranged upon it.~
+~
+stone~
+special 0 0 0 0
+1 0 0 0 0
+58 0 0 1 P
+0
+V13
+20106
+mystic circle inscription~
+a mystical inscription~
+A large mystical inscription is set into the floor.~
+~
+silver~
+trash d 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+E
+mystic2~
+Your mystical knowledge would lead you to believe that the inscription
+upon the floor is that of a circle of protection, the magical runes within
+being various symbols of warding and power.  The etching appears to be made
+of some light metal, possibly silver.
+~
+E
+mystic inscription circle~
+The mystical inscription consists of a number of circles set within each
+other, joined by lines radiating outwards from the centre, and filled with
+various magical runes.  The etching appears to be made of some light metal,
+possibly silver.
+~
+>verb_prog p look~
+if compstr(2) == circle
+or compstr(2) == mystic
+or compstr(2) == inscription
+  if class($n) < 12
+    opforce $n look mystic2
+  else
+    opinterpret $n $x
+  endif
+else
+  opinterpret $n $x
+endif
+~
+>verb_prog p examine~
+if compstr(2) == circle
+or compstr(2) == mystic
+or compstr(2) == inscription
+  if class($n) < 12
+    opforce $n look mystic2
+  else
+    opinterpret $n $x
+  endif
+else
+  opinterpret $n $x
+endif
+~
+|
+V13
+20107
+mystic2~
+a mystical inscription~
+A mystical inscription is set upon the ground.~
+~
+silver~
+trash d 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+E
+mystic2~
+Your mystical knowledge would lead you to believe that the inscription
+upon the floor is that of a circle of protection, the magical runes within
+being various symbols of warding and power.  The etching appears to be made
+of some light metal, possibly silver.  
+~
+V13
+20108
+compartment compartment001~
+a small compartment~
+A small compartment, inset into the wall behind the painting.~
+~
+unknown~
+container e 0 0 0
+50 0 0 2 0
+60 0 0 4 P
+0
+V13
+20109
+vial liquid rose rose-coloured~
+a vial of rose-coloured liquid~
+A corked vial of rose-coloured liquid lies here.~
+~
+glass~
+potion G 0 0 A
+51 'cure poison' 'ghost' 'ghost' 'ghost'
+51 8 0 1 P
+0
+V13
+20110
+clear vial~
+a clear vial marked with a \@P\@~
+A vial of clear liquid marked with a \@P\@ is here.~
+~
+glass~
+potion G 0 0 A
+51 'poison' 'ghost' 'ghost' 'ghost'
+51 8 0 1 P
+0
+V13
+20111
+platter food~
+a platter of food~
+A silver platter of sumptuous-looking food rests here.~
+~
+silver~
+food U 0 0 A
+12 50 0 0 0
+1 40 0 1 P
+1
+V13
+20202
+xan mystical object o20202~
+a mystical object named \@Xan\@~
+A mystical object named \@Xan\@ sits here, waiting to prove what objects can do.~
+~
+glass~
+treasure A 0 0 AQ
+0 0 0 0 0
+1 1 0 0 P
+1
+>verb_prog o20202_test~
+mpfocus $n 0
+mpgoto $f0
+~
+|
+V13
+20297
+severed rotting head~
+a rotting head~
+A severed head lies here, rotting away.~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+20298
+severed rotting arm~
+a rotting arm~
+A severed arm lies here, rotting away.~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+20299
+severed rotting leg~
+a rotting leg~
+A severed leg lies here, rotting away.~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+#0
+
+
+
+#ROOMS
+#20101
+Entryway to the Tower of the Spheres~
+Light-coloured marble spans upwards around you, reaching the ceiling
+approximately twenty-five feet above.  The tower itself seems alive with
+mystic energy, the air tingling with power.  Golden fixtures jut out from
+the walls, each affixed with glass bulbs from which eminate a bright yellow
+light, illuminating the area.  Two doorways are set on either side of the
+hallway, each draped with a dark violet hanging to protect the privacy of
+whatever lies beyond.  To the south lies the tower gatehouse, and to the
+north the hallway continues.  
+~
+~
+0
+0 4194362 0
+D0
+~
+~
+0 0 20107
+D1
+~
+~
+0 0 20103
+D3
+~
+~
+0 0 20102
+W 5 0 0
+Z 5 5
+S
+#20102
+Waiting Room~
+The faint crackling sounds of burning wood fill the small area of this
+room, emanating from a moderate blaze burning within a finely-worked iron
+hearth.  A number of dark wooden chairs are arranged about the chamber, and
+a single plush couch rests against the north wall, a golden framed landscape
+hanging above it.  A small table inset with a glass top sits in the middle
+of the room, with a silver pitcher and a number of glasses set atop it.  A
+doorway is set into the eastern wall of the room, and a dark drapery hangs
+within, blocking view of the outside.  
+~
+~
+0
+0 4194362 0
+D1
+~
+~
+0 0 20101
+W 5 0 0
+Z 5 5
+S
+#20103
+Waiting Room~
+The faint sound of quiet music drifts through the air here, its origin
+seeming to be a small crystal globe which rests upon a table in the centre
+of the room.  The orb radiates a faint, rose-coloured glow, pulsing lazily
+to the rhythm of the tune.  A soft, warm light suffuses the chamber,
+although no source is apparent.  Armchairs are arranged around the middle of
+the room, while off to the side, against the eastern wall, sits a small
+chessboard and two padded wooden chairs.  A simple doorway is set into the
+opposing wall, a dark violet drapery hanging within, obscuring view of what
+lies outside.  
+~
+~
+0
+0 4194362 0
+D3
+~
+~
+0 0 20101
+W 5 0 0
+Z 5 5
+S
+#20104
+Reception Room~
+~
+~
+0
+0 4194362 0
+D1
+~
+~
+3 0 20107
+W 5 0 0
+Z 5 5
+S
+#20105
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20107
+W 5 0 0
+Z 5 5
+S
+#20106
+Central Hall~
+The central hall is expansive, its circular interior being much wider
+than the four hallways entering it from the cardinal directions.  This
+chamber also appears to be considerably darker than the areas around it,
+with little visible lighting beyond violet and scarlet illuminations cast
+alternately upon the marble walls, their sources unknown.  The floor here
+has been etched, the grooves forming an inscription of a large mystic
+circle, which glows a faint pure white.  Around the edges of the room,
+between the adjoining passages, sit four identical suits of bronzed armor,
+standing erect upon small wooden pedestals.  Directly above, inset into the
+centre of the ceiling, is the symbol of the Order of the Spheres, seemingly
+formed from sapphire, amethyst, and gold.  
+~
+~
+0
+0 4194362 0
+D0
+~
+~
+0 0 20116
+D1
+~
+~
+0 0 20117
+D2
+~
+~
+0 0 20107
+D3
+~
+~
+0 0 20108
+W 5 0 0
+Z 5 5
+S
+#20107
+Main Hallway~
+Light-coloured marble spans upwards around you, reaching the ceiling
+approximately twenty-five feet above.  The tower itself seems alive with
+mystic energy, the air tingling with power.  Golden fixtures jut out from
+the walls, each affixed with glass bulbs from which eminate a bright yellow
+light, illuminating the area.  Sturdy-looking wooden doors are set into
+either side of the hallway, each inset with finely worked silver, displaying
+the symbol of the Order.  To the north, the hallway opens into a large
+central chamber, while to the south, it continues towards the main gates.  
+~
+~
+0
+0 4194362 0
+D0
+~
+~
+0 0 20106
+D1
+~
+~
+0 0 20105
+D2
+~
+~
+0 0 20101
+D3
+~
+~
+3 0 20104
+W 5 0 0
+Z 5 5
+S
+#20108
+Hallway~
+Light-coloured marble spans upwards around you, reaching the ceiling
+approximately twenty-five feet above.  The tower itself seems alive with
+mystic energy, the air tingling with power.  Golden fixtures jut out from
+the walls, each affixed with glass bulbs from which eminate a bright yellow
+light, illuminating the area.  On the north wall hangs a painting of an
+aging man dressed in the robes of the Order, and to the south is an
+elegant tapestry, depicting a young lady.  To the east, the hallway opens
+into a large central chamber, and continues to the west.
+~
+~
+0
+0 4194362 0
+E
+tapestry~
+This tapestry has been woven of a deep red fabric, with a complex
+embroidery of golden thread running down either side.  In the centre of the
+tapestry is a depiction of a young aelin woman, her head bowed, and pristine
+white wings folded about her.  In her hands she holds a wand-like sceptre, a
+large glass ball affixed to its head, apparently glowing with power.  
+~
+E
+painting~
+The painting depicts an elderly human with a flowing white beard and calm
+demeanour about him, sitting on a high-backed hair, hands carefully folded
+in his lap.  He is dressed in the formal attire of the Order of the Spheres,
+a deep purple robe trimmed with gold.  The engraving on the bottom of the
+portrait reads \@Wrereth Delrethia, Lord of the Spheres\@.  
+~
+D1
+~
+~
+0 0 20106
+D3
+~
+~
+0 0 20109
+W 5 0 0
+Z 5 5
+S
+#20109
+Hallway~
+Light-coloured marble spans upwards around you, reaching the ceiling
+approximately twenty-five feet above.  Golden fixtures jut out from the
+walls, each affixed with glass bulbs from which eminate a bright yellow
+light, illuminating the area.  At the end of the hallway, to the west, hangs
+a simple decorative tapestry, numerous magical runes woven into the fabric. 
+A swinging door is set into the north wall, from which constantly wafts the
+enticing smell of preparing food.  To the south is set a plain door upon
+which the word \@Private\@ has been engraved.
+~
+~
+0
+0 4194362 0
+D0
+~
+~
+0 0 20111
+D1
+~
+~
+0 0 20108
+D2
+~
+~
+99 0 20110
+W 5 0 0
+Z 5 5
+S
+#20110
+Small Dining Room~
+This room is unusually warm, its small interior heated by a crackling
+fire which endlessly burns inside an elegant iron hearth set into the
+eastern wall.  A short, beautifully worked redwood table sits in the middle
+of the room, with six tall chairs arranged around it, each set before an
+arrangement of silver eating utensils.  A gold-framed painting hangs on the
+western wall, and a door is set to the north.  
+~
+~
+0
+0 0 0
+E
+painting~
+Framed on the western wall is a beautifully rendered oil painting of a
+fruitbowl.  
+~
+D0
+~
+~
+99 0 20109
+W 5 0 0
+Z 5 5
+P
+>rand_prog 100~
+if roomvalue(1) > 0
+  mpvaluedown 1
+endif
+~
+>verb_prog p move painting~
+if roomvalue(0) == 1
+  mpechoat $n You move the painting back to its original position, concealing the compartment.
+  mpechoaround $n $N moves the painting back into position, concealing the small compartment behind.
+  mppurge compartment001
+  mpvalueset 0 0
+else
+  mpechoat $n You move the painting, revealing a small compartment.
+  mpechoaround $n $N moves the painting, revealing a small compartment.
+  mpoload 20108
+  if roomvalue(1) == 0
+    mpoload 20109 in compartment001
+    mpoload 20110 in compartment001
+    mpvalueset 1 2000
+  endif
+  mpvalueset 0 1
+endif
+~
+>verb_prog p take~
+if compstr(2) == utensil
+or compstr(2) == utensils
+  mpechoat $n You are shocked as you touch the utensils, and quickly pull your hand away.
+  mpechoaround $n $N is shocked as $e touches the utensils, and quickly pulls $s hand away.
+else
+  mpnextinterp
+endif
+~
+|
+S
+#20111
+Main Kitchen~
+The kitchen is abuzz with a constant flow of activity and energy. 
+Enchanted knives fly about the room, chopping and cutting various meal
+ingredients, which seemingly float by their own faculties from a small
+wicker food hamper onto the cleared counters.  Wooden spoons unceasingly
+stir pots of boiling liquids and stews, resting atop magically heated stone
+blocks.  Mops and cloths, both wet and dry, speed around every surface,
+ensuring that nothing is ever dirtied.  The smells of the preparing foods
+mingle in the air, creating a pleasurably enticing aroma.  To the east, an
+open doorway leads into the dining hall, and a swinging door leads into a
+hallway to the south.  
+~
+~
+0
+0 4194362 0
+D1
+~
+~
+0 0 20112
+D2
+~
+~
+0 0 20109
+W 5 0 0
+Z 5 5
+S
+#20112
+Dining Hall~
+Light-coloured marble walls, largely undecorated, span upwards around
+you, forming the main dining hall.  The area is suffused with light,
+illuminated by two magnificent crystal chandeliers which hang down over the
+long central table, shimmering with energy.  Many low-backed chairs line
+either side of the table, with two regal seats gracing the ends.  The
+enticing smell of food drifts in from an open doorway to the west, leading
+into the kitchen.  
+~
+~
+0
+0 4194362 0
+D0
+~
+~
+0 0 20113
+D3
+~
+~
+0 0 20111
+W 5 0 0
+Z 5 5
+P
+>verb_prog p sit~
+if compstr(1) == s
+  mpinterpret $n south
+  break
+endif
+if compstr(2) == 
+or compstr(2) == chair
+  mpechoat $n You take a seat in one of the chairs.
+  mpechoaround $n $N takes a seat in one of the chairs.
+  if iscarrying($n) == 20111
+    break
+  endif
+  mpechoat $n A platter of food flies in from the kitchen, coming to rest in front of you.
+  mpechoaround $n A platter of food flies in from the kitchen, coming to a rest in front of $N.
+  mpat 20111 mpecho A platter of food levitates off the counter, and flies into the dining room.
+  mpoload 20111 on $n
+endif
+~
+|
+S
+#20113
+Dining Hall~
+Light-coloured marble walls, largely undecorated, span upwards around
+you, forming the main dining hall.  The area is suffused with light,
+illuminated by two magnificent crystal chandeliers which hang down over the
+long central table, shimmering with energy.  Many low-backed chairs line
+either side of the table, with two regal seats gracing the ends.  The
+enticing smell of food drifts down from the far end of the room, where a
+small doorway leads into the kitchen.  A large wooden door opens east here,
+into the main hallway.  
+~
+~
+0
+0 4194362 0
+D1
+~
+~
+0 0 20114
+D2
+~
+~
+0 0 20112
+W 5 0 0
+Z 5 5
+P
+>verb_prog p sit~
+if compstr(1) == s
+  mpinterpret $n south
+  break
+endif
+if compstr(2) == 
+or compstr(2) == chair
+  mpechoat $n You take a seat in one of the chairs.
+  mpechoaround $n $N takes a seat in one of the chairs.
+  if iscarrying($n) == 20111
+    break
+  endif
+  mpechoat $n A platter of food flies into the room, coming to rest in front of you.
+  mpechoaround $n A platter of food flies into the room, coming to a rest in front of $N.
+  mpat 20112 mpecho A platter of food flies past, speeding towards the north end of the room.
+  mpat 20111 mpecho A platter of food levitates off the counter, and flies into the dining room.
+  mpoload 20111 on $n
+endif
+~
+|
+S
+#20114
+Main Hallway~
+~
+~
+0
+0 4194362 0
+D1
+~
+~
+0 0 20115
+D2
+~
+~
+0 0 20116
+D3
+~
+~
+0 0 20113
+W 5 0 0
+Z 5 5
+S
+#20115
+Small Classroom~
+~
+~
+0
+0 4194362 0
+D3
+~
+~
+0 0 20114
+W 5 0 0
+Z 5 5
+S
+#20116
+Main Hallway~
+Light-coloured marble spans upwards around you, reaching the ceiling
+approximately twenty-five feet above.  The tower itself seems alive with
+mystic energy, the air tingling with power.  Golden fixtures jut out from
+the walls, each affixed with glass bulbs from which eminate a bright yellow
+light, illuminating the area.  Hanging down on either side of the hallway
+are two wide red banners, each embroidered in gold thread with various
+magical symbols and runes.  To the south lies a large, circular chamber, and
+the hall continues to the north.  
+~
+~
+0
+0 4194362 0
+D0
+~
+~
+0 0 20114
+D2
+~
+~
+0 0 20106
+W 5 0 0
+Z 5 5
+S
+#20117
+Hallway~
+Light-coloured marble spans upwards around you, reaching the ceiling
+approximately twenty-five feet above.  The tower itself seems alive with
+mystic energy, the air tingling with power.  Golden fixtures jut out from
+the walls, each affixed with glass bulbs from which eminate a bright yellow
+light, illuminating the area.  A simple wooden door is set into the north
+wall, and standing opposite it is a majestic looking marble statue, carved
+in the likeness of a human man wearing scale mail.  To the east the hallway
+continues on, leading towards a spiralling stairway, and to the west opens
+into a large circular chamber.  
+~
+~
+0
+0 4194362 0
+D0
+~
+~
+0 0 20118
+D1
+~
+~
+0 0 20119
+D3
+~
+~
+0 0 20106
+W 5 0 0
+Z 5 5
+S
+#20118
+Small Classroom~
+Long, dark scorch-marks scar the walls of this small classroom, and the
+heavy odor of char seems to hang in the air.  A large bonfire endlessly
+burns in the centre of the room, surrounded by a wide runic circle of what
+appears to be crushed ruby.  Braziers of various metals stand on the outside
+of this area, and an urn filled with coal sits in each corner.  A wooden
+door, warded from the effects of the fire, is set to the south, leading out
+into the hallway.  
+~
+~
+0
+0 4194362 0
+D2
+~
+~
+0 0 20117
+W 5 0 0
+Z 5 5
+S
+#20119
+Hallway~
+Light-coloured marble spans upwards around you, reaching the ceiling
+approximately twenty-five feet above.  The tower itself seems alive with
+mystic energy, the air tingling with power.  Golden fixtures jut out from
+the walls, each affixed with glass bulbs from which eminate a bright yellow
+light, illuminating the area.  Two simple wooden doors are set across from
+one another, no visible marking set upon them.  To the west the hallway
+continues onwards to a large central chamber, and directly to the east sits
+a spiralling staircase, allowing access to both upper and lower levels of
+the tower.  
+~
+~
+0
+0 4194362 0
+D0
+~
+~
+0 0 20121
+D1
+~
+~
+0 0 20122
+D2
+~
+~
+0 0 20120
+D3
+~
+~
+0 0 20117
+W 5 0 0
+Z 5 5
+S
+#20120
+Small Classroom~
+~
+~
+0
+0 4194362 0
+D0
+~
+~
+0 0 20119
+W 5 0 0
+Z 5 5
+S
+#20121
+Small Classroom~
+Artificial sunlight streams into this room from an illusionary window set
+into the ceiling, reflecting off the white marble walls, creating a
+comforting sense of space in this otherwise small area.  Above you, a high
+relief of the Lady Rystaia, composed of fine alabaster and gold, reaches
+outwards, looking down on all below.  Many anatomical diagrams are spread
+out around the room, marked with various arrows and jotted notes, to be used
+as teaching materials.  A smooth slate board is affixed to the northern
+wall, and a gold-framed door is set to the south, leading into the hallway. 
+~
+~
+0
+0 4194362 0
+E
+smooth slate board~
+The slate board is currently blank.
+~
+D2
+~
+~
+0 0 20119
+W 5 0 0
+Z 5 5
+S
+#20122
+Stairwell~
+Wide, light-coloured marble steps spiral around perimeter of this
+cylindrical stairwell, ascending to the upper floors of the tower, and
+decending towards the basement.  Golden fixtures jut out from the walls,
+illuminating the area, and reflecting brightly off the polished golden
+banister that runs alongside the stairs.  Beautifully worked oil paintings
+hang between the lights, depicting various historical scenes.  Directly to
+the west of here extends a hallway, leading towards the central chamber.  
+~
+~
+0
+0 4194362 0
+D3
+~
+~
+0 0 20119
+D4
+~
+~
+0 0 20123
+D5
+~
+~
+0 0 20212
+W 5 0 0
+Z 5 5
+S
+#20123
+Stairwell~
+Wide, light-coloured marble steps spiral around perimeter of this
+cylindrical stairwell, ascending to the upper floors of the tower, and
+decending towards the basement.  Golden fixtures jut out from the walls,
+illuminating the area, and reflecting brightly off the polished golden
+banister that runs alongside the stairs.  Beautifully worked oil paintings
+hang between the lights, depicting various historical scenes.  The library
+opens up to the west of here, and little noise can be heard from within.  
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20124
+D4
+~
+~
+0 0 20145
+D5
+~
+~
+0 0 20122
+W 5 0 0
+Z 5 5
+S
+#20124
+Entrance to The Hall of Knowledge~
+The Hall of Knowledge is very quiet, the unobtrusive rustling of turning
+pages and shuffling feet being the only sounds to break the silence of this
+seemlingly hallowed place.  A soft light, cast from no discernable source,
+suffuses the entire area, and the air is filled with the musty smell of
+ancient text.  Small ferns, situated in rounded, golden pots, are arranged
+in lines to the north and south of you, and beyond them you can see tables
+and chairs arranged for reading and research.  Fanciful text has been
+engraved into the marble floor, facing the stairwell to the east, so as to
+be readable by those entering.  To the west, long bookcases run the length
+of the room, carrying tomes of all size and description.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20126
+D1
+~
+~
+0 0 20123
+D2
+~
+~
+0 0 20125
+D3
+~
+~
+0 0 20127
+W 5 0 0
+Z 5 5
+S
+#20125
+The Hall of Knowledge~
+The Hall of Knowledge is very quiet, the unobtrusive rustling of turning
+pages and shuffling feet being the only sounds to break the silence of this
+seemlingly hallowed place.  A soft light, cast from no discernable source,
+suffuses the entire area, and the air is filled with the musty smell of
+ancient text.  Tables and chairs are spread about in this corner, and to the
+north sits a line of ferns, past which lies the entryway.  To the west, long
+bookcases run the length of the room, carrying tomes of all size and
+description.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20124
+D3
+~
+~
+0 0 20139
+W 5 0 0
+Z 5 5
+S
+#20126
+The Hall of Knowledge~
+The Hall of Knowledge is very quiet, the unobtrusive rustling of turning
+pages and shuffling feet being the only sounds to break the silence of this
+seemlingly hallowed place.  A soft light, cast from no discernable source,
+suffuses the entire area, and the air is filled with the musty smell of
+ancient text.  Tables and chairs are spread about in this corner, and to the
+south sits a line of ferns, past which lies the entryway.  To the west, long
+bookcases run the length of the room, carrying tomes of all size and
+description.  
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 20124
+D3
+~
+~
+0 0 20128
+W 5 0 0
+Z 5 5
+S
+#20127
+The Hall of Knowledge~
+The Hall of Knowledge is very quiet, the unobtrusive rustling of turning
+pages and shuffling feet being the only sounds to break the silence of this
+seemlingly hallowed place.  A soft light, cast from no discernable source,
+suffuses the entire area, and the air is filled with the musty smell of
+ancient text.  Tables and chairs are spread about here, the study area
+extending to both the north and south.  To the west, long bookcases run the
+length of the room, carrying tomes of all size and description, and to the
+east lies the entryway.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20128
+D1
+~
+~
+0 0 20124
+D2
+~
+~
+0 0 20139
+D3
+~
+~
+0 0 20138
+W 5 0 0
+Z 5 5
+S
+#20128
+The Hall of Knowledge~
+The Hall of Knowledge is very quiet, the unobtrusive rustling of turning
+pages and shuffling feet being the only sounds to break the silence of this
+seemlingly hallowed place.  A soft light, cast from no discernable source,
+suffuses the entire area, and the air is filled with the musty smell of
+ancient text.  Tables and chairs are spread about here, the study area
+extending to the south and east.  To the west, long bookcases run the length
+of the room, carrying tomes of all size and description.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20129
+D1
+~
+~
+0 0 20126
+D2
+~
+~
+0 0 20127
+D3
+~
+~
+0 0 20132
+W 5 0 0
+Z 5 5
+S
+#20129
+The Hall of Knowledge~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 20128
+D3
+~
+~
+0 0 20130
+W 5 0 0
+Z 5 5
+S
+#20130
+The Hall of Knowledge~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20129
+D3
+~
+~
+0 0 20131
+W 5 0 0
+Z 5 5
+S
+#20131
+The Hall of Knowledge~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20130
+W 5 0 0
+Z 5 5
+S
+#20132
+The Hall of Knowledge~
+The Hall of Knowledge is very quiet, the unobtrusive rustling of turning
+pages and shuffling feet being the only sounds to break the silence of this
+seemlingly hallowed place.  A soft light, cast from no discernable source,
+suffuses the entire area, and the air is filled with the musty smell of
+ancient text.  Tall bookcases of polished mahogany stand on either side of
+you, their shelves crowded with manuals and tomes of varying sizes and
+descriptions, each containing the lore and wisdom of the ages.  The aisle
+extends to the west of the here, and to the east are situated tables and
+chairs for study.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20128
+D3
+~
+~
+0 0 20133
+W 5 0 0
+Z 5 5
+S
+#20133
+The Hall of Knowledge~
+The Hall of Knowledge is very quiet, the unobtrusive rustling of turning
+pages and shuffling feet being the only sounds to break the silence of this
+seemlingly hallowed place.  A soft light, cast from no discernable source,
+suffuses the entire area, and the air is filled with the musty smell of
+ancient text.  Tall bookcases of polished mahogany stand on either side of
+you, their shelves crowded with manuals and tomes of varying sizes and
+descriptions, each containing the lore and wisdom of the ages.  The aisle
+extends to the east of here, and an alcove formed by the curving tower 
+wall lies to the west.
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20132
+D3
+~
+~
+0 0 20134
+W 5 0 0
+Z 5 5
+S
+#20134
+The Hall of Knowledge~
+The Hall of Knowledge is very quiet, the unobtrusive rustling of turning
+pages and shuffling feet being the only sounds to break the silence of this
+seemlingly hallowed place.  A soft light, cast from no discernable source,
+suffuses the entire area, and the air is filled with the musty smell of
+ancient text.  Tall bookcases of polished mahogany extend in an aisle to the
+east of here, and the small alcove extends to the south.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20133
+D2
+~
+~
+0 0 20135
+W 5 0 0
+Z 5 5
+S
+#20135
+The Hall of Knowledge~
+The Hall of Knowledge is very quiet, the unobtrusive rustling of turning
+pages and shuffling feet being the only sounds to break the silence of this
+seemlingly hallowed place.  A soft light, cast from no discernable source,
+suffuses the entire area, and the air is filled with the musty smell of
+ancient text.  Tall bookcases of polished mahogany extend in an aisle to the
+east of here, and the small alcove extends to the north.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20134
+D1
+~
+~
+0 0 20137
+D2
+~
+~
+0 0 20136
+W 5 0 0
+Z 5 5
+S
+#20136
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20135
+W 5 0 0
+Z 5 5
+S
+#20137
+The Hall of Knowledge~
+The Hall of Knowledge is very quiet, the unobtrusive rustling of turning
+pages and shuffling feet being the only sounds to break the silence of this
+seemlingly hallowed place.  A soft light, cast from no discernable source,
+suffuses the entire area, and the air is filled with the musty smell of
+ancient text.  Tall bookcases of polished mahogany stand on either side of
+you, their shelves crowded with manuals and tomes of varying sizes and
+descriptions, each containing the lore and wisdom of the ages.  The aisle
+extends to the east of here, and an alcove formed by the curving tower wall
+lies to the west.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20138
+D3
+~
+~
+0 0 20135
+W 5 0 0
+Z 5 5
+S
+#20138
+The Hall of Knowledge~
+The Hall of Knowledge is very quiet, the unobtrusive rustling of turning
+pages and shuffling feet being the only sounds to break the silence of this
+seemlingly hallowed place.  A soft light, cast from no discernable source,
+suffuses the entire area, and the air is filled with the musty smell of
+ancient text.  Tall bookcases of polished mahogany stand on either side of
+you, their shelves crowded with manuals and tomes of varying sizes and
+descriptions, each containing the lore and wisdom of the ages.  The aisle
+extends to the west of the here, and to the east are situated tables and
+chairs for study.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20127
+D3
+~
+~
+0 0 20137
+W 5 0 0
+Z 5 5
+S
+#20139
+The Hall of Knowledge~
+The Hall of Knowledge is very quiet, the unobtrusive rustling of turning
+pages and shuffling feet being the only sounds to break the silence of this
+seemlingly hallowed place.  A soft light, cast from no discernable source,
+suffuses the entire area, and the air is filled with the musty smell of
+ancient text.  Tables and chairs are spread about here, the study area
+extending to the north and east.  To the west, long bookcases run the length
+of the room, carrying tomes of all size and description.  
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20127
+D1
+~
+~
+0 0 20125
+D2
+~
+~
+0 0 20142
+D3
+~
+~
+0 0 20140
+W 5 0 0
+Z 5 5
+S
+#20140
+The Hall of Knowledge~
+The Hall of Knowledge is very quiet, the unobtrusive rustling of turning
+pages and shuffling feet being the only sounds to break the silence of this
+seemlingly hallowed place.  A soft light, cast from no discernable source,
+suffuses the entire area, and the air is filled with the musty smell of
+ancient text.  Tall bookcases of polished mahogany stand on either side of
+you, their shelves crowded with manuals and tomes of varying sizes and
+descriptions, each containing the lore and wisdom of the ages.  The aisle
+extends to the west of the here, and to the east are situated tables and
+chairs for study.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20139
+D3
+~
+~
+0 0 20141
+W 5 0 0
+Z 5 5
+S
+#20141
+The Hall of Knowledge~
+The Hall of Knowledge is very quiet, the unobtrusive rustling of turning
+pages and shuffling feet being the only sounds to break the silence of this
+seemlingly hallowed place.  A soft light, cast from no discernable source,
+suffuses the entire area, and the air is filled with the musty smell of
+ancient text.  Tall bookcases of polished mahogany stand on either side of
+you, their shelves crowded with manuals and tomes of varying sizes and
+descriptions, each containing the lore and wisdom of the ages.  The aisle
+extends to the east of here.  
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20140
+W 5 0 0
+Z 5 5
+S
+#20142
+The Hall of Knowledge~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20139
+D3
+~
+~
+0 0 20143
+W 5 0 0
+Z 5 5
+S
+#20143
+The Hall of Knowledge~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20142
+D3
+~
+~
+0 0 20144
+W 5 0 0
+Z 5 5
+S
+#20144
+The Hall of Knowledge~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20143
+W 5 0 0
+Z 5 5
+S
+#20145
+Stairwell~
+Wide, light-coloured marble steps spiral around perimeter of this
+cylindrical stairwell, ascending to the upper floors of the tower, and
+decending towards the basement.  Golden fixtures jut out from the walls,
+illuminating the area, and reflecting brightly off the polished golden
+banister that runs alongside the stairs.  Beautifully worked oil paintings
+hang between the lights, depicting various historical scenes.  A hallway
+extends to the west of here, leading into the some living quarters.  
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20146
+D4
+~
+~
+0 0 20168
+D5
+~
+~
+0 0 20123
+W 5 0 0
+Z 5 5
+S
+#20146
+Hallway~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20147
+D1
+~
+~
+0 0 20145
+D2
+~
+~
+0 0 20148
+D3
+~
+~
+0 0 20149
+W 5 0 0
+Z 5 5
+S
+#20147
+~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 20146
+W 5 0 0
+Z 5 5
+S
+#20148
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20146
+W 5 0 0
+Z 5 5
+S
+#20149
+Hallway~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20150
+D1
+~
+~
+0 0 20146
+D3
+~
+~
+0 0 20151
+W 5 0 0
+Z 5 5
+S
+#20150
+~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 20149
+W 5 0 0
+Z 5 5
+S
+#20151
+Hallway~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20157
+D1
+~
+~
+0 0 20149
+D2
+~
+~
+0 0 20152
+D3
+~
+~
+0 0 20162
+W 5 0 0
+Z 5 5
+S
+#20152
+Hallway~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20151
+D1
+~
+~
+0 0 20153
+D2
+~
+~
+0 0 20154
+W 5 0 0
+Z 5 5
+S
+#20153
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20152
+W 5 0 0
+Z 5 5
+S
+#20154
+Hallway~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20152
+D1
+~
+~
+0 0 20156
+D3
+~
+~
+0 0 20155
+W 5 0 0
+Z 5 5
+S
+#20155
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20154
+W 5 0 0
+Z 5 5
+S
+#20156
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20154
+W 5 0 0
+Z 5 5
+S
+#20157
+Hallway~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20158
+D2
+~
+~
+0 0 20151
+W 5 0 0
+Z 5 5
+S
+#20158
+Hallway~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20159
+D1
+~
+~
+0 0 20161
+D2
+~
+~
+0 0 20157
+D3
+~
+~
+0 0 20160
+W 5 0 0
+Z 5 5
+S
+#20159
+~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 20158
+W 5 0 0
+Z 5 5
+S
+#20160
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20158
+W 5 0 0
+Z 5 5
+S
+#20161
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20158
+W 5 0 0
+Z 5 5
+S
+#20162
+Hallway~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20164
+D1
+~
+~
+0 0 20151
+D2
+~
+~
+0 0 20163
+D3
+~
+~
+0 0 20165
+W 5 0 0
+Z 5 5
+S
+#20163
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20162
+W 5 0 0
+Z 5 5
+S
+#20164
+~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 20162
+W 5 0 0
+Z 5 5
+S
+#20165
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20167
+D1
+~
+~
+0 0 20162
+D2
+~
+~
+0 0 20166
+W 5 0 0
+Z 5 5
+S
+#20166
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20165
+W 5 0 0
+Z 5 5
+S
+#20167
+~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 20165
+W 5 0 0
+Z 5 5
+S
+#20168
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20169
+D4
+~
+~
+0 0 20190
+D5
+~
+~
+0 0 20145
+W 5 0 0
+Z 5 5
+S
+#20169
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20178
+D1
+~
+~
+0 0 20168
+D2
+~
+~
+0 0 20186
+D3
+~
+~
+0 0 20170
+W 5 0 0
+Z 5 5
+S
+#20170
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20177
+D1
+~
+~
+0 0 20169
+D2
+~
+~
+0 0 20185
+D3
+~
+~
+0 0 20171
+W 5 0 0
+Z 5 5
+S
+#20171
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20176
+D1
+~
+~
+0 0 20170
+D2
+~
+~
+0 0 20184
+D3
+~
+~
+0 0 20172
+W 5 0 0
+Z 5 5
+S
+#20172
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20175
+D1
+~
+~
+0 0 20171
+D2
+~
+~
+0 0 20183
+D3
+~
+~
+0 0 20173
+W 5 0 0
+Z 5 5
+S
+#20173
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20174
+D1
+~
+~
+0 0 20172
+D2
+~
+~
+0 0 20182
+W 5 0 0
+Z 5 5
+S
+#20174
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20175
+D2
+~
+~
+0 0 20173
+W 5 0 0
+Z 5 5
+S
+#20175
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20181
+D1
+~
+~
+0 0 20176
+D2
+~
+~
+0 0 20172
+D3
+~
+~
+0 0 20174
+W 5 0 0
+Z 5 5
+S
+#20176
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20180
+D1
+~
+~
+0 0 20177
+D2
+~
+~
+0 0 20171
+D3
+~
+~
+0 0 20175
+W 5 0 0
+Z 5 5
+S
+#20177
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20179
+D1
+~
+~
+0 0 20178
+D2
+~
+~
+0 0 20170
+D3
+~
+~
+0 0 20176
+W 5 0 0
+Z 5 5
+S
+#20178
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 20169
+D3
+~
+~
+0 0 20177
+W 5 0 0
+Z 5 5
+S
+#20179
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 20177
+D3
+~
+~
+0 0 20180
+W 5 0 0
+Z 5 5
+S
+#20180
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20179
+D2
+~
+~
+0 0 20176
+D3
+~
+~
+0 0 20181
+W 5 0 0
+Z 5 5
+S
+#20181
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20180
+D2
+~
+~
+0 0 20175
+W 5 0 0
+Z 5 5
+S
+#20182
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20173
+D1
+~
+~
+0 0 20183
+W 5 0 0
+Z 5 5
+S
+#20183
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20172
+D1
+~
+~
+0 0 20184
+D2
+~
+~
+0 0 20187
+D3
+~
+~
+0 0 20182
+W 5 0 0
+Z 5 5
+S
+#20184
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20171
+D1
+~
+~
+0 0 20185
+D2
+~
+~
+0 0 20188
+D3
+~
+~
+0 0 20183
+W 5 0 0
+Z 5 5
+S
+#20185
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20170
+D1
+~
+~
+0 0 20186
+D2
+~
+~
+0 0 20189
+D3
+~
+~
+0 0 20184
+W 5 0 0
+Z 5 5
+S
+#20186
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20169
+D3
+~
+~
+0 0 20185
+W 5 0 0
+Z 5 5
+S
+#20187
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20183
+D1
+~
+~
+0 0 20188
+W 5 0 0
+Z 5 5
+S
+#20188
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20184
+D1
+~
+~
+0 0 20189
+D3
+~
+~
+0 0 20187
+W 5 0 0
+Z 5 5
+S
+#20189
+Chamber of the Voice~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20185
+D3
+~
+~
+0 0 20188
+W 5 0 0
+Z 5 5
+S
+#20190
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20191
+D5
+~
+~
+0 0 20168
+W 5 0 0
+Z 5 5
+S
+#20191
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20190
+D3
+~
+~
+0 0 20192
+W 5 0 0
+Z 5 5
+S
+#20192
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20200
+D1
+~
+~
+0 0 20191
+D2
+~
+~
+0 0 20206
+D3
+~
+~
+0 0 20193
+W 5 0 0
+Z 5 5
+S
+#20193
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20192
+D3
+~
+~
+0 0 20194
+W 5 0 0
+Z 5 5
+S
+#20194
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20195
+D1
+~
+~
+0 0 20193
+D2
+~
+~
+0 0 20199
+D3
+~
+~
+0 0 20197
+W 5 0 0
+Z 5 5
+S
+#20195
+~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 20194
+D3
+~
+~
+0 0 20196
+W 5 0 0
+Z 5 5
+S
+#20196
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20195
+D2
+~
+~
+0 0 20197
+W 5 0 0
+Z 5 5
+S
+#20197
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20196
+D1
+~
+~
+0 0 20194
+D2
+~
+~
+0 0 20198
+W 5 0 0
+Z 5 5
+S
+#20198
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20197
+D1
+~
+~
+0 0 20199
+W 5 0 0
+Z 5 5
+S
+#20199
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20194
+D3
+~
+~
+0 0 20198
+W 5 0 0
+Z 5 5
+S
+#20200
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20203
+D1
+~
+~
+0 0 20201
+D2
+~
+~
+0 0 20192
+D3
+~
+~
+0 0 20202
+W 5 0 0
+Z 5 5
+S
+#20201
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20200
+W 5 0 0
+Z 5 5
+S
+#20202
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20204
+D1
+~
+~
+0 0 20200
+W 5 0 0
+Z 5 5
+S
+#20203
+~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 20200
+D3
+~
+~
+0 0 20204
+W 5 0 0
+Z 5 5
+S
+#20204
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20203
+D2
+~
+~
+0 0 20202
+D3
+~
+~
+0 0 20205
+W 5 0 0
+Z 5 5
+S
+#20205
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20204
+W 5 0 0
+Z 5 5
+S
+#20206
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20192
+D1
+~
+~
+0 0 20207
+D2
+~
+~
+0 0 20208
+D3
+~
+~
+0 0 20211
+W 5 0 0
+Z 5 5
+S
+#20207
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20206
+W 5 0 0
+Z 5 5
+S
+#20208
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20206
+D3
+~
+~
+0 0 20209
+W 5 0 0
+Z 5 5
+S
+#20209
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20211
+D1
+~
+~
+0 0 20208
+D3
+~
+~
+0 0 20210
+W 5 0 0
+Z 5 5
+S
+#20210
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20209
+W 5 0 0
+Z 5 5
+S
+#20211
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20206
+D2
+~
+~
+0 0 20209
+W 5 0 0
+Z 5 5
+S
+#20212
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20213
+D4
+~
+~
+0 0 20122
+W 5 0 0
+Z 5 5
+S
+#20213
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20212
+D3
+~
+~
+0 0 20214
+W 5 0 0
+Z 5 5
+S
+#20214
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20215
+D1
+~
+~
+0 0 20213
+D2
+~
+~
+0 0 20243
+D3
+~
+~
+0 0 20226
+W 5 0 0
+Z 5 5
+S
+#20215
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20220
+D1
+~
+~
+0 0 20219
+D2
+~
+~
+0 0 20214
+D3
+~
+~
+0 0 20218
+W 5 0 0
+Z 5 5
+S
+#20216
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20223
+W 5 0 0
+Z 5 5
+S
+#20217
+~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 20223
+D3
+~
+~
+0 0 20225
+W 5 0 0
+Z 5 5
+S
+#20218
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20215
+W 5 0 0
+Z 5 5
+S
+#20219
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20215
+W 5 0 0
+Z 5 5
+S
+#20220
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20223
+D1
+~
+~
+0 0 20221
+D2
+~
+~
+0 0 20215
+D3
+~
+~
+0 0 20222
+W 5 0 0
+Z 5 5
+S
+#20221
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20220
+W 5 0 0
+Z 5 5
+S
+#20222
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20220
+W 5 0 0
+Z 5 5
+S
+#20223
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20217
+D1
+~
+~
+0 0 20216
+D2
+~
+~
+0 0 20220
+D3
+~
+~
+0 0 20224
+W 5 0 0
+Z 5 5
+S
+#20224
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20223
+W 5 0 0
+Z 5 5
+S
+#20225
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20217
+W 5 0 0
+Z 5 5
+S
+#20226
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20214
+D3
+~
+~
+0 0 20227
+W 5 0 0
+Z 5 5
+S
+#20227
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20228
+D1
+~
+~
+0 0 20226
+D2
+~
+~
+0 0 20229
+D3
+~
+~
+0 0 20230
+W 5 0 0
+Z 5 5
+S
+#20228
+~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 20227
+W 5 0 0
+Z 5 5
+S
+#20229
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20227
+W 5 0 0
+Z 5 5
+S
+#20230
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20231
+D1
+~
+~
+0 0 20227
+D2
+~
+~
+0 0 20239
+W 5 0 0
+Z 5 5
+S
+#20231
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20233
+D2
+~
+~
+0 0 20230
+D3
+~
+~
+0 0 20232
+W 5 0 0
+Z 5 5
+S
+#20232
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20231
+W 5 0 0
+Z 5 5
+S
+#20233
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20236
+D1
+~
+~
+0 0 20235
+D2
+~
+~
+0 0 20231
+D3
+~
+~
+0 0 20234
+W 5 0 0
+Z 5 5
+S
+#20234
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20233
+W 5 0 0
+Z 5 5
+S
+#20235
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20233
+W 5 0 0
+Z 5 5
+S
+#20236
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20238
+D2
+~
+~
+0 0 20233
+D3
+~
+~
+0 0 20237
+W 5 0 0
+Z 5 5
+S
+#20237
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20236
+W 5 0 0
+Z 5 5
+S
+#20238
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20236
+W 5 0 0
+Z 5 5
+S
+#20239
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20230
+D2
+~
+~
+0 0 20240
+W 5 0 0
+Z 5 5
+S
+#20240
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20239
+D1
+~
+~
+0 0 20241
+D3
+~
+~
+0 0 20242
+W 5 0 0
+Z 5 5
+S
+#20241
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20240
+W 5 0 0
+Z 5 5
+S
+#20242
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20240
+W 5 0 0
+Z 5 5
+S
+#20243
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20214
+D2
+~
+~
+0 0 20246
+D3
+~
+~
+0 0 20244
+W 5 0 0
+Z 5 5
+S
+#20244
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20243
+D2
+~
+~
+0 0 20245
+W 5 0 0
+Z 5 5
+S
+#20245
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20244
+W 5 0 0
+Z 5 5
+S
+#20246
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20243
+D1
+~
+~
+0 0 20247
+D2
+~
+~
+0 0 20250
+W 5 0 0
+Z 5 5
+S
+#20247
+~
+~
+~
+0
+0 0 0
+D2
+~
+~
+0 0 20248
+D3
+~
+~
+0 0 20246
+W 5 0 0
+Z 5 5
+S
+#20248
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20247
+D1
+~
+~
+0 0 20249
+W 5 0 0
+Z 5 5
+S
+#20249
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20248
+W 5 0 0
+Z 5 5
+S
+#20250
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20246
+D3
+~
+~
+0 0 20251
+W 5 0 0
+Z 5 5
+S
+#20251
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20250
+D2
+~
+~
+0 0 20252
+D3
+~
+~
+0 0 20257
+W 5 0 0
+Z 5 5
+S
+#20252
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20251
+D1
+~
+~
+0 0 20253
+D3
+~
+~
+0 0 20254
+W 5 0 0
+Z 5 5
+S
+#20253
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20252
+W 5 0 0
+Z 5 5
+S
+#20254
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20252
+D5
+~
+~
+0 0 20255
+W 5 0 0
+Z 5 5
+S
+#20255
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20256
+D4
+~
+~
+0 0 20254
+W 5 0 0
+Z 5 5
+S
+#20256
+~
+~
+~
+0
+0 0 0
+D3
+~
+~
+0 0 20255
+W 5 0 0
+Z 5 5
+S
+#20257
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20251
+D3
+~
+~
+0 0 20258
+W 5 0 0
+Z 5 5
+S
+#20258
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20257
+D2
+~
+~
+0 0 20259
+W 5 0 0
+Z 5 5
+S
+#20259
+~
+~
+~
+0
+0 0 0
+D0
+~
+~
+0 0 20258
+D3
+~
+~
+0 0 20260
+W 5 0 0
+Z 5 5
+S
+#20260
+~
+~
+~
+0
+0 0 0
+D1
+~
+~
+0 0 20259
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 20104 1 3
+D 0 20107 3 3
+D 0 20109 2 99
+D 0 20110 0 99
+M 0 20101 3 20101 1
+M 0 20101 3 20102 1
+O 0 20102 0 20102
+M 0 20101 3 20103 1
+O 0 20104 0 20103
+O 0 20105 0 20103
+O 0 20106 0 20106
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

@@ -1,0 +1,1291 @@
+#AREADATA
+Name Ancient Valley~
+Builders Sranu Benedir~
+VNUMs 400 499
+Credits [10 40] Jolinn    Ancient Valley~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 1 0 0
+Shades 3 1
+Stone 82
+End
+
+
+
+#MOBILES
+V4 400
+stone bear bear-shaped construct mob_400~
+a stone bear~
+A hulking bear-shaped construct of stone lumbers about here.
+~
+An utterly massive construct of some dark stone, this bear could well
+pass for a mighty statue were it not animated by some ancient magic.  As it
+is, the beast poses a considerable danger to those nearby; its paws are slow
+but appear extraordinarily powerful, and the tough stone of its hide seems
+difficult to even chip.  A large rune has been cut into its stony skull, but
+the creature moves about too much to get a prolonged look at it.  
+~
+elemental~
+water scholar~
+ABFPX 0 D N 0
+55 40 100d19+10000 55d10+100 15d9+100 bash~
+crushing paw~
+-30 -30 -30 -10
+0 ABPRb
+26 0 0 20 50 0 0 0 -30 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+J 0 BK huge flesh
+>death_prog 100~
+mpecho The mighty bear construct comes suddenly apart, the stones forming its body crumbling away!
+mpecho The rune-etched skull falls to the ground, and is still.
+mpoload 410 in room
+~
+>fight_prog 100~
+if value(0) == 0
+  mpaddskill $i 168 100
+  mpvalueup 0
+endif
+if rand(5)
+  bash
+endif
+if rand(3)
+  mpechoat $n $I lunges at you, snapping its stony jaws!
+  mpechoaround $n $I lunges at $N, snapping its stony jaws!
+  mpdealdamage $n $i \@snapping jaws\@ pierce 200
+endif
+if rand(10)
+  emote swivels its head from side to side as though seeking a new target.
+  kill $r
+endif
+if value(2) == 0
+    mpvalueup 1
+    if rand($1)
+      emote rears back, drawing up to its full height!
+      mpvalueset 1 0
+      mpvalueset 2 1
+    endif
+else
+  emote slams its weight on the ground, sending a shockwave of energy rippling outwards!
+  mpcast 1154 55
+  mpvalueset 2 0
+endif
+~
+>load_prog 100~
+mpaddskill $i 168 100
+~
+|
+V4 401
+cat~
+the forest cat~
+A sleek forest cat is here, stalking through the woods for prey.
+~
+This cat is covered in a soft grey fur, giving a soft silver outline
+to its rippling muscles. Something about the cat\@s movement through
+the forest indicates that sometime in the distant past, its ancestors
+were trained to be killers, and this animal has followed through on
+that tradition. A consummate killing machine, its claws retract in and
+out on the ground as it tense for attack.
+~
+cat~
+water scholar~
+AFGN 0 Z E 0
+30 0 39d15+197 0d0+0 6d6+20 slash~
+claw~
+-9 -9 -9 0
+DEFHOR 0
+26 0 0 0 0 33 0 0 -33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 0 -1
+AGV ABCDEFHJKQUV A medium unknown
+V4 402
+Brown bear~
+the brown bear~
+A brown bear is here, ambling around.
+~
+This brown bear ambles along, stopping to paw at the occassional tree. 
+Its thick brown fur matted with dirt, the bear pays little attention to you,
+apparently not viewing you as a threat.  
+~
+bear~
+water scholar~
+AGN 0 0 N 0
+30 0 13d65+659 0d0+0 5d8+15 slash~
+claw~
+-9 -9 -9 0
+DEOR 0
+26 0 0 0 0 33 0 0 -33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGMV ABCDEFHJKUV A large flesh
+V4 403
+Ancient grey cat~
+the ancient grey cat~
+The ancient grey cat is here, snarling angrily.
+~
+This enormous cat has a smooth coat of grey fur marked and pitted by the
+scars of countless fights.  The whiskers on its snout are all white,
+indicating an immensely old age.  As it snarls angrily, it reveals a full
+row of still intact fangs, and sea green eyes.  Incongrously, you can make
+out a glint of metal around its neck, whatever it is long overgrown by fur. 
+Despite its obvious age, this cat still moves with a cunning grace, and the
+muscles that ripple as it moves are anything but atrophied with age.  
+~
+cat~
+water scholar~
+ABN 0 Z E 0
+45 0 10d169+964 0d0+0 5d10+25 slash~
+claw~
+-20 -20 -20 -10
+DFHR I
+26 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit stand female 0 -1
+AGV ACDEFHJKQUV A large unknown
+V4 404
+Alatharya Ape ancient~
+the ancient alatharya~
+An ancient ape stares into space, its face a mask of madness.
+~
+Clothed in tattered rags, this great ape rushes along, evidently in some
+sort of panic.  The ape resembles an Alatharya in form, but seems larger,
+with thinner fingers and a leaner build.  Most prominent though are the
+eyes, which stare at the world them with a penetrating intelligence.  The
+intensity of the eye is offset by the ape\@s face, which is a maelstrom of
+snarls, tics, and loocks of abject panic.  The ape looks ready to say
+something, but as it opens its most to speak, you note that it lacks a
+toungue.  
+~
+alatharya~
+water scholar~
+AG 0 PZ E 0
+40 0 11d80+804 0d0+0 5d10+15 none~
+hit~
+-10 -10 -10 -10
+CIR 0
+26 0 0 33 0 33 0 0 0 0 0 0 0 0 -33 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMV ABCDEFGHIJK A large flesh
+V4 405
+Stone Guardian~
+the guardian statue~
+A statue of an enormous ape stands here, untouched by the sands of time.
+~
+~
+human~
+water scholar~
+ABG 0 0 N 0
+45 0 10d169+750 0d0+0 5d10+25 none~
+hit~
+-20 -20 -20 -20
+CDKOR AF
+26 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A large stone
+V4 406
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 407
+no name~
+(no short description)~
+(no long description)
+~
+~
+human~
+water scholar~
+A 0 0 N 0
+0 0 0d0+0 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 410
+Sranubot~
+Sranubot~
+The Sranubot is here, replacing Sranu slowly but surely.
+~
+~
+human~
+water scholar~
+AE 0 DFHNOTV N 0
+59 0 50d10+1000 0d0+0 100d1+1 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJKMN A medium unknown
+>load_prog 100~
+say I\@m running a mud, not a place for moral redempetion!
+~
+>rand_prog 7~
+say your ideas suck!
+~
+>rand_prog 5~
+\\\@ DS9 is on! Seeya!
+emote disappears in a bright flash of light!
+goto 2.
+~
+>rand_prog 11~
+emote rolls its eyes in disgust.
+~
+>rand_prog 6~
+emote chortles mischeviously.
+~
+>rand_prog 7~
+\\\@ Math class is cool.
+~
+>rand_prog 5~
+poke 2.
+~
+>rand_prog 10~
+nudge 2.
+~
+>rand_prog 12~
+emote mutters something quietly to itself.
+~
+>rand_prog 10~
+\\\@ Hey, did I mention I went to hell this weekend?
+~
+>rand_prog 10~
+\\\@ Heh
+~
+|
+V4 450
+bitchass wizi guy~
+the bitchass wizi guy~
+The bitchass wizi guy helps with the fargin quest.
+~
+~
+human~
+water scholar~
+AB 0 DFJLZ N 0
+60 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p invoke stone~
+if mobvalue(0) == 0
+if iscarrying($n) == 79
+mpecho A shimmering portal appears before you!
+mpoload 460
+mpvalueset 0 1
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+400
+fountain~
+a large, moss-covered fountain~
+A large, moss covered fountain stands here.~
+~
+stone~
+fountain O 0 0 P
+-1 -1 'water' 0 0
+52 10000 0 5 P
+0
+V13
+401
+statue~
+the statue~
+A statue covered with vines stands in place here.~
+~
+unknown~
+trash 0 0 0 0
+0 0 0 0 0
+0 0 0 2 P
+0
+V13
+402
+spring~
+the gurgling spring~
+The spring gushes out of the rocks, spilling on to the ground.~
+~
+stone~
+fountain O 0 0 P
+-1 -1 'water' 0 0
+53 10000 0 5 P
+0
+V13
+403
+graceful house~
+a graceful house~
+A graceful house lies nestled within the clearing, by the pond.~
+~
+stone~
+portal 0 0 0 0
+0 H H 491 0
+52 0 0 0 P
+0
+V13
+404
+marble hearth~
+the marble hearth~
+A hearth.~
+~
+marble~
+furniture DYae 0 0 0
+2 1000 EHK 110 110
+0 0 0 0 P
+0
+E
+hearth~
+The hearth is constructed of the same green marble as the floor of the
+house.  The fire it shelters dances with the wind that comes from the
+balcony on the second floor.  Ample space is provided by the hearth for
+those who wish to sit upon and bask in the warmth of the fire.  
+~
+E
+marble~
+~
+V13
+405
+spiral~
+(no short description)~
+(no description)~
+~
+unknown~
+portal 0 0 0 0
+0 0 0 0 0
+0 0 0 0 P
+0
+V13
+406
+altar worn marble obj_406~
+a worn marble altar~
+A worn marble altar sits here, half-buried in the ground.~
+~
+marble~
+trash Ya 0 0 P
+0 0 0 0 0
+52 0 0 0 P
+0
+E
+altar worn marble obj_406~
+This altar has clearly not been touched in decades it has long since been
+knocked from its base, lying akilter.  The left end is almost completely
+buried with dirt and tree roots, and a foot-thick layer of pine needles has
+accumulated around the edges.  Grime and blown leaves further serve to
+obscure the marble, the once-white stone almost indistinguishable from the
+ground around it.  A sunstone plaque remains in the middle of the altar.  
+~
+>verb_prog p wipe~
+if compstr(2) == plaque
+or compstr(2) == sunstone
+or compstr(2) == middle
+or compstr(2) == altar
+  mpechoat $n You wipe the dirt and grime from the sunstone plaque.
+  mpechoaround $n $N wipes the dirt and grime from the sunstone plaque.
+  mpvalueset 0 5
+else
+  mpnextinterp
+endif
+~
+>verb_prog p clean~
+if compstr(2) == plaque
+or compstr(2) == sunstone
+or compstr(2) == middle
+or compstr(2) == altar
+  mpechoat $n You wipe the dirt and grime from the sunstone plaque.
+  mpechoaround $n $N wipes the dirt and grime from the sunstone plaque.
+  mpvalueset 0 5
+else
+  mpechoat $n Clean what?
+endif
+~
+>rand_prog 1~
+if value(0) > 0
+  mpvaluedown 0 1
+endif
+~
+>verb_prog p dust~
+if compstr(2) == plaque
+or compstr(2) == sunstone
+or compstr(2) == middle
+or compstr(2) == altar
+  mpechoat $n You wipe the dirt and grime from the sunstone plaque.
+  mpechoaround $n $N wipes the dirt and grime from the sunstone plaque.
+  mpvalueset 0 5
+else
+  mpechoat $n Dust what?
+endif
+~
+>verb_prog p look~
+if compstr(2) == plaque
+or compstr(2) == sunstone
+or compstr(2) == middle
+  if value(0) == 0
+    mpechoat $n The plaque would have to be cleaned to be legible.
+    mpechoat $n The grime and dirt of the ages is caked thick on the stone.
+  else
+    mpechoat $n *The plaque has been heavily damaged by time.  It reads:*
+    mpechoat $n {D.{n
+    mpechoat $n Joy of Joys!  Hope of Hopes!  
+    mpechoat $n We pray unto t ee, bound in the impot nt Void.
+    mpechoat $n {D.{n
+    mpechoat $n {YB{nle s me with happiness, in   re me with humor.
+    mpechoat $n In darkness, give unto me ligh ! 
+    mpechoat $n a  you hold t  Light in true Obscurity.
+    mpechoat $n Take from me   e fruit of my im  rfections and fa
+    mpechoat $n I off    p mine sins to th   for forgiveness, for I m Thy ch-
+    mpechoat $n {D.{n  
+    mpechoat $n *The plaque is broken off at the bottom.*
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+407
+clump wild sage~
+a clump of wild sage~
+A clump of wild sage grows here, its broad leaves a healthy green.~
+~
+plant~
+food 0 0 D AO
+1 80 0 0 0
+1 2 0 0 P
+0
+E
+clump wild sage~
+Green and healthy, the leaves of this wild sage give off the distintive
+aroma of the herb.  The fuzzy tops of the leaves are paler in color than the
+ridged undersides, which sprout from thin green stems.  
+~
+V13
+408
+simple sturdy table~
+a sturdy table~
+A simple but sturdy table of stone stands in the center of the room.~
+~
+stone~
+trash TYa 0 0 P
+0 0 0 0 0
+0 0 0 0 P
+0
+E
+simple sturdy table~
+This massive table rises up in the center of the home, taking up
+considerable space even in the large room.  As solid as it is tall, this
+simple furnishing looks as though it could stand the test of time.  
+~
+V13
+409
+gigantic stone bear skull obj_409~
+a gigantic stone bear skull~
+A gigantic stone bear skull sits atop the table.~
+~
+stone~
+trash TYa 0 0 P
+0 0 0 0 0
+0 0 0 0 P
+0
+E
+gigantic stone bear skull~
+This skull appears similar in form to a bear\@s skull, but on a far larger
+scale.  It seems to have been hollowed out from solid rock; no cracks or
+fuselines are evident to indicate it having been pieced together.  A large
+runic pattern has been cut across the face of the skull: 
+
+   ***********************
+ ***************************
+***                       ***
+***      /      /    /\\/  ***
+***  \\  /    /\\/    /     ***
+***   \\/    /      /      ***
+***                       ***
+ ***************************
+   ***********************
+
+Perhaps if you were to {Wstudy{x the rune, you would learn more.
+~
+>load_prog 100~
+if mobhere(400)
+  mppurge self
+endif
+~
+>rand_prog 100~
+if mobhere(400)
+  mppurge self
+  break
+endif
+mppurge obj_410
+if value(0) >= 3
+  mpecho As its new form towers high, the gigantic stone construct charges towards you!
+  mpmload 400
+  mppurge self
+  break
+endif
+if value(0) == 2
+  mpecho The rapidly-growing body of the skull fills out into the shape of an absolutely massive stone bear, which begins to swivel towards you!
+  mpvalueup 0
+endif
+if value(0) == 1
+  mpecho The skull skitters over the table, then begins to sprout arms and legs of pure stone!
+  mpvalueup 0
+endif
+~
+>verb_prog p study~
+if isghost($n)
+or isnpc($n)
+  mpnextinterp
+  break
+endif
+if compx() == runes
+or compx() == rune
+or compx() == skull
+or compx() == gigantic
+or compx() == bear
+or compx() == stone
+  if value(0) == 0
+    mpechoat $n You stare intently at $I for a long moment.
+    mpechoaround $n $N stares intently at $I for a long moment.
+    mpecho As you watch, the gigantic bear skull begins to move!
+    mpvalueup 0
+  else
+    mpechoat $n The skull is moving too much to study it!
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+410
+gigantic stone bear skull obj_410~
+a gigantic stone bear skull~
+A gigantic stone bear skull lies on its side on the floor.~
+~
+stone~
+trash TYa 0 0 P
+0 0 0 0 0
+0 0 0 0 P
+0
+E
+gigantic stone bear skull~
+This skull appears similar in form to a bear\@s skull, but on a far larger
+scale.  It seems to have been hollowed out from solid rock; no cracks or
+fuselines are evident to indicate it having been pieced together.  A large
+runic pattern has been cut across the face of the skull: 
+
+   ***********************
+ ***************************
+***                       ***
+***      /      /    /\\/  ***
+***  \\  /    /\\/    /     ***
+***   \\/    /      /      ***
+***                       ***
+ ***************************
+   ***********************
+
+Perhaps if you were to {Wstudy{x the rune, you would learn more.
+~
+>verb_prog p study~
+if isghost($n)
+or isnpc($n)
+  mpnextinterp
+  break
+endif
+if compx() == runes
+or compx() == rune
+  mpechoaround $n $N stares intently at $I for a long moment.
+  // Check for stonecraft
+  if skill1152($n) <= 0
+    mpechoat $n You study the ancient rune for a long moment, but it is meaningless to you.
+  else
+    // Check for stoneshaper
+    if skill1157($n) <= 0
+      mpechoat $n You recognize the pattern as an ancient rune of earth, but grow swiftly weary of trying to understand it; the rune is too complex for your skills.
+    else
+      // Check for already learned the rune
+      if isbitset($n) == 294
+        mpechoat $n You study the rune of Pulverize, but learn nothing new.
+      else
+        mpechoat $n You study the ancient rune for a long moment, and slowly a new understanding of runic magic fills you.
+        mpechoat $n You have learned the rune of Pulverize!
+        mpbitset $n 294 1
+      endif
+    endif
+  endif
+else
+  mpnextinterp
+endif
+~
+|
+V13
+460
+portal shimmering~
+a shimmering portal~
+A shimmering portal stands before you.~
+~
+unknown~
+portal A 0 0 0
+0 0 0 499 0
+60 0 0 4 P
+0
+#0
+
+
+
+#ROOMS
+#400
+The Void~
+Inky blackness surrounds you in all directions.
+~
+~
+1
+0 565366 3
+W 5 0 0
+Z 5 5
+S
+#401
+Crest of a Mountain Path~
+This path dips down from the mountains a bit, then rises to a small
+crest.  From this vantage point, you can make out a bowl-shaped valley, full
+almost to the brim with trees of all shapes and sizes.  All around the
+valley, the mountains jut up above the treeline like sharp teeth,
+surrounding the valley in a stony barrier.  The path begins a steep descent
+ahead of you, turning from a rocky trail into a clear swath through the
+trees to the far north.  The trees thicken near the center of the valley,
+and rise almost imperceptibly into a small hill, which is completely covered
+in a thick tree-scape.  To the east and west, the mountains prove too
+impassible for travel, forcing egress to the valley into the north, or the
+mountains back to the south.  
+~
+~
+1
+0 0 5
+D0
+The path leads down into the valley.
+~
+~
+0 0 402
+D3
+~
+~
+0 0 570
+W 5 0 0
+Z 5 5
+S
+#402
+Descending Path~
+The path from the mountains continues to descend into the valley ahead of
+you.  For the first time, you see undergrowth on the path, small shrubs and
+bushes covering an increasingly less rocky terrain.  The path heads south
+back to the mountains, or north where you can see the trees become
+omnipresent ahead of you.  
+~
+~
+1
+0 0 2
+D0
+~
+~
+0 0 403
+D2
+~
+~
+0 0 401
+W 5 0 0
+Z 5 5
+S
+#403
+Beginning of the Ancient Valley~
+The mountain path terminates completely here, leaving you standing amidst
+the greenery.  Most of the trees around you are pines, tall and straight. 
+The extremely dense concentration of pines provides a soft carpet of needles
+here as you walk beneath the trees.  To the north, the needles become lost
+in a sea of briars and other tearing vines, while the carpet of needles
+continues to the east and west.  The forest is definitely alive here - you
+see and hear the presence of your typical forest animals, but you can\@t
+shake the feeling that this place is somehow...  \#old\#, in a way you can\@t
+quite describe.  To the east, a recent fall of pines blocks further travel. 
+~
+~
+1
+0 0 3
+D2
+~
+~
+0 0 402
+D3
+The trail heads west through the woods.
+~
+~
+0 0 449
+W 5 0 0
+Z 5 5
+S
+#404
+A Narrow Winding Trail~
+Thick foliage presses in on this narrow, winding trail, making movement
+off it all but impossible.  The sounds of the forest are present here as in
+the rest of the forest, but quieter, as though the slumbering solemnity of
+this ancient valley were blanketing the area in stillness.  The trail winds
+off to the west, but opens up into a wider path to the south.  
+~
+~
+1
+0 0 3
+D2
+The narrow trail widens to the south, becoming more passable.
+~
+~
+0 0 449
+D3
+The narrow trail continues to the west, winding through the trees.
+~
+~
+0 0 405
+W 5 0 0
+Z 5 5
+S
+#405
+A Narrow Winding Trail~
+Thick foliage presses in on this narrow, winding trail, making movement
+away from it all but impossible.  Wild herbs grow blithely alongside the
+path, giving off a faint fragrance.  The quiet of the eastern woods seems to
+diminish slightly here, fading more as the trail continues north.  There,
+the soil seems to grow loamy and rich, dampening ever so slightly.  
+~
+~
+1
+0 0 3
+D0
+The narrow trail continues to the north, winding through the trees.
+~
+~
+0 0 406
+D1
+The narrow trail continues to the east, winding through the trees.
+~
+~
+0 0 404
+W 5 0 0
+Z 5 5
+S
+#406
+Before an Ancient Stone House~
+The narrow trail which winds off to the south terminates here, in front
+of a massive, ancient stone house on the bank of a pond.  Though the
+structure consists of only a single story, it nonetheless appears to have
+been constructed for a frame far larger than human.  Thick slabs of rock
+support the slightly-sloping stone roof, which extends past the entry way
+into a makeshift awning.  Heavy doors of solid rock mark the threshold of
+the house, which despite beginning to crumble manages to maintain a certain
+architectural dignitity, if only in its scale.  
+~
+~
+1
+0 0 3
+D2
+A narrow trail winds off to the south, running through the trees.
+~
+~
+0 0 405
+D3
+Ancient but sturdy doors hewn from solid rock mark the entrance to a massive house.
+~
+ancient stone doors~
+3 0 407
+W 5 0 0
+Z 5 5
+S
+#407
+An Ancient Stone House~
+This house -- if such a name can be lightly given to so large a structure
+-- has been built of blocks of some dark, solid rock traced with thin lines
+of whiter stone.  Though massive in its scale the house is not particularly
+ornate, its architecture tending more towards simple straight lines and
+unadorned walls.  Similarly, the place has been outfitted with large but
+plain furnishings; a mighty bed occupies one corner, a great hearth the
+other.  A single window of quartz has been fused by some great force into
+the western wall, allowing a glimpse of the large pond beyond the home.  
+~
+~
+2
+0 8 0
+E
+window quartz~
+Through the simple window of quartz you can make out a large pond in the
+middle of the valley\@s forest.  Across the pond is an elegant house
+fashioned of glass and wood, nestled comfortably in the trees.  
+~
+D1
+~
+~
+3 0 406
+W 5 1 0
+Z 5 5
+S
+#443
+Pine Trail~
+The forest here is very quiet as you walk a trail lined by pines.  The
+trail makes an almost perfect line, aligned north and south.  High mountains
+loom west, while off to the east the forest thickens quickly, and the pine
+carpet gives way to a tangle of undergrowth.  A break in the trees to the
+west reveals a small trail leading toward the mountains.  To the north, a
+recent fall of pines blocks further travel.  
+~
+~
+1
+0 0 5
+D1
+~
+~
+0 0 492
+D2
+The trail heads south through the forest.
+~
+~
+0 0 444
+D3
+~
+~
+0 0 493
+W 5 0 0
+Z 5 5
+S
+#444
+Pine Trail~
+The sounds of the forest surround you here, making you notice the subtler
+cues that indicate life.  High above, woodpeckers hammer away on pines,
+while insects make their prescence known in the surrounding brush.  The path
+itself hends into a clearing to the south, while the trail heads into more
+pines to the north.  East, a thin trail leads into the deep forest, while
+steep mountains climb into sight to the west.  
+~
+~
+1
+0 0 3
+D0
+The trail heads north through the forest.
+~
+~
+0 0 443
+D1
+~
+~
+0 0 496
+D2
+The trail heads south through the forest.
+~
+~
+0 0 445
+W 5 0 0
+Z 5 5
+S
+#445
+Pine Clearing~
+The pines clear here, setting aside a wide open meadow.  The trees make a
+near perfect circle around the clearing, giving the impression of being at
+the bottom of a giant barrel, staring up at the sky.  The clearing is free
+of weeds and the ground seems soft without being damp, making this an
+inviting place to rest.  Mountains lie behind to the trees to the south and
+west, while north and east a trail makes its way through the pines.  
+~
+~
+1
+0 0 3
+D0
+The trail heads north through the forest.
+~
+~
+0 0 444
+D1
+~
+~
+0 0 446
+W 5 0 0
+Z 5 5
+S
+#446
+South Pine Trail~
+The pines trees that frame the east-west trail form a canopy above and
+below, their needles forming a soft carpet underfoot.  You see signs of
+large animal activity here - clawed trees, and the occasional tuft of fur. 
+West, the trail continues as far as you can see.  
+~
+~
+1
+0 0 3
+D1
+~
+~
+0 0 447
+D3
+The trail heads west through the woods.
+~
+~
+0 0 445
+W 5 0 0
+Z 5 5
+S
+#447
+South Pine Trail~
+This forest trail heads almost straight east-west, skirting the denser
+parts of the forest to the north.  The pines grow tall and straight here,
+and several seem very old, marked by disease and the occasional lightning
+strike.  South of you is a steep mountain range, while seems to stretch on a
+ways in both directions.  
+~
+~
+1
+0 0 3
+D1
+~
+~
+0 0 448
+D3
+The trail heads west through the woods.
+~
+~
+0 0 446
+W 5 0 0
+Z 5 5
+S
+#448
+South Pine Trail~
+The forest is silent here, with only an occasional bird calling off in
+the distance.  The deepest parts of the forest seem to descend to the north,
+while tall mountains block your way to the south.  The trail itself heads
+east and west in either direction.  
+~
+~
+1
+0 0 3
+D1
+~
+~
+0 0 449
+D3
+The trail heads west through the woods.
+~
+~
+0 0 447
+W 5 0 0
+Z 5 5
+S
+#449
+South Pine Trail~
+This path is covered with a thick layer of pine needles but is otherwise
+clear, providing easy passage to the east and west.  A narrower branch
+extends to the north, where thicker foliage presses in, threatening to
+overrun the trail.  You can make out jagged mountains rising above the pines
+to the south, looming mightily over this ancient valley.  The natural sounds
+endemic to a forest seem muted here, as though even the local wildlife were
+reluctant to disturb the solemnity of this place.  
+~
+~
+1
+0 0 3
+D0
+~
+~
+0 0 404
+D1
+~
+~
+0 0 403
+D3
+The trail heads west through the woods.
+~
+~
+0 0 448
+W 5 0 0
+Z 5 5
+S
+#491
+The House of Mishien Aenesti~
+This graceful house has an open two-story main room.  The floor of the
+main room is built with a soothing green marble that is polished to give a
+subtle reflection of those who walk upon it.  A hearth lies to the right of
+the house, while the center of the room is dominated by a large oaken table
+and surrounding set of chairs.  The left wall of the house is dominated
+mainly by a large glass pane, giving a stunning view of the forest nearby. 
+The northern wall holds a large mural painting that stretches its whole
+length.  All around the room, lie simple mementos of a life spent traveling.
+Illumination is provided by the multi-colored glass that form the skylight
+of the roof.  A spiraling stairway is tucked within the back of the room,
+which leads to the second floor.  The second floor is the only means to
+reach the balcony that stretches over the pond, elevated by thin buttresses
+of white oak.  From the balcony one can see the tops of the trees and the
+peaks of the mountains that surround the house, as well as a crumbling stone
+house far across the pond.  
+~
+~
+0
+0 0 0
+E
+mural~
+The mural portrays a bloody battlefield as a faceless lone warrior looks
+to the sky, as if beseeching a god for favor.  His knuckles are white as he
+clenches his spear and shield to him in readiness, while his armor runs with
+the blood of his enemies, and that of his own wounds.  He is surrounded by
+enemies from every direction, one side wearing brilliant white robes that
+shine in the light of the sun, while others wear midnight robes that absorbs
+the light that reaches them.  By his stance, it is obvious that the lone
+warrior realizes that he is being overwhelmed.  
+~
+E
+hearth~
+The hearth is constructed of the same green marble as the floor of the
+house.  The fire it shelters dances with the wind that comes from the
+balcony on the second floor.  Ample space is provided by the hearth for
+those who wish to sit upon and bask in the warmth of the fire.  
+~
+E
+mementos~
+A scattering of objects are placed around the room in remembrance of past
+events.  Objects which range from a bucket of smooth pebbles that look ideal
+to use as skipping stones upon a lake or pond, to a miniature set of
+lovingly crafted platinum scales that rest above the hearth.  
+~
+E
+skylight~
+The multicolor glass of the skylight provides brilliant illumination to
+the room when the sun and stars shine through it.  You see that the pieces
+of glass form an abstract pattern that reminds one of interlocking
+triangles.  The pattern of lights as it falls gently upon the room only
+heightens ones appreciation of its ascetics.  
+~
+D3
+~
+~
+0 0 492
+W 5 0 0
+Z 5 5
+S
+#492
+A Clearing in the Pines~
+The forest here is very quiet as you walk among the towering, ancient
+pines.  The crisp mountain air pervades the clearing.  The pine trail ends
+here in a small clearing, the majestic mountains looming over the tips of
+the trees.  A small quiet pond lies towards the edge of the clearing. 
+Occasionally you can see the sleek shadowy forms of various fish as they
+swim within the pond.  The trail leads to the west, appearing to slope
+downward.  
+~
+~
+0
+0 0 5
+D3
+~
+~
+0 0 443
+W 5 0 0
+Z 5 5
+S
+#493
+Pine Trail~
+A thin trail leads through the pine forest, climbing steadily toward the
+mountains to the north and west.  The pine forest is almost perfectly quiet,
+and the trail is carpeted with a layer of pine needles.  A chill wind blows
+from the mountains to the north, causing the trees to whisper against one
+another.  
+~
+~
+1
+0 0 5
+D1
+~
+~
+0 0 443
+D3
+~
+~
+0 0 494
+W 5 0 0
+Z 5 5
+S
+#494
+Path Up a Mountain~
+A thin trail leads through the pine forest, climbing steadily toward the
+mountains to the north and west.  At last the trail breaks out of the trees
+and begins heading up the bare side of the peak.  A chill wind blows from
+the north, swirling snow down from the higher altitudes.  
+~
+~
+1
+0 0 5
+D0
+~
+~
+0 0 495
+D1
+~
+~
+0 0 493
+W 5 0 0
+Z 5 5
+S
+#495
+Path Up a Mountain~
+A thin trail climbs the mountainside, leading steadily toward the
+mountains to the north and west.  The trail winds up the sheer face of the
+mountain, heading up the bare side of the peak.  A chill wind blows from the
+north, swirling snow down from the higher altitudes.  
+~
+~
+1
+0 0 5
+D0
+~
+~
+0 0 8420
+D2
+~
+~
+0 0 494
+W 5 0 0
+Z 5 5
+S
+#496
+A Thin Pine Trail~
+The sounds of the forest surround you here, making you notice the subtler
+cues that indicate life.  A small pine trail branches off from the main
+trail here, leading through the woods to the east.  The trees grow ever
+thicker in this area, and steep mountains are visible through the branches
+to the west.  
+~
+~
+1
+0 0 3
+D1
+~
+~
+0 0 497
+D3
+~
+~
+0 0 444
+W 5 0 0
+Z 5 5
+S
+#497
+A Thin Pine Trail~
+The sounds of the forest surround you here, making you notice the subtler
+cues that indicate life.  A small pine trail leads west to the main trail
+here, arriving at a clearing in the woods to the north.  The trees grow ever
+thicker in this area, and steep mountains are visible through the branches
+to the west.  
+~
+~
+1
+0 0 3
+D0
+~
+~
+0 0 498
+D3
+~
+~
+0 0 496
+W 5 0 0
+Z 5 5
+S
+#498
+An Ancient Clearing in the Pine Forest~
+The pine trail ends here in a cleft in the rock.  The dark, worn stone of
+the Brintor mountains slopes upwards, pine trees growing thickly anywhere
+they can gain purchase.  What little flat ground there is is covered in a
+thick layer of pine needles.  The trail wends its way back to the west. 
+Several small, scraggly holly trees struggle to grow amidst the dense needle
+carpet.  
+~
+~
+1
+0 0 3
+D2
+~
+~
+0 0 497
+T 77
+W 5 0 0
+Z 5 5
+S
+#499
+A Concealed Vault~
+An ancient, concealed vault stands before you, undisturbed for centuries.
+Thick layers of dust coat everything inside the arched chamber, and an aura
+of magic pervades the area.  Stone shelves line the walls, unweakened by
+corrosion.  An opening in the south wall of the vault leads back to the
+outside.  
+~
+~
+1
+0 50 0
+D2
+~
+~
+0 0 498
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 406 3 3
+D 0 407 1 3
+O 0 407 0 405
+O 0 408 0 407
+O 0 409 0 407
+M 0 402 12 446 1
+O 0 404 0 491
+O 0 403 0 492
+M 0 450 1 498 1
+O 0 406 0 498
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+0
+
+
+
+#$

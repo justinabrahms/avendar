@@ -1,0 +1,3182 @@
+#AREADATA
+Name The Tower of Testing~
+Builders Jolinn Ninjadyne Neongrey~
+VNUMs 8500 8599
+Credits [ 1 10] ninjadyne The Tower of Testing~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 4 0 0
+Shades 4 5
+Stone -1
+End
+
+
+
+#MOBILES
+V4 8500
+dirty oversized rat~
+an oversized rat~
+A dirty, oversized rat squeaks as it scampers across the floor.
+~
+An oversized, filthy rat scampers across the floor within the Tower of
+Testing.  They seem to be living somewhere within this floor\@s walls or
+beneath the floor, and multiply at a surprising rate.  Its fur is black and
+mottled, and its dark eyes peer about anxiously.  
+~
+generic~
+water scholar~
+ADN 0 JZ N 0
+1 0 1d10+5 0d0+0 1d2+1 pierce~
+bite~
+8 8 8 8
+0 AB
+26 0 0 0 0 0 0 0 -20 0 0 0 33 0 0 0 0 33 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 50 -1
+AGVd ABCDEFHJKQUV 0 tiny unknown
+>data_prog new_long_desc~
+stretches out lazily on top of a broken stone.
+leaps from one stone to another.
+sits up on its hind legs, sniffing at the air.
+scurries across the stone floor.
+squeaks as it scampers about.
+squeaks as it rolls onto its back.
+sniffs and chews at some debris.
+looks about on its hind legs, black eyes shining in the torchlight.
+runs swiftly through the shadows.
+~
+>data_prog action_line~
+pmote stretches out lazily on top of a broken stone.
+pmote leaps from one broken stone to another.
+pmote sits up on its hind legs, sniffing at the air.
+pmote scurries across the stone floor of the chamber.
+pmote squeaks as it scampers about.
+pmote rolls onto its back, squeaking.
+pmote sniffs and chews at some debris.
+pmote looks about the room on its hind legs, the torchlight flickering in its black eyes.
+pmote runs swiftly through the shadows.
+~
+>rand_prog 1~
+if rand(35)
+        mpvaluerand 3 0 8
+        mpsetdata action_line
+        mpnextdata $3
+        $d
+        mpsetdata new_long_desc
+        mpnextdata $3
+        mpstring mob self long An oversized rat $d
+endif
+~
+|
+V4 8501
+large lizard chained ~
+a large lizard~
+A large lizard stalks slowly through the area.
+~
+This large speckled lizard is covered with dull scales.  It ocassionally
+emits a low growl as it stalks through the second floor of the Tower of
+Testing, but seems largely docile until intentionally provoked.  
+~
+generic~
+water scholar~
+AD 0 0 N 0
+4 5 1d20+100 0d0+0 1d6+5 pierce~
+bite~
+7 7 7 7
+C AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 50 -1
+AHXc ABCDEFGHJKQU 0 medium unknown
+>data_prog new_long_desc~
+stalks languidly through the hallway.
+bares its yellow fangs.
+scratches at the floor with its short claws.
+lets out a low, rumbling growl.
+flexes its forward legs and claws.
+rests on the rough stone floor.
+rears back, sniffing at the breeze.
+rubs against the wall of the corridor as it moves.
+scratches its rear claws against the stone floor.
+~
+>data_prog action_line~
+pmote moves languidly through the hallway.
+pmote snorts, baring its yellow fangs.
+pmote scratches at the floor with its short claws.
+pmote lets out a low rumbling growl.
+pmote flexes its forward legs and claws.
+pmote rests on the rough stone floor.
+pmote sniffs a few times at the breeze through the corridor.
+pmote rubs against the wall of the corridor as it moves.
+pmote scratches its rear claws against the stone floor.
+~
+>rand_prog 1~
+if rand(35)
+        mpvaluerand 3 0 8
+        mpsetdata action_line
+        mpnextdata $3
+        $d
+        mpsetdata new_long_desc
+        mpnextdata $3
+        mpstring mob self long A large lizard $d
+endif
+~
+|
+V4 8502
+Korinne pale blonde human girl void scholar pkmob~
+Korinne~
+A pale, blonde human girl is here, staff at the ready.
+~
+A pale, blonde haired human, Korinne is a young adept of the Conclave of
+the Aklaju.  Her eyes are dark and brooding, and her expression one of mild
+disdain.  Her frame is slight and unimpressive, suggesting that she has
+little athletic ability.  She battles within the Tower of Testing to prove
+her merit and begin her life as an adventurer.  
+~
+human~
+water scholar~
+A 0 D N 0
+10 9 1d1+134 1d1+499 1d4+2 bash~
+slap~
+-2 -2 -2 -2
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMV ABCDEFGHIJK AK medium unknown
+>data_prog attack_spells~
+enervating ray
+blindness
+curse
+~
+>rand_prog 5~
+mpwander
+~
+>greet_prog 100~
+if snaffected($n) == 8
+        cast \@enervating ray\@ $n
+else
+        cast \@blindness\@ $n
+endif
+~
+>fight_prog 100~
+if rand(25)
+        mpvaluerand 8 0 2
+        mpsetdata attack_spells
+        mpnextdata $8
+        cast \@$d\@
+endif
+~
+>load_prog 100~
+mpaddskill $i 8 75
+mpaddskill $i 39 75
+mpaddskill $i 20 75
+mpaddskill $i 164 75
+speak common
+mpoload 3775 on $i 12
+mpoload 3783 on $i 16
+mpoload 3769 on $i 5
+~
+|
+V4 8503
+brander bot~
+the marble scholar~
+The brander brands all of the newbies with brands.  Brand brand brand.
+~
+~
+human~
+water scholar~
+ABD B DFL N 0
+0 0 1d1+10 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p touch~
+if compstr(2) == orb
+        mpechoat $n You touch the orb, and you feel yourself drawn into its image.
+        mpechoaround $n $N touches the orb and disappears.
+        mptransfer $n 3791
+        mpat 3791 mpforce $n look
+        mpat 3791 mpforce eliaj mproomcmd mptrigger all
+else
+        mpechoat $n Touch what?
+endif
+~
+>greet_prog 100~
+if isbitset($n) == 8503
+else
+        mpbitset $n 8503 1
+        mpbrand $n 8511
+        if newbie($n)
+                ooc $n With this brand, you have completed the {RTower of Testing{r.  Congratulations!{x
+                ooc $n You should visit the {RHall of Victors{r to meet the School proprietor.{x
+                ooc $n To continue, {Rtouch{r the {Rorb{r.{x
+        endif
+endif
+~
+|
+V4 8504
+emerald green imp~
+an emerald green imp~
+An emerald green imp hovers on leathery wings.
+~
+This small demon is covered in emerald green scales.  It hovers on
+leathery wings, its needle-like teeth and short claws bared.  Its dark eyes
+burn with a fiery intensity, glaring hatefully about.  Every now and then,
+it emits a shrill, piercing shriek.  
+~
+demon~
+water scholar~
+ABDF 0 JT E 0
+7 1 3d20+100 0d0+0 2d6+9 pierce~
+bite~
+5 5 5 0
+F AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 20 -20 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 80 -1
+ABCHM ABCDEFGHIJKPQ A small unknown
+>data_prog new_long_desc~
+lets out a piercing screech.
+glares about the hall, flapping its leathery wings.
+smiles viciously, baring its needle-like teeth.
+lands briefly, turning its head from side to side.
+snaps at the air with its small jaws.
+waves its claws about anxiously.
+leans its head back, letting out a shrill, angry chirp.
+flaps its wings wildly as it drifts about.
+opens and closes its small claws irritably.
+~
+>data_prog action_line~
+pmote lets out a piercing screech.
+pmote flaps its leathery wings, glaring hatefully about.
+pmote bares its needle-like teeth in a hideous smile.
+pmote lands briefly, turning its head from side to side.
+pmote snaps at the air with its small jaws.
+pmote waves its claws about anxiously.
+pmote lets out a shrill, angry chirp.
+pmote flaps its wings rapidly, drifting about the hallway.
+pmote opens and closes its small claws irritably.
+~
+>rand_prog 1~
+if rand(35)
+        mpvaluerand 3 0 8
+        mpsetdata action_line
+        mpnextdata $3
+        $d
+        mpsetdata new_long_desc
+        mpnextdata $3
+        mpstring mob self long An emerald green imp $d
+endif
+~
+>fight_prog 3~
+lunge
+~
+>load_prog 100~
+mpaddskill $i 452 75
+~
+|
+V4 8505
+Suisha tall aelin girl fighter pkmob~
+Suisha~
+A tall aelin girl with ruddy wings searches for opponents.
+~
+Suisha is a tall, dark-haired aelin girl who is serves the Earendam
+Guard.  Her long hair is held back in a utilitarian braid, and her pleasant
+face is hardened with the spirit of battle.  She seems quick, her ruddy
+wings keeping her aloft.  She tests herself against other young adventurers
+on the fourth floor of the Tower of Testing.  
+~
+aelin~
+water scholar~
+A 0 ET N 0
+10 9 1d1+174 0d0+0 1d6+0 bash~
+punch~
+0 0 0 0
+FIK AB
+26 0 0 0 0 -20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 100 -1
+AHMVW ABCDEFGHIJKP AF medium unknown
+>rand_prog 5~
+mpwander
+~
+>greet_prog 100~
+murder $n
+~
+>load_prog 100~
+mpaddskill $i 163 75
+mpaddskill $i 162 75
+mpaddskill $i 187 75
+speak common
+mpoload 3765 on $i 11
+mpoload 3741 on $i 16
+mpoload 3769 on $i 5
+~
+|
+V4 8506
+Trap bot~
+the trap~
+The trap is here, waiting to shoot you with daggers.
+~
+~
+human~
+water scholar~
+ABD 0 L N 0
+30 10000 1d1+10 0d0+0 1d1+29 pierce~
+stab~
+-100 -100 -100 -100
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>greet_prog 100~
+mpechoat $n As you pass through this door, you inadvertently snap a tiny wire.
+mpechoaround As $n passes through this door, they inadvertently snap a tiny wire.
+mpecho Knives shoot out of the wall!
+mpkill $n
+~
+|
+V4 8507
+stone guardian~
+the stone guardian~
+The stone guardian stands here in mute silence.
+~
+A tall marble statue of a warrior stands here.  Its bulk and silence are
+somewhat forbidding, and its defensive posture indicates that of a guardian
+who will defend his post to the death.  
+~
+elemental~
+water scholar~
+AB 0 0 N 0
+10 15 4d12+300 0d0+0 2d6+13 slash~
+slash~
+5 5 5 5
+FK ABPQR
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACEHJMVc ABCDEFGHIJK 0 medium stone
+V4 8508
+magic mouth grinning~
+the magic mouth~
+A magic mouth hovers in mid-air, grinning nonchalantly.
+~
+More magic than matter, this disembodied mouth is little more than a set
+of rich red lips.  Its origin is a mystery of sorts, as it simply appeared
+within the School during its original construction and never saw fit to
+leave.  Since then, it has become something of a mascot, and tests the wit
+of battle-weary adventurers with a riddle.  It is said to not be bound by
+planar space, and inhabits all of its favorite locations at once.  
+~
+generic~
+water scholar~
+ABDX B DFTU N 0
+1 1 1d100+200 1d1+99 10d4+15 energy~
+kiss~
+-10 -10 -10 -10
+0 ABCD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 74
+CHJL L A small unknown
+>speech_prog p ~
+if compx() -- water
+  if value(1) == 0
+    mpfocus $n
+    sendoff
+    break
+  else
+    wrong_answer
+    break
+  endif
+endif
+if compx() -- needle
+or compx() -- hurricane
+or compx() -- storm
+or compx() -- blind cyclops
+  if value(1) == 1
+    if compx() -- blind cyclops
+      esay smirks Well, I suppose.
+    endif
+    mpfocus $n
+    sendoff
+    break
+  else
+    wrong_answer
+    break
+  endif
+endif
+if compx() -- chess pieces
+  if value(1) == 2
+    mpfocus $n
+    sendoff
+    break
+  else
+    wrong_answer
+    break
+  endif
+endif
+if compx() -- tombstone
+or compx() -- gravestone
+or compx() -- head stone
+or compx() -- headstone
+or compx() -- grave stone
+  if value(1) == 3
+    mpfocus $n
+    sendoff
+    break
+  else
+    wrong_answer
+    break
+  endif
+endif
+if compx() -- fire
+  if value(1) == 4
+    mpfocus $n
+    sendoff
+    break
+  else
+    wrong_answer
+    break
+  endif
+endif
+if compx() -- river
+or compx() -- stream
+  if value(1) == 5
+    mpfocus $n
+    sendoff
+    break
+  else
+    wrong_answer
+    break
+  endif
+endif
+if compx() -- darkness
+  if value(1) == 6
+    mpfocus $n
+    sendoff
+    break
+  else
+    wrong_answer
+    break
+  endif
+endif
+if compx() -- frost
+or compx() -- snow
+or compx() -- cold
+  if value(1) == 7
+    mpfocus $n
+    sendoff
+    break
+  else
+    wrong_answer
+    break
+  endif
+endif
+if compx() -- wheat
+  if value(1) == 8
+    mpfocus $n
+    sendoff
+    break
+  else
+    wrong_answer
+    break
+  endif
+endif
+if compx() -- next
+  if value(1) == 8
+    mpvalueset 1 0
+    mpnextdata 0
+  else
+    mpnextdata
+    mpvalueup 1
+  endif
+  $d
+  break
+endif
+wrong_answer
+~
+>data_prog riddle_me_timbers~
+water_riddle
+needle_riddle
+chess_riddle
+tombstone_riddle
+fire_riddle
+river_riddle
+darkness_riddle
+frost_riddle
+wheat_riddle
+~
+>verb_prog p wrong_answer~
+if isnpc($n)
+  mpvaluerand 2 1 5
+  if value(2) == 1
+    say I\@m sorry but that is incorrect.
+  endif
+  if value(2) == 2
+    esay tsks That\@s not the answer.
+  endif
+  if value(2) == 3
+    esay encourages C\@mon now, think about it. You can get it.
+  endif
+  if value(2) == 4
+    esay \@gives a sly smile and taunts\@ You\@ll never get it, heh.
+  endif
+  if value(2) == 5
+    esay sighs No, no.  That won\@t do.
+  endif
+  say If you\@d like a different riddle say \#next\#.
+endif
+~
+>verb_prog p sendoff~
+if isnpc($n)
+  mpechoat $f The magic mouth opens widely, and you are pulled suddenly through!
+  mpechoaround $f The magic mouth opens widely, and $F vanishes into it.
+  mptransfer $f 8570
+  mpat 8570 mpforce $f look
+  mpunfocus
+endif
+~
+>verb_prog p wheat_riddle~
+say A five lettered word, I\@m used to make bread.
+say Remove one letter and I\@ll burn you instead.
+say Remove two and do this to your stew.
+say Mix that around and a good drink we will brew.
+~
+>verb_prog p frost_riddle~
+say I drape the hills in white,
+say I do not swallow, but I do bite.
+esay asks What am I?
+~
+>verb_prog p darkness_riddle~
+say The more places I be, the less you can see.
+esay asks What am I?
+~
+>verb_prog p river_riddle~
+say What has a head yet it never weeps, 
+say has a bed but never sleeps, 
+say can run but can not walk, 
+say and has a bank but no coins of which to talk?
+~
+>verb_prog p fire_riddle~
+say Give food and I will live.
+say Give water and I will die.
+esay asks What am I?
+~
+>verb_prog p tombstone_riddle~
+say I have a name that\@s not mine,
+say and no one cares about me in their prime.
+say People cry at my sight,
+say and lie by me all day and night.
+esay asks What am I?
+~
+>verb_prog p chess_riddle~
+say Thirty men and only two women, but they have the most power.
+say Dressed in black and white, they could fight for hours.
+esay asks What are they?
+~
+>verb_prog p needle_riddle~
+say I have one eye, but I cannot see.
+esay asks What am I?
+~
+>verb_prog p water_riddle~
+say I\@m in everybody but everybody still wants me.
+say I live in the oceans, the rivers and seas,
+say when I\@m cold I float, when I\@m hot, I\@m free.
+esay asks What am I?
+~
+>greet_prog 100~
+mpvaluerand 0 1 5
+if value(0) == 1
+  emote wrinkles its lip.
+endif
+if value(0) == 2
+  emote grins widely.
+endif
+if value(0) == 3
+  emote slides its teeth side to side in a grating motion.
+endif
+if value(0) == 4
+  emote purses its lips for a moment.
+endif
+if value(0) == 5
+  emote pinches its bottom lip with its teeth.
+endif
+mpsetdata riddle_me_timbers
+mpvaluerand 1 0 8
+mpnextdata $1
+$d
+~
+|
+V4 8509
+Yagrin scribe dark skinned dark-skinned human monk~
+Yagrin the scribe~
+A dark-skinned human monk sits at a desk, recording the names of young heroes.
+~
+Yagrin is the scribe for the School of Heroes, and it is he who records
+the names of those who survive the Tower of Testing.  A slender,
+dark-skinned human monk, it is said that he was raised at the far-off
+Hakurah Monastery.  He left the temple when he turned twenty and traveled to
+the far-off city of Gaald.  During his stay, he spent much time in its
+library, and took to transcribing books and scrolls in his spare time.  He
+has since been hired by the School to maintain the list of victorious
+adventurers kept for internal records.  
+~
+human~
+water scholar~
+AB B DFJZ N 0
+25 10 10d100+200 0d0+0 10d4+20 bash~
+punch~
+-10 -10 -10 -10
+IK ABCD
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 100 74
+AHMV ABCDEFGHIJK A medium unknown
+>data_prog faction_new~
+ooc $f1 Avendar contains various {Rfactions{r with whom you can gain or lose favor.{x
+ooc $f1 Being a friend, or enemy, of a faction will change how NPCs within it react to you.
+ooc $f1 For more information, please read {Rhelp factions{r.{x
+mpunfocus 1
+~
+>rand_prog 100~
+if isfocused($i) == 1
+        if ishere($f1)
+                $d
+                mpnextdata
+                $d
+                mpnextdata
+        else
+                mpunfocus 1
+        endif
+endif
+~
+>greet_prog 100~
+if ispc($n)
+        if isbitset($n) == 3770
+                nod $n
+        else
+                mpbitset $n 3770 1
+                pmote looks up from his writing.
+                tell $n Congratulations, $N.  You have triumphed over the Tower of Testing.
+                tell $n You are now a graduate of the School of Heroes, and will be recognized by students and faculty.
+                tell $n Proceed up the stairs.  You will receive the School\@s brand as a sign of your achievement.
+                pmote adds $N\@s name to the scrolls of heroes.
+                mpfaction $n 74 750 1
+                if newbie($n)
+                        mpsetdata faction_new
+                        mpfocus $n 1
+                        mplag $n 2
+                endif
+        endif
+endif
+~
+|
+V4 8510
+marble scholar statue man~
+the marble scholar~
+A marble statue of a scholar stands silently beside the central orb.
+~
+A tall marble statue of a scholar stands here.  Its figure is
+well-sculpted and clad in a graceful depiction of a robe.  It waits silently
+beside the orb at the center of the platform, one hand extended to those who
+would approach.  
+~
+human~
+water scholar~
+AB 0 DF N 0
+45 10 10d100+500 0d0+0 8d10+40 cold~
+iceblast~
+-10 -10 -10 -10
+K ABb
+26 0 0 50 50 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+ACHJMV ABCDEFGHIJK 0 medium unknown
+V4 8511
+Trapdisarmguy bot~
+Trapdisarmguy~
+Trapdisarmguy is here. It looks like a real wimp.
+~
+~
+human~
+water scholar~
+ABD 0 Le N 0
+0 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>verb_prog p look~
+if compstr(2) == s
+or compstr(2) == so
+or compstr(2) == sou
+or compstr(2) == sout
+or compstr(2) == south
+        if mobvalue(0) == 0
+                mpechoat $n A fine wire stretches across the doorway to the south.
+        else
+                mpechoat $n The hallway continues to the south.
+        endif
+else
+        mpnextinterp
+endif
+~
+>rand_prog 100~
+if mobvalue(0) > 0 
+mpvaluedown 0
+endif
+~
+>verb_prog p slice wire~
+mpechoat $n as you cut the wire, a barrage of daggers flashes overhead.
+mpat 8538 mppurge trap
+mpvalueset 0 50
+~
+>verb_prog p cut wire~
+mpechoat $n As you cut the wire, a barrage of daggers flashes overhead.
+mpat 8538 mppurge trap
+mpvalueset 0 50
+~
+|
+V4 8512
+Rhisshul grey srryn male assassin pkmob~
+Rhisshul~
+A grey srryn moves silently in the shadows.
+~
+A grey scaled srryn, Rhisshul is a student who hails to Sythtys, the
+ancient home swamp of his race.  His long tail and protruding fangs give him
+a fierce, serpentine look.  He trains to be an assassin, learning to blend
+mental techniques with speed and stealth.  His frame is muscular and
+tough-looking, and he sticks to the shadows of the Tower of Testing.  
+~
+srryn~
+water scholar~
+A 0 DFPZ E 0
+10 9 1d1+184 1d1+199 1d6+1 slash~
+claw~
+0 0 0 0
+FIMV AB
+26 0 0 0 0 0 0 0 20 -20 0 0 20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMX ABCDEFGHIJKLQUVX 0 medium flesh
+>greet_prog 100~
+murder $n
+~
+>rand_prog 100~
+if isaffected($i) == 65536
+else
+        hide
+endif
+if rand(5)
+        mpwander
+endif
+~
+>load_prog 100~
+mpaddskill $i 156 75
+mpaddskill $i 192 100
+mpaddskill $i 198 100
+mpaddskill $i 157 75
+speak common
+mpoload 3769 on $i 5
+mpoload 3763 on $i 16
+mpoload 3763 on $i 19
+~
+|
+V4 8513
+Aevikal golden ch\@taren male spirit templar pkmob~
+Aevikal~
+A golden ch\@taren male with shining blue eyes looks for opponents.
+~
+Aevikal is a golden-skinned ch\@taren male from the isle of Alensha.  He
+has traveled to the mainland to study with the Company of the Pegasus, a
+famed fighting company in Earendam.  He seeks to find and defeat evil
+wherever it may hide, his deep blue eyes radiant from the magics of Spirit. 
+He moves slowly through the Tower of Testing, weapons ready.  
+~
+ch\@taren~
+water scholar~
+A 0 DU G 0
+10 9 1d1+159 1d1+499 1d6+4 bash~
+punch~
+-4 -4 -4 -4
+K AB
+26 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 0 10 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHKMV ABCDEFGIJK AEK medium flesh
+>greet_prog 100~
+if isgood($n)
+or class($n) == 3
+or class($n) == 9
+else
+        murder $n
+endif
+~
+>rand_prog 100~
+if snaffected($i) != 87
+        cast \@invisibility\@
+        break
+endif
+if rand(5)
+        mpwander
+endif
+~
+>fight_prog 100~
+if rand(25)
+        if rand(50)
+                cast \@searing light\@
+        else
+                kick
+        endif
+endif
+~
+>load_prog 100~
+mpaddskill $i 163 75
+mpaddskill $i 166 75
+mpaddskill $i 988 75
+mpaddskill $i 87 100
+mpaddskill $i 176 75
+mpaddskill $i 157 75
+speak common
+mpoload 3769 on $i 5
+mpoload 3741 on $i 16
+mpoload 3743 on $i 19
+mpaddaffect $i 7 9 -1 24 -1 0 A
+mpaddaffect $i 7 9 -1 18 1 0 A
+~
+|
+V4 8514
+Jichar large chaja gladiator pkmob~
+Jichar~
+A large chaja gladiator peers about with milk-white eyes.
+~
+A large chaja, Jichar is one of the rare members of his race who does not
+live his life in service of shuddeni masters.  He is muscular and
+dark-skinned, with mottled, black hair covering much of his body.  He
+studies here to begin his life as a gladiator and battle in the famous
+arenas of Earendam and Ashta Harrud.  He prepares himself by fighting in the
+Tower of Testing.  
+~
+chaja~
+water scholar~
+A 0 Z N 0
+10 7 1d1+224 1d1+99 1d6+6 bash~
+punch~
+0 0 0 0
+FIJK AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -20 0 0 0 0 -20 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGIJK AG large flesh
+>greet_prog 100~
+murder $n
+~
+>rand_prog 100~
+if snaffected($i) != 870
+        bravado
+        break
+endif
+if rand(5)
+        mpwander
+endif
+~
+>load_prog 100~
+mpaddskill $i 165 75
+mpaddskill $i 166 75
+mpaddskill $i 157 75
+mpaddskill $i 870 75
+mpaddskill $i 919 75
+speak common
+mpoload 3776 on $i 10
+mpoload 3761 on $i 16
+mpoload 3743 on $i 19
+~
+|
+V4 8515
+Daloeq olive green ethron male ranger pkmob~
+Daloeq~
+An olive green ethron male prepares for combat.
+~
+Daloeq is an olive-green ethron with a sturdy build and dark eyes.  His
+hair is wild and unkempt, tied back behind him in a makeshift ponytail.  A
+student from the forest of Qilarn, he has come to the School of Heroes to
+learn the way of the ranger.  He stalks about on the fourth floor of the
+Tower of Testing, trying his hand at battle.  
+~
+ethron~
+water scholar~
+A 0 Z N 0
+10 9 1d1+189 1d1+99 1d6+8 bash~
+punch~
+0 0 0 0
+FJKN AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGIJK AJ medium flesh
+>rand_prog 5~
+mpwander
+~
+>greet_prog 100~
+murder $n
+~
+>load_prog 100~
+mpaddskill $i 163 75
+mpaddskill $i 157 75
+speak common
+mpoload 3770 on $i 7
+mpoload 3771 on $i 8
+mpoload 3741 on $i 16
+~
+|
+V4 8525
+wherebot where bot~
+the wherebot~
+The wherebot should not be here.
+~
+~
+human~
+water scholar~
+A 0 DFLe N 0
+0 0 1d1+10 1d1+0 1d1+0 none~
+~
+-22 -22 -22 -6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium flesh
+>trigger_prog 100~
+if valname($f) == $n
+else
+        if cansee($f) == $n
+                mpstrlen 0 $N
+                mpmath 1 28 - $0
+                mpvalueset peepstr (PK) $N  $d
+                loop 7 to $1
+                        mpstrreplace peepstr \#%peepstr\# \#  \# \#   \#
+                endloop
+                mpechoat $f %peepstr
+        endif
+endif
+~
+>data_prog r00mz~
+11
+8525
+A Marble Stairwell
+8526
+The Southwest Corner of the Fourth Floor
+8527
+The West Wall of the Fourth Floor
+8528
+The Northwest Corner of the Fourth Floor
+8529
+The North Wall of the Fourth Floor
+8530
+The Center of the Fourth Floor
+8531
+The Southeast Corner of the Fourth Floor
+8532
+The East Wall of the Fourth Floor
+8533
+The Northeast Corner of the Fourth Floor
+8534
+A Stone Stairwell
+8535
+The South Wall of the Fourth Floor
+~
+>verb_prog p0sr3p0rt~
+mpechoat $f Others in The Tower of Testing:
+mpsetdata r00mz
+loop 1 to $d
+        mpnextdata
+        mpgoto $d
+        mpnextdata
+        mproomcmd mptrigger all
+endloop
+mppurge self
+~
+|
+V4 8540
+small black bat~
+a small black bat~
+A small black bat is here, hanging from the ceiling.
+~
+A small black bat glides from spot to spot on the ceiling of the dark
+corridor.  It is unremarkable, with beady eyes and tiny protruding fangs. 
+Its wings flap as it moves, making a disquieting beat.  
+~
+bat~
+water scholar~
+AFN 0 ATZ N 0
+3 1 3d20+10 0d0+0 1d6+3 sound~
+shriek~
+3 3 3 3
+FH b
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -20 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 0 -1
+AGHV ABCDEFGHIJKP 0 tiny unknown
+>rand_prog 1~
+if rand(50)
+        emote dives from its perch and glides through the darkness.
+        mpstring mob self long A small black bat glides through the darkness.
+else
+        emote perches itself on the ceiling silently.
+        mpstring mob self long A small black bat hangs silently from the ceiling.
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+8510
+stone key~
+a stone key~
+A stone key rests on the ground.~
+~
+stone~
+key NP 0 F A
+0 0 0 0 0
+0 0 0 0 P
+0
+E
+key~
+This key is made of carved sandstone.
+~
+E
+stone~
+This key is made of carved sandstone.
+~
+V13
+8511
+sigil school heroes~
+the Sigil of the School of Heroes~
+The Sigil of the School of Heroes is here.~
+~
+flesh~
+armor AMPTZ 0 0 AR
+10 10 10 10 0
+10 0 0 0 P
+0
+A
+2 1
+A
+1 2
+A
+13 10
+A
+12 10
+E
+sigil school heroes~
+The Sigil of the School of Heroes is a brand of a shield with a pair of
+crossed swords.  It is small but conspicuous, shining with mystic light. 
+The mark signifies the completion of the Tower of Testing and recognition as
+one of the School\@s graduates.  
+~
+V13
+8512
+obsidian arch dark~
+an obsidian arch~
+A dark arch stands at the end of the corridor, cobwebs clinging to its base.~
+~
+obsidian~
+portal GTa 0 0 P
+0 0 0 8536 0
+1 0 0 4 P
+0
+#0
+
+
+
+#ROOMS
+#8500
+The Southeast Corner of the First Floor~
+The Tower of Testing\@s first floor is a simple and rugged affair, built
+of heavy, rough-hewn bricks.  Torches line the grey walls, and a chill
+moisture clings to the air.  The floor underfoot is well-trod and packed
+with rough mortar.  The first level of the Tower opens up into a low-lit,
+open, and shadowy chamber.  There are no windows, and the dank air suggests
+that this part is still below ground level.  The chamber continues to the
+north and west, where the screeches of rats and the crackles of torches fill
+the quiet air.  
+~
+~
+1
+0 131122 0
+D0
+The first floor continues to the north.
+~
+~
+0 0 8501
+D3
+The first floor continues to the west.
+~
+~
+0 0 8503
+W 5 0 0
+Z 5 5
+S
+#8501
+The Northeast Corner of the First Floor~
+The Tower of Testing\@s first floor is a simple and rugged affair, built
+of heavy, rough-hewn bricks.  Torches line the grey walls, and a chill
+moisture clings to the air.  The floor underfoot is well-trod and packed
+with rough mortar.  The first level of the Tower opens up into a low-lit,
+open, and shadowy chamber.  There are no windows, and the dank air suggests
+that this part is still below ground level.  The chamber continues to the
+south and west, where the screeches of rats and the crackles of torches fill
+the quiet air.  To the north lies a stairwell leading to the second floor.  
+~
+~
+1
+0 131122 0
+D0
+A breezy stairwell leads up to the next level.
+~
+~
+0 0 8505
+D2
+The first floor continues to the south.
+~
+~
+0 0 8500
+D3
+The first floor continues to the west.
+~
+~
+0 0 8504
+W 5 0 0
+Z 5 5
+S
+#8502
+The Beginning of the First Floor~
+The Tower of Testing\@s first floor is a simple and rugged affair, built
+of heavy, rough-hewn bricks.  Torches line the grey walls, and a chill
+moisture clings to the air.  The floor underfoot is well-trod and packed
+with rough mortar.  The first level of the Tower opens up into a low-lit,
+open, and shadowy chamber.  There are no windows, and the dank air suggests
+that this part is still below ground level.  The chamber continues to the
+north, where the screeches of rats and the crackles of torches fill the
+quiet air.  
+
+A sign is affixed to an iron stand.
+~
+~
+1
+0 131122 0
+E
+sign iron stand~
+The first floor of the Tower of Testing is dedicated to basic creatures
+upon whom to test your skills.  Rats infest the lowest level, and should be
+easily dispatched by enterprising adventurers.  
+
+To kill a rat you see, type {Wkill rat{x.  They should be absolutely no
+match for you, so this can be an easy way to gain some combat experience.  
+
+For additional combat-related help, please see {Whelp kill{x, {Whelp cast{x,
+{Whelp hit points{x, and {Whelp damage{x.  
+~
+D0
+The first floor continues to the north.
+~
+~
+0 0 8503
+D2
+The entrance to the Tower of Testing is to the south.
+~
+~
+0 0 3790
+W 5 0 0
+Z 5 5
+S
+#8503
+The Southwest Corner of the First Floor~
+The Tower of Testing\@s first floor is a simple and rugged affair, built
+of heavy, rough-hewn bricks.  Torches line the grey walls, and a chill
+moisture clings to the air.  The floor underfoot is well-trod and packed
+with rough mortar.  The first level of the Tower opens up into a low-lit,
+open, and shadowy chamber.  There are no windows, and the dank air suggests
+that this part is still below ground level.  The chamber continues to the
+north and east, where the screeches of rats and the crackles of torches fill
+the quiet air.  
+~
+~
+1
+0 131122 0
+D0
+The first floor continues to the north.
+~
+~
+0 0 8504
+D1
+The first floor continues to the east.
+~
+~
+0 0 8500
+D2
+The beginning of the first floor is to the south.
+~
+~
+0 0 8502
+W 5 0 0
+Z 5 5
+S
+#8504
+The Northwest Corner of the First Floor~
+The Tower of Testing\@s first floor is a simple and rugged affair, built
+of heavy, rough-hewn bricks.  Torches line the grey walls, and a chill
+moisture clings to the air.  The floor underfoot is well-trod and packed
+with rough mortar.  The first level of the Tower opens up into a low-lit,
+open, and shadowy chamber.  There are no windows, and the dank air suggests
+that this part is still below ground level.  The chamber continues to the
+south and east, where the screeches of rats and the crackles of torches fill
+the quiet air.  
+~
+~
+1
+0 131122 0
+D1
+The first floor continues to the east.
+~
+~
+0 0 8501
+D2
+The first floor continues to the south.
+~
+~
+0 0 8503
+W 5 0 0
+Z 5 5
+S
+#8505
+A Breezy Stairwell~
+This stairwell is in the far northeast, just outside of the first floor
+proper.  It is rugged and dark, lit with flickering torches.  However, as
+the stairs climb higher, the chill cling of the air lessens and the basement
+scent dims.  Warmer, fresher air travels downward on a faint breeze, causing
+the flames to dance wildly atop their torches.  The steps are worn and
+smooth, suggesting the passage of many feet.  To the south lies the
+rat-infested first floor of the Tower of Testing, while the second floor
+awaits above.  
+~
+~
+1
+0 131126 0
+D2
+The first floor lies to the south, beyond the stairwell.
+~
+~
+0 0 8501
+D4
+The top of the breezy stairwell leads to the second level.
+~
+~
+0 0 8506
+W 5 0 0
+Z 5 5
+S
+#8506
+A Breezy Stairwell~
+This stairwell is on the far north side of the second floor of the Tower
+of Testing.  It is rugged and dark, lit with flickering torches.  As the
+stairs descend back to the first level, the air becomes colder and more
+dank.  Warmer, fresher air travels downward on a faint breeze, causing the
+flames to dance wildly atop their torches.  The steps are worn and smooth,
+suggesting the passage of many feet.  To the south lies the lizard habitat
+on the second floor of the Tower of Testing, while the first floor lay
+below.  
+
+A standing sign describes the area to come.
+~
+~
+1
+0 131126 0
+E
+standing sign~
+The second floor of the Tower of Testing is intended to challenge
+students with more powerful creatures than the rats below.  The lizards that
+inhabit this level will attempt to {Wbash{x students who attack them.  Bash
+is a {Wlag{x skill, whose primary function is to delay opponents and prevent
+them from inputting commands.  This technique is common in
+{Wplayerkilling{x, so it is highly recommended that you recognize when this
+is being done to you.  
+
+For more help on the subject, see {Whelp lag{x.
+~
+D2
+The second floor of the Tower of Testing begins to the south.
+~
+~
+0 0 8507
+D5
+A stairwell descends down to the first level of the Tower.
+~
+~
+0 0 8505
+W 5 0 0
+Z 5 5
+S
+#8507
+The Beginning of the Second Floor~
+The second floor of the Tower of Testing is at ground level, with high
+windows bringing in light from the outside.  The floor is generally shaped
+like a cross, with two long intersecting hallways.  The floor here is the
+same rough-hewn stone as the level below, except it is now marked by lizard
+droppings.  The scent of habitation is heavy in the air, but blissfully the
+many windows offer a breeze and some freshening air.  The ceiling is fairly
+high, and strung with oil lanterns.  This hallway continues south, while the
+stairwell to the first floor lies to the north.  
+~
+~
+1
+0 131122 0
+D0
+A breezy stairwell awaits to the north, freshening the air.
+~
+~
+0 0 8506
+D2
+An intersection of two long hallways is to the south.
+~
+~
+0 0 8509
+W 5 0 0
+Z 5 5
+S
+#8508
+The Southern Section of the Second Floor~
+The second floor of the Tower of Testing is at ground level, with high
+windows bringing in light from the outside.  The floor is generally shaped
+like a cross, with two long intersecting hallways.  The floor here is the
+same rough-hewn stone as the level below, except it is now marked by lizard
+droppings.  The scent of habitation is heavy in the air, but blissfully the
+many windows offer a breeze and some freshening air.  The ceiling is fairly
+high, and strung with oil lanterns.  This hallway continues north, while the
+stairwell to the third floor lies to the south.  
+~
+~
+1
+0 131122 0
+D0
+An intersection lies to the north.
+~
+~
+0 0 8509
+D2
+The hallway continues south toward a glass stairwell.
+~
+~
+0 0 8510
+W 5 0 0
+Z 5 5
+S
+#8509
+The Intersection on the Second Floor~
+The second floor of the Tower of Testing is at ground level, with high
+windows bringing in light from the outside.  The floor here is the same
+rough-hewn stone as the level below, except it is now marked by lizard
+droppings.  The scent of habitation is heavy in the air, but blissfully the
+many windows offer a breeze and some freshening air.  The ceiling is fairly
+high, and strung with oil lanterns.  This area serves as a point of
+intersection between the two hallways of the floor, with one going east and
+west, and the other going north and south.  
+~
+~
+1
+0 131122 0
+D0
+To the north, the hallway leads toward a breezy stairwell.
+~
+~
+0 0 8507
+D1
+To the east, the intersecting hallway proceeds through the second floor.
+~
+~
+0 0 8511
+D2
+To the south, the hallway extends toward a glass stairwell.
+~
+~
+0 0 8508
+D3
+To the west, the intersecting hallway proceeds through the second floor.
+~
+~
+0 0 8512
+W 5 0 0
+Z 5 5
+S
+#8510
+A Glass Stairwell~
+The second floor comes to an end with a stairwell leading upward.  The
+tower here begins a transition away from the rough-hewn stone of the lower
+levels toward white brick and tile, much like that of the School of Heroes. 
+The ceilings are substantially higher than the floor below, with high glass
+panels that follow the stairs as they proceed further up.  From here you
+have a pleasant but commanding view of Avendar\@s distant horizons, with
+vents letting in further fresh air from above.  The stairway is
+significantly warmer than below.  
+~
+~
+1
+0 131126 0
+D0
+The hall to the north leads through the second floor.
+~
+~
+0 0 8508
+D4
+The glass stairwell leads up to the third level of the Tower.
+~
+~
+0 0 8515
+W 5 0 0
+Z 5 5
+S
+#8511
+The Eastern Section of the Second Floor~
+The second floor of the Tower of Testing is at ground level, with high
+windows bringing in light from the outside.  The floor here is the same
+rough-hewn stone as the level below, except it is now marked by lizard
+droppings.  The scent of habitation is heavy in the air, but blissfully the
+many windows offer a breeze and some freshening air.  The ceiling is fairly
+high, and strung with oil lanterns.  This section of hallway extends east
+and west, with an intersection waiting immediately westward.  
+~
+~
+1
+0 131122 0
+D1
+The hallway continues to the east.
+~
+~
+0 0 8514
+D3
+An intersection waits to the west.
+~
+~
+0 0 8509
+W 5 0 0
+Z 5 5
+S
+#8512
+The Western Section of the Second Floor~
+The second floor of the Tower of Testing is at ground level, with high
+windows bringing in light from the outside.  The floor here is the same
+rough-hewn stone as the level below, except it is now marked by lizard
+droppings.  The scent of habitation is heavy in the air, but blissfully the
+many windows offer a breeze and some freshening air.  The ceiling is fairly
+high, and strung with oil lanterns.  This section of hallway extends east
+and west, with an intersection waiting immediately eastward.  
+~
+~
+1
+0 131122 0
+D1
+An intersection awaits to the east.
+~
+~
+0 0 8509
+D3
+The hallway continues to the west.
+~
+~
+0 0 8513
+W 5 0 0
+Z 5 5
+S
+#8513
+The Western Section of the Second Floor~
+The second floor of the Tower of Testing is at ground level, with high
+windows bringing in light from the outside.  The floor here is the same
+rough-hewn stone as the level below, except it is now marked by lizard
+droppings.  The scent of habitation is heavy in the air, but blissfully the
+many windows offer a breeze and some freshening air.  The ceiling is fairly
+high, and strung with oil lanterns.  This western section ends here, with
+the hallway continuing only eastward.  
+~
+~
+1
+0 131122 0
+D1
+The hallway continues to the east.
+~
+~
+0 0 8512
+W 5 0 0
+Z 5 5
+S
+#8514
+The Eastern Section of the Second Floor~
+The second floor of the Tower of Testing is at ground level, with high
+windows bringing in light from the outside.  The floor here is the same
+rough-hewn stone as the level below, except it is now marked by lizard
+droppings.  The scent of habitation is heavy in the air, but blissfully the
+many windows offer a breeze and some freshening air.  The ceiling is fairly
+high, and strung with oil lanterns.  This eastern section ends here, with
+the hallway continuing only westward.  
+~
+~
+1
+0 131122 0
+D3
+The hallway continues to the west.
+~
+~
+0 0 8511
+W 5 0 0
+Z 5 5
+S
+#8515
+A Glass Stairwell~
+The glass stairwell leads upward to the third floor of the Tower of
+Testing.  The tower itself begins a transition away from the rough-hewn
+stone of the lower levels toward white brick and tile, much like that of the
+School of Heroes.  The ceilings are substantially higher than the floor
+below, with high glass panels that follow the stairs as they proceed further
+up.  From here you have a pleasant but commanding view of Avendar\@s distant
+horizons, with vents letting in further fresh air from above.  The stairway
+gets colder as it descends.  
+
+A standing sign describes the trials of this floor.
+~
+~
+1
+0 131126 0
+E
+standing sign~
+The third floor of the Tower of Testing is intended to introduce you to
+the idea of {Waggressive (aggro){x monsters.  Here, you will find stationary
+imps who will attack you when you enter the room with them.  Aggressive
+monsters are common in many areas in Avendar, and can be quite dangerous
+when unexpected.  As well, the imps on this floor may use basic in-round
+damage against you; in this case, {Wskill{x use.  Some creatures are able to
+use additional abilities in battle, and can be much more powerful as a
+result.  
+~
+D0
+The hallway through the third floor of the Tower waits to the north.
+~
+~
+0 0 8516
+D5
+A glass stairwell descends to the second level of the Tower.
+~
+~
+0 0 8510
+W 5 0 0
+Z 5 5
+S
+#8516
+The Beginning of the Third Floor~
+The third floor of the Tower of Testing is a stone and tile affair, much
+like the School of Heroes.  The bricks are white and lit by lanterns which
+hang from the ceiling, as well as the large glass windows which look out
+into the surrounding skyscape.  The tiles are dark and well-trod, showing
+the scuffs of many young adventurers.  The air on this floor is surprisingly
+clear and fresh due to better ventilation; however, it still stings the nose
+with the acrid scent of summoning.  Scratches and the spattering of dark
+blood mar the floor, ceiling and walls, with the high screech of imps never
+far from the ear.  To the south, a glass-enclosed stairwell descends to the
+second floor, while the current one continues to the north.  
+~
+~
+1
+0 131122 0
+D0
+The third floor continues to the north.
+~
+~
+0 0 8517
+D2
+A glass stairwell waits to the south.
+~
+~
+0 0 8515
+W 5 0 0
+Z 5 5
+S
+#8517
+The West Side of the Third Floor~
+The third floor of the Tower of Testing is a stone and tile affair, much
+like the School of Heroes.  The bricks are white and lit by lanterns which
+hang from the ceiling, as well as the large glass windows which look out
+into the surrounding skyscape.  The tiles are dark and well-trod, showing
+the scuffs of many young adventurers.  The air on this floor is surprisingly
+clear and fresh due to better ventilation; however, it still stings the nose
+with the acrid scent of summoning.  Scratches and the spattering of dark
+blood mar the floor, ceiling and walls, with the high screech of imps never
+far from the ear.  The hall continues to the north and south.  
+~
+~
+1
+0 131122 0
+D0
+The third floor continues to the north.
+~
+~
+0 0 8518
+D2
+The third floor continues to the south.
+~
+~
+0 0 8516
+W 5 0 0
+Z 5 5
+S
+#8518
+A Corner on the Third Floor~
+The third floor of the Tower of Testing is a stone and tile affair, much
+like the School of Heroes.  The bricks are white and lit by lanterns which
+hang from the ceiling, as well as the large glass windows which look out
+into the surrounding skyscape.  The tiles are dark and well-trod, showing
+the scuffs of many young adventurers.  The air on this floor is surprisingly
+clear and fresh due to better ventilation; however, it still stings the nose
+with the acrid scent of summoning.  Scratches and the spattering of dark
+blood mar the floor, ceiling and walls, with the high screech of imps never
+far from the ear.  The hall turns here, its two exits to the east and south.
+~
+~
+1
+0 131122 0
+D1
+The third floor continues to the east.
+~
+~
+0 0 8519
+D2
+The third floor continues to the south.
+~
+~
+0 0 8517
+W 5 0 0
+Z 5 5
+S
+#8519
+The North Side of the Third Floor~
+The third floor of the Tower of Testing is a stone and tile affair, much
+like the School of Heroes.  The bricks are white and lit by lanterns which
+hang from the ceiling, as well as the large glass windows which look out
+into the surrounding skyscape.  The tiles are dark and well-trod, showing
+the scuffs of many young adventurers.  The air on this floor is surprisingly
+clear and fresh due to better ventilation; however, it still stings the nose
+with the acrid scent of summoning.  Scratches and the spattering of dark
+blood mar the floor, ceiling and walls, with the high screech of imps never
+far from the ear.  The hall continues to the east and west.  
+~
+~
+1
+0 131122 0
+D1
+The third floor continues to the east.
+~
+~
+0 0 8520
+D3
+The third floor continues to the west.
+~
+~
+0 0 8518
+W 5 0 0
+Z 5 5
+S
+#8520
+A Corner on the Third Floor~
+The third floor of the Tower of Testing is a stone and tile affair, much
+like the School of Heroes.  The bricks are white and lit by lanterns which
+hang from the ceiling, as well as the large glass windows which look out
+into the surrounding skyscape.  The tiles are dark and well-trod, showing
+the scuffs of many young adventurers.  The air on this floor is surprisingly
+clear and fresh due to better ventilation; however, it still stings the nose
+with the acrid scent of summoning.  Scratches and the spattering of dark
+blood mar the floor, ceiling and walls, with the high screech of imps never
+far from the ear.  The hall turns here, with its exits to the west and
+south.  
+~
+~
+1
+0 131122 0
+D2
+The third floor continues to the south.
+~
+~
+0 0 8521
+D3
+The third floor continues to the west.
+~
+~
+0 0 8519
+W 5 0 0
+Z 5 5
+S
+#8521
+The East Side of the Third Floor~
+The third floor of the Tower of Testing is a stone and tile affair, much
+like the School of Heroes.  The bricks are white and lit by lanterns which
+hang from the ceiling, as well as the large glass windows which look out
+into the surrounding skyscape.  The tiles are dark and well-trod, showing
+the scuffs of many young adventurers.  The air on this floor is surprisingly
+clear and fresh due to better ventilation; however, it still stings the nose
+with the acrid scent of summoning.  Scratches and the spattering of dark
+blood mar the floor, ceiling and walls save the uncharacteristic cleanliness
+of the western one.  The hall continues north and south.  
+~
+~
+1
+0 131122 0
+E
+western wall~
+The western wall appears to be surprisingly clear of blood and grime,
+despite the rest of the hallway being thick with the evidence of death.  Its
+cleanliness makes it seem somehow artificial...  
+~
+D0
+The third floor continues to the north.
+~
+~
+0 0 8520
+D2
+The third floor continues to the south.
+~
+~
+0 0 8522
+D3
+The western wall appears to be surprisingly clear of blood and grime,
+despite the rest of the hallway being thick with the evidence of death.  Its
+cleanliness makes it seem somehow artificial...  
+~
+~
+8 0 8523
+W 5 0 0
+Z 5 5
+S
+#8522
+The End of the Third Floor~
+The third floor of the Tower of Testing is a stone and tile affair, much
+like the School of Heroes.  The bricks are white and lit by lanterns which
+hang from the ceiling, as well as the large glass windows which look out
+into the surrounding skyscape.  The tiles are dark and well-trod, showing
+the scuffs of many young adventurers.  The air on this floor is surprisingly
+clear and fresh due to better ventilation however, it still stings the nose
+with the acrid scent of summoning.  Scratches and the spattering of dark
+blood mar the floor, ceiling and walls, with the high screech of imps never
+far from the ear.  To the south, a marble stairwell ascends to the fourth
+floor, while the hall continues to the north.  
+~
+~
+1
+0 131122 0
+D0
+The third floor continues to the north.
+~
+~
+0 0 8521
+D2
+The third floor comes to an end at a marble stairwell.
+~
+~
+0 0 8524
+W 5 0 0
+Z 5 5
+S
+#8523
+A Hidden Passage~
+Through the illusory wall lies an older, secret part of the Tower of
+Testing.  The hall here appears to be particularly poorly maintained, with
+thick, clinging cobwebs.  The stones are grey and dark, and no windows are
+present within the interior.  The floor is rough-hewn stone, suggesting that
+this may have been part of the original construction of the facility.  No
+torches are present to light the way, making the passage difficult to
+navigate without light.  The false wall is to the east, while the dark
+passage continues north.  
+~
+~
+1
+0 524343 0
+D0
+A dark hallway continues to the north.
+~
+~
+0 0 8542
+D1
+A false wall conceals passage to the east.
+~
+~
+8 0 8521
+W 5 0 0
+Z 5 5
+P
+>rand_prog 1~
+if rand(35)
+        mpvaluerand 3 0 3
+        mpsetdata echo_line
+        mpnextdata $3
+        mpecho $d
+endif
+~
+>data_prog echo_line~
+The sound of flapping wings draws close as a tiny bat flits past.
+A faint shriek echoes off of the stone walls.
+The passage grows suddenly, eerily quiet.
+A quiet scratching sound echoes through the passage.
+~
+|
+S
+#8524
+A Marble Stairwell~
+A marble stairwell leads upward to the fourth floor of the Tower of
+Testing.  The white stones of the third level end at the entrance to this
+stairwell, instead replaced by the iconic marble of the School\@s main level.
+The tile floor looks less worn and of a higher sheen, and the stairwell
+itself is polished to a high gloss.  Arched windows look out onto the world
+at large, high enough to give the faint of heart a bit of pause.  The sounds
+of battle ring out from the floor above.  The long hall of the third floor
+lies to the north.  
+~
+~
+1
+0 131126 0
+D0
+The third floor awaits to the north.
+~
+~
+0 0 8522
+D4
+A marble stairwell leads up to the fourth level of the Tower.
+~
+~
+0 0 8525
+W 5 0 0
+Z 5 5
+S
+#8525
+A Marble Stairwell~
+A marble stairwell ends at the doorstep of the fourth floor of the Tower
+of Testing.  This entire floor is done in the polished black tile of the
+School of Heroes proper, and the walls are a high, glossy marble.  The
+chamber which composes the fourth floor is the largest and most open yet,
+the great expanse of its floor composing a patterned relief of the School\@s
+iconic sigil.  The air is cool but smelling of exertion, blood, and metal. 
+Lanterns hang from the ceiling to illuminate the final steps before entering
+the floor.  Down the stairs, the third floor awaits.  
+
+A plaque is inset into the wall at the top of the stairs.
+~
+~
+1
+0 131126 0
+E
+plaque~
+The fourth floor of the Tower of Testing will introduce you to a
+{Wplayerkilling{x simulation.  Obviously, you are not yet a high enough
+level to participate in actual PK, so instead you will face scripted,
+computer-controlled opponents.  They represent a variety of classes, will
+pursue you, and will use rudimentary class powers against you.  These should
+be the Tower\@s most challenging opponents.  
+
+In a true PK scenario, you can sense where your opponents might be using the
+{Wwhere{x command.  In Avendar, this represents a sort of sixth sense that
+adventurers use to tell when others are near them.  The opponents of this
+floor have been programmed to respond to where as another player would.  As
+well, to see how far away other characters are in relation to you, use the
+{Wscan{x command.  The combination of these two commands can be very
+effective.  
+
+Completing this floor can be quite difficult as some classes.  Much like in
+real PK, you can survive simply on awareness, patience, and cleverness. 
+However, you can also challenge this floor\@s opponents and defeat them.  PK
+is an important part of Avendar, and largely unavoidable.  Yet, it can be an
+enjoyable experience if one is prepared.  Make sure to review your class
+skills or spells by reading their {Whelp{x entries to understand the extent
+of your powers.  
+~
+D1
+The great hall of the fourth floor opens to the east.
+~
+~
+0 0 8526
+D5
+A marble stairwell descends back to the third level of the Tower.
+~
+~
+0 0 8524
+W 5 0 0
+Z 5 5
+P
+>verb_prog p whe~
+mpvalueset 0 0
+mpstrlen 0 $y2
+if value(0) == 0
+  mpmload 8525
+  mpforce wherebot mpfocus $n
+  mpforce wherebot p0sr3p0rt
+else
+  if compstr(2) == pk
+    mpmload 8525
+    mpforce wherebot mpfocus $n
+    mpforce wherebot p0sr3p0rt
+  else
+    mpnextinterp
+  endif
+endif
+~
+|
+S
+#8526
+The Southwest Corner of the Fourth Floor~
+This floor of the Tower of Testing is done in polished black tile, with
+walls of high marble.  The ceiling is vaulted and extravagant, the entire
+expanse forming a wide open battle arena.  The tiles of the floor compose a
+patterned relief of the iconic sigil of the School of Heroes.  The air is
+cool but smells of exertion, blood, and spellcraft.  Lanterns hang from the
+high ceiling, lighting the chamber at night, while natural light filters in
+through arched windows during the day.  A stairwell leads down to the third
+floor to the west, while the chamber continues north and east.  
+~
+~
+1
+0 50 0
+D0
+The fourth floor continues to the north.
+~
+~
+0 0 8527
+D1
+The fourth floor continues to the east.
+~
+~
+0 0 8535
+D3
+A marble stairwell lies to the west, descending to the third floor.
+~
+~
+0 0 8525
+W 5 0 0
+Z 5 5
+P
+>verb_prog p whe~
+mpvalueset 0 0
+mpstrlen 0 $y2
+if value(0) == 0
+  mpmload 8525
+  mpforce wherebot mpfocus $n
+  mpforce wherebot p0sr3p0rt
+else
+  if compstr(2) == pk
+    mpmload 8525
+    mpforce wherebot mpfocus $n
+    mpforce wherebot p0sr3p0rt
+  else
+    mpnextinterp
+  endif
+endif
+~
+|
+S
+#8527
+The West Wall of the Fourth Floor~
+This floor of the Tower of Testing is done in polished black tile, with
+walls of high marble.  The ceiling is vaulted and extravagant, the entire
+expanse forming a wide open battle arena.  The tiles of the floor compose a
+patterned relief of the iconic sigil of the School of Heroes.  The air is
+cool but smells of exertion, blood, and spellcraft.  Lanterns hang from the
+high ceiling, lighting the chamber at night, while natural light filters in
+through arched windows during the day.  The chamber continues north, east,
+and south.  
+~
+~
+1
+0 50 0
+D0
+The fourth floor continues to the north.
+~
+~
+0 0 8528
+D1
+The center of the fourth floor lies to the east.
+~
+~
+0 0 8530
+D2
+The fourth floor continues to the south.
+~
+~
+0 0 8526
+W 5 0 0
+Z 5 5
+P
+>verb_prog p whe~
+mpvalueset 0 0
+mpstrlen 0 $y2
+if value(0) == 0
+  mpmload 8525
+  mpforce wherebot mpfocus $n
+  mpforce wherebot p0sr3p0rt
+else
+  if compstr(2) == pk
+    mpmload 8525
+    mpforce wherebot mpfocus $n
+    mpforce wherebot p0sr3p0rt
+  else
+    mpnextinterp
+  endif
+endif
+~
+|
+S
+#8528
+The Northwest Corner of the Fourth Floor~
+This floor of the Tower of Testing is done in polished black tile, with
+walls of high marble.  The ceiling is vaulted and extravagant, the entire
+expanse forming a wide open battle arena.  The tiles of the floor compose a
+patterned relief of the iconic sigil of the School of Heroes.  The air is
+cool but smells of exertion, blood, and spellcraft.  Lanterns hang from the
+high ceiling, lighting the chamber at night, while natural light filters in
+through arched windows during the day.  The chamber comes to a corner here,
+continuing only to the east and south.  
+~
+~
+1
+0 50 0
+D1
+The fourth floor continues to the east.
+~
+~
+0 0 8529
+D2
+The fourth floor continues to the south.
+~
+~
+0 0 8527
+W 5 0 0
+Z 5 5
+P
+>verb_prog p whe~
+mpvalueset 0 0
+mpstrlen 0 $y2
+if value(0) == 0
+  mpmload 8525
+  mpforce wherebot mpfocus $n
+  mpforce wherebot p0sr3p0rt
+else
+  if compstr(2) == pk
+    mpmload 8525
+    mpforce wherebot mpfocus $n
+    mpforce wherebot p0sr3p0rt
+  else
+    mpnextinterp
+  endif
+endif
+~
+|
+S
+#8529
+The North Wall of the Fourth Floor~
+This floor of the Tower of Testing is done in polished black tile, with
+walls of high marble.  The ceiling is vaulted and extravagant, the entire
+expanse forming a wide open battle arena.  The tiles of the floor compose a
+patterned relief of the iconic sigil of the School of Heroes.  The air is
+cool but smells of exertion, blood, and spellcraft.  Lanterns hang from the
+high ceiling, lighting the chamber at night, while natural light filters in
+through arched windows during the day.  The floor continues to the east,
+south, and west.  
+~
+~
+1
+0 50 0
+D1
+The fourth floor continues to the east.
+~
+~
+0 0 8533
+D2
+The center of the fourth floor lies to the south.
+~
+~
+0 0 8530
+D3
+The fourth floor continues to the west.
+~
+~
+0 0 8528
+W 5 0 0
+Z 5 5
+P
+>verb_prog p whe~
+mpvalueset 0 0
+mpstrlen 0 $y2
+if value(0) == 0
+  mpmload 8525
+  mpforce wherebot mpfocus $n
+  mpforce wherebot p0sr3p0rt
+else
+  if compstr(2) == pk
+    mpmload 8525
+    mpforce wherebot mpfocus $n
+    mpforce wherebot p0sr3p0rt
+  else
+    mpnextinterp
+  endif
+endif
+~
+|
+S
+#8530
+The Center of the Fourth Floor~
+This floor of the Tower of Testing is done in polished black tile, with
+walls of high marble.  The ceiling is vaulted and extravagant, the entire
+expanse forming a wide open battle arena.  The tiles of the floor compose a
+patterned relief of the iconic sigil of the School of Heroes.  The air is
+cool but smells of exertion, blood, and spellcraft.  Lanterns hang from the
+high ceiling, lighting the chamber at night, while natural light filters in
+through arched windows during the day.  This space forms the center of the
+floor, with more of it waiting in all of the cardinal directions.  
+~
+~
+1
+0 50 0
+D0
+The fourth floor continues to the north.
+~
+~
+0 0 8529
+D1
+The fourth floor continues to the east.
+~
+~
+0 0 8532
+D2
+The fourth floor continues to the south.
+~
+~
+0 0 8535
+D3
+The fourth floor continues to the west.
+~
+~
+0 0 8527
+W 5 0 0
+Z 5 5
+P
+>verb_prog p whe~
+mpvalueset 0 0
+mpstrlen 0 $y2
+if value(0) == 0
+  mpmload 8525
+  mpforce wherebot mpfocus $n
+  mpforce wherebot p0sr3p0rt
+else
+  if compstr(2) == pk
+    mpmload 8525
+    mpforce wherebot mpfocus $n
+    mpforce wherebot p0sr3p0rt
+  else
+    mpnextinterp
+  endif
+endif
+~
+|
+S
+#8531
+The Southeast Corner of the Fourth Floor~
+This floor of the Tower of Testing is done in polished black tile, with
+walls of high marble.  The ceiling is vaulted and extravagant, the entire
+expanse forming a wide open battle arena.  The tiles of the floor compose a
+patterned relief of the iconic sigil of the School of Heroes.  The air is
+cool but smells of exertion, blood, and spellcraft.  Lanterns hang from the
+high ceiling, lighting the chamber at night, while natural light filters in
+through arched windows during the day.  The walls form a corner here, the
+floor continuing to the north and west.  
+~
+~
+1
+0 50 0
+D0
+The fourth floor continues to the north.
+~
+~
+0 0 8532
+D3
+The fourth floor continues to the west.
+~
+~
+0 0 8535
+W 5 0 0
+Z 5 5
+P
+>verb_prog p whe~
+mpvalueset 0 0
+mpstrlen 0 $y2
+if value(0) == 0
+  mpmload 8525
+  mpforce wherebot mpfocus $n
+  mpforce wherebot p0sr3p0rt
+else
+  if compstr(2) == pk
+    mpmload 8525
+    mpforce wherebot mpfocus $n
+    mpforce wherebot p0sr3p0rt
+  else
+    mpnextinterp
+  endif
+endif
+~
+|
+S
+#8532
+The East Wall of the Fourth Floor~
+This floor of the Tower of Testing is done in polished black tile, with
+walls of high marble.  The ceiling is vaulted and extravagant, the entire
+expanse forming a wide open battle arena.  The tiles of the floor compose a
+patterned relief of the iconic sigil of the School of Heroes.  The air is
+cool but smells of exertion, blood, and spellcraft.  Lanterns hang from the
+high ceiling, lighting the chamber at night, while natural light filters in
+through arched windows during the day.  The floor continues to the north,
+west, and south.  
+~
+~
+1
+0 50 0
+D0
+The fourth floor continues to the north.
+~
+~
+0 0 8533
+D2
+The fourth floor continues to the south.
+~
+~
+0 0 8531
+D3
+The center of the fourth floor lies to the west.
+~
+~
+0 0 8530
+W 5 0 0
+Z 5 5
+P
+>verb_prog p whe~
+mpvalueset 0 0
+mpstrlen 0 $y2
+if value(0) == 0
+  mpmload 8525
+  mpforce wherebot mpfocus $n
+  mpforce wherebot p0sr3p0rt
+else
+  if compstr(2) == pk
+    mpmload 8525
+    mpforce wherebot mpfocus $n
+    mpforce wherebot p0sr3p0rt
+  else
+    mpnextinterp
+  endif
+endif
+~
+|
+S
+#8533
+The Northeast Corner of the Fourth Floor~
+This floor of the Tower of Testing is done in polished black tile, with
+walls of high marble.  The ceiling is vaulted and extravagant, the entire
+expanse forming a wide open battle arena.  The tiles of the floor compose a
+patterned relief of the iconic sigil of the School of Heroes.  The air is
+cool but smells of exertion, blood, and spellcraft.  Lanterns hang from the
+high ceiling, lighting the chamber at night, while natural light filters in
+through arched windows during the day.  The floor continues to the west and
+south, while a stairwell to the east leads up to the fifth level.  
+~
+~
+1
+0 50 0
+D1
+A stone stairwell lies to the east, leading upward.
+~
+~
+0 0 8534
+D2
+The fourth floor continues to the south.
+~
+~
+0 0 8532
+D3
+The fourth floor continues to the west.
+~
+~
+0 0 8529
+W 5 0 0
+Z 5 5
+P
+>verb_prog p whe~
+mpvalueset 0 0
+mpstrlen 0 $y2
+if value(0) == 0
+  mpmload 8525
+  mpforce wherebot mpfocus $n
+  mpforce wherebot p0sr3p0rt
+else
+  if compstr(2) == pk
+    mpmload 8525
+    mpforce wherebot mpfocus $n
+    mpforce wherebot p0sr3p0rt
+  else
+    mpnextinterp
+  endif
+endif
+~
+|
+S
+#8534
+A Stone Stairwell~
+A stone stairwell leads upward toward the fifth floor, just on the other
+side of the large tiled arena of the fourth.  The arched windows and heavy
+construction suggest that this is one of the oldest remaining parts of the
+Tower of Testing, the stone worn smooth by a thousand years of young
+adventurers.  The stairs are smooth and even, and worn in the center from
+the crossing of many footsteps.  Torches light the stairwell, giving it the
+same shadowy cast as some of the lowest floors of the School and Tower.  The
+fifth floor awaits above, while the tests of battle are to the west.  
+~
+~
+1
+0 131126 0
+D3
+The fourth floor awaits to the west.
+~
+~
+0 0 8533
+D4
+The stone stairs lead up to the fifth level of the Tower.
+~
+~
+0 0 8536
+W 5 0 0
+Z 5 5
+P
+>verb_prog p whe~
+mpvalueset 0 0
+mpstrlen 0 $y2
+if value(0) == 0
+  mpmload 8525
+  mpforce wherebot mpfocus $n
+  mpforce wherebot p0sr3p0rt
+else
+  if compstr(2) == pk
+    mpmload 8525
+    mpforce wherebot mpfocus $n
+    mpforce wherebot p0sr3p0rt
+  else
+    mpnextinterp
+  endif
+endif
+~
+|
+S
+#8535
+The South Wall of the Fourth Floor~
+This floor of the Tower of Testing is done in polished black tile, with
+walls of high marble.  The ceiling is vaulted and extravagant, the entire
+expanse forming a wide open battle arena.  The tiles of the floor compose a
+patterned relief of the iconic sigil of the School of Heroes.  The air is
+cool but smells of exertion, blood, and spellcraft.  Lanterns hang from the
+high ceiling, lighting the chamber at night, while natural light filters in
+through arched windows during the day.  The floor continues to the north,
+east, and west.  
+~
+~
+1
+0 50 0
+D0
+The center of the fourth floor lies to the north.
+~
+~
+0 0 8530
+D1
+The fourth floor continues to the east.
+~
+~
+0 0 8531
+D3
+The fourth floor continues to the west.
+~
+~
+0 0 8526
+W 5 0 0
+Z 5 5
+P
+>verb_prog p whe~
+mpvalueset 0 0
+mpstrlen 0 $y2
+if value(0) == 0
+  mpmload 8525
+  mpforce wherebot mpfocus $n
+  mpforce wherebot p0sr3p0rt
+else
+  if compstr(2) == pk
+    mpmload 8525
+    mpforce wherebot mpfocus $n
+    mpforce wherebot p0sr3p0rt
+  else
+    mpnextinterp
+  endif
+endif
+~
+|
+S
+#8536
+A Stone Stairwell~
+A stone stairwell exits onto the fifth floor, at the end of a stone
+corridor.  The arched windows and heavy construction suggest that this is
+one of the oldest remaining parts of the Tower of Testing, the stone worn
+smooth by a thousand years of young adventurers.  The stairs are smooth and
+even, and worn in the center from the crossing of many footsteps.  Torches
+light the stairwell, giving it the same shadowy cast as some of the lowest
+floors of the School and Tower.  The fifth floor continues to the south,
+while the stairs lead back to the fourth floor below.  
+
+A tall sign stands near the top of the stairwell.
+~
+~
+1
+0 131126 0
+E
+tall sign~
+The fifth floor is the final level of the Tower of Testing. 
+Congratulations for making it this far!  This floor will test you against a
+more powerful creature than you have faced on the floors below.  At times,
+you will encounter monsters that are more powerful than you, and will take
+multiple attempts to defeat.  In such a case, you can often {Wflee{x and
+return when you are healed (usually by {Wresting{x or {Wsleeping{x to
+recover).  
+
+This level will also test your cleverness in terms of looking for traps not
+apparent simply from a casual glance.  It will incorporate topics reviewed
+in the {WHall of Trials{x within the School of Heroes, so if you chose to
+complete it, those techniques will come in handy.  As well, it will provide
+a very simple test of wit to review interacting with NPCs.  
+
+If you complete this level of the Tower, you will be rewarded with the Sigil
+of the School of Heroes.  
+~
+D2
+A stone hallway and a secure doorway wait to the south.
+~
+~
+0 0 8537
+D5
+The stone stairs lead down to the fourth level of the Tower.
+~
+~
+0 0 8534
+W 5 0 0
+Z 5 5
+S
+#8537
+The Fifth Floor~
+The fifth floor is among the oldest parts of the Tower of Testing, built
+of heavy, rough-hewn stone.  The arched windows and smooth, worn stone
+suggest the passage of untold adventurers over many generations, the floor
+clear of debris and signs of disrepair.  Old stains of blood mark the stone
+walls, and heavy iron lanterns hang from the ceiling to light the corridor. 
+A large door leads to the south, its frame secure and marked with runic
+wards.  The stairwell lies to the north, while this level of the Tower
+awaits behind the southern door.  
+~
+~
+1
+0 131122 0
+D0
+A stone stairwell lies to the north.
+~
+~
+0 0 8536
+D2
+A fine wire stretches across the doorway to the south.  It looks like you
+could {Wcut{x the {Wwire{x.  
+~
+~
+71 8510 8538
+W 5 0 0
+Z 5 5
+S
+#8538
+The Fifth Floor~
+The fifth floor is among the oldest parts of the Tower of Testing, built
+of heavy, rough-hewn stone.  The arched windows and smooth, worn stone
+suggest the passage of untold adventurers over many generations, the floor
+clear of debris and signs of disrepair.  Old stains of blood mark the stone
+walls, and heavy iron lanterns hang from the ceiling to light the corridor. 
+A long slit in the eastern wall glitters with sharp points, a mounted
+barrage of daggers waiting for the unwary.  A large door leads to the north,
+its frame secure and marked with runic wards.  The fifth level continues
+through a shimmering portal set into the south wall.  
+~
+~
+1
+0 131122 0
+D0
+A doorway leads to the northern hall.
+~
+~
+71 0 8537
+D2
+A shimmering portal in the south wall leads to parts unknown.
+~
+~
+0 0 8539
+W 5 0 0
+Z 5 5
+S
+#8539
+A Small Granite Chamber~
+This stone chamber is built from smooth blocks of pale granite, four
+bracketed torches ensconced on each wall.  The ceiling is high and largely
+oddly disorienting, as the floor and walls are all the same color and
+texture.  The air is cool and crisp, tinged with a hint of magical energy. 
+There are no apparent exits in any direction, making the low ceiling seem
+even more claustrophobic.  
+~
+~
+1
+0 131126 0
+W 5 0 0
+Z 5 5
+S
+#8540
+A Lavish Enclosure~
+Before you is a lavishly decorated chamber, which appears to be the
+highest level of the Tower of Testing.  The walls largely absent, the high
+roof held aloft by mighty stone columns.  A barrier of energy surrounds the
+enclosure, allowing the passing breeze and cool air of the Tower\@s great
+height.  The marble floor is covered in a rich, burgundy carpet, with
+gold-mounted orbs of light illuminating the room.  The view outside is
+little more than a cloudscape, with the sun and moons clearly visible to
+occupants.  A well-polished desk sits within the enclosure, a large array of
+scrolls, books, and other materials piled at either side.  A golden spiral
+staircase heads up onto the roof itself, while the chamber continues to the
+north.  
+~
+~
+1
+0 131122 0
+D0
+An open enclosure, sumptuously decorated, awaits to the north.
+~
+~
+0 0 8570
+D4
+A golden spiral staircase heads up to the top of the Tower.
+~
+~
+0 0 8541
+W 5 0 0
+Z 5 5
+S
+#8541
+The Roof of the Tower of Testing~
+The high roof of the Tower is shielded by a barely perceptible field of
+magic, but otherwise is entirely unencumbered.  It includes a large central
+platform, upon which six slender spires rise, matching a hexagon\@s points. 
+The golden staircase from below arrives between two of such spires, allowing
+admission to the platform.  The glittering stone of the rooftop shines in
+both sunlight and moonlight, and the shrill wind whips between the spires. 
+The surrounding skyscape is above the clouds, their wispy expanse making the
+roof seem more like an island in a white sea.  A large orb sits at the
+center of the platform, beckoning you.  The only apparent exit is down the
+golden stairs.  
+~
+~
+1
+0 131122 0
+E
+large orb~
+This large orb crackles with mystic energy.  As you look at it, you can
+see the image of a small office within its depths.  Something about it
+beckons you to {Wtouch{x it.  
+~
+D5
+A golden spiral staircase descends to the sixth level of the Tower.
+~
+~
+0 0 8540
+W 5 0 0
+Z 5 5
+S
+#8542
+A Hidden Stairwell~
+A dark stairwell with uneven steps lies within the secret corridor, lined
+with cobwebs.  The hall here appears to be particularly poorly maintained,
+with dark grey stones and no windows.  The floor is rough-hewn stone,
+suggesting that this may have been part of the original construction of the
+facility.  No torches are present to light the way, making the passage
+difficult to navigate without light.  The sounds of flapping wings can be
+heard throughout the stairwell, echoing off the cold stone.  The entrance to
+the hidden passage is to the south, while it continues up the stairs.  
+~
+~
+1
+0 524339 0
+D2
+The entrance to the hidden hallway is to the south.
+~
+~
+0 0 8523
+D4
+A set of uneven stairs leads upward into the darkness.
+~
+~
+0 0 8543
+W 5 0 0
+Z 5 5
+P
+>rand_prog 1~
+if rand(35)
+        mpvaluerand 3 0 3
+        mpsetdata echo_line
+        mpnextdata $3
+        mpecho $d
+endif
+~
+>data_prog echo_line~
+The sound of flapping wings draws close as a tiny bat flits past.
+A faint shriek echoes off of the stone walls.
+The passage grows suddenly, eerily quiet.
+A quiet scratching sound echoes through the passage.
+~
+|
+S
+#8543
+A Hidden Stairwell~
+A dark stairwell with uneven steps lies within the secret corridor, lined
+with cobwebs.  The hall here appears to be particularly poorly maintained,
+with dark grey stones and no windows.  The floor is rough-hewn stone,
+suggesting that this may have been part of the original construction of the
+facility.  No torches are present to light the way, making the passage
+difficult to navigate without light.  The sounds of flapping wings can be
+heard throughout the stairwell, echoing off the cold stone.  The stairs
+return to the third floor, while the corridor continues to the north.  
+~
+~
+1
+0 524339 0
+D0
+The hidden hallway continues to the north.
+~
+~
+0 0 8544
+D5
+A set of uneven stairs descends into the darkness.
+~
+~
+0 0 8542
+W 5 0 0
+Z 5 5
+P
+>rand_prog 1~
+if rand(35)
+        mpvaluerand 3 0 3
+        mpsetdata echo_line
+        mpnextdata $3
+        mpecho $d
+endif
+~
+>data_prog echo_line~
+The sound of flapping wings draws close as a tiny bat flits past.
+A faint shriek echoes off of the stone walls.
+The passage grows suddenly, eerily quiet.
+A quiet scratching sound echoes through the passage.
+~
+|
+S
+#8544
+A Hidden Passage~
+This portion of the hidden passage runs just beneath the fourth floor\@s
+great seal of the School of Heroes.  Above, through the heavy stone, the
+muffled sounds of battle can be dimly heard.  The corridor is dark and
+filled with thick cobwebs, and smells musty from age and disuse.  The
+rough-hewn stone of the floor is uneven, and no windows or torches provide
+light for those who might traverse it.  The sounds of small, flapping wings
+can be heard throughout this part of the passage, echoing off the stone.  It
+continues to the north and south.  
+~
+~
+1
+0 524339 0
+D0
+The hidden hallway comes to an end just to the north.
+~
+~
+0 0 8545
+D2
+The hidden hallway continues to the south.
+~
+~
+0 0 8543
+W 5 0 0
+Z 5 5
+P
+>rand_prog 1~
+if rand(35)
+        mpvaluerand 3 0 3
+        mpsetdata echo_line
+        mpnextdata $3
+        mpecho $d
+endif
+~
+>data_prog echo_line~
+The sound of flapping wings draws close as a tiny bat flits past.
+A faint shriek echoes off of the stone walls.
+The passage grows suddenly, eerily quiet.
+A quiet scratching sound echoes through the passage.
+~
+|
+S
+#8545
+A Dead End~
+The hidden passage comes to an end here, where the older path has been
+bricked over with heavy stone.  The cobwebs are particularly expansive here,
+covering the majority of the wall and the room\@s uneven corners.  The
+rough-hewn stone is cold and smells musty with age, the entire affair a
+claustrophobic experience.  Like the rest of the passage, there are no
+lights or windows to guide travelers safely through.  The sound of flapping
+wings can be heard down the hall.  The only apparent exit is back down the
+corridor to the south.  
+~
+~
+1
+0 524339 0
+D2
+The hidden hallway continues to the south.
+~
+~
+0 0 8544
+W 5 0 0
+Z 5 5
+P
+>rand_prog 1~
+if rand(35)
+        mpvaluerand 3 0 3
+        mpsetdata echo_line
+        mpnextdata $3
+        mpecho $d
+endif
+~
+>data_prog echo_line~
+The sound of flapping wings draws close as a tiny bat flits past.
+A faint shriek echoes off of the stone walls.
+The passage grows suddenly, eerily quiet.
+A quiet scratching sound echoes through the passage.
+~
+|
+S
+#8546
+~
+Warriors: Swordmasters: Swordmasters are warriors who have devoted their
+life to mastering one weapon - the blade.  Learned in ancient meditative
+techniques, they practice the art of ak\@anginta: thought-to-form, where the
+blade becomes an extension of self, and acquires form.  Using these \#Ginta\#
+or \#forms\#, a swordmaster becomes one of Avendar\@s most formidable
+opponents, displaying a mastery of his weapon unparalled by any other.  
+ 
+ 
+Some Swordmaster skills:
+ 
+ 
+Fourth Attack, Form of the Dragon, Form of the Bear, Form of the Panther
+~
+~
+1
+0 294912 0
+D0
+~
+~
+0 0 8547
+W 5 0 0
+Z 5 5
+S
+#8547
+~
+Warriors: Barbarians: Savage warriors of the plains, barbarians excel at
+brute force.  Rather than being formally trained in combat they instead
+acquire their lessons from the harsh realities of a life given over to rage
+and war.  Understanding little of civilization, they eschew the path of
+those who embrace the law and instead prefer to remain unbound by excessive
+rules or protocol.  Allowing their rage to consume them, they become
+formidable opponents.  
+ 
+Barbarian skills include:
+ 
+Hew, Savagery, Brutal Damage, Berserk
+~
+~
+1
+0 294912 0
+D0
+~
+~
+0 0 8548
+D2
+~
+~
+0 0 8546
+W 5 0 0
+Z 5 5
+S
+#8548
+~
+Warriors: Fighters: Fighters are by far the most common type of warriors
+in Avendar.  Trained in the rigors of a life spent campaigning, they are
+true soldiers.  Learned in the arts of combat strategy, fighters are also
+proficient in most of the known weapons of Avendar, even though their
+particular specialty are spears and polearms and other long handled weapons.
+ 
+ 
+Fighter abilities include: 
+ 
+Impale, Fend, Flank Attack, Hamstring
+~
+~
+1
+0 294912 0
+D0
+~
+~
+0 0 8549
+D2
+~
+~
+0 0 8547
+W 5 0 0
+Z 5 5
+S
+#8549
+~
+Warriors: Gladiators: Gladiators are warriors who have been trained for
+the arena fighting that is so common throughout Avendar.  Learned in a
+variety of dirty and showy techniques designed to incapacitate their
+opponents, they nonetheless are fearsome warriors all their own, often
+specializing in a wide assortment of exotic weapons. 
+ 
+ 
+Gladiator skills include:
+ 
+Gouge, Shin Kick, Entangle, Decapitate
+ 
+~
+~
+1
+0 294916 0
+D0
+~
+~
+0 0 8550
+D2
+~
+~
+0 0 8548
+W 5 0 0
+Z 5 5
+S
+#8550
+~
+Naturalists: Rangers: The class of rangers is composed of those who have
+made the forest their home, learning and adapting the ways of nature to
+their own needs.  Relying on their own considerable fighting prowess and
+their ability to survive in flourish in almost any sort of terrain, rangers
+often work to both protect their home as well as use it for their own ends. 
+ 
+ 
+Ranger abilities include:
+ 
+Charm animal, camoflauge, tan hide, poultice
+~
+~
+1
+0 294912 0
+D0
+~
+~
+0 0 8551
+D2
+~
+~
+0 0 8549
+W 5 0 0
+Z 5 5
+S
+#8551
+~
+The order of druids is dedicated to attaining oneness with nature. 
+Drawing their powers from the ancient magics of nature, druids act to
+protect the balance of nature, protecting the purity of the natural world. 
+Embracing from nature, they are said to be able to travel from forest to
+forest, drawing their strength from life itself.  
+ 
+Druid powers include:
+Moon Ray, Speak with Plants, Morph with Animal, Spirit of the Bear
+~
+~
+1
+0 32768 0
+D0
+~
+~
+0 0 8552
+D2
+~
+~
+0 0 8550
+W 5 0 0
+Z 5 5
+S
+#8552
+~
+Entertainers:
+Bards:
+ 
+~
+~
+1
+0 32768 0
+D0
+~
+~
+0 0 8553
+D2
+~
+~
+0 0 8551
+W 5 0 0
+Z 5 5
+S
+#8553
+~
+Entertainers:
+Gleemen
+~
+~
+1
+0 32768 0
+D0
+~
+~
+0 0 8554
+D2
+~
+~
+0 0 8552
+W 5 0 0
+Z 5 5
+S
+#8554
+~
+Scholars: Scholars are sages who have devoted their life to the study of
+the various elemental magics.  Their area of specialization is determined
+early in life, where they choose major and minor sphere of elemental
+influence.  
+ 
+Related Help Files:
+Help WATER
+Help SPIRIT
+Help AIR
+Help FIRE
+Help VOID
+Help EARTH
+ 
+Help GREATER
+Help MAJOR
+Help MINOR
+ 
+Help MAGIC
+~
+~
+1
+0 32768 0
+D0
+~
+~
+0 0 8555
+D2
+~
+~
+0 0 8553
+W 5 0 0
+Z 5 5
+S
+#8555
+~
+Templars: Templars are warriors who have trained in the ways and means of
+combining sword and spell.  Unlike scholars, who diversify in their studies,
+templars only major in one sphere of elemental influence.  Known far and
+wide as some of the greatest leaders Avendar has produced, templars are
+often seen leading the charge into battle, or directing the forces of
+varying factions.  Due to the amount of time spent studying other matters,
+the alignment and ethos of a templar must be resonant with their elemental
+sphere.  
+ 
+ 
+For more information on templars, see:
+ 
+Help WATER TEMPLARS
+Help SPIRIT TEMPLARS
+Help AIR TEMPLARS
+Help FIRE TEMPLARS
+Help VOID TEMPLARS
+Help EARTH TEMPLARS
+ 
+Help MAGIC
+Help GREATER, MAJOR, MINOR
+~
+~
+1
+0 32768 0
+D0
+~
+~
+0 0 8556
+D2
+~
+~
+0 0 8554
+W 5 0 0
+Z 5 5
+S
+#8556
+~
+~
+~
+1
+0 32768 0
+D2
+~
+~
+0 0 8555
+W 5 0 0
+Z 5 5
+S
+#8570
+A Lavish Enclosure~
+On the other side of the magic mouth\@s portal is a lavishly decorated
+chamber, which appears to be the highest level of the Tower of Testing.  The
+walls largely absent, the high roof held aloft by mighty stone columns.  A
+barrier of energy surrounds the enclosure, allowing the passing breeze and
+cool air of the Tower\@s great height.  The marble floor is covered in a
+rich, burgundy carpet, with gold-mounted orbs of light illuminating the
+room.  The view outside is little more than a cloudscape, with the sun and
+moons clearly visible to occupants.  The chamber continues to the south.  
+~
+~
+1
+0 131122 0
+D2
+A desk awaits to the south, covered in scrolls.
+~
+~
+0 0 8540
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+S
+
+
+
+#RESETS
+D 0 8521 3 8
+D 0 8523 1 8
+D 0 8537 2 71
+D 0 8538 0 71
+M 0 8500 7 8500 2
+M 0 8500 7 8501 1
+M 0 8500 7 8502 1
+M 0 8500 7 8503 2
+M 0 8500 7 8504 1
+M 0 8501 13 8507 1
+M 0 8501 13 8508 2
+M 0 8501 13 8509 2
+M 0 8501 13 8511 2
+M 0 8501 13 8512 2
+M 0 8501 13 8513 2
+M 0 8501 13 8514 2
+M 0 8504 7 8516 1
+M 0 8504 7 8517 1
+M 0 8504 7 8518 1
+M 0 8504 7 8519 1
+M 0 8504 7 8520 1
+M 0 8504 7 8521 1
+M 0 8504 7 8522 1
+M 0 8505 1 8527 1
+M 0 8515 1 8529 1
+M 0 8514 1 8530 1
+M 0 8512 1 8532 1
+M 0 8513 1 8533 1
+M 0 8502 1 8535 1
+M 0 8507 1 8537 1
+G 0 8510 0
+M 0 8511 1 8537 1
+M 0 8506 1 8538 1
+M 0 8508 1 8539 1
+M 0 8509 1 8540 1
+M 0 8503 1 8541 1
+M 0 8510 1 8541 1
+O 0 8512 0 8545
+S
+
+
+
+#GUILD
+#8540
+"grapple"
+"hamstring"
+"brutal damage"
+"savagery"
+"berserk"
+"impale"
+"hew"
+"bludgeon"
+"grapple"
+"bash"
+"dual wield"
+"sword"
+"spear"
+"hide"
+"haggle"
+"fast healing"
+"second attack"
+"dodge"
+"dagger"
+"knife"
+"dirt kicking"
+"trip"
+#0
+
+S
+
+
+#SHOPS
+0
+
+
+
+#$

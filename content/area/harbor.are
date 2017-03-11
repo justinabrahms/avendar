@@ -1,0 +1,7575 @@
+#AREADATA
+Name The Port of Earendam~
+Builders Cazel Chadraln Iacobos Transmitt Tzajai~
+VNUMs 23700 23799
+Credits [ 1 25] Cazel     The Port of Earendam~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 1 2 2
+Weave 5 0 0
+Shades 5 5
+Stone 85
+End
+
+
+
+#MOBILES
+V4 23701
+fisherman sailor man old one-legged~
+an old, one-legged fisherman~
+An old, one-legged fisherman sits in a chair.
+~
+A grizzled old sailor who has lost his right leg above the knee, this
+ancient fisherman now sits in his home, his mind slowly fading from reality.
+His withered limbs bear the scars of voyages past, and his eyes appear to be
+set in a permanent squint.  
+~
+human~
+water scholar~
+ADL 0 0 N 0
+10 5 3d22+96 0d0+0 2d5+5 bash~
+punch~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 20 -1
+AHMV ABCDEFGHIJK A medium flesh
+>data_prog fishstory~
+say I must have been twenty then, twenty or twenty one.
+say Aye, I was twenty one, and the village girls were all over me.
+2
+emote chortles gleefully.
+say I had to fight them off, though of course not too hard.
+emote pauses for a moment, lost in thought.
+say Well, anyway, my friends and I had a ship, a fine ship she was.
+say Not very large, but sturdy.  You could count on her.
+say Built her with my own two hands I did, cut the trees for her too.
+2
+say We did all our own work then, not like these days.
+emote shakes his head sadly.
+2
+emote gazes out into the distance as he continues.
+say The day was slightly overcast, with a brisk wind.
+say We sailed out into the sea, and let out our nets.
+say I had feeling though, and dropped my line as well.
+say The hours passed, and we were getting a good haul.
+say I stuck to my line though, cause my feeling was strong.
+say Ha, and then he came.  The big one, a real monster.
+say Grabbed my line and dragged the whole ship along.
+2
+say My friends tried to help bring him in, but I waved them off.
+emote waves his hands in demonstration.
+say If I couldn\@t bring him in, they wouldn\@t have been able to help.
+say He must have pulled her a good league before my line snapped.
+say Ha.  Disappeared completely after that, he did.
+say Never heard tell of him again, must have scared him off.
+say One of these days he\@ll appear again though, and I\@ll have him.
+2
+emote trails off, nodding to himself.
+mpvalueset 1 0
+~
+>rand_prog 100~
+if mobvalue(0) == 1
+else
+if mobvalue(1) == 1
+mpvalueset 2 0
+mpvalueset 2 $d
+if mobvalue(2) > 0
+mpnextdata
+loop 1 to $2
+$d
+mpnextdata
+endloop
+else
+$d
+mpnextdata
+endif
+else
+if rand(5)
+if ispc($r)
+look $r
+say Did I ever tell you about the time I almost caught the big one?
+mpforce granddaughter roll
+mpforce granddaughter say Not this story again.
+mpsetdata fishstory
+mpvalueset 1 1
+endif
+endif
+endif
+endif
+endif
+~
+>greet_prog 100~
+if mobvalue(0) == 1
+else
+if mobvalue(1) == 1
+else
+if ispc($n)
+if rand(5)
+mpechoat $n An old, one-legged fisherman turns his glassy gaze on you.
+mpechoaround $n An old, one-legged fisherman turns his glassy gaze on $N.
+if ismale($n)
+say Is that you, Frelden?  Where have you been, son?
+if mobhere(23702)
+mpforce granddaughter say That isn\@t my uncle.
+mpforce granddaughter say He was lost at sea thirty years ago, remember?
+mpechoat $n A thin, harried young woman turns towards you.
+mpechoaround $n A thin, harried young woman turns towards $N.
+mpforce granddaughter say Pardon him, kind sir.  His mind is frail.
+endif
+endif
+if isfemale($n)
+say Ahh, Jinanla my girl.  So good of you to visit your father.
+if mobhere(23702)
+mpforce granddaughter emote sighs sadly.
+mpforce granddaughter say My mother has been dead for 3 years.
+mpechoat $n A thin, harried young woman turns towards you.
+mpechoaround $n A thin, harried young woman turns towards $N.
+mpforce granddaughter say Excuse him, good lady.  His mind is frail.
+endif
+endif
+endif
+endif
+endif
+endif
+~
+|
+V4 23702
+woman young thin harried slender granddaughter~
+a thin, harried young woman~
+A slender young woman with a harried appearance tends the fire.
+~
+A young woman with a slender build, this woman has a harried look as she
+tries to care for her elderly, cripple grandfather.  Currently, she stands
+by the fire keeping the fire going while preparing a pot of fish stew.  
+~
+human~
+water scholar~
+ADL 0 0 N 0
+10 5 3d22+96 0d0+0 2d5+5 bash~
+punch~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 20 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if rand(1)
+emote stirs the pot.
+else
+if rand(1)
+emote samples the stew.
+say Not... quite yet.
+endif
+endif
+~
+|
+V4 23703
+watchman watch man patrol patroller Earendam eguard epatrol ewatcher ewatch~
+an Earendam watchman~
+An Earendam watchman patrols the port.
+~
+Wearing the formal armor of a member of the city watch, this burly man
+patrols the port of Earendam.  
+~
+human~
+water scholar~
+AG B JZ N 0
+30 25 10d80+700 0d0+0 5d6+15 slash~
+slash~
+-9 -9 -9 0
+FHK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 5 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23704
+boy child small~
+a small boy~
+A small boy plays on the beach.
+~
+A small child with tanned skin runs along the beach, playing at the edge
+of the waves.  Caught up in his play, he seems oblivious to the world around
+him.  
+~
+human~
+water scholar~
+AGL 0 0 G 0
+5 2 1d17+42 0d0+0 2d3+2 bash~
+punch~
+7 7 7 8
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 10 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if rand(1)
+emote splashes in the waves.
+else
+if rand(1)
+emote laughs happily.
+else
+if rand(1)
+emote yells excitedly.
+endif
+endif
+endif
+~
+|
+V4 23705
+girl child small~
+a small girl~
+A small girl plays on the beach.
+~
+A small girl plays at the edge of the ocean, running happily through the
+waves.  Caught up in her play, she seems oblivious to the world around her. 
+~
+human~
+water scholar~
+AGL 0 0 G 0
+5 2 1d17+42 0d0+0 2d3+2 bash~
+punch~
+7 7 7 8
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 10 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+if rand(1)
+emote screams excitedly.
+else
+if rand(1)
+emote splashes in the waves.
+else
+if rand(1)
+emote giggles happily.
+endif
+endif
+endif
+~
+|
+V4 23706
+Losatres Velobran sergeant man~
+Sergeant Losatres~
+Sergeant Velobran Losatres sits behind a small desk.
+~
+Through years of service within the Earendam watch, Sergeant Velobran
+Losatres earned the position of leader of the watch stationed in the port. 
+A portly, middle-aged man of medium height garbed in the uniform of the
+watch, he sits behind a small desk, going over some paperwork.  
+~
+human~
+water scholar~
+ADLT B F N 0
+35 18 10d110+600 0d0+0 8d5+14 bash~
+punch~
+-12 -12 -12 -1
+CEFIK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 5 -1
+AHMV ABCDEFGHIJK A medium flesh
+>speech_prog p bandits~
+say Bandits?  In the port?
+say Impossible.  I have heard nothing of the kind.
+say I would ask that you forget whatever rumor you heard.
+~
+>speech_prog p bandit~
+say Bandits?  In the port?
+say Impossible.  I have heard nothing of the kind.
+say I would ask that you forget whatever rumor you heard.
+~
+>speech_prog p Vaid~
+say Are you talking about Fedrol Vaid the tavernkeeper?
+say I dislike the man intensely.
+say He refuses to let my men patrol his tavern.
+say Who knows what miscreants are in there.
+~
+>speech_prog p Fedrol~
+say Are you talking about Fedrol Vaid the tavernkeeper?
+say I dislike the man intensely.
+say He refuses to let my men patrol his tavern.
+say Who knows what miscreants are in there.
+~
+>speech_prog p Sanedros~
+say The harbormaster?
+say He is an honest man, and knows much about the port.
+~
+>speech_prog p Grendolen~
+say The harbormaster?
+say He is an honest man, and knows much about the port.
+~
+>speech_prog p harbormaster~
+say The harbormaster?
+say He is an honest man, and knows much about the port.
+~
+>speech_prog p leader~
+say I am afraid I know nothing of the leader of the smugglers.
+say You should hunt around for clues.
+~
+>speech_prog p smugglers~
+say Do you speak of the smugglers which operate within the port?
+say They are well-organized and have managed to avoid my men.
+say If you wish to help the watch, you could kill their leader.
+say Though I cannot reward you, you would have my thanks.
+mpremember $n
+~
+>speech_prog p smuggler~
+say Do you speak of the smugglers which operate within the port?
+say They are well-organized and have managed to avoid my men.
+say If you wish to help the watch, you could kill their leader.
+say Though I cannot reward you, you would have my thanks.
+mpremember $n
+~
+>give_prog head bodypart leader~
+tell $n Ahh, $N, you have done it.
+tell $n This will not stop the smugglers, of course.
+tell $n It will hamper them, however.
+tell $n And for that, my thanks.
+mpjunk head
+if isbitset($n) == 23701
+else
+mpxp $n 1000
+mpbitset $n 23701 1
+endif
+~
+>greet_prog 100~
+if isbitset($n) == 23701
+else
+if remembers($n)
+else
+if ispc($n)
+if islawful($n)
+tell $n Greetings to you, $N.
+tell $n I have a request of you, should you wish it.
+tell $n There is a band of smugglers which operates within the port.
+tell $n So far they have managed to avoid my men.
+tell $n If you would, please kill the leader of the smugglers.
+tell $n Bring me his head as proof of your success.
+mpremember $n
+endif
+endif
+endif
+endif
+~
+|
+V4 23707
+dockhand man~
+a dockhand~
+A dockhand stands here, helping unload cargo.
+~
+A large, muscular man with tanned skin, this dockhand helps unload the
+ships which come into the port.  
+~
+human~
+water scholar~
+AGL 0 0 N 0
+15 7 5d30+161 0d0+0 3d5+8 bash~
+punch~
+0 0 0 5
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 30 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if rand(1)
+emote struggles with a crate.
+else
+if rand(1)
+emote pauses to wipe the sweat from his forehead.
+else
+if rand(1)
+emote laughs loudly as he works.
+endif
+endif
+endif
+~
+|
+V4 23708
+dockhand man~
+a dockhand~
+A dockhand stands here, organizing the warehouse.
+~
+A large, muscular man with tanned skin, this dockhand helps to organize
+the warehouse.  
+~
+human~
+water scholar~
+AGY 0 0 N 0
+15 7 5d30+161 0d0+0 3d5+8 bash~
+punch~
+0 0 0 5
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 30 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if rand(1)
+emote grunts with exertion.
+else
+if rand(1)
+emote straighens a pile of goods.
+endif
+endif
+~
+|
+V4 23709
+workman worker man~
+a workman~
+A workman moves about the port.
+~
+Clothed in drab but comfortable garb, this workman is a fit man of
+average build and height.  His skin tanned from working outside, he moves
+calmly yet determinedly through the bustle of the port, going about his
+business.  
+~
+human~
+water scholar~
+AGW 0 0 N 0
+10 5 3d22+96 0d0+0 2d5+5 bash~
+punch~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 30 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if rand(1)
+emote whistles softly as he walks along.
+else
+if rand(1)
+if ispc($r)
+mpechoat $r While walking past, $I bumps into you.
+mpechoat $r Startled, he nods a quick apology to you.
+mpechoaround $r While walking past, $I bumps into $R.
+mpechoaround $r Starled, he nods a quick apology to $R.
+endif
+endif
+endif
+~
+|
+V4 23710
+merchant~
+a merchant~
+A merchant walks through the port.
+~
+Dressed in finely-cut, well-made clothes, this merchant moves through
+Earendam\@s port.  Walking quickly, he goes about his business.  
+~
+human~
+water scholar~
+AGW 0 0 N 0
+12 6 4d26+120 0d0+0 2d6+6 bash~
+punch~
+2 2 2 6
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23711
+merchant~
+a merchant~
+A merchant supervises the unloading of his cargo.
+~
+Dressed in finely-cut, well-made clothes, this merchant stands restlessly
+on the docks, watching the dockhands unload his cargo.  
+~
+human~
+water scholar~
+AGL 0 0 N 0
+12 6 4d26+120 0d0+0 2d6+6 bash~
+punch~
+2 2 2 6
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if rand(1)
+emote winces.
+say Please be careful with that.
+endif
+~
+|
+V4 23712
+baby child small~
+a baby~
+A small child lies in a crib.
+~
+A young child wrapped in blankets, this baby lies in a small wooden crib,
+asleep.  Small sucking sounds arise from the crib, as he sucks his thumb
+while he sleeps.  
+~
+human~
+water scholar~
+AB 0 0 G 0
+1 1 1d2+6 0d0+0 1d1+0 bash~
+punch~
+9 9 9 9
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sleep sleep male 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+V4 23713
+mother woman young fishmother~
+a young mother~
+A young woman watches over her child.
+~
+A young woman of the fishing village, this woman devotes her time to
+caring for her young babe.  She sits in a chair beside his crib, gently
+rocking it.  
+~
+human~
+water scholar~
+ADL 0 0 N 0
+10 5 3d22+96 0d0+0 2d5+5 bash~
+punch~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit stand female 20 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23714
+fisherman man~
+a fisherman~
+A fisherman goes about his business.
+~
+A slender, lanky man with tanned, weathered skin, this fisherman walks
+unhurriedly, going about his business.  As he walks, he admires the view
+around him and whistles quietly to himself.  
+~
+human~
+water scholar~
+AG 0 0 N 0
+12 6 4d26+120 0d0+0 2d6+6 bash~
+punch~
+2 2 2 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23715
+fisherman man~
+a fisherman~
+A fisherman unloads a fishing boat.
+~
+A muscular man with tanned, weathered skin, this fisherman is busy
+unloading a small fishing boat.  Standing besides the boat, he attempts to
+haul the fish-laden nets onto the docks.  
+~
+human~
+water scholar~
+AGL 0 0 N 0
+12 6 4d26+120 0d0+0 2d6+6 bash~
+punch~
+2 2 2 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23716
+fisherman man~
+a fisherman~
+A fisherman tends his nets.
+~
+A muscular man with tanned, weathered skin, this fisherman sits in a
+large fishing boat, tending his nets.  As he works, he chats amiably with
+his companions.  
+~
+human~
+water scholar~
+AGL 0 0 N 0
+12 6 4d26+120 0d0+0 2d6+6 bash~
+punch~
+2 2 2 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 50 -1
+AHMV ABCDEFGHIJK A medium flesh
+>load_prog 100~
+stand boat
+~
+|
+V4 23717
+barmaid maid~
+a barmaid~
+A barmaid moves about the room, serving the tavern\@s patrons.
+~
+A thin, youthful woman, this barmaid moves hurriedly through the common
+room.  Carrying a tray of drinks, she goes from table to table, serving the
+patrons of the tavern.  
+~
+human~
+water scholar~
+AGY 0 0 N 0
+8 4 6d10+60 8d10+100 2d4+4 bash~
+slap~
+4 4 4 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 60 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23718
+grendolen sanedros harbormaster~
+Grendolen Sanedros~
+The harbormaster sits at a large desk.
+~
+Short of stature with a lean frame, Grendolen Sanedros, the harbormaster
+of Earendam\@s port, has begun to show the signs of advancing age.  Streaks
+of grey have appeared amid his otherwise jet black, shortly cut hair, and
+small wrinkles crease his once unblemished skin.  He is dressed in well-made
+clothing of fine materials, and maintains a neat appearance.  Though a
+member of a very minor house in Earendam, Grendolen achieved his position
+through his efficient management skills, rather than through his
+connections.  
+~
+human~
+water scholar~
+ADL B 0 N 0
+25 13 9d45+500 25d10+100 4d6+13 bash~
+punch~
+-5 -5 -5 2
+FKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit stand male 30 -1
+AHMV ABCDEFGHIJK A medium flesh
+>speech_prog p alensha~
+say Are you traveling to Alensha?
+say The runesail-ship Tural\@s Icewing provides transporation from the harbor.
+say Wait at the sign and pay the first mate if you\@d like to board.
+~
+>speech_prog p Orgilien~
+say Do you wish to hear about Orgilien the minstrel?
+say I am afraid I have little information to offer.
+say He is often to be found about the port, plying his trade.
+~
+>speech_prog p Mindilast~
+say Mindilast?  Ahh, the caladaran scholar.
+say He does much business in the port, selling enchanted wares.
+say Myself, I do not place trust in such magical goods.
+say But to each his own, I suppose.
+~
+>speech_prog p Vaid~
+say You wish to hear about Fedrol Vaid?
+say He is the owner of the Bilge Rat Tavern.
+say I do not know the man well, so I cannot say more.
+~
+>speech_prog p Fedrol~
+say You wish to hear about Fedrol Vaid?
+say He is the owner of the Bilge Rat Tavern.
+say I do not know the man well, so I cannot say more.
+~
+>speech_prog p sergeant~
+say Do you speak about the sergeant of the watch?
+say Sergeant Losatres is a good man, and an experienced watchman.
+say He and his men work hard to protect the port.
+~
+>speech_prog p Velobran~
+say Do you speak about the sergeant of the watch?
+say Sergeant Losatres is a good man, and an experienced watchman.
+say He and his men work hard to protect the port.
+~
+>speech_prog p Losatres~
+say Do you speak about the sergeant of the watch?
+say Sergeant Losatres is a good man, and an experienced watchman.
+say He and his men work hard to protect the port.
+~
+>speech_prog p Dandelon~
+say You wish to know about Filibrin Dandelon?
+say He is the master shipwright of our shipyards, and a great man.
+say His love for his model ships is his only vice.
+~
+>speech_prog p Filibrin~
+say You wish to know about Filibrin Dandelon?
+say He is the master shipwright of our shipyards, and a great man.
+say His love for his model ships is his only vice.
+~
+>speech_prog p Pedynin~
+say Pedynin?  I do not recognize the name.
+say Oh, you must mean that aelin merchant.
+say I believe he is friends with Fedrol Vaid, owner of the Bilge Rat Tavern.
+~
+>speech_prog p shipyards~
+say You wish to hear about Earendam\@s shipyards?
+say Our shipyards feature some of Avendar\@s finest shipwrights.
+say Filibrin Dandelon is the most well-known shipwright of our age.
+say Perhaps he could tell you more, if you can distract him from his models.
+~
+>speech_prog p shipyard~
+say You wish to hear about Earendam\@s shipyards?
+say Our shipyards feature some of Avendar\@s finest shipwrights.
+say Filibrin Dandelon is the most well-known shipwright of our age.
+say Perhaps he could tell you more, if you can distract him from his models.
+~
+>speech_prog p tavern~
+say Do you speak of the Bilge Rat Tavern here in the port?
+say It is an old establishment, though it attracts an unsavory crowd.
+say Fedrol Vaid keeps the watch out, claiming it hurts business.
+say He could certainly tell you more.
+~
+>speech_prog p rumors~
+say You wish to know about the rumors?
+say Well, some dockhands claim the southern warehouse is haunted.
+say Items stored in the warehouse being moved or disappearing.
+say I dismissed the tales as mere fiction, but maybe there is something to it.
+~
+>speech_prog p rumor~
+say You wish to know about the rumors?
+say Well, some dockhands claim the southern warehouse is haunted.
+say Items stored in the warehouse being moved or disappearing.
+say I dismissed the tales as mere fiction, but maybe there is something to it.
+~
+>speech_prog p bandits~
+say Bandits?  Surely you do not think there are bandits here in the port?
+say However, I have heard strange rumors recently.
+~
+>speech_prog p bandit~
+say Bandits?  Surely you do not think there are bandits here in the port?
+say However, I have heard strange rumors recently.
+~
+>speech_prog p smugglers~
+say Do you speak of the smugglers which haunt this port?
+say The watch has tried hard to cease their work here.
+say Alas, they are quite well organized.
+say Perhaps you should ask the watch sergeant about them.
+~
+>speech_prog p smuggler~
+say Do you speak of the smugglers which haunt this port?
+say The watch has tried hard to cease their work here.
+say Alas, they are quite well organized.
+say Perhaps you should ask the watch sergeant about them.
+~
+>speech_prog p lighthouse~
+say Do you wish to know about the lighthouse?
+say It is a grand structure, and crucial to the port\@s success.
+say You should ask the lighthouse keeper if you wish to know more.
+~
+>rand_prog 100~
+if rand(2)
+emote shuffles some papers.
+endif
+~
+|
+V4 23719
+Filibrin Dandelon shipwright~
+Filibrin Dandelon~
+Filibrin Dandelon works on a model ship.
+~
+A tall man with broad shoulders and a muscular frame, Filibrin Dandelon
+is a man approaching his middle years, no longer young but still free from
+the marks of advancing age.  Curly brown hair covers the top of his head,
+and a short beard rests on his chin.  The master shipwright of the port,
+Filibrin is in charge of running the shipyards, taking orders from customers
+and overseeing the men building the ships.  Standing in his office, he
+busies himself cleaning one of his model ships.  
+~
+human~
+water scholar~
+ADL B 0 N 0
+25 13 9d45+500 25d10+100 4d6+13 bash~
+punch~
+-5 -5 -5 2
+CFK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 60 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>speech_prog p shipyards~
+emote looks up from his work.
+esay \@says distractedly\@ Hmmm?  The shipyards?
+say Ahh, well, if you wish a ship built, we could probably build it.
+say Of course, right now we have a large backlog of contracts.
+say It will be some time before we will be able to take on new orders.
+~
+>speech_prog p shipyard~
+emote looks up from his work.
+esay \@says distractedly\@ Hmmm?  The shipyards?
+say Ahh, well, if you wish a ship built, we could probably build it.
+say Of course, right now we have a large backlog of contracts.
+say It will be some time before we will be able to take on new orders.
+~
+>rand_prog 100~
+if rand(1)
+emote carefully cleans a model ship.
+endif
+~
+>death_prog 100~
+if iscarrying($i) == 23740
+mpjunk model
+mpoload 23741 on $i
+endif
+~
+|
+V4 23720
+sailor~
+a sailor~
+A sailor strolls through the port.
+~
+A muscular man of average height, this is sailor is dressed in the
+colorful garb of a seaman.  Having only recently arrived in port, he walks
+as if on shipboard as he wanders the port, enjoying a brief respite.  
+~
+human~
+water scholar~
+AG 0 0 N 0
+20 10 8d40+220 20d10+100 3d7+10 bash~
+punch~
+-2 -2 -2 4
+FK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 40 -1
+AHMV ABCDEFGHIJK A medium flesh
+>greet_prog 100~
+if rand(25)
+if isfemale($n)
+tip $n
+endif
+endif
+~
+|
+V4 23721
+Fedrol Vaid tavernkeeper~
+Fedrol Vaid~
+The tavernkeeper stands behind the bar.
+~
+The owner of the Bilge Rat Tavern, Fedrol Vaid stands behind the bar,
+mixing drinks.  Though of only middling height, he is quite heavyset, with a
+wide frame and a full, round stomach.  His dark brown hair is cut short,
+revealing a large bald spot on the top of his head.  Several days of grizzle
+rest on his cheeks, and his clothes are stained with splashes of liquid.  
+~
+human~
+water scholar~
+ADGL B 0 N 0
+20 10 8d40+220 20d10+100 3d7+10 bash~
+punch~
+-2 -2 -2 4
+EFKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 20 -1
+AHMV ABCDEFGHIJK A medium flesh
+>speech_prog p Kelithys~
+say You want to know about Kelithys?
+say He likes his drink, not that I can complain, and has an eye for women.
+say I hear he claims to have been quite an adventurer when he was younger.
+say Exploring the wine selection, no doubt.
+~
+>speech_prog p bandits~
+say You are talking about bandits here in the port?
+say I have heard there are some, but beyond that I know nothing.
+~
+>speech_prog p bandit~
+say You are talking about bandits here in the port?
+say I have heard there are some, but beyond that I know nothing.
+~
+>speech_prog p Pedynin~
+say Pedynin?  I know him.
+say Haven\@t seen him in quite some time.
+say I believe he is currently in the savannah on some business.
+~
+>speech_prog p tavern~
+say Heh.  You wish to hear about my tavern?
+say This tavern ain\@t the nicest tavern around, but it is the best.
+say My wife\@s cooking is top rate, and the drinks are good.
+say Even have a room for rent, though haven\@t had a renter in ages.
+~
+>speech_prog p smugglers~
+say Oh, you wish to know about the smugglers?
+say If they want to use my services, I see no reason to refuse.
+mpechoat $n Fedrol Vaid leans towards you conspiratorily.
+mpechoaround $n Fedrol Vaid leans towards $N conspiratorily.
+esay whispers I have heard the leader of the smugglers comes here of a night.
+~
+>speech_prog p smuggler~
+say Oh, you wish to know about the smugglers?
+say If they want to use my services, I see no reason to refuse.
+mpechoat $n Fedrol Vaid leans towards you conspiratorily.
+mpechoaround $n Fedrol Vaid leans towards $N conspiratorily.
+esay whispers I have heard the leader of the smugglers comes here of a night.
+~
+>rand_prog 100~
+if rand(1)
+emote wipes a spill off the bartop.
+else
+if rand(1)
+emote polishes an empty glass.
+endif
+endif
+~
+|
+V4 23722
+keeper lighthouse man middle-aged~
+a middle-aged man~
+A middle-aged man gazes idly out a window.
+~
+A middle-aged man with short brown hair which has begun to gray at the
+ends, the lighthouse keeper is a tall, thin man with a slight stoop in his
+posture.  He stands next a wide window, gazing out idly upon the sea,
+occasionally checking on the fire which burns in the center of the room.  
+~
+human~
+water scholar~
+ADGL 0 0 N 0
+20 10 8d40+220 20d10+100 3d7+10 bash~
+punch~
+-2 -2 -2 4
+FIKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 80 -1
+AHMV ABCDEFGHIJK A medium flesh
+>speech_prog p troubles~
+say You wish to know about my troubles?
+emote sighs heavily.
+say By rights my son should be training to take over for me some day.
+say But the gods willed he should be borne crippled.
+say Even the scholars of Salyra can do nothing.
+~
+>speech_prog p son~
+say You wish to know about my son?
+emote sighs heavily.
+say By rights he should be training to take over for me some day.
+say But the gods willed he should be borne crippled.
+say Even the scholars of Salyra can do nothing.
+~
+>speech_prog p lighthouse~
+say You wish to know about the lighthouse?
+say This lighthouse was built after the War of Night.
+say You will find no grander lighthouse in Avendar.
+esay \@says proudly\@ My family has kept it for five generations.
+say Sadly, it will pass from our hands, as my son cannot take over.
+say But, I should not bother you with my troubles.
+~
+>greet_prog 100~
+if rand(30)
+if ispc($n)
+mpechoat $n A middle-aged man turns to look at you.
+mpechoaround $n A middle-aged man gazes interestedly at $N.
+endif
+endif
+~
+>rand_prog 100~
+if rand(1)
+emote adds fuel to the fire.
+endif
+~
+|
+V4 23723
+smuggler man~
+a smuggler~
+A darkly-clothed man unloads a small boat.
+~
+A muscular man clothed in dark apparrel, this smuggler unloads a small
+boat.  Working by the light of a mostly hooded lantern, he moves silently,
+attemptly to avoid attention.  
+~
+human~
+water scholar~
+ADL 0 L N 0
+22 11 9d41+391 22d10+100 3d7+11 slash~
+slash~
+-4 -4 -4 2
+CFKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 30 -1
+AHMV ABCDEFGHIJK A medium flesh
+>time_prog 3~
+mpwizi
+~
+>time_prog 22~
+mpunwizi
+~
+|
+V4 23724
+bouncer alatharya alath~
+an alatharya bouncer~
+An alatharya bouncer scans the common room for trouble.
+~
+Tall and muscular, this alatharya works as a bouncer for the Bilge Rat
+Tavern.  He quietly scans the room, watching the patrons and looking for
+signs of trouble.  
+~
+alatharya~
+water scholar~
+AGY 0 Z N 0
+22 11 9d41+391 22d10+100 3d7+11 bash~
+punch~
+-4 -4 -4 2
+CEFKW 0
+26 0 0 0 0 20 0 0 0 0 0 0 0 0 -20 0 -20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 70 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if rand(1)
+emote folds his arms and stares around the room.
+else
+if remembers($r)
+if rand(2)
+mpechoat $r An alatharya bouncer glares suspiciously at you.
+mpechoaround $r An alatharya bouncer glares suspiciously at $R.
+endif
+else
+if ispc($r)
+if isfighting($r)
+mpremember($r)
+endif
+endif
+endif
+endif
+~
+|
+V4 23725
+sailor drunk drunken~
+a drunken sailor~
+A sailor sits at one of the tavern\@s tables.
+~
+A somewhat muscular man dressed in sailors\@ garb, this sailor sits at one
+of the tavern\@s tables.  As he sits, he drinks and talks with those around
+him.  
+~
+human~
+water scholar~
+AGL 0 0 N 0
+18 9 5d51+195 18d10+100 3d6+9 bash~
+punch~
+-1 -1 -1 4
+FKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit stand male 20 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+if rand(1)
+emote rocks unsteadily in his chair, nearly falling over.
+else
+if rand(1)
+emote begins to hum tunelessly.
+else
+if rand(1)
+emote signals for another beer.
+endif
+endif
+endif
+~
+|
+V4 23726
+workman man drunk drunken~
+a drunken workman~
+A workman relaxes after a day\@s work.
+~
+An ordinary-looking man of somewhat muscular build, this workman relaxes
+in the tavern after a day\@s work.  Dressed in plain garb, he sits at one of
+the tavern\@s many tables.  
+~
+human~
+water scholar~
+AGL 0 0 N 0
+8 4 6d10+60 8d10+100 2d4+4 bash~
+punch~
+4 4 4 6
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit stand male 30 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if rand(1)
+emote calls out for another mug.
+else
+if rand(1)
+if mobhere(23717)
+emote winks suggestively at a barmaid.
+endif
+endif
+endif
+~
+|
+V4 23727
+woman middle-aged wife~
+a middle-aged woman~
+A middle-aged woman sits in chair, knitting.
+~
+A middle-aged woman with light brown hair that hangs halfway to her
+waist, the lighthouse keeper\@s wife is slightly heavy, and a few wrinkles
+have begun to cross her features.  She sits within her home in the
+lighthouse, busying herself with knitting.  
+~
+human~
+water scholar~
+ADGL 0 0 N 0
+10 5 3d22+96 10d10+100 2d5+5 pierce~
+stab~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit stand female 30 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23728
+boy son cripple crippled~
+a crippled boy~
+A crippled boy sits gazing out a window.
+~
+A young boy with short, sandy brown hair and dressed in plain clothes,
+the lighthouse keeper\@s son is crippled, his left leg noticably shorter than
+the right.  Unable to navigate the lighthouse\@s stairs without assistance,
+he sits in a chair by one of the windows, staring at the world outside.  
+~
+human~
+water scholar~
+ADGL 0 0 G 0
+5 2 1d17+42 5d10+100 2d2+3 bash~
+punch~
+7 7 7 8
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit sit male 10 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if rand(1)
+emote plays a soft, sorrowful tune.
+else
+if rand(1)
+emote sighs as he gazes out the window.
+endif
+endif
+~
+|
+V4 23729
+worker shipyard ship~
+a shipyard worker~
+A shipyard worker works on a ship.
+~
+A muscular man of average height, this workman toils on one of the ships
+which stand in the shipyard.  Numerous small tools and other items fill the
+pockets of his clothes, and several larger tools lay scattered around him. 
+He works silently and patiently, concentrating on his tasks.  
+~
+human~
+water scholar~
+ADGL 0 0 N 0
+18 9 5d51+195 18d10+100 3d6+9 bash~
+punch~
+-1 -1 -1 4
+FKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 30 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+if rand(1)
+emote stops to wipe the sweat from his brow.
+else
+if rand(1)
+emote hums softly as he works.
+endif
+endif
+~
+|
+V4 23730
+merchant thin~
+a thin merchant~
+A thin merchant stands within the market, selling his wares.
+~
+A thin man of average height, this merchant is well-dressed and maintains
+a trim appearance.  He stands inside the Sea Market, trading in food and
+fine goods.  
+~
+human~
+water scholar~
+ADGL 0 0 N 0
+20 10 8d40+220 20d10+100 3d7+10 bash~
+punch~
+-2 -2 -2 4
+FKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if rand(1)
+esay calls Get your fish here.
+endif
+~
+|
+V4 23731
+merchant quest wizi wiziquest~
+a merchant~
+A wizi merchant quest mob stands here, lining up his sights.
+~
+A plain looking human, this wizimob gazes around, looking to hand out
+quests.  
+~
+human~
+water scholar~
+AB B L N 0
+55 28 36d118+1147 55d10+100 7d8+28 none~
+~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>speech_prog p yes!~
+if isbitset($n) == 23700
+else
+if remembers($n)
+mpecho {YA merchant say \@My thanks.\@
+if rand(100)
+mpecho {YA merchant says \@I have a letter for Pedynin, an aelin merchant.\@
+mpecho {YA merchant says \@Unforunately, I know not where he may be.\@
+mpecho {YA merchant says \@Please, find him and give him this.\@{x
+mpechoat $n A merchant gives you a sealed letter.
+mpechoaround $n A merchant gives $N a sealed letter.
+mpoload 23731 on $n
+mpbitset $n 23700 1
+endif
+endif
+endif
+~
+>speech_prog p yes.~
+if isbitset($n) == 23700
+else
+if remembers($n)
+mpecho {YA merchant say \@My thanks.\@
+if rand(100)
+mpecho {YA merchant says \@I have a letter for Pedynin, an aelin merchant.\@
+mpecho {YA merchant says \@Unforunately, I know not where he may be.\@
+mpecho {YA merchant says \@Please, find him and give him this.\@{x
+mpechoat $n A merchant gives you a sealed letter.
+mpechoaround $n A merchant gives $N a sealed letter.
+mpoload 23731 on $n
+mpbitset $n 23700 1
+endif
+endif
+endif
+~
+>speech_prog p yes~
+if isbitset($n) == 23700
+else
+if remembers($n)
+mpechoat $n {YA merchant say \@My thanks.\@
+if rand(100)
+mpechoat $n {YA merchant says \@I have a letter for Pedynin, an aelin merchant.\@
+mpechoat $n {YA merchant says \@Unforunately, I know not where he may be.\@
+mpechoat $n {YA merchant says \@Please, find him and give him this.\@{x
+mpechoat $n A merchant gives you a sealed letter.
+mpechoaround $n A merchant gives $N a sealed letter.
+mpoload 23731 on $n
+mpbitset $n 23700 1
+endif
+endif
+endif
+~
+>greet_prog 100~
+if ispc($n)
+if remembers($n)
+else
+if isbitset($n) == 23700
+else
+mpechoat $n A merchant comes up to you out of the crowd.
+mpechoat $n {YA merchant says to you \@You look like the person I need.\@
+mpechoat $n {YA merchant says \@Will you help me?\@{x
+mpremember $n
+endif
+endif
+endif
+~
+|
+V4 23732
+smuggler man leader smuggerleader~
+the smuggler leader~
+A darkly clothed man sits at a small booth.
+~
+A tall man with a muscular build, this smuggler is dressed in plain, dark
+clothing.  He sits at a small booth, occasionally glancing around him
+towards the entrance to the tavern.  
+~
+human~
+water scholar~
+ADGL 0 L N 0
+25 13 9d45+500 25d10+100 4d6+13 slash~
+slash~
+-5 -5 -5 2
+FIKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit stand male 50 -1
+AHMV ABCDEFGHIJK A medium flesh
+>death_prog 100~
+mpecho The smuggler leader\@s severed head plops on the ground.
+mpoload 23743 in room
+~
+>rand_prog 100~
+if iswizi($i)
+else
+if rand(1)
+if mobhere(23733)
+emote whispers quietly to a short merchant.
+mpforce darkmerchant nod smugglerleader
+endif
+else
+if rand(1)
+emote glances towards the tavern\@s entrance.
+endif
+endif
+endif
+~
+>load_prog 100~
+if istime() >=23
+mpunwizi
+else
+if istime() <2
+mpunwizi
+endif
+endif
+~
+>time_prog 2~
+mpecho A darkly clothed man looks up towards the tavern entrance.
+mpecho Standing up, he signals to a man standing by the door.
+if mobhere(23733)
+esay \@says to a short merchant\@ It is time for me to leave.
+esay \@says to a short merchant\@ If I find it, I will let you know.
+nod darkmerchant
+endif
+mpecho A darkly clothed man heads out of the tavern.
+mpwizi
+~
+>time_prog 23~
+mpecho A darkly clothed man makes his way to this corner of the room.
+if mobhere(23733)
+nod darkmerchant
+mpecho A darkly clothed man joins a short merchant at his booth.
+else
+mpecho A darkly clothed man sits down at a small booth.
+endif
+mpunwizi
+~
+|
+V4 23733
+merchant darkmerchant short~
+a short merchant~
+A short merchant sits at a small booth.
+~
+A short, somewhat heavy-set man dressed in somber, well-made clothing,
+this merchant maintains a neat and trim appearance.  Seated at one of the
+tavern\@s booths, he slowly consumes the meal which sits on the table in
+front of him.  
+~
+human~
+water scholar~
+ADL B L N 0
+20 10 8d40+220 20d10+100 3d7+10 bash~
+punch~
+-2 -2 -2 4
+FIK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit stand male 80 -1
+AHMV ABCDEFGHIJK A medium flesh
+>trigger_prog 100~
+if ispc($n)
+if isbitset($n) == 23704
+say My wife, you found her!
+say I don\@t think I can ever repay you.
+say Please, take this as a reward.
+mpoload 23749
+give bracelet $n
+if isbitset($n) == 23705
+else
+mpxp $n 1500
+mpbitset $n 23705 1
+endif
+mpbitset $n 23704 0
+mpforce merchantwife mpstopfollow
+mpecho Taking his wife\@s arm, a short merchant leaves the tavern.
+mpforce merchantwife mpgoto 23700
+mpforce merchantwife mpwizi
+mpwizi
+mpgoto 23700
+endif
+endif
+~
+>give_prog ring delicate diamond~
+if isbitset($n) == 23706
+emote shakes his head.
+give delicate $n
+else
+emote looks at a delicate diamond ring.
+emote gulps.
+esay gasps She\@s... dead?
+emote shakes his head.
+say If only I could have paid....
+say Here, you can keep this.
+say It would have too many bad memories for me.
+give delicate $n
+if isbitset($n) == 23705
+else
+mpxp $n 750
+mpbitset $n 23705 1
+endif
+mpbitset $n 23706 1
+endif
+~
+>speech_prog p yes!~
+if remembers($n)
+say My eternal thanks to you.
+say You see, my wife was kidnapped by bandits.
+say They have demanded a ransom, which I fear I can\@t pay.
+say From what I have learned, she is being held somewhere nearby.
+say Please, find their hideout and rescue my wife.
+endif
+~
+>speech_prog p yes.~
+if remembers($n)
+say My eternal thanks to you.
+say You see, my wife was kidnapped by bandits.
+say They have demanded a ransom, which I fear I can\@t pay.
+say From what I have learned, she is being held somewhere nearby.
+say Please, find their hideout and rescue my wife.
+endif
+~
+>speech_prog p yes~
+if iswizi($i)
+else
+if remembers($n)
+say My eternal thanks to you.
+say You see, my wife was kidnapped by bandits.
+say They have demanded a ransom, which I fear I can\@t pay.
+say From what I have learned, she is being held somewhere nearby.
+say Please, find their hideout and rescue my wife.
+endif
+endif
+~
+>give_prog scroll sealed questscroll~
+emote visibly pales.
+esay croaks Another letter.
+emote opens the sealed scroll and reads the contents.
+say She is still alive.
+say Please, I beg your assistance.  Will you help me?
+mppurge questscroll
+mpremember $n
+mpbitset $n 23750 1
+~
+>rand_prog 100~
+if iswizi($i)
+else
+if mobhere(23744)
+stand
+mproomcmd mptrigger all
+else
+if rand(1)
+emote eats a bite of fish.
+else
+if rand(1)
+emote takes a sip of wine.
+endif
+endif
+endif
+endif
+~
+>load_prog 100~
+if istime() >=22
+mpunwizi
+else
+if istime() <3
+mpunwizi
+endif
+endif
+~
+>time_prog 3~
+if iswizi($i)
+else
+mpecho A short merchant sighs as he finishes his meal.
+mpecho Standing, he walks out of this corner of the room.
+mpwizi
+endif
+~
+>time_prog 22~
+mpecho A short merchant enters this corner of the common room.
+mpunwizi
+if mobhere(23744)
+mproomcmd mptrigger all
+else
+mpecho A short merchant glances around, then sits at a small booth.
+mpecho Placing his meal on the booth\@s table, he begins to eat.
+endif
+~
+|
+V4 23734
+merchant~
+a merchant~
+A merchant hawks his wares.
+~
+A slightly well-dressed man, this merchant stands beside a small stall,
+hoping to attract customers.  
+~
+human~
+water scholar~
+AGL 0 0 N 0
+12 6 4d26+120 0d0+0 2d6+6 bash~
+punch~
+2 2 2 6
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23735
+Varnela Vaid cook~
+Varnela Vaid~
+A cook works behind the bar.
+~
+A short, rotund woman with shoulder-length auburn hair, Varnela is the
+tavern\@s cook and the wife of Fedrol Vaid, the tavern owner.  She stands in
+front of a small grill, which she uses to cook simple meals.  Occasionally
+she adds small amounts of fuel to the fire over which she works.  
+~
+human~
+water scholar~
+ADL 0 0 N 0
+20 10 8d40+220 20d10+100 3d7+10 bash~
+punch~
+-2 -2 -2 4
+FKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 60 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23736
+workman worker man~
+a workman~
+A workman rests in the barracks.
+~
+A well-muscled man of normal height, this workman relaxes after a day\@s
+work.  
+~
+human~
+water scholar~
+AGL 0 0 N 0
+10 5 3d22+96 0d0+0 2d5+5 bash~
+punch~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+rest stand male 30 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23737
+woman fisherwoman~
+a woman~
+A woman of the fishing village strolls through the village.
+~
+A woman of the fishing village, this woman strolls leisurely through the
+village, going about her business.  
+~
+human~
+water scholar~
+AG 0 0 N 0
+10 5 3d22+96 0d0+0 2d5+5 bash~
+punch~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit stand female 30 -1
+AHMV ABCDEFGHIJK A medium flesh
+V4 23738
+seagull gull grey pale~
+a pale grey seagull~
+A pale grey seagull stands on a large white rock.
+~
+A slightly plump bird, this seagull is colored a pale grey tinged with a
+hint of blue.  Standing easily near the harbor\@s entrance, the gull gazes
+alertly about, observing the flow of ships in and out of the harbor.  
+~
+song bird~
+water scholar~
+ADGLNW 0 T N 0
+2 1 1d3+15 2d10+100 1d2+1 pierce~
+peck~
+9 9 9 9
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMW ACDEFHKP 0 medium flesh
+>rand_prog 100~
+if rand(3)
+if iswizi($i)
+mpecho A pale grey seagull lands on a large white rock.
+mpunwizi
+else
+mpecho With a cry, a pale grey seagull rises into the air.
+mpwizi
+endif
+endif
+~
+>load_prog 100~
+stand rock
+~
+|
+V4 23739
+bandit~
+a bandit~
+A bandit stands in the shadows of the room, watching the door.
+~
+A muscular man of above average height, this bandit is dressed in rough
+garments of crude make.  He stands within the shadows of the room, keeping a
+careful watch on the western door.  
+~
+human~
+water scholar~
+ADL 0 Q E 0
+22 11 9d41+391 22d10+100 3d7+11 slash~
+slash~
+-4 -4 -4 2
+CFKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 30 -1
+AHMV ABCDEFGHIJK A medium flesh
+>death_prog 100~
+mpforce banditchief mpvalueup 0 1
+~
+>greet_prog 100~
+if ispc($n)
+murder $n
+endif
+~
+|
+V4 23740
+bandit~
+a bandit~
+A bandit stands in the shadows of the room, watching the door.
+~
+A muscular man of above average height, this bandit is dressed in rough
+garments of crude make.  He stands within the shadows of the room, keeping a
+careful watch on the eastern door.  
+~
+human~
+water scholar~
+ADL 0 Q E 0
+22 11 9d41+391 22d10+100 3d7+11 slash~
+slash~
+-4 -4 -4 2
+CFKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 30 -1
+AHMV ABCDEFGHIJK A medium flesh
+>verb_prog p open~
+if compstr(2) == east
+or compstr(2) == e
+or compstr(2) == door
+or compstr(2) == wooden
+or compstr(2) == small
+if position($n) >4
+mpinterpret $n $x
+say You won\@t pass through here.
+close east
+murder $n
+mpverbstop
+else
+mpinterpret $n $x
+endif
+else
+mpinterpret $n $x
+endif
+~
+|
+V4 23741
+assistant~
+a lab assistant~
+A lab assistant rushes about the lab.
+~
+An attractive woman with a harrowed look, this assistant rushes through
+the lab, attempting to carry out the whims of the mad doctor.  
+~
+human~
+water scholar~
+A 0 L N 0
+52 26 35d107+1167 52d10+100 6d9+26 bash~
+slap~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 -1
+AHMV ABCDEFGHIJK 0 small wood
+>load_prog 100~
+mpseewizi
+~
+>time_prog 3~
+if mobhere(23744)
+mppurge merchantwife
+endif
+if mobhere(23733)
+mppurge darkmerchant
+endif
+~
+|
+V4 23742
+seagull gull grey pale~
+a pale grey seagull~
+A pale grey seagull wanders through the port.
+~
+A slightly plump bird, this seagull is colored a pale grey tinged with a
+hint of blue.  Walking quickly on its slender legs, the gull wanders the
+port looking for scraps to eat.  
+~
+song bird~
+water scholar~
+AGNW 0 T N 0
+2 1 1d3+15 2d10+100 1d2+1 pierce~
+peck~
+9 9 9 9
+FH 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AGHMW ACDEFHKP 0 medium flesh
+>rand_prog 100~
+if rand(3)
+if iswizi($i)
+mpecho With a flutter of wings, a pale grey seagull lands on the ground.
+mpunwizi
+else
+mpecho With a cry, a pale grey seagull rises into the air.
+mpwizi
+endif
+endif
+~
+|
+V4 23743
+chief bandit banditchief~
+the bandit chief~
+The bandit chief lounges against the eastern wall.
+~
+A slender man of average height, this bandit is dressed in the finery of
+a wealthy merchant.  Alert brown eyes gaze out beneath bushy black eyebrows,
+and rich locks of black hair cascade down to his shoulders.  He lounges
+against the eastern wall, keeping a lazy eye on his captive.  
+~
+human~
+water scholar~
+ADL B 0 E 0
+25 13 9d45+500 25d10+100 4d6+13 bash~
+punch~
+-5 -5 -5 2
+FJKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit stand male 75 -1
+AHMV ABCDEFGHIJK A medium flesh
+>give_prog bottle rum drugged~
+mpechoat $n $I stares at you suspiciously.
+mpechoaround $n $I stares at $N suspiciously.
+emote examines a bottle of rum.
+mpechoat $n $I glances at you again.
+mpechoaround $n $I glances at $N again.
+shrug
+emote opens the bottle of rum and chugs it down.
+emote staggers, and collapses to the ground.
+sleep
+~
+>greet_prog 100~
+if remembers($n)
+say So there you are.  You will not escape this time.
+murder $n
+endif
+~
+>fight_prog 100~
+mpremember $n
+~
+>rand_prog 100~
+if mobvalue(0) == 2
+say Tch.  So you\@ve come to free her, have you?
+say You\@ll have to get through me first.
+mpvalueset 0 0
+endif
+~
+>death_prog 100~
+if mobhere(23744)
+mpecho {YThe bandit chief says \@I may be beaten,\@
+mpecho {YThe bandit chief says \@But you will not save her.\@{x
+mpecho The bandit chief staggers to the captive woman.
+mpecho The bandit chief slits the captive woman\@s throat.
+mpslay merchantwife
+endif
+~
+|
+V4 23744
+woman captive prisoner merchantwife young~
+the captive woman~
+A captive woman sits on a large crate.
+~
+A young woman bound tightly with ropes, this woman sits captive on top of
+a large crate.  Her long auburn hair hangs disheveled about her, and her
+delicate skin is marred with myriad cuts and bruises.  Her clothes are
+little but tatters, barely covering her body, and a haunted look fills her
+eyes.  
+~
+human~
+water scholar~
+ADL 0 0 N 0
+10 5 3d22+96 0d0+0 2d5+5 bash~
+punch~
+4 4 4 7
+0 A
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+sit stand female 0 -1
+AHMV ABCDEFGHIJK A medium flesh
+>data_prog desc~
+A young woman, her long auburn hair hanging disheveled about her, stands
+here, clutching her arms tightly across her chest.  Her delicate skin is
+marred with myriad cuts and bruises, and crossed with angry welts left by
+her captors\@ ropes.  Her clothes are little but tatters, barely covering her
+body, and a haunted look fills her eyes.  
+~
+>trigger_prog 100~
+if ispc($n)
+if isbitset($n) == 23704
+mpbitset $n 23704 0
+endif
+endif
+~
+>verb_prog p free~
+if compstr(2) == woman
+or compstr(2) == captive
+or compstr(2) == prisoner
+or compstr(2) == merchantwife
+if ispc($n)
+if mobvalue(0) == 1
+else
+if isfighting($n)
+mpechoat $n No way!  You are still fighting!
+else
+if mobhere(23743)
+mpforce banditchief say I warned you.
+mpforce banditchief murder $n
+if isfighting($n)
+break
+endif
+endif
+mpechoat $n You untie the ropes binding the captive woman.
+mpechoaround $n $N unties the ropes binding the captive woman.
+mpstring char $i short a young woman
+mpstring char $i long A young, bruised woman is here.
+mpdesc $i desc
+stand
+emote mutely nods her thanks.
+mpseewizi
+fol $n
+mpvalueset 0 1
+mpbitset $n 23704 1
+mpunseewizi
+endif
+endif
+endif
+else
+mpinterpret $n $x
+endif
+~
+>rand_prog 100~
+if mobvalue(0) == 1
+else
+if rand(10)
+emote struggles against her bonds.
+endif
+endif
+~
+>load_prog 100~
+sit crate
+~
+|
+V4 23745
+figure bandit cloaked~
+a cloaked figure~
+A cloaked figure stands in the roadway.
+~
+A crude looking man of heavy build, this bandit stands in the roadway,
+looking to hand out scrolls.  
+~
+human~
+water scholar~
+ADL B L E 0
+22 11 9d41+391 22d10+100 3d7+11 slash~
+slash~
+-4 -4 -4 2
+CFKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 30 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+mpvaluedown 0
+~
+>greet_prog 75~
+if value(0) < 1
+  if ispc($n)
+    if level($n) > 40
+    or isbitset($n) == 23750
+    else
+      if iscarrying($n) == 23748
+      else
+        mpechoat $n A cloaked figure approaches you on the road.
+        mpunwizi
+        tell $n There is a merchant who visits the Bilge Rat every night.
+        tell $n Give this to him.
+        mpoload 23748
+        give questscroll $n
+        mpvalueset 0 30
+        mpwizi
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 23746
+griffinrider rider human~
+a griffinrider~
+A griffinrider browses the market.
+~
+A human dressed in warm leather clothing browses the market, on the
+lookout for supplies.  Examining the available goods, the griffinrider
+searches for a good deal.  
+~
+human~
+water scholar~
+AGL 0 DZ G 0
+50 25 18d200+920 0d0+0 5d12+25 slash~
+slash~
+-20 -20 -20 -6
+FKNU 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand either 50 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if rand(1)
+mpecho $I examines a roll of cloth.
+say How much for this cloth?
+mpecho $I begins to haggle with a merchant.
+else
+if rand(1)
+mpecho $I studies a rack of knives.
+mpecho $I snorts in disgust.
+say I could have made better myself.
+else
+if rand(1)
+mpecho $I examines a bottle of wine.
+mpecho $I raises $l eyebrows in surprise.
+say Is this truly an Earendam red?
+mpecho $I shakes $l head.
+say A weak pressing, regardless.
+endif
+endif
+endif
+~
+|
+V4 23747
+workman worker man~
+a workman~
+A workman moves about the port.
+~
+Clothed in drab but comfortable garb, this workman is a fit man of
+average build and height.  His skin tanned from working outside, he moves
+calmly yet determinedly through the bustle of the port, going about his
+business.  
+~
+human~
+water scholar~
+AGW 0 0 N 0
+10 5 3d22+96 0d0+0 2d5+5 bash~
+punch~
+4 4 4 7
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 30 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if rand(1)
+emote whistles softly as he walks along.
+else
+if rand(1)
+if ispc($r)
+mpechoat $r While walking past, $I bumps into you.
+mpechoaround $r While walking past, $I bumps into $R.
+mpstealrandom $r
+mpechoat $r Startled, he nods a quick apology to you.
+mpechoaround $r Starled, he nods a quick apology to $R.
+endif
+endif
+endif
+~
+|
+V4 23748
+merchant~
+a merchant~
+A merchant inspects the shipyard.
+~
+Dressed in finely-cut, well-made clothes, this merchant wanders through
+the shipyard, inspecting the ships which are under construction.  
+~
+human~
+water scholar~
+AGL 0 0 N 0
+12 6 4d26+120 0d0+0 2d6+6 bash~
+punch~
+2 2 2 6
+F 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if rand(1)
+emote carefully inspects the hull of a ship.
+else
+if rand(1)
+emote peers at a ship frame and taps his chin thoughtfully.
+if rand(10)
+if istrack($i)
+else
+if inroom($i) == 23732
+if rand(50)
+east
+else
+north
+endif
+else
+if inroom($i) == 23733
+if rand(50)
+north
+else
+west
+endif
+else
+if inroom($i) == 23734
+if rand(50)
+west
+else
+south
+endif
+else
+if inroom($i) == 23725
+if rand(50)
+south
+else
+east
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+~
+|
+V4 23749
+foreman shipyard~
+the foreman~
+The foreman of the shipyard supervises the workers.
+~
+A tall, muscular man of middle years, the foreman of the shipyard wanders
+through the shipyard inspecting his workers.  Dressed in loose-fitting,
+comfortable clothing, he gazes at the workers, keeping them in line.  
+~
+human~
+water scholar~
+AG 0 0 N 0
+20 10 8d40+220 20d10+100 3d7+10 bash~
+punch~
+-2 -2 -2 4
+FKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 40 -1
+AHMV ABCDEFGHIJK A medium flesh
+>rand_prog 100~
+if rand(1)
+emote frowns as he watches the workers.
+else
+if rand(1)
+emote gazes sternly at a worker.
+else
+if rand(1)
+esay \@says harshly\@ Get back to work.
+else
+if rand(10)
+if istrack($i)
+else
+if inroom($i) == 23732
+if rand(50)
+east
+else
+north
+endif
+else
+if inroom($i) == 23733
+if rand(50)
+north
+else
+west
+endif
+else
+if inroom($i) == 23734
+if rand(50)
+west
+else
+south
+endif
+else
+if inroom($i) == 23725
+if rand(50)
+south
+else
+east
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+~
+|
+V4 23750
+merchant ch\@taren~
+a ch\@taren merchant~
+A ch\@taren merchant walks through the port.
+~
+Dressed in loose fitting, well-made robes, this ch\@taren merchant wanders
+through the port.  Having come from Alensha, he takes time to relax
+following his voyage.  
+~
+ch\@taren~
+water scholar~
+AGW 0 U G 0
+12 6 4d26+120 0d0+0 2d6+6 bash~
+punch~
+2 2 2 6
+F 0
+26 0 0 0 10 0 0 0 0 0 0 0 0 -20 0 0 20 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHKMV ABCDEFGHIJK E medium flesh
+V4 23751
+mouse small grey~
+a small grey mouse~
+A small grey mouse scurries about the floor of the warehouse.
+~
+A small grey-furred mouse with short, thin tail and bright red eyes, this
+mouse scurries about, searching for food.  
+~
+generic~
+water scholar~
+AGLN 0 0 N 0
+2 1 1d3+15 2d10+100 1d2+1 pierce~
+bite~
+9 9 9 9
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+GV ACDEFHJKQ 0 tiny flesh
+V4 23752
+sailor drunk drunken~
+a drunken sailor~
+A drunken sailor staggers through the port.
+~
+Portly built with a hint of muscle, the man before you is extremely
+inebriated.  Dressed in disheveled, beer-stained sailor\@s garb, he staggers
+through the port, clutching his stomach.  
+~
+human~
+water scholar~
+AGLW 0 0 N 0
+18 9 5d51+195 18d10+100 3d6+9 bash~
+punch~
+-1 -1 -1 4
+CFK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 20 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>rand_prog 100~
+if rand(5)
+mpwander
+else
+if rand(1)
+emote groans loudly.
+else
+if rand(1)
+emote stumbles as he walks.
+else
+if rand(1)
+emote begins to heave.
+if rand(75)
+emote vomits on the ground.
+else
+mpechoat $r A drunken sailor vomits all over you.
+mpechoaround $r A drunken sailor vomits all over $R.
+endif
+endif
+endif
+endif
+endif
+~
+|
+V4 23753
+Kelithys srryn templar stocky~
+Kelithys~
+A stocky srryn sits at a large wooden table.
+~
+A srryn with a stocky build and muscular frame, Kelithys sits at one of
+the tavern\@s large tables.  His scales are a muted green, a thin line of
+golden scales running up his sides.  Dressed in bright-colored clothes, he
+appears to be slightly inebriated.  
+~
+srryn~
+air templar~
+AGL BGM BT N 0
+25 13 19d35+818 25d10+100 4d6+13 bash~
+punch~
+-6 -6 -6 1
+FIKMNV 0
+26 0 0 0 0 0 0 0 20 -20 0 0 20 0 0 0 0 20 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+AHMX ABCDEFGIJKLQUVX AC medium flesh
+>load_prog 100~
+speak common
+~
+>bribe_prog 400~
+emote hisses with delight.
+say You wish to see my trick?
+emote pulls out a vial of oddly colored fluid.
+say This vial contains a weak sleeping potion.
+emote mutters a few words, and the air around the vial begins to shimmer.
+mpecho The air returns to normal, but the vial now resembles a bottle of rum.
+say And now, tis a bottle of alcohol.
+mpoload 23750
+give bottle $n
+say Have fun with it.
+snicker
+~
+>give_prog mug beer~
+say My thanks.
+mppurge mug
+say You know, I\@ve heard a rumor recently.
+say I heard that some merchant\@s wife was abducted by a group of bandits.
+say It happens that I may know these bandits.
+say Their leader is a terrible drunkard, drinks everything in sight.
+say I know a wonderful trick that could be played on him.
+say If you are interested, I could share my trick for, ohh, 4 gold.
+~
+>fight_prog 100~
+if rand(25)
+mpcast 603 25 $n
+endif
+~
+>greet_prog 100~
+if ispc($n)
+if cansee($n) == $i
+mpechoat $n Kelithys looks up as you enter.
+endif
+if rand(10)
+if isfemale($n)
+if remembers($n)
+tell $n Good to see you again, $N.
+else
+tell $n Care to join me for a drink, my dear?
+mpremember $n
+endif
+endif
+endif
+endif
+~
+>speech_prog p Pedynin~
+say Pedynin?  What\@s a Pedynin?
+say If it\@s not a drink, I am not interested.
+~
+>speech_prog p smugglers~
+say Smugglers?  Do I look like a smuggler to you?
+look self
+say No, I think I look like a srryn.
+chortle self
+~
+>speech_prog p smuggler~
+say Smugglers?  Do I look like a smuggler to you?
+look self
+say No, I think I look like a srryn.
+chortle self
+~
+>speech_prog p bandits~
+say Do you think I know something about bandits?
+say Do I look like a bandit to you?
+emote hisses with glee.
+say Maybe ask the tavernkeeper, he has to be a bandit with these prices.
+~
+>speech_prog p bandit~
+say Do you think I know something about bandits?
+say Do I look like a bandit to you?
+emote hisses with glee.
+say Maybe ask the tavernkeeper, he has to be a bandit with these prices.
+~
+>rand_prog 100~
+if rand(1)
+emote downs a mug of beer.
+else
+if rand(1)
+emote sighs happily.
+endif
+endif
+~
+|
+V4 23754
+Mindilast scholar caladaran~
+Mindilast~
+A caladaran scholar walks through the port.
+~
+A slender caladaran male of medium height, Mindilast is a wandering
+scholar.  Dressed in loose-fitting robes with numerous pockets, he is laden
+down with a plethora of items which fill his pockets and pouches.  
+~
+caladaran~
+water scholar~
+AG B D N 0
+25 13 19d35+818 25d10+100 4d6+13 bash~
+punch~
+-6 -6 -6 1
+FK 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 20 -1
+AHMW ABCDEFGIJK AI medium flesh
+>greet_prog 100~
+if ispc($n)
+  if isghost($n)
+    tell $n You look like you\@ve had some trouble recently!
+    tell $n If you need to get to Alensha, just say \#Alensha\#.
+    tell $n Then I\@ll give you a free teleport.
+    break
+  else
+    if remembers($n)
+    else
+      mpremember $n
+      tell $n Ahh, I wonder if you might be willing to help me out?
+      tell $n I went to Jh\@ten to purchase some items for myself.
+      tell $n Unfortunately, I ended up buying too much.
+      tell $n Thus, I have some items I would like to resell.
+    endif
+  endif
+endif
+~
+>speech_prog p Alensha~
+if ispc($n)
+  if isghost($n)
+    mpechoat $n $I murmurs a spell, and you are teleported to Alensha.
+    mpechoaround $n $I murmurs a spell, and $N suddenly disappears.
+    mptransfer $n 25433
+    mpat 25433 mpechoaround $n $N suddenly appears.
+    mpat 25433 mpforce $n look
+  endif
+endif
+~
+>time_prog 0~
+if rand(25)
+  if iscarrying($i) == 23752
+  else
+    if isunderlimit(23752)
+      mpoload 23752
+    endif
+  endif
+endif
+if rand(50)
+  if iscarrying($i) == 23759
+  else
+    if isunderlimit(23759)
+      mpoload 23759
+    endif
+  endif
+endif
+~
+>load_prog 100~
+\\\\mpwizi
+mpoload 23757
+mpoload 23758
+if rand(50)
+  if isunderlimit(23752)
+    mpoload 23752
+  endif
+endif
+if rand(50)
+  if isunderlimit(23759)
+    mpoload 23759
+  endif
+endif
+mpoload 23765
+~
+>verb_prog buy~
+mpinterpret $n $x
+if iscarrying($n) == 23765
+  purge_teleportobject
+  mpechoat $n $I murmurs a spell, and you are teleported to Alensha.
+  mptransfer $n 25433
+  mpat 25433 mpechoaround $n $N suddenly appears.
+  mpat 25433 mpforce $n look
+endif
+~
+>rand_prog 100~
+if iscarrying($i) == 23757
+else
+  if rand(20)
+    mpoload 23757
+  endif
+endif
+if iscarrying($i) == 23758
+else
+  if rand(20)
+    mpoload 23758
+  endif
+endif
+if iscarrying($i) == 23765
+else
+  mpoload 23765
+endif
+if isunderlimit(23766)
+  mpoload 23766
+endif
+~
+|
+V4 23755
+traveler ethron~
+an ethron traveler~
+An ethron traveler wanders through the port.
+~
+A thin ethron man of slightly above average height, this traveler wanders
+the Earendam port.  Tan-colored leather clothes hang about his body,
+contrasted with his pale green skin.  He moves in a relaxed manner, enjoying
+the sights around him.  
+~
+ethron~
+water scholar~
+ADGL 0 0 N 0
+8 4 3d22+89 0d0+0 2d3+2 bash~
+punch~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMVW ABCDEFGHIJK J medium unknown
+V4 23756
+Orgilien minstrel wandering~
+Orgilien~
+A wandering minstrel strides through the port.
+~
+Tall and thin, with long, delicate limbs, this man is dressed in the
+bright garb of a wandering minstrel.  Well groomed, with flowing blonde hair
+that descends to his shoulders, he travels through the port, looking for
+listeners.  
+~
+human~
+bard~
+AG G 0 N 0
+20 10 8d40+220 20d10+100 3d7+10 bash~
+punch~
+-2 -2 -2 4
+FIKN 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 60 -1
+AHMV ABCDEFGHIJK A medium flesh
+>speech_prog p song~
+if mobvalue(0) == 1
+else
+if mobvalue(1) == 1
+else
+say You wish to hear a song?  Very well.
+if rand(50)
+if rand(50)
+mpsetdata heartsong
+mpvalueset 1 1
+else
+mpsetdata lullaby
+mpvalueset 1 1
+endif
+else
+if rand(50)
+mpsetdata tearsong
+mpvalueset 1 1
+else
+mpsetdata appearance
+mpvalueset 1 1
+endif
+endif
+emote begins to play.
+endif
+endif
+~
+>data_prog appearance~
+sing Softly blows the howling wind.
+sing Gently blows the gale.
+sing Sparsely falls the pouring rain.
+sing Lightly falls the hail.
+sing Sweetly loom the darkened clouds.
+sing Night is light as day.
+sing All things thus appear to me,
+sing When you look my way.
+emote pause briefly.
+sing Winter\@s chill is full of warmth.
+sing Summer\@s heat is cool.
+sing Brintor\@s heights a set of hills,
+sing Lidraeu a pool.
+sing Riding on a raging bull
+sing Seems a pleasant ride.
+sing All things thus appear to me,
+sing When you\@re by my side.
+mpvalueset 1 0
+~
+>data_prog tearsong~
+sing Forget the tears upon my face,
+sing And go upon your road.
+sing Forget the sighs that I will give,
+sing Faced with this bitter load.
+sing Remember not the golden days,
+sing When you and I were one.
+sing Remember not those twists of fate
+sing That made us come undone.
+sing Too happy were we in those times
+sing To see the coming doom.
+sing Too happy were we with our love
+sing To see that fate did loom.
+sing So go from me and to your end
+sing Don\@t stay and hear me weep.
+sing So go from me lest this poor fool
+sing Do trouble all your sleep.
+mpvalueset 1 0
+~
+>data_prog lullaby~
+sing Rest when sleep does come upon you,
+sing Sleep and rest your head.
+sing Healing comes with sleep\@s good graces,
+sing Sleep and go to bed.
+sing Lay and listen closely as I sing,
+sing Rest and go to sleep.
+sing Cast aside your worries while you dream
+sing Safe in slumber deep.
+emote lets his chord slowly die as he finishes the song.
+mpvalueset 1 0
+~
+>data_prog heartsong~
+sing A gentle breeze is blowing softly round my face.
+sing A peaceful air is drifting slowly through this place.
+sing The calm envelops me, my eyes begin to see
+sing The peace that opens up my heart.
+emote pauses for a brief moment, before continuing the song.
+sing The reassuring knowledge that you\@re always there
+sing Fills me to overflowing knowing you still care.
+sing Your warmth envelops me, my eyes begin to see
+sing The love that opens up my heart.
+emote pauses again, this time changing into a new key.
+sing Now quickly turn around and show your face to me,
+sing Remember that our love was always meant to be.
+sing My love envelops me, my eyes begin to see
+sing The one that opens up my heart.
+mpvalueset 1 0
+~
+>speech_prog p yes~
+if mobvalue(0) == 1
+else
+if mobvalue(1) == 1
+else
+say Very well.
+if rand(50)
+if rand(50)
+mpsetdata heartsong
+mpvalueset 1 1
+else
+mpsetdata lullaby
+mpvalueset 1 1
+endif
+else
+if rand(50)
+mpsetdata tearsong
+mpvalueset 1 1
+else
+mpsetdata appearance
+mpvalueset 1 1
+endif
+endif
+emote begins to play.
+endif
+endif
+~
+>greet_prog 100~
+if mobvalue(0) == 1
+else
+if mobvalue(1) == 1
+else
+if rand(25)
+tell $n Would you care to hear a song?
+endif
+endif
+endif
+~
+>rand_prog 100~
+if mobvalue(0) == 1
+else
+if mobvalue(1) == 1
+mpvalueset 2 0
+mpvalueset 2 $d
+if mobvalue(2) > 0
+mpnextdata
+loop 1 to $2
+$d
+mpnextdata
+endloop
+else
+$d
+mpnextdata
+endif
+endif
+endif
+~
+>speech_prog p bandits~
+say You wish to hear about bandits?
+say I have heard of bandits here in the port.
+say A worrisome rumor.  I hope it does prove false.
+~
+>speech_prog p bandit~
+say You wish to hear about bandits?
+say I have heard of bandits here in the port.
+say A worrisome rumor.  I hope it does prove false.
+~
+>speech_prog p smugglers~
+say You wish to hear about the smugglers?
+say I have little interest in such things, I am afraid.
+~
+>speech_prog p smuggler~
+say You wish to hear about the smugglers?
+say I have little interest in such things, I am afraid.
+~
+>speech_prog p Pedynin~
+say Do you wish to hear about Pedynin the merchant?
+say That is too bad, for I do not know anything about him.
+~
+|
+V4 23757
+trader kankoran~
+a kankoran trader~
+A kankoran trader wanders through the port.
+~
+A large kankoran male with brown fur and yellow eyes, this trader has
+come down from Ryarl looking to trade.  He is dressed in furs and hides,
+examples of his wares.  Bearing his collection of hides on back, he stalks
+through the port, hunting for customers.  
+~
+kankoran~
+water scholar~
+AG 0 Z N 0
+15 7 5d30+161 0d0+0 3d5+8 slash~
+claws~
+0 0 0 5
+FNV 0
+26 0 0 0 0 0 0 0 -20 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 10 -1
+AHMV ABCDEFGHIJKUV D medium flesh
+>rand_prog 100~
+if rand(1)
+mpechoat $r $I flashes a grin at you as he displays his goods
+mpechoaround $r $I flashes $R a grin as he displays his goods.
+else
+if rand(1)
+mpecho $I adjusts the positioning of the wares on his back.
+endif
+endif
+~
+|
+V4 23758
+traveler curious~
+a curious traveler~
+A curious traveler wanders through the port.
+~
+A newcomer to the port of Earendam, this traveler looks curiously about
+himself, taking in the sights and sounds of the port.  
+~
+human~
+water scholar~
+AG 0 0 R 0
+8 4 3d22+89 0d0+0 2d3+2 bash~
+punch~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+V4 23759
+traveler hurried~
+a hurried traveler~
+A curious traveler wanders through the port.
+~
+Moving quickly through the port, this traveler hurries to his
+destination.  Taking minimal care to avoid collisions, he presses forward
+through the crowd.  
+~
+human~
+water scholar~
+ADG 0 0 R 0
+8 4 3d22+89 0d0+0 2d3+2 bash~
+punch~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 -1
+AHMV ABCDEFGHIJK A medium unknown
+#0
+
+
+
+#OBJECTS
+V13
+23701
+sign worn wooden wood~
+a worn, wooden sign~
+A worn, wooden sign stands at the side of the road.~
+~
+wood~
+trash 0 0 0 P
+0 0 0 0 0
+20 300 0 2 A
+1
+E
+wood~
+Worn lettering on this wooden sign proclaims:
+\@Come to the Bilge Rat for beer and cheer.\@
+~
+E
+wooden~
+Worn lettering on this wooden sign proclaims:
+\@Come to the Bilge Rat for beer and cheer.\@
+~
+E
+worn~
+Worn lettering on this wooden sign proclaims:
+\@Come to the Bilge Rat for beer and cheer.\@
+~
+E
+sign~
+Worn lettering on this wooden sign proclaims:
+\@Come to the Bilge Rat for beer and cheer.\@
+~
+V13
+23702
+bookcase large wooden wood~
+a large wooden bookcase~
+A large wooden bookcase stands against the northern wall.~
+~
+wood~
+container Se 0 0 P
+100 0 0 5 50
+52 600 0 3 P
+0
+E
+wood~
+A large bookcase, crafted from fine rosewood, stands against the northern
+wall.  A large number of books fill the shelfs, most records of offical
+transactions that have occured.  
+~
+E
+wooden~
+A large bookcase, crafted from fine rosewood, stands against the northern
+wall. A large number of books fill the shelfs, most records of offical
+transactions that have occured.
+~
+E
+large~
+A large bookcase, crafted from fine rosewood, stands against the northern
+wall. A large number of books fill the shelfs, most records of offical
+transactions that have occured.
+~
+E
+bookcase~
+A large bookcase, crafted from fine rosewood, stands against the northern
+wall.  A large number of books fill the shelfs, most records of offical
+transactions that have occured.  
+~
+V13
+23703
+cane small wooden wood~
+a small wooden cane~
+A small wooden cane lies on the ground.~
+This cane was purchased in a small store in Earendam by the fisherman who
+previously owned it once his back fell victim to the infirmity of age.  As
+is evidenced by the numerous scratches and marks near its bottom, it was
+used by the fisherman to bludgeon still-flopping fish, and as support for
+his ailing spine.  
+~
+wood~
+weapon 0 0 F AN
+mace 4 4 1 0
+swing~
+10 100 30 2 G
+0
+E
+wood~
+A thin strip of worn wood has been used to form this small cane.  The
+handle of the cane has become smooth through frequent use.  
+~
+E
+wooden~
+A thin strip of worn wood has been used to form this small cane.  The
+handle of the cane has become smooth through frequent use.  
+~
+E
+small~
+A thin strip of worn wood has been used to form this small cane.  The
+handle of the cane has become smooth through frequent use.  
+~
+E
+cane~
+A thin strip of worn wood has been used to form this small cane.  The
+handle of the cane has become smooth through frequent use.  
+~
+V13
+23704
+armor embossed plate~
+an embossed torso plate~
+An piece of embossed plate armor lies on the ground.~
+This torso plate was one of many made in the Arien Forge for the Port
+Guard.  Upon its chest is a large, slightly crude version of the Patrician\@s
+Golden Seal, made shiny out of thick, polished copper.  This torso plate and
+the others like it were sent out of Earendam proper and to the Port Guard
+due to their more weather-resistant surface.  
+~
+steel~
+armor 0 0 F AD
+7 7 7 0 0
+30 250 1100 2 P
+0
+A
+18 1
+A
+13 5
+E
+seal~
+The seal depicts the Patrician\@s golden sceptre.
+~
+E
+plate~
+Embossed on the front plate of this armor is the gold seal of the Patrician.
+ 
+~
+E
+torso~
+Embossed on the front plate of this armor is the gold seal of the
+Patrician.  
+~
+E
+embossed~
+Embossed on the front plate of this armor is the gold seal of the
+Patrician.  
+~
+V13
+23705
+longsword embossed steel~
+an embossed steel longsword~
+An embossed longsword lies on the ground.~
+~
+steel~
+weapon 0 0 F AN
+sword 8 3 3 0
+slash~
+30 170 360 2 P
+0
+E
+steel~
+The hilt of this sword is marked with the gold seal of the Patrician.  
+~
+E
+longsword~
+The hilt of this sword is marked with the gold seal of the Patrician.  
+~
+E
+embossed~
+The hilt of this sword is marked with the gold seal of the Patrician.  
+~
+V13
+23706
+shield embossed~
+an embossed shield~
+An embossed shield lies on the ground.~
+~
+steel~
+armor 0 0 F AJ
+5 7 7 0 0
+30 40 1350 2 P
+0
+A
+13 3
+A
+19 1
+E
+seal~
+The seal depicts the Patrician\@s golden sceptre.
+~
+E
+steel~
+Embossed on this shield is the gold seal of the Patrician.  
+~
+E
+shield~
+Embossed on this shield is the gold seal of the Patrician.  
+~
+E
+embossed~
+Embossed on this shield is the gold seal of the Patrician.  
+~
+V13
+23707
+bracer steel sturdy serrated~
+a serrated steel bracer~
+A serrated steel bracer lies on the ground.~
+~
+steel~
+armor 0 0 F AM
+3 3 3 0 0
+30 30 650 1 P
+0
+A
+19 1
+E
+bracer~
+Embossed on this shield is the gold seal of the Patrician.  
+~
+E
+steel~
+Embossed on this shield is the gold seal of the Patrician.  
+~
+E
+serrated~
+Embossed on this shield is the gold seal of the Patrician.  
+~
+V13
+23708
+boots polished black~
+a pair of polished black boots~
+A pair of black boots lies on the ground.~
+~
+leather~
+armor 0 0 F AG
+3 4 4 0 0
+30 40 415 2 P
+0
+A
+18 1
+A
+14 5
+E
+mirrored~
+These sturdy black boots are polished to a mirrored shine.  
+~
+E
+black~
+These sturdy black boots are polished to a mirrored shine.  
+~
+E
+polished~
+These sturdy black boots are polished to a mirrored shine.  
+~
+E
+boots~
+These sturdy black boots are polished to a mirrored shine.  
+~
+V13
+23709
+truncheon polished oak~
+a polished oak truncheon~
+A truncheon of polished oak lies on the ground.~
+~
+oak~
+weapon 0 0 F AN
+mace 6 5 1 0
+pound~
+35 160 1560 2 P
+0
+E
+polished~
+This plain truncheon is made of well-polished oak.  The seal of the
+Patrician has been carved into the base.  
+~
+E
+oak~
+This plain truncheon is made of well-polished oak.  The seal of the
+Patrician has been carved into the base.  
+~
+E
+truncheon~
+This plain truncheon is made of well-polished oak.  The seal of the
+Patrician has been carved into the base.  
+~
+V13
+23710
+net fishing woven rope~
+a fishing net~
+A fishing net of woven rope lies on the ground.~
+~
+plant~
+net 0 0 F AO
+0 0 0 0 0
+12 300 60 2 P
+0
+E
+rope~
+A heavy net made from tightly woven strands of rope, this net was
+designed for fishing.  The scent of saltwater hangs on the net, as well as a
+faint smell of fish.  
+~
+E
+woven~
+A heavy net made from tightly woven strands of rope, this net was
+designed for fishing.  The scent of saltwater hangs on the net, as well as a
+faint smell of fish.  
+~
+E
+fishing~
+A heavy net made from tightly woven strands of rope, this net was
+designed for fishing.  The scent of saltwater hangs on the net, as well as a
+faint smell of fish.  
+~
+E
+net~
+A heavy net made from tightly woven strands of rope, this net was
+designed for fishing.  The scent of saltwater hangs on the net, as well as a
+faint smell of fish.  
+~
+V13
+23711
+boat fishing large~
+a large fishing boat~
+A large fishing boat lies at anchor here.~
+~
+wood~
+furniture a 0 0 P
+6 30000 CFIL 100 100
+60 10000 0 0 P
+0
+E
+large~
+A large fishing boat lies at anchor here.  Not of recent construction,
+the hull of the vessel appears to have been patched many times.  A small
+mast and several oars allow the ship to be moved.  
+~
+E
+fishing~
+A large fishing boat lies at anchor here.  Not of recent construction,
+the hull of the vessel appears to have been patched many times.  A small
+mast and several oars allow the ship to be moved.  
+~
+E
+boat~
+A large fishing boat lies at anchor here.  Not of recent construction,
+the hull of the vessel appears to have been patched many times.  A small
+mast and several oars allow the ship to be moved.  
+~
+V13
+23712
+table large wooden~
+a large wooden table~
+A large wooden table stands in the common room.~
+~
+wood~
+furniture e 0 0 P
+8 10000 DGJ 100 100
+55 3000 0 4 P
+0
+V13
+23713
+apron stained large~
+a large stained apron~
+A heavily stained apron lies discarded on the ground.~
+~
+cloth~
+armor 0 0 F AK
+6 6 6 0 0
+20 30 450 2 P
+0
+E
+apron~
+Constructed from plain, thick cloth, this large apron is covered by many
+stains.  Bits of food lay smeared on the apron\@s front, and splashes of beer
+and other drinks adorn the cloth.  
+~
+E
+stained~
+Constructed from plain, thick cloth, this large apron is covered by many
+stains.  Bits of food lay smeared on the apron\@s front, and splashes of beer
+and other drinks adorn the cloth.  
+~
+E
+large~
+Constructed from plain, thick cloth, this large apron is covered by many
+stains.  Bits of food lay smeared on the apron\@s front, and splashes of beer
+and other drinks adorn the cloth.  
+~
+V13
+23714
+knife rusty cooking~
+a rusty cooking knife~
+A cooking knife lies here, the blade tinged with rust.~
+~
+iron~
+weapon 0 0 F AN
+dagger 4 7 3 0
+chop~
+20 80 91 1 P
+0
+E
+knife~
+A long, sharp blade attached to a simple wooden blade, this cooking knife
+has begun to rust, though it is otherwise still in good condition.  
+~
+E
+cooking~
+A long, sharp blade attached to a simple wooden blade, this cooking knife
+has begun to rust, though it is otherwise still in good condition.  
+~
+E
+rusty~
+A long, sharp blade attacged to a simple wooden blade, this cooking knife
+has begun to rust, though it is otherwise still in good condition.  
+~
+V13
+23715
+booth small wooden~
+a small wooden booth~
+A small wooden booth lies along the eastern wall.~
+~
+wood~
+furniture e 0 0 P
+2 2000 FIL 100 0
+55 500 0 3 P
+0
+V13
+23716
+pipes reed~
+a set of reed pipes~
+A set of reed pipes lies on the ground.~
+~
+wood~
+instrument 0 0 F AO
+C 0 0 0 0
+5 5 65 0 P
+0
+E
+reed~
+Cured in sea water and joined with strands of sturdy sea grass, this set
+of reed pipes produces a light, airy tone when played.  
+~
+E
+pipes~
+Cured in sea water and joined with strands of sturdy sea grass, this set
+of reed pipes produces a light, airy tone when played.  
+~
+V13
+23717
+hat wide-brimmed wide dark~
+a dark, wide-brimmed hat~
+A dark, wide-brimmed hat rests on the ground.~
+~
+cloth~
+armor 0 0 F AE
+7 7 7 3 0
+25 20 547 1 P
+0
+E
+hat~
+This wide-brimmed hat has been made from sturdy, dark cloth.  The edges
+of the brim flop downwards, shading and partially concealing the face of the
+wearer.  
+~
+E
+wide-brimmed~
+This wide-brimmed hat has been made from sturdy, dark cloth.  The edges
+of the brim flop downwards, shading and partially concealing the face of the
+wearer.  
+~
+E
+wide~
+This wide-brimmed hat has been made from sturdy, dark cloth.  The edges
+of the brim flop downwards, shading and partially concealing the face of the
+wearer.  
+~
+E
+dark~
+This wide-brimmed hat has been made from sturdy, dark cloth.  The edges
+of the brim flop downwards, shading and partially concealing the face of the
+wearer.  
+~
+V13
+23718
+book leather leather-bound~
+a leather-bound book~
+A leather-bound book lies on the ground~
+~
+parchment~
+trash S 0 F A
+0 0 0 0 0
+10 40 0 1 P
+0
+E
+section 3~
+During the invasion of the red-furred kankoran hordes, the port was
+destroyed once more.  With all the military forces arrayed to protect the
+city, the port was left defenseless and ripe for plunder.  Nothing remained
+of the port except for the great lighthouse, which stood untouched by the
+hordes.  It is unknown why the lighthouse remained unscathed, though some
+scholars attribute this to superstition on the part of the kankoran.  
+
+The port was immediately rebuilt after that attack in close to its present
+form, and a barracks was established to help guard the port from further
+destruction.  With the conclusion of the kankoran wars, the port once more
+began its rise to prominence.  Under the competent leadership of a
+succession of skilled harbormasters, the port has once again become a center
+of trade.  
+~
+E
+leather-bound~
+A small book bound with leather, this book contains a history of the
+Earendam Harbor.  The history is divided into three sections (1, 2, and 3),
+each containing one period of the harbor\@s past.  
+~
+E
+leather~
+A small book bound with leather, this book contains a history of the
+Earendam Harbor.  The history is divided into three sections (1, 2, and 3),
+each containing one period of the harbor\@s past.  
+~
+E
+book~
+A small book bound with leather, this book contains a history of the
+Earendam Harbor.  The history is divided into three sections (1, 2, and 3),
+each containing one period of the harbor\@s past.  
+~
+E
+section 1~
+According to popular myth, Earendam\@s port was originally founded by
+Iraren, the grandson of the city\@s founder.  Most historians, however,
+believe that the original port grew gradually as a result of the increasing
+importance of the sea trade to Earendam\@s economy.  
+
+During the short period immediately preceding the War of Night, the port
+grew substantially in size, as many built homes along the shore.  The port
+reached its peak of prominence during this time, and plans were drawn up for
+a great lighthouse to replace the simple structure of the time.  
+
+An unforunate disaster then struck the port.  An oil lamp was knocked over
+during a tavern brawl, and the tavern went up in flames.  The port, a vast,
+sprawling collection of closely built wooden structures, was ripe fuel for
+the fires, and soon all that was left were the charred ruins of the once
+vibrant port.  Many lost their homes and fortunes to the flames, though
+fortunately few lives were lost.  
+~
+E
+section 2~
+Due to the decrease of trade brought on by the War of Night and the need
+to protect the citizens of the city, the port was not rebuilt during the
+war.  A few small buildings were erected to handle the trade that did come
+in, though even these were abandoned when the city was in danger.  
+
+Following the war\@s end, the senate quickly ordered the rebuilding of the
+harbor, as they knew that the sea trade would help stabilize the Republic\@s
+finances.  It was during this rebuilding that the great lighthouse, whose
+plans had sat untouched since before the war, was finally constructed,
+rising above the headland at the northern end of the harbor.  
+
+The sea trade began to flourish once more, though, with Earendam severely
+weakened militarily, piracy was a greater danger than it had been before the
+war.  
+~
+V13
+23719
+fish fillet~
+a fish fillet~
+A fish fillet lies here.~
+~
+food~
+food 0 0 F A
+40 50 0 0 0
+5 5 40 1 P
+0
+E
+fillet~
+This fillet of Uthlin sole has been lightly grilled, and gives off the
+faint aroma of citrus.  The fillet is no longer whole, part of it having
+already been eaten.  
+~
+E
+fish~
+This fillet of Uthlin sole has been lightly grilled, and gives off the
+faint aroma of citrus.  The fillet is no logner whole, part of it having
+already been eaten.  
+~
+V13
+23720
+fish fillet~
+a fish fillet~
+A fish fillet lies here.~
+~
+food~
+food 0 0 F A
+85 50 0 0 0
+5 5 90 1 P
+0
+E
+fish~
+This fillet of Uthlin sole has been lightly grilled, and gives off the
+faint aroma of citrus.  
+~
+E
+fillet~
+This fillet of Uthlin sole has been lightly grilled, and gives off the
+faint aroma of citrus.  
+~
+V13
+23721
+glass suma wine~
+a glass of suma wine~
+A glass of suma wine lies here.~
+~
+alcohol~
+drink U 0 F A
+5 5 'white wine' 0 1
+5 2 40 0 P
+0
+E
+suma~
+This small glass contains a quantity of white wine made from suma grapes.
+~
+E
+glass~
+This small glass contains a quantity of white wine made from suma grapes.  
+~
+E
+wine~
+This small glass contains a quantity of white wine made from suma grapes.
+~
+V13
+23722
+mug beer~
+a mug of beer~
+A mug of beer lies on the ground.~
+~
+alcohol~
+drink U 0 F A
+12 12 'beer' 0 1
+5 4 6 0 P
+0
+E
+mug~
+This small clay mug is filled with a crisp, cool beer.
+~
+E
+beer~
+This small clay mug is filled with a crisp, cool beer.  
+~
+V13
+23723
+toast slice~
+a slice of toast~
+A slice of toast lies here.~
+~
+food~
+food 0 0 F A
+5 50 0 0 0
+5 1 5 0 P
+0
+E
+toast~
+This slice of bread has been lightly toasted, the color just beginning to
+turn brown.  
+~
+E
+slice~
+This slice of bread has been lightly toasted, the color just beginning to
+turn brown.  
+~
+V13
+23724
+shot Bilge Rat Death~
+a shot of Bilge Rat\@s Death~
+A shot of Bilge Rat\@s Death lies here.~
+~
+alcohol~
+drink U 0 F A
+2 2 'local specialty' 0 1
+5 1 150 0 P
+0
+E
+shot~
+This small shot glass contains a drink called the Bilge Rat\@s Death, the
+specialty of the tavern.  
+~
+E
+bilge~
+This small shot glass contains a drink called the Bilge Rat\@s Death, the
+specialty of the tavern.  
+~
+E
+rat~
+This small shot glass contains a drink called the Bilge Rat\@s Death, the
+specialty of the tavern.  
+~
+E
+death~
+This small shot glass contains a drink called the Bilge Rat\@s Death, the
+specialty of the tavern.  
+~
+V13
+23725
+shot Dockyard Drowning~
+a shot of Dockyard Drowning~
+A shot of Dockyard Drowning lies here.~
+~
+alcohol~
+drink U 0 F A
+2 2 'vodka' 0 1
+5 2 80 0 P
+0
+E
+shot~
+This small shot glass contains a quantity of a vodka-based drink called
+Dockyard Drowning.  
+~
+E
+dockyard~
+This small shot glass contains a quantity of a vodka-based drink called
+Dockyard Drowning.  
+~
+E
+drowning~
+This small shot glass contains a quantity of a vodka-based drink called
+Dockyard Drowning.  
+~
+V13
+23726
+glass red wine~
+a glass of red wine~
+A glass of red wine lies here.~
+~
+alcohol~
+drink U 0 F A
+5 3 'red wine' 0 1
+5 2 40 0 P
+0
+E
+wine~
+This small glass contains a quantity of average red wine.
+~
+E
+red~
+This small glass contains a quantity of average of red wine.
+~
+E
+glass~
+This small glass contains a quantity of average red wine.
+~
+V13
+23727
+ring seal signet harbormaster~
+a signet ring~
+A ring set with the seal of the harbormaster lies here.~
+~
+bronze~
+armor 0 0 F AB
+5 5 5 2 0
+25 3 423 0 P
+0
+A
+17 -1
+V13
+23728
+biscuit sea~
+a sea biscuit~
+A sea biscuit lies on the ground.~
+~
+food~
+food 0 0 F A
+40 50 0 0 0
+5 2 40 0 P
+0
+E
+biscuit~
+An extremely hard lump of bread, this biscuit is designed to keep on long
+sea voyages.  
+~
+E
+sea~
+An extremely hard lump of bread, this biscuit is designed to keep on long
+sea voyages.  
+~
+V13
+23729
+fish salted~
+a salted fish~
+A salted fish lays discarded on the ground.~
+~
+food~
+food 0 0 F A
+80 50 0 0 0
+5 10 75 1 P
+0
+E
+fish~
+A large slab of Uthlin sole, this piece of fish has been salted to
+prevent decay.  
+~
+E
+salted~
+A large slab of Uthlin sole, this piece of fish has been salted to
+prevent decay.  
+~
+V13
+23730
+bolt silk fine~
+a bolt of fine silk~
+A bolt of fine silk rests on the ground.~
+~
+silk~
+treasure S 0 F A
+0 0 0 0 0
+15 100 600 3 P
+0
+E
+bolt~
+A roll of tightly wrapped silk, this bolt is quite large.  The silk is of
+superior quality, with vibrant colors and rich hues.  
+~
+E
+silk~
+A roll of tightly wrapped silk, this bolt is quite large.  The silk is of
+superior quality, with vibrant colors and rich hues.  
+~
+E
+fine~
+A roll of tightly wrapped silk, this bolt is quite large.  The silk is of
+superior quality, with vibrant colors and rich hues.  
+~
+V13
+23731
+letter sealed questletter1~
+a sealed letter~
+A sealed letter lies on the ground.~
+~
+parchment~
+trash U 0 0 A
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+letter~
+A small wax seal is affixed to this letter, keeping the contents from
+prying eyes.  
+~
+E
+sealed~
+A small wax seal is affixed to this letter, keeping the contents from
+prying eyes.  
+~
+E
+seal~
+This small seal is made of wax, and contains the sigil of a merchant
+family.  
+~
+V13
+23732
+greaves pair leather griffinrider\@s~
+a pair of leather griffinrider\@s greaves~
+A pair of leather greaves of the type worn by griffinriders rests here.~
+~
+leather~
+armor S 0 F AF
+5 3 5 0 0
+50 20 2776 2 P
+40
+A
+14 10
+A
+2 1
+A
+18 3
+E
+griffinrider\@s~
+High quality leather was used to create this pair of leather greaves. 
+Designed for comfort and ease of movement, the leather is thick yet supple. 
+~
+E
+pair~
+High quality leather was used to create this pair of leather greaves. 
+Designed for comfort and ease of movement, the leather is thick yet supple. 
+~
+E
+leather~
+High quality leather was used to create this pair of leather greaves. 
+Designed for comfort and ease of movement, the leather is thick yet supple. 
+~
+E
+greaves~
+High quality leather was used to create this pair of leather greaves. 
+Designed for comfort and ease of movement, the leather is thick yet supple. 
+~
+V13
+23733
+jerkin leather griffinrider padded~
+the leather jerkin of a griffinrider~
+A thickly padded leather jerkin worn by a griffinrider is here.~
+~
+leather~
+armor DGS 0 F AD
+10 15 15 15 0
+50 80 12800 2 P
+40
+A
+37 2
+A
+20 -2
+A
+5 1
+E
+padded~
+High quality leather was used to make this leather jerkin.  Thick padding
+has been added to the jerkin, providing warmth from the cool winds which
+blow past the griffinriders\@ caves.
+~
+E
+griffinrider~
+High quality leather was used to make this leather jerkin.  Thick padding
+has been added to the jerkin, providing warmth from the cool winds which
+blow past the griffinriders\@ caves.
+~
+E
+leather~
+High quality leather was used to make this leather jerkin.  Thick padding
+has been added to the jerkin, providing warmth from the cool winds which
+blow past the griffinriders\@ caves.
+~
+E
+jerkin~
+High quality leather was used to make this leather jerkin.  Thick padding
+has been added to the jerkin, providing warmth from the cool winds which
+blow past the griffinriders\@ caves.  
+~
+V13
+23734
+armbands golden serpent~
+a pair of golden armbands~
+A pair of golden armbands in the shape of a serpent lie here.~
+~
+gold~
+armor 0 0 F AI
+1 4 4 3 0
+25 40 2273 0 P
+0
+A
+38 2
+A
+13 2
+A
+12 2
+E
+serpent~
+Designed to be worn on the upper arms, this pair of armbands has been
+crafted from solid gold.  Each armband has been formed in the shape of
+serpent, which coils about the wearer\@s arms.
+~
+E
+golden~
+Designed to be worn on the upper arms, this pair of armbands has been
+crafted from solid gold.  Each armband has been formed in the shape of
+serpent, which coils about the wearer\@s arms.
+~
+E
+armbands~
+Designed to be worn on the upper arms, this pair of armbands has been
+crafted from solid gold.  Each armband has been formed in the shape of
+serpent, which coils about the wearer\@s arms.  
+~
+V13
+23735
+sign small~
+a small sign~
+A small sign hangs on the wall by the door.~
+~
+parchment~
+trash 0 0 0 0
+0 0 0 0 0
+1 1 0 0 P
+0
+E
+small~
+If you are interested in purchasing a ship, we apologize but the Earendam
+shipyards are not taking orders at this time.  When the volume of current
+orders diminshes, we will be happy to fulfill your shipping needs.  
+
+Filibrin Dandelon, Master Shipwright
+~
+E
+sign~
+If you are interested in purchasing a ship, we apologize but the Earendam
+shipyards are not taking orders at this time.  When the volume of current
+orders diminshes, we will be happy to fulfill your shipping needs.  
+
+Filibrin Dandelon, Master Shipwright
+~
+V13
+23736
+necklace thin silver~
+a thin silver necklace~
+A thin band of silver lies on the ground.~
+~
+silver~
+armor 0 0 F AC
+4 4 4 0 0
+10 50 207 1 P
+0
+A
+13 1
+E
+necklace~
+Delicate links of silver have been joined together to form this thin
+chain necklace.  Well polished, the necklace sparkles in the light.  
+~
+E
+thin~
+Delicate links of silver have been joined together to form this thin
+chain necklace.  Well polished, the necklace sparkles in the light.  
+~
+E
+silver~
+Delicate links of silver have been joined together to form this thin
+chain necklace.  Well polished, the necklace sparkles in the light.  
+~
+V13
+23737
+bottle perfume small~
+a bottle of perfume~
+A small bottle of perfume lies on the ground.~
+~
+glass~
+treasure 0 0 F A
+0 0 0 0 0
+10 5 300 0 P
+0
+E
+bottle~
+A small glass bottle with a fitted top, this perfume bottle contains a
+small amount of clear liquid.  A delicate scent wafts from the bottle,
+containing the hint of roses.  
+~
+E
+perfume~
+A small glass bottle with a fitted top, this perfume bottle contains a
+small amount of clear liquid.  A delicate scent wafts from the bottle,
+containing the hint of roses.  
+~
+E
+small~
+A small glass bottle with a fitted top, this perfume bottle contains a
+small amount of clea liquid.  A delicate scent wafts from the bottle,
+containing the hint of roses.  
+~
+V13
+23738
+cask suma wine~
+a cask of suma wine~
+A cask of suma wine sits on the ground.~
+~
+alcohol~
+drink 0 0 F A
+150 150 'red wine' 0 0
+15 300 1200 3 P
+0
+E
+suma~
+A medium-sized cask made of finely joined wooden slabs, this cask
+contains a quantity of white wine made from suma grapes.  
+~
+E
+cask~
+A medium-sized cask made of finely joined wooden slabs, this cask
+contains a quanity of white wine made from suma grapes.  
+~
+E
+wine~
+A medium-sized cask made of finely joined wooden slabs, this cask
+contains a quantity of white wine made from suma grapes.  
+~
+V13
+23739
+scarf yellow wool~
+a yellow wool scarf~
+A pile of yellow wool lies on the ground.~
+~
+cloth~
+armor D 0 F AC
+4 4 4 2 0
+10 30 105 1 P
+0
+E
+scarf~
+A thick length of pale yellow duskin wool, this scarf is finely made,
+though one end seems to have been left unfinished.  
+~
+E
+yellow~
+A thick length of pale yellow duskin wool, this scarf is finely made,
+though one end seems to have been left unfinished.  
+~
+E
+wool~
+A thick length of pale yellow duskin wool, this scarf is finely made,
+though one end seems to have been left unfinished.  
+~
+V13
+23740
+ship model~
+a model ship~
+A model of a ship rests on the ground.~
+~
+wood~
+treasure 0 0 F A
+0 0 0 0 0
+25 30 500 1 P
+0
+E
+model~
+An intricately crafted wooden ship, this model has been made to resemble
+a small merchant ship.  The model is well-maintained, free of dust and
+well-polished.  
+~
+E
+ship~
+An intricately crafted wooden ship, this model has been made to resemble
+a small merchant ship.  The model is well-maintained, free of dust and
+well-polished.  
+~
+V13
+23741
+ship model~
+a model ship~
+A model of a ship lies on the ground~
+~
+wood~
+trash 0 0 0 A
+0 0 0 0 0
+25 30 0 1 P
+0
+E
+model~
+An intricately crafted wooden ship, this model has been smashed beyond
+repair, the small masts broken, and the hull cracked open.  Drops of blood
+stain the wood, further marring the model.  
+~
+E
+ship~
+An intricately crafted wooden ship, this model has been smashed beyond
+repair, the small masts broken, and the hull cracked open.  Drops of blood
+stain the wood, further marring the model.  
+~
+V13
+23742
+bottle rum~
+a bottle of rum~
+A bottle of rum lies discarded.~
+~
+alcohol~
+drink 0 0 F A
+4 4 'rum' 0 1
+5 4 40 0 P
+0
+E
+bottle~
+A small, slender bottle of clear glass, this bottle contains a quantity
+of rum.  
+~
+E
+rum~
+A small, slender bottle of clear glass, this bottle contains a quantity
+of rum.  
+~
+V13
+23743
+head bodypart leader~
+the head of the smuggler leader~
+The severed head of the smuggler leader is lying here.~
+~
+food~
+trash 0 0 0 A
+0 0 0 0 0
+0 50 0 2 D
+0
+V13
+23744
+chessboard board plain~
+a plain chessboard~
+A plain chessboard rests on a table.~
+~
+wood~
+special 0 0 0 P
+1 0 0 0 0
+10 0 0 1 P
+0
+E
+plain~
+Resting on one of the tavern\@s tables, this chessboard is of plain
+design.  The board is without embellishment, and the pieces consist of small
+wooden tokens, their rank carved into their surfaces.  
+~
+E
+board~
+Resting on one of the tavern\@s tables, this chessboard is of plain
+design.  The board is without embellishment, and the pieces consist of small
+wooden tokens, their rank carved into their surface.  
+~
+E
+chessboard~
+Resting on one of the tavern\@s tables, this chessboard is of plain
+design.  The board is without embellishment, and the pieces consist of small
+wooden tokens, their rank carved into their surface.  
+~
+V13
+23745
+rock large white~
+a large white rock~
+A large rock stands near the entrance to the harbor.~
+~
+stone~
+furniture 0 0 0 P
+4 3000 BE 100 100
+30 10000 0 5 P
+0
+V13
+23746
+crate large cratestep1~
+a large crate~
+A large crate sits in the middle of the floor.~
+~
+wood~
+furniture S 0 0 AP
+1 500 E 100 100
+52 300 0 3 P
+0
+E
+crate~
+This large wooden crate has been turned upside down, enabling it to be
+sat on.  
+~
+E
+large~
+This large wooden crate has been turned upside down, enabling it to be
+sat on.  
+~
+V13
+23747
+ring delicate diamond~
+a delicate diamond ring~
+A delicate diamond ring lies here.~
+~
+silver~
+jewelry 0 0 F AB
+0 0 0 0 0
+10 3 244 0 P
+0
+A
+12 3
+A
+17 -2
+E
+diamond~
+A small, thin band of worked silver, this delicate ring is set with a
+small diamond.  
+~
+E
+delicate~
+A small, thin band of worked silver, this delicate ring is set with a
+small diamond.  
+~
+E
+ring~
+A small, thin band of worked silver, this delicate ring is set with a
+small diamond.  
+~
+V13
+23748
+scroll sealed questscroll~
+a sealed scroll~
+A sealed scroll lies on the ground.~
+~
+parchment~
+trash UX 0 0 A
+0 0 0 0 0
+20 2 0 0 P
+0
+E
+scroll~
+A large wax seal rests upon the surface of this thin scroll.  Set in the
+shape of a blooded dagger, the seal keeps out prying eyes.  
+~
+E
+sealed~
+A large wax seal rests upon the surface of this thin scroll.  Set in the
+shape of a blooded dagger, the seal keeps out prying eyes.  
+~
+E
+seal~
+A large wax seal rests upon the surface of this thin scroll.  Set in the
+shape of a blooded dagger, the seal keeps out prying eyes.  
+~
+V13
+23749
+bracelet carved amber~
+a bracelet of carved amber~
+A bracelet of carved amber lies on the ground.~
+~
+amber~
+armor SY 0 0 AM
+5 5 5 3 0
+20 10 1041 0 P
+0
+A
+13 5
+A
+12 3
+V13
+23750
+bottle rum drugged~
+a bottle of rum~
+A bottle of rum lies discarded here.~
+~
+glass~
+potion SU 0 0 A
+1 '' '' '' ''
+1 1 0 0 P
+0
+E
+rum~
+This plain glass bottle is full of rum, the mouth still sealed shut.
+~
+E
+bottle~
+This plain glass bottle is full of rum, the mouth still sealed shut.  
+~
+>verb_prog drink~
+if isowner($n)
+if compstr(2) == bottle
+mpforce $n quaff drugged
+else
+if compstr(2) == rum
+mpforce $n quaff drugged
+else
+mpnextinterp
+endif
+endif
+else
+mpnextinterp
+endif
+~
+|
+V13
+23751
+cape bright scarlet~
+a bright scarlet cape~
+A pile of bright scarlet cloth lies here.~
+~
+cloth~
+armor S 0 F AC
+3 3 3 1 0
+25 10 660 1 P
+0
+A
+20 -1
+E
+scarlet~
+Formed from cloth dyed a bright scarlet, this cape is richly embroidered.
+Intricate patterns of deeper scarlet thread dance along the length of the
+cape, seemingly placed at random.
+~
+E
+bright~
+Formed from cloth dyed a bright scarlet, this cape is richly embroidered.
+Intricate patterns of deeper scarlet thread dance along the length of the
+cape, seemingly placed at random.
+~
+E
+cape~
+Formed from cloth dyed a bright scarlet, this cape is richly embroidered.
+Intricate patterns of deeper scarlet thread dance along the length of the
+cape, seemingly placed at random.  
+~
+V13
+23752
+scrollcase case silver engraved~
+an engraved silver scrollcase~
+An engraved silver scrollcase lies on the ground.~
+~
+silver~
+container G 0 0 A
+0 AC 0 0 0
+25 15 100000 0 P
+3
+E
+scrollcase~
+A thin, cylindrical container designed to hold scrolls and parchments,
+this scrollcase is elegantly crafted from high quality silver.  Engraved
+into the surface of the case is the likeness of a fully-armored soldier,
+weapon at the ready.  
+~
+E
+case~
+A thin, cylindrical container designed to hold scrolls and parchments,
+this scrollcase is elegantly crafted from high quality silver.  Engraved
+into the surface of the case is the likeness of a fully-armored soldier,
+weapon at the ready.
+~
+E
+silver~
+A thin, cylindrical container designed to hold scrolls and parchments,
+this scrollcase is elegantly crafted from high quality silver.  Engraved
+into the surface of the case is the likeness of a fully-armored soldier,
+weapon at the ready.
+~
+E
+engraved~
+A thin, cylindrical container designed to hold scrolls and parchments,
+this scrollcase is elegantly crafted from high quality silver.  Engraved
+into the surface of the case is the likeness of a fully-armored soldier,
+weapon at the ready.
+~
+>load_prog 100~
+if rand(50)
+mpoload 23753 in self
+else
+if rand(60)
+mpoload 23754 in self
+else
+if rand(75)
+mpoload 23755 in self
+else
+mpoload 23756 in self
+endif
+endif
+endif
+~
+>time_prog 16~
+if incontainer(23753)
+else
+if incontainer(23754)
+else
+if incontainer(23755)
+else
+if incontainer(23756)
+else
+if rand(50)
+mpoload 23753 in self
+else
+if rand(60)
+mpoload 23754 in self
+else
+if rand(75)
+mpoload 23755 in self
+else
+mpoload 23756 in self
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+~
+>time_prog 0~
+if incontainer(23753)
+else
+if incontainer(23754)
+else
+if incontainer(23755)
+else
+if incontainer(23756)
+else
+if rand(50)
+mpoload 23753 in self
+else
+if rand(60)
+mpoload 23754 in self
+else
+if rand(75)
+mpoload 23755 in self
+else
+mpoload 23756 in self
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+~
+|
+V13
+23753
+scroll armor~
+a scroll of armor~
+A small scroll lies discarded here.~
+~
+parchment~
+scroll S 0 0 A
+10 'armor' '' '' ''
+10 2 0 0 P
+0
+V13
+23754
+scroll shield~
+a scroll of shield~
+A small scroll lies discarded here.~
+~
+parchment~
+scroll S 0 0 A
+10 'shield' '' '' ''
+10 2 0 0 P
+0
+V13
+23755
+scroll wind wall small~
+a scroll of wind wall~
+A small scroll lies discarded here.~
+~
+parchment~
+scroll S 0 0 A
+25 'wind wall' '' '' ''
+25 2 0 0 P
+0
+V13
+23756
+scroll gaseous form small~
+a scroll of gaseous form~
+A small scroll lies discarded here.~
+~
+parchment~
+scroll S 0 0 A
+25 'gaseous form' '' '' ''
+25 2 0 0 P
+0
+V13
+23757
+wand thin granite~
+a thin granite wand~
+A thin wand carved from granite lies here.~
+~
+granite~
+wand SY 0 0 AO
+25 20 20 'earthbind' 0
+25 60 3400 1 P
+0
+E
+wand~
+This wand has been carved from granite into the shape of thin cylinder. 
+Vine-like carvings decorate the length of the wand.  
+~
+E
+thin~
+This wand has been carved from granite into the shape of thin cylinder. 
+Vine-like carvings decorate the length of the wand.
+~
+E
+granite~
+This wand has been carved from granite into the shape of thin cylinder. 
+Vine-like carvings decorate the length of the wand.
+~
+V13
+23758
+staff jagged applewood branch~
+a jagged applewood staff~
+A jagged branch of applewood lies here.~
+~
+wood~
+staff S 0 0 AO
+25 5 5 'conjure air efreeti' 0
+25 70 9375 2 P
+0
+E
+staff~
+This jagged staff is made from the knarled branch of an apple tree.  Tiny
+wisps of cloud seem to hover around its edges.  
+~
+E
+jagged~
+This jagged staff is made from the knarled branch of an apple tree.  Tiny
+wisps of cloud seem to hover around its edges.
+~
+E
+applewood~
+This jagged staff is made from the knarled branch of an apple tree.  Tiny
+wisps of cloud seem to hover around its edges.
+~
+E
+branch~
+This jagged staff is made from the knarled branch of an apple tree.  Tiny
+wisps of cloud seem to hover around its edges.
+~
+V13
+23759
+bracelet tiger-eye tiger eye~
+a tiger-eye bracelet~
+A bracelet inset with tiger-eyes lies here.~
+~
+gem~
+jewelry G 0 0 AM
+0 0 0 0 0
+30 30 85000 1 P
+5
+A
+13 10
+A
+20 -2
+E
+bracelet~
+This finely-wrought bracelet has been crafted from fine steel and is
+inset with large tiger-eyes.  The stones shift in the light, and seem to
+radiate warmth.  A small word has been carved into the base of the bracelet.
+~
+E
+tiger-eye~
+This finely-wrought bracelet has been crafted from fine steel and is
+inset with large tiger-eyes.  The stones shift in the light, and seem to
+radiate warmth.  A small word has been carved into the base of the bracelet.
+~
+E
+tiger~
+This finely-wrought bracelet has been crafted from fine steel and is
+inset with large tiger-eyes.  The stones shift in the light, and seem to
+radiate warmth.  A small word has been carved into the base of the bracelet.
+~
+E
+eye~
+This finely-wrought bracelet has been crafted from fine steel and is
+inset with large tiger-eyes.  The stones shift in the light, and seem to
+radiate warmth.  A small word has been carved into the base of the bracelet.
+~
+E
+word~
+Carved into the base of the bracelet is the ch\@taren word \@esmelt\@.  
+~
+>speech_prog p esmelt~
+if isworn(var)
+if objvalue(0) == 0
+if isbitset($n) == 23759
+mpecho A tiger-eye bracelet glows faintly.
+mpcast 34 30 $n
+else
+mpecho A tiger-eye bracelet glows warm.
+mpcast 114 30 $n
+endif
+mpvalueset 0 500
+else
+mpecho A tiger-eye bracelet begins to glow, then fades.
+endif
+endif
+~
+>rand_prog 100~
+if objvalue(0) == 0
+else
+mpvaluedown 0
+endif
+~
+|
+V13
+23760
+chest small~
+a small chest~
+A small chest lies against a wall of the hut.~
+~
+wood~
+container 0 0 0 P
+0 ACD 0 0 0
+10 300 0 1 P
+0
+V13
+23761
+pouch coins coin~
+a pouch of coins~
+A pouch half-full of coins lies on the ground.~
+~
+copper~
+money 0 0 F A
+14 3 0 0 0
+5 0 0 0 P
+0
+V13
+23762
+lyre wood wooden~
+a wooden lyre~
+A wooden lyre lies discarded here.~
+~
+wood~
+instrument S 0 F AO
+B 0 0 0 0
+20 50 100 1 P
+0
+E
+lyre~
+This lyre has been carved from sturdy wood.  A simple pattern of leaves
+ornaments the surface of the lyre.  
+~
+E
+wood~
+This lyre has been carved from sturdy wood.  A simple pattern of leaves
+ornaments the surface of the lyre.  
+~
+E
+wooden~
+This lyre has been carved from sturdy wood.  A simple pattern of leaves
+ornaments the surface of the lyre.  
+~
+V13
+23763
+robe leather thick bjorcha~
+a thick leather robe~
+A length of thick bjorcha leather lies on the ground.~
+~
+leather~
+armor DS 0 F AK
+4 6 5 0 0
+15 150 1085 1 P
+0
+A
+37 1
+E
+bjorcha~
+A long length of leather, this robe has been crafted from the thick hide
+of a bjorcha.  Lacking ornamentation, the robe is clasped with a simple
+leather tie.
+~
+E
+thick~
+A long length of leather, this robe has been crafted from the thick hide
+of a bjorcha.  Lacking ornamentation, the robe is clasped with a simple
+leather tie.
+~
+E
+leather~
+A long length of leather, this robe has been crafted from the thick hide
+of a bjorcha.  Lacking ornamentation, the robe is clasped with a simple
+leather tie.
+~
+E
+robe~
+A long length of leather, this robe has been crafted from the thick hide
+of a bjorcha.  Lacking ornamentation, the robe is clasped with a simple
+leather tie.  
+~
+V13
+23764
+sign ship wooden~
+a wooden sign~
+A wooden sign stands here, bearing the picture of a ship.~
+~
+wood~
+trash 0 0 0 P
+0 0 0 0 0
+1 0 0 0 P
+0
+E
+ship~
+----------------------------------
+|                                |
+| Schedule for Tural\@s Icewing   |
+| ============================== |
+| Boarding    6:00am  to 11:30am |
+| Departure to Alensha   12:00pm |
+|                                |
+|--------------------------------|
+~
+E
+wooden~
+----------------------------------
+|                                |
+| Schedule for Tural\@s Icewing   |
+| ============================== |
+| Boarding    6:00am  to 11:30am |
+| Departure to Alensha   12:00pm |
+|                                |
+|--------------------------------|
+~
+E
+sign~
+----------------------------------
+|                                |
+| Schedule for Tural\@s Icewing   |
+| ============================== |
+| Boarding    6:00am  to 11:30am |
+| Departure to Alensha   12:00pm |
+|                                |
+|--------------------------------|
+~
+V13
+23765
+teleportation Alensha~
+teleportation to Alensha~
+A crystalized rune of teleportation keyed to Alensha is here.~
+~
+crystal~
+special GPUX 0 0 A
+0 0 0 0 0
+51 0 5000 0 P
+0
+>rand_prog 100~
+if ispc($o)
+  mpechoat $o Your rune of teleportation flickers.
+  mptransfer $o 25433
+  mpechoaround $o $O suddenly appears.
+  mpforce $o look
+  mppurge self
+endif
+~
+>verb_prog purge_teleportobject~
+if ispc($o)
+  mppurge self
+endif
+~
+|
+V13
+23766
+oddly ciphered text oddly-ciphered~
+an oddly-ciphered text~
+An oddly-ciphered text is here, marked with the Salyran seal.~
+~
+parchment~
+writing TX 0 0 AO
+1 0 0 0 0
+55 1 65000 1 P
+1
+E
+oddly1~
+[This strange text has been scribed in some ciphered hand, rendering it
+impossible to read.  The confusing symbols seem to warp and shift, as though
+the letters themselves resisted being understood.  The text is accompanied
+by a number of diagrams depicting in scientific detail features of nefortu
+physiology.  ] 
+~
+V13
+23799
+port map~
+a map of the port of the Earendam~
+A map of Earendam\@s port hangs on the wall.~
+~
+cloth~
+trash d 0 0 0
+0 0 0 0 0
+55 0 0 1 P
+1
+E
+port~
+E
+a
+r ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  L
+e ,  ,  ,  ,  ,  ,  ,  ,  ,  , /
+n ,  ,  , H  H  H  H  S       L
+d ,  ,  , +  +  +  +  |      /
+a ,   D   R--R--R--R--S--C--L       Uthlin Ocean
+m ,   |   +  +  |     |
+, ,   |   H  H  R     P  
+O ,   D---D---D-|--D--U--U--U--U--U
+u ,  , T  T--T `R  ---+--+-----+--------
+t ,  , +  |  |  |     |  |     |
+s ,  , T--T--T  R--B--B--B+-B  P+-M  W--W  
+k ,  ,  , +     |     |  |     |     +     
+i ,  ,  , R--R--R--R  B--B  M-+R--R--R--R--R--R    
+r ,  ,  ,  , |     |  |  |     |  +     +     
+t ,  ,  , H-+R+-H  R--B--B--B--R  W--W  W
+s ,  ,  ,  , |     |  +  +     |        |
+, ,  ,  , H-+R+-H  R  B  B  M-+R+-W--W  W    
+, ,  ,  ,  ,  ,  , |  ,  ,  ,  |      
+O---R----R----R----R--R--R--R--R+-W--W
+~
+E
+map~
+E
+a
+r ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  L
+e ,  ,  ,  ,  ,  ,  ,  ,  ,  , /
+n ,  ,  , H  H  H  H  S       L
+d ,  ,  , +  +  +  +  |      /
+a ,   D   R--R--R--R--S--C--L       Uthlin Ocean
+m ,   |   +  +  |     |
+, ,   |   H  H  R     P  
+O ,   D---D---D-|--D--U--U--U--U--U
+u ,  , T  T--T `R  ---+--+-----+--------
+t ,  , +  |  |  |     |  |     |
+s ,  , T--T--T  R--B--B--B+-B  P+-M  W--W  
+k ,  ,  , +     |     |  |     |     +     
+i ,  ,  , R--R--R--R  B--B  M-+R--R--R--R--R--R    
+r ,  ,  ,  , |     |  |  |     |  +     +     
+t ,  ,  , H-+R+-H  R--B--B--B--R  W--W  W
+s ,  ,  ,  , |     |  +  +     |        |
+, ,  ,  , H-+R+-H  R  B  B  M-+R+-W--W  W    
+, ,  ,  ,  ,  ,  , |  ,  ,  ,  |      
+O---R----R----R----R--R--R--R--R+-W--W
+~
+#0
+
+
+
+#ROOMS
+#23700
+Cazel\@s Secret Laboratory~
+Built in the very depths of the Earendam Harbor, the laboratory is the
+source of all the Mad Doctor Cazel\@s evil schemes.  Odd devices line the
+shelves throughout the room, and strange books lay piled on the tables.  A
+large dome covers the lab, allowing a clear view of the murky gray waters
+outside.  
+~
+~
+0
+0 557068 0
+W 5 0 0
+Z 5 5
+S
+#23701
+The Uthlin Road~
+The Uthlin Road is a narrow strip of stones leading eastward toward the
+Uthlin Ocean and the lands to the east.  Maintained by the Earendam
+authorities, it cuts a path through the Earendam countryside, allowing
+merchants and caravans a safe route to the shore of the ocean.  The
+sprawling port of Earendam is visible to the northeast, and a western breeze
+carries the faint smell of saltwater.  
+~
+~
+0
+0 0 13
+D1
+The Uthlin Road continues to the east.
+~
+~
+0 0 23702
+D3
+~
+~
+0 0 5838
+W 5 0 0
+Z 5 5
+S
+#23702
+The Uthlin Road~
+The Uthlin Road is a narrow strip of stones leading eastward toward the
+Uthlin Ocean and the lands to the east.  Maintained by the Earendam
+authorities, it cuts a path through the Earendam countryside, allowing
+merchants and caravans a safe route to the shore of the ocean.  The
+sprawling port of Earendam is visible to the northeast, and a western breeze
+carries the faint smell of saltwater.  
+~
+~
+0
+0 0 13
+D1
+The Uthlin Road continues to the east.
+~
+~
+0 0 23703
+D3
+The Uthlin Road continues to the west.
+~
+~
+0 0 23701
+W 5 0 0
+Z 5 5
+S
+#23703
+The Uthlin Road~
+The Uthlin Road is a narrow strip of stones leading eastward toward the
+Uthlin Ocean and the lands to the east.  Maintained by the Earendam
+authorities, it cuts a path through the Earendam countryside, allowing
+merchants and caravans a safe route to the shore of the ocean.  The
+sprawling port of Earendam is visible to the north, and a western breeze
+carries the faint smell of saltwater.  
+~
+~
+0
+0 4 13
+D1
+The Uthlin Road continues to the east.
+~
+~
+0 0 23704
+D3
+The Uthlin Road continues to the west.
+~
+~
+0 0 23702
+W 5 0 0
+Z 5 5
+S
+#23704
+The Uthlin Road~
+The Uthlin Road is a narrow strip of stones leading eastward toward the
+Uthlin Ocean and the lands to the east.  Maintained by the Earendam
+authorities, it cuts a path through the Earendam countryside, allowing
+merchants and caravans a safe route to the shore of the ocean.  The Bilge
+Rat Road heads north here through the sprawling Earendam docks towards the
+Dantaron and its namesake Bilge Rat Tavern.  A faint smell of saltwater is
+carries by a western breeze.  
+~
+~
+0
+0 0 13
+D0
+The Bilge Rat Road heads off to the north.
+~
+~
+0 0 23740
+D1
+The Uthlin Road continues to the east.
+~
+~
+0 0 23705
+D3
+The Uthlin Road continues to the west.
+~
+~
+0 0 23703
+W 5 0 0
+Z 5 5
+S
+#23705
+The Uthlin Road~
+The Uthlin Road is a narrow belt of carefully laid stones that leads from
+Earendam to the shore of the Uthlin Ocean and the lands to the east.  To the
+north lies the sprawling port of Earendam, and beyond that the calm waters
+of Earendam Harbor.  The smell of salt water is carried by the breeze, and
+gulls cry in the air overhead.  
+~
+~
+0
+0 0 13
+D1
+The Uthlin Road continues to the east.
+~
+~
+0 0 23706
+D3
+The Uthlin Road continues to the west.
+~
+~
+0 0 23704
+W 5 0 0
+Z 5 5
+S
+#23706
+The Uthlin Road~
+The Uthlin Road is a narrow belt of carefully laid stones that leads from
+Earendam to the shore of the Uthlin Ocean and the lands to the east.  To the
+north lies the sprawling port of Earendam, and beyond that the calm waters
+of Earendam Harbor.  The smell of salt water is carried by the breeze, and
+gulls cry in the air overhead.  
+~
+~
+0
+0 0 13
+D1
+The Uthlin Road continues to the east.
+~
+~
+0 0 23707
+D3
+The Uthlin Road continues to the west.
+~
+~
+0 0 23705
+W 5 0 0
+Z 5 5
+S
+#23707
+The Uthlin Road~
+The Uthlin Road is a narrow belt of carefully laid stones that leads from
+Earendam to the docks along the Uthlin Ocean and the lands to the east.  To
+the north lies the sprawling port of Earendam, and beyond that the vast,
+gray expanse of the Uthlin Ocean.  The smell of salt water is carried by the
+breeze, and gulls cry in the air overhead.  
+~
+~
+0
+0 0 13
+D1
+The Uthlin Road continues to the east.
+~
+~
+0 0 23708
+D3
+The Uthlin Road continues to the west.
+~
+~
+0 0 23706
+W 5 0 0
+Z 5 5
+S
+#23708
+The Uthlin Road~
+The Uthlin Road is a narrow belt of carefully laid stones that leads from
+Earendam to the docks along the Uthlin Ocean and the lands to the east.  The
+road turns north here through the sprawling port of Earendam, towards the
+docks and the vast, gray expanse of the Uthlin Ocean.  The smell of salt
+water is carried by the breeze, and gulls cry in the air overhead.  To the
+east lies the entrance to one of the port\@s many warehouses.  
+~
+~
+0
+0 0 1
+D0
+The Uthlin Road continues to the north.
+~
+~
+0 0 23709
+D1
+A sturdy door leads into a warehouse.
+~
+sturdy door~
+3 0 23727
+D3
+The Uthlin Road continues to the west.
+~
+~
+0 0 23707
+W 5 0 0
+Z 5 5
+S
+#23709
+The Uthlin Road~
+A narrow band of carefully laid stones, the Uthlin Road runs from
+Earendam to the Earendam Docks and the vast, gray expanse of the ocean.  The
+smell of salt water fills the air, and the cries of gulls mix with the
+clamor of men.  A large warehouse lies to the east, and to the west lies the
+barracks of the Earendam guards who have been stationed to guard the port.  
+~
+~
+0
+0 0 1
+D0
+The Uthlin Road continues to the north.
+~
+~
+0 0 23710
+D1
+A sturdy door leads into a warehouse.
+~
+sturdy door~
+3 0 23719
+D2
+The Uthlin Road continues to the south.
+~
+~
+0 0 23708
+D3
+A solid oak door leads into the guards\@ barracks.
+~
+solid oak door~
+3 0 23715
+W 5 0 0
+Z 5 5
+S
+#23710
+The Uthlin Road~
+A narrow band of carefully laid stones, the Uthlin Road runs from
+Earendam to the Earendam Docks and the vast, gray expanse of the ocean.  The
+smell of salt water fills the air, and the cries of gulls mix with the
+clamor of men.  A thin, gravelled path heads west here, running through the
+Earendam shipyards.  
+~
+~
+0
+0 0 1
+D0
+The Uthlin Road continues to the north.
+~
+~
+0 0 23711
+D2
+The Uthlin Road continues to the south.
+~
+~
+0 0 23709
+D3
+A gravelled path heads into the shipyard.
+~
+~
+0 0 23729
+W 5 0 0
+Z 5 5
+S
+#23711
+The Uthlin Road~
+A narrow band of carefully laid stones, the Uthlin Road runs from
+Earendam to the Earendam Docks and the vast, gray expanse of the ocean.  The
+smell of salt water fills the air, and the cries of gulls mix with the
+clamor of men.  Earendam\@s docks lie to north, while to the west stands the
+Sea Market, where merchants may trade their imported goods.  The road itself
+turns, heading south towards Earendam and east away from the docks.  
+~
+~
+0
+0 0 1
+D0
+The Earendam Docks lie to the north.
+~
+~
+0 0 23712
+D1
+The Uthlin Road continues to the east.
+~
+~
+0 0 23716
+D2
+The Uthlin Road continues to the south.
+~
+~
+0 0 23710
+D3
+A large archway leads to the Sea Market.
+~
+large archway~
+0 0 23714
+W 5 0 0
+Z 5 5
+S
+#23712
+The Earendam Docks~
+Spread along the southern shore of the Uthlin Ocean, the well-kept docks
+of Earendam look out over the vast, gray waters.  Wooden quays lie on the
+water\@s edge, and small boats traverse the surf between the beach and the
+large merchant ships anchored offshore.  Off to the north the port\@s great
+lighthouse is visible, jutting out from the headland.  To the east stands a
+large building in which the Earendam harbormaster keeps his office, and to
+the south the Uthlin Road heads towards Earendam.  
+~
+~
+0
+0 0 1
+D0
+The Uthlin Ocean stretches to the horizon.
+~
+~
+0 0 23786
+D1
+An ornate door leads to the harbormaster\@s office.
+~
+ornate door~
+3 0 23713
+D2
+To the south the Uthlin Road passes through the port.
+~
+~
+0 0 23711
+D3
+The Earendam Docks continue to the west.
+~
+~
+0 0 23789
+W 5 0 0
+Z 5 5
+P
+>rand_prog 100~
+if rand(1)
+mpecho A small ship pulls into the docks, disgorging a number of sailors.
+mpecho Talking animately, they wander off into the port.
+else
+if rand(1)
+mpecho A sharp cry echoes through the air, as a gull passes overhead.
+else
+if rand(2)
+mpecho A dockhand has arrived.
+mpecho A dockhand grabs a crate from the dock.
+mpecho A dockhand leaves south.
+endif
+endif
+endif
+~
+|
+S
+#23713
+The Office of the Harbormaster~
+A large wooden structure built at the eastern end of the Earendam docks,
+this building serves as the office of Earendam\@s harbormaster, Grendolen
+Sanedros.  The room is sparsely furnished, containing a large desk and a
+single bookcase, as well as a large map of the port which hangs on the
+southern wall.  A single doorway to the west provides entrance and exit to
+the office.  
+~
+~
+0
+0 8 0
+E
+map~
+This map shows the layout of Earendam\@s port, from the eastern warehouses
+to the Bilge Rat Tavern in the west and the great lighthouse in the north.  
+~
+E
+desk~
+The harbormaster\@s desk is a large oak affair, made of sturdy
+construction with little embellishment.  A plush, well-padded chair sits
+behind the desk, the indentations produced by its user visible on its seat. 
+~
+D3
+An ornate door leads out of the harbormaster\@s office.
+~
+ornate door~
+3 0 23712
+W 5 0 0
+Z 5 5
+S
+#23714
+The Sea Market~
+Large and airy, this building as a place for merchants to trade imported
+goods.  Rugs, vases, and crates adorn the corners of the room, and eager
+merchants set up stalls wherever there is room.  Large quantities of goods
+change hands, as merchants carry on their business through all hours of the
+day.  A large archway leads out of the Sea Market, back onto the Uthlin
+Road.  
+~
+~
+0
+0 8 0
+D1
+A large archway leads out of the Sea Market.
+~
+~
+0 0 23711
+W 5 0 0
+Z 5 5
+S
+#23715
+The Guard Barracks~
+A long wooden building, this room serves as the barracks for the Earendam
+guards who have been stationed to protect the harbor.  Two rows of cots line
+the walls of the room, each with a small chest of personal items lying
+beside it.  The building is in very neat condition, the cots are well-made
+and everything has been stowed away.  To the east, a doorway leads back out
+onto the Uthlin Road.  
+~
+~
+0
+0 8 0
+D1
+A solid oak door leads out of the barracks.
+~
+solid oak door~
+3 0 23709
+W 5 0 0
+Z 5 5
+S
+#23716
+The Uthlin Road~
+A narrow band of carefully laid stones, the Uthlin Road runs along the
+Uthlin Ocean, joining Earendam with the lands to the east.  The smell of
+salt water fills the air, and the cries of gulls mix with the clamor of men.
+The entrance to a warehouse lies to the south, and several others are
+visible to the east.  
+~
+~
+0
+0 0 1
+D1
+The Uthlin Road continues to the east.
+~
+~
+0 0 23717
+D2
+A sturdy door leads into a warehouse.
+~
+sturdy door~
+1 0 23721
+D3
+The Uthlin Road continues to the west.
+~
+~
+0 0 23711
+W 5 0 0
+Z 5 5
+S
+#23717
+The Uthlin Road~
+A narrow band of carefully laid stones, the Uthlin Road runs along the
+Uthlin Ocean, joining Earendam with the lands to the east.  The smell of
+salt water fills the air, and the cries of gulls mix with the clamor of men.
+The entrance to a warehouse lies to the north, others standing both east and
+west.  
+~
+~
+0
+0 0 1
+D0
+A sturdy door leads into a warehouse.
+~
+sturdy door~
+1 0 23723
+D1
+The Uthlin Road continues to the east.
+~
+~
+0 0 23718
+D3
+The Uthlin Road continues to the west.
+~
+~
+0 0 23716
+W 5 0 0
+Z 5 5
+S
+#23718
+The Uthlin Road~
+A narrow band of carefully laid stones, the Uthlin Road runs along the
+Uthlin Ocean, joining Earendam with the lands to the east.  The smell of
+salt water fills the air, and the cries of gulls mix with the clamor of men.
+The entrance to a warehouse lies to the south, several others are visible
+off to the west.  
+~
+~
+0
+0 0 1
+D1
+The Uthlin Road continues to the east.
+~
+~
+0 0 23788
+D2
+A sturdy door leads into a warehouse.
+~
+sturdy door~
+7 0 23725
+D3
+The Uthlin Road continues to the west.
+~
+~
+0 0 23717
+W 5 0 0
+Z 5 5
+S
+#23719
+A Warehouse~
+One of the many warehouses built at the eastern end of the Earendam port,
+this building serves as storage for the many goods that pass through the
+docks.  A large number of sacks containing salt from the salt mines of Ashta
+Harrud have been stacked along the walls, accompanied by bags of rare spices
+from across the lands.  To the east, the warehouse continues, while a
+doorway leads back out onto the Uthlin Road to the west.  
+~
+~
+0
+0 8 0
+D1
+The warehouse continues to the east.
+~
+~
+0 0 23720
+D3
+A sturdy door leads out of the warehouse.
+~
+sturdy door~
+3 0 23709
+W 5 0 0
+Z 5 5
+S
+#23720
+A Warehouse~
+One of the many warehouses built at the eastern end of the Earendam port,
+this building serves as storage for the many goods that pass through the
+docks.  Large sacks line the walls, filled with freshly milled dushasn flour
+from Alensha.  Small amounts of flour slip through tiny holes in the fabric
+of the sacks, falling unto the slightly dusty floor.  From here the
+warehouse continues to the west, where more goods are visible.  
+~
+~
+0
+0 8 0
+D3
+The warehouse continues to the west.
+~
+~
+0 0 23719
+W 5 0 0
+Z 5 5
+S
+#23721
+A Warehouse~
+One of the many warehouses built at the eastern end of the Earendam port,
+this building serves as storage for the many goods that pass through the
+docks.  Large numbers of crates are stacked along the walls, filled with
+ripe tarel fruit from Alensha and fresh vegetables from the Lithling valley.
+To the east, the warehouse continues, while a doorway leads out onto Uthlin
+Road to the north.  
+~
+~
+0
+0 8 0
+D0
+A sturdy door leads out of the warehouse.
+~
+sturdy door~
+1 0 23716
+D1
+The warehouse continues to the east.
+~
+~
+0 0 23722
+W 5 0 0
+Z 5 5
+S
+#23722
+A Warehouse~
+One of the many warehouses built at the eastern end of the Earendam port,
+this building serves as storage for the many goods that pass through the
+docks.  Casks and barrels line the walls, filled with fine wines from
+Alensha, Earendam and the Lithling valley and ales from Eril and Var Bandor.
+From here the warehouse continues to the west, where more goods are visible.
+~
+~
+0
+0 8 0
+D3
+The warehouse continues to the west.
+~
+~
+0 0 23721
+W 5 0 0
+Z 5 5
+S
+#23723
+A Warehouse~
+One of the many warehouses built at the eastern end of the Earendam port,
+this building serves as storage for the many goods that pass through the
+docks.  Numerous boxes are stacked along the walls, containing furs from
+Krilin and finished goods of steel and iron from the craftshops of Var
+Bandor.  To the east, the warehouse continues, while a doorway leads out
+onto Uthlin Road to the south.  
+~
+~
+0
+0 8 0
+D1
+The warehouse continues to the east.
+~
+~
+0 0 23724
+D2
+A sturdy door leads out of the warehouse.
+~
+sturdy door~
+1 0 23717
+W 5 0 0
+Z 5 5
+S
+#23724
+A Warehouse~
+One of the many warehouses built at the eastern end of the Earendam port,
+this building serves as storage for the many goods that pass through the
+docks.  Rugs and fine multi-colored tapestries from Ashta Harrud fill the
+room, mixed with skeins of duskin wool yarn from Alensha and rolls of cloth
+and silk.  From here the warehouse continues to the west, where more goods
+are visible.  
+~
+~
+0
+0 8 0
+D3
+The warehouse continues to the west.
+~
+~
+0 0 23723
+W 5 0 0
+Z 5 5
+S
+#23725
+A Warehouse~
+One of the many warehouses built at the eastern end of the Earendam port,
+this building serves as storage for the many goods that pass through the
+docks.  Enchanted with the power of water, this warehouse remains cold at
+all times.  Large barrels full of fish and pork stand along the walls,
+filling the room with the smell of meat.  To the south, the air grows colder
+as the warehouse continues, while a doorway leads out onto the Uthlin Road
+to the north.  
+~
+~
+0
+0 8 0
+D0
+A sturdy door leads out of the warehouse.
+~
+sturdy door~
+7 0 23718
+D2
+The warehouse continues to the south.
+~
+~
+0 0 23726
+W 5 0 0
+Z 5 5
+S
+#23726
+A Warehouse~
+One of the many warehouses built at the eastern end of the Earendam port,
+this building serves as storage for the many goods that pass through the
+docks.  Enchanted with the power of water, this warehouse remains cold at
+all times.  Along the walls stand sides of beef from the Lithling and mutton
+from Alensha, filling the air with the smell of meat.  The air in this part
+of the warehouse is quite cold, though to the north it begins to warm as the
+warehouse continues.  
+~
+~
+0
+0 8 0
+D0
+The warehouse continues to the north.
+~
+~
+0 0 23725
+W 5 0 0
+Z 5 5
+S
+#23727
+A Warehouse~
+One of the many warehouses built at the eastern end of the Earendam port,
+this building serves to store the many goods that pass through the docks. 
+Not currently used for storage, this warehouse is poorly lit, full of dust
+and shadows.  Several stacks of empty crates stand along the walls, and the
+accumulated litter from long periods of disuse covers the floor.  The
+warehouse continues east, while a doorway in the western wall leads out into
+the port.  
+~
+~
+0
+0 8 0
+D1
+The warehouse continues to the east.
+~
+~
+0 0 23728
+D3
+A sturdy door leads out of the warehouse.
+~
+sturdy door~
+3 0 23708
+W 5 0 0
+Z 5 5
+S
+#23728
+A Warehouse~
+One of the many warehouses built at the eastern end of the Earendam port,
+this building serves to store the many goods that pass through the docks. 
+Not currently used for storage, this warehouse is poorly lit, full of dust
+and shadows.  Several stacks of empty crates stand along the walls, and a
+small, threadbare rug lies across one section of the floor, amidst the
+accumulated litter from long periods of disuse.  From here the warehouse
+continues to the west.  
+~
+~
+0
+0 8 0
+E
+rug~
+A small, threadbare rug, stained with mud and wine, lies across one
+section of the floor.  Upon closer examination, the rug appears to be
+covering a trapdoor which has been set into the ground.  
+~
+D3
+The warehouse continues to the west.
+~
+~
+0 0 23727
+D5
+A trapdoor leads down through the warehouse floor.
+~
+~
+3 0 23790
+W 5 0 0
+Z 5 5
+S
+#23729
+A Gravelled Path~
+Covered in a thin layer of coarse gravel, this path runs east and west
+through Earendam\@s shipyard.  Though the main portion of the shipyard lies
+to the northwest, assorted tools and carefully stacked piles of wood lie
+along the edge of the road.  The smell of wood and paint mingles with the
+salty sea air, and the cries of gulls mix with the clamor of men.  To the
+east the path meets the Uthlin Road, and continues through the shipyard to
+the west.  
+~
+~
+0
+0 0 1
+D1
+The path leads out of the shipyard.
+~
+~
+0 0 23710
+D3
+The path continues through the shipyard.
+~
+~
+0 0 23730
+W 5 0 0
+Z 5 5
+S
+#23730
+A Gravelled Path~
+Covered in a thin layer of coarse gravel, this path runs east and west
+through Earendam\@s shipyard.  Though the main portion of the shipyard lies
+to the north, assorted tools and carefully stacked piles of wood lie along
+the edge of the road.  The smell of wood and paint mingles with the salty
+sea air, and the cries of gulls mix with the clamor of men.  Numerous
+partially-built ships are visible to the north, while a small storage shed
+stands to the south.  
+~
+~
+0
+0 0 1
+D0
+The shipyard continues to the north.
+~
+~
+0 0 23733
+D1
+The path continues through the shipyard.
+~
+~
+0 0 23729
+D2
+A simple pine door leads into the storage shed.
+~
+simple pine door~
+3 0 23738
+D3
+The path continues through the shipyard.
+~
+~
+0 0 23731
+W 5 0 0
+Z 5 5
+S
+#23731
+A Gravelled Path~
+Covered in a thin layer of coarse gravel, this path runs east and west
+through Earendam\@s shipyard.  Though the main portion of the shipyard lies
+to the north, assorted tools and carefully stacked piles of wood lie along
+the edge of the road.  The smell of wood and paint mingles with the salty
+sea air, and the cries of gulls mix with the clamor of men.  Numerous
+partially-built ships are visible to the north, while a small storage shed
+stands to the south.  In the west, the path ends, meeting the Bilge Rat
+Road.  
+~
+~
+0
+0 0 1
+D0
+The shipyard continues to the north.
+~
+~
+0 0 23732
+D1
+The path continues through the shipyard.
+~
+~
+0 0 23730
+D2
+A simple pine door leads into the storage shed.
+~
+simple pine door~
+3 0 23737
+D3
+The path heads out of the shipyard.
+~
+~
+0 0 23741
+W 5 0 0
+Z 5 5
+S
+#23732
+The Earendam Shipyards~
+A variety of ships in various states of construction lie scattered about
+the shipyard grounds, large merchant cogs, fishing craft and even canoes
+awaiting the attention of busy workmen.  Several sets of wooden rollers
+cross the grounds, allowing the larger ships to be transported to the shore.
+Piles of wood, covered securely by tarps to keep them dry, fill the gaps
+between the ships, and assorted tools lay abandoned on the walkways.  The
+smell of wood and paint mingles with the salty sea air, and the cries of
+gulls mix with the clamor of men.  To the north and east the shipyards
+continue, while a gravel path cuts across the shipyard to the south.  
+~
+~
+0
+0 0 1
+D0
+The shipyards continue to the north.
+~
+~
+0 0 23735
+D1
+The shipyard continues to the east.
+~
+~
+0 0 23733
+D2
+The shipyard continues to the south.
+~
+~
+0 0 23731
+W 5 0 0
+Z 5 5
+S
+#23733
+The Earendam Shipyards~
+A variety of ships in various states of construction lie scattered about
+the shipyard grounds, large merchant cogs, fishing craft and even canoes
+awaiting the attention of busy workmen.  Several sets of wooden rollers
+cross the grounds, allowing the larger ships to be transported to the shore.
+Piles of wood, covered securely by tarps to keep them dry, fill the gaps
+between the ships, and assorted tools lay abandoned on the walkways.  The
+smell of wood and paint mingles with the salty sea air, and the cries of
+gulls mix with the clamor of men.  To the north and west the shipyards
+continue, while a gravel path cuts across the shipyard to the south.  
+~
+~
+0
+0 0 1
+D0
+The shipyard continues to the north.
+~
+~
+0 0 23734
+D2
+The shipyards continue to the south.
+~
+~
+0 0 23730
+D3
+The shipyard continues to the west.
+~
+~
+0 0 23732
+W 5 0 0
+Z 5 5
+S
+#23734
+The Earendam Shipyards~
+A variety of ships in various states of construction lie scattered about
+the shipyard grounds, large merchant cogs, fishing craft and even canoes
+awaiting the attention of busy workmen.  Several sets of wooden rollers
+cross the grounds, allowing the larger ships to be transported to the shore.
+Piles of wood, covered securely by tarps to keep them dry, fill the gaps
+between the ships, and assorted tools lay abandoned on the walkways.  The
+smell of wood and paint mingles with the salty sea air, and the cries of
+gulls mix with the clamor of men.  To the west and south the shipyards
+continue, while to the east stands the offices of Filibrin Dandelon, master
+of the shipyards.  The calm waters of Earendam Harbor lie to the north, the
+great lighthouse visible off in the distance.  
+~
+~
+0
+0 0 1
+D0
+The calm waters of Earendam Harbor lie to the north.
+~
+~
+0 0 23780
+D1
+A well-crafted oak door leads into Filibrin Dandelon\@s office.
+~
+well-crafted oak door~
+3 0 23739
+D2
+The shipyards continue to the south.
+~
+~
+0 0 23733
+D3
+The shipyards continue to the west.
+~
+~
+0 0 23735
+W 5 0 0
+Z 5 5
+S
+#23735
+The Earendam Shipyards~
+A variety of ships in various states of construction lie scattered about
+the shipyard grounds, large merchant cogs, fishing craft and even canoes
+awaiting the attention of busy workmen.  Several sets of wooden rollers
+cross the grounds, allowing the larger ships to be transported to the shore.
+Piles of wood, covered securely by tarps to keep them dry, fill the gaps
+between the ships, and assorted tools lay abandoned on the walkways.  The
+smell of wood and paint mingles with the salty sea air, and the cries of
+gulls mix with the clamor of men.  The shipyard continues in all directions
+save north, where the calm waters of Earendam lap against the shore, and off
+to the north the great lighthouse is visible rising from the headland.  
+~
+~
+0
+0 0 1
+D0
+The calm waters of Earendam Harbor lie to the north.
+~
+~
+0 0 23779
+D1
+The shipyards continue to the east.
+~
+~
+0 0 23734
+D2
+The shipyards continue to the south.
+~
+~
+0 0 23732
+D3
+The shipyards continue to the west.
+~
+~
+0 0 23736
+W 5 0 0
+Z 5 5
+S
+#23736
+The Earendam Shipyards~
+A variety of ships in various states of construction lie scattered about
+the shipyard grounds, merchant vessels, fishing craft, and even canoes
+awaiting the attention of busy workmen.  Several sets of wooden rollers
+cross the grounds, allowing the larger ships to be transported to the shore.
+Piles of wood, covered securely by tarps to keep them dry, fill the gaps
+between the ships, and assorted tools lay abandoned on the walkways.  The
+smell of wood and paint mingles with the salty sea air, and the cries of
+gulls mix with the clamor of men.  The shipyard continues to the east, while
+a small path heads off west out of the shipyard.  To the north the mouth of
+the Dantaron opens, as the waters of the river mix with the calm waters of
+Earendam Harbor.  
+~
+~
+0
+0 0 1
+D0
+The mouth of the Dantaron empties into Earendam Harbor.
+~
+~
+0 0 23778
+D1
+The shipyards continue to the east.
+~
+~
+0 0 23735
+D3
+A path leads out of the shipyard.
+~
+~
+0 0 23748
+W 5 0 0
+Z 5 5
+S
+#23737
+A Storage Shed~
+Built with thick, sturdy wooden walls, this small shed stands at the
+southern end of the shipyards.  A number of roughly-carved cabinets line the
+walls of the room, the occasional open drawer revealing an assortment of
+tools and other items.  A large stack of barrels stands in one corner, the
+scent of pitch drifting through the room and mingling with the smells of
+wood and salt water.  Through the doorway to the north the cries of gulls
+can be heard, as well as the sounds of the shipyard.  
+~
+~
+0
+0 8 0
+D0
+A simple pine door leads out of the storage shed.
+~
+simple pine door~
+3 0 23731
+W 5 0 0
+Z 5 5
+S
+#23738
+A Storage Shed~
+Built with thick, sturdy wooden walls, this small shed stands at the
+southern end of the shipyards.  A number of roughly-carved cabinets line the
+walls of the room, the occasional open drawer revealing an assortment of
+tools and other items.  A large stack of barrels stands in one corner, the
+scent of pitch drifting through the room and mingling with the smells of
+wood and salt water.  Through the doorway to the north the cries of gulls
+can be heard, as well as the sounds of the shipyard.  
+~
+~
+0
+0 8 0
+D0
+A simple pine door leads out of the storage shed.
+~
+simple pine door~
+3 0 23730
+W 5 0 0
+Z 5 5
+S
+#23739
+The Office of Filibrin Dandelon~
+Ship designs and ship models fill the walls and shelves of this spacious
+office.  All manner of ships are on display, from cogs to skiffs, and each
+model is preserved within a glass display case.  By contrast, the desk of
+the master of the shipyard is quite plain, a small, wooden table piled high
+with papers.  Several chairs have been left about the room, so that
+customers might have a place to sit.  The exit from the office lies west,
+through a well-crafted oak door.  
+~
+~
+0
+0 8 0
+D3
+A well-crafted oak door leads out of the office.
+~
+well-crafted oak door~
+3 0 23734
+W 5 0 0
+Z 5 5
+S
+#23740
+The Bilge Rat Road~
+Travelling through Earendam\@s port between the Bilge Rat Tavern and the
+Uthlin Road, the Bilge Rat Road is little more than a thin, muddy trail. 
+Around you, the air is filled with the smell of saltwater, and the cries of
+gulls mix with the clamor of men.  The path continues to the north, and
+meets the Uthlin Road to the south.  
+~
+~
+0
+0 0 1
+D0
+The Bilge Rat Road continues to the north.
+~
+~
+0 0 23741
+D2
+The Bilge Rat Road meets the Uthlin Road to the south.
+~
+~
+0 0 23704
+W 5 0 0
+Z 5 5
+S
+#23741
+The Bilge Rat Road~
+Travelling through Earendam\@s port between the Bilge Rat Tavern and the
+Uthlin Road, the Bilge Rat Road is little more than a thin, muddy trail. 
+Around you, the air is filled with the smell of saltwater, and the cries of
+gulls mix with the clamor of men.  The path continues to the north and
+south, while to the east a gravelled path heads into the shipyard.  
+~
+~
+0
+0 0 1
+D0
+The Bilge Rat Road continies to the north.
+~
+~
+0 0 23742
+D1
+A gravelled path heads into the shipyard.
+~
+~
+0 0 23731
+D2
+The Bilge Rat Road continues to the south.
+~
+~
+0 0 23740
+W 5 0 0
+Z 5 5
+S
+#23742
+The Bilge Rat Road~
+Travelling through Earendam\@s port between the Bilge Rat Tavern and the
+Uthlin Road, the Bilge Rat Road is little more than a thin, muddy trail. 
+Around you, the air is filled with the smell of saltwater, and the cries of
+gulls mix with the clamor of men.  The path turns at this point, heading
+west toward the tavern and south towards the Uthlin Road.  
+~
+~
+0
+0 4 1
+D2
+The Bilge Rat Road continues to the south.
+~
+~
+0 0 23741
+D3
+The Bilge Rat Road continues to the west.
+~
+~
+0 0 23743
+W 5 0 0
+Z 5 5
+S
+#23743
+The Bilge Rat Road~
+Travelling through Earendam\@s port between the Bilge Rat Tavern and the
+Uthlin Road, the Bilge Rat Road is little more than a thin, muddy trail. 
+Around you, the air is filled with the smell of saltwater, and the cries of
+gulls mix with the clamor of men.  The path continues to the east and west,
+while the pathway known as Fishermen\@s Lane heads north towards the
+Dantaron.  
+~
+~
+0
+0 0 1
+D0
+Fishermen\@s Lane heads north towards the Dantaron.
+~
+~
+0 0 23748
+D1
+The Bilge Rat Road continues to the east.
+~
+~
+0 0 23742
+D3
+The Bilge Rat Road continues to the west.
+~
+~
+0 0 23744
+W 5 0 0
+Z 5 5
+S
+#23744
+The Bilge Rat Road~
+Travelling through Earendam\@s port between the Bilge Rat Tavern and the
+Uthlin Road, the Bilge Rat Road is little more than a thin, muddy trail. 
+Around you, the air is filled with the smell of saltwater, and the cries of
+gulls mix with the clamor of men.  The path continues to the east and west,
+while to the south a trail leads to the workmen\@s barracks.  
+~
+~
+0
+0 0 1
+D1
+The Bilge Rat Road continues to the east.
+~
+~
+0 0 23743
+D2
+A small side path heads south.
+~
+~
+0 0 23746
+D3
+The Bilge Rat Road continues to the west.
+~
+~
+0 0 23745
+W 5 0 0
+Z 5 5
+S
+#23745
+The Bilge Rat Road~
+Travelling through Earendam\@s port between the Bilge Rat Tavern and the
+Uthlin Road, the Bilge Rat Road is little more than a thin, muddy trail. 
+Around you, the air is filled with the smell of saltwater, and the cries of
+gulls mix with the clamor of men.  The path comes to an end here, as the
+worn facade of the Bilge Rat Tavern squats to the north.  The path continues
+to the east.  
+~
+~
+0
+0 0 1
+D0
+A worn pine door leads into the Bilge Rat Tavern.
+~
+worn pine door~
+1 0 23772
+D1
+The Bilge Rat Road continues to the east.
+~
+~
+0 0 23744
+W 5 0 0
+Z 5 5
+S
+#23746
+A Side Path~
+Branching off of the Bilge Rat Road, this path leads to the barracks
+which house the docks\@ workers.  Narrow and full of mud, the trail runs
+straight through the barracks, which stand on either side to the east and
+west.  Around you, the air is filled with the smell of saltwater, and the
+cries of gulls mix with the clamor of men.  The path continues to the south,
+and to the north meets the Bilge Rat Road.  
+~
+~
+0
+0 0 1
+D0
+To the north the path meets the Bilge Rat Road.
+~
+~
+0 0 23744
+D1
+A rough-hewn door leads into a barracks.
+~
+rough-hewn door~
+1 0 23768
+D2
+The path continues to the south.
+~
+~
+0 0 23747
+D3
+A rough-hewn door leads into a barracks.
+~
+rough-hewn door~
+1 0 23765
+W 5 0 0
+Z 5 5
+S
+#23747
+A Side Path~
+Branching off of the Bilge Rat Road, this path leads to the barracks
+which house the docks\@ workers.  Narrow and full of mud, the trail runs
+straight through the barracks, which stand on either side to the east and
+west.  Around you, the air is filled with the smell of saltwater, and the
+cries of gulls mix with the clamor of men.  The path comes to an end here,
+but continues to the north.  
+~
+~
+0
+0 0 1
+D0
+The path continues to the north.
+~
+~
+0 0 23746
+D1
+A rough-hewn door leads into a barracks.
+~
+rough-hewn door~
+1 0 23767
+D3
+A rough-hewn door leads into a barracks.
+~
+rough-hewn door~
+1 0 23766
+W 5 0 0
+Z 5 5
+S
+#23748
+Fishermen\@s Lane~
+A pathway which provides access between the north and south banks of the
+Dantaron River within Earendam\@s port, Fishermen\@s Lane is narrow, muddy,
+and well-travelled.  Around you, the salty smell of the sea hangs in the
+air, and the cries of gulls fill the skies.  The path passes over the
+Dantaron River to the north, and to the south meets the Bilge Rat Road.  A
+small path heads east, into the shipyards.  
+~
+~
+0
+0 4 1
+D0
+Fishermen\@s Lane continues to the north.
+~
+~
+0 0 23749
+D1
+A path leads into the shipyards.
+~
+~
+0 0 23736
+D2
+Fishermen\@s Lane meets the Bilge Rat Road to the south.
+~
+~
+0 0 23743
+W 5 0 0
+Z 5 5
+S
+#23749
+Fishermen\@s Lane~
+A pathway which provides access between the north and south banks of the
+Dantaron River within Earendam\@s port, Fishermen\@s Lane is narrow, muddy,
+and well-travelled.  Around you, the salty smell of the sea hangs in the
+air, and the cries of gulls fill the skies.  A wooden bridge crosses over
+the Dantaron River at this point, a ladder along the southern bank leading
+down onto the water.  To the north the path heads into a fishing village,
+and to the south leads into the main portion of the port.  
+~
+~
+0
+0 0 1
+D0
+Fishermen\@s Lane continues to the north.
+~
+~
+0 0 23750
+D2
+Fishermen\@s Lane continues to the south.
+~
+~
+0 0 23748
+D5
+A ladder leads down onto the Dantaron.
+~
+~
+0 0 23777
+W 5 0 0
+Z 5 5
+S
+#23750
+Fishermen\@s Lane~
+A pathway which provides access between the north and south banks of the
+Dantaron River within Earendam\@s port, Fishermen\@s Lane is narrow, muddy,
+and well-travelled.  Around you, the salty smell of the sea hangs in the
+air, and the cries of gulls fill the skies.  The path passes over the
+Dantaron to the south, and to the north passes into a fishing village.  
+~
+~
+0
+0 0 1
+D0
+Fishermen\@s Lane continues to the north.
+~
+~
+0 0 23751
+D2
+Fishermen\@s Lane continues to the south.
+~
+~
+0 0 23749
+W 5 0 0
+Z 5 5
+S
+#23751
+Fishermen\@s Lane~
+A pathway which provides access between the north and south banks of the
+Dantaron River within Earendam\@s port, Fishermen\@s Lane is narrow, muddy,
+and well-travelled.  Around you, the salty smell of the sea hangs in the
+air, and the cries of gulls fill the skies.  The path turns here, heading
+south toward the Dantaron River and west through the village which surrounds
+you.  To the north stands a small hovel, while a dirt path heads east
+through the eastern part of the village.  
+~
+~
+0
+0 0 1
+D0
+A fisherman\@s hovel stands to the north.
+~
+~
+0 0 23760
+D1
+A dirt path heads towards the Uthlin Shore.
+~
+~
+0 0 23754
+D2
+Fishermen\@s Lane continues to the south.
+~
+~
+0 0 23750
+D3
+Fishermen\@s Lane continues to the west.
+~
+~
+0 0 23752
+W 5 0 0
+Z 5 5
+S
+#23752
+Fishermen\@s Lane~
+A pathway which provides access between the north and south banks of the
+Dantaron River within Earendam\@s port, Fishermen\@s Lane is narrow, muddy,
+and well-travelled.  Around you, the salty smell of the sea hangs in the
+air, and the cries of gulls fill the skies.  The path continues through the
+village in both directions, while two hovels lie on either side of the lane,
+standing to the north and south.  
+~
+~
+0
+0 0 1
+D0
+A fisherman\@s hovel lies to the north.
+~
+~
+0 0 23761
+D1
+Fishermen\@s Lane continues to the east.
+~
+~
+0 0 23751
+D2
+A fisherman\@s hovel lies to the south.
+~
+~
+0 0 23764
+D3
+Fishermen\@s Lane continues to the west.
+~
+~
+0 0 23753
+W 5 0 0
+Z 5 5
+S
+#23753
+Fishermen\@s Lane~
+A pathway which provides access between the north and south banks of the
+Dantaron River within Earendam\@s port, Fishermen\@s Lane is narrow, muddy,
+and well-travelled.  Around you, the salty smell of the sea hangs in the
+air, and the cries of gulls fill the skies.  The path continues through the
+village to the east, while two hovels lie on either side of the lane,
+standing to the north and south.  
+~
+~
+0
+0 0 1
+D0
+A fisherman\@s hovel lies to the north.
+~
+~
+0 0 23762
+D1
+Fishermen\@s Lane continues to the east.
+~
+~
+0 0 23752
+D2
+A fisherman\@s hovel lies to the south.
+~
+~
+0 0 23763
+W 5 0 0
+Z 5 5
+S
+#23754
+A Dirt Path~
+A small dirt path which joins the Uthlin Shore with the fishing village
+to the west, this trail runs through the stands of seagrass which lie on the
+edge of the village.  Around you, the salty smell of the sea hangs in the
+air, and the cries of gulls fill the skies.  The village warehouse lies to
+the south, and a fisherman\@s hovel stands to the north.  To the east stands
+a wide beach, the towering form of Earendam\@s lighthouse visible beyond it. 
+~
+~
+0
+0 0 1
+D0
+A fisherman\@s hovel lies to the north.
+~
+~
+0 0 23759
+D1
+The path leads to the Uthlin shore.
+~
+~
+0 0 23755
+D2
+The stores of the fishing village lie to the south.
+~
+~
+0 0 23758
+D3
+The path meets Fishermen\@s Lane to the west.
+~
+~
+0 0 23751
+W 5 0 0
+Z 5 5
+S
+#23755
+The Uthlin Shore~
+Small waves lap up onto the beach here as the Uthlin Ocean meets the
+shore.  Its vast, gray expanse stretches out to the northwest, running off
+past the horizon.  The smell of saltwater and rotting fish fills the air,
+and the cries of gulls mix with the clamor of men.  To the east a lighthouse
+rises from the headland, standing at the end of a small path, while to the
+south a small dock lies along the Earendam Harbor.  A dirt path heads west,
+leading to a small fishing village.  
+~
+~
+0
+0 0 2
+D0
+The beach continues to the north.
+~
+~
+0 0 23756
+D1
+A well-kept path leads to the lighthouse.
+~
+~
+0 0 23781
+D2
+A small path leads to the Fishermen\@s Docks.
+~
+~
+0 0 23757
+D3
+A dirt path leads into a small fishing village.
+~
+~
+0 0 23754
+W 5 0 0
+Z 5 5
+P
+>rand_prog 100~
+if rand(1)
+mpecho A sharp cry echoes through the air, as a gull passes overhead.
+else
+if rand(2)
+mpecho A large wave crashes into the shore.
+endif
+endif
+~
+|
+S
+#23756
+The Uthlin Shore~
+Small waves lap up onto the beach here as the Uthlin Ocean meets the
+shore.  Its vast, gray expanse stretches out to the east, running off past
+the horizon.  The smell of saltwater, and the cries of gulls mix with the
+lapping of the waves.  Stands of seagrass lie among sand dunes, their blades
+swaying in the ocean breeze.  The beach ends as a cliff face arises to the
+north, but continues towards a headland to the south.  
+~
+~
+0
+0 0 2
+D1
+~
+~
+0 0 4606
+D2
+The beach continues to the south.
+~
+~
+0 0 23755
+W 5 0 0
+Z 5 5
+P
+>rand_prog 100~
+if rand(1)
+mpecho A sharp cry echoes through the air, as a gull passes overhead.
+else
+if rand(2)
+mpecho A large wave crashes into the shore.
+endif
+endif
+~
+|
+S
+#23757
+The Fishermen\@s Docks~
+Small wooden quays and assorted sea vessels line the small stretch of
+shore known as the Fishermen\@s Dock.  Earendam\@s unoffical port, this dock
+is frequented by fisherman, as well as those who wish to bypass Earendam\@s
+trade tariffs.  The smell of saltwater and rotting fish fills the air, and
+the cries of gulls mix with the clamors of men.  To the south stretch the
+calm waters of the Earendam Harbor, while to the east the gray expanse of
+the Uthlin Ocean is visible.  A small path runs north, towards a small
+fishing village and the great lighthouse which watches over the harbor.  
+~
+~
+0
+0 0 1
+D0
+A small path leads to the shore of the Uthlin Ocean.
+~
+~
+0 0 23755
+D2
+Earendam Harbor lies to the south.
+~
+~
+0 0 23779
+W 5 0 0
+Z 5 5
+P
+>time_prog 3~
+mpecho A darkly dressed man enters the docks.
+mpecho He signals to his fellows and boards the ship.
+mpecho The others follow, and the ship pulls out from the docks.
+~
+>time_prog 22~
+mpecho A small ship with dark sails pulls into the docks.
+mpecho Five men dressed in dark clothing leave it and come ashore.
+mpecho The first, his face concealed, heads north out of the docks.
+mpecho Those left behind begin to unload the ship.
+~
+|
+S
+#23758
+The Village Stores~
+A large wooden room with a packed dirt floor, this structure is the
+warehouse for the fishing village.  A pile of fishing nets lays tangled in
+one corner, most of the nets showing the impact of frequent use.  Fish,
+herbs, and vegetables have been left to hang here, dangling down from the
+ceiling.  A number of barrels, emitting the scents of fish and brine, stand
+along one wall.  A large doorway leads out of the stores, onto a small dirt
+path.  
+~
+~
+0
+0 8 0
+D0
+A doorway leads out of the stores.
+~
+~
+0 0 23754
+W 5 0 0
+Z 5 5
+S
+#23759
+A Fisherman\@s Hovel~
+A simple wooden room with a packed dirt floor, this hovel serves as a
+home for one of the fishing village\@s families.  A few worn sleeping mats
+lay piled in the corner, and several small pots have been placed along one
+wall.  The ashes of an old fire lie within the fireplace set in the north
+wall, and a battered pot sits beside it.  An open doorway leads south, out
+into the village.  
+~
+~
+0
+0 8 0
+D2
+A doorway leads out of the hovel.
+~
+~
+0 0 23754
+W 5 0 0
+Z 5 5
+S
+#23760
+A Fisherman\@s Hovel~
+A simple wooden room with a packed dirt floor, this hovel serves as a
+home for one of the fishing village\@s families.  A few worn sleeping mats
+lay spread out on the floor, and several small pots have been placed along
+one wall.  The ashes of an old fire lie within the fireplace set in the
+north wall, a battered pot dangling above.  An open doorway leads south, out
+into the village.  
+~
+~
+0
+0 8 0
+D2
+A doorway leads out the hovel.
+~
+~
+0 0 23751
+W 5 0 0
+Z 5 5
+S
+#23761
+A Fisherman\@s Hovel~
+A simple wooden room with a packed dirt floor, this hovel serves as a
+home for one of the fishing village\@s families.  A few worn sleeping mats
+lay piled in the corner, and several small pots have been placed along one
+wall.  A small fire burns in the fireplace set in the north wall, a pot of
+stew cooking above it.  An open doorway leads south, out into the village.  
+~
+~
+0
+0 8 0
+D2
+A doorway leads out of the hovel.
+~
+~
+0 0 23752
+W 5 0 0
+Z 5 5
+S
+#23762
+A Fisherman\@s Hovel~
+A simple wooden room with a packed dirt floor, this hovel appears to have
+been unoccupied for some time.  Leaves and other debris litter the floor,
+and bits of broken pottery lay scattered along the eastern wall.  Within the
+fireplace set in the north wall rests the remains of an old fire, dust
+mixing with the ashes.  An open doorway leads south, out into the village.  
+~
+~
+0
+0 8 0
+D2
+A doorway leads out of the hovel.
+~
+~
+0 0 23753
+W 5 0 0
+Z 5 5
+S
+#23763
+A Fisherman\@s Hovel~
+A simple wooden room with a packed dirt floor, this hovel serves as a
+home for one of the fishing village\@s families.  A few worn sleeping mats
+lay spread out on the floor, and several small pots have been placed along
+one wall.  A small fire burns in the fireplace set in the south wall, near
+which a small crib has been placed, accompanied by a wooden chair.  An open
+doorway leads north, out into the village.  
+~
+~
+0
+0 8 0
+D0
+A doorway leads out of the hovel.
+~
+~
+0 0 23753
+W 5 0 0
+Z 5 5
+S
+#23764
+A Fisherman\@s Hovel~
+A simple wooden room with a packed dirt floor, this hovel serves as a
+home for one of the fishing village\@s families.  A few worn sleeping mats
+lay piled in the corner, and several small pots are scattered about the
+room.  The ashes of an old fire lie within the fireplace set in the south
+wall, and a battered pots sits beside it.  An open doorway leads north, out
+into the village.  
+~
+~
+0
+0 8 0
+D0
+A doorway leads out of the hovel.
+~
+~
+0 0 23752
+W 5 0 0
+Z 5 5
+S
+#23765
+The Barracks~
+A ramshackle building with a cluttered appearance, this wooden structure
+serves to house the men who work at the docks.  Narrow bunks lay scattered
+about, chests and small tables filling the gaps between beds.  Clothing and
+other articles lay scattered about the wooden floor.  The smell of sweat and
+grime clogs the air, tinged slightly by the sea air outside.  Through the
+doorway to the east the cries of gulls mingle with the sounds of the docks. 
+~
+~
+0
+0 8 0
+D1
+A rough-hewn door leads out of the barracks.
+~
+rough-hewn door~
+1 0 23746
+W 5 0 0
+Z 5 5
+S
+#23766
+The Barracks~
+A ramshackle building with a cluttered appearance, this wooden structure
+serves to house the men who work at the docks.  Narrow bunks lay scattered
+about, chests and small tables filling the gaps between beds.  Clothing and
+other articles lay scattered about the wooden floor.  The smell of sweat and
+grime clogs the air, tinged slightly by the sea air outside.  Through the
+doorway to the east the cries of gulls mingle with the sounds of the docks. 
+~
+~
+0
+0 8 0
+D1
+A rough-hewn door leads out of the barracks.
+~
+rough-hewn door~
+1 0 23747
+W 5 0 0
+Z 5 5
+S
+#23767
+The Barracks~
+A ramshackle building with a cluttered appearance, this wooden structure
+serves to house the men who work at the docks.  Narrow bunks lay scattered
+about, chests and small tables filling the gaps between beds.  Clothing and
+other articles lay scattered about the wooden floor.  The smell of sweat and
+grime clogs the air, tinged slightly by the sea air outside.  Through the
+doorway to the west the cries of gulls mingle with the sounds of the docks. 
+~
+~
+0
+0 8 0
+D3
+A rough-hewn door leads out of the barracks.
+~
+rough-hewn door~
+1 0 23747
+W 5 0 0
+Z 5 5
+S
+#23768
+The Barracks~
+A ramshackle building with a cluttered appearance, this wooden structure
+serves to house the men who work at the docks.  Narrow bunks lay scattered
+about, chests and small tables filling the gaps between beds.  Clothing and
+other articles lay scattered about the wooden floor.  The smell of sweat and
+grime clogs the air, tinged slightly by the sea air outside.  Through the
+doorway to the west the cries of gulls mingle with the sounds of the docks. 
+~
+~
+0
+0 8 0
+D3
+A rough-hewn door leads out of the barracks.
+~
+rough-hewn door~
+1 0 23746
+W 5 0 0
+Z 5 5
+S
+#23769
+The Bilge Rat Tavern~
+A large room with wood panelling and a hardwood floor, the common room of
+the Bilge Rat Tavern is dimly lit by a series of lamps, whose dull glows
+shed little light throughout the room.  The tables and other furniture are
+worn from frequent use, and the floor is covered in the sticky grime of dirt
+and spilled drinks.  About you, the air is filled with talk and laughter,
+and the smells of beer and men.  In this corner of the tavern, a number of
+booths have been set up to permit private conversation while the rest of the
+common room extends to the west and north.  
+~
+~
+0
+0 8 0
+D0
+The common room of the tavern continues to the north.
+~
+~
+0 0 23770
+D3
+The common room of the tavern continues to the west.
+~
+~
+0 0 23772
+W 5 0 0
+Z 5 5
+S
+#23770
+The Bilge Rat Tavern~
+A large room with wood panelling and a hardwood floor, the common room of
+the Bilge Rat Tavern is dimly lit by a series of lamps, whose dull glows
+shed little light throughout the room.  The tables and other furniture are
+worn from frequent use, and the floor is covered in the sticky grime of dirt
+and spilled drinks.  About you, the air is filled with talk and laughter,
+and the smells of beer and men.  A large bar stands in this corner of the
+room while the rest of the common room extends to the west and south.  
+~
+~
+0
+0 8 0
+D2
+The common room of the tavern continues to the south.
+~
+~
+0 0 23769
+D3
+The common room of the tavern continues to the west.
+~
+~
+0 0 23771
+W 5 0 0
+Z 5 5
+S
+#23771
+The Bilge Rat Tavern~
+A large room with wood panelling and a hardwood floor, the common room of
+the Bilge Rat Tavern is dimly lit by a series of lamps, whose dull glows
+shed little light throughout the room.  The tables and other furniture are
+worn from frequent use, and the floor is covered in the sticky grime of dirt
+and spilled drinks.  About you, the air is filled with talk and laughter,
+and the smells of beer and men.  A number of large tables rest in this
+corner while the rest of the common room extends to the east and south.  
+~
+~
+0
+0 8 0
+D1
+The common room of the tavern continues to the east.
+~
+~
+0 0 23770
+D2
+The common room of the tavern continues to the south.
+~
+~
+0 0 23772
+W 5 0 0
+Z 5 5
+S
+#23772
+The Bilge Rat Tavern~
+A large room with wood panelling and a hardwood floor, the common room of
+the Bilge Rat Tavern is dimly lit by a series of lamps, whose dull glows
+shed little light throughout the room.  The tables and other furniture are
+worn from frequent use, and the floor is covered in the sticky grime of dirt
+and spilled drinks.  About you, the air is filled with talk and laughter,
+and the smells of beer and men.  To the south a doorway provides exit from
+the tavern while the rest of the common room extends to the east and north. 
+A dark, narrow hallway heads west, towards the tavern\@s lone guestroom.  
+~
+~
+0
+0 8 0
+D0
+The common room of the tavern continues to the north.
+~
+~
+0 0 23771
+D1
+The common room of the tavern continues to the east.
+~
+~
+0 0 23769
+D2
+A worn pine door leads out of the tavern.
+~
+worn pine door~
+1 0 23745
+D3
+A poorly lit hallway heads off to the west.
+~
+~
+0 0 23773
+W 5 0 0
+Z 5 5
+S
+#23773
+A Poorly Lit Hallway~
+A thin corridor which leads away from the common room of the tavern, this
+hallway is lighted by only a single dying lamp.  A light layer of dust has
+settled onto the hardwood floor, and small cobwebs have begun to form on the
+ceiling.  A small door leads into a room to the north, while the clamorous
+sounds of the tavern can be quite clearly heard from the east.  
+~
+~
+0
+0 12 0
+D0
+A slightly-warped door leads into the tavern\@s guest room.
+~
+slightly-warped door~
+7 0 23774
+D1
+The common room of the tavern lies to the east.
+~
+~
+0 0 23772
+W 5 0 0
+Z 5 5
+S
+#23774
+A Small, Cramped Room~
+A very compact room with little space in which to move, this room does
+not appear to be used often.  A narrow cot fills most of the available
+space, with a musty rug covering most of the remainder.  A candle attached
+to the eastern wall beside the bed provides all the lighting, and cobwebs
+fill the corners.  A doorway lies to the south, through which drift the
+sounds of the tavern outside.  
+~
+~
+0
+0 8 0
+D2
+A slightly-warped door leads out of the room.
+~
+slightly-warped door~
+7 0 23773
+W 5 0 0
+Z 5 5
+S
+#23775
+The Dantaron River~
+The Dantaron River continues its steady pace to the sea here, flowing
+eastward across the grasslands towards Earendam Harbor and the Uthlin Ocean.
+The walls of the city Earendam are visible in the distance to the west, and
+to the east the port of Earendam spreads along the shore.  
+~
+~
+0
+0 0 6
+D1
+The river continues downstream to the east.
+~
+~
+0 0 23776
+D3
+~
+~
+0 0 1857
+W 5 0 0
+Z 5 5
+P
+>rand_prog 100~
+if rand(1)
+mpecho A large barge drifts slowly past down the river, headed to the port.
+else
+if rand(1)
+mpecho A small rivercraft passes by heading upriver to Earendam.
+endif
+endif
+~
+|
+S
+#23776
+The Dantaron River~
+The Dantaron River continues its steady pace to the sea here, flowing
+eastward across the grasslands towards Earendam Harbor and the Uthlin Ocean.
+The walls of the city Earendam are visible in the distance to the west, and
+in the east the buildings of Earendam\@s port are visible, rising up on both
+sides of the riverbank.  
+~
+~
+0
+0 0 6
+D1
+The river continues downstream to the east.
+~
+~
+0 0 23777
+D3
+The river continues upstream to the west.
+~
+~
+0 0 23775
+W 5 0 0
+Z 5 5
+P
+>rand_prog 100~
+if rand(1)
+mpecho A large barge drifts slowly past down the river, headed to the port.
+else
+if rand(1)
+mpecho A small rivercraft passes by heading upriver to Earendam.
+endif
+endif
+~
+|
+S
+#23777
+The Dantaron River~
+The Dantaron River continues its steady pace to the sea here, flowing
+through the assorted buildings that make up Earendam\@s port towards Earendam
+Harbor and the Uthlin Ocean.  The walls of Earendam in the distance to the
+west, and to the north and south a number of buildings are visible.  At this
+point, the river passes under a wooden bridge, a ladder along the southern
+bank allowing access from the river up onto the bridge.  
+~
+~
+0
+0 4 6
+D1
+The mouth of the Dantaron opens to the east.
+~
+~
+0 0 23778
+D3
+The river continues upstream to the west.
+~
+~
+0 0 23776
+D4
+A ladder leads up onto a wooden bridge.
+~
+~
+0 0 23749
+W 5 0 0
+Z 5 5
+P
+>rand_prog 100~
+if rand(1)
+mpecho A large barge drifts slowly past down the river, headed to the port.
+else
+if rand(1)
+mpecho A small rivercraft passes by heading upriver to Earendam.
+endif
+endif
+~
+|
+S
+#23778
+The Mouth of the Dantaron~
+The wide mouth of the Dantaron empties at this point into the calm, gray
+waters of Earendam Harbor as the river passes through the port of Earendam. 
+The smell of saltwater fills the air, and the cries of gulls mix with the
+clamor of men.  Far to the west the walls of Earendam are still barely
+visible, and to the northwest the great lighthouse of the harbor rises from
+the headland.  Earendam Harbor continues to the east, while to the south
+Earendam\@s shipyards are visible, nestled up against the beach.  
+~
+~
+0
+0 4 6
+D1
+Earendam Harbor continues to the east.
+~
+~
+0 0 23779
+D2
+Earendam\@s shipyards lie to the south.
+~
+~
+0 0 23736
+D3
+To the west the Dantaron passes under a bridge.
+~
+~
+0 0 23777
+W 5 0 0
+Z 5 5
+S
+#23779
+Earendam Harbor~
+Sheltered by the headland at the northeast end of the bay, the gray
+waters of the Earendam Harbor are calm and gentle.  Many merchant ships lay
+at anchor in the bay, impeding the passage of the fishing boats and smaller
+vessels which traverse the harbor\@s waters.  The smell of the sea fills the
+air, and the cries of gulls are heard as they glide through the sky.  To the
+south, the shipyards of the port are visible, while the quays of the
+Fishermen\@s Docks can be seen to the north.  The harbor continues to the
+east under the watchful eye of the great lighthouse, but end to the west in
+wide mouth of the Dantaron.  
+~
+~
+0
+0 4 7
+D0
+The Fishermen\@s Docks lie to the north.
+~
+~
+0 0 23757
+D1
+Earendam Harbor continues to the east.
+~
+~
+0 0 23780
+D2
+Earendam\@s shipyards lie to the south.
+~
+~
+0 0 23735
+D3
+The mouth of the Dantaron lies to the west.
+~
+~
+0 0 23778
+W 5 0 0
+Z 5 5
+P
+>rand_prog 100~
+if rand(1)
+mpecho A small merchant vessel narrowly avoids a small fishing boat.
+mpecho {Y A fisherman cries \@Watch where you\@re going.\@
+mpecho {Y A sailor replies \@You\@re in the way, you fool.\@{x
+else
+if rand(1)
+mpecho A sharp cry echoes through the air, as a gull passes overhead.
+endif
+endif
+~
+|
+S
+#23780
+Earendam Harbor~
+Sheltered by the headland at the northeast end of the bay, the gray
+waters of the Earendam Harbor are calm and gentle.  Many merchant ships lay
+at anchor in the bay, impeding the passage of the fishing boats and smaller
+vessels which traverse the harbor\@s waters.  The smell of the sea fills the
+air, and the cries of gulls are heard as they glide through the sky.  To the
+south, the shipyards of the port are visible, while to the north the
+towering form of the great lighthouse can be seen rising from the headland. 
+The harbor continues to the west, but opens to the east into the Uthlin
+Ocean.  
+~
+~
+0
+0 4 7
+D1
+Earendam Harbor continues to the east.
+~
+~
+0 0 23785
+D2
+Earendam\@s shipyards lie to the south.
+~
+~
+0 0 23734
+D3
+Earendam Harbor continues to the west.
+~
+~
+0 0 23779
+W 5 0 0
+Z 5 5
+P
+>rand_prog 100~
+if rand(1)
+mpecho A small merchant vessel narrowly avoids a small fishing boat.
+mpecho {Y A fisherman cries \@Watch where you\@re going.\@
+mpecho {Y A sailor replies \@You\@re in the way, you fool.\@{x
+else
+if rand(1)
+mpecho A sharp cry echoes through the air, as a gull passes overhead.
+endif
+endif
+~
+|
+S
+#23781
+Outside the Lighthouse~
+Running along the crest of a headland which juts out into the Uthlin
+Ocean to form Earendam Harbor, this small path leads to the great
+lighthouse, which stands directly to the east.  A towering structure which
+rises high over the headland, the lighthouse has been constructed from
+tightly-joined stone blocks.  To the west, the path heads towards a beach
+along the shore of the Uthlin Ocean.  A salty smell of the sea fills the
+air, the cries of gulls mixing with the lapping of the waves.  
+~
+~
+0
+0 0 13
+D1
+A steel-bound door guards the entrance to the lighthouse.
+~
+steel-bound door~
+3 0 23782
+D3
+A path leads away from the lighthouse.
+~
+~
+0 0 23755
+W 5 0 0
+Z 5 5
+S
+#23782
+The Base of the Lighthouse~
+Rising high above the headland, this lighthouse serves to help ships find
+the entrance to Earendam Harbor.  The walls of the towering structure have
+been crafted from tightly-joined stone blocks, a stone stairway circling
+upward along the walls towards the upper floors.  Through the windows
+arrayed along the walls flow the cries of gulls and the scent of the ocean. 
+To the west, a large doorway leads out onto a small dirt path.  
+~
+~
+0
+0 8 0
+D3
+A steel-bound door leads out of the lighthouse.
+~
+steel-bound door~
+3 0 23781
+D4
+The spiral staircase leads up through the lighthouse.
+~
+~
+0 0 23783
+W 5 0 0
+Z 5 5
+S
+#23783
+The Lighthouse Keeper\@s Room~
+Located about halfway up the lighthouse, this small floor serves as the
+home of the lighthouse keeper and his family.  Several pieces of furniture
+stand carefully placed throughout the room, and a number of smaller items
+line shelves and walls.  Through the windows along the walls flow the cries
+of gulls and the scent of ocean.  A stone stairway runs through the room,
+circling the walls and leading both up and down into other parts of the
+lighthouse.  
+~
+~
+0
+0 8 0
+D4
+The spiral staircase leads up through the lighthouse.
+~
+~
+0 0 23784
+D5
+The spiral staircase leads down through the lighthouse.
+~
+~
+0 0 23782
+W 5 0 0
+Z 5 5
+S
+#23784
+The Top of the Lighthouse~
+A large fire rages in the center of this room, which stands at the top of
+Earendam\@s lighthouse.  Piles of wood are stacked against the walls, fuel
+for the flames which light the shores at night.  The cool, salty sea breeze
+flows through the room, carrying with it the sounds the ocean.  A stone
+stairway winds down from the room, circling the walls as it leads down into
+the lower portions of the lighthouse.  
+~
+~
+0
+0 8 0
+E
+fire~
+A roaring fire blazes in the center of the room, feasting on the wood
+which fuels its flames.  A smouldering heat radiates from the blaze, and
+tendrils of smoke drift up from flames on the sea breezes.  
+~
+D5
+The spiral staircase leads down through the lighthouse.
+~
+~
+0 0 23783
+W 5 0 0
+Z 5 5
+S
+#23785
+Earendam Harbor~
+Sheltered by the headland at the northeast end of the bay, the gray
+waters of the Earendam Harbor are calm and gentle.  Many merchant ships lay
+at anchor in the bay, impeding the passage of the fishing boats and smaller
+vessels which traverse the harbor\@s waters.  The smell of the sea fills the
+air, and the cries of gulls are heard as they glide through the sky.  A
+constant flow of ships head towards the docks, which can be seen spread
+along the coastline to the south, while to the north the towering form of
+the great lighthouse can be seen rising from the headland.  The harbor
+continues to the west, but opens to the east into the Uthlin Ocean.  
+~
+~
+0
+0 4 7
+D1
+The Uthlin Ocean lies to the east.
+~
+~
+0 0 23786
+D2
+The Earendam Docks lie to the south.
+~
+~
+0 0 23789
+D3
+Earendam Harbor continues to the west.
+~
+~
+0 0 23780
+W 5 0 0
+Z 5 5
+P
+>rand_prog 100~
+if rand(1)
+mpecho A small merchant vessel narrowly avoids a small fishing boat.
+mpecho {Y A fisherman cries \@Watch where you\@re going.\@
+mpecho {Y A sailor replies \@You\@re in the way, you fool.\@{x
+else
+if rand(1)
+A sharp cry echoes through the air, as a gull passes overhead.
+endif
+endif
+~
+|
+S
+#23786
+The Entrance to Earendam Harbor~
+The waters of the Uthlin Ocean spread before you like gray slate, an
+occasional wave tossing the driftwood and seaweed about.  A number of ships
+plow the waters here, heading into and out of Earendam Harbor under the
+watchful view of the lighthouse which rises up in the northwest.  Others
+move in towards the docks, which can be seen spread along the coastline to
+the south.  The salty air blows about you, carrying a slight chill with it,
+a light hint of colder climes to the north.  To the west Earendam Harbor
+opens fully, its calm waters providing safe shelter for ships.  
+~
+~
+0
+0 4 7
+D1
+The Uthlin Ocean continues to the east.
+~
+~
+0 0 23787
+D2
+The Earendam Docks lie to the south.
+~
+~
+0 0 23712
+D3
+Earendam Harbor lies to the west.
+~
+~
+0 0 23785
+W 5 0 0
+Z 5 5
+P
+>rand_prog 100~
+if rand(1)
+mpecho A small merchant vessel narrowly avoids a small fishing boat.
+mpecho {Y A fisherman cries \@Watch where you\@re going.\@
+mpecho {Y A sailor replies \@You\@re in the way, you fool.\@{x
+else
+if rand(1)
+mpecho A sharp cry echoes through the air, as a gull passes overhead.
+endif
+endif
+~
+|
+S
+#23787
+The Southern Uthlin Ocean~
+The waters of the Uthlin Ocean spread before you like gray slate, an
+occasional wave tossing the driftwood and seaweed about.  A few ships plow
+the waters here, heading into and out of Earendam Harbor.  To the south, the
+docks of Earendam can be seen spread along the coastline.  The salty air
+blows about you, carrying a slight chill with it, a light hint of the colder
+climes to the north.  
+~
+~
+0
+0 0 7
+D1
+~
+~
+0 0 4605
+D3
+The Uthlin Ocean continues to the west.
+~
+~
+0 0 23786
+W 5 0 0
+Z 5 5
+S
+#23788
+The Uthlin Road~
+A narrow stretch of carefully laid stones, the Uthlin Road runs along the
+shore of the Uthlin Ocean, joining Earendam with the lands to the east.  The
+smell of salt water drifts on the breeze, and the cries of gulls fill the
+air.  The gray expanse of the Uthlin stretches off to the north, while to
+the west the road passes through the Earendam docks.  
+~
+~
+0
+0 4 13
+D1
+~
+~
+0 0 4602
+D3
+The Uthlin Road continues to the west.
+~
+~
+0 0 23718
+W 5 0 0
+Z 5 5
+S
+#23789
+The Earendam Docks~
+Spread along the southern shore of the Uthlin Ocean, the well-kept docks
+of Earendam look out over the vast, gray waters.  Wooden quays lie on the
+water\@s edge, and small boats traverse the surf between the beach and the
+large merchant ships anchored offshore.  Off to the north the port\@s great
+lighthouse is visible, jutting out from the headland.  The docks of Earendam
+continue to the east.  
+~
+~
+0
+0 0 1
+D0
+Earendam Harbor extends beyond the docks.
+~
+~
+0 0 23785
+D1
+The Earendam Docks continue to the east.
+~
+~
+0 0 23712
+W 5 0 0
+Z 5 5
+P
+>rand_prog 100~
+if rand(1)
+mpecho A small ship pulls into the docks, disgorging a number of sailors.
+mpecho Talking animately, they wander off into the port.
+else
+if rand(1)
+mpecho A sharp cry echoes through the air, as a gull passes overhead.
+else
+if rand(2)
+mpecho A dockhand has arrived.
+mpecho A dockhand grabs a crate from the dock.
+mpecho A dockhand leaves east.
+endif
+endif
+endif
+~
+|
+S
+#23790
+An Ancient Cellar~
+A small cramped room lying beneath the surface of the port, this cellar
+has fallen into a state of heavy disrepair.  The stone walls have begun to
+crumble, and the wooden supports are rotting away.  Scorch marks scar the
+walls in several places, remnants of an old fire.  The air within the room
+reeks of decay, though the tightly packed dirt floor shows signs of recent
+use.  A small wooden door stands in the eastern wall, while a trapdoor leads
+up out of the cellar.  
+~
+~
+0
+0 8 0
+D1
+A small wooden door stands in the eastern wall.
+~
+small wooden door~
+3 0 23791
+D4
+A trapdoor leads up out of the cellar.
+~
+trapdoor~
+3 0 23728
+W 5 0 0
+Z 5 5
+S
+#23791
+An Ancient Cellar~
+A fair-sized room lying beneath the surface of the port, this cellar has
+fallen into a state of heavy disrepair.  The stone walls have begun to
+crumble, and the wooden supports are rotting away.  Scorch marks scar the
+walls in several places, remnants of an old fire.  Several old beds, their
+beddings disheveled, stand along the walls, and articles of clothing lay in
+clumps about the floor.  The air within the room reeks of decay and sweat. 
+A small wooden door stands in the western wall, permitting exit from the
+room.  
+~
+~
+0
+0 8 0
+D3
+A small wooden door stands in the western wall.
+~
+small wooden door~
+3 0 23790
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 23703 spec_executioner
+M 23706 spec_executioner
+S
+
+
+
+#RESETS
+D 0 23708 1 3
+D 0 23709 1 3
+D 0 23709 3 3
+D 0 23712 1 3
+D 0 23713 3 3
+D 0 23715 1 3
+D 0 23716 2 1
+D 0 23717 0 1
+D 0 23718 2 7
+D 0 23719 3 3
+D 0 23721 0 1
+D 0 23723 2 1
+D 0 23725 0 7
+D 0 23727 3 3
+D 0 23728 5 3
+D 0 23730 2 3
+D 0 23731 2 3
+D 0 23734 1 3
+D 0 23737 0 3
+D 0 23738 0 3
+D 0 23739 3 3
+D 0 23745 0 1
+D 0 23746 1 1
+D 0 23746 3 1
+D 0 23747 1 1
+D 0 23747 3 1
+D 0 23765 1 1
+D 0 23766 1 1
+D 0 23767 3 1
+D 0 23768 3 1
+D 0 23772 2 1
+D 0 23773 0 7
+D 0 23774 2 7
+D 0 23781 1 3
+D 0 23782 3 3
+D 0 23790 1 3
+D 0 23790 4 3
+D 0 23791 3 3
+O 0 23799 0 23700
+M 0 23741 1 23700 1
+O 0 23701 0 23704
+M 0 23758 5 23704 1
+M 0 23709 5 23705 1
+M 0 23703 6 23706 1
+E 0 23704 0 5
+E 0 23705 0 16
+E 0 23706 0 11
+E 0 23707 0 15
+E 0 23708 0 8
+M 0 23710 3 23706 1
+M 0 23720 8 23707 1
+M 0 23759 3 23707 1
+M 0 23742 10 23708 1
+M 0 23745 1 23708 1
+M 0 23720 8 23709 1
+M 0 23758 5 23709 1
+M 0 23703 6 23710 1
+E 0 23704 0 5
+E 0 23705 0 16
+E 0 23706 0 11
+E 0 23707 0 15
+E 0 23708 0 8
+M 0 23709 5 23710 1
+M 0 23710 3 23711 1
+M 0 23742 10 23711 1
+M 0 23759 3 23711 1
+M 0 23754 1 23711 1
+M 0 23707 6 23712 3
+M 0 23707 6 23712 3
+M 0 23707 6 23712 3
+M 0 23711 2 23712 1
+O 0 23764 0 23712
+O 0 23702 0 23713
+P 0 23718 9999 23702 1
+M 0 23718 1 23713 1
+E 0 23727 0 1
+M 0 23731 1 23714 1
+M 0 23730 1 23714 1
+G 0 23730 0
+G 0 23737 0
+G 0 23738 0
+G 0 23729 0
+G 0 23728 0
+M 0 23734 2 23714 2
+M 0 23734 2 23714 2
+M 0 23746 1 23714 1
+E 0 23732 0 7
+E 0 23733 0 5
+M 0 23706 1 23715 1
+E 0 23704 0 5
+E 0 23709 0 16
+E 0 23706 0 11
+E 0 23707 0 15
+E 0 23708 0 8
+M 0 23720 8 23716 1
+M 0 23757 1 23716 1
+E 0 23763 0 12
+M 0 23703 6 23717 1
+E 0 23704 0 5
+E 0 23705 0 16
+E 0 23706 0 11
+E 0 23707 0 15
+E 0 23708 0 8
+M 0 23742 10 23717 1
+M 0 23756 1 23718 1
+E 0 23762 0 17
+M 0 23751 1 23720 1
+M 0 23708 6 23721 2
+M 0 23708 6 23721 2
+M 0 23708 6 23722 1
+M 0 23708 6 23723 1
+M 0 23708 6 23724 2
+M 0 23708 6 23724 2
+M 0 23750 2 23729 1
+M 0 23710 3 23730 1
+M 0 23742 10 23730 1
+M 0 23755 1 23731 1
+M 0 23703 6 23732 1
+E 0 23704 0 5
+E 0 23705 0 16
+E 0 23706 0 11
+E 0 23707 0 15
+E 0 23708 0 8
+M 0 23729 8 23732 1
+M 0 23709 5 23733 1
+M 0 23729 8 23733 1
+M 0 23720 8 23733 1
+M 0 23749 1 23733 1
+M 0 23758 5 23733 1
+M 0 23729 8 23734 2
+M 0 23729 8 23734 2
+M 0 23729 8 23735 2
+M 0 23729 8 23735 2
+M 0 23748 1 23735 1
+M 0 23729 8 23736 2
+M 0 23729 8 23736 2
+M 0 23742 10 23736 1
+M 0 23719 1 23739 1
+G 0 23740 0
+O 0 23735 0 23739
+M 0 23703 6 23740 1
+E 0 23704 0 5
+E 0 23705 0 16
+E 0 23706 0 11
+E 0 23707 0 15
+E 0 23708 0 8
+M 0 23747 1 23741 1
+M 0 23742 10 23742 1
+M 0 23709 5 23743 1
+M 0 23720 8 23743 1
+M 0 23742 10 23744 1
+M 0 23759 3 23744 1
+M 0 23752 1 23745 1
+M 0 23720 8 23746 1
+M 0 23709 5 23747 1
+M 0 23758 5 23748 1
+M 0 23714 4 23750 1
+M 0 23737 2 23751 1
+M 0 23742 10 23751 1
+M 0 23720 8 23752 1
+M 0 23737 2 23753 1
+M 0 23714 4 23753 1
+M 0 23714 4 23754 1
+M 0 23704 2 23755 2
+M 0 23704 2 23755 2
+M 0 23705 1 23755 1
+M 0 23715 1 23757 1
+E 0 23710 0 17
+M 0 23723 4 23757 4
+M 0 23723 4 23757 4
+M 0 23723 4 23757 4
+M 0 23723 4 23757 4
+O 0 23760 0 23759
+P 0 23761 9999 23760 1
+M 0 23714 4 23760 1
+M 0 23701 1 23761 1
+E 0 23703 0 16
+M 0 23702 1 23761 1
+M 0 23712 1 23763 1
+M 0 23713 1 23763 1
+E 0 23736 0 3
+M 0 23736 5 23765 2
+M 0 23736 5 23765 2
+M 0 23736 5 23766 1
+M 0 23736 5 23767 1
+M 0 23736 5 23768 1
+M 0 23726 6 23769 1
+O 0 23715 0 23769
+M 0 23725 6 23769 1
+M 0 23732 1 23769 1
+E 0 23717 0 6
+M 0 23733 1 23769 1
+G 0 23726 0
+G 0 23719 0
+M 0 23717 4 23770 1
+M 0 23726 6 23770 1
+M 0 23724 2 23770 1
+M 0 23721 1 23770 1
+G 0 23725 0
+G 0 23724 0
+G 0 23742 0
+G 0 23721 0
+G 0 23722 0
+G 0 23723 0
+G 0 23720 0
+M 0 23725 6 23770 2
+M 0 23725 6 23770 2
+M 0 23735 1 23770 1
+E 0 23713 0 12
+E 0 23714 0 16
+M 0 23717 4 23771 2
+M 0 23717 4 23771 2
+M 0 23726 6 23771 2
+M 0 23726 6 23771 2
+O 0 23712 0 23771
+M 0 23725 6 23771 2
+M 0 23725 6 23771 2
+M 0 23753 1 23771 1
+E 0 23734 0 10
+E 0 23751 0 3
+M 0 23717 4 23772 1
+M 0 23726 6 23772 2
+M 0 23726 6 23772 2
+M 0 23724 2 23772 1
+M 0 23725 6 23772 1
+M 0 23720 8 23772 1
+O 0 23744 0 23772
+O 0 23711 0 23780
+M 0 23716 3 23780 3
+E 0 23710 0 17
+M 0 23716 3 23780 3
+E 0 23710 0 17
+M 0 23716 3 23780 3
+E 0 23710 0 17
+M 0 23742 10 23781 1
+M 0 23728 1 23783 1
+E 0 23716 0 17
+M 0 23727 1 23783 1
+G 0 23739 0
+M 0 23722 1 23784 1
+O 0 23745 0 23786
+M 0 23738 3 23786 3
+M 0 23738 3 23786 3
+M 0 23738 3 23786 3
+M 0 23758 5 23788 1
+M 0 23707 6 23789 3
+M 0 23707 6 23789 3
+M 0 23707 6 23789 3
+M 0 23711 2 23789 1
+M 0 23742 10 23789 1
+M 0 23740 1 23790 1
+O 0 23746 0 23791
+M 0 23739 2 23791 2
+M 0 23739 2 23791 2
+M 0 23744 1 23791 1
+E 0 23747 0 1
+M 0 23743 1 23791 1
+S
+
+
+
+#GUILD
+S
+
+
+#SHOPS
+23721 0 0 0 0 0 100 100 1 0 0
+23730 19 8 17 0 0 100 100 6 10 0
+23754 0 0 0 0 0 100 100 6 22 0
+0
+
+
+
+#$

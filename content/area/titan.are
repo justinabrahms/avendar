@@ -1,0 +1,4506 @@
+#AREADATA
+Name Castle of the Titans~
+Builders Iandir Iacobos Tzajai~
+VNUMs 8420 8499
+Credits [45 51] Iandir    The Titan Castle~
+Danger 1
+Security 1
+Areainfo 59
+Herbs 0
+Weather 2 2 2 1 0
+Weave 1 1 1
+Shades 5 5
+Stone 82
+End
+
+
+
+#MOBILES
+V4 8420
+griffin guard noble~
+the griffin guard~
+A noble griffin guards the path.
+~
+A noble beast with the head of an eagle and the body of a lion, the griffin
+guards the path, keeping a sharp lookout for evil.
+~
+wyvern~
+water scholar~
+ABX 0 CDFTZ G 0
+51 25 18d200+920 50d10+100 5d10+25 pierce~
+bite~
+-10 -10 -10 -10
+CFH ABL
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 23
+ABGZ ACDEFHJKPQVX A large unknown
+V4 8421
+griffin guard noble~
+the griffin guard~
+A noble griffin guards the path.
+~
+A noble beast with the head of an eagle and the body of a lion, the griffin
+guards the path, keeping a sharp lookout for evil.
+~
+human~
+water scholar~
+ABX 0 DFTZ G 0
+51 25 18d200+920 50d10+100 5d10+25 pierce~
+bite~
+-10 -10 -10 -10
+CFH AB
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 23
+AHMV ABCDEFGHIJKP A large unknown
+V4 8422
+khil\@ayum khil ayum hulking figure~
+the khil\@ayum~
+A hulking figure covered with sharp spikes, the khil\@ayum glares hatefully.
+~
+The khil\@ayum are a brutish race that once dwelt in the catacombs of the
+Darken Reaches. They preyed upon humans and other sentient races, and it
+is said that the terror they inflicted through their ravages fed them as
+much as the flesh that they rent from innocent bones. Once entrenched in
+an area, the khil\@ayum are nearly impossible to exterminate, as their evasive
+capabilities are formidable. Several centuries ago they spread across many
+lands, and the Titans finally intervened. Now the remainder of their kind
+is locked in the Astral Prison.
+~
+demon~
+water scholar~
+ABF 0 DZ E 0
+58 27 20d220+1100 100d10+1 6d12+20 pierce~
+pierce~
+-20 -20 -20 -5
+EFHJKNO B
+26 0 0 33 0 0 0 0 33 33 -33 0 0 0 -33 0 -33 0 0 0 0 0 0 0 0 -33 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+ACHMV ABCDEFGHIJKP A large unknown
+V4 8423
+xthjich demon~
+Xthjich~
+Xthjich, the Eternal Demon, flexes his leathery wings and razor claws.
+~
+Xthjich is a 12\@ tall figure with leathery black skin and huge bat-like
+wings. Cruel fangs curve down from his slavering mouth, and razor-sharp
+claws tip his long, bony fingers. Known as the Eternal Demon, Xthjich has
+menaced the Light throughout time. Once confined for 300 years by a mage
+of Istilail, he escaped by catching his jailor off guard and devouring him.
+Xthjich then gathered an army of the vilest powers and lead his forces to
+the destruction of the Iilim, a peaceful and gentle race. He met with the
+forces of light at Anda, where he was struck down by the Titan Captain
+Oradan, and sealed in this prison.
+~
+demon~
+water scholar~
+ABFGPX 0 BDJTVZ E 0
+65 300 22000d1+1 500d5+5 4d90+105 slash~
+claw~
+-30 -30 -30 -30
+ACFHIKM BFHM
+26 0 0 95 95 0 0 0 0 -20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+ACHMZ ABCDEFGHIJKPQUVX A huge unknown
+>load_prog 100~
+mpaddaffect $i 399 65 -1 0 0 0 
+mpaddskill $i 403 100 
+mpaddskill $i 187 100 
+mpaddskill $i 188 100
+~
+>fight_prog 100~
+if value(9) > 0 
+        mpvaluedown 9 
+        break 
+endif 
+if rand(33) 
+        if snaffected($n) == 328 
+        or snaffected($n) == 119 
+                cast \@flame tongue\@ 
+                mpvalueset 9 1 
+                break 
+        endif 
+endif
+~
+>rand_prog 100~
+if value(9) > 0 
+        mpvaluedown 9 
+        break 
+endif
+~
+|
+V4 8424
+haj-ra worm~
+Haj-Ra~
+An immense black worm plated with thick scales, Haj-Ra writhes about.
+~
+Haj-Ra is an enormous, black-plated C\@thsa worm. His 20\@ body is encased in
+a thick layer of chitin, and no sensory organs are visible. Hailing from
+the black world of Yra, Haj-Ra bred his loathsome spawn, the C\@thsa worms,
+and set out to devour the many worlds of the universe. He was only stopped
+when the Titans intervened, stripped him of much of his power, and confined
+him in this cell. Here he has rested for over 8,000 years.
+~
+centipede~
+water scholar~
+ABFGPTX 0 DFVZ E 0
+65 150 16000d1+999 500d1+1 2d220+99 acid~
+digestion~
+-70 -70 -70 -70
+ACDGHM BE
+26 0 0 50 50 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ABCGHMORV ABCDEFGHIJKPQX A giant unknown
+>trigger_prog 100~
+if isbitset($n) == 8424
+or level($n) == 51
+  break
+endif
+mpbitset $n 8424 1
+mpechoat $n {WYou were awarded a 25,000 experience bonus for defeating Haj-Ra!{X
+mpxp $n 25000
+
+~
+>death_prog 100~
+mproomcmd mptrigger all
+~
+>fight_prog 8~
+mpvaluerand 0 1 3
+if mobvalue(0) == 1
+mpecho A piece of Haj-Ra\@s flesh is hewn off, and falls to the ground!
+mpecho The flesh writhes, and forms into a horrid c\@thsa worm!
+mpmload 8441
+endif
+if mobvalue(0) == 2
+mpecho Pieces of Haj-Ra\@s flesh are hewn off, and fall to the ground!
+mpecho The pieces of flesh writhe, and form into horrid c\@thsa worms!
+mpmload 8441
+mpmload 8441
+endif
+~
+|
+V4 8425
+sothmogga demon~
+Sothmogga~
+A seething mass of tentacles and slime, Sothmogga hisses and burbles.
+~
+A 30\@ mass of writhing tentacles, flailing eyestalks, and noxious slime,
+the odious Sothmogga hisses and burbles in his cell. One of the creations
+of the Archmage Vila, who wielded the Nyakigah Sha Yith for several
+centuries, Sothmogga grew immensely in power when he defiled the Grove of the
+Celanim and drained the power of their trees. So strong had he become that
+he sought to open a permanent portal between the ruined Grove and this,
+our own world. Left momentarily vulnerable, Sothmogga was impaled by the
+templar Converu, and thus his ravages were halted.
+~
+demon~
+water scholar~
+ABFGPTX 0 DFTVZc E 0
+65 150 19000d1+999 100d50+10 20d20+5 acid~
+acidic bite~
+-30 -30 -30 -30
+ADEFHKMO BEGKLMPQRb
+26 0 0 33 33 33 33 0 33 33 33 0 0 100 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 55
+ACHMSV ABCDEFGHIJKNP A giant unknown
+>trigger_prog 100~
+mpvaluerand 5 1 4
+if mobvalue(5) == 1
+  mpvaluerand 0 1 4
+  if mobvalue(0) == 1
+    mpechoat $n Sothmogga seizes you in its great tentacles!
+    mpechoaround $n Sothmogga seizes $N in its great tentacles!
+    mpdice 1 2 120 5
+    mpdealdamage $n \@$I\@ \@crushing squeeze\@ bash $1
+    mplag $n 3
+  endif
+  if mobvalue(0) > 2
+    mpechoat $n Sothmogga\@s tentacle snakes out, entangling you!
+    mpechoaround $n Sothmogga\@s tentacle snakes out, entangling $N!
+    mplag $n 3
+  endif
+  if mobvalue(0) == 2
+    mpechoat $n Sothmogga spews forth a great stream of acid, enveloping you!
+    mpechoaround $n Sothmogga spews forth a great stream of acid, enveloping $N!
+    mpforce $n yell Aaauuugghhh!
+    mpdice 1 1 600 5
+    mpdealdamage $n \@$I\@ \@acidic blast\@ acid $1
+  endif
+endif
+~
+>fight_prog 100~
+mproomcmd mptrigger all
+~
+>death_prog 100~
+mpoload 8451
+~
+|
+V4 8426
+titan guard~
+the titan guard~
+A titan guard paces along, vigilant for evil.
+~
+A Titan guard, measuring 20\@ in height, paces along the Hall of Pillars,
+watching for evil. One of the last remaining Titans in this realm, he has
+remained to serve Anirim, and to guard this outpost of truth and light.
+~
+giant~
+water scholar~
+AGL 0 CDFTZ G 0
+58 27 20d220+1100 50d10+100 6d12+20 bash~
+pound~
+-22 -22 -22 -7
+CEFHIKN N
+26 0 0 0 33 0 0 0 33 33 -33 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 23
+AHMV ABCDEFGHIJK A giant unknown
+V4 8427
+wizard aelin ancient~
+the ancient aelin wizard~
+An ancient aelin wizard guards the Astral Prison.
+~
+This ancient aelin mage has devoted himself to King Anirim\@s service, and
+is lending his powers to guard the Astral Prison from any intruders.
+~
+aelin~
+water scholar~
+ABP 0 DEFHTZ G 0
+54 20 7500d1+2000 500d10+1 15d15+1 energy~
+magic~
+-20 -20 -20 -20
+FK AN
+26 0 33 33 0 -33 0 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 23
+AHMW ABCDEFGIJKP F medium unknown
+V4 8428
+anirim king titan~
+Anirim~
+Anirim the Pure, King of the Titans, dispenses wisdom.
+~
+Lord Anirim the Pure, King of the Titans, has ruled from his white throne
+for 6,000 years. The seventh king of the Titan people, his reign has seen
+the decline of their presence in this world. It is unknown exactly why the
+Titans have withdrawn, or where they have gone, but intervention from the
+Great Ones has been rare in the last hundred years.
+Nevertheless, the White Castle is ever a gathering place for those of the
+Light, and the throne of Anirim is crowded with rulers, kings, and sages,
+seeking the council of the wisest being to dwell in physical form upon this
+land.
+~
+human~
+water scholar~
+ABPTX BP CDFHNTVZ G 0
+68 200 32000d1+1 60d500+1 1d33+200 energy~
+magic~
+-100 -100 -100 -100
+ACEFGHIKNO ABEIJKLMNPQRSTUXYZ
+26 0 0 70 70 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 33 
+5 0 0 0 0 0
+stand stand male 0 23
+AHMV ABCDEFGHIJK A giant unknown
+>speech_prog p Sothmogga~
+if isgood($n)
+  if ispc($n)
+    if valname($n) == $f
+      if mobvalue(0) == 67
+        say Yes, the templar Converu used the Javelin to impale the horrific Sothmogga.
+        say If I were to give the Javelin to another today, he should prove his strength to me by defeating the weakened Sothmogga.
+        say A tentacle severed from the demon would show that this had been done.
+      else
+        if mobvalue(0) == 68
+          say If you plan to battle Sothmogga for use of the Javelin, you should prepare carefully.
+          say Even in its weakened state, the demon is a powerful opponent, and only the most powerful mortals will survive the encounter.
+          say A tentacle severed from the beast would be sufficient to prove to me that the deed has been accomplished.
+        else
+          if mobvalue(0) == 1
+            say Sothmogga was created millennia ago by the Archmage Vila, and was used as a tool of destruction and horror.
+            say As is so often the case, Sothmogga grew beyond Vila\@s power to control. Roaming the universe, it gained unbelievable power.
+            say By the time the demon sought to return to its home dimension, it had absorbed the incredible power of the Celanim.
+            say With this might Sothmogga might have consumed all of Avendar. Only the actions of Converu stopped its mad plan.
+            mpvalueset 0 69
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>rand_prog 1~
+mpvalueset 0 0
+~
+>give_prog tentacle large green severed~
+if ispc($n)
+if iswielding($i) == 8431
+if isgood($n)
+tell $n Well done, $N. You have proven yourself worthy to bear the Javelin of the Skies.
+\@Stand down
+give javelin $n
+tell $n Wield it in good faith, and always shun darkness!
+mpjunk tentacle
+else
+tell $n Although defeating Sothmogga is quite a deed, I will only allow those of the light to wield this javelin.
+drop tentacle
+else
+if isgood($n)
+tell $n A worthy feat! Well done. The Javelin of the Skies is currently in use, however.
+drop tentacle
+endif
+endif
+endif
+endif
+~
+>speech_prog tentacle~
+if isgood($n)
+if ispc($n)
+if valname($n) == $f
+if mobvalue(0) == 69
+nod $n
+\@Yes, a tentacle.
+else
+if mobvalue(0) == 68
+nod $n
+\@Yes, a tentacle.
+endif
+endif
+endif
+endif
+endif
+~
+>speech_prog converu~
+if isgood($n)
+  if ispc($n)
+    if valname($n) == $f
+      if mobvalue(0) == 69
+        say Sothmogga had finally entered our world, and was preparing to open a permanent corridor for its power.
+        say If successful, this would have spelled the end of Avendar. Fortunately, the demon was momentarily distracted by its task;
+        say In addition, its physical form was greatly drained by its entry to this world.
+        say At this crucial moment, the templar Converu impaled the foul demon with the Javelin that I bear.
+        say Although he was consumed by the critically wounded Sothmogga, Converu\@s selfless act saved Avendar from utter destruction.
+      else
+        if mobvalue(0) == 1
+          say Converu was a legendary templar, and will always be renowned for his might in combat and for his purity of soul.
+          say It is he who battled the horrific demon Sothmogga, sacrificing his life for the sake of all Avendar.
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>speech_prog temporary~
+if isgood($n)
+  if ispc($n)
+    if valname($n) == $f
+      if mobvalue(0) == 67
+        say To prove oneself worthy of this Javelin, a test is required. The hero must show bravery, might, and purity of intention.
+        say If a hero of the light were to defeat Sothmogga in his weakened state, it would be sufficient.
+        mpvalueset 0 68
+      endif
+    endif
+  endif
+endif
+~
+>speech_prog use~
+if isgood($n)
+  if ispc($n)
+    if valname($n) == $f
+      if mobvalue(0) == 67
+        say To prove oneself worthy of this Javelin, a test is required. The hero must show bravery, might, and purity of intention.
+        say If a hero of the light were to defeat Sothmogga in his weakened state, it would be sufficient.
+        mpvalueset 0 68
+      endif
+    endif
+  endif
+endif
+~
+>speech_prog prove~
+if isgood($n)
+  if ispc($n)
+    if valname($n) == $f
+      if mobvalue(0) == 67
+        say To prove oneself worthy of this Javelin, a test is required. The hero must show bravery, might, and purity of intention.
+        say If a hero of the light were to defeat Sothmogga in his weakened state, it would be sufficient.
+        mpvalueset 0 68
+      endif
+    endif
+  endif
+endif
+~
+>speech_prog worthy~
+if isgood($n)
+  if ispc($n)
+    if valname($n) == $f
+      if mobvalue(0) == 67
+        say To prove oneself worthy of this Javelin, a test is required. The hero must show bravery, might, and purity of intention.
+        say If a hero of the light were to defeat Sothmogga in his weakened state, it would be sufficient.
+        mpvalueset 0 68
+      endif
+    endif
+  endif
+endif
+~
+>speech_prog javelin~
+if isgood($n)
+  if ispc($n)
+    if valname($n) == $f
+      emote nods sagely.
+      say Ah, my Javelin of Heavenly Flames. It was forged during the creation of this very world, its energy that of the Sun itself.
+      say The Deities of Light shaped this divine flame into a physical weapon for the use of great heroes of this world.
+      say And thus I hold it, granting its temporary use to heroes who can prove themselves worthy.
+      mpvalueset 0 67
+    endif
+  endif
+endif
+~
+>speech_prog yes~
+if isgood($n)
+  if ispc($n)
+    if remembers($n)
+      if mobvalue(0) == 0
+        say What is it you desire knowledge of, $N?
+        mpfocus $n
+        mpvalueset 0 1
+      endif
+    endif
+  endif
+endif
+~
+>load_prog 100~
+mpsetskilled
+~
+>greet_prog 100~
+if ispc($n)
+  if isgood($n)
+    if isfocused($i)
+    else
+      if remembers($n)
+        say Ah, you return, $N. Do you wish my council?
+      else
+        say Hail $N, fellow of the light! Do you wish my council?
+        mpremember $n
+      endif
+    endif
+  endif
+endif
+~
+|
+V4 8429
+nelenna titan queen~
+Nelenna the Titan Queen~
+Nelenna, Queen of Titans, offers her council to the good of the world.
+~
+Nelenna, Anirim\@s queen, rules the grand White Castle with her husband.
+The noble granddaughter of Kyana, the Goddess of Stars, Nelenna is blessed
+with wisdom beyond mortal understanding. As the Queen of Titans, she is
+able to use that wisdom to undermine the efforts of darkness.
+~
+human~
+water scholar~
+ABGPX Q CDFHNTZ G 0
+60 20 5500d1+100 50d100+1 15d12+10 energy~
+magic~
+-40 -40 -40 -40
+AFKN ABLNPQSY
+26 0 0 33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 23
+AHMV ABCDEFGHIJK A medium unknown
+V4 8430
+Deremegon human templar champion~
+Deremegon~
+Deremegon, the human templar champion, stands dressed in shining armor.
+~
+Deremegon, Champion of Serenity, is a direct descendent of Converu,
+history\@s most renowned templar-saint.  He is tall and timelessly handsome,
+wearing the shining armor worn by his legendary forefather during the impaling
+of Sothmogga.  Sworn to guard the ancient sword of his ancestor, he has
+known many lifetimes of battle.  He personally is famed for his strength and
+courage during the War of Night, his victories and bloodline earning him a
+place amongst the heroes of old.  Although unquestionably mighty, he is
+equally respected for his mercy, compassion, and forgiveness.  
+~
+human~
+water scholar~
+ABGPX 0 DFHNZ G 0
+60 30 9000d1+1 54d100+1 10d4+90 slash~
+slice~
+-20 -20 -20 -20
+CEFHIK AN
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 33 0 0 0 0 0 33 0 
+5 0 0 0 0 0
+stand stand male 220 23
+AHMV ABCDEFGHIJK A medium unknown
+V4 8431
+an-nindon aelin priest~
+An-Nindon~
+An-Nindon, the Aelin priest of Compassion, preaches his message of understanding.
+~
+An-Nindon, the ever-faithful servant of Alajial, Goddess of Compassion,
+was befriended by Anirim during the joint effort to save the people of Mah. 
+The priest of Compassion visits the Titans regularly, both to council with
+others of the light and to offer his prayers to petitioners.  
+~
+aelin~
+water scholar~
+ABGPX 0 DEHNT G 0
+60 30 6000d1+1 54d100+10 5d2+1 holy~
+wrath~
+-50 -50 -50 -50
+FK AN
+26 0 33 33 0 -33 0 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 23
+AHMW ABCDEFGIJKP F medium unknown
+V4 8432
+kachoja kankoran warrior~
+Kachoja~
+Kachoja, the legendary kankoran warrior, reclines on a couch.
+~
+Known far and wide as the greatest warrior the Kankoran race has produced,
+Kachoja has lead the forces of light into battle more times than any other
+living mortal general. Legendary for his ability to win at overwhelming
+odds, and for his custom of joining his troops at the front lines, Kachoja
+is an inspiring leader as well as a dazzling swordsman.
+~
+kankoran~
+water scholar~
+ABGPTX 0 NVZ G 0
+60 30 6000d1+1 100d10+50 10d30+1 slash~
+chop~
+-40 -40 -40 -40
+ACDEFHIKNV A
+26 0 0 0 0 0 0 0 -33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 23
+AHMV ABCDEFGIJKUV D medium unknown
+V4 8433
+rgaa bear~
+Rgaa~
+Rgaa, the Bear of Goran, sprawls mightily on the tiled floor.
+~
+Rgaa, one of the near-mythical Bears of Goran, has come to the Titan Castle
+to represent his kind in an upcoming Council. The Bears of Goran are a
+reclusive race, often said to have never existed. But many a goodly traveller
+has become lost in the Woods of Goran only to return with tales of large \@
+intelligent bears coming to their aid.
+~
+bear~
+water scholar~
+ABGPX 0 DFNVZ G 0
+60 30 8000d1+1 100d50+10 8d40+10 bash~
+crush~
+-20 -20 -20 -20
+DEO N
+26 0 0 0 0 33 0 0 0 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 23
+AGV ABCDEFHJKUV A medium unknown
+V4 8434
+alerra healer~
+Alerra~
+Alerra of the River, Healer of Ardron, offers healing to any who need it.
+~
+Alerra of the River, so called for her devotion to the sphere of Water,
+is commonly reported to be the most powerful healer to ever live in Ardron. 
+As an initiate, she singlehandedly halted the Plague of Youl.  Once her
+training was complete, her power surpassed that of her greatest teachers. 
+Alerra, however, is humbled by the gifts she posseses, and seeks to use them
+for the greater benefit of all.  
+~
+human~
+water scholar~
+ABGJKPX 0 BDHNWcd G 0
+60 30 5000d1+1 100d100+10 1d2+1 energy~
+magic~
+-60 -60 -60 -60
+0 0
+26 0 0 33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand female 0 23
+AHMV ABCDEFGHIJK A medium unknown
+>speech_prog text~
+esay \@shakes her head, saying\@ I am afraid I do not know where lie the Salyran Scrits.
+esay \@suggests\@ Perhaps the heads of the guilds of Water might be of more assistance than I.
+emote smiles apologetically.
+~
+>hitprcnt_prog 50~
+emote utters a prayer to the Lords of Light.
+mpcast 77 30
+mpcast 77 30
+mpcast 77 30
+~
+>fight_prog 11~
+\\@Calm your mind, young one.
+mpcast 12 54
+~
+>fight_prog 10~
+\\@Let this violence cease!
+mpcast 69 54
+~
+|
+V4 8435
+pelloro bard~
+Pelloro~
+Pelloro, the Bard of the Light, records the historic events transpiring around him.
+~
+Pelloro Nimblefingers, the acclaimed Bard of Light, leans against a mighty
+marble pillar and picks out his latest composition on his instrument. He
+spends his days in the company of the Great Ones, recording in song the
+marvelous deeds that transpire around him.
+~
+human~
+water scholar~
+ABGPX 0 DFH G 0
+60 30 9000d1+1 54d100+1 20d8+20 bash~
+punch~
+-20 -20 -20 -20
+FKN A
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 280 23
+AHMV ABCDEFGHIJK A medium unknown
+V4 8436
+qilaunin alatharya scholar~
+Qilaunin~
+Qilaunin the Alatharya scholar of the Earth is here.
+~
+Qilaunin, the Alatharya scholar, is the last of the Alatharya to retain
+the intellectual gifts that were rent from his people.  One of the last
+mages in the age of Alatharya prosperity, he has used his mystic arts to
+preserve his physical form.  Mourning for his people\@s withdrawal from the
+affairs of the world, Qilaunin resides in the Titan Castle, lending his
+powers to the Court of Anirim.  
+~
+alatharya~
+water scholar~
+ABGKPX 0 DHNPTZ G 0
+60 30 8000d1+1 80d100+10 5d50+1 bash~
+pound~
+0 0 0 0
+0 A
+26 0 0 0 0 33 0 0 0 0 0 0 0 0 -33 0 -33 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 100 23
+AHMV ABCDEFGHIJK A large unknown
+>greet_prog 100~
+if ispc($n)
+  if class($n) == 1
+    if minorsphere($n) == earth
+      if level($n) >= 30
+        if chosenpath($n) != 0
+          \\\\HAS ALREADY CHOSEN A PATH
+        else
+          if isbitset($n) == 8420
+            \\\\ALREADY TOLD TO VISIT LANIA
+          else
+            speak arcane
+            mpbitset $n 8420 1
+            esay \@splays his arms and says\@ Ah, you have done well to progress so far, $N.
+            esay \@places his fists on his hips and states\@ I will be glad to teach you what I can, but I sense great potential dwells within you.
+            esay \@suggests\@ You should speak with Lania at the Glallian School in Earendam.  She will surely aid you in discovering your hidden power.
+          endif
+        endif
+      endif
+    endif
+  endif
+endif
+~
+>give_prog staff thick vysara white wood obj_356~
+if value(6) == 1
+  mpvalueset 6 0
+  emote runs his hands over the wood.
+  mpsetdata show_me_the_power
+  mpvalueset 9 1
+else
+  emote glances at the Staff in puzzlement.
+  give obj_356 $n
+  drop obj_356
+endif
+~
+>speech_prog Vysara~
+if ispc($n)
+  if iscarrying($n) == 356
+    if iswielding($n) == 356
+      if isbitset($n) == 340
+      else
+        mpsetdata vysara
+        mpvalueset 9 1
+        mpfocus $N
+        mpremember $n
+        pmote looks at $F.
+      endif
+    else
+      pmote looks at $N.
+      esay asks Do you have it?
+    endif
+  else
+    if isevil($n)
+      mpcast 132 90
+      pmote glances warningly at $N.
+    else
+      esay comments The Staff is a truly incredible artifact indeed.
+    endif
+  endif
+endif
+~
+>data_prog Vysara~
+emote nods solemnly, casting his gaze over the Staff.
+esay \@exhales slowly\@ So Malyn has finally taken our advice.
+esay \@looks at $F with muted intensity.  He says\@ If you have borne the Staff thus far you will have doubtless  learned of the need which conceived it, the arts which forged it, and the wills which power it.
+esay \@chuckles grimly\@ So has the Staff the ability to accomplish miracles.
+esay explains You may have noticed that its abilities as a weapon are limited - in the conventional sense.  Size,  density - these and other factors were a challenge to overcome.
+esay \@reaches out, pointing to the artifact in $F`s hands\@ In light of this fact, Vysara and I designed a  ...less  cumbersome means of using the already potent ties it holds to the powers that were for the most part lost in the  Sundering.
+mpvalueset 6 1
+esay requests May I see it?
+mpvalueset 9 0
+~
+>give_prog staff vysara thick maple obj_356~
+if value(6) == 1
+  mpvalueset 6 0
+  emote runs his hands over the wood.
+  mpsetdata show_me_the_power
+  mpvalueset 9 1
+else
+  emote glances at the Staff in puzzlement.
+  give obj_356 $n
+  drop obj_356
+endif
+~
+>data_prog show_me_the_power~
+nod
+wear obj_356
+esay \@lectures, his aged eyes regaining some of their energy\@ Ancient magic: The workings and weavings of my people.
+esay sighs Before their Hubris...
+esay notes Ancient magic is arguably the most pure of all magics -- pure energy.
+esay \@pauses briefly, adding\@ This is not the life-force energy of spiritmagic, but, as I said, pure _kinetics_.
+esay explains The True Names of such simple things as the air, wood, stone.  All things - Naming gives power over them.
+\@That power enables manipulation.  Coaxing.
+\@That coaxing can translate into great force, if applied properly and coherently.
+esay expresses Much of the ancient magic I bound into the Staff deals with and contains, in various aspects, Force.
+emote gestures with the Staff in a swift, stabbing motion, as if it were a spear.  A gentle shockwave ripples the air.
+say In this manner was the Staff able to repulse physical attacks on the Seal.
+emote takes a deep breath.
+esay \@continues, gesturing with a flat hand\@ Reinforced and held in place by the elemental Earth-energies.
+esay finishes And sanctified and secured against the Void by the positive energies of the Spirit.
+esay \@chuckles to himself, almost boyishly\@ And now, with its energies no longer needed to hold the Seal...
+beckon $f
+pmote instructs and teaches $F many intricate gestures, handholds, and spell-triggers with the Staff.
+esay \@tells $F\@ The kinetics of this Staff might prove useful in combat, or before, should you require it.
+esay \@chortles, voice tired\@ It does have a tendency to bring out the Hero in each of us.\@  He strokes the Staff fondly.
+esay \@tells $F\@ I would recommend avoiding its use thus, however, except in emergency.
+esay elaborates Doubtless, there will be places within the Tower where only the Staff\@s powers can help you.  Save it for  them.
+tell $f Have a care not to expend too much of its energy, or it will become drained and useless for some time.
+esay notes Should you find a need to speed its recovery, meditate with it in hand.  It is...costly, and will take much.
+ooc $f {Rcoalesce energy{r to recharge.{x
+mpbitset $f 340 1
+ooc $f You now know how to \@invoke staff ancient\@.
+remove staff
+give staff $f
+emote sighs quietly.
+esay \@nods his head slowly, as if convincing himself.  He looks eastward\@ So, then Kor Thrandir stands naked.
+esay \@murmurs with quiet, sad resolve\@ I shall go to replace the Staff, and hold the Seal.
+wear geomancer
+esay \@looks back over his shoulder, saying\@ May you be successful, for our hopes go with you.
+emote walks away.
+mpgoto 17179
+emote arrives.
+mpat nora mpforce nora emote walks away.
+mptransfer nora
+mpforce nora emote arrives.
+nod nora
+mpstring mob nora long Valaiar Nora chants here, eyes closed.
+mpstring mob self long Qilaunin stands here, arms spread out over the Seal.
+mpvalueset 9 0
+~
+>exit_prog 100~
+if ispc($n)
+ if remembers($n)
+  \@Good luck on your journeys.
+ else
+  if mobvalue(0) == 2
+   if isevil($n)
+    \@I will not be left holding your garbage!
+    give scrap $n
+    mpunfocus
+    mpvalueset 0 0
+    mpvalueset 1 0
+   else
+    \@Here, take your notes with you.
+    give scrap $n
+    mpvalueset 0 0
+    mpvalueset 1 0
+    mpunfocus
+   endif
+  else
+   mpvalueset 0 0
+   if isfocused($i)
+    if valname($n) == $f
+     if isevil($n)
+     else
+      \@Farewell, traveler. I hope I have been of use.
+     endif
+    endif
+   endif
+  endif
+ endif
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+>rand_prog 100~
+if mobvalue(1) > 0
+ mpvaluedown 1
+endif
+if mobvalue(1) == 18
+ emote lifts his head.
+ \@Well, this is certainly an interesting development.
+endif
+if mobvalue(1) == 16
+ \@This certainly matches my mental picture of Dilalyn\@s last work, although it is slightly different.
+endif
+if mobvalue(1) == 14
+ \@To start with, Dilalyn\@s works actually came to life, and were normally more sentient than this beast seems to 
+be.
+endif
+if mobvalue(1) == 12
+ \@My guess is that whatever life Dilalyn imbued it with was weakened greatly during the Sundering.
+ \@Now, it is probably little more than a moving statue, animated by the powers of the void.
+endif
+if mobvalue(1) == 11
+ emote strokes his chin thoughtfully.
+endif
+if mobvalue(1) == 10
+ \@Dilalyn did possess a bit of control over his creations, and was able to switch off their life force temporaril
+y with a few simple words.  If I could just remember...
+endif
+if mobvalue(1) == 8
+ mpecho Qilaunin\@s eyes gleam with enlightenment.
+endif
+if mobvalue(1) == 6
+ \@I remember.  To animate them, he would say \#Vanyar Riquan Inya S\@uhm\#.
+ \@To put them to rest, he would say \#Qulenie Inyo S\@arelar Veyn\#.
+endif
+if mobvalue(1) == 4
+ \@That\@s all I can remember for now, I hope the information has been useful.
+ emote smiles warmly.
+ mpvalueset 1 0
+ mpremember $f
+ give scrap $f
+ mpunfocus
+ mpvalueset 0 0
+endif
+if value(9) == 1
+  if rand(43)
+    mpnextdata
+    $d
+  endif
+endif
+~
+>give_prog paper scrap worn~
+if mobvalue(0) == 1
+ if ispc($n)
+  if isevil($n)
+   \@Your trash does not interest me.
+   give scrap $n
+  else
+   if isfocused($i)
+    if valname($n) == $f
+     emote carefully reads a worn scrap of paper.
+     mpvalueset 0 2
+     mpvalueset 1 20
+    else
+     \@Pardon, but I was speaking with $f.  I\@ll look at this when we\@re finished.
+     give scrap $n
+    endif
+   else
+    \@I\@m sorry, but I really don\@t have time to look at miscellaneous bits of paper.
+    give scrap $n
+   endif
+  endif
+ endif
+else
+ \@I\@m sorry, but I really don\@t have the time to look at miscellaneous bits of paper.
+ give scrap $n
+endif
+~
+>speech_prog p last work~
+if mobvalue(0) == 0
+ if ispc($n)
+  if isevil($n)
+   \@Neither your presence, nor your conversational skills, are wanted here.
+  else
+   if isfocused($i)
+    if valname($n) == $f
+     \@I\@m sorry, but it\@s been such a long time that I can\@t quite remember all of Dilalyn\@s works.
+     \@Perhaps if I had something to remind me... Ah well.
+     mpvalueset 0 1
+    else
+     \@Pardon me, but I was speaking with $f.
+    endif
+   else
+    \@I\@m sorry, but who\@s last work?
+   endif
+  endif
+ endif
+endif
+~
+>speech_prog p Dilalyn~
+if ispc($n)
+ if isevil($n)
+  \@I would rather not speak to you about him.
+ else
+  if isfocused($i) 
+   if valname($n) == $f
+    \@I have already told you the little that I know of Dilalyn.
+   else
+    \@I\@m sorry, but I am currently conversing with $f.
+   endif
+  else
+   mpfocus $n
+   \@Ah, Dilalyn, it has been several ages since I have heard someone utter his name.
+   \@Among our race, he was the master of stoneworking.
+   \@His hands were legendary, capable of forming a work of art from the simplest rock.
+   \@Furthermore, he could breathe life into his creations, transforming them into sentient beings.
+   \@Sadly, he and his creations were buried in the Sundering, never to be seen again.
+  endif
+ endif
+endif
+~
+|
+V4 8437
+worm c\@thsa~
+the C\@thsa worm~
+A horrible C\@thsa worm, black-plated and featureless, writhes hungrily.
+~
+An enormous worm measuring 15\@ in length, this monstrous creature writhes
+about sightlessly, flexing its toothless mouth. Born of the dark world Yra,
+the C\@thsa worms are spawned and spread by Haj-Ra.
+~
+demon~
+water scholar~
+ADF 0 DFOVZc E 0
+52 30 3000d1+1 52d100+1 5d10+25 acid~
+digestion~
+-15 -15 -15 -15
+H BE
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACHMSV ABCDEFGHIJKLPQ A medium unknown
+>fight_prog 1~
+mpseewizi
+mptransfer boogerbot
+mpforce boogerbot mpvalueset 1 1
+mpat 8100 say Boogers!
+mpunseewizi
+~
+>death_prog 100~
+mpseewizi
+mpat boogerbot mpforce boogerbot mpvaluedown 0
+~
+>rand_prog 2~
+mpseewizi
+mptransfer boogerbot
+mpforce boogerbot mpvalueset 1 1
+mpat 8100 say Boogers!
+mpunseewizi
+~
+|
+V4 8438
+barlonde jester~
+Barlonde~
+Barlonde the Jester capers about the Titan stronghold.
+~
+Barlonde the Jester began his career as the court entertainer for the
+goodly King Fulian.  Later he began traveling with parties of adventurers,
+seeking tales of amusement and glory.  Soon there were few adventures that
+Barlonde learned of that he did not partake of in some form.  His most
+daring feat was to sneak into the keep of the vile sorcerer Ankhemes and
+steal the Amulet of Seton, returning it to the temple from whence it came. 
+He is a frequent guest in the court of Anirim.  
+~
+human~
+water scholar~
+ABGPX 0 DHNZ G 0
+60 30 7000d1+1 0d0+0 5d10+45 pierce~
+pierce~
+-30 -30 -30 -30
+EFHIKN A
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 333 23
+AHMV ABCDEFGHIJK A medium unknown
+>fight_prog 3~
+mpseewizi
+mpvaluerand 0 1 3
+if value(0) == 1
+  yell Hey Anirim! Take $N off the \#good behavior\# list!
+endif
+if value(0) == 2
+  yell $N\@s mother works in an unpopular brothel!
+endif
+if value(0) == 3
+  esay \@comments languidly\@ You know, this is rather dashed of you.
+endif
+mpunseewizi
+~
+>rand_prog 100~
+if value(8) == 9
+else
+if rand(5)
+  mpvaluerand 0 1 8
+  if mobvalue(0) == 1
+    north
+  endif
+  if mobvalue(0) == 2
+    south
+  endif
+  if mobvalue(0) == 3
+    east
+  endif
+  if mobvalue(0) == 4
+    west
+  endif
+  if mobvalue(0) > 4
+    mpvaluerand 1 1 35
+    if mobvalue(1) == 1
+      \@Let this be a lesson to you: If you are ever in Var Bandor and someone tosses you a baby, swat it to the ground!
+    endif
+    if mobvalue(1) == 2
+      emote looks at you.
+      \@Ye gods! I\@ve never seen the likes of THIS rabble!
+      dismay
+    endif
+    if mobvalue(1) == 3
+      tickle $r
+    endif
+    if mobvalue(1) == 4
+      \@He thrusts his fists against the posts and still insists he sees the ghosts!
+    endif
+    if mobvalue(1) == 5
+      \@It was karma not coincidence that killed the evil queen...
+    endif
+    if mobvalue(1) == 6
+      \@When you get older, you know what\@s under the table, and who has the grapes.
+      sage
+    endif
+    if mobvalue(1) == 7
+      \@So I said to him, what do you mean you\@ve never made love to a shuddeni?
+    endif
+    if mobvalue(1) == 8
+      mull
+      \@I think the Earendam white will go well with the truffles..
+    endif
+    if mobvalue(1) == 9
+      \@Well, you know about those girls from Earendam..
+    endif
+    if mobvalue(1) == 10
+      \@That\@s no astrologist, that\@s my wife!
+    endif
+    if mobvalue(1) == 11
+      mpecho {YBarlonde sings gaily:{n
+      mpecho {Y\@Oh, here is light, and here is truth\@{n
+      mpecho {Y\@And here is food for joyous laugher!\@{n
+      mpecho {Y\@We will be faithful to our sooth!\@{n
+      mpecho {Y\@Till the end, and even after!\@{n
+    endif
+    if mobvalue(1) == 12
+      Emote produces a coin from each ear, tosses them into the air, and grins impishly as they fail to return to the ground.
+    endif
+    if mobvalue(1) == 13
+      mpecho {YBarlonde sings:{n
+      mpecho {Y\@Let us gaily tread the measure\@{n
+      mpecho {Y\@Make the most of fleeting leisure\@{n
+      mpecho {Y\@Hail it as a true ally,\@{n
+      mpecho {Y\@Though it perish bye and bye!\@{n
+    endif
+    if mobvalue(1) == 14
+      emote begins to juggle seven flaming batons.
+      \@I learned this trick from my old archenemy, Guildmaster Toloth!
+    endif
+    if mobvalue(1) == 15
+      \@Stand down!
+      emote removes the Javelin of Anirim.
+      emote gives you the Javelin of Anirim.
+    endif
+    if mobvalue(1) == 16
+      mpecho Barlonde utters the words, \@gjwwai\@.
+      mpecho Sothmogga arrives suddenly.
+      mpecho Sothmogga\@s {W>>>{r FORMIDABLE {W<<< {nacidic bite sunders you!
+      mpecho Sothmogga\@s {W<<< {rTREMENDOUS {W>>> {nacidic bite dismembers you!
+      emote waves his hand, and Sothmogga disappears.
+      emote grins impishly.
+    endif
+    if mobvalue(1) == 17
+      mpecho {gA Divine Presence tells you \@Did you know that Barlonde is a ventriloquist?\@{n
+    endif
+    if mobvalue(1) == 18
+      \@How many alatharya does it take to light a torch?
+    endif
+    if mobvalue(1) == 19
+      \@One to hold the fire scholar down, two to stomp the living hell out of him.
+    endif
+    if mobvalue(1) == 20
+      \@Psssst.. Anirim snores.
+    endif
+    if mobvalue(1) == 21
+      \@What\@s the difference between a void scholar with the pox, and a pregnant bar maid?
+    endif
+    if mobvalue(1) == 22
+      \@So then Raekith says to Dyrck, \#Oh yeah? Maybe I WOULD like to know what it feels like!\#...
+    endif
+    if mobvalue(1) == 23
+      \@I\@m not sure about that, but I do know the truth about ethron girls..
+    endif
+    if mobvalue(1) == 24
+      mpvaluerand 2 1 1000
+      if mobvalue(2) == 5
+        mpat 3499 yell Lae di lae, Lie da lie, Fa de la da rum!
+      endif
+    endif
+    if mobvalue(1) == 25
+      pinch $r
+      mpforce $r squeal
+    endif
+  endif
+endif
+endif
+~
+>greet_prog 3~
+yell Help!  I am being attacked by $N!
+~
+>entry_prog 3~
+\\@What\@s all the fuss? They\@re only Titans...
+~
+>greet_prog 2~
+if rand(20)
+  emote winks conspiratorily, waiting for the countersign.
+else
+  if rand(40)
+    emote bows deeply before you.
+    \@Why, you remind me of my old friend Regnant Maendorn!
+  endif
+endif
+~
+|
+V4 8439
+captain titan eruin~
+Eruin the Titan Captain~
+Eruin, Captain of the Titans, stands ready to battle darkness.
+~
+The Titan Captain known as Eruin is the last of the truly great Titan
+warriors to remain in the land of Avendar.  He succeeded his older brother,
+Olonar, as Anirim\@s captain after the last battle of Oan, when Olonar saw
+fit to join the movement of the Titans into other worlds.  Eruin now stands
+ready to battle wherever he may be called, defending the light as directed
+by his king, Anirim.  
+~
+human~
+water scholar~
+ABGP Q DHNZ G 0
+60 0 4000d1+1 0d0+0 9d5+70 none~
+hit~
+-20 -20 -20 -20
+CDEFHIKN 0
+26 0 0 33 33 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 23
+AHMV ABCDEFGHIJK A medium unknown
+V4 8440
+siyyad khil ayum khil\@ayum spiked massive giant~
+the siyyad khil\@ayum~
+A massive, spiked giant, the siyyad khil\@ayum snarls wickedly.
+~
+The siyyad khil\@ayum was the terrible leader of the foul race, until his
+kind were subdued by the hand of the Titans.  A massive specimen, the
+siyyad\@s eyes gleam with hatred and ferocity, and curving fangs protrude
+from his mouth.  
+~
+demon~
+water scholar~
+ABFPTX 0 0 E 0
+60 78 14000d1+1 0d0+0 5d8+101 pierce~
+pierce~
+-40 -40 -40 -40
+CEFHKN AB
+26 0 0 33 0 0 0 0 0 0 0 0 0 0 -33 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand male 0 -1
+ACHMV ABCDEFGHIJKP A medium unknown
+>death_prog 100~
+mpvaluerand 0 1 10
+if mobvalue(0) == 1
+mpvaluerand 1 1 3
+if mobvalue(1) == 1
+if isoverlimit(8454)
+else
+mpecho One of the siyyad khil\@ayum\@s vicious fangs is severed!
+mpoload 8454 in room
+endif
+endif
+mpvaluerand 1 1 3
+if mobvalue(1) == 1
+if isoverlimit(8455)
+else
+mpoload 8455 in room
+endif
+endif
+endif
+~
+|
+V4 8441
+worm black c\@thsa~
+the C\@thsa worm~
+A horrid black C\@thsa worm writhes sightlessly.
+~
+A huge black worm writhes sightlessly, its gaping maw reaching for unseen food.
+~
+demon~
+water scholar~
+AFX 0 0 E 0
+57 28 20d220+1100 0d0+0 5d13+27 acid~
+digestion~
+-22 -22 -22 -9
+H BE
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+ACHMV ABCDEFGHIJKP A medium unknown
+V4 8442
+boogerbot boogers~
+the boogerbot~
+The boogerbot spews boogers and worms! All over! Wooo!
+~
+~
+human~
+water scholar~
+AB 0 DFJLPZ N 0
+0 0 5d5+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK A medium unknown
+>rand_prog 100~
+if mobvalue(0) < 12
+if mobvalue(1) > 0
+mpecho The C\@thsa worm writhes violently, and spawns another of its kind!
+mpmload 8437
+mpvalueset 1 0
+mpvalueup 0
+endif
+endif
+~
+|
+V4 8443
+Xthjichbot symbolbot2 symbolbot bot~
+the Xthjichbot~
+The Xthjichbot is here, dripping blood all over.
+~
+~
+human~
+water scholar~
+ADL 0 DFL N 0
+52 0 1d1+1 0d0+0 0d0+0 none~
+hit~
+0 0 0 0
+0 0
+26 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 0 -1
+AHMV ABCDEFGHIJK 0 medium flesh
+>verb_prog p study~
+if isghost($n)
+  mpechoat $n You can\@t comprehend this symbol while a ghost.
+  break
+endif
+if mobhere(8423)
+  mpechoat $n You can\@t study anything with Xthjich here!
+  break
+endif
+if compstr(2) == symbol
+or compstr(2) == Eye
+or compstr(2) == Xthjich
+or compstr(2) == Pentagram
+  if skill1250($n) > 0
+    if hassymbol($n) == 9
+      mpechoat $n That symbol is one with which you are already familiar.
+    else
+      mpforce $n look symbolvision
+      mpaddsymbol $n 9
+      mplag $n 4
+      break
+    endif
+  else
+    mpechoat $n You lack the knowledge to fully comprehend this symbol.
+  endif
+else
+  mpinterpret $n $x
+endif
+~
+>load_prog 100~
+mpseewizi
+~
+|
+V4 8444
+gyel-xan gyel xan gyelimage spawn gyelxan~
+Gyel-Xan~
+Gyel-Xan, leader of the Spawn of Sothmogga, stands here.
+~
+Gyel-Xan is the leader of the cult of Sothmogga, and foremost among its
+Spawn.  Originally one an unborn of the celestial race of the Celanim,
+Gyel-Xan, like his fellow spawn, was twisted and corrupted by the coming of
+that cosmic horror.  
+
+Gyel-Xan stands about as tall as an alatharya, but his entire body is
+covered by ropy, midnight-black tentacles.  An acidic sheen covers his skin,
+and only magic prevents the dissolution of his dark silk robes.  Little
+trace remains of his Celanimic heritage, save his eyes, which pulse with a
+deep blue energy.  
+~
+demon~
+water scholar~
+ADFLPTX B DFJZ E 0
+60 80 1d1+20000 0d0+0 7d10+100 acid~
+acidic bite~
+-50 -50 -50 -50
+AFHK ABK
+26 0 0 90 90 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+5 0 0 0 0 0
+stand stand none 650 -1
+ACHMV ABCDEFGHIJKP 0 medium flesh
+>fight_prog 20~
+if rand(50)
+mpcast 2 60
+else
+mpcast 148 55
+endif
+~
+|
+#0
+
+
+
+#OBJECTS
+V13
+8420
+key runed silver~
+a runed silver key~
+A silver key, engraved with mystic runes, hums in the dust.~
+This silver key unlocks the magical barriers that seal the Astral Prison
+from the rest of Avendar.  
+~
+silver~
+key ABF 0 0 A
+0 0 0 0 0
+54 10 2200 0 P
+2
+V13
+8421
+helmet spiked black~
+a spiked black helmet~
+A helmet covered with long black spikes is here.~
+This wickedly spiked helmet is worn in battle by the demon lord Xthjich. 
+Its evil-feeling black metal is imbued with dark magic that grants the
+wearer battle prowess.  So dark is its nature that it cannot be worn by any
+but those whose hearts are full of darkness.  
+~
+iron~
+armor BCDEGJLMa 0 0 AE
+15 15 15 15 0
+58 150 138997 2 P
+1
+A
+24 -5
+A
+13 40
+A
+19 2
+A
+18 2
+A
+17 -20
+V13
+8422
+breastplate spiked black~
+a spiked black breastplate~
+A black breastplate covered with wicked spikes rests here.~
+This wickedly spiked breastplate is worn in battle by the demon lord
+Xthjich.  Its evil-feeling black metal is imbued with dark magic that grants
+the wearer battle prowess.  So dark is its nature that it cannot be worn by
+any but those whose hearts are full of darkness.  It is enormous in size,
+forged for the gigantic demon lord, but through its demonic power it adjusts
+to fit its current owner.  
+~
+iron~
+armor BCDEGJLMa 0 0 AD
+15 20 20 15 0
+58 250 887314 2 P
+1
+A
+17 -10
+A
+19 3
+A
+13 65
+A
+18 2
+V13
+8423
+shield spiked black~
+a spiked black shield~
+A black shield covered with wicked spikes rests here.~
+This wickedly spiked shield is worn in battle by the demon lord
+Xthjich.  Its evil-feeling black metal is imbued with dark magic that grants
+the wearer battle prowess.  So dark is its nature that it cannot be worn by
+any but those whose hearts are full of darkness. 
+~
+iron~
+armor BCDEGJLMa 0 0 AJ
+11 11 11 11 0
+58 100 54225 2 P
+1
+A
+24 -5
+A
+14 20
+A
+1 1
+A
+13 25
+A
+19 1
+A
+18 4
+V13
+8424
+arm guards armguards spiked black~
+a pair of spiked black armguards~
+A pair of spiked black armguards rest here.~
+This wickedly spiked pair of armguards is worn in battle by the demon
+lord Xthjich.  Its evil-feeling black metal is imbued with dark magic that
+grants the wearer battle prowess.  So dark is its nature that it cannot be
+worn by any but those whose hearts are full of darkness.  The armguards are
+enormous in size, forged for the gigantic demon lord, but through its
+demonic power it adjusts to fit its current owner.  
+~
+iron~
+armor BCDEGJLMa 0 0 AI
+12 12 12 12 0
+58 80 167869 2 P
+1
+A
+19 3
+A
+12 20
+A
+13 35
+A
+17 -15
+V13
+8425
+leggings spiked black~
+a pair of spiked black leggings~
+A pair of spiked black leggings sit here.~
+This wickedly spiked pair of leggings is worn in battle by the demon lord
+Xthjich.  Its evil-feeling black metal is imbued with dark magic that grants
+the wearer battle prowess.  So dark is its nature that it cannot be worn by
+any but those whose hearts are full of darkness.  The leggings are enormous
+in size, forged for the gigantic demon lord, but through its demonic power
+it adjusts to fit its current owner.  
+~
+iron~
+armor BCDEGJLMa 0 0 AF
+12 12 12 12 0
+58 100 132137 2 P
+1
+A
+19 3
+A
+18 2
+A
+12 25
+A
+13 20
+A
+17 -15
+V13
+8426
+boots spiked black~
+a pair of spiked black boots~
+A pair of spiked black boots rests here.~
+This wickedly spiked pair of boots is worn in battle by the demon lord
+Xthjich.  Its evil-feeling black metal is imbued with dark magic that grants
+the wearer battle prowess.  So dark is its nature that it cannot be worn by
+any but those whose hearts are full of darkness.  The boots are enormous in
+size, forged for the gigantic demon lord, but through its demonic power it
+adjusts to fit its current owner.  
+~
+iron~
+armor BCDEGJLMa 0 0 AG
+12 12 12 12 0
+58 100 49151 2 P
+1
+A
+13 30
+A
+19 2
+A
+18 3
+V13
+8427
+hide haj-ra~
+the Hide of Haj-Ra~
+The chitinous Hide of Haj-Ra rests in a pile of black scales.~
+The Hide of Haj-Ra is an enormous sheet of foul, clammy black skin
+covered in dull black chitinous scales.  It can be worn about one\@s body, if
+the wearer can stand the powerful evil that radiates from it.  When Haj-Ra\@s
+physical form was defeated, this hide was cut from it, and it now grants
+astonishing protection to its wearer.  
+~
+flesh~
+armor DEGHJLMQSa 0 0 AK
+20 20 20 10 0
+58 300 1998370 2 P
+1
+A
+19 3
+A
+13 100
+A
+17 -40
+V13
+8428
+eggs clutch white~
+a clutch of white eggs~
+A clutch of white eggs hums and pulsates.~
+This evil-looking clutch of white eggs contains within it a horrifying
+swarm of C\@thsa worms.  These hideous creatures are the lesser spawn of the
+cosmic horror known as Haj-Ra.  Once loosed upon an unsuspecting world, the
+C\@thsa worms will divide at a terrifying rate, overwhelming the area and
+consuming all that falls within their path.  
+The demonic worms may be spawned by speaking the phrase:
+Yigac shocura atog llos nach C\@thsa cyakoa!
+~
+flesh~
+trash BEQS 0 0 A
+0 0 0 0 0
+58 180 110000 2 P
+2
+E
+clutch~
+As you gaze at the clutch of eggs, a strange and terrible phrase begins to
+form itself clearly in your mind:
+\@Yigac shocura atog llos nach C\@thsa cyakoa!\@
+~
+E
+eggs~
+As you gaze at the clutch of eggs, a strange and terrible phrase begins to
+form itself clearly in your mind:
+\@Yigac shocura atog llos nach C\@thsa cyakoa!\@
+~
+>speech_prog p Yigac shocura atog llos nach C\@thsa cyakoa!~
+if roomflag($o) == law
+opechoat $o The eggs quiver, but nothing else seems to happen. 
+else
+opforce $n drop eggs
+opecho The clutch of eggs splits open, and a ravenous C\@thsa worm is born!
+opmload 8437
+oppurge self
+endif
+~
+|
+V13
+8429
+heart black pulsing sothmogga~
+the pulsing black heart of Sothmogga~
+The black heart of Sothmogga pulses here.~
+A relic of extremely powerful evil, this pulsing black heart was torn
+from the physical form of Sothmogga when the great cosmic evil was
+temporarily destroyed.  The heart\@s dark power can be tapped by a wielder of
+sufficiently twisted psyche, allowing one to draw upon it for magical
+purposes.  
+~
+flesh~
+treasure ABCDEGHJLMQSa 0 0 AO
+0 0 0 0 0
+58 80 1411823 2 P
+1
+A
+13 40
+A
+12 110
+A
+17 -30
+>fight_prog 6~
+if isworn($o)
+opecho The black heart of Sothmogga pulses, and shoots forth a blast of acid!
+opcast 2 55
+endif
+~
+|
+V13
+8430
+crown blazing~
+the blazing crown of Anirim~
+The blazing crown of Anirim crackles with power.~
+~
+energy~
+armor AKLSa 0 0 AE
+10 10 10 10 0
+60 180 4500000 2 P
+1
+A
+17 -30
+A
+13 50
+A
+12 50
+A
+18 2
+A
+19 2
+V13
+8431
+javelin flaming javanirim~
+the flaming Javelin of Anirim~
+The Javelin of Anirim blazes with righteous flames.~
+It is said by Anirim himself that the Javelin of Heavenly Flames was
+forged during the creation of the world.  The Deities of Light shaped the
+divine flames of the Sun itself into a physical weapon for the use of the
+great heroes that would come.  Anirim now holds it, granting its temporary
+use to heroes who can prove themselves worthy.  
+~
+fire~
+weapon AKLMSZa 0 0 AN
+spear 8 7 10 F
+divine power~
+60 80 2000000 3 P
+1
+A
+41 6
+A
+29 33
+A
+54 2
+O divine power~
+>rand_prog 100~
+if isworn($o)
+  opvaluerand 8 1 1000
+  if objvalue(8) < 10
+    if snaffected($n) == 39
+      opechoat $o The Javelin tingles in your hands, and you feel the grip of the curse dissipate.
+      opremaffect $o 39
+    endif
+  endif
+endif
+~
+>fight_prog 100~
+if isworn($o)
+  opvaluerand 8 1 120
+  if objvalue(8) < 10
+    if snaffected($n) == 39
+      opechoat $o The Javelin tingles in your hands, and you feel the grip of the curse dissipate.
+      opremaffect $o 39
+    endif
+  endif
+  if objvalue(8) == 1
+    opecho The Javelin of Anirim flares brightly!
+    opasound A flash of light flares up nearby.
+    opcastoff 688 54
+  endif
+  if objvalue(8) == 2
+    opforce $o yell Darkness shall be banished!
+  endif
+  if objvalue(8) == 3
+    opforce $o yell May the light prevail!
+  endif
+  if objvalue(8) == 4
+    opecho $I thrums quietly.
+    opcastoff 130 60
+  endif
+endif
+~
+>speech_prog p Stand down~
+opset obj javanirim extra 0
+opforce $o rem javanirim
+opset obj javanirim extra 100932609
+mpremaffect $o 697
+~
+>wear_prog 100~
+opforce $o yell Javelin of the skies, I wield thee that darkness may be rent asunder!
+mpaddaffect $o 697 52 -1 0 0 4194304 O
+mpechoaround $o A brilliant, steady light kindles around $O.
+mpechoat $o A brilliant, steady light kindles around you.
+opechoat $o The flaming Javelin of Anirim seals itself to your grip!
+if isbitset($o) == 341
+  if rand(5)
+    opechoat $o {gThe flaming Javelin of Anirim tells you \@To release me from your grip, speak the words \#Stand down\#.\@{n
+  endif
+else
+  mpbitset $n 341 1
+  opechoat $o {gThe flaming Javelin of Anirim tells you \@To release me from your grip, speak the words \#Stand down\#.\@{n
+endif
+~
+|
+V13
+8432
+sleeves silk blue~
+some blue silk sleeves~
+Some blue silk sleeves rest here.~
+These powerfully enchanted blue silk sleeves were created by Anirim, King
+of the Titans, for his bride Nelenna.  They are known to offer powerful
+resistance to magical attacks, and to augment the wearer\@s durability
+magically.  
+~
+cloth~
+armor GKLSa 0 0 AI
+5 5 5 5 0
+55 20 585500 2 P
+1
+A
+24 -10
+A
+13 55
+V13
+8433
+skirt silk blue~
+a blue silk skirt~
+An elegant blue silk skirt is here.~
+This powerfully enchanted blue silk skirt was created by Anirim, King of
+Titans, for his bride Nelenna.  It is known to offer powerful resistance to
+magical attacks, and to augment the wearer\@s durability magically.  
+~
+cloth~
+armor GKLSa 0 0 AF
+5 5 5 5 0
+55 20 125299 2 P
+5
+A
+12 55
+A
+24 -10
+V13
+8434
+claws bear~
+the Claws of the Bear~
+Two pairs of gleaming black claws rest here.~
+The fabled Bears of Goran, a mystic, intelligent race of giant bears,
+count as one of their many powers the ability to create special claws that
+meld with their paws and augment their natural claws.  On rare occasions a
+Bear of Goran may loan these claws to a non-bear creature.  While non-bears
+cannot take full advantage of their power, the claws will greatly increase
+that creature\@s physical strength, and allow them to do more damage in
+combat.  
+~
+flesh~
+armor KLSa 0 0 AH
+1 1 5 1 0
+54 90 21310 1 P
+15
+A
+19 2
+A
+1 6
+V13
+8435
+belt kankoran~
+the Belt of the Kankoran~
+The fur-lined Belt of the Kankoran sits here.~
+The legendary Belt of the Kankoran was crafted long ago by an ancient
+kankoran demigod known as Rigakhor, who stood for the principles of freedom
+that Kankoran hold so dear, but also fought for the Light whenever possible.
+He imbued this belt with blessings and enchantments that would carry a
+kankoran warrior into battle against evil, and aid in victory.  
+~
+flesh~
+armor KLSa 0 0 AL
+5 5 5 5 0
+54 50 62911 2 P
+1
+A
+18 3
+A
+19 4
+>wear_prog 100~
+if isgood($n)
+if israce($n) == kankoran
+  mpechoat $n You feel a surge of power as you buckle on the Belt of the Kankoran.
+else
+  mpechoat $n You are not a kankoran!
+  opzap $n
+  mpechoat $n The Belt of the Kankoran falls from your waist to the ground.
+  mpechoaround $n The Belt of the Kankoran falls from $N\@s wait to the ground.
+endif
+endif
+~
+|
+V13
+8436
+cloak river pool water rippling~
+the Cloak of the River~
+A cloak formed from a pool of rippling water is here.~
+This cloak formed from pure, rippling river water, is known as the Cloak
+of the River.  Passed down from generation to generation by powerful water
+scholars, it is rumored to have been a gift from Jolinn for the services
+rendered by their faction in the War of Fire.  
+~
+water~
+armor ABFGKLSa 0 0 AK
+10 10 10 25 0
+54 10 28658 2 P
+1
+A
+24 -8
+A
+13 20
+A
+12 20
+A
+14 40
+>rand_prog 2~
+opvaluerand 0 1 20
+if objvalue(0) == 1
+  if isworn($o)
+    if objhere(22)
+    else
+      opecho {bThe Cloak of the River ripples gently, and a fresh spring is created.{x
+      opcast 31 54
+    endif
+  endif
+endif
+~
+|
+V13
+8437
+lute pelloro~
+the Lute of Pelloro~
+The legendary Pelloro\@s Lute rests here.~
+Pelloro is a famed bard, renowned for his numerous deeds and for retiring
+to dwell in the court of the Titan king Anirim.  Now almost legendary, his
+lute is alleged to have been shaped from a maple tree growing in Firiel\@s
+grove.  Personally blessed by Aeolis, the lute carries Pelloro\@s personal
+mystic rune, lovingly carved into its base.  
+~
+wood~
+instrument KLSa 0 0 AO
+B 0 0 0 0
+54 90 486954 2 P
+1
+A
+12 60
+A
+18 1
+A
+19 1
+A
+14 80
+V13
+8438
+ring earth plain stone~
+the Ring of the Earth~
+A ring cut from shimmering stone is here.~
+This ring is cut from elemental stone found only on the Elemental Plane
+of Earth.  Judging from the purity and magnifience of the piece, it is of a
+quality typically favored by an elemental lord or prince.  
+~
+stone~
+armor FKSa 0 0 AB
+8 8 8 8 0
+54 30 108522 0 P
+3
+A
+17 -15
+A
+24 -4
+A
+12 50
+A
+5 2
+A
+1 2
+V13
+8439
+helm white shining~
+a shining white helm~
+A white helm shines with burning intensity.~
+This helm is one of the pieces of the legendary white armor of Converu, a
+human templar from ages long past.  Converu battled ceaselessly against the
+powerful archmage Vila, who used the Nyakigh Sha Yith to threaten the
+scattered human kingdoms following the Gandar Age.  This culminated in the
+creation of Sothmogga, a cosmic horror who devestated the demiplane of the
+Celanim and then Avendar proper.  Taking up the Javelin of Heavenly Flames,
+Converu mortally wounded Sothmogga, but sacrificed his own life in the
+process.  Converu\@s spirit was given power to cleanse the Grove of the
+Celanim, and when the last of the Spawn of Sothmogga, Gyel-Xan, was
+contained, he ascended to the status of demigod.  This helm was part of the
+set of blessed armor Converu wore his entire life, which was bequeathed to
+the templars of his line.  
+~
+platinum~
+armor AKLa 0 0 AE
+10 10 10 10 0
+54 130 44371 2 P
+1
+A
+18 6
+A
+13 25
+A
+4 3
+V13
+8440
+breastplate breast plate shining white~
+a shining white breastplate~
+A white breastplate shines with holy light.~
+This breastplate is one of the pieces of the legendary white armor of
+Converu, a human templar from ages long past.  Converu battled ceaselessly
+against the powerful archmage Vila, who used the Nyakigh Sha Yith to
+threaten the scattered human kingdoms following the Gandar Age.  This
+culminated in the creation of Sothmogga, a cosmic horror who devestated the
+demiplane of the Celanim and then Avendar proper.  Taking up the Javelin of
+Heavily Flames, Converu mortally wounded Sothmogga, but sacrificed his own
+life in the process.  Converu\@s spirit was given power to cleanse the Grove
+of the Celanim, and when the last of the Spawn of Sothmogga, Gyel-Xan, was
+contained, he ascended to the status of demigod.  This breastplate was part
+of the set of blessed armor Converu wore his entire life, which was
+bequeathed to the templars of his line.  
+~
+platinum~
+armor AKLa 0 0 AD
+15 15 15 15 0
+54 100 549506 2 P
+1
+A
+13 55
+A
+19 3
+A
+18 3
+A
+17 -10
+V13
+8441
+shield shining white~
+a shining white shield~
+A white shield shines brightly.~
+This shield is one of the pieces of the legendary white armor of Converu,
+a human templar from ages long past.  Converu battled ceaselessly against
+the powerful archmage Vila, who used the Nyakigh Sha Yith to threaten the
+scattered human kingdoms following the Gandar Age.  This culminated in the
+creation of Sothmogga, a cosmic horror who devestated the demiplane of the
+Celanim and then Avendar proper.  Taking up the Javelin of Heavily Flames,
+Converu mortally wounded Sothmogga, but sacrificed his own life in the
+process.  Converu\@s spirit was given power to cleanse the Grove of the
+Celanim, and when the last of the Spawn of Sothmogga, Gyel-Xan, was
+contained, he ascended to the status of demigod.  This shield was part of
+the set of blessed armor Converu wore his entire life, which was bequeathed
+to the templars of his line.  
+~
+platinum~
+armor AKLa 0 0 AJ
+11 11 11 11 0
+54 80 125606 2 P
+1
+A
+13 35
+A
+19 3
+A
+18 4
+A
+14 50
+V13
+8442
+bracer shining white~
+a shining white bracer~
+A white bracer shines brightly.~
+This bracer is one of the pieces of the legendary white armor of Converu,
+a human templar from ages long past.  Converu battled ceaselessly against
+the powerful archmage Vila, who used the Nyakigh Sha Yith to threaten the
+scattered human kingdoms following the Gandar Age.  This culminated in the
+creation of Sothmogga, a cosmic horror who devestated the demiplane of the
+Celanim and then Avendar proper.  Taking up the Javelin of Heavenly Flames,
+Converu mortally wounded Sothmogga, but sacrificed his own life in the
+process.  Converu\@s spirit was given power to cleanse the Grove of the
+Celanim, and when the last of the Spawn of Sothmogga, Gyel-Xan, was
+contained, he ascended to the status of demigod.  This bracer was part of
+the set of blessed armor Converu wore his entire life, which was bequeathed
+to the templars of his line.  
+~
+platinum~
+armor AKLa 0 0 AM
+8 8 8 8 0
+54 50 26247 1 P
+2
+A
+18 2
+A
+19 2
+A
+12 20
+A
+13 20
+V13
+8443
+sword shining white longsword~
+a shining white longsword~
+A white sword with a carved lily hilt is here.~
+This sword is believed to be the personal sword of the legendary
+templar-saint, Converu.  It has been handed down to his descendents with
+each succeeding generation, each one tasked with both the protection of the
+blade and its use in the punishment of evil.  
+
+After the unprecedented evil of the War of Night, the war-weary Deremegon
+converted to the worship of the child-goddess, Alajial.  Troubled by the
+knowledge that he and his children would forever be destined to fight, he
+prayed to Her for guidance.  She is said to have blessed the sword and him,
+absolving him of his burden of guilt.  
+~
+elirium~
+weapon AIKLa 0 0 AN
+sword 6 9 10 0
+divine power~
+54 180 1638579 2 P
+1
+A
+13 60
+A
+18 2
+E
+sword shining white longsword~
+This shining white sword is crafted from the legendary metal elirium. 
+Its craftsmanship is peerless, its edges eternally sharp and its body
+knowing none of the ravages of time.  The hilt is particularly ornate, with
+the blade growing out of the spread petals of a stylized lily.  
+~
+O divine power~
+V13
+8444
+necklace silver symbol holy alajial~
+the holy symbol of Alajial~
+A silver necklace embossed with the symbol of Alajial is here.~
+Alajial, the caladaran goddess of compassion, has had precious little
+influence in Avendar within this age.  While a few small orders of monks and
+charity workers continue her worship, she has not blessed them with her
+presence often.  
+This powerful holy symbol is a relic of an age when Alajial\@s attention was
+directed upon the lands much more frequently. An-Nindon, the most powerful
+of her followers, carries the symbol out of reverence for all it stands for.
+He is known to allow others of the light to use it when their need is dire.
+~
+silver~
+armor GIKLa 0 0 AC
+0 0 0 18 0
+54 30 460940 1 P
+1
+A
+12 100
+V13
+8445
+mandolin painted~
+a brightly painted mandolin~
+A mandolin painted with bright, flashy colors is here.~
+~
+wood~
+instrument AKLSa 0 0 AO
+B 0 0 0 0
+54 80 268428 2 P
+1
+A
+13 30
+A
+1 2
+A
+2 4
+A
+19 4
+V13
+8446
+red tunic bright~
+a bright red tunic~
+A bright red tunic, sewn from the shiniest silk, is folded carefully.~
+~
+silk~
+armor KLSa 0 0 AD
+11 11 11 15 0
+51 10 58911 2 P
+1
+A
+24 -2
+A
+19 3
+A
+13 20
+A
+18 5
+V13
+8447
+cap green bright felt~
+a bright green cap~
+A cap of bright green felt rests here.~
+~
+cloth~
+armor KLSa 0 0 AE
+12 12 12 12 0
+54 10 24981 2 P
+1
+A
+24 -8
+A
+12 35
+A
+4 5
+A
+3 5
+V13
+8448
+hose bright yellow pair~
+a pair of bright yellow hose~
+A pair of bright yellow hose is piled here.~
+~
+cloth~
+armor KLSa 0 0 AF
+11 11 11 11 0
+54 10 15865 2 P
+1
+A
+24 -2
+A
+19 2
+A
+17 -15
+V13
+8449
+sleeves pair bright purple~
+a pair of bright purple sleeves~
+A pair of bright purple sleeves are folded here.~
+~
+silk~
+armor KLSa 0 0 AI
+11 11 11 11 0
+54 0 43872 2 P
+1
+A
+19 2
+A
+18 2
+A
+24 -3
+A
+12 15
+A
+13 15
+A
+5 3
+V13
+8450
+flail enormous shining blue light~
+a flail of shining blue light~
+An enormous flail of shining blue light rests here.~
+This flail is the favored weapon of Eruin, the great captain of the
+Titans.  Legend has it the flail was constructed by the Titan Queen Nelenna,
+who bathed sapphires blessed by Jolinn in the light of Kyana, goddess of the
+stars in a holy ritual.  When the sun dawned on the sapphires, they had
+transformed into pure energy, and were bound up into this flail.  
+~
+energy~
+weapon AGKLa 0 0 AN
+flail 9 5 10 0
+divine power~
+54 110 500000 2 P
+1
+A
+12 30
+A
+13 30
+A
+18 4
+A
+1 2
+O divine power~
+V13
+8451
+tentacle large green severed~
+the severed tentacle of Sothmogga~
+A large green tentacle drips corrosive ooze and flops listlessly.~
+Yes. A tentacle.
+~
+carrion~
+trash ES 0 0 A
+0 0 0 0 0
+65 300 0 2 P
+0
+>rand_prog 100~
+if objvalue(0) == 0
+opvalueset 0 30
+endif
+if objvalue(0) > 0
+opvaluedown 0
+endif
+if objvalue(0) == 14
+opechoat $o The tentacle of Sothmogga begins to decay!
+endif
+if objvalue(0) == 1
+opechoat $o The tentacle of Sothmogga crumbles into dust.
+oppurge self
+endif
+~
+|
+V13
+8452
+secret~
+the secret item~
+A secret item. You can\@t see it.~
+~
+unknown~
+trash QV 0 0 A
+0 0 0 0 0
+0 0 0 2 P
+0
+V13
+8453
+knife ceremonial iphesta~
+the ceremonial knife of the Iphesta~
+A ceremonial knife, scribed with aelin figures and characters, rests here.~
+This knife bears the ceremonial markings of the house of Iphesta, one of
+the most ancient and venerated of the great aelin families.  The Iphesta\@s
+recorded history stretches back to the time of the War of Fire, when they
+were among the first aelin scholars of water.  For generations, they used
+their magics to protect the great aelin cities, tirelessly working to
+preserve the aelin way of life.  
+
+As a gift from their house to the aelin people, they built architectural
+marvels in every aelin city.  By far the most famous was the Iphestan Maze
+of Ilodaiya, whose twisting and circuitous paths are said to be an homage to
+the crafty and cunning scholars and politicians of the great house.  
+
+During the War of Night, the Iphestans faced treachery from within, when an
+offshoot of their family followed Serachel into deceit and treachery against
+Ilodaiya.  Breaking with tradition, the Iphestans began to train their
+youngest children as assassins rather than scholars.  Upon completion of
+their training, they were given knives of this kind, consecrated to the
+destruction of traitors to the light.  
+~
+silver~
+weapon 0 0 0 AN
+dagger 5 9 10 0
+wrath~
+52 50 195000 1 P
+3
+E
+iphesta~
+This ceremonial dagger is inscribed with intricate figures from the
+history of the Iphesta, an aelin house long associated with the forces of
+Light.  
+~
+E
+ceremonial~
+This ceremonial dagger is inscribed with intricate figures from the
+history of the Iphesta, an aelin house long associated with the forces of
+Light.  
+~
+E
+knife~
+This ceremonial dagger is inscribed with intricate figures from the
+history of the Iphesta, an aelin house long associated with the forces of
+Light.  
+~
+O wrath~
+V13
+8454
+fang long glistening khil\@ayum khil~
+the fang of a khil\@ayum~
+A long, glistening fang rests here.~
+This dagger is actually the fang of the siyyad, one of the leaders of the
+khil\@ayum.  The khil\@ayum were a race of demonic insects who nested in the
+Darken Reach, a maze of catacombs and caverns which somehow had become
+infected with a portion of the elemental plane of Void.  The Titans defeated
+the khil\@ayum plague, imprisoning all the free khil\@ayum and entombing the
+rest inside the Reach.  
+~
+carrion~
+weapon S 0 0 AN
+dagger 4 12 2 0
+pierce~
+51 60 325000 1 P
+5
+O pierce~
+V13
+8455
+hide thick rough siyyad khil\@ayum khil~
+the hide of the siyyad khil\@ayum~
+The thick, rough hide of a large beast rests here.~
+This is the hide of the siyyad, one of the leaders of the khil\@ayum.  The
+khil\@ayum were a race of demonic insects who nested in the Darken Reach, a
+maze of catacombs and caverns which somehow had become infected with a
+portion of the elemental plane of Void.  The Titans defeated the khil\@ayum
+plague, imprisoning all the free khil\@ayum and entombing the rest inside the
+Reach.  
+~
+hide~
+armor S 0 0 AK
+10 10 10 10 0
+51 120 29730 2 P
+25
+A
+13 25
+A
+18 2
+A
+19 2
+V13
+8456
+staff geomancer crystal blue long~
+the Staff of the Geomancer~
+A long staff of blue crystal glows with power.~
+This staff is a powerful artifact of the magics of earth, wielded only by
+the greatest of the archmages to study such magic.  Creation of such a staff
+is a perilous task at best, since it involves a personal pilgrimage to the
+elemental plane of earth, where the scholar harvests a crystal attuned to
+his very essence.  Even surviving the journey does not ensure success, for
+the scholar must work uninterrupted for a single year to shape the crystal
+into a usable form, with the risk of a lethal magical accident quite high. 
+
+
+This particular staff is made from sapphire, possibly pointing to an
+attunement to the forces of the light by its creator.  
+~
+crystal~
+weapon AGSa 0 0 AN
+staff 5 9 1 F
+crush~
+52 130 195000 3 P
+1
+O crush~
+>fight_prog 1~
+if rand(25)
+if isworn($o)
+opcast 387 99
+endif
+endif
+~
+|
+V13
+8457
+robes dark silk Gyel-Xan pile~
+the dark silk robes of Gyel-Xan~
+A pile of dark silk lies here.~
+These are the robes of Gyel-Xan, leader of the spawn of Sothmogga.  The
+Spawn of Sothmogga, as they styled themselves, where actually the children
+of the Celanim, corrupted by the passing of that cosmic horror.  Long did
+the spawn continue the menace the Celanim, until they were nearly completely
+exterminated by the celestial essence of Converu, the same templar who
+banished Sothmogga.  
+
+Gyel-Xan, mightiest and most cunning of his kind, lead a clutch of his
+brethren away from his home plane when the finding of the Chalice of Jolinn
+cause a dimensional disturbance which opened up a portal to the prime
+material.  Long foreseen by his sinister auguries, Gyel-Xan was well
+prepared for this day, arriving in Avendar armed with an arsenal of
+nefarious magics.  
+
+He used an artifact known as the Orb of Illusions to obscure the Titans from
+the world at large, resulting in the widespread fear that their great kind
+had departed Avendar entirely.  Distracting the forces of the light with the
+release of a demon lord of some potency, he manipulated events to acquire
+the last remaining page of the Nyakigh Sha Yith, along with the mystical
+power needed for his plan.  
+
+Convincing the rest of his sect that he actually meant to free Sothmogga,
+Gyel-Xan began poisoning humans with Sothmogga\@s taint, and proceeded to
+encircle the Titan castle, with the heedless Titans still blind to the
+world.  Little did his followers realize, however, that Gyel-Xan had no
+desire to free Sothmogga instead, he sought to drain Sothmogga\@s power
+completely, instead becoming the cosmic horror himself!  
+
+Fortunately, a group of Champions found the Orb of Illusions in Gyel-Xan\@s
+secluded lair, and broke it on Anirim\@s throne, releasing the Titans. 
+Seeing his plans unravel, Gyel-Xan drew on Sothmogga\@s power recklessly,
+failing to realize that in doing so, he would be trapped in the same spell
+which bound Sothmogga in the astral prison.  His sect and demon army were
+defeated, and Gyel-Xan shared the same fate as his progenitor: eternity
+sealed away from the world under the care of the Titans.  
+~
+silk~
+armor CDEGSYa 0 0 AK
+10 10 10 15 0
+60 7 167489 1 P
+1
+A
+12 50
+A
+41 5
+A
+39 10
+V13
+8458
+red tunic bright~
+a rough woolen kilt, woven with bone charms~
+A rough woolen kilt lies in a pile, woven with bone charms.~
+~
+cloth~
+armor KLSa 0 0 AF
+11 11 11 15 0
+51 10 58911 2 P
+1
+A
+18 5
+A
+13 20
+A
+19 3
+A
+24 -2
+#0
+
+
+
+#ROOMS
+#8420
+Path Along a Dangerous Cliff~
+The mountain trail at this point leads to the north, and begins skirting
+the edge of a steep cliff.  As the narrow path winds up the side of the
+mountain to the north, it rises toward a thick layer of clouds that obscures
+the summit.  The trail appears to be well-kept, although not heavily
+travelled.  
+~
+~
+1
+0 0 5
+D0
+The path continues north.
+~
+~
+0 0 8421
+D2
+~
+~
+0 0 495
+W 5 0 0
+Z 5 5
+S
+#8421
+Path Along a Dangerous Cliff~
+The path continues along the edge of the cliff, following a curve in the
+mountain to the east, or leading south to the beginning of the trail.  To
+the west, a sheer cliff descends into a misty canyon.  Northeast of you, you
+can see the trail as it continues to curve around the edge of the mountains,
+ascending toward the layer of clouds that conceal the peak.  
+~
+~
+1
+0 0 5
+D1
+The path curves around the mountain to the east.
+~
+~
+0 0 8422
+D2
+The path descends to the south, and curves away from the cliff.
+~
+~
+0 0 8420
+W 5 0 0
+Z 5 5
+S
+#8422
+Path Along a Dangerous Cliff~
+The trail continues to curve along the mountain cliff, now turning
+northward once more.  To the north, you can see the trail curving west as it
+ascends into the cloud layer above you.  The trail also curves west behind
+you, leading to the beginning of the cliff trail.  
+~
+~
+1
+0 0 5
+D0
+The trail continues ascending to the north.
+~
+~
+0 0 8423
+D3
+The trail leads west and downward.
+~
+~
+0 0 8421
+W 5 0 0
+Z 5 5
+S
+#8423
+Path Along a Dangerous Cliff~
+The trail continues its course along the mountain cliff.  To the north,
+the trail turns west again, ascending into the cloud layer just above you. 
+The south portion of the trail also curves west, but leads downward.  
+~
+~
+1
+0 0 5
+D0
+The path continues to ascend north.
+~
+~
+0 0 8424
+D2
+The path descends to the south.
+~
+~
+0 0 8422
+W 5 0 0
+Z 5 5
+S
+#8424
+Path Along a Dangerous Cliff~
+The narrow mountain path curves along the dangerous cliffs.  To the west,
+the trail curves around an outcropping of stone and ascends into the thick
+cloud layer that conceals the peak of the mountain.  Southward, the trail
+descends away from the clouds.  
+~
+~
+1
+0 0 5
+D2
+The path descends to the south.
+~
+~
+0 0 8423
+D3
+The path curves west, ascending into the cloud layer.
+~
+~
+0 0 8425
+W 5 0 0
+Z 5 5
+S
+#8425
+Path Along a Dangerous Cliff~
+The narrow cliffside path curves its way upward into the mist of the
+clouds, which obscure your vision beyond about twenty feet.  Water droplets
+begin to accumulate on your clothing, and the chill mountain air begins to
+seep under your skin.  The path continues upwards to the north, or leads
+down below the clouds to the east.  
+~
+~
+1
+0 0 5
+D0
+The trail continues to ascend into the clouds.
+~
+~
+0 0 8426
+D1
+The trail descends out of the clouds.
+~
+~
+0 0 8424
+W 5 0 0
+Z 5 5
+S
+#8426
+Path Along a Dangerous Cliff~
+The narrow mountain path continues to climb its way through the clouds. 
+Your vision is obscured by the white mist that surrounds you, but the edge
+of the cliff is visible.  The path ascends to the north, and descends to the
+south.  
+~
+~
+1
+0 0 5
+D0
+The path continues through the clouds.
+~
+~
+0 0 8427
+D2
+The path continues through the clouds.
+~
+~
+0 0 8425
+W 5 0 0
+Z 5 5
+S
+#8427
+Path Along a Dangerous Cliff~
+The narrow mountain path continues to climb its way through the clouds. 
+Your vision is obscured by the white mist that surrounds you, but the edge
+of the cliff is visible to the northwest.  The path ascends to the east, and
+descends to the south.  
+~
+~
+1
+0 0 5
+D1
+The path ascends to the east.
+~
+~
+0 0 8428
+D2
+The path descends.
+~
+~
+0 0 8426
+W 5 0 0
+Z 5 5
+S
+#8428
+Path Along a Dangerous Cliff~
+The narrow mountain path continues to climb its way through the clouds. 
+Your vision is obscured by the white mist that surrounds you, but the edge
+of the cliff is visible to the north.  The path breaks out of the cloud
+layer to the east, and descends to the west.  
+~
+~
+1
+0 0 5
+D1
+The path climbs upwards.
+~
+~
+0 0 8429
+D3
+~
+~
+0 0 8427
+W 5 0 0
+Z 5 5
+S
+#8429
+A Path Approaching a Castle~
+As the mountain path climbs above the cloud layer, a brilliant white
+castle comes into view.  Bathed in glorious sunlight, the castle perches on
+the very summit of the mountain you have ascended.  White columns line the
+open front of the beautiful structure, and a large stairway built from white
+stone leads up the mountain to the entrance.  To the west, the trail
+descends back into the cloud layer, and the beginning of the white stairs
+are to the east.  
+~
+~
+1
+0 0 5
+D1
+The path leads to some marble steps.
+~
+~
+0 0 8430
+D3
+~
+~
+0 0 8428
+W 5 0 0
+Z 5 5
+S
+#8430
+At The Foot Of The White Stairs~
+The path leads to the base of an enormous stairway constructed of the
+purest white stone.  The stairs go up for several hundred feet to the north,
+and terminate at the castle entrance.  The castle itself stands bathed in
+shimmering sunlight, a white beacon against the grey clouds below you.  
+~
+~
+1
+0 0 0
+D0
+The white stairs lead upwards to the castle.
+~
+~
+0 0 8431
+D3
+The mountain path leads downward into the clouds.
+~
+~
+0 0 8429
+W 5 0 0
+Z 5 5
+S
+#8431
+The White Stairs~
+You stand halfway along the broad expanse of the white stairs.  The
+stairs lead up northward to the castle entrance.  The castle itself stands
+bathed in shimmering sunlight, a white beacon against the grey clouds below
+you.  
+~
+~
+1
+0 0 0
+D2
+The white stairs lead back to the mountain path.
+~
+~
+0 0 8430
+D4
+~
+~
+0 0 8432
+W 5 0 0
+Z 5 5
+S
+#8432
+The White Stairs~
+You stand at the top of the white stairs.  To the north, the shimmering
+white stones of the castle reflect sunlight in dazzling amounts.  The north
+wall is lined with pillars, and massive titan guards patrol under the
+intricate stonework that caps the beauty of the edifice.  
+~
+~
+1
+0 0 0
+D0
+The castle shimmers brilliantly to the north.
+~
+~
+0 0 8435
+D5
+~
+~
+0 0 8431
+W 5 0 0
+Z 5 5
+S
+#8433
+The Hall of Pillars~
+You stand in the fantastic Hall of Pillars, so named for the colossal
+stone supports that hold the stonework above.  Each pillar is carved with
+bas-relief, depicting epic battles, scenes from history, and events of
+cosmic proportions.  The pillars line the edge of the castle, forming a row
+heading north and south.  To the northeast is a wall of pure white stone,
+behind which the grand council of the Titans meets.  
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this pillar shows scenes from the building of Castle
+Nathli, a bastion of truth and learning throughout the grim Age of Winter. 
+Its construction took eighty years and involved the powers of hundreds of
+mages, as well as the aid of two Titans, the twin brothers Ealim and Aomin. 
+~
+D0
+The Hall of Pillars continues.
+~
+~
+0 0 8438
+D1
+The Hall of Pillars continues.
+~
+~
+0 0 8434
+W 5 0 0
+Z 5 5
+S
+#8434
+The Hall of Pillars~
+You stand in the fantastic Hall of Pillars, so named for the colossal
+stone supports that hold the stonework above.  Each pillar is carved with
+bas-relief, depicting epic battles, scenes from history, and events of
+cosmic proportions.  The pillars line the open front of the castle, forming
+a row heading east and west.  To the north, unseparated by walls and marked
+only by the beginning of a red carpet, is the grand council room of the
+Titans.  
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this pillar shows the final destruction of the Nyakigah
+Sha Yith, the Black Libram of Souls.  This wicked volume was the source of
+the Gath Warlock\@s powers, and is said to have stolen the minds of a
+thousand men.  The Titan sage Namaol eventually discovered its weakness, and
+oversaw its undoing in the flames of Goncath\@s Forge.  
+~
+D0
+The grand council room is to the north.
+~
+~
+0 0 8439
+D1
+The Hall of Pillars continues.
+~
+~
+0 0 8435
+D3
+The Hall of Pillars continues.
+~
+~
+0 0 8433
+W 5 0 0
+Z 5 5
+S
+#8435
+The Hall of Pillars~
+At the top of the white stairway is the entrance to the Castle of the
+Titans.  You stand at the beginning of the Hall of Pillars, so named for the
+colossal stone supports that hold the stonework above.  Each pillar is
+carved with bas-relief, depicting epic battles, scenes from history, and
+events of cosmic proportions.  The pillars line the open front of the
+castle, forming a row heading east and west.  To the north, unseparated by
+walls and marked only by the beginning of a red carpet, is the grand council
+room of the Titans.  
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this massive pillar shows the succession of the Titan
+Kings, an unbroken line since the Lord of the Sapphire Spear set them upon
+this sphere, at the beginning of time.  Seven wise and noble Titans have
+lead their people, from Uthbran the Omnipotent to the current monarch,
+Anirim the Pure.  
+~
+D0
+The hall of pillars opens into the grand council room.
+~
+~
+0 0 8440
+D1
+The hall of pillars continues.
+~
+~
+0 0 8436
+D2
+The white stairs lead downward.
+~
+~
+0 0 8432
+D3
+The hall of pillars continues.
+~
+~
+0 0 8434
+W 5 0 0
+Z 5 5
+S
+#8436
+The Hall of Pillars~
+You stand in the fantastic Hall of Pillars, so named for the colossal
+stone supports that hold the stonework above.  Each pillar is carved with
+bas-relief, depicting epic battles, scenes from history, and events of
+cosmic proportions.  The pillars line the open front of the castle, forming
+a row heading east and west.  To the north, unseparated by walls and marked
+only by the beginning of a red carpet, is the grand council room of the
+Titans.
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this pillar is a panorama of the Departure of the
+Yal\@alya.  The Yal\@alya, or \#Wise Teachers\#, were renowned for their
+learning and perception.  After dwelling in this world for seven millennia,
+they were called to their ancient home, and left behind only one of their
+number to record events in this sphere.  
+~
+D0
+The grand council room is north.
+~
+~
+0 0 8441
+D1
+The Hall of Pillars continues.
+~
+~
+0 0 8437
+D3
+The Hall of Pillars continues.
+~
+~
+0 0 8435
+W 5 0 0
+Z 5 5
+S
+#8437
+The Hall of Pillars~
+You stand in the fantastic Hall of Pillars, so named for the colossal
+stone supports that hold the stonework above.  Each pillar is carved with
+bas-relief, depicting epic battles, scenes from history, and events of
+cosmic proportions.  The pillars line the edge of the castle, forming a row
+heading north and south.  To the northwest is a wall of pure white stone,
+behind which the grand council of the Titans meets.  
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this pillar shows the God of Peace, Ajjnai, persuading
+the opposing generals of the Harkania War to lay down their arms.  The enemy
+countries subsequently forged such a treaty that to this day they are the
+strongest of allies.  
+~
+D0
+The Hall of Pillars continues.
+~
+~
+0 0 8442
+D3
+The Hall of Pillars continues.
+~
+~
+0 0 8436
+W 5 0 0
+Z 5 5
+S
+#8438
+The Hall of Pillars~
+You stand in the fantastic Hall of Pillars, so named for the colossal
+stone supports that hold the stonework above.  Each pillar is carved with
+bas-relief, depicting epic battles, scenes from history, and events of
+cosmic proportions.  The pillars line the edge of the castle, forming a row
+heading north and south.  To the east is a wall of pure white stone, behind
+which the grand council of the Titans meets.
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this pillar depicts the Hour of Blackness, in which the
+tentacled Sothmogga, Blight of Celanim, nearly gained free access to this
+world.  The legendary templar Converu is shown impaling the demon\@s physical
+form with Anirim\@s Javelin.  Although Converu died in this selfless act, his
+courage disabled Sothmogga\@s advance, and allowed the tentacled one to be
+contained forever.  
+~
+D0
+The Hall of Pillars continues.
+~
+~
+0 0 8443
+D2
+The Hall of Pillars continues.
+~
+~
+0 0 8433
+W 5 0 0
+Z 5 5
+S
+#8439
+The Grand Council Room~
+The enormous Grand Council Room of the Titans spreads before you. 
+Bordered on the north, east, and west by walls of the purest white and on
+the south by the Hall of Pillars, the Council Room has an air of immense
+magesty and power.  The walls are hung with flawless tapestries, the
+stonework of the ceiling is of breathtaking skill, and the floor is carpeted
+in a wonderous rug of deep crimson.  The Room is furnished with rich
+couches, cushioned with the finest of silk pillows.  To the far north of the
+Room, the White Throne of Anirim towers.  It is from this mighty chair that
+the Titan King gives council to the troubled of the world. 
+~
+~
+1
+0 8 0
+D0
+The grand council room continues.
+~
+~
+0 0 8444
+D1
+The grand council room continues.
+~
+~
+0 0 8440
+D2
+The Hall of Pillars is to the south.
+~
+~
+0 0 8434
+W 5 0 0
+Z 5 5
+S
+#8440
+The Grand Council Room~
+The enormous Grand Council Room of the Titans spreads before you. 
+Bordered on the north, east, and west by walls of the purest white and on
+the south by the Hall of Pillars, the Council Room has an air of immense
+magesty and power.  The walls are hung with flawless tapestries, the
+stonework of the ceiling is of breathtaking skill, and the floor is carpeted
+in a wonderous rug of deep crimson.  The Room is furnished with rich
+couches, cushioned with the finest of silk pillows.  To the far north of the
+Room, the White Throne of Anirim towers.  It is from this mighty chair that
+the Titan King gives council to the troubled of the world. 
+~
+~
+1
+0 8 0
+D0
+The grand council room continues.
+~
+~
+0 0 8445
+D1
+The grand council room continues.
+~
+~
+0 0 8441
+D2
+The Hall of Pillars is to the south.
+~
+~
+0 0 8435
+D3
+The grand council room continues.
+~
+~
+0 0 8439
+W 5 0 0
+Z 5 5
+S
+#8441
+The Grand Council Room~
+The enormous Grand Council Room of the Titans spreads before you. 
+Bordered on the north, east, and west by walls of the purest white and on
+the south by the Hall of Pillars, the Council Room has an air of immense
+magesty and power.  The walls are hung with flawless tapestries, the
+stonework of the ceiling is of breathtaking skill, and the floor is carpeted
+in a wonderous rug of deep crimson.  The Room is furnished with rich
+couches, cushioned with the finest of silk pillows.  To the far north of the
+Room, the White Throne of Anirim towers.  It is from this mighty chair that
+the Titan King gives council to the troubled of the world.  
+~
+~
+1
+0 8 0
+D0
+The grand council room continues.
+~
+~
+0 0 8446
+D2
+The Hall of Pillars is to the south.
+~
+~
+0 0 8436
+D3
+The grand council room continues.
+~
+~
+0 0 8440
+W 5 0 0
+Z 5 5
+S
+#8442
+The Hall of Pillars~
+You stand in the fantastic Hall of Pillars, so named for the colossal
+stone supports that hold the stonework above.  Each pillar is carved with
+bas-relief, depicting epic battles, scenes from history, and events of
+cosmic proportions.  The pillars line the edge of the castle, forming a row
+heading north and south.  To the west is a wall of pure white stone,
+behind which the grand council of the Titans meets.  
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this pillar depicts the battle to stop the spread of
+the horrific C\@thsa worms, whose ravenous advances nearly overran this world
+two millennia ago.  At the center of the scene is Eiliam, past champion of
+the Titans, struggling with the Insane Haj-Ra, father of the C\@thsa worms.  
+~
+D0
+The Hall of Pillars continues.
+~
+~
+0 0 8447
+D2
+The Hall of Pillars continues.
+~
+~
+0 0 8437
+W 5 0 0
+Z 5 5
+S
+#8443
+The Hall of Pillars~
+You stand in the fantastic Hall of Pillars, so named for the colossal
+stone supports that hold the stonework above.  Each pillar is carved with
+bas-relief, depicting epic battles, scenes from history, and events of
+cosmic proportions.  The pillars line the edge of the castle, forming a row
+heading north and south.  To the east is a wall of pure white stone, behind
+which the grand council of the Titans meets.
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this pillar depicts the concerted effort of the Titans,
+two Gods of the Light, and several Yal\@alya to convince the corrupt demi-god
+Grujnah of his error.  After thirty years of continuous debate, Grujnah
+admitted to the contradictions in his philosophy and became Thales, one of
+the Lords of Balance.  
+~
+D0
+The Hall of Pillars continues.
+~
+~
+0 0 8448
+D2
+The Hall of Pillars continues.
+~
+~
+0 0 8438
+W 5 0 0
+Z 5 5
+S
+#8444
+The Grand Council Room~
+The enormous Grand Council Room of the Titans spreads before you. 
+Bordered on the north, east, and west by walls of the purest white and on
+the south by the Hall of Pillars, the Council Room has an air of immense
+magesty and power.  The walls are hung with flawless tapestries, the
+stonework of the ceiling is of breathtaking skill, and the floor is carpeted
+in a wonderous rug of deep crimson.  The Room is furnished with rich
+couches, cushioned with the finest of silk pillows.  To the far north of the
+Room, the White Throne of Anirim towers.  It is from this mighty chair that
+the Titan King gives council to the troubled of the world. 
+~
+~
+1
+0 8 0
+D0
+The grand council room continues.
+~
+~
+0 0 8449
+D1
+The grand council room continues.
+~
+~
+0 0 8445
+D2
+The grand council room continues.
+~
+~
+0 0 8439
+W 5 0 0
+Z 5 5
+S
+#8445
+The Grand Council Room~
+The enormous Grand Council Room of the Titans spreads before you. 
+Bordered on the north, east, and west by walls of the purest white and on
+the south by the Hall of Pillars, the Council Room has an air of immense
+magesty and power.  The walls are hung with flawless tapestries, the
+stonework of the ceiling is of breathtaking skill, and the floor is carpeted
+in a wonderous rug of deep crimson.  The Room is furnished with rich
+couches, cushioned with the finest of silk pillows.  To the far north of the
+Room, the White Throne of Anirim towers.  It is from this mighty chair that
+the Titan King gives council to the troubled of the world. 
+~
+~
+1
+0 8 0
+D0
+The grand council room continues.
+~
+~
+0 0 8450
+D1
+The grand council room continues.
+~
+~
+0 0 8446
+D2
+The grand council room continues.
+~
+~
+0 0 8440
+D3
+The grand council room continues.
+~
+~
+0 0 8444
+W 5 0 0
+Z 5 5
+S
+#8446
+The Grand Council Room~
+The enormous Grand Council Room of the Titans spreads before you. 
+Bordered on the north, east, and west by walls of the purest white and on
+the south by the Hall of Pillars, the Council Room has an air of immense
+magesty and power.  The walls are hung with flawless tapestries, the
+stonework of the ceiling is of breathtaking skill, and the floor is carpeted
+in a wonderous rug of deep crimson.  The Room is furnished with rich
+couches, cushioned with the finest of silk pillows.  To the far north of the
+Room, the White Throne of Anirim towers.  It is from this mighty chair that
+the Titan King gives council to the troubled of the world.  
+~
+~
+1
+0 8 0
+D0
+The grand council room continues.
+~
+~
+0 0 8451
+D2
+The grand council room continues.
+~
+~
+0 0 8441
+D3
+The grand council room continues.
+~
+~
+0 0 8445
+W 5 0 0
+Z 5 5
+S
+#8447
+The Hall of Pillars~
+You stand in the fantastic Hall of Pillars, so named for the colossal
+stone supports that hold the stonework above.  Each pillar is carved with
+bas-relief, depicting epic battles, scenes from history, and events of
+cosmic proportions.  The pillars line the edge of the castle, forming a row
+heading north and south.  To the west is a wall of pure white stone, behind
+which the grand council of the Titans meets.
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this pillar depicts the War of One Thousand Gods, in
+which the wicked Demigods of Shias banded together to challenge the Lords of
+Aolo.  Although the Titans were not directly involved in this conflict,
+Limaen the Historian was on hand to record the events.  
+~
+D0
+The Hall of Pillars continues.
+~
+~
+0 0 8452
+D2
+The Hall of Pillars continues.
+~
+~
+0 0 8442
+W 5 0 0
+Z 5 5
+S
+#8448
+The Hall of Pillars~
+You stand in the fantastic Hall of Pillars, so named for the colossal
+stone supports that hold the stonework above.  Each pillar is carved with
+bas-relief, depicting epic battles, scenes from history, and events of
+cosmic proportions.  The pillars line the edge of the castle, forming a row
+heading north and south.  To the east the grand council of the Titans meets.
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this pillar shows the Taming of Pancuma, the Devil-Dog.
+As Pancuma\@s hellish ravages were nearing a defenseless city, the beautiful
+bard Elde\@adria took her simple lute and faced the beast alone.  Her
+legendary voice calmed Pancuma\@s rage, and sent him back to the pits from
+whence he came.  
+~
+D0
+The Hall of Pillars continues.
+~
+~
+0 0 8453
+D1
+The grand council room is to the east.
+~
+~
+0 0 8449
+D2
+The Hall of Pillars continues.
+~
+~
+0 0 8443
+W 5 0 0
+Z 5 5
+S
+#8449
+The Grand Council Room~
+The enormous Grand Council Room of the Titans spreads before you. 
+Bordered on the north, east, and west by walls of the purest white and on
+the south by the Hall of Pillars, the Council Room has an air of immense
+magesty and power.  The walls are hung with flawless tapestries, the
+stonework of the ceiling is of breathtaking skill, and the floor is carpeted
+in a wonderous rug of deep crimson.  The Room is furnished with rich
+couches, cushioned with the finest of silk pillows.  To the east, the
+titanic White Throne of Anirim towers.  It is from here that the Titan king
+directs the work of his people, and gives council to the troubled of this
+world.  To the west, an opening in the wall leads to the Hall of Pillars.  
+~
+~
+1
+0 8 0
+D1
+The grand council room continues.
+~
+~
+0 0 8450
+D2
+The grand council room continues.
+~
+~
+0 0 8444
+D3
+The Hall of Pillars is to the west.
+~
+~
+0 0 8448
+W 5 0 0
+Z 5 5
+S
+#8450
+The Throne of Anirim~
+The enormous Grand Council Room of the Titan Castle is centered by the
+White Throne of King Anirim.  Measuring thirty feet at the back, the White
+Throne is constructed of a form of crystal that glows faintly with a pale
+radiance.  From this marvelous chair, Anirim directs the work of his people
+in this realm.  Around and behind the Throne are racks upon racks of ancient
+scrolls, upon which are recorded millennia of knowledge.  The Council Room
+spreads grandly south, east, and west of you.  
+~
+~
+1
+0 8 0
+D1
+The grand council room continues.
+~
+~
+0 0 8451
+D2
+The grand council room continues.
+~
+~
+0 0 8445
+D3
+The grand council room continues.
+~
+~
+0 0 8449
+W 1 0 2
+Z 5 5
+S
+#8451
+The Grand Council Room~
+The enormous Grand Council Room of the Titans spreads before you. 
+Bordered on the north, east, and west by walls of the purest white and on
+the south by the Hall of Pillars, the Council Room has an air of immense
+magesty and power.  The walls are hung with flawless tapestries, the
+stonework of the ceiling is of breathtaking skill, and the floor is carpeted
+in a wonderous rug of deep crimson.  The Room is furnished with rich
+couches, cushioned with the finest of silk pillows.  To the west, the
+titanic White Throne of Anirim towers.  It is from here that the Titan king
+directs the work of his people, and gives council to the troubled of this
+world. To the east, an opening in the wall leads to the Hall of Pillars. 
+~
+~
+1
+0 8 0
+D1
+The Hall of Pillars is to the east.
+~
+~
+0 0 8452
+D2
+The grand council room continues.
+~
+~
+0 0 8446
+D3
+The grand council room continues.
+~
+~
+0 0 8450
+W 5 0 0
+Z 5 5
+S
+#8452
+The Hall of Pillars~
+You stand in the fantastic Hall of Pillars, so named for the colossal
+stone supports that hold the stonework above.  Each pillar is carved with
+bas-relief, depicting epic battles, scenes from history, and events of
+cosmic proportions.  The pillars line the edge of the castle, forming a row
+heading north and south.  To the west the grand council of the Titans meets.
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this pillar is a panorama of scenes from the efforts to
+eradicate the Withering Plague, which threatened the lives of entire
+continents during the Gandar Age.  
+~
+D0
+The Hall of Pillars continues.
+~
+~
+0 0 8457
+D2
+The Hall of Pillars continues.
+~
+~
+0 0 8447
+D3
+The grand council room is west.
+~
+~
+0 0 8451
+W 5 0 0
+Z 5 5
+S
+#8453
+The Hall of Pillars~
+You stand in the fantastic Hall of Pillars, so named for the colossal
+stone supports that hold the stonework above.  Each pillar is carved with
+bas-relief, depicting epic battles, scenes from history, and events of
+cosmic proportions.  The pillars line the edge of the castle, forming a row
+heading east and west.  To southeast is a wall of pure white stone, behind
+which the grand council of the Titans meets.  
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this pillar shows the Battle of Anda, in which the
+forces of worlds combined to capture Xthjich, Destroyer of the Iilim. 
+Leading the army of light was the Titan Captain Oradan, and it was he who
+struck the final blow against the vile Xthjich.  
+~
+D1
+The Hall of Pillars continues.
+~
+~
+0 0 8454
+D2
+The Hall of Pillars continues.
+~
+~
+0 0 8448
+W 5 0 0
+Z 5 5
+S
+#8454
+The Hall of Pillars~
+You stand in the fantastic Hall of Pillars, so named for the colossal
+stone supports that hold the stonework above.  Each pillar is carved with
+bas-relief, depicting epic battles, scenes from history, and events of
+cosmic proportions.  The pillars line the edge of the castle, forming a row
+heading east and west.  To south is a wall of pure white stone, behind which
+the grand council of the Titans meets.
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this pillar depicts the placing of the final stone in
+the Bridge of Yaai-ul, the fabled portal that allowed the Titans permanent
+access to Avayalu, the Realm of Dreams.  
+~
+D1
+The Hall of Pillars continues.
+~
+~
+0 0 8455
+D3
+The Hall of Pillars continues.
+~
+~
+0 0 8453
+W 5 0 0
+Z 5 5
+S
+#8455
+The Hall of Pillars~
+You stand in the fantastic Hall of Pillars, so named for the colossal
+stone supports that hold the stonework above.  Each pillar is carved with
+bas-relief, depicting epic battles, scenes from history, and events of
+cosmic proportions.  The pillars line the edge of the castle, forming a row
+heading east and west.  To south is a wall of pure white stone, behind which
+the grand council of the Titans meets.  A stairway leads down.  
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this pillar shows the sealing of the Darken Reaches,
+the catacombs that housed the dreadful khil\@ayum.  In the background, mages
+are shown working to bind the remaining khil\@ayum for containment in the
+Astral Prison.  
+~
+D1
+The Hall of Pillars continues.
+~
+~
+0 0 8456
+D3
+The Hall of Pillars continues.
+~
+~
+0 0 8454
+D5
+A plain stone stairway leads down to the Astral Prison.
+~
+~
+0 0 8458
+W 5 0 0
+Z 5 5
+S
+#8456
+The Hall of Pillars~
+You stand in the fantastic Hall of Pillars, so named for the colossal
+stone supports that hold the stonework above.  Each pillar is carved with
+bas-relief, depicting epic battles, scenes from history, and events of
+cosmic proportions.  The pillars line the edge of the castle, forming a row
+heading east and west.  To south is a wall of pure white stone, behind which
+the grand council of the Titans meets.  
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this pillar shows a scene of the Healer-Mage Arafia\@s
+descent into the Nether Pits to rescue his lover, Istera the Green.  Arafia
+is the only mortal to have made this journey and returned.  
+~
+D1
+The Hall of Pillars continues.
+~
+~
+0 0 8457
+D3
+The Hall of Pillars continues.
+~
+~
+0 0 8455
+W 5 0 0
+Z 5 5
+S
+#8457
+The Hall of Pillars~
+You stand in the fantastic Hall of Pillars, so named for the colossal
+stone supports that hold the stonework above.  Each pillar is carved with
+bas-relief, depicting epic battles, scenes from history, and events of
+cosmic proportions.  The pillars line the edge of the castle, forming a row
+heading east and west.  To southwest is a wall of pure white stone, behind
+which the grand council of the Titans meets.  
+~
+~
+1
+0 8 0
+E
+pillar~
+The bas-relief on this pillar recounts the history of the legendary
+Challenge of Ishurru, when the demonic Lord Ishurru duelled Anirim, King of
+Titans, laying aside their supernatural powers to duel using mundane
+strength alone.  
+~
+D2
+The Hall of Pillars continues.
+~
+~
+0 0 8452
+D3
+The Hall of Pillars continues.
+~
+~
+0 0 8456
+W 5 0 0
+Z 5 5
+S
+#8458
+The Astral Prison~
+A white stone stairway leads down from the Hall of Pillars to this
+hallway underneath the castle.  The walls are of the same flawless white
+stone and are carved with mystic symbols.  In the distance to the north, you
+can see a large door set in the wall, and to hall turns to the east.  
+~
+~
+1
+0 8 0
+D0
+The Astral Prison is to the north.
+~
+~
+0 0 8464
+D4
+The stairs lead back to the Hall of Pillars.
+~
+~
+0 0 8455
+W 5 0 0
+Z 5 5
+S
+#8459
+An Astral Cell~
+The door opens into a large, bare cell.  The walls measure approximately
+20\@ on each side, with the ceiling about the same height.  The floor is
+covered with fresh straw, and the cell is clean, but it is still filled with
+an animal stench.  
+~
+~
+1
+0 8250 0
+D0
+The cell exits north.
+~
+~
+3 0 8465
+T 55
+W 5 0 0
+Z 5 5
+S
+#8460
+An Astral Cell~
+The door opens into a large, bare cell.  The walls measure approximately
+20\@ on each side, with the ceiling about the same height.  The floor is
+covered with fresh straw, and the cell is clean, but it is still filled with
+an animal stench.  
+~
+~
+1
+0 8250 0
+D0
+The cell exits north.
+~
+~
+3 0 8466
+T 55
+W 5 0 0
+Z 5 5
+S
+#8461
+An Astral Cell~
+The door opens into a large, bare cell.  The walls measure approximately
+20\@ on each side, with the ceiling about the same height.  The floor is
+covered with fresh straw, and the cell is clean, but it is still filled with
+an animal stench.  
+~
+~
+1
+0 8250 0
+D0
+The cell exits north.
+~
+~
+3 0 8467
+T 55
+W 5 0 0
+Z 5 5
+S
+#8462
+An Astral Cell~
+The door opens into a large, bare cell.  The walls measure approximately
+20\@ on each side, with the ceiling about the same height.  The floor is
+covered with fresh straw, and the cell is clean, but it is still filled with
+an animal stench.  
+~
+~
+1
+0 8250 0
+D0
+The cell exits north.
+~
+~
+3 0 8468
+T 55
+W 5 0 0
+Z 5 5
+S
+#8463
+An Astral Cell~
+The door opens into a large, bare cell.  The walls measure approximately
+20\@ on each side, with the ceiling about the same height.  The floor is
+covered with fresh straw, and the cell is clean, but it is still filled with
+an animal stench.  
+~
+~
+1
+0 8250 0
+D0
+The cell exits north.
+~
+~
+3 0 8469
+T 55
+W 5 0 0
+Z 5 5
+S
+#8464
+The Astral Prison~
+You stand in the white stone halls of the Astral Prison, the confinement
+system used by the Titans to hold beings so dangerous as to threaten entire
+worlds.  To the north is a large door, sealed by mystic runes of binding. 
+To the east is a row of cells.  A plaque is set in the wall.  
+~
+~
+1
+0 8 0
+E
+plaque~
+The plaque reads:
+Extreme caution is urged while in the Astral Prison. The beings contained
+here are quite dangerous, and while they are weakened by the bonds placed
+upon them, they can still harm those who enter their cells. It is advised
+that none enter these halls unless absolutely necessary.
+~
+D0
+To the north is a large sealed door.
+~
+~
+103 8420 8471
+D1
+A row of cells is to the east.
+~
+~
+0 0 8465
+D2
+The stairway is south.
+~
+~
+0 0 8458
+T 55
+W 5 0 0
+Z 5 5
+S
+#8465
+The Astral Prison~
+You stand in a hallway of white stone.  The north and south walls are
+lined with large wooden doors.  The door frames are surrounded by glowing
+runes that crackle with energy and prevent the occupant of the cell from
+escaping.  A plaque is set in the wall.  
+~
+~
+1
+0 8 0
+E
+plaque~
+The plaque reads:
+The cells in this hallway contain the last of the khil\@ayum. Their wicked
+kind preyed on the people of Uil for generations, and soon spread to many
+other lands. Intervention became necessary, and the last few stay out
+their miserable years in these cells.
+~
+D0
+An Astral Cell is north.
+~
+~
+3 0 8472
+D1
+The Astral Prison continues.
+~
+~
+0 0 8466
+D2
+An Astral Cell is south.
+~
+~
+3 0 8459
+D3
+The Astral Prison continues.
+~
+~
+0 0 8464
+T 55
+W 5 0 0
+Z 5 5
+S
+#8466
+The Astral Prison~
+You stand in a hallway of white stone.  The north and south walls are
+lined with large wooden doors.  The door frames are surrounded by glowing
+runes that crackle with energy and prevent the occupant of the cell from
+escaping.
+~
+~
+1
+0 8 0
+D0
+An Astral Cell is north.
+~
+~
+3 0 8473
+D1
+The Astral Prison continues.
+~
+~
+0 0 8467
+D2
+An Astral Cell is south.
+~
+~
+3 0 8460
+D3
+The Astral Prison continues.
+~
+~
+0 0 8465
+T 55
+W 5 0 0
+Z 5 5
+S
+#8467
+The Astral Prison~
+You stand in a hallway of white stone.  The north and south walls are
+lined with large wooden doors.  The door frames are surrounded by glowing
+runes that crackle with energy and prevent the occupant of the cell from
+escaping.
+~
+~
+1
+0 8 0
+D0
+An Astral Cell is north.
+~
+~
+3 0 8474
+D1
+The Astral Prison continues.
+~
+~
+0 0 8468
+D2
+An Astral Cell is south.
+~
+~
+3 0 8461
+D3
+The Astral Prison continues.
+~
+~
+0 0 8466
+T 55
+W 5 0 0
+Z 5 5
+S
+#8468
+The Astral Prison~
+You stand in a hallway of white stone.  The north and south walls are
+lined with large wooden doors.  The door frames are surrounded by glowing
+runes that crackle with energy and prevent the occupant of the cell from
+escaping.
+~
+~
+1
+0 8 0
+D0
+An Astral Cell is north.
+~
+~
+3 0 8475
+D1
+The Astral Prison continues.
+~
+~
+0 0 8469
+D2
+An Astral Cell is south.
+~
+~
+3 0 8462
+D3
+The Astral Prison continues.
+~
+~
+0 0 8467
+T 55
+W 5 0 0
+Z 5 5
+S
+#8469
+The Astral Prison~
+You stand in a hallway of white stone.  The north and south walls are
+lined with large wooden doors, and a larger wooden door is set in the east
+wall.  The door frames are surrounded by glowing runes that crackle with
+energy and prevent the occupant of the cell from escaping.  
+~
+~
+1
+0 8 0
+D0
+An Astral Cell is north.
+~
+~
+3 0 8476
+D1
+An Astral Cell is east.
+~
+~
+3 0 8477
+D2
+An Astral Cell is south.
+~
+~
+3 0 8463
+D3
+The Astral Prison continues.
+~
+~
+0 0 8468
+T 55
+W 5 0 0
+Z 5 5
+S
+#8470
+The Cell of Xthjich~
+The door opens into a large, bare cell.  The walls measure approximately
+20\@ on each side, with the ceiling about the same height.  Each wall is
+scored by talon marks, and the white of the stones is marred by scorch marks
+and deep red streaks.  The doorway, though it opens to the hall outside, is
+blocked by mystical runes that glow and crackle in midair.  
+
+The Eye of Xthjich is burned into the floor of the cell.
+~
+~
+5
+0 8250 0
+E
+symbolvision~
+You reel, as you no longer see the confines of the astral cell.  
+
+
+
+You stand on a dark plain, glaring through a yellowed eye onto the field of
+a vast battle.  Ahead of you, and all around sinister and eldritch horrors
+seethe and roil, part of a great host.  At their head, the monstrous demon
+general Xthjich leads the abominations in a surging swarm of pure force.  
+
+He turns, to stare at you, and you are ensnared by his gaze.  His claws tear
+the air, and he roars.  You cannot look away, though, and are drawn into his
+eyes.  Their dark pits consume the entire scene, and, horrifyingly, you are
+lost in their exquisite emptiness.....  
+
+
+
+The vision clears, and the Eye of Xthjich has burned itself onto the weave
+of your mind.  
+~
+E
+eye~
+The eye of Xthjich is the canonical pentagram, but with a stylized and
+glaring eye drawn in the central pentagon.  The eye is angry, and is
+surrounded by lines representing radiant fire in the various branches of the
+pentagram.  
+
+This particular symbol is burnt into the floor of the near invulnerable
+astral cell.  You might more learn more of it if you were to study it.  
+~
+E
+xthjich~
+The eye of Xthjich is the canonical pentagram, but with a stylized and
+glaring eye drawn in the central pentagon.  The eye is angry, and is
+surrounded by lines representing radiant fire in the various branches of the
+pentagram.  
+
+This particular symbol is burnt into the floor of the near invulnerable
+astral cell.  You might more learn more of it if you were to study it.  
+~
+D1
+~
+~
+103 8420 8471
+T 55
+W 5 0 0
+Z 5 5
+S
+#8471
+The Astral Prison~
+You stand in a large hallway of white stone.  Set in the west wall is a
+large wooden door, enscribed with powerful runes of binding.  In addition,
+the door is equipped with a powerful mundane lock.  The air fairly hums with
+the power of the containment sorcery being used.  A plaque is set in the
+wall.  
+~
+~
+3
+0 8250 0
+E
+plaque~
+The plaque reads:
+Xthjich, the Eternal Demon, is herein contained for his numberless crimes  
+against the light. His slaughter of the Iilim is counted as one of the
+most horrific acts of all time. As he lead his demonic legions to capture
+the Heart of Light, he was finally struck down, and abides in this weakened
+state, tasting of the bondage he imposed upon a thousand thousand souls.
+~
+D0
+The Astral Prison continues north.
+~
+~
+0 0 8479
+D2
+The Astral Prison continues south.
+~
+~
+103 8420 8464
+D3
+~
+~
+103 8420 8470
+W 5 0 0
+Z 5 5
+S
+#8472
+An Astral Cell~
+The door opens into a large, bare cell.  The walls measure approximately
+20\@ on each side, with the ceiling about the same height.  The floor is
+covered with fresh straw, and the cell is clean, but it is still filled with
+an animal stench.  
+~
+~
+1
+0 8250 0
+D2
+The cell exits south.
+~
+~
+3 0 8465
+T 55
+W 5 0 0
+Z 5 5
+S
+#8473
+An Astral Cell~
+The door opens into a large, bare cell.  The walls measure approximately
+20\@ on each side, with the ceiling about the same height.  The floor is
+covered with fresh straw, and the cell is clean, but it is still filled with
+an animal stench.  
+~
+~
+1
+0 8250 0
+D2
+The cell exits south.
+~
+~
+3 0 8466
+T 55
+W 5 0 0
+Z 5 5
+S
+#8474
+An Astral Cell~
+The door opens into a large, bare cell.  The walls measure approximately
+20\@ on each side, with the ceiling about the same height.  The floor is
+covered with fresh straw, and the cell is clean, but it is still filled with
+an animal stench.  
+~
+~
+1
+0 8250 0
+D2
+The cell exits south.
+~
+~
+3 0 8467
+T 55
+W 5 0 0
+Z 5 5
+S
+#8475
+An Astral Cell~
+The door opens into a large, bare cell.  The walls measure approximately
+20\@ on each side, with the ceiling about the same height.  The floor is
+covered with fresh straw, and the cell is clean, but it is still filled with
+an animal stench.  
+~
+~
+1
+0 8250 0
+D2
+The cell exits south.
+~
+~
+3 0 8468
+T 55
+W 5 0 0
+Z 5 5
+S
+#8476
+An Astral Cell~
+The door opens into a large, bare cell.  The walls measure approximately
+20\@ on each side, with the ceiling about the same height.  The floor is
+covered with fresh straw, and the cell is clean, but it is still filled with
+an animal stench.  
+~
+~
+1
+0 8250 0
+D2
+The cell exits south.
+~
+~
+3 0 8469
+T 55
+W 5 0 0
+Z 5 5
+S
+#8477
+The Astral Cell~
+The door opens into a large, bare cell.  The walls measure approximately
+20\@ on each side, with the ceiling about the same height.  The floor is
+covered with fresh straw, and the cell is clean, but it is still filled with
+an animal stench.  
+~
+~
+2
+0 8250 0
+D3
+The cell exits west.
+~
+~
+3 0 8469
+T 55
+W 5 0 0
+Z 5 5
+S
+#8478
+The Cell of Haj-Ra~
+The door opens into a large, bare cell.  The walls measure approximately
+20\@ on each side, with the ceiling about the same height.  The floor is
+covered with dried segments of black chitinous material.  The doorway,
+though it opens to the hall outside, is blocked by mystical runes that glow
+and crackle in midair.  
+~
+~
+5
+0 8250 0
+D1
+The cell exits east.
+~
+~
+103 8420 8479
+T 55
+W 5 0 0
+Z 5 5
+S
+#8479
+The Astral Prison~
+You stand in a large hallway of white stone.  Set in the west wall is a
+large wooden door, enscribed with powerful runes of binding.  In addition,
+the door is equipped with a powerful mundane lock.  The air fairly hums with
+the power of the containment sorcery being used.  A plaque is set in the
+wall.
+~
+~
+3
+0 8250 0
+E
+plaque~
+The plaque reads:
+Haj-Ra, the Insane Worm of Yra, is herein contained that his voracious
+advances may never again plague the dimensions. Hailing from the dark world
+of Yra, the hunger of Haj-Ra devoured all that was precious. Thus he went
+forth with his vile spawn, the C\@thsa worms, and spread across the many
+lands. At last he was defeated by the champion Eiliam, and his appetite is
+now bound by these walls.
+~
+D0
+The Astral Prison continues north.
+~
+~
+0 0 8481
+D2
+The Astral Prison continues south.
+~
+~
+0 8420 8471
+D3
+To the west is the cell of Haj-Ra, the insane worm of Yra.
+~
+~
+103 8420 8478
+T 55
+W 5 0 0
+Z 5 5
+S
+#8480
+The Cell of Sothmogga~
+The door opens into a large, bare cell.  The walls measure approximately
+20\@ on each side, with the ceiling about the same height.  The cell floor
+and walls are coated with a layer of noxious ooze, and the air is heavy with
+a fetid stink.  The doorway, though it opens to the hall outside, is blocked
+by mystical runes that glow and crackle in midair.  
+~
+~
+5
+0 8250 0
+D1
+The cell exits east.
+~
+~
+103 8420 8481
+T 55
+W 5 0 0
+Z 5 5
+S
+#8481
+The Astral Prison~
+You stand in a large hallway of white stone.  Set in the west wall is a
+large wooden door, enscribed with powerful runes of binding.  In addition,
+the door is equipped with a powerful mundane lock.  The air fairly hums with
+the power of the containment sorcery being used.  A plaque is set in the
+wall.
+~
+~
+3
+0 8250 0
+E
+plaque~
+The plaque reads:
+Herein lies the physical form of Sothmogga, the Blight of Celanim. The
+tentacled one attempted to assert his influence on this sphere by opening
+a permanent corridor between our world and his source of power. He was left
+momentarily vulnerable, and the renowned knight Converu sacrificed his life
+to stop Sothmogga\@s attempt. Sothmogga\@s crippled body now lies in this
+prison, though his soul is doubtless working foul deeds elsewhere.
+~
+D0
+The Astral Prison continues north.
+~
+~
+0 0 8483
+D2
+The Astral Prison continues south.
+~
+~
+0 0 8479
+D3
+To the west is the cell of Sothmogga the Eternal Demon, Blight of Celanim.
+~
+~
+103 8420 8480
+T 55
+W 5 0 0
+Z 5 5
+S
+#8482
+The Cell of Gyel-Xan~
+You stand in a large cell, measuring about twenty feet on each side.  The
+stone walls and floor are completely bare, and the air is stale, as if the
+door has been closed for years.  An acidic tang fills the air.  
+~
+~
+3
+0 8250 0
+D1
+The cell exits east.
+~
+~
+67 0 8483
+T 55
+W 5 0 0
+Z 5 5
+S
+#8483
+The Astral Prison~
+The white stone hall ends abruptly.  To the west is a large wooden door,
+curiously absent of runes or protective magic.  The sturdy metal lock set in
+the opening mechanism hangs open.  The hall continues to the south, and
+there is a plaque set in the wall.  
+~
+~
+3
+0 8250 0
+E
+plaque~
+Gyel-Xan, the leader of the Children of Sothmogga, is herein contained
+that its insatiable, devouring hunger may never again be unleashed upon the
+Prime Material.  Born of the Celanim and transformed into an abomination by
+the arrival of Sothmogga, Gyel-Xan led the Children to Avendar.  Driven to
+this cell by a host of mortals and the legendary Converu, Gyel-Xan\@s body
+became ensnared by the same power that also binds the form of its Lord.  It
+now hungers, eternally and in silence, its blighted brethren long ago struck
+down.  
+~
+D2
+The Astral Prison continues south.
+~
+~
+0 0 8481
+D3
+An Astral Cell is west.
+~
+~
+67 0 8482
+T 55
+W 5 0 0
+Z 5 5
+S
+#0
+
+
+
+#SPECIALS
+M 8423 spec_breath_fire
+M 8424 spec_poison
+M 8427 spec_cast_spirit
+M 8431 spec_cast_air
+M 8434 spec_cast_water
+M 8436 spec_cast_earth
+M 8437 spec_poison
+S
+
+
+
+#RESETS
+D 0 8459 0 3
+D 0 8460 0 3
+D 0 8461 0 3
+D 0 8462 0 3
+D 0 8463 0 3
+D 0 8464 0 103
+D 0 8465 0 3
+D 0 8465 2 3
+D 0 8466 0 3
+D 0 8466 2 3
+D 0 8467 0 3
+D 0 8467 2 3
+D 0 8468 0 3
+D 0 8468 2 3
+D 0 8469 0 3
+D 0 8469 1 3
+D 0 8469 2 3
+D 0 8470 1 103
+D 0 8471 2 103
+D 0 8471 3 103
+D 0 8472 2 3
+D 0 8473 2 3
+D 0 8474 2 3
+D 0 8475 2 3
+D 0 8476 2 3
+D 0 8477 3 3
+D 0 8478 1 103
+D 0 8479 3 103
+D 0 8480 1 103
+D 0 8481 3 103
+D 0 8482 1 67
+D 0 8483 3 67
+M 0 8420 1 8429 1
+M 0 8421 1 8429 1
+M 0 8426 10 8431 1
+M 0 8426 10 8432 1
+M 0 8426 10 8433 1
+M 0 8426 10 8435 1
+M 0 8438 1 8436 1
+E 0 8445 0 17
+E 0 8446 0 5
+E 0 8447 0 6
+E 0 8448 0 7
+E 0 8449 0 10
+M 0 8426 10 8437 1
+M 0 8436 1 8439 1
+E 0 8438 0 2
+E 0 8456 0 16
+M 0 8431 1 8440 1
+E 0 8444 0 3
+M 0 8435 1 8441 1
+E 0 8437 0 17
+M 0 8426 10 8443 1
+M 0 8433 1 8444 1
+E 0 8434 0 9
+M 0 8430 1 8445 1
+E 0 8439 0 6
+E 0 8441 0 11
+E 0 8440 0 5
+E 0 8442 0 15
+E 0 8442 0 14
+E 0 8443 0 16
+E 0 1280 0 20
+M 0 8434 1 8446 1
+E 0 8436 0 12
+M 0 8426 10 8447 1
+M 0 8432 1 8449 1
+E 0 8435 0 13
+M 0 8428 1 8450 1
+E 0 8430 0 6
+E 0 8431 0 16
+M 0 8429 1 8451 1
+E 0 8432 0 10
+E 0 8433 0 7
+M 0 8426 10 8453 1
+M 0 8439 1 8455 1
+E 0 8450 0 16
+G 0 8420 0
+M 0 8426 10 8456 1
+M 0 8426 10 8457 1
+M 0 8422 11 8459 1
+M 0 8422 11 8460 1
+M 0 8422 11 8461 1
+M 0 8422 11 8462 1
+M 0 8422 11 8463 1
+M 0 8427 1 8464 1
+E 0 8420 0 17
+E 0 8453 0 16
+M 0 8423 1 8470 1
+E 0 8421 0 6
+E 0 8422 0 5
+E 0 8423 0 11
+E 0 8424 0 10
+E 0 8425 0 7
+E 0 8426 0 8
+M 0 8443 1 8470 1
+M 0 8422 11 8472 1
+M 0 8422 11 8473 1
+M 0 8422 11 8474 1
+M 0 8422 11 8475 1
+M 0 8422 11 8476 1
+M 0 8440 1 8477 1
+M 0 8424 1 8478 1
+E 0 8427 0 12
+G 0 8428 0
+M 0 8442 1 8478 1
+M 0 8425 1 8480 1
+G 0 8429 0
+M 0 8444 1 8482 1
+S
+
+
+
+#GUILD
+#8434
+"resurrection"
+"revitalize"
+"meld with water"
+"rebirth"
+#0
+
+#8436
+"crystalize magic"
+"flesh to stone"
+"stonefist"
+"gravity well"
+"salt of the earth"
+"lattice of stone"
+"geomancy"
+"gravity well"
+"crystalize magic"
+"wall of stone"
+#0
+
+S
+
+
+#SHOPS
+0
+
+
+
+#$
