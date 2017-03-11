@@ -32,14 +32,14 @@ GTEST_DIR = deps/googletest
 TESTS = StringUtil_test
 
 main:
-	./update_version > version.h
+	../scripts/update_version > version.h
 	make rom
 
 rom: $(O_FILES)
-	$(CC) -o avendar $(O_FILES) $(L_FLAGS)
+	$(CC) -o ../avendar $(O_FILES) $(L_FLAGS)
 
 prof: $(O_FILES)
-	$(CC) -o avendar -pg $(O_FILES) $(L_FLAGS)
+	$(CC) -o ../avendar -pg $(O_FILES) $(L_FLAGS)
 
 clean:
 	rm -f avendar *~ *.o *.a *.gcov *.gcda *.gcno $(TESTS)
