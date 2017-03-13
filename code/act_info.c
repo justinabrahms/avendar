@@ -44,6 +44,7 @@
 #include <ctype.h>
 #include <time.h>
 #include <mysql/mysql.h>
+#include <crypt.h>
 #include "merc.h"
 #include "magic.h"
 #include "recycle.h"
