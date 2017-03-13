@@ -1,5 +1,4 @@
 #include "CommandTrie.h"
-using namespace std;
 
 const int CommandTrie::NoIndex(-1);
 

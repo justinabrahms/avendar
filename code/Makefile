@@ -1,11 +1,9 @@
 CC      = g++
 PROF    = -O0 -g
 RELEASE = -O3
-COVERAGE= -fprofile-arcs -ftest-coverage
-C_FLAGS = -m32 -fpermissive -Wall -Wno-parentheses -Wno-char-subscripts -Wno-write-strings $(PROF) $(NOCRYPT) $(COVERAGE)
-L_FLAGS = -m32 -lm -L/usr/lib/i386-linux-gnu -L/lib/i386-linux-gnu -lcrypt -L/usr/local/bin/ -lmysqlclient -lgcov $(PROF)
+C_FLAGS =  -Wall -Wno-parentheses -Wno-char-subscripts -Wno-write-strings $(PROF) $(NOCRYPT) 
+L_FLAGS =  -lm -lcrypt -L/usr/local/lib/mysql/ -lmysqlclient $(PROF)
 
-# TODO(jabrahms): Move this into things which are mud dependencies and things which rarely change (eg StringUtil)
 O_FILES = act_comm.o act_enter.o act_info.o act_move.o act_obj.o act_wiz.o AirTitles.o \
           alchemy.o alias.o ban.o bit.o comm.o CommandTrie.o const.o db.o db2.o dictionary.o \
           Direction.o DisplayPanel.o Drakes.o EarthTitles.o EchoAffect.o \
@@ -26,79 +24,21 @@ O_FILES = act_comm.o act_enter.o act_info.o act_move.o act_obj.o act_wiz.o AirTi
 	      update.o VoidTitles.o weather.o Weave.o cards.o mount.o puerto.o gameserv.o coloretto.o \
 	      version.o WaterTitles.o
 
-USER_DIR = .
-GTEST_DIR = deps/googletest
-
-TESTS = StringUtil_test
-
 main:
-	../scripts/update_version > version.h
+	./update_version > version.h
 	make rom
 
 rom: $(O_FILES)
-	$(CC) -o ../avendar $(O_FILES) $(L_FLAGS)
+	$(CC) $(L_FLAGS) -o avendar $(O_FILES)
 
 prof: $(O_FILES)
-	$(CC) -o ../avendar -pg $(O_FILES) $(L_FLAGS)
+	$(CC) $(L_FLAGS) -o avendar -pg $(O_FILES)
 
 clean:
-	rm -f avendar *~ *.o *.a *.gcov *.gcda *.gcno $(TESTS)
+	rm -f avendar *~ *.o
 
 .c.o: merc.h
 	$(CC) -c $(C_FLAGS) $<
 
 .cpp.o: merc.h
 	$(CC) -c $(C_FLAGS) $<
-
-test: $(TESTS)
-
-# TESTS!!!
-#
-# The bulk of these were pulled from GoogleTests's Makefile samples.
-
-
-# Flags passed to the preprocessor.
-# Set Google Test's header directory as a system directory, such that
-# the compiler doesn't generate warnings in Google Test headers.
-CPPFLAGS += -m32 -isystem $(GTEST_DIR)/include $(COVERAGE)
-
-# Flags passed to the C++ compiler.
-CXXFLAGS += -m32 -g -Wall -Wextra -pthread
-
-# All Google Test headers.  Usually you shouldn't change this
-# definition.
-GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
-                $(GTEST_DIR)/include/gtest/internal/*.h
-
-# House-keeping build targets.
-
-
-# Usually you shouldn't tweak such internal variables, indicated by a
-# trailing _.
-GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
-
-# For simplicity and to avoid depending on Google Test's
-# implementation details, the dependencies specified below are
-# conservative and not optimized.  This is fine as Google Test
-# compiles fast and for ordinary users its source rarely changes.
-gtest-all.o : $(GTEST_SRCS_)
-	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
-            $(GTEST_DIR)/src/gtest-all.cc
-
-gtest_main.o : $(GTEST_SRCS_)
-	$(CXX) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
-            $(GTEST_DIR)/src/gtest_main.cc
-
-gtest.a : gtest-all.o
-	$(AR) $(ARFLAGS) $@ $^
-
-gtest_main.a : gtest-all.o gtest_main.o
-	$(AR) $(ARFLAGS) $@ $^
-
-
-
-StringUtil_test.o : StringUtil_test.cpp $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(C_FLAGS) $(USER_DIR)/$*.cpp
-
-StringUtil_test : StringUtil.o StringUtil_test.o gtest_main.a
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@ 

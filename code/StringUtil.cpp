@@ -4,7 +4,6 @@
 #include <ctype.h>
 #include <cstring>
 #include <cstdlib>
-using namespace std;
 
 // Externs which need to be moved elsewhere at some point
 extern char * str_dup(const char *str);
