@@ -5359,6 +5359,8 @@ char *fread_name(FILE *fp, char *buffer, const unsigned long max_length)
 	pword   = buffer+1;
 	cEnd    = ' ';
     }
+    bug(pword, 0);
+    bug(buffer+max_length, 0);
 
     for ( ; pword < buffer + max_length; pword++ )
     {
